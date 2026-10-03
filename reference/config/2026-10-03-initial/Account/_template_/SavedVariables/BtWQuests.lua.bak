@@ -1,0 +1,20 @@
+
+BtWQuests_Settings = {
+["minimapAngle"] = -135.0000168650029,
+}
+BtWQuests_AutoLoad = {
+["BtWQuestsDragonflight"] = false,
+["BtWQuestsWrathOfTheLichKing"] = false,
+["BtWQuestsWarlordsOfDraenor"] = false,
+["BtWQuestsMidnight"] = true,
+["BtWQuestsDragonflightPrologue"] = false,
+["BtWQuestsBattleForAzeroth"] = false,
+["BtWQuestsMistsOfPandaria"] = false,
+["BtWQuestsShadowlandsPrologue"] = false,
+["BtWQuestsLegion"] = false,
+["BtWQuestsTheWarWithin"] = true,
+["BtWQuestsShadowlands"] = false,
+["BtWQuestsCataclysm"] = false,
+["BtWQuestsBattleForAzerothPrologue"] = false,
+["BtWQuestsTheBurningCrusade"] = false,
+}

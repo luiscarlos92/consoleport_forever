@@ -1,0 +1,427 @@
+
+DynamicCamDB = {
+["profileKeys"] = {
+["Lóriën - Grim Batol"] = "Default",
+["Angaïnor - Proudmoore"] = "Default",
+["Brandhir - Grim Batol"] = "Default",
+["Mírïel - Grim Batol"] = "Default",
+["Mírïel - Proudmoore"] = "Default",
+["Fengie - Grim Batol"] = "Default",
+["Ologreth - Proudmoore"] = "Default",
+["Lënwë - Grim Batol"] = "Default",
+["Angorbag - Grim Batol"] = "Default",
+["Górlim - Proudmoore"] = "Default",
+["Fëanólë - Grim Batol"] = "Default",
+["Ologreth - Grim Batol"] = "Default",
+["Glaürung - Grim Batol"] = "Default",
+["Dugbúrz - Proudmoore"] = "Default",
+["Góthmog - Proudmoore"] = "Default",
+["Fëlagund - Proudmoore"] = "Default",
+["Fëanturï - Proudmoore"] = "Default",
+["Dugbúrz - Grim Batol"] = "Default",
+["Lórïën - Proudmoore"] = "Default",
+["Fëanólë - Proudmoore"] = "Default",
+["Fengie - Proudmoore"] = "Default",
+["Fenmei - Proudmoore"] = "Default",
+["Drauglúin - Grim Batol"] = "Default",
+["Glaürüng - Proudmoore"] = "Default",
+["Ganymëdë - Grim Batol"] = "Default",
+["Ologbúrz - Grim Batol"] = "Default",
+["Ologbúrz - Proudmoore"] = "Default",
+["Fëlagund - Grim Batol"] = "Default",
+["Drauglúin - Proudmoore"] = "Default",
+["Góthmog - Grim Batol"] = "Default",
+["Angaïnor - Grim Batol"] = "Default",
+["Brandhir - Proudmoore"] = "Default",
+["Angorbag - Proudmoore"] = "Default",
+["Fëanora - Grim Batol"] = "Default",
+["Gorlim - Grim Batol"] = "Default",
+["Fëanturï - Grim Batol"] = "Default",
+["Fenmei - Grim Batol"] = "Default",
+["Ganymëdë - Proudmoore"] = "Default",
+["Lënwë - Proudmoore"] = "Default",
+["Fëanora - Proudmoore"] = "Default",
+},
+["profiles"] = {
+["Default"] = {
+["version"] = 5,
+["situations"] = {
+["033"] = {
+["enabled"] = true,
+["transitionTime"] = {
+["timeToEnter"] = 0.3,
+["timeToExit"] = 0.5,
+},
+["situationSettings"] = {
+["cvars"] = {
+["test_cameraTargetFocusEnemyEnable"] = 0,
+["test_cameraOverShoulder"] = 0,
+},
+},
+["viewZoom"] = {
+["enabled"] = true,
+["zoomValue"] = 28,
+},
+},
+["170"] = {
+["enabled"] = true,
+["transitionTime"] = {
+["timeToEnter"] = 0.5,
+["timeToExit"] = 0.6,
+},
+["situationSettings"] = {
+["cvars"] = {
+["test_cameraOverShoulder"] = 0,
+},
+},
+["viewZoom"] = {
+["enabled"] = true,
+["zoomValue"] = 24,
+},
+},
+["034"] = {
+["enabled"] = true,
+["transitionTime"] = {
+["timeToEnter"] = 0.3,
+["timeToExit"] = 0.5,
+},
+["situationSettings"] = {
+["cvars"] = {
+["test_cameraTargetFocusEnemyEnable"] = 0,
+["test_cameraOverShoulder"] = 0,
+},
+},
+["viewZoom"] = {
+["enabled"] = true,
+["zoomValue"] = 24,
+},
+},
+["030"] = {
+["enabled"] = true,
+["transitionTime"] = {
+["timeToEnter"] = 0.5,
+["timeToExit"] = 0.6,
+},
+["situationSettings"] = {
+["cvars"] = {
+["test_cameraOverShoulder"] = 0,
+},
+},
+["viewZoom"] = {
+["enabled"] = true,
+["zoomValue"] = 20,
+},
+},
+["323"] = {
+["enabled"] = true,
+["transitionTime"] = {
+["timeToEnter"] = 0.55,
+["timeToExit"] = 0.6,
+},
+["situationSettings"] = {
+["cvars"] = {
+["test_cameraOverShoulder"] = 0,
+},
+},
+["viewZoom"] = {
+["enabled"] = true,
+["zoomValue"] = 16,
+},
+},
+["031"] = {
+["enabled"] = true,
+["transitionTime"] = {
+["timeToEnter"] = 0.5,
+["timeToExit"] = 0.6,
+},
+["situationSettings"] = {
+["cvars"] = {
+["test_cameraOverShoulder"] = 0,
+},
+},
+["viewZoom"] = {
+["enabled"] = true,
+["zoomValue"] = 20,
+},
+},
+["103"] = {
+["enabled"] = true,
+["transitionTime"] = {
+["timeToEnter"] = 0.4,
+["timeToExit"] = 0.6,
+},
+["situationSettings"] = {
+["cvars"] = {
+["test_cameraOverShoulder"] = 0,
+},
+},
+["viewZoom"] = {
+["enabled"] = true,
+["zoomValue"] = 30,
+},
+},
+["023"] = {
+["enabled"] = true,
+["transitionTime"] = {
+["timeToEnter"] = 0.3,
+["timeToExit"] = 0.5,
+},
+["situationSettings"] = {
+["cvars"] = {
+["test_cameraTargetFocusEnemyEnable"] = 0,
+["test_cameraOverShoulder"] = 0,
+},
+},
+["viewZoom"] = {
+["enabled"] = true,
+["zoomValue"] = 22,
+},
+},
+["006"] = {
+["enabled"] = true,
+["transitionTime"] = {
+["timeToEnter"] = 0.35,
+["timeToExit"] = 0.6,
+},
+["situationSettings"] = {
+["cvars"] = {
+["test_cameraTargetFocusEnemyEnable"] = 0,
+["test_cameraOverShoulder"] = 0,
+},
+},
+["viewZoom"] = {
+["enabled"] = true,
+["zoomValue"] = 18,
+},
+},
+["302"] = {
+["enabled"] = true,
+["transitionTime"] = {
+["timeToEnter"] = 0.7,
+["timeToExit"] = 0.7,
+},
+["viewZoom"] = {
+["enabled"] = true,
+},
+},
+["002"] = {
+["enabled"] = true,
+["transitionTime"] = {
+["timeToEnter"] = 0.45,
+["timeToExit"] = 0.6,
+},
+["situationSettings"] = {
+["cvars"] = {
+["test_cameraOverShoulder"] = 0,
+},
+},
+["viewZoom"] = {
+["enabled"] = true,
+["zoomValue"] = 7,
+},
+},
+["102"] = {
+["enabled"] = true,
+["transitionTime"] = {
+["timeToEnter"] = 0.55,
+["timeToExit"] = 0.6,
+},
+["situationSettings"] = {
+["cvars"] = {
+["test_cameraOverShoulder"] = 0,
+},
+},
+["viewZoom"] = {
+["enabled"] = true,
+["zoomValue"] = 26,
+},
+},
+["160"] = {
+["enabled"] = true,
+["transitionTime"] = {
+["timeToEnter"] = 0.8,
+["timeToExit"] = 0.8,
+},
+["situationSettings"] = {
+["cvars"] = {
+["test_cameraOverShoulder"] = 0,
+},
+},
+["viewZoom"] = {
+["enabled"] = true,
+["zoomValue"] = 28,
+},
+},
+["005"] = {
+["enabled"] = true,
+["transitionTime"] = {
+["timeToEnter"] = 0.45,
+["timeToExit"] = 0.6,
+},
+["situationSettings"] = {
+["cvars"] = {
+["test_cameraOverShoulder"] = 0,
+},
+},
+["viewZoom"] = {
+["enabled"] = true,
+["zoomValue"] = 8,
+},
+},
+["021"] = {
+["enabled"] = true,
+["transitionTime"] = {
+["timeToEnter"] = 0.5,
+["timeToExit"] = 0.6,
+},
+["situationSettings"] = {
+["cvars"] = {
+["test_cameraOverShoulder"] = 0,
+},
+},
+["viewZoom"] = {
+["enabled"] = true,
+["zoomValue"] = 17,
+},
+},
+["001"] = {
+["enabled"] = true,
+["transitionTime"] = {
+["timeToEnter"] = 0.6,
+["timeToExit"] = 0.6,
+},
+["situationSettings"] = {
+["cvars"] = {
+["test_cameraOverShoulder"] = 0.8,
+},
+},
+["viewZoom"] = {
+["enabled"] = true,
+["zoomValue"] = 12,
+},
+},
+["024"] = {
+["enabled"] = true,
+["transitionTime"] = {
+["timeToEnter"] = 0.3,
+["timeToExit"] = 0.5,
+},
+["situationSettings"] = {
+["cvars"] = {
+["test_cameraTargetFocusEnemyEnable"] = 0,
+["test_cameraOverShoulder"] = 0,
+},
+},
+["viewZoom"] = {
+["enabled"] = true,
+["zoomValue"] = 20,
+},
+},
+["320"] = {
+["enabled"] = true,
+["transitionTime"] = {
+["timeToEnter"] = 0.45,
+["timeToExit"] = 0.6,
+},
+["viewZoom"] = {
+["enabled"] = true,
+["zoomValue"] = 8,
+},
+},
+["004"] = {
+["enabled"] = true,
+["transitionTime"] = {
+["timeToEnter"] = 0.6,
+["timeToExit"] = 0.6,
+},
+["situationSettings"] = {
+["cvars"] = {
+["test_cameraOverShoulder"] = 0.8,
+},
+},
+["viewZoom"] = {
+["enabled"] = true,
+["zoomValue"] = 14,
+},
+},
+["300"] = {
+["enabled"] = true,
+["transitionTime"] = {
+["timeToEnter"] = 0.75,
+["timeToExit"] = 0.6,
+},
+["situationSettings"] = {
+["cvars"] = {
+["test_cameraTargetFocusInteractEnable"] = 1,
+["test_cameraOverShoulder"] = 0,
+["test_cameraTargetFocusInteractStrengthPitch"] = 0.2,
+["test_cameraTargetFocusInteractStrengthYaw"] = 0.35,
+},
+},
+["viewZoom"] = {
+["enabled"] = true,
+["zoomValue"] = 5.5,
+},
+},
+["020"] = {
+["enabled"] = true,
+["transitionTime"] = {
+["timeToEnter"] = 0.5,
+["timeToExit"] = 0.6,
+},
+["situationSettings"] = {
+["cvars"] = {
+["test_cameraOverShoulder"] = 0,
+},
+},
+["viewZoom"] = {
+["enabled"] = true,
+["zoomValue"] = 17,
+},
+},
+["100"] = {
+["enabled"] = true,
+["transitionTime"] = {
+["timeToEnter"] = 0.55,
+["timeToExit"] = 0.6,
+},
+["situationSettings"] = {
+["cvars"] = {
+["test_cameraOverShoulder"] = 0.6,
+},
+},
+["viewZoom"] = {
+["enabled"] = true,
+["zoomValue"] = 20,
+},
+},
+["301"] = {
+["enabled"] = true,
+["transitionTime"] = {
+["timeToEnter"] = 0.65,
+["timeToExit"] = 0.6,
+},
+["situationSettings"] = {
+["cvars"] = {
+["test_cameraOverShoulder"] = 0,
+},
+},
+["viewZoom"] = {
+["enabled"] = true,
+["zoomValue"] = 7,
+},
+},
+},
+["standardSettings"] = {
+["cvars"] = {
+["cameraZoomSpeed"] = 12,
+["test_cameraOverShoulder"] = 0.8,
+},
+["reactiveZoomMaxZoomTime"] = 0.35,
+},
+},
+},
+}
+minZoomValues = {
+[1100087] = 0.7923427224159241,
+}

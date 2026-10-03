@@ -1,0 +1,23 @@
+
+AltoholicDB = {
+	["profileKeys"] = {
+		["Fëanturï - Proudmoore"] = "Fëanturï - Proudmoore",
+		["Glaürung - Grim Batol"] = "Glaürung - Grim Batol",
+		["Fëlagund - Proudmoore"] = "Fëlagund - Proudmoore",
+		["Fëlagund - Grim Batol"] = "Fëlagund - Grim Batol",
+		["Fëanturï - Grim Batol"] = "Fëanturï - Grim Batol",
+	},
+	["global"] = {
+		["options"] = {
+			["UI.Mail.GuildMailWarning"] = false,
+			["UI.Tooltip.ShowGuildBankCount"] = false,
+			["UI.Tooltip.ShowTotalItemCount"] = false,
+			["UI.Tabs.Guild.BankAutoUpdate"] = true,
+			["UI.Minimap.IconAngle"] = 176.0090813026583,
+			["UI.Tooltip.ShowItemXPack"] = false,
+			["UI.Tooltip.IncludeGuildBankInTotal"] = false,
+			["UI.Tooltip.ShowItemSource"] = false,
+			["UI.Tooltip.ShowItemCount"] = false,
+		},
+	},
+}

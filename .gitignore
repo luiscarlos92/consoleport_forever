@@ -1,0 +1,7 @@
+dist/
+scratch/
+node_modules/
+__pycache__/
+*.pyc
+dependencies/cache/
+dependencies/unpacked/

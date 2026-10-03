@@ -1,0 +1,421 @@
+
+ConsolePort_BarLayout = {
+["name"] = "Forever: Expanded Crosses",
+["visibility"] = "[petbattle] hide; show",
+["children"] = {
+["L2"] = {
+["type"] = "Group",
+["opacity"] = "[vehicleui][overridebar] 0; [mod:M2M1] 45; [mod:M1] 100; 45",
+["width"] = 277.5,
+["override"] = "shown",
+["visibility"] = "[vehicleui][overridebar] hide; show",
+["modifier"] = "[] M1",
+["height"] = 140,
+["rescale"] = "[mod:M2M1] 80; [mod:M1] 90;80",
+["children"] = {
+["PADDDOWN"] = {
+["pos"] = {
+["y"] = -45,
+["relPoint"] = "LEFT",
+["point"] = "LEFT",
+["x"] = 37.5,
+},
+["type"] = "GroupButton",
+},
+["PAD1"] = {
+["pos"] = {
+["y"] = -45,
+["relPoint"] = "LEFT",
+["point"] = "LEFT",
+["x"] = 195,
+},
+["type"] = "GroupButton",
+},
+["PADDUP"] = {
+["pos"] = {
+["y"] = 45,
+["relPoint"] = "LEFT",
+["point"] = "LEFT",
+["x"] = 37.5,
+},
+["type"] = "GroupButton",
+},
+["PAD2"] = {
+["pos"] = {
+["y"] = 0,
+["relPoint"] = "LEFT",
+["point"] = "LEFT",
+["x"] = 240,
+},
+["type"] = "GroupButton",
+},
+["PADDRIGHT"] = {
+["pos"] = {
+["y"] = 0,
+["relPoint"] = "LEFT",
+["point"] = "LEFT",
+["x"] = 82.5,
+},
+["type"] = "GroupButton",
+},
+["PADDLEFT"] = {
+["pos"] = {
+["y"] = 0,
+["relPoint"] = "LEFT",
+["point"] = "LEFT",
+["x"] = -7.5,
+},
+["type"] = "GroupButton",
+},
+["PAD4"] = {
+["pos"] = {
+["y"] = 45,
+["relPoint"] = "LEFT",
+["point"] = "LEFT",
+["x"] = 195,
+},
+["type"] = "GroupButton",
+},
+["PAD3"] = {
+["pos"] = {
+["y"] = 0,
+["relPoint"] = "LEFT",
+["point"] = "LEFT",
+["x"] = 150,
+},
+["type"] = "GroupButton",
+},
+},
+["pos"] = {
+["y"] = 80,
+["strata"] = "MEDIUM",
+["point"] = "BOTTOM",
+["relPoint"] = "BOTTOM",
+["level"] = 2,
+["x"] = -270,
+["offsetscale"] = false,
+},
+},
+["L2R2"] = {
+["type"] = "Group",
+["opacity"] = "[vehicleui][overridebar] 0; [mod:M2M1] 100; 45",
+["width"] = 277.5,
+["override"] = "shown",
+["visibility"] = "[vehicleui][overridebar] hide; show",
+["modifier"] = "[] M2M1",
+["height"] = 140,
+["rescale"] = "[mod:M2M1] 90; 80",
+["children"] = {
+["PADDDOWN"] = {
+["pos"] = {
+["y"] = -45,
+["relPoint"] = "LEFT",
+["point"] = "LEFT",
+["x"] = 37.5,
+},
+["type"] = "GroupButton",
+},
+["PAD1"] = {
+["pos"] = {
+["y"] = -45,
+["relPoint"] = "LEFT",
+["point"] = "LEFT",
+["x"] = 195,
+},
+["type"] = "GroupButton",
+},
+["PADDUP"] = {
+["pos"] = {
+["y"] = 45,
+["relPoint"] = "LEFT",
+["point"] = "LEFT",
+["x"] = 37.5,
+},
+["type"] = "GroupButton",
+},
+["PAD2"] = {
+["pos"] = {
+["y"] = 0,
+["relPoint"] = "LEFT",
+["point"] = "LEFT",
+["x"] = 240,
+},
+["type"] = "GroupButton",
+},
+["PADDRIGHT"] = {
+["pos"] = {
+["y"] = 0,
+["relPoint"] = "LEFT",
+["point"] = "LEFT",
+["x"] = 82.5,
+},
+["type"] = "GroupButton",
+},
+["PADDLEFT"] = {
+["pos"] = {
+["y"] = 0,
+["relPoint"] = "LEFT",
+["point"] = "LEFT",
+["x"] = -7.5,
+},
+["type"] = "GroupButton",
+},
+["PAD4"] = {
+["pos"] = {
+["y"] = 45,
+["relPoint"] = "LEFT",
+["point"] = "LEFT",
+["x"] = 195,
+},
+["type"] = "GroupButton",
+},
+["PAD3"] = {
+["pos"] = {
+["y"] = 0,
+["relPoint"] = "LEFT",
+["point"] = "LEFT",
+["x"] = 150,
+},
+["type"] = "GroupButton",
+},
+},
+["pos"] = {
+["y"] = 5,
+["strata"] = "MEDIUM",
+["point"] = "BOTTOM",
+["relPoint"] = "BOTTOM",
+["level"] = 2,
+["x"] = 0,
+["offsetscale"] = false,
+},
+},
+["Override Action Bar"] = {
+["flyoutDirection"] = "UP",
+["opacity"] = "100",
+["slots"] = 8,
+["rescale"] = "100",
+["paddingY"] = 4,
+["offset"] = 1,
+["type"] = "Page",
+["paddingX"] = 4,
+["hotkeys"] = true,
+["stride"] = 4,
+["orientation"] = "HORIZONTAL",
+["override"] = "shown",
+["reverse"] = false,
+["showGrid"] = true,
+["page"] = "overiidebar",
+["visibility"] = "[vehicleui][overridebar] show; hide",
+["pos"] = {
+["y"] = 20,
+["strata"] = "MEDIUM",
+["point"] = "BOTTOM",
+["relPoint"] = "BOTTOM",
+["level"] = 2,
+["x"] = 458,
+["offsetscale"] = false,
+},
+},
+["R2"] = {
+["type"] = "Group",
+["opacity"] = "[vehicleui][overridebar] 0; [mod:M2M1] 45; [mod:M2] 100; 45",
+["width"] = 277.5,
+["override"] = "shown",
+["visibility"] = "[vehicleui][overridebar] hide; show",
+["modifier"] = "[] M2",
+["height"] = 140,
+["rescale"] = "[mod:M2M1] 80; [mod:M2] 90; 80",
+["children"] = {
+["PADDDOWN"] = {
+["pos"] = {
+["y"] = -45,
+["relPoint"] = "LEFT",
+["point"] = "LEFT",
+["x"] = 37.5,
+},
+["type"] = "GroupButton",
+},
+["PAD1"] = {
+["pos"] = {
+["y"] = -45,
+["relPoint"] = "LEFT",
+["point"] = "LEFT",
+["x"] = 195,
+},
+["type"] = "GroupButton",
+},
+["PADDUP"] = {
+["pos"] = {
+["y"] = 45,
+["relPoint"] = "LEFT",
+["point"] = "LEFT",
+["x"] = 37.5,
+},
+["type"] = "GroupButton",
+},
+["PAD2"] = {
+["pos"] = {
+["y"] = 0,
+["relPoint"] = "LEFT",
+["point"] = "LEFT",
+["x"] = 240,
+},
+["type"] = "GroupButton",
+},
+["PADDRIGHT"] = {
+["pos"] = {
+["y"] = 0,
+["relPoint"] = "LEFT",
+["point"] = "LEFT",
+["x"] = 82.5,
+},
+["type"] = "GroupButton",
+},
+["PADDLEFT"] = {
+["pos"] = {
+["y"] = 0,
+["relPoint"] = "LEFT",
+["point"] = "LEFT",
+["x"] = -7.5,
+},
+["type"] = "GroupButton",
+},
+["PAD4"] = {
+["pos"] = {
+["y"] = 45,
+["relPoint"] = "LEFT",
+["point"] = "LEFT",
+["x"] = 195,
+},
+["type"] = "GroupButton",
+},
+["PAD3"] = {
+["pos"] = {
+["y"] = 0,
+["relPoint"] = "LEFT",
+["point"] = "LEFT",
+["x"] = 150,
+},
+["type"] = "GroupButton",
+},
+},
+["pos"] = {
+["y"] = 80,
+["strata"] = "MEDIUM",
+["point"] = "BOTTOM",
+["relPoint"] = "BOTTOM",
+["level"] = 2,
+["x"] = 270,
+["offsetscale"] = false,
+},
+},
+["Base"] = {
+["type"] = "Group",
+["opacity"] = "[vehicleui][overridebar] 0; [nomod] 100; 45",
+["width"] = 277.5,
+["override"] = "shown",
+["visibility"] = "show",
+["modifier"] = "[nomod]  ; [mod]  ",
+["height"] = 140,
+["rescale"] = "[nomod] 90; 80",
+["children"] = {
+["PADDDOWN"] = {
+["pos"] = {
+["y"] = -45,
+["relPoint"] = "LEFT",
+["point"] = "LEFT",
+["x"] = 37.5,
+},
+["type"] = "GroupButton",
+},
+["PAD1"] = {
+["pos"] = {
+["y"] = -45,
+["relPoint"] = "LEFT",
+["point"] = "LEFT",
+["x"] = 195,
+},
+["type"] = "GroupButton",
+},
+["PADDUP"] = {
+["pos"] = {
+["y"] = 45,
+["relPoint"] = "LEFT",
+["point"] = "LEFT",
+["x"] = 37.5,
+},
+["type"] = "GroupButton",
+},
+["PAD2"] = {
+["pos"] = {
+["y"] = 0,
+["relPoint"] = "LEFT",
+["point"] = "LEFT",
+["x"] = 240,
+},
+["type"] = "GroupButton",
+},
+["PADDRIGHT"] = {
+["pos"] = {
+["y"] = 0,
+["relPoint"] = "LEFT",
+["point"] = "LEFT",
+["x"] = 82.5,
+},
+["type"] = "GroupButton",
+},
+["PADDLEFT"] = {
+["pos"] = {
+["y"] = 0,
+["relPoint"] = "LEFT",
+["point"] = "LEFT",
+["x"] = -7.5,
+},
+["type"] = "GroupButton",
+},
+["PAD4"] = {
+["pos"] = {
+["y"] = 45,
+["relPoint"] = "LEFT",
+["point"] = "LEFT",
+["x"] = 195,
+},
+["type"] = "GroupButton",
+},
+["PAD3"] = {
+["pos"] = {
+["y"] = 0,
+["relPoint"] = "LEFT",
+["point"] = "LEFT",
+["x"] = 150,
+},
+["type"] = "GroupButton",
+},
+},
+["pos"] = {
+["y"] = 160,
+["strata"] = "MEDIUM",
+["point"] = "BOTTOM",
+["relPoint"] = "BOTTOM",
+["level"] = 2,
+["x"] = 0,
+["offsetscale"] = false,
+},
+},
+},
+["desc"] = "Four persistent banks on a symmetric 78.75-unit center-out grid, each built from adjacent D-pad and face-button crosses.",
+}
+ConsolePort_BarDB = {
+["LABcolorsRange"] = "ffcc1a1a",
+["clusterFullStateModifier"] = false,
+["tintEnable"] = false,
+["enableXPBar"] = false,
+["LABcolorsMana"] = "ff8080ff",
+["clusterBorderStyle"] = "Normal",
+["clusterShowAll"] = false,
+["fadeXPBar"] = false,
+["showMainIcons"] = true,
+["clusterShowFlyoutIcons"] = false,
+["LABhideElementsMacro"] = true,
+["showCooldownText"] = true,
+}

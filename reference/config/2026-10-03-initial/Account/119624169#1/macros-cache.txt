@@ -1,0 +1,30 @@
+VER 3 0000000000000031 " " "134400"
+#showtooltip Spell
+/cast [advflyable, mounted] Second Wind; Spell
+END
+VER 3 0000000000000022 " " "INV_Misc_QuestionMark"
+#showtooltip Spell
+/cast [advflyable, mounted] Surge Forward; Spell
+END
+VER 3 0000000000000033 "Circle" "2026009"
+/ run if SpellIsTargeting() then SpellStopTargeting() else CloseAllWindows() end
+END
+VER 3 0000000000000004 "Food" "609813"
+/click ORLOpen Food
+END
+VER 3 0000000000000026 "Mount" "132117"
+#showtooltip Big Battle Bear
+/click LM_B1
+END
+VER 3 0000000000000032 "Skull" "136083"
+/tm [@mouseover,exists][@target,exists] 8
+END
+VER 3 0000000000000003 "Travel" "413582"
+/click ORLOpen SpecMenu
+END
+VER 3 0000000000000030 "Utility" "133666"
+/click ORLOpen Utility
+END
+VER 3 0000000000000021 "World Markers" "133250"
+/click ORLOpen WorldMarkers
+END

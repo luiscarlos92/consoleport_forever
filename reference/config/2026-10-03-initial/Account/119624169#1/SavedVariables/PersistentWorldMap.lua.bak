@@ -1,0 +1,9 @@
+
+PWM_config = {
+["showReadingEmote"] = true,
+["autoCentering"] = false,
+["resetMapAfter"] = 15,
+["zoomTimeSeconds"] = 0.3,
+["autoCenterEnabled"] = true,
+["doubleClickTime"] = 0.25,
+}

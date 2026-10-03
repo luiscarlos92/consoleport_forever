@@ -1,0 +1,34 @@
+﻿## Interface: 120100, 50504, 20506, 11509
+## Version: 1.17.35
+## Title: Immersion ExtraFade
+## IconTexture: Interface\AddOns\Immersion\Textures\Logo
+## Author: LudiusMaximus
+
+## Notes: Improves Immersion's UI fading while talking to NPCs.
+## Notes-deDE: Verbessert das Ausblenden der Benutzeroberfläche von Immersion beim Sprechen mit NSCs.
+## Notes-esES: Mejora el desvanecimiento de la interfaz de Immersion al hablar con los PNJ.
+## Notes-esMX: Mejora el desvanecimiento de la interfaz de Immersion al hablar con los PNJ.
+## Notes-frFR: Améliore le masquage de l'interface d'Immersion lors des dialogues avec les PNJ.
+## Notes-itIT: Migliora la dissolvenza dell'interfaccia di Immersion mentre si parla con i PNG.
+## Notes-ptBR: Melhora o desaparecimento da interface do Immersion ao falar com NPCs.
+## Notes-ruRU: Улучшает скрытие интерфейса Immersion во время разговора с NPC.
+## Notes-koKR: NPC와 대화하는 동안 Immersion의 UI 숨김 기능을 개선합니다.
+## Notes-zhCN: 改善与 NPC 对话时 Immersion 的界面隐藏效果。
+## Notes-zhTW: 改善與 NPC 對話時 Immersion 的介面隱藏效果。
+
+## RequiredDeps: Immersion
+## OptionalDeps: Bartender4, GW2_UI
+## SavedVariables: IEF_Config
+
+## X-Curse-Project-ID: 362188
+## X-WoWI-ID: 25504
+## X-Wago-ID: aNDmag6o
+
+## X-Donate: PayPal:ludiusmaximus@gmail.com
+## X-License: The MIT License (MIT)
+
+embeds.xml
+
+hide_module.lua
+main.lua
+options.lua

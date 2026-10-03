@@ -1,0 +1,126 @@
+{
+  "packages": [
+    {
+      "repo": "seblindfors/ConsolePort",
+      "tag": "3.3.3",
+      "url": "https://github.com/seblindfors/ConsolePort/releases/download/3.3.3/ConsolePort-3.3.3.zip",
+      "sha256": "4e5e464b5cc0de3b0ae9efead1a57ad04da0ff3572492cbede1d0617dd3f4f6f",
+      "digestVerified": true,
+      "path": "C:\\Users\\luisr\\OneDrive\\Documents\\03 Gaming\\World of Warcraft\\Forever-Design-2026-10-03\\handoff-pass\\current-packages\\ConsolePort"
+    },
+    {
+      "repo": "Cidan/BetterBags",
+      "tag": "v0.5.14",
+      "url": "https://github.com/Cidan/BetterBags/releases/download/v0.5.14/BetterBags-v0.5.14.zip",
+      "sha256": "16c1ac70c4de2e7f2cfdbf4d2b5f3d3f44514a3f9ecf1040e29c790e8be8c0d7",
+      "digestVerified": true,
+      "path": "C:\\Users\\luisr\\OneDrive\\Documents\\03 Gaming\\World of Warcraft\\Forever-Design-2026-10-03\\handoff-pass\\current-packages\\BetterBags"
+    }
+  ],
+  "supplementary": {
+    "mpstark/DynamicCam": {
+      "tags": [
+        {
+          "name": "classic-1.4.6",
+          "sha": "c1ecf3c004390ed8dc9f430af54afd086e4896e4"
+        },
+        {
+          "name": "classic-1.4.5",
+          "sha": "63f8b68d4932e3537c17783d777d18dcc87e8e73"
+        },
+        {
+          "name": "classic-1.4.4",
+          "sha": "f909fa4c42089156f667453f37a9c1117fab3c32"
+        },
+        {
+          "name": "classic-1.4.3",
+          "sha": "47f34b27bb7af7c34f7b9c14fa34c63beef66e07"
+        },
+        {
+          "name": "classic-1.4.2",
+          "sha": "963a77d53868680beacdad084a95d5ab266ba2b6"
+        },
+        {
+          "name": "classic-1.4.1",
+          "sha": "54da1b5f10cedee57bf9779158d8a1b567f2d33d"
+        },
+        {
+          "name": "classic-1.4.0",
+          "sha": "c22a400cce648dad09f6ee3e7ac821d7801220e1"
+        },
+        {
+          "name": "classic-1.3.0",
+          "sha": "56bcd66d439b72ca59b867d9d3484e5625e69b04"
+        },
+        {
+          "name": "classic-1.2.0",
+          "sha": "13e28af17a37eb485446585da353571ccff18cef"
+        },
+        {
+          "name": "classic-1.1.5",
+          "sha": "dc30f96157cb928dd54d5b2d9cc82c7eb9f1a5c6"
+        }
+      ],
+      "defaultBranch": "master",
+      "head": "ae586a9c973c3f868c10440358d4a6e8c2fab5ff"
+    },
+    "LudiusMaximus/Immersion_ExtraFade": {
+      "tags": [
+        {
+          "name": "classic-1.9.3",
+          "sha": "ba0019a715fd7212b1f277f0fa947d3aa5d717ad"
+        },
+        {
+          "name": "classic-1.9.2",
+          "sha": "6cb0c0e5a9739e6d2df2ba639efb37a51df4eef0"
+        },
+        {
+          "name": "classic-1.9.1",
+          "sha": "e822e4707723ea316e8ae5d0c831d83a9dac3069"
+        },
+        {
+          "name": "classic-1.9.0",
+          "sha": "ec4f8d62163c6485dd49dc557f7866771ea62e56"
+        },
+        {
+          "name": "classic-1.8.1",
+          "sha": "7b6c27766010a716fe29dc476b2f024119b7e905"
+        },
+        {
+          "name": "classic-1.8.0",
+          "sha": "35690d4d184826fa433b9f776929bd89d03a5634"
+        },
+        {
+          "name": "classic-1.7",
+          "sha": "961411ef3f17d9785b3f9abce15261d17e61839d"
+        },
+        {
+          "name": "1.18.0",
+          "sha": "7028d1abb77f680937325985da37e013d2901217"
+        },
+        {
+          "name": "1.17.35",
+          "sha": "1703d9d15ed134c4a1fdbec5d4e3c0e6585fc6aa"
+        },
+        {
+          "name": "1.17.34",
+          "sha": "1c42b3af8b348dfd8d2adb132495672af13ec5ab"
+        }
+      ],
+      "defaultBranch": "master",
+      "head": "7028d1abb77f680937325985da37e013d2901217"
+    },
+    "DeadlyBossMods/DBM-Voicepack-VEM": {
+      "tags": [],
+      "defaultBranch": "master",
+      "head": "99e0c336444fd7105e1414c46f9d6a4e0cf99bc6"
+    },
+    "productRepository": {
+      "html_url": "https://github.com/luiscarlos92/consoleport_forever",
+      "private": false,
+      "default_branch": "main",
+      "size": 0,
+      "empty": null
+    }
+  }
+}

@@ -1,0 +1,365 @@
+{
+  "evidenceType": "Static source and saved-disk inspection; no runtime validation",
+  "capturedAtUTC": "2026-10-03T19:34:06.2975399Z",
+  "consolePortVersion": "3.2.6",
+  "consolePortStockCommit": "299c393cfd48ef57b335e57421fe8c4849fbd445",
+  "retailSource": {
+    "sha": "09b9db7948abc9b9648dedaab51eb0cf3ee67b31",
+    "date": "2026-09-22T14:31:12Z",
+    "message": "12.1.0 (69933)"
+  },
+  "installedSourceSnapshots": [
+    {
+      "relativePath": "ConsolePort/ConsolePort.toc",
+      "sourcePath": "C:\\Program Files (x86)\\World of Warcraft\\_retail_\\Interface\\AddOns\\ConsolePort\\ConsolePort.toc",
+      "snapshotPath": "C:\\Users\\luisr\\OneDrive\\Documents\\03 Gaming\\World of Warcraft\\Forever-Design-2026-10-03\\installed-source\\ConsolePort\\ConsolePort.toc",
+      "sha256": "A4B3C76E9BB00B02739C16A4BD2B25966DC68EB9A292BC7996A4347826BB6A9E"
+    },
+    {
+      "relativePath": "ConsolePort/Controller/Pager.lua",
+      "sourcePath": "C:\\Program Files (x86)\\World of Warcraft\\_retail_\\Interface\\AddOns\\ConsolePort\\Controller\\Pager.lua",
+      "snapshotPath": "C:\\Users\\luisr\\OneDrive\\Documents\\03 Gaming\\World of Warcraft\\Forever-Design-2026-10-03\\installed-source\\ConsolePort\\Controller\\Pager.lua",
+      "sha256": "042A3B48341BF001D85E5E41715BEE169AD69C064DBD2CE8DCD0D8727D2A4469"
+    },
+    {
+      "relativePath": "ConsolePort/Controller/Bindings.lua",
+      "sourcePath": "C:\\Program Files (x86)\\World of Warcraft\\_retail_\\Interface\\AddOns\\ConsolePort\\Controller\\Bindings.lua",
+      "snapshotPath": "C:\\Users\\luisr\\OneDrive\\Documents\\03 Gaming\\World of Warcraft\\Forever-Design-2026-10-03\\installed-source\\ConsolePort\\Controller\\Bindings.lua",
+      "sha256": "5BFFC6E26E7E1818A828E498846689E1F332CCBDFE30030EC13E19CE02B9A32E"
+    },
+    {
+      "relativePath": "ConsolePort/Controller/Mouse.lua",
+      "sourcePath": "C:\\Program Files (x86)\\World of Warcraft\\_retail_\\Interface\\AddOns\\ConsolePort\\Controller\\Mouse.lua",
+      "snapshotPath": "C:\\Users\\luisr\\OneDrive\\Documents\\03 Gaming\\World of Warcraft\\Forever-Design-2026-10-03\\installed-source\\ConsolePort\\Controller\\Mouse.lua",
+      "sha256": "8F098FDA7C45FFD3D94A0DFD344568C1770DA94B618092BEE7221AB8B56DE4BC"
+    },
+    {
+      "relativePath": "ConsolePort/Controller/Interact.lua",
+      "sourcePath": "C:\\Program Files (x86)\\World of Warcraft\\_retail_\\Interface\\AddOns\\ConsolePort\\Controller\\Interact.lua",
+      "snapshotPath": "C:\\Users\\luisr\\OneDrive\\Documents\\03 Gaming\\World of Warcraft\\Forever-Design-2026-10-03\\installed-source\\ConsolePort\\Controller\\Interact.lua",
+      "sha256": "5380F2FAA3A183D9920F5BBB319A7FFD1FBD3807D596B8ECFA959A0BCB70B703"
+    },
+    {
+      "relativePath": "ConsolePort/Model/Data/Variables.lua",
+      "sourcePath": "C:\\Program Files (x86)\\World of Warcraft\\_retail_\\Interface\\AddOns\\ConsolePort\\Model\\Data\\Variables.lua",
+      "snapshotPath": "C:\\Users\\luisr\\OneDrive\\Documents\\03 Gaming\\World of Warcraft\\Forever-Design-2026-10-03\\installed-source\\ConsolePort\\Model\\Data\\Variables.lua",
+      "sha256": "E30E69EF487CA92D3F6927E5373380765804300CD2F00AB5EDD09124A0F7790C"
+    },
+    {
+      "relativePath": "ConsolePort/Model/Game/Bindings.lua",
+      "sourcePath": "C:\\Program Files (x86)\\World of Warcraft\\_retail_\\Interface\\AddOns\\ConsolePort\\Model\\Game\\Bindings.lua",
+      "snapshotPath": "C:\\Users\\luisr\\OneDrive\\Documents\\03 Gaming\\World of Warcraft\\Forever-Design-2026-10-03\\installed-source\\ConsolePort\\Model\\Game\\Bindings.lua",
+      "sha256": "0F307BB72EA8D701F8D9F518B1B14F690CA43B4A00486379566D9EEB6239B3DA"
+    },
+    {
+      "relativePath": "ConsolePort/Model/Gamepad/PlayStation/PlayStation5.lua",
+      "sourcePath": "C:\\Program Files (x86)\\World of Warcraft\\_retail_\\Interface\\AddOns\\ConsolePort\\Model\\Gamepad\\PlayStation\\PlayStation5.lua",
+      "snapshotPath": "C:\\Users\\luisr\\OneDrive\\Documents\\03 Gaming\\World of Warcraft\\Forever-Design-2026-10-03\\installed-source\\ConsolePort\\Model\\Gamepad\\PlayStation\\PlayStation5.lua",
+      "sha256": "8E259DECC1589835002FE63A5928FB6E8717B4A611FB31FCC7D09A43C88CC65D"
+    },
+    {
+      "relativePath": "ConsolePort/Utils/Utils.lua",
+      "sourcePath": "C:\\Program Files (x86)\\World of Warcraft\\_retail_\\Interface\\AddOns\\ConsolePort\\Utils\\Utils.lua",
+      "snapshotPath": "C:\\Users\\luisr\\OneDrive\\Documents\\03 Gaming\\World of Warcraft\\Forever-Design-2026-10-03\\installed-source\\ConsolePort\\Utils\\Utils.lua",
+      "sha256": "8D1D01EEADE870DE30910891F2574864924DAB18B3CFF207F28B238B56E67D1E"
+    },
+    {
+      "relativePath": "ConsolePort/Libs/External/LibActionButton-1.0/LibActionButton-1.0.lua",
+      "sourcePath": "C:\\Program Files (x86)\\World of Warcraft\\_retail_\\Interface\\AddOns\\ConsolePort\\Libs\\External\\LibActionButton-1.0\\LibActionButton-1.0.lua",
+      "snapshotPath": "C:\\Users\\luisr\\OneDrive\\Documents\\03 Gaming\\World of Warcraft\\Forever-Design-2026-10-03\\installed-source\\ConsolePort\\Libs\\External\\LibActionButton-1.0\\LibActionButton-1.0.lua",
+      "sha256": "BE1DEF58B2E7F79E12137AC9B8376352F30E52508D6830CFC2FA33418482F375"
+    },
+    {
+      "relativePath": "ConsolePort_Bar/ConsolePort_Bar.toc",
+      "sourcePath": "C:\\Program Files (x86)\\World of Warcraft\\_retail_\\Interface\\AddOns\\ConsolePort_Bar\\ConsolePort_Bar.toc",
+      "snapshotPath": "C:\\Users\\luisr\\OneDrive\\Documents\\03 Gaming\\World of Warcraft\\Forever-Design-2026-10-03\\installed-source\\ConsolePort_Bar\\ConsolePort_Bar.toc",
+      "sha256": "CD0DB0481A3F6E0A4DAD0B04D8FE4ED92D8266A06F6C25BE10C57FCC3316BE65"
+    },
+    {
+      "relativePath": "ConsolePort_Bar/Model/Utils.lua",
+      "sourcePath": "C:\\Program Files (x86)\\World of Warcraft\\_retail_\\Interface\\AddOns\\ConsolePort_Bar\\Model\\Utils.lua",
+      "snapshotPath": "C:\\Users\\luisr\\OneDrive\\Documents\\03 Gaming\\World of Warcraft\\Forever-Design-2026-10-03\\installed-source\\ConsolePort_Bar\\Model\\Utils.lua",
+      "sha256": "42E2EF052B604A5293F4B02C0CE097696AC70E534A455BC7C764354697BFA7C5"
+    },
+    {
+      "relativePath": "ConsolePort_Bar/Widget/Group/Group.lua",
+      "sourcePath": "C:\\Program Files (x86)\\World of Warcraft\\_retail_\\Interface\\AddOns\\ConsolePort_Bar\\Widget\\Group\\Group.lua",
+      "snapshotPath": "C:\\Users\\luisr\\OneDrive\\Documents\\03 Gaming\\World of Warcraft\\Forever-Design-2026-10-03\\installed-source\\ConsolePort_Bar\\Widget\\Group\\Group.lua",
+      "sha256": "8C783C760A071D15EFC0A099454EF4C1FBEC71BB026FA5230E421E3D1E3E9724"
+    },
+    {
+      "relativePath": "ConsolePort_Bar/Widget/Bar/Bar.lua",
+      "sourcePath": "C:\\Program Files (x86)\\World of Warcraft\\_retail_\\Interface\\AddOns\\ConsolePort_Bar\\Widget\\Bar\\Bar.lua",
+      "snapshotPath": "C:\\Users\\luisr\\OneDrive\\Documents\\03 Gaming\\World of Warcraft\\Forever-Design-2026-10-03\\installed-source\\ConsolePort_Bar\\Widget\\Bar\\Bar.lua",
+      "sha256": "841BEDA75B1816ADA312D45031699EB648CCB0DB4B66994A23725C77DF54DF78"
+    },
+    {
+      "relativePath": "ConsolePort_Bar/Widget/Page/Page.lua",
+      "sourcePath": "C:\\Program Files (x86)\\World of Warcraft\\_retail_\\Interface\\AddOns\\ConsolePort_Bar\\Widget\\Page\\Page.lua",
+      "snapshotPath": "C:\\Users\\luisr\\OneDrive\\Documents\\03 Gaming\\World of Warcraft\\Forever-Design-2026-10-03\\installed-source\\ConsolePort_Bar\\Widget\\Page\\Page.lua",
+      "sha256": "F90D8324751BE01333B02F0A2365FB4AB0254BC42356246FC17361147E350AC4"
+    },
+    {
+      "relativePath": "ConsolePort_Bar/Widget/Button/Button.lua",
+      "sourcePath": "C:\\Program Files (x86)\\World of Warcraft\\_retail_\\Interface\\AddOns\\ConsolePort_Bar\\Widget\\Button\\Button.lua",
+      "snapshotPath": "C:\\Users\\luisr\\OneDrive\\Documents\\03 Gaming\\World of Warcraft\\Forever-Design-2026-10-03\\installed-source\\ConsolePort_Bar\\Widget\\Button\\Button.lua",
+      "sha256": "E49ECDCCBACF38CE237528E9161C7143A8F4E7A4A1B21F4E483D62F91586727F"
+    },
+    {
+      "relativePath": "ConsolePort_Bar/Controller/Manager/Manager.lua",
+      "sourcePath": "C:\\Program Files (x86)\\World of Warcraft\\_retail_\\Interface\\AddOns\\ConsolePort_Bar\\Controller\\Manager\\Manager.lua",
+      "snapshotPath": "C:\\Users\\luisr\\OneDrive\\Documents\\03 Gaming\\World of Warcraft\\Forever-Design-2026-10-03\\installed-source\\ConsolePort_Bar\\Controller\\Manager\\Manager.lua",
+      "sha256": "A79896FCDAD55AF2E0D14D0AEE03C1BB33BF184DEB5DEF5430B5ED89DCA95CD8"
+    },
+    {
+      "relativePath": "ConsolePort_Bar/Controller/Blizzard/Mainline.lua",
+      "sourcePath": "C:\\Program Files (x86)\\World of Warcraft\\_retail_\\Interface\\AddOns\\ConsolePort_Bar\\Controller\\Blizzard\\Mainline.lua",
+      "snapshotPath": "C:\\Users\\luisr\\OneDrive\\Documents\\03 Gaming\\World of Warcraft\\Forever-Design-2026-10-03\\installed-source\\ConsolePort_Bar\\Controller\\Blizzard\\Mainline.lua",
+      "sha256": "C21BDD79F00547F53F96A2874ECB34DBD452ABEF5FD40BB0610E1E61E1205A21"
+    },
+    {
+      "relativePath": "ConsolePort_Bar/View/Toolbar/Toolbar.lua",
+      "sourcePath": "C:\\Program Files (x86)\\World of Warcraft\\_retail_\\Interface\\AddOns\\ConsolePort_Bar\\View\\Toolbar\\Toolbar.lua",
+      "snapshotPath": "C:\\Users\\luisr\\OneDrive\\Documents\\03 Gaming\\World of Warcraft\\Forever-Design-2026-10-03\\installed-source\\ConsolePort_Bar\\View\\Toolbar\\Toolbar.lua",
+      "sha256": "D73E86CE0EC1EA06E2CE5ABD863E8EEB808864006D21E9880C5A9CC557E7A1AF"
+    },
+    {
+      "relativePath": "ConsolePort_Bar/View/Pet/Petring.lua",
+      "sourcePath": "C:\\Program Files (x86)\\World of Warcraft\\_retail_\\Interface\\AddOns\\ConsolePort_Bar\\View\\Pet\\Petring.lua",
+      "snapshotPath": "C:\\Users\\luisr\\OneDrive\\Documents\\03 Gaming\\World of Warcraft\\Forever-Design-2026-10-03\\installed-source\\ConsolePort_Bar\\View\\Pet\\Petring.lua",
+      "sha256": "93F84ACCED226D3DBC37C5B567D046F8D662EBD7AEC11D6D275826B8443CC79E"
+    },
+    {
+      "relativePath": "ConsolePort_Rings/ConsolePort_Rings.toc",
+      "sourcePath": "C:\\Program Files (x86)\\World of Warcraft\\_retail_\\Interface\\AddOns\\ConsolePort_Rings\\ConsolePort_Rings.toc",
+      "snapshotPath": "C:\\Users\\luisr\\OneDrive\\Documents\\03 Gaming\\World of Warcraft\\Forever-Design-2026-10-03\\installed-source\\ConsolePort_Rings\\ConsolePort_Rings.toc",
+      "sha256": "A0E423DE6D4E9D94C8955E8F9D89121EFF55C46B502449443AA058040D4405F7"
+    },
+    {
+      "relativePath": "ConsolePort_Rings/Model/Container.lua",
+      "sourcePath": "C:\\Program Files (x86)\\World of Warcraft\\_retail_\\Interface\\AddOns\\ConsolePort_Rings\\Model\\Container.lua",
+      "snapshotPath": "C:\\Users\\luisr\\OneDrive\\Documents\\03 Gaming\\World of Warcraft\\Forever-Design-2026-10-03\\installed-source\\ConsolePort_Rings\\Model\\Container.lua",
+      "sha256": "5FD3C4CEFC84B60D29038497B99D9C23105D68B43A5E1066333D23034C93F544"
+    },
+    {
+      "relativePath": "ConsolePort_Rings/Model/Map.lua",
+      "sourcePath": "C:\\Program Files (x86)\\World of Warcraft\\_retail_\\Interface\\AddOns\\ConsolePort_Rings\\Model\\Map.lua",
+      "snapshotPath": "C:\\Users\\luisr\\OneDrive\\Documents\\03 Gaming\\World of Warcraft\\Forever-Design-2026-10-03\\installed-source\\ConsolePort_Rings\\Model\\Map.lua",
+      "sha256": "B238F7E5A76024FC78F56B8A3C5A6BC3A566C884AA16D34061BE9623082A639A"
+    },
+    {
+      "relativePath": "ConsolePort_Rings/Model/Collection.lua",
+      "sourcePath": "C:\\Program Files (x86)\\World of Warcraft\\_retail_\\Interface\\AddOns\\ConsolePort_Rings\\Model\\Collection.lua",
+      "snapshotPath": "C:\\Users\\luisr\\OneDrive\\Documents\\03 Gaming\\World of Warcraft\\Forever-Design-2026-10-03\\installed-source\\ConsolePort_Rings\\Model\\Collection.lua",
+      "sha256": "FC4C7F88316AD936874F2DF2F347A7E9EDE31F2063ABBE4F3F990C1F10163A4E"
+    },
+    {
+      "relativePath": "ConsolePort_Rings/Controller/Secure.lua",
+      "sourcePath": "C:\\Program Files (x86)\\World of Warcraft\\_retail_\\Interface\\AddOns\\ConsolePort_Rings\\Controller\\Secure.lua",
+      "snapshotPath": "C:\\Users\\luisr\\OneDrive\\Documents\\03 Gaming\\World of Warcraft\\Forever-Design-2026-10-03\\installed-source\\ConsolePort_Rings\\Controller\\Secure.lua",
+      "sha256": "C6ECD6E022494A254E4BFD0C8EBC489BF02345DA2639004F0608176D4B5B45D2"
+    },
+    {
+      "relativePath": "ConsolePort_Rings/Controller/Events.lua",
+      "sourcePath": "C:\\Program Files (x86)\\World of Warcraft\\_retail_\\Interface\\AddOns\\ConsolePort_Rings\\Controller\\Events.lua",
+      "snapshotPath": "C:\\Users\\luisr\\OneDrive\\Documents\\03 Gaming\\World of Warcraft\\Forever-Design-2026-10-03\\installed-source\\ConsolePort_Rings\\Controller\\Events.lua",
+      "sha256": "BFF38BED94394CDA6DD41C4E3C1076A61223F0FF4609CA2B855D17C5790838FC"
+    },
+    {
+      "relativePath": "ConsolePort_Rings/Controller/Auto.lua",
+      "sourcePath": "C:\\Program Files (x86)\\World of Warcraft\\_retail_\\Interface\\AddOns\\ConsolePort_Rings\\Controller\\Auto.lua",
+      "snapshotPath": "C:\\Users\\luisr\\OneDrive\\Documents\\03 Gaming\\World of Warcraft\\Forever-Design-2026-10-03\\installed-source\\ConsolePort_Rings\\Controller\\Auto.lua",
+      "sha256": "E9BC6CB95CDC9AED044BD747AE2959226E092FC25BEEADD9CD9693038C75143F"
+    },
+    {
+      "relativePath": "ConsolePort_Rings/Controller/Context.lua",
+      "sourcePath": "C:\\Program Files (x86)\\World of Warcraft\\_retail_\\Interface\\AddOns\\ConsolePort_Rings\\Controller\\Context.lua",
+      "snapshotPath": "C:\\Users\\luisr\\OneDrive\\Documents\\03 Gaming\\World of Warcraft\\Forever-Design-2026-10-03\\installed-source\\ConsolePort_Rings\\Controller\\Context.lua",
+      "sha256": "278D885C854E2A3C9F4F5A815A37D8360521C6C04CC7D542DB544DE70560F64F"
+    },
+    {
+      "relativePath": "ConsolePort_Rings/Database.lua",
+      "sourcePath": "C:\\Program Files (x86)\\World of Warcraft\\_retail_\\Interface\\AddOns\\ConsolePort_Rings\\Database.lua",
+      "snapshotPath": "C:\\Users\\luisr\\OneDrive\\Documents\\03 Gaming\\World of Warcraft\\Forever-Design-2026-10-03\\installed-source\\ConsolePort_Rings\\Database.lua",
+      "sha256": "276DDF4071EACBB797657A34E8B6C641C838B496F9C0932A957BB7A97FEF59CA"
+    },
+    {
+      "relativePath": "ConsolePort_Cursor/Database.lua",
+      "sourcePath": "C:\\Program Files (x86)\\World of Warcraft\\_retail_\\Interface\\AddOns\\ConsolePort_Cursor\\Database.lua",
+      "snapshotPath": "C:\\Users\\luisr\\OneDrive\\Documents\\03 Gaming\\World of Warcraft\\Forever-Design-2026-10-03\\installed-source\\ConsolePort_Cursor\\Database.lua",
+      "sha256": "513EDBE9CF10DBABAD447A305AC7562918310CDED99A8669C82291CB0128E076"
+    },
+    {
+      "relativePath": "ConsolePort_Cursor/View/Cursor.lua",
+      "sourcePath": "C:\\Program Files (x86)\\World of Warcraft\\_retail_\\Interface\\AddOns\\ConsolePort_Cursor\\View\\Cursor.lua",
+      "snapshotPath": "C:\\Users\\luisr\\OneDrive\\Documents\\03 Gaming\\World of Warcraft\\Forever-Design-2026-10-03\\installed-source\\ConsolePort_Cursor\\View\\Cursor.lua",
+      "sha256": "46FBBB5759EA519DAB0F221E6A6A7FE3FA8E96F6952DF772A103A6EEE9B945BA"
+    },
+    {
+      "relativePath": "ConsolePort_Cursor/Controller/Hooks.lua",
+      "sourcePath": "C:\\Program Files (x86)\\World of Warcraft\\_retail_\\Interface\\AddOns\\ConsolePort_Cursor\\Controller\\Hooks.lua",
+      "snapshotPath": "C:\\Users\\luisr\\OneDrive\\Documents\\03 Gaming\\World of Warcraft\\Forever-Design-2026-10-03\\installed-source\\ConsolePort_Cursor\\Controller\\Hooks.lua",
+      "sha256": "8B46C8B43D4994E46721E1D8A8D51333CD3737DE0683A26EE9B725106CCEF7DB"
+    },
+    {
+      "relativePath": "ConsolePort_Forever/ConsolePort_Forever.toc",
+      "sourcePath": "C:\\Program Files (x86)\\World of Warcraft\\_retail_\\Interface\\AddOns\\ConsolePort_Forever\\ConsolePort_Forever.toc",
+      "snapshotPath": "C:\\Users\\luisr\\OneDrive\\Documents\\03 Gaming\\World of Warcraft\\Forever-Design-2026-10-03\\installed-source\\ConsolePort_Forever\\ConsolePort_Forever.toc",
+      "sha256": "AFDA2AEA59CB187A16C5D4A6E1CE34D7B9127CFA24AF4DA72A23C76AF5BAE5D3"
+    },
+    {
+      "relativePath": "ConsolePort_Forever/ConsolePort_Forever.lua",
+      "sourcePath": "C:\\Program Files (x86)\\World of Warcraft\\_retail_\\Interface\\AddOns\\ConsolePort_Forever\\ConsolePort_Forever.lua",
+      "snapshotPath": "C:\\Users\\luisr\\OneDrive\\Documents\\03 Gaming\\World of Warcraft\\Forever-Design-2026-10-03\\installed-source\\ConsolePort_Forever\\ConsolePort_Forever.lua",
+      "sha256": "099B5A6B985D4E661BEAA182C42CC48F5F275EB74978F3E345A27D5AF47632C2"
+    },
+    {
+      "relativePath": "ConsolePort_Forever/Bindings.lua",
+      "sourcePath": "C:\\Program Files (x86)\\World of Warcraft\\_retail_\\Interface\\AddOns\\ConsolePort_Forever\\Bindings.lua",
+      "snapshotPath": "C:\\Users\\luisr\\OneDrive\\Documents\\03 Gaming\\World of Warcraft\\Forever-Design-2026-10-03\\installed-source\\ConsolePort_Forever\\Bindings.lua",
+      "sha256": "FAECC497F79D9D7437F87E809844FC7144AB722E33AFD89245578461BC232A8F"
+    },
+    {
+      "relativePath": "ConsolePort_Forever/Layout.lua",
+      "sourcePath": "C:\\Program Files (x86)\\World of Warcraft\\_retail_\\Interface\\AddOns\\ConsolePort_Forever\\Layout.lua",
+      "snapshotPath": "C:\\Users\\luisr\\OneDrive\\Documents\\03 Gaming\\World of Warcraft\\Forever-Design-2026-10-03\\installed-source\\ConsolePort_Forever\\Layout.lua",
+      "sha256": "486F4267FE9C5EF217EC87E229AC1CED9A21ACE92D579EB9D91F9C7B5E75FEF3"
+    },
+    {
+      "relativePath": "ConsolePort_Forever/Runtime.lua",
+      "sourcePath": "C:\\Program Files (x86)\\World of Warcraft\\_retail_\\Interface\\AddOns\\ConsolePort_Forever\\Runtime.lua",
+      "snapshotPath": "C:\\Users\\luisr\\OneDrive\\Documents\\03 Gaming\\World of Warcraft\\Forever-Design-2026-10-03\\installed-source\\ConsolePort_Forever\\Runtime.lua",
+      "sha256": "FFFC41C25D908E30AD011CA9798D00324D9D4D1C94672B634CBD46E3B863C26B"
+    },
+    {
+      "relativePath": "ConsolePort_Forever/Skin.lua",
+      "sourcePath": "C:\\Program Files (x86)\\World of Warcraft\\_retail_\\Interface\\AddOns\\ConsolePort_Forever\\Skin.lua",
+      "snapshotPath": "C:\\Users\\luisr\\OneDrive\\Documents\\03 Gaming\\World of Warcraft\\Forever-Design-2026-10-03\\installed-source\\ConsolePort_Forever\\Skin.lua",
+      "sha256": "4800B78AB8FBA4CC6DAB1DB9E6FFE8F1121FE3DFD22C6515A1069F5FA6947F04"
+    },
+    {
+      "relativePath": "BetterBags/BetterBags.toc",
+      "sourcePath": "C:\\Program Files (x86)\\World of Warcraft\\_retail_\\Interface\\AddOns\\BetterBags\\BetterBags.toc",
+      "snapshotPath": "C:\\Users\\luisr\\OneDrive\\Documents\\03 Gaming\\World of Warcraft\\Forever-Design-2026-10-03\\installed-source\\BetterBags\\BetterBags.toc",
+      "sha256": "F36AD8939523EA855A60A56985D5755DD0340556105FC9034A2C92D1FD91A1BD"
+    },
+    {
+      "relativePath": "BetterBags/integrations/consoleport.lua",
+      "sourcePath": "C:\\Program Files (x86)\\World of Warcraft\\_retail_\\Interface\\AddOns\\BetterBags\\integrations\\consoleport.lua",
+      "snapshotPath": "C:\\Users\\luisr\\OneDrive\\Documents\\03 Gaming\\World of Warcraft\\Forever-Design-2026-10-03\\installed-source\\BetterBags\\integrations\\consoleport.lua",
+      "sha256": "D3377CFBE05CBAD4558FE88743B669768503CD15B94128C00ECCADB218270647"
+    },
+    {
+      "relativePath": "BetterBags/integrations/masque.lua",
+      "sourcePath": "C:\\Program Files (x86)\\World of Warcraft\\_retail_\\Interface\\AddOns\\BetterBags\\integrations\\masque.lua",
+      "snapshotPath": "C:\\Users\\luisr\\OneDrive\\Documents\\03 Gaming\\World of Warcraft\\Forever-Design-2026-10-03\\installed-source\\BetterBags\\integrations\\masque.lua",
+      "sha256": "986DBFFE2C5ACEE04CE9E5E9A08F74A7A8B990BC5BC8A6E342109681DF975E91"
+    },
+    {
+      "relativePath": "BetterBags/frames/item.lua",
+      "sourcePath": "C:\\Program Files (x86)\\World of Warcraft\\_retail_\\Interface\\AddOns\\BetterBags\\frames\\item.lua",
+      "snapshotPath": "C:\\Users\\luisr\\OneDrive\\Documents\\03 Gaming\\World of Warcraft\\Forever-Design-2026-10-03\\installed-source\\BetterBags\\frames\\item.lua",
+      "sha256": "FD600D528C7779C8778F24F559896A6A74DAE5E80449AAB27F8ABF9EE345272E"
+    },
+    {
+      "relativePath": "DynamicCam/DynamicCam.toc",
+      "sourcePath": "C:\\Program Files (x86)\\World of Warcraft\\_retail_\\Interface\\AddOns\\DynamicCam\\DynamicCam.toc",
+      "snapshotPath": "C:\\Users\\luisr\\OneDrive\\Documents\\03 Gaming\\World of Warcraft\\Forever-Design-2026-10-03\\installed-source\\DynamicCam\\DynamicCam.toc",
+      "sha256": "3BCC95C4B209DCDC627F531A800ADB78100F2FD374F12E82854CC60ACF97B463"
+    },
+    {
+      "relativePath": "DynamicCam/Core.lua",
+      "sourcePath": "C:\\Program Files (x86)\\World of Warcraft\\_retail_\\Interface\\AddOns\\DynamicCam\\Core.lua",
+      "snapshotPath": "C:\\Users\\luisr\\OneDrive\\Documents\\03 Gaming\\World of Warcraft\\Forever-Design-2026-10-03\\installed-source\\DynamicCam\\Core.lua",
+      "sha256": "97221E481F6F92EDCB9FF0956B2BA068E82E99057F4125D3ECFC9EB9649ACDB0"
+    },
+    {
+      "relativePath": "DynamicCam/Libs/AceDB-3.0/AceDB-3.0.lua",
+      "sourcePath": "C:\\Program Files (x86)\\World of Warcraft\\_retail_\\Interface\\AddOns\\DynamicCam\\Libs\\AceDB-3.0\\AceDB-3.0.lua",
+      "snapshotPath": "C:\\Users\\luisr\\OneDrive\\Documents\\03 Gaming\\World of Warcraft\\Forever-Design-2026-10-03\\installed-source\\DynamicCam\\Libs\\AceDB-3.0\\AceDB-3.0.lua",
+      "sha256": "9D6659C3DE31C931A249C5CE35839939E43C07E5118C1660C30B4A5234E586CE"
+    },
+    {
+      "relativePath": "Immersion/Immersion.toc",
+      "sourcePath": "C:\\Program Files (x86)\\World of Warcraft\\_retail_\\Interface\\AddOns\\Immersion\\Immersion.toc",
+      "snapshotPath": "C:\\Users\\luisr\\OneDrive\\Documents\\03 Gaming\\World of Warcraft\\Forever-Design-2026-10-03\\installed-source\\Immersion\\Immersion.toc",
+      "sha256": "C6B20BAA8C176B3FF3817376EFC2340AF1161FF0DD55D8A2C7A266C39F53010E"
+    },
+    {
+      "relativePath": "Immersion/Config.lua",
+      "sourcePath": "C:\\Program Files (x86)\\World of Warcraft\\_retail_\\Interface\\AddOns\\Immersion\\Config.lua",
+      "snapshotPath": "C:\\Users\\luisr\\OneDrive\\Documents\\03 Gaming\\World of Warcraft\\Forever-Design-2026-10-03\\installed-source\\Immersion\\Config.lua",
+      "sha256": "D8B53DBFB3C85C187B3A14FC9183F938B85443EE4DA3482FFFF86AC43FC3C52B"
+    },
+    {
+      "relativePath": "Immersion/Settings.lua",
+      "sourcePath": "C:\\Program Files (x86)\\World of Warcraft\\_retail_\\Interface\\AddOns\\Immersion\\Settings.lua",
+      "snapshotPath": "C:\\Users\\luisr\\OneDrive\\Documents\\03 Gaming\\World of Warcraft\\Forever-Design-2026-10-03\\installed-source\\Immersion\\Settings.lua",
+      "sha256": "37C9542E8F437C919C06ABDC244374794C83BEA3C87EA444FB69620285804220"
+    },
+    {
+      "relativePath": "Immersion_ExtraFade/Immersion_ExtraFade.toc",
+      "sourcePath": "C:\\Program Files (x86)\\World of Warcraft\\_retail_\\Interface\\AddOns\\Immersion_ExtraFade\\Immersion_ExtraFade.toc",
+      "snapshotPath": "C:\\Users\\luisr\\OneDrive\\Documents\\03 Gaming\\World of Warcraft\\Forever-Design-2026-10-03\\installed-source\\Immersion_ExtraFade\\Immersion_ExtraFade.toc",
+      "sha256": "35A44422A1DD87FB29192A1F01AA2758A8CC908D74ADC3049542E13DF5591BB8"
+    },
+    {
+      "relativePath": "Immersion_ExtraFade/main.lua",
+      "sourcePath": "C:\\Program Files (x86)\\World of Warcraft\\_retail_\\Interface\\AddOns\\Immersion_ExtraFade\\main.lua",
+      "snapshotPath": "C:\\Users\\luisr\\OneDrive\\Documents\\03 Gaming\\World of Warcraft\\Forever-Design-2026-10-03\\installed-source\\Immersion_ExtraFade\\main.lua",
+      "sha256": "5FFAF20B545BE500859756C9413550C146482D5F8AA3266B1E03048C9C9B61EA"
+    },
+    {
+      "relativePath": "Immersion_ExtraFade/options.lua",
+      "sourcePath": "C:\\Program Files (x86)\\World of Warcraft\\_retail_\\Interface\\AddOns\\Immersion_ExtraFade\\options.lua",
+      "snapshotPath": "C:\\Users\\luisr\\OneDrive\\Documents\\03 Gaming\\World of Warcraft\\Forever-Design-2026-10-03\\installed-source\\Immersion_ExtraFade\\options.lua",
+      "sha256": "0379DFE8363D168A4FD2F43E5A4EA1CD1DC504E1A73807FDD5877206401DDE13"
+    },
+    {
+      "relativePath": "LiteMount/LiteMount.toc",
+      "sourcePath": "C:\\Program Files (x86)\\World of Warcraft\\_retail_\\Interface\\AddOns\\LiteMount\\LiteMount.toc",
+      "snapshotPath": "C:\\Users\\luisr\\OneDrive\\Documents\\03 Gaming\\World of Warcraft\\Forever-Design-2026-10-03\\installed-source\\LiteMount\\LiteMount.toc",
+      "sha256": "E5F83535DAFCE2F00F49A1FD4F7138ADFE57BF3AF18BE50ECFED160E6785FC3F"
+    },
+    {
+      "relativePath": "LiteMount/ActionButton.lua",
+      "sourcePath": "C:\\Program Files (x86)\\World of Warcraft\\_retail_\\Interface\\AddOns\\LiteMount\\ActionButton.lua",
+      "snapshotPath": "C:\\Users\\luisr\\OneDrive\\Documents\\03 Gaming\\World of Warcraft\\Forever-Design-2026-10-03\\installed-source\\LiteMount\\ActionButton.lua",
+      "sha256": "ACAEB25D5F7A38F7E25A29AC4866DBFBAC8A93D2AF007C9A28408DD243311D45"
+    }
+  ],
+  "retailSourceFiles": [
+    {
+      "path": "C:\\Users\\luisr\\OneDrive\\Documents\\03 Gaming\\World of Warcraft\\Forever-Design-2026-10-03\\source\\Retail-12.1.0\\Interface\\AddOns\\Blizzard_ActionBarController\\ActionBarController.lua",
+      "sha256": "90CEFE2F87130BDE370D7614B33B771CE96614C753598A70B04590C5762D2F09"
+    },
+    {
+      "path": "C:\\Users\\luisr\\OneDrive\\Documents\\03 Gaming\\World of Warcraft\\Forever-Design-2026-10-03\\source\\Retail-12.1.0\\Interface\\AddOns\\Blizzard_APIDocumentationGenerated\\EditModeManagerDocumentation.lua",
+      "sha256": "3F937C16F0BEA205A03B3816F5679F952A64AD8CE593DF2C03D3B382CB569FCA"
+    },
+    {
+      "path": "C:\\Users\\luisr\\OneDrive\\Documents\\03 Gaming\\World of Warcraft\\Forever-Design-2026-10-03\\source\\Retail-12.1.0\\Interface\\AddOns\\Blizzard_APIDocumentationGenerated\\GamePadDocumentation.lua",
+      "sha256": "6B63E7E0F7DB4BC1BA2CF1F47072F552DB6218C4AEE08B02C93AA64536F74490"
+    },
+    {
+      "path": "C:\\Users\\luisr\\OneDrive\\Documents\\03 Gaming\\World of Warcraft\\Forever-Design-2026-10-03\\source\\Retail-12.1.0\\Interface\\AddOns\\Blizzard_APIDocumentationGenerated\\SpellDocumentation.lua",
+      "sha256": "FBEDB3CF4B82D623B49A7FA170C982DE2E4B005D2BCD5DB3068BFB6211E51007"
+    },
+    {
+      "path": "C:\\Users\\luisr\\OneDrive\\Documents\\03 Gaming\\World of Warcraft\\Forever-Design-2026-10-03\\source\\Retail-12.1.0\\Interface\\AddOns\\Blizzard_FrameXML\\SecureTemplates.lua",
+      "sha256": "5FD1EFCBFC20B4D426187F55DBEE52542D37BEFD1EF52082DB1F466F1049929A"
+    },
+    {
+      "path": "C:\\Users\\luisr\\OneDrive\\Documents\\03 Gaming\\World of Warcraft\\Forever-Design-2026-10-03\\source\\Retail-12.1.0\\Interface\\AddOns\\Blizzard_RestrictedAddOnEnvironment\\RestrictedEnvironment.lua",
+      "sha256": "5E42EC4807156002470D957A140D107619B068C941E182AF4C4A4B62E1FCD895"
+    },
+    {
+      "path": "C:\\Users\\luisr\\OneDrive\\Documents\\03 Gaming\\World of Warcraft\\Forever-Design-2026-10-03\\source\\Retail-12.1.0\\Interface\\AddOns\\Blizzard_RestrictedAddOnEnvironment\\RestrictedFrames.lua",
+      "sha256": "D934A9FF9BCAD70B754047498EB0A130A210AC7D4EACEC67F321F04DCDFD7BB3"
+    },
+    {
+      "path": "C:\\Users\\luisr\\OneDrive\\Documents\\03 Gaming\\World of Warcraft\\Forever-Design-2026-10-03\\source\\Retail-12.1.0\\Interface\\AddOns\\Blizzard_RestrictedAddOnEnvironment\\SecureStateDriver.lua",
+      "sha256": "BEBD4A4B18E610233FF8F734DF7B473DF08FE25B1CE383B0C7883AE962A63029"
+    }
+  ]
+}

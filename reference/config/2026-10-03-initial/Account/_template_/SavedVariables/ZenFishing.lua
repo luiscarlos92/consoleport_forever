@@ -1,0 +1,2 @@
+
+ZenFishingDB = nil

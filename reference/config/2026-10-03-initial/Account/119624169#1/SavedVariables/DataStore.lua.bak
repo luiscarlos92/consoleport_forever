@@ -1,0 +1,45 @@
+
+DataStoreDB = {
+	["profileKeys"] = {
+		["Fëanturï - Proudmoore"] = "Fëanturï - Proudmoore",
+		["Glaürung - Grim Batol"] = "Glaürung - Grim Batol",
+		["Fëlagund - Proudmoore"] = "Fëlagund - Proudmoore",
+		["Fëlagund - Grim Batol"] = "Fëlagund - Grim Batol",
+		["Fëanturï - Grim Batol"] = "Fëanturï - Grim Batol",
+	},
+	["global"] = {
+		["Guilds"] = {
+			["Default.Grim Batol.The Family Of Blood"] = {
+				["faction"] = "Horde",
+			},
+			["Default.Proudmoore.Breedable Raiding Pups"] = {
+				["faction"] = "Horde",
+			},
+		},
+		["Characters"] = {
+			["Default.Grim Batol.Fëlagund"] = {
+				["guildName"] = "The Family Of Blood",
+				["faction"] = "Horde",
+			},
+			["Default.Grim Batol.Glaürung"] = {
+				["guildName"] = "The Family Of Blood",
+				["faction"] = "Horde",
+			},
+			["Default.Grim Batol.Fëanturï"] = {
+				["faction"] = "Horde",
+				["guildName"] = "The Family Of Blood",
+			},
+			["Default.Proudmoore.Fëanturï"] = {
+				["faction"] = "Horde",
+				["guildName"] = "Breedable Raiding Pups",
+			},
+			["Default.Proudmoore.Fëlagund"] = {
+				["faction"] = "Horde",
+			},
+		},
+		["ShortToLongRealmNames"] = {
+			["GrimBatol"] = "Grim Batol",
+			["Proudmoore"] = "Proudmoore",
+		},
+	},
+}

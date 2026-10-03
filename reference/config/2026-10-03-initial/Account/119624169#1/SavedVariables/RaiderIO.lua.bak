@@ -1,0 +1,62 @@
+
+RaiderIO_Config = {
+["previouslyEnabledLogging"] = false,
+["minimapIcon"] = {
+["minimapPos"] = 180,
+["showInCompartment"] = true,
+["lock"] = false,
+["hide"] = false,
+},
+["profilePoint"] = {
+["y"] = 0,
+["x"] = -16,
+["point"] = "TOPLEFT",
+},
+}
+RaiderIO_LastCharacter = "us-Fëanturï-proudmoore"
+RaiderIO_MissingCharacters = {
+["us-Phyrexis-proudmoore"] = true,
+["us-Malchance-proudmoore"] = true,
+["us-Risenlight-proudmoore"] = true,
+["us-Obtooseotter-proudmoore"] = true,
+["us-Ellutheron-kelthuzad"] = true,
+["us-Jaicapanda-proudmoore"] = true,
+["us-Carynna-proudmoore"] = true,
+["us-Feyn-proudmoore"] = true,
+["us-Phaldrake-proudmoore"] = true,
+["us-Mastagrif-proudmoore"] = true,
+["us-Jeanarra-proudmoore"] = true,
+["us-Pheanne-proudmoore"] = true,
+["us-Dominò-proudmoore"] = true,
+["us-Doomboss-proudmoore"] = true,
+["us-Randeh-proudmoore"] = true,
+["us-Zosu-proudmoore"] = true,
+["us-Fëanturï-proudmoore"] = true,
+["us-Etory-proudmoore"] = true,
+["us-Burningbrad-sargeras"] = true,
+["us-Asmodae-proudmoore"] = true,
+["us-Lynkiee-proudmoore"] = true,
+["us-Aluminous-proudmoore"] = true,
+["us-Sleboz-proudmoore"] = true,
+["us-Vizcious-proudmoore"] = true,
+["us-Crispyjfish-proudmoore"] = true,
+["us-Gankèd-proudmoore"] = true,
+["us-Jaywitch-proudmoore"] = true,
+["us-Anslym-proudmoore"] = true,
+["us-Judopunch-proudmoore"] = true,
+["us-Pasilla-proudmoore"] = true,
+["us-Thepip-proudmoore"] = true,
+["us-Blueeyé-proudmoore"] = true,
+["us-Azigoth-proudmoore"] = true,
+["us-Anguas-proudmoore"] = true,
+["us-Roei-proudmoore"] = true,
+["us-Ninwa-proudmoore"] = true,
+["us-Borri-proudmoore"] = true,
+}
+RaiderIO_MissingServers = {
+}
+RaiderIO_CachedRuns = nil
+RaiderIO_RWF = {
+}
+RaiderIO_CompletedReplays = {
+}

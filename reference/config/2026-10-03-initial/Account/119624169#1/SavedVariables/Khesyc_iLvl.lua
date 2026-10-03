@@ -1,0 +1,14 @@
+
+ki_showTooltip = true
+ki_addLine = true
+ki_showWeapons = true
+ki_showCharacter = true
+ki_showLevel = true
+ki_showDura = true
+ki_showGems = true
+ki_showMPlusRating = true
+ki_useCompareColors = {
+["tooltip"] = "Indicate 'less than' and 'greater than' iLvl range pieces in red and green?",
+["Text"] = {
+},
+}

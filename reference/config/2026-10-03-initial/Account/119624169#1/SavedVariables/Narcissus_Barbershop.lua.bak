@@ -1,0 +1,42 @@
+
+NarciBarberShopDB = {
+["SharedSavedLooks"] = {
+},
+["ToggleNotification"] = true,
+["Hotkeys"] = {
+["ZoomIn"] = "W",
+["RotateLeft"] = "A",
+["ZoomOut"] = "S",
+["RotateRight"] = "D",
+},
+["PlayerData"] = {
+["0E664CF8"] = {
+["classID"] = 2,
+["playerName"] = "Fëanturï",
+["realmName"] = "Proudmoore",
+["SavedLooks"] = {
+["chrModel129"] = {
+},
+["chrModel123"] = {
+},
+["chrModel126"] = {
+},
+[10] = {
+["male"] = {
+},
+["female"] = {
+},
+},
+["chrModel188"] = {
+},
+["chrModel125"] = {
+},
+["chrModel124"] = {
+},
+["chrModel186"] = {
+},
+},
+["realmID"] = "5",
+},
+},
+}

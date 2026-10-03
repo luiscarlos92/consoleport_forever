@@ -1,0 +1,18 @@
+VER 3 0100000000000006 " " "134400"
+#showtooltip Sentinel
+/use 13
+/use 14
+/cast Sentinel
+END
+VER 3 0100000000000003 " " "134400"
+#showtooltip Rebuke
+/cast [advflying, mounted] Surge Forward; Rebuke
+END
+VER 3 0100000000000004 " " "134400"
+#showtooltip Hammer of Justice
+/cast [advflyable, mounted] Second Wind; Hammer of Justice
+END
+VER 3 0100000000000002 " " "134400"
+#showtooltip  Final Reckoning
+/cast [@cursor]  Final Reckoning
+END

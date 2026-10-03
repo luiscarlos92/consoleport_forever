@@ -1,0 +1,9 @@
+## Interface: 120007
+## Version: 1.1.4
+## Title: LibMountInfo
+## Author: LudiusMaximus
+## Notes: A library for mount tracking and information.
+
+## X-Curse-Project-ID: 1401403
+
+LibMountInfo.lua

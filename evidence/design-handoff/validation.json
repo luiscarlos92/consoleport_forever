@@ -1,0 +1,33 @@
+{
+  "liveFiles": 3973,
+  "liveFilesUnchanged": true,
+  "tests": [
+    {
+      "name": "installer",
+      "exitCode": 0,
+      "output": "PASS exact migration + portable clean install + combined index + fail-closed transaction\n",
+      "passed": true
+    },
+    {
+      "name": "runtime",
+      "exitCode": 0,
+      "output": "PASS menu hidden normally -> restored for Edit Mode -> hidden on exit\n",
+      "passed": true
+    },
+    {
+      "name": "skin",
+      "exitCode": 0,
+      "output": "PASS detach Masque -> round skin -> survive Masque reload\n",
+      "passed": true
+    },
+    {
+      "name": "lua51-syntax",
+      "exitCode": 0,
+      "output": "PASS Lua 5.1 syntax: 6 sources\n",
+      "passed": true
+    }
+  ],
+  "gameOpened": false,
+  "protectedRuntimeValidated": false,
+  "fullSavedVariablesUsedInSimulation": false
+}

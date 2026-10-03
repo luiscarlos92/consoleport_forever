@@ -1,0 +1,34 @@
+
+DataStore_AgendaDB = {
+	["profileKeys"] = {
+		["Fëanturï - Proudmoore"] = "Fëanturï - Proudmoore",
+		["Glaürung - Grim Batol"] = "Glaürung - Grim Batol",
+		["Fëlagund - Proudmoore"] = "Fëlagund - Proudmoore",
+		["Fëlagund - Grim Batol"] = "Fëlagund - Grim Batol",
+		["Fëanturï - Grim Batol"] = "Fëanturï - Grim Batol",
+	},
+	["global"] = {
+		["Options"] = {
+			["WeeklyResetHour"] = 6,
+			["WeeklyResetDay"] = 2,
+			["NextWeeklyReset"] = "2024-04-30",
+		},
+		["Characters"] = {
+			["Default.Grim Batol.Fëlagund"] = {
+				["lastUpdate"] = 1699527030,
+			},
+			["Default.Grim Batol.Glaürung"] = {
+				["lastUpdate"] = 1699385223,
+			},
+			["Default.Grim Batol.Fëanturï"] = {
+				["lastUpdate"] = 1699384127,
+			},
+			["Default.Proudmoore.Fëanturï"] = {
+				["lastUpdate"] = 1714444542,
+			},
+			["Default.Proudmoore.Fëlagund"] = {
+				["lastUpdate"] = 1700321148,
+			},
+		},
+	},
+}

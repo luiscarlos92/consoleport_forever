@@ -1,0 +1,150 @@
+{
+  "masterSHA256": "AA669DDAB618F243A5E5111FAECCDAE8F29C4556A8EDDC636E0C125B54E5EE7D",
+  "historicalAppendixUnchanged": true,
+  "liveFiles": 3973,
+  "liveInventoryUnchanged": true,
+  "changedLivePaths": [],
+  "testSuites": [
+    "T01",
+    "T02",
+    "T03",
+    "T04",
+    "T05",
+    "T06",
+    "T07",
+    "T08",
+    "T09",
+    "T10",
+    "T11",
+    "T12",
+    "T13",
+    "T14",
+    "T15",
+    "T16",
+    "T17",
+    "T18",
+    "T19",
+    "T20",
+    "T21",
+    "T22",
+    "T23",
+    "T24",
+    "T25",
+    "T26",
+    "T27",
+    "T28",
+    "T29"
+  ],
+  "testSuitesUnique": true,
+  "undefinedReferences": [],
+  "localSourceAnchors": [
+    {
+      "reference": "D-pager",
+      "exists": true
+    },
+    {
+      "reference": "D-button",
+      "exists": true
+    },
+    {
+      "reference": "D-page",
+      "exists": true
+    },
+    {
+      "reference": "D-env",
+      "exists": true
+    },
+    {
+      "reference": "D-utils",
+      "exists": true
+    },
+    {
+      "reference": "D-manager",
+      "exists": true
+    },
+    {
+      "reference": "D-rings",
+      "exists": true
+    },
+    {
+      "reference": "D-ringsecure",
+      "exists": true
+    },
+    {
+      "reference": "D-ringevents",
+      "exists": true
+    },
+    {
+      "reference": "D-cursor",
+      "exists": true
+    },
+    {
+      "reference": "D-mouse",
+      "exists": true
+    },
+    {
+      "reference": "D-vars",
+      "exists": true
+    },
+    {
+      "reference": "D-bartoc",
+      "exists": true
+    },
+    {
+      "reference": "D-ringstoc",
+      "exists": true
+    },
+    {
+      "reference": "D-installer",
+      "exists": true
+    },
+    {
+      "reference": "D-dynamiccam",
+      "exists": true
+    },
+    {
+      "reference": "D-immersion",
+      "exists": true
+    },
+    {
+      "reference": "D-extrafade",
+      "exists": true
+    },
+    {
+      "reference": "D-litemount",
+      "exists": true
+    },
+    {
+      "reference": "D-restricted",
+      "exists": true
+    },
+    {
+      "reference": "D-secure",
+      "exists": true
+    },
+    {
+      "reference": "D-editmode",
+      "exists": true
+    }
+  ],
+  "legacyRegisterRowsUpdated": [
+    "D03",
+    "D05",
+    "D07",
+    "D09",
+    "D10",
+    "D11",
+    "D13",
+    "D15",
+    "D16",
+    "D17",
+    "D18",
+    "D19",
+    "D20",
+    "D21"
+  ],
+  "textReconciliations": 0,
+  "implementationPerformed": false,
+  "deployed": false,
+  "runtimeTestsPerformed": false
+}

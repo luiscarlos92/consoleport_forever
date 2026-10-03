@@ -1,0 +1,319 @@
+[
+  {
+    "repo": "seblindfors/ConsolePort",
+    "tag": "3.3.3",
+    "url": "https://github.com/seblindfors/ConsolePort/releases/tag/3.3.3",
+    "publishedAt": "2026-10-02T23:40:35Z",
+    "prerelease": false,
+    "assets": [
+      {
+        "name": "ConsolePort-3.3.3.zip",
+        "url": "https://github.com/seblindfors/ConsolePort/releases/download/3.3.3/ConsolePort-3.3.3.zip",
+        "bytes": 17808639,
+        "digest": "sha256:4e5e464b5cc0de3b0ae9efead1a57ad04da0ff3572492cbede1d0617dd3f4f6f"
+      },
+      {
+        "name": "release.json",
+        "url": "https://github.com/seblindfors/ConsolePort/releases/download/3.3.3/release.json",
+        "bytes": 347,
+        "digest": "sha256:fbe726ac266b3ac03d68cc39eba4aab4cb282c19257b02603e1b71a734fcc532"
+      }
+    ]
+  },
+  {
+    "repo": "Cidan/BetterBags",
+    "tag": "v0.5.14",
+    "url": "https://github.com/Cidan/BetterBags/releases/tag/v0.5.14",
+    "publishedAt": "2026-10-02T01:12:16Z",
+    "prerelease": false,
+    "assets": [
+      {
+        "name": "BetterBags-v0.5.14.zip",
+        "url": "https://github.com/Cidan/BetterBags/releases/download/v0.5.14/BetterBags-v0.5.14.zip",
+        "bytes": 551933,
+        "digest": "sha256:16c1ac70c4de2e7f2cfdbf4d2b5f3d3f44514a3f9ecf1040e29c790e8be8c0d7"
+      },
+      {
+        "name": "release.json",
+        "url": "https://github.com/Cidan/BetterBags/releases/download/v0.5.14/release.json",
+        "bytes": 311,
+        "digest": "sha256:38c8386ba22fc6e70ca9787da0b51412ed9df35ffe9846b4de2bb088eb0aac55"
+      }
+    ]
+  },
+  {
+    "repo": "mpstark/DynamicCam",
+    "unverified": true,
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "repo": "seblindfors/Immersion",
+    "tag": "1.4.61",
+    "url": "https://github.com/seblindfors/Immersion/releases/tag/1.4.61",
+    "publishedAt": "2026-09-24T06:59:53Z",
+    "prerelease": false,
+    "assets": [
+      {
+        "name": "Immersion-1.4.61.zip",
+        "url": "https://github.com/seblindfors/Immersion/releases/download/1.4.61/Immersion-1.4.61.zip",
+        "bytes": 145146,
+        "digest": "sha256:b180a8cbd1a1d878377da5a85abfdc5576e0c04212f9e900e3e9ca505cde1f3e"
+      },
+      {
+        "name": "release.json",
+        "url": "https://github.com/seblindfors/Immersion/releases/download/1.4.61/release.json",
+        "bytes": 344,
+        "digest": "sha256:cb44dc8b883c7bc1b48f59cb5ac618111a696130c36020a9677ff493c90a2a9e"
+      }
+    ]
+  },
+  {
+    "repo": "LudiusMaximus/Immersion_ExtraFade",
+    "unverified": true,
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "repo": "xod-wow/LiteMount",
+    "tag": "12.1.0-1",
+    "url": "https://github.com/xod-wow/LiteMount/releases/tag/12.1.0-1",
+    "publishedAt": "2026-09-17T06:18:53Z",
+    "prerelease": false,
+    "assets": [
+      {
+        "name": "LiteMount-12.1.0-1.zip",
+        "url": "https://github.com/xod-wow/LiteMount/releases/download/12.1.0-1/LiteMount-12.1.0-1.zip",
+        "bytes": 439577,
+        "digest": "sha256:bf89ab84666266ffefd8ce56581f98467f8125c25c65e3fe68031303df28efe0"
+      },
+      {
+        "name": "release.json",
+        "url": "https://github.com/xod-wow/LiteMount/releases/download/12.1.0-1/release.json",
+        "bytes": 198,
+        "digest": "sha256:4493808c1ee98d55cf8ebe93a2957e143b7a0ed83037e939621e3b9e8fed5099"
+      }
+    ]
+  },
+  {
+    "repo": "SFX-WoW/Masque",
+    "tag": "12.1.0",
+    "url": "https://github.com/SFX-WoW/Masque/releases/tag/12.1.0",
+    "publishedAt": "2026-08-24T15:48:33Z",
+    "prerelease": false,
+    "assets": [
+      {
+        "name": "Masque-12.1.0.zip",
+        "url": "https://github.com/SFX-WoW/Masque/releases/download/12.1.0/Masque-12.1.0.zip",
+        "bytes": 3025889,
+        "digest": "sha256:9e1da4827ae60bd25d7fc427cbeeb0dc297e59d53a71a29ae95223d3374bbfa0"
+      },
+      {
+        "name": "release.json",
+        "url": "https://github.com/SFX-WoW/Masque/releases/download/12.1.0/release.json",
+        "bytes": 372,
+        "digest": "sha256:631592d326257f0b0737995df9e50592cab2e953ce1e393df9251a48e988e865"
+      }
+    ]
+  },
+  {
+    "repo": "rursache/HideClassBars",
+    "tag": "v1.1.0",
+    "url": "https://github.com/rursache/HideClassBars/releases/tag/v1.1.0",
+    "publishedAt": "2026-01-27T07:31:21Z",
+    "prerelease": false,
+    "assets": []
+  },
+  {
+    "repo": "Tercioo/Plater-Nameplates",
+    "tag": "Plater-v656",
+    "url": "https://github.com/Tercioo/Plater-Nameplates/releases/tag/Plater-v656",
+    "publishedAt": "2026-09-19T16:38:47Z",
+    "prerelease": false,
+    "assets": [
+      {
+        "name": "Plater-v656.zip",
+        "url": "https://github.com/Tercioo/Plater-Nameplates/releases/download/Plater-v656/Plater-v656.zip",
+        "bytes": 4545532,
+        "digest": "sha256:3353250fa63fe840d8e9444037a3debde5c82286ccbcc825a475cec5ffd90ead"
+      },
+      {
+        "name": "release.json",
+        "url": "https://github.com/Tercioo/Plater-Nameplates/releases/download/Plater-v656/release.json",
+        "bytes": 382,
+        "digest": "sha256:44fc47bd8373229e740175578acecfeca78f42eff118f7d1a97cbd235db23c26"
+      }
+    ]
+  },
+  {
+    "repo": "DeadlyBossMods/DeadlyBossMods",
+    "tag": "12.1.12",
+    "url": "https://github.com/DeadlyBossMods/DeadlyBossMods/releases/tag/12.1.12",
+    "publishedAt": "2026-09-29T22:59:44Z",
+    "prerelease": false,
+    "assets": [
+      {
+        "name": "DBM-Core-12.1.12.zip",
+        "url": "https://github.com/DeadlyBossMods/DeadlyBossMods/releases/download/12.1.12/DBM-Core-12.1.12.zip",
+        "bytes": 12963818,
+        "digest": "sha256:5c8bbcc7daabff029d8ecf4b4b95b400be1bfdd5e860123914d84ada032d40e6"
+      },
+      {
+        "name": "release.json",
+        "url": "https://github.com/DeadlyBossMods/DeadlyBossMods/releases/download/12.1.12/release.json",
+        "bytes": 419,
+        "digest": "sha256:1b4faf57ea35d7464bd0445a09e56f4754f3fea57499ae12ee60fe5e86fa1a02"
+      }
+    ]
+  },
+  {
+    "repo": "DeadlyBossMods/DBM-Dungeons",
+    "tag": "r264",
+    "url": "https://github.com/DeadlyBossMods/DBM-Dungeons/releases/tag/r264",
+    "publishedAt": "2026-09-20T20:35:39Z",
+    "prerelease": false,
+    "assets": [
+      {
+        "name": "DBM-Dungeons-r264.zip",
+        "url": "https://github.com/DeadlyBossMods/DBM-Dungeons/releases/download/r264/DBM-Dungeons-r264.zip",
+        "bytes": 1774364,
+        "digest": "sha256:63a30527dfef38975ef48d9f98c82608c286504cd7668d745e8998a1fd5c9479"
+      },
+      {
+        "name": "release.json",
+        "url": "https://github.com/DeadlyBossMods/DBM-Dungeons/releases/download/r264/release.json",
+        "bytes": 439,
+        "digest": "sha256:b5618b23da140477201b94ac946e42e44d9d1eda992d3ad22018ee15f4c49d2a"
+      }
+    ]
+  },
+  {
+    "repo": "DeadlyBossMods/DBM-Vanilla",
+    "tag": "r830",
+    "url": "https://github.com/DeadlyBossMods/DBM-Vanilla/releases/tag/r830",
+    "publishedAt": "2026-09-20T20:35:01Z",
+    "prerelease": false,
+    "assets": [
+      {
+        "name": "DBM-Vanilla_SoD-r830.zip",
+        "url": "https://github.com/DeadlyBossMods/DBM-Vanilla/releases/download/r830/DBM-Vanilla_SoD-r830.zip",
+        "bytes": 1817482,
+        "digest": "sha256:7c559db0599ae1dac36c2836b61b7f8125d705d71cc39d76d8a2d2fe8f048463"
+      },
+      {
+        "name": "release.json",
+        "url": "https://github.com/DeadlyBossMods/DBM-Vanilla/releases/download/r830/release.json",
+        "bytes": 486,
+        "digest": "sha256:13737be2e8e2d0fa565dac4247fee118ace7d846650db5dc62408f02aa37b5cf"
+      }
+    ]
+  },
+  {
+    "repo": "DeadlyBossMods/DBM-WotLK",
+    "tag": "r353",
+    "url": "https://github.com/DeadlyBossMods/DBM-WotLK/releases/tag/r353",
+    "publishedAt": "2026-09-19T23:06:20Z",
+    "prerelease": false,
+    "assets": [
+      {
+        "name": "DBM-Raids-WoTLK-r353.zip",
+        "url": "https://github.com/DeadlyBossMods/DBM-WotLK/releases/download/r353/DBM-Raids-WoTLK-r353.zip",
+        "bytes": 526264,
+        "digest": "sha256:a62e410a8bf69bbc23ef3cb14ed20268dd175c5f7b2ccba52931b894e2c2b462"
+      },
+      {
+        "name": "release.json",
+        "url": "https://github.com/DeadlyBossMods/DBM-WotLK/releases/download/r353/release.json",
+        "bytes": 320,
+        "digest": "sha256:9aec5f5dd566305fdfa9c2cd58892efada27d98f78e7ded426905588fcb2dece"
+      }
+    ]
+  },
+  {
+    "repo": "DeadlyBossMods/DBM-Cataclysm",
+    "tag": "r263",
+    "url": "https://github.com/DeadlyBossMods/DBM-Cataclysm/releases/tag/r263",
+    "publishedAt": "2026-09-19T23:08:28Z",
+    "prerelease": false,
+    "assets": [
+      {
+        "name": "DBM-Raids-Cata-r263.zip",
+        "url": "https://github.com/DeadlyBossMods/DBM-Cataclysm/releases/download/r263/DBM-Raids-Cata-r263.zip",
+        "bytes": 189913,
+        "digest": "sha256:ae87dc521de1f39ae6eccbaaf8a8dc2d91205b4be9ecc9bda72f2da79d9be145"
+      },
+      {
+        "name": "release.json",
+        "url": "https://github.com/DeadlyBossMods/DBM-Cataclysm/releases/download/r263/release.json",
+        "bytes": 244,
+        "digest": "sha256:7e3f11e483b008a3c59e62cd4c7951c3191537099d9e6f9927aba2452c2cbbdb"
+      }
+    ]
+  },
+  {
+    "repo": "DeadlyBossMods/DBM-MoP",
+    "tag": "r191",
+    "url": "https://github.com/DeadlyBossMods/DBM-MoP/releases/tag/r191",
+    "publishedAt": "2026-09-19T23:06:35Z",
+    "prerelease": false,
+    "assets": [
+      {
+        "name": "DBM-Raids-MoP-r191.zip",
+        "url": "https://github.com/DeadlyBossMods/DBM-MoP/releases/download/r191/DBM-Raids-MoP-r191.zip",
+        "bytes": 304982,
+        "digest": "sha256:074eebe2db67590f42a78d5f2dbfde24423563ff3c822c1ee6a3a082790a56d4"
+      },
+      {
+        "name": "release.json",
+        "url": "https://github.com/DeadlyBossMods/DBM-MoP/releases/download/r191/release.json",
+        "bytes": 206,
+        "digest": "sha256:7979516f5eb1d8de43510ce3d34ca22804d2e0fcd38324ed8b4981ba39637f69"
+      }
+    ]
+  },
+  {
+    "repo": "DeadlyBossMods/DBM-WoD",
+    "tag": "r97",
+    "url": "https://github.com/DeadlyBossMods/DBM-WoD/releases/tag/r97",
+    "publishedAt": "2026-09-19T23:08:44Z",
+    "prerelease": false,
+    "assets": [
+      {
+        "name": "DBM-Raids-WoD-r97.zip",
+        "url": "https://github.com/DeadlyBossMods/DBM-WoD/releases/download/r97/DBM-Raids-WoD-r97.zip",
+        "bytes": 213368,
+        "digest": "sha256:87889c77279e5c422e99ffb595c6b83e274f4e6f5be31e5142a7b75d5aa72bf6"
+      },
+      {
+        "name": "release.json",
+        "url": "https://github.com/DeadlyBossMods/DBM-WoD/releases/download/r97/release.json",
+        "bytes": 167,
+        "digest": "sha256:ffd4022b4f824b5a32b74751a7f81c20df82987462cde4bad453973ac2588a83"
+      }
+    ]
+  },
+  {
+    "repo": "DeadlyBossMods/DBM-Legion",
+    "tag": "r67",
+    "url": "https://github.com/DeadlyBossMods/DBM-Legion/releases/tag/r67",
+    "publishedAt": "2026-09-19T23:09:01Z",
+    "prerelease": false,
+    "assets": [
+      {
+        "name": "DBM-Raids-Legion-r67.zip",
+        "url": "https://github.com/DeadlyBossMods/DBM-Legion/releases/download/r67/DBM-Raids-Legion-r67.zip",
+        "bytes": 252885,
+        "digest": "sha256:6c1bdbabb0340408cbb44e663a80ca42f26158c81457b6cf50707d5f2f4533b2"
+      },
+      {
+        "name": "release.json",
+        "url": "https://github.com/DeadlyBossMods/DBM-Legion/releases/download/r67/release.json",
+        "bytes": 173,
+        "digest": "sha256:8cc3a562ca40cc25a6a68c2e756c6941c0e5d518f66ebd0fd23dfaf90196d92b"
+      }
+    ]
+  },
+  {
+    "repo": "DeadlyBossMods/DBM-Voicepack-VEM",
+    "unverified": true,
+    "error": "HTTP Error 404: Not Found"
+  }
+]

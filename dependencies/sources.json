@@ -1,0 +1,18 @@
+{
+  "github": [
+    {"repo":"seblindfors/ConsolePort"}, {"repo":"Cidan/BetterBags"},
+    {"repo":"seblindfors/Immersion"}, {"repo":"xod-wow/LiteMount"},
+    {"repo":"SFX-WoW/Masque"}, {"repo":"rursache/HideClassBars"},
+    {"repo":"Tercioo/Plater-Nameplates"}, {"repo":"DeadlyBossMods/DeadlyBossMods"},
+    {"repo":"DeadlyBossMods/DBM-Dungeons"}, {"repo":"DeadlyBossMods/DBM-Vanilla"},
+    {"repo":"DeadlyBossMods/DBM-WotLK"}, {"repo":"DeadlyBossMods/DBM-Cataclysm"},
+    {"repo":"DeadlyBossMods/DBM-MoP"}, {"repo":"DeadlyBossMods/DBM-WoD"},
+    {"repo":"DeadlyBossMods/DBM-Legion"}
+  ],
+  "manualSources": [
+    {"package":"DynamicCam", "url":"https://www.curseforge.com/wow/addons/dynamiccam", "reason":"Official current packaged distribution and version verification required"},
+    {"package":"Immersion_ExtraFade", "url":"https://www.curseforge.com/wow/addons/immersion-extrafade/files/8995675", "reason":"Packaged distribution including shared libraries required"},
+    {"package":"SharedMedia_Causese", "url":"https://www.curseforge.com/wow/addons/sharedmedia_causese/files/7242737", "reason":"Official package/content verification required; installed TOC lacks version"},
+    {"package":"DBM-VPVEM", "url":"https://github.com/DeadlyBossMods/DBM-Voicepack-VEM", "reason":"No release asset; verify maintainer commit, packaging completeness and provenance"}
+  ]
+}

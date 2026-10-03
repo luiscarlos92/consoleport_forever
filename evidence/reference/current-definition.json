@@ -1,0 +1,12 @@
+{
+  "source": "reference/config/2026-10-03-initial/Account/_template_/",
+  "sha256": "eb0961ddb5afa76dc55b9d01a6663159d8c378cb5a628331a6d8264735a36d30",
+  "controllerKeys": 126,
+  "banks": [
+    "L2",
+    "L2R2",
+    "Override Action Bar",
+    "R2",
+    "Base"
+  ]
+}

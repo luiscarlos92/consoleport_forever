@@ -2,7 +2,7 @@
 
 Prepared: 2026-10-03  
 Updated with user clarifications: 2026-10-03  
-Status: Implementation handoff revised and user choices recorded; offline baseline checks passed; implementation and user in-game acceptance remain  
+Status: Implementation started in isolated Git checkout; untouched baseline committed/pushed; foundation offline checks pass; runtime integration, complete candidate pack and user in-game acceptance remain. See `IMPLEMENTATION-STATUS.md` for the current checkpoint and continuation schedule.  
 Companion addon: `ConsolePort_Forever`
 
 **Target game: World of Warcraft Retail.** Forever is the behavior/layout reference; this companion runs with Retail ConsolePort. Forever-only CVars, storage and restricted APIs are evidence, not APIs to assume exist in Retail.

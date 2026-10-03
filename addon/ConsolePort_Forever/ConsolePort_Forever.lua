@@ -1,372 +1,210 @@
 local ADDON_NAME, Addon = ...
-
-Addon.VERSION = C_AddOns.GetAddOnMetadata(ADDON_NAME, "Version") or "0.0.0"
-Addon.SCHEMA = 2
-Addon.PROFILE_NAME = "Console Port - Forever"
-
+Addon.VERSION=C_AddOns.GetAddOnMetadata(ADDON_NAME,"Version") or "0.0.0"
+Addon.SCHEMA=Addon.Store.VERSION
+Addon.CONFIG_REVISION=1
+Addon.PROFILE_NAME="Console Port - Forever (Managed)"
 local function Print(message)
-    DEFAULT_CHAT_FRAME:AddMessage("|cff69ccf0Console Port - Forever:|r " .. message)
+    if DEFAULT_CHAT_FRAME then DEFAULT_CHAT_FRAME:AddMessage("|cff69ccf0ConsolePort Forever:|r "..tostring(message)) end
 end
-
-local function AccountDB()
-    ConsolePortForeverDB = ConsolePortForeverDB or {}
-    ConsolePortForeverDB.backup = ConsolePortForeverDB.backup or {}
-    return ConsolePortForeverDB
+local function CanWrite()
+    return not InCombatLockdown() and not (EditModeManagerFrame and EditModeManagerFrame:IsShown())
 end
-
-local function CharacterDB()
-    ConsolePortForeverCharacterDB = ConsolePortForeverCharacterDB or {}
-    return ConsolePortForeverCharacterDB
+function Addon:IsCharacterInstalled()
+    return self.record and self.record.appliedRevision>=self.CONFIG_REVISION or false
 end
-
-local function GetPresetLayouts()
-    if not EditModePresetLayoutManager or type(EditModePresetLayoutManager.GetCopyOfPresetLayouts) ~= "function" then
-        return nil
+function Addon:InitializeStore()
+    local guid=UnitGUID("player")
+    if not guid then return false,"player GUID unavailable" end
+    ConsolePortForeverDB=ConsolePortForeverDB or {}
+    local db,reason=self.Store.EnsureSchema(ConsolePortForeverDB,guid,ConsolePortForeverCharacterDB)
+    if not db then return false,reason end
+    local record,error=self.Store.GetCharacter(db,guid,{name=UnitName("player"),realm=GetRealmName()})
+    if not record then return false,error end
+    self.db,self.guid,self.record=db,guid,record
+    record.requiredRevision=self.CONFIG_REVISION
+    return true
+end
+function Addon:CaptureControllerEdits()
+    if self.busy or not self.adapters or not self.record or not self.record.bindingAccepted or self.db.lastProjectedGUID~=self.guid then return end
+    local ok,state=pcall(self.adapters.bindings.read,self.adapters.bindings,{"state"})
+    if not ok then return end
+    local scopes=self.BindingPolicy.Split(state.keys)
+    self.record.controllerBindings=self.Core.Copy(scopes.character)
+    self.db.shared.faceBindings=self.Core.Copy(scopes.shared)
+end
+function Addon:FinishAccepted(journal)
+    local state=self.adapters.bindings:read({"state"})
+    local scopes=self.BindingPolicy.Split(state.keys)
+    self.record.bindingAccepted=state.set==Enum.BindingSet.Character
+    if self.record.bindingAccepted then
+        self.record.controllerBindings=self.Core.Copy(scopes.character)
+        self.db.shared.faceBindings=self.Core.Copy(scopes.shared)
+        self.db.lastProjectedGUID=self.guid
     end
-    return EditModePresetLayoutManager:GetCopyOfPresetLayouts()
-end
-
--- GetLayouts() contains only saved layouts, while activeLayout and
--- SetActiveLayout() address Blizzard's combined list: presets first, then saved.
-local function ResolveActiveLayout(layoutInfo, presets)
-    local active = layoutInfo and layoutInfo.activeLayout
-    if not active then return nil end
-    if active <= #presets then return active, presets[active] end
-    return active, layoutInfo.layouts and layoutInfo.layouts[active - #presets]
-end
-
-local function FindProfile(layouts, name)
-    for index, layout in ipairs(layouts or {}) do
-        if layout.layoutName == name then return index, layout end
+    self.db.shared.geometry=self.adapters.consoleport:read({"layout"})
+    if self.adapters.editmode then
+        local snapshot=self.adapters.editmode:Capture()
+        if snapshot and snapshot.active.layoutName==self.PROFILE_NAME then self.db.shared.managedEditModeName=self.PROFILE_NAME end
     end
+    self.record.lastInstallTransaction=journal.id
+    self.record.pendingReload=journal.id
+    self.reloadAppliedInSession=journal.id
+    self.Diagnostics:SetFeature("configuration","applied","runtime baseline retained; reload verification pending")
+    Print("Reviewed configuration applied. Backup "..journal.id.." is retained.")
+    self.Prompt:Reload()
 end
-
-local function PutAccountProfile(layouts, profile, existingIndex)
-    if existingIndex then
-        layouts[existingIndex] = profile
-        return existingIndex
+function Addon:ApplyReviewed(resolutions)
+    self.busy=true
+    local ok,result,detail=pcall(self.coordinator.Accept,self.coordinator,resolutions)
+    self.busy=false
+    if not ok then self.Diagnostics:Log("error",result) Print("Configuration failed; use /cpf diagnose.") return end
+    if not result then self.Diagnostics:Log("pending",detail) Print(detail) return end
+    if detail.context.restores then self:FinishRestored(detail) else self:FinishAccepted(detail) end
+end
+function Addon:ShowPrompt(force)
+    if self.Prompt.active then return end
+    if not self.coordinator then self.forcePrompt=force self:Refresh() return end
+    if not force and (self:IsCharacterInstalled() or self.record.declinedRevision==self.CONFIG_REVISION) then return end
+    if not CanWrite() then self.forcePrompt=true return end
+    local fields,deferred=self.RuntimeSetup.Fields(self.db,self.guid,self.adapters,_G,self.CONFIG_REVISION)
+    local plan=self.coordinator:Build(fields,self.CONFIG_REVISION)
+    for _,entry in ipairs(deferred) do plan.deferred[#plan.deferred+1]=entry end
+    self.record.runtimeBaseline=self.Core.Copy(plan.current)
+    self.record.baselineProvenance={guid=self.guid,previousProjectedGUID=self.db.lastProjectedGUID,bindingSet=GetCurrentBindingSet(),codeVersion=self.VERSION}
+    self.Prompt:Show(plan,function(resolutions) self:ApplyReviewed(resolutions) end,function()
+        self.record.declinedRevision=self.CONFIG_REVISION
+        Print("Review cancelled. Configuration retained; /cpf install opens it again.")
+    end)
+end
+function Addon:HydrateController()
+    if not self.record.bindingAccepted or not CanWrite() then return end
+    if self.db.lastProjectedGUID==self.guid then self:CaptureControllerEdits() end
+    local adapter=self.adapters.bindings
+    local current=adapter:read({"state"})
+    local desired=self.RuntimeSetup.BindingProposal(self.db,self.guid,adapter,self.ReferenceBindings)
+    if self.Core.Equal(current,desired) then self.db.lastProjectedGUID=self.guid return end
+    local step={id=self.guid.."/controller",scope="bindings",path={"state"},before=current,value=desired,revision=self.CONFIG_REVISION}
+    local journal=self.Transactions.Prepare(self.db,self.guid,{step},{projection=true})
+    self.busy=true
+    local ok,result=pcall(self.Transactions.Apply,journal,self.adapters,CanWrite)
+    self.busy=false
+    if ok and result then
+        self.Transactions.Commit(self.db,journal,self.record.appliedRevision)
+        self.db.lastProjectedGUID=self.guid
+    else self.Diagnostics:Log("recovery","character projection requires review") end
+end
+function Addon:VerifyReload()
+    local id=self.record.pendingReload
+    if not id or id==self.reloadAppliedInSession then return end
+    local journal=self.db.transactions[id]
+    if not journal or (journal.status~="committed" and journal.status~="restored") then return end
+    local failures={}
+    for _,step in ipairs(journal.steps) do
+        local adapter=self.adapters[step.scope]
+        local ok,value=false,nil
+        if adapter then ok,value=pcall(adapter.read,adapter,step.path) end
+        if not ok or not self.Core.Equal(self.Core.Encode(value),step.value) then failures[#failures+1]=step.id end
     end
-
-    -- Blizzard keeps account layouts before character layouts. Preserve that
-    -- ordering so its own Edit Mode manager can continue editing the profile.
-    local insertAt = #layouts + 1
-    for index, layout in ipairs(layouts) do
-        if layout.layoutType == Enum.EditModeLayoutType.Character then
-            insertAt = index
-            break
+    journal.reloadVerification={failures=failures}
+    if #failures==0 then
+        self.record.pendingReload=nil
+        self.Diagnostics:SetFeature("configuration","verified","accepted fields survived reload")
+    else self.Diagnostics:SetFeature("configuration","review-required","reload fields changed; /cpf diagnose") end
+end
+function Addon:Refresh()
+    local ok,reason=self:InitializeStore()
+    if not ok then self.Diagnostics:SetFeature("configuration","pending",reason) return end
+    local probe=self.Capability.Probe({C_AddOns=C_AddOns,UnitGUID=UnitGUID,UnitName=UnitName,GetBuildInfo=GetBuildInfo,
+        GetCurrentBindingSet=GetCurrentBindingSet,AccountSet=Enum.BindingSet.Account,CharacterSet=Enum.BindingSet.Character})
+    self.capabilities=probe
+    if not probe.ready then self.Diagnostics:SetFeature("configuration","pending",table.concat(probe.pending,", ")) return end
+    local adapters,error=self.RuntimeSetup.Adapters(_G)
+    if not adapters then self.Diagnostics:SetFeature("configuration","pending",error) return end
+    self.adapters=adapters
+    self.coordinator=self.Coordinator.New(self.db,self.guid,adapters,CanWrite)
+    for _,journal in pairs(self.db.transactions) do
+        if journal.guid==self.guid and (journal.status=="applying" or journal.status=="recovery-required") then
+            self.Diagnostics:SetFeature("configuration","recovery-required","transaction "..journal.id.."; /cpf recover "..journal.id)
+            return
         end
     end
-    table.insert(layouts, insertAt, profile)
-    return insertAt
+    self:VerifyReload()
+    if self:IsCharacterInstalled() then self:HydrateController() end
+    if self.forcePrompt then self.forcePrompt=nil self:ShowPrompt(true) else self:ShowPrompt(false) end
 end
-
-local function BuildCombinedLayouts(presets, savedLayouts)
-    local combined = {}
-    for _, layout in ipairs(presets) do table.insert(combined, CopyTable(layout)) end
-    for _, layout in ipairs(savedLayouts) do table.insert(combined, layout) end
-    return combined
+function Addon:Restore(id)
+    if not self.coordinator then Print("Configuration is not initialized.") return end
+    id=id~="" and id or self.record.lastInstallTransaction
+    if not id then Print("No installed backup for this character.") return end
+    if self.Prompt.active then Print("Finish or cancel the current review first.") return end
+    local plan,reason=self.coordinator:BuildRestore(id)
+    if not plan then Print(reason) return end
+    self.Prompt:Show(plan,function(resolutions) self:ApplyReviewed(resolutions) end,function() Print("Restore cancelled; configuration retained.") end)
 end
-
-local function CreateManagedProfile(existing, modern)
-    if existing then return CopyTable(existing), "existing" end
-    if type(Addon.BundledEditModeProfile) == "string" and
-       C_EditMode and type(C_EditMode.ConvertStringToLayoutInfo) == "function" then
-        local ok, imported = pcall(C_EditMode.ConvertStringToLayoutInfo, Addon.BundledEditModeProfile)
-        if ok and type(imported) == "table" and type(imported.systems) == "table" then
-            return imported, "bundled"
-        end
-    end
-    return CopyTable(modern), "modern-fallback"
+function Addon:FinishRestored(journal)
+    self.record.bindingAccepted=false
+    self.record.declinedRevision=self.CONFIG_REVISION
+    self.record.pendingReload=journal.id
+    self.reloadAppliedInSession=journal.id
+    Print("Reviewed backup fields restored; retained edits and unavailable fields are preserved. Backup "..journal.id.." retained.")
+    self.Prompt:Reload()
 end
-
-local function CanAddAccountProfile(savedLayouts, existing)
-    if existing then return true end
-    local limit = Constants and Constants.EditModeConsts and Constants.EditModeConsts.EditModeMaxLayoutsPerType
-    if not limit then return true end
-    local count = 0
-    for _, layout in ipairs(savedLayouts) do
-        if layout.layoutType == Enum.EditModeLayoutType.Account then count = count + 1 end
-    end
-    return count < limit
+function Addon:Recover(id)
+    local journal=self.db and self.db.transactions[id]
+    if not journal or journal.guid~=self.guid then Print("Recovery journal unavailable for this character.") return end
+    if not CanWrite() then Print("Recovery is unavailable during combat or Edit Mode.") return end
+    if journal.status~="applying" and journal.status~="recovery-required" then Print("This journal does not require recovery.") return end
+    self.busy=true
+    local ok,result=pcall(self.Transactions.Recover,journal,self.adapters,CanWrite)
+    self.busy=false
+    Print(ok and result and "Interrupted transaction rolled back." or "Recovery remains pending; newer edits are preserved. /cpf diagnose")
 end
-
-local function FindSystem(layout, system, systemIndex)
-    for _, info in ipairs(layout.systems or {}) do
-        if info.system == system and info.systemIndex == systemIndex then return info end
-    end
+function Addon:Status()
+    Print(("Version %s; character %s; configuration %s/%s; binding set %s"):format(self.VERSION,tostring(self.guid or "pending"),
+        tostring(self.record and self.record.appliedRevision or 0),self.CONFIG_REVISION,tostring(GetCurrentBindingSet())))
+    Print(self.Diagnostics:Summary())
 end
-
-local function SetAnchor(layout, system, systemIndex, point, relativePoint, x, y)
-    local info = FindSystem(layout, system, systemIndex)
-    if not info then return false end
-    info.anchorInfo = info.anchorInfo or {}
-    info.anchorInfo.point, info.anchorInfo.relativeTo = point, "UIParent"
-    info.anchorInfo.relativePoint, info.anchorInfo.offsetX, info.anchorInfo.offsetY = relativePoint, x, y
-    return true
+Addon.Prompt:Initialize({dialogs=StaticPopupDialogs,show=StaticPopup_Show,reload=ReloadUI,defer=function(callback) C_Timer.After(0,callback) end})
+SLASH_CONSOLEPORTFOREVER1="/cpf"
+SlashCmdList.CONSOLEPORTFOREVER=function(input)
+    local command,arg=(input or ""):match("^%s*(%S*)%s*(.-)%s*$")
+    command=command:lower()
+    if command=="install" or command=="update" then Addon:ShowPrompt(true)
+    elseif command=="restore" then Addon:Restore(arg)
+    elseif command=="recover" then Addon:Recover(arg)
+    elseif command=="diagnose" or command=="proof" then
+        Addon:Status()
+        for _,entry in ipairs(Addon.Diagnostics.entries) do Print(entry.kind..": "..entry.message) end
+    else Addon:Status() end
 end
-
-local function SetSetting(layout, system, systemIndex, setting, value)
-    if setting == nil then return false end
-    local info = FindSystem(layout, system, systemIndex)
-    if not info then return false end
-    info.settings = info.settings or {}
-    for key, entry in pairs(info.settings) do
-        if type(entry) == "table" and entry.setting == setting then entry.value = value return true end
-        if key == setting and type(entry) == "number" then info.settings[key] = value return true end
-    end
-    table.insert(info.settings, {setting = setting, value = value})
-    return true
-end
-
-local function PatchProfile(profile)
-    local s, u = Enum.EditModeSystem, Enum.EditModeUnitFrameSystemIndices
-    SetAnchor(profile, s.UnitFrame, u.Player, "CENTER", "CENTER", -315, -175)
-    SetAnchor(profile, s.UnitFrame, u.Target, "CENTER", "CENTER", 315, -175)
-    SetAnchor(profile, s.CastBar, nil, "BOTTOM", "CENTER", 0, -116)
-    SetSetting(profile, s.CastBar, nil, Enum.EditModeCastBarSetting.LockToPlayerFrame, 0)
-    local a = Enum.EditModeAuraFrameSystemIndices
-    SetAnchor(profile, s.AuraFrame, a.BuffFrame, "TOPRIGHT", "CENTER", -443, -125)
-    SetAnchor(profile, s.AuraFrame, a.DebuffFrame, "TOPRIGHT", "CENTER", -443, -220)
-    for _, index in ipairs({a.BuffFrame, a.DebuffFrame}) do
-        SetSetting(profile, s.AuraFrame, index, Enum.EditModeAuraFrameSetting.IconDirection, Enum.AuraFrameIconDirection.Left)
-        SetSetting(profile, s.AuraFrame, index, Enum.EditModeAuraFrameSetting.IconWrap, Enum.AuraFrameIconWrap.Down)
-    end
-    SetAnchor(profile, s.ChatFrame, nil, "BOTTOMLEFT", "BOTTOMLEFT", 35, 55)
-    SetSetting(profile, s.ChatFrame, nil, Enum.EditModeChatFrameSetting.WidthHundreds, 4)
-    SetSetting(profile, s.ChatFrame, nil, Enum.EditModeChatFrameSetting.WidthTensAndOnes, 0)
-    SetSetting(profile, s.ChatFrame, nil, Enum.EditModeChatFrameSetting.HeightHundreds, 1)
-    SetSetting(profile, s.ChatFrame, nil, Enum.EditModeChatFrameSetting.HeightTensAndOnes, 20)
-end
-
-local function SetControllerBinding(key, action)
-    if CPAPI and type(CPAPI.SetBinding) == "function" then
-        return CPAPI.SetBinding(key, action or "", false)
-    end
-    return SetBinding(key, action ~= "" and action or nil)
-end
-
-local function InstallBindings(db)
-    local presetName, bindings = Addon.BINDING_PRESET_NAME, Addon.BundledBindings
-    if type(bindings) ~= "table" then return false end
-
-    ConsolePortShared = ConsolePortShared or {}
-    if db.backup.consolePortPreset == nil then
-        db.backup.consolePortPreset = ConsolePortShared[presetName] and CopyTable(ConsolePortShared[presetName]) or false
-    end
-    ConsolePortShared[presetName] = {
-        Meta = {Name=presetName, Type="PlayStation 5"},
-        Bindings = CopyTable(bindings),
-    }
-
-    ConsolePortSettings = ConsolePortSettings or {}
-    if db.backup.bindingPresetCondition == nil then
-        db.backup.bindingPresetCondition = ConsolePortSettings.bindingPresetCondition or false
-    end
-    -- ConsolePort can evaluate this before Shared/Data is loaded. The installer
-    -- owns application, so disable the racy loader but keep the named preset.
-    ConsolePortSettings.bindingPresetCondition = ""
-    if ConsolePortBindings and type(ConsolePortBindings.OnConditionChanged) == "function" then
-        pcall(ConsolePortBindings.OnConditionChanged, ConsolePortBindings)
-    end
-
-    db.backup.bindings = db.backup.bindings or {}
-    for button, set in pairs(bindings) do
-        for modifier, action in pairs(set) do
-            local key = modifier .. button
-            if db.backup.bindings[key] == nil then db.backup.bindings[key] = GetBindingAction(key, true) or false end
-            SetControllerBinding(key, action)
-        end
-    end
-    db.backup.cvars = db.backup.cvars or {}
-    for cvar, value in pairs({GamePadEmulateShift="PADLTRIGGER", GamePadEmulateCtrl="PADRTRIGGER"}) do
-        if db.backup.cvars[cvar] == nil then db.backup.cvars[cvar] = GetCVar(cvar) end
-        SetCVar(cvar, value)
-    end
-    SaveBindings(GetCurrentBindingSet())
-    return true
-end
-
-local function InstallBarLayout(charDB)
-    if type(Addon.BundledBarLayout) ~= "table" then return false end
-    if charDB.backupBarLayout == nil then charDB.backupBarLayout = CopyTable(ConsolePort_BarLayout) end
-    ConsolePort_BarPresets = ConsolePort_BarPresets or {}
-    ConsolePort_BarPresets[Addon.BundledBarLayout.name] = CopyTable(Addon.BundledBarLayout)
-    ConsolePort_BarLayout = CopyTable(Addon.BundledBarLayout)
-    return true
-end
-
-local function InstallImmersion(db)
-    if type(ImmersionSetup) ~= "table" then return false end
-    if db.backup.immersion == nil then db.backup.immersion = CopyTable(ImmersionSetup) end
-    for key, value in pairs({
-        strata="MEDIUM", boxoffsetY=39.27963256835938, boxoffsetX=0, scale=1.2,
-        elementscale=1, titlescale=1, titleoffset=446.7689819335938,
-        titleoffsetY=-117.6884460449219, enablenumbers=true, movetalkinghead=true,
-        hidetooltip=true, hideminimap=true, hidetracker=true, hideui=true,
-        boxpoint="Bottom", immersivemode=true,
-    }) do ImmersionSetup[key] = value end
-    return true
-end
-
-local function ReadyForEditMode()
-    local presets = GetPresetLayouts()
-    local info = C_EditMode and C_EditMode.GetLayouts and C_EditMode.GetLayouts()
-    -- The manager window is load-on-demand and may not have consumed its first
-    -- layout event yet. The C API and preset manager are the actual prerequisites.
-    return presets and #presets > 0 and presets[1] and presets[1].systems and info and info.layouts, presets, info
-end
-
-function Addon:Install()
-    if InCombatLockdown() then self.pendingInstall = true Print("Installation is queued until combat ends.") return end
-    local db, charDB = AccountDB(), CharacterDB()
-    local ready, presets, layoutInfo = ReadyForEditMode()
-    if not ready then db.lastError = "Edit Mode API unavailable" Print("Could not install: Blizzard Edit Mode is unavailable.") return end
-
-    local active, source = ResolveActiveLayout(layoutInfo, presets)
-    source = source or presets[1]
-    db.backup.editMode = db.backup.editMode or C_EditMode.ConvertLayoutInfoToString(source)
-    db.backup.activeLayout = db.backup.activeLayout or active
-    db.backup.activeLayoutName = db.backup.activeLayoutName or source.layoutName
-
-    local savedLayouts = layoutInfo.layouts
-    local savedIndex, existing = FindProfile(savedLayouts, self.PROFILE_NAME)
-    if not CanAddAccountProfile(savedLayouts, existing) then
-        db.lastError = "Maximum account Edit Mode layouts reached"
-        Print("Could not install: delete one account layout in Edit Mode, then use /cpf install.")
+local events=CreateFrame("Frame")
+for _,event in ipairs({"PLAYER_LOGIN","PLAYER_LOGOUT","PLAYER_ENTERING_WORLD","PLAYER_REGEN_ENABLED","ADDON_LOADED","UPDATE_BINDINGS","EDIT_MODE_LAYOUTS_UPDATED","ADDON_ACTION_BLOCKED","ADDON_ACTION_FORBIDDEN"}) do events:RegisterEvent(event) end
+events:SetScript("OnEvent",function(_,event,...)
+    if event=="PLAYER_LOGOUT" then Addon:CaptureControllerEdits() return end
+    if event=="UPDATE_BINDINGS" then Addon:CaptureControllerEdits() end
+    if event=="ADDON_ACTION_BLOCKED" or event=="ADDON_ACTION_FORBIDDEN" then
+        local blamed,func=...
+        if blamed==ADDON_NAME then Addon.Diagnostics:Log("blocked",event..": "..tostring(func)) end
         return
     end
-    if type(Addon.BundledBarLayout) ~= "table" or type(Addon.BundledBindings) ~= "table" or type(ImmersionSetup) ~= "table" then
-        db.lastError = "Bundled data or required dependency unavailable"
-        Print("Could not install: required ConsolePort or Immersion data is unavailable.")
-        return
-    end
-    -- Preserve the complete schema-1 profile when migrating this prototype: it
-    -- already contains the approved minimap, objective, and remaining Blizzard
-    -- geometry. Clean installs use the bundled native export; current Modern is
-    -- only the forward-compatibility fallback if Blizzard rejects that export.
-    local profile, profileSource = CreateManagedProfile(existing, presets[1])
-    if existing and existing.layoutIndex ~= nil then profile.layoutIndex = existing.layoutIndex end
-    profile.layoutName, profile.layoutType = self.PROFILE_NAME, Enum.EditModeLayoutType.Account
-    PatchProfile(profile)
-    savedIndex = PutAccountProfile(savedLayouts, profile, savedIndex)
-    local combinedIndex = #presets + savedIndex
-
-    -- The C API is the trust boundary; never call live Edit Mode UpdateSystem.
-    -- SaveLayouts expects the same combined list used internally by Blizzard's
-    -- Edit Mode manager, even though GetLayouts() returns only saved layouts.
-    layoutInfo.layouts = BuildCombinedLayouts(presets, savedLayouts)
-    layoutInfo.activeLayout = combinedIndex
-    local savedOK, savedError = pcall(C_EditMode.SaveLayouts, layoutInfo)
-    if not savedOK then
-        db.lastError = "Edit Mode save failed: " .. tostring(savedError)
-        Print("Could not install the Edit Mode profile; no controller data was changed.")
-        return
-    end
-    local selectedOK, selectedError = pcall(C_EditMode.SetActiveLayout, combinedIndex)
-    if not selectedOK then
-        db.lastError = "Edit Mode activation failed: " .. tostring(selectedError)
-        Print("The profile was saved but could not be activated; use /cpf install to retry.")
-        return
-    end
-
-    -- All fallible Edit Mode work completed before touching dependency-owned
-    -- SavedVariables, preventing the partial-install state seen in schema 1.
-    InstallBarLayout(charDB)
-    InstallImmersion(db)
-    InstallBindings(db)
-    db.installedSchema, db.installedAddonVersion, db.profileName = self.SCHEMA, self.VERSION, self.PROFILE_NAME
-    db.activeCombinedIndex, db.savedProfileIndex = combinedIndex, savedIndex
-    db.profileSource = profileSource
-    db.lastInstallAt, db.lastError = time(), nil
-    db.dependencies = {ConsolePort=C_AddOns.IsAddOnLoaded("ConsolePort"), ConsolePort_Bar=C_AddOns.IsAddOnLoaded("ConsolePort_Bar"), ConsolePort_Menu=C_AddOns.IsAddOnLoaded("ConsolePort_Menu"), Immersion=C_AddOns.IsAddOnLoaded("Immersion")}
-    charDB.installedSchema = self.SCHEMA
-    Print("Interface installed. Reloading to activate " .. self.PROFILE_NAME .. ".")
-    ReloadUI()
-end
-
-function Addon:Restore()
-    if InCombatLockdown() then Print("Restore is unavailable in combat.") return end
-    local db, charDB = AccountDB(), CharacterDB()
-    local ready, presets, info = ReadyForEditMode()
-    if not ready then Print("Restore is unavailable until Blizzard Edit Mode initializes.") return end
-    local index = db.backup.activeLayout
-    if index and ((index <= #presets and presets[index]) or info.layouts[index - #presets]) then C_EditMode.SetActiveLayout(index) end
-    for key, action in pairs(db.backup.bindings or {}) do SetControllerBinding(key, action or "") end
-    for cvar, value in pairs(db.backup.cvars or {}) do SetCVar(cvar, value) end
-    if db.backup.bindingPresetCondition ~= nil then ConsolePortSettings.bindingPresetCondition = db.backup.bindingPresetCondition or "" end
-    if db.backup.consolePortPreset ~= nil then ConsolePortShared[Addon.BINDING_PRESET_NAME] = db.backup.consolePortPreset or nil end
-    if charDB.backupBarLayout then ConsolePort_BarLayout = CopyTable(charDB.backupBarLayout) end
-    if db.backup.immersion then ImmersionSetup = CopyTable(db.backup.immersion) end
-    SaveBindings(GetCurrentBindingSet())
-    Print("Previous layout and recorded bindings restored. Reloading.")
-    ReloadUI()
-end
-
-function Addon:ShowPrompt(force, attempt)
-    local db, charDB = AccountDB(), CharacterDB()
-    if not force and db.installedSchema == self.SCHEMA and charDB.installedSchema == self.SCHEMA then return end
-    attempt = attempt or 1
-    if not C_AddOns.IsAddOnLoaded("Blizzard_EditMode") then
-        local loaded, reason = C_AddOns.LoadAddOn("Blizzard_EditMode")
-        if not loaded then db.lastError = "Could not load Blizzard Edit Mode: " .. tostring(reason) Print(db.lastError) return end
-    end
-    if not ReadyForEditMode() and attempt < 40 then
-        C_Timer.After(0.1, function() Addon:ShowPrompt(force, attempt + 1) end)
-        return
-    elseif not ReadyForEditMode() then
-        db.lastError = "Blizzard Edit Mode did not initialize"
-        Print(db.lastError .. "; type /cpf install to retry.")
-        return
-    end
-    local dialog = StaticPopup_Show("CONSOLEPORT_FOREVER_INSTALL", db.installedSchema and "update" or "install")
-    if dialog then
-        dialog:EnableGamePadButton(true)
-        dialog:SetPropagateKeyboardInput(false)
-        dialog:SetScript("OnGamePadButtonDown", function(self, button)
-            local accept = self.button1 or _G[self:GetName() .. "Button1"]
-            local cancel = self.button2 or _G[self:GetName() .. "Button2"]
-            if button == "PAD1" and accept and accept:IsEnabled() then accept:Click()
-            elseif button == "PAD2" and cancel and cancel:IsEnabled() then cancel:Click() end
+    if event=="PLAYER_LOGIN" and not C_AddOns.IsAddOnLoaded("Blizzard_EditMode") and CanWrite() then C_AddOns.LoadAddOn("Blizzard_EditMode") end
+    if Addon.busy then return end
+    if not Addon.refreshQueued then
+        Addon.refreshQueued=true
+        C_Timer.After(0,function()
+            Addon.refreshQueued=false
+            if Addon.Prompt.active then return end
+            if Addon.coordinator and Addon.coordinator.queued and CanWrite() then
+                Addon.busy=true
+                local ok,result,journal=pcall(Addon.coordinator.Resume,Addon.coordinator)
+                Addon.busy=false
+                if ok and result then
+                    if journal.context.restores then Addon:FinishRestored(journal) else Addon:FinishAccepted(journal) end
+                else Print("Queued review changed; reopen its review.") end
+            else
+                local ok,error=pcall(Addon.Refresh,Addon)
+                if not ok then Addon.Diagnostics:Log("error",error) end
+            end
         end)
     end
-end
-
-StaticPopupDialogs.CONSOLEPORT_FOREVER_INSTALL = {
-    text="New interface to be installed\n\nConsole Port - Forever will %s its native Edit Mode profile and controller layout. Your current profile and changed bindings will be backed up.",
-    button1="Cross / A  Install", button2="Circle / B  Cancel", OnAccept=function() Addon:Install() end,
-    timeout=0, whileDead=true, hideOnEscape=true, preferredIndex=3,
-}
-
-SLASH_CONSOLEPORTFOREVER1 = "/cpf"
-SlashCmdList.CONSOLEPORTFOREVER = function(input)
-    input = strtrim(input or ""):lower()
-    if input == "install" or input == "update" then Addon:ShowPrompt(true)
-    elseif input == "restore" then Addon:Restore()
-    else
-        local db, charDB = AccountDB(), CharacterDB()
-        Print(("schema %s (account %s, character %s); profile %s; last error: %s"):format(Addon.SCHEMA,
-            tostring(db.installedSchema or "not installed"), tostring(charDB.installedSchema or "not installed"),
-            tostring(db.profileName or "none"), tostring(db.lastError or "none")))
-    end
-end
-
--- Migrate schema 1 before ConsolePort's conditional driver can fire again.
-if ConsolePortSettings and ConsolePortSettings.bindingPresetCondition == "[] Forever Controller" then
-    ConsolePortSettings.bindingPresetCondition = ""
-    if ConsolePortBindings and type(ConsolePortBindings.OnConditionChanged) == "function" then
-        pcall(ConsolePortBindings.OnConditionChanged, ConsolePortBindings)
-    end
-end
-
-local events = CreateFrame("Frame")
-events:RegisterEvent("PLAYER_LOGIN")
-events:RegisterEvent("PLAYER_REGEN_ENABLED")
-events:RegisterEvent("ADDON_ACTION_BLOCKED")
-events:RegisterEvent("ADDON_ACTION_FORBIDDEN")
-events:SetScript("OnEvent", function(_, event, ...)
-    if event == "PLAYER_REGEN_ENABLED" and Addon.pendingInstall then Addon.pendingInstall = nil Addon:ShowPrompt(true)
-    elseif event == "ADDON_ACTION_BLOCKED" or event == "ADDON_ACTION_FORBIDDEN" then
-        local blamedAddon, blockedFunction = ...
-        if blamedAddon == ADDON_NAME then AccountDB().lastError = event .. ": " .. tostring(blockedFunction) Print(AccountDB().lastError) end
-    elseif event == "PLAYER_LOGIN" then C_Timer.After(2, function() Addon:ShowPrompt(false) end) end
 end)

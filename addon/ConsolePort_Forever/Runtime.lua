@@ -5,7 +5,7 @@ local originalShown = {}
 local editModeActive = false
 
 local function Installed()
-    return ConsolePortForeverDB and ConsolePortForeverDB.installedSchema == Addon.SCHEMA
+    return Addon.IsCharacterInstalled and Addon:IsCharacterInstalled()
 end
 
 local function HideMenus()

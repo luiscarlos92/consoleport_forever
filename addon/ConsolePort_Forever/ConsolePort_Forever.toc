@@ -1,15 +1,32 @@
 ## Interface: 120100
 ## Title: ConsolePort |cff69ccf0Forever HUD|r
-## Notes: One-click controller UI profile, layout, and artwork companion for ConsolePort.
+## Notes: Reviewed controller configuration, protected routing and artwork companion for Retail ConsolePort.
 ## Author: Console Port - Forever
-## Version: 1.2.0
-## RequiredDeps: ConsolePort, ConsolePort_Bar, ConsolePort_Menu, Immersion
+## Version: 2.0.0-dev
+## RequiredDeps: ConsolePort, ConsolePort_Bar
+## OptionalDeps: ConsolePort_Menu, ConsolePort_Cursor, ConsolePort_Rings, ConsolePort_Config, Immersion, Immersion_ExtraFade, DynamicCam, BetterBags, LiteMount, Masque
 ## SavedVariables: ConsolePortForeverDB
 ## SavedVariablesPerCharacter: ConsolePortForeverCharacterDB
 
-Layout.lua
-Bindings.lua
-Profile.lua
-ConsolePort_Forever.lua
+Core.lua
+Store.lua
+Plan.lua
+Transactions.lua
+Diagnostics.lua
+Capability.lua
+Reference.lua
+BindingPolicy.lua
+ModePolicy.lua
+UI\Ownership.lua
+Adapters\NativeBindings.lua
+Adapters\BindingState.lua
+Adapters\ConsolePort.lua
+Adapters\EditMode.lua
+Adapters\FlatConfig.lua
+Baseline.lua
+Coordinator.lua
+Prompt.lua
+RuntimeSetup.lua
 Skin.lua
 Runtime.lua
+ConsolePort_Forever.lua

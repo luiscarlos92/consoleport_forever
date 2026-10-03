@@ -18,12 +18,24 @@ function Core.Copy(value, seen)
     for key, item in pairs(value) do copy[Core.Copy(key, seen)] = Core.Copy(item, seen) end
     return copy
 end
-function Core.Equal(a, b)
+function Core.Equal(a, b, seen)
     if a == b then return true end
     if type(a) ~= "table" or type(b) ~= "table" then return false end
-    for key, value in pairs(a) do if not Core.Equal(value, b[key]) then return false end end
+    seen = seen or {}
+    if seen[a] == b then return true end
+    seen[a] = b
+    for key, value in pairs(a) do if not Core.Equal(value, b[key], seen) then return false end end
     for key in pairs(b) do if a[key] == nil then return false end end
     return true
+end
+function Core.Replace(target, source)
+    assert(type(target) == "table" and type(source) == "table", "table replacement required")
+    for key in pairs(target) do if source[key] == nil then target[key] = nil end end
+    for key, value in pairs(source) do
+        if type(value) == "table" and type(target[key]) == "table" then Core.Replace(target[key], value)
+        else target[key] = Core.Copy(value) end
+    end
+    return target
 end
 function Core.Encode(value)
     if value == nil then return Core.Copy(Core.NIL) end

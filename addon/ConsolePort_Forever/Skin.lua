@@ -68,7 +68,7 @@ local function Prompts(bank)
 end
 
 function Addon:RefreshConsolePortSkin()
-    if not ConsolePortForeverDB or ConsolePortForeverDB.installedSchema~=self.SCHEMA then return end
+    if not self.IsCharacterInstalled or not self:IsCharacterInstalled() then return end
     for bankID in pairs(BANKS) do
         local bank=_G["ConsolePortGroup"..bankID]
         if bank and bank.buttons then

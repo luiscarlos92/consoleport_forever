@@ -56,9 +56,21 @@ check('T01.snapshot', () => {
 check('T27.lua51', () => {
   for (const f of files('addon').filter(f=>f.endsWith('.lua'))) parser.parse(read(f),{luaVersion:'5.1'});
 });
-const modules = ['Core','Store','Plan','Transactions','BindingPolicy','ModePolicy','UI/Ownership','Adapters/NativeBindings'];
+const modules = ['Core','Store','Plan','Transactions','BindingPolicy','ModePolicy','UI/Ownership','Adapters/NativeBindings',
+  'Adapters/BindingState','Diagnostics','Capability','Adapters/ConsolePort','Adapters/EditMode','Adapters/FlatConfig','Baseline','Coordinator'];
 const source = 'Addon={};\n' + modules.map(m=>
   ';(function(...)\n'+read('addon/ConsolePort_Forever/'+m+'.lua')+'\nend)("ConsolePort_Forever",Addon);\n').join('');
+const serializer=`
+local function serialized(value)
+  if type(value)=='table' then
+    local fields={}
+    for key,item in pairs(value) do fields[#fields+1]='['..serialized(key)..']='..serialized(item) end
+    table.sort(fields)
+    return '{'..table.concat(fields,',')..'}'
+  elseif type(value)=='string' then return string.format('%q',value)
+  else return tostring(value) end
+end
+`;
 check('T04-T09.foundations', () => execute(source + read('tests/harness/foundations.lua'),'foundations'));
 check('T05.sequential-VM-persistence', () => {
   const serialize = `
@@ -110,6 +122,22 @@ TEST_SUCCESS=true
 });
 check('T06-T14-T16.policies', () => execute(source+read('tests/harness/policies.lua'),'policies'));
 check('T07.native-binding-readiness', () => execute(source+read('tests/harness/native_bindings.lua'),'native-bindings'));
+check('T09-T10.coordinator', () => execute(source+read('tests/harness/coordinator.lua'),'coordinator'));
+check('T12-T13.adapters', () => execute(source+read('tests/harness/adapters.lua'),'adapters'));
+check('T10-T11.product-bootstrap', () => {
+  const entries=read('addon/ConsolePort_Forever/ConsolePort_Forever.toc').split(/\r?\n/).filter(x=>x.trim() && !x.startsWith('#'));
+  const product='Addon={};\n'+entries.map(f=>';(function(...)\n'+read('addon/ConsolePort_Forever/'+f.replace(/\\/g,'/'))+'\nend)("ConsolePort_Forever",Addon);\n').join('');
+  const fixture=read('tests/harness/bootstrap.lua').replace('--@LOAD_PRODUCT',product);
+  const state=execute(fixture+serializer+'\nSERIALIZED_STATE=serialized(SESSION_STATE)','bootstrap');
+  require('./saved_variables.cjs').parse('SESSION_STATE='+state);
+  execute('SESSION_STATE='+state+'\n'+fixture.split('--@LIFECYCLE')[0]+`
+fire('PLAYER_LOGIN') flush()
+assert(writes==0 and Addon.record.pendingReload==nil,'persisted login changed the accepted configuration')
+assert(Addon:IsCharacterInstalled() and Addon.record.controllerBindings['SHIFT-PAD1']==(SESSION_STATE.banks[2]['SHIFT-PAD1'] or ''))
+assert(Addon.db.transactions[Addon.record.lastInstallTransaction].reloadVerification.failures[1]==nil)
+TEST_SUCCESS=true
+`,'bootstrap-persisted-reload');
+});
 check('T01.data-parser', () => {
   const parse=require('./saved_variables.cjs').parse;
   for (const text of ['x=os.execute("bad")','x=(function() return 1 end)()','while true do end','x={f=CreateFrame("Frame")}']) {

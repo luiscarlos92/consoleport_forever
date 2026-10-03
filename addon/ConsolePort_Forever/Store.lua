@@ -5,7 +5,13 @@ Addon.Store = Store
 function Store.EnsureSchema(db, guid, legacyCharacter)
     if type(db) ~= "table" then return nil, "invalid account store" end
     local version = db.databaseVersion or db.schema or db.installedSchema or 0
-    if type(version) ~= "number" or version > Store.VERSION then return nil, "unsupported database schema" end
+    if type(version) ~= "number" or version < 0 or version % 1 ~= 0 or version > Store.VERSION then return nil, "unsupported database schema" end
+    for _, key in ipairs({"legacy", "shared", "characters", "managedFields", "transactions", "backups", "reviews"}) do
+        if db[key] ~= nil and type(db[key]) ~= "table" then return nil, "invalid store field: " .. key end
+    end
+    if db.nextTransactionID ~= nil and (type(db.nextTransactionID) ~= "number" or db.nextTransactionID < 0 or db.nextTransactionID % 1 ~= 0) then
+        return nil, "invalid transaction counter"
+    end
     if version < Store.VERSION then
         local previous = Core.Copy(db)
         db.legacy = db.legacy or {}
@@ -19,7 +25,7 @@ function Store.EnsureSchema(db, guid, legacyCharacter)
     end
     db.shared = db.shared or {revision = 0, geometry = {}, faceBindings = {}, utilityPolicy = {}, integrationPolicy = {}}
     db.characters, db.managedFields = db.characters or {}, db.managedFields or {}
-    db.transactions, db.backups = db.transactions or {}, db.backups or {}
+    db.transactions, db.backups, db.reviews = db.transactions or {}, db.backups or {}, db.reviews or {}
     db.nextTransactionID = db.nextTransactionID or 0
     return db
 end
@@ -27,12 +33,21 @@ end
 function Store.GetCharacter(db, guid, identity)
     if type(guid) ~= "string" or guid == "" then return nil, "player GUID unavailable" end
     local record = db.characters[guid]
+    if record ~= nil and type(record) ~= "table" then return nil, "invalid character record" end
     if not record then
         record = {identity = {}, requiredRevision = 0, appliedRevision = 0,
                   controllerBindings = {}, rings = {}, fieldBaselines = {},
                   integrationStatus = {}, pendingChanges = {}, transactionIDs = {}}
         db.characters[guid] = record
     end
+    for _, key in ipairs({"identity", "controllerBindings", "rings", "fieldBaselines", "integrationStatus", "pendingChanges", "transactionIDs"}) do
+        if record[key] ~= nil and type(record[key]) ~= "table" then return nil, "invalid character field: " .. key end
+    end
+    for _, key in ipairs({"requiredRevision","appliedRevision"}) do
+        if record[key]~=nil and (type(record[key])~="number" or record[key]<0) then return nil,"invalid character revision" end
+    end
+    for _, key in ipairs({"identity", "controllerBindings", "rings", "fieldBaselines", "integrationStatus", "pendingChanges", "transactionIDs"}) do record[key]=record[key] or {} end
+    record.requiredRevision,record.appliedRevision=record.requiredRevision or 0,record.appliedRevision or 0
     if identity then record.identity = Core.Copy(identity) end
     return record
 end

@@ -11,7 +11,7 @@ function Plan.Build(current, baselines, proposals, reviews)
         local old = baselines[field.id]
         local proposed = Core.Copy(field.value)
         local entry = {id = field.id, scope = field.scope, path = Core.Copy(field.path),
-                       before = now, value = proposed, revision = field.revision}
+                       before = now, value = proposed, revision = field.revision,label=field.label}
         local review = reviews and reviews[field.id]
         if field.deferred then
             entry.reason = field.deferred

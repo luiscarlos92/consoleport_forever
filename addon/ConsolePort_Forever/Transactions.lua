@@ -3,6 +3,7 @@ local Core, Transactions = Addon.Core, {}
 Addon.Transactions = Transactions
 
 local function Read(adapter, step)
+    if not adapter or type(adapter.read) ~= "function" then return false, "adapter unavailable" end
     local ok, value = pcall(adapter.read, adapter, step.path)
     if not ok then return false, value end
     return true, Core.Encode(value)
@@ -37,7 +38,10 @@ function Transactions.Recover(journal, adapters, canWrite)
         local step = journal.steps[index]
         local adapter = adapters[step.scope]
         local ok, actual = Read(adapter, step)
-        if ok and Core.Equal(actual, step.before) then
+        if adapter and type(adapter.compensate)=="function" then
+            local called,restored,reason=pcall(adapter.compensate,adapter,step,journal,canWrite)
+            if not called or not restored then table.insert(journal.recovery,{id=step.id,reason=reason or "adapter compensation failed"}) end
+        elseif ok and Core.Equal(actual, step.before) then
             -- A rejecting writer may not have changed this field.
         elseif ok and Core.Equal(actual, step.value) then
             local restored, reason = Write(adapter, step, step.before)
@@ -64,6 +68,7 @@ function Transactions.Apply(journal, adapters, canWrite)
         end
     end
     journal.status = "applying"
+    for _, adapter in pairs(adapters) do if adapter.Attach then adapter:Attach(journal) end end
     for index, step in ipairs(journal.steps) do
         if not canWrite() then
             journal.error = "protected writes became unavailable"
@@ -99,4 +104,21 @@ function Transactions.Commit(db, journal, revision)
     db.characters[journal.guid].appliedRevision = revision
     journal.status = "committed"
     return true
+end
+
+function Transactions.RestorePlan(journal, adapters)
+    local steps, conflicts = {}, {}
+    for index = #journal.steps, 1, -1 do
+        local applied = journal.steps[index]
+        local ok, actual = Read(adapters[applied.scope], applied)
+        if ok and Core.Equal(actual, applied.before) then
+            -- Already restored.
+        elseif ok and Core.Equal(actual, applied.value) then
+            steps[#steps + 1] = {id=applied.id, scope=applied.scope, path=Core.Copy(applied.path),
+                                before=actual, value=Core.Copy(applied.before), revision=applied.revision}
+        else
+            conflicts[#conflicts + 1] = {id=applied.id, reason="newer edit or unavailable scope", current=actual}
+        end
+    end
+    return steps, conflicts
 end

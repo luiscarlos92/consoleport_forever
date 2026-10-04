@@ -49,6 +49,20 @@
     "url": "https://github.com/Gethe/wow-ui-source/blob/09b9db7948abc9b9648dedaab51eb0cf3ee67b31/Interface/AddOns/Blizzard_ActionBarController/ActionBarController.lua"
   },
   {
+    "path": "Blizzard_ActionBar/Shared/StanceBar.lua",
+    "commit": "09b9db7948abc9b9648dedaab51eb0cf3ee67b31",
+    "gitBlob": "229d7508f08033c74d135f65cda8e4e64f0b16d9",
+    "sha256": "5f702382fa1f84ce0ba1f927a527492437d7c7023e009072dccf917889f8b72f",
+    "url": "https://github.com/Gethe/wow-ui-source/blob/09b9db7948abc9b9648dedaab51eb0cf3ee67b31/Interface/AddOns/Blizzard_ActionBar/Shared/StanceBar.lua"
+  },
+  {
+    "path": "Blizzard_ActionBar/Shared/PetActionBar.lua",
+    "commit": "09b9db7948abc9b9648dedaab51eb0cf3ee67b31",
+    "gitBlob": "174f0537a8ebeca8490fba1034a8f54505c46bde",
+    "sha256": "d57c7226ff4ab093df049a7f28a1f8780207c844c651c4a3e71078e8cdd61d2f",
+    "url": "https://github.com/Gethe/wow-ui-source/blob/09b9db7948abc9b9648dedaab51eb0cf3ee67b31/Interface/AddOns/Blizzard_ActionBar/Shared/PetActionBar.lua"
+  },
+  {
     "path": "Blizzard_StaticPopup/StaticPopup.lua",
     "commit": "09b9db7948abc9b9648dedaab51eb0cf3ee67b31",
     "gitBlob": "131aba579a39157e7a223ffa31dd9d4c1e84600f",

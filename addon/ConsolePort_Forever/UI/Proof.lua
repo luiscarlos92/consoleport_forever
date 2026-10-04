@@ -16,6 +16,14 @@ function Proof:Text(api)
         if layer.GetActiveChord then lines[#lines+1]='Engine chord: '..layer:GetActiveChord() end
     end
     lines[#lines+1]='Interface cursor shown: '..shown(db and db.Cursor)
+    local discovered,discoveryReason=Addon.RingDiscovery.Capture(api,Addon.guid)
+    lines[#lines+1]='Ring discovery is read-only; ring projection and exact gesture remain pending.'
+    if discovered then
+        for _,form in ipairs(discovered.forms) do lines[#lines+1]='Native stance '..form.nativeStanceSlot..': spell '..form.spell..' active='..tostring(form.active)..' castable='..tostring(form.castable) end
+        lines[#lines+1]='Current pet: '..tostring(discovered.pet.guid or 'none')
+        for _,pet in ipairs(discovered.pet.actions) do lines[#lines+1]='Native pet slot '..pet.action..': '..pet.name..' autocast allowed='..tostring(pet.autoCastAllowed)..' enabled='..tostring(pet.autoCastEnabled) end
+        for _,reason in ipairs(discovered.pending) do lines[#lines+1]='Discovery pending: '..reason end
+    else lines[#lines+1]='Discovery pending: '..tostring(discoveryReason) end
     local context=Addon.UIContexts
     local input=context and context.input
     if input then

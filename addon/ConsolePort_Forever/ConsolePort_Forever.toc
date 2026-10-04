@@ -17,6 +17,7 @@ Capability.lua
 Reference.lua
 BindingPolicy.lua
 ModePolicy.lua
+Rings\Discovery.lua
 SecureModes.lua
 UI\Ownership.lua
 UI\InputBridge.lua

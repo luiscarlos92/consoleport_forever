@@ -43,6 +43,22 @@
     {
       "path": "ConsolePort/LICENSE.md",
       "sha256": "ae649c4a6cbf80a9eeb0edd80a59c2bf7456844a01921912cacd7520b7b3f4e6"
+    },
+    {
+      "path": "ConsolePort_Rings/Model/Container.lua",
+      "sha256": "1837327a55f62b0152f5445d951a24f0ea80a3030b530525f4ced28a176a2336"
+    },
+    {
+      "path": "ConsolePort_Rings/Model/Map.lua",
+      "sha256": "027b9464f1b3645d8ba08e4c2b8fbb3ea1d70e6883114ae49075d987e9380e1b"
+    },
+    {
+      "path": "ConsolePort_Rings/Controller/Secure.lua",
+      "sha256": "c6ecd6e022494a254e4bfd0c8ebc489bf02345da2639004f0608176d4b5b45d2"
+    },
+    {
+      "path": "ConsolePort_Rings/Database.lua",
+      "sha256": "276ddf4071eacbb797657a34e8b6c641c838b496f9c0932a957bb7a97fef59ca"
     }
   ]
 }

@@ -14,6 +14,8 @@ FILES=[
     'Blizzard_RestrictedAddOnEnvironment/SecureHandlers.lua',
     'Blizzard_FrameXML/SecureTemplates.lua',
     'Blizzard_ActionBarController/ActionBarController.lua',
+    'Blizzard_ActionBar/Shared/StanceBar.lua',
+    'Blizzard_ActionBar/Shared/PetActionBar.lua',
     'Blizzard_StaticPopup/StaticPopup.lua',
     'Blizzard_StaticPopup/SharedTemplates.lua',
     'Blizzard_StaticPopup_Game/GameDialog.lua',

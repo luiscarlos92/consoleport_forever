@@ -63,7 +63,17 @@ The new contract suite runs full pinned LibStub/AceDB/CallbackHandler and the ac
 
 ## Validation and source contracts
 
-`tools/Test-All.ps1` passes seven Python tooling suites and nineteen Node/Lua suites, including immutable capture, Lua 5.1 syntax, transaction failures, separate-VM ownership, actual current ConsolePort secure snippets, native coordinator/adapters, focus visuals/proof panel, full TOC/bootstrap/new-session persistence and historical regressions. Fengari has Lua 5.3 execution semantics, with independent Lua 5.1 syntax validation. No offline test proves Retail taint/combat input or appearance. Windows fresh-checkout CI is green after byte-preserving .gitattributes eliminated Git line-ending transformations of immutable references.
+## Ring discovery prerequisites (projection remains unfinished)
+
+`Rings/Discovery.lua` reads current native stance slots (forms/auras/aspects) and current pet action slots without casting, binding, creating sets or changing saved data. `/cpf proof` exposes those observations. A snapshot belongs to the current player GUID and qualified pet GUID; identity changes during capture reject it. Learned stance slots remain discoverable when temporarily uncastable. Missing/invalid/opaque values defer locally and are not retained. No-pet clears the returned action list; a different pet produces a fresh list. No class spell or Forever flyout IDs are hardcoded.
+
+Native binding lookup now verifies actual current ring-container suffix generation against existing Data/Shared sets. This is prerequisite code, not an installed class/pet ring or a proof of exact stick-return activation. Existing utility/class rings and all controls remain unchanged. GUID ring capture/projection, preserving manual entries/order, learned-selector reconciliation, new pet set/opener and supported active-entry cancellation still need implementation or feature-local technical gating.
+
+Coverage parameterizes 13 simulated class identities, compares discovery to full pinned Blizzard StanceBar/PetActionBar mixins, exercises no-pet/pet-swap/unavailable/secret/changed-identity cases, and executes full current ConsolePort ring Container for numeric/default/named/shared suffixes and rejected readback. Four additional current CP ring files and two native bar files are pinned. Twenty Node/Lua suites plus seven Python suites and all 18 dependency verifications pass. Latest report: evidence/test-results/ring-discovery.json.
+
+## Validation and source contracts (continued)
+
+`tools/Test-All.ps1` passes seven Python tooling suites and twenty Node/Lua suites, including immutable capture, Lua 5.1 syntax, transaction failures, separate-VM ownership, actual current ConsolePort secure snippets, native coordinator/adapters, focus visuals/proof panel, full TOC/bootstrap/new-session persistence and historical regressions. Fengari has Lua 5.3 execution semantics, with independent Lua 5.1 syntax validation. No offline test proves Retail taint/combat input or appearance. Windows fresh-checkout CI is green after byte-preserving .gitattributes eliminated Git line-ending transformations of immutable references.
 
 The last exact tested source hashes/results are committed in `evidence/test-results/runtime-foundations.json`. Native UI source is pinned to Gethe/wow-ui-source commit `09b9db7948abc9b9648dedaab51eb0cf3ee67b31`, build 12.1.0 (69933), with provenance and SHA/blob verification in evidence/native. API signatures, secure handler whitelist, restricted exports, secure action dispatch, Edit Mode and StaticPopup behavior are checked against these sources. `tools/fetch_native_sources.py` fetches only declared pinned sources into the checkout.
 
@@ -93,6 +103,6 @@ Python and Node tooling writers now guard canonical/lexical output ancestors, re
 
 ## Usage and continuation
 
-This is the second run, awakened by same-chat heartbeat `continue-consoleport-forever-implementation` (thread `01a103b2-8a16-7931-9f91-938f0f07569b`). Most recent five-hour usage: 79% used / 21% remaining; reset Unix 1791086666. Continue monitoring frequently.
+This is the second run, awakened by same-chat heartbeat `continue-consoleport-forever-implementation` (thread `01a103b2-8a16-7931-9f91-938f0f07569b`). Most recent five-hour usage: 84% used / 16% remaining; reset Unix 1791086666. Continue monitoring frequently.
 
 When approaching 10% remaining, the last substantive action must update this same heartbeat for five minutes after the next reported five-hour reset. Then save a complete graceful handoff, commit/push it and end cleanly. Preserve all instructions across runs, do not create duplicate automation, and do not consume the available reset credit. The old one-shot wakeup has fired; do not rely on it to repeat without explicitly updating it at the next cutoff.

@@ -61,7 +61,7 @@ check('T01.snapshot', () => {
 check('T27.lua51', () => {
   for (const f of files('addon').filter(f=>f.endsWith('.lua'))) parser.parse(read(f),{luaVersion:'5.1'});
 });
-const modules = ['Core','Store','Plan','Transactions','BindingPolicy','ModePolicy','SecureModes','UI/Ownership','UI/InputBridge','UI/Contexts','UI/FocusVisuals','UI/Proof','Adapters/NativeBindings',
+const modules = ['Core','Store','Plan','Transactions','BindingPolicy','ModePolicy','Rings/Discovery','SecureModes','UI/Ownership','UI/InputBridge','UI/Contexts','UI/FocusVisuals','UI/Proof','Adapters/NativeBindings',
   'Adapters/BindingState','Adapters/BindingBanks','Diagnostics','Capability','Adapters/ConsolePort','Adapters/EditMode','Adapters/FlatConfig','Adapters/DynamicCam','Baseline','Coordinator','Prompt'];
 const source = 'Addon={};\n' + modules.map(m=>
   ';(function(...)\n'+read('addon/ConsolePort_Forever/'+m+'.lua')+'\nend)("ConsolePort_Forever",Addon);\n').join('');
@@ -126,6 +126,12 @@ TEST_SUCCESS=true
 `,'session-A-restored');
 });
 check('T06-T14-T16.policies', () => execute(source+read('tests/harness/policies.lua'),'policies'));
+check('T18.current-native-ring-discovery', () => {
+  const native=read('evidence/native/Blizzard_ActionBar/Shared/StanceBar.lua')+'\n'+read('evidence/native/Blizzard_ActionBar/Shared/PetActionBar.lua');
+  const current=read('evidence/consoleport-contracts/ConsolePort_Rings/Model/Container.lua');
+  execute(source+read('tests/harness/ring_discovery.lua').replace('--@NATIVE_ACTION_BARS',native)
+    .replace('--@CURRENT_RING_CONTAINER',';(function(...)\n'+current+'\nend)("ConsolePort_Rings");'),'ring-discovery-native-source');
+});
 check('T07.native-binding-readiness', () => execute(source+read('tests/harness/native_bindings.lua'),'native-bindings'));
 check('T09-T10.coordinator', () => execute(source+read('tests/harness/coordinator.lua'),'coordinator'));
 check('T07-T09.both-binding-bank-restore', () => execute(source+read('tests/harness/binding_banks.lua'),'binding-bank-restore'));

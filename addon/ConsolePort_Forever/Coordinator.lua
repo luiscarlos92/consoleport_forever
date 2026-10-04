@@ -141,10 +141,11 @@ function Coordinator:BuildRestore(id)
     local plan={operations={},conflicts={},noops={},deferred=errors,fields={},current=current,guid=self.guid,revision=0,restores=id,bindingInspection=bindingInspection}
     local missing={}
     for _,entry in ipairs(errors) do missing[entry.id]=true end
-    for _,field in ipairs(fields) do
+    for order,field in ipairs(fields) do
         if not missing[field.id] then
             plan.fields[#plan.fields+1]=field
             local entry=Core.Copy(field)
+            entry.order=order
             entry.before=Core.Read(current[field.scope],field.path)
             if Core.Equal(entry.before,entry.value) then plan.noops[#plan.noops+1]=entry
             elseif Core.Equal(entry.before,baselines[field.id].value) then plan.operations[#plan.operations+1]=entry

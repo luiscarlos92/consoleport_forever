@@ -55,6 +55,10 @@ function Setup.Adapters(api,account)
         for key in pairs(api.IEF_Config) do allowed[key]=true end
         adapters.extrafade=Addon.FlatConfigAdapter.New(function() return api.IEF_Config end,allowed,api.InCombatLockdown)
     end
+    if account and api.DynamicCam then
+        adapters.dynamiccam=Addon.DynamicCamAdapter.New({addon=function() return api.DynamicCam end,
+            version=api.C_AddOns.GetAddOnMetadata('DynamicCam','Version'),inCombat=api.InCombatLockdown},account.shared.managedDynamicCamProfiles)
+    end
     return adapters
 end
 function Setup.BindingProposal(db,guid,adapter,reference)
@@ -112,6 +116,13 @@ function Setup.Fields(db,guid,adapters,api,revision)
             end
         else deferred[#deferred+1]={id=scope,reason="optional integration not initialized"} end
     end
+    if adapters.dynamiccam then
+        local name,profile=adapters.dynamiccam:Proposal(Addon.PROFILE_NAME)
+        if name then
+            add('shared/dynamiccam/1-profile','dynamiccam',{'profile',name},profile,'Managed copy of your current DynamicCam settings and situations')
+            add('shared/dynamiccam/2-selected','dynamiccam',{'selected'},name,'Select the managed DynamicCam copy through its native profile lifecycle')
+        else deferred[#deferred+1]={id='dynamiccam',reason=profile} end
+    else deferred[#deferred+1]={id='dynamiccam',reason='optional DynamicCam not initialized'} end
     table.sort(fields,function(a,b) return a.id<b.id end)
     return fields,deferred
 end

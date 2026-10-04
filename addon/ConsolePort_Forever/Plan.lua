@@ -6,12 +6,12 @@ Addon.Plan = Plan
 -- Missing baseline differs from a baseline whose value is nil.
 function Plan.Build(current, baselines, proposals, reviews)
     local result = {operations = {}, conflicts = {}, noops = {}, deferred = {}}
-    for _, field in ipairs(proposals) do
+    for order, field in ipairs(proposals) do
         local now = Core.Read(assert(current[field.scope], "unknown scope"), field.path)
         local old = baselines[field.id]
         local proposed = Core.Copy(field.value)
         local entry = {id = field.id, scope = field.scope, path = Core.Copy(field.path),
-                       before = now, value = proposed, revision = field.revision,label=field.label}
+                       before = now, value = proposed, revision = field.revision,label=field.label,order=order}
         local review = reviews and reviews[field.id]
         if field.deferred then
             entry.reason = field.deferred
@@ -46,5 +46,10 @@ function Plan.Accept(plan, resolutions)
         if decision == "accept" then table.insert(accepted, Core.Copy(entry))
         elseif decision ~= "keep" then return nil, "unresolved conflict: " .. entry.id end
     end
+    -- Preparation/selection and reverse restore fields must retain the reviewed
+    -- sequence even when some are ordinary operations and others are conflicts.
+    local ordered=true
+    for _,entry in ipairs(accepted) do if not entry.order then ordered=false break end end
+    if ordered then table.sort(accepted,function(a,b) return a.order<b.order end) end
     return accepted
 end

@@ -62,7 +62,7 @@ check('T27.lua51', () => {
   for (const f of files('addon').filter(f=>f.endsWith('.lua'))) parser.parse(read(f),{luaVersion:'5.1'});
 });
 const modules = ['Core','Store','Plan','Transactions','BindingPolicy','ModePolicy','SecureModes','UI/Ownership','UI/InputBridge','UI/Contexts','UI/FocusVisuals','UI/Proof','Adapters/NativeBindings',
-  'Adapters/BindingState','Adapters/BindingBanks','Diagnostics','Capability','Adapters/ConsolePort','Adapters/EditMode','Adapters/FlatConfig','Baseline','Coordinator','Prompt'];
+  'Adapters/BindingState','Adapters/BindingBanks','Diagnostics','Capability','Adapters/ConsolePort','Adapters/EditMode','Adapters/FlatConfig','Adapters/DynamicCam','Baseline','Coordinator','Prompt'];
 const source = 'Addon={};\n' + modules.map(m=>
   ';(function(...)\n'+read('addon/ConsolePort_Forever/'+m+'.lua')+'\nend)("ConsolePort_Forever",Addon);\n').join('');
 const serializer=`
@@ -131,6 +131,30 @@ check('T09-T10.coordinator', () => execute(source+read('tests/harness/coordinato
 check('T07-T09.both-binding-bank-restore', () => execute(source+read('tests/harness/binding_banks.lua'),'binding-bank-restore'));
 check('T08-T10.review-details', () => execute(source+read('tests/harness/prompt.lua'),'review-details'));
 check('T12-T13.adapters', () => execute(source+read('tests/harness/adapters.lua'),'adapters'));
+check('T13.current-DynamicCam-AceDB', () => {
+  const base='evidence/integration-contracts/';
+  const lock=JSON.parse(read('dependencies/lock.json'));
+  for(const file of JSON.parse(read(base+'manifest.json')).files) {
+    const package=lock.packages.find(p=>p.repo===file.repo);
+    if(!package || package.sha256!==file.packageSHA256 || sha(base+file.path)!==file.sha256 || package.files[file.path]!==file.sha256) throw Error('integration contract drift: '+file.path);
+  }
+  const native=['LibStub/LibStub.lua','CallbackHandler-1.0/CallbackHandler-1.0.lua','AceDB-3.0/AceDB-3.0.lua']
+    .map(file=>';(function()\n'+read(base+'DynamicCam/Libs/'+file)+'\nend)();').join('\n');
+  const current=read(base+'DynamicCam/Core.lua');
+  if(!current.includes('self.db.RegisterCallback(self, "OnProfileChanged", "RefreshConfig")') || !current.includes('function DynamicCam:RefreshConfig()')) throw Error('native DynamicCam lifecycle changed');
+  const fixture=read('tests/harness/dynamiccam.lua').replace('--@CURRENT_ACEDB',native)
+    .replace('--@CURRENT_DYNAMIC_DEFAULTS',';(function(...)\n'+read(base+'DynamicCam/DefaultSettings.lua')+'\nend)("DynamicCam");');
+  const state=execute(source+serializer+fixture,'DynamicCam-native-AceDB');
+  require('./saved_variables.cjs').parse('PERSISTED_STATE='+state);
+  execute(source+'local PERSISTED_STATE='+state+'\n'+fixture.split('--@LIFECYCLE')[0]+`
+assert(adapter:Probe() and db:GetCurrentProfile()=='CPF managed' and owned['CPF managed'].created)
+local name,value=adapter:Proposal('CPF managed')
+assert(name=='CPF managed' and value.nested.manual==7 and value.nested.default==9)
+assert(value.situations.one.executeOnInit=='preserved script' and db.profiles.Original)
+assert(refreshes==0,'persisted profile initialization refreshed or replaced the accepted data')
+TEST_SUCCESS=true
+`,'DynamicCam-persisted-native-AceDB');
+});
 check('T21.focus-visuals-proof', () => execute(source+read('tests/harness/focus_visuals.lua'),'focus-visuals-proof'));
 check('T16-T20-T22.current-native-UI-contexts', () => {
   const base='evidence/consoleport-contracts/';

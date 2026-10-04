@@ -1,0 +1,54 @@
+{
+  "purpose": "Exact unmodified integration lifecycle contracts; not deployed dependency copies.",
+  "files": [
+    {
+      "path": "DynamicCam/Core.lua",
+      "sha256": "496a0180d99dee31882fa07c9b03373ee6443697c6002ecd3a609ea0d6ca54d8",
+      "repo": "curseforge/DynamicCam",
+      "version": "2.21.1",
+      "packageSHA256": "10eb86230c6903e72097e1552c04de8a163a39fe3cb31fc3a3274c2c4394e072"
+    },
+    {
+      "path": "DynamicCam/DefaultSettings.lua",
+      "sha256": "56ed16d3fb86daf2fa59c34087ddf8db2ddbe89d9e37552448cee07ae03de130",
+      "repo": "curseforge/DynamicCam",
+      "version": "2.21.1",
+      "packageSHA256": "10eb86230c6903e72097e1552c04de8a163a39fe3cb31fc3a3274c2c4394e072"
+    },
+    {
+      "path": "DynamicCam/LICENSE",
+      "sha256": "d073ad048c4a17bfb5a1c69eea17c60f262aa6f542a8ebb10c81e07c6876e6b1",
+      "repo": "curseforge/DynamicCam",
+      "version": "2.21.1",
+      "packageSHA256": "10eb86230c6903e72097e1552c04de8a163a39fe3cb31fc3a3274c2c4394e072"
+    },
+    {
+      "path": "DynamicCam/Libs/LICENSE.md",
+      "sha256": "af51766e056af139f94de73afdc907b860d11707a20e709654ad0bf110f6fb3a",
+      "repo": "curseforge/DynamicCam",
+      "version": "2.21.1",
+      "packageSHA256": "10eb86230c6903e72097e1552c04de8a163a39fe3cb31fc3a3274c2c4394e072"
+    },
+    {
+      "path": "DynamicCam/Libs/LibStub/LibStub.lua",
+      "sha256": "186bac9553513504fac3a5c4550ff59f3aee9e8a497376134f3ca01de2ed18d0",
+      "repo": "curseforge/DynamicCam",
+      "version": "2.21.1",
+      "packageSHA256": "10eb86230c6903e72097e1552c04de8a163a39fe3cb31fc3a3274c2c4394e072"
+    },
+    {
+      "path": "DynamicCam/Libs/CallbackHandler-1.0/CallbackHandler-1.0.lua",
+      "sha256": "84a15af505e728ac5e5eb6a8eaba8989d1131d5f8ba14d11abcfe4ce086de3c1",
+      "repo": "curseforge/DynamicCam",
+      "version": "2.21.1",
+      "packageSHA256": "10eb86230c6903e72097e1552c04de8a163a39fe3cb31fc3a3274c2c4394e072"
+    },
+    {
+      "path": "DynamicCam/Libs/AceDB-3.0/AceDB-3.0.lua",
+      "sha256": "fe1074edbbd248130f3c9aabfede6631133853e482e96e72f6d25d7a116f4ef7",
+      "repo": "curseforge/DynamicCam",
+      "version": "2.21.1",
+      "packageSHA256": "10eb86230c6903e72097e1552c04de8a163a39fe3cb31fc3a3274c2c4394e072"
+    }
+  ]
+}

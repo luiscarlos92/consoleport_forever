@@ -173,5 +173,33 @@
     "gitBlob": "e570e6b794dd6dd492e22fa940322100be4c4e47",
     "sha256": "4adea2fd63db2698c43a410d94401cd72bc46bfefac92a91a2986593174f2088",
     "url": "https://github.com/Gethe/wow-ui-source/blob/09b9db7948abc9b9648dedaab51eb0cf3ee67b31/Interface/AddOns/Blizzard_SharedXML/Shared/Scroll/ScrollController.lua"
+  },
+  {
+    "path": "Blizzard_MapCanvas/MapCanvas_ScrollContainerMixin.lua",
+    "commit": "09b9db7948abc9b9648dedaab51eb0cf3ee67b31",
+    "gitBlob": "2593cbc17011a588af44292c86a83172b3ec6125",
+    "sha256": "78fb276916b66604c61dc51c5d86698e30e594ff080f23a85650f51fe14f2664",
+    "url": "https://github.com/Gethe/wow-ui-source/blob/09b9db7948abc9b9648dedaab51eb0cf3ee67b31/Interface/AddOns/Blizzard_MapCanvas/MapCanvas_ScrollContainerMixin.lua"
+  },
+  {
+    "path": "Blizzard_WorldMap/Blizzard_WorldMap.lua",
+    "commit": "09b9db7948abc9b9648dedaab51eb0cf3ee67b31",
+    "gitBlob": "6783f8c6e1ecfd21d7b06a604efcfb59cd280593",
+    "sha256": "e10bc3edd4fbb6d34edf3658796dc73990257db3c1b9b3113686a72e365e30fa",
+    "url": "https://github.com/Gethe/wow-ui-source/blob/09b9db7948abc9b9648dedaab51eb0cf3ee67b31/Interface/AddOns/Blizzard_WorldMap/Blizzard_WorldMap.lua"
+  },
+  {
+    "path": "Blizzard_UIPanels_Game/Mainline/ContainerFrame.lua",
+    "commit": "09b9db7948abc9b9648dedaab51eb0cf3ee67b31",
+    "gitBlob": "706a19f15f6f824203442309193f3e14c3885b03",
+    "sha256": "173bd5513472d3cc33be6db76ede5d83314e38a4208c70339b8a4d9f545604bc",
+    "url": "https://github.com/Gethe/wow-ui-source/blob/09b9db7948abc9b9648dedaab51eb0cf3ee67b31/Interface/AddOns/Blizzard_UIPanels_Game/Mainline/ContainerFrame.lua"
+  },
+  {
+    "path": "Blizzard_APIDocumentationGenerated/ContainerDocumentation.lua",
+    "commit": "09b9db7948abc9b9648dedaab51eb0cf3ee67b31",
+    "gitBlob": "355894f1572f0af7731429e59a885786a6cfc97a",
+    "sha256": "c22fe196197e1a42b4188facb40baa4fb5ede07ac3eb27eb314bb17565bcd968",
+    "url": "https://github.com/Gethe/wow-ui-source/blob/09b9db7948abc9b9648dedaab51eb0cf3ee67b31/Interface/AddOns/Blizzard_APIDocumentationGenerated/ContainerDocumentation.lua"
   }
 ]

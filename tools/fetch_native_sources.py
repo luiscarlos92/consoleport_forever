@@ -32,6 +32,10 @@ FILES=[
     'Blizzard_SharedXML/Shared/TabSystem/TabSystemTemplates.lua',
     'Blizzard_UIPanelTemplates/Shared/UIPanelTemplatesShared.lua',
     'Blizzard_SharedXML/Shared/Scroll/ScrollController.lua',
+    'Blizzard_MapCanvas/MapCanvas_ScrollContainerMixin.lua',
+    'Blizzard_WorldMap/Blizzard_WorldMap.lua',
+    'Blizzard_UIPanels_Game/Mainline/ContainerFrame.lua',
+    'Blizzard_APIDocumentationGenerated/ContainerDocumentation.lua',
 ]
 
 if __name__=='__main__':

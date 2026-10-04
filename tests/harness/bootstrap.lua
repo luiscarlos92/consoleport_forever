@@ -17,9 +17,9 @@ if SESSION_STATE then
     db.Settings=SESSION_STATE.settings
 end
 local shown
-local modules={ConsolePort=true,ConsolePort_Bar=true,ConsolePort_Menu=true,ConsolePort_Config=true,ConsolePort_Cursor=true,ConsolePort_Rings=true,Immersion=true,Blizzard_EditMode=true,ConsolePort_Forever=true}
+local modules={ConsolePort=true,ConsolePort_Bar=true,ConsolePort_Menu=true,ConsolePort_Config=true,ConsolePort_Cursor=true,ConsolePort_Rings=true,Immersion=true,Immersion_ExtraFade=true,Blizzard_EditMode=true,ConsolePort_Forever=true}
 Enum={BindingSet={Account=1,Character=2},EditModeLayoutType={Account=1,Character=2}}
-C_AddOns={GetAddOnMetadata=function(name,key) if name=="ConsolePort" or name=="ConsolePort_Rings" then return "3.3.3" end return "2.0.0-dev" end,
+C_AddOns={GetAddOnMetadata=function(name,key) if name=="ConsolePort" or name=="ConsolePort_Rings" then return "3.3.3" elseif name=='Immersion' then return '1.4.61' elseif name=='Immersion_ExtraFade' then return '1.18.0' end return "2.0.0-dev" end,
     GetAddOnInfo=function(name) return modules[name] and name or nil end,
     IsAddOnLoaded=function(name) return modules[name] or false end,
     GetAddOnEnableState=function(name,character) assert(character=="Player") return modules[name] and 2 or 0 end,

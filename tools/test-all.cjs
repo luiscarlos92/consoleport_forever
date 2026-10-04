@@ -62,7 +62,7 @@ check('T27.lua51', () => {
   for (const f of files('addon').filter(f=>f.endsWith('.lua'))) parser.parse(read(f),{luaVersion:'5.1'});
 });
 const modules = ['Core','Store','Plan','Transactions','BindingPolicy','ModePolicy','Rings/Discovery','Rings/Selectors','SecureModes','UI/Ownership','UI/InputBridge','UI/Windows','UI/Scroll','UI/Contexts','UI/FocusVisuals','UI/Proof','Adapters/NativeBindings',
-  'Adapters/BindingState','Adapters/BindingBanks','Diagnostics','Capability','Adapters/ConsolePort','Adapters/EditMode','Adapters/FlatConfig','Adapters/DynamicCam','Adapters/Rings','Baseline','Coordinator','Prompt'];
+  'Adapters/BindingState','Adapters/BindingBanks','Diagnostics','Capability','Adapters/ConsolePort','Adapters/EditMode','Adapters/FlatConfig','Adapters/Integrations','Adapters/DynamicCam','Adapters/Rings','Baseline','Coordinator','Prompt'];
 const source = 'Addon={};\n' + modules.map(m=>
   ';(function(...)\n'+read('addon/ConsolePort_Forever/'+m+'.lua')+'\nend)("ConsolePort_Forever",Addon);\n').join('');
 const serializer=`
@@ -174,6 +174,26 @@ check('T09-T10.coordinator', () => execute(source+read('tests/harness/coordinato
 check('T07-T09.both-binding-bank-restore', () => execute(source+read('tests/harness/binding_banks.lua'),'binding-bank-restore'));
 check('T08-T10.review-details', () => execute(source+read('tests/harness/prompt.lua'),'review-details'));
 check('T12-T13.adapters', () => execute(source+read('tests/harness/adapters.lua'),'adapters'));
+check('T13.pinned-flat-integration-settings', () => {
+  const base='evidence/integration-contracts/';
+  const settingsAST=parser.parse(read(base+'Immersion/Settings.lua'),{luaVersion:'5.1',encodingMode:'x-user-defined'});
+  const keys=new Set();
+  function visit(value) {
+    if(!value || typeof value!=='object') return;
+    if(value.type==='CallExpression') {
+      const name=value.base?.name;
+      const index=name==='Keybind' ? 2 : 1;
+      if(['Checkbox','Slider','Dropdown','Keybind'].includes(name) && value.arguments[index]?.type==='StringLiteral') keys.add(value.arguments[index].value);
+    }
+    for(const child of Object.values(value)) if(Array.isArray(child)) child.forEach(visit); else if(child && typeof child==='object') visit(child);
+  }
+  visit(settingsAST);
+  if(keys.size<25) throw Error('native panel key extraction did not qualify');
+  const fixture=read('tests/harness/flat_integrations.lua')
+    .replace('--@NATIVE_IMMERSION_CONFIG',()=>';(function(...)\n'+read(base+'Immersion/Config.lua')+'\nend)("Immersion",nativeImmersion);')
+    .replace('--@NATIVE_EXTRFADE_OPTIONS',()=>';(function(...)\n'+read(base+'Immersion_ExtraFade/options.lua')+'\nend)("Immersion_ExtraFade");');
+  execute(source+'NATIVE_IMMERSION_SETTINGS_KEYS={'+[...keys].sort().map(k=>JSON.stringify(k)).join(',')+'}\n'+fixture,'flat-integrations-native-settings');
+});
 check('T13.current-DynamicCam-AceDB', () => {
   const base='evidence/integration-contracts/';
   const lock=JSON.parse(read('dependencies/lock.json'));

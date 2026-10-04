@@ -33,6 +33,7 @@ Adapters\BindingBanks.lua
 Adapters\ConsolePort.lua
 Adapters\EditMode.lua
 Adapters\FlatConfig.lua
+Adapters\Integrations.lua
 Adapters\DynamicCam.lua
 Adapters\Rings.lua
 Baseline.lua

@@ -87,6 +87,10 @@
     {
       "path": "ConsolePort/Libs/External/ConsolePortNode/ConsolePortNode.lua",
       "sha256": "1c10da60d4240da12c009c752b45a72d72c3883baa7d423cd6f603170ed9197e"
+    },
+    {
+      "path": "ConsolePort_Cursor/Controller/Hooks.lua",
+      "sha256": "76fb0c5b690003c344923a5544a9616557cd38bc2de7d9ed394fdc37450a45d0"
     }
   ]
 }

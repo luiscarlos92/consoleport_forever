@@ -15,6 +15,7 @@ FILES = [
     'ConsolePort/Libs/External/RelaTable/RelaTable.lua',
     'ConsolePort/Controller/Radial.lua', 'ConsolePort/Controller/Convenience.lua',
     'ConsolePort/Libs/External/ConsolePortNode/ConsolePortNode.lua',
+    'ConsolePort_Cursor/Controller/Hooks.lua',
 ]
 if __name__ == '__main__':
     lock = json.loads((ROOT / 'dependencies/lock.json').read_text(encoding='utf-8'))

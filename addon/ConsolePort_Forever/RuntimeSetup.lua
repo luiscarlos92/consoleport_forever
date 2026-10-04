@@ -62,13 +62,9 @@ function Setup.Adapters(api,account)
             api.SetCVar(p[1],value)
             return api.GetCVar(p[1])==tostring(value)
         end}
-    local immersionFields={scale=true,boxoffsetX=true,boxoffsetY=true,boxpoint=true,boxscale=true,
-        titleoffset=true,titleoffsetY=true,titlescale=true,elementscale=true,immersivemode=true}
-    if type(api.ImmersionSetup)=="table" then adapters.immersion=Addon.FlatConfigAdapter.New(function() return api.ImmersionSetup end,immersionFields,api.InCombatLockdown) end
-    if type(api.IEF_Config)=="table" then
-        local allowed={}
-        for key in pairs(api.IEF_Config) do allowed[key]=true end
-        adapters.extrafade=Addon.FlatConfigAdapter.New(function() return api.IEF_Config end,allowed,api.InCombatLockdown)
+    adapters.integrationReasons={}
+    for _,kind in ipairs({'immersion','extrafade'}) do
+        adapters[kind],adapters.integrationReasons[kind]=Addon.FlatIntegrations.New(kind,api)
     end
     if account and api.DynamicCam then
         adapters.dynamiccam=Addon.DynamicCamAdapter.New({addon=function() return api.DynamicCam end,
@@ -134,12 +130,15 @@ function Setup.Fields(db,guid,adapters,api,revision)
             else deferred[#deferred+1]={id="editmode",reason=error} end
         else deferred[#deferred+1]={id="editmode",reason=reason} end
     else deferred[#deferred+1]={id="editmode",reason="Blizzard Edit Mode is not initialized"} end
-    for scope,tableValue in pairs({immersion=api.ImmersionSetup,extrafade=api.IEF_Config}) do
+    for _,scope in ipairs({'immersion','extrafade'}) do
         if adapters[scope] then
             for key in pairs(adapters[scope].allowed) do
-                add("shared/"..scope.."/"..key,scope,{key},tableValue[key],"Preserve "..scope.." "..key)
+                local readable,value=pcall(adapters[scope].read,adapters[scope],{key})
+                if readable then add("shared/"..scope.."/"..key,scope,{key},value,"Preserve "..scope.." "..key)
+                else deferred[#deferred+1]={id=scope..'/'..key,reason=tostring(value)} end
             end
-        else deferred[#deferred+1]={id=scope,reason="optional integration not initialized"} end
+            for _,reason in ipairs(adapters[scope].pending or {}) do deferred[#deferred+1]={id=scope,reason=reason} end
+        else deferred[#deferred+1]={id=scope,reason=adapters.integrationReasons and adapters.integrationReasons[scope] or "optional integration not initialized"} end
     end
     if adapters.dynamiccam then
         local name,profile=adapters.dynamiccam:Proposal(Addon.PROFILE_NAME)

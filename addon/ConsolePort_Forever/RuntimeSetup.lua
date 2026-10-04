@@ -46,7 +46,7 @@ function Setup.Adapters(api,account)
         adapters.bindings.bankInspector=adapters.bindingBanks
         adapters.bindings.canWrite=adapters.bindingBanks.canWrite
     end
-    if account then adapters.policy=Addon.FlatConfigAdapter.New(function() return account.shared.runtimePolicy end,{modesEnabled=true,focusVisuals=true,uiContextsEnabled=true,windowsEnabled=true},api.InCombatLockdown) end
+    if account then adapters.policy=Addon.FlatConfigAdapter.New(function() return account.shared.runtimePolicy end,{modesEnabled=true,focusVisuals=true,uiContextsEnabled=true,windowsEnabled=true,bagsEnabled=true},api.InCombatLockdown) end
     if api.C_EditMode and api.EditModePresetLayoutManager then
         adapters.editmode=Addon.EditModeAdapter.New({GetLayouts=api.C_EditMode.GetLayouts,
             SaveLayouts=api.C_EditMode.SaveLayouts,SetActiveLayout=api.C_EditMode.SetActiveLayout,
@@ -118,6 +118,10 @@ function Setup.Fields(db,guid,adapters,api,revision)
     if contextReady and Addon.UIWindows.CanUse(adapters.consoleport.db) and adapters.policy then
         add('shared/policy/windowsEnabled','policy',{'windowsEnabled'},true,'Use registered-window triggers, native tabs, audited right-stick scrolling and focused tooltips; popup and quantity keep priority')
     else deferred[#deferred+1]={id='windows',reason='audited native cursor/stack/input window bridge unavailable'} end
+    local bagReady,bagReason=Addon.BetterBagsAdapter.New(adapters.consoleport.db,api):Probe()
+    if contextReady and Addon.UIWindows.CanUse(adapters.consoleport.db) and bagReady and adapters.policy then
+        add('shared/policy/bagsEnabled','policy',{'bagsEnabled'},true,'Guard native BetterBags item clicks by current item identity; clear a carried item before Back closes the bag')
+    else deferred[#deferred+1]={id='bags',reason=bagReason or 'native window context unavailable'} end
     for cvar,value in pairs({GamePadEmulateShift="PADLTRIGGER",GamePadEmulateCtrl="PADRTRIGGER"}) do
         if api.GetCVarDefault(cvar)~=nil then add("shared/cvar/"..cvar,"cvars",{cvar},value,"Controller trigger modifier: "..cvar)
         else deferred[#deferred+1]={id=cvar,reason="registered Retail CVar unavailable"} end

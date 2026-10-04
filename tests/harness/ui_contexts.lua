@@ -145,11 +145,11 @@ function CreateFrame(kind,name,parent,template)
     if name then named[name]=frame _G[name]=frame end
     if parent then parent.children[#parent.children+1]=frame end
     if template and template:find('SecureActionButtonTemplate',1,true) then
-        frame:SetScript('OnClick',function(button,_,down)
+        frame:SetScript('OnClick',function(button,click,down)
             if not down and button:GetAttribute('typerelease')=='click' then
                 local target=button:GetAttribute('clickbutton')
                 assert(not rawFrames[target],'restricted handle used as native click delegate')
-                SECURE_ACTIONS.click(button,nil,'LeftButton')
+                SECURE_ACTIONS.click(button,nil,click)
             end
         end)
     end
@@ -170,11 +170,12 @@ function RegisterStateDriver() end
 --@CURRENT_SCRIPT_MIXIN
 --@CURRENT_INPUT
 local input=db.Input
-local function press(widget,down)
+local function press(widget,down,click)
     local prior=hardware hardware=true
-    fire(widget,down and 'OnMouseDown' or 'OnMouseUp','LeftButton')
-    fire(widget,'OnClick','LeftButton',down)
-    fire(widget,'PostClick','LeftButton',down)
+    click=click or (widget:GetOverride(true) or widget:GetOverride(false) or {}).button or 'LeftButton'
+    fire(widget,down and 'OnMouseDown' or 'OnMouseUp',click)
+    fire(widget,'OnClick',click,down)
+    fire(widget,'PostClick',click,down)
     hardware=prior
 end
 local parent=CreateFrame('Frame','ParentPanel',UIParent)

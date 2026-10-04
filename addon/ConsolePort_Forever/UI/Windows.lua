@@ -70,6 +70,7 @@ function Windows:NativeOverlay()
     return shown(self.api.ColorPickerFrame) or shown(self.api.ConsolePortKeyboard)
 end
 function Windows:IsMenu(frame)
+    if frame==self.db.ItemMenu or frame==self.db.SpellMenu or frame==self.db.UnitMenu then return true end
     local name=frame.GetName and frame:GetName() or ''
     if name:match('^L_DropDownList%d+$') or name:match('^DropDownList%d+$') then return true end
     local menu=self.api.Menu
@@ -148,6 +149,13 @@ function Windows:Current()
     for _,frame in ipairs(self:Frames()) do if within(node,frame) then owner=frame break end end
     if not owner or owner==self.api.WorldMapFrame then return end
     local menu=self:IsMenu(owner)
+    local ancestor=node
+    for _=1,32 do
+        if not ancestor then break end
+        if self:IsMenu(ancestor) then owner=ancestor menu=true break end
+        if ancestor==owner then break end
+        ancestor=ancestor.GetParent and ancestor:GetParent()
+    end
     local strata=owner.GetFrameStrata and owner:GetFrameStrata()
     if not menu and (strata=='FULLSCREEN_DIALOG' or strata=='TOOLTIP') then return end
     local routes={}

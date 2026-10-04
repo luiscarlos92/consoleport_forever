@@ -1,7 +1,7 @@
 local ADDON_NAME, Addon = ...
 Addon.VERSION=C_AddOns.GetAddOnMetadata(ADDON_NAME,"Version") or "0.0.0"
 Addon.SCHEMA=Addon.Store.VERSION
-Addon.CONFIG_REVISION=7
+Addon.CONFIG_REVISION=8
 Addon.PROFILE_NAME="Console Port - Forever (Managed)"
 local function Print(message)
     if DEFAULT_CHAT_FRAME then DEFAULT_CHAT_FRAME:AddMessage("|cff69ccf0ConsolePort Forever:|r "..tostring(message)) end
@@ -316,7 +316,7 @@ function Addon:RefreshUI()
     local ok,reason=self.FocusVisuals:Enable(self.adapters.consoleport,_G,enabled)
     self.Diagnostics:SetFeature("focusVisuals",enabled and ok and "offline-verified" or "pending",reason or (enabled and "ordinary cursor ownership only; rendered acceptance pending" or "reviewed visual policy not enabled"))
     local contexts=self:IsCharacterInstalled() and self.db.shared.runtimePolicy.uiContextsEnabled
-    local active,error=self.UIContexts:Enable(self.adapters.consoleport,_G,contexts,self:IsCharacterInstalled() and self.db.shared.runtimePolicy.windowsEnabled)
+    local active,error=self.UIContexts:Enable(self.adapters.consoleport,_G,contexts,self:IsCharacterInstalled() and self.db.shared.runtimePolicy.windowsEnabled,self:IsCharacterInstalled() and self.db.shared.runtimePolicy.bagsEnabled)
     self.Diagnostics:SetFeature("uiContexts",contexts and active and "offline-verified" or "pending",error or (contexts and "native popup/quantity ownership; Retail input/taint acceptance pending" or "reviewed UI context policy not enabled"))
 end
 Addon.Prompt:Initialize({dialogs=StaticPopupDialogs,show=StaticPopup_Show,reload=ReloadUI,defer=function(callback) C_Timer.After(0,callback) end,
@@ -339,7 +339,7 @@ SlashCmdList.CONSOLEPORTFOREVER=function(input)
     else Addon:Status() end
 end
 local events=CreateFrame("Frame")
-for _,event in ipairs({"PLAYER_LOGIN","PLAYER_LOGOUT","PLAYER_ENTERING_WORLD","PLAYER_REGEN_ENABLED","PLAYER_REGEN_DISABLED","ADDON_LOADED","UPDATE_BINDINGS","EDIT_MODE_LAYOUTS_UPDATED","SPELLS_CHANGED","UPDATE_SHAPESHIFT_FORMS","PET_BAR_UPDATE","UNIT_PET","ADDON_ACTION_BLOCKED","ADDON_ACTION_FORBIDDEN"}) do events:RegisterEvent(event) end
+for _,event in ipairs({"PLAYER_LOGIN","PLAYER_LOGOUT","PLAYER_ENTERING_WORLD","PLAYER_REGEN_ENABLED","PLAYER_REGEN_DISABLED","ADDON_LOADED","UPDATE_BINDINGS","EDIT_MODE_LAYOUTS_UPDATED","SPELLS_CHANGED","UPDATE_SHAPESHIFT_FORMS","PET_BAR_UPDATE","UNIT_PET","BAG_UPDATE_DELAYED","ITEM_LOCK_CHANGED","CURSOR_CHANGED","MERCHANT_SHOW","MERCHANT_CLOSED","ADDON_ACTION_BLOCKED","ADDON_ACTION_FORBIDDEN"}) do events:RegisterEvent(event) end
 events:SetScript("OnEvent",function(_,event,...)
     if event=="PLAYER_LOGOUT" then
         Addon:CaptureControllerEdits()

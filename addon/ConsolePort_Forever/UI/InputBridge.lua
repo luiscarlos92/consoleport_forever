@@ -58,6 +58,17 @@ function Bridge:Stamp(state,active)
         state.widget:SetAttribute('cpf-ui-active',active or nil)
     end
 end
+function Bridge:Validate(state)
+    if not state.validator then return true end
+    local ok,valid=pcall(state.validator)
+    if ok and valid then return true end
+    state.allowed=false
+    if not self.api.InCombatLockdown() then
+        state.widget:SetAttribute('cpf-ui-allowed',nil)
+        self:Stamp(state,state.active)
+    end
+    return false
+end
 function Bridge:Widget(key)
     local state=self.states[key]
     if state then return state end
@@ -75,13 +86,14 @@ function Bridge:Widget(key)
         local cpf=state.active
         local front={cpf=cpf,generation=state.generation,target=cpf and state.target or nil}
         state.front=front
-        if cpf and (self.api.InCombatLockdown() or not state.allowed) then return end
+        if cpf and (self.api.InCombatLockdown() or not state.allowed or not self:Validate(state)) then return end
         if not self.api.InCombatLockdown() then button:SetAttribute('cpf-ui-front',cpf and state.generation or nil) end
         if down then down(button,...) end
         if cpf and (not state.active or front.generation~=state.generation) then button.postreset=nil end
     end)
     widget:SetScript('OnMouseUp',function(button,...)
         local front=state.front state.front=nil
+        if state.active and not self.api.InCombatLockdown() then self:Validate(state) end
         local stale=(front and front.cpf and (not state.active or front.generation~=state.generation))
             or (state.active and (not front or not front.cpf or not state.allowed))
         if stale or (state.active and self.api.InCombatLockdown()) then
@@ -122,7 +134,7 @@ function Bridge:ReleaseKey(state)
     end
     self.applying=nil
     self:Stamp(state,false)
-    state.previous=nil state.context=nil state.target=nil
+    state.previous=nil state.context=nil state.target=nil state.validator=nil
 end
 function Bridge:Release()
     local failures={}
@@ -140,30 +152,33 @@ function Bridge:Apply(context,force)
     if not context then return self:Release() end
     local changed=force or not self.context or self.context.frame~=context.frame
         or self.context.token~=context.token or self.context.data~=context.data or self.context.data2~=context.data2
-    local wanted={}
+    local wanted,clicks={},{}
     for key,target in pairs(context.routes) do
-        for _,modifier in ipairs(modifiers) do wanted[modifier..key]=target end
+        for _,modifier in ipairs(modifiers) do wanted[modifier..key]=target clicks[modifier..key]=(context.clicks or {})[key] end
     end
     for key,target in pairs(context.chords or {}) do wanted[key]=target end
     self.owner:Show()
     for chord,target in pairs(wanted) do
+            local click=clicks[chord] or 'LeftButton'
             local state=self:Widget(chord)
             local row=state.widget:GetOverride(true)
             local allowed=target and target.IsShown and target:IsShown() and target.IsEnabled and target:IsEnabled() or false
             if target and target.IsForbidden and target:IsForbidden() then allowed=false end
             local label=target and target.GetText and target:GetText() or nil
             if self.api.issecretvalue and self.api.issecretvalue(label) then label='opaque native label' end
-            if changed or not state.active or state.target~=target or state.allowed~=allowed or state.label~=label or not row or row.owner~=self.owner then
+            state.validator=context.validators and context.validators[chord:match('[^%-]+$')] or context.validate
+            if changed or not state.active or state.target~=target or state.allowed~=allowed or state.label~=label or state.click~=click or not row or row.owner~=self.owner then
                 if row and row.owner~=self.owner then state.previous=row state.previousOwner=row.owner end
                 self:Stamp(state,true)
                 state.target,state.allowed,state.context,state.label=target,allowed,context.frame,label
+                state.click=click
                 local widget=state.widget
                 widget:SetFrameRef('cpf-ui-owner',context.frame)
                 widget:SetFrameRef('cpf-ui-target',allowed and target or self.owner)
                 widget:SetAttribute('cpf-ui-allowed',allowed or nil)
                 widget:SetAttribute('cpf-ui-release',allowed and 'click' or 'CPFConsume')
                 self.applying=true
-                if allowed then self.input:SetButton(chord,self.owner,target,true,'LeftButton')
+                if allowed then self.input:SetButton(chord,self.owner,target,true,click)
                 else
                     widget:SetAttribute('clickbutton',nil)
                     self.input:SetCommand(chord,self.owner,true,'LeftButton','CPFConsume',function() end)
@@ -173,7 +188,7 @@ function Bridge:Apply(context,force)
                 assert(installed and installed.owner==self.owner and widget:GetAttribute('owner')==self.owner,'native UI row readback rejected')
                 assert(widget:GetAttribute('typerelease')==(allowed and 'click' or 'CPFConsume'),'native UI action readback rejected')
                 if allowed then assert(widget:GetAttribute('clickbutton')==target,'native UI target readback rejected') end
-                assert(self.api.GetBindingAction(chord,true)=='CLICK '..widget:GetName()..':LeftButton','native effective UI route readback rejected')
+                assert(self.api.GetBindingAction(chord,true)=='CLICK '..widget:GetName()..':'..(allowed and click or 'LeftButton'),'native effective UI route readback rejected')
             end
     end
     for key,state in pairs(self.states) do if wanted[key]==nil and state.active then self:ReleaseKey(state) end end

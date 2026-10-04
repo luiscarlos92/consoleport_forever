@@ -45,6 +45,7 @@ function Contexts:Current()
     end
     if not visible(owner) then
         local window=self.windows and self.windows:Current()
+        if window and self.bags then window=self.bags:Enrich(window) end
         if window then
             self:Watch(window.frame,false)
             self:Watch(window.data,false)
@@ -101,7 +102,7 @@ function Contexts:Refresh(force)
     end
     return true
 end
-function Contexts:Enable(bridge,api,enabled,windowsEnabled)
+function Contexts:Enable(bridge,api,enabled,windowsEnabled,bagsEnabled)
     self.enabled=not not enabled
     if not enabled then if self.input then return self:Refresh() end return true end
     local ready,reason=self:Probe(bridge,api)
@@ -109,6 +110,8 @@ function Contexts:Enable(bridge,api,enabled,windowsEnabled)
     self.api,self.db=api,bridge.db
     self.windows=self.windows or Addon.UIWindows.New(self.db,api,function() self:Refresh() end)
     self.windows.enabled=not not windowsEnabled
+    self.bags=self.bags or Addon.BetterBagsAdapter.New(self.db,api,function() return self.windows:Current() end)
+    self.bags.enabled=not not bagsEnabled
     self.scroll=self.scroll or Addon.UIScroll.New(self.db,api,function() return self:Current() end,function() self:Refresh() end)
     if not self.input then
         self.input=Addon.InputBridge.New(self.db.Input,api)

@@ -91,6 +91,14 @@
     {
       "path": "ConsolePort_Cursor/Controller/Hooks.lua",
       "sha256": "76fb0c5b690003c344923a5544a9616557cd38bc2de7d9ed394fdc37450a45d0"
+    },
+    {
+      "path": "ConsolePort/Controller/Modules.lua",
+      "sha256": "e822d15b1670260a717115b527d1272851fa49af4c3fe52f96b92b4af8b67b9a"
+    },
+    {
+      "path": "ConsolePort_Menu/View/Popup/ItemMenu.lua",
+      "sha256": "e5458da7fea46b1a18aa05f39a2ec0dfe2c6c020c80b3113075c2db7f43ee227"
     }
   ]
 }

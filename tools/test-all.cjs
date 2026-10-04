@@ -61,7 +61,7 @@ check('T01.snapshot', () => {
 check('T27.lua51', () => {
   for (const f of files('addon').filter(f=>f.endsWith('.lua'))) parser.parse(read(f),{luaVersion:'5.1'});
 });
-const modules = ['Core','Store','Plan','Transactions','BindingPolicy','ModePolicy','Rings/Discovery','Rings/Selectors','SecureModes','UI/Ownership','UI/InputBridge','UI/Windows','UI/Scroll','UI/Contexts','UI/FocusVisuals','UI/Proof','Adapters/NativeBindings',
+const modules = ['Core','Store','Plan','Transactions','BindingPolicy','ModePolicy','Rings/Discovery','Rings/Selectors','SecureModes','UI/Ownership','UI/InputBridge','UI/Windows','UI/Scroll','Adapters/BetterBags','UI/Contexts','UI/FocusVisuals','UI/Proof','Adapters/NativeBindings',
   'Adapters/BindingState','Adapters/BindingBanks','Diagnostics','Capability','Adapters/ConsolePort','Adapters/EditMode','Adapters/FlatConfig','Adapters/Integrations','Adapters/DynamicCam','Adapters/Rings','Baseline','Coordinator','Prompt'];
 const source = 'Addon={};\n' + modules.map(m=>
   ';(function(...)\n'+read('addon/ConsolePort_Forever/'+m+'.lua')+'\nend)("ConsolePort_Forever",Addon);\n').join('');
@@ -248,6 +248,25 @@ function windowFixture() {
   return uiContextFixture()+'\n'+windows;
 }
 check('T20.current-native-window-controls', () => execute(source+windowFixture(),'ui-windows-native-source'));
+check('T21-T22.native-BetterBags-item-guards', () => {
+  function nativeFunction(file,signature) {
+    const text=read(file).replace(/\r\n/g,'\n');
+    const start=text.indexOf('function '+signature+'(');
+    const end=text.indexOf('\nend',start)+4;
+    if(start<0 || end<start) throw Error('native function not found: '+signature);
+    const body=text.slice(start,end);
+    parser.parse(body,{luaVersion:'5.1'}); return body;
+  }
+  const container='evidence/native/Blizzard_UIPanels_Game/Mainline/ContainerFrame.lua';
+  const base='evidence/consoleport-contracts/';
+  const fixture=read('tests/harness/betterbags.lua')
+    .replace('--@NATIVE_CONTAINER_METHODS',()=>['ContainerFrameItemButton_OnClick','ContainerFrameItemButtonMixin:OnClick','ContainerFrameItemButtonMixin:OnModifiedClick','ContainerFrameItemButtonMixin:GetBagID','ContainerFrameItemButtonMixin:GetSlotAndBagID'].map(name=>nativeFunction(container,name)).join('\n'))
+    .replace('--@NATIVE_BETTERBAGS_ITEM',()=>';(function(...)\n'+read('evidence/integration-contracts/BetterBags/frames/item.lua')+'\nend)("BetterBags");')
+    .replace('--@NATIVE_BETTERBAGS_INTEGRATION',()=>';(function(...)\n'+read('evidence/integration-contracts/BetterBags/integrations/consoleport.lua')+'\nend)("BetterBags");')
+    .replace('--@NATIVE_ITEM_MENU_SET',()=>nativeFunction(base+'ConsolePort_Menu/View/Popup/ItemMenu.lua','ItemMenu:SetItem'))
+    .replace('--@NATIVE_MODULE_DEMAND',()=>['Modules:IsEnabled','Modules:Demand'].map(name=>nativeFunction(base+'ConsolePort/Controller/Modules.lua',name)).join('\n'));
+  execute(source+windowFixture()+'\n'+fixture,'BetterBags-native-item-contexts');
+});
 check('T20.native-UI-stick-scroll-ownership', () => {
   const base='evidence/consoleport-contracts/';
   const scroll=read('tests/harness/ui_scroll.lua')

@@ -24,6 +24,7 @@ function Store.EnsureSchema(db, guid, legacyCharacter)
         db.databaseVersion = Store.VERSION
     end
     db.shared = db.shared or {revision = 0, geometry = {}, faceBindings = {}, utilityPolicy = {}, integrationPolicy = {}}
+    if db.shared.ringProjectionGUID~=nil and (type(db.shared.ringProjectionGUID)~='string' or db.shared.ringProjectionGUID=='') then return nil,'invalid ring projection identity' end
     for _,key in ipairs({"geometry","faceBindings","utilityPolicy","integrationPolicy","runtimePolicy","managedDynamicCamProfiles"}) do
         if db.shared[key]~=nil and type(db.shared[key])~="table" then return nil,"invalid shared field: "..key end
         db.shared[key]=db.shared[key] or {}
@@ -47,9 +48,10 @@ function Store.GetCharacter(db, guid, identity)
     for _, key in ipairs({"identity", "controllerBindings", "rings", "fieldBaselines", "integrationStatus", "pendingChanges", "transactionIDs", "pendingBindingSelection", "bindingSelectionHistory", "bindingViewRecovery"}) do
         if record[key] ~= nil and type(record[key]) ~= "table" then return nil, "invalid character field: " .. key end
     end
-    for _, key in ipairs({"requiredRevision","appliedRevision"}) do
+    for _, key in ipairs({"requiredRevision","appliedRevision","ringOfferedRevision"}) do
         if record[key]~=nil and (type(record[key])~="number" or record[key]<0) then return nil,"invalid character revision" end
     end
+    if record.ringAccepted~=nil and type(record.ringAccepted)~='boolean' then return nil,'invalid ring acceptance' end
     for _, key in ipairs({"identity", "controllerBindings", "rings", "fieldBaselines", "integrationStatus", "pendingChanges", "transactionIDs"}) do record[key]=record[key] or {} end
     record.requiredRevision,record.appliedRevision=record.requiredRevision or 0,record.appliedRevision or 0
     if identity then record.identity = Core.Copy(identity) end

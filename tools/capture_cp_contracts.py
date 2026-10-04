@@ -10,6 +10,7 @@ FILES = [
     'ConsolePort_Cursor/View/Cursor.lua', 'ConsolePort/LICENSE.md',
     'ConsolePort_Rings/Model/Container.lua', 'ConsolePort_Rings/Model/Map.lua',
     'ConsolePort_Rings/Controller/Secure.lua', 'ConsolePort_Rings/Database.lua',
+    'ConsolePort_Rings/Controller/Auto.lua',
 ]
 if __name__ == '__main__':
     lock = json.loads((ROOT / 'dependencies/lock.json').read_text(encoding='utf-8'))

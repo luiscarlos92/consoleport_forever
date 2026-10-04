@@ -17,7 +17,8 @@ function Proof:Text(api)
     end
     lines[#lines+1]='Interface cursor shown: '..shown(db and db.Cursor)
     local discovered,discoveryReason=Addon.RingDiscovery.Capture(api,Addon.guid)
-    lines[#lines+1]='Ring discovery is read-only; ring projection and exact gesture remain pending.'
+    lines[#lines+1]='Ring projection GUID: '..tostring(Addon.db and Addon.db.shared.ringProjectionGUID or 'none')
+    lines[#lines+1]='Learned ring discovery is read-only; new selector activation and exact gesture remain pending.'
     if discovered then
         for _,form in ipairs(discovered.forms) do lines[#lines+1]='Native stance '..form.nativeStanceSlot..': spell '..form.spell..' active='..tostring(form.active)..' castable='..tostring(form.castable) end
         lines[#lines+1]='Current pet: '..tostring(discovered.pet.guid or 'none')

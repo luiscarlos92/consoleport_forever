@@ -59,6 +59,10 @@
     {
       "path": "ConsolePort_Rings/Database.lua",
       "sha256": "276ddf4071eacbb797657a34e8b6c641c838b496f9c0932a957bb7a97fef59ca"
+    },
+    {
+      "path": "ConsolePort_Rings/Controller/Auto.lua",
+      "sha256": "c21476f2cbd0a188109da7731579dd1b297f9b43ea5c107f49064eb38e4cd580"
     }
   ]
 }

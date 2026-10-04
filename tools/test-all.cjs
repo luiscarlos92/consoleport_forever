@@ -62,7 +62,7 @@ check('T27.lua51', () => {
   for (const f of files('addon').filter(f=>f.endsWith('.lua'))) parser.parse(read(f),{luaVersion:'5.1'});
 });
 const modules = ['Core','Store','Plan','Transactions','BindingPolicy','ModePolicy','Rings/Discovery','SecureModes','UI/Ownership','UI/InputBridge','UI/Contexts','UI/FocusVisuals','UI/Proof','Adapters/NativeBindings',
-  'Adapters/BindingState','Adapters/BindingBanks','Diagnostics','Capability','Adapters/ConsolePort','Adapters/EditMode','Adapters/FlatConfig','Adapters/DynamicCam','Baseline','Coordinator','Prompt'];
+  'Adapters/BindingState','Adapters/BindingBanks','Diagnostics','Capability','Adapters/ConsolePort','Adapters/EditMode','Adapters/FlatConfig','Adapters/DynamicCam','Adapters/Rings','Baseline','Coordinator','Prompt'];
 const source = 'Addon={};\n' + modules.map(m=>
   ';(function(...)\n'+read('addon/ConsolePort_Forever/'+m+'.lua')+'\nend)("ConsolePort_Forever",Addon);\n').join('');
 const serializer=`
@@ -129,8 +129,44 @@ check('T06-T14-T16.policies', () => execute(source+read('tests/harness/policies.
 check('T18.current-native-ring-discovery', () => {
   const native=read('evidence/native/Blizzard_ActionBar/Shared/StanceBar.lua')+'\n'+read('evidence/native/Blizzard_ActionBar/Shared/PetActionBar.lua');
   const current=read('evidence/consoleport-contracts/ConsolePort_Rings/Model/Container.lua');
-  execute(source+read('tests/harness/ring_discovery.lua').replace('--@NATIVE_ACTION_BARS',native)
-    .replace('--@CURRENT_RING_CONTAINER',';(function(...)\n'+current+'\nend)("ConsolePort_Rings");'),'ring-discovery-native-source');
+  execute(source+read('tests/harness/ring_discovery.lua').replace('--@NATIVE_ACTION_BARS',()=>native)
+    .replace('--@CURRENT_RING_CONTAINER',()=>';(function(...)\n'+current+'\nend)("ConsolePort_Rings");'),'ring-discovery-native-source');
+});
+function ringFixture() {
+  const base='evidence/consoleport-contracts/ConsolePort_Rings/';
+  const database=read(base+'Database.lua');
+  const secure=read(base+'Controller/Secure.lua');
+  const fixture=read('tests/harness/rings.lua')
+    .replace('--@NATIVE_DATABASE',()=>database.slice(database.indexOf('function env:GetData('),database.indexOf('function env:GetSetIcon(')))
+    .replace('--@NATIVE_MAP', ()=>';(function(...)\n'+read(base+'Model/Map.lua')+'\nend)("ConsolePort_Rings");')
+    .replace('--@NATIVE_CONTAINER', ()=>';(function(...)\n'+read(base+'Model/Container.lua')+'\nend)("ConsolePort_Rings");')
+    .replace('--@NATIVE_REFRESH',()=>secure.slice(secure.indexOf('function Secure:QueueRefresh('),secure.indexOf('function Secure:ClearAllActions(')))
+    .replace('--@NATIVE_AUTO',()=>';(function(...)\n'+read(base+'Controller/Auto.lua')+'\nend)("ConsolePort_Rings");');
+  return fixture;
+}
+check('T05-T18.GUID-native-ring-projection', () => {
+  const fixture=ringFixture();
+  const state=execute(source+fixture+serializer+'\nSERIALIZED_STATE=serialized(SESSION_STATE)','ring-projection-native');
+  require('./saved_variables.cjs').parse('SESSION_STATE='+state);
+  const prelude=source+'SESSION_STATE='+state+'\n'+fixture.split('--@LIFECYCLE')[0];
+  const bState=execute(prelude+`
+currentGUID='B'
+local desired=assert(b:Proposal())
+assert(desired.sets.Auras[0].name=='B own order' and #desired.sets.Auras==1)
+assert(b:write({'state'},desired))
+assert(b:CaptureEdits() and account.shared.ringProjectionGUID=='B')
+SESSION_STATE={account=account,live=container.Data,shared=container.Shared}
+TEST_SUCCESS=true
+`+serializer+'\nSERIALIZED_STATE=serialized(SESSION_STATE)','ring-new-VM-B');
+  require('./saved_variables.cjs').parse('SESSION_STATE='+bState);
+  execute(source+'SESSION_STATE='+bState+'\n'+fixture.split('--@LIFECYCLE')[0]+`
+assert(not a:CaptureEdits(),'new VM A adopted B leftover')
+local desired=assert(a:Proposal())
+assert(desired.sets.Auras[0].name=='Manual class' and #desired.sets.Auras==2)
+assert(a:write({'state'},desired))
+assert(account.characters.B.rings.sets.Auras[0].name=='B own order')
+TEST_SUCCESS=true
+`,'ring-new-VM-A-return');
 });
 check('T07.native-binding-readiness', () => execute(source+read('tests/harness/native_bindings.lua'),'native-bindings'));
 check('T09-T10.coordinator', () => execute(source+read('tests/harness/coordinator.lua'),'coordinator'));
@@ -199,7 +235,28 @@ check('T14.current-ConsolePort-secure-contract', () => {
 check('T10-T11.product-bootstrap', () => {
   const entries=read('addon/ConsolePort_Forever/ConsolePort_Forever.toc').split(/\r?\n/).filter(x=>x.trim() && !x.startsWith('#'));
   const product='Addon={};\n'+entries.map(f=>';(function(...)\n'+read('addon/ConsolePort_Forever/'+f.replace(/\\/g,'/'))+'\nend)("ConsolePort_Forever",Addon);\n').join('');
-  const fixture=read('tests/harness/bootstrap.lua').replace('--@LOAD_PRODUCT',product);
+  const ringPrelude=ringFixture().split('local account=')[0]
+    .replace('function InCombatLockdown() return combat end','');
+  const fixture=read('tests/harness/bootstrap.lua').replace('--@LOAD_PRODUCT',()=>product)
+    .replace('--@NATIVE_RING_BOOTSTRAP',()=>`
+local bootstrapRings,bootstrapRingEnv
+do
+local originalCPAPI,mainDB=CPAPI,ConsolePort:GetData()
+${ringPrelude}
+for key,value in pairs(originalCPAPI) do if CPAPI[key]==nil then CPAPI[key]=value end end
+container.Data=SESSION_STATE and Core.Copy(SESSION_STATE.rings) or {
+ [1]={{type='item',item='6948'},[0]={name='Utility'}},
+ Auras={{type='spell',spell=101},[0]={name='Manual class'}}}
+container.Shared=SESSION_STATE and Core.Copy(SESSION_STATE.sharedRings) or {SharedManual={[0]={name='Account ring'}}}
+mainDB.Rings=container bootstrapRings=container bootstrapRingEnv=env
+function LibStub(name,silent) assert(name=='RelaTable') return {ConsolePort_Bar=bar,ConsolePort_Rings=env} end
+function hooksecurefunc(target,method,callback)
+ local original=target[method]
+ target[method]=function(...) local result=table.pack(original(...)) callback(...) return table.unpack(result,1,result.n) end
+end
+function container:HookScript(name,callback) assert(name=='OnHide') self.onHide=callback end
+end
+`);
   const state=execute(fixture+serializer+'\nSERIALIZED_STATE=serialized({installed=SESSION_STATE,restored=RESTORED_SESSION_STATE})','bootstrap');
   require('./saved_variables.cjs').parse('SESSION_STATE='+state);
   execute('SESSION_STATE=('+state+').installed\n'+fixture.split('--@LIFECYCLE')[0]+`
@@ -218,6 +275,40 @@ local journal=Addon.db.transactions[Addon.record.transactionIDs[#Addon.record.tr
 assert(journal.status=='restored' and #journal.reloadVerification.failures==0)
 TEST_SUCCESS=true
 `,'bootstrap-restored-reload');
+  execute(fixture.split('--@LIFECYCLE')[0]+`
+bootstrapRingEnv.IsDataReady=false
+bindingSet=1 fire('PLAYER_LOGIN') flush()
+choose(1) flush()
+while shown.name=='CPF_FIELD_REVIEW' do choose(1) flush() end
+choose(1) flush()
+assert(Addon:IsCharacterInstalled() and not Addon.record.ringAccepted)
+choose(2)
+bootstrapRingEnv.IsDataReady=true fire('ADDON_LOADED') flush()
+assert(shown.name=='CPF_PLAN_REVIEW' and Addon.record.ringOfferedRevision==Addon.CONFIG_REVISION,'late optional ring readiness had no review')
+local declined=shown choose(2)
+fire('SPELLS_CHANGED') flush()
+assert(shown==declined and not Addon.Prompt.active,'declined optional ring review repeated')
+SlashCmdList.CONSOLEPORTFOREVER('update') choose(1) flush()
+while shown.name=='CPF_FIELD_REVIEW' do choose(1) flush() end
+choose(1) flush()
+assert(Addon.record.ringAccepted and Addon.db.shared.ringProjectionGUID=='A')
+choose(2)
+Addon.Store.GetCharacter(Addon.db,'B')
+Addon.db.shared.ringProjectionGUID='B'
+bootstrapRings.Data.Auras[0].name='B current ring'
+SlashCmdList.CONSOLEPORTFOREVER('update') choose(1) flush()
+while shown.name=='CPF_FIELD_REVIEW' do
+ if shown.text:find('personal ring contents',1,true) then choose(2) else choose(1) end
+ flush()
+end
+choose(1) flush()
+assert(not Addon.record.ringAccepted and Addon.db.shared.ringProjectionGUID=='B','Keep mine was followed by an automatic ring projection')
+assert(bootstrapRings.Data.Auras[0].name=='B current ring')
+assert(Addon.record.rings.sets.Auras[0].name=='Manual class','Keep mine erased the earlier GUID archive')
+fire('SPELLS_CHANGED') flush()
+assert(bootstrapRings.Data.Auras[0].name=='B current ring')
+TEST_SUCCESS=true
+`,'bootstrap-late-ring-ready-and-declined');
 });
 check('T01.data-parser', () => {
   const parse=require('./saved_variables.cjs').parse;

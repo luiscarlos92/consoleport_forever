@@ -23,6 +23,9 @@ function Plan.Build(current, baselines, proposals, reviews)
             and Core.Equal(review.proposed, proposed) and Core.Equal(review.current, now) then
             entry.reason = "reviewed keep"
             table.insert(result.noops, entry)
+        elseif field.requireReview then
+            entry.reason = 'changed field ownership'
+            table.insert(result.conflicts,entry)
         elseif old and Core.Equal(now, old.value) then
             table.insert(result.operations, entry)
         elseif old and Core.Equal(old.value, proposed) then

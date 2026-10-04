@@ -1,7 +1,7 @@
 local ADDON_NAME, Addon = ...
 Addon.VERSION=C_AddOns.GetAddOnMetadata(ADDON_NAME,"Version") or "0.0.0"
 Addon.SCHEMA=Addon.Store.VERSION
-Addon.CONFIG_REVISION=4
+Addon.CONFIG_REVISION=5
 Addon.PROFILE_NAME="Console Port - Forever (Managed)"
 local function Print(message)
     if DEFAULT_CHAT_FRAME then DEFAULT_CHAT_FRAME:AddMessage("|cff69ccf0ConsolePort Forever:|r "..tostring(message)) end
@@ -42,6 +42,14 @@ function Addon:FinishAccepted(journal)
         self.db.lastProjectedGUID=self.guid
     end
     self.db.shared.geometry=self.adapters.consoleport:read({"layout"})
+    local rings=self.adapters.rings
+    local keptRings=journal.context.resolutions and journal.context.resolutions[self.guid..'/rings']=='keep'
+    if keptRings and self.db.shared.ringProjectionGUID~=self.guid then self.record.ringAccepted=false end
+    if rings and rings:Probe() and self.db.shared.ringProjectionGUID==self.guid then
+        if not self.record.ringAccepted then self.record.rings.sets=self.Core.Copy(rings:read({'state'}).sets) end
+        self.record.ringAccepted=true
+        rings:CaptureEdits()
+    end
     if self.adapters.editmode then
         local snapshot=self.adapters.editmode:Capture()
         if snapshot and snapshot.active.layoutName==self.PROFILE_NAME then self.db.shared.managedEditModeName=self.PROFILE_NAME end
@@ -51,6 +59,7 @@ function Addon:FinishAccepted(journal)
     self.reloadAppliedInSession=journal.id
     self:RefreshModes()
     self:RefreshUI()
+    self:RefreshRings()
     self.Diagnostics:SetFeature("configuration","applied","runtime baseline retained; reload verification pending")
     Print("Reviewed configuration applied. Backup "..journal.id.." is retained.")
     self.Prompt:Reload()
@@ -71,6 +80,7 @@ function Addon:ShowPrompt(force)
     if not force and (self:IsCharacterInstalled() or self.record.declinedRevision==self.CONFIG_REVISION) then return end
     if not CanWrite() then self.forcePrompt=true return end
     local fields,deferred=self.RuntimeSetup.Fields(self.db,self.guid,self.adapters,_G,self.CONFIG_REVISION)
+    if self.adapters.rings and self.adapters.rings:Probe() then self.record.ringOfferedRevision=self.CONFIG_REVISION end
     local plan=self.coordinator:Build(fields,self.CONFIG_REVISION)
     for _,entry in ipairs(deferred) do plan.deferred[#plan.deferred+1]=entry end
     self.record.runtimeBaseline=self.Core.Copy(plan.current)
@@ -96,6 +106,41 @@ function Addon:HydrateController()
         self.Transactions.Commit(self.db,journal,self.record.appliedRevision)
         self.db.lastProjectedGUID=self.guid
     else self.Diagnostics:Log("recovery","character projection requires review") end
+end
+function Addon:RefreshRings()
+    local adapter=self.adapters and self.adapters.rings
+    if not adapter then self.Diagnostics:SetFeature('rings','pending','native ring adapter not initialized') return end
+    local ready,probeReason=adapter:Probe()
+    if not ready then self.Diagnostics:SetFeature('rings','pending',probeReason) return end
+    if not self.record.ringAccepted then self.Diagnostics:SetFeature('rings','review-required','GUID ring projection has not been accepted; baseline retained') return end
+    if not CanWrite() then return end
+    if adapter.rings:IsShown() then self.Diagnostics:SetFeature('rings','pending','ring projection waits for the current native wheel to close') return end
+    adapter:CaptureEdits()
+    local desired,reason=adapter:Proposal()
+    if not desired then self.Diagnostics:SetFeature('rings','pending',reason) return end
+    local current=adapter:read({'state'})
+    if not self.Core.Equal(current,desired) then
+        local step={id=self.guid..'/rings',scope='rings',path={'state'},before=current,value=desired,revision=self.CONFIG_REVISION}
+        local journal=self.Transactions.Prepare(self.db,self.guid,{step},{ringProjection=true})
+        self.busy=true
+        local ok,result=pcall(self.Transactions.Apply,journal,self.adapters,CanWrite)
+        self.busy=false
+        if not ok or not result then self.Diagnostics:SetFeature('rings','recovery-required','personal ring projection requires guarded recovery; /cpf diagnose') return end
+        self.Transactions.Commit(self.db,journal,self.record.appliedRevision)
+    end
+    self.ringHookTargets=self.ringHookTargets or setmetatable({},{__mode='k'})
+    if not self.ringHookTargets[adapter.rings] then
+        self.ringHookTargets[adapter.rings]=true
+        local target=adapter.rings
+        hooksecurefunc(target,'RefreshAll',function()
+            local current=self.adapters and self.adapters.rings
+            if not self.busy and current and current.rings==target then current:CaptureEdits() end
+        end)
+        target:HookScript('OnHide',function()
+            C_Timer.After(0,function() if CanWrite() and not self.busy then self:RefreshRings() end end)
+        end)
+    end
+    self.Diagnostics:SetFeature('rings','offline-verified','GUID personal rings; native utility extras preserved; new selector gesture remains pending')
 end
 function Addon:VerifyReload()
     local id=self.record.pendingReload
@@ -143,8 +188,11 @@ function Addon:Refresh()
     end
     self:VerifyReload()
     if self:IsCharacterInstalled() then self:HydrateController() end
+    self:RefreshRings()
     self:RefreshModes()
     self:RefreshUI()
+    if self:IsCharacterInstalled() and not self.record.ringAccepted and self.record.ringOfferedRevision~=self.CONFIG_REVISION
+        and adapters.rings and adapters.rings:Probe() then self.forcePrompt=true end
     if self.forcePrompt then self.forcePrompt=nil self:ShowPrompt(true) else self:ShowPrompt(false) end
 end
 function Addon:Restore(id)
@@ -200,6 +248,7 @@ function Addon:FinishBindingView(journal)
 end
 function Addon:FinishRestored(journal)
     self.record.bindingAccepted=false
+    self.record.ringAccepted=false
     self.record.declinedRevision=self.CONFIG_REVISION
     self.record.pendingReload=journal.id
     self.reloadAppliedInSession=journal.id
@@ -276,9 +325,13 @@ SlashCmdList.CONSOLEPORTFOREVER=function(input)
     else Addon:Status() end
 end
 local events=CreateFrame("Frame")
-for _,event in ipairs({"PLAYER_LOGIN","PLAYER_LOGOUT","PLAYER_ENTERING_WORLD","PLAYER_REGEN_ENABLED","PLAYER_REGEN_DISABLED","ADDON_LOADED","UPDATE_BINDINGS","EDIT_MODE_LAYOUTS_UPDATED","ADDON_ACTION_BLOCKED","ADDON_ACTION_FORBIDDEN"}) do events:RegisterEvent(event) end
+for _,event in ipairs({"PLAYER_LOGIN","PLAYER_LOGOUT","PLAYER_ENTERING_WORLD","PLAYER_REGEN_ENABLED","PLAYER_REGEN_DISABLED","ADDON_LOADED","UPDATE_BINDINGS","EDIT_MODE_LAYOUTS_UPDATED","SPELLS_CHANGED","UPDATE_SHAPESHIFT_FORMS","PET_BAR_UPDATE","UNIT_PET","ADDON_ACTION_BLOCKED","ADDON_ACTION_FORBIDDEN"}) do events:RegisterEvent(event) end
 events:SetScript("OnEvent",function(_,event,...)
-    if event=="PLAYER_LOGOUT" then Addon:CaptureControllerEdits() return end
+    if event=="PLAYER_LOGOUT" then
+        Addon:CaptureControllerEdits()
+        if Addon.adapters and Addon.adapters.rings then Addon.adapters.rings:CaptureEdits() end
+        return
+    end
     if event=="PLAYER_REGEN_DISABLED" then Addon.FocusVisuals:SetFocus(false,_G) Addon.UIContexts:Refresh() return end
     if event=="UPDATE_BINDINGS" then Addon:CaptureControllerEdits() end
     if event=="ADDON_ACTION_BLOCKED" or event=="ADDON_ACTION_FORBIDDEN" then

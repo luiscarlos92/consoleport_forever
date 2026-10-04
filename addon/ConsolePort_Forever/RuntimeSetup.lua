@@ -22,6 +22,21 @@ function Setup.Adapters(api,account)
     if not cp:Probe() then return nil,"ConsolePort settings/bar data not initialized" end
     local adapters={bindings=Addon.BindingStateAdapter.New(native,mask),consoleport=cp}
     if account and Addon.guid then
+        local rings=cp.db.Rings
+        local classSet
+        if rings and rings.GetSetForBindingSuffix and rings.GetName then
+            local currentClass=native.api.GetBindingAction('CTRL-PADFORWARD')
+            local name,suffix=currentClass:match('^CLICK ([^:]+):(.+)$')
+            if name==rings:GetName() then classSet=rings:GetSetForBindingSuffix(suffix) end
+        end
+        adapters.rings=Addon.RingsAdapter.New({version=api.C_AddOns.GetAddOnMetadata('ConsolePort_Rings','Version'),
+            getDB=function() return cp.db end,getEnv=function()
+                local lib=api.LibStub('RelaTable',true)
+                return lib and rawget(lib,'ConsolePort_Rings')
+            end,inCombat=api.InCombatLockdown,currentGUID=function() return api.UnitGUID('player') end,
+            defaultSet=api.CPAPI.DefaultRingSetID,classSet=classSet},account,Addon.guid)
+    end
+    if account and Addon.guid then
         local record=assert(Addon.Store.GetCharacter(account,Addon.guid))
         local previousBusy
         adapters.bindingBanks=Addon.BindingBanksAdapter.New(native,record,function() return not api.InCombatLockdown() and not (api.EditModeManagerFrame and api.EditModeManagerFrame:IsShown()) end,function(active)
@@ -80,6 +95,13 @@ function Setup.Fields(db,guid,adapters,api,revision)
         fields[#fields+1]={id=id,scope=scope,path=path,value=Core.Encode(value),revision=revision,label=label}
     end
     add(guid.."/controller","bindings",{"state"},Setup.BindingProposal(db,guid,adapters.bindings,Addon.ReferenceBindings),"Character controller arrangement and preserved keyboard bindings")
+    if adapters.rings then
+        local state,reason=adapters.rings:Proposal()
+        if state then
+            add(guid..'/rings','rings',{'state'},state,'Keep personal ring contents and manual order in this character GUID; native utility extras remain automatic')
+            fields[#fields].requireReview=db.shared.ringProjectionGUID~=guid
+        else deferred[#deferred+1]={id='rings',reason=reason} end
+    end
     add("shared/consoleport/condition","consoleport",{"settings","bindingPresetCondition"},"","Disable the old automatic preset loader")
     local layout=adapters.consoleport:read({"layout"})
     local modeReady,modeReason=Addon.SecureModes.Probe(adapters.consoleport,api)

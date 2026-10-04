@@ -19,7 +19,7 @@ end
 local shown
 local modules={ConsolePort=true,ConsolePort_Bar=true,ConsolePort_Menu=true,ConsolePort_Config=true,ConsolePort_Cursor=true,ConsolePort_Rings=true,Immersion=true,Blizzard_EditMode=true,ConsolePort_Forever=true}
 Enum={BindingSet={Account=1,Character=2},EditModeLayoutType={Account=1,Character=2}}
-C_AddOns={GetAddOnMetadata=function(name,key) if name=="ConsolePort" then return "3.3.3" end return "2.0.0-dev" end,
+C_AddOns={GetAddOnMetadata=function(name,key) if name=="ConsolePort" or name=="ConsolePort_Rings" then return "3.3.3" end return "2.0.0-dev" end,
     GetAddOnInfo=function(name) return modules[name] and name or nil end,
     IsAddOnLoaded=function(name) return modules[name] or false end,
     GetAddOnEnableState=function(name,character) assert(character=="Player") return modules[name] and 2 or 0 end,
@@ -86,6 +86,7 @@ local function choose(button)
     if info.OnHide then info.OnHide(nil,dialog.data) end
 end
 --@LOAD_PRODUCT
+--@NATIVE_RING_BOOTSTRAP
 --@LIFECYCLE
 assert(writes==0 and ConsolePortForeverDB==nil and db.Settings.bindingPresetCondition=="[] old")
 fire("PLAYER_LOGIN") flush()
@@ -105,6 +106,8 @@ assert(writes==0 and Addon.coordinator.queued)
 combat=false
 fire("PLAYER_REGEN_ENABLED") flush()
 assert(Addon:IsCharacterInstalled(),Addon.Diagnostics:Summary())
+assert(Addon.record.ringAccepted and Addon.db.shared.ringProjectionGUID=='A')
+assert(bootstrapRings.Data.Auras[1].spell==101 and Addon.record.rings.sets.Auras[1].spell==101)
 assert(bindingSet==2 and banks[2].SPACE=="JUMP" and banks[2].K==nil and banks[2].PAD1=="JUMP")
 assert(db.Settings.bindingPresetCondition=="" and bar.Layout.name=="actual runtime layout")
 assert(ImmersionSetup.scale==1.2 and ImmersionSetup.manual=="preserve")
@@ -117,7 +120,10 @@ local beforeRepeated=writes
 fire("PLAYER_ENTERING_WORLD") flush()
 assert(writes==beforeRepeated,"repeated login reapplied preset")
 assert(Addon.record.pendingReload~=nil,"world-entry incorrectly certified a reload")
-SESSION_STATE=Addon.Core.Copy({account=ConsolePortForeverDB,banks=banks,bindingSet=bindingSet,cvars=cv,settings=db.Settings,editInfo=editInfo,immersion=ImmersionSetup,extrafade=IEF_Config})
+SESSION_STATE=Addon.Core.Copy({account=ConsolePortForeverDB,banks=banks,bindingSet=bindingSet,cvars=cv,settings=db.Settings,editInfo=editInfo,immersion=ImmersionSetup,extrafade=IEF_Config,rings=bootstrapRings.Data,sharedRings=bootstrapRings.Shared})
+bootstrapRings.Data.Auras[0].name='A manual after acceptance'
+bootstrapRings:RefreshAll()
+assert(Addon.record.rings.sets.Auras[0].name=='A manual after acceptance','native hook failed to capture outgoing ring edit')
 banks[2]["SHIFT-PAD1"]="ACTIONBUTTON7"
 fire("UPDATE_BINDINGS") flush()
 assert(Addon.record.controllerBindings["SHIFT-PAD1"]=="ACTIONBUTTON7")
@@ -126,10 +132,12 @@ guid="B"
 fire("PLAYER_LOGIN") flush()
 assert(Addon.record.appliedRevision==0 and shown.name=="CPF_PLAN_REVIEW")
 assert(Addon.record.controllerBindings["SHIFT-PAD1"]==nil,"B inherited A's personal arrangement")
+assert(not Addon.record.ringAccepted and Addon.record.rings.sets==nil,'B inherited A ring acceptance/archive')
 choose(2)
 guid="A"
 fire("PLAYER_LOGIN") flush()
 assert(Addon.record.controllerBindings["SHIFT-PAD1"]=="ACTIONBUTTON7")
+assert(Addon.record.rings.sets.Auras[0].name=='A manual after acceptance')
 local beforeRestore=writes
 SlashCmdList.CONSOLEPORTFOREVER("restore")
 assert(shown.name=="CPF_BINDING_INSPECT" and writes==beforeRestore)
@@ -147,6 +155,7 @@ combat=true choose(1)
 assert(writes==beforeApply and Addon.coordinator.queued and bindingSet==2)
 combat=false fire("PLAYER_REGEN_ENABLED") flush()
 assert(bindingSet==1 and Addon.record.appliedRevision==0 and not Addon.record.bindingAccepted and shown.name=="CPF_RELOAD")
+assert(not Addon.record.ringAccepted and Addon.db.shared.ringProjectionGUID==nil)
 assert(banks[2].K=="OTHER" and banks[2].PAD1=="OLD" and banks[1].SPACE=="JUMP")
-RESTORED_SESSION_STATE=Addon.Core.Copy({account=ConsolePortForeverDB,banks=banks,bindingSet=bindingSet,cvars=cv,settings=db.Settings,editInfo=editInfo,immersion=ImmersionSetup,extrafade=IEF_Config})
+RESTORED_SESSION_STATE=Addon.Core.Copy({account=ConsolePortForeverDB,banks=banks,bindingSet=bindingSet,cvars=cv,settings=db.Settings,editInfo=editInfo,immersion=ImmersionSetup,extrafade=IEF_Config,rings=bootstrapRings.Data,sharedRings=bootstrapRings.Shared})
 TEST_SUCCESS=true

@@ -31,6 +31,7 @@ Adapters\ConsolePort.lua
 Adapters\EditMode.lua
 Adapters\FlatConfig.lua
 Adapters\DynamicCam.lua
+Adapters\Rings.lua
 Baseline.lua
 Coordinator.lua
 Prompt.lua

@@ -44,7 +44,7 @@ function Store.GetCharacter(db, guid, identity)
                   integrationStatus = {}, pendingChanges = {}, transactionIDs = {}}
         db.characters[guid] = record
     end
-    for _, key in ipairs({"identity", "controllerBindings", "rings", "fieldBaselines", "integrationStatus", "pendingChanges", "transactionIDs"}) do
+    for _, key in ipairs({"identity", "controllerBindings", "rings", "fieldBaselines", "integrationStatus", "pendingChanges", "transactionIDs", "pendingBindingSelection", "bindingSelectionHistory", "bindingViewRecovery"}) do
         if record[key] ~= nil and type(record[key]) ~= "table" then return nil, "invalid character field: " .. key end
     end
     for _, key in ipairs({"requiredRevision","appliedRevision"}) do

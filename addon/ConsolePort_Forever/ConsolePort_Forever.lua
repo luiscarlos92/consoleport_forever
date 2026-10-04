@@ -61,7 +61,9 @@ function Addon:ApplyReviewed(resolutions)
     self.busy=false
     if not ok then self.Diagnostics:Log("error",result) Print("Configuration failed; use /cpf diagnose.") return end
     if not result then self.Diagnostics:Log("pending",detail) Print(detail) return end
-    if detail.context.restores then self:FinishRestored(detail) else self:FinishAccepted(detail) end
+    if detail.context.restores then self:FinishRestored(detail)
+    elseif detail.context.viewRecovery then self:FinishBindingView(detail)
+    else self:FinishAccepted(detail) end
 end
 function Addon:ShowPrompt(force)
     if self.Prompt.active then return end
@@ -100,6 +102,10 @@ function Addon:VerifyReload()
     if not id or id==self.reloadAppliedInSession then return end
     local journal=self.db.transactions[id]
     if not journal or (journal.status~="committed" and journal.status~="restored") then return end
+    if journal.context.bindingInspection then
+        if not CanWrite() then return end
+        self.adapters.bindingBanks:Attach(journal)
+    end
     local failures={}
     for _,step in ipairs(journal.steps) do
         local adapter=self.adapters[step.scope]
@@ -124,6 +130,11 @@ function Addon:Refresh()
     if not adapters then self.Diagnostics:SetFeature("configuration","pending",error) return end
     self.adapters=adapters
     self.coordinator=self.Coordinator.New(self.db,self.guid,adapters,CanWrite)
+    if self.record.pendingBindingSelection then
+        self.Diagnostics:SetFeature("bindingSelection","recovery-required","temporary bank inspection interrupted; /cpf recover-selection")
+        return
+    end
+    if self.record.bindingViewRecovery then self.Diagnostics:SetFeature("bindingView","review-required","pre-interruption native view retained; /cpf recover-view opens its conflict review") end
     for _,journal in pairs(self.db.transactions) do
         if journal.guid==self.guid and (journal.status=="applying" or journal.status=="recovery-required") then
             self.Diagnostics:SetFeature("configuration","recovery-required","transaction "..journal.id.."; /cpf recover "..journal.id)
@@ -141,9 +152,51 @@ function Addon:Restore(id)
     id=id~="" and id or self.record.lastInstallTransaction
     if not id then Print("No installed backup for this character.") return end
     if self.Prompt.active then Print("Finish or cancel the current review first.") return end
+    if not CanWrite() then self.restoreRequested=id Print("Backup review is deferred until combat and Edit Mode end.") return end
+    if self.record.pendingBindingSelection then Print("Complete /cpf recover-selection before opening another restore review.") return end
+    local original=self.db.transactions[id]
+    if not original or original.guid~=self.guid or original.status~="committed" then Print("Backup does not belong to this installed character.") return end
+    local banks,detail=self.adapters.bindingBanks,original.bindingDetails
+    if banks and detail and (banks:NeedsInspection(detail.targetSet) or banks:NeedsInspection(detail.originalSet)) then
+        self.Prompt:InspectBindings(function()
+            banks:Permit(detail.targetSet,id) banks:Permit(detail.originalSet,id)
+            self:Restore(id)
+        end,function() banks.permits={} Print("Bank inspection cancelled; current bindings retained.") end)
+        return
+    end
     local plan,reason=self.coordinator:BuildRestore(id)
     if not plan then Print(reason) return end
-    self.Prompt:Show(plan,function(resolutions) self:ApplyReviewed(resolutions) end,function() Print("Restore cancelled; configuration retained.") end)
+    self.Prompt:Show(plan,function(resolutions) self:ApplyReviewed(resolutions) end,function()
+        if banks then banks.permits={} end
+        Print("Restore cancelled; configuration retained.")
+    end)
+end
+function Addon:RecoverBindingSelection()
+    local banks=self.adapters and self.adapters.bindingBanks
+    if not banks then Print("Native binding banks are not initialized.") return end
+    self.busy=true
+    local ok,result,reason=pcall(banks.RecoverSelection,banks)
+    self.busy=false
+    if not ok or not result then Print(reason or result) return end
+    Print("Previous binding bank selected; retained transient-view snapshots remain available for review.")
+    self:Refresh()
+    if self.record.bindingViewRecovery then self:ReviewBindingView() end
+end
+function Addon:ReviewBindingView()
+    if not self.coordinator or self.Prompt.active then return end
+    if not CanWrite() then Print("Transient binding view review is available outside combat and Edit Mode.") return end
+    local plan,reason=self.coordinator:BuildBindingViewRecovery()
+    if not plan then Print(reason) return end
+    self.Prompt:Show(plan,function(resolutions) self:ApplyReviewed(resolutions) end,function() Print("Transient view retained for a later review; current bindings kept.") end)
+end
+function Addon:FinishBindingView(journal)
+    self.record.pendingReload=journal.id
+    self.reloadAppliedInSession=journal.id
+    self:CaptureControllerEdits()
+    local original=self.db.transactions[journal.context.viewRecoveryBackup]
+    if original and original.status=="recovery-required" then self:Recover(original.id) end
+    Print("Reviewed transient binding view saved. Recovery backup "..journal.id.." retained.")
+    self.Prompt:Reload()
 end
 function Addon:FinishRestored(journal)
     self.record.bindingAccepted=false
@@ -179,6 +232,7 @@ function Addon:RefreshModes()
     end
 end
 function Addon:Recover(id)
+    if self.record and self.record.pendingBindingSelection then Print("Complete /cpf recover-selection before recovering a configuration transaction.") return end
     local journal=self.db and self.db.transactions[id]
     if not journal or journal.guid~=self.guid then Print("Recovery journal unavailable for this character.") return end
     if not CanWrite() then Print("Recovery is unavailable during combat or Edit Mode.") return end
@@ -199,7 +253,8 @@ function Addon:RefreshUI()
     local ok,reason=self.FocusVisuals:Enable(self.adapters.consoleport,_G,enabled)
     self.Diagnostics:SetFeature("focusVisuals",enabled and ok and "offline-verified" or "pending",reason or (enabled and "ordinary cursor ownership only; rendered acceptance pending" or "reviewed visual policy not enabled"))
 end
-Addon.Prompt:Initialize({dialogs=StaticPopupDialogs,show=StaticPopup_Show,reload=ReloadUI,defer=function(callback) C_Timer.After(0,callback) end})
+Addon.Prompt:Initialize({dialogs=StaticPopupDialogs,show=StaticPopup_Show,reload=ReloadUI,defer=function(callback) C_Timer.After(0,callback) end,
+    details=function(text) local ok,reason=Addon.Proof:Show(_G,text) if not ok then Print(reason) end end})
 SLASH_CONSOLEPORTFOREVER1="/cpf"
 SlashCmdList.CONSOLEPORTFOREVER=function(input)
     local command,arg=(input or ""):match("^%s*(%S*)%s*(.-)%s*$")
@@ -207,6 +262,8 @@ SlashCmdList.CONSOLEPORTFOREVER=function(input)
     if command=="install" or command=="update" then Addon:ShowPrompt(true)
     elseif command=="restore" then Addon:Restore(arg)
     elseif command=="recover" then Addon:Recover(arg)
+    elseif command=="recover-selection" then Addon:RecoverBindingSelection()
+    elseif command=="recover-view" then Addon:ReviewBindingView()
     elseif command=="proof" then
         local ok,reason=Addon.Proof:Show(_G)
         if not ok then Print(reason) end
@@ -233,12 +290,17 @@ events:SetScript("OnEvent",function(_,event,...)
         C_Timer.After(0,function()
             Addon.refreshQueued=false
             if Addon.Prompt.active then return end
+            if Addon.restoreRequested and CanWrite() then
+                local id=Addon.restoreRequested Addon.restoreRequested=nil Addon:Restore(id) return
+            end
             if Addon.coordinator and Addon.coordinator.queued and CanWrite() then
                 Addon.busy=true
                 local ok,result,journal=pcall(Addon.coordinator.Resume,Addon.coordinator)
                 Addon.busy=false
                 if ok and result then
-                    if journal.context.restores then Addon:FinishRestored(journal) else Addon:FinishAccepted(journal) end
+                    if journal.context.restores then Addon:FinishRestored(journal)
+                    elseif journal.context.viewRecovery then Addon:FinishBindingView(journal)
+                    else Addon:FinishAccepted(journal) end
                 else Print("Queued review changed; reopen its review.") end
             else
                 local ok,error=pcall(Addon.Refresh,Addon)

@@ -57,7 +57,7 @@ check('T27.lua51', () => {
   for (const f of files('addon').filter(f=>f.endsWith('.lua'))) parser.parse(read(f),{luaVersion:'5.1'});
 });
 const modules = ['Core','Store','Plan','Transactions','BindingPolicy','ModePolicy','SecureModes','UI/Ownership','UI/FocusVisuals','UI/Proof','Adapters/NativeBindings',
-  'Adapters/BindingState','Diagnostics','Capability','Adapters/ConsolePort','Adapters/EditMode','Adapters/FlatConfig','Baseline','Coordinator'];
+  'Adapters/BindingState','Adapters/BindingBanks','Diagnostics','Capability','Adapters/ConsolePort','Adapters/EditMode','Adapters/FlatConfig','Baseline','Coordinator','Prompt'];
 const source = 'Addon={};\n' + modules.map(m=>
   ';(function(...)\n'+read('addon/ConsolePort_Forever/'+m+'.lua')+'\nend)("ConsolePort_Forever",Addon);\n').join('');
 const serializer=`
@@ -123,6 +123,8 @@ TEST_SUCCESS=true
 check('T06-T14-T16.policies', () => execute(source+read('tests/harness/policies.lua'),'policies'));
 check('T07.native-binding-readiness', () => execute(source+read('tests/harness/native_bindings.lua'),'native-bindings'));
 check('T09-T10.coordinator', () => execute(source+read('tests/harness/coordinator.lua'),'coordinator'));
+check('T07-T09.both-binding-bank-restore', () => execute(source+read('tests/harness/binding_banks.lua'),'binding-bank-restore'));
+check('T08-T10.review-details', () => execute(source+read('tests/harness/prompt.lua'),'review-details'));
 check('T12-T13.adapters', () => execute(source+read('tests/harness/adapters.lua'),'adapters'));
 check('T21.focus-visuals-proof', () => execute(source+read('tests/harness/focus_visuals.lua'),'focus-visuals-proof'));
 check('T14.current-ConsolePort-secure-contract', () => {
@@ -143,15 +145,24 @@ check('T10-T11.product-bootstrap', () => {
   const entries=read('addon/ConsolePort_Forever/ConsolePort_Forever.toc').split(/\r?\n/).filter(x=>x.trim() && !x.startsWith('#'));
   const product='Addon={};\n'+entries.map(f=>';(function(...)\n'+read('addon/ConsolePort_Forever/'+f.replace(/\\/g,'/'))+'\nend)("ConsolePort_Forever",Addon);\n').join('');
   const fixture=read('tests/harness/bootstrap.lua').replace('--@LOAD_PRODUCT',product);
-  const state=execute(fixture+serializer+'\nSERIALIZED_STATE=serialized(SESSION_STATE)','bootstrap');
+  const state=execute(fixture+serializer+'\nSERIALIZED_STATE=serialized({installed=SESSION_STATE,restored=RESTORED_SESSION_STATE})','bootstrap');
   require('./saved_variables.cjs').parse('SESSION_STATE='+state);
-  execute('SESSION_STATE='+state+'\n'+fixture.split('--@LIFECYCLE')[0]+`
+  execute('SESSION_STATE=('+state+').installed\n'+fixture.split('--@LIFECYCLE')[0]+`
 fire('PLAYER_LOGIN') flush()
 assert(writes==0 and Addon.record.pendingReload==nil,'persisted login changed the accepted configuration')
 assert(Addon:IsCharacterInstalled() and Addon.record.controllerBindings['SHIFT-PAD1']==(SESSION_STATE.banks[2]['SHIFT-PAD1'] or ''))
 assert(Addon.db.transactions[Addon.record.lastInstallTransaction].reloadVerification.failures[1]==nil)
 TEST_SUCCESS=true
 `,'bootstrap-persisted-reload');
+  execute('SESSION_STATE=('+state+').restored\n'+fixture.split('--@LIFECYCLE')[0]+`
+local preserved=Addon.Core.Copy(banks)
+fire('PLAYER_LOGIN') flush()
+assert(Addon.record.appliedRevision==0 and not Addon.record.bindingAccepted and Addon.record.pendingReload==nil)
+assert(bindingSet==1 and Addon.Core.Equal(banks,preserved),'restored reload changed native bank contents or selected set')
+local journal=Addon.db.transactions[Addon.record.transactionIDs[#Addon.record.transactionIDs]]
+assert(journal.status=='restored' and #journal.reloadVerification.failures==0)
+TEST_SUCCESS=true
+`,'bootstrap-restored-reload');
 });
 check('T01.data-parser', () => {
   const parse=require('./saved_variables.cjs').parse;

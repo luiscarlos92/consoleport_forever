@@ -1,4 +1,5 @@
 local queue,frames,messages={}, {}, {}
+local fire
 local guid,combat,editing,bindingSet="A",false,false,0
 local writes,reloads=0,0
 local banks={[1]={SPACE="JUMP",PAD1="JUMP",PAD2="",PAD3="INTERACTTARGET",PAD4="TURNORACTION"},[2]={K="OTHER",PAD1="OLD"}}
@@ -29,11 +30,11 @@ function UnitName() return "Player" end
 function GetRealmName() return "Realm" end
 function InCombatLockdown() return combat end
 function GetCurrentBindingSet() return bindingSet end
-function LoadBindings(v) assert(not combat) writes=writes+1 bindingSet=v end
+function LoadBindings(v) assert(not combat) writes=writes+1 bindingSet=v if fire then fire("UPDATE_BINDINGS") end end
 function GetNumBindings() local n=0 for _,v in pairs(banks[bindingSet] or {}) do if v~="" then n=n+1 end end return n end
 function GetBinding(i) local n=0 for k,v in pairs(banks[bindingSet] or {}) do if v~="" then n=n+1 if n==i then return v,"category",k end end end end
 function GetBindingAction(k,effective) return (banks[bindingSet] or {})[k] or "" end
-function SetBinding(k,v) assert(not combat) writes=writes+1 banks[bindingSet][k]=v return true end
+function SetBinding(k,v) assert(not combat) writes=writes+1 banks[bindingSet][k]=v if fire then fire("UPDATE_BINDINGS") end return true end
 function GetCVar(k) return cv[k] end
 function GetCVarDefault(k) return cv[k] end
 function SetCVar(k,v) assert(not combat) writes=writes+1 cv[k]=v end
@@ -67,7 +68,7 @@ function CreateFrame(kind,name,parent,template)
     frames[#frames+1]=frame
     return frame
 end
-local function fire(event)
+fire=function(event)
     for _,frame in ipairs(frames) do if frame.events[event] then frame.event(frame,event) end end
 end
 local function flush()
@@ -129,4 +130,23 @@ choose(2)
 guid="A"
 fire("PLAYER_LOGIN") flush()
 assert(Addon.record.controllerBindings["SHIFT-PAD1"]=="ACTIONBUTTON7")
+local beforeRestore=writes
+SlashCmdList.CONSOLEPORTFOREVER("restore")
+assert(shown.name=="CPF_BINDING_INSPECT" and writes==beforeRestore)
+choose(2) flush()
+assert(writes==beforeRestore and not Addon.Prompt.active and bindingSet==2)
+local priorBanks=Addon.Core.Copy(banks)
+local owned=Addon.Core.Copy(Addon.record.controllerBindings)
+SlashCmdList.CONSOLEPORTFOREVER("restore") choose(1) flush()
+assert(shown.name=="CPF_PLAN_REVIEW" and bindingSet==2 and Addon.Core.Equal(banks,priorBanks))
+assert(Addon.Core.Equal(Addon.record.controllerBindings,owned),"temporary bank inspection captured the other bank as this character's edits")
+choose(1) flush()
+while shown.name=="CPF_FIELD_REVIEW" do choose(1) flush() end
+local beforeApply=writes
+combat=true choose(1)
+assert(writes==beforeApply and Addon.coordinator.queued and bindingSet==2)
+combat=false fire("PLAYER_REGEN_ENABLED") flush()
+assert(bindingSet==1 and Addon.record.appliedRevision==0 and not Addon.record.bindingAccepted and shown.name=="CPF_RELOAD")
+assert(banks[2].K=="OTHER" and banks[2].PAD1=="OLD" and banks[1].SPACE=="JUMP")
+RESTORED_SESSION_STATE=Addon.Core.Copy({account=ConsolePortForeverDB,banks=banks,bindingSet=bindingSet,cvars=cv,settings=db.Settings,editInfo=editInfo,immersion=ImmersionSetup,extrafade=IEF_Config})
 TEST_SUCCESS=true

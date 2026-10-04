@@ -23,6 +23,7 @@ UI\FocusVisuals.lua
 UI\Proof.lua
 Adapters\NativeBindings.lua
 Adapters\BindingState.lua
+Adapters\BindingBanks.lua
 Adapters\ConsolePort.lua
 Adapters\EditMode.lua
 Adapters\FlatConfig.lua

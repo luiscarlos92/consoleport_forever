@@ -68,7 +68,7 @@ function Proof:Text(api)
     for _,entry in ipairs(Addon.Diagnostics.entries) do lines[#lines+1]=entry.kind..': '..entry.message end
     return table.concat(lines,'\n')
 end
-function Proof:Show(api)
+function Proof:Show(api,details)
     if api.InCombatLockdown() then return false,'proof panel opens out of combat; /cpf status remains available' end
     if not self.frame then
         local frame=api.CreateFrame('Frame','ConsolePortForeverProof',api.UIParent,'BackdropTemplate')
@@ -86,7 +86,7 @@ function Proof:Show(api)
         api.UISpecialFrames[#api.UISpecialFrames+1]='ConsolePortForeverProof'
         if api.ConsolePort and api.ConsolePort.AddInterfaceCursorFrame then api.ConsolePort:AddInterfaceCursorFrame(frame) end
     end
-    self.text:SetText(self:Text(api)) self.content:SetHeight(math.max(500,self.text:GetStringHeight()+20))
+    self.text:SetText(details or self:Text(api)) self.content:SetHeight(math.max(500,self.text:GetStringHeight()+20))
     self.frame:Show()
     return true
 end

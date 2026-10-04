@@ -21,6 +21,16 @@ function Setup.Adapters(api,account)
         end})
     if not cp:Probe() then return nil,"ConsolePort settings/bar data not initialized" end
     local adapters={bindings=Addon.BindingStateAdapter.New(native,mask),consoleport=cp}
+    if account and Addon.guid then
+        local record=assert(Addon.Store.GetCharacter(account,Addon.guid))
+        local previousBusy
+        adapters.bindingBanks=Addon.BindingBanksAdapter.New(native,record,function() return not api.InCombatLockdown() and not (api.EditModeManagerFrame and api.EditModeManagerFrame:IsShown()) end,function(active)
+            if active then previousBusy=Addon.busy Addon.busy=true else Addon.busy=previousBusy end
+        end)
+        adapters.bindings.record=record
+        adapters.bindings.bankInspector=adapters.bindingBanks
+        adapters.bindings.canWrite=adapters.bindingBanks.canWrite
+    end
     if account then adapters.policy=Addon.FlatConfigAdapter.New(function() return account.shared.runtimePolicy end,{modesEnabled=true,focusVisuals=true},api.InCombatLockdown) end
     if api.C_EditMode and api.EditModePresetLayoutManager then
         adapters.editmode=Addon.EditModeAdapter.New({GetLayouts=api.C_EditMode.GetLayouts,

@@ -19,14 +19,14 @@ function Plan.Build(current, baselines, proposals, reviews)
         elseif Core.Equal(now, proposed) then
             entry.reason = "converged"
             table.insert(result.noops, entry)
+        elseif review and review.decision == "keep" and review.revision == field.revision
+            and Core.Equal(review.proposed, proposed) and Core.Equal(review.current, now) then
+            entry.reason = "reviewed keep"
+            table.insert(result.noops, entry)
         elseif old and Core.Equal(now, old.value) then
             table.insert(result.operations, entry)
         elseif old and Core.Equal(old.value, proposed) then
             entry.reason = "preserved manual edit"
-            table.insert(result.noops, entry)
-        elseif review and review.decision == "keep" and review.revision == field.revision
-            and Core.Equal(review.proposed, proposed) and Core.Equal(review.current, now) then
-            entry.reason = "reviewed keep"
             table.insert(result.noops, entry)
         else
             entry.reason = old and "competing manual edit" or "new field ownership"
@@ -37,7 +37,10 @@ function Plan.Build(current, baselines, proposals, reviews)
 end
 
 function Plan.Accept(plan, resolutions)
-    local accepted = Core.Copy(plan.operations)
+    local accepted = {}
+    for _,entry in ipairs(plan.operations) do
+        if not resolutions or resolutions[entry.id]~="keep" then accepted[#accepted+1]=Core.Copy(entry) end
+    end
     for _, entry in ipairs(plan.conflicts) do
         local decision = resolutions and resolutions[entry.id]
         if decision == "accept" then table.insert(accepted, Core.Copy(entry))

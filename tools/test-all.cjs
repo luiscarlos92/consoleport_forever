@@ -408,6 +408,14 @@ assert(bootstrapRings.Data.Auras[0].name=='B current ring')
 TEST_SUCCESS=true
 `,'bootstrap-late-ring-ready-and-declined');
 });
+check('T31.native-visibility-parent-lifecycle', () => {
+  const file='evidence/native/Blizzard_ActionBar/Shared/ActionBar.lua';
+  const names=['SetupVisibilityFunctionOverrides','EditModeActionBar_OnEvent','IsShownOverride','SetShownOverride','ShowOverride','HideOverride','UpdateVisibility'];
+  const fixture=read('tests/harness/visibility.lua')
+    .replace('--@NATIVE_BAR_METHODS',()=>names.map(name=>nativeFunction(file,'EditModeActionBarMixin:'+name)).join('\n'))
+    .replace('--@RUNTIME_VISIBILITY',()=>';(function(...)\n'+read('addon/ConsolePort_Forever/Runtime.lua')+'\nend)("ConsolePort_Forever",Addon);');
+  execute(fixture,'native-visibility-parent-lifecycle');
+});
 check('T01.data-parser', () => {
   const parse=require('./saved_variables.cjs').parse;
   for (const text of ['x=os.execute("bad")','x=(function() return 1 end)()','while true do end','x={f=CreateFrame("Frame")}']) {

@@ -264,5 +264,40 @@
     "gitBlob": "29156012f381503525004a9c6bd670a35e16ccd4",
     "sha256": "ffe4e2ad70cfbe618899f4402dd8e6fc387ecf63602c3105707d9efe3e903681",
     "url": "https://github.com/Gethe/wow-ui-source/blob/09b9db7948abc9b9648dedaab51eb0cf3ee67b31/Interface/AddOns/Blizzard_FrameXML/Mainline/CinematicFrameButton.xml"
+  },
+  {
+    "path": "Blizzard_EditMode/Shared/EditModeSystemTemplates.lua",
+    "commit": "09b9db7948abc9b9648dedaab51eb0cf3ee67b31",
+    "gitBlob": "aa524c95fb4306446702428ded1e2e7dfe542a10",
+    "sha256": "83bbb6b1d6a2dc7382e80ac1a4631ac6890eac6dd5f850dd4a9b7c7793645f66",
+    "url": "https://github.com/Gethe/wow-ui-source/blob/09b9db7948abc9b9648dedaab51eb0cf3ee67b31/Interface/AddOns/Blizzard_EditMode/Shared/EditModeSystemTemplates.lua"
+  },
+  {
+    "path": "Blizzard_EditMode/Shared/EditModeManager.lua",
+    "commit": "09b9db7948abc9b9648dedaab51eb0cf3ee67b31",
+    "gitBlob": "bb1a73aef507c5f0aa4e05f6946a7008e992e42c",
+    "sha256": "3b96fcf292e2a1338e7fbf25473c7e0786b9db1fea0ca48737cf98a43423814e",
+    "url": "https://github.com/Gethe/wow-ui-source/blob/09b9db7948abc9b9648dedaab51eb0cf3ee67b31/Interface/AddOns/Blizzard_EditMode/Shared/EditModeManager.lua"
+  },
+  {
+    "path": "Blizzard_ActionBar/Shared/MultiActionBars.lua",
+    "commit": "09b9db7948abc9b9648dedaab51eb0cf3ee67b31",
+    "gitBlob": "ab4787ab4dbbc9ba53a1635e49252f6fc4fcb4b6",
+    "sha256": "e929ab9423011648349481e497617e67121b2b6fa9f75ffa5a67729d813b0cce",
+    "url": "https://github.com/Gethe/wow-ui-source/blob/09b9db7948abc9b9648dedaab51eb0cf3ee67b31/Interface/AddOns/Blizzard_ActionBar/Shared/MultiActionBars.lua"
+  },
+  {
+    "path": "Blizzard_ActionBar/Shared/MultiActionBars.xml",
+    "commit": "09b9db7948abc9b9648dedaab51eb0cf3ee67b31",
+    "gitBlob": "4f93ab69ed2bcaededfadf86f783b9fb431d2813",
+    "sha256": "bd7eb7d3ee594e90c7f1efc1a3c545b9716df62514162047639e6b58926179ba",
+    "url": "https://github.com/Gethe/wow-ui-source/blob/09b9db7948abc9b9648dedaab51eb0cf3ee67b31/Interface/AddOns/Blizzard_ActionBar/Shared/MultiActionBars.xml"
+  },
+  {
+    "path": "Blizzard_ActionBar/Shared/ActionBar.lua",
+    "commit": "09b9db7948abc9b9648dedaab51eb0cf3ee67b31",
+    "gitBlob": "bf258b7ca257d48e338350a3dbaf9a0ad600162f",
+    "sha256": "b1f3c29d6d673e5ffb056b834f7e379e67d54261dc8fadf88fb6ca589552ad8c",
+    "url": "https://github.com/Gethe/wow-ui-source/blob/09b9db7948abc9b9648dedaab51eb0cf3ee67b31/Interface/AddOns/Blizzard_ActionBar/Shared/ActionBar.lua"
   }
 ]

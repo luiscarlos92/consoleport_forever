@@ -1,48 +1,90 @@
 local _, Addon = ...
+local Visibility = {names={"MultiBarLeft","MultiBarRight","MultiBar5","MultiBar6","MultiBar7","MicroButtonAndBagsBar","MicroMenuContainer","MicroMenu","BagsBar"}}
+Addon.BlizzardVisibility = Visibility
 
-local MENU_FRAMES = {"MicroButtonAndBagsBar", "MicroMenuContainer", "BagsBar"}
-local originalShown = {}
-local editModeActive = false
-
-local function Installed()
-    return Addon.IsCharacterInstalled and Addon:IsCharacterInstalled()
-end
-
-local function HideMenus()
-    if not Installed() or editModeActive or InCombatLockdown() then return end
-    for _, name in ipairs(MENU_FRAMES) do
-        local frame = _G[name]
-        if frame then
-            if originalShown[name] == nil then originalShown[name] = frame:IsShown() end
-            frame:Hide()
+function Visibility:Probe(api)
+    local native=api.EditModeActionBarMixin
+    if not native or type(native.UpdateVisibility)~="function" or type(api.hooksecurefunc)~="function" or not api.UIParent then
+        return false,"native action-bar visibility lifecycle unavailable"
+    end
+    for index=1,5 do
+        local frame=api[self.names[index]]
+        if not frame or frame.UpdateVisibility~=native.UpdateVisibility or frame.SetShown~=native.SetShownOverride then
+            return false,"native side-bar identity unavailable: "..self.names[index]
         end
     end
+    return true
 end
-
-local function RestoreMenusForEditing()
-    if not Installed() or InCombatLockdown() then return end
-    editModeActive = true
-    for _, name in ipairs(MENU_FRAMES) do
-        local frame = _G[name]
-        if frame and originalShown[name] then frame:Show() end
+function Visibility:Release(frame,row)
+    if frame:GetParent()==self.hidden then
+        row.writing=true
+        frame:SetParent(row.parent)
+        row.writing=false
     end
+    -- A newer parent belongs to its new owner. Neither shown state, action
+    -- storage, events nor the native visibility methods were ever replaced.
 end
-
-local function LeaveEditMode()
-    editModeActive = false
-    C_Timer.After(0, HideMenus)
+function Visibility:Refresh(api,enabled)
+    self.api,self.enabled=api,enabled==true
+    self.rows=self.rows or {}
+    if api.InCombatLockdown() then return false,"visibility update deferred until combat ends" end
+    local editing=self.editing or (api.EditModeManagerFrame and api.EditModeManagerFrame:IsShown())
+    if not self.enabled or editing then
+        for frame,row in pairs(self.rows) do self:Release(frame,row) end
+        return true,editing and "native parents restored for Edit Mode" or "native parents restored"
+    end
+    local ready,reason=self:Probe(api)
+    if not ready then
+        for frame,row in pairs(self.rows) do self:Release(frame,row) end
+        return false,reason
+    end
+    if not self.hidden then
+        self.hidden=api.CreateFrame("Frame",nil,api.UIParent,"SecureHandlerBaseTemplate")
+        self.hidden:Hide()
+    end
+    for frame,row in pairs(self.rows) do
+        if api[row.name]~=frame then self:Release(frame,row) row.foreign=true end
+    end
+    local pending={}
+    for _,name in ipairs(self.names) do
+        local frame=api[name]
+        if frame and not (self.rows[frame:GetParent()] and frame:GetParent():GetParent()==self.hidden) then
+            local row=self.rows[frame]
+            if not row then
+                -- Clean native containers start at UIParent. A different parent
+                -- is evidence of another owner; do not absorb its subtree.
+                row={parent=frame:GetParent(),name=name}
+                row.foreign=row.parent~=api.UIParent
+                self.rows[frame]=row
+                api.hooksecurefunc(frame,"SetParent",function()
+                    if row.writing or not self.enabled or self.editing then return end
+                    if frame:GetParent()~=self.hidden then row.foreign=true end
+                end)
+            end
+            if row.foreign then
+                pending[#pending+1]=name..": newer or non-native parent retained"
+            elseif frame:GetParent()==row.parent then
+                row.writing=true
+                frame:SetParent(self.hidden)
+                row.writing=false
+                if frame:GetParent()~=self.hidden then row.foreign=true pending[#pending+1]=name..": parent change rejected" end
+            elseif frame:GetParent()~=self.hidden then
+                row.foreign=true pending[#pending+1]=name..": newer parent retained"
+            end
+        end
+    end
+    return #pending==0, #pending>0 and table.concat(pending,"; ") or "native shown state/events retained behind hidden parent; Retail combat/rendering acceptance pending"
 end
-
-if EventRegistry and type(EventRegistry.RegisterCallback) == "function" then
-    EventRegistry:RegisterCallback("EditMode.Enter", RestoreMenusForEditing, Addon)
-    EventRegistry:RegisterCallback("EditMode.Exit", LeaveEditMode, Addon)
+function Visibility:Update()
+    local enabled=Addon.IsCharacterInstalled and Addon:IsCharacterInstalled() and Addon.db and Addon.db.shared.runtimePolicy.blizzardVisibility
+    local ok,reason=self:Refresh(_G,enabled)
+    if Addon.Diagnostics then Addon.Diagnostics:SetFeature("blizzardVisibility",enabled and ok and "offline-verified" or "pending",reason) end
 end
-
-local events = CreateFrame("Frame")
-events:RegisterEvent("PLAYER_ENTERING_WORLD")
-events:RegisterEvent("PLAYER_REGEN_ENABLED")
-events:RegisterEvent("EDIT_MODE_LAYOUTS_UPDATED")
-events:SetScript("OnEvent", function()
-    C_Timer.After(0, HideMenus)
-    C_Timer.After(1, HideMenus)
-end)
+local function Later() C_Timer.After(0,function() Visibility:Update() end) end
+if EventRegistry and type(EventRegistry.RegisterCallback)=="function" then
+    EventRegistry:RegisterCallback("EditMode.Enter",function() Visibility.editing=true Visibility:Update() end,Addon)
+    EventRegistry:RegisterCallback("EditMode.Exit",function() Visibility.editing=false Later() end,Addon)
+end
+local events=CreateFrame("Frame")
+for _,event in ipairs({"PLAYER_ENTERING_WORLD","PLAYER_REGEN_ENABLED","EDIT_MODE_LAYOUTS_UPDATED","ADDON_LOADED"}) do events:RegisterEvent(event) end
+events:SetScript("OnEvent",Later)

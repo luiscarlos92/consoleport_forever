@@ -45,6 +45,11 @@ FILES=[
     'Blizzard_FrameXML/Shared/CinematicFrame.xml',
     'Blizzard_FrameXML/MovieFrame.xml',
     'Blizzard_FrameXML/Mainline/CinematicFrameButton.xml',
+    'Blizzard_EditMode/Shared/EditModeSystemTemplates.lua',
+    'Blizzard_EditMode/Shared/EditModeManager.lua',
+    'Blizzard_ActionBar/Shared/MultiActionBars.lua',
+    'Blizzard_ActionBar/Shared/MultiActionBars.xml',
+    'Blizzard_ActionBar/Shared/ActionBar.lua',
 ]
 
 if __name__=='__main__':

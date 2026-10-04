@@ -167,4 +167,11 @@ assert(bindingSet==1 and Addon.record.appliedRevision==0 and not Addon.record.bi
 assert(not Addon.record.ringAccepted and Addon.db.shared.ringProjectionGUID==nil)
 assert(banks[2].K=="OTHER" and banks[2].PAD1=="OLD" and banks[1].SPACE=="JUMP")
 RESTORED_SESSION_STATE=Addon.Core.Copy({account=ConsolePortForeverDB,banks=banks,bindingSet=bindingSet,cvars=cv,settings=db.Settings,editInfo=editInfo,immersion=ImmersionSetup,extrafade=IEF_Config,rings=bootstrapRings.Data,sharedRings=bootstrapRings.Shared})
+local statusWrites=writes
+local statusMessages=#messages
+SlashCmdList.CONSOLEPORTFOREVER('status')
+local statusText=table.concat(messages,'\n',statusMessages+1)
+assert(statusText:find('ConsolePort: 3.3.5',1,true),'status omits exact native dependency version')
+assert(statusText:find('Runtime journals retained:',1,true),'status omits retained restore identities')
+assert(writes==statusWrites,'status changed runtime configuration')
 TEST_SUCCESS=true

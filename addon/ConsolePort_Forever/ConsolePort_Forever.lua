@@ -309,6 +309,23 @@ function Addon:Status()
     Print(("Version %s; character %s; configuration %s/%s; binding set %s"):format(self.VERSION,tostring(self.guid or "pending"),
         tostring(self.record and self.record.appliedRevision or 0),self.CONFIG_REVISION,tostring(GetCurrentBindingSet())))
     Print(self.Diagnostics:Summary())
+    local names={}
+    for name in pairs(self.capabilities and self.capabilities.modules or {}) do names[#names+1]=name end
+    table.sort(names)
+    for _,name in ipairs(names) do
+        local module=self.capabilities.modules[name]
+        Print(name..": "..tostring(module.version or "version metadata unavailable").."; installed="..tostring(module.installed)
+            .." enabled="..tostring(module.enabled).." loaded="..tostring(module.loaded))
+    end
+    local journals={}
+    for id,journal in pairs(self.db and self.db.transactions or {}) do
+        if journal.guid==self.guid then journals[#journals+1]=tostring(id).." ("..tostring(journal.status)..")" end
+    end
+    table.sort(journals)
+    if #journals>0 then
+        Print("Runtime journals retained: "..#journals.."; IDs (use /cpf restore <id> or /cpf recover <id>):")
+        for index=math.max(1,#journals-9),#journals do Print(journals[index]) end
+    end
 end
 function Addon:RefreshUI()
     self.BlizzardVisibility:Update()

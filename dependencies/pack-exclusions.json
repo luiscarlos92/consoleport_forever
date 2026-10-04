@@ -1,0 +1,18 @@
+{
+  "files": [
+    {
+      "repo": "DeadlyBossMods/DeadlyBossMods",
+      "version": "12.1.12",
+      "path": "DBM-Test/Tools/CLI/CompressTestLog.py",
+      "sha256": "4d662137da6065c59717bf9838bdd64770a057437647f4a6f98553b0fe20fb90",
+      "reason": "Non-runtime development helper/workflow excluded from AddOns under H8; official archive and all remaining source bytes retained unchanged."
+    },
+    {
+      "repo": "rursache/HideClassBars",
+      "version": "v1.1.0",
+      "path": "HideClassBars/.github/workflows/cf.yml",
+      "sha256": "576af7fa9961d9f5e71369d4bbe46a320ef1227d528cfc668bec9067d666fb7e",
+      "reason": "Non-runtime development helper/workflow excluded from AddOns under H8; official archive and all remaining source bytes retained unchanged."
+    }
+  ]
+}

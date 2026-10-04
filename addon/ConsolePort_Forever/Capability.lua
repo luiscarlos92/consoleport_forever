@@ -6,7 +6,10 @@ function Capability.Probe(api)
     if not result.guid then result.ready=false result.pending[#result.pending+1]="player GUID unavailable" end
     local version,build,_,interface = api.GetBuildInfo()
     result.game={version=version,build=build,interface=interface}
-    for _,name in ipairs({"ConsolePort","ConsolePort_Bar","ConsolePort_Menu","ConsolePort_Cursor","ConsolePort_Rings","ConsolePort_Config","Immersion"}) do
+    for _,name in ipairs({"ConsolePort","ConsolePort_Bar","ConsolePort_Menu","ConsolePort_Cursor","ConsolePort_Rings","ConsolePort_Config",
+        "ConsolePort_Keyboard","ConsolePort_Target","ConsolePort_World","Immersion","Immersion_ExtraFade","BetterBags","DynamicCam",
+        "LiteMount","Masque","Plater","HideClassBars","SharedMedia_Causese","DBM-Core","DBM-VPVEM","DBM-Challenges",
+        "DBM-Raids-Vanilla","DBM-Raids-WoTLK","DBM-Raids-Cata","DBM-Pandaria","DBM-Draenor","DBM-Raids-Legion"}) do
         local installed = api.C_AddOns.GetAddOnInfo(name) ~= nil
         local loaded = installed and api.C_AddOns.IsAddOnLoaded(name) or false
         local enableState = installed and api.C_AddOns.GetAddOnEnableState(name,api.UnitName("player")) or 0

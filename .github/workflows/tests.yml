@@ -13,10 +13,16 @@ jobs:
         with:
           python-version: '3.14'
       - run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Verify exact pinned official archives (explicit network stage)
+        run: python tools/verify_pinned_sources.py
       - run: ./tools/Test-All.ps1
         shell: pwsh
       - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: foundation-results
-          path: scratch/test-results/
+          path: |
+            scratch/test-results/
+            dependencies/lock.json
+            dependencies/pack-exclusions.json
+            evidence/dependencies/coverage.json

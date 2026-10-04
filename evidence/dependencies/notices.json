@@ -1,0 +1,874 @@
+{
+  "lockSHA256": "89e1d35b9a4b6a4003929813caf59c613318e919bc5c70a04fba7605b4a68746",
+  "discoveryComplete": true,
+  "releaseNoticeReviewComplete": false,
+  "packDistributionReady": false,
+  "packages": [
+    {
+      "repo": "seblindfors/ConsolePort",
+      "version": "3.3.3",
+      "officialRelease": "https://github.com/seblindfors/ConsolePort/releases/tag/3.3.3",
+      "packageSHA256": "4e5e464b5cc0de3b0ae9efead1a57ad04da0ff3572492cbede1d0617dd3f4f6f",
+      "selectedFolders": [
+        "ConsolePort",
+        "ConsolePort_Bar",
+        "ConsolePort_Config",
+        "ConsolePort_Cursor",
+        "ConsolePort_Keyboard",
+        "ConsolePort_Menu",
+        "ConsolePort_Rings",
+        "ConsolePort_Target",
+        "ConsolePort_World"
+      ],
+      "noticeFiles": [
+        {
+          "source": "ConsolePort/LICENSE.md",
+          "sha256": "ae649c4a6cbf80a9eeb0edd80a59c2bf7456844a01921912cacd7520b7b3f4e6",
+          "copy": "evidence/dependencies/notices/seblindfors__ConsolePort/ConsolePort/LICENSE.md"
+        }
+      ],
+      "embeddedNoticeSources": [
+        {
+          "source": "ConsolePort/Libs/External/ConsolePortNode/README.md",
+          "sha256": "c5c4f36a22a9b2de5a2a47f1e6d6bcc3d775155c1213c20400694cf875c447f4"
+        },
+        {
+          "source": "ConsolePort/Libs/External/LibActionButton-1.0/LibActionButton-1.0.lua",
+          "sha256": "971cb26e95e06787f2f7d9a72dcfcda8c3ab46634495b924dff0f3eb4de1e80a"
+        },
+        {
+          "source": "ConsolePort/Libs/External/LibButtonGlow-1.0/LibButtonGlow-1.0.lua",
+          "sha256": "85c4f53cad52f479a4a84203987eb155cef68730f3adc2133755dbee77c617e3"
+        },
+        {
+          "source": "ConsolePort_Config/Libs/LibWoWQRCode/LibWoWQRCode.lua",
+          "sha256": "589d743a542b059840d62c419b50c7f86e26e762b7bc25260bbc2a72a3967741"
+        },
+        {
+          "source": "ConsolePort_Config/Libs/LibWoWQRCode/README.md",
+          "sha256": "2c0ab83dc70fa01f4d5184a748ae9ddfa4315bf8b2d3a9ce56e37e1e65b75ed2"
+        }
+      ],
+      "assemblyRequiredByCoverage": false,
+      "noticeFilesAbsent": false,
+      "review": "Review main addon, bundled libraries and media terms independently; filename discovery does not grant redistribution rights."
+    },
+    {
+      "repo": "Cidan/BetterBags",
+      "version": "v0.5.14",
+      "officialRelease": "https://github.com/Cidan/BetterBags/releases/tag/v0.5.14",
+      "packageSHA256": "16c1ac70c4de2e7f2cfdbf4d2b5f3d3f44514a3f9ecf1040e29c790e8be8c0d7",
+      "selectedFolders": [
+        "BetterBags"
+      ],
+      "noticeFiles": [
+        {
+          "source": "BetterBags/LICENSE",
+          "sha256": "b92215e6fb3d24dbe22b524d917465340aa22a8e9e018f24986554a902026bec",
+          "copy": "evidence/dependencies/notices/Cidan__BetterBags/BetterBags/LICENSE"
+        },
+        {
+          "source": "BetterBags/libs/WagoAnalytics/LICENSE",
+          "sha256": "ccdd055ace13a16bd6a059586aba1f3a9037bd394a593d0a98bf28912877f075",
+          "copy": "evidence/dependencies/notices/Cidan__BetterBags/BetterBags/libs/WagoAnalytics/LICENSE"
+        }
+      ],
+      "embeddedNoticeSources": [],
+      "assemblyRequiredByCoverage": false,
+      "noticeFilesAbsent": false,
+      "review": "Review main addon, bundled libraries and media terms independently; filename discovery does not grant redistribution rights."
+    },
+    {
+      "repo": "seblindfors/Immersion",
+      "version": "1.4.61",
+      "officialRelease": "https://github.com/seblindfors/Immersion/releases/tag/1.4.61",
+      "packageSHA256": "b180a8cbd1a1d878377da5a85abfdc5576e0c04212f9e900e3e9ca505cde1f3e",
+      "selectedFolders": [
+        "Immersion"
+      ],
+      "noticeFiles": [
+        {
+          "source": "Immersion/LICENSE.md",
+          "sha256": "fbe474bab315f2856f8f393d5273f97eb956d7f93e8f6405b71230c2605d5a2b",
+          "copy": "evidence/dependencies/notices/seblindfors__Immersion/Immersion/LICENSE.md"
+        }
+      ],
+      "embeddedNoticeSources": [],
+      "assemblyRequiredByCoverage": false,
+      "noticeFilesAbsent": false,
+      "review": "Review main addon, bundled libraries and media terms independently; filename discovery does not grant redistribution rights."
+    },
+    {
+      "repo": "xod-wow/LiteMount",
+      "version": "12.1.0-1",
+      "officialRelease": "https://github.com/xod-wow/LiteMount/releases/tag/12.1.0-1",
+      "packageSHA256": "bf89ab84666266ffefd8ce56581f98467f8125c25c65e3fe68031303df28efe0",
+      "selectedFolders": [
+        "LiteMount"
+      ],
+      "noticeFiles": [
+        {
+          "source": "LiteMount/LICENSE.txt",
+          "sha256": "189b1af95d661151e054cea10c91b3d754e4de4d3fecfb074c1fb29476f7167b",
+          "copy": "evidence/dependencies/notices/xod-wow__LiteMount/LiteMount/LICENSE.txt"
+        },
+        {
+          "source": "LiteMount/Libs/LibDeflate/LICENSE.txt",
+          "sha256": "d789a4b3d104bb9f559b2f19048d356c67ea695dde4b1748f900ccb210a42450",
+          "copy": "evidence/dependencies/notices/xod-wow__LiteMount/LiteMount/Libs/LibDeflate/LICENSE.txt"
+        },
+        {
+          "source": "LiteMount/Libs/MountsRarity-2.0/LICENSE",
+          "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986",
+          "copy": "evidence/dependencies/notices/xod-wow__LiteMount/LiteMount/Libs/MountsRarity-2.0/LICENSE"
+        }
+      ],
+      "embeddedNoticeSources": [
+        {
+          "source": "LiteMount/ActionButton.lua",
+          "sha256": "acaeb25d5f7a38f7e25a29ac4866dbfbac8a93d2af007c9a28408dd243311d45"
+        },
+        {
+          "source": "LiteMount/Actions.lua",
+          "sha256": "027c73b70f44efae1503ed0efbe585f8c8f634b9835cf116a9abbbc4dcaec092"
+        },
+        {
+          "source": "LiteMount/AutoEventFrame.lua",
+          "sha256": "8a51a1d55d0899cfa35f353be95e329e43806d7eb6bdc7050c451c553fea6db3"
+        },
+        {
+          "source": "LiteMount/Bindings.xml",
+          "sha256": "f2d51644f358accec7e25e3a55ddb75a06eac76a2dc861dadace6a5f8c26ba75"
+        },
+        {
+          "source": "LiteMount/Conditions.lua",
+          "sha256": "2a69de90c277a36164c17b4ddcb405cba11717537e72e46bd1894247a24438b6"
+        },
+        {
+          "source": "LiteMount/Core.lua",
+          "sha256": "7f1826f205c441912dbe7af0898c6902301bd1bcfdab488a52e6bdc7ac25660f"
+        },
+        {
+          "source": "LiteMount/Developer.lua",
+          "sha256": "1386aec67f2bc6e7c341311b97244cf20ff3ffca4b6f14d8dcba52ed77f2afe9"
+        },
+        {
+          "source": "LiteMount/Environment.lua",
+          "sha256": "fa076b2b2373d3786476bb464a606e668b98f914aebd6f36f926c38958f6e24c"
+        },
+        {
+          "source": "LiteMount/Fonts/OFL.txt",
+          "sha256": "59e901eacdfd82d836d7a096c5b41885fbaea15a248f112e9dae430a4fbc085c"
+        },
+        {
+          "source": "LiteMount/KeyBindingStrings.lua",
+          "sha256": "2eecf12706c3f2adf8b75c581686b72463df8565c870f2a46297c068d04529b9"
+        },
+        {
+          "source": "LiteMount/LM_Drive.lua",
+          "sha256": "977cfbd60e3d891e5d5a5c4f27b9841c5b7323ff082a54826100c10810ba8d57"
+        },
+        {
+          "source": "LiteMount/LM_GhostWolf.lua",
+          "sha256": "e685e67b2d7c3d028b5519b87d84152b8cfd37bdbb3c2aa4a3b3e4d77d0d7849"
+        },
+        {
+          "source": "LiteMount/LM_ItemSummoned.lua",
+          "sha256": "2015ca32bde2b1084f66739948b99dbab5b8dafdad334e2c2c048c8d1679295f"
+        },
+        {
+          "source": "LiteMount/LM_Journal.lua",
+          "sha256": "108062b811164cc129378b6ecdf9b54678877be207a7ab7acb48b275d83a905f"
+        },
+        {
+          "source": "LiteMount/LM_Nagrand.lua",
+          "sha256": "5080eacdd5a6fe9b33bebc8a2ef5f88d4ec0f891fbba8fbff6998634511cb3eb"
+        },
+        {
+          "source": "LiteMount/LM_RunningWild.lua",
+          "sha256": "5ec0f348f1dc7af44b47777b1a4c0eae2dbe8fffdc7107c233e6d5c217a3e6d6"
+        },
+        {
+          "source": "LiteMount/LM_Soar.lua",
+          "sha256": "b68d1dec0393b9d82fe18fc24c413fc65952ed012f836af66875f6591bac1390"
+        },
+        {
+          "source": "LiteMount/LM_Spell.lua",
+          "sha256": "22521e4db0ff23e2b292daa0c8c73ff8fa8878bac46e53cf67aac1ae7edea7df"
+        },
+        {
+          "source": "LiteMount/LM_TravelForm.lua",
+          "sha256": "e1fb9c47e2fe941f69a5013313f1d7b1be7c5765efa83afca6abbbe3582b3dd5"
+        },
+        {
+          "source": "LiteMount/Libs/LibDeflate/LibDeflate.lua",
+          "sha256": "b6cf1bdc38dfae0c2deadfcb2cbf4e53d9dee6fb8f0ad5a03820ccf3635b7195"
+        },
+        {
+          "source": "LiteMount/Libs/MountsRarity-2.0/MountsRarity.lua",
+          "sha256": "0e0a9754570de341a09a00b444a8174c6aafcafc04062efde8bf23766ecf6090"
+        },
+        {
+          "source": "LiteMount/Localization.lua",
+          "sha256": "b41c506c6942106e41dbd3cf256b673c9b0ef4f9705d90001a68364b8894c193"
+        },
+        {
+          "source": "LiteMount/Macro.lua",
+          "sha256": "c4c50a286ab0942375c2e3424327839dd355aeabe8c7f22be2f0df9c15ef16d1"
+        },
+        {
+          "source": "LiteMount/Mount.lua",
+          "sha256": "75a1cd80808ed8c8990b81ac1fb97b37a18117c72bdf776f8f47b78bf4ab5c44"
+        },
+        {
+          "source": "LiteMount/MountDB/Localization.lua",
+          "sha256": "efd2bbf0d4566add2a3d5c9207b9fcf175ca29ef9d8cffdb4104c604d4c3e07e"
+        },
+        {
+          "source": "LiteMount/MountDB/Model.lua",
+          "sha256": "22b0c8125871dfc95483c6482ca17f75e410712aa43dc6ff038212e81f9e4555"
+        },
+        {
+          "source": "LiteMount/MountList.lua",
+          "sha256": "e9ab99213c9eb366408c030e2dcdfcfb33e6aaa862293e6d918f9698369fb9c4"
+        },
+        {
+          "source": "LiteMount/MountRegistry.lua",
+          "sha256": "5dd288717e17987905c87ab7b894d4f497cd9944abc172e1e3aeb3824af4d6d2"
+        },
+        {
+          "source": "LiteMount/Options.lua",
+          "sha256": "ab90a323a0d56498a35f0ac40533e68b4e8c4c6ae2f0dbfc07cfcc3599640df5"
+        },
+        {
+          "source": "LiteMount/Print.lua",
+          "sha256": "53a2e7cd713390bcd42474ec60044d3bca3f40c72abe54828a97a27b38bf35da"
+        },
+        {
+          "source": "LiteMount/Rule.lua",
+          "sha256": "a5a82cea7f070301c60214fa5d6b05ba85e6560c5d687e0c848ca187703c278b"
+        },
+        {
+          "source": "LiteMount/RuleArguments.lua",
+          "sha256": "3c0ca4718282dd6b98a9e4798579cd861da0f4339111f7f8767bee1fd8328251"
+        },
+        {
+          "source": "LiteMount/RuleBoolean.lua",
+          "sha256": "67a1f11fa059986f463c8f68706fb9faf9d6692eaeddf6f1e07f126af7e4d269"
+        },
+        {
+          "source": "LiteMount/RuleSet.lua",
+          "sha256": "fb7809193718697902ce9edb675c68fd85b7718eaf794da7556fa4ef7ded5350"
+        },
+        {
+          "source": "LiteMount/SecureAction.lua",
+          "sha256": "3e30232c53b314c97c10bbb0d85ff2d9c27d24c44fcb509dd4c5ff30d7c63645"
+        },
+        {
+          "source": "LiteMount/SlashCommand.lua",
+          "sha256": "891e76abb8f6340e44ad8054d2a324328d90aa5a3c81a9d32495e11ffe62412a"
+        },
+        {
+          "source": "LiteMount/SpellInfo.lua",
+          "sha256": "7d8d74d40843d1f5dac7c6d43efec17eb326f651f0e482cca7668258e229b8e5"
+        },
+        {
+          "source": "LiteMount/TableUtil.lua",
+          "sha256": "647cda883207d20825b8d24f5bad263029fc42fbdee709384e9090dacc795375"
+        },
+        {
+          "source": "LiteMount/UI/Advanced.lua",
+          "sha256": "9c18c7ef70bcfe303831678e6d2a7b944b3e9079ae80a242f2d19b1c50aa2ed9"
+        },
+        {
+          "source": "LiteMount/UI/Advanced.xml",
+          "sha256": "91bf522a1ff77ace2c4091ba1723798e9c7ff67fee99fbf9c8f889b40203838a"
+        },
+        {
+          "source": "LiteMount/UI/AnnounceFrame.lua",
+          "sha256": "261114485c4b282883f58785e90a5ffc2941ac138d70b2fdad234f4d24389263"
+        },
+        {
+          "source": "LiteMount/UI/AnnounceFrame.xml",
+          "sha256": "a0531358b9a50f3b7bbef1edd1e41555ade2a019b7d3f65da3f00c2d2218ff2a"
+        },
+        {
+          "source": "LiteMount/UI/Base.xml",
+          "sha256": "3b20da3c67239c4127a4e5a3d2b6b4719bd19f878e1533c4aae50e1e4de34b5e"
+        },
+        {
+          "source": "LiteMount/UI/Falling.lua",
+          "sha256": "1ed0a54c20dccfcbcc1e3c1cf5f34bb8fc7e15787f017f5c75871d864acd3831"
+        },
+        {
+          "source": "LiteMount/UI/Falling.xml",
+          "sha256": "ff779659b620165428cff989df91d85be9ad2459d6a91829a1b4ba18ce39e43a"
+        },
+        {
+          "source": "LiteMount/UI/General.lua",
+          "sha256": "564a8f7262fa4df4d93e144c43e76a83cd6125fcec229172f90b69dd53f0dff2"
+        },
+        {
+          "source": "LiteMount/UI/General.xml",
+          "sha256": "d3332890f6c9aa6d5f2b45a9c80c169392387b2f869572fd96b3eb7d58032f1c"
+        },
+        {
+          "source": "LiteMount/UI/Groups.lua",
+          "sha256": "319c56e8af662f649436da01341cff269eeeb49a2b29c61c23ef740a29595aff"
+        },
+        {
+          "source": "LiteMount/UI/Groups.xml",
+          "sha256": "19a9b66b4afa76e31b7eab1c905f6b5760f58940ebcea20ab0b3fb82ed959532"
+        },
+        {
+          "source": "LiteMount/UI/Macro.lua",
+          "sha256": "417fdc9e28c84413dea34a5914e2e948f8a5d624bd175020a4992bab7114eb81"
+        },
+        {
+          "source": "LiteMount/UI/Macro.xml",
+          "sha256": "f421ec30e3554af45d264c039c698e1a3a39a99070860934b32ed2fda1a14065"
+        },
+        {
+          "source": "LiteMount/UI/MountFlagBitTemplate.lua",
+          "sha256": "6f8a64132b27924bb8cb99af5a29f217f7c1dda64366b1502c4590db9366caf2"
+        },
+        {
+          "source": "LiteMount/UI/MountFlagBitTemplate.xml",
+          "sha256": "e9710fe8c997637988a35d6ab577cc95d13552540fb2b82a14625400b3f2408a"
+        },
+        {
+          "source": "LiteMount/UI/MountIconTemplate.lua",
+          "sha256": "843854953bb44d8b7d1b93d20b0d427177aafcb9114639648d45e39260c4755c"
+        },
+        {
+          "source": "LiteMount/UI/MountIconTemplate.xml",
+          "sha256": "dcf9442bd062ca229c4a57a2ed38eafc30c357a9b33c1e230a2dc1154a7237e8"
+        },
+        {
+          "source": "LiteMount/UI/MountListButtonTemplate.lua",
+          "sha256": "6dacf3cacb00f627f76f57f3ef82693d26d4c0d633d11364db807054d4275448"
+        },
+        {
+          "source": "LiteMount/UI/MountListButtonTemplate.xml",
+          "sha256": "a893b13c3bc5542946b1d45e6d54518a17e1d94dc6031363e0b11ed61d2ff1a0"
+        },
+        {
+          "source": "LiteMount/UI/MountModelSceneTemplate.lua",
+          "sha256": "73b30a7d99e707b8b9ad254c7a4743847d26fbcf03aa7522bffb626d09233c08"
+        },
+        {
+          "source": "LiteMount/UI/MountModelSceneTemplate.xml",
+          "sha256": "d81b4f139ca4f545f91dc2adce741100ce0e310291c4d96d78631d35d1a67df3"
+        },
+        {
+          "source": "LiteMount/UI/MountPriorityTemplate.lua",
+          "sha256": "d22f54a0808e8e5d28f9a1df4ab0f0c44c563d558e1e4219dadbae0ccbddac3c"
+        },
+        {
+          "source": "LiteMount/UI/MountPriorityTemplate.xml",
+          "sha256": "46db4dc991bb0844d2fa32b5719dd3dc87838d3673aeb682aa845734eb4d436a"
+        },
+        {
+          "source": "LiteMount/UI/MountTooltip.lua",
+          "sha256": "72bb3678cd7452f440c54370c55872675778749c662c7473679459951fdbabc9"
+        },
+        {
+          "source": "LiteMount/UI/MountTooltip.xml",
+          "sha256": "078ec14ce4ee40cff63a00c744fb8d55bc98eaa5645a4b65f2e505ae09ea6202"
+        },
+        {
+          "source": "LiteMount/UI/Mounts.lua",
+          "sha256": "225bbcac606dcc5b91ab812fe75aedf51b3618e88daf34596265bf7b1e30c13f"
+        },
+        {
+          "source": "LiteMount/UI/Mounts.xml",
+          "sha256": "4eb55cbbb1157661593e5fee615ed29fb5c4d55d66e8ab4e4824219f351be6eb"
+        },
+        {
+          "source": "LiteMount/UI/MountsFilter.lua",
+          "sha256": "82c60b9821e290901be8e6b92e825943effd079b3a908c5c40e8c9783e081901"
+        },
+        {
+          "source": "LiteMount/UI/MountsFilter.xml",
+          "sha256": "5823af60a24acdc2fb275ad6c707ee56c3a4c0269b962d6bd5c1dbc2b90911c6"
+        },
+        {
+          "source": "LiteMount/UI/PanelTemplate.lua",
+          "sha256": "9a2f1889d8b5ed87908e23b0060db8dfcd12aea0dcd0d3c6b27cb2ab8b9f4ece"
+        },
+        {
+          "source": "LiteMount/UI/PanelTemplate.xml",
+          "sha256": "a5c48f6069fd4c1c636dc86e9d6d51137876b922c833c89f399f54a9bb63f348"
+        },
+        {
+          "source": "LiteMount/UI/Picker.lua",
+          "sha256": "0a5dbc3ddb8971b17b30a3fb008bc22718694932acf7412a0eb51c5e771930e7"
+        },
+        {
+          "source": "LiteMount/UI/ProfileImportExport.lua",
+          "sha256": "f538387c9c2979f12d322d90cf7cf12918125fac52cc84d350b2fa08aacb17cb"
+        },
+        {
+          "source": "LiteMount/UI/ProfileImportExport.xml",
+          "sha256": "976151ae8975f1157451fbba381fbb13f398f5a9bf2ae1e3370286b4299bfabd"
+        },
+        {
+          "source": "LiteMount/UI/Profiles.lua",
+          "sha256": "8b041553fdb6cbb1cb5942e3dbbff9846ba391eda9702263849bb253606665ae"
+        },
+        {
+          "source": "LiteMount/UI/Profiles.xml",
+          "sha256": "c6572ecc6487ec896eb39559fbb3f1606a2bf35021563cf4970f525c93c3505c"
+        },
+        {
+          "source": "LiteMount/UI/ReportBug.lua",
+          "sha256": "150054fbc5a3d78b5fd2d3ca6e672db1148498148240b7fe7366e06bf1d13976"
+        },
+        {
+          "source": "LiteMount/UI/ReportBug.xml",
+          "sha256": "f9eae4bff413cce75682bd56cdfc6552c47b7319ace26ea7514e9c4e1c3b1cab"
+        },
+        {
+          "source": "LiteMount/UI/RuleEdit.lua",
+          "sha256": "b49e63e025776945aa4f7a0447a075c7c8a4b527828e4d2f334d2bd2fec9f3c3"
+        },
+        {
+          "source": "LiteMount/UI/RuleEdit.xml",
+          "sha256": "4cb7c85eaff7487172af2535bc1851468f888795bbe21c6dbb79e23fd2a114bb"
+        },
+        {
+          "source": "LiteMount/UI/Rules.lua",
+          "sha256": "dbee3a4974e9d83d4322f7e37a16de3ee3d0b2b561fff17a73fbfeb8c0cfeeb5"
+        },
+        {
+          "source": "LiteMount/UI/Rules.xml",
+          "sha256": "6a7c994ba9cf61fe80021df50621975d10db9bda5eea7c575ee09681c5ae2e07"
+        },
+        {
+          "source": "LiteMount/UIFilter.lua",
+          "sha256": "403a848bad12c0a86a49a33e35f59ed2ce7967fd768692792d6b8bbd1a73fe31"
+        },
+        {
+          "source": "LiteMount/Vars.lua",
+          "sha256": "bf7ab4038c32070304818e3dd2b32182d9bae18e74e09215e3f7424c0b94b322"
+        }
+      ],
+      "assemblyRequiredByCoverage": false,
+      "noticeFilesAbsent": false,
+      "review": "Review main addon, bundled libraries and media terms independently; filename discovery does not grant redistribution rights."
+    },
+    {
+      "repo": "SFX-WoW/Masque",
+      "version": "12.1.0",
+      "officialRelease": "https://github.com/SFX-WoW/Masque/releases/tag/12.1.0",
+      "packageSHA256": "9e1da4827ae60bd25d7fc427cbeeb0dc297e59d53a71a29ae95223d3374bbfa0",
+      "selectedFolders": [
+        "Masque"
+      ],
+      "noticeFiles": [
+        {
+          "source": "Masque/LICENSE.txt",
+          "sha256": "42bd6cd191a045f474b8dc2635b86793cf4c6bd38a1c31dd31a4effe50f7ce6d",
+          "copy": "evidence/dependencies/notices/SFX-WoW__Masque/Masque/LICENSE.txt"
+        }
+      ],
+      "embeddedNoticeSources": [
+        {
+          "source": "Masque/Libs/LibDualSpec-1.0/LibDualSpec-1.0.lua",
+          "sha256": "62b722c9d657193638f41bcd95bc115f005f9c6240646ec1d08928a856a3b3f6"
+        }
+      ],
+      "assemblyRequiredByCoverage": true,
+      "noticeFilesAbsent": false,
+      "review": "Review main addon, bundled libraries and media terms independently; filename discovery does not grant redistribution rights."
+    },
+    {
+      "repo": "Tercioo/Plater-Nameplates",
+      "version": "Plater-v656",
+      "officialRelease": "https://github.com/Tercioo/Plater-Nameplates/releases/tag/Plater-v656",
+      "packageSHA256": "3353250fa63fe840d8e9444037a3debde5c82286ccbcc825a475cec5ffd90ead",
+      "selectedFolders": [
+        "Plater"
+      ],
+      "noticeFiles": [
+        {
+          "source": "Plater/libs/DF/LICENSE",
+          "sha256": "20c17d8b8c48a600800dfd14f95d5cb9ff47066a9641ddeab48dc54aec96e331",
+          "copy": "evidence/dependencies/notices/Tercioo__Plater-Nameplates/Plater/libs/DF/LICENSE"
+        },
+        {
+          "source": "Plater/libs/LibCustomGlow-1.0/LICENSE",
+          "sha256": "fe1c25533575333ef9934022382659bc0b470cef1fbb69ef0d45a9a52d2e9455",
+          "copy": "evidence/dependencies/notices/Tercioo__Plater-Nameplates/Plater/libs/LibCustomGlow-1.0/LICENSE"
+        },
+        {
+          "source": "Plater/libs/LibDeflate/LICENSE.txt",
+          "sha256": "d789a4b3d104bb9f559b2f19048d356c67ea695dde4b1748f900ccb210a42450",
+          "copy": "evidence/dependencies/notices/Tercioo__Plater-Nameplates/Plater/libs/LibDeflate/LICENSE.txt"
+        },
+        {
+          "source": "Plater/libs/LibRangeCheck-3.0/LICENSE",
+          "sha256": "e3fdaf76f03ccf2bf5ec951f5e14eaf1178a6f6af8f7c9d321e3256fa31e25f9",
+          "copy": "evidence/dependencies/notices/Tercioo__Plater-Nameplates/Plater/libs/LibRangeCheck-3.0/LICENSE"
+        },
+        {
+          "source": "Plater/libs/LibTranslit-1.0/COPYING",
+          "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986",
+          "copy": "evidence/dependencies/notices/Tercioo__Plater-Nameplates/Plater/libs/LibTranslit-1.0/COPYING"
+        },
+        {
+          "source": "Plater/libs/LibTranslit-1.0/COPYING.LESSER",
+          "sha256": "e3a994d82e644b03a792a930f574002658412f62407f5fee083f2555c5f23118",
+          "copy": "evidence/dependencies/notices/Tercioo__Plater-Nameplates/Plater/libs/LibTranslit-1.0/COPYING.LESSER"
+        }
+      ],
+      "embeddedNoticeSources": [
+        {
+          "source": "Plater/fonts/SIL Open Font License.txt",
+          "sha256": "95f0b1f9afda13064972fd032130a254494659dc68ba2b1bcc134ae410879316"
+        },
+        {
+          "source": "Plater/libs/LibDeflate/LibDeflate.lua",
+          "sha256": "b6cf1bdc38dfae0c2deadfcb2cbf4e53d9dee6fb8f0ad5a03820ccf3635b7195"
+        },
+        {
+          "source": "Plater/libs/LibDeflate/README.md",
+          "sha256": "603a57a7de4b0c757aa169eeb712a71af8de1b3d517d841060b360640245c6ca"
+        },
+        {
+          "source": "Plater/libs/LibTranslit-1.0/LibTranslit-1.0.lua",
+          "sha256": "ee5f4644ce1b26ed86c43e6ce08e72e05fb40ca602a4c8bc1837c3ce74ae3578"
+        }
+      ],
+      "assemblyRequiredByCoverage": true,
+      "noticeFilesAbsent": false,
+      "review": "Review main addon, bundled libraries and media terms independently; filename discovery does not grant redistribution rights."
+    },
+    {
+      "repo": "DeadlyBossMods/DeadlyBossMods",
+      "version": "12.1.12",
+      "officialRelease": "https://github.com/DeadlyBossMods/DeadlyBossMods/releases/tag/12.1.12",
+      "packageSHA256": "5c8bbcc7daabff029d8ecf4b4b95b400be1bfdd5e860123914d84ada032d40e6",
+      "selectedFolders": [
+        "DBM-Brawlers",
+        "DBM-Core",
+        "DBM-GUI",
+        "DBM-Lairs-Midnight",
+        "DBM-Midnight",
+        "DBM-Raids-Midnight",
+        "DBM-StatusBarTimers",
+        "DBM-Test",
+        "DBM-VPVEM"
+      ],
+      "noticeFiles": [
+        {
+          "source": "DBM-Core/LICENSE",
+          "sha256": "3508c59e5691fa2003362a83ed908319d2f7217c0d3dbe30cc9a19bb660c9e7c",
+          "copy": "evidence/dependencies/notices/DeadlyBossMods__DeadlyBossMods/DBM-Core/LICENSE"
+        },
+        {
+          "source": "DBM-Core/Libs/LibCustomGlow-1.0/LICENSE",
+          "sha256": "fe1c25533575333ef9934022382659bc0b470cef1fbb69ef0d45a9a52d2e9455",
+          "copy": "evidence/dependencies/notices/DeadlyBossMods__DeadlyBossMods/DBM-Core/Libs/LibCustomGlow-1.0/LICENSE"
+        },
+        {
+          "source": "DBM-Core/Libs/LibDeflate/LICENSE.txt",
+          "sha256": "d789a4b3d104bb9f559b2f19048d356c67ea695dde4b1748f900ccb210a42450",
+          "copy": "evidence/dependencies/notices/DeadlyBossMods__DeadlyBossMods/DBM-Core/Libs/LibDeflate/LICENSE.txt"
+        },
+        {
+          "source": "DBM-Core/Libs/LibDropDownMenu/LICENSE",
+          "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986",
+          "copy": "evidence/dependencies/notices/DeadlyBossMods__DeadlyBossMods/DBM-Core/Libs/LibDropDownMenu/LICENSE"
+        },
+        {
+          "source": "DBM-VPVEM/license.txt",
+          "sha256": "25059af3f1af5a096801a5cfab094228526d6163ba7795c0e962a63d52331225",
+          "copy": "evidence/dependencies/notices/DeadlyBossMods__DeadlyBossMods/DBM-VPVEM/license.txt"
+        }
+      ],
+      "embeddedNoticeSources": [
+        {
+          "source": "DBM-Core/DBM-Core.lua",
+          "sha256": "a813daeac0af8afab41da7ad20e75fdabf12dd9cfeb3691928c7ffe623dba82b"
+        },
+        {
+          "source": "DBM-Core/Libs/LibDeflate/LibDeflate.lua",
+          "sha256": "b6cf1bdc38dfae0c2deadfcb2cbf4e53d9dee6fb8f0ad5a03820ccf3635b7195"
+        },
+        {
+          "source": "DBM-Core/Libs/LibSerialize/LibSerialize.lua",
+          "sha256": "b1c61778633eec25cb1b8fac9d55aed49714050ba8c8c46da2d032afa85a6b4c"
+        },
+        {
+          "source": "DBM-Core/sounds/Creative Commons Sampling Plus 1.0.txt",
+          "sha256": "da6b1dffdc47b93261ed4950ccc7637833997f5a3abba193a5fb7dbaf22ed4d2"
+        },
+        {
+          "source": "DBM-Core/sounds/license info.txt",
+          "sha256": "4df53c4ff9d6894a3f0ec559896a9ebd5e3f3f1e6d34a064942be71982bf8aa7"
+        }
+      ],
+      "assemblyRequiredByCoverage": true,
+      "noticeFilesAbsent": false,
+      "review": "Review main addon, bundled libraries and media terms independently; filename discovery does not grant redistribution rights."
+    },
+    {
+      "repo": "DeadlyBossMods/DBM-Dungeons",
+      "version": "r264",
+      "officialRelease": "https://github.com/DeadlyBossMods/DBM-Dungeons/releases/tag/r264",
+      "packageSHA256": "63a30527dfef38975ef48d9f98c82608c286504cd7668d745e8998a1fd5c9479",
+      "selectedFolders": [
+        "DBM-Challenges"
+      ],
+      "noticeFiles": [],
+      "embeddedNoticeSources": [],
+      "assemblyRequiredByCoverage": true,
+      "noticeFilesAbsent": true,
+      "review": "Review main addon, bundled libraries and media terms independently; filename discovery does not grant redistribution rights."
+    },
+    {
+      "repo": "DeadlyBossMods/DBM-Vanilla",
+      "version": "r830",
+      "officialRelease": "https://github.com/DeadlyBossMods/DBM-Vanilla/releases/tag/r830",
+      "packageSHA256": "7c559db0599ae1dac36c2836b61b7f8125d705d71cc39d76d8a2d2fe8f048463",
+      "selectedFolders": [
+        "DBM-Raids-Vanilla"
+      ],
+      "noticeFiles": [
+        {
+          "source": "DBM-Raids-Vanilla/LICENSE",
+          "sha256": "cc8c5189e2cc6adcaf8b143527836b4c9b46669d1a0506f3fdcbfa851d0d4a97",
+          "copy": "evidence/dependencies/notices/DeadlyBossMods__DBM-Vanilla/DBM-Raids-Vanilla/LICENSE"
+        }
+      ],
+      "embeddedNoticeSources": [
+        {
+          "source": "DBM-Raids-Vanilla/VanillaNaxx/ConstructQuarter/Textures/lgpl.txt",
+          "sha256": "319917f5ccd09878db6f67c9a77dee846055644ca49eb535628b9e020a87261e"
+        },
+        {
+          "source": "DBM-Raids-Vanilla/VanillaNaxx/ConstructQuarter/Thaddius.lua",
+          "sha256": "be8bc0a3236bde04560eecb45cf7028b84157e6a20e19954b4a5b633ac65f760"
+        }
+      ],
+      "assemblyRequiredByCoverage": true,
+      "noticeFilesAbsent": false,
+      "review": "Review main addon, bundled libraries and media terms independently; filename discovery does not grant redistribution rights."
+    },
+    {
+      "repo": "DeadlyBossMods/DBM-WotLK",
+      "version": "r353",
+      "officialRelease": "https://github.com/DeadlyBossMods/DBM-WotLK/releases/tag/r353",
+      "packageSHA256": "a62e410a8bf69bbc23ef3cb14ed20268dd175c5f7b2ccba52931b894e2c2b462",
+      "selectedFolders": [
+        "DBM-Raids-WoTLK"
+      ],
+      "noticeFiles": [
+        {
+          "source": "DBM-Raids-WoTLK/LICENSE",
+          "sha256": "3508c59e5691fa2003362a83ed908319d2f7217c0d3dbe30cc9a19bb660c9e7c",
+          "copy": "evidence/dependencies/notices/DeadlyBossMods__DBM-WotLK/DBM-Raids-WoTLK/LICENSE"
+        }
+      ],
+      "embeddedNoticeSources": [
+        {
+          "source": "DBM-Raids-WoTLK/Naxx/ConstructQuarter/Textures/lgpl.txt",
+          "sha256": "319917f5ccd09878db6f67c9a77dee846055644ca49eb535628b9e020a87261e"
+        },
+        {
+          "source": "DBM-Raids-WoTLK/Naxx/ConstructQuarter/Thaddius.lua",
+          "sha256": "90cedd6796f2e321f1bf27824d0c71f23976d6923b0978777512b205b76a38d3"
+        }
+      ],
+      "assemblyRequiredByCoverage": true,
+      "noticeFilesAbsent": false,
+      "review": "Review main addon, bundled libraries and media terms independently; filename discovery does not grant redistribution rights."
+    },
+    {
+      "repo": "DeadlyBossMods/DBM-Cataclysm",
+      "version": "r263",
+      "officialRelease": "https://github.com/DeadlyBossMods/DBM-Cataclysm/releases/tag/r263",
+      "packageSHA256": "ae87dc521de1f39ae6eccbaaf8a8dc2d91205b4be9ecc9bda72f2da79d9be145",
+      "selectedFolders": [
+        "DBM-Cataclysm",
+        "DBM-Raids-Cata"
+      ],
+      "noticeFiles": [
+        {
+          "source": "DBM-Raids-Cata/LICENSE",
+          "sha256": "3508c59e5691fa2003362a83ed908319d2f7217c0d3dbe30cc9a19bb660c9e7c",
+          "copy": "evidence/dependencies/notices/DeadlyBossMods__DBM-Cataclysm/DBM-Raids-Cata/LICENSE"
+        }
+      ],
+      "embeddedNoticeSources": [],
+      "assemblyRequiredByCoverage": true,
+      "noticeFilesAbsent": false,
+      "review": "Review main addon, bundled libraries and media terms independently; filename discovery does not grant redistribution rights."
+    },
+    {
+      "repo": "DeadlyBossMods/DBM-MoP",
+      "version": "r191",
+      "officialRelease": "https://github.com/DeadlyBossMods/DBM-MoP/releases/tag/r191",
+      "packageSHA256": "074eebe2db67590f42a78d5f2dbfde24423563ff3c822c1ee6a3a082790a56d4",
+      "selectedFolders": [
+        "DBM-Pandaria",
+        "DBM-Raids-MoP",
+        "DBM-Scenario-MoP"
+      ],
+      "noticeFiles": [
+        {
+          "source": "DBM-Raids-MoP/LICENSE",
+          "sha256": "3508c59e5691fa2003362a83ed908319d2f7217c0d3dbe30cc9a19bb660c9e7c",
+          "copy": "evidence/dependencies/notices/DeadlyBossMods__DBM-MoP/DBM-Raids-MoP/LICENSE"
+        }
+      ],
+      "embeddedNoticeSources": [],
+      "assemblyRequiredByCoverage": true,
+      "noticeFilesAbsent": false,
+      "review": "Review main addon, bundled libraries and media terms independently; filename discovery does not grant redistribution rights."
+    },
+    {
+      "repo": "DeadlyBossMods/DBM-WoD",
+      "version": "r97",
+      "officialRelease": "https://github.com/DeadlyBossMods/DBM-WoD/releases/tag/r97",
+      "packageSHA256": "87889c77279e5c422e99ffb595c6b83e274f4e6f5be31e5142a7b75d5aa72bf6",
+      "selectedFolders": [
+        "DBM-Draenor",
+        "DBM-Raids-WoD"
+      ],
+      "noticeFiles": [
+        {
+          "source": "DBM-Raids-WoD/LICENSE",
+          "sha256": "3508c59e5691fa2003362a83ed908319d2f7217c0d3dbe30cc9a19bb660c9e7c",
+          "copy": "evidence/dependencies/notices/DeadlyBossMods__DBM-WoD/DBM-Raids-WoD/LICENSE"
+        }
+      ],
+      "embeddedNoticeSources": [],
+      "assemblyRequiredByCoverage": true,
+      "noticeFilesAbsent": false,
+      "review": "Review main addon, bundled libraries and media terms independently; filename discovery does not grant redistribution rights."
+    },
+    {
+      "repo": "DeadlyBossMods/DBM-Legion",
+      "version": "r67",
+      "officialRelease": "https://github.com/DeadlyBossMods/DBM-Legion/releases/tag/r67",
+      "packageSHA256": "6c1bdbabb0340408cbb44e663a80ca42f26158c81457b6cf50707d5f2f4533b2",
+      "selectedFolders": [
+        "DBM-BrokenIsles",
+        "DBM-Raids-Legion"
+      ],
+      "noticeFiles": [
+        {
+          "source": "DBM-Raids-Legion/LICENSE",
+          "sha256": "3508c59e5691fa2003362a83ed908319d2f7217c0d3dbe30cc9a19bb660c9e7c",
+          "copy": "evidence/dependencies/notices/DeadlyBossMods__DBM-Legion/DBM-Raids-Legion/LICENSE"
+        }
+      ],
+      "embeddedNoticeSources": [],
+      "assemblyRequiredByCoverage": true,
+      "noticeFilesAbsent": false,
+      "review": "Review main addon, bundled libraries and media terms independently; filename discovery does not grant redistribution rights."
+    },
+    {
+      "repo": "rursache/HideClassBars",
+      "version": "v1.1.0",
+      "officialRelease": "https://github.com/rursache/HideClassBars/releases/tag/v1.1.0",
+      "packageSHA256": "20b40ca768005b912400d6a64894c0607e5e60f7ee9f7b9fff94f1be5242587e",
+      "selectedFolders": [
+        "HideClassBars"
+      ],
+      "noticeFiles": [
+        {
+          "source": "HideClassBars/LICENSE",
+          "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+          "copy": "evidence/dependencies/notices/rursache__HideClassBars/HideClassBars/LICENSE"
+        }
+      ],
+      "embeddedNoticeSources": [],
+      "assemblyRequiredByCoverage": false,
+      "noticeFilesAbsent": false,
+      "review": "Review main addon, bundled libraries and media terms independently; filename discovery does not grant redistribution rights."
+    },
+    {
+      "repo": "curseforge/DynamicCam",
+      "version": "2.21.1",
+      "officialRelease": "https://www.curseforge.com/wow/addons/dynamiccam/files/8995535",
+      "packageSHA256": "10eb86230c6903e72097e1552c04de8a163a39fe3cb31fc3a3274c2c4394e072",
+      "selectedFolders": [
+        "DynamicCam"
+      ],
+      "noticeFiles": [
+        {
+          "source": "DynamicCam/LICENSE",
+          "sha256": "d073ad048c4a17bfb5a1c69eea17c60f262aa6f542a8ebb10c81e07c6876e6b1",
+          "copy": "evidence/dependencies/notices/curseforge__DynamicCam/DynamicCam/LICENSE"
+        },
+        {
+          "source": "DynamicCam/Libs/LICENSE.md",
+          "sha256": "af51766e056af139f94de73afdc907b860d11707a20e709654ad0bf110f6fb3a",
+          "copy": "evidence/dependencies/notices/curseforge__DynamicCam/DynamicCam/Libs/LICENSE.md"
+        },
+        {
+          "source": "DynamicCam/Libs/LibCamera/LICENSE.md",
+          "sha256": "42989df156027d106f8ef55a8f330f27f09255d6500470dbea5960b32dd43998",
+          "copy": "evidence/dependencies/notices/curseforge__DynamicCam/DynamicCam/Libs/LibCamera/LICENSE.md"
+        },
+        {
+          "source": "DynamicCam/Libs/LibEasing/LICENSE.md",
+          "sha256": "42989df156027d106f8ef55a8f330f27f09255d6500470dbea5960b32dd43998",
+          "copy": "evidence/dependencies/notices/curseforge__DynamicCam/DynamicCam/Libs/LibEasing/LICENSE.md"
+        },
+        {
+          "source": "DynamicCam/Libs/LibMountInfo/LICENSE",
+          "sha256": "17167210cb8256bf1ceaf8b76bce60d544e7415589a6b88bccc91bc3ea792dbd",
+          "copy": "evidence/dependencies/notices/curseforge__DynamicCam/DynamicCam/Libs/LibMountInfo/LICENSE"
+        }
+      ],
+      "embeddedNoticeSources": [
+        {
+          "source": "DynamicCam/Libs/LibEasing/LibEasing.lua",
+          "sha256": "d01905038a55bb8f4c1b6dce2af381616d4ac8f25615f0b3dfb1fb7a26ceaa58"
+        }
+      ],
+      "assemblyRequiredByCoverage": false,
+      "noticeFilesAbsent": false,
+      "review": "Review main addon, bundled libraries and media terms independently; filename discovery does not grant redistribution rights."
+    },
+    {
+      "repo": "curseforge/Immersion_ExtraFade",
+      "version": "1.18.0",
+      "officialRelease": "https://www.curseforge.com/wow/addons/immersion-extrafade/files/8995675",
+      "packageSHA256": "89c59d0519b2392b41010dda34ec01d38c9c1702c644f5e57422341b1fec21c6",
+      "selectedFolders": [
+        "Immersion_ExtraFade"
+      ],
+      "noticeFiles": [
+        {
+          "source": "Immersion_ExtraFade/LICENSE",
+          "sha256": "21fa609537edd30918bd7703c8d5e7ca5ebd1ebf90a5c9a7fe68b781db7750c2",
+          "copy": "evidence/dependencies/notices/curseforge__Immersion_ExtraFade/Immersion_ExtraFade/LICENSE"
+        }
+      ],
+      "embeddedNoticeSources": [],
+      "assemblyRequiredByCoverage": false,
+      "noticeFilesAbsent": false,
+      "review": "Review main addon, bundled libraries and media terms independently; filename discovery does not grant redistribution rights."
+    },
+    {
+      "repo": "curseforge/SharedMedia_Causese",
+      "version": "7.6",
+      "officialRelease": "https://www.curseforge.com/wow/addons/sharedmedia_causese/files/7242737",
+      "packageSHA256": "12060554a2eace5438f08daa98660169a18e127b8af269c38974f9f570091711",
+      "selectedFolders": [
+        "SharedMedia_Causese"
+      ],
+      "noticeFiles": [],
+      "embeddedNoticeSources": [],
+      "assemblyRequiredByCoverage": false,
+      "noticeFilesAbsent": true,
+      "review": "Review main addon, bundled libraries and media terms independently; filename discovery does not grant redistribution rights."
+    }
+  ],
+  "remaining": "Finalize notices and official-source assembly before candidate distribution. Missing notice files require official terms/provenance review; no implicit permissive fallback."
+}

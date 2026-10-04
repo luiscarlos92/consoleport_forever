@@ -13,6 +13,7 @@ from repository_paths import ROOT, contained, output, fixture_copy, sha
 from resolve_dependencies import members
 import resolve_dependencies
 from audit_dependencies import runtime_closure
+from inventory_notices import inventory
 
 
 class ToolGuards(unittest.TestCase):
@@ -34,6 +35,33 @@ class ToolGuards(unittest.TestCase):
         escape=dict(files);escape['Example/View/Main.xml']=b'<Ui><Script file="../../Other/Main.lua"/></Ui>'
         escape['Other/Main.lua']=b'not-owned'
         with self.assertRaises(ValueError): runtime_closure('Example',escape)
+
+    def test_notice_sources_are_distinct_from_permission(self):
+        with tempfile.TemporaryDirectory(dir=ROOT/'scratch') as temp:
+            scope=Path(temp)
+            source=scope/'source'/'Addon'; source.mkdir(parents=True)
+            for name,data in {'LICENSE.txt':b'\r\nOriginal terms\r\n',
+                'lib.lua':b'-- Copyright maintainer\nlocal original=true',
+                'art.tga':b'Copyright byte sequence in image'}.items(): (source/name).write_bytes(data)
+            files={'Addon/'+p.name:sha(p) for p in source.iterdir()}
+            package={'repo':'example/Addon','version':'1','releaseURL':'https://example.invalid/official',
+                'sha256':'test-only','unpacked':str(source.parent.relative_to(ROOT)), 'files':files}
+            coverage={'lockSHA256':sha(ROOT/'dependencies/lock.json'),
+                'selectedFolders':{'Addon':{'owner':'example/Addon'}},
+                'distribution':{'restrictedOfficialAssembly':['example/Addon']}}
+            with patch('inventory_notices.verify') as qualified:
+                result=inventory({'packages':[package]},coverage,scope/'notices')
+                qualified.assert_called_once()
+                row=result['packages'][0]
+                self.assertFalse(result['releaseNoticeReviewComplete'])
+                self.assertFalse(result['packDistributionReady'])
+                self.assertTrue(row['assemblyRequiredByCoverage'])
+                self.assertEqual(len(row['noticeFiles']),1)
+                self.assertEqual(len(row['embeddedNoticeSources']),1)
+                self.assertEqual((ROOT/row['noticeFiles'][0]['copy']).read_bytes(),(source/'LICENSE.txt').read_bytes())
+                self.assertEqual({name:sha(source.parent/name) for name in files},files)
+                (source/'LICENSE.txt').write_bytes(b'tampered')
+                with self.assertRaises(ValueError): inventory({'packages':[package]},coverage,scope/'rejected')
 
     def test_fresh_official_download_and_expired_metadata(self):
         from datetime import datetime,timezone

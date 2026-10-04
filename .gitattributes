@@ -1,0 +1,3 @@
+# Captured reference bytes and pinned source contracts must survive every
+# checkout unchanged, including Windows hosts with core.autocrlf=true.
+* -text

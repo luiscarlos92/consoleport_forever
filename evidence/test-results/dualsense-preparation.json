@@ -1,0 +1,69 @@
+{
+  "purpose": "Prepare genuine virtual USB DualSense for user-required PS5 tests",
+  "assets": [
+    {
+      "repository": "hbashton/VIIPER",
+      "tag": "v0.1.9-rc4.6.6",
+      "prerelease": true,
+      "filename": "viiper-windows-amd64.zip",
+      "url": "https://github.com/hbashton/VIIPER/releases/download/v0.1.9-rc4.6.6/viiper-windows-amd64.zip",
+      "sha256": "c68d89319a12d4adc408ee8c779917b943c2ae2fac247f9933330e25b04c5842",
+      "size": 3957811,
+      "executed": false
+    },
+    {
+      "repository": "hbashton/VIIPER",
+      "tag": "v0.1.9-rc4.6.6",
+      "prerelease": true,
+      "filename": "VIIPER-0.1.9-rc4.6.6-SOURCE.zip",
+      "url": "https://github.com/hbashton/VIIPER/releases/download/v0.1.9-rc4.6.6/VIIPER-0.1.9-rc4.6.6-SOURCE.zip",
+      "sha256": "fbdf251480a8a2aef5f3c5bae7f4ef288afb3cd26a3a4aa60d1f491a301ef655",
+      "size": 2223210,
+      "executed": false
+    },
+    {
+      "repository": "vadimgrn/usbip-win2",
+      "tag": "v.0.9.7.7",
+      "prerelease": false,
+      "filename": "USBip-0.9.7.7-x64.exe",
+      "url": "https://github.com/vadimgrn/usbip-win2/releases/download/v.0.9.7.7/USBip-0.9.7.7-x64.exe",
+      "sha256": "51620fa5f9f8be5932bc9d786deee557ce06d5407a99cab490dcfac71f185fea",
+      "size": 33226344,
+      "executed": false
+    }
+  ],
+  "driverAlreadyInstalled": false,
+  "installationPerformed": true,
+  "liveWtfEdited": false,
+  "testResults": "No PS5 result yet; preliminary DS4 observations are excluded from PS5 acceptance.",
+  "recordedAt": "2026-10-04T21:42:33.314343+00:00",
+  "userApprovedInstallation": true,
+  "installerLaunched": true,
+  "installerUiOutcome": "User completed setup; completion screen requires restart",
+  "driverInstalledAtCheck": true,
+  "driverSignature": {
+    "status": "Valid",
+    "signer": "Cloudyne Systems (Scheibling Consulting AB)",
+    "thumbprint": "9AC56B6C76141395D74FFF6652818376E80B9C95"
+  },
+  "serverStartupAttempt": {
+    "result": "Failed prerequisite; USBip usbip.exe absent",
+    "deviceCreated": false
+  },
+  "offlineContractChecks": "Passed; no OS or Retail result",
+  "ps5RetailCasesPassed": 0,
+  "preliminaryPs4": {
+    "excludedFromPs5Acceptance": true,
+    "deviceRemoved": true,
+    "observations": [
+      "R2+Create opens Character",
+      "Circle closes Character and restores icons",
+      "L2+Create opens BetterBags",
+      "D-pad Down moves bag focus"
+    ]
+  },
+  "installedCliFileVersion": "0.9.7.7",
+  "restartRequired": true,
+  "serverStarted": false,
+  "ps5DeviceCreated": false
+}

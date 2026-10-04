@@ -1,6 +1,6 @@
 # ConsolePort Forever
 
-Personal Retail controller UI companion. Version **2.0.0-candidate.2** is the current tested correction candidate. Development and simulations stay isolated from the installed game; live installation requires the user's explicit request. See [the first live audit and fixes](docs/WTF-AUDIT-2026-10-04.md).
+Personal Retail controller UI companion. Version **2.0.0-candidate.2** is the current tested and installed personal correction candidate. Development and simulations stay isolated from the installed game; live installation requires the user's explicit request. See [the first live audit and fixes](docs/WTF-AUDIT-2026-10-04.md), [verified deployment](docs/LIVE-INSTALL-2026-10-04.md) and [33 concrete test cases](docs/MANUAL-TEST-CASES.md).
 
 Read [the active master plan](docs/MASTER-PLAN.md) and [implementation status](docs/IMPLEMENTATION-STATUS.md) before continuing. The untouched installed companion, dependency snapshots, configuration, assets and junction inventory were captured and pushed as baseline `15a191ab06b6d4562d63761116ca2c248150c3cc`.
 

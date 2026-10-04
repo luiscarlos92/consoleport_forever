@@ -1,0 +1,10 @@
+{
+  "path": "ConsolePort-Forever-UI-Pack-2.0.0-candidate.2.zip",
+  "sha256": "119b96e84040643c38a94d2b45409eb27e7d0d364ad55584c4a816519cdfaa84",
+  "bytes": 45356829,
+  "sourceCommit": "6a43e78f9c33fb1f2f83f08b4b1bb90136bfe677",
+  "addonFolders": 40,
+  "dependencyLockSHA256": "f495048cd9c84670c6087d109406691b0dd45c964a6b2d7ffc8eb286b6495201",
+  "personalUseOnly": true,
+  "runtimeAcceptance": "Pending the H8 Retail client checklist."
+}

@@ -1,4 +1,15 @@
-# Personal build delivery: 2.0.0-candidate.1
+# Current correction build: 2.0.0-candidate.2
+
+The first accepted-login WTF audit found disabled special modes, rejected Rings metadata and a false Edit Mode reload mismatch. The fixes are built from pushed source **6a43e78f9c33fb1f2f83f08b4b1bb90136bfe677**, StoreSchema **3**, configuration revision **12**. All 32 runtime/source suites and 21 tooling tests passed; Windows CI [37227788728](https://github.com/luiscarlos92/consoleport_forever/actions/runs/37227788728) also passed. The October 4 stable recheck still matches all 18 dependencies, including ConsolePort 3.3.5.
+
+| Artifact | Size | SHA-256 |
+| --- | --- | --- |
+| ConsolePort-Forever-UI-Pack-2.0.0-candidate.2.zip | 45,356,829 bytes | `119b96e84040643c38a94d2b45409eb27e7d0d364ad55584c4a816519cdfaa84` |
+| ConsolePort-Forever-Official-Sources-2.0.0-candidate.2.zip | 1,095,428 bytes | `837c05dd1ad67bf5211547f235fe8800bae6486b771278d34ff5fb36a49a1169` |
+
+Both artifact receipts are retained in `evidence/delivery`; archives remain in `dist/2.0.0-candidate.2`. The dependency lock is unchanged. Read [the audit](WTF-AUDIT-2026-10-04.md), [the live deployment record](LIVE-INSTALL-2026-10-04.md) and [33 concrete manual cases](MANUAL-TEST-CASES.md). Real controller/secure/combat/taint/rendering/persistence acceptance and the separately documented exact-feature gates remain pending.
+
+# Historical first build delivery: 2.0.0-candidate.1
 
 The candidate ZIP and official-source recipe are retained locally in `C:\Users\luisr\Dev\consoleport_forever\dist\2.0.0-candidate.1`. They were assembled from clean tested pushed source commit **e7937e1e2972dcdc123cd7ab853fa9d75866918a**. StoreSchema is **3**, configuration revision **11**. The untouched installed baseline remains **15a191ab06b6d4562d63761116ca2c248150c3cc**.
 

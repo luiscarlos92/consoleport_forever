@@ -1,5 +1,22 @@
 # Personal Retail installation — October 4, 2026
 
+## Current installation: candidate.2 after the accepted-login audit
+
+The user requested a read-only WTF audit before further manual tests, fixes committed to Git, and redeployment. Candidate **2.0.0-candidate.2**, StoreSchema **3**, configuration revision **12**, was installed successfully at **15:35:42 America/Toronto**. WoW remained closed. The original saved files were never edited.
+
+- Pushed/tested pack source: `6a43e78f9c33fb1f2f83f08b4b1bb90136bfe677`; Windows CI 37227788728 passed.
+- Pack SHA-256: `119b96e84040643c38a94d2b45409eb27e7d0d364ad55584c4a816519cdfaa84`.
+- New complete backup: `C:\Users\luisr\WoW-Backups\ConsolePort-Forever\20261004T192647Z-36ba564db147`.
+- Backup contains **3,637** pre-correction addon files and **296** canonical WTF files, with **42** links recorded. The first deployment's older backup is retained separately below.
+- Parked pre-correction folders: `C:\Users\luisr\OneDrive\Documents\03 Gaming\World of Warcraft\_retail_\Interface\.cpf-stage-20261004T192647Z-36ba564db147\previous`.
+- Final operation receipt SHA-256: `cd5d2c560791871901a795bbce66a5bba8306e90c84cb540fba3ea0288c2c2b1`.
+
+The guarded installer verified both complete backups before promotion, exact installed pack files, unrelated-addon preservation and unchanged WTF bytes/topology. An additional read-only final inventory matches the accepted-login audit snapshot exactly, not merely the deployment's immediate preflight. Evidence: `evidence/delivery/live-install-candidate2.json`. All 18 stable dependencies are still current and unmodified.
+
+The fixes remove the missing-key mode gate, include native skyriding page 11, preserve secure exit/overflow access, qualify Rings against its parent suite when its own TOC has no version, and compare Edit Mode through native exports. Read [the audit](WTF-AUDIT-2026-10-04.md) and [the concrete controller test cases](MANUAL-TEST-CASES.md). Log in, review/accept the newly offered mode/layout and personal-ring fields, and reload. Begin with cases 01–07. Runtime protected behavior is still pending actual Retail testing; no game launch or controller test was automated.
+
+## Historical first installation: candidate.1
+
 The user explicitly requested readiness verification, full AddOns and WTF backups, and installation of ConsolePort Forever plus all current dependencies, without editing WTF. The guarded installer completed successfully at **13:52:51 America/Toronto**. WoW was closed throughout; this session did not launch the game or wait for the user's test results.
 
 - Installed candidate: `2.0.0-candidate.1`, StoreSchema 3, configuration revision 11.

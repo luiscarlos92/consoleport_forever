@@ -1,0 +1,21 @@
+{
+  "status": "installed",
+  "startedAt": "2026-10-04T19:26:47.588459+00:00",
+  "closedAt": "2026-10-04T19:35:42.703574+00:00",
+  "sourceCommit": "6a43e78f9c33fb1f2f83f08b4b1bb90136bfe677",
+  "packSHA256": "119b96e84040643c38a94d2b45409eb27e7d0d364ad55584c4a816519cdfaa84",
+  "backup": "C:\\Users\\luisr\\WoW-Backups\\ConsolePort-Forever\\20261004T192647Z-36ba564db147",
+  "stage": "C:\\Users\\luisr\\OneDrive\\Documents\\03 Gaming\\World of Warcraft\\_retail_\\Interface\\.cpf-stage-20261004T192647Z-36ba564db147",
+  "receiptSHA256": "cd5d2c560791871901a795bbce66a5bba8306e90c84cb540fba3ea0288c2c2b1",
+  "snapshotSHA256": "b232d8ff099acc4833471b2ef1cee437fcd4598e0b6e088c8d6c8a1dff5f1525",
+  "auditSnapshotSHA256": "975039530efb9dd22c829306d19d845b4c6cc7114f065d186688e95e1cee5230",
+  "backupAddonFiles": 3637,
+  "wtfFiles": 296,
+  "wtfLinks": 42,
+  "wtfMatchesAcceptedLoginAudit": true,
+  "installerVerifiedPackAndUnrelatedAddons": true,
+  "runtimeSourceSuitesPassed": 32,
+  "toolingTestsPassed": 21,
+  "windowsCI": "https://github.com/luiscarlos92/consoleport_forever/actions/runs/37227788728",
+  "retailHardwareAcceptance": "pending"
+}

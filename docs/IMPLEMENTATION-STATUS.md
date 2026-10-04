@@ -1,6 +1,6 @@
 # Implementation checkpoint — October 4, 2026
 
-Authorized build-only delivery is recorded: personal candidate 2.0.0-candidate.1 plus official-source recipe. Exact parity gates and all actual Retail acceptance remain pending. Work is confined to `C:\Users\luisr\Dev\consoleport_forever`. Neither live WoW tree has been edited, installed into or launched. The user will request installation later. H0–H8 of MASTER-PLAN.md remain the authority.
+The user subsequently authorized live installation, then a read-only audit of the accepted-login WTF and correction/redeployment before further manual tests. Current installed candidate is **2.0.0-candidate.2**, configuration revision **12**, source **6a43e78f9c33fb1f2f83f08b4b1bb90136bfe677**. The mode gate/skyriding route, Rings metadata check and false Edit Mode reload comparison are fixed. All 32 runtime/source suites, 21 tooling tests and Windows CI 37227788728 passed. Redeployment completed at 15:35:42 Toronto; complete AddOns/WTF backups are retained and final live WTF matches all 296 audited files and 42 links exactly. No WTF file was edited and no game was launched. See WTF-AUDIT-2026-10-04.md, LIVE-INSTALL-2026-10-04.md and MANUAL-TEST-CASES.md. Actual Retail behavior and the independent exact parity gates remain pending. The older build-only checkpoints below are history; H0–H8 plus the later direct user authorization remain the authority.
 
 ## Retained baseline and repository
 

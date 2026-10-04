@@ -1,0 +1,256 @@
+{
+  "scope": "OS-level virtual gamepad self-test; WoW closed; no Retail acceptance inferred",
+  "checks": [
+    {
+      "name": "connected-neutral",
+      "index": 1,
+      "busReportedIndex": 0,
+      "osReadback": {
+        "buttons": 0,
+        "lt": 0,
+        "rt": 0,
+        "lx": 0,
+        "ly": 0,
+        "rx": 0,
+        "ry": 0
+      }
+    },
+    {
+      "name": "XUSB_GAMEPAD_DPAD_UP",
+      "osReadback": {
+        "buttons": 1,
+        "lt": 0,
+        "rt": 0,
+        "lx": 0,
+        "ly": 0,
+        "rx": 0,
+        "ry": 0
+      }
+    },
+    {
+      "name": "XUSB_GAMEPAD_DPAD_DOWN",
+      "osReadback": {
+        "buttons": 2,
+        "lt": 0,
+        "rt": 0,
+        "lx": 0,
+        "ly": 0,
+        "rx": 0,
+        "ry": 0
+      }
+    },
+    {
+      "name": "XUSB_GAMEPAD_DPAD_LEFT",
+      "osReadback": {
+        "buttons": 4,
+        "lt": 0,
+        "rt": 0,
+        "lx": 0,
+        "ly": 0,
+        "rx": 0,
+        "ry": 0
+      }
+    },
+    {
+      "name": "XUSB_GAMEPAD_DPAD_RIGHT",
+      "osReadback": {
+        "buttons": 8,
+        "lt": 0,
+        "rt": 0,
+        "lx": 0,
+        "ly": 0,
+        "rx": 0,
+        "ry": 0
+      }
+    },
+    {
+      "name": "XUSB_GAMEPAD_START",
+      "osReadback": {
+        "buttons": 16,
+        "lt": 0,
+        "rt": 0,
+        "lx": 0,
+        "ly": 0,
+        "rx": 0,
+        "ry": 0
+      }
+    },
+    {
+      "name": "XUSB_GAMEPAD_BACK",
+      "osReadback": {
+        "buttons": 32,
+        "lt": 0,
+        "rt": 0,
+        "lx": 0,
+        "ly": 0,
+        "rx": 0,
+        "ry": 0
+      }
+    },
+    {
+      "name": "XUSB_GAMEPAD_LEFT_THUMB",
+      "osReadback": {
+        "buttons": 64,
+        "lt": 0,
+        "rt": 0,
+        "lx": 0,
+        "ly": 0,
+        "rx": 0,
+        "ry": 0
+      }
+    },
+    {
+      "name": "XUSB_GAMEPAD_RIGHT_THUMB",
+      "osReadback": {
+        "buttons": 128,
+        "lt": 0,
+        "rt": 0,
+        "lx": 0,
+        "ly": 0,
+        "rx": 0,
+        "ry": 0
+      }
+    },
+    {
+      "name": "XUSB_GAMEPAD_LEFT_SHOULDER",
+      "osReadback": {
+        "buttons": 256,
+        "lt": 0,
+        "rt": 0,
+        "lx": 0,
+        "ly": 0,
+        "rx": 0,
+        "ry": 0
+      }
+    },
+    {
+      "name": "XUSB_GAMEPAD_RIGHT_SHOULDER",
+      "osReadback": {
+        "buttons": 512,
+        "lt": 0,
+        "rt": 0,
+        "lx": 0,
+        "ly": 0,
+        "rx": 0,
+        "ry": 0
+      }
+    },
+    {
+      "name": "XUSB_GAMEPAD_A",
+      "osReadback": {
+        "buttons": 4096,
+        "lt": 0,
+        "rt": 0,
+        "lx": 0,
+        "ly": 0,
+        "rx": 0,
+        "ry": 0
+      }
+    },
+    {
+      "name": "XUSB_GAMEPAD_B",
+      "osReadback": {
+        "buttons": 8192,
+        "lt": 0,
+        "rt": 0,
+        "lx": 0,
+        "ly": 0,
+        "rx": 0,
+        "ry": 0
+      }
+    },
+    {
+      "name": "XUSB_GAMEPAD_X",
+      "osReadback": {
+        "buttons": 16384,
+        "lt": 0,
+        "rt": 0,
+        "lx": 0,
+        "ly": 0,
+        "rx": 0,
+        "ry": 0
+      }
+    },
+    {
+      "name": "XUSB_GAMEPAD_Y",
+      "osReadback": {
+        "buttons": 32768,
+        "lt": 0,
+        "rt": 0,
+        "lx": 0,
+        "ly": 0,
+        "rx": 0,
+        "ry": 0
+      }
+    },
+    {
+      "name": "buttons-triggers-axes",
+      "osReadback": {
+        "buttons": 4353,
+        "lt": 255,
+        "rt": 128,
+        "lx": 16384,
+        "ly": -24576,
+        "rx": 8192,
+        "ry": 32767
+      }
+    },
+    {
+      "name": "held-report",
+      "elapsedSeconds": 0.55,
+      "osReadback": {
+        "buttons": 4353,
+        "lt": 255,
+        "rt": 128,
+        "lx": 16384,
+        "ly": -24576,
+        "rx": 8192,
+        "ry": 32767
+      }
+    },
+    {
+      "name": "released-neutral",
+      "osReadback": {
+        "buttons": 0,
+        "lt": 0,
+        "rt": 0,
+        "lx": 0,
+        "ly": 0,
+        "rx": 0,
+        "ry": 0
+      }
+    },
+    {
+      "name": "disconnected",
+      "osReadback": {
+        "error": 1167
+      }
+    },
+    {
+      "name": "reconnected-neutral",
+      "osReadback": {
+        "buttons": 0,
+        "lt": 0,
+        "rt": 0,
+        "lx": 0,
+        "ly": 0,
+        "rx": 0,
+        "ry": 0
+      }
+    },
+    {
+      "name": "dualshock4-connected-neutral",
+      "vendor": 1356,
+      "product": 1476,
+      "type": 2,
+      "attached": true,
+      "specialButtonsAvailable": [
+        "PS",
+        "touchpad"
+      ],
+      "osButtonReadbackTested": false
+    }
+  ],
+  "driverInstalledOrUpdated": false,
+  "liveWtfEdited": false
+}

@@ -8,6 +8,14 @@ Use **PASS** only after every applicable step and expected result agrees. Use **
 
 Installed code source: `c004591fb1372322f33f9bf603a8546e1d039c8e`. Each case below includes its steps, expected result and current recorded outcome.
 
+## Agent execution with an emulated controller
+
+The user requested that the agent perform the controller tests too. The existing Windows ViGEm bus is running; no driver installation/update is needed. An isolated vgamepad 0.1.0 client was downloaded with its official PyPI SHA-256 checked, without running setup.py or its bundled installer. With WoW closed, 21 checks verified the standard Xbox buttons, both triggers/sticks, combined input, a 0.55-second hold, release to neutral, disconnect and reconnect through actual Windows XInput readback. A virtual DualShock 4 also attached successfully; its PS/touchpad signals and actual Retail mapping still require in-game verification. Evidence is in `evidence/test-results/controller-os-selftest.json` and `controller-client-provenance.json`.
+
+After the user logs in, first confirm that Retail recognizes the virtual device and that its actual PAD controls match this saved arrangement. Use real virtual-controller reports for chords, axes, holds and release transitions; screenshots and `/cpf proof`/`/cpf diagnose` provide observations. Use Windows Computer Use for screenshots and keyboard/mouse setup. Do not count mouse clicks or direct Lua callback execution as passes for controller-input tests. The agent should attempt every applicable case and record its own observations below. Cases requiring an unavailable quest, vehicle, class or other state remain UNAVAILABLE; the OS self-test changes none of the Retail results.
+
+The test client is local tooling outside the addon pack. `python tools/prepare_gamepad_test_client.py` prepares the isolated client; `python tools/gamepad_selftest.py` requires WoW closed and verifies OS signals. Both operate outside live WTF. The emulated device is released/removed after the self-test. Identify the actual controller by its unique reported signal, because the bus-reported index differed from Windows' effective XInput slot during qualification.
+
 ## Current controls, from the saved bindings
 
 Cross = PAD1; Circle = PAD2; Square = PAD3; Triangle = PAD4. L2 supplies Shift; R2 supplies Ctrl. L3/R3 are stick clicks. The hardware control named `PADSYSTEM` opens map, with L2+PADSYSTEM zoom in and R2+PADSYSTEM zoom out. `PADFORWARD` opens the ConsolePort menu; L2+PADFORWARD opens utility, R2+PADFORWARD opens your existing Auras/manual class ring. Both-trigger PADFORWARD remains unbound while the new pet gesture is gated.

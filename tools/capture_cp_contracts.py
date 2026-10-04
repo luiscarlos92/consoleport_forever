@@ -3,7 +3,7 @@ import json
 from repository_paths import ROOT, contained, output, sha
 
 FILES = [
-    'ConsolePort/Utils/Utils.lua', 'ConsolePort/Utils/Database.lua',
+    'ConsolePort/Utils/Utils.lua', 'ConsolePort/Utils/Database.lua', 'ConsolePort/Utils/Const.lua',
     'ConsolePort/Controller/Input.lua', 'ConsolePort/Controller/Layers.lua',
     'ConsolePort/Libs/External/LibActionButton-1.0/LibActionButton-1.0.lua',
     'ConsolePort_Bar/Widget/Button/Button.lua', 'ConsolePort_Bar/Widget/Group/Group.lua',

@@ -31,7 +31,7 @@ function Setup.Adapters(api,account)
         adapters.bindings.bankInspector=adapters.bindingBanks
         adapters.bindings.canWrite=adapters.bindingBanks.canWrite
     end
-    if account then adapters.policy=Addon.FlatConfigAdapter.New(function() return account.shared.runtimePolicy end,{modesEnabled=true,focusVisuals=true},api.InCombatLockdown) end
+    if account then adapters.policy=Addon.FlatConfigAdapter.New(function() return account.shared.runtimePolicy end,{modesEnabled=true,focusVisuals=true,uiContextsEnabled=true},api.InCombatLockdown) end
     if api.C_EditMode and api.EditModePresetLayoutManager then
         adapters.editmode=Addon.EditModeAdapter.New({GetLayouts=api.C_EditMode.GetLayouts,
             SaveLayouts=api.C_EditMode.SaveLayouts,SetActiveLayout=api.C_EditMode.SetActiveLayout,
@@ -89,6 +89,10 @@ function Setup.Fields(db,guid,adapters,api,revision)
     if Addon.FocusVisuals:Probe(adapters.consoleport,api) and adapters.policy then
         add("shared/policy/focusVisuals","policy",{"focusVisuals"},true,"Suppress gameplay icons and highlights while the interface cursor owns input")
     else deferred[#deferred+1]={id="focusVisuals",reason="native interface cursor not initialized"} end
+    local contextReady,contextReason=Addon.UIContexts:Probe(adapters.consoleport,api)
+    if contextReady and adapters.policy then
+        add("shared/policy/uiContextsEnabled","policy",{"uiContextsEnabled"},true,"Use native semantic popup/quantity controls; retain parent and keyboard owners")
+    else deferred[#deferred+1]={id="uiContexts",reason=contextReason} end
     for cvar,value in pairs({GamePadEmulateShift="PADLTRIGGER",GamePadEmulateCtrl="PADRTRIGGER"}) do
         if api.GetCVarDefault(cvar)~=nil then add("shared/cvar/"..cvar,"cvars",{cvar},value,"Controller trigger modifier: "..cvar)
         else deferred[#deferred+1]={id=cvar,reason="registered Retail CVar unavailable"} end

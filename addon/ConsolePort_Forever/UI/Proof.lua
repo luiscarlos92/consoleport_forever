@@ -16,6 +16,22 @@ function Proof:Text(api)
         if layer.GetActiveChord then lines[#lines+1]='Engine chord: '..layer:GetActiveChord() end
     end
     lines[#lines+1]='Interface cursor shown: '..shown(db and db.Cursor)
+    local context=Addon.UIContexts
+    local input=context and context.input
+    if input then
+        lines[#lines+1]='Native UI context: '..tostring(context.context and context.context.kind or 'none')
+        local keys={}
+        for key,state in pairs(input.states) do if state.active or state.front then keys[#keys+1]=key end end
+        table.sort(keys)
+        for _,key in ipairs(keys) do
+            local state=input.states[key]
+            local row=state.widget:GetOverride(true)
+            lines[#lines+1]=key..' UI generation='..state.generation..' active='..tostring(state.active)
+                ..' allowed='..tostring(state.allowed)..' held='..tostring(state.widget:GetAttribute('cpf-ui-held'))
+                ..' native owner='..tostring(row and row.owner and row.owner.GetName and row.owner:GetName() or 'unnamed')
+                ..' target='..tostring(state.target and state.target.GetName and state.target:GetName() or 'none')
+        end
+    end
     lines[#lines+1]=''
     lines[#lines+1]='Saved -> effective bindings (engine overrides may change ownership):'
     for _,modifier in ipairs(modifiers) do

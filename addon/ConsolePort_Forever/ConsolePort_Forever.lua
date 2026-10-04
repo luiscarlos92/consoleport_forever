@@ -1,7 +1,7 @@
 local ADDON_NAME, Addon = ...
 Addon.VERSION=C_AddOns.GetAddOnMetadata(ADDON_NAME,"Version") or "0.0.0"
 Addon.SCHEMA=Addon.Store.VERSION
-Addon.CONFIG_REVISION=2
+Addon.CONFIG_REVISION=3
 Addon.PROFILE_NAME="Console Port - Forever (Managed)"
 local function Print(message)
     if DEFAULT_CHAT_FRAME then DEFAULT_CHAT_FRAME:AddMessage("|cff69ccf0ConsolePort Forever:|r "..tostring(message)) end
@@ -252,6 +252,9 @@ function Addon:RefreshUI()
     local enabled=self:IsCharacterInstalled() and self.db.shared.runtimePolicy.focusVisuals
     local ok,reason=self.FocusVisuals:Enable(self.adapters.consoleport,_G,enabled)
     self.Diagnostics:SetFeature("focusVisuals",enabled and ok and "offline-verified" or "pending",reason or (enabled and "ordinary cursor ownership only; rendered acceptance pending" or "reviewed visual policy not enabled"))
+    local contexts=self:IsCharacterInstalled() and self.db.shared.runtimePolicy.uiContextsEnabled
+    local active,error=self.UIContexts:Enable(self.adapters.consoleport,_G,contexts)
+    self.Diagnostics:SetFeature("uiContexts",contexts and active and "offline-verified" or "pending",error or (contexts and "native popup/quantity ownership; Retail input/taint acceptance pending" or "reviewed UI context policy not enabled"))
 end
 Addon.Prompt:Initialize({dialogs=StaticPopupDialogs,show=StaticPopup_Show,reload=ReloadUI,defer=function(callback) C_Timer.After(0,callback) end,
     details=function(text) local ok,reason=Addon.Proof:Show(_G,text) if not ok then Print(reason) end end})
@@ -276,7 +279,7 @@ local events=CreateFrame("Frame")
 for _,event in ipairs({"PLAYER_LOGIN","PLAYER_LOGOUT","PLAYER_ENTERING_WORLD","PLAYER_REGEN_ENABLED","PLAYER_REGEN_DISABLED","ADDON_LOADED","UPDATE_BINDINGS","EDIT_MODE_LAYOUTS_UPDATED","ADDON_ACTION_BLOCKED","ADDON_ACTION_FORBIDDEN"}) do events:RegisterEvent(event) end
 events:SetScript("OnEvent",function(_,event,...)
     if event=="PLAYER_LOGOUT" then Addon:CaptureControllerEdits() return end
-    if event=="PLAYER_REGEN_DISABLED" then Addon.FocusVisuals:SetFocus(false,_G) return end
+    if event=="PLAYER_REGEN_DISABLED" then Addon.FocusVisuals:SetFocus(false,_G) Addon.UIContexts:Refresh() return end
     if event=="UPDATE_BINDINGS" then Addon:CaptureControllerEdits() end
     if event=="ADDON_ACTION_BLOCKED" or event=="ADDON_ACTION_FORBIDDEN" then
         local blamed,func=...

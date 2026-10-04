@@ -36,7 +36,12 @@ function execute(source, name) {
   lua.lua_pushnil(L); lua.lua_setglobal(L,to_luastring('dofile'));
   lua.lua_pushnil(L); lua.lua_setglobal(L,to_luastring('loadfile'));
   const rc = lauxlib.luaL_loadbuffer(L,to_luastring(source),null,to_luastring(name)) || lua.lua_pcall(L,0,0,0);
-  if (rc !== lua.LUA_OK) throw Error(to_jsstring(lua.lua_tostring(L,-1)));
+  if (rc !== lua.LUA_OK) {
+    const message=to_jsstring(lua.lua_tostring(L,-1));
+    const line=Number(message.match(/\]:(\d+):/)?.[1]);
+    const context=line ? source.split('\n').slice(Math.max(0,line-3),line+2).join('\n') : '';
+    throw Error(message+(context ? '\n'+context : ''));
+  }
   lua.lua_getglobal(L,to_luastring('TEST_SUCCESS'));
   if (!lua.lua_toboolean(L,-1)) throw Error('missing explicit success marker');
   lua.lua_getglobal(L,to_luastring('SERIALIZED_STATE'));
@@ -56,7 +61,7 @@ check('T01.snapshot', () => {
 check('T27.lua51', () => {
   for (const f of files('addon').filter(f=>f.endsWith('.lua'))) parser.parse(read(f),{luaVersion:'5.1'});
 });
-const modules = ['Core','Store','Plan','Transactions','BindingPolicy','ModePolicy','SecureModes','UI/Ownership','UI/FocusVisuals','UI/Proof','Adapters/NativeBindings',
+const modules = ['Core','Store','Plan','Transactions','BindingPolicy','ModePolicy','SecureModes','UI/Ownership','UI/InputBridge','UI/Contexts','UI/FocusVisuals','UI/Proof','Adapters/NativeBindings',
   'Adapters/BindingState','Adapters/BindingBanks','Diagnostics','Capability','Adapters/ConsolePort','Adapters/EditMode','Adapters/FlatConfig','Baseline','Coordinator','Prompt'];
 const source = 'Addon={};\n' + modules.map(m=>
   ';(function(...)\n'+read('addon/ConsolePort_Forever/'+m+'.lua')+'\nend)("ConsolePort_Forever",Addon);\n').join('');
@@ -127,6 +132,26 @@ check('T07-T09.both-binding-bank-restore', () => execute(source+read('tests/harn
 check('T08-T10.review-details', () => execute(source+read('tests/harness/prompt.lua'),'review-details'));
 check('T12-T13.adapters', () => execute(source+read('tests/harness/adapters.lua'),'adapters'));
 check('T21.focus-visuals-proof', () => execute(source+read('tests/harness/focus_visuals.lua'),'focus-visuals-proof'));
+check('T16-T20-T22.current-native-UI-contexts', () => {
+  const base='evidence/consoleport-contracts/';
+  const database=read(base+'ConsolePort/Utils/Database.lua').replace(/\r\n/g,'\n');
+  const begin=database.indexOf('db.table.mixin = function');
+  const end=database.indexOf('return obj\nend;',begin)+'return obj\nend;'.length;
+  if(begin<0 || end<begin) throw Error('native script mixin source changed');
+  const handlers=read('evidence/native/Blizzard_RestrictedAddOnEnvironment/SecureHandlers.lua');
+  const wrapped=handlers.slice(handlers.indexOf('local function Wrapped_Click('),handlers.indexOf('local function Wrapped_OnEnter('));
+  const popup=read('evidence/native/Blizzard_StaticPopup/StaticPopup.lua');
+  const click=popup.slice(popup.indexOf('function StaticPopup_OnClick('),popup.indexOf('local function CallOnButton('));
+  const templates=read('evidence/native/Blizzard_FrameXML/SecureTemplates.lua');
+  const secureClick=templates.slice(templates.indexOf('SECURE_ACTIONS.click ='),templates.indexOf('SECURE_ACTIONS.attribute ='));
+  const fixture=read('tests/harness/ui_contexts.lua').replace('--@NATIVE_WRAPPED_CLICK',wrapped)
+    .replace('--@CURRENT_SCRIPT_MIXIN',database.slice(begin,end))
+    .replace('--@CURRENT_INPUT','(function(...)\n'+read(base+'ConsolePort/Controller/Input.lua')+'\nend)("ConsolePort",db)')
+    .replace('--@NATIVE_POPUP_CLICK',click)
+    .replace('--@NATIVE_SECURE_CLICK',secureClick)
+    .replace('--@NATIVE_STACK_SPLIT',read('evidence/native/Blizzard_FrameXML/Mainline/StackSplitFrame.lua'));
+  execute(source+fixture,'UI-contexts-current-source');
+});
 check('T14.current-ConsolePort-secure-contract', () => {
   const base='evidence/consoleport-contracts/';
   const manifest=JSON.parse(read(base+'manifest.json'));

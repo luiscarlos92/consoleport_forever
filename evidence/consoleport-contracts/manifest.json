@@ -13,6 +13,10 @@
       "sha256": "e6c79704d35f7c094de7bb7f684112e523205354440d331fae6c9bb5e77a7852"
     },
     {
+      "path": "ConsolePort/Utils/Const.lua",
+      "sha256": "9c1caf10f8bd1d28fd2545de7e609adba9f1eb4b912c5ef813074bcafa0a6902"
+    },
+    {
       "path": "ConsolePort/Controller/Input.lua",
       "sha256": "b1afa749c570a1da69b48e6d1cd38455be2976aebb814c5dae16b3ba3a49f791"
     },

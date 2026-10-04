@@ -56,6 +56,27 @@
     "url": "https://github.com/Gethe/wow-ui-source/blob/09b9db7948abc9b9648dedaab51eb0cf3ee67b31/Interface/AddOns/Blizzard_StaticPopup/StaticPopup.lua"
   },
   {
+    "path": "Blizzard_StaticPopup/SharedTemplates.lua",
+    "commit": "09b9db7948abc9b9648dedaab51eb0cf3ee67b31",
+    "gitBlob": "894e5ff44019785e4a719f21f01e20ab317a9e0c",
+    "sha256": "6d039655fc3b5f488b6c93966217ed90b42a77dc9e66ac9d91dda8221732dd5c",
+    "url": "https://github.com/Gethe/wow-ui-source/blob/09b9db7948abc9b9648dedaab51eb0cf3ee67b31/Interface/AddOns/Blizzard_StaticPopup/SharedTemplates.lua"
+  },
+  {
+    "path": "Blizzard_StaticPopup_Game/GameDialog.lua",
+    "commit": "09b9db7948abc9b9648dedaab51eb0cf3ee67b31",
+    "gitBlob": "95a1ffab4c0d3dff9c1f7436941e87092bd92236",
+    "sha256": "65c3ad0105f1b81a312326923e638f3c02e769162ac37b946b4a8229cc6720ab",
+    "url": "https://github.com/Gethe/wow-ui-source/blob/09b9db7948abc9b9648dedaab51eb0cf3ee67b31/Interface/AddOns/Blizzard_StaticPopup_Game/GameDialog.lua"
+  },
+  {
+    "path": "Blizzard_StaticPopup_Game/GameDialog.xml",
+    "commit": "09b9db7948abc9b9648dedaab51eb0cf3ee67b31",
+    "gitBlob": "1c0ffed6c456a35585ec71a2a4ecd57cc0e72791",
+    "sha256": "19713b718b07c9d14b07cc0a36753797b9e9461f263e31b5bcc1e7c6d829dba3",
+    "url": "https://github.com/Gethe/wow-ui-source/blob/09b9db7948abc9b9648dedaab51eb0cf3ee67b31/Interface/AddOns/Blizzard_StaticPopup_Game/GameDialog.xml"
+  },
+  {
     "path": "Blizzard_RestrictedAddOnEnvironment/RestrictedFrames.lua",
     "commit": "09b9db7948abc9b9648dedaab51eb0cf3ee67b31",
     "gitBlob": "058dbd2cf0e547867865c0e117df0e11b5fe13ad",
@@ -68,6 +89,13 @@
     "gitBlob": "bf6fd2ed85ef4666828e6104cc8ef839068b49bf",
     "sha256": "2e2a6ea9fc246a351966ce29fdce69ae87330fd9e7400324885b409666f3829e",
     "url": "https://github.com/Gethe/wow-ui-source/blob/09b9db7948abc9b9648dedaab51eb0cf3ee67b31/Interface/AddOns/Blizzard_FrameXML/Mainline/StackSplitFrame.lua"
+  },
+  {
+    "path": "Blizzard_FrameXML/Mainline/StackSplitFrame.xml",
+    "commit": "09b9db7948abc9b9648dedaab51eb0cf3ee67b31",
+    "gitBlob": "878a9e67f2d724989698d51dd23d5f1fc4dd6dcc",
+    "sha256": "18413dff4a39cc6d449922b95aa6a03c9057dc3ff16523b1ea1217b41e33708a",
+    "url": "https://github.com/Gethe/wow-ui-source/blob/09b9db7948abc9b9648dedaab51eb0cf3ee67b31/Interface/AddOns/Blizzard_FrameXML/Mainline/StackSplitFrame.xml"
   },
   {
     "path": "Blizzard_FrameXML/Shared/CinematicFrame.lua",

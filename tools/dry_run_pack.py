@@ -25,7 +25,7 @@ def dry_run(pack, checksum):
     links = []
     for row in capture['links']:
         parts = PureWindowsPath(row['alias']).parts
-        if 'WTF' not in parts:
+        if 'WTF' not in parts or parts.index('WTF')==len(parts)-1:
             continue
         relative = Path(*parts[parts.index('WTF')+1:])
         target_parts = PureWindowsPath(row['target']).parts
@@ -69,6 +69,7 @@ def dry_run(pack, checksum):
         raise ValueError('Immutable reference drift')
     report = {'at': datetime.now(timezone.utc).isoformat(), 'status': 'passed', 'scope': str(scope),
         'packSHA256': checksum, 'sourceCommit': manifest['sourceCommit'],
+        'dryRunToolSHA256': sha(ROOT/'tools/dry_run_pack.py'),
         'addonFolders': len(manifest['addonFolders']), 'installedAddonFiles': len(current['files']),
         'referenceAddonFiles': len(code['files']), 'canonicalConfigurationFiles': len(config['files']),
         'characterLinksPreserved': len(config['links']), 'priorAddonMetadata': len(snapshot['priorAddonMetadata']),

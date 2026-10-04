@@ -1,0 +1,28 @@
+{
+  "at": "2026-10-04T10:54:38.126909+00:00",
+  "status": "passed",
+  "scope": "C:\\Users\\luisr\\Dev\\consoleport_forever\\scratch\\candidate-31mawe4d",
+  "packSHA256": "992321ed50e64b0b209320a278ab74c142ae06396b92ade03dcdd5cf579ffe7f",
+  "sourceCommit": "e7937e1e2972dcdc123cd7ab853fa9d75866918a",
+  "dryRunToolSHA256": "bb96ff4f47cc4943b51c663e4b0b169ee6bb66d69ac9a3f7be0691a13e7b5bb9",
+  "addonFolders": 40,
+  "installedAddonFiles": 3637,
+  "referenceAddonFiles": 3668,
+  "canonicalConfigurationFiles": 295,
+  "characterLinksPreserved": 42,
+  "priorAddonMetadata": 54,
+  "readOnlyPreview": true,
+  "backupVerified": true,
+  "configurationUntouchedByInstall": true,
+  "unrelatedAddonsPreserved": true,
+  "fullDisasterRestoreVerified": true,
+  "laterPlayBackupVerified": true,
+  "immutableReferencesUnchanged": true,
+  "installReceiptSHA256": "9dfaeb886edfc003bee5c0d955810bf293c8e47f00ef5904192807a7facf91cf",
+  "restoreReceiptSHA256": "d64db87daec691cef70d3facb37ef83b9d6fd86b7bb678a931a1807f14b19722",
+  "simulationBackupsRetained": [
+    "C:\\Users\\luisr\\Dev\\consoleport_forever\\scratch\\candidate-31mawe4d\\_retail_\\CPFBackups\\20261004T104128Z-b644daef13d7",
+    "C:\\Users\\luisr\\Dev\\consoleport_forever\\scratch\\candidate-31mawe4d\\_retail_\\CPFBackups\\20261004T104824Z-04a2b0dad427"
+  ],
+  "limitation": "Copied snapshot plus recreated repository-local junctions only; no live writes or Retail/client execution."
+}

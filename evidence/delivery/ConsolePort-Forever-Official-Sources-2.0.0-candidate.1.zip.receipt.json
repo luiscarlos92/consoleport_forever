@@ -1,0 +1,11 @@
+{
+  "path": "ConsolePort-Forever-Official-Sources-2.0.0-candidate.1.zip",
+  "sha256": "2e9df5115d5976d86250aac2596722d1aa5ebb91002f8da2cbd1615cce4efb36",
+  "bytes": 1093147,
+  "sourceCommit": "e7937e1e2972dcdc123cd7ab853fa9d75866918a",
+  "assemblyComplete": false,
+  "dependencyPackages": 18,
+  "requiredAddonFolders": 40,
+  "localPersonalUseOnly": true,
+  "redistributionApproved": false
+}

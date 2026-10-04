@@ -1,0 +1,23 @@
+{
+  "version": "2.0.0-candidate.1",
+  "packSourceCommit": "e7937e1e2972dcdc123cd7ab853fa9d75866918a",
+  "baselineCommit": "15a191ab06b6d4562d63761116ca2c248150c3cc",
+  "dependencyLockSHA256": "f495048cd9c84670c6087d109406691b0dd45c964a6b2d7ffc8eb286b6495201",
+  "runtimeSuites": 32,
+  "toolingTests": 21,
+  "packageSourceWindowsCI": {
+    "id": 37195912442,
+    "conclusion": "success"
+  },
+  "fullCopiedReferenceRehearsal": {
+    "status": "passed",
+    "report": "dry-run-992321ed50e64b0b.json",
+    "sha256": "4cad3a6c0939b97e5eee3e9ffed1f98ebe44126eb5fd4dc29924eb43f3316f32"
+  },
+  "officialNetworkReproductionSHA256": "7f7618d9a2f00ff3eaa769a7e18a4367b37a647601bc6fee6c0ca141f231c18b",
+  "manifestSHA256": "f228b23ba120d6b6d161b68d4136e58621e52c45739c32adaa4580ed3b0dbf48",
+  "actualRetailAcceptance": "pending",
+  "actualInstallationPerformed": false,
+  "publicRedistributionApproved": false,
+  "preciseFeatureGatesRemainPending": true
+}

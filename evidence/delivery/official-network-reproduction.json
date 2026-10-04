@@ -1,0 +1,20 @@
+{
+  "status": "passed",
+  "scope": "C:\\Users\\luisr\\Dev\\consoleport_forever\\scratch\\delivered-assembly-bx99jclo",
+  "sourceCommit": "e7937e1e2972dcdc123cd7ab853fa9d75866918a",
+  "recipeSHA256": "2e9df5115d5976d86250aac2596722d1aa5ebb91002f8da2cbd1615cce4efb36",
+  "deliveredStandaloneScripts": true,
+  "freshOfficialDownloads": 18,
+  "allPackFileBytesIdentical": true,
+  "manifestDifference": "Assembly timestamp and resulting archive SHA only",
+  "networkReceipt": {
+    "path": "official-network-pack.zip",
+    "sha256": "ba105c3146a93550ba2952f861716d5e2175cf91c2f96125c4589481158cd913",
+    "bytes": 45354525,
+    "sourceCommit": "e7937e1e2972dcdc123cd7ab853fa9d75866918a",
+    "addonFolders": 40,
+    "dependencyLockSHA256": "f495048cd9c84670c6087d109406691b0dd45c964a6b2d7ffc8eb286b6495201",
+    "personalUseOnly": true,
+    "runtimeAcceptance": "Pending the H8 Retail client checklist."
+  }
+}

@@ -1,6 +1,6 @@
-# Implementation checkpoint — October 3, 2026
+# Implementation checkpoint — October 4, 2026
 
-Implementation is underway and remains incomplete. Work is confined to `C:\Users\luisr\Dev\consoleport_forever`. Neither live WoW tree has been edited, installed into or launched. The user will request installation later. H0–H8 of MASTER-PLAN.md remain the authority.
+Authorized build-only delivery is recorded: personal candidate 2.0.0-candidate.1 plus official-source recipe. Exact parity gates and all actual Retail acceptance remain pending. Work is confined to `C:\Users\luisr\Dev\consoleport_forever`. Neither live WoW tree has been edited, installed into or launched. The user will request installation later. H0–H8 of MASTER-PLAN.md remain the authority.
 
 ## Retained baseline and repository
 
@@ -11,7 +11,7 @@ Implementation is underway and remains incomplete. Work is confined to `C:\Users
 
 ## Runtime foundation milestone
 
-The TOC now loads the replacement modules, with the new bootstrap last. Old Layout/Bindings/Profile source files remain as migration evidence but are no longer loaded. Product version is explicitly `2.0.0-dev`; it is not an installable release claim.
+The TOC now loads the replacement modules, with the new bootstrap last. Old Layout/Bindings/Profile source files remain as migration evidence but are no longer loaded. At this earlier foundation milestone the product version was `2.0.0-dev`. The final candidate/version and delivery are recorded below.
 
 - Core, Store schema 3, field Plan, durable Transactions, BindingPolicy, ModePolicy, scoped UI Ownership, Diagnostics, Capability and runtime Baseline are implemented. Unknown schemas/anonymous GUIDs/malformed store fields defer safely. Legacy backups are retained; shared flat character data does not confer acceptance on a new GUID.
 - A readiness-driven coordinator and native StaticPopup review replace the legacy eager preset installer. Loading the addon does not change settings or bindings. Review captures current runtime layout, native keyboard/controller bindings, active Edit Mode and selected flat settings. Decline writes no configuration. Combat/Edit Mode postpone protected writes, and all reviewed fields are rechecked before an accepted queued plan can apply.
@@ -169,7 +169,7 @@ License terms require an official-source assembly mechanism for DBM, Plater and 
 
 Python and Node tooling writers now guard canonical/lexical output ancestors, rejecting junctions/symlinks and immutable reference/fixture destinations. Simulations use fresh repository scratch copies only; tests include an alias pointing to a disposable fake target and prove it stays unchanged.
 
-## Continue next
+## Earlier continuation steps (superseded by final delivery)
 
 1. Check account five-hour usage and Git status. Continue only in the isolated repo, without deployment or launching WoW. Commit/push coherent tested milestones on main.
 2. SecureModes now has the native extension above. Continue integration/edge-case coverage, especially missing exit/overflow route handling, family transitions, held owner changes/disconnects and real-game taint/empowered proofs. These remain pending acceptance. Do not replace the global Pager with a constant page or infer possessed-pet paging.
@@ -207,7 +207,7 @@ Begin the next run with current five-hour usage, this checkpoint and Git status.
 - cd4614dc1d1df2e424a84012ffccc04eb4c35834: matching packaged migration audit, native resolved presentation/Masque lifecycle and reviewed LiteMount binding icons, CONFIG_REVISION 10. Pushed; fresh Windows CI 37184286320 green.
 - Final local closure report: evidence/test-results/third-run-close.json. Thirty Node/Lua suites and nine Python suites pass; all 18 pinned packages verify network-free. Product/tooling/lock hashes match the committed milestone. Its parent-HEAD report provenance is separate from exact tested file hashes. Native contracts: 38 pinned Blizzard files, 27 exact CP files and 20 integration files; immutable current-version Masque reference is hash-qualified separately. Final handoff commit follows this tested milestone on main.
 
-### Fourth-run priority and concrete remaining work
+### Earlier fourth-run priorities (historical)
 
 1. Read H0–H8/checkpoint, inspect Git and check five-hour account usage first. Reuse this repository/main only. No new copy, live writes, installation, game launch, immutable fixture edits, reset credit or preference questions.
 2. Finish the five additional native side bars (MultiBarLeft, MultiBarRight, MultiBar5, MultiBar6, MultiBar7) from the migration ledger. Runtime currently hides bags/micro strip, with editor handling; do not claim this implements the entire old Mainline patch. Inspect current native visibility/Edit Mode/combat ownership before choosing a reversible reviewed approach. Keep native Config access restored by clean upstream. Do not unregister native events or replace another visibility owner speculatively.
@@ -249,3 +249,21 @@ Install/Restore/Verify/Assemble tools use read-only defaults, independently supp
 Thirty-two Node/Lua suites and twenty-one Python tooling tests pass. Exact source reports: evidence/test-results/candidate-preparation.json and candidate-tooling.json. T28/T29 simulations include traversal/digest/source integrity, read-only PowerShell entry point, running check, root/stage/current/backup drift, copy/promotion/rollback failure, abrupt interruption after rename, reversible retirement, known code-only and explicit disaster restore, retained later play, and 42 repository-local character junctions with fake Interface/WTF anchor resolution. No actual executable was run; the real-anchor branch used an inert fake file in a separately guarded fresh scratch root. Python and PowerShell tools parse. All 18 pinned cached packages verify network-free and all 18 official archives were additionally fetched fresh and checked against archive/every-file hashes (pinned-official-downloads.json); the Windows CI now includes that explicit locked network stage.
 
 Next: commit/push this tested coherent preparation milestone, build from its clean pushed identity, run the complete ZIP through tools/dry_run_pack.py on fresh immutable-reference copies with recreated local 42-link topology, record receipts/delivery provenance, update the master/checkpoint and pause this heartbeat when build-only delivery finishes. Candidate artifacts have not yet been built at this preparation checkpoint. Precise gesture/selector/LM_B2/other-scroll gates and all Retail H8 acceptance remain pending.
+
+
+## Final build-only delivery and continuation boundary
+
+All authorized independent build work is delivered for the approved personal setup. Source milestone e7937e1e2972dcdc123cd7ab853fa9d75866918a is pushed on main; Windows CI 37195912442 passed, including fresh locked official downloads, 32 runtime/source suites and 21 tooling tests. The final isolated rehearsal helper correction is source-tested again: fourth-run-close.json and fourth-run-tooling-close.json record exact current hashes/parent HEAD. All 18 cached packages verified network-free after that correction. No delivered addon/script bytes changed from the e7937e1 package source.
+
+Artifacts in dist/2.0.0-candidate.1:
+- Personal UI ZIP: 45,354,525 bytes, SHA-256 992321ed50e64b0b209320a278ab74c142ae06396b92ade03dcdd5cf579ffe7f.
+- Official-source recipe ZIP: 1,093,147 bytes, SHA-256 2e9df5115d5976d86250aac2596722d1aa5ebb91002f8da2cbd1615cce4efb36.
+- Exact receipts and packaged manifest are committed under evidence/delivery; docs/DELIVERY.md is the delivery index. Neither restricted full ZIP nor dependency cache was published in Git.
+
+The full package verifies 3,696 files/40 current addon folders and 18 pinned official packages, lock SHA f495048cd9c84670c6087d109406691b0dd45c964a6b2d7ffc8eb286b6495201. Current clean ConsolePort is 3.3.5. Local personal assembly review includes 38 exact upstream notices and scoped supplemental notices; public redistribution approval remains false. Delivered standalone recipe scripts fetched every exact official archive fresh and reproduced all pack file bytes. The independent archive differs only by assembly timestamp/SHA; official-network-reproduction.json records it.
+
+The complete ZIP rehearsal passed on fresh guarded copies of the original immutable addon/configuration snapshots, with all 42 recreated repository-local character junctions preserved. It verified read-only preview, full backup (3,668 prior addon files, 295 canonical configuration files, 54 prior TOC metadata records), current code promotion, two explicit native-non-Retail folder retirements, unrelated-addon survival and no configuration writes by install. A later Config.wtf change was simulated only in the scratch copy; explicit disaster restore first retained that later play in a new full current backup, then restored the original code/configuration byte-for-byte. Both operation backups and parked folders remain. References were hashed before/after and remain unchanged. Full report: evidence/delivery/dry-run-992321ed50e64b0b.json. The root WTF anchor is excluded from character-link counting; fixed rehearsal tool SHA bb96ff4f47cc4943b51c663e4b0b169ee6bb66d69ac9a3f7be0691a13e7b5bb9.
+
+All real Retail hardware/secure/combat/taint/visual/persistence/A-B-A/rollback tests remain pending. Independent exact stick-return/close-and-continue, one-success Circle, active ring cancellation, learned selector/new pet activation, transient 0.5-second loot hold, held cinematic skip, missing LM_B2 icon and other unaudited scrolling retain baseline/pending reasons. Do not substitute opener hold/release, combined cancellation, guessed icons or timer-based protected actions. Native BetterBags integration notice and native upstream migrations are disclosed.
+
+Next action belongs to the user: request installation later and conduct it together carefully, starting with docs/INSTALLATION.md read-only preview and the single H8 checklist in docs/ACCEPTANCE.md. No live game paths have been edited or installed into, no executable launched, no immutable references changed and no reset credit consumed. Pause the existing continuation heartbeat after final evidence is committed/pushed; do not continue old superseded priorities or regenerate artifacts absent new authorization. Preserve the baseline and all backups. Future user-authorized build revisions still require account five-hour monitoring and the reset-plus-five-minute graceful-close policy.

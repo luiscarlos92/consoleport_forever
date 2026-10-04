@@ -1,0 +1,18 @@
+# Personal build delivery: 2.0.0-candidate.1
+
+The candidate ZIP and official-source recipe are retained locally in `C:\Users\luisr\Dev\consoleport_forever\dist\2.0.0-candidate.1`. They were assembled from clean tested pushed source commit **e7937e1e2972dcdc123cd7ab853fa9d75866918a**. StoreSchema is **3**, configuration revision **11**. The untouched installed baseline remains **15a191ab06b6d4562d63761116ca2c248150c3cc**.
+
+| Artifact | Size | SHA-256 |
+| --- | --- | --- |
+| ConsolePort-Forever-UI-Pack-2.0.0-candidate.1.zip | 45,354,525 bytes | `992321ed50e64b0b209320a278ab74c142ae06396b92ade03dcdd5cf579ffe7f` |
+| ConsolePort-Forever-Official-Sources-2.0.0-candidate.1.zip | 1,093,147 bytes | `2e9df5115d5976d86250aac2596722d1aa5ebb91002f8da2cbd1615cce4efb36` |
+
+Exact separate receipts and the complete packaged manifest are committed in `evidence/delivery`. The full ZIP verifies 3,696 files and 40 addon folders, using 18 pinned official packages and 38 exact upstream notice files plus disclosed supplemental notices. Its dependency lock SHA-256 is `f495048cd9c84670c6087d109406691b0dd45c964a6b2d7ffc8eb286b6495201`. All native runtime Lua/XML/media/library files remain unpatched. Three unloaded historical companion sources and two non-runtime upstream helpers are omitted with exact hashes/reasons. Two retired non-Retail DBM folders are disclosed separately in the install preview and reversibly parked, rather than retained as stale active package code.
+
+The official-source recipe has no dependency addon code and cannot be installed directly. Its delivered standalone assembly tools fetched all 18 exact official archives afresh and reproduced every pack file byte-for-byte. Only the assembly timestamp and resulting ZIP SHA differ between reproductions; the deterministic file inventory/content agree. `official-network-reproduction.json` records the independent result. The personal full ZIP stays local; public redistribution approval has not been granted.
+
+Preparation passed 32 runtime/source suites and 21 tooling tests, plus locked cached verification and fresh official archive/every-file verification. Fresh Windows CI for the package source passed [run 37195912442](https://github.com/luiscarlos92/consoleport_forever/actions/runs/37195912442). Exact preparation reports are `evidence/test-results/candidate-preparation.json`, `candidate-tooling.json` and `pinned-official-downloads.json`. Reports retain their pre-commit parent HEAD separately from the exact file hashes. A later correction to the repository-only full-rehearsal helper excludes the root WTF anchor when counting 42 character links; it changes no delivered game/script bytes. Final rehearsal/closure evidence is recorded separately.
+
+Read `docs/INSTALLATION.md` for later preview/install/restore/recovery, and `docs/ACCEPTANCE.md` for the single H8 checklist and independent precise gates. Exact stick-return, one-success Circle, active-entry cancellation, learned selector/pet activation, exact transient loot hold and held cinematic skip remain unproved. LM_B2's missing native icon and other unaudited scroll widgets retain their baseline. All actual Retail controller/secure/combat/taint/rendering/native persistence and A→B→A acceptance remain pending.
+
+No actual installation, live code/configuration edit, game launch or reset credit use occurred. The next user action is to request the installation session when ready; the delivered tools remain read-only until that later explicit execution. Implementation continuation stops after the build-only delivery and its disposable-copy rehearsal are recorded, with the heartbeat paused.

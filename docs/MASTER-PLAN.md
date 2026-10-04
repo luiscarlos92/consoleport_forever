@@ -2,7 +2,7 @@
 
 Prepared: 2026-10-03  
 Updated with user clarifications: 2026-10-03  
-Status: Implementation underway in isolated Git checkout; original baseline committed/pushed. Runtime/bootstrap, secure modes, binding-bank recovery/restore, review, GUID manual rings, native popup/quantity/window/scroll/BetterBags/map/quest-detail controls, current flat integration settings and DynamicCam copies pass offline/source contracts. Matching packaged patch audit and native presentation/LiteMount icon adapters are implemented. Reviewed native side-bar visibility and personal notice review are source-tested. The current dependency target is ConsolePort 3.3.5 after the final stable-source recheck. Exact protected gestures remain separately gated; official-source assembly, guarded pack/install/restore tooling and candidate delivery remain. All actual Retail acceptance is pending. See IMPLEMENTATION-STATUS.md for exact milestones and continuation.
+Status: Build-only personal candidate delivery recorded on October 4: version 2.0.0-candidate.1, StoreSchema 3, configuration revision 11. Runtime/bootstrap, secure modes, ownership/review/restore, GUID manual rings, contextual adapters, native visibility/presentation and current ConsolePort 3.3.5 contracts pass offline tests. Local personal ZIP and official-source recipe are built/verified, with full copied-reference backup/install/restore rehearsal and 42 local junctions preserved. Exact gesture/selector/icon/scroll gates and all actual Retail acceptance remain pending. No live installation, game launch or saved-file edit occurred; installation will be requested together later. See docs/DELIVERY.md and the final IMPLEMENTATION-STATUS.md entry for exact provenance.
 Companion addon: `ConsolePort_Forever`
 
 **Target game: World of Warcraft Retail.** Forever is the behavior/layout reference; this companion runs with Retail ConsolePort. Forever-only CVars, storage and restricted APIs are evidence, not APIs to assume exist in Retail.
@@ -81,7 +81,7 @@ Installed versions remain the migration/reference baseline, **not the implementa
 
 Evidence: `Forever-Design-2026-10-03/handoff-pass/upstream-releases.json` records GitHub API results, asset URLs/digests and explicit 404s; `current-source-check.json` records source HEADs and downloaded package checks. The ConsolePort and BetterBags release ZIPs were downloaded only to evidence, extracted outside live WoW and verified against GitHub SHA-256 digests:
 
-- ConsolePort: `4e5e464b5cc0de3b0ae9efead1a57ad04da0ff3572492cbede1d0617dd3f4f6f`.
+- Current ConsolePort 3.3.5: `64d653aaccca1421fd884b03bd00d2485d0190dc3e95bc79eec8cb676aa23e45`. The initial design-pass 3.3.3 asset hash `4e5e464b5cc0de3b0ae9efead1a57ad04da0ff3572492cbede1d0617dd3f4f6f` remains historical evidence only.
 - BetterBags: `16c1ac70c4de2e7f2cfdbf4d2b5f3d3f44514a3f9ecf1040e29c790e8be8c0d7`.
 
 Implement `tools/Resolve-Dependencies.ps1` (or equivalent single documented entry point), `dependencies/sources.json`, `dependencies/lock.json`, `tools/Build-Pack.ps1`, and dependency audit evidence. Lock entries contain package identity, source/project/file ID, stable channel, game flavor, version/tag/commit, asset URL, retrieval time, expected/actual SHA-256, addon folders, TOC interface/dependencies and license/provenance. Map every installed addon folder to a package. Include libraries/media and reject unresolved required dependencies, duplicate folder ownership, unexpected folder names, escaping ZIP members, executable installers and source placeholders such as `@project-version@` in final package metadata.
@@ -250,6 +250,14 @@ Final user checklist, with expected result and diagnostic command on failure:
 10. DynamicCam, Immersion/ExtraFade and other managed configurations persist; manual edits survive a later update with conflict review where needed. Test `/cpf restore` on the chosen backup and confirm code/config compatibility before treating rollback as accepted.
 
 Report runtime results separately from offline tests. On failures, request the checklist item, `/cpf diagnose` output and precise class/spec/action/context in a later feedback chat; no questions are required to complete the upcoming implementation/build chat.
+
+### H8 build-only delivery record — October 4, 2026
+
+Personal candidate 2.0.0-candidate.1 and its official-source recipe were built from clean tested pushed commit e7937e1e2972dcdc123cd7ab853fa9d75866918a. The full ZIP SHA-256 is 992321ed50e64b0b209320a278ab74c142ae06396b92ade03dcdd5cf579ffe7f; its 40 addon folders use 18 current pinned official packages. Package/runtime closure, exact notices and source/ZIP/test receipts are in evidence/delivery. Public redistribution remains unapproved. The recipe fetched all 18 exact official archives using its delivered standalone tools and reproduced every pack file byte; only assembly timestamp/archive SHA differs.
+
+Thirty-two runtime/source suites and twenty-one tooling tests pass; Windows CI 37195912442 is green. Full candidate rehearsal used fresh immutable-reference copies under guarded repository scratch, recreated all 42 character links, verified full backup/promotion/retirement/restoration and preservation of later play in a fresh backup, and proved references unchanged. Exact report: evidence/delivery/dry-run-992321ed50e64b0b.json. StoreSchema 3 and CONFIG_REVISION 11 are independent from code version. The isolated rehearsal helper required a root-WTF-anchor counting correction; it changes no delivered game/script bytes and its exact hash is recorded.
+
+This fulfills the authorized build-only delivery; no actual installation or game launch took place. The user will request the installation session later. Preserve the precise independent feature gates and actual Retail H8 checklist above as pending. Do not describe offline/source verification as secure-engine or visual acceptance. Read docs/INSTALLATION.md, docs/ACCEPTANCE.md and docs/DELIVERY.md for the later careful session. The continuation heartbeat is paused after final evidence is pushed.
 
 ### H9. Validation actually performed in this design pass
 

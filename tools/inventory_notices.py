@@ -10,11 +10,11 @@ from resolve_dependencies import verify
 
 def classify(name, data):
     basename = PurePosixPath(name).name
-    if re.match(r'^(?:licen[sc]e|copying|copyright|notice)(?:[._-]|$)', basename, re.I):
+    if re.search(r'licen[sc]e|^(?:copying|copyright|notice|[la]?gpl)(?:[ ._-]|$)|^creative commons', basename, re.I):
         return 'notice-file'
     if name.lower().endswith(('.lua', '.xml', '.toc', '.md', '.txt')):
         header = data[:12000].decode('utf-8-sig', errors='replace')
-        if re.search(r'copyright|all rights reserved|permission is hereby granted|licensed under', header, re.I):
+        if re.search(r'copyright|all rights reserved|permission is hereby granted|licen[sc]e[ :]|licensed under|public domain|redistribution', header, re.I):
             return 'embedded-notice-source'
     return None
 

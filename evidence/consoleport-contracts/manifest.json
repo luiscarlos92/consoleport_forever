@@ -1,7 +1,7 @@
 {
-  "version": "3.3.3",
-  "releaseURL": "https://github.com/seblindfors/ConsolePort/releases/tag/3.3.3",
-  "packageSHA256": "4e5e464b5cc0de3b0ae9efead1a57ad04da0ff3572492cbede1d0617dd3f4f6f",
+  "version": "3.3.5",
+  "releaseURL": "https://github.com/seblindfors/ConsolePort/releases/tag/3.3.5",
+  "packageSHA256": "64d653aaccca1421fd884b03bd00d2485d0190dc3e95bc79eec8cb676aa23e45",
   "purpose": "Exact unmodified source audit/test contracts; not deployed dependency copies.",
   "files": [
     {
@@ -22,7 +22,7 @@
     },
     {
       "path": "ConsolePort/Controller/Layers.lua",
-      "sha256": "78c122eb3f29e09cfe40a90fa1a3cf1e07ef9640970a97a7e434e1b6a227dd83"
+      "sha256": "1606b7953f8fe1ed52bafc94ef33941fed91d4609aefe0aa782109acbc4cfc7d"
     },
     {
       "path": "ConsolePort/Libs/External/LibActionButton-1.0/LibActionButton-1.0.lua",
@@ -94,7 +94,7 @@
     },
     {
       "path": "ConsolePort/Controller/Modules.lua",
-      "sha256": "e822d15b1670260a717115b527d1272851fa49af4c3fe52f96b92b4af8b67b9a"
+      "sha256": "fa5c9922d40e34571dcefafccc122805166b49a06db36f5ca6d82b75078ea53b"
     },
     {
       "path": "ConsolePort_Menu/View/Popup/ItemMenu.lua",
@@ -111,6 +111,22 @@
     {
       "path": "ConsolePort_Bar/Controller/Manager/Manager.lua",
       "sha256": "adebeb4416575936b5092cbc605eeb2ae65460b5e1bcef9e083f09d7ed1f6367"
+    },
+    {
+      "path": "ConsolePort/Model/Gamepad/Gamepad.lua",
+      "sha256": "465e33ffcfabe616d847a8c1bf71cb560850e6a9b4e8d4be26f1fddb4017e901"
+    },
+    {
+      "path": "ConsolePort_Keyboard/View/Keyboard.lua",
+      "sha256": "0c73e5fe49f249d1dc1492b7f77e95503ff055794cf6d23077e22a3f6f0ec9de"
+    },
+    {
+      "path": "ConsolePort_Menu/Controller/UnitMenu.lua",
+      "sha256": "65da2c214c24c1a3f56d37e8407083b7566fdb2519909abe0d4f6ec571009797"
+    },
+    {
+      "path": "ConsolePort/Utils/Macro.lua",
+      "sha256": "dc517ad6e4528aaaf418e478f3bbdc32c3cc08bfb6a35f19db72401e73dad4e2"
     }
   ]
 }

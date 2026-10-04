@@ -113,7 +113,7 @@ api.MerchantFrame=MerchantFrame api.BankFrame=BankFrame api.MailFrame=MailFrame 
 local closed=0
 paneA.CloseButton=CreateFrame('Button','NativeBagClose',paneA)
 paneA.CloseButton:SetScript('OnClick',function() assert(hardware) closed=closed+1 end)
-contexts:Enable({db=db,api={version='3.3.3'}},api,true,true,true)
+contexts:Enable({db=db,api={version='3.3.5'}},api,true,true,true)
 cursor:SetCurrentNode(item.button)
 assert(contexts.context.token=='native-bag-item' and contexts.context.routes.PAD1==item.button)
 press(input.Widgets.PAD1,true) press(input.Widgets.PAD1,false) assert(pickups==1)
@@ -166,5 +166,5 @@ itemGUID=oldGUID api.issecretvalue=nil contexts:Refresh()
 press(input.Widgets.PAD3,true) combat=true contexts:Refresh() press(input.Widgets.PAD3,false) assert(uses==3)
 combat=false contexts:Refresh()
 assert(Addon.Diagnostics.features.bagHold.status=='pending')
-assert(contexts:Enable({db=db,api={version='3.3.3'}},api,false))
+assert(contexts:Enable({db=db,api={version='3.3.5'}},api,false))
 TEST_SUCCESS=true

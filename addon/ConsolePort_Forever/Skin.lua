@@ -12,7 +12,7 @@ end
 function Addon:ResolvedPresentationBinding(button)
     if button._state_type~='custom' or not button.GetAttribute or button:GetAttribute('cpf-held') then return end
     local bridge=self.adapters and self.adapters.consoleport
-    if not bridge or bridge.api.version~='3.3.3' then return end
+    if not bridge or bridge.api.version~='3.3.5' then return end
     local manager=bridge.bar and bridge.bar.Manager
     if not manager or type(manager.GetBindings)~='function' then return end
     local state=button:GetAttribute('state')

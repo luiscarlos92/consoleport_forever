@@ -1,0 +1,2249 @@
+{
+  "lockSHA256": "f495048cd9c84670c6087d109406691b0dd45c964a6b2d7ffc8eb286b6495201",
+  "noticeInventorySHA256": "bdf0e775ef63bd2789326036067d7c8c1006934d9868ddd607b1f7fdaa24afb0",
+  "localPersonalAssemblyReviewComplete": true,
+  "publicRedistributionApproved": false,
+  "scope": "All third-party dependencies use official-source local assembly. This inventory is not a license grant or approval to publish dependency code or media.",
+  "media": "Own unchanged baseline BLPs and exact current upstream/client media remain qualified by media.json; public image/font/audio rights and actual rendering are not inferred.",
+  "packages": [
+    {
+      "repo": "Cidan/BetterBags",
+      "version": "v0.5.14",
+      "mainTerms": "MIT",
+      "officialRelease": "https://github.com/Cidan/BetterBags/releases/tag/v0.5.14",
+      "noticeFiles": [
+        {
+          "source": "BetterBags/LICENSE",
+          "sha256": "b92215e6fb3d24dbe22b524d917465340aa22a8e9e018f24986554a902026bec",
+          "copy": "evidence/dependencies/notices/Cidan__BetterBags/BetterBags/LICENSE"
+        },
+        {
+          "source": "BetterBags/libs/WagoAnalytics/LICENSE",
+          "sha256": "ccdd055ace13a16bd6a059586aba1f3a9037bd394a593d0a98bf28912877f075",
+          "copy": "evidence/dependencies/notices/Cidan__BetterBags/BetterBags/libs/WagoAnalytics/LICENSE"
+        }
+      ],
+      "embeddedNoticeSources": [
+        {
+          "source": "BetterBags/BetterBags.toc",
+          "sha256": "3fc1337a2b8721bdaa02211fc8f74a70b3fb82551c5d27672c5dffd6023eab5f",
+          "declarations": [
+            "## X-License: MIT\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "BetterBags/BetterBags_Camelot.toc",
+          "sha256": "69bf987c43774500a22292338fad2124be5ca0093a17f02e7863e18ac3cd5a64",
+          "declarations": [
+            "## X-License: MIT\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "BetterBags/BetterBags_Mists.toc",
+          "sha256": "bf7f61a8b1be18e1095e7073f75d2fb61d70a31d6b4b6b41975fd651ff006acc",
+          "declarations": [
+            "## X-License: MIT\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "BetterBags/BetterBags_TBC.toc",
+          "sha256": "82e23179b31d9e92e051cffac4829f2146ac376c1379e44be2f950635acbe287",
+          "declarations": [
+            "## X-License: MIT\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "BetterBags/BetterBags_Vanilla.toc",
+          "sha256": "b31311160eb8c052814bfaa68e6639c77852697b77749967bb82ff2e50042338",
+          "declarations": [
+            "## X-License: MIT\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "BetterBags/libs/LibSharedMedia-3.0/LibSharedMedia-3.0.lua",
+          "sha256": "db6c60a0cdca4921d35c9a27225ae16f28187dac5a4866c2d75240c3226373f9",
+          "declarations": [
+            "License: LGPL v2.1\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "BetterBags/libs/LibStub/LibStub.lua",
+          "sha256": "6000f58d740eaa2b4a006c1dabb0366f0321fc687bab9e85d97d040a1fd42dab",
+          "declarations": [
+            "-- LibStub is hereby placed in the Public Domain Credits: Kaelten, Cladhaire, ckknight, Mikk, Ammo, Nevcairiel, joshborke\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "BetterBags/libs/LibStub/LibStub.toc",
+          "sha256": "e01f590f6dfb5419595b640e6b5391092b5e39f8581d010adb9d852f4a30578d",
+          "declarations": [
+            "## X-License: Public Domain\t\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "BetterBags/libs/LibWindow-1.1/LibWindow-1.1.lua",
+          "sha256": "40d80952d2a1c9b8a8d25786887cc049159e64b01c2737a4416ec55aa4ab74a0",
+          "declarations": [
+            "License: Public Domain\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        }
+      ],
+      "standaloneNoticeAbsent": false,
+      "supplemental": [],
+      "assembly": "Fetch exact official package for this user and retain all original source/media/notice bytes.",
+      "publicRedistributionApproved": false
+    },
+    {
+      "repo": "seblindfors/Immersion",
+      "version": "1.4.61",
+      "mainTerms": "Artistic-2.0",
+      "officialRelease": "https://github.com/seblindfors/Immersion/releases/tag/1.4.61",
+      "noticeFiles": [
+        {
+          "source": "Immersion/LICENSE.md",
+          "sha256": "fbe474bab315f2856f8f393d5273f97eb956d7f93e8f6405b71230c2605d5a2b",
+          "copy": "evidence/dependencies/notices/seblindfors__Immersion/Immersion/LICENSE.md"
+        }
+      ],
+      "embeddedNoticeSources": [],
+      "standaloneNoticeAbsent": false,
+      "supplemental": [],
+      "assembly": "Fetch exact official package for this user and retain all original source/media/notice bytes.",
+      "publicRedistributionApproved": false
+    },
+    {
+      "repo": "xod-wow/LiteMount",
+      "version": "12.1.0-1",
+      "mainTerms": "GPL-2.0; bundled MountsRarity declares GPL-3.0",
+      "officialRelease": "https://github.com/xod-wow/LiteMount/releases/tag/12.1.0-1",
+      "noticeFiles": [
+        {
+          "source": "LiteMount/LICENSE.txt",
+          "sha256": "189b1af95d661151e054cea10c91b3d754e4de4d3fecfb074c1fb29476f7167b",
+          "copy": "evidence/dependencies/notices/xod-wow__LiteMount/LiteMount/LICENSE.txt"
+        },
+        {
+          "source": "LiteMount/Libs/LibDeflate/LICENSE.txt",
+          "sha256": "d789a4b3d104bb9f559b2f19048d356c67ea695dde4b1748f900ccb210a42450",
+          "copy": "evidence/dependencies/notices/xod-wow__LiteMount/LiteMount/Libs/LibDeflate/LICENSE.txt"
+        },
+        {
+          "source": "LiteMount/Libs/MountsRarity-2.0/LICENSE",
+          "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986",
+          "copy": "evidence/dependencies/notices/xod-wow__LiteMount/LiteMount/Libs/MountsRarity-2.0/LICENSE"
+        }
+      ],
+      "embeddedNoticeSources": [
+        {
+          "source": "LiteMount/ActionButton.lua",
+          "sha256": "acaeb25d5f7a38f7e25a29ac4866dbfbac8a93d2af007c9a28408dd243311d45",
+          "declarations": [
+            "  Copyright 2011 Mike Battersby\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "LiteMount/Actions.lua",
+          "sha256": "027c73b70f44efae1503ed0efbe585f8c8f634b9835cf116a9abbbc4dcaec092",
+          "declarations": [
+            "  Copyright 2011 Mike Battersby\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "LiteMount/AutoEventFrame.lua",
+          "sha256": "8a51a1d55d0899cfa35f353be95e329e43806d7eb6bdc7050c451c553fea6db3",
+          "declarations": [
+            "  Copyright 2011 Mike Battersby\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "LiteMount/Bindings.xml",
+          "sha256": "f2d51644f358accec7e25e3a55ddb75a06eac76a2dc861dadace6a5f8c26ba75",
+          "declarations": [
+            "  Copyright 2011 Mike Battersby\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "LiteMount/Conditions.lua",
+          "sha256": "2a69de90c277a36164c17b4ddcb405cba11717537e72e46bd1894247a24438b6",
+          "declarations": [
+            "  Copyright 2011 Mike Battersby\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "LiteMount/Core.lua",
+          "sha256": "7f1826f205c441912dbe7af0898c6902301bd1bcfdab488a52e6bdc7ac25660f",
+          "declarations": [
+            "  Copyright 2011 Mike Battersby\r",
+            "  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "LiteMount/Developer.lua",
+          "sha256": "1386aec67f2bc6e7c341311b97244cf20ff3ffca4b6f14d8dcba52ed77f2afe9",
+          "declarations": [
+            "  Copyright 2011 Mike Battersby\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "LiteMount/Environment.lua",
+          "sha256": "fa076b2b2373d3786476bb464a606e668b98f914aebd6f36f926c38958f6e24c",
+          "declarations": [
+            "  Copyright 2011 Mike Battersby\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "LiteMount/Fonts/OFL.txt",
+          "sha256": "59e901eacdfd82d836d7a096c5b41885fbaea15a248f112e9dae430a4fbc085c",
+          "declarations": [
+            "\"Font Software\" refers to the set of files released by the Copyright\r",
+            "4) The name(s) of the Copyright Holder(s) or the Author(s) of the Font\r",
+            "COPYRIGHT HOLDER BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,\r",
+            "Copyright (c) 2012-2013, The Mozilla Corporation and Telefonica S.A.\r",
+            "Copyright Holder(s) and the Author(s) or with their explicit written\r",
+            "Copyright Holder. This restriction only applies to the primary font name as\r",
+            "Holder(s) under this license and clearly marked as such. This may\r",
+            "OF COPYRIGHT, PATENT, TRADEMARK, OR OTHER RIGHT. IN NO EVENT SHALL THE\r",
+            "SIL OPEN FONT LICENSE Version 1.1 - 26 February 2007\r",
+            "The goals of the Open Font License (OFL) are to stimulate worldwide\r",
+            "This Font Software is licensed under the SIL Open Font License, Version 1.1.\r",
+            "This license becomes null and void if any of the above conditions are\r",
+            "This license is copied below, and is also available with a FAQ at:\r",
+            "contains the above copyright notice and this license. These can be\r",
+            "copyright statement(s).\r",
+            "distributed by the Copyright Holder(s).\r",
+            "remain under this license does not apply to any document created\r",
+            "requirement for fonts to remain under this license does not apply\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "LiteMount/KeyBindingStrings.lua",
+          "sha256": "2eecf12706c3f2adf8b75c581686b72463df8565c870f2a46297c068d04529b9",
+          "declarations": [
+            "  Copyright 2011 Mike Battersby\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "LiteMount/LM_Drive.lua",
+          "sha256": "977cfbd60e3d891e5d5a5c4f27b9841c5b7323ff082a54826100c10810ba8d57",
+          "declarations": [
+            "  Copyright 2025 Mike Battersby\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "LiteMount/LM_GhostWolf.lua",
+          "sha256": "e685e67b2d7c3d028b5519b87d84152b8cfd37bdbb3c2aa4a3b3e4d77d0d7849",
+          "declarations": [
+            "  Copyright 2011 Mike Battersby\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "LiteMount/LM_ItemSummoned.lua",
+          "sha256": "2015ca32bde2b1084f66739948b99dbab5b8dafdad334e2c2c048c8d1679295f",
+          "declarations": [
+            "  Copyright 2011 Mike Battersby\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "LiteMount/LM_Journal.lua",
+          "sha256": "108062b811164cc129378b6ecdf9b54678877be207a7ab7acb48b275d83a905f",
+          "declarations": [
+            "  Copyright 2011 Mike Battersby\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "LiteMount/LM_Nagrand.lua",
+          "sha256": "5080eacdd5a6fe9b33bebc8a2ef5f88d4ec0f891fbba8fbff6998634511cb3eb",
+          "declarations": [
+            "  Copyright 2011 Mike Battersby\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "LiteMount/LM_RunningWild.lua",
+          "sha256": "5ec0f348f1dc7af44b47777b1a4c0eae2dbe8fffdc7107c233e6d5c217a3e6d6",
+          "declarations": [
+            "  Copyright 2011 Mike Battersby\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "LiteMount/LM_Soar.lua",
+          "sha256": "b68d1dec0393b9d82fe18fc24c413fc65952ed012f836af66875f6591bac1390",
+          "declarations": [
+            "  Copyright 2011 Mike Battersby\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "LiteMount/LM_Spell.lua",
+          "sha256": "22521e4db0ff23e2b292daa0c8c73ff8fa8878bac46e53cf67aac1ae7edea7df",
+          "declarations": [
+            "  Copyright 2011 Mike Battersby\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "LiteMount/LM_TravelForm.lua",
+          "sha256": "e1fb9c47e2fe941f69a5013313f1d7b1be7c5765efa83afca6abbbe3582b3dd5",
+          "declarations": [
+            "  Copyright 2011 Mike Battersby\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "LiteMount/Libs/LibDeflate/LibDeflate.lua",
+          "sha256": "b6cf1bdc38dfae0c2deadfcb2cbf4e53d9dee6fb8f0ad5a03820ccf3635b7195",
+          "declarations": [
+            "\tLicensed under GPLv2.\r",
+            "\tLicensed under zlib License. http://www.zlib.net/zlib_license.html\r",
+            "                       \" Copyright (C) 2018-2021 Haoqian He.\" ..\r",
+            "                       \" Licensed under the zlib License\"\r",
+            "  LibDeflate._COPYRIGHT = _COPYRIGHT\r",
+            "  local _COPYRIGHT = \"LibDeflate \" .. _VERSION ..\r",
+            "1. GNU General Public License Version 3 in v1.0.0 and earlier versions.\r",
+            "2. GNU Lesser General Public License Version 3 in v1.0.1\r",
+            "3. the zlib License since v1.0.2\r",
+            "@copyright LibDeflate <2018-2021> Haoqian He\r",
+            "@license zlib License\r",
+            "License History:\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "LiteMount/Libs/LibStub/LibStub.lua",
+          "sha256": "d34235c85f869505fdd9ef321d2420f69db7d2eb873d2b3bbf57584a314060fa",
+          "declarations": [
+            "-- LibStub is hereby placed in the Public Domain\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "LiteMount/Libs/LibStub/LibStub.toc",
+          "sha256": "d6ef350c07edf6be550c586e32473776e310d212bf39962cafee04a8d415405f",
+          "declarations": [
+            "## X-License: Public Domain\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "LiteMount/Libs/MountsRarity-2.0/MountsRarity.lua",
+          "sha256": "0e0a9754570de341a09a00b444a8174c6aafcafc04062efde8bf23766ecf6090",
+          "declarations": [
+            "  Copyright (c) 2023 S\u00f6ren Gade\r",
+            "  GNU General Public License for more details.\r",
+            "  it under the terms of the GNU General Public License as published by\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "LiteMount/Localization.lua",
+          "sha256": "b41c506c6942106e41dbd3cf256b673c9b0ef4f9705d90001a68364b8894c193",
+          "declarations": [
+            "  Copyright 2011 Mike Battersby\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "LiteMount/Macro.lua",
+          "sha256": "c4c50a286ab0942375c2e3424327839dd355aeabe8c7f22be2f0df9c15ef16d1",
+          "declarations": [
+            "  Copyright 2011 Mike Battersby\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "LiteMount/Mount.lua",
+          "sha256": "75a1cd80808ed8c8990b81ac1fb97b37a18117c72bdf776f8f47b78bf4ab5c44",
+          "declarations": [
+            "  Copyright 2011 Mike Battersby\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "LiteMount/MountDB/Localization.lua",
+          "sha256": "efd2bbf0d4566add2a3d5c9207b9fcf175ca29ef9d8cffdb4104c604d4c3e07e",
+          "declarations": [
+            "  Copyright 2011 Mike Battersby\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "LiteMount/MountDB/Model.lua",
+          "sha256": "22b0c8125871dfc95483c6482ca17f75e410712aa43dc6ff038212e81f9e4555",
+          "declarations": [
+            "  Copyright 2011 Mike Battersby\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "LiteMount/MountList.lua",
+          "sha256": "e9ab99213c9eb366408c030e2dcdfcfb33e6aaa862293e6d918f9698369fb9c4",
+          "declarations": [
+            "  Copyright 2011 Mike Battersby\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "LiteMount/MountRegistry.lua",
+          "sha256": "5dd288717e17987905c87ab7b894d4f497cd9944abc172e1e3aeb3824af4d6d2",
+          "declarations": [
+            "  Copyright 2011 Mike Battersby\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "LiteMount/Options.lua",
+          "sha256": "ab90a323a0d56498a35f0ac40533e68b4e8c4c6ae2f0dbfc07cfcc3599640df5",
+          "declarations": [
+            "  Copyright 2011 Mike Battersby\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "LiteMount/Print.lua",
+          "sha256": "53a2e7cd713390bcd42474ec60044d3bca3f40c72abe54828a97a27b38bf35da",
+          "declarations": [
+            "  Copyright 2011 Mike Battersby\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "LiteMount/Rule.lua",
+          "sha256": "a5a82cea7f070301c60214fa5d6b05ba85e6560c5d687e0c848ca187703c278b",
+          "declarations": [
+            "  Copyright 2011 Mike Battersby\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "LiteMount/RuleArguments.lua",
+          "sha256": "3c0ca4718282dd6b98a9e4798579cd861da0f4339111f7f8767bee1fd8328251",
+          "declarations": [
+            "  Copyright 2011 Mike Battersby\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "LiteMount/RuleBoolean.lua",
+          "sha256": "67a1f11fa059986f463c8f68706fb9faf9d6692eaeddf6f1e07f126af7e4d269",
+          "declarations": [
+            "  Copyright 2011 Mike Battersby\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "LiteMount/RuleSet.lua",
+          "sha256": "fb7809193718697902ce9edb675c68fd85b7718eaf794da7556fa4ef7ded5350",
+          "declarations": [
+            "  Copyright 2011 Mike Battersby\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "LiteMount/SecureAction.lua",
+          "sha256": "3e30232c53b314c97c10bbb0d85ff2d9c27d24c44fcb509dd4c5ff30d7c63645",
+          "declarations": [
+            "  Copyright 2011 Mike Battersby\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "LiteMount/SlashCommand.lua",
+          "sha256": "891e76abb8f6340e44ad8054d2a324328d90aa5a3c81a9d32495e11ffe62412a",
+          "declarations": [
+            "  Copyright 2011 Mike Battersby\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "LiteMount/SpellInfo.lua",
+          "sha256": "7d8d74d40843d1f5dac7c6d43efec17eb326f651f0e482cca7668258e229b8e5",
+          "declarations": [
+            "  Copyright 2011 Mike Battersby\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "LiteMount/TableUtil.lua",
+          "sha256": "647cda883207d20825b8d24f5bad263029fc42fbdee709384e9090dacc795375",
+          "declarations": [
+            "  Copyright 2011 Mike Battersby\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "LiteMount/UI/Advanced.lua",
+          "sha256": "9c18c7ef70bcfe303831678e6d2a7b944b3e9079ae80a242f2d19b1c50aa2ed9",
+          "declarations": [
+            "  Copyright 2011 Mike Battersby\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "LiteMount/UI/Advanced.xml",
+          "sha256": "91bf522a1ff77ace2c4091ba1723798e9c7ff67fee99fbf9c8f889b40203838a",
+          "declarations": [
+            "<!-- Copyright 2011 Mike Battersby -->\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "LiteMount/UI/AnnounceFrame.lua",
+          "sha256": "261114485c4b282883f58785e90a5ffc2941ac138d70b2fdad234f4d24389263",
+          "declarations": [
+            "  Copyright 2011 Mike Battersby\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "LiteMount/UI/AnnounceFrame.xml",
+          "sha256": "a0531358b9a50f3b7bbef1edd1e41555ade2a019b7d3f65da3f00c2d2218ff2a",
+          "declarations": [
+            "<!-- Copyright 2011 Mike Battersby -->\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "LiteMount/UI/Base.xml",
+          "sha256": "3b20da3c67239c4127a4e5a3d2b6b4719bd19f878e1533c4aae50e1e4de34b5e",
+          "declarations": [
+            "<!-- Copyright 2011 Mike Battersby -->\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "LiteMount/UI/Falling.lua",
+          "sha256": "1ed0a54c20dccfcbcc1e3c1cf5f34bb8fc7e15787f017f5c75871d864acd3831",
+          "declarations": [
+            "  Copyright 2011 Mike Battersby\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "LiteMount/UI/Falling.xml",
+          "sha256": "ff779659b620165428cff989df91d85be9ad2459d6a91829a1b4ba18ce39e43a",
+          "declarations": [
+            "<!-- Copyright 2011 Mike Battersby -->\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "LiteMount/UI/General.lua",
+          "sha256": "564a8f7262fa4df4d93e144c43e76a83cd6125fcec229172f90b69dd53f0dff2",
+          "declarations": [
+            "  Copyright 2011 Mike Battersby\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "LiteMount/UI/General.xml",
+          "sha256": "d3332890f6c9aa6d5f2b45a9c80c169392387b2f869572fd96b3eb7d58032f1c",
+          "declarations": [
+            "<!-- Copyright 2011 Mike Battersby -->\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "LiteMount/UI/Groups.lua",
+          "sha256": "319c56e8af662f649436da01341cff269eeeb49a2b29c61c23ef740a29595aff",
+          "declarations": [
+            "  Copyright 2011 Mike Battersby\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "LiteMount/UI/Groups.xml",
+          "sha256": "19a9b66b4afa76e31b7eab1c905f6b5760f58940ebcea20ab0b3fb82ed959532",
+          "declarations": [
+            "<!-- Copyright 2011 Mike Battersby -->\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "LiteMount/UI/Macro.lua",
+          "sha256": "417fdc9e28c84413dea34a5914e2e948f8a5d624bd175020a4992bab7114eb81",
+          "declarations": [
+            "  Copyright 2011 Mike Battersby\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "LiteMount/UI/Macro.xml",
+          "sha256": "f421ec30e3554af45d264c039c698e1a3a39a99070860934b32ed2fda1a14065",
+          "declarations": [
+            "<!-- Copyright 2011 Mike Battersby -->\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "LiteMount/UI/MountFlagBitTemplate.lua",
+          "sha256": "6f8a64132b27924bb8cb99af5a29f217f7c1dda64366b1502c4590db9366caf2",
+          "declarations": [
+            "  Copyright 2011 Mike Battersby\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "LiteMount/UI/MountFlagBitTemplate.xml",
+          "sha256": "e9710fe8c997637988a35d6ab577cc95d13552540fb2b82a14625400b3f2408a",
+          "declarations": [
+            "<!-- Copyright 2011 Mike Battersby -->\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "LiteMount/UI/MountIconTemplate.lua",
+          "sha256": "843854953bb44d8b7d1b93d20b0d427177aafcb9114639648d45e39260c4755c",
+          "declarations": [
+            "  Copyright 2011 Mike Battersby\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "LiteMount/UI/MountIconTemplate.xml",
+          "sha256": "dcf9442bd062ca229c4a57a2ed38eafc30c357a9b33c1e230a2dc1154a7237e8",
+          "declarations": [
+            "<!-- Copyright 2011 Mike Battersby -->\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "LiteMount/UI/MountListButtonTemplate.lua",
+          "sha256": "6dacf3cacb00f627f76f57f3ef82693d26d4c0d633d11364db807054d4275448",
+          "declarations": [
+            "  Copyright 2011 Mike Battersby\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "LiteMount/UI/MountListButtonTemplate.xml",
+          "sha256": "a893b13c3bc5542946b1d45e6d54518a17e1d94dc6031363e0b11ed61d2ff1a0",
+          "declarations": [
+            "<!-- Copyright 2011 Mike Battersby -->\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "LiteMount/UI/MountModelSceneTemplate.lua",
+          "sha256": "73b30a7d99e707b8b9ad254c7a4743847d26fbcf03aa7522bffb626d09233c08",
+          "declarations": [
+            "  Copyright 2011 Mike Battersby\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "LiteMount/UI/MountModelSceneTemplate.xml",
+          "sha256": "d81b4f139ca4f545f91dc2adce741100ce0e310291c4d96d78631d35d1a67df3",
+          "declarations": [
+            "<!-- Copyright 2011 Mike Battersby -->\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "LiteMount/UI/MountPriorityTemplate.lua",
+          "sha256": "d22f54a0808e8e5d28f9a1df4ab0f0c44c563d558e1e4219dadbae0ccbddac3c",
+          "declarations": [
+            "  Copyright 2011 Mike Battersby\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "LiteMount/UI/MountPriorityTemplate.xml",
+          "sha256": "46db4dc991bb0844d2fa32b5719dd3dc87838d3673aeb682aa845734eb4d436a",
+          "declarations": [
+            "<!-- Copyright 2011 Mike Battersby -->\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "LiteMount/UI/MountTooltip.lua",
+          "sha256": "72bb3678cd7452f440c54370c55872675778749c662c7473679459951fdbabc9",
+          "declarations": [
+            "  Copyright 2011 Mike Battersby\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "LiteMount/UI/MountTooltip.xml",
+          "sha256": "078ec14ce4ee40cff63a00c744fb8d55bc98eaa5645a4b65f2e505ae09ea6202",
+          "declarations": [
+            "<!-- Copyright 2011 Mike Battersby -->\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "LiteMount/UI/Mounts.lua",
+          "sha256": "225bbcac606dcc5b91ab812fe75aedf51b3618e88daf34596265bf7b1e30c13f",
+          "declarations": [
+            "  Copyright 2011 Mike Battersby\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "LiteMount/UI/Mounts.xml",
+          "sha256": "4eb55cbbb1157661593e5fee615ed29fb5c4d55d66e8ab4e4824219f351be6eb",
+          "declarations": [
+            "<!-- Copyright 2011 Mike Battersby -->\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "LiteMount/UI/MountsFilter.lua",
+          "sha256": "82c60b9821e290901be8e6b92e825943effd079b3a908c5c40e8c9783e081901",
+          "declarations": [
+            "  Copyright 2011 Mike Battersby\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "LiteMount/UI/MountsFilter.xml",
+          "sha256": "5823af60a24acdc2fb275ad6c707ee56c3a4c0269b962d6bd5c1dbc2b90911c6",
+          "declarations": [
+            "<!-- Copyright 2011 Mike Battersby -->\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "LiteMount/UI/PanelTemplate.lua",
+          "sha256": "9a2f1889d8b5ed87908e23b0060db8dfcd12aea0dcd0d3c6b27cb2ab8b9f4ece",
+          "declarations": [
+            "  Copyright 2016 Mike Battersby\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "LiteMount/UI/PanelTemplate.xml",
+          "sha256": "a5c48f6069fd4c1c636dc86e9d6d51137876b922c833c89f399f54a9bb63f348",
+          "declarations": [
+            "<!-- Copyright 2011 Mike Battersby -->\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "LiteMount/UI/Picker.lua",
+          "sha256": "0a5dbc3ddb8971b17b30a3fb008bc22718694932acf7412a0eb51c5e771930e7",
+          "declarations": [
+            "  Copyright 2011 Mike Battersby\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "LiteMount/UI/ProfileImportExport.lua",
+          "sha256": "f538387c9c2979f12d322d90cf7cf12918125fac52cc84d350b2fa08aacb17cb",
+          "declarations": [
+            "  Copyright 2011 Mike Battersby\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "LiteMount/UI/ProfileImportExport.xml",
+          "sha256": "976151ae8975f1157451fbba381fbb13f398f5a9bf2ae1e3370286b4299bfabd",
+          "declarations": [
+            "<!-- Copyright 2011 Mike Battersby -->\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "LiteMount/UI/Profiles.lua",
+          "sha256": "8b041553fdb6cbb1cb5942e3dbbff9846ba391eda9702263849bb253606665ae",
+          "declarations": [
+            "  Copyright 2011 Mike Battersby\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "LiteMount/UI/Profiles.xml",
+          "sha256": "c6572ecc6487ec896eb39559fbb3f1606a2bf35021563cf4970f525c93c3505c",
+          "declarations": [
+            "<!-- Copyright 2011 Mike Battersby -->\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "LiteMount/UI/ReportBug.lua",
+          "sha256": "150054fbc5a3d78b5fd2d3ca6e672db1148498148240b7fe7366e06bf1d13976",
+          "declarations": [
+            "  Copyright 2011 Mike Battersby\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "LiteMount/UI/ReportBug.xml",
+          "sha256": "f9eae4bff413cce75682bd56cdfc6552c47b7319ace26ea7514e9c4e1c3b1cab",
+          "declarations": [
+            "<!-- Copyright 2011 Mike Battersby -->\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "LiteMount/UI/RuleEdit.lua",
+          "sha256": "b49e63e025776945aa4f7a0447a075c7c8a4b527828e4d2f334d2bd2fec9f3c3",
+          "declarations": [
+            "  Copyright 2011 Mike Battersby\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "LiteMount/UI/RuleEdit.xml",
+          "sha256": "4cb7c85eaff7487172af2535bc1851468f888795bbe21c6dbb79e23fd2a114bb",
+          "declarations": [
+            "<!-- Copyright 2011 Mike Battersby -->\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "LiteMount/UI/Rules.lua",
+          "sha256": "dbee3a4974e9d83d4322f7e37a16de3ee3d0b2b561fff17a73fbfeb8c0cfeeb5",
+          "declarations": [
+            "  Copyright 2011 Mike Battersby\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "LiteMount/UI/Rules.xml",
+          "sha256": "6a7c994ba9cf61fe80021df50621975d10db9bda5eea7c575ee09681c5ae2e07",
+          "declarations": [
+            "<!-- Copyright 2011 Mike Battersby -->\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "LiteMount/UIFilter.lua",
+          "sha256": "403a848bad12c0a86a49a33e35f59ed2ce7967fd768692792d6b8bbd1a73fe31",
+          "declarations": [
+            "  Copyright 2011 Mike Battersby\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "LiteMount/Vars.lua",
+          "sha256": "bf7ab4038c32070304818e3dd2b32182d9bae18e74e09215e3f7424c0b94b322",
+          "declarations": [
+            "  Copyright 2011 Mike Battersby\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        }
+      ],
+      "standaloneNoticeAbsent": false,
+      "supplemental": [],
+      "assembly": "Fetch exact official package for this user and retain all original source/media/notice bytes.",
+      "publicRedistributionApproved": false
+    },
+    {
+      "repo": "SFX-WoW/Masque",
+      "version": "12.1.0",
+      "mainTerms": "Custom personal-use and restricted compilation distribution terms",
+      "officialRelease": "https://github.com/SFX-WoW/Masque/releases/tag/12.1.0",
+      "noticeFiles": [
+        {
+          "source": "Masque/LICENSE.txt",
+          "sha256": "42bd6cd191a045f474b8dc2635b86793cf4c6bd38a1c31dd31a4effe50f7ce6d",
+          "copy": "evidence/dependencies/notices/SFX-WoW__Masque/Masque/LICENSE.txt"
+        }
+      ],
+      "embeddedNoticeSources": [
+        {
+          "source": "Masque/Core/Button.lua",
+          "sha256": "7843a82ba91585a172489f0f3b70fc8238ff71556ee3cc9469650fa426b9d547",
+          "declarations": [
+            "\tsuggestions and license information, please visit https://github.com/SFX-WoW/Masque.\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "Masque/Core/Core.lua",
+          "sha256": "5408653113dd1f901f0a98b9b1bfe299b284461f9efca6358b5398d51824a0fe",
+          "declarations": [
+            "\tsuggestions and license information, please visit https://github.com/SFX-WoW/Masque.\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "Masque/Core/Group.lua",
+          "sha256": "7b2b8006d652e136114dcfcc6e729f17ac8952cdff50555ed182235135d3b7b8",
+          "declarations": [
+            "\tsuggestions and license information, please visit https://github.com/SFX-WoW/Masque.\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "Masque/Core/Groups.lua",
+          "sha256": "29cdf83cb1f2e570b9dd37ebcb8d15658f0a3a95c7b95d0eee7c067cb27bae27",
+          "declarations": [
+            "\tsuggestions and license information, please visit https://github.com/SFX-WoW/Masque.\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "Masque/Core/Regions/AssistedCombat.lua",
+          "sha256": "662f18965df4351cbfce3a32e1d78130dc0e6284d7508d4364b73df2722d4b2c",
+          "declarations": [
+            "\tsuggestions and license information, please visit https://github.com/SFX-WoW/Masque.\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "Masque/Core/Regions/AutoCast.lua",
+          "sha256": "7a4fe5a25190febb791f64abd7448d15384d0fc366f24c8df3bc48b61d226e6b",
+          "declarations": [
+            "\tsuggestions and license information, please visit https://github.com/SFX-WoW/Masque.\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "Masque/Core/Regions/Backdrop.lua",
+          "sha256": "c3404a0c35bdb443b5fbd74789944d638146beed15fb2934c49c1ed1892676c9",
+          "declarations": [
+            "\tsuggestions and license information, please visit https://github.com/SFX-WoW/Masque.\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "Masque/Core/Regions/Cooldown.lua",
+          "sha256": "f1ee1b3211e42945823f70e76cffb74f7698a53a1b95ffdf24ddc79ea7154448",
+          "declarations": [
+            "\tsuggestions and license information, please visit https://github.com/SFX-WoW/Masque.\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "Masque/Core/Regions/Gloss.lua",
+          "sha256": "fe39569d0e59b759155f9e2964a541ee0fe020dc94f2f56fe3f72a0e76e75ad0",
+          "declarations": [
+            "\tsuggestions and license information, please visit https://github.com/SFX-WoW/Masque.\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "Masque/Core/Regions/Icon.lua",
+          "sha256": "6545ead0b578214eb95b23df43f87a13f76a8bd0325d87b325c65bceba59da13",
+          "declarations": [
+            "\tsuggestions and license information, please visit https://github.com/SFX-WoW/Masque.\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "Masque/Core/Regions/IconBorder.lua",
+          "sha256": "a40caf9027e8e4bed13105b3217fe16d33587a87093194adb026c1e373b3df1f",
+          "declarations": [
+            "\tsuggestions and license information, please visit https://github.com/SFX-WoW/Masque.\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "Masque/Core/Regions/Mask.lua",
+          "sha256": "61b71b2afe755683f4866087b0037ebf123b944d9c7b35f64ef11eca65eb3b1e",
+          "declarations": [
+            "\tsuggestions and license information, please visit https://github.com/SFX-WoW/Masque.\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "Masque/Core/Regions/NewItem.lua",
+          "sha256": "e6570bb8540e46e6cf7c750d62a09d779a33d3e51bcb98b8adefded508d7b46d",
+          "declarations": [
+            "\tsuggestions and license information, please visit https://github.com/SFX-WoW/Masque.\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "Masque/Core/Regions/Normal.lua",
+          "sha256": "9781982f86db9158c262042841871b32412183b35bbc437fcbcf77c36232e906",
+          "declarations": [
+            "\tsuggestions and license information, please visit https://github.com/SFX-WoW/Masque.\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "Masque/Core/Regions/QuestBorder.lua",
+          "sha256": "f883a23d8a3a6927ba9b49235643cdedb7129975c311389989a790c6d3a9150b",
+          "declarations": [
+            "\tsuggestions and license information, please visit https://github.com/SFX-WoW/Masque.\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "Masque/Core/Regions/Shadow.lua",
+          "sha256": "89a618ab33f282148a7cf8651ecbf68e091e92c7201cf56424c182da66c193c4",
+          "declarations": [
+            "\tsuggestions and license information, please visit https://github.com/SFX-WoW/Masque.\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "Masque/Core/Regions/SpellAlert.lua",
+          "sha256": "72a6283b846b5c023ce53e2b4d9c94936007c8b40cf322c76ac645c8e4670853",
+          "declarations": [
+            "\tsuggestions and license information, please visit https://github.com/SFX-WoW/Masque.\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "Masque/Core/Regions/Text.lua",
+          "sha256": "f5b76993f67e62f472db0a5c1aa3a94c23aaa82e8220dc31acb0bd1b09200480",
+          "declarations": [
+            "\tsuggestions and license information, please visit https://github.com/SFX-WoW/Masque.\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "Masque/Core/Regions/Texture.lua",
+          "sha256": "4374e1e2c33d80df6e84f9ce830033ea96477886857c4404b87ce6b85db310aa",
+          "declarations": [
+            "\tsuggestions and license information, please visit https://github.com/SFX-WoW/Masque.\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "Masque/Core/Utility.lua",
+          "sha256": "f371c74e4a80e99e420de2f659119544a8243cdaf7262e7b24918b29df0f77d0",
+          "declarations": [
+            "\tsuggestions and license information, please visit https://github.com/SFX-WoW/Masque.\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "Masque/Libs/AceGUI-3.0_SFX-Widgets/LibStub/LibStub.lua",
+          "sha256": "d34235c85f869505fdd9ef321d2420f69db7d2eb873d2b3bbf57584a314060fa",
+          "declarations": [
+            "-- LibStub is hereby placed in the Public Domain\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "Masque/Libs/AceGUI-3.0_SFX-Widgets/Widgets/SFX-Header-II.lua",
+          "sha256": "921ab99843d96999f144280f08b4df35a097ad2df2700e7203a9d43e74e03d32",
+          "declarations": [
+            "\tdocumentation and license information, visit https://github.com/SFX-WoW/AceGUI-3.0_SFX-Widgets.\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "Masque/Libs/AceGUI-3.0_SFX-Widgets/Widgets/SFX-Header.lua",
+          "sha256": "9ed380c3adde793cd9a694e989274a3b411d871477ad997806fb0e6827e29279",
+          "declarations": [
+            "\tdocumentation and license information, visit https://github.com/SFX-WoW/AceGUI-3.0_SFX-Widgets.\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "Masque/Libs/AceGUI-3.0_SFX-Widgets/Widgets/SFX-Info-URL.lua",
+          "sha256": "c44eaab0951a0d4a4c4fb09f90d801fab0abb91138e38878c1911e14935c77a2",
+          "declarations": [
+            "\tdocumentation and license information, visit https://github.com/SFX-WoW/AceGUI-3.0_SFX-Widgets.\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "Masque/Libs/AceGUI-3.0_SFX-Widgets/Widgets/SFX-Info.lua",
+          "sha256": "c2690efc4947da576d3152a4ff223cec340aee7158be8208c2e289f9a031d301",
+          "declarations": [
+            "\tdocumentation and license information, visit https://github.com/SFX-WoW/AceGUI-3.0_SFX-Widgets.\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "Masque/Libs/LibDualSpec-1.0/LibDualSpec-1.0.lua",
+          "sha256": "62b722c9d657193638f41bcd95bc115f005f9c6240646ec1d08928a856a3b3f6",
+          "declarations": [
+            "    * Redistributions in binary form must reproduce the above copyright notice,\r",
+            "    * Redistributions of source code must retain the above copyright notice,\r",
+            "A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR\r",
+            "All rights reserved.\r",
+            "Copyright (C) 2009-2024 Adirelle\r",
+            "THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "Masque/Libs/LibDualSpec-1.0/LibStub.lua",
+          "sha256": "6000f58d740eaa2b4a006c1dabb0366f0321fc687bab9e85d97d040a1fd42dab",
+          "declarations": [
+            "-- LibStub is hereby placed in the Public Domain Credits: Kaelten, Cladhaire, ckknight, Mikk, Ammo, Nevcairiel, joshborke\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "Masque/Libs/LibStub/LibStub.lua",
+          "sha256": "02d25b7433af734b59f0c4571bfaa73b2b660992d71d2fb6a8809b32de3f964c",
+          "declarations": [
+            "-- LibStub is hereby placed in the Public Domain Credits: Kaelten, Cladhaire, ckknight, Mikk, Ammo, Nevcairiel, joshborke\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "Masque/Locales/deDE.lua",
+          "sha256": "e13949ffa87a465a8cd136c901f07167e51c57e233ce75bbf3ca792fa7d71b25",
+          "declarations": [
+            "\tdocumentation and license information, please visit https://github.com/SFX-WoW/Masque.\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "Masque/Locales/enUS.lua",
+          "sha256": "ccb412d7e2d777878125145bcb120dd080d4a523ce5bfb793414a30da0491e5b",
+          "declarations": [
+            "\tdocumentation and license information, please visit https://github.com/SFX-WoW/Masque.\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "Masque/Locales/esES.lua",
+          "sha256": "9dd142eddc8bc74fa19d44d2d9485f256168ed915a0c4d53d478c27ff9b9ae52",
+          "declarations": [
+            "\tdocumentation and license information, please visit https://github.com/SFX-WoW/Masque.\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "Masque/Locales/frFR.lua",
+          "sha256": "8aa8abd105e691250631e8c69d6731cbabd8e865a4bfbe4034b4b725b5c8eda0",
+          "declarations": [
+            "\tdocumentation and license information, please visit https://github.com/SFX-WoW/Masque.\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "Masque/Locales/itIT.lua",
+          "sha256": "04b0bf6dcb6c574b49e5c41f5766cc3ec3c79da02b90438fc4233e69b6bd3810",
+          "declarations": [
+            "\tdocumentation and license information, please visit https://github.com/SFX-WoW/Masque.\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "Masque/Locales/koKR.lua",
+          "sha256": "1e453b38c82704c1ccca3143a109e10a7b3afdfcf3d897226980515529a49bbd",
+          "declarations": [
+            "\tdocumentation and license information, please visit https://github.com/SFX-WoW/Masque.\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "Masque/Locales/ptBR.lua",
+          "sha256": "e01387b56c512ef6249923a72f3b971eb7a963de89e8b5a0dc2d21fc3605df9c",
+          "declarations": [
+            "\tdocumentation and license information, please visit https://github.com/SFX-WoW/Masque.\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "Masque/Locales/ruRU.lua",
+          "sha256": "d13aad645d62f22ac0858208141c92fa7b4d0844515a4cde0e97580d8487f6b9",
+          "declarations": [
+            "\tdocumentation and license information, please visit https://github.com/SFX-WoW/Masque.\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "Masque/Locales/zhCN.lua",
+          "sha256": "559fc22cd9ea066f44c1b7087f26745daaa0556e9ee785a4177a808c8bcd89c4",
+          "declarations": [
+            "\tdocumentation and license information, please visit https://github.com/SFX-WoW/Masque.\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "Masque/Locales/zhTW.lua",
+          "sha256": "2d170a7ba90a23442713ace84b276cbcd8369ba64e2ed7bf0759c7c56ae0e186",
+          "declarations": [
+            "\tdocumentation and license information, please visit https://github.com/SFX-WoW/Masque.\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "Masque/Masque.lua",
+          "sha256": "2ebfce0ce77f6ff0c30743abab43b71303130127a4cf168a9700566c681be6ab",
+          "declarations": [
+            "\tdocumentation and license information, please visit https://github.com/SFX-WoW/Masque.\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "Masque/Options/About.lua",
+          "sha256": "c9f34e38d3d7e9f0a05b9a3f5f6ff7fb27a9a3823065c134b005ed2c68942d98",
+          "declarations": [
+            "\tdocumentation and license information, please visit https://github.com/SFX-WoW/Masque.\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "Masque/Options/Core.lua",
+          "sha256": "80f67fd2d3b64933a063c014bc17a84f64d0939842a7801bb470b9366a3b7393",
+          "declarations": [
+            "\tdocumentation and license information, please visit https://github.com/SFX-WoW/Masque.\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "Masque/Options/General.lua",
+          "sha256": "7e7b2229c10577db229db0d47b78cfde7808b29ce31fe7dd87dca0fd83251f45",
+          "declarations": [
+            "\tdocumentation and license information, please visit https://github.com/SFX-WoW/Masque.\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "Masque/Options/Info.lua",
+          "sha256": "cf11cb13385b81ca3ee26081a25969cdce076497ab597918a6f3fe2dbff04fa9",
+          "declarations": [
+            "\tdocumentation and license information, please visit https://github.com/SFX-WoW/Masque.\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "Masque/Options/LDB.lua",
+          "sha256": "c0cb7e18b845764190c73b837b4c6abd7170007a47e856e9a1f29d55c322db6d",
+          "declarations": [
+            "\tdocumentation and license information, please visit https://github.com/SFX-WoW/Masque.\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "Masque/Options/Profiles.lua",
+          "sha256": "bdb3a7c1bd2f6b60983ac42ffeac74b7fe85d7dcb9d4e1ab0a78e9065629cb2a",
+          "declarations": [
+            "\tdocumentation and license information, please visit https://github.com/SFX-WoW/Masque.\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "Masque/Options/Skins.lua",
+          "sha256": "7062bfc67f5f1359852c5ea58c53815bea5bc07968f4fcd35cea1f780adfe22e",
+          "declarations": [
+            "\tdocumentation and license information, please visit https://github.com/SFX-WoW/Masque.\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "Masque/Skins/Blizzard_Classic.lua",
+          "sha256": "091a3eb5d7097bf2bf24671ffc44f8b890f9930c42158c71c4d7ee6083615795",
+          "declarations": [
+            "\tsuggestions and license information, please visit https://github.com/SFX-WoW/Masque.\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "Masque/Skins/Blizzard_Modern.lua",
+          "sha256": "23e9a7b710409299930a17bef38243377e8dacfdff898793dd20a879797eb94e",
+          "declarations": [
+            "\tsuggestions and license information, please visit https://github.com/SFX-WoW/Masque.\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "Masque/Skins/Classic_Enhanced.lua",
+          "sha256": "c93f856ff8ac318cc94991efd05c25a23e4c1f3bf6cffc85a862eb5608e51d71",
+          "declarations": [
+            "\tsuggestions and license information, please visit https://github.com/SFX-WoW/Masque.\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "Masque/Skins/Defaults.lua",
+          "sha256": "01a99cacb42dc0d42d8dee273a5d012db5b15c72657b930d022d698f40d8b082",
+          "declarations": [
+            "\tsuggestions and license information, please visit https://github.com/SFX-WoW/Masque.\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "Masque/Skins/Dream.lua",
+          "sha256": "35774fc7e98dc915f0ced6a9ee11743477d7314d87475f39272267bf66c40051",
+          "declarations": [
+            "\tsuggestions and license information, please visit https://github.com/SFX-WoW/Masque.\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "Masque/Skins/Modern_Enhanced.lua",
+          "sha256": "0d74b3de33ada64c56d4c4c8098b2330755795098dbf4015fe873f630d070fdd",
+          "declarations": [
+            "\tsuggestions and license information, please visit https://github.com/SFX-WoW/Masque.\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "Masque/Skins/Regions.lua",
+          "sha256": "5da2ba09949fc367237607317e4926b22e914e6f72b71f7c6a16a8d7ee3a3347",
+          "declarations": [
+            "\tsuggestions and license information, please visit https://github.com/SFX-WoW/Masque.\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "Masque/Skins/Skins.lua",
+          "sha256": "85bb0dd0d459f83215811557a47282c10b8a763e2ec461d4da3a0d5423d68360",
+          "declarations": [
+            "\tsuggestions and license information, please visit https://github.com/SFX-WoW/Masque.\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "Masque/Skins/Zoomed.lua",
+          "sha256": "c3d3c27f0549fc4a7afe374df7bf90b63f4135b715419f181b3e7b1f579e0fec",
+          "declarations": [
+            "\tsuggestions and license information, please visit https://github.com/SFX-WoW/Masque.\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        }
+      ],
+      "standaloneNoticeAbsent": false,
+      "supplemental": [],
+      "assembly": "Fetch exact official package for this user and retain all original source/media/notice bytes.",
+      "publicRedistributionApproved": false
+    },
+    {
+      "repo": "Tercioo/Plater-Nameplates",
+      "version": "Plater-v656",
+      "mainTerms": "Maintainer distribution; no permissive main-addon notice in package",
+      "officialRelease": "https://github.com/Tercioo/Plater-Nameplates/releases/tag/Plater-v656",
+      "noticeFiles": [
+        {
+          "source": "Plater/fonts/SIL Open Font License.txt",
+          "sha256": "95f0b1f9afda13064972fd032130a254494659dc68ba2b1bcc134ae410879316",
+          "copy": "evidence/dependencies/notices/Tercioo__Plater-Nameplates/Plater/fonts/SIL Open Font License.txt"
+        },
+        {
+          "source": "Plater/libs/DF/LICENSE",
+          "sha256": "20c17d8b8c48a600800dfd14f95d5cb9ff47066a9641ddeab48dc54aec96e331",
+          "copy": "evidence/dependencies/notices/Tercioo__Plater-Nameplates/Plater/libs/DF/LICENSE"
+        },
+        {
+          "source": "Plater/libs/LibCustomGlow-1.0/LICENSE",
+          "sha256": "fe1c25533575333ef9934022382659bc0b470cef1fbb69ef0d45a9a52d2e9455",
+          "copy": "evidence/dependencies/notices/Tercioo__Plater-Nameplates/Plater/libs/LibCustomGlow-1.0/LICENSE"
+        },
+        {
+          "source": "Plater/libs/LibDeflate/LICENSE.txt",
+          "sha256": "d789a4b3d104bb9f559b2f19048d356c67ea695dde4b1748f900ccb210a42450",
+          "copy": "evidence/dependencies/notices/Tercioo__Plater-Nameplates/Plater/libs/LibDeflate/LICENSE.txt"
+        },
+        {
+          "source": "Plater/libs/LibRangeCheck-3.0/LICENSE",
+          "sha256": "e3fdaf76f03ccf2bf5ec951f5e14eaf1178a6f6af8f7c9d321e3256fa31e25f9",
+          "copy": "evidence/dependencies/notices/Tercioo__Plater-Nameplates/Plater/libs/LibRangeCheck-3.0/LICENSE"
+        },
+        {
+          "source": "Plater/libs/LibTranslit-1.0/COPYING",
+          "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986",
+          "copy": "evidence/dependencies/notices/Tercioo__Plater-Nameplates/Plater/libs/LibTranslit-1.0/COPYING"
+        },
+        {
+          "source": "Plater/libs/LibTranslit-1.0/COPYING.LESSER",
+          "sha256": "e3a994d82e644b03a792a930f574002658412f62407f5fee083f2555c5f23118",
+          "copy": "evidence/dependencies/notices/Tercioo__Plater-Nameplates/Plater/libs/LibTranslit-1.0/COPYING.LESSER"
+        }
+      ],
+      "embeddedNoticeSources": [
+        {
+          "source": "Plater/libs/AceComm-3.0/ChatThrottleLib.lua",
+          "sha256": "43fb93b5c70f1198ad37289d4568df0d8929d1326072486ba2e5abaa12d19701",
+          "declarations": [
+            "-- LICENSE: ChatThrottleLib is released into the Public Domain\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "Plater/libs/DF/README.md",
+          "sha256": "5d2c144509b50b763be9b988e5a6f4dc20035e873fd8fc96e5d0baf1cd9fb6b4",
+          "declarations": [
+            "| License | GNU LGPL 2.1 (see [LICENSE](LICENSE)). Embedders retain their own license on their own code; LGPL governs modifications to framework files. Upstream contributions are welcome via pull request. |\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "Plater/libs/LibCompress/LibCompress.lua",
+          "sha256": "6d6bc816bd7621c2552fc62798644e36d8d9ed97ccb31330c078355a900faa02",
+          "declarations": [
+            "-- Licence: GPL version 2 (General Public License)\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "Plater/libs/LibCompress/LibCompress.toc",
+          "sha256": "30913b368285b8bac45d544a4d2e11cec8e7d64ab841c6d0a870d35cbe49fb43",
+          "declarations": [
+            "## X-License: GPL v2\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "Plater/libs/LibCompress/LibStub/LibStub.lua",
+          "sha256": "d34235c85f869505fdd9ef321d2420f69db7d2eb873d2b3bbf57584a314060fa",
+          "declarations": [
+            "-- LibStub is hereby placed in the Public Domain\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "Plater/libs/LibCompress/LibStub/LibStub.toc",
+          "sha256": "f61649b1747c7deeea2fc9010cd66aa68c5039541ae8fb75b06611e94cf377af",
+          "declarations": [
+            "## X-License: Public Domain\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "Plater/libs/LibCompress/lib/LibStub/LibStub.lua",
+          "sha256": "6000f58d740eaa2b4a006c1dabb0366f0321fc687bab9e85d97d040a1fd42dab",
+          "declarations": [
+            "-- LibStub is hereby placed in the Public Domain Credits: Kaelten, Cladhaire, ckknight, Mikk, Ammo, Nevcairiel, joshborke\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "Plater/libs/LibCompress/lib/LibStub/LibStub.toc",
+          "sha256": "537d6d1f28697a2c081f6b26ad5711753e6f8f4c5abc4a224eb5b0786d517766",
+          "declarations": [
+            "## X-License: Public Domain\t\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "Plater/libs/LibCustomGlow-1.0/LibCustomGlow-1.0.toc",
+          "sha256": "136bd78ae4a8897667d95da2b5020ebdff6c0bc3ece67fdf66b9b87ce4049822",
+          "declarations": [
+            "## X-License: BSD\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "Plater/libs/LibCustomGlow-1.0/LibStub/LibStub.lua",
+          "sha256": "d34235c85f869505fdd9ef321d2420f69db7d2eb873d2b3bbf57584a314060fa",
+          "declarations": [
+            "-- LibStub is hereby placed in the Public Domain\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "Plater/libs/LibCustomGlow-1.0/LibStub/LibStub.toc",
+          "sha256": "f1a1ad1e84b70453fc4362ad4696f0eb80c53476cbfff1bb9161448490401da9",
+          "declarations": [
+            "## X-License: Public Domain\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "Plater/libs/LibDeflate/LibDeflate.lua",
+          "sha256": "b6cf1bdc38dfae0c2deadfcb2cbf4e53d9dee6fb8f0ad5a03820ccf3635b7195",
+          "declarations": [
+            "\tLicensed under GPLv2.\r",
+            "\tLicensed under zlib License. http://www.zlib.net/zlib_license.html\r",
+            "                       \" Copyright (C) 2018-2021 Haoqian He.\" ..\r",
+            "                       \" Licensed under the zlib License\"\r",
+            "  LibDeflate._COPYRIGHT = _COPYRIGHT\r",
+            "  local _COPYRIGHT = \"LibDeflate \" .. _VERSION ..\r",
+            "1. GNU General Public License Version 3 in v1.0.0 and earlier versions.\r",
+            "2. GNU Lesser General Public License Version 3 in v1.0.1\r",
+            "3. the zlib License since v1.0.2\r",
+            "@copyright LibDeflate <2018-2021> Haoqian He\r",
+            "@license zlib License\r",
+            "License History:\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "Plater/libs/LibDeflate/LibDeflate.toc",
+          "sha256": "8f5721b9a9cf6b7508db0669933fdd0a79e486f747e578f573c0ed5220fcc208",
+          "declarations": [
+            "## X-License: zlib\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "Plater/libs/LibDeflate/README.md",
+          "sha256": "603a57a7de4b0c757aa169eeb712a71af8de1b3d517d841060b360640245c6ca",
+          "declarations": [
+            "1. [zlib](http://www.zlib.net), by Jean-loup Gailly (compression) and Mark Adler (decompression). Licensed under [zlib License](http://www.zlib.net/zlib_license.html).\r",
+            "2. [puff](https://github.com/madler/zlib/tree/master/contrib/puff), by Mark Adler. Licensed under zlib License.\r",
+            "3. [LibCompress](https://www.wowace.com/projects/libcompress), by jjsheets and Galmok of European Stormrage (Horde). Licensed under GPLv2.\r",
+            "4. [WeakAuras2](https://github.com/WeakAuras/WeakAuras2). Licensed under GPLv2.\r",
+            "Copyright (C) 2018-2021 Haoqian He\r",
+            "LibDeflate is licensed under the zlib license. See LICENSE.txt.\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "Plater/libs/LibDeflate/changelog.md",
+          "sha256": "5aa36e1ee993cd79557671a19c6a2ecc4f3bc2ac763b74b3d2e1abada16d1152",
+          "declarations": [
+            "- Change the license to LGPLv3 (Formerly GPLv3)\r",
+            "- Change the license to the zlib license (Formerly LGPLv3). This license is more permissive than LGPLv3.\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "Plater/libs/LibRangeCheck-3.0/LibRangeCheck-3.0.lua",
+          "sha256": "9dc1cd5ab514b22be029d44b06ee9b7348d04f33f03618ae284422995e53c61a",
+          "declarations": [
+            "License: MIT\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "Plater/libs/LibRangeCheck-3.0/LibRangeCheck-3.0.toc",
+          "sha256": "2940384b7c2b2411391b9918758941ba98cc94e3154626171fde278541c86d9c",
+          "declarations": [
+            "## X-License: MIT\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "Plater/libs/LibRangeCheck-3.0/LibRangeCheck-3.0_Cata.toc",
+          "sha256": "c7435320972d3f3d5022b7deb62a243f93b649ee5f6ed4132f2062c286c95b20",
+          "declarations": [
+            "## X-License: MIT\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "Plater/libs/LibRangeCheck-3.0/LibRangeCheck-3.0_Mists.toc",
+          "sha256": "cda18a57c192ee7fe1ea648abfd514edf1612f426d0e2871b272eafa53057130",
+          "declarations": [
+            "## X-License: MIT\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "Plater/libs/LibRangeCheck-3.0/LibRangeCheck-3.0_TBC.toc",
+          "sha256": "1e070bf26a6b4114c4b54ccf25314f7afffe54108b630b268080f2c089b06ab7",
+          "declarations": [
+            "## X-License: MIT\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "Plater/libs/LibRangeCheck-3.0/LibRangeCheck-3.0_Vanilla.toc",
+          "sha256": "cba325eee3968f8915c1bf0f5652f23ca0669db30a4b84cda6e435aee07471fb",
+          "declarations": [
+            "## X-License: MIT\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "Plater/libs/LibRangeCheck-3.0/LibRangeCheck-3.0_Wrath.toc",
+          "sha256": "66ac3db533ab73379e42281c97d6fe1dbdc5b124bb21b9fab58511200d16a4b5",
+          "declarations": [
+            "## X-License: MIT\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "Plater/libs/LibSharedMedia-3.0/LibSharedMedia-3.0.lua",
+          "sha256": "db6c60a0cdca4921d35c9a27225ae16f28187dac5a4866c2d75240c3226373f9",
+          "declarations": [
+            "License: LGPL v2.1\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "Plater/libs/LibStub/LibStub.lua",
+          "sha256": "d34235c85f869505fdd9ef321d2420f69db7d2eb873d2b3bbf57584a314060fa",
+          "declarations": [
+            "-- LibStub is hereby placed in the Public Domain\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "Plater/libs/LibStub/LibStub.toc",
+          "sha256": "d6ef350c07edf6be550c586e32473776e310d212bf39962cafee04a8d415405f",
+          "declarations": [
+            "## X-License: Public Domain\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "Plater/libs/LibTranslit-1.0/LibTranslit-1.0.lua",
+          "sha256": "ee5f4644ce1b26ed86c43e6ce08e72e05fb40ca602a4c8bc1837c3ce74ae3578",
+          "declarations": [
+            "Copyright (C) 2019-2022 Vardex\r",
+            "LibTranslit is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more details.\r",
+            "LibTranslit is free software: you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.\r",
+            "You should have received a copy of the GNU Lesser General Public License along with LibTranslit. If not, see <https://www.gnu.org/licenses/>. \r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "Plater/libs/LibTranslit-1.0/LibTranslit-1.0.toc",
+          "sha256": "585f358758aac167a1e30849ba64f6da964444093ff13db50ef4461413044bca",
+          "declarations": [
+            "## X-License: LGPL-3.0\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        }
+      ],
+      "standaloneNoticeAbsent": false,
+      "supplemental": [],
+      "assembly": "Fetch exact official package for this user and retain all original source/media/notice bytes.",
+      "publicRedistributionApproved": false
+    },
+    {
+      "repo": "DeadlyBossMods/DeadlyBossMods",
+      "version": "12.1.12",
+      "mainTerms": "All Rights Reserved; VEM voice separately All Rights Reserved",
+      "officialRelease": "https://github.com/DeadlyBossMods/DeadlyBossMods/releases/tag/12.1.12",
+      "noticeFiles": [
+        {
+          "source": "DBM-Core/LICENSE",
+          "sha256": "3508c59e5691fa2003362a83ed908319d2f7217c0d3dbe30cc9a19bb660c9e7c",
+          "copy": "evidence/dependencies/notices/DeadlyBossMods__DeadlyBossMods/DBM-Core/LICENSE"
+        },
+        {
+          "source": "DBM-Core/Libs/LibCustomGlow-1.0/LICENSE",
+          "sha256": "fe1c25533575333ef9934022382659bc0b470cef1fbb69ef0d45a9a52d2e9455",
+          "copy": "evidence/dependencies/notices/DeadlyBossMods__DeadlyBossMods/DBM-Core/Libs/LibCustomGlow-1.0/LICENSE"
+        },
+        {
+          "source": "DBM-Core/Libs/LibDeflate/LICENSE.txt",
+          "sha256": "d789a4b3d104bb9f559b2f19048d356c67ea695dde4b1748f900ccb210a42450",
+          "copy": "evidence/dependencies/notices/DeadlyBossMods__DeadlyBossMods/DBM-Core/Libs/LibDeflate/LICENSE.txt"
+        },
+        {
+          "source": "DBM-Core/Libs/LibDropDownMenu/LICENSE",
+          "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986",
+          "copy": "evidence/dependencies/notices/DeadlyBossMods__DeadlyBossMods/DBM-Core/Libs/LibDropDownMenu/LICENSE"
+        },
+        {
+          "source": "DBM-Core/sounds/Creative Commons Sampling Plus 1.0.txt",
+          "sha256": "da6b1dffdc47b93261ed4950ccc7637833997f5a3abba193a5fb7dbaf22ed4d2",
+          "copy": "evidence/dependencies/notices/DeadlyBossMods__DeadlyBossMods/DBM-Core/sounds/Creative Commons Sampling Plus 1.0.txt"
+        },
+        {
+          "source": "DBM-Core/sounds/license info.txt",
+          "sha256": "4df53c4ff9d6894a3f0ec559896a9ebd5e3f3f1e6d34a064942be71982bf8aa7",
+          "copy": "evidence/dependencies/notices/DeadlyBossMods__DeadlyBossMods/DBM-Core/sounds/license info.txt"
+        },
+        {
+          "source": "DBM-Core/textures/arrows/ArrowLicense.txt",
+          "sha256": "6b9c9c15fa0cdc64a92c8a5c78178d8eece3400a20b3bdfafb3855d67192b95d",
+          "copy": "evidence/dependencies/notices/DeadlyBossMods__DeadlyBossMods/DBM-Core/textures/arrows/ArrowLicense.txt"
+        },
+        {
+          "source": "DBM-VPVEM/license.txt",
+          "sha256": "25059af3f1af5a096801a5cfab094228526d6163ba7795c0e962a63d52331225",
+          "copy": "evidence/dependencies/notices/DeadlyBossMods__DeadlyBossMods/DBM-VPVEM/license.txt"
+        }
+      ],
+      "embeddedNoticeSources": [
+        {
+          "source": "DBM-Core/DBM-Core.lua",
+          "sha256": "a813daeac0af8afab41da7ad20e75fdabf12dd9cfeb3691928c7ffe623dba82b",
+          "declarations": [
+            "-- This addon is written and copyrighted by:\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "DBM-Core/Libs/ChatThrottleLib/ChatThrottleLib.lua",
+          "sha256": "43fb93b5c70f1198ad37289d4568df0d8929d1326072486ba2e5abaa12d19701",
+          "declarations": [
+            "-- LICENSE: ChatThrottleLib is released into the Public Domain\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "DBM-Core/Libs/LibCustomGlow-1.0/LibCustomGlow-1.0.toc",
+          "sha256": "136bd78ae4a8897667d95da2b5020ebdff6c0bc3ece67fdf66b9b87ce4049822",
+          "declarations": [
+            "## X-License: BSD\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "DBM-Core/Libs/LibDeflate/LibDeflate.lua",
+          "sha256": "b6cf1bdc38dfae0c2deadfcb2cbf4e53d9dee6fb8f0ad5a03820ccf3635b7195",
+          "declarations": [
+            "\tLicensed under GPLv2.\r",
+            "\tLicensed under zlib License. http://www.zlib.net/zlib_license.html\r",
+            "                       \" Copyright (C) 2018-2021 Haoqian He.\" ..\r",
+            "                       \" Licensed under the zlib License\"\r",
+            "  LibDeflate._COPYRIGHT = _COPYRIGHT\r",
+            "  local _COPYRIGHT = \"LibDeflate \" .. _VERSION ..\r",
+            "1. GNU General Public License Version 3 in v1.0.0 and earlier versions.\r",
+            "2. GNU Lesser General Public License Version 3 in v1.0.1\r",
+            "3. the zlib License since v1.0.2\r",
+            "@copyright LibDeflate <2018-2021> Haoqian He\r",
+            "@license zlib License\r",
+            "License History:\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "DBM-Core/Libs/LibSerialize/LibSerialize.lua",
+          "sha256": "b1c61778633eec25cb1b8fac9d55aed49714050ba8c8c46da2d032afa85a6b4c",
+          "declarations": [
+            "AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\r",
+            "Copyright (c) 2020 Ross Nichols\r",
+            "The above copyright notice and this permission notice shall be included in all\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "DBM-Core/Libs/LibSharedMedia-3.0/LibSharedMedia-3.0.lua",
+          "sha256": "db6c60a0cdca4921d35c9a27225ae16f28187dac5a4866c2d75240c3226373f9",
+          "declarations": [
+            "License: LGPL v2.1\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "DBM-Core/Libs/LibStub/LibStub.lua",
+          "sha256": "d34235c85f869505fdd9ef321d2420f69db7d2eb873d2b3bbf57584a314060fa",
+          "declarations": [
+            "-- LibStub is hereby placed in the Public Domain\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "DBM-Core/Libs/LibStub/LibStub.toc",
+          "sha256": "d6ef350c07edf6be550c586e32473776e310d212bf39962cafee04a8d415405f",
+          "declarations": [
+            "## X-License: Public Domain\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        }
+      ],
+      "standaloneNoticeAbsent": false,
+      "supplemental": [],
+      "assembly": "Fetch exact official package for this user and retain all original source/media/notice bytes.",
+      "publicRedistributionApproved": false
+    },
+    {
+      "repo": "DeadlyBossMods/DBM-Dungeons",
+      "version": "r264",
+      "mainTerms": "All Rights Reserved in tagged-source LICENSE; absent from ZIP",
+      "officialRelease": "https://github.com/DeadlyBossMods/DBM-Dungeons/releases/tag/r264",
+      "noticeFiles": [],
+      "embeddedNoticeSources": [],
+      "standaloneNoticeAbsent": true,
+      "supplemental": [
+        {
+          "repo": "DeadlyBossMods/DBM-Dungeons",
+          "tag": "r264",
+          "path": "LICENSE",
+          "gitBlob": "6c03debc6900e4ad2b1eb83f01235ad477827d1d",
+          "url": "https://github.com/DeadlyBossMods/DBM-Dungeons/blob/r264/LICENSE",
+          "sha256": "3508c59e5691fa2003362a83ed908319d2f7217c0d3dbe30cc9a19bb660c9e7c",
+          "copy": "evidence/dependencies/notices/DeadlyBossMods__DBM-Dungeons/source-LICENSE-r264",
+          "scope": "Supplemental tagged-source notice; package itself has no standalone notice."
+        }
+      ],
+      "assembly": "Fetch exact official package for this user and retain all original source/media/notice bytes.",
+      "publicRedistributionApproved": false
+    },
+    {
+      "repo": "DeadlyBossMods/DBM-Vanilla",
+      "version": "r830",
+      "mainTerms": "All Rights Reserved",
+      "officialRelease": "https://github.com/DeadlyBossMods/DBM-Vanilla/releases/tag/r830",
+      "noticeFiles": [
+        {
+          "source": "DBM-Raids-Vanilla/LICENSE",
+          "sha256": "cc8c5189e2cc6adcaf8b143527836b4c9b46669d1a0506f3fdcbfa851d0d4a97",
+          "copy": "evidence/dependencies/notices/DeadlyBossMods__DBM-Vanilla/DBM-Raids-Vanilla/LICENSE"
+        },
+        {
+          "source": "DBM-Raids-Vanilla/VanillaNaxx/ConstructQuarter/Textures/lgpl.txt",
+          "sha256": "319917f5ccd09878db6f67c9a77dee846055644ca49eb535628b9e020a87261e",
+          "copy": "evidence/dependencies/notices/DeadlyBossMods__DBM-Vanilla/DBM-Raids-Vanilla/VanillaNaxx/ConstructQuarter/Textures/lgpl.txt"
+        }
+      ],
+      "embeddedNoticeSources": [
+        {
+          "source": "DBM-Raids-Vanilla/VanillaNaxx/ConstructQuarter/Thaddius.lua",
+          "sha256": "be8bc0a3236bde04560eecb45cf7028b84157e6a20e19954b4a5b633ac65f760",
+          "declarations": [
+            "-- this file uses the texture Textures/arrow.tga. This image was created by Everaldo Coelho and is licensed under the GNU Lesser General Public License. See Textures/lgpl.txt.\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        }
+      ],
+      "standaloneNoticeAbsent": false,
+      "supplemental": [],
+      "assembly": "Fetch exact official package for this user and retain all original source/media/notice bytes.",
+      "publicRedistributionApproved": false
+    },
+    {
+      "repo": "DeadlyBossMods/DBM-WotLK",
+      "version": "r353",
+      "mainTerms": "All Rights Reserved",
+      "officialRelease": "https://github.com/DeadlyBossMods/DBM-WotLK/releases/tag/r353",
+      "noticeFiles": [
+        {
+          "source": "DBM-Raids-WoTLK/LICENSE",
+          "sha256": "3508c59e5691fa2003362a83ed908319d2f7217c0d3dbe30cc9a19bb660c9e7c",
+          "copy": "evidence/dependencies/notices/DeadlyBossMods__DBM-WotLK/DBM-Raids-WoTLK/LICENSE"
+        },
+        {
+          "source": "DBM-Raids-WoTLK/Naxx/ConstructQuarter/Textures/lgpl.txt",
+          "sha256": "319917f5ccd09878db6f67c9a77dee846055644ca49eb535628b9e020a87261e",
+          "copy": "evidence/dependencies/notices/DeadlyBossMods__DBM-WotLK/DBM-Raids-WoTLK/Naxx/ConstructQuarter/Textures/lgpl.txt"
+        }
+      ],
+      "embeddedNoticeSources": [
+        {
+          "source": "DBM-Raids-WoTLK/Naxx/ConstructQuarter/Thaddius.lua",
+          "sha256": "90cedd6796f2e321f1bf27824d0c71f23976d6923b0978777512b205b76a38d3",
+          "declarations": [
+            "-- this file uses the texture Textures/arrow.tga. This image was created by Everaldo Coelho and is licensed under the GNU Lesser General Public License. See Textures/lgpl.txt.\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        }
+      ],
+      "standaloneNoticeAbsent": false,
+      "supplemental": [],
+      "assembly": "Fetch exact official package for this user and retain all original source/media/notice bytes.",
+      "publicRedistributionApproved": false
+    },
+    {
+      "repo": "DeadlyBossMods/DBM-Cataclysm",
+      "version": "r263",
+      "mainTerms": "All Rights Reserved",
+      "officialRelease": "https://github.com/DeadlyBossMods/DBM-Cataclysm/releases/tag/r263",
+      "noticeFiles": [
+        {
+          "source": "DBM-Raids-Cata/LICENSE",
+          "sha256": "3508c59e5691fa2003362a83ed908319d2f7217c0d3dbe30cc9a19bb660c9e7c",
+          "copy": "evidence/dependencies/notices/DeadlyBossMods__DBM-Cataclysm/DBM-Raids-Cata/LICENSE"
+        }
+      ],
+      "embeddedNoticeSources": [],
+      "standaloneNoticeAbsent": false,
+      "supplemental": [],
+      "assembly": "Fetch exact official package for this user and retain all original source/media/notice bytes.",
+      "publicRedistributionApproved": false
+    },
+    {
+      "repo": "DeadlyBossMods/DBM-MoP",
+      "version": "r191",
+      "mainTerms": "All Rights Reserved",
+      "officialRelease": "https://github.com/DeadlyBossMods/DBM-MoP/releases/tag/r191",
+      "noticeFiles": [
+        {
+          "source": "DBM-Raids-MoP/LICENSE",
+          "sha256": "3508c59e5691fa2003362a83ed908319d2f7217c0d3dbe30cc9a19bb660c9e7c",
+          "copy": "evidence/dependencies/notices/DeadlyBossMods__DBM-MoP/DBM-Raids-MoP/LICENSE"
+        }
+      ],
+      "embeddedNoticeSources": [],
+      "standaloneNoticeAbsent": false,
+      "supplemental": [],
+      "assembly": "Fetch exact official package for this user and retain all original source/media/notice bytes.",
+      "publicRedistributionApproved": false
+    },
+    {
+      "repo": "DeadlyBossMods/DBM-WoD",
+      "version": "r97",
+      "mainTerms": "All Rights Reserved",
+      "officialRelease": "https://github.com/DeadlyBossMods/DBM-WoD/releases/tag/r97",
+      "noticeFiles": [
+        {
+          "source": "DBM-Raids-WoD/LICENSE",
+          "sha256": "3508c59e5691fa2003362a83ed908319d2f7217c0d3dbe30cc9a19bb660c9e7c",
+          "copy": "evidence/dependencies/notices/DeadlyBossMods__DBM-WoD/DBM-Raids-WoD/LICENSE"
+        }
+      ],
+      "embeddedNoticeSources": [],
+      "standaloneNoticeAbsent": false,
+      "supplemental": [],
+      "assembly": "Fetch exact official package for this user and retain all original source/media/notice bytes.",
+      "publicRedistributionApproved": false
+    },
+    {
+      "repo": "DeadlyBossMods/DBM-Legion",
+      "version": "r67",
+      "mainTerms": "All Rights Reserved",
+      "officialRelease": "https://github.com/DeadlyBossMods/DBM-Legion/releases/tag/r67",
+      "noticeFiles": [
+        {
+          "source": "DBM-Raids-Legion/LICENSE",
+          "sha256": "3508c59e5691fa2003362a83ed908319d2f7217c0d3dbe30cc9a19bb660c9e7c",
+          "copy": "evidence/dependencies/notices/DeadlyBossMods__DBM-Legion/DBM-Raids-Legion/LICENSE"
+        }
+      ],
+      "embeddedNoticeSources": [],
+      "standaloneNoticeAbsent": false,
+      "supplemental": [],
+      "assembly": "Fetch exact official package for this user and retain all original source/media/notice bytes.",
+      "publicRedistributionApproved": false
+    },
+    {
+      "repo": "rursache/HideClassBars",
+      "version": "v1.1.0",
+      "mainTerms": "Apache-2.0",
+      "officialRelease": "https://github.com/rursache/HideClassBars/releases/tag/v1.1.0",
+      "noticeFiles": [
+        {
+          "source": "HideClassBars/LICENSE",
+          "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+          "copy": "evidence/dependencies/notices/rursache__HideClassBars/HideClassBars/LICENSE"
+        }
+      ],
+      "embeddedNoticeSources": [],
+      "standaloneNoticeAbsent": false,
+      "supplemental": [],
+      "assembly": "Fetch exact official package for this user and retain all original source/media/notice bytes.",
+      "publicRedistributionApproved": false
+    },
+    {
+      "repo": "curseforge/DynamicCam",
+      "version": "2.21.1",
+      "mainTerms": "MIT; separate bundled library notices retained",
+      "officialRelease": "https://www.curseforge.com/wow/addons/dynamiccam/files/8995535",
+      "noticeFiles": [
+        {
+          "source": "DynamicCam/LICENSE",
+          "sha256": "d073ad048c4a17bfb5a1c69eea17c60f262aa6f542a8ebb10c81e07c6876e6b1",
+          "copy": "evidence/dependencies/notices/curseforge__DynamicCam/DynamicCam/LICENSE"
+        },
+        {
+          "source": "DynamicCam/Libs/LICENSE.md",
+          "sha256": "af51766e056af139f94de73afdc907b860d11707a20e709654ad0bf110f6fb3a",
+          "copy": "evidence/dependencies/notices/curseforge__DynamicCam/DynamicCam/Libs/LICENSE.md"
+        },
+        {
+          "source": "DynamicCam/Libs/LibCamera/LICENSE.md",
+          "sha256": "42989df156027d106f8ef55a8f330f27f09255d6500470dbea5960b32dd43998",
+          "copy": "evidence/dependencies/notices/curseforge__DynamicCam/DynamicCam/Libs/LibCamera/LICENSE.md"
+        },
+        {
+          "source": "DynamicCam/Libs/LibEasing/LICENSE.md",
+          "sha256": "42989df156027d106f8ef55a8f330f27f09255d6500470dbea5960b32dd43998",
+          "copy": "evidence/dependencies/notices/curseforge__DynamicCam/DynamicCam/Libs/LibEasing/LICENSE.md"
+        },
+        {
+          "source": "DynamicCam/Libs/LibMountInfo/LICENSE",
+          "sha256": "17167210cb8256bf1ceaf8b76bce60d544e7415589a6b88bccc91bc3ea792dbd",
+          "copy": "evidence/dependencies/notices/curseforge__DynamicCam/DynamicCam/Libs/LibMountInfo/LICENSE"
+        }
+      ],
+      "embeddedNoticeSources": [
+        {
+          "source": "DynamicCam/DynamicCam.toc",
+          "sha256": "bb23006ec5240b376dd3c8463cc8066ce57c6a3a26bd2854b33760668a2676c7",
+          "declarations": [
+            "## X-License: The MIT License (MIT)\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "DynamicCam/Libs/LibCompress/LibCompress.lua",
+          "sha256": "1d3a6bb930d4134689105c74003851b2aecd7f568a2898d5d85c0591b0fa8ddb",
+          "declarations": [
+            "-- Licence: GPL version 2 (General Public License)\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "DynamicCam/Libs/LibCompress/LibCompress.toc",
+          "sha256": "bef6c501fe7fedc8cfff074aa5a685a724fc8bdaea9e248d574b4796ecdcb471",
+          "declarations": [
+            "## X-License: GPL v2\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "DynamicCam/Libs/LibEasing/LibEasing.lua",
+          "sha256": "d01905038a55bb8f4c1b6dce2af381616d4ac8f25615f0b3dfb1fb7a26ceaa58",
+          "declarations": [
+            "    * Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.\r",
+            "    * Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.\r",
+            "All rights reserved.\r",
+            "Copyright \u00a9 2001 Robert Penner\r",
+            "Disclaimer for Robert Penner's Easing Equations license:\r",
+            "THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS \"AS IS\" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "DynamicCam/Libs/LibStub/LibStub.lua",
+          "sha256": "186bac9553513504fac3a5c4550ff59f3aee9e8a497376134f3ca01de2ed18d0",
+          "declarations": [
+            "-- LibStub is hereby placed in the Public Domain"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "DynamicCam/Libs/LibStub/LibStub.toc",
+          "sha256": "1f64542bc3921a190963e7bbd92a706b61fe2e8c411a03cd060a9c6097e6f4fa",
+          "declarations": [
+            "## X-License: Public Domain"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        }
+      ],
+      "standaloneNoticeAbsent": false,
+      "supplemental": [],
+      "assembly": "Fetch exact official package for this user and retain all original source/media/notice bytes.",
+      "publicRedistributionApproved": false
+    },
+    {
+      "repo": "curseforge/Immersion_ExtraFade",
+      "version": "1.18.0",
+      "mainTerms": "MIT",
+      "officialRelease": "https://www.curseforge.com/wow/addons/immersion-extrafade/files/8995675",
+      "noticeFiles": [
+        {
+          "source": "Immersion_ExtraFade/LICENSE",
+          "sha256": "21fa609537edd30918bd7703c8d5e7ca5ebd1ebf90a5c9a7fe68b781db7750c2",
+          "copy": "evidence/dependencies/notices/curseforge__Immersion_ExtraFade/Immersion_ExtraFade/LICENSE"
+        }
+      ],
+      "embeddedNoticeSources": [
+        {
+          "source": "Immersion_ExtraFade/Immersion_ExtraFade.toc",
+          "sha256": "b26a8c04a5b2ed7abdc268da42d44f3dbf145c0084a6b02eb5b8408581bdf3d7",
+          "declarations": [
+            "## X-License: The MIT License (MIT)\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "Immersion_ExtraFade/Libs/LibStub/LibStub.lua",
+          "sha256": "186bac9553513504fac3a5c4550ff59f3aee9e8a497376134f3ca01de2ed18d0",
+          "declarations": [
+            "-- LibStub is hereby placed in the Public Domain"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "Immersion_ExtraFade/Libs/LibStub/LibStub.toc",
+          "sha256": "1f64542bc3921a190963e7bbd92a706b61fe2e8c411a03cd060a9c6097e6f4fa",
+          "declarations": [
+            "## X-License: Public Domain"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        }
+      ],
+      "standaloneNoticeAbsent": false,
+      "supplemental": [],
+      "assembly": "Fetch exact official package for this user and retain all original source/media/notice bytes.",
+      "publicRedistributionApproved": false
+    },
+    {
+      "repo": "curseforge/SharedMedia_Causese",
+      "version": "7.6",
+      "mainTerms": "GPL-3.0 declared on official project/license page; absent from ZIP",
+      "officialRelease": "https://www.curseforge.com/wow/addons/sharedmedia_causese/files/7242737",
+      "noticeFiles": [],
+      "embeddedNoticeSources": [
+        {
+          "source": "SharedMedia_Causese/libs/LibSharedMedia-3.0/LibSharedMedia-3.0.lua",
+          "sha256": "33a765d61d3dfbfc1965c48404e5d30601176fc9168c3f8360c2892f3811dd2b",
+          "declarations": [
+            "License: LGPL v2.1\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "SharedMedia_Causese/libs/LibStub/LibStub.lua",
+          "sha256": "d34235c85f869505fdd9ef321d2420f69db7d2eb873d2b3bbf57584a314060fa",
+          "declarations": [
+            "-- LibStub is hereby placed in the Public Domain\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "SharedMedia_Causese/libs/LibStub/LibStub.toc",
+          "sha256": "0e276448cc269122f1cb10bf98087db945d923bf006825de7ebed8e647822ef1",
+          "declarations": [
+            "## X-License: Public Domain\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        }
+      ],
+      "standaloneNoticeAbsent": true,
+      "supplemental": [
+        {
+          "repo": "curseforge/SharedMedia_Causese",
+          "url": "https://www.curseforge.com/wow/addons/sharedmedia_causese/license",
+          "verifiedAt": "2026-10-04T09:36:33.361163+00:00",
+          "declaredLicense": "GPL-3.0",
+          "copy": "evidence/dependencies/notices/curseforge__SharedMedia_Causese/supplemental-GPL-3.0.txt",
+          "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986",
+          "scope": "Official project declares GPLv3; supplemental standard license text copied verbatim from qualified MountsRarity GPLv3 notice, not represented as present in SharedMedia ZIP."
+        }
+      ],
+      "assembly": "Fetch exact official package for this user and retain all original source/media/notice bytes.",
+      "publicRedistributionApproved": false
+    },
+    {
+      "repo": "seblindfors/ConsolePort",
+      "version": "3.3.5",
+      "mainTerms": "Artistic-2.0",
+      "officialRelease": "https://github.com/seblindfors/ConsolePort/releases/tag/3.3.5",
+      "noticeFiles": [
+        {
+          "source": "ConsolePort/LICENSE.md",
+          "sha256": "ae649c4a6cbf80a9eeb0edd80a59c2bf7456844a01921912cacd7520b7b3f4e6",
+          "copy": "evidence/dependencies/notices/seblindfors__ConsolePort/ConsolePort/LICENSE.md"
+        }
+      ],
+      "embeddedNoticeSources": [
+        {
+          "source": "ConsolePort/Libs/External/ConsolePortNode/ConsolePortNode.lua",
+          "sha256": "1c10da60d4240da12c009c752b45a72d72c3883baa7d423cd6f603170ed9197e",
+          "declarations": [
+            "-- Licence: GPL version 2 (General Public License)\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "ConsolePort/Libs/External/ConsolePortNode/README.md",
+          "sha256": "c5c4f36a22a9b2de5a2a47f1e6d6bcc3d775155c1213c20400694cf875c447f4",
+          "declarations": [
+            "This library is licensed under the GPL version 2 (General Public License).\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "ConsolePort/Libs/External/LibActionButton-1.0/LibActionButton-1.0.lua",
+          "sha256": "971cb26e95e06787f2f7d9a72dcfcda8c3ab46634495b924dff0f3eb4de1e80a",
+          "declarations": [
+            "    * Redistributions in binary form must reproduce the above copyright notice,\r",
+            "    * Redistributions of source code must retain the above copyright notice,\r",
+            "A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR\r",
+            "All rights reserved.\r",
+            "Copyright (c) 2010-2022, Hendrik \"nevcairiel\" Leppkes <h.leppkes@gmail.com>\r",
+            "THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "ConsolePort/Libs/External/LibActionButton-1.0/LibActionButton-1.0.toc",
+          "sha256": "f868eb39a69ca6129738db3d1a0254d9c032b6700e26e43a2225eae996a71790",
+          "declarations": [
+            "## X-License: BSD\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "ConsolePort/Libs/External/LibButtonGlow-1.0/LibButtonGlow-1.0.lua",
+          "sha256": "85c4f53cad52f479a4a84203987eb155cef68730f3adc2133755dbee77c617e3",
+          "declarations": [
+            "    * Redistributions in binary form must reproduce the above copyright notice, \r",
+            "    * Redistributions of source code must retain the above copyright notice, \r",
+            "A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR\r",
+            "All rights reserved.\r",
+            "Copyright (c) 2015-2020, Hendrik \"nevcairiel\" Leppkes <h.leppkes@gmail.com>\r",
+            "THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "ConsolePort/Libs/External/LibButtonGlow-1.0/LibButtonGlow-1.0.toc",
+          "sha256": "d53875d3f292895dc859cfc901933f534cef1b4ef3ab187ec41e80c320e460e2",
+          "declarations": [
+            "## X-License: BSD\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "ConsolePort/Libs/External/LibStub/LibStub.lua",
+          "sha256": "6000f58d740eaa2b4a006c1dabb0366f0321fc687bab9e85d97d040a1fd42dab",
+          "declarations": [
+            "-- LibStub is hereby placed in the Public Domain Credits: Kaelten, Cladhaire, ckknight, Mikk, Ammo, Nevcairiel, joshborke\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "ConsolePort/Libs/External/LibStub/LibStub.toc",
+          "sha256": "e01f590f6dfb5419595b640e6b5391092b5e39f8581d010adb9d852f4a30578d",
+          "declarations": [
+            "## X-License: Public Domain\t\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "ConsolePort/Libs/External/RelaTable/RelaTable.lua",
+          "sha256": "89ee28e8ca9dc8933901014e5644a505a0f8984bbf548685a6e846864ebc7a40",
+          "declarations": [
+            "-- Licence: GPL version 2 (General Public License)\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "ConsolePort/Libs/Local/Carpenter.lua",
+          "sha256": "ce1bc2d6486e4f768c1c6dc3852a881e5e1bd9155d58813121ae5a830cf9e9a8",
+          "declarations": [
+            "-- Licence: GPL version 2 (General Public License)\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "ConsolePort/Libs/Local/Tabular.lua",
+          "sha256": "4b7dbcd45ce14fd9cb6a6a23284b61623fd25ca6be6189a14024094e3f92dd4e",
+          "declarations": [
+            "-- Licence: GPL version 2 (General Public License)\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "ConsolePort_Config/Libs/LibCompress/LibCompress.lua",
+          "sha256": "6d6bc816bd7621c2552fc62798644e36d8d9ed97ccb31330c078355a900faa02",
+          "declarations": [
+            "-- Licence: GPL version 2 (General Public License)\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "ConsolePort_Config/Libs/LibCompress/LibCompress.toc",
+          "sha256": "30913b368285b8bac45d544a4d2e11cec8e7d64ab841c6d0a870d35cbe49fb43",
+          "declarations": [
+            "## X-License: GPL v2\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "ConsolePort_Config/Libs/LibWoWQRCode/LibWoWQRCode.lua",
+          "sha256": "589d743a542b059840d62c419b50c7f86e26e762b7bc25260bbc2a72a3967741",
+          "declarations": [
+            "--\t * Redistributions in binary form must reproduce the above copyright\r",
+            "--\t * Redistributions of source code must retain the above copyright\r",
+            "-- All rights reserved.\r",
+            "-- Copyright (c) 2012-2020, Patrick Gundlach and contributors, see https://github.com/speedata/luaqrcode\r",
+            "-- THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS \"AS IS\" AND\r",
+            "--- The qrcode library is licensed under the 3-clause BSD license (aka \"new BSD\")\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "ConsolePort_Config/Libs/LibWoWQRCode/README.md",
+          "sha256": "2c0ab83dc70fa01f4d5184a748ae9ddfa4315bf8b2d3a9ce56e37e1e65b75ed2",
+          "declarations": [
+            "This library includes code from [luaqrcode](https://github.com/speedata/luaqrcode), licensed under the 3-clause BSD license.\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        }
+      ],
+      "standaloneNoticeAbsent": false,
+      "supplemental": [],
+      "assembly": "Fetch exact official package for this user and retain all original source/media/notice bytes.",
+      "publicRedistributionApproved": false
+    }
+  ]
+}

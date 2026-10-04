@@ -41,7 +41,7 @@ function db:Get(p) return self.Settings[p:match("Settings/(.+)")] end
 function db:Set(p,v) self.Settings[p:match("Settings/(.+)")]=v return true end
 local bar={Layout={name="current",children={}},Manager={hasEnvironment=true}}
 function bar:ApplyPreset(v) self.Layout=v end
-local bridge=Addon.ConsolePortAdapter.New({version="3.3.3",getDB=function() return db end,getBar=function() return bar end,inCombat=function() return combat end})
+local bridge=Addon.ConsolePortAdapter.New({version="3.3.5",getDB=function() return db end,getBar=function() return bar end,inCombat=function() return combat end})
 assert(bridge:Probe() and bridge:Capture().settings.bindingPresetCondition=="keep")
 assert(bridge:write({"settings","bindingPresetCondition"},""))
 assert(bridge:read({"settings","bindingPresetCondition"})=="")

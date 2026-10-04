@@ -1,0 +1,23 @@
+{
+  "sources": [
+    {
+      "repo": "DeadlyBossMods/DBM-Dungeons",
+      "tag": "r264",
+      "path": "LICENSE",
+      "gitBlob": "6c03debc6900e4ad2b1eb83f01235ad477827d1d",
+      "url": "https://github.com/DeadlyBossMods/DBM-Dungeons/blob/r264/LICENSE",
+      "sha256": "3508c59e5691fa2003362a83ed908319d2f7217c0d3dbe30cc9a19bb660c9e7c",
+      "copy": "evidence/dependencies/notices/DeadlyBossMods__DBM-Dungeons/source-LICENSE-r264",
+      "scope": "Supplemental tagged-source notice; package itself has no standalone notice."
+    },
+    {
+      "repo": "curseforge/SharedMedia_Causese",
+      "url": "https://www.curseforge.com/wow/addons/sharedmedia_causese/license",
+      "verifiedAt": "2026-10-04T09:36:33.361163+00:00",
+      "declaredLicense": "GPL-3.0",
+      "copy": "evidence/dependencies/notices/curseforge__SharedMedia_Causese/supplemental-GPL-3.0.txt",
+      "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986",
+      "scope": "Official project declares GPLv3; supplemental standard license text copied verbatim from qualified MountsRarity GPLv3 notice, not represented as present in SharedMedia ZIP."
+    }
+  ]
+}

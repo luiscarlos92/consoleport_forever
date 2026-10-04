@@ -5,7 +5,7 @@ function Bridge.New(api,account,guid)
     return setmetatable({api=api,account=account,guid=guid},{__index=Bridge})
 end
 function Bridge:Probe()
-    if self.api.version~='3.3.3' then return false,'ring version has not been audited' end
+    if self.api.version~='3.3.5' then return false,'ring version has not been audited' end
     if type(self.api.currentGUID)~='function' or self.api.currentGUID()~=self.guid then return false,'ring view belongs to another or unavailable GUID' end
     local record=self.account.characters[self.guid]
     if not record or type(record.rings)~='table' or (record.ringAccepted and type(record.rings.sets)~='table')

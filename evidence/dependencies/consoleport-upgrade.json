@@ -1,0 +1,50 @@
+{
+  "before": {
+    "version": "3.3.3",
+    "packageSHA256": "4e5e464b5cc0de3b0ae9efead1a57ad04da0ff3572492cbede1d0617dd3f4f6f"
+  },
+  "after": {
+    "version": "3.3.5",
+    "packageSHA256": "64d653aaccca1421fd884b03bd00d2485d0190dc3e95bc79eec8cb676aa23e45",
+    "officialRelease": "https://github.com/seblindfors/ConsolePort/releases/tag/3.3.5"
+  },
+  "changedFiles": [
+    {
+      "path": "ConsolePort/CHANGELOG.md",
+      "beforeSHA256": "e67b060279c6080307aa26e6873f6413b672744f0672a67652353d481268cd5c",
+      "afterSHA256": "0c1e020e02079c8d80fc5dc4b3fdd5d048cb93780a9af7163d73a54593e7e289"
+    },
+    {
+      "path": "ConsolePort/ConsolePort.toc",
+      "beforeSHA256": "53a261a3b65ff57d3818c1eff459bf725d47691da7ac59e3ccc49f379d321e4b",
+      "afterSHA256": "de1ca51fbe5563dc63764729e411306b4ee644a20c917b24303c85d12f1efc1a"
+    },
+    {
+      "path": "ConsolePort/Controller/Layers.lua",
+      "beforeSHA256": "78c122eb3f29e09cfe40a90fa1a3cf1e07ef9640970a97a7e434e1b6a227dd83",
+      "afterSHA256": "1606b7953f8fe1ed52bafc94ef33941fed91d4609aefe0aa782109acbc4cfc7d"
+    },
+    {
+      "path": "ConsolePort/Controller/Modules.lua",
+      "beforeSHA256": "e822d15b1670260a717115b527d1272851fa49af4c3fe52f96b92b4af8b67b9a",
+      "afterSHA256": "fa5c9922d40e34571dcefafccc122805166b49a06db36f5ca6d82b75078ea53b"
+    },
+    {
+      "path": "ConsolePort/Model/Gamepad/Gamepad.lua",
+      "beforeSHA256": "b0238c097b18438ddbffee0927ec43c1e0f18e49759c443535af717c69fb5970",
+      "afterSHA256": "465e33ffcfabe616d847a8c1bf71cb560850e6a9b4e8d4be26f1fddb4017e901"
+    },
+    {
+      "path": "ConsolePort_Keyboard/View/Keyboard.lua",
+      "beforeSHA256": "235508d69406cb529e53c57bf689500dbeeaa05e27c98babbc25dc9c9cf827ed",
+      "afterSHA256": "0c73e5fe49f249d1dc1492b7f77e95503ff055794cf6d23077e22a3f6f0ec9de"
+    },
+    {
+      "path": "ConsolePort_Menu/Controller/UnitMenu.lua",
+      "beforeSHA256": "735fbbadc7c272ed2232b0d7fc20ab9fbae81d8b2da0302075ae65604e979714",
+      "afterSHA256": "65da2c214c24c1a3f56d37e8407083b7566fdb2519909abe0d4f6ec571009797"
+    }
+  ],
+  "unchangedFiles": 599,
+  "analysis": "3.3.4 repairs once-only native module selection, keyboard command convention and target-interact eligibility; Layers adds an insecure-frame state branch. 3.3.5 guards binding writes until a selected native bank exists. All current source contracts are refreshed and tested; secure/rendered acceptance remains pending."
+}

@@ -2,7 +2,7 @@
 
 Prepared: 2026-10-03  
 Updated with user clarifications: 2026-10-03  
-Status: Implementation underway in isolated Git checkout; original baseline committed/pushed. Runtime/bootstrap, secure modes, binding-bank recovery/restore, review, GUID manual rings, native popup/quantity/window/scroll/BetterBags/map/quest-detail controls, current flat integration settings and DynamicCam copies pass offline/source contracts. Matching packaged patch audit and native presentation/LiteMount icon adapters are implemented. Exact protected gestures remain separately gated; additional side-bar visibility, final notices/official-source assembly, guarded pack/install/restore tooling and candidate delivery remain. All actual Retail acceptance is pending. See IMPLEMENTATION-STATUS.md for exact milestones and continuation.
+Status: Implementation underway in isolated Git checkout; original baseline committed/pushed. Runtime/bootstrap, secure modes, binding-bank recovery/restore, review, GUID manual rings, native popup/quantity/window/scroll/BetterBags/map/quest-detail controls, current flat integration settings and DynamicCam copies pass offline/source contracts. Matching packaged patch audit and native presentation/LiteMount icon adapters are implemented. Reviewed native side-bar visibility and personal notice review are source-tested. The current dependency target is ConsolePort 3.3.5 after the final stable-source recheck. Exact protected gestures remain separately gated; official-source assembly, guarded pack/install/restore tooling and candidate delivery remain. All actual Retail acceptance is pending. See IMPLEMENTATION-STATUS.md for exact milestones and continuation.
 Companion addon: `ConsolePort_Forever`
 
 **Target game: World of Warcraft Retail.** Forever is the behavior/layout reference; this companion runs with Retail ConsolePort. Forever-only CVars, storage and restricted APIs are evidence, not APIs to assume exist in Retail.
@@ -65,7 +65,7 @@ Installed versions remain the migration/reference baseline, **not the implementa
 
 | Dependency/package family | Installed baseline | Current source finding in this pass | Source / packaging instruction |
 | --- | --- | --- | --- |
-| ConsolePort suite | 3.2.6 | **3.3.3**, October 2 | [Official release](https://github.com/seblindfors/ConsolePort/releases/tag/3.3.3). Fetch packaged ZIP with libraries and all nine module folders. Audit its new layer/input lifecycle. |
+| ConsolePort suite | 3.2.6 | **3.3.5**, October 4 final build recheck | [Official release](https://github.com/seblindfors/ConsolePort/releases/tag/3.3.5). Fetch packaged ZIP with libraries and all nine module folders. Audit its new layer/input lifecycle. |
 | BetterBags | v0.5.11 | **v0.5.14**, October 2 | [Official release](https://github.com/Cidan/BetterBags/releases/tag/v0.5.14). Preserve its native ConsolePort integration. |
 | DynamicCam | 2.20.3 | 2.21.1 official stable package qualified October 4 (file 8995535); no GitHub latest-release endpoint | [Maintainer source](https://github.com/mpstark/DynamicCam), [official 2.21.1 distribution](https://www.curseforge.com/wow/addons/dynamiccam/files/8995535). Source uses packaging version tokens; a raw checkout is not a deployable release. |
 | Immersion | 1.4.61 | 1.4.61 | [Official release](https://github.com/seblindfors/Immersion/releases/tag/1.4.61). |
@@ -91,6 +91,8 @@ The deliverable is a personal UI pack, not a public redistribution project. Comm
 Third-party patches are migration evidence. Compare copied installed folders to **matching old packaged versions** first; classify personal changes versus packaging/library/whitespace differences. The four substantive ConsolePort changes in 2.14 need companion substitutes. Extend the audit to BetterBags `integrations/masque.lua` and historical Immersion modifications. Final pack dependencies are clean current upstream packages. Never replay old patches onto current releases or overwrite live addons during this build-only chat.
 
 ### H3. Current-source changes that alter the implementation
+
+Build update: the active current package is now 3.3.5, with all adapters/source contracts refreshed and tested. The 3.3.3 analysis below describes the original architectural migration; 3.3.4/5 additionally repair native module-list selection, keyboard button convention, unprotected Layers state dispatch and selected-binding-bank readiness. Those clean upstream migrations remain upstream-owned; companion decline does not disable them. See evidence/dependencies/consoleport-upgrade.json and IMPLEMENTATION-STATUS.md.
 
 ConsolePort 3.3.3 is structurally different from the inspected 3.2.6 baseline. Review `ConsolePort/Controller/Layers.lua`, `Controller/Bindings.lua`, `Controller/Modules.lua`, `API.lua`, `ConsolePort_Bar/Controller/Manager/Manager.lua`, `Model/Utils.lua`, button/pager/cursor/ring code and their XML/TOC load order from the pinned **current package**.
 

@@ -55,7 +55,7 @@ function env:Acquire(kind,name,id,bank) assert(kind==GROUP_BUTTON) return makeBu
 --@NATIVE_GROUP_SKIN_LIFECYCLE
 local Manager={bindingSnapshot={PAD1={['']='JUMP',['SHIFT-']='INTERACTTARGET'},PAD2={['']=''},PAD3={['']='INTERACTTARGET'},PAD4={['']='TURNORACTION'}}}
 --@NATIVE_MANAGER_BINDINGS
-Addon.adapters={consoleport={api={version='3.3.3'},bar={Manager=Manager}}}
+Addon.adapters={consoleport={api={version='3.3.5'},bar={Manager=Manager}}}
 C_Spell={GetSpellTexture=function(id) assert(id==6603) return 6603 end}
 function UnitExists() return false end
 local function makeBank(id,name)

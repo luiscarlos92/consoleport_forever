@@ -416,6 +416,21 @@ check('T31.native-visibility-parent-lifecycle', () => {
     .replace('--@RUNTIME_VISIBILITY',()=>';(function(...)\n'+read('addon/ConsolePort_Forever/Runtime.lua')+'\nend)("ConsolePort_Forever",Addon);');
   execute(fixture,'native-visibility-parent-lifecycle');
 });
+check('T32.current-ConsolePort-upgrade-contracts', () => {
+  const base='evidence/consoleport-contracts/';
+  const utils=read(base+'ConsolePort/Utils/Utils.lua');
+  const conversion=utils.slice(utils.indexOf('do\tlocal ConvertSecureBody'),utils.indexOf('\nend',utils.indexOf('do\tlocal ConvertSecureBody'))+4);
+  const modules=read(base+'ConsolePort/Controller/Modules.lua');
+  const keyboard=read(base+'ConsolePort_Keyboard/View/Keyboard.lua');
+  const fixture=read('tests/harness/cp_upgrade.lua')
+    .replace('--@NATIVE_CONVERSION',()=>conversion)
+    .replace('--@NATIVE_MACRO',()=>read(base+'ConsolePort/Utils/Macro.lua').slice(0,read(base+'ConsolePort/Utils/Macro.lua').indexOf('function CPAPI.ModComplement')))
+    .replace('--@NATIVE_LAYERS',()=>';(function(...)\n'+read(base+'ConsolePort/Controller/Layers.lua')+'\nend)("ConsolePort",db);')
+    .replace('--@NATIVE_MODULE_MIGRATION',()=>modules.slice(modules.indexOf('Modules.Deprecated ='),modules.indexOf('function Modules:OnDataLoaded')))
+    .replace('--@NATIVE_KEYBOARD_MIGRATION',()=>keyboard.slice(keyboard.indexOf('local BUTTON_CONVENTION_VERSION'),keyboard.indexOf('function Keyboard:OnDataLoaded')))
+    .replace('--@NATIVE_CLEAR_BLOCKED',()=>nativeFunction(base+'ConsolePort/Model/Gamepad/Gamepad.lua','GamepadAPI:ClearBlockedBindings'));
+  execute(fixture,'native-ConsolePort-upgrade');
+});
 check('T01.data-parser', () => {
   const parse=require('./saved_variables.cjs').parse;
   for (const text of ['x=os.execute("bad")','x=(function() return 1 end)()','while true do end','x={f=CreateFrame("Frame")}']) {

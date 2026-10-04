@@ -1,0 +1,207 @@
+{
+  "checkedAt": "2026-10-04T09:46:09.204324+00:00",
+  "lockSHA256": "f495048cd9c84670c6087d109406691b0dd45c964a6b2d7ffc8eb286b6495201",
+  "github": [
+    {
+      "repo": "seblindfors/ConsolePort",
+      "url": "https://github.com/seblindfors/ConsolePort/releases/tag/3.3.5",
+      "latestStable": "3.3.5",
+      "releaseID": 402903202,
+      "publishedAt": "2026-10-04T07:43:37Z",
+      "matchesLock": true,
+      "assetID": 609382705,
+      "digest": "sha256:64d653aaccca1421fd884b03bd00d2485d0190dc3e95bc79eec8cb676aa23e45",
+      "bytes": 17809769
+    },
+    {
+      "repo": "Cidan/BetterBags",
+      "url": "https://github.com/Cidan/BetterBags/releases/tag/v0.5.14",
+      "latestStable": "v0.5.14",
+      "releaseID": 401468770,
+      "publishedAt": "2026-10-02T01:12:16Z",
+      "matchesLock": true,
+      "assetID": 604493194,
+      "digest": "sha256:16c1ac70c4de2e7f2cfdbf4d2b5f3d3f44514a3f9ecf1040e29c790e8be8c0d7",
+      "bytes": 551933
+    },
+    {
+      "repo": "seblindfors/Immersion",
+      "url": "https://github.com/seblindfors/Immersion/releases/tag/1.4.61",
+      "latestStable": "1.4.61",
+      "releaseID": 395415546,
+      "publishedAt": "2026-09-24T06:59:53Z",
+      "matchesLock": true,
+      "assetID": 585356687,
+      "digest": "sha256:b180a8cbd1a1d878377da5a85abfdc5576e0c04212f9e900e3e9ca505cde1f3e",
+      "bytes": 145146
+    },
+    {
+      "repo": "xod-wow/LiteMount",
+      "url": "https://github.com/xod-wow/LiteMount/releases/tag/12.1.0-1",
+      "latestStable": "12.1.0-1",
+      "releaseID": 390475359,
+      "publishedAt": "2026-09-17T06:18:53Z",
+      "matchesLock": true,
+      "assetID": 569607132,
+      "digest": "sha256:bf89ab84666266ffefd8ce56581f98467f8125c25c65e3fe68031303df28efe0",
+      "bytes": 439577
+    },
+    {
+      "repo": "SFX-WoW/Masque",
+      "url": "https://github.com/SFX-WoW/Masque/releases/tag/12.1.0",
+      "latestStable": "12.1.0",
+      "releaseID": 375817118,
+      "publishedAt": "2026-08-24T15:48:33Z",
+      "matchesLock": true,
+      "assetID": 527819371,
+      "digest": "sha256:9e1da4827ae60bd25d7fc427cbeeb0dc297e59d53a71a29ae95223d3374bbfa0",
+      "bytes": 3025889
+    },
+    {
+      "repo": "rursache/HideClassBars",
+      "url": "https://github.com/rursache/HideClassBars/releases/tag/v1.1.0",
+      "latestStable": "v1.1.0",
+      "releaseID": 280180870,
+      "publishedAt": "2026-01-27T07:31:21Z",
+      "matchesLock": true,
+      "sourceCommit": "29bd1080d3df6e428339e81be86f11f14f8c8034"
+    },
+    {
+      "repo": "Tercioo/Plater-Nameplates",
+      "url": "https://github.com/Tercioo/Plater-Nameplates/releases/tag/Plater-v656",
+      "latestStable": "Plater-v656",
+      "releaseID": 392139015,
+      "publishedAt": "2026-09-19T16:38:47Z",
+      "matchesLock": true,
+      "assetID": 575104334,
+      "digest": "sha256:3353250fa63fe840d8e9444037a3debde5c82286ccbcc825a475cec5ffd90ead",
+      "bytes": 4545532
+    },
+    {
+      "repo": "DeadlyBossMods/DeadlyBossMods",
+      "url": "https://github.com/DeadlyBossMods/DeadlyBossMods/releases/tag/12.1.12",
+      "latestStable": "12.1.12",
+      "releaseID": 399587587,
+      "publishedAt": "2026-09-29T22:59:44Z",
+      "matchesLock": true,
+      "assetID": 599441908,
+      "digest": "sha256:5c8bbcc7daabff029d8ecf4b4b95b400be1bfdd5e860123914d84ada032d40e6",
+      "bytes": 12963818
+    },
+    {
+      "repo": "DeadlyBossMods/DBM-Dungeons",
+      "url": "https://github.com/DeadlyBossMods/DBM-Dungeons/releases/tag/r264",
+      "latestStable": "r264",
+      "releaseID": 392566154,
+      "publishedAt": "2026-09-20T20:35:39Z",
+      "matchesLock": true,
+      "assetID": 577527405,
+      "digest": "sha256:63a30527dfef38975ef48d9f98c82608c286504cd7668d745e8998a1fd5c9479",
+      "bytes": 1774364
+    },
+    {
+      "repo": "DeadlyBossMods/DBM-Vanilla",
+      "url": "https://github.com/DeadlyBossMods/DBM-Vanilla/releases/tag/r830",
+      "latestStable": "r830",
+      "releaseID": 392565978,
+      "publishedAt": "2026-09-20T20:35:01Z",
+      "matchesLock": true,
+      "assetID": 577520254,
+      "digest": "sha256:7c559db0599ae1dac36c2836b61b7f8125d705d71cc39d76d8a2d2fe8f048463",
+      "bytes": 1817482
+    },
+    {
+      "repo": "DeadlyBossMods/DBM-WotLK",
+      "url": "https://github.com/DeadlyBossMods/DBM-WotLK/releases/tag/r353",
+      "latestStable": "r353",
+      "releaseID": 392246580,
+      "publishedAt": "2026-09-19T23:06:20Z",
+      "matchesLock": true,
+      "assetID": 575646739,
+      "digest": "sha256:a62e410a8bf69bbc23ef3cb14ed20268dd175c5f7b2ccba52931b894e2c2b462",
+      "bytes": 526264
+    },
+    {
+      "repo": "DeadlyBossMods/DBM-Cataclysm",
+      "url": "https://github.com/DeadlyBossMods/DBM-Cataclysm/releases/tag/r263",
+      "latestStable": "r263",
+      "releaseID": 392247061,
+      "publishedAt": "2026-09-19T23:08:28Z",
+      "matchesLock": true,
+      "assetID": 575651637,
+      "digest": "sha256:ae87dc521de1f39ae6eccbaaf8a8dc2d91205b4be9ecc9bda72f2da79d9be145",
+      "bytes": 189913
+    },
+    {
+      "repo": "DeadlyBossMods/DBM-MoP",
+      "url": "https://github.com/DeadlyBossMods/DBM-MoP/releases/tag/r191",
+      "latestStable": "r191",
+      "releaseID": 392246664,
+      "publishedAt": "2026-09-19T23:06:35Z",
+      "matchesLock": true,
+      "assetID": 575645679,
+      "digest": "sha256:074eebe2db67590f42a78d5f2dbfde24423563ff3c822c1ee6a3a082790a56d4",
+      "bytes": 304982
+    },
+    {
+      "repo": "DeadlyBossMods/DBM-WoD",
+      "url": "https://github.com/DeadlyBossMods/DBM-WoD/releases/tag/r97",
+      "latestStable": "r97",
+      "releaseID": 392247131,
+      "publishedAt": "2026-09-19T23:08:44Z",
+      "matchesLock": true,
+      "assetID": 575648305,
+      "digest": "sha256:87889c77279e5c422e99ffb595c6b83e274f4e6f5be31e5142a7b75d5aa72bf6",
+      "bytes": 213368
+    },
+    {
+      "repo": "DeadlyBossMods/DBM-Legion",
+      "url": "https://github.com/DeadlyBossMods/DBM-Legion/releases/tag/r67",
+      "latestStable": "r67",
+      "releaseID": 392247171,
+      "publishedAt": "2026-09-19T23:09:01Z",
+      "matchesLock": true,
+      "assetID": 575648661,
+      "digest": "sha256:6c1bdbabb0340408cbb44e663a80ca42f26158c81457b6cf50707d5f2f4533b2",
+      "bytes": 252885
+    }
+  ],
+  "curseforge": [
+    {
+      "repo": "curseforge/DynamicCam",
+      "latestURL": "https://www.curseforge.com/wow/addons/dynamiccam/files/all",
+      "officialFile": "https://www.curseforge.com/wow/addons/dynamiccam/files/8995535",
+      "latestStable": "2.21.1",
+      "fileID": 8995535,
+      "metadataVerifiedAt": "2026-10-04T09:36:33.377792+00:00",
+      "method": "Official latest-stable Retail listing and file page inspected; no floating latest fetch during assembly.",
+      "matchesLock": true
+    },
+    {
+      "repo": "curseforge/Immersion_ExtraFade",
+      "latestURL": "https://www.curseforge.com/wow/addons/immersion-extrafade/files/all",
+      "officialFile": "https://www.curseforge.com/wow/addons/immersion-extrafade/files/8995675",
+      "latestStable": "1.18.0",
+      "fileID": 8995675,
+      "metadataVerifiedAt": "2026-10-04T09:36:33.377805+00:00",
+      "method": "Official latest-stable Retail listing and file page inspected; no floating latest fetch during assembly.",
+      "matchesLock": true
+    },
+    {
+      "repo": "curseforge/SharedMedia_Causese",
+      "latestURL": "https://www.curseforge.com/wow/addons/sharedmedia_causese/files/all",
+      "officialFile": "https://www.curseforge.com/wow/addons/sharedmedia_causese/files/7242737",
+      "latestStable": "7.6",
+      "fileID": 7242737,
+      "metadataVerifiedAt": "2026-10-04T09:36:33.377809+00:00",
+      "method": "Official latest-stable Retail listing and file page inspected; no floating latest fetch during assembly.",
+      "matchesLock": true
+    }
+  ],
+  "bundledVoice": {
+    "maintainerCommit": "99e0c336444fd7105e1414c46f9d6a4e0cf99bc6",
+    "expectedCommit": "99e0c336444fd7105e1414c46f9d6a4e0cf99bc6",
+    "matchesLock": true
+  },
+  "allCurrent": true
+}

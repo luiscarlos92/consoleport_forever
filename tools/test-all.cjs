@@ -61,7 +61,7 @@ check('T01.snapshot', () => {
 check('T27.lua51', () => {
   for (const f of files('addon').filter(f=>f.endsWith('.lua'))) parser.parse(read(f),{luaVersion:'5.1'});
 });
-const modules = ['Core','Store','Plan','Transactions','BindingPolicy','ModePolicy','Rings/Discovery','Rings/Selectors','SecureModes','UI/Ownership','UI/InputBridge','UI/Contexts','UI/FocusVisuals','UI/Proof','Adapters/NativeBindings',
+const modules = ['Core','Store','Plan','Transactions','BindingPolicy','ModePolicy','Rings/Discovery','Rings/Selectors','SecureModes','UI/Ownership','UI/InputBridge','UI/Windows','UI/Scroll','UI/Contexts','UI/FocusVisuals','UI/Proof','Adapters/NativeBindings',
   'Adapters/BindingState','Adapters/BindingBanks','Diagnostics','Capability','Adapters/ConsolePort','Adapters/EditMode','Adapters/FlatConfig','Adapters/DynamicCam','Adapters/Rings','Baseline','Coordinator','Prompt'];
 const source = 'Addon={};\n' + modules.map(m=>
   ';(function(...)\n'+read('addon/ConsolePort_Forever/'+m+'.lua')+'\nend)("ConsolePort_Forever",Addon);\n').join('');
@@ -199,7 +199,7 @@ TEST_SUCCESS=true
 `,'DynamicCam-persisted-native-AceDB');
 });
 check('T21.focus-visuals-proof', () => execute(source+read('tests/harness/focus_visuals.lua'),'focus-visuals-proof'));
-check('T16-T20-T22.current-native-UI-contexts', () => {
+function uiContextFixture() {
   const base='evidence/consoleport-contracts/';
   const database=read(base+'ConsolePort/Utils/Database.lua').replace(/\r\n/g,'\n');
   const begin=database.indexOf('db.table.mixin = function');
@@ -217,7 +217,24 @@ check('T16-T20-T22.current-native-UI-contexts', () => {
     .replace('--@NATIVE_POPUP_CLICK',click)
     .replace('--@NATIVE_SECURE_CLICK',secureClick)
     .replace('--@NATIVE_STACK_SPLIT',read('evidence/native/Blizzard_FrameXML/Mainline/StackSplitFrame.lua'));
-  execute(source+fixture,'UI-contexts-current-source');
+  return fixture;
+}
+check('T16-T20-T22.current-native-UI-contexts', () => execute(source+uiContextFixture(),'UI-contexts-current-source'));
+function windowFixture() {
+  const base='evidence/consoleport-contracts/';
+  const windows=read('tests/harness/ui_windows.lua')
+    .replace('--@NATIVE_STACK',()=>';(function(...)\n'+read(base+'ConsolePort_Cursor/Controller/Stack.lua')+'\nend)("ConsolePort_Cursor");')
+    .replace('--@NATIVE_TABS',()=>read('evidence/native/Blizzard_SharedXML/Shared/TabSystem/TabSystemOwner.lua')+'\n'+read('evidence/native/Blizzard_SharedXML/Shared/TabSystem/TabSystemTemplates.lua'));
+  return uiContextFixture()+'\n'+windows;
+}
+check('T20.current-native-window-controls', () => execute(source+windowFixture(),'ui-windows-native-source'));
+check('T20.native-UI-stick-scroll-ownership', () => {
+  const base='evidence/consoleport-contracts/';
+  const scroll=read('tests/harness/ui_scroll.lua')
+    .replace('--@NATIVE_RADIAL',()=>';(function(...)\n'+read(base+'ConsolePort/Controller/Radial.lua')+'\nend)("ConsolePort",db);')
+    .replace('--@NATIVE_SCROLL_CONTROLLER',()=>read('evidence/native/Blizzard_SharedXML/Shared/Scroll/ScrollController.lua'))
+    .replace('--@NATIVE_SCROLL',()=>';(function(...)\n'+read(base+'ConsolePort_Cursor/Controller/Scroll.lua')+'\nend)("ConsolePort_Cursor");');
+  execute(source+windowFixture()+'\n'+scroll,'UI-scroll-native-dispatcher');
 });
 check('T14.current-ConsolePort-secure-contract', () => {
   const base='evidence/consoleport-contracts/';

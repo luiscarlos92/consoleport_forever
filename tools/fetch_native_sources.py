@@ -28,11 +28,23 @@ FILES=[
     'Blizzard_APIDocumentationGenerated/SpellBookDocumentation.lua',
     'Blizzard_APIDocumentationGenerated/PetInfoDocumentation.lua',
     'Blizzard_APIDocumentationGenerated/SpellDocumentation.lua',
+    'Blizzard_SharedXML/Shared/TabSystem/TabSystemOwner.lua',
+    'Blizzard_SharedXML/Shared/TabSystem/TabSystemTemplates.lua',
+    'Blizzard_UIPanelTemplates/Shared/UIPanelTemplatesShared.lua',
+    'Blizzard_SharedXML/Shared/Scroll/ScrollController.lua',
 ]
 
 if __name__=='__main__':
     records=[]
+    manifest=ROOT/'evidence/native/manifest.json'
+    retained={r['path']:r for r in json.loads(manifest.read_text(encoding='utf-8'))} if manifest.exists() else {}
     for name in FILES:
+        prior=retained.get(name)
+        if prior and prior.get('commit')==REV and prior.get('sha256') and (ROOT/'evidence/native'/name).exists():
+            if sha(ROOT/'evidence/native'/name)!=prior['sha256']:
+                raise ValueError('Retained pinned native source drift: '+name)
+            records.append(prior)
+            continue
         endpoint='repos/Gethe/wow-ui-source/contents/Interface/AddOns/'+name+'?ref='+REV
         try:
             result=json.loads(subprocess.check_output(['gh','api',endpoint],stderr=subprocess.PIPE,timeout=40))

@@ -1,7 +1,7 @@
 local ADDON_NAME, Addon = ...
 Addon.VERSION=C_AddOns.GetAddOnMetadata(ADDON_NAME,"Version") or "0.0.0"
 Addon.SCHEMA=Addon.Store.VERSION
-Addon.CONFIG_REVISION=5
+Addon.CONFIG_REVISION=6
 Addon.PROFILE_NAME="Console Port - Forever (Managed)"
 local function Print(message)
     if DEFAULT_CHAT_FRAME then DEFAULT_CHAT_FRAME:AddMessage("|cff69ccf0ConsolePort Forever:|r "..tostring(message)) end
@@ -10,7 +10,7 @@ local function CanWrite()
     return not InCombatLockdown() and not (EditModeManagerFrame and EditModeManagerFrame:IsShown())
 end
 function Addon:IsCharacterInstalled()
-    return self.record and self.record.appliedRevision>=self.CONFIG_REVISION or false
+    return self.record and self.record.appliedRevision>0 or false
 end
 function Addon:InitializeStore()
     local guid=UnitGUID("player")
@@ -77,7 +77,7 @@ end
 function Addon:ShowPrompt(force)
     if self.Prompt.active then return end
     if not self.coordinator then self.forcePrompt=force self:Refresh() return end
-    if not force and (self:IsCharacterInstalled() or self.record.declinedRevision==self.CONFIG_REVISION) then return end
+    if not force and (self.record.appliedRevision>=self.CONFIG_REVISION or self.record.declinedRevision==self.CONFIG_REVISION) then return end
     if not CanWrite() then self.forcePrompt=true return end
     local fields,deferred=self.RuntimeSetup.Fields(self.db,self.guid,self.adapters,_G,self.CONFIG_REVISION)
     if self.adapters.rings and self.adapters.rings:Probe() then self.record.ringOfferedRevision=self.CONFIG_REVISION end
@@ -316,7 +316,7 @@ function Addon:RefreshUI()
     local ok,reason=self.FocusVisuals:Enable(self.adapters.consoleport,_G,enabled)
     self.Diagnostics:SetFeature("focusVisuals",enabled and ok and "offline-verified" or "pending",reason or (enabled and "ordinary cursor ownership only; rendered acceptance pending" or "reviewed visual policy not enabled"))
     local contexts=self:IsCharacterInstalled() and self.db.shared.runtimePolicy.uiContextsEnabled
-    local active,error=self.UIContexts:Enable(self.adapters.consoleport,_G,contexts)
+    local active,error=self.UIContexts:Enable(self.adapters.consoleport,_G,contexts,self:IsCharacterInstalled() and self.db.shared.runtimePolicy.windowsEnabled)
     self.Diagnostics:SetFeature("uiContexts",contexts and active and "offline-verified" or "pending",error or (contexts and "native popup/quantity ownership; Retail input/taint acceptance pending" or "reviewed UI context policy not enabled"))
 end
 Addon.Prompt:Initialize({dialogs=StaticPopupDialogs,show=StaticPopup_Show,reload=ReloadUI,defer=function(callback) C_Timer.After(0,callback) end,

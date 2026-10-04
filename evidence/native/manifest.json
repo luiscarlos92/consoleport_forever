@@ -145,5 +145,33 @@
     "gitBlob": "096033af83dee399c1c6eb2b805a339b6e6da535",
     "sha256": "fbedb3cf4b82d623b49a7fa170c982de2e4b005d2bcd5db3068bfb6211e51007",
     "url": "https://github.com/Gethe/wow-ui-source/blob/09b9db7948abc9b9648dedaab51eb0cf3ee67b31/Interface/AddOns/Blizzard_APIDocumentationGenerated/SpellDocumentation.lua"
+  },
+  {
+    "path": "Blizzard_SharedXML/Shared/TabSystem/TabSystemOwner.lua",
+    "commit": "09b9db7948abc9b9648dedaab51eb0cf3ee67b31",
+    "gitBlob": "282312658ba6ef49bdf0dacfeae1fc34e70bda24",
+    "sha256": "b34cf960f2e51ca1538f01e8f8e8b46b61d45971e02667f4df1a13533c0094d1",
+    "url": "https://github.com/Gethe/wow-ui-source/blob/09b9db7948abc9b9648dedaab51eb0cf3ee67b31/Interface/AddOns/Blizzard_SharedXML/Shared/TabSystem/TabSystemOwner.lua"
+  },
+  {
+    "path": "Blizzard_SharedXML/Shared/TabSystem/TabSystemTemplates.lua",
+    "commit": "09b9db7948abc9b9648dedaab51eb0cf3ee67b31",
+    "gitBlob": "4f3e8a4d75b0c5f39015b455a7180dc99b61f56c",
+    "sha256": "abca5fa0b609a78bd2ba89f8543298ccd7eefdc52c2c6d075e7c28ae65f8a646",
+    "url": "https://github.com/Gethe/wow-ui-source/blob/09b9db7948abc9b9648dedaab51eb0cf3ee67b31/Interface/AddOns/Blizzard_SharedXML/Shared/TabSystem/TabSystemTemplates.lua"
+  },
+  {
+    "path": "Blizzard_UIPanelTemplates/Shared/UIPanelTemplatesShared.lua",
+    "commit": "09b9db7948abc9b9648dedaab51eb0cf3ee67b31",
+    "gitBlob": "6ab1bb04eab94c881b2b58a939abdbefb0d703b1",
+    "sha256": "e45503a2d16012c6aa8bd2c9fbd5eda102f2690f6c3dd923091f28840ac83d5c",
+    "url": "https://github.com/Gethe/wow-ui-source/blob/09b9db7948abc9b9648dedaab51eb0cf3ee67b31/Interface/AddOns/Blizzard_UIPanelTemplates/Shared/UIPanelTemplatesShared.lua"
+  },
+  {
+    "path": "Blizzard_SharedXML/Shared/Scroll/ScrollController.lua",
+    "commit": "09b9db7948abc9b9648dedaab51eb0cf3ee67b31",
+    "gitBlob": "e570e6b794dd6dd492e22fa940322100be4c4e47",
+    "sha256": "4adea2fd63db2698c43a410d94401cd72bc46bfefac92a91a2986593174f2088",
+    "url": "https://github.com/Gethe/wow-ui-source/blob/09b9db7948abc9b9648dedaab51eb0cf3ee67b31/Interface/AddOns/Blizzard_SharedXML/Shared/Scroll/ScrollController.lua"
   }
 ]

@@ -22,6 +22,8 @@ Rings\Selectors.lua
 SecureModes.lua
 UI\Ownership.lua
 UI\InputBridge.lua
+UI\Windows.lua
+UI\Scroll.lua
 UI\Contexts.lua
 UI\FocusVisuals.lua
 UI\Proof.lua

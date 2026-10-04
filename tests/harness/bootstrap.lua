@@ -116,6 +116,15 @@ assert(editInfo.layouts[2].systems[1].x==999 and shown.name=="CPF_RELOAD")
 assert(reloads==0)
 choose(2) -- later must not call ReloadUI
 assert(reloads==0)
+-- A new revision offers review while the previously accepted feature scope
+-- remains active. Declining the update must not disable that older scope.
+local currentRevision=Addon.CONFIG_REVISION
+Addon.record.appliedRevision=currentRevision-1
+Addon.record.declinedRevision=nil
+Addon:ShowPrompt(false)
+assert(shown.name=='CPF_PLAN_REVIEW' and Addon:IsCharacterInstalled())
+choose(2) assert(Addon:IsCharacterInstalled())
+Addon.record.appliedRevision=currentRevision
 local beforeRepeated=writes
 fire("PLAYER_ENTERING_WORLD") flush()
 assert(writes==beforeRepeated,"repeated login reapplied preset")

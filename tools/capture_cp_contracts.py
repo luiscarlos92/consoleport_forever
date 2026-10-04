@@ -11,6 +11,10 @@ FILES = [
     'ConsolePort_Rings/Model/Container.lua', 'ConsolePort_Rings/Model/Map.lua',
     'ConsolePort_Rings/Controller/Secure.lua', 'ConsolePort_Rings/Database.lua',
     'ConsolePort_Rings/Controller/Auto.lua',
+    'ConsolePort_Cursor/Controller/Stack.lua', 'ConsolePort_Cursor/Controller/Scroll.lua',
+    'ConsolePort/Libs/External/RelaTable/RelaTable.lua',
+    'ConsolePort/Controller/Radial.lua', 'ConsolePort/Controller/Convenience.lua',
+    'ConsolePort/Libs/External/ConsolePortNode/ConsolePortNode.lua',
 ]
 if __name__ == '__main__':
     lock = json.loads((ROOT / 'dependencies/lock.json').read_text(encoding='utf-8'))

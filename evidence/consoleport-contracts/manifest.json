@@ -63,6 +63,30 @@
     {
       "path": "ConsolePort_Rings/Controller/Auto.lua",
       "sha256": "c21476f2cbd0a188109da7731579dd1b297f9b43ea5c107f49064eb38e4cd580"
+    },
+    {
+      "path": "ConsolePort_Cursor/Controller/Stack.lua",
+      "sha256": "4b2d76e369579f0450ef4e1fc49c7e8ceb4b2346b2304b47499ad5f665487d33"
+    },
+    {
+      "path": "ConsolePort_Cursor/Controller/Scroll.lua",
+      "sha256": "57ecda0da021e8f9475d0f2738073f4805fbf6e3642df8d54ade68345bbc417a"
+    },
+    {
+      "path": "ConsolePort/Libs/External/RelaTable/RelaTable.lua",
+      "sha256": "89ee28e8ca9dc8933901014e5644a505a0f8984bbf548685a6e846864ebc7a40"
+    },
+    {
+      "path": "ConsolePort/Controller/Radial.lua",
+      "sha256": "bcd3806dacb21271d0e3ddb96ff5d1dca0dc02c290807abf58174f9e0e1b7480"
+    },
+    {
+      "path": "ConsolePort/Controller/Convenience.lua",
+      "sha256": "bcd7e97188fec2bb27ff074c2da5f31cfeb8687309634ff6f7d2e5f1014682f9"
+    },
+    {
+      "path": "ConsolePort/Libs/External/ConsolePortNode/ConsolePortNode.lua",
+      "sha256": "1c10da60d4240da12c009c752b45a72d72c3883baa7d423cd6f603170ed9197e"
     }
   ]
 }

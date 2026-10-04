@@ -141,10 +141,12 @@ function Bridge:Apply(context,force)
     local changed=force or not self.context or self.context.frame~=context.frame
         or self.context.token~=context.token or self.context.data~=context.data or self.context.data2~=context.data2
     local wanted={}
-    self.owner:Show()
     for key,target in pairs(context.routes) do
-        for _,modifier in ipairs(modifiers) do
-            local chord=modifier..key wanted[chord]=true
+        for _,modifier in ipairs(modifiers) do wanted[modifier..key]=target end
+    end
+    for key,target in pairs(context.chords or {}) do wanted[key]=target end
+    self.owner:Show()
+    for chord,target in pairs(wanted) do
             local state=self:Widget(chord)
             local row=state.widget:GetOverride(true)
             local allowed=target and target.IsShown and target:IsShown() and target.IsEnabled and target:IsEnabled() or false
@@ -173,9 +175,8 @@ function Bridge:Apply(context,force)
                 if allowed then assert(widget:GetAttribute('clickbutton')==target,'native UI target readback rejected') end
                 assert(self.api.GetBindingAction(chord,true)=='CLICK '..widget:GetName()..':LeftButton','native effective UI route readback rejected')
             end
-        end
     end
-    for key,state in pairs(self.states) do if not wanted[key] and state.active then self:ReleaseKey(state) end end
+    for key,state in pairs(self.states) do if wanted[key]==nil and state.active then self:ReleaseKey(state) end end
     self.context={frame=context.frame,token=context.token,data=context.data,data2=context.data2}
     return true
 end

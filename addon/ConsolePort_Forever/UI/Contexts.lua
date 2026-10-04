@@ -27,6 +27,7 @@ function Contexts:Current()
     if not visible(cursor) or cursor.isCombatPaused then return nil end
     if api.ConsolePortKeyboard then self:Watch(api.ConsolePortKeyboard,false) end
     if visible(api.ConsolePortKeyboard) then return nil end
+    if self.scroll and self.scroll.foreign then return nil end
     local shown={}
     api.StaticPopup_ForEachShownDialog(function(frame)
         if visible(frame) then shown[frame]=true self:Watch(frame,true) end
@@ -42,7 +43,15 @@ function Contexts:Current()
         end
         node=node.GetParent and node:GetParent()
     end
-    if not visible(owner) then return nil end
+    if not visible(owner) then
+        local window=self.windows and self.windows:Current()
+        if window then
+            self:Watch(window.frame,false)
+            self:Watch(window.data,false)
+            for _,target in pairs(window.routes) do if target then self:Watch(target,false) end end
+        end
+        return window
+    end
     local routes={}
     for _,key in ipairs(controls) do routes[key]=false end
     local context={frame=owner,routes=routes}
@@ -66,10 +75,17 @@ function Contexts:Refresh(force)
     if self.refreshing or not self.input then return end
     self.refreshing=true
     local ok,result,reason=pcall(function()
-        if not self.enabled or self.api.InCombatLockdown() then return self.input:Release() end
+        if not self.enabled or self.api.InCombatLockdown() then
+            if self.scroll then self.scroll:Release() end
+            return self.input:Release()
+        end
         local context=self:Current()
         local applied,error=self.input:Apply(context,force)
         self.context=context
+        if self.scroll then
+            local scrolling,scrollError=self.scroll:Apply(context)
+            Addon.Diagnostics:SetFeature('windowScroll',scrolling and 'offline-verified' or 'pending',scrollError or 'native right-stick dispatcher and audited ScrollController mouse-wheel callback; other widgets/Retail propagation pending')
+        end
         return applied,error
     end)
     self.refreshing=nil
@@ -81,23 +97,33 @@ function Contexts:Refresh(force)
     if self.enabled then
         Addon.Diagnostics:SetFeature('popups','offline-verified','focused native buttons 1–4/extra; Retail input/taint acceptance pending')
         Addon.Diagnostics:SetFeature('quantity',self.api.StackSplitFrame and 'offline-verified' or 'pending',self.api.StackSplitFrame and 'native quantity buttons/bounds; Retail input acceptance pending' or 'native StackSplitFrame not loaded')
+        Addon.Diagnostics:SetFeature('windows',self.windows.enabled and 'offline-verified' or 'pending',self.windows.enabled and 'registered-window triggers, audited native tabs and focused tooltip; Retail input acceptance pending' or 'registered-window policy has not been accepted')
     end
     return true
 end
-function Contexts:Enable(bridge,api,enabled)
+function Contexts:Enable(bridge,api,enabled,windowsEnabled)
     self.enabled=not not enabled
     if not enabled then if self.input then return self:Refresh() end return true end
     local ready,reason=self:Probe(bridge,api)
     if not ready then return false,reason end
     self.api,self.db=api,bridge.db
+    self.windows=self.windows or Addon.UIWindows.New(self.db,api,function() self:Refresh() end)
+    self.windows.enabled=not not windowsEnabled
+    self.scroll=self.scroll or Addon.UIScroll.New(self.db,api,function() return self:Current() end,function() self:Refresh() end)
     if not self.input then
         self.input=Addon.InputBridge.New(self.db.Input,api)
     end
+    self.windows.inputOwner=self.input.owner
     if not self.registered then
         self.registered=true
         self:Watch(self.db.Cursor,false)
         for _,method in ipairs({'SetBasicControls','SetCurrentNode','OnEnterNode','OnLeaveNode','Release'}) do
             if type(self.db.Cursor[method])=='function' then api.hooksecurefunc(self.db.Cursor,method,function() self:Refresh() end) end
+        end
+        for _,method in ipairs({'SetButton','SetCommand','SetGlobal','SetMacro','Release'}) do
+            if type(self.db.Input[method])=='function' then api.hooksecurefunc(self.db.Input,method,function()
+                if not self.input.applying then self:Refresh() end
+            end) end
         end
         api.hooksecurefunc('StaticPopup_Show',function() self:Refresh(true) end)
         if api.StackSplitFrame then

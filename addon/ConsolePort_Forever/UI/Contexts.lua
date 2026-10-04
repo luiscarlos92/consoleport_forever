@@ -44,7 +44,7 @@ function Contexts:Current()
         node=node.GetParent and node:GetParent()
     end
     if not visible(owner) then
-        local window=self.windows and self.windows:Current()
+        local window=self.maps and self.maps:Current() or (self.windows and self.windows:Current())
         if window and self.bags then window=self.bags:Enrich(window) end
         if window then
             self:Watch(window.frame,false)
@@ -99,10 +99,12 @@ function Contexts:Refresh(force)
         Addon.Diagnostics:SetFeature('popups','offline-verified','focused native buttons 1–4/extra; Retail input/taint acceptance pending')
         Addon.Diagnostics:SetFeature('quantity',self.api.StackSplitFrame and 'offline-verified' or 'pending',self.api.StackSplitFrame and 'native quantity buttons/bounds; Retail input acceptance pending' or 'native StackSplitFrame not loaded')
         Addon.Diagnostics:SetFeature('windows',self.windows.enabled and 'offline-verified' or 'pending',self.windows.enabled and 'registered-window triggers, audited native tabs and focused tooltip; Retail input acceptance pending' or 'registered-window policy has not been accepted')
+        local mapReady,mapReason=self.maps:Probe()
+        Addon.Diagnostics:SetFeature('map',self.maps.enabled and mapReady and 'offline-verified' or 'pending',mapReason or (self.maps.enabled and 'native canvas pan/zoom, hardware waypoint and minimize/detail Back; Retail movement/camera/autorun/rendering acceptance pending' or 'map policy has not been accepted'))
     end
     return true
 end
-function Contexts:Enable(bridge,api,enabled,windowsEnabled,bagsEnabled)
+function Contexts:Enable(bridge,api,enabled,windowsEnabled,bagsEnabled,mapEnabled)
     self.enabled=not not enabled
     if not enabled then if self.input then return self:Refresh() end return true end
     local ready,reason=self:Probe(bridge,api)
@@ -110,6 +112,8 @@ function Contexts:Enable(bridge,api,enabled,windowsEnabled,bagsEnabled)
     self.api,self.db=api,bridge.db
     self.windows=self.windows or Addon.UIWindows.New(self.db,api,function() self:Refresh() end)
     self.windows.enabled=not not windowsEnabled
+    self.maps=self.maps or Addon.UIMap.New(self.db,api,self.windows,function() self:Refresh() end)
+    self.maps.enabled=not not mapEnabled
     self.bags=self.bags or Addon.BetterBagsAdapter.New(self.db,api,function() return self.windows:Current() end)
     self.bags.enabled=not not bagsEnabled
     self.scroll=self.scroll or Addon.UIScroll.New(self.db,api,function() return self:Current() end,function() self:Refresh() end)

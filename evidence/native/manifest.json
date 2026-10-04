@@ -201,5 +201,68 @@
     "gitBlob": "355894f1572f0af7731429e59a885786a6cfc97a",
     "sha256": "c22fe196197e1a42b4188facb40baa4fb5ede07ac3eb27eb314bb17565bcd968",
     "url": "https://github.com/Gethe/wow-ui-source/blob/09b9db7948abc9b9648dedaab51eb0cf3ee67b31/Interface/AddOns/Blizzard_APIDocumentationGenerated/ContainerDocumentation.lua"
+  },
+  {
+    "path": "Blizzard_SharedMapDataProviders/WaypointLocationDataProvider.lua",
+    "commit": "09b9db7948abc9b9648dedaab51eb0cf3ee67b31",
+    "gitBlob": "7ce47e4bde7bbe97963488b19bc7d4413480f076",
+    "sha256": "ed58fd36928782eb79aaf6826a283ba432b708d3ef4a0fdb065fb8b2b169f251",
+    "url": "https://github.com/Gethe/wow-ui-source/blob/09b9db7948abc9b9648dedaab51eb0cf3ee67b31/Interface/AddOns/Blizzard_SharedMapDataProviders/WaypointLocationDataProvider.lua"
+  },
+  {
+    "path": "Blizzard_APIDocumentationGenerated/MapDocumentation.lua",
+    "commit": "09b9db7948abc9b9648dedaab51eb0cf3ee67b31",
+    "gitBlob": "bb7ddb20a86b74fb222ff44826bea0923f345f6f",
+    "sha256": "9aa2a98f5a02ae1bf047b0c01bf4861804273a35ba0b85a9963a8f8dd851321b",
+    "url": "https://github.com/Gethe/wow-ui-source/blob/09b9db7948abc9b9648dedaab51eb0cf3ee67b31/Interface/AddOns/Blizzard_APIDocumentationGenerated/MapDocumentation.lua"
+  },
+  {
+    "path": "Blizzard_MapCanvasSecureUtil/Blizzard_MapCanvasSecureUtil.lua",
+    "commit": "09b9db7948abc9b9648dedaab51eb0cf3ee67b31",
+    "gitBlob": "62347db3b0636a2953466c292134f1fc3c210e7b",
+    "sha256": "01b8b601c9b5d8fa62a3b70e926483907b143e4f4308046525a55d00cfa7474c",
+    "url": "https://github.com/Gethe/wow-ui-source/blob/09b9db7948abc9b9648dedaab51eb0cf3ee67b31/Interface/AddOns/Blizzard_MapCanvasSecureUtil/Blizzard_MapCanvasSecureUtil.lua"
+  },
+  {
+    "path": "Blizzard_MapCanvas/Blizzard_MapCanvas.lua",
+    "commit": "09b9db7948abc9b9648dedaab51eb0cf3ee67b31",
+    "gitBlob": "eddf26fa304b44e953e1a1def7650f1a6cd62643",
+    "sha256": "285cb7019375c2dfc0c87c8060147513b2d81a560ac7885951612d461801267f",
+    "url": "https://github.com/Gethe/wow-ui-source/blob/09b9db7948abc9b9648dedaab51eb0cf3ee67b31/Interface/AddOns/Blizzard_MapCanvas/Blizzard_MapCanvas.lua"
+  },
+  {
+    "path": "Blizzard_WorldMap/QuestLogOwnerMixin.lua",
+    "commit": "09b9db7948abc9b9648dedaab51eb0cf3ee67b31",
+    "gitBlob": "a31271d7be62a1d2290fe4ce8cae92b20653ab3b",
+    "sha256": "2990bce27b76f9fdb25e3bb8fa9e84a89c9f0287de879aa9c1c68234c743efa3",
+    "url": "https://github.com/Gethe/wow-ui-source/blob/09b9db7948abc9b9648dedaab51eb0cf3ee67b31/Interface/AddOns/Blizzard_WorldMap/QuestLogOwnerMixin.lua"
+  },
+  {
+    "path": "Blizzard_UIPanels_Game/Mainline/QuestMapFrame.lua",
+    "commit": "09b9db7948abc9b9648dedaab51eb0cf3ee67b31",
+    "gitBlob": "71564f3ac740d8433dc7967fbdd231d97f2c07f5",
+    "sha256": "2f8f59e7790a3c90840cda05521897f98aee68a26cee6251db753401cf96492b",
+    "url": "https://github.com/Gethe/wow-ui-source/blob/09b9db7948abc9b9648dedaab51eb0cf3ee67b31/Interface/AddOns/Blizzard_UIPanels_Game/Mainline/QuestMapFrame.lua"
+  },
+  {
+    "path": "Blizzard_FrameXML/Shared/CinematicFrame.xml",
+    "commit": "09b9db7948abc9b9648dedaab51eb0cf3ee67b31",
+    "gitBlob": "272efddd7a3087915ed24fcfcb1508040346f7d7",
+    "sha256": "bf780be12d69ead3974b1837bf3644ecf4a9886ba3b7a389351774beea11ed1b",
+    "url": "https://github.com/Gethe/wow-ui-source/blob/09b9db7948abc9b9648dedaab51eb0cf3ee67b31/Interface/AddOns/Blizzard_FrameXML/Shared/CinematicFrame.xml"
+  },
+  {
+    "path": "Blizzard_FrameXML/MovieFrame.xml",
+    "commit": "09b9db7948abc9b9648dedaab51eb0cf3ee67b31",
+    "gitBlob": "ddeadba1ec042400c24b5c424a57133828732cb3",
+    "sha256": "d19c866a7ab083bb6c66edc55c9be53f94f28cd7c7f78ca769a264a00dcad784",
+    "url": "https://github.com/Gethe/wow-ui-source/blob/09b9db7948abc9b9648dedaab51eb0cf3ee67b31/Interface/AddOns/Blizzard_FrameXML/MovieFrame.xml"
+  },
+  {
+    "path": "Blizzard_FrameXML/Mainline/CinematicFrameButton.xml",
+    "commit": "09b9db7948abc9b9648dedaab51eb0cf3ee67b31",
+    "gitBlob": "29156012f381503525004a9c6bd670a35e16ccd4",
+    "sha256": "ffe4e2ad70cfbe618899f4402dd8e6fc387ecf63602c3105707d9efe3e903681",
+    "url": "https://github.com/Gethe/wow-ui-source/blob/09b9db7948abc9b9648dedaab51eb0cf3ee67b31/Interface/AddOns/Blizzard_FrameXML/Mainline/CinematicFrameButton.xml"
   }
 ]

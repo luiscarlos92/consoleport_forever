@@ -141,6 +141,16 @@ function Windows:Tabs(node,owner)
         node=node.GetParent and node:GetParent()
     end
 end
+function Windows:Chords()
+    local chords={}
+    for _,key in ipairs(fallbackControls) do for _,modifier in ipairs(modifiers) do
+        local chord=modifier..key
+        local widget=self.db.Input.Widgets[chord]
+        local row=widget and widget:GetOverride(true)
+        if not row or row.owner==self.inputOwner then chords[chord]=false end
+    end end
+    return chords
+end
 function Windows:Current()
     if not self:Probe() or self:NativeOverlay() then return end
     local node=self.db.Cursor:GetCurrentNode()
@@ -164,13 +174,7 @@ function Windows:Current()
     -- Keep actual native priority UI rows. Consume only uncovered chords;
     -- GetBasicControls registers bare keys, unlike native face-click rows.
     -- Neither a saved spell nor a low-priority Bar row is a UI fallback.
-    context.chords={}
-    for _,key in ipairs(fallbackControls) do for _,modifier in ipairs(modifiers) do
-        local chord=modifier..key
-        local widget=self.db.Input.Widgets[chord]
-        local row=widget and widget:GetOverride(true)
-        if not row or row.owner==self.inputOwner then context.chords[chord]=false end
-    end end
+    context.chords=self:Chords()
     if context.kind=='menu' then return context end
     routes.PADLTRIGGER=self:Proxy('previous') routes.PADRTRIGGER=self:Proxy('next')
     local left,right,selected=self:Tabs(node,owner)

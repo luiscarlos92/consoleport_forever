@@ -36,6 +36,15 @@ FILES=[
     'Blizzard_WorldMap/Blizzard_WorldMap.lua',
     'Blizzard_UIPanels_Game/Mainline/ContainerFrame.lua',
     'Blizzard_APIDocumentationGenerated/ContainerDocumentation.lua',
+    'Blizzard_SharedMapDataProviders/WaypointLocationDataProvider.lua',
+    'Blizzard_APIDocumentationGenerated/MapDocumentation.lua',
+    'Blizzard_MapCanvasSecureUtil/Blizzard_MapCanvasSecureUtil.lua',
+    'Blizzard_MapCanvas/Blizzard_MapCanvas.lua',
+    'Blizzard_WorldMap/QuestLogOwnerMixin.lua',
+    'Blizzard_UIPanels_Game/Mainline/QuestMapFrame.lua',
+    'Blizzard_FrameXML/Shared/CinematicFrame.xml',
+    'Blizzard_FrameXML/MovieFrame.xml',
+    'Blizzard_FrameXML/Mainline/CinematicFrameButton.xml',
 ]
 
 if __name__=='__main__':

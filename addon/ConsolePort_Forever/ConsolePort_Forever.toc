@@ -24,6 +24,7 @@ UI\Ownership.lua
 UI\InputBridge.lua
 UI\Windows.lua
 UI\Scroll.lua
+UI\Map.lua
 Adapters\BetterBags.lua
 UI\Contexts.lua
 UI\FocusVisuals.lua

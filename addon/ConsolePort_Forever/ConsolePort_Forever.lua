@@ -1,7 +1,7 @@
 local ADDON_NAME, Addon = ...
 Addon.VERSION=C_AddOns.GetAddOnMetadata(ADDON_NAME,"Version") or "0.0.0"
 Addon.SCHEMA=Addon.Store.VERSION
-Addon.CONFIG_REVISION=8
+Addon.CONFIG_REVISION=9
 Addon.PROFILE_NAME="Console Port - Forever (Managed)"
 local function Print(message)
     if DEFAULT_CHAT_FRAME then DEFAULT_CHAT_FRAME:AddMessage("|cff69ccf0ConsolePort Forever:|r "..tostring(message)) end
@@ -316,7 +316,7 @@ function Addon:RefreshUI()
     local ok,reason=self.FocusVisuals:Enable(self.adapters.consoleport,_G,enabled)
     self.Diagnostics:SetFeature("focusVisuals",enabled and ok and "offline-verified" or "pending",reason or (enabled and "ordinary cursor ownership only; rendered acceptance pending" or "reviewed visual policy not enabled"))
     local contexts=self:IsCharacterInstalled() and self.db.shared.runtimePolicy.uiContextsEnabled
-    local active,error=self.UIContexts:Enable(self.adapters.consoleport,_G,contexts,self:IsCharacterInstalled() and self.db.shared.runtimePolicy.windowsEnabled,self:IsCharacterInstalled() and self.db.shared.runtimePolicy.bagsEnabled)
+    local active,error=self.UIContexts:Enable(self.adapters.consoleport,_G,contexts,self:IsCharacterInstalled() and self.db.shared.runtimePolicy.windowsEnabled,self:IsCharacterInstalled() and self.db.shared.runtimePolicy.bagsEnabled,self:IsCharacterInstalled() and self.db.shared.runtimePolicy.mapEnabled)
     self.Diagnostics:SetFeature("uiContexts",contexts and active and "offline-verified" or "pending",error or (contexts and "native popup/quantity ownership; Retail input/taint acceptance pending" or "reviewed UI context policy not enabled"))
 end
 Addon.Prompt:Initialize({dialogs=StaticPopupDialogs,show=StaticPopup_Show,reload=ReloadUI,defer=function(callback) C_Timer.After(0,callback) end,

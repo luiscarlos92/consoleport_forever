@@ -61,7 +61,7 @@ check('T01.snapshot', () => {
 check('T27.lua51', () => {
   for (const f of files('addon').filter(f=>f.endsWith('.lua'))) parser.parse(read(f),{luaVersion:'5.1'});
 });
-const modules = ['Core','Store','Plan','Transactions','BindingPolicy','ModePolicy','Rings/Discovery','Rings/Selectors','SecureModes','UI/Ownership','UI/InputBridge','UI/Windows','UI/Scroll','Adapters/BetterBags','UI/Contexts','UI/FocusVisuals','UI/Proof','Adapters/NativeBindings',
+const modules = ['Core','Store','Plan','Transactions','BindingPolicy','ModePolicy','Rings/Discovery','Rings/Selectors','SecureModes','UI/Ownership','UI/InputBridge','UI/Windows','UI/Scroll','UI/Map','Adapters/BetterBags','UI/Contexts','UI/FocusVisuals','UI/Proof','Adapters/NativeBindings',
   'Adapters/BindingState','Adapters/BindingBanks','Diagnostics','Capability','Adapters/ConsolePort','Adapters/EditMode','Adapters/FlatConfig','Adapters/Integrations','Adapters/DynamicCam','Adapters/Rings','Baseline','Coordinator','Prompt'];
 const source = 'Addon={};\n' + modules.map(m=>
   ';(function(...)\n'+read('addon/ConsolePort_Forever/'+m+'.lua')+'\nend)("ConsolePort_Forever",Addon);\n').join('');
@@ -248,15 +248,15 @@ function windowFixture() {
   return uiContextFixture()+'\n'+windows;
 }
 check('T20.current-native-window-controls', () => execute(source+windowFixture(),'ui-windows-native-source'));
-check('T21-T22.native-BetterBags-item-guards', () => {
-  function nativeFunction(file,signature) {
+function nativeFunction(file,signature) {
     const text=read(file).replace(/\r\n/g,'\n');
     const start=text.indexOf('function '+signature+'(');
     const end=text.indexOf('\nend',start)+4;
     if(start<0 || end<start) throw Error('native function not found: '+signature);
     const body=text.slice(start,end);
     parser.parse(body,{luaVersion:'5.1'}); return body;
-  }
+}
+check('T21-T22.native-BetterBags-item-guards', () => {
   const container='evidence/native/Blizzard_UIPanels_Game/Mainline/ContainerFrame.lua';
   const base='evidence/consoleport-contracts/';
   const fixture=read('tests/harness/betterbags.lua')
@@ -267,13 +267,27 @@ check('T21-T22.native-BetterBags-item-guards', () => {
     .replace('--@NATIVE_MODULE_DEMAND',()=>['Modules:IsEnabled','Modules:Demand'].map(name=>nativeFunction(base+'ConsolePort/Controller/Modules.lua',name)).join('\n'));
   execute(source+windowFixture()+'\n'+fixture,'BetterBags-native-item-contexts');
 });
-check('T20.native-UI-stick-scroll-ownership', () => {
+function scrollFixture() {
   const base='evidence/consoleport-contracts/';
   const scroll=read('tests/harness/ui_scroll.lua')
     .replace('--@NATIVE_RADIAL',()=>';(function(...)\n'+read(base+'ConsolePort/Controller/Radial.lua')+'\nend)("ConsolePort",db);')
     .replace('--@NATIVE_SCROLL_CONTROLLER',()=>read('evidence/native/Blizzard_SharedXML/Shared/Scroll/ScrollController.lua'))
     .replace('--@NATIVE_SCROLL',()=>';(function(...)\n'+read(base+'ConsolePort_Cursor/Controller/Scroll.lua')+'\nend)("ConsolePort_Cursor");');
-  execute(source+windowFixture()+'\n'+scroll,'UI-scroll-native-dispatcher');
+  return windowFixture()+'\n'+scroll;
+}
+check('T20.native-UI-stick-scroll-ownership', () => {
+  execute(source+scrollFixture(),'UI-scroll-native-dispatcher');
+});
+check('T21.native-map-canvas-controls', () => {
+  const base='evidence/native/';
+  const fixture=read('tests/harness/map.lua')
+    .replace('--@NATIVE_MAP_CANVAS',()=>read(base+'Blizzard_MapCanvas/Blizzard_MapCanvas.lua'))
+    .replace('--@NATIVE_MAP_SCROLL',()=>read(base+'Blizzard_MapCanvas/MapCanvas_ScrollContainerMixin.lua'))
+    .replace('--@NATIVE_QUEST_OWNER',()=>read(base+'Blizzard_WorldMap/QuestLogOwnerMixin.lua'))
+    .replace('--@NATIVE_QUEST_BACK',()=>['QuestMapFrame_CloseQuestDetails','QuestMapFrame_ReturnFromQuestDetails'].map(name=>nativeFunction(base+'Blizzard_UIPanels_Game/Mainline/QuestMapFrame.lua',name)).join('\n'))
+    .replace('--@NATIVE_MAP_MAXIMIZED',()=>nativeFunction(base+'Blizzard_WorldMap/Blizzard_WorldMap.lua','WorldMapMixin:IsMaximized'))
+    .replace('--@NATIVE_WAYPOINT',()=>read(base+'Blizzard_SharedMapDataProviders/WaypointLocationDataProvider.lua'));
+  execute(source+scrollFixture()+'\n'+fixture,'map-native-canvas');
 });
 check('T14.current-ConsolePort-secure-contract', () => {
   const base='evidence/consoleport-contracts/';

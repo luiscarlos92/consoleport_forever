@@ -42,7 +42,9 @@ db.Radial:OnDataLoaded()
 assert(nativeDispatcher and nativeDispatcher.enableDeadzone and nativeDispatcher.enableTimeout)
 --@NATIVE_SCROLL_CONTROLLER
 api.ScrollControllerMixin=ScrollControllerMixin
+local controllerAPI=ConsolePort
 ConsolePort=CreateFrame('Frame','ConsolePort',UIParent)
+for key,value in pairs(controllerAPI) do if ConsolePort[key]==nil then ConsolePort[key]=value end end
 function Clamp(value,min,max) return math.max(min,math.min(max,value)) end
 LibStub=function(name) assert(name=='ConsolePortNode') return {} end
 CPAPI.GetEnv=function() return {ExecuteScript=function(frame,script,...) fire(frame,script,...) end},db end

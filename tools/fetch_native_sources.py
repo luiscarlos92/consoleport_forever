@@ -3,7 +3,7 @@ import base64
 import json
 from pathlib import Path
 import subprocess
-from repository_paths import ROOT, contained, sha
+from repository_paths import ROOT, output, sha
 
 REV='09b9db7948abc9b9648dedaab51eb0cf3ee67b31'
 FILES=[
@@ -30,11 +30,11 @@ if __name__=='__main__':
         endpoint='repos/Gethe/wow-ui-source/contents/Interface/AddOns/'+name+'?ref='+REV
         try:
             result=json.loads(subprocess.check_output(['gh','api',endpoint],stderr=subprocess.PIPE,timeout=40))
-            target=contained(ROOT/'evidence/native'/name)
+            target=output(ROOT/'evidence/native'/name)
             target.parent.mkdir(parents=True,exist_ok=True)
             target.write_bytes(base64.b64decode(result['content']))
             records.append({'path':name,'commit':REV,'gitBlob':result['sha'],'sha256':sha(target),'url':result['html_url']})
         except Exception as error:
             records.append({'path':name,'commit':REV,'error':str(error)})
-    (ROOT/'evidence/native/manifest.json').write_text(json.dumps(records,indent=2),encoding='utf-8')
+    output(ROOT/'evidence/native/manifest.json').write_text(json.dumps(records,indent=2),encoding='utf-8')
     print(json.dumps(records,indent=2))

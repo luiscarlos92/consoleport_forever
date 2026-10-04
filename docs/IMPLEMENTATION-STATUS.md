@@ -21,7 +21,7 @@ The TOC now loads the replacement modules, with the new bootstrap last. Old Layo
 - Edit Mode clones the active runtime profile to an account managed copy, retains original profiles, checks capacity/name ownership and verifies combined preset/saved indices. Flat adapters retain table identity and unrelated fields. Immersion/ExtraFade currently adopt selected current values; full desired integration settings and DynamicCam managed-copy work remain.
 - Backup restore now opens a review, including newer-edit conflicts with accept/keep decisions; it uses another independently retained transaction. Rollback rejects newer values and exposes recovery-required journals. `/cpf recover <id>` retries guarded compensation.
 - Reload now/later is implemented. Same-session world entry cannot certify persistence; a fresh-session readback can. A failed/changed reload scope is diagnosed without automatic reset. Current bootstrap tests serialize saved state, parse it as data and reload the full actual TOC in a separate restricted VM.
-- Skin/runtime retain original appearance/hidden menu behavior behind GUID acceptance. No new mode/action/UI protected integration is active yet.
+- Skin/runtime retain original appearance/hidden menu behavior behind GUID acceptance. SecureModes and FocusVisuals are now separately reviewed/gated, as described below.
 
 ## SecureModes and UI visual milestone
 
@@ -31,11 +31,11 @@ Activation is reviewed and gated by the current four native groups, audited help
 
 D29 FocusVisuals listens to native ordinary interface-cursor ownership, suppresses only gameplay icon/highlight regions, preserves geometry/art/radial feedback, and restores the latest native alpha after UI focus. Rebuilt regions and native cursor reacquisition are handled. This behavior requires accepted policy. `/cpf proof` opens an on-demand scrollable native panel with saved/effective bindings, Layers prefix/chord/claims, native resolved/displayed cells, held state, dependency readiness, journals and diagnostic pending reasons. No proof panel is created until requested. Offline checks do not certify rendered Retail results.
 
-Fifteen Node/Lua suites now pass, in addition to three Python suites. Exact unmodified ConsolePort 3.3.3 contract files are committed in evidence/consoleport-contracts with its license, package/file hashes and capture tool. This keeps ordinary tests and CI independent of ignored download caches. Additional native restricted-frame, stack split, cinematic/movie and spellbook/pet/spell contracts are pinned under evidence/native. Latest tested hashes/results: evidence/test-results/secure-modes-and-focus.json.
+Fifteen Node/Lua suites and seven Python tooling suites pass. Exact unmodified ConsolePort 3.3.3 contract files are committed in evidence/consoleport-contracts with its license, package/file hashes and capture tool. This keeps ordinary tests and CI independent of ignored download caches. Additional native restricted-frame, stack split, cinematic/movie and spellbook/pet/spell contracts are pinned under evidence/native. Latest tested hashes/results: evidence/test-results/secure-modes-and-focus.json.
 
 ## Validation and source contracts
 
-`tools/Test-All.ps1` currently passes three Python tooling suites and thirteen Node/Lua suites: immutable capture, Lua 5.1 syntax, foundation/failure matrix, separate-VM ownership persistence, policy/owner sequences, binding readiness, actual coordinator/adapters, full TOC/bootstrap/new-session persistence, malicious data rejection and three historical baseline regressions. Historical regressions test copied old source separately, not the new product. Fengari has Lua 5.3 execution semantics, with independent Lua 5.1 syntax validation. No offline test proves Retail taint/combat input or appearance.
+`tools/Test-All.ps1` passes seven Python tooling suites and fifteen Node/Lua suites, including immutable capture, Lua 5.1 syntax, transaction failures, separate-VM ownership, actual current ConsolePort secure snippets, native coordinator/adapters, focus visuals/proof panel, full TOC/bootstrap/new-session persistence and historical regressions. Fengari has Lua 5.3 execution semantics, with independent Lua 5.1 syntax validation. No offline test proves Retail taint/combat input or appearance. Windows fresh-checkout CI is green after byte-preserving .gitattributes eliminated Git line-ending transformations of immutable references.
 
 The last exact tested source hashes/results are committed in `evidence/test-results/runtime-foundations.json`. Native UI source is pinned to Gethe/wow-ui-source commit `09b9db7948abc9b9648dedaab51eb0cf3ee67b31`, build 12.1.0 (69933), with provenance and SHA/blob verification in evidence/native. API signatures, secure handler whitelist, restricted exports, secure action dispatch, Edit Mode and StaticPopup behavior are checked against these sources. `tools/fetch_native_sources.py` fetches only declared pinned sources into the checkout.
 
@@ -43,11 +43,15 @@ Native secure handlers do not permit wrapping OnGamePadStick or OnKeyDown. Exact
 
 ## Dependencies and pack
 
-Lock verification succeeds for 14 official stable GitHub packages: ConsolePort 3.3.3, BetterBags 0.5.14, Immersion 1.4.61, LiteMount 12.1.0-1, Masque 12.1.0, Plater-v656, DBM core 12.1.12 and seven installed historical content families. Exact identities/digests/TOCs/folder coverage live in dependencies/lock.json. Cache/unpacked/scratch/dist are ignored. `tools/Resolve-Dependencies.ps1` verifies pinned local bytes; `-Refresh` explicitly queries current official releases. Cache reuse requires independently retrieved upstream digest qualification.
+Lock and coverage audit qualify 18 official stable packages. DynamicCam 2.21.1 (official CurseForge file 8995535), Immersion_ExtraFade 1.18.0 (8995675), SharedMedia_Causese 7.6 (7242737) and HideClassBars 1.1.0 (official tagged standalone source, no patched bytes) now join the 14 GitHub packages. Refresh without an independent CDN digest always fetches fresh official bytes and requires recently verified source metadata; locked verification is network-free. Root addon TOC placeholders are rejected; unused nested library TOC placeholders are disclosed as advisories and retained unchanged.
 
-Pack remains incomplete: DynamicCam, Immersion_ExtraFade, SharedMedia_Causese packaged distribution and HideClassBars source/package qualification remain unresolved. DBM core contains DBM-VPVEM 99e0c33 including sound media: verify/close its provenance ticket from this official package, without adding a duplicate folder owner. DBM families contain extra folders (including Party-Forever); retain installed native content coverage and justified closure only. Audit actual expected folders and exclusions before assembling.
+`python tools/audit_dependencies.py --record` validates Retail TOC/recursive XML file closure and required addon dependencies. Coverage selects 39 current Retail folders and excludes 19 archive folders. Seventeen were not part of installed content or required closure, including Forever-only content; DBM-Azeroth and DBM-Test-Vanilla were installed archive folders whose latest native metadata excludes Retail. Their immutable references remain. Native locale/family/conditional include declarations are checked for file presence, not simulated as the client loader. evidence/dependencies/coverage.json records every selection/exclusion.
 
-Matching-old-package migration audit, license/notices, Build-Pack, guarded Install-Pack/Restore-Pack and fake-root/junction/failure simulations remain. No candidate ZIP exists.
+Official DBM core 12.1.12 already owns DBM-VPVEM 99e0c33. Its 452 non-TOC files match pinned maintainer Git blobs; its TOC differs only by upstream resolution of the Version packager token. evidence/dependencies/voice-provenance.json records the source tree. No duplicate voice package is introduced. Lock `complete` means retrieval and coverage have qualified; `packDistributionReady` remains false.
+
+License terms require an official-source assembly mechanism for DBM, Plater and Masque when distributing through this repository. Complete that mechanism and full notices inventory; do not put those dependency bytes in a published candidate ZIP. Matching-old-package migration audit, Build-Pack, guarded Install-Pack/Restore-Pack and fake-root/junction/failure simulations remain. No candidate ZIP exists.
+
+Python and Node tooling writers now guard canonical/lexical output ancestors, rejecting junctions/symlinks and immutable reference/fixture destinations. Simulations use fresh repository scratch copies only; tests include an alias pointing to a disposable fake target and prove it stays unchanged.
 
 ## Continue next
 
@@ -61,6 +65,6 @@ Matching-old-package migration audit, license/notices, Build-Pack, guarded Insta
 
 ## Usage and continuation
 
-This is the second run, awakened by same-chat heartbeat `continue-consoleport-forever-implementation` (thread `01a103b2-8a16-7931-9f91-938f0f07569b`). Most recent five-hour usage: 15% used / 85% remaining; reset Unix 1791086666. Continue monitoring frequently.
+This is the second run, awakened by same-chat heartbeat `continue-consoleport-forever-implementation` (thread `01a103b2-8a16-7931-9f91-938f0f07569b`). Most recent five-hour usage: 42% used / 58% remaining; reset Unix 1791086666. Continue monitoring frequently.
 
 When approaching 10% remaining, the last substantive action must update this same heartbeat for five minutes after the next reported five-hour reset. Then save a complete graceful handoff, commit/push it and end cleanly. Preserve all instructions across runs, do not create duplicate automation, and do not consume the available reset credit. The old one-shot wakeup has fired; do not rely on it to repeat without explicitly updating it at the next cutoff.

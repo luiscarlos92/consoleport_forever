@@ -175,8 +175,11 @@ for (const name of ['installer','runtime','skin']) {
 }
 const report = {at:new Date().toISOString(), commit:cp.execFileSync('git',['rev-parse','HEAD'],{cwd:root}).toString().trim(),
   productHashes:Object.fromEntries(files('addon').map(f=>[f,sha(f)])),
+  toolingHashes:Object.fromEntries([...files('tools'),...files('tests')].filter(f=>!f.includes('__pycache__')).map(f=>[f,sha(f)])),
+  pinnedDependencyLockSHA256:sha('dependencies/lock.json'),
   limitation:'Fengari uses Lua 5.3 semantics. Lua 5.1 syntax checked separately. No Retail secure/hardware proof.', results};
-fs.mkdirSync(path.join(root,'scratch/test-results'),{recursive:true});
-fs.writeFileSync(path.join(root,'scratch/test-results/latest.json'),JSON.stringify(report,null,2));
+const {output} = require('./repository_paths.cjs');
+fs.mkdirSync(output('scratch/test-results'),{recursive:true});
+fs.writeFileSync(output('scratch/test-results/latest.json'),JSON.stringify(report,null,2));
 for (const r of results) console.log(r.status.toUpperCase()+' '+r.id+(r.error?'\n'+r.error:''));
 process.exitCode=results.some(r=>r.status==='failed')?1:0;

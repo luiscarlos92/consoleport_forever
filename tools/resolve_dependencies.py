@@ -3,6 +3,7 @@ import argparse
 import concurrent.futures
 from datetime import datetime, timezone
 import io
+import hashlib
 import json
 from pathlib import Path, PurePosixPath
 import re
@@ -10,7 +11,29 @@ import shutil
 import subprocess
 import urllib.request
 import zipfile
-from repository_paths import ROOT, contained, sha
+from repository_paths import ROOT, contained, output, sha
+
+
+def segment(value):
+    if not isinstance(value, str) or not value or len(PurePosixPath(value).parts) != 1 or any(c in value for c in '<>:"/\\|?*') or any(ord(c)<32 for c in value) or value.endswith((' ', '.')) or re.match(r'^(con|prn|aux|nul|com[1-9]|lpt[1-9])(?:\.|$)',value,re.I):
+        raise ValueError('Unsafe package identity: ' + str(value))
+    return value
+
+
+def metadata(entries):
+    toc, advisories = {}, {}
+    for name, body in entries:
+        if not name.lower().endswith('.toc'):
+            continue
+        text = body.decode('utf-8-sig', errors='replace')
+        if re.search(r'@(?:project-version|interface|wow-version-[\w-]+)@', text):
+            if len(PurePosixPath(name).parts)==2:
+                raise ValueError('Unpackaged TOC metadata: ' + name)
+            advisories[name] = 'Bundled unused standalone library TOC has packager tokens; official bytes retained.'
+        toc[name] = dict(re.findall(r'^##\s*([^:]+):\s*(.*)$',text,re.M))
+    if not any(len(PurePosixPath(name).parts)==2 and any(int(n)>=120000 for n in re.findall(r'\d+',meta.get('Interface',''))) for name,meta in toc.items()):
+        raise ValueError('No qualifying Retail addon TOC')
+    return toc, advisories
 
 
 def fetch(url):
@@ -44,6 +67,8 @@ def members(data):
 
 
 def package(source):
+    if source['repo'].startswith('curseforge/'):
+        return curseforge_package(source)
     repo = source['repo']
     endpoint = 'repos/' + repo + '/releases/latest'
     if shutil.which('gh'):
@@ -64,9 +89,12 @@ def package(source):
     if preferred:
         assets = preferred
     if len(assets) != 1:
+        if not assets and source.get('sourceArchiveAddon'):
+            return source_archive(source, release)
         raise ValueError('Ambiguous stable Retail asset: ' + ', '.join(a['name'] for a in assets))
     asset = assets[0]
-    cache = contained(ROOT / 'dependencies/cache' / asset['name'])
+    segment(asset['name']); segment(release['tag_name'])
+    cache = output(ROOT / 'dependencies/cache' / asset['name'], ROOT / 'dependencies')
     cache.parent.mkdir(parents=True, exist_ok=True)
     expected = asset.get('digest')
     # Existing cache qualifies only if the freshly resolved stable asset
@@ -83,19 +111,15 @@ def package(source):
         raise ValueError('Truncated package')
     entries = members(data)
     folders = sorted({name.split('/')[0] for name, _ in entries if '/' in name})
-    toc = {}
+    toc, advisories = metadata(entries)
+    target = output(ROOT / 'dependencies/unpacked' / repo.split('/')[-1] / release['tag_name'], ROOT / 'dependencies')
     for name, body in entries:
-        if name.lower().endswith('.toc'):
-            text = body.decode('utf-8-sig', errors='replace')
-            if '@project-version@' in text or '@interface@' in text:
-                raise ValueError('Unpackaged metadata: ' + name)
-            toc[name] = dict(re.findall(r'^##\s*([^:]+):\s*(.*)$', text, re.M))
-    if not toc or not any(any(int(n) >= 120000 for n in re.findall(r'\d+', meta.get('Interface', ''))) for meta in toc.values()):
-        raise ValueError('No current Retail TOC')
+        dest = output(target / name, ROOT / 'dependencies')
+        if dest.exists() and dest.read_bytes() != body:
+            raise ValueError('Immutable package cache drift: ' + str(dest))
     cache.write_bytes(data)
-    target = contained(ROOT / 'dependencies/unpacked' / repo.split('/')[-1] / release['tag_name'])
     for name, body in entries:
-        dest = contained(target / name, target)
+        dest = output(target / name, ROOT / 'dependencies')
         dest.parent.mkdir(parents=True, exist_ok=True)
         if dest.exists() and dest.read_bytes() != body:
             raise ValueError('Immutable package cache drift: ' + str(dest))
@@ -104,8 +128,100 @@ def package(source):
             'releaseURL': release['html_url'], 'assetURL': asset['browser_download_url'],
             'retrievedAt': datetime.now(timezone.utc).isoformat(), 'expectedDigest': expected,
             'sha256': actual, 'bytes': len(data), 'cache': cache.relative_to(ROOT).as_posix(),
-            'unpacked': target.relative_to(ROOT).as_posix(), 'addonFolders': folders, 'toc': toc,
+            'unpacked': target.relative_to(ROOT).as_posix(), 'addonFolders': folders, 'toc': toc, 'metadataAdvisories': advisories,
             'files': {name: hashlib.sha256(body).hexdigest() for name, body in entries}}
+
+
+def materialize(source, data, asset_url, version, archive_prefix=None):
+    """Qualify official bytes before writing a normalized standalone folder."""
+    segment(version); segment(source['addon'])
+    entries = members(data)
+    if archive_prefix:
+        prefix = archive_prefix + '/'
+        if any(not name.startswith(prefix) for name, _ in entries):
+            raise ValueError('Mixed source archive roots')
+        entries = [(source['addon'] + '/' + name[len(prefix):], body) for name, body in entries]
+    folders = sorted({name.split('/')[0] for name, _ in entries if '/' in name})
+    if folders != [source['addon']]:
+        raise ValueError('Unexpected official package folders: ' + str(folders))
+    toc, advisories = metadata(entries)
+    versions = {meta['Version'].strip() for name,meta in toc.items() if len(PurePosixPath(name).parts)==2 and meta.get('Version')}
+    if versions and version.lstrip('v') not in {v.lstrip('v') for v in versions}:
+        raise ValueError('Official file/TOC version mismatch: ' + str(versions))
+    # Source packaging is allowed only when every actual runtime file resolves
+    # and there are no absent external libraries or packager directives.
+    if archive_prefix:
+        by_name = dict(entries)
+        for name, body in entries:
+            if name.lower().endswith(('.toc', '.xml')):
+                text = body.decode('utf-8-sig', errors='replace')
+                if '#@' in text or '@project' in text:
+                    raise ValueError('Source requires packager transformations: ' + name)
+                if name.lower().endswith('.toc'):
+                    for line in text.splitlines():
+                        line = line.strip()
+                        if line and not line.startswith('#'):
+                            runtime = str(PurePosixPath(name).parent / line.replace('\\', '/'))
+                            if runtime not in by_name:
+                                raise ValueError('Missing source runtime file: ' + runtime)
+                else:
+                    for file in re.findall(r'file=[\"\']([^\"\']+)[\"\']', text):
+                        runtime = str(PurePosixPath(name).parent / file.replace('\\', '/'))
+                        if runtime not in by_name:
+                            raise ValueError('Missing source XML include: ' + runtime)
+    digest = hashlib.sha256(data).hexdigest()
+    cache = output(ROOT / 'dependencies/cache' / (source['addon'] + '-' + version + '-official.zip'), ROOT / 'dependencies')
+    target = output(ROOT / 'dependencies/unpacked' / source['addon'] / version, ROOT / 'dependencies')
+    for name, body in entries:
+        dest = output(target / name, ROOT / 'dependencies')
+        if dest.exists() and dest.read_bytes() != body:
+            raise ValueError('Immutable official package drift: ' + name)
+    cache.parent.mkdir(parents=True, exist_ok=True)
+    cache.write_bytes(data)
+    for name, body in entries:
+        dest = output(target / name, ROOT / 'dependencies')
+        dest.parent.mkdir(parents=True, exist_ok=True)
+        if dest.exists() and dest.read_bytes() != body:
+            raise ValueError('Immutable official package drift: ' + name)
+        dest.write_bytes(body)
+    return {'repo': source['repo'], 'channel': 'stable', 'flavor': 'Retail', 'version': version,
+            'releaseURL': source['url'], 'assetURL': asset_url, 'expectedDigest': None,
+            'retrievedAt': datetime.now(timezone.utc).isoformat(), 'sha256': digest, 'bytes': len(data),
+            'cache': cache.relative_to(ROOT).as_posix(), 'unpacked': target.relative_to(ROOT).as_posix(),
+            'addonFolders': folders, 'toc': toc, 'metadataAdvisories': advisories, 'files': {name: hashlib.sha256(body).hexdigest() for name, body in entries}}
+
+
+def curseforge_package(source):
+    verified = datetime.fromisoformat(source['metadataVerifiedAt'].replace('Z', '+00:00'))
+    if not source.get('supportsRetail') or abs((datetime.now(timezone.utc) - verified).total_seconds()) > 86400:
+        raise ValueError('Recheck official latest stable Retail file metadata before refresh')
+    file_id = str(source['fileID'])
+    url = 'https://edge.forgecdn.net/files/' + file_id[:-3] + '/' + str(int(file_id[-3:])) + '/' + source['filename']
+    # No advertised independent digest: refresh must fetch official CDN bytes,
+    # not accept a stale local cache merely because its filename matches.
+    data = fetch(url)
+    entry = materialize(source, data, url, source['version'])
+    entry['distribution'] = 'CurseForge official CDN'
+    entry['projectID'], entry['fileID'] = source['projectID'], source['fileID']
+    entry['metadataVerifiedAt'], entry['license'] = source['metadataVerifiedAt'], source['license']
+    entry['latestURL'] = source['latestURL']
+    return entry
+
+
+def source_archive(source, release):
+    repo = source['repo']
+    commit = json.loads(subprocess.check_output(['gh', 'api', 'repos/' + repo + '/commits/' + release['tag_name']], timeout=45))['sha']
+    url = 'https://api.github.com/repos/' + repo + '/zipball/' + commit
+    data = fetch(url)
+    entries = members(data)
+    roots = {name.split('/')[0] for name, _ in entries}
+    if len(roots) != 1:
+        raise ValueError('Source archive root mismatch')
+    descriptor = dict(source, addon=source['sourceArchiveAddon'], url=release['html_url'])
+    entry = materialize(descriptor, data, url, release['tag_name'], next(iter(roots)))
+    entry['distribution'], entry['sourceCommit'] = 'Qualified official tagged standalone source', commit
+    entry['qualification'] = source['qualification']
+    return entry
 
 
 def verify(lock):
@@ -127,9 +243,9 @@ def verify(lock):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--refresh', action='store_true')
-    parser.add_argument('--only', help='Resolve one official repository and merge into lock')
+    parser.add_argument('--only', action='append', help='Resolve selected official repositories and merge into lock; repeat for multiple packages')
     args = parser.parse_args()
-    lock_path = ROOT / 'dependencies/lock.json'
+    lock_path = output(ROOT / 'dependencies/lock.json', ROOT / 'dependencies')
     if not args.refresh:
         lock = json.loads(lock_path.read_text())
         verify(lock)
@@ -137,14 +253,15 @@ def main():
         return
     sources = json.loads((ROOT / 'dependencies/sources.json').read_text())
     packages, blockers = [], list(sources['manualSources'])
-    selected = sources['github']
+    selected = sources['github'] + sources.get('curseforge', [])
     if args.only:
-        if args.only not in [x['repo'] for x in selected]:
+        if any(repo not in [x['repo'] for x in selected] for repo in args.only):
             raise ValueError('Unknown dependency repository')
-        selected = [x for x in selected if x['repo'] == args.only]
+        selected = [x for x in selected if x['repo'] in args.only]
         previous = json.loads(lock_path.read_text())
-        packages = [p for p in previous['packages'] if p['repo'] != args.only]
-        blockers = [b for b in previous['blockers'] if b.get('repo') != args.only]
+        packages = [p for p in previous['packages'] if p['repo'] not in args.only]
+        names = {x.get('addon') for x in selected if x.get('addon')}
+        blockers = [b for b in previous['blockers'] if b.get('repo') not in args.only and b.get('package') not in names]
     def resolve(source):
         try:
             return package(source), None

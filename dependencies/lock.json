@@ -1,5 +1,5 @@
 {
-  "resolvedAt": "2026-10-03T21:57:19.478636+00:00",
+  "resolvedAt": "2026-10-04T00:22:37.481761+00:00",
   "packages": [
     {
       "repo": "seblindfors/ConsolePort",
@@ -814,7 +814,8 @@
         "ConsolePort_World/Assets/CooldownSwipe.blp": "5becfd132719914aba5c58e9fe1cd9603892a7c517dd30a2f07f9b836d9268e5",
         "ConsolePort_World/ConsolePort_World.toc": "905d8c9192eb6be7e6e955d0462af44a013d6987944005c22fc0392681051f25",
         "ConsolePort_World/Database.lua": "8d782debfefbb68d728d6e812399dfee271077d94e814bd2449e6b88a8c4070f"
-      }
+      },
+      "metadataAdvisories": {}
     },
     {
       "repo": "Cidan/BetterBags",
@@ -1108,7 +1109,8 @@
         "BetterBags/views/README.md": "d629695f3fb5eda89e6190ae2cbe586a48cb0baa2d396f706c0cd375fd0f89d5",
         "BetterBags/views/gridview.lua": "7bda54e1d2ece95184e9cfe273d7ed0d2b9d68e9465e2a356031b91870432c2b",
         "BetterBags/views/bagview.lua": "3b2ad449cd5a764aa7fcc7ce358345dd19e602d9b2cb6e950a036d3eb51c2e35"
-      }
+      },
+      "metadataAdvisories": {}
     },
     {
       "repo": "seblindfors/Immersion",
@@ -1195,7 +1197,8 @@
         "Immersion/Logic/Talkbox.lua": "57c70782a54ccd24b9a8202f0d22f4a58451f906aed74e4c7415d2ed0d6147ba",
         "Immersion/Compat.lua": "0e8e3ebc387af4a62d67255ac04ae737c20bb3e9cf0e752e47717a4fe96cd461",
         "Immersion/Interface.lua": "2fb3fa9d849fa93bcec5030285cbdc56b8ac2a5010932bf12fbcf367a3b52012"
-      }
+      },
+      "metadataAdvisories": {}
     },
     {
       "repo": "xod-wow/LiteMount",
@@ -1353,7 +1356,8 @@
         "LiteMount/Fonts/OFL.txt": "59e901eacdfd82d836d7a096c5b41885fbaea15a248f112e9dae430a4fbc085c",
         "LiteMount/LM_Nagrand.lua": "5080eacdd5a6fe9b33bebc8a2ef5f88d4ec0f891fbba8fbff6998634511cb3eb",
         "LiteMount/LM_RunningWild.lua": "5ec0f348f1dc7af44b47777b1a4c0eae2dbe8fffdc7107c233e6d5c217a3e6d6"
-      }
+      },
+      "metadataAdvisories": {}
     },
     {
       "repo": "SFX-WoW/Masque",
@@ -1604,7 +1608,8 @@
         "Masque/Locales/deDE.lua": "e13949ffa87a465a8cd136c901f07167e51c57e233ce75bbf3ca792fa7d71b25",
         "Masque/Locales/zhCN.lua": "559fc22cd9ea066f44c1b7087f26745daaa0556e9ee785a4177a808c8bcd89c4",
         "Masque/Locales/ruRU.lua": "d13aad645d62f22ac0858208141c92fa7b4d0844515a4cde0e97580d8487f6b9"
-      }
+      },
+      "metadataAdvisories": {}
     },
     {
       "repo": "Tercioo/Plater-Nameplates",
@@ -2417,7 +2422,8 @@
         "Plater/Plater_AnimationEditor.lua": "743b26036a9f990107e6e9541710cdcbfefc6c2d0c9614666737a16e7923d8c2",
         "Plater/Plater_GhostAuras.lua": "5871abc85409fa6abe659cf55e43b63ec3b3d2d2a5f289d44b79dc08f3401d80",
         "Plater/Plater_Docs.lua": "043f1ac20bb8f30d384abb03aa4ccabec7d51f07ead3136c46de897eab06732b"
-      }
+      },
+      "metadataAdvisories": {}
     },
     {
       "repo": "DeadlyBossMods/DeadlyBossMods",
@@ -3743,7 +3749,8 @@
         "DBM-Test/Tools/Shared/Parser.lua": "a057071517c1d9d97ad64b719e27dbdc3359302046cc780e9d45d50b03cce690",
         "DBM-Test/Tools/Shared/InstanceInfoGuesser.lua": "3abf1847ac0601757ba576b5e0631214bdbb56b88213696a79151c5fb2bdbdbf",
         "DBM-Test/Registry.lua": "1581ebed9f7a7f03289b92b187504b241d93dbb6be877d35cba45db00fc8d75c"
-      }
+      },
+      "metadataAdvisories": {}
     },
     {
       "repo": "DeadlyBossMods/DBM-Dungeons",
@@ -5561,7 +5568,8 @@
         "DBM-Challenges/Legion/Tank.lua": "ab2f1bd903a49e2ecd6bda67a04e682def3852e1cb4f93eebe06cb6c565a6052",
         "DBM-Challenges/Legion/DPSFelTotem.lua": "89b9ee6d9dd0a334d6c15cddd077777c8f295f3ccf7542aeb1ea04429f410405",
         "DBM-Challenges/Legion/DPSQueen.lua": "104196b39b430c40e51f82fb146855ec55459da276c9bd9f70bd93b9a7508dc2"
-      }
+      },
+      "metadataAdvisories": {}
     },
     {
       "repo": "DeadlyBossMods/DBM-Vanilla",
@@ -5913,7 +5921,8 @@
         "DBM-Test-Vanilla/Season of Discovery/Molten Core/Lucifron-Heat3-Kill.lua": "b97f71cd2a6730307aa6a259cf9a6c78b9637b69a85199cced3a0c2387bb292e",
         "DBM-Test-Vanilla/Season of Discovery/Molten Core/Gehennas-Heat1-Kill.lua": "3665afdaaea9af3fc0e8efa0a630a8d1c1e6e7b669e32322c821e04905ee6e1e",
         "DBM-Test-Vanilla/README.md": "ab8241be7b329c9e16f1f744f23a68f1e07f0f3b1c12ad60329c77b3a7cc9bac"
-      }
+      },
+      "metadataAdvisories": {}
     },
     {
       "repo": "DeadlyBossMods/DBM-WotLK",
@@ -6049,7 +6058,8 @@
         "DBM-Raids-WoTLK/ObsidianSanctum/Sartharion.lua": "afe009d870a5901d23fb9acea8c69fd9a10ea31f44930868a78294775ba0ace5",
         "DBM-Raids-WoTLK/ObsidianSanctum/Vesperon.lua": "3bfbe257231c38042b562c4b0813c183995abdacd318b554567ac62b7ff9692a",
         "DBM-Raids-WoTLK/LICENSE": "3508c59e5691fa2003362a83ed908319d2f7217c0d3dbe30cc9a19bb660c9e7c"
-      }
+      },
+      "metadataAdvisories": {}
     },
     {
       "repo": "DeadlyBossMods/DBM-Cataclysm",
@@ -6197,7 +6207,8 @@
         "DBM-Cataclysm/Akmahat.lua": "3b30e632af33ef0614827cc0b66e9610014cbf5cfc899ff69e6d9d2b7c0c53d9",
         "DBM-Cataclysm/localization.br.lua": "b4dd7c2ac47480adfa5b4e28690addb04637da274bf58f741d1dc5531f779ab5",
         "DBM-Cataclysm/Xariona.lua": "5e506d3343a3ee0e6882520a22f6cc148c0582283dc47ef0287b3af38546fca1"
-      }
+      },
+      "metadataAdvisories": {}
     },
     {
       "repo": "DeadlyBossMods/DBM-MoP",
@@ -6429,7 +6440,8 @@
         "DBM-Pandaria/localization.en.lua": "4688417a3bfa1a65c5e0b1913266a28b6ad30ba5770c055b34596fdac4be0028",
         "DBM-Pandaria/Oondasta.lua": "0770cde05f45b124c229ff13c9cc586cf382a21c0f674fa8d61ef50752ef88de",
         "DBM-Pandaria/localization.br.lua": "18458d34e2c1dc4fac740399d873f67944d3f8037cb442e7103f0fd101d51e9d"
-      }
+      },
+      "metadataAdvisories": {}
     },
     {
       "repo": "DeadlyBossMods/DBM-WoD",
@@ -6583,7 +6595,8 @@
         "DBM-Draenor/Drov.lua": "fbba14d36275b7ccd0a44dfb59c727c019896dafe7c410bf9eb9d0aefeb6becd",
         "DBM-Draenor/Invasions.lua": "45c27589f83560d8e4738d177c9c01fd67acbc3b75f6af5e215635c0d27dd208",
         "DBM-Draenor/localization.br.lua": "8b9e50e1d7c7abe8fc1c5c4a7db891519ffa894f76892a2adecbd88baea8f3ca"
-      }
+      },
+      "metadataAdvisories": {}
     },
     {
       "repo": "DeadlyBossMods/DBM-Legion",
@@ -6756,35 +6769,640 @@
         "DBM-BrokenIsles/Humongris.lua": "d13cd695e4d783bed00f64a1276c6208f3037ebeaeb3dee3ae0960fe7c0f50ff",
         "DBM-BrokenIsles/Apocron.lua": "1cebe926dd5f769f6b3c387030215d0d41f3992c6a59dee551567b1a47fd9afd",
         "DBM-BrokenIsles/Alluradel.lua": "54cf8bba79f803d0f9608c1fadbe5006bee935549e9b63815ed19e0822863ed2"
-      }
-    }
-  ],
-  "blockers": [
-    {
-      "package": "DynamicCam",
-      "url": "https://www.curseforge.com/wow/addons/dynamiccam",
-      "reason": "Official current packaged distribution and version verification required"
-    },
-    {
-      "package": "Immersion_ExtraFade",
-      "url": "https://www.curseforge.com/wow/addons/immersion-extrafade/files/8995675",
-      "reason": "Packaged distribution including shared libraries required"
-    },
-    {
-      "package": "SharedMedia_Causese",
-      "url": "https://www.curseforge.com/wow/addons/sharedmedia_causese/files/7242737",
-      "reason": "Official package/content verification required; installed TOC lacks version"
-    },
-    {
-      "package": "DBM-VPVEM",
-      "url": "https://github.com/DeadlyBossMods/DBM-Voicepack-VEM",
-      "reason": "No release asset; verify maintainer commit, packaging completeness and provenance"
+      },
+      "metadataAdvisories": {}
     },
     {
       "repo": "rursache/HideClassBars",
-      "reason": "Ambiguous stable Retail asset: "
+      "channel": "stable",
+      "flavor": "Retail",
+      "version": "v1.1.0",
+      "releaseURL": "https://github.com/rursache/HideClassBars/releases/tag/v1.1.0",
+      "assetURL": "https://api.github.com/repos/rursache/HideClassBars/zipball/29bd1080d3df6e428339e81be86f11f14f8c8034",
+      "expectedDigest": null,
+      "retrievedAt": "2026-10-04T00:22:36.244345+00:00",
+      "sha256": "20b40ca768005b912400d6a64894c0607e5e60f7ee9f7b9fff94f1be5242587e",
+      "bytes": 241689,
+      "cache": "dependencies/cache/HideClassBars-v1.1.0-official.zip",
+      "unpacked": "dependencies/unpacked/HideClassBars/v1.1.0",
+      "addonFolders": [
+        "HideClassBars"
+      ],
+      "toc": {
+        "HideClassBars/HideClassBars.toc": {
+          "Interface": "120000, 120001\r",
+          "Title": "Hide Class Bars\r",
+          "Notes": "Hides class-specific bars (stance, shapeshift, stealth, etc.) and optionally other UI clutter\r",
+          "Author": "Radu Ursache\r",
+          "Version": "1.1.0\r",
+          "SavedVariables": "HideClassBarsDB\r"
+        }
+      },
+      "files": {
+        "HideClassBars/.github/workflows/cf.yml": "576af7fa9961d9f5e71369d4bbe46a320ef1227d528cfc668bec9067d666fb7e",
+        "HideClassBars/HideClassBars.lua": "bb1dda3d0f2f8f13d8792e9dff1c749f72f117de3676817e002ed59c1b894566",
+        "HideClassBars/HideClassBars.toc": "ae7f2f42b4901a8674c58d68da4cf28f9408ad9ec9a640fd08ea6d2620d16e78",
+        "HideClassBars/LICENSE": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+        "HideClassBars/README.md": "f6ad648e9f2e1e356879d2212728c53dcfccaade89141655bec09b78c3f5fe2d",
+        "HideClassBars/logo.jpg": "1e7465a30f3d5eb8a761e1596c4602bab70761d9e38df898c4e1b86702d75b4b"
+      },
+      "distribution": "Qualified official tagged standalone source",
+      "sourceCommit": "29bd1080d3df6e428339e81be86f11f14f8c8034",
+      "qualification": "Latest official tagged source is a standalone addon; qualify TOC/files and dependencies without patching",
+      "metadataAdvisories": {}
+    },
+    {
+      "repo": "curseforge/DynamicCam",
+      "channel": "stable",
+      "flavor": "Retail",
+      "version": "2.21.1",
+      "releaseURL": "https://www.curseforge.com/wow/addons/dynamiccam/files/8995535",
+      "assetURL": "https://edge.forgecdn.net/files/8995/535/DynamicCam_2.21.1.zip",
+      "expectedDigest": null,
+      "retrievedAt": "2026-10-04T00:22:35.696107+00:00",
+      "sha256": "10eb86230c6903e72097e1552c04de8a163a39fe3cb31fc3a3274c2c4394e072",
+      "bytes": 517881,
+      "cache": "dependencies/cache/DynamicCam-2.21.1-official.zip",
+      "unpacked": "dependencies/unpacked/DynamicCam/2.21.1",
+      "addonFolders": [
+        "DynamicCam"
+      ],
+      "toc": {
+        "DynamicCam/DynamicCam.toc": {
+          "Interface": "120100, 16001, 50504, 20506, 11509\r",
+          "Version": "2.21.1\r",
+          "Title": "DynamicCam\r",
+          "IconTexture": "interface/icons/inv_misc_spyglass_03.blp [AllowLoadGameType mists, tbc, vanilla]\r",
+          "Author": "mpstark, LudiusMaximus\r",
+          "Notes": "A more dynamic camera.\r",
+          "Notes-deDE": "Eine dynamischere Kamera.\r",
+          "Notes-esES": "Una c\u00e1mara m\u00e1s din\u00e1mica.\r",
+          "Notes-esMX": "Una c\u00e1mara m\u00e1s din\u00e1mica.\r",
+          "Notes-frFR": "Une cam\u00e9ra plus dynamique.\r",
+          "Notes-itIT": "Una telecamera pi\u00f9 dinamica.\r",
+          "Notes-koKR": "\ub354 \uc5ed\ub3d9\uc801\uc778 \uce74\uba54\ub77c.\r",
+          "Notes-ptBR": "Uma c\u00e2mera mais din\u00e2mica.\r",
+          "Notes-ruRU": "\u0411\u043e\u043b\u0435\u0435 \u0434\u0438\u043d\u0430\u043c\u0438\u0447\u043d\u0430\u044f \u043a\u0430\u043c\u0435\u0440\u0430.\r",
+          "Notes-zhCN": "\u667a\u80fd\u52a8\u6001\u76f8\u673a\u955c\u5934\u3002\r",
+          "Notes-zhTW": "\u667a\u80fd\u52d5\u614b\u76f8\u6a5f\u93e1\u982d\u3002\r",
+          "Category": "Other\r",
+          "Category-deDE": "Anderes\r",
+          "Category-esES": "Otros\r",
+          "Category-esMX": "Otros\r",
+          "Category-frFR": "Autre\r",
+          "Category-itIT": "Altro\r",
+          "Category-koKR": "\uae30\ud0c0\r",
+          "Category-ptBR": "Outro\r",
+          "Category-ruRU": "\u0414\u0440\u0443\u0433\u043e\u0435\r",
+          "Category-zhCN": "\u5176\u5b83\r",
+          "Category-zhTW": "\u5176\u4ed6\r",
+          "OptionalDeps": "Bartender4, GW2_UI, Immersion, Immersion_ExtraFade\r",
+          "SavedVariables": "DynamicCamDB, minZoomValues\r",
+          "X-Curse-Project-ID": "101120\r",
+          "X-WoWI-ID": "25570\r",
+          "X-Wago-ID": "b6XVoOGp\r",
+          "X-Donate": "PayPal:ludiusmaximus@gmail.com\r",
+          "X-License": "The MIT License (MIT)\r"
+        },
+        "DynamicCam/Libs/LibCamera/LibCamera.toc": {
+          "Interface": "80000\r",
+          "Version": "1.0\r",
+          "Title": "LibCamera\r",
+          "Author": "mpstark\r",
+          "Notes": "A library for camera motion.\r"
+        },
+        "DynamicCam/Libs/LibCompress/LibCompress.toc": {
+          "Interface": "90002\r",
+          "Title": "Lib: Compress\r",
+          "Notes": "Compression and Decompression library\r",
+          "Author": "Galmok at Stormrage-EU (Horde) and JJSheets\r",
+          "Version": "@project-version@\r",
+          "X-Website": "http://www.wowace.com/addons/libcompress/\r",
+          "X-Category": "Library\r",
+          "X-eMail": "galmok AT gmail DOT com, sheets DOT jeff AT gmail DOT com\r",
+          "X-License": "GPL v2\r",
+          "LoadOnDemand": "1\r"
+        },
+        "DynamicCam/Libs/LibEasing/LibEasing.toc": {
+          "Interface": "80000\r",
+          "Version": "1.0\r",
+          "Title": "LibEasing\r",
+          "Author": "mpstark\r",
+          "Notes": "A set of easing functions with some helper functionality.\r"
+        },
+        "DynamicCam/Libs/LibHideUI/LibHideUI.toc": {
+          "Interface": "110002\r",
+          "Version": "@project-version@\r",
+          "Title": "LibHideUI\r",
+          "Author": "LudiusMaximus\r",
+          "Notes": "A library for UI hiding.\r"
+        },
+        "DynamicCam/Libs/LibMountInfo/LibMountInfo.toc": {
+          "Interface": "120007\r",
+          "Version": "1.1.4\r",
+          "Title": "LibMountInfo\r",
+          "Author": "LudiusMaximus\r",
+          "Notes": "A library for mount tracking and information.\r",
+          "X-Curse-Project-ID": "1401403\r"
+        },
+        "DynamicCam/Libs/LibStub/LibStub.toc": {
+          "Interface": "90005",
+          "Title": "Lib: LibStub",
+          "Notes": "Universal Library Stub",
+          "Credits": "Kaelten, Cladhaire, ckknight, Mikk, Ammo, Nevcairiel",
+          "X-Website": "http://www.wowace.com/addons/libstub/",
+          "X-Category": "Library",
+          "X-License": "Public Domain"
+        }
+      },
+      "files": {
+        "DynamicCam/BLP/commondropdownsettings2x.blp": "0c53d3c91cedb0a0c78e6565466f3b69dd6a31acda6101b91ce7f31d831438a7",
+        "DynamicCam/Core.lua": "496a0180d99dee31882fa07c9b03373ee6443697c6002ecd3a609ea0d6ca54d8",
+        "DynamicCam/DefaultSettings.lua": "56ed16d3fb86daf2fa59c34087ddf8db2ddbe89d9e37552448cee07ae03de130",
+        "DynamicCam/DynamicCam.toc": "bb23006ec5240b376dd3c8463cc8066ce57c6a3a26bd2854b33760668a2676c7",
+        "DynamicCam/embeds.xml": "e1ec1062fd5e2fc9cd4cd845a504a33422d841effb36b21bd0311c7b0bd6cd26",
+        "DynamicCam/Libs/AceAddon-3.0/AceAddon-3.0.lua": "9aaec858b04820b597155b040dd76ef0d6e8e4f0707e54630001bcfe68497307",
+        "DynamicCam/Libs/AceAddon-3.0/AceAddon-3.0.xml": "b9820071648e42f9167882ef2a08602644a301cefd5d7e57c82aa36ca1439259",
+        "DynamicCam/Libs/AceConfig-3.0/AceConfig-3.0.lua": "25d745c5a8b50cf4b145caa55b5aeb389762286690117f51341d4111f98ee462",
+        "DynamicCam/Libs/AceConfig-3.0/AceConfig-3.0.xml": "72e34a78a8f8d0377d4e62cc33d8bacff42f4871d4f04f58ebc169b92c0ae347",
+        "DynamicCam/Libs/AceConfig-3.0/AceConfigCmd-3.0/AceConfigCmd-3.0.lua": "936138368dd8fa2523937428b321dab6ac9b5e0e502c6b49d5faa66dc5d5c609",
+        "DynamicCam/Libs/AceConfig-3.0/AceConfigCmd-3.0/AceConfigCmd-3.0.xml": "db2f8281fbed72fe1ac5f65a4e063011f45aff4d4841b8dd2aad0d50a0813164",
+        "DynamicCam/Libs/AceConfig-3.0/AceConfigDialog-3.0/AceConfigDialog-3.0.lua": "56f9cc0e8da69975296e22a1bfe0bc02b86c34a63c28bd5464e3d386fcdb523e",
+        "DynamicCam/Libs/AceConfig-3.0/AceConfigDialog-3.0/AceConfigDialog-3.0.xml": "c10388710651ef39d7c8e5920e9ef232b8bb9abcc3eb8fbf179ba9ac1c77e413",
+        "DynamicCam/Libs/AceConfig-3.0/AceConfigRegistry-3.0/AceConfigRegistry-3.0.lua": "dc0fa1aee9ac56690109078cd58045ae237635cf9dc7d80496242ab358e4d5fe",
+        "DynamicCam/Libs/AceConfig-3.0/AceConfigRegistry-3.0/AceConfigRegistry-3.0.xml": "9ef73f2e0598eb51564f53b71d66179768a950cce0d6602746070556e3a25fed",
+        "DynamicCam/Libs/AceConsole-3.0/AceConsole-3.0.lua": "3372abc50efcfa4f643bf7c2f3254de19327d28e2040997d672f94d1845a5499",
+        "DynamicCam/Libs/AceConsole-3.0/AceConsole-3.0.xml": "19b0494a1f16f9d7147cf0e0f601aa4e0fbaa61490037af0e8969fabcc2f185b",
+        "DynamicCam/Libs/AceDB-3.0/AceDB-3.0.lua": "fe1074edbbd248130f3c9aabfede6631133853e482e96e72f6d25d7a116f4ef7",
+        "DynamicCam/Libs/AceDB-3.0/AceDB-3.0.xml": "5b3873c68d76a76fb52bbb9232d4d63b13f99cda5b3f95c86205d8022786d184",
+        "DynamicCam/Libs/AceDBOptions-3.0/AceDBOptions-3.0.lua": "f6959caf4ca1fae0f2713e3c32efa9dbe488f3d25f686a4453774308ad2c0eb6",
+        "DynamicCam/Libs/AceDBOptions-3.0/AceDBOptions-3.0.xml": "37caa69558e131e0f13fad3a8cc05c10c3927446e35cf251ff255349b1bcf060",
+        "DynamicCam/Libs/AceEvent-3.0/AceEvent-3.0.lua": "928729c0edae955407778463d345baa0e59fc8f6f6ad53877b6243e0f225da4e",
+        "DynamicCam/Libs/AceEvent-3.0/AceEvent-3.0.xml": "9a9c0b14a8eda4509d45422cb1ac065ba9165879ef291816f1689bf6be3bcbc4",
+        "DynamicCam/Libs/AceGUI-3.0/AceGUI-3.0.lua": "bcfcef55d727f8434606bdba2375929123422e051c27fd1bfcbd95e7ab723ed7",
+        "DynamicCam/Libs/AceGUI-3.0/AceGUI-3.0.xml": "e54bd15393700719dbec2b1b433e570a3f364fa5e927f9227f63037eb16ad522",
+        "DynamicCam/Libs/AceGUI-3.0/widgets/AceGUIContainer-BlizOptionsGroup.lua": "566551ddd7c8c434d6bb6f4a4c9a67479e6e8a719fcc3a504b18eec4f11e6586",
+        "DynamicCam/Libs/AceGUI-3.0/widgets/AceGUIContainer-DropDownGroup.lua": "ecf7743bd5fb9059d4226e35cd2374aa13282eca720938498f85d7f328f8c070",
+        "DynamicCam/Libs/AceGUI-3.0/widgets/AceGUIContainer-Frame.lua": "fb3f9f3b3414bd3b27e1281c2b8836749e38906458df6b69e9f385fbe041df91",
+        "DynamicCam/Libs/AceGUI-3.0/widgets/AceGUIContainer-InlineGroup.lua": "e9458bd6378d017994408618cbc6921ef7e6bbe152e9bbded199255c399468a5",
+        "DynamicCam/Libs/AceGUI-3.0/widgets/AceGUIContainer-ScrollFrame.lua": "fef3da3ce311b861d669bc503906cdd0780a372fbea039c1e2d3f75ac6e68709",
+        "DynamicCam/Libs/AceGUI-3.0/widgets/AceGUIContainer-SimpleGroup.lua": "d65968489c0fa5749d2e35be69c60d0dd7969189aa14a9031f0654715625d214",
+        "DynamicCam/Libs/AceGUI-3.0/widgets/AceGUIContainer-TabGroup.lua": "ad73ed3b619cba61778ec39b73206daac423bd1f539241f4a58ff623b0b0b687",
+        "DynamicCam/Libs/AceGUI-3.0/widgets/AceGUIContainer-TreeGroup.lua": "faf9f1eb9bec0af6d3493c8e264fbf6aef244c364ed72c85069578d69115682d",
+        "DynamicCam/Libs/AceGUI-3.0/widgets/AceGUIContainer-Window.lua": "d57f41b781d8c021fb69a94e084efadbb891d3a353738e6ca68853da21f94645",
+        "DynamicCam/Libs/AceGUI-3.0/widgets/AceGUIWidget-Button.lua": "1bcc3592c6315d1369f448316f4bc990c812a37d2a7b5c31fd2324daf6ad7e87",
+        "DynamicCam/Libs/AceGUI-3.0/widgets/AceGUIWidget-CheckBox.lua": "81cef4bb6ddef3b8bc31360f292fe7b7a7916d675b9336a697545c9ba9adfd77",
+        "DynamicCam/Libs/AceGUI-3.0/widgets/AceGUIWidget-ColorPicker.lua": "d69b7e600acf2e6f9d0e222d40952f4f25115eb6a48c039bfa71d2807668e5ef",
+        "DynamicCam/Libs/AceGUI-3.0/widgets/AceGUIWidget-DropDown-Items.lua": "aa7d0bd54525e63b9549ec0a41ff3b3595267a377e0ae65da42577856cf03f4b",
+        "DynamicCam/Libs/AceGUI-3.0/widgets/AceGUIWidget-DropDown.lua": "42e2a9d9c41bc4f481af1721b6cc45988e2bc5573fd0282499e9bf3af8e8ec20",
+        "DynamicCam/Libs/AceGUI-3.0/widgets/AceGUIWidget-EditBox.lua": "24a7570e949647c67a0364a8b21d8904c7df812ce0a3d58a74413e473cd023e2",
+        "DynamicCam/Libs/AceGUI-3.0/widgets/AceGUIWidget-Heading.lua": "43db0151f5ff7daaeb5bba3cb99d2aa6d8f0a0b8f5bf47477d274ee7b5d43773",
+        "DynamicCam/Libs/AceGUI-3.0/widgets/AceGUIWidget-Icon.lua": "ebfe6a6d699dfdb32c1eab93f974d21ffc5eedc634dae297afc9bad3fd2117de",
+        "DynamicCam/Libs/AceGUI-3.0/widgets/AceGUIWidget-InteractiveLabel.lua": "e47543663cc5c4272ef6fb6d356fb63a49f6b101d3cc0501e769ac6615442cce",
+        "DynamicCam/Libs/AceGUI-3.0/widgets/AceGUIWidget-Keybinding.lua": "5d372eb175c2768e0e13f46f77b5d5ec4a1ca74636b2ad940725040496a6ba7e",
+        "DynamicCam/Libs/AceGUI-3.0/widgets/AceGUIWidget-Label.lua": "5a62305ac4eaf31d173d84cc40bede59b0fe32c8b5fbbc9f015a1c5b7894c7d0",
+        "DynamicCam/Libs/AceGUI-3.0/widgets/AceGUIWidget-MultiLineEditBox.lua": "ac67fd32a7a5642c0bebc5104ee4ac57088fb04e44b15cee64513b78e532e7cd",
+        "DynamicCam/Libs/AceGUI-3.0/widgets/AceGUIWidget-Slider.lua": "d4aab13b831961cbef9c0639ba2f08c0d7ac1baae7e2d4de7621cea61850de37",
+        "DynamicCam/Libs/AceLocale-3.0/AceLocale-3.0.lua": "584b30b5cd9da71408cdd83a49469aa4348941e185a42cbd218d964678d88e57",
+        "DynamicCam/Libs/AceLocale-3.0/AceLocale-3.0.xml": "ad70df709b297effd04410ddf242188fd3811793ae55814a482ac41f5895eaef",
+        "DynamicCam/Libs/AceSerializer-3.0/AceSerializer-3.0.lua": "874fabab25ee5c5c08599e37744abe9205659b6f33c59250bccbfbf4fe5d0a41",
+        "DynamicCam/Libs/AceSerializer-3.0/AceSerializer-3.0.xml": "7d578832f12c3f4eb1311e1dbebb2156950202d61aa6c299f3fd05a6ab69d496",
+        "DynamicCam/Libs/AceTimer-3.0/AceTimer-3.0.lua": "ae95dbb59d8240cb5ff2c1308d526daf57e504710985fe8532b886a9ad543af6",
+        "DynamicCam/Libs/AceTimer-3.0/AceTimer-3.0.xml": "c6f5ceece38bd9705e0371443ee16568c547b49a71ac2008ad648c079d4f3446",
+        "DynamicCam/Libs/CallbackHandler-1.0/CallbackHandler-1.0.lua": "84a15af505e728ac5e5eb6a8eaba8989d1131d5f8ba14d11abcfe4ce086de3c1",
+        "DynamicCam/Libs/CallbackHandler-1.0/CallbackHandler-1.0.xml": "9310765c5310a395652e60a04f378e836785deb6f0b7181a448c74751d6f0185",
+        "DynamicCam/Libs/LibCamera/LibCamera.lua": "4fabe2699562e08d439314d60ef54b69efd6442b260115e995c1adac72b1ca56",
+        "DynamicCam/Libs/LibCamera/LibCamera.toc": "b94a0806ae79023469fda0be4077f755bc3519019d62f44342b206269a8e573a",
+        "DynamicCam/Libs/LibCamera/LICENSE.md": "42989df156027d106f8ef55a8f330f27f09255d6500470dbea5960b32dd43998",
+        "DynamicCam/Libs/LibCompress/lib.xml": "ccc1dec54ab19a8352e551bb15470698dc7197131338383467e6290f4ca7fc35",
+        "DynamicCam/Libs/LibCompress/LibCompress.lua": "1d3a6bb930d4134689105c74003851b2aecd7f568a2898d5d85c0591b0fa8ddb",
+        "DynamicCam/Libs/LibCompress/LibCompress.toc": "bef6c501fe7fedc8cfff074aa5a685a724fc8bdaea9e248d574b4796ecdcb471",
+        "DynamicCam/Libs/LibEasing/LibEasing.lua": "d01905038a55bb8f4c1b6dce2af381616d4ac8f25615f0b3dfb1fb7a26ceaa58",
+        "DynamicCam/Libs/LibEasing/LibEasing.toc": "135a8cfe5b57d6cf298f26b86b7299e70b3cd66f0972ee2cec3b37f5c269363d",
+        "DynamicCam/Libs/LibEasing/LICENSE.md": "42989df156027d106f8ef55a8f330f27f09255d6500470dbea5960b32dd43998",
+        "DynamicCam/Libs/LibHideUI/LibHideUI.lua": "27b697bdbb68c2cfab3507df47422841eb91c9a79d724fe9f8b441e536b29404",
+        "DynamicCam/Libs/LibHideUI/LibHideUI.toc": "dadddffa1883a4617ad3f78d963c5acac23b985f199c2f9fe30d19d8e37ce115",
+        "DynamicCam/Libs/LibMountInfo/LibMountInfo.lua": "56a6439d33c6ced20caf1c83a0dd94dcfd315c5e443f7c88d0112a3f891252ad",
+        "DynamicCam/Libs/LibMountInfo/LibMountInfo.toc": "a03ffd497adafe6adefff5d781c741b7b9d94e401f7f2745cffb6b351e856f55",
+        "DynamicCam/Libs/LibMountInfo/LICENSE": "17167210cb8256bf1ceaf8b76bce60d544e7415589a6b88bccc91bc3ea792dbd",
+        "DynamicCam/Libs/LibStub/LibStub.lua": "186bac9553513504fac3a5c4550ff59f3aee9e8a497376134f3ca01de2ed18d0",
+        "DynamicCam/Libs/LibStub/LibStub.toc": "1f64542bc3921a190963e7bbd92a706b61fe2e8c411a03cd060a9c6097e6f4fa",
+        "DynamicCam/Libs/LibStub/tests/test.lua": "786faf8f1660a479a16d94cb4d9745ddcf23b3b34e04e2fa9b5e7972f44ecc66",
+        "DynamicCam/Libs/LibStub/tests/test2.lua": "b3a84b999b9c3a67bf9e91932d0869add978617d722b33fbda94b7d136cd7f01",
+        "DynamicCam/Libs/LibStub/tests/test3.lua": "d75281c555ab79fcc395ded413df5c2a2c1a66e756102a378e37935648edeb14",
+        "DynamicCam/Libs/LibStub/tests/test4.lua": "58ed91abffa524f06f64ecad1f350a587ae8a6263de6b3af4bbc24abddd6f2e3",
+        "DynamicCam/Libs/LICENSE.md": "af51766e056af139f94de73afdc907b860d11707a20e709654ad0bf110f6fb3a",
+        "DynamicCam/LICENSE": "d073ad048c4a17bfb5a1c69eea17c60f262aa6f542a8ebb10c81e07c6876e6b1",
+        "DynamicCam/Locales/deDE.lua": "3e2cd8d1866201f5d6f1566debd4696e1762638ad5b284d678d4254572bbd8f3",
+        "DynamicCam/Locales/enUS.lua": "94a3710b814a66f4405c88d2078a7e20f5d897b6037e72c195f8249caf217172",
+        "DynamicCam/Locales/esES.lua": "204cea34e14a53fccac679005b9142e56d9e603118db56757c268d64065bc3e8",
+        "DynamicCam/Locales/esMX.lua": "19e3d03340c392de83c07f4f842197b4c69bd4f3647c02e80b231997b91ac118",
+        "DynamicCam/Locales/frFR.lua": "c949bc3fd8f76e05f8a4b0192fb82c390db637bb43eb60ee15345163fa0ed602",
+        "DynamicCam/Locales/itIT.lua": "889fc2182bb4539655cb596edfc65e1bdf0a54c9155daa7f58d89692f412c826",
+        "DynamicCam/Locales/koKR.lua": "3d5c0c665a65998a07531f492660d1e7230a038da78731e5a881669a9404e644",
+        "DynamicCam/Locales/Locales.xml": "a2c3494c2a5875eb0e6df55342e660c79f5ccb145beee9d3eb78b705d20c198b",
+        "DynamicCam/Locales/ptBR.lua": "0c48f9e438541b644ff442883c5010918d9ecd02f7f9d916995994f9d0d7dce3",
+        "DynamicCam/Locales/ruRU.lua": "bac827fa055b6aebf63848953797f5dc478118b099ead8afd04ab8a893a209ff",
+        "DynamicCam/Locales/zhCN.lua": "469cfb2aea30204d981e72ef90f0b021bf9a7af09057f8dc31fdf1f2eccf1637",
+        "DynamicCam/Locales/zhTW.lua": "a2952b5adbc850e042bd731b60881c31797097cb94c7a736e94aa1197e3ef4dc",
+        "DynamicCam/MouseZoom.lua": "1534fdeec70c4ae84aa91c81317441f3747444231f79b1f724c02adbd931006f",
+        "DynamicCam/Options/ControlFactories.lua": "f9445fef6845b40180384c96e7830efa13e98afe22376e4b1ee07c3602ab8ecf",
+        "DynamicCam/Options/CvarMonitor.lua": "3be5d3a1b39d5e688e3bb884c5c514fb9fb28baddf963841bb433c28cfe44bf6",
+        "DynamicCam/Options/DetachFrame.lua": "648e489b8d1314b17cf98a31a02bb2d46f637280abdec57ca808e6350757b825",
+        "DynamicCam/Options/Helpers.lua": "7fe2689724ab5a51a1ec1cc7672232e691f7307f9e9d98957be7f1cf13c09bb9",
+        "DynamicCam/Options/Widgets.lua": "dd18bec22eddf15bbd08c4bbce48af4bb85fb91c963527992d6ff9193504219d",
+        "DynamicCam/Options.lua": "b5dd5cec099bc50b756b7c195dc4a282d7642261ea16881658fee61a9f4e6818",
+        "DynamicCam/Presets.lua": "0f1476d46107255108930caf3b8ef333b5d4aa5784724413878d02703f781701",
+        "DynamicCam/Sharing.lua": "414f65358d003503abcdda6748fc27e4cfe19a998fd10e9edb358c4e515a3d8a",
+        "DynamicCam/SituationManager.lua": "242c68b479f04b67c83bdb5972abf58eeda31076cf0c6e43baa15b6ff1b94829",
+        "DynamicCam/UiHideModule.lua": "4ba4963b2a9f63491010abbde52005d925670aa963efc8e669045e52cfcb1c10",
+        "DynamicCam/ZoomBasedEditor.lua": "1e4a19b992ac7a56b62dde2a026e1558c054215fcf7b152863cb1a4cca6785aa",
+        "DynamicCam/ZoomBasedSettings.lua": "b7be1d3e9bf24916e6199446af2f2416edb7d9749440b4b636fbf404e56ec5f4"
+      },
+      "distribution": "CurseForge official CDN",
+      "projectID": 101120,
+      "fileID": 8995535,
+      "metadataVerifiedAt": "2026-10-04T00:19:12Z",
+      "license": "MIT",
+      "latestURL": "https://www.curseforge.com/wow/addons/dynamiccam/files/all",
+      "metadataAdvisories": {
+        "DynamicCam/Libs/LibCompress/LibCompress.toc": "Bundled unused standalone library TOC has packager tokens; official bytes retained.",
+        "DynamicCam/Libs/LibHideUI/LibHideUI.toc": "Bundled unused standalone library TOC has packager tokens; official bytes retained."
+      }
+    },
+    {
+      "repo": "curseforge/Immersion_ExtraFade",
+      "channel": "stable",
+      "flavor": "Retail",
+      "version": "1.18.0",
+      "releaseURL": "https://www.curseforge.com/wow/addons/immersion-extrafade/files/8995675",
+      "assetURL": "https://edge.forgecdn.net/files/8995/675/Immersion_ExtraFade_1.18.0.zip",
+      "expectedDigest": null,
+      "retrievedAt": "2026-10-04T00:22:35.238316+00:00",
+      "sha256": "89c59d0519b2392b41010dda34ec01d38c9c1702c644f5e57422341b1fec21c6",
+      "bytes": 125448,
+      "cache": "dependencies/cache/Immersion_ExtraFade-1.18.0-official.zip",
+      "unpacked": "dependencies/unpacked/Immersion_ExtraFade/1.18.0",
+      "addonFolders": [
+        "Immersion_ExtraFade"
+      ],
+      "toc": {
+        "Immersion_ExtraFade/Immersion_ExtraFade.toc": {
+          "Interface": "120100, 16001, 50504, 20506, 11509\r",
+          "Version": "1.18.0\r",
+          "Title": "Immersion ExtraFade\r",
+          "IconTexture": "Interface\\AddOns\\Immersion\\Textures\\Logo\r",
+          "Author": "LudiusMaximus\r",
+          "Notes": "Improves Immersion's UI fading while talking to NPCs.\r",
+          "Notes-deDE": "Verbessert das Ausblenden der Benutzeroberfl\u00e4che von Immersion beim Sprechen mit NSCs.\r",
+          "Notes-esES": "Mejora el desvanecimiento de la interfaz de Immersion al hablar con los PNJ.\r",
+          "Notes-esMX": "Mejora el desvanecimiento de la interfaz de Immersion al hablar con los PNJ.\r",
+          "Notes-frFR": "Am\u00e9liore le masquage de l'interface d'Immersion lors des dialogues avec les PNJ.\r",
+          "Notes-itIT": "Migliora la dissolvenza dell'interfaccia di Immersion mentre si parla con i PNG.\r",
+          "Notes-ptBR": "Melhora o desaparecimento da interface do Immersion ao falar com NPCs.\r",
+          "Notes-ruRU": "\u0423\u043b\u0443\u0447\u0448\u0430\u0435\u0442 \u0441\u043a\u0440\u044b\u0442\u0438\u0435 \u0438\u043d\u0442\u0435\u0440\u0444\u0435\u0439\u0441\u0430 Immersion \u0432\u043e \u0432\u0440\u0435\u043c\u044f \u0440\u0430\u0437\u0433\u043e\u0432\u043e\u0440\u0430 \u0441 NPC.\r",
+          "Notes-koKR": "NPC\uc640 \ub300\ud654\ud558\ub294 \ub3d9\uc548 Immersion\uc758 UI \uc228\uae40 \uae30\ub2a5\uc744 \uac1c\uc120\ud569\ub2c8\ub2e4.\r",
+          "Notes-zhCN": "\u6539\u5584\u4e0e NPC \u5bf9\u8bdd\u65f6 Immersion \u7684\u754c\u9762\u9690\u85cf\u6548\u679c\u3002\r",
+          "Notes-zhTW": "\u6539\u5584\u8207 NPC \u5c0d\u8a71\u6642 Immersion \u7684\u4ecb\u9762\u96b1\u85cf\u6548\u679c\u3002\r",
+          "RequiredDeps": "Immersion\r",
+          "OptionalDeps": "Bartender4, GW2_UI\r",
+          "SavedVariables": "IEF_Config\r",
+          "X-Curse-Project-ID": "362188\r",
+          "X-WoWI-ID": "25504\r",
+          "X-Wago-ID": "aNDmag6o\r",
+          "X-Donate": "PayPal:ludiusmaximus@gmail.com\r",
+          "X-License": "The MIT License (MIT)\r"
+        },
+        "Immersion_ExtraFade/Libs/LibStub/LibStub.toc": {
+          "Interface": "90005",
+          "Title": "Lib: LibStub",
+          "Notes": "Universal Library Stub",
+          "Credits": "Kaelten, Cladhaire, ckknight, Mikk, Ammo, Nevcairiel",
+          "X-Website": "http://www.wowace.com/addons/libstub/",
+          "X-Category": "Library",
+          "X-License": "Public Domain"
+        }
+      },
+      "files": {
+        "Immersion_ExtraFade/embeds.xml": "f5eb8ca4689a77f242c5131d6ba6110122ff1737a0f540f717b21462b63bf042",
+        "Immersion_ExtraFade/hide_module.lua": "4ba4963b2a9f63491010abbde52005d925670aa963efc8e669045e52cfcb1c10",
+        "Immersion_ExtraFade/Immersion_ExtraFade.toc": "b26a8c04a5b2ed7abdc268da42d44f3dbf145c0084a6b02eb5b8408581bdf3d7",
+        "Immersion_ExtraFade/Libs/AceAddon-3.0/AceAddon-3.0.lua": "9aaec858b04820b597155b040dd76ef0d6e8e4f0707e54630001bcfe68497307",
+        "Immersion_ExtraFade/Libs/AceAddon-3.0/AceAddon-3.0.xml": "b9820071648e42f9167882ef2a08602644a301cefd5d7e57c82aa36ca1439259",
+        "Immersion_ExtraFade/Libs/AceConfig-3.0/AceConfig-3.0.lua": "25d745c5a8b50cf4b145caa55b5aeb389762286690117f51341d4111f98ee462",
+        "Immersion_ExtraFade/Libs/AceConfig-3.0/AceConfig-3.0.xml": "72e34a78a8f8d0377d4e62cc33d8bacff42f4871d4f04f58ebc169b92c0ae347",
+        "Immersion_ExtraFade/Libs/AceConfig-3.0/AceConfigCmd-3.0/AceConfigCmd-3.0.lua": "936138368dd8fa2523937428b321dab6ac9b5e0e502c6b49d5faa66dc5d5c609",
+        "Immersion_ExtraFade/Libs/AceConfig-3.0/AceConfigCmd-3.0/AceConfigCmd-3.0.xml": "db2f8281fbed72fe1ac5f65a4e063011f45aff4d4841b8dd2aad0d50a0813164",
+        "Immersion_ExtraFade/Libs/AceConfig-3.0/AceConfigDialog-3.0/AceConfigDialog-3.0.lua": "56f9cc0e8da69975296e22a1bfe0bc02b86c34a63c28bd5464e3d386fcdb523e",
+        "Immersion_ExtraFade/Libs/AceConfig-3.0/AceConfigDialog-3.0/AceConfigDialog-3.0.xml": "c10388710651ef39d7c8e5920e9ef232b8bb9abcc3eb8fbf179ba9ac1c77e413",
+        "Immersion_ExtraFade/Libs/AceConfig-3.0/AceConfigRegistry-3.0/AceConfigRegistry-3.0.lua": "dc0fa1aee9ac56690109078cd58045ae237635cf9dc7d80496242ab358e4d5fe",
+        "Immersion_ExtraFade/Libs/AceConfig-3.0/AceConfigRegistry-3.0/AceConfigRegistry-3.0.xml": "9ef73f2e0598eb51564f53b71d66179768a950cce0d6602746070556e3a25fed",
+        "Immersion_ExtraFade/Libs/AceGUI-3.0/AceGUI-3.0.lua": "bcfcef55d727f8434606bdba2375929123422e051c27fd1bfcbd95e7ab723ed7",
+        "Immersion_ExtraFade/Libs/AceGUI-3.0/AceGUI-3.0.xml": "e54bd15393700719dbec2b1b433e570a3f364fa5e927f9227f63037eb16ad522",
+        "Immersion_ExtraFade/Libs/AceGUI-3.0/widgets/AceGUIContainer-BlizOptionsGroup.lua": "566551ddd7c8c434d6bb6f4a4c9a67479e6e8a719fcc3a504b18eec4f11e6586",
+        "Immersion_ExtraFade/Libs/AceGUI-3.0/widgets/AceGUIContainer-DropDownGroup.lua": "ecf7743bd5fb9059d4226e35cd2374aa13282eca720938498f85d7f328f8c070",
+        "Immersion_ExtraFade/Libs/AceGUI-3.0/widgets/AceGUIContainer-Frame.lua": "fb3f9f3b3414bd3b27e1281c2b8836749e38906458df6b69e9f385fbe041df91",
+        "Immersion_ExtraFade/Libs/AceGUI-3.0/widgets/AceGUIContainer-InlineGroup.lua": "e9458bd6378d017994408618cbc6921ef7e6bbe152e9bbded199255c399468a5",
+        "Immersion_ExtraFade/Libs/AceGUI-3.0/widgets/AceGUIContainer-ScrollFrame.lua": "fef3da3ce311b861d669bc503906cdd0780a372fbea039c1e2d3f75ac6e68709",
+        "Immersion_ExtraFade/Libs/AceGUI-3.0/widgets/AceGUIContainer-SimpleGroup.lua": "d65968489c0fa5749d2e35be69c60d0dd7969189aa14a9031f0654715625d214",
+        "Immersion_ExtraFade/Libs/AceGUI-3.0/widgets/AceGUIContainer-TabGroup.lua": "ad73ed3b619cba61778ec39b73206daac423bd1f539241f4a58ff623b0b0b687",
+        "Immersion_ExtraFade/Libs/AceGUI-3.0/widgets/AceGUIContainer-TreeGroup.lua": "faf9f1eb9bec0af6d3493c8e264fbf6aef244c364ed72c85069578d69115682d",
+        "Immersion_ExtraFade/Libs/AceGUI-3.0/widgets/AceGUIContainer-Window.lua": "d57f41b781d8c021fb69a94e084efadbb891d3a353738e6ca68853da21f94645",
+        "Immersion_ExtraFade/Libs/AceGUI-3.0/widgets/AceGUIWidget-Button.lua": "1bcc3592c6315d1369f448316f4bc990c812a37d2a7b5c31fd2324daf6ad7e87",
+        "Immersion_ExtraFade/Libs/AceGUI-3.0/widgets/AceGUIWidget-CheckBox.lua": "81cef4bb6ddef3b8bc31360f292fe7b7a7916d675b9336a697545c9ba9adfd77",
+        "Immersion_ExtraFade/Libs/AceGUI-3.0/widgets/AceGUIWidget-ColorPicker.lua": "d69b7e600acf2e6f9d0e222d40952f4f25115eb6a48c039bfa71d2807668e5ef",
+        "Immersion_ExtraFade/Libs/AceGUI-3.0/widgets/AceGUIWidget-DropDown-Items.lua": "aa7d0bd54525e63b9549ec0a41ff3b3595267a377e0ae65da42577856cf03f4b",
+        "Immersion_ExtraFade/Libs/AceGUI-3.0/widgets/AceGUIWidget-DropDown.lua": "42e2a9d9c41bc4f481af1721b6cc45988e2bc5573fd0282499e9bf3af8e8ec20",
+        "Immersion_ExtraFade/Libs/AceGUI-3.0/widgets/AceGUIWidget-EditBox.lua": "24a7570e949647c67a0364a8b21d8904c7df812ce0a3d58a74413e473cd023e2",
+        "Immersion_ExtraFade/Libs/AceGUI-3.0/widgets/AceGUIWidget-Heading.lua": "43db0151f5ff7daaeb5bba3cb99d2aa6d8f0a0b8f5bf47477d274ee7b5d43773",
+        "Immersion_ExtraFade/Libs/AceGUI-3.0/widgets/AceGUIWidget-Icon.lua": "ebfe6a6d699dfdb32c1eab93f974d21ffc5eedc634dae297afc9bad3fd2117de",
+        "Immersion_ExtraFade/Libs/AceGUI-3.0/widgets/AceGUIWidget-InteractiveLabel.lua": "e47543663cc5c4272ef6fb6d356fb63a49f6b101d3cc0501e769ac6615442cce",
+        "Immersion_ExtraFade/Libs/AceGUI-3.0/widgets/AceGUIWidget-Keybinding.lua": "5d372eb175c2768e0e13f46f77b5d5ec4a1ca74636b2ad940725040496a6ba7e",
+        "Immersion_ExtraFade/Libs/AceGUI-3.0/widgets/AceGUIWidget-Label.lua": "5a62305ac4eaf31d173d84cc40bede59b0fe32c8b5fbbc9f015a1c5b7894c7d0",
+        "Immersion_ExtraFade/Libs/AceGUI-3.0/widgets/AceGUIWidget-MultiLineEditBox.lua": "ac67fd32a7a5642c0bebc5104ee4ac57088fb04e44b15cee64513b78e532e7cd",
+        "Immersion_ExtraFade/Libs/AceGUI-3.0/widgets/AceGUIWidget-Slider.lua": "d4aab13b831961cbef9c0639ba2f08c0d7ac1baae7e2d4de7621cea61850de37",
+        "Immersion_ExtraFade/Libs/AceTimer-3.0/AceTimer-3.0.lua": "ae95dbb59d8240cb5ff2c1308d526daf57e504710985fe8532b886a9ad543af6",
+        "Immersion_ExtraFade/Libs/AceTimer-3.0/AceTimer-3.0.xml": "c6f5ceece38bd9705e0371443ee16568c547b49a71ac2008ad648c079d4f3446",
+        "Immersion_ExtraFade/Libs/CallbackHandler-1.0/CallbackHandler-1.0.lua": "84a15af505e728ac5e5eb6a8eaba8989d1131d5f8ba14d11abcfe4ce086de3c1",
+        "Immersion_ExtraFade/Libs/CallbackHandler-1.0/CallbackHandler-1.0.xml": "9310765c5310a395652e60a04f378e836785deb6f0b7181a448c74751d6f0185",
+        "Immersion_ExtraFade/Libs/LibStub/LibStub.lua": "186bac9553513504fac3a5c4550ff59f3aee9e8a497376134f3ca01de2ed18d0",
+        "Immersion_ExtraFade/Libs/LibStub/LibStub.toc": "1f64542bc3921a190963e7bbd92a706b61fe2e8c411a03cd060a9c6097e6f4fa",
+        "Immersion_ExtraFade/Libs/LibStub/tests/test.lua": "786faf8f1660a479a16d94cb4d9745ddcf23b3b34e04e2fa9b5e7972f44ecc66",
+        "Immersion_ExtraFade/Libs/LibStub/tests/test2.lua": "b3a84b999b9c3a67bf9e91932d0869add978617d722b33fbda94b7d136cd7f01",
+        "Immersion_ExtraFade/Libs/LibStub/tests/test3.lua": "d75281c555ab79fcc395ded413df5c2a2c1a66e756102a378e37935648edeb14",
+        "Immersion_ExtraFade/Libs/LibStub/tests/test4.lua": "58ed91abffa524f06f64ecad1f350a587ae8a6263de6b3af4bbc24abddd6f2e3",
+        "Immersion_ExtraFade/LICENSE": "21fa609537edd30918bd7703c8d5e7ca5ebd1ebf90a5c9a7fe68b781db7750c2",
+        "Immersion_ExtraFade/main.lua": "5ffaf20b545be500859756c9413550c146482d5f8aa3266b1e03048c9c9b61ea",
+        "Immersion_ExtraFade/options.lua": "0379dfe8363d168a4fd2f43e5a4ea1cd1dc504e1a73807fdd5877206401dde13"
+      },
+      "distribution": "CurseForge official CDN",
+      "projectID": 362188,
+      "fileID": 8995675,
+      "metadataVerifiedAt": "2026-10-04T00:19:12Z",
+      "license": "MIT",
+      "latestURL": "https://www.curseforge.com/wow/addons/immersion-extrafade/files/all",
+      "metadataAdvisories": {}
+    },
+    {
+      "repo": "curseforge/SharedMedia_Causese",
+      "channel": "stable",
+      "flavor": "Retail",
+      "version": "7.6",
+      "releaseURL": "https://www.curseforge.com/wow/addons/sharedmedia_causese/files/7242737",
+      "assetURL": "https://edge.forgecdn.net/files/7242/737/SharedMedia_Causese.zip",
+      "expectedDigest": null,
+      "retrievedAt": "2026-10-04T00:22:37.476175+00:00",
+      "sha256": "12060554a2eace5438f08daa98660169a18e127b8af269c38974f9f570091711",
+      "bytes": 1395644,
+      "cache": "dependencies/cache/SharedMedia_Causese-7.6-official.zip",
+      "unpacked": "dependencies/unpacked/SharedMedia_Causese/7.6",
+      "addonFolders": [
+        "SharedMedia_Causese"
+      ],
+      "toc": {
+        "SharedMedia_Causese/libs/LibStub/LibStub.toc": {
+          "Interface": "70000\r",
+          "Title": "Lib: LibStub\r",
+          "Notes": "Universal Library Stub\r",
+          "Credits": "Kaelten, Cladhaire, ckknight, Mikk, Ammo, Nevcairiel\r",
+          "X-Website": "http://www.wowace.com/addons/libstub/\r",
+          "X-Category": "Library\r",
+          "X-License": "Public Domain\r"
+        },
+        "SharedMedia_Causese/SharedMedia_Causese.toc": {
+          "Interface": "110205, 120000\r",
+          "Title": "SharedMedia_Causese\r",
+          "Category": "Causese\r"
+        }
+      },
+      "files": {
+        "SharedMedia_Causese/embeds.xml": "5bc506dd00793cb28b08e28c5e97f631cde6faf4b8cdabba4ee3e4ba3db28fc1",
+        "SharedMedia_Causese/libs/CallbackHandler-1.0/CallbackHandler-1.0.lua": "5160e2109ae174d7a4b329dcd81a34a6454ec27b170820720e81327ff3339d36",
+        "SharedMedia_Causese/libs/CallbackHandler-1.0/CallbackHandler-1.0.xml": "5fc06440452a82be9554fc9650fa7de0b6df786c6d188d05d7d0ec4aa3e002fd",
+        "SharedMedia_Causese/libs/LibSharedMedia-3.0/lib.xml": "b4de98e3097db71406927fe7dcca508911bfd6e871b1bb744049fb4201f983cf",
+        "SharedMedia_Causese/libs/LibSharedMedia-3.0/LibSharedMedia-3.0.lua": "33a765d61d3dfbfc1965c48404e5d30601176fc9168c3f8360c2892f3811dd2b",
+        "SharedMedia_Causese/libs/LibStub/LibStub.lua": "d34235c85f869505fdd9ef321d2420f69db7d2eb873d2b3bbf57584a314060fa",
+        "SharedMedia_Causese/libs/LibStub/LibStub.toc": "0e276448cc269122f1cb10bf98087db945d923bf006825de7ebed8e647822ef1",
+        "SharedMedia_Causese/libs/LibStub/tests/test.lua": "5b473314c45bba15c57aa57b1c8aab35821fa732b03e4a44b9651d9b8e3020fa",
+        "SharedMedia_Causese/libs/LibStub/tests/test2.lua": "7c3caa8a85cc4048ea355a06f5c74918a85c1920d444547a26479783cadde3e7",
+        "SharedMedia_Causese/libs/LibStub/tests/test3.lua": "97d3dc9dc74b5e763f384d5e1a8b7bc66edd66bac36f43954ae9ad10f7658f9d",
+        "SharedMedia_Causese/libs/LibStub/tests/test4.lua": "78f9c01de14790bed483522cd7094c3f77c78bdc3e29c5ca098e00d23d264e5b",
+        "SharedMedia_Causese/SharedMedia_Causese.toc": "329fd98cca8d797d5dfc8c46428b3a26f732bb8282d389ebfbf5c906a041d76f",
+        "SharedMedia_Causese/sound/01.ogg": "c6afe033355c6124c674b0eb84ed9896828cb2fcc28ac2d903ccc3a912b71220",
+        "SharedMedia_Causese/sound/02.ogg": "6bb9442db84e67ac0b674d0b97b170fd8bcffbe121293a97dafac11445ad7616",
+        "SharedMedia_Causese/sound/03.ogg": "e5251599234e2338c4822977dbb90fdc0bb0f67e9a28c877131b196c5ee36f77",
+        "SharedMedia_Causese/sound/04.ogg": "a465d6e3cff7c4dd15935c1e71b17f3f233d7bc553a28987dbb93072b461a859",
+        "SharedMedia_Causese/sound/05.ogg": "6cbf2847e8a5eed8c3e6aea2538698796c918d363dfd6c2e083dafcd14fde529",
+        "SharedMedia_Causese/sound/06.ogg": "c3ae4292da3bf85b9cbc633654222a2901798dcb861916489f9ca20cf7c3dda8",
+        "SharedMedia_Causese/sound/07.ogg": "9fd327a1fa36eb88f79eee6fa6152ac1bb9d16f54f5c7cebe4f96e940bb45ded",
+        "SharedMedia_Causese/sound/08.ogg": "5d1ae3822cba71e423b1d00ad85950a375a3638126165cfd184aeb788a563424",
+        "SharedMedia_Causese/sound/1.ogg": "022a9ddd7ade8d5d3a5aadeff9604cf277052040d0e142c7c362a3b18ac42064",
+        "SharedMedia_Causese/sound/10.ogg": "ac9e15dbf8ece14ffdc5de2c746adc20ec04045e61e2578498dc1c6ed5e66014",
+        "SharedMedia_Causese/sound/2.ogg": "8bdeca9c2a2c9e43815b7bf642375d3e4bcfdee05be47f6e8360b722386a9376",
+        "SharedMedia_Causese/sound/3.ogg": "5861c6614a6b58757c12326971c5ee6d71c4801fbfbb16a83fa1db866e80f488",
+        "SharedMedia_Causese/sound/4.ogg": "fe500a3b9e212917fb14b416fee44f386abe5591018dca33227d23493fb8c19c",
+        "SharedMedia_Causese/sound/5.ogg": "1ff519cc01e070010dfe7590b8cf3754fda32fdddd0095a5aeb4f0adc5f73bd3",
+        "SharedMedia_Causese/sound/6.ogg": "68e839e0faf8d1cb4c09518739a7b15f171097c7896cfb2039224765dcdd2174",
+        "SharedMedia_Causese/sound/7.ogg": "0d13389f7d8c965720790d77465ea0d95c6cb5507986e83e870bd4f54045b3bc",
+        "SharedMedia_Causese/sound/8.ogg": "d9fa3914f69d2e48fbbe5f2f9b66c34a261e77364ae1424651be1c643a90dfe9",
+        "SharedMedia_Causese/sound/9.ogg": "b1490c771f44d64b4d33c0df978d81a9f67db5d16b5755b6aaaca46ec222044b",
+        "SharedMedia_Causese/sound/Add.ogg": "e5ebd7af1b04bc53681062cdd1c3b76d58264a37db1f4f6283fd3623bb5665a5",
+        "SharedMedia_Causese/sound/Adds.ogg": "6de059a423d0e22807ce053fcfe0a3f2854705e7f481c87317088525d28f560b",
+        "SharedMedia_Causese/sound/Affix.ogg": "5671a781c6c8d5330ae06bbecce3c73f3801d10cf88260846fac6d1374aab796",
+        "SharedMedia_Causese/sound/AMZ.ogg": "f691f66e62ef4bdbdbf956653a25b89c7d1c430026fe0b953f03c2986fcdcaeb",
+        "SharedMedia_Causese/sound/Angel.ogg": "2aa6f80cfbf0a0ba6a05fc7fa1ee916e97344afe8ad3f83b9a8ace61ef6c44f1",
+        "SharedMedia_Causese/sound/AoE.ogg": "cd2299515d3f91dbbfa29f32b0be1c3353157c3b992f089ac6141f35ca2db483",
+        "SharedMedia_Causese/sound/Ascendance.ogg": "c41d2142a6fb0ca722c35cc068d57cbd80462bf2c55dd85c4f9e6d4298092f45",
+        "SharedMedia_Causese/sound/Assist.ogg": "9d90eb330bcfa765d3f3e24912c51e548ca8c43541e85ab1027dbf337c3aa708",
+        "SharedMedia_Causese/sound/Autumn.ogg": "545e081736d83eb7d6b616c1a20288d86416336c8d7528f602a00c7a1b228409",
+        "SharedMedia_Causese/sound/Avoid.ogg": "97f6264b0f5dec3e08c52d3cac95c50c466a5586348a638701eb43e75623ed74",
+        "SharedMedia_Causese/sound/Back.ogg": "cf86e38fcbeaddc1f0c0353ea78857da27ca4036c594993d4b20b238df615a83",
+        "SharedMedia_Causese/sound/Backup.ogg": "c34e069e5be4ace0a38e5758bf1e1cf74aa6b7a979e3bcb87a3736a53523fba1",
+        "SharedMedia_Causese/sound/Bait.ogg": "492ec9c6b5ebf6fd853dfe670d65b9aec4486bc4af25c0d74f478d8b80720b2d",
+        "SharedMedia_Causese/sound/Bark.ogg": "9fb6d90e4b168daa99864dea1222e3fb8b41e3dc2904aa5ec39155b450cc0ec6",
+        "SharedMedia_Causese/sound/Barrier.ogg": "73e678c15df79fc137a6a5f860d618c431a70f0891b3d391cdc1d3e3b6bc8ec6",
+        "SharedMedia_Causese/sound/Beam.ogg": "fd923bb91c4a0145aaf3149f36c2d657d440281ae4315eaaf258b9019f6b31b2",
+        "SharedMedia_Causese/sound/Big.ogg": "cbb0ae6c97abda62657e5c5fa0e62c61a266d985a746ea752b83e11f9a79c952",
+        "SharedMedia_Causese/sound/BITE.ogg": "58b0d4eeed553d6ea64cc8d9a6cfad1bdf2aea0147baae93e5f094fd42c5af82",
+        "SharedMedia_Causese/sound/Bleed.ogg": "58cdacfd06b752df8fe10f2a1ea46c41522a73ae8a6a6ef31400aeffcbaf518f",
+        "SharedMedia_Causese/sound/Bloodlust.ogg": "7e631da2ee484b056188055129ffa7ac56aa6b17eb7078a7518f4ea3f17ccd34",
+        "SharedMedia_Causese/sound/Blue.ogg": "9d07db9ef26e441728c06ddaca3980acfc056d678b1541f0681eb9c3602bd7d9",
+        "SharedMedia_Causese/sound/Bombs.ogg": "5dc14faaf23f33ee181f787898bbb53d25d18bda60f742eed2af1eaa1831f9e3",
+        "SharedMedia_Causese/sound/BoP.ogg": "9aeecff20e123ed459a2963ad01545eb25810a350dfcd5666495cf2495e5bebd",
+        "SharedMedia_Causese/sound/Boss.ogg": "9feb113db15d6ddaea745776d78a41035300abe37cefbf4ca1171a51944f65c9",
+        "SharedMedia_Causese/sound/Break.ogg": "07644a083b5391b45366545069d880e900b14733718b015f130a1bd82e129a00",
+        "SharedMedia_Causese/sound/Buff.ogg": "b5fc3fda6a35f190f6fa0dfdd43c956134058832d2daae0bebef87f069e51459",
+        "SharedMedia_Causese/sound/Cage.ogg": "f912e82a488619b20c143291f5dd1099b8649977aafb4b09f6790b8487c042c5",
+        "SharedMedia_Causese/sound/CC.ogg": "9f5314338984d050892ba5dd735938bd6f8b2198f9b27387d941c645f241d312",
+        "SharedMedia_Causese/sound/CD.ogg": "1444fea2e3be6f8fdc00aafa198699ea4d84d26c962419e3ea17d9f919860218",
+        "SharedMedia_Causese/sound/Center.ogg": "8d216a509cdcba3c406809c46b87164a26a56a4ae65c6b6b958ae91828561e44",
+        "SharedMedia_Causese/sound/Chain.ogg": "254c57c041edc27752bf30257877924cdd41bbad49298101d11fcaf035a76f49",
+        "SharedMedia_Causese/sound/Charge.ogg": "fb709529c2ebc87c5a9b60ab70547d9888cf9b3a08eee78a19f0e87b2e1460a7",
+        "SharedMedia_Causese/sound/Check.ogg": "06e2dcecfcacce5de892a8c0cb617023f1922134dd1246b5aecba545857a09fe",
+        "SharedMedia_Causese/sound/Chi-Ji.ogg": "cd7f3f2f78f7c8559654fe63ffea4bfdf5f161333c23c48ffec3507f374ba5a2",
+        "SharedMedia_Causese/sound/Clear.ogg": "344d62411c197b4c34934d606083464d88d997ec7c7db710b2eaa4d352462804",
+        "SharedMedia_Causese/sound/Cocoon.ogg": "f565fe360ba10580125c7cb0de6a328ef2e521fd93a33010b8d30f5fa93291e4",
+        "SharedMedia_Causese/sound/Coin.ogg": "b5fe1e68a504a32aa82882d3f4ffbf3db6e7d3135d7bf2419e539c07ba2b9a36",
+        "SharedMedia_Causese/sound/Collect.ogg": "cd1d4b60eed5b1391b7465c46f8b860e195b59d2d913344951de27feb93b7e9f",
+        "SharedMedia_Causese/sound/Cross.ogg": "b477964864a1044bad2a9fa3bcd8251c7c33071c0c442ec24acae10c7d73c4ec",
+        "SharedMedia_Causese/sound/Curse.ogg": "01893da824d7918dc3a15dd79278e37bac6d9b393176a8d2d3f5de6ee8169295",
+        "SharedMedia_Causese/sound/Dance.ogg": "6171543b8b2dea12f82c6200bcb2db4e4fa619a75c3eb4b3bf65d6b772782608",
+        "SharedMedia_Causese/sound/Darkness.ogg": "fee8a4e0a5821a2a1c3b58307efcdc33e57795ecc03f81368728a5917587bd5d",
+        "SharedMedia_Causese/sound/Debuff.ogg": "449f9155bfeb49c414c5c249235f3f69efba326b38562cb61be86186b1434279",
+        "SharedMedia_Causese/sound/Decimate.ogg": "1f290d590036f2b03656113647377f96ebefda52c0d6b6244154d8f7c592f13e",
+        "SharedMedia_Causese/sound/Defensive.ogg": "64d75a25631669ba6680e4b0ffcbe44844e5882b4ffe0c30e7f7256b9e6159ad",
+        "SharedMedia_Causese/sound/Devo.ogg": "6f15f45d46cf3d642bfd1cec8c682c14272cc21a149944a16170334ad91104b6",
+        "SharedMedia_Causese/sound/Disease.ogg": "67b877fd89557d4b9d66d89e6115fcbd1414d0bf4ff0a2bdc8aba3707721f9a2",
+        "SharedMedia_Causese/sound/Dispell.ogg": "4a72cea5bc79b7bd6ceb0a8a0fe4e2d2048cec780573fa9741362196cd8d0428",
+        "SharedMedia_Causese/sound/Dodge.ogg": "f27b4a24d75335a0f7c4a04ae0fbec850055294843c708afb700b273e99fd22b",
+        "SharedMedia_Causese/sound/Dont Move.ogg": "34cb0285dab549b5a4ca2fbbd1c898f6528d892bb7a4abc687e3d998fa9eb0ee",
+        "SharedMedia_Causese/sound/Dont.ogg": "355fa941da2521aa444016088535876d61080978bdd66999a529cd14c8cc0938",
+        "SharedMedia_Causese/sound/Dot.ogg": "57040c66850c8887ca7750493a0504c8bb3565da6fdedc4cd3ea420920b36d09",
+        "SharedMedia_Causese/sound/Drop.ogg": "0ae5a4621cfa06b83226924f86e7f40c03c964dfbe244ce4793bace72565f789",
+        "SharedMedia_Causese/sound/Dwarf.ogg": "e57292c8e550ab7b0099be231ce4ec511c6af8a8ce62deb14cfa51fdcd5fd82c",
+        "SharedMedia_Causese/sound/Enter.ogg": "c5d9a97b33a21ceef4fd57df864f1ad0898e10412e90ab4edca98abc2e2099be",
+        "SharedMedia_Causese/sound/Escort.ogg": "47a31725d684e3617363e5901ec130adaf36d40365c193a31c264f220929f237",
+        "SharedMedia_Causese/sound/Exit.ogg": "434201dfb85d6d69c04e2fa9e8c98f66f3b4148f9e62caef04e12b31620e0d6a",
+        "SharedMedia_Causese/sound/External.ogg": "b375560c42913de57803887c7d810c7f2c93ed0bc2fb16742663baf411533935",
+        "SharedMedia_Causese/sound/Feet.ogg": "74c8d89a6dfae672bdd610901b4637723d448e73d460c732a1085eef5e3b3c85",
+        "SharedMedia_Causese/sound/Fifth.ogg": "e44deb6a749693f124885a7eb14038a9932eff30d53af7120b35585cffcaef69",
+        "SharedMedia_Causese/sound/First.ogg": "286acc6d8650e971f4670593091408a8c744f891e06f0476ed426572177fb373",
+        "SharedMedia_Causese/sound/Fixate.ogg": "add775120d6d69be222901bf71c75fc33c05020547041ac8e7bfba192abc746d",
+        "SharedMedia_Causese/sound/Focus.ogg": "0b08ede5f02a29aaa22767167e21982d0da81dd00e86641bc94ff0136fbb65e6",
+        "SharedMedia_Causese/sound/Follow.ogg": "4a2c009d759a7bfd104a513f2c4472c2f92165b70c7b81204a2385757c2adbc5",
+        "SharedMedia_Causese/sound/Fourth.ogg": "a538a0ed5aee5a6751008ab8b734b68b969c08e4d6a18e8c7c09f3bab4e7ae6a",
+        "SharedMedia_Causese/sound/Freedom.ogg": "13146b6051ce3fe6127f4d97fb7169efeb9e5419a6bb60b20dd9daf2cbc105e9",
+        "SharedMedia_Causese/sound/Front.ogg": "8f20620f18987198dc7d96f1de37c0db1f48b96ae2c2f27b69e2eb4cff3ffaff",
+        "SharedMedia_Causese/sound/Gate.ogg": "d384fbe7893066b6a51df457e715d3c361310a420330ea8135304157d8de95d9",
+        "SharedMedia_Causese/sound/Gather.ogg": "824d79610a9d7f33cb7fac58e0b36001e3a1de46213abe37fbe0f76894d3d083",
+        "SharedMedia_Causese/sound/Go.ogg": "e694737e17151fcfd53390bf5db8c33747ea20de69b7b69bcb5a3091a907121e",
+        "SharedMedia_Causese/sound/Green.ogg": "93d3979344bca991698402f04105e17cea7fb961353ddc81c683eba61047c4cb",
+        "SharedMedia_Causese/sound/Grip.ogg": "e98d3a90714b9289fe3147868e97ab8895f04bd5a7670f0dd5b150f571772b4b",
+        "SharedMedia_Causese/sound/Healcd.ogg": "659b324c61a7f2034c951826fcde4d3f1767e2a97ac2a36add0b9a85b0c7dc28",
+        "SharedMedia_Causese/sound/Healing Tide.ogg": "e56cbaf60bdcbe48f8257ea322accee78e054dfe7fd51b345c98109839cbec96",
+        "SharedMedia_Causese/sound/Hide.ogg": "64a068ff5d09c983e5ccf7977d869a324874eb5928ce8472afa4864222e85203",
+        "SharedMedia_Causese/sound/High Energy.ogg": "ed69a6c908a06fdd4b91aaeee07e5c29f927168101e44ca993ad684bb44088e6",
+        "SharedMedia_Causese/sound/High Stacks.ogg": "b717f3d2b02c7a5696687b85f1b63dad61d71317c212ea3dd2df6d026e37a2b4",
+        "SharedMedia_Causese/sound/Hymn.ogg": "6affb16085f49d64f0a4c15ae279a8be3948c218d081796d05674dbefa58b557",
+        "SharedMedia_Causese/sound/Immunity.ogg": "4d28b16b67cb399013a550f1467c5dde9c9445e8a3dedaeb8627c1d96e20e8e3",
+        "SharedMedia_Causese/sound/In.ogg": "ecf4d4c6df81d86663e7ac100c0e76bcb5b18ddac174972002f3a1792586c20c",
+        "SharedMedia_Causese/sound/Incarn.ogg": "ea902b7a0449722930163e4a3dd703fca17abca4316b3192030db6bc9fe01afd",
+        "SharedMedia_Causese/sound/Innervate.ogg": "3263513b6197aaf4ab17be17dd121573d8256311f60c2a1e790f24430943105f",
+        "SharedMedia_Causese/sound/Intermission.ogg": "955c3d23c0873831b8b621d1e40f421cd285f12da31dd1d6dc8f15e714a8d6ea",
+        "SharedMedia_Causese/sound/Interrupt.ogg": "92037fba59f649775d6bd3f51e145cb86ac5eab64fdb9f19357efe1d01c25261",
+        "SharedMedia_Causese/sound/Invisibility.ogg": "966067c11db0a2f14aa022c3b043a66436176e1cae0c607fad8602637123ab0c",
+        "SharedMedia_Causese/sound/Jump.ogg": "a996fd3f8030455ae60da6170c9428b37090a3abd9606387d90b20774bc17d6a",
+        "SharedMedia_Causese/sound/Kick.ogg": "034ae628febde21a3a4e83b8abca91af8cea1922dbfa4ba1e06351aba9020f9c",
+        "SharedMedia_Causese/sound/Kite.ogg": "b1d8db2ceacd1b662335271f664ca5b402df53828701fd449ff3f29089c18fd4",
+        "SharedMedia_Causese/sound/Knock.ogg": "f9bc8f777f1831c75f29e21d36f3efe14a35e3ef0c995daa8c3b5e9846673237",
+        "SharedMedia_Causese/sound/Last.ogg": "b705418854267c8a706b0929f5fe02539646ce73d091e5e3bcba3298510ad51d",
+        "SharedMedia_Causese/sound/Lay.ogg": "8de673917785c25264f94c63c384914273c5f35bdf51ce075256dba3ff135321",
+        "SharedMedia_Causese/sound/Lead.ogg": "9871c06825486a681cc3aa6a042df9136dd0099949185203692b1096336555fa",
+        "SharedMedia_Causese/sound/Leap.ogg": "edd6800dd6a984801590efca653ca2d48b7fea258b416a8e2d73d6356283ec26",
+        "SharedMedia_Causese/sound/Left.ogg": "36fb8394490f3182e8bd04bf99158cdab5c5b656a59eb94b0a66eddca53b6347",
+        "SharedMedia_Causese/sound/Line.ogg": "60d22be1e2d0814fa99212d76156cc74d7d60d2d6c34cb3858066ed0d9d5ce68",
+        "SharedMedia_Causese/sound/Link.ogg": "e56eadaa8672a00e78acf9fbbfbea07d1edf0a76f014caff124ce57d939b060e",
+        "SharedMedia_Causese/sound/Linked.ogg": "42b6e0d92157825b1842c7f06097d460e03642639e4ce3b57c7255d04e84ae7b",
+        "SharedMedia_Causese/sound/LoS.ogg": "07131dc10007b80b5a45840c041d18321eca6a6648f85ac80cbfe268b7c15d90",
+        "SharedMedia_Causese/sound/Macro.ogg": "dd72ca18ef478a6cd22f369c7b9c4c1533d33a076be185642e7507a33088c96d",
+        "SharedMedia_Causese/sound/Magic.ogg": "0568afa8d1b067780c652e51129cb8f21fd5a36473267a0e8d9c8506c8cf9036",
+        "SharedMedia_Causese/sound/Main.ogg": "8e4699244522809ae14fd0a47a872a8b061b637234d1d7a3f78af1cc61022a1f",
+        "SharedMedia_Causese/sound/MC.ogg": "aad0b9033b3458166c210ae0ca96c1ee43c48f150f06407d9861ec1eb6158197",
+        "SharedMedia_Causese/sound/Meld.ogg": "c7b0d38d57f74f83aa0d7e55d5f7b45d1bd4dbe145d867d307814edb31a3c0ac",
+        "SharedMedia_Causese/sound/Melee.ogg": "9a8cd0ba1492706e356dae3c68234a9c1d7065cb389669c290d10cf094fb6a97",
+        "SharedMedia_Causese/sound/Mines.ogg": "d6f364ba0d6632d56306b201ec907a0934bd6054991d58e18de12b2177855fa8",
+        "SharedMedia_Causese/sound/Misdirect.ogg": "7e6a69971992927d8ca211b2f342355ebe8d0023172978b7a1ef9403718d0faa",
+        "SharedMedia_Causese/sound/Move.ogg": "b03ec0fedc7f1cf11ad99f2c4c7f829484325304873ed95f9419f17290aeb583",
+        "SharedMedia_Causese/sound/Next.ogg": "ae6ad135086ef953febe9daf2634e7cd053ec48bfc6a69e60ac6745b04d934f8",
+        "SharedMedia_Causese/sound/Nuke.ogg": "2affc313a25946986f3d736c92b4cf37dae078595a03d8b0a60789e6777bd53b",
+        "SharedMedia_Causese/sound/Orange.ogg": "330f48a704ba058d8aa6b71de6e5a95dff5a1b21a01be3f8a197b424fe712bca",
+        "SharedMedia_Causese/sound/Orb.ogg": "3d1490699007c696ad177b094f4aa662d52b8e43b368f83e7e4d81ca68dcf20e",
+        "SharedMedia_Causese/sound/Out.ogg": "ab1725a491f63ececf52a411f3bc45ed6ae310e91a197746c3b320c970c2c88d",
+        "SharedMedia_Causese/sound/Overlap.ogg": "d4753143aeadfa6c68c159710f70d3dafd94445187c787042f6b515da1caa1ed",
+        "SharedMedia_Causese/sound/Paradox.ogg": "bedc9d1f96778e2f5ec5749c68e9dc47e1d8b6c9fabfc9aa6cfe30885b87584f",
+        "SharedMedia_Causese/sound/Physical.ogg": "52448fd339e715da6d60a2b968642cff12e866e5d5a8f45c0d7fd0e4ae19fe30",
+        "SharedMedia_Causese/sound/PI.ogg": "4dbeb5b026d672c6a7b8bf0bb7e3d768e08c2d0e8912d8e14e2c85d64b0a9079",
+        "SharedMedia_Causese/sound/Poison.ogg": "e121233092c93590c1e9721c10ad78839019bf92f43fb577908906e825c834ab",
+        "SharedMedia_Causese/sound/Pop.ogg": "a7782b3541daaf1a2c0fccd0919296aa8fac7ed2509464addcd0d9bef44cab5f",
+        "SharedMedia_Causese/sound/Pots.ogg": "9c78d569c268490af03e112c4154b823ccd0f0982a78223284a48d6a25b03f5e",
+        "SharedMedia_Causese/sound/Protection.ogg": "4ccce6ffb766773ca9f1bd220c5614f3b3ff6f3fade49ea307de10c407d15354",
+        "SharedMedia_Causese/sound/PS.ogg": "adb576dcbb379b1acce409aa6d7a9c7ec0c369743dd4991ea43ace7a949792ab",
+        "SharedMedia_Causese/sound/Pull.ogg": "653d73382f79179024790c72f83f5d2d2a739fc16f1fc4a1c2b624b1319c44c5",
+        "SharedMedia_Causese/sound/Purple.ogg": "870d8120f48057f05a0837e6d7c23ae69a42892dd7f70c79f252286acc23d5b1",
+        "SharedMedia_Causese/sound/Push.ogg": "4a4695061fdd2144ca1b3df534e08792bd92b2e8f8451296a98ec3b42870fe42",
+        "SharedMedia_Causese/sound/Rally.ogg": "0aead0e7ac113aae559ba463f1e7fcd95e2fa6f180c25064683fd499f4e5d78b",
+        "SharedMedia_Causese/sound/Range.ogg": "069ddbf71101df417dd16ee9b4c0fded01b0b3c3f6e1321d9bdde60ebcbfd5be",
+        "SharedMedia_Causese/sound/Ready.ogg": "841a6f005bf00a91181d87dc2fd5c9e89018a9d9098cd565cc70a0a890c13190",
+        "SharedMedia_Causese/sound/Red.ogg": "f95043e34e0588234b1e5aafefe2c2bd1be015831cd8fe4be430ed513a1c3bdd",
+        "SharedMedia_Causese/sound/Reflect.ogg": "2f70b50260f6b054d9316febc343f4b9878da78b67ebf990fd7646fdef4fc265",
+        "SharedMedia_Causese/sound/Refresh.ogg": "983ec0e911201a4ea26bab8e5354fdb22e0a2d0b82d347c9cc11e9637278b2d4",
+        "SharedMedia_Causese/sound/Rescue.ogg": "47bdbc00302a5012ccb6900d0e119d67d71ca96dd242ae4407c96915e9fee149",
+        "SharedMedia_Causese/sound/Revival.ogg": "66708ba325b37740ed8d6435fa6a2dfc7629ae6661b0c672c005875ef8adfc7f",
+        "SharedMedia_Causese/sound/Rewind.ogg": "abe39a8914f52dd37f4f2e3965ac6840c5ed64e4e0014cfa348e075f4e635d01",
+        "SharedMedia_Causese/sound/Right.ogg": "f8bcf615e80f3b66659e9bf877534cd0cdd85dd32c9238c0a29e0677d0bdcfbb",
+        "SharedMedia_Causese/sound/Ring.ogg": "29d547e3dc3278f5bb4c63de00ed000b63c2c39f37e559c985be71f7f4d12acb",
+        "SharedMedia_Causese/sound/Roar.ogg": "824e077f6ec71508761b93956f614d4a63f4b15633d42a666e1ae24084c77a0c",
+        "SharedMedia_Causese/sound/Root.ogg": "7ca8d2728d7bcc23766d377d31f3c185762fef61ea8f935a8941eb836aac9e0b",
+        "SharedMedia_Causese/sound/Sac.ogg": "aa8ebed5399578898f6e85cd1069e6a84cf2269dd1489c94363b8f74b32bc8b0",
+        "SharedMedia_Causese/sound/Second.ogg": "dcba66697cd8c698393e27a2efffc14855fb62678d1ade15413b74fa33509122",
+        "SharedMedia_Causese/sound/Seed.ogg": "99562cdeb73c2b920d3c6b83fb42bb04a6c67da4684aaf151437e7c67f2ce70e",
+        "SharedMedia_Causese/sound/Selfcd.ogg": "e535ea9e3c6f815e98d53127d3f8a8fd211f59a0fd16f0f282e24645722c3a56",
+        "SharedMedia_Causese/sound/Shield.ogg": "f236696fe23ea279796f87a97e0899aa179839adbd0fe30a83da79c8d64055ac",
+        "SharedMedia_Causese/sound/Shroud.ogg": "d394f6bbd25283ac841f3c143ec42201af55ef5fb3e779055b74dfb05f88415a",
+        "SharedMedia_Causese/sound/Side.ogg": "fa9e7e768df2cf2fb74ccd6fa8d34f905527480829f15a1fae2eece93e5816a0",
+        "SharedMedia_Causese/sound/SLT.ogg": "e25d28d14282111b15eb9ad787389bef7100013e57c757d6010d9af0d20a08f4",
+        "SharedMedia_Causese/sound/Small.ogg": "5fcefb3b78b2c78f7b55d93094db2a87c345a9df776d09064cf02a795615a822",
+        "SharedMedia_Causese/sound/Soak.ogg": "b701c5c8e9b2238d1bfb4d684d2a1e0f2def4d178fe4bfd963fbfd0d74970758",
+        "SharedMedia_Causese/sound/Soon.ogg": "4cd44a0a434efbf420b790d1d85e652f64dd570131ba07171b5ab3787cc87bce",
+        "SharedMedia_Causese/sound/Spawn.ogg": "a1fecd7a3b792b6e91860e4b5490842c32bf368c10063f5242c82aacf7b24b5a",
+        "SharedMedia_Causese/sound/Spellsteal.ogg": "dd9d0a655d4edcb509a4ff8007f6e832699f6cd477ac7fb4c381238aba8f2b08",
+        "SharedMedia_Causese/sound/Spellwarding.ogg": "0cd15be030b800c2cca49c8f22f756dea5dcb517c25cb01ca42bb8c97ef26f58",
+        "SharedMedia_Causese/sound/Split.ogg": "8a14d9403a3c13e36b7d92b4915322abe30912d07b7ee60a5363c36c77d1b40c",
+        "SharedMedia_Causese/sound/Spread.ogg": "abc742f91972aa38c0ea121c70405cc2e5f9e10a002e2c6a0220f1b7e07eb996",
+        "SharedMedia_Causese/sound/Spring.ogg": "14a0d047d5159212744c8a3ea6d32b7536aa48b48bee74c2241fa8939a8586e1",
+        "SharedMedia_Causese/sound/SS.ogg": "89490889ae5ff96bf027073c0b1654c14f52af29dd520adcbf264b8e4f045b55",
+        "SharedMedia_Causese/sound/Stack.ogg": "71a7bdff92a5e3add234dab2ec83514921a0c4f734033d38d5a6bd4afd52e55e",
+        "SharedMedia_Causese/sound/Stay.ogg": "22b162d79b8f12d8015bbc1b6e8a24a3d35b83375c38958fdc3c76e05ee5ae7c",
+        "SharedMedia_Causese/sound/Stick.ogg": "643eaecb079ca2449f75baf52b9bf2625f3a53579e231b93bb83a23c67945af8",
+        "SharedMedia_Causese/sound/Stop.ogg": "a276affadd024b0fe116faf6d48f31db58cf4f3da5a4f6e352483fb7c31fcebf",
+        "SharedMedia_Causese/sound/Stopcast.ogg": "c5b249c1fc34a4e30407c7a6f03fdabb511f729e8f3d338212e7116a87f688a2",
+        "SharedMedia_Causese/sound/Summer.ogg": "49b87b4b03cb2d3aa84d7b6759d315030a8ffbcce6b106c4be48bf80d177594b",
+        "SharedMedia_Causese/sound/Swap.ogg": "7e1021aa5a0519c77a20049491a5330e5c04a5da0821d8d353527a215362c5cc",
+        "SharedMedia_Causese/sound/Switch.ogg": "b7692c1969fc4a8e3cc982b456daae535cb1b32eb5291f1c36150467f5c479e3",
+        "SharedMedia_Causese/sound/Targeted.ogg": "10fdfe9a09b57f8aa27e4b6cb4af3ae3a096e3121318f46a0998b20ae4510514",
+        "SharedMedia_Causese/sound/Taunt.ogg": "f45e92ea2b731eb5985eab2f6b4f0184efe5d457fcb9f106569afcfe4d17ebd9",
+        "SharedMedia_Causese/sound/TD.ogg": "1731651badb4387bb405e529afd8b6aa3dbe4b6c5f80b75f59387d388fbf4430",
+        "SharedMedia_Causese/sound/Third.ogg": "774debbbdc8b0a98382c40d0b34f786d42a3f6cba7673c28dcd40a43feadf81a",
+        "SharedMedia_Causese/sound/Throw.ogg": "3ce54ca7a7efa1667289d1254810abf630ea8697e26785d2b7480fd903bede09",
+        "SharedMedia_Causese/sound/Tiger's Lust.ogg": "2e190413b64c32eeb68efec0bcdd879c7e6830e1dbe413e3caa4a9c858d234c8",
+        "SharedMedia_Causese/sound/Time Spiral.ogg": "3e5fe741b69988735790de8d651ede6e848410e30607bce3e1eee9d2890ccfb3",
+        "SharedMedia_Causese/sound/Totem.ogg": "dad2deb5c338ee9fd9bb2e13a72a5922884d709b5b171100669b691c009765dc",
+        "SharedMedia_Causese/sound/Tranq.ogg": "ffe1512f2a9cf0886a052d211c29a04e8882568a6e113cab7afcc94c4d66dcd6",
+        "SharedMedia_Causese/sound/Transition.ogg": "4ebc55a56c35aea115af28f93bdb8ae73bc157925fe268caebb493522f00f105",
+        "SharedMedia_Causese/sound/Trap.ogg": "884ebe2348357a70bf76813b45130b7c7ee0698a9122102ab98298262002b6cc",
+        "SharedMedia_Causese/sound/Tricks.ogg": "2a7fea158ab0d9888c5826078cee9e9c8ab08428c95623ec8d767fd6de5c7455",
+        "SharedMedia_Causese/sound/Turn.ogg": "4f1e8dfbb8389cf2c22a10e539810cf20d1b341a7629199043d5b5c0120ee12d",
+        "SharedMedia_Causese/sound/Use.ogg": "20c851bad309f8f46e4ddd443f79b2f4b91f927e371105035112b2defb65b74d",
+        "SharedMedia_Causese/sound/Volley.ogg": "064ca7751d634432250cb2be5839cc2f09ff8445b54f903e8503f844b795030e",
+        "SharedMedia_Causese/sound/Wave.ogg": "16c17d06a6fafbe160e81faad16f75414193ceaf70f11f509feefc2a41894d1b",
+        "SharedMedia_Causese/sound/Wind Rush.ogg": "d8407995adf0a150a7aa74b0b678c59e4739a723a9fa56dd8abc48c468e853bb",
+        "SharedMedia_Causese/sound/Winds.ogg": "4d8a7f0feaa35110dfbd5252df46a56f88bf66182191b6376f933acf54dce348",
+        "SharedMedia_Causese/sound/Winter.ogg": "244d23680d73d532327ad11054e1afff0bc8fabf1658ebaa02a894adefd9190c",
+        "SharedMedia_Causese/sound/Yellow.ogg": "0f1fd7065d5dcdda4d42fc68178ad164ba0cd466dcd89ee9125ca8ea837f0473",
+        "SharedMedia_Causese/sound/Zephyr.ogg": "a5032b14c0bf79a2bc844878d479836a45d62ca517be7485df1a725ac173ea30",
+        "SharedMedia_Causese/Soundpaths.lua": "4e2033b8b304a633ab86c3d60d597ce8c71dd3a2e8f52cad0719a77f2fe9ae71",
+        "SharedMedia_Causese/texture/stop.blp": "d2a65ac4c5123586a72424047c0062ce5cab41d24c88ef981024c5ab3dd68261"
+      },
+      "distribution": "CurseForge official CDN",
+      "projectID": 301812,
+      "fileID": 7242737,
+      "metadataVerifiedAt": "2026-10-04T00:19:12Z",
+      "license": "GPL-3.0",
+      "latestURL": "https://www.curseforge.com/wow/addons/sharedmedia_causese/files/all",
+      "metadataAdvisories": {}
     }
   ],
+  "blockers": [],
   "installedFolders": [
     "BetterBags",
     "ConsolePort",
@@ -6828,13 +7446,8 @@
     "Plater",
     "SharedMedia_Causese"
   ],
-  "complete": false,
-  "unmappedFolders": [
-    "DynamicCam",
-    "HideClassBars",
-    "Immersion_ExtraFade",
-    "SharedMedia_Causese"
-  ],
+  "complete": true,
+  "unmappedFolders": [],
   "unexpectedFolders": [
     "DBM-Delves-Midnight",
     "DBM-Delves-WarWithin",
@@ -6853,5 +7466,126 @@
     "DBM-Party-WotLK",
     "DBM-Test-Dungeons",
     "DBM-WorldEvents"
-  ]
+  ],
+  "coverageQualified": true,
+  "packDistributionReady": false,
+  "selectedFolders": [
+    "BetterBags",
+    "ConsolePort",
+    "ConsolePort_Bar",
+    "ConsolePort_Config",
+    "ConsolePort_Cursor",
+    "ConsolePort_Keyboard",
+    "ConsolePort_Menu",
+    "ConsolePort_Rings",
+    "ConsolePort_Target",
+    "ConsolePort_World",
+    "DBM-Brawlers",
+    "DBM-BrokenIsles",
+    "DBM-Cataclysm",
+    "DBM-Challenges",
+    "DBM-Core",
+    "DBM-Draenor",
+    "DBM-GUI",
+    "DBM-Lairs-Midnight",
+    "DBM-Midnight",
+    "DBM-Pandaria",
+    "DBM-Raids-Cata",
+    "DBM-Raids-Legion",
+    "DBM-Raids-Midnight",
+    "DBM-Raids-MoP",
+    "DBM-Raids-Vanilla",
+    "DBM-Raids-WoD",
+    "DBM-Raids-WoTLK",
+    "DBM-Scenario-MoP",
+    "DBM-StatusBarTimers",
+    "DBM-Test",
+    "DBM-VPVEM",
+    "DynamicCam",
+    "HideClassBars",
+    "Immersion",
+    "Immersion_ExtraFade",
+    "LiteMount",
+    "Masque",
+    "Plater",
+    "SharedMedia_Causese"
+  ],
+  "excludedFolders": {
+    "DBM-Delves-Midnight": {
+      "owner": "DeadlyBossMods/DBM-Dungeons",
+      "reason": "Not installed reference coverage or required dependency; retain archive but omit from personal pack."
+    },
+    "DBM-Delves-WarWithin": {
+      "owner": "DeadlyBossMods/DBM-Dungeons",
+      "reason": "Not installed reference coverage or required dependency; retain archive but omit from personal pack."
+    },
+    "DBM-Party-BC": {
+      "owner": "DeadlyBossMods/DBM-Dungeons",
+      "reason": "Not installed reference coverage or required dependency; retain archive but omit from personal pack."
+    },
+    "DBM-Party-BfA": {
+      "owner": "DeadlyBossMods/DBM-Dungeons",
+      "reason": "Not installed reference coverage or required dependency; retain archive but omit from personal pack."
+    },
+    "DBM-Party-Cataclysm": {
+      "owner": "DeadlyBossMods/DBM-Dungeons",
+      "reason": "Not installed reference coverage or required dependency; retain archive but omit from personal pack."
+    },
+    "DBM-Party-Dragonflight": {
+      "owner": "DeadlyBossMods/DBM-Dungeons",
+      "reason": "Not installed reference coverage or required dependency; retain archive but omit from personal pack."
+    },
+    "DBM-Party-Forever": {
+      "owner": "DeadlyBossMods/DBM-Dungeons",
+      "reason": "Forever-only content is not a Retail dependency; exclude without editing upstream."
+    },
+    "DBM-Party-Legion": {
+      "owner": "DeadlyBossMods/DBM-Dungeons",
+      "reason": "Not installed reference coverage or required dependency; retain archive but omit from personal pack."
+    },
+    "DBM-Party-Midnight": {
+      "owner": "DeadlyBossMods/DBM-Dungeons",
+      "reason": "Not installed reference coverage or required dependency; retain archive but omit from personal pack."
+    },
+    "DBM-Party-MoP": {
+      "owner": "DeadlyBossMods/DBM-Dungeons",
+      "reason": "Not installed reference coverage or required dependency; retain archive but omit from personal pack."
+    },
+    "DBM-Party-Shadowlands": {
+      "owner": "DeadlyBossMods/DBM-Dungeons",
+      "reason": "Not installed reference coverage or required dependency; retain archive but omit from personal pack."
+    },
+    "DBM-Party-Vanilla": {
+      "owner": "DeadlyBossMods/DBM-Dungeons",
+      "reason": "Not installed reference coverage or required dependency; retain archive but omit from personal pack."
+    },
+    "DBM-Party-WarWithin": {
+      "owner": "DeadlyBossMods/DBM-Dungeons",
+      "reason": "Not installed reference coverage or required dependency; retain archive but omit from personal pack."
+    },
+    "DBM-Party-WoD": {
+      "owner": "DeadlyBossMods/DBM-Dungeons",
+      "reason": "Not installed reference coverage or required dependency; retain archive but omit from personal pack."
+    },
+    "DBM-Party-WotLK": {
+      "owner": "DeadlyBossMods/DBM-Dungeons",
+      "reason": "Not installed reference coverage or required dependency; retain archive but omit from personal pack."
+    },
+    "DBM-Test-Dungeons": {
+      "owner": "DeadlyBossMods/DBM-Dungeons",
+      "reason": "Not installed reference coverage or required dependency; retain archive but omit from personal pack."
+    },
+    "DBM-WorldEvents": {
+      "owner": "DeadlyBossMods/DBM-Dungeons",
+      "reason": "Not installed reference coverage or required dependency; retain archive but omit from personal pack."
+    },
+    "DBM-Azeroth": {
+      "owner": "DeadlyBossMods/DBM-Vanilla",
+      "reason": "Installed archive contains this folder, but latest upstream TOC has no Retail interface or explicitly excludes Retail. Preserve reference; omit incompatible package folder."
+    },
+    "DBM-Test-Vanilla": {
+      "owner": "DeadlyBossMods/DBM-Vanilla",
+      "reason": "Installed archive contains this folder, but latest upstream TOC has no Retail interface or explicitly excludes Retail. Preserve reference; omit incompatible package folder."
+    }
+  }
 }

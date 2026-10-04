@@ -23,9 +23,10 @@ const result={layout,bindings};
 const generated='-- Generated from verified current saved data by tools/extract_reference.cjs.\n'+
   '-- Data only; runtime capture takes precedence. Temporary routing must be replaced only after proof.\n'+
   'local _, Addon = ...\nAddon.ReferenceLayout='+lua(layout)+'\nAddon.ReferenceBindings='+lua(bindings)+'\n';
-fs.writeFileSync(path.join(root,'addon/ConsolePort_Forever/Reference.lua'),generated);
-fs.mkdirSync(path.join(root,'evidence/reference'),{recursive:true});
-fs.writeFileSync(path.join(root,'evidence/reference/current-definition.json'),JSON.stringify({
+const {output} = require('./repository_paths.cjs');
+fs.writeFileSync(output('addon/ConsolePort_Forever/Reference.lua'),generated);
+fs.mkdirSync(output('evidence/reference'),{recursive:true});
+fs.writeFileSync(output('evidence/reference/current-definition.json'),JSON.stringify({
   source:base,sha256:crypto.createHash('sha256').update(generated).digest('hex'),controllerKeys:Object.keys(bindings).length,
   banks:Object.keys(layout.children)},null,2));
 console.log('Extracted current layout and '+Object.keys(bindings).length+' controller bindings without execution');

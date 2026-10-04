@@ -18,6 +18,26 @@ def contained(path, base=ROOT):
     return path
 
 
+def output(path, base=ROOT):
+    """Check lexical ancestors as well as canonical containment before writes."""
+    lexical, scope = Path(path).absolute(), Path(base).absolute()
+    if scope != ROOT and not scope.is_relative_to(ROOT):
+        raise ValueError('Output scope is outside checkout: ' + str(scope))
+    if scope.resolve() != scope:
+        raise ValueError('Output scope is an alias: ' + str(scope))
+    canonical = contained(lexical, scope)
+    for immutable in [ROOT / 'reference', ROOT / 'tests/fixtures']:
+        if canonical == immutable or canonical.is_relative_to(immutable):
+            raise ValueError('Immutable reference output rejected: ' + str(canonical))
+    for parent in [lexical, *lexical.parents]:
+        if parent.exists() or parent.is_symlink():
+            if parent.is_symlink() or (getattr(parent.lstat(), 'st_file_attributes', 0) & 0x400):
+                raise ValueError('Output ancestor is a link: ' + str(parent))
+        if parent == scope:
+            break
+    return canonical
+
+
 def sha(path):
     h = hashlib.sha256()
     with Path(path).open('rb') as stream:
@@ -41,7 +61,7 @@ def immutable_hashes(source):
 
 def fixture_copy(source, destination):
     source = contained(source, ROOT / 'reference')
-    destination = contained(destination, ROOT / 'scratch')
+    destination = output(destination, ROOT / 'scratch')
     if destination.exists():
         raise ValueError('Simulation requires a fresh destination')
     before = immutable_hashes(source)

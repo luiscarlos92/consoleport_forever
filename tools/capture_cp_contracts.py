@@ -1,6 +1,6 @@
 """Retain the exact current-source set used by offline contract tests."""
 import json
-from repository_paths import ROOT, contained, sha
+from repository_paths import ROOT, contained, output, sha
 
 FILES = [
     'ConsolePort/Utils/Utils.lua', 'ConsolePort/Utils/Database.lua',
@@ -18,13 +18,13 @@ if __name__ == '__main__':
         expected = package['files'][name]
         if sha(source) != expected:
             raise ValueError('Pinned source drift: ' + name)
-        target = contained(ROOT / 'evidence/consoleport-contracts' / name)
+        target = output(ROOT / 'evidence/consoleport-contracts' / name)
         target.parent.mkdir(parents=True, exist_ok=True)
         target.write_bytes(source.read_bytes())
         if sha(source) != expected or sha(target) != expected:
             raise ValueError('Source changed during capture: ' + name)
         records.append({'path': name, 'sha256': expected})
-    (ROOT / 'evidence/consoleport-contracts/manifest.json').write_text(json.dumps({
+    output(ROOT / 'evidence/consoleport-contracts/manifest.json').write_text(json.dumps({
         'version': package['version'], 'releaseURL': package['releaseURL'],
         'packageSHA256': package['sha256'], 'purpose': 'Exact unmodified source audit/test contracts; not deployed dependency copies.',
         'files': records}, indent=2), encoding='utf-8')

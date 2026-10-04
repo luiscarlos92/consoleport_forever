@@ -54,5 +54,54 @@
     "gitBlob": "131aba579a39157e7a223ffa31dd9d4c1e84600f",
     "sha256": "2d3a761180637a21d4c057df78a9ec742365835917482b405d26fdc5f4873299",
     "url": "https://github.com/Gethe/wow-ui-source/blob/09b9db7948abc9b9648dedaab51eb0cf3ee67b31/Interface/AddOns/Blizzard_StaticPopup/StaticPopup.lua"
+  },
+  {
+    "path": "Blizzard_RestrictedAddOnEnvironment/RestrictedFrames.lua",
+    "commit": "09b9db7948abc9b9648dedaab51eb0cf3ee67b31",
+    "gitBlob": "058dbd2cf0e547867865c0e117df0e11b5fe13ad",
+    "sha256": "d934a9ff9bcad70b754047498eb0a130a210ac7d4eacec67f321f04dcdfd7bb3",
+    "url": "https://github.com/Gethe/wow-ui-source/blob/09b9db7948abc9b9648dedaab51eb0cf3ee67b31/Interface/AddOns/Blizzard_RestrictedAddOnEnvironment/RestrictedFrames.lua"
+  },
+  {
+    "path": "Blizzard_FrameXML/Mainline/StackSplitFrame.lua",
+    "commit": "09b9db7948abc9b9648dedaab51eb0cf3ee67b31",
+    "gitBlob": "bf6fd2ed85ef4666828e6104cc8ef839068b49bf",
+    "sha256": "2e2a6ea9fc246a351966ce29fdce69ae87330fd9e7400324885b409666f3829e",
+    "url": "https://github.com/Gethe/wow-ui-source/blob/09b9db7948abc9b9648dedaab51eb0cf3ee67b31/Interface/AddOns/Blizzard_FrameXML/Mainline/StackSplitFrame.lua"
+  },
+  {
+    "path": "Blizzard_FrameXML/Shared/CinematicFrame.lua",
+    "commit": "09b9db7948abc9b9648dedaab51eb0cf3ee67b31",
+    "gitBlob": "ead9e4623705f9d1dac3159cf2dc072da75a6494",
+    "sha256": "d2dadccd7605f41c23ec4093229889c7bb50c3528d0bc6cfd3744a4149417b6b",
+    "url": "https://github.com/Gethe/wow-ui-source/blob/09b9db7948abc9b9648dedaab51eb0cf3ee67b31/Interface/AddOns/Blizzard_FrameXML/Shared/CinematicFrame.lua"
+  },
+  {
+    "path": "Blizzard_FrameXML/MovieFrame.lua",
+    "commit": "09b9db7948abc9b9648dedaab51eb0cf3ee67b31",
+    "gitBlob": "c9eb2ee8bc7a2989c043e5eefc897430dfa51d07",
+    "sha256": "bad03e70ad114b1648236c650d540bcd75dd6c27eca44bc09d0d2e80a112ae56",
+    "url": "https://github.com/Gethe/wow-ui-source/blob/09b9db7948abc9b9648dedaab51eb0cf3ee67b31/Interface/AddOns/Blizzard_FrameXML/MovieFrame.lua"
+  },
+  {
+    "path": "Blizzard_APIDocumentationGenerated/SpellBookDocumentation.lua",
+    "commit": "09b9db7948abc9b9648dedaab51eb0cf3ee67b31",
+    "gitBlob": "98c67b8f6c4982de6aa5c5531dd7e085a7b22f5d",
+    "sha256": "526e806e3602454d3ccdaba874b9294accb7b0ed56db32adab306cc639dd24b9",
+    "url": "https://github.com/Gethe/wow-ui-source/blob/09b9db7948abc9b9648dedaab51eb0cf3ee67b31/Interface/AddOns/Blizzard_APIDocumentationGenerated/SpellBookDocumentation.lua"
+  },
+  {
+    "path": "Blizzard_APIDocumentationGenerated/PetInfoDocumentation.lua",
+    "commit": "09b9db7948abc9b9648dedaab51eb0cf3ee67b31",
+    "gitBlob": "f5c161465998ef5f83c2d7e3639e08f4184283e1",
+    "sha256": "2e5f75fdd8e187a43587d192a7bfc26d7ce8d14303992b8a017626bd685471ab",
+    "url": "https://github.com/Gethe/wow-ui-source/blob/09b9db7948abc9b9648dedaab51eb0cf3ee67b31/Interface/AddOns/Blizzard_APIDocumentationGenerated/PetInfoDocumentation.lua"
+  },
+  {
+    "path": "Blizzard_APIDocumentationGenerated/SpellDocumentation.lua",
+    "commit": "09b9db7948abc9b9648dedaab51eb0cf3ee67b31",
+    "gitBlob": "096033af83dee399c1c6eb2b805a339b6e6da535",
+    "sha256": "fbedb3cf4b82d623b49a7fa170c982de2e4b005d2bcd5db3068bfb6211e51007",
+    "url": "https://github.com/Gethe/wow-ui-source/blob/09b9db7948abc9b9648dedaab51eb0cf3ee67b31/Interface/AddOns/Blizzard_APIDocumentationGenerated/SpellDocumentation.lua"
   }
 ]

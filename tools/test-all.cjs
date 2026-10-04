@@ -56,7 +56,7 @@ check('T01.snapshot', () => {
 check('T27.lua51', () => {
   for (const f of files('addon').filter(f=>f.endsWith('.lua'))) parser.parse(read(f),{luaVersion:'5.1'});
 });
-const modules = ['Core','Store','Plan','Transactions','BindingPolicy','ModePolicy','UI/Ownership','Adapters/NativeBindings',
+const modules = ['Core','Store','Plan','Transactions','BindingPolicy','ModePolicy','SecureModes','UI/Ownership','UI/FocusVisuals','UI/Proof','Adapters/NativeBindings',
   'Adapters/BindingState','Diagnostics','Capability','Adapters/ConsolePort','Adapters/EditMode','Adapters/FlatConfig','Baseline','Coordinator'];
 const source = 'Addon={};\n' + modules.map(m=>
   ';(function(...)\n'+read('addon/ConsolePort_Forever/'+m+'.lua')+'\nend)("ConsolePort_Forever",Addon);\n').join('');
@@ -124,6 +124,21 @@ check('T06-T14-T16.policies', () => execute(source+read('tests/harness/policies.
 check('T07.native-binding-readiness', () => execute(source+read('tests/harness/native_bindings.lua'),'native-bindings'));
 check('T09-T10.coordinator', () => execute(source+read('tests/harness/coordinator.lua'),'coordinator'));
 check('T12-T13.adapters', () => execute(source+read('tests/harness/adapters.lua'),'adapters'));
+check('T21.focus-visuals-proof', () => execute(source+read('tests/harness/focus_visuals.lua'),'focus-visuals-proof'));
+check('T14.current-ConsolePort-secure-contract', () => {
+  const base='evidence/consoleport-contracts/';
+  const manifest=JSON.parse(read(base+'manifest.json'));
+  const package=JSON.parse(read('dependencies/lock.json')).packages.find(p=>p.repo==='seblindfors/ConsolePort');
+  if(manifest.version!==package.version || manifest.packageSHA256!==package.sha256) throw Error('contract package drift');
+  for(const file of manifest.files) if(sha(base+file.path)!==file.sha256 || package.files[file.path]!==file.sha256) throw Error('contract source drift: '+file.path);
+  const native=read(base+'ConsolePort_Bar/Widget/Button/Button.lua');
+  const utils=read(base+'ConsolePort/Utils/Utils.lua');
+  const lib=read(base+'ConsolePort/Libs/External/LibActionButton-1.0/LibActionButton-1.0.lua');
+  const conversion=utils.slice(utils.indexOf('do\tlocal ConvertSecureBody'),utils.indexOf('\nend',utils.indexOf('do\tlocal ConvertSecureBody'))+4);
+  const nativeLoad=native.slice(0,native.indexOf('function SlotButton:OnLoad'));
+  execute(source+read('tests/harness/secure_modes.lua').replace('--@CURRENT_CP',conversion+'\n'+nativeLoad)
+    .replace('--@CURRENT_LAB',lib.slice(lib.indexOf('function Generic:SetState('),lib.indexOf('function Generic:DisableDragNDrop('))),'secure-modes-current-source');
+});
 check('T10-T11.product-bootstrap', () => {
   const entries=read('addon/ConsolePort_Forever/ConsolePort_Forever.toc').split(/\r?\n/).filter(x=>x.trim() && !x.startsWith('#'));
   const product='Addon={};\n'+entries.map(f=>';(function(...)\n'+read('addon/ConsolePort_Forever/'+f.replace(/\\/g,'/'))+'\nend)("ConsolePort_Forever",Addon);\n').join('');

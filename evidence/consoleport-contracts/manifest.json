@@ -1,0 +1,44 @@
+{
+  "version": "3.3.3",
+  "releaseURL": "https://github.com/seblindfors/ConsolePort/releases/tag/3.3.3",
+  "packageSHA256": "4e5e464b5cc0de3b0ae9efead1a57ad04da0ff3572492cbede1d0617dd3f4f6f",
+  "purpose": "Exact unmodified source audit/test contracts; not deployed dependency copies.",
+  "files": [
+    {
+      "path": "ConsolePort/Utils/Utils.lua",
+      "sha256": "0dbdbf4ec319fe60ae9fb943d30ca56a90aab131b8cfea1cea75c0069f8b388b"
+    },
+    {
+      "path": "ConsolePort/Utils/Database.lua",
+      "sha256": "e6c79704d35f7c094de7bb7f684112e523205354440d331fae6c9bb5e77a7852"
+    },
+    {
+      "path": "ConsolePort/Controller/Input.lua",
+      "sha256": "b1afa749c570a1da69b48e6d1cd38455be2976aebb814c5dae16b3ba3a49f791"
+    },
+    {
+      "path": "ConsolePort/Controller/Layers.lua",
+      "sha256": "78c122eb3f29e09cfe40a90fa1a3cf1e07ef9640970a97a7e434e1b6a227dd83"
+    },
+    {
+      "path": "ConsolePort/Libs/External/LibActionButton-1.0/LibActionButton-1.0.lua",
+      "sha256": "971cb26e95e06787f2f7d9a72dcfcda8c3ab46634495b924dff0f3eb4de1e80a"
+    },
+    {
+      "path": "ConsolePort_Bar/Widget/Button/Button.lua",
+      "sha256": "e49ecdccbacf38ce237528e9161c7143a8f4e7a4a1b21f4e483d62f91586727f"
+    },
+    {
+      "path": "ConsolePort_Bar/Widget/Group/Group.lua",
+      "sha256": "8c783c760a071d15efc0a099454ef4c1fbec71bb026fa5230e421e3d1e3e9724"
+    },
+    {
+      "path": "ConsolePort_Cursor/View/Cursor.lua",
+      "sha256": "eb17f90b9a7c8b524a7e5efaaf0e9bc9c48a1aaf472cc1590c5dff029ec170c8"
+    },
+    {
+      "path": "ConsolePort/LICENSE.md",
+      "sha256": "ae649c4a6cbf80a9eeb0edd80a59c2bf7456844a01921912cacd7520b7b3f4e6"
+    }
+  ]
+}

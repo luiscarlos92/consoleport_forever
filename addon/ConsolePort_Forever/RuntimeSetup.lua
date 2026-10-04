@@ -1,7 +1,7 @@
 local _, Addon = ...
 local Core, Setup = Addon.Core, {}
 Addon.RuntimeSetup = Setup
-function Setup.Adapters(api)
+function Setup.Adapters(api,account)
     local native=Addon.NativeBindings.New({GetCurrentBindingSet=api.GetCurrentBindingSet,
         GetNumBindings=api.GetNumBindings,GetBinding=api.GetBinding,GetBindingAction=api.GetBindingAction,
         SetBinding=api.SetBinding,LoadBindings=api.LoadBindings,InCombatLockdown=api.InCombatLockdown,
@@ -21,6 +21,7 @@ function Setup.Adapters(api)
         end})
     if not cp:Probe() then return nil,"ConsolePort settings/bar data not initialized" end
     local adapters={bindings=Addon.BindingStateAdapter.New(native,mask),consoleport=cp}
+    if account then adapters.policy=Addon.FlatConfigAdapter.New(function() return account.shared.runtimePolicy end,{modesEnabled=true,focusVisuals=true},api.InCombatLockdown) end
     if api.C_EditMode and api.EditModePresetLayoutManager then
         adapters.editmode=Addon.EditModeAdapter.New({GetLayouts=api.C_EditMode.GetLayouts,
             SaveLayouts=api.C_EditMode.SaveLayouts,SetActiveLayout=api.C_EditMode.SetActiveLayout,
@@ -66,7 +67,18 @@ function Setup.Fields(db,guid,adapters,api,revision)
     end
     add(guid.."/controller","bindings",{"state"},Setup.BindingProposal(db,guid,adapters.bindings,Addon.ReferenceBindings),"Character controller arrangement and preserved keyboard bindings")
     add("shared/consoleport/condition","consoleport",{"settings","bindingPresetCondition"},"","Disable the old automatic preset loader")
-    add("shared/consoleport/layout","consoleport",{"layout"},adapters.consoleport:read({"layout"}),"Current ConsolePort geometry")
+    local layout=adapters.consoleport:read({"layout"})
+    local modeReady,modeReason=Addon.SecureModes.Probe(adapters.consoleport,api)
+    if modeReady and adapters.policy then
+        add("shared/consoleport/layout","consoleport",{"layout"},Addon.SecureModes.LayoutProposal(layout),"Keep current geometry; route temporary actions through L2R2")
+        add("shared/policy/modesEnabled","policy",{"modesEnabled"},true,"Enable eight temporary L2R2 cells with retained native exit and overflow routes")
+    else
+        add("shared/consoleport/layout","consoleport",{"layout"},layout,"Current ConsolePort geometry")
+        deferred[#deferred+1]={id="secureModes",reason=modeReason or "mode policy unavailable"}
+    end
+    if Addon.FocusVisuals:Probe(adapters.consoleport,api) and adapters.policy then
+        add("shared/policy/focusVisuals","policy",{"focusVisuals"},true,"Suppress gameplay icons and highlights while the interface cursor owns input")
+    else deferred[#deferred+1]={id="focusVisuals",reason="native interface cursor not initialized"} end
     for cvar,value in pairs({GamePadEmulateShift="PADLTRIGGER",GamePadEmulateCtrl="PADRTRIGGER"}) do
         if api.GetCVarDefault(cvar)~=nil then add("shared/cvar/"..cvar,"cvars",{cvar},value,"Controller trigger modifier: "..cvar)
         else deferred[#deferred+1]={id=cvar,reason="registered Retail CVar unavailable"} end

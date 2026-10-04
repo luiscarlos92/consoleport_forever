@@ -1,7 +1,7 @@
 local ADDON_NAME, Addon = ...
 Addon.VERSION=C_AddOns.GetAddOnMetadata(ADDON_NAME,"Version") or "0.0.0"
 Addon.SCHEMA=Addon.Store.VERSION
-Addon.CONFIG_REVISION=1
+Addon.CONFIG_REVISION=2
 Addon.PROFILE_NAME="Console Port - Forever (Managed)"
 local function Print(message)
     if DEFAULT_CHAT_FRAME then DEFAULT_CHAT_FRAME:AddMessage("|cff69ccf0ConsolePort Forever:|r "..tostring(message)) end
@@ -49,6 +49,8 @@ function Addon:FinishAccepted(journal)
     self.record.lastInstallTransaction=journal.id
     self.record.pendingReload=journal.id
     self.reloadAppliedInSession=journal.id
+    self:RefreshModes()
+    self:RefreshUI()
     self.Diagnostics:SetFeature("configuration","applied","runtime baseline retained; reload verification pending")
     Print("Reviewed configuration applied. Backup "..journal.id.." is retained.")
     self.Prompt:Reload()
@@ -118,7 +120,7 @@ function Addon:Refresh()
         GetCurrentBindingSet=GetCurrentBindingSet,AccountSet=Enum.BindingSet.Account,CharacterSet=Enum.BindingSet.Character})
     self.capabilities=probe
     if not probe.ready then self.Diagnostics:SetFeature("configuration","pending",table.concat(probe.pending,", ")) return end
-    local adapters,error=self.RuntimeSetup.Adapters(_G)
+    local adapters,error=self.RuntimeSetup.Adapters(_G,self.db)
     if not adapters then self.Diagnostics:SetFeature("configuration","pending",error) return end
     self.adapters=adapters
     self.coordinator=self.Coordinator.New(self.db,self.guid,adapters,CanWrite)
@@ -130,6 +132,8 @@ function Addon:Refresh()
     end
     self:VerifyReload()
     if self:IsCharacterInstalled() then self:HydrateController() end
+    self:RefreshModes()
+    self:RefreshUI()
     if self.forcePrompt then self.forcePrompt=nil self:ShowPrompt(true) else self:ShowPrompt(false) end
 end
 function Addon:Restore(id)
@@ -146,8 +150,33 @@ function Addon:FinishRestored(journal)
     self.record.declinedRevision=self.CONFIG_REVISION
     self.record.pendingReload=journal.id
     self.reloadAppliedInSession=journal.id
+    self:RefreshModes()
+    self:RefreshUI()
     Print("Reviewed backup fields restored; retained edits and unavailable fields are preserved. Backup "..journal.id.." retained.")
     self.Prompt:Reload()
+end
+function Addon:RefreshModes()
+    if not CanWrite() or not self.adapters then return end
+    local bridge=self.adapters.consoleport
+    if not self:IsCharacterInstalled() or not self.db.shared.runtimePolicy.modesEnabled then
+        self.SecureModes.Disable(_G,bridge)
+        self.Diagnostics:SetFeature("secureModes","pending","reviewed mode policy not enabled; baseline retained")
+        return
+    end
+    local current=bridge:read({"layout"})
+    if not self.Core.Equal(current,self.SecureModes.LayoutProposal(current)) then
+        self.SecureModes.Disable(_G,bridge)
+        self.Diagnostics:SetFeature("secureModes","review-required","legacy special visibility/access remains; review the layout proposal")
+        return
+    end
+    local ok,reason=self.SecureModes.Install(bridge,_G)
+    self.Diagnostics:SetFeature("secureModes",ok and "offline-verified" or "pending",reason or "native CP buttons/Layers retained; in-game secure input proof pending")
+    if ok and not self.modeCallbacks then
+        self.modeCallbacks=true
+        local function changed() C_Timer.After(0,function() local called,error=pcall(self.RefreshModes,self) if not called then self.Diagnostics:Log("mode-error",error) end end) end
+        bridge.bar:RegisterSafeCallback('OnLayoutChanged',changed)
+        bridge.bar:RegisterSafeCallback('OnNewBindings',changed)
+    end
 end
 function Addon:Recover(id)
     local journal=self.db and self.db.transactions[id]
@@ -164,6 +193,12 @@ function Addon:Status()
         tostring(self.record and self.record.appliedRevision or 0),self.CONFIG_REVISION,tostring(GetCurrentBindingSet())))
     Print(self.Diagnostics:Summary())
 end
+function Addon:RefreshUI()
+    if not self.adapters then return end
+    local enabled=self:IsCharacterInstalled() and self.db.shared.runtimePolicy.focusVisuals
+    local ok,reason=self.FocusVisuals:Enable(self.adapters.consoleport,_G,enabled)
+    self.Diagnostics:SetFeature("focusVisuals",enabled and ok and "offline-verified" or "pending",reason or (enabled and "ordinary cursor ownership only; rendered acceptance pending" or "reviewed visual policy not enabled"))
+end
 Addon.Prompt:Initialize({dialogs=StaticPopupDialogs,show=StaticPopup_Show,reload=ReloadUI,defer=function(callback) C_Timer.After(0,callback) end})
 SLASH_CONSOLEPORTFOREVER1="/cpf"
 SlashCmdList.CONSOLEPORTFOREVER=function(input)
@@ -172,15 +207,19 @@ SlashCmdList.CONSOLEPORTFOREVER=function(input)
     if command=="install" or command=="update" then Addon:ShowPrompt(true)
     elseif command=="restore" then Addon:Restore(arg)
     elseif command=="recover" then Addon:Recover(arg)
-    elseif command=="diagnose" or command=="proof" then
+    elseif command=="proof" then
+        local ok,reason=Addon.Proof:Show(_G)
+        if not ok then Print(reason) end
+    elseif command=="diagnose" then
         Addon:Status()
         for _,entry in ipairs(Addon.Diagnostics.entries) do Print(entry.kind..": "..entry.message) end
     else Addon:Status() end
 end
 local events=CreateFrame("Frame")
-for _,event in ipairs({"PLAYER_LOGIN","PLAYER_LOGOUT","PLAYER_ENTERING_WORLD","PLAYER_REGEN_ENABLED","ADDON_LOADED","UPDATE_BINDINGS","EDIT_MODE_LAYOUTS_UPDATED","ADDON_ACTION_BLOCKED","ADDON_ACTION_FORBIDDEN"}) do events:RegisterEvent(event) end
+for _,event in ipairs({"PLAYER_LOGIN","PLAYER_LOGOUT","PLAYER_ENTERING_WORLD","PLAYER_REGEN_ENABLED","PLAYER_REGEN_DISABLED","ADDON_LOADED","UPDATE_BINDINGS","EDIT_MODE_LAYOUTS_UPDATED","ADDON_ACTION_BLOCKED","ADDON_ACTION_FORBIDDEN"}) do events:RegisterEvent(event) end
 events:SetScript("OnEvent",function(_,event,...)
     if event=="PLAYER_LOGOUT" then Addon:CaptureControllerEdits() return end
+    if event=="PLAYER_REGEN_DISABLED" then Addon.FocusVisuals:SetFocus(false,_G) return end
     if event=="UPDATE_BINDINGS" then Addon:CaptureControllerEdits() end
     if event=="ADDON_ACTION_BLOCKED" or event=="ADDON_ACTION_FORBIDDEN" then
         local blamed,func=...

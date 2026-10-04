@@ -24,6 +24,10 @@ function Store.EnsureSchema(db, guid, legacyCharacter)
         db.databaseVersion = Store.VERSION
     end
     db.shared = db.shared or {revision = 0, geometry = {}, faceBindings = {}, utilityPolicy = {}, integrationPolicy = {}}
+    for _,key in ipairs({"geometry","faceBindings","utilityPolicy","integrationPolicy","runtimePolicy"}) do
+        if db.shared[key]~=nil and type(db.shared[key])~="table" then return nil,"invalid shared field: "..key end
+        db.shared[key]=db.shared[key] or {}
+    end
     db.characters, db.managedFields = db.characters or {}, db.managedFields or {}
     db.transactions, db.backups, db.reviews = db.transactions or {}, db.backups or {}, db.reviews or {}
     db.nextTransactionID = db.nextTransactionID or 0

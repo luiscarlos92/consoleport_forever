@@ -15,6 +15,13 @@ FILES=[
     'Blizzard_FrameXML/SecureTemplates.lua',
     'Blizzard_ActionBarController/ActionBarController.lua',
     'Blizzard_StaticPopup/StaticPopup.lua',
+    'Blizzard_RestrictedAddOnEnvironment/RestrictedFrames.lua',
+    'Blizzard_FrameXML/Mainline/StackSplitFrame.lua',
+    'Blizzard_FrameXML/Shared/CinematicFrame.lua',
+    'Blizzard_FrameXML/MovieFrame.lua',
+    'Blizzard_APIDocumentationGenerated/SpellBookDocumentation.lua',
+    'Blizzard_APIDocumentationGenerated/PetInfoDocumentation.lua',
+    'Blizzard_APIDocumentationGenerated/SpellDocumentation.lua',
 ]
 
 if __name__=='__main__':

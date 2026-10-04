@@ -17,7 +17,10 @@ Capability.lua
 Reference.lua
 BindingPolicy.lua
 ModePolicy.lua
+SecureModes.lua
 UI\Ownership.lua
+UI\FocusVisuals.lua
+UI\Proof.lua
 Adapters\NativeBindings.lua
 Adapters\BindingState.lua
 Adapters\ConsolePort.lua

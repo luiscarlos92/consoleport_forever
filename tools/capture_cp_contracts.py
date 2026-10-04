@@ -1,0 +1,31 @@
+"""Retain the exact current-source set used by offline contract tests."""
+import json
+from repository_paths import ROOT, contained, sha
+
+FILES = [
+    'ConsolePort/Utils/Utils.lua', 'ConsolePort/Utils/Database.lua',
+    'ConsolePort/Controller/Input.lua', 'ConsolePort/Controller/Layers.lua',
+    'ConsolePort/Libs/External/LibActionButton-1.0/LibActionButton-1.0.lua',
+    'ConsolePort_Bar/Widget/Button/Button.lua', 'ConsolePort_Bar/Widget/Group/Group.lua',
+    'ConsolePort_Cursor/View/Cursor.lua', 'ConsolePort/LICENSE.md',
+]
+if __name__ == '__main__':
+    lock = json.loads((ROOT / 'dependencies/lock.json').read_text(encoding='utf-8'))
+    package = next(p for p in lock['packages'] if p['repo'] == 'seblindfors/ConsolePort')
+    records = []
+    for name in FILES:
+        source = contained(ROOT / package['unpacked'] / name)
+        expected = package['files'][name]
+        if sha(source) != expected:
+            raise ValueError('Pinned source drift: ' + name)
+        target = contained(ROOT / 'evidence/consoleport-contracts' / name)
+        target.parent.mkdir(parents=True, exist_ok=True)
+        target.write_bytes(source.read_bytes())
+        if sha(source) != expected or sha(target) != expected:
+            raise ValueError('Source changed during capture: ' + name)
+        records.append({'path': name, 'sha256': expected})
+    (ROOT / 'evidence/consoleport-contracts/manifest.json').write_text(json.dumps({
+        'version': package['version'], 'releaseURL': package['releaseURL'],
+        'packageSHA256': package['sha256'], 'purpose': 'Exact unmodified source audit/test contracts; not deployed dependency copies.',
+        'files': records}, indent=2), encoding='utf-8')
+    print('Captured', len(records), 'pinned contract files')

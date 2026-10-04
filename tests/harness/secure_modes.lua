@@ -16,7 +16,7 @@ assert(env.SlotButton.Env.UpdateState:find('IsPressHoldReleaseSpell',1,true))
 local nativeBody=env.SlotButton.Env.UpdateState
 local state={page=1,bonus=0,family=nil,specialPage=12,empowered=73}
 function GetActionBarPage() return state.page end
-function GetBonusBarOffset() error('ordinary form bonus must not route these buttons') end
+function GetBonusBarOffset() return state.family=='skyriding' and 5 or state.bonus end
 function HasVehicleActionBar() return state.family=='vehicle' end
 function HasOverrideActionBar() return state.family=='override' end
 function HasTempShapeshiftActionBar() return state.family=='temporary' end
@@ -68,7 +68,7 @@ local face=make('custom',customAction)
 for _,button in ipairs({main,fixed,special,face}) do button:SetAttribute('cpf-enabled',true) end
 combat=true
 assert(not pcall(main.SetAttribute,main,'action',999))
-for _,family in ipairs({'normal','form','stealth','mount','vehicle','override','temporary'}) do
+for _,family in ipairs({'normal','form','stealth','mount','vehicle','override','temporary','skyriding'}) do
     state.family=family
     main:RunAttribute('UpdateState','SHIFT-')
     fixed:RunAttribute('UpdateState','SHIFT-')
@@ -78,7 +78,7 @@ for _,family in ipairs({'normal','form','stealth','mount','vehicle','override','
     assert(fixed:GetAttribute('action')==73 and fixed:GetAttribute('pressAndHoldAction')==true)
     assert(face._state_type=='custom' and face._state_action==customAction)
     local temporary=family=='vehicle' or family=='override' or family=='temporary'
-    assert(special:GetAttribute('action')==(temporary and 137 or 61))
+    assert(special:GetAttribute('action')==(family=='skyriding' and 125 or temporary and 137 or 61))
     assert(special._state_action==special:GetAttribute('action'),'display/click disagreed')
 end
 state.family='vehicle'
@@ -170,4 +170,69 @@ assert(Addon.SecureModes.Disable(api,bridge))
 assert(updated.Env.UpdateState==nativeBody and not updated:GetAttribute('cpf-enabled'))
 assert(api.ConsolePortGroupL2R2.attrs.ActionPageChanged=='native-page')
 assert(Addon.SecureModes.Install(bridge,api) and wrapCount==96)
+-- Real-world controller-only configuration has no keyboard exit or overflow
+-- bindings. Verify the supplemental native secure surface instead of allowing
+-- the whole mode feature to silently remain disabled.
+local created,registered,cursorFrames=0,0,0
+local usable,canExit=true,true
+function HasAction(action) return usable and action>=129 and action<=132 end
+function CanExitVehicle() return canExit end
+api.UIParent={}
+api.GetActionTexture=function(action) return 'native:'..tostring(action) end
+api.ConsolePort={AddInterfaceCursorFrame=function(_,frame) assert(frame==Addon.TemporaryAccess.frame) cursorFrames=cursorFrames+1 end}
+function api.CreateFrame(kind,name,parent,template)
+    assert(not combat)
+    assert(template=='SecureHandlerBaseTemplate' or template=='SecureActionButtonTemplate')
+    created=created+1
+    local frame={attributes={},refs={},scripts={},shown=true}
+    function frame:SetSize() end
+    function frame:SetPoint() end
+    function frame:RegisterForClicks(first,second) assert(first=='AnyDown' and second=='AnyUp') end
+    function frame:WrapScript(button,event,body)
+        assert(event=='PreClick' or event=='PostClick' or event=='OnHide')
+        button.wrapped=button.wrapped or {} button.wrapped[event]=body
+    end
+    function frame:SetAttribute(key,value)
+        assert(not combat or trusted,'untrusted access mutation')
+        self.attributes[key]=value
+        if self.scripts.OnAttributeChanged then self.scripts.OnAttributeChanged(self,key,value) end
+    end
+    function frame:GetAttribute(key) return self.attributes[key] end
+    function frame:SetFrameRef(key,value) assert(not combat) self.refs[key]=value end
+    function frame:GetFrameRef(key) return self.refs[key] end
+    function frame:Execute(body) return run(self,body) end
+    function frame:SetScript(key,value) self.scripts[key]=value end
+    function frame:Show() assert(not combat or trusted) self.shown=true if self.scripts.OnShow then self.scripts.OnShow(self) end end
+    function frame:Hide() assert(not combat or trusted) self.shown=false end
+    function frame:CreateTexture() return {SetAllPoints=function() end,SetTexture=function(t,v) t.texture=v end} end
+    function frame:CreateFontString() return {SetPoint=function() end,SetText=function(t,v) t.text=v end} end
+    return frame
+end
+bridge.db={Pager={RegisterHeader=function(_,header)
+    registered=registered+1
+    assert(header:GetAttribute('ActionPageChanged')==Addon.TemporaryAccess.Response)
+end}}
+routes=false
+state.family='skyriding'
+assert(Addon.SecureModes.Install(bridge,api),'unbound keyboard routes blocked actual controller-only setup')
+local access=Addon.TemporaryAccess.frame
+assert(created==6 and registered==1 and cursorFrames==1)
+assert(access.refs.action9:GetAttribute('action')==129 and access.refs.action12:GetAttribute('action')==132)
+assert(access.refs.exit.shown and access.refs.exit:GetAttribute('type')=='leavevehicle')
+assert(access.refs.action9:GetAttribute('useOnKeyDown')==false)
+assert(Addon.SecureModes.Install(bridge,api) and created==6 and wrapCount==96,'access or native hooks duplicated')
+combat=true
+access:Execute([[local button=self:GetFrameRef('action9'); button:SetAttribute('cpf-held',true)]])
+state.family='form' state.bonus=1
+access:Execute(Addon.TemporaryAccess.Response)
+assert(access.refs.action9.shown and access.refs.action9:GetAttribute('action')==129,'held action changed across mode transition')
+access:Execute([[local button=self:GetFrameRef('action9'); button:SetAttribute('cpf-held',nil)]])
+access:Execute(Addon.TemporaryAccess.Response)
+assert(not access.refs.action9.shown and not access.refs.exit.shown,'ordinary form displayed temporary controls after release')
+state.family='skyriding' usable=false canExit=false
+access:Execute(Addon.TemporaryAccess.Response)
+assert(not access.refs.action9.shown and not access.refs.exit.shown,'empty overflow or unavailable exit was exposed')
+assert(not Addon.SecureModes.Disable(api,bridge),'combat performed insecure cleanup')
+combat=false state.bonus=0
+assert(Addon.SecureModes.Disable(api,bridge) and not access:GetAttribute('cpf-enabled'))
 TEST_SUCCESS=true

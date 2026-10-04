@@ -15,7 +15,10 @@ Modes.Before=[[
     local specialPage;
     if HasVehicleActionBar() then specialPage = GetVehicleBarIndex()
     elseif HasOverrideActionBar() then specialPage = GetOverrideBarIndex()
-    elseif HasTempShapeshiftActionBar() then specialPage = GetTempShapeshiftBarIndex() end;
+    elseif HasTempShapeshiftActionBar() then specialPage = GetTempShapeshiftBarIndex()
+    -- Current ConsolePort maps bonusbar:5 to Dragonriding, native page 11.
+    -- Other bonus offsets are class forms/stealth and remain ordinary.
+    elseif GetBonusBarOffset() == 5 then specialPage = 11 end;
     local kind = self:GetAttribute('cpf-kind-'..tostring(requested)) or 'empty';
     local value = self:GetAttribute('cpf-action-'..tostring(requested));
     local special = specialPage and self:GetAttribute('cpf-special-cell');
@@ -95,11 +98,14 @@ function Modes.Probe(bridge,api)
             if not button.__cpfMode and not Modes.Environment(button) then return false,"native button contract changed" end
         end
     end
-    -- Native CP hides the Blizzard override/possess bars. Do not remove the
-    -- legacy access surface until an actual remaining native route is known.
-    if not keyboardRoute(api,"VEHICLEEXIT") then return false,"native vehicle-exit route unavailable; baseline preserved" end
+    -- Controller-only users may have no keyboard exit/overflow bindings.
+    -- Keep those actions reachable through a secure supplemental surface.
+    local needsAccess=not keyboardRoute(api,"VEHICLEEXIT")
     for i=9,12 do
-        if not keyboardRoute(api,"ACTIONBUTTON"..i) then return false,"native overflow route unavailable for action "..i.."; baseline preserved" end
+        if not keyboardRoute(api,"ACTIONBUTTON"..i) then needsAccess=true end
+    end
+    if needsAccess and (not Addon.TemporaryAccess or not Addon.TemporaryAccess:Probe(bridge,api)) then
+        return false,"secure exit/overflow access surface unavailable; baseline preserved"
     end
     return true
 end
@@ -122,6 +128,7 @@ function Modes.Install(bridge,api)
     if api.InCombatLockdown() then return false,"mode setup deferred during combat" end
     local ok,reason=Modes.Probe(bridge,api)
     if not ok then return false,reason end
+    if Addon.TemporaryAccess and Addon.TemporaryAccess:Probe(bridge,api) then Addon.TemporaryAccess:Enable(bridge,api) end
     for _,id in ipairs(banks) do
         local group=api["ConsolePortGroup"..id]
         for key,index in pairs(cells) do
@@ -168,6 +175,7 @@ function Modes.RefreshButton(button)
 end
 function Modes.Disable(api,bridge)
     if api.InCombatLockdown() then return false end
+    if Addon.TemporaryAccess then Addon.TemporaryAccess:Disable() end
     for _,id in ipairs(banks) do
         local group=api['ConsolePortGroup'..id]
         if group and group.buttons then

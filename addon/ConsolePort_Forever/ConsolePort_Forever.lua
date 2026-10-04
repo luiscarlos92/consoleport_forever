@@ -1,7 +1,7 @@
 local ADDON_NAME, Addon = ...
 Addon.VERSION=C_AddOns.GetAddOnMetadata(ADDON_NAME,"Version") or "0.0.0"
 Addon.SCHEMA=Addon.Store.VERSION
-Addon.CONFIG_REVISION=11
+Addon.CONFIG_REVISION=12
 Addon.PROFILE_NAME="Console Port - Forever (Managed)"
 local function Print(message)
     if DEFAULT_CHAT_FRAME then DEFAULT_CHAT_FRAME:AddMessage("|cff69ccf0ConsolePort Forever:|r "..tostring(message)) end
@@ -170,7 +170,12 @@ function Addon:VerifyReload()
         local adapter=self.adapters[step.scope]
         local ok,value=false,nil
         if adapter then ok,value=pcall(adapter.read,adapter,step.path) end
-        if not ok or not self.Core.Equal(self.Core.Encode(value),step.value) then failures[#failures+1]=step.id end
+        local same=ok and self.Core.Equal(self.Core.Encode(value),step.value)
+        if ok and adapter and type(adapter.equal)=='function' then
+            local compared,result=pcall(adapter.equal,adapter,value,self.Core.Decode(step.value))
+            same=compared and result==true
+        end
+        if not same then failures[#failures+1]=step.id end
     end
     journal.reloadVerification={failures=failures}
     if #failures==0 then

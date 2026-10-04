@@ -61,7 +61,7 @@ check('T01.snapshot', () => {
 check('T27.lua51', () => {
   for (const f of files('addon').filter(f=>f.endsWith('.lua'))) parser.parse(read(f),{luaVersion:'5.1'});
 });
-const modules = ['Core','Store','Plan','Transactions','BindingPolicy','ModePolicy','Rings/Discovery','Rings/Selectors','SecureModes','UI/Ownership','UI/InputBridge','UI/Windows','UI/Scroll','UI/Map','Cinematic','Adapters/BetterBags','UI/Contexts','UI/FocusVisuals','UI/Proof','Adapters/NativeBindings',
+const modules = ['Core','Store','Plan','Transactions','BindingPolicy','ModePolicy','Rings/Discovery','Rings/Selectors','SecureModes','TemporaryAccess','UI/Ownership','UI/InputBridge','UI/Windows','UI/Scroll','UI/Map','Cinematic','Adapters/BetterBags','UI/Contexts','UI/FocusVisuals','UI/Proof','Adapters/NativeBindings',
   'Adapters/BindingState','Adapters/BindingBanks','Diagnostics','Capability','Adapters/ConsolePort','Adapters/EditMode','Adapters/FlatConfig','Adapters/Integrations','Adapters/LiteMount','Adapters/DynamicCam','Adapters/Rings','Baseline','Coordinator','Prompt'];
 const source = 'Addon={};\n' + modules.map(m=>
   ';(function(...)\n'+read('addon/ConsolePort_Forever/'+m+'.lua')+'\nend)("ConsolePort_Forever",Addon);\n').join('');
@@ -439,6 +439,8 @@ check('T01.data-parser', () => {
   }
   const v=parse('x={yes=false,n=-2,empty=nil,text="hello"}').x;
   if(v.yes!==false || v.n!==-2 || v.empty!==null || v.text!=='hello') throw Error('literal parse mismatch');
+  const unicode=parse('x={["Fëanturï - Proudmoore"]="Lóriën",escaped="\\195\\171"}').x;
+  if(unicode['Fëanturï - Proudmoore']!=='Lóriën' || unicode.escaped!=='ë') throw Error('UTF-8 saved names or byte escapes were corrupted');
 });
 // Keep historical behavior as evidence, using copied source only. Its old
 // synchronous timers are not accepted as tests of the new lifecycle.

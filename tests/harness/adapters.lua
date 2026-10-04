@@ -26,6 +26,25 @@ editing=true assert(not edit:write({"state"},proposed)) editing=false
 rejected=true assert(not edit:write({"state"},proposed)) rejected=false
 assert(edit:write({"state"},proposed) and C.Equal(edit:read({"state"}),proposed))
 assert(edit:write({"state"},before) and state.activeLayout==3 and #state.layouts==2)
+local rounded=C.Copy(proposed)
+rounded.layouts[1].layoutIndex=3
+rounded.layouts[2].systems[1].transientNativeField=false
+assert(edit:equal(rounded,proposed),'native incidental fields caused false persistence failure')
+rounded.layouts[2].systems[1].x=100
+assert(not edit:equal(rounded,proposed),'real persisted geometry edit was ignored')
+rounded=C.Copy(proposed) rounded.activeLayout=3
+assert(not edit:equal(rounded,proposed),'changed selection was ignored')
+local nativeExport=api.ConvertLayoutInfoToString
+api.ConvertLayoutInfoToString=function(layout) return layout.layoutName..':'..string.format('%.1f',layout.systems[1].x) end
+local fractional=C.Copy(proposed)
+fractional.layouts[2].systems[1].x=99.123456
+fractional.export=api.ConvertLayoutInfoToString(fractional.active)
+rounded=C.Copy(fractional) rounded.layouts[2].systems[1].x=99.1
+rounded.export=api.ConvertLayoutInfoToString(rounded.active)
+assert(edit:equal(rounded,fractional),'native serialization precision caused false reload failure')
+rounded.layouts[2].systems[1].x=99.2 rounded.export=api.ConvertLayoutInfoToString(rounded.active)
+assert(not edit:equal(rounded,fractional),'persisted coordinate change was ignored')
+api.ConvertLayoutInfoToString=nativeExport
 api.limit=1 assert(not edit:Proposal(before,"CPF new")) api.limit=5
 assert(not edit:Proposal(before,"User active"))
 

@@ -8,11 +8,18 @@ local function Read(adapter, step)
     if not ok then return false, value end
     return true, Core.Encode(value)
 end
+local function Equal(adapter,a,b)
+    if adapter and type(adapter.equal)=='function' then
+        local ok,result=pcall(adapter.equal,adapter,Core.Decode(a),Core.Decode(b))
+        return ok and result==true
+    end
+    return Core.Equal(a,b)
+end
 local function Write(adapter, step, value)
     local ok, result = pcall(adapter.write, adapter, step.path, Core.Decode(value))
     if not ok or result ~= true then return false, "write rejected" end
     local readOK, actual = Read(adapter, step)
-    if not readOK or not Core.Equal(actual, value) then return false, "readback mismatch" end
+    if not readOK or not Equal(adapter,actual,value) then return false, "readback mismatch" end
     return true
 end
 
@@ -41,9 +48,9 @@ function Transactions.Recover(journal, adapters, canWrite)
         if adapter and type(adapter.compensate)=="function" then
             local called,restored,reason=pcall(adapter.compensate,adapter,step,journal,canWrite)
             if not called or not restored then table.insert(journal.recovery,{id=step.id,reason=reason or "adapter compensation failed"}) end
-        elseif ok and Core.Equal(actual, step.before) then
+        elseif ok and Equal(adapter,actual,step.before) then
             -- A rejecting writer may not have changed this field.
-        elseif ok and Core.Equal(actual, step.value) then
+        elseif ok and Equal(adapter,actual,step.value) then
             local restored, reason = Write(adapter, step, step.before)
             if not restored then table.insert(journal.recovery, {id = step.id, reason = reason}) end
         else
@@ -62,7 +69,7 @@ function Transactions.Apply(journal, adapters, canWrite)
         local adapter = adapters[step.scope]
         if not adapter then return false, "adapter unavailable: " .. step.scope end
         local ok, actual = Read(adapter, step)
-        if not ok or not Core.Equal(actual, step.before) then
+        if not ok or not Equal(adapter,actual,step.before) then
             journal.status = "stale"
             return false, "reviewed plan changed: " .. step.id
         end
@@ -86,7 +93,7 @@ function Transactions.Apply(journal, adapters, canWrite)
     end
     for _, step in ipairs(journal.steps) do
         local ok, actual = Read(adapters[step.scope], step)
-        if not ok or not Core.Equal(actual, step.value) then
+        if not ok or not Equal(adapters[step.scope],actual,step.value) then
             journal.error = "final scope verification failed"
             Transactions.Recover(journal, adapters, canWrite)
             return false, journal.error
@@ -111,9 +118,9 @@ function Transactions.RestorePlan(journal, adapters)
     for index = #journal.steps, 1, -1 do
         local applied = journal.steps[index]
         local ok, actual = Read(adapters[applied.scope], applied)
-        if ok and Core.Equal(actual, applied.before) then
+        if ok and Equal(adapters[applied.scope],actual,applied.before) then
             -- Already restored.
-        elseif ok and Core.Equal(actual, applied.value) then
+        elseif ok and Equal(adapters[applied.scope],actual,applied.value) then
             steps[#steps + 1] = {id=applied.id, scope=applied.scope, path=Core.Copy(applied.path),
                                 before=actual, value=Core.Copy(applied.before), revision=applied.revision}
         else

@@ -29,7 +29,8 @@ function Setup.Adapters(api,account)
             local name,suffix=currentClass:match('^CLICK ([^:]+):(.+)$')
             if name==rings:GetName() then classSet=rings:GetSetForBindingSuffix(suffix) end
         end
-        adapters.rings=Addon.RingsAdapter.New({version=api.C_AddOns.GetAddOnMetadata('ConsolePort_Rings','Version'),
+        -- The official Rings TOC has no Version field; qualify the suite owner.
+        adapters.rings=Addon.RingsAdapter.New({version=api.C_AddOns.GetAddOnMetadata('ConsolePort_Rings','Version') or api.C_AddOns.GetAddOnMetadata('ConsolePort','Version'),
             getDB=function() return cp.db end,getEnv=function()
                 local lib=api.LibStub('RelaTable',true)
                 return lib and rawget(lib,'ConsolePort_Rings')

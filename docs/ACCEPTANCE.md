@@ -1,6 +1,6 @@
 # Retail acceptance: pending
 
-This candidate is for the approved personal setup. All actual hardware input, secure combat, taint, appearance, native logout persistence and rollback acceptance remain pending. No WoW process was launched and no actual installation was performed during implementation. Offline Lua hosts execute Lua 5.3 semantics with independent Lua 5.1 parsing; source-contract tests are not Blizzard's secure engine.
+This candidate is for the approved personal setup. User-authorized installation and two read-only accepted-login WTF audits are recorded in LIVE-INSTALL-2026-10-04.md and WTF-AUDIT-2026-10-04-SECOND.md. Current installed version is candidate.3, configuration revision 12. Saved review persistence and the reported basic appearance have evidence; the full hardware/secure/combat/taint/rendering/A-B-A/rollback checklist remains pending. No WoW process was launched by the agent. Offline Lua hosts execute Lua 5.3 semantics with independent Lua 5.1 parsing; source-contract tests are not Blizzard's secure engine.
 
 The single acceptance checklist is H8 in `docs/MASTER-PLAN.md`. The identical checklist is reproduced below for the pack. On failure, capture its item number, `/cpf diagnose` output and precise class/spec/action/context for the later test session. `/cpf status` gives version, runtime readiness and pending reasons; `/cpf proof` displays the proof panel.
 

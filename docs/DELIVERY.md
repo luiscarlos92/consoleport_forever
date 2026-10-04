@@ -1,4 +1,15 @@
-# Current correction build: 2.0.0-candidate.2
+# Current correction build: 2.0.0-candidate.3
+
+The second complete WTF audit reproduced an unintended skyriding supplemental bar and a shown empty cursor parent. Candidate.3 corrects those and persists bounded runtime diagnostics for future audits. Source **c004591fb1372322f33f9bf603a8546e1d039c8e** is pushed; StoreSchema remains **3** and configuration revision **12**. All 32 runtime/source suites, 21 tooling tests and Windows CI [37230130771](https://github.com/luiscarlos92/consoleport_forever/actions/runs/37230130771) passed. All 18 official dependencies remain current and unchanged.
+
+| Artifact | Size | SHA-256 |
+| --- | --- | --- |
+| ConsolePort-Forever-UI-Pack-2.0.0-candidate.3.zip | 45,357,192 bytes | `c31d69284297c5c7259e95e45cac2b2fd4b11a61e9867e76a43252a26d5d5724` |
+| ConsolePort-Forever-Official-Sources-2.0.0-candidate.3.zip | 1,095,791 bytes | `3db7884d8bce0a1700399446d9d4f38bd69bca19bd61a2783d228bccdf593abc` |
+
+Artifact receipts are in `evidence/delivery`; archives stay local in `dist/2.0.0-candidate.3`. Read [the second audit](WTF-AUDIT-2026-10-04-SECOND.md), [the deployment record](LIVE-INSTALL-2026-10-04.md) and [34 manual cases](MANUAL-TEST-CASES.md). Code-only corrections do not require repeating the already accepted revision-12 review. Actual secure/controller/combat/rendering acceptance and precise independent gates remain pending.
+
+# Historical correction build: 2.0.0-candidate.2
 
 The first accepted-login WTF audit found disabled special modes, rejected Rings metadata and a false Edit Mode reload mismatch. The fixes are built from pushed source **6a43e78f9c33fb1f2f83f08b4b1bb90136bfe677**, StoreSchema **3**, configuration revision **12**. All 32 runtime/source suites and 21 tooling tests passed; Windows CI [37227788728](https://github.com/luiscarlos92/consoleport_forever/actions/runs/37227788728) also passed. The October 4 stable recheck still matches all 18 dependencies, including ConsolePort 3.3.5.
 

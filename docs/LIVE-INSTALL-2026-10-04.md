@@ -1,6 +1,21 @@
 # Personal Retail installation — October 4, 2026
 
-## Current installation: candidate.2 after the accepted-login audit
+## Current installation: candidate.3 after the second complete audit
+
+Candidate **2.0.0-candidate.3**, StoreSchema **3**, configuration revision **12**, installed at **16:08:52 America/Toronto** after the user's second accepted-login audit request. WoW remained closed. It fixes bonus-only skyriding's unintended numbered bar and its shown empty cursor parent, and persists bounded runtime diagnostics for later read-only audits. Already accepted revision-12 fields should not prompt again.
+
+- Pushed/tested source: `c004591fb1372322f33f9bf603a8546e1d039c8e`; 32 runtime/source suites, 21 tooling tests and Windows CI 37230130771 passed.
+- Pack SHA-256: `c31d69284297c5c7259e95e45cac2b2fd4b11a61e9867e76a43252a26d5d5724`.
+- Full verified backup: `C:\Users\luisr\WoW-Backups\ConsolePort-Forever\20261004T195835Z-5da6f0a446d6`.
+- Backup contains **3,638** prior addon files and **296** canonical WTF files, recording **42** unchanged links. All earlier backups remain retained.
+- Parked pre-correction addon folders: `C:\Users\luisr\OneDrive\Documents\03 Gaming\World of Warcraft\_retail_\Interface\.cpf-stage-20261004T195835Z-5da6f0a446d6\previous`.
+- Final operation receipt SHA-256: `52ac797bb3c08a0f73a91ddaae15c9cea910c5d60f3ffff31f38902c5be746ff`.
+
+Preview, complete backup verification, staged pack verification and final readback all passed. The installer verified exact installed files and unrelated-addon preservation. Additional final WTF inventory equals the second audited save byte-for-byte and topology-for-topology. No live WTF file was edited and no game was launched. All 18 official dependencies remain current and unmodified. Evidence: `evidence/delivery/live-install-candidate3.json`; findings: [second complete audit](WTF-AUDIT-2026-10-04-SECOND.md).
+
+Relog, check `/cpf status`, mount/dismount and test ordinary window focus. Bonus-only skyriding should show no numbered side bar, and no empty supplemental parent should participate in focus. The eight L2R2 flight actions remain; genuine temporary overflow/exit retains prior emergency access and still needs client acceptance. Normal logout will save the new runtime diagnostics for the next audit. See cases 01, 05 and 34 in [the updated test cases](MANUAL-TEST-CASES.md).
+
+## Historical installation: candidate.2 after the accepted-login audit
 
 The user requested a read-only WTF audit before further manual tests, fixes committed to Git, and redeployment. Candidate **2.0.0-candidate.2**, StoreSchema **3**, configuration revision **12**, was installed successfully at **15:35:42 America/Toronto**. WoW remained closed. The original saved files were never edited.
 

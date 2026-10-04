@@ -61,7 +61,7 @@ check('T01.snapshot', () => {
 check('T27.lua51', () => {
   for (const f of files('addon').filter(f=>f.endsWith('.lua'))) parser.parse(read(f),{luaVersion:'5.1'});
 });
-const modules = ['Core','Store','Plan','Transactions','BindingPolicy','ModePolicy','Rings/Discovery','Rings/Selectors','SecureModes','UI/Ownership','UI/InputBridge','UI/Windows','UI/Scroll','UI/Map','Adapters/BetterBags','UI/Contexts','UI/FocusVisuals','UI/Proof','Adapters/NativeBindings',
+const modules = ['Core','Store','Plan','Transactions','BindingPolicy','ModePolicy','Rings/Discovery','Rings/Selectors','SecureModes','UI/Ownership','UI/InputBridge','UI/Windows','UI/Scroll','UI/Map','Cinematic','Adapters/BetterBags','UI/Contexts','UI/FocusVisuals','UI/Proof','Adapters/NativeBindings',
   'Adapters/BindingState','Adapters/BindingBanks','Diagnostics','Capability','Adapters/ConsolePort','Adapters/EditMode','Adapters/FlatConfig','Adapters/Integrations','Adapters/DynamicCam','Adapters/Rings','Baseline','Coordinator','Prompt'];
 const source = 'Addon={};\n' + modules.map(m=>
   ';(function(...)\n'+read('addon/ConsolePort_Forever/'+m+'.lua')+'\nend)("ConsolePort_Forever",Addon);\n').join('');
@@ -288,6 +288,16 @@ check('T21.native-map-canvas-controls', () => {
     .replace('--@NATIVE_MAP_MAXIMIZED',()=>nativeFunction(base+'Blizzard_WorldMap/Blizzard_WorldMap.lua','WorldMapMixin:IsMaximized'))
     .replace('--@NATIVE_WAYPOINT',()=>read(base+'Blizzard_SharedMapDataProviders/WaypointLocationDataProvider.lua'));
   execute(source+scrollFixture()+'\n'+fixture,'map-native-canvas');
+});
+check('T23.native-cinematic-held-skip-gate', () => {
+  const base='evidence/native/Blizzard_FrameXML/';
+  const xml=read(base+'Shared/CinematicFrame.xml');
+  if(!xml.includes('<OnGamePadButtonDown function="CinematicFrame_OnKeyDown"/>')) throw Error('native gamepad cinematic key route drift');
+  if(!read(base+'MovieFrame.xml').includes('method="OnKeyUp"')) throw Error('native movie key-up route drift');
+  const fixture=read('tests/harness/cinematic.lua')
+    .replace('--@NATIVE_CINEMATIC_KEYS',()=>['CinematicFrame_OnKeyDown','CinematicFrame_CancelCinematic'].map(name=>nativeFunction(base+'Shared/CinematicFrame.lua',name)).join('\n'))
+    .replace('--@NATIVE_MOVIE',()=>read(base+'MovieFrame.lua'));
+  execute(source+scrollFixture()+'\n'+fixture,'cinematic-native-eligibility-gate');
 });
 check('T14.current-ConsolePort-secure-contract', () => {
   const base='evidence/consoleport-contracts/';

@@ -311,6 +311,7 @@ function Addon:Status()
     Print(self.Diagnostics:Summary())
 end
 function Addon:RefreshUI()
+    self.Cinematic:Refresh(_G)
     if not self.adapters then return end
     local enabled=self:IsCharacterInstalled() and self.db.shared.runtimePolicy.focusVisuals
     local ok,reason=self.FocusVisuals:Enable(self.adapters.consoleport,_G,enabled)
@@ -339,7 +340,7 @@ SlashCmdList.CONSOLEPORTFOREVER=function(input)
     else Addon:Status() end
 end
 local events=CreateFrame("Frame")
-for _,event in ipairs({"PLAYER_LOGIN","PLAYER_LOGOUT","PLAYER_ENTERING_WORLD","PLAYER_REGEN_ENABLED","PLAYER_REGEN_DISABLED","ADDON_LOADED","UPDATE_BINDINGS","EDIT_MODE_LAYOUTS_UPDATED","SPELLS_CHANGED","UPDATE_SHAPESHIFT_FORMS","PET_BAR_UPDATE","UNIT_PET","BAG_UPDATE_DELAYED","ITEM_LOCK_CHANGED","CURSOR_CHANGED","MERCHANT_SHOW","MERCHANT_CLOSED","ADDON_ACTION_BLOCKED","ADDON_ACTION_FORBIDDEN"}) do events:RegisterEvent(event) end
+for _,event in ipairs({"PLAYER_LOGIN","PLAYER_LOGOUT","PLAYER_ENTERING_WORLD","PLAYER_REGEN_ENABLED","PLAYER_REGEN_DISABLED","ADDON_LOADED","UPDATE_BINDINGS","EDIT_MODE_LAYOUTS_UPDATED","SPELLS_CHANGED","UPDATE_SHAPESHIFT_FORMS","PET_BAR_UPDATE","UNIT_PET","BAG_UPDATE_DELAYED","ITEM_LOCK_CHANGED","CURSOR_CHANGED","MERCHANT_SHOW","MERCHANT_CLOSED","CINEMATIC_START","CINEMATIC_STOP","PLAY_MOVIE","STOP_MOVIE","ADDON_ACTION_BLOCKED","ADDON_ACTION_FORBIDDEN"}) do events:RegisterEvent(event) end
 events:SetScript("OnEvent",function(_,event,...)
     if event=="PLAYER_LOGOUT" then
         Addon:CaptureControllerEdits()

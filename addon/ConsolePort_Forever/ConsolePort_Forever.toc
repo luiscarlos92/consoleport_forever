@@ -25,6 +25,7 @@ UI\InputBridge.lua
 UI\Windows.lua
 UI\Scroll.lua
 UI\Map.lua
+Cinematic.lua
 Adapters\BetterBags.lua
 UI\Contexts.lua
 UI\FocusVisuals.lua

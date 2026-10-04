@@ -25,6 +25,7 @@ end
 function Contexts:Current()
     local api,cursor=self.api,self.db.Cursor
     if not visible(cursor) or cursor.isCombatPaused then return nil end
+    if Addon.Cinematic.IsVisible(api.CinematicFrame) or Addon.Cinematic.IsVisible(api.MovieFrame) then return nil end
     if api.ConsolePortKeyboard then self:Watch(api.ConsolePortKeyboard,false) end
     if visible(api.ConsolePortKeyboard) then return nil end
     if self.scroll and self.scroll.foreign then return nil end
@@ -121,6 +122,8 @@ function Contexts:Enable(bridge,api,enabled,windowsEnabled,bagsEnabled,mapEnable
         self.input=Addon.InputBridge.New(self.db.Input,api)
     end
     self.windows.inputOwner=self.input.owner
+    self:Watch(api.CinematicFrame,false)
+    self:Watch(api.MovieFrame,false)
     if not self.registered then
         self.registered=true
         self:Watch(self.db.Cursor,false)

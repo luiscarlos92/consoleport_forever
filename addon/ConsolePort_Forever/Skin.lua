@@ -2,7 +2,6 @@ local _, Addon = ...
 local BANKS, FACE = {Base=true,L2=true,R2=true,L2R2=true}, {PAD1=true,PAD2=true,PAD3=true,PAD4=true}
 local CIRCLE = [[Interface\Masks\CircleMaskScalable]]
 local RING = [[Interface\AddOns\ConsolePort\Assets\Textures\Cursor\RoundBorderHighlight]]
-local BASE = {PAD1="JUMP", PAD2="", PAD3="INTERACTTARGET", PAD4="TURNORACTION"}
 
 local function Round(texture, button)
     if not texture then return end
@@ -10,25 +9,51 @@ local function Round(texture, button)
     texture:SetPoint("CENTER", button) texture:SetSize(button:GetWidth(), button:GetWidth())
 end
 
+function Addon:ResolvedPresentationBinding(button)
+    if button._state_type~='custom' or not button.GetAttribute or button:GetAttribute('cpf-held') then return end
+    local bridge=self.adapters and self.adapters.consoleport
+    if not bridge or bridge.api.version~='3.3.3' then return end
+    local manager=bridge.bar and bridge.bar.Manager
+    if not manager or type(manager.GetBindings)~='function' then return end
+    local state=button:GetAttribute('state')
+    if issecretvalue and issecretvalue(state) then return end
+    if type(state)~='string' then return end
+    local bindings=manager:GetBindings(button.id)
+    if type(bindings)~='table' then return end
+    local binding=bindings[state]
+    if issecretvalue and issecretvalue(binding) then return end
+    if type(binding)=='string' then return binding end
+end
 local function BaseIcon(button)
-    if button:GetParent().id ~= "Base" or button._state_type ~= "custom" or GetBindingAction(button.id) ~= BASE[button.id] then return end
-    if button.id == "PAD1" then button.icon:SetTexture([[Interface\AddOns\ConsolePort_Forever\Assets\ForeverInGame.blp]]) button.icon:SetTexCoord(397/2048,461/2048,1682/2048,1746/2048)
-    elseif button.id == "PAD2" then button.icon:SetAtlas("128-redbutton-exit")
-    elseif button.id == "PAD3" then button.icon:SetTexture(C_Spell.GetSpellTexture(6603))
-    elseif button.id == "PAD4" then button.icon:SetAtlas(UnitExists("target") and "crosshair_inspect_32" or "crosshair_unableinspect_32") end
+    local binding=Addon:ResolvedPresentationBinding(button)
+    if binding=='JUMP' then button.icon:SetTexture([[Interface\AddOns\ConsolePort_Forever\Assets\ForeverInGame.blp]]) button.icon:SetTexCoord(397/2048,461/2048,1682/2048,1746/2048)
+    elseif binding=='' and button:GetParent().id=='Base' and button.id=='PAD2' then button.icon:SetAtlas('128-redbutton-exit')
+    elseif binding=='INTERACTTARGET' then button.icon:SetTexture(C_Spell.GetSpellTexture(6603))
+    elseif binding=='TURNORACTION' then button.icon:SetAtlas(UnitExists('target') and 'crosshair_inspect_32' or 'crosshair_unableinspect_32')
+    else return end
     button.icon:Show()
 end
 
 local function Apply(button)
+    if not Addon.IsCharacterInstalled or not Addon:IsCharacterInstalled() then return end
     if not button or not button.icon then return end
     button.MasqueSkinned = true
     local mask = button.IconMask or button:CreateMaskTexture(nil, "BACKGROUND")
-    button.IconMask = mask button.icon:AddMaskTexture(mask)
+    button.IconMask = mask
+    if button.__cpfMaskIcon~=button.icon or button.__cpfConnectedMask~=mask then
+        if button.__cpfMaskIcon and button.__cpfConnectedMask and button.__cpfMaskIcon.RemoveMaskTexture then button.__cpfMaskIcon:RemoveMaskTexture(button.__cpfConnectedMask) end
+        button.icon:AddMaskTexture(mask) button.__cpfMaskIcon=button.icon button.__cpfConnectedMask=mask
+    end
     mask:SetTexture(CIRCLE,"CLAMPTOBLACKADDITIVE","CLAMPTOBLACKADDITIVE") mask:ClearAllPoints()
     mask:SetPoint("CENTER",button) mask:SetSize(button:GetWidth()*0.88,button:GetWidth()*0.88)
     button.icon:SetTexCoord(0,1,0,1)
     local bg = button.SlotBackground or button:CreateTexture(nil,"BACKGROUND")
-    button.SlotBackground = bg bg:SetColorTexture(0.04,0.04,0.04,0.65) bg:SetAllPoints(button.icon) bg:AddMaskTexture(mask) bg:Show()
+    button.SlotBackground = bg bg:SetColorTexture(0.04,0.04,0.04,0.65) bg:SetAllPoints(button.icon)
+    if button.__cpfMaskBackground~=bg or button.__cpfBackgroundMask~=mask then
+        if button.__cpfMaskBackground and button.__cpfBackgroundMask and button.__cpfMaskBackground.RemoveMaskTexture then button.__cpfMaskBackground:RemoveMaskTexture(button.__cpfBackgroundMask) end
+        bg:AddMaskTexture(mask) button.__cpfMaskBackground=bg button.__cpfBackgroundMask=mask
+    end
+    bg:Show()
     if button.SlotArt then button.SlotArt:Hide() end
     for _, texture in ipairs({button.NormalTexture,button.PushedTexture or button:GetPushedTexture(),button.HighlightTexture or button:GetHighlightTexture(),button.CheckedTexture or button:GetCheckedTexture(),button.Flash,button.Border,button.NewActionTexture,button.SpellHighlightTexture}) do Round(texture,button) end
     for _, key in ipairs({"cooldown","chargeCooldown","lossOfControlCooldown"}) do
@@ -57,18 +82,25 @@ local function Install(button)
 end
 
 local targetingBank
+local targetingPrompts={}
 local function Prompts(bank)
     if targetingBank==bank or InCombatLockdown() then return end targetingBank=bank
     for _,i in ipairs({{n="Friendly",x=-157.5,g="ps_s_l1",t=141,b=186,l=297,r=347},{n="Hostile",x=157.5,g="ps_s_r1",t=188,b=233,l=349,r=399}}) do
-        local f=CreateFrame("Frame","ConsolePortForever"..i.n.."Prompt",bank) f:SetSize(34,30.6) f:SetPoint("BOTTOM",bank,"TOP",i.x,-32)
+        local f=targetingPrompts[i.n]
+        if f then
+            f:SetParent(bank) f:ClearAllPoints() f:SetSize(34,30.6) f:SetPoint('BOTTOM',bank,'TOP',i.x,-32)
+        else
+        f=CreateFrame("Frame","ConsolePortForever"..i.n.."Prompt",bank) f:SetSize(34,30.6) f:SetPoint("BOTTOM",bank,"TOP",i.x,-32)
+        targetingPrompts[i.n]=f
         local bg=f:CreateTexture(nil,"BACKGROUND") bg:SetAllPoints() bg:SetTexture([[Interface\AddOns\ConsolePort_Forever\Assets\ForeverTargeting.blp]]) bg:SetTexCoord(i.l/512,i.r/512,1/256,46/256)
         local icon=f:CreateTexture(nil,"ARTWORK") icon:SetAllPoints() icon:SetTexture([[Interface\AddOns\ConsolePort_Forever\Assets\ForeverTargeting.blp]]) icon:SetTexCoord(223/512,273/512,i.t/256,i.b/256)
         local glyph=f:CreateTexture(nil,"OVERLAY") glyph:SetSize(18,18) glyph:SetPoint("BOTTOM",f,"TOP",0,1) glyph:SetTexture([[Interface\AddOns\ConsolePort\Assets\Icons\64\]]..i.g)
+        end
     end
 end
 
 function Addon:RefreshConsolePortSkin()
-    if not self.IsCharacterInstalled or not self:IsCharacterInstalled() then return end
+    if not self.IsCharacterInstalled or not self:IsCharacterInstalled() or InCombatLockdown() then return end
     for bankID in pairs(BANKS) do
         local bank=_G["ConsolePortGroup"..bankID]
         if bank and bank.buttons then

@@ -1,0 +1,51 @@
+{
+  "artwork": [
+    {
+      "path": "addon/ConsolePort_Forever/Assets/ForeverInGame.blp",
+      "sha256": "9daccf7f192871a876ede143a14f4cc453a726ac271fc89d0e30a5610b5a673f",
+      "bytes": 4195476,
+      "provenance": "Exact authorized installed companion baseline copy.",
+      "use": "Personal candidate artwork retained. Original artwork/third-party rights are not established by a capture hash."
+    },
+    {
+      "path": "addon/ConsolePort_Forever/Assets/ForeverTargeting.blp",
+      "sha256": "f1cbdf024b1d397abe318dd9caaf67f6c0ab6c5406d03873a456aa48e7b76760",
+      "bytes": 132244,
+      "provenance": "Exact authorized installed companion baseline copy.",
+      "use": "Personal candidate artwork retained. Original artwork/third-party rights are not established by a capture hash."
+    }
+  ],
+  "referencedDependencyMedia": [
+    {
+      "path": "ConsolePort/Assets/Textures/Cursor/RoundBorderHighlight.blp",
+      "sha256": "19b5d158aac471aa0296ab588933361f46c0566a47c5dd32d04cbe3f94dd1283",
+      "packageSHA256": "4e5e464b5cc0de3b0ae9efead1a57ad04da0ff3572492cbede1d0617dd3f4f6f",
+      "source": "https://github.com/seblindfors/ConsolePort/releases/tag/3.3.3",
+      "use": "Referenced from clean official ConsolePort; not duplicated into companion."
+    },
+    {
+      "path": "ConsolePort/Assets/Icons/64/ps_s_l1.blp",
+      "sha256": "b7d6001183669a1923ffc43f6dd34c51554a738bf1299c76803ca58582cac2be",
+      "packageSHA256": "4e5e464b5cc0de3b0ae9efead1a57ad04da0ff3572492cbede1d0617dd3f4f6f",
+      "source": "https://github.com/seblindfors/ConsolePort/releases/tag/3.3.3",
+      "use": "Referenced from clean official ConsolePort; not duplicated into companion."
+    },
+    {
+      "path": "ConsolePort/Assets/Icons/64/ps_s_r1.blp",
+      "sha256": "361af17d4f6b4cd312459bcfac82a104ea0a11ea28b32ce3c4c8066bddd28fc7",
+      "packageSHA256": "4e5e464b5cc0de3b0ae9efead1a57ad04da0ff3572492cbede1d0617dd3f4f6f",
+      "source": "https://github.com/seblindfors/ConsolePort/releases/tag/3.3.3",
+      "use": "Referenced from clean official ConsolePort; not duplicated into companion."
+    }
+  ],
+  "nativeResources": [
+    "CircleMaskScalable client mask",
+    "128-redbutton-exit client atlas",
+    "crosshair_inspect_32/crosshair_unableinspect_32 client atlases",
+    "C_Spell.GetSpellTexture(6603) client resource",
+    "LiteMount IconTexture metadata; explicit current LM_B2 icon preserved"
+  ],
+  "behavior": "Existing PS5 targeting glyphs/current art geometry retained. Skin does not change native usability/range colors or create dynamic chosen-mount icons.",
+  "acceptance": "Actual client atlas/path availability, clipping/empty slots/cooldowns/colors/glyphs remain user-rendered checks.",
+  "distribution": "Personal locally assembled pack only. No public asset permission inferred; final notices/official-source assembly remain required."
+}

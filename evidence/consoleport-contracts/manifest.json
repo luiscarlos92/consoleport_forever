@@ -99,6 +99,18 @@
     {
       "path": "ConsolePort_Menu/View/Popup/ItemMenu.lua",
       "sha256": "e5458da7fea46b1a18aa05f39a2ec0dfe2c6c020c80b3113075c2db7f43ee227"
+    },
+    {
+      "path": "ConsolePort/Model/Game/Bindings.lua",
+      "sha256": "5252b9e84c3df01f70e8f808d0a3a2f7d8734469d583e2b8834ffd0db232ed06"
+    },
+    {
+      "path": "ConsolePort/Libs/Local/ActionButton.lua",
+      "sha256": "e65ad2ea4b86b676bbfba5d4ea6e00f90e2f3d979ab266c423854688dbab5379"
+    },
+    {
+      "path": "ConsolePort_Bar/Controller/Manager/Manager.lua",
+      "sha256": "adebeb4416575936b5092cbc605eeb2ae65460b5e1bcef9e083f09d7ed1f6367"
     }
   ]
 }

@@ -63,6 +63,7 @@ function Setup.Adapters(api,account)
             return api.GetCVar(p[1])==tostring(value)
         end}
     adapters.integrationReasons={}
+    adapters.mountIcons,adapters.integrationReasons.mountIcons=Addon.LiteMountAdapter.New(cp.db,api)
     for _,kind in ipairs({'immersion','extrafade'}) do
         adapters[kind],adapters.integrationReasons[kind]=Addon.FlatIntegrations.New(kind,api)
     end
@@ -91,6 +92,11 @@ function Setup.Fields(db,guid,adapters,api,revision)
         fields[#fields+1]={id=id,scope=scope,path=path,value=Core.Encode(value),revision=revision,label=label}
     end
     add(guid.."/controller","bindings",{"state"},Setup.BindingProposal(db,guid,adapters.bindings,Addon.ReferenceBindings),"Character controller arrangement and preserved keyboard bindings")
+    if adapters.mountIcons then
+        local icons,pending=adapters.mountIcons:Proposal()
+        for id,value in pairs(icons or {}) do add('shared/mountIcon/'..id,'mountIcons',{id},value,'Preserve native LiteMount binding icon: '..id) end
+        for _,reason in ipairs(pending) do deferred[#deferred+1]={id='mountIcons',reason=reason} end
+    else deferred[#deferred+1]={id='mountIcons',reason=adapters.integrationReasons.mountIcons} end
     if adapters.rings then
         local state,reason=adapters.rings:Proposal()
         if state then

@@ -2,7 +2,7 @@
 
 Prepared: 2026-10-03  
 Updated with user clarifications: 2026-10-03  
-Status: Implementation underway in isolated Git checkout; untouched baseline committed/pushed. Replacement runtime/bootstrap, secure mode extension, guarded binding-bank restore, native popup/quantity contexts, DynamicCam managed copying and GUID ring projection pass offline/source-contract checks. Learned selector activation, other contextual adapters, complete candidate pack and user in-game acceptance remain. See `IMPLEMENTATION-STATUS.md` for exact milestones, tested hashes and continuation schedule.
+Status: Implementation underway in isolated Git checkout; original baseline committed/pushed. Runtime/bootstrap, secure modes, binding-bank recovery/restore, review, GUID manual rings, native popup/quantity/window/scroll/BetterBags/map/quest-detail controls, current flat integration settings and DynamicCam copies pass offline/source contracts. Matching packaged patch audit and native presentation/LiteMount icon adapters are implemented. Exact protected gestures remain separately gated; additional side-bar visibility, final notices/official-source assembly, guarded pack/install/restore tooling and candidate delivery remain. All actual Retail acceptance is pending. See IMPLEMENTATION-STATUS.md for exact milestones and continuation.
 Companion addon: `ConsolePort_Forever`
 
 **Target game: World of Warcraft Retail.** Forever is the behavior/layout reference; this companion runs with Retail ConsolePort. Forever-only CVars, storage and restricted APIs are evidence, not APIs to assume exist in Retail.

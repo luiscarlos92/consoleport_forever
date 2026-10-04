@@ -1,0 +1,64 @@
+{
+  "audit": "migration-audit.json",
+  "matchingPackageProof": "migration-lock.json",
+  "entries": [
+    {
+      "path": "BetterBags/integrations/masque.lua",
+      "classification": "substantive-Lua-change",
+      "installedSHA256": "986dbffe2c5acee04ce9e5e9a08f74a7a8b990bc5bc8a6e342109681df975e91",
+      "officialSHA256": "3409e1c7ac9a1cd3438b69c6cc276aba304b06019231fa736d3e307d6e81ba32",
+      "repo": "Cidan/BetterBags",
+      "version": "v0.5.11",
+      "effect": "Suppresses the native integration-enabled chat notice only.",
+      "replacement": "Clean current BetterBags keeps its native notice. No global print override or dependency source patch.",
+      "status": "native-message-difference-disclosed"
+    },
+    {
+      "path": "ConsolePort/Model/Game/Bindings.lua",
+      "classification": "substantive-Lua-change",
+      "installedSHA256": "0f307bb72ea8d701f8d9f518b1b14f690ca43b4a00486379566d9eeb6239b3da",
+      "officialSHA256": "85ae2a79758298e04a42ae70e70e2f2bafbadc72d8bbb4c336c47d3a1145c5d6",
+      "repo": "seblindfors/ConsolePort",
+      "version": "3.2.6",
+      "effect": "Adds LM_B1 static default icon 132247.",
+      "replacement": "Adapters/LiteMount.lua proposes existing explicit icons/current native defaults; LM_B1 may use current LiteMount declared IconTexture through Bindings:SetIcon after review. LM_B2 keeps its distinct action and existing icon, or reports missing icon rather than inventing a dynamic mount.",
+      "status": "runtime-icon-adapter-offline-verified-LM_B2-presentation-local-pending"
+    },
+    {
+      "path": "ConsolePort/Model/Gamepad/PlayStation/PlayStation5.lua",
+      "classification": "substantive-Lua-change",
+      "installedSHA256": "8e259decc1589835002fe63a5928fb6e8717b4a611fb31fcc7d09a43c88cc65d",
+      "officialSHA256": "091f8eeed56138d3d13009a674fba9e0f7399a470717df44b76935604620a7e7",
+      "repo": "seblindfors/ConsolePort",
+      "version": "3.2.6",
+      "effect": "Changes obsolete mount D-pad, map/menu and PADBACK preset defaults.",
+      "replacement": "Current character arrangement/retained routes are captured and composed at runtime; old automatic loader condition is reviewed disabled. Current LiteMount rules/two actions retained. No upstream device preset source changed.",
+      "status": "runtime-binding-composition-offline-verified"
+    },
+    {
+      "path": "ConsolePort_Bar/Controller/Blizzard/Mainline.lua",
+      "classification": "substantive-Lua-change",
+      "installedSHA256": "c21bdd79f00547f53f96a2874ecb34dbd452abef5fd40bb0610e1e61e1205a21",
+      "officialSHA256": "fa72cc89e0ce30ac6e32ac14dee9bba9eec2b7c5f54ef1e4b12be5bea0a71477",
+      "repo": "seblindfors/ConsolePort",
+      "version": "3.2.6",
+      "effect": "Hides five additional side action bars and bags/micro strip.",
+      "replacement": "Current companion Runtime hides strip out of combat and exposes it during Edit Mode. Additional side-bar visibility ownership/current native lifecycle is still required before candidate delivery. Do not infer this patch is fully replaced.",
+      "status": "side-bar-visibility-unfinished"
+    },
+    {
+      "path": "ConsolePort_Bar/View/Toolbar/Toolbar.lua",
+      "classification": "substantive-Lua-change",
+      "installedSHA256": "d73e86ce0ec1ea06e2ce5abd863e8eeb808864006d21e9880c5a9cc557e7a1af",
+      "officialSHA256": "11d43f012cf1006b36beaa6f5649de2a5b1df8c5443568f330bccdd62ef8dec3",
+      "repo": "seblindfors/ConsolePort",
+      "version": "3.2.6",
+      "effect": "Unconditionally hides Config despite native props.",
+      "replacement": "Clean current ConsolePort restores native Config visibility/access. No companion source patch needed; actual rendered access remains a client acceptance check.",
+      "status": "native-Config-access-restored-by-clean-package"
+    }
+  ],
+  "otherResults": "841 files exact; 2 Cluster files differ only in parsed formatting/comments; 52 Immersion files exact including libraries. No added/missing files among matched packages.",
+  "installation": "No live restoration/deployment/game launch. User installation later, with whole-tree guarded backup and hash checks.",
+  "remaining": "Additional side-bar visibility, final media/licensing inventory and pack/install/restore tools remain."
+}

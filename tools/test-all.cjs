@@ -62,7 +62,7 @@ check('T27.lua51', () => {
   for (const f of files('addon').filter(f=>f.endsWith('.lua'))) parser.parse(read(f),{luaVersion:'5.1'});
 });
 const modules = ['Core','Store','Plan','Transactions','BindingPolicy','ModePolicy','Rings/Discovery','Rings/Selectors','SecureModes','UI/Ownership','UI/InputBridge','UI/Windows','UI/Scroll','UI/Map','Cinematic','Adapters/BetterBags','UI/Contexts','UI/FocusVisuals','UI/Proof','Adapters/NativeBindings',
-  'Adapters/BindingState','Adapters/BindingBanks','Diagnostics','Capability','Adapters/ConsolePort','Adapters/EditMode','Adapters/FlatConfig','Adapters/Integrations','Adapters/DynamicCam','Adapters/Rings','Baseline','Coordinator','Prompt'];
+  'Adapters/BindingState','Adapters/BindingBanks','Diagnostics','Capability','Adapters/ConsolePort','Adapters/EditMode','Adapters/FlatConfig','Adapters/Integrations','Adapters/LiteMount','Adapters/DynamicCam','Adapters/Rings','Baseline','Coordinator','Prompt'];
 const source = 'Addon={};\n' + modules.map(m=>
   ';(function(...)\n'+read('addon/ConsolePort_Forever/'+m+'.lua')+'\nend)("ConsolePort_Forever",Addon);\n').join('');
 const serializer=`
@@ -288,6 +288,23 @@ check('T21.native-map-canvas-controls', () => {
     .replace('--@NATIVE_MAP_MAXIMIZED',()=>nativeFunction(base+'Blizzard_WorldMap/Blizzard_WorldMap.lua','WorldMapMixin:IsMaximized'))
     .replace('--@NATIVE_WAYPOINT',()=>read(base+'Blizzard_SharedMapDataProviders/WaypointLocationDataProvider.lua'));
   execute(source+scrollFixture()+'\n'+fixture,'map-native-canvas');
+});
+check('T24.current-native-presentation-lifecycle', () => {
+  const masque='reference/installed-addons/2026-10-03-initial/Masque/Core/Group.lua';
+  const package=JSON.parse(read('dependencies/lock.json')).packages.find(p=>p.repo==='SFX-WoW/Masque');
+  if(sha(masque)!==package.files['Masque/Core/Group.lua']) throw Error('Masque reference differs from current audited package');
+  const group='evidence/consoleport-contracts/ConsolePort_Bar/Widget/Group/Group.lua';
+  const fixture=read('tests/harness/presentation.lua')
+    .replace('--@NATIVE_MASQUE_REMOVE',()=>nativeFunction(masque,'GMT:RemoveButton'))
+    .replace('--@NATIVE_GROUP_SKIN_LIFECYCLE',()=>['CPGroupBar:UpdateButtons','CPGroupBar:OnMasqueLoaded'].map(name=>nativeFunction(group,name)).join('\n'))
+    .replace('--@NATIVE_MANAGER_BINDINGS',()=>nativeFunction('evidence/consoleport-contracts/ConsolePort_Bar/Controller/Manager/Manager.lua','Manager:GetBindings'))
+    .replace('--@PRODUCT_SKIN',()=>';(function(...)\n'+read('addon/ConsolePort_Forever/Skin.lua')+'\nend)("ConsolePort_Forever",Addon);');
+  execute(source+fixture,'current-native-presentation');
+});
+check('T13.native-LiteMount-binding-icons', () => {
+  const file='evidence/consoleport-contracts/ConsolePort/Model/Game/Bindings.lua';
+  const fixture=read('tests/harness/litemount.lua').replace('--@NATIVE_BINDING_ICON_METHODS',()=>['Bindings:GetIcon','Bindings:SetIcon'].map(name=>nativeFunction(file,name)).join('\n'));
+  execute(source+fixture,'native-LiteMount-icons');
 });
 check('T23.native-cinematic-held-skip-gate', () => {
   const base='evidence/native/Blizzard_FrameXML/';

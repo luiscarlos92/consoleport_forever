@@ -14,12 +14,48 @@ from resolve_dependencies import members
 import resolve_dependencies
 from audit_dependencies import runtime_closure
 from inventory_notices import inventory
+import audit_migration
 
 
 class ToolGuards(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         output(ROOT/'scratch').mkdir(exist_ok=True)
+
+    def test_matching_packaged_migration_classification(self):
+        self.assertEqual(audit_migration.classify(b'x\r\n',b'x\n','Example/a.lua'),'line-endings-only')
+        with tempfile.TemporaryDirectory(dir=ROOT/'scratch') as temp:
+            scope=Path(temp); baseline=scope/'baseline';baseline.mkdir()
+            sources={'Example/format.lua':b'local x = 1 -- original\n',
+                     'Example/message.lua':b'local message="a b"\n',
+                     'Example/package-only.txt':b'original'}
+            installed={'Example/format.lua':b'local x=1 -- edited comment\n',
+                       'Example/message.lua':b'local message="a  b"\n',
+                       'Example/installed-only.txt':b'custom'}
+            for name,data in installed.items():
+                path=baseline/name;path.parent.mkdir(parents=True,exist_ok=True);path.write_bytes(data)
+            cache=scope/'matching.zip'
+            with zipfile.ZipFile(cache,'w') as archive:
+                for name,data in sources.items(): archive.writestr(name,data)
+            import hashlib
+            package={'repo':'example/Addon','version':'old','cache':str(cache.relative_to(ROOT)),
+                     'sha256':sha(cache),'expectedDigest':'sha256:'+sha(cache),
+                     'files':{n:hashlib.sha256(b).hexdigest() for n,b in sources.items()}}
+            imm=scope/'official'/'Immersion';imm.mkdir(parents=True)
+            (imm/'Config.lua').write_bytes(b'local original=true')
+            original={'repo':'seblindfors/Immersion','version':'1.4.61','releaseURL':'https://example.invalid/official',
+                      'assetURL':'https://example.invalid/official.zip','sha256':'test','bytes':19,
+                      'unpacked':str(imm.parent.relative_to(ROOT)),'files':{'Immersion/Config.lua':sha(imm/'Config.lua')}}
+            with patch.object(audit_migration,'BASE',baseline):
+                result=audit_migration.audit([package],{'packages':[original]})
+                rows={r['path']:r for r in result['files']}
+                self.assertEqual(rows['Example/format.lua']['classification'],'Lua-formatting-comments-only')
+                self.assertEqual(rows['Example/message.lua']['classification'],'substantive-Lua-change')
+                self.assertEqual(rows['Example/installed-only.txt']['classification'],'installed-only')
+                self.assertEqual(rows['Example/package-only.txt']['classification'],'package-only')
+                self.assertEqual((baseline/'Example/message.lua').read_bytes(),installed['Example/message.lua'])
+                package['files']['Example/message.lua']='drift'
+                with self.assertRaises(ValueError): audit_migration.audit([package],{'packages':[original]})
 
     def test_native_runtime_package_closure(self):
         files={'Example/Example.toc':b'## Interface: 120100\n## RequiredDeps: ConsolePort\nView/Main.xml\n',

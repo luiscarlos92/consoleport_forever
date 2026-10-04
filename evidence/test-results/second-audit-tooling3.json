@@ -1,0 +1,170 @@
+{
+  "at": "2026-10-04T19:53:10.013388+00:00",
+  "python": "3.14.7",
+  "overallPassed": true,
+  "testsRun": 21,
+  "commit": "14f813b191801b8a090679e33c739bb6f1674744",
+  "sourceHashes": {
+    "tools/Assemble-Pack.ps1": "369eddda7a5488b5e7fcbd6cbf9c97e7f8c615e3a13581d1e4f419e4554cb211",
+    "tools/assemble_pack.py": "34a54aeedd33a95bf7cb2ca7737d21c31ff70a9d4c2b16e6f121c8b2cc5de6f9",
+    "tools/audit_dependencies.py": "4684ca41698be92cdd685392816a9e5f81ce9c4708462770d6a04e13ec263416",
+    "tools/audit_migration.py": "74e6e1f2040fca2da640767dfcba27eab0d38b201e36de682db3294ec8aa0941",
+    "tools/Build-Pack.ps1": "c9b76402cfabc5d15352dfc8e64ce153e1334abc14f7caee72331b39a88cdb41",
+    "tools/build_pack.py": "2be2b13796637dfb0bcdc5a601b5dcf91d2dcd4bad7d14d59e8e987bdf71ea79",
+    "tools/Capture-Baseline.py": "2111abb9b1eebfd3eeca87573d4f916ecb477300cb1c1211a8315dc1099ecbdd",
+    "tools/capture_cp_contracts.py": "252ebfd6708b63a82e24d4b9e822a794273bb52845bba7f2638ba93e1a9e659e",
+    "tools/capture_integration_contracts.py": "56d53db90f22f68b017e2451d45d33669ca533c62b9724276e4afed8f15b8c8c",
+    "tools/capture_voice_provenance.py": "fb48bc562aaf3b1fe97b4bf7604a0855faefb4fc8e2c4cfb689addcad020462f",
+    "tools/check_stable_sources.py": "8495f43b9454369d0a77389a370024300202cbec131d3f8dd338c174d8dbd02c",
+    "tools/deployment_guard.py": "e38bcae029038554c79261d08750743e12354c2a524aaf2a7a792be7b61e346f",
+    "tools/dry_run_pack.py": "bb96ff4f47cc4943b51c663e4b0b169ee6bb66d69ac9a3f7be0691a13e7b5bb9",
+    "tools/extract_reference.cjs": "13b397bbe6e057ef485b7fc8bc533e77fc63d18fd9380d69161e9d1f20cd199b",
+    "tools/fetch_native_sources.py": "34a400f7ab501d8e56465a46868bbb7957f29bceaebe5d0fbc7a27ecdea75256",
+    "tools/Install-Pack.ps1": "3bc8b9861831955ceb181c97dd69cd445e80365db67453cff6ec4733fa729ad7",
+    "tools/install_pack.py": "62bb972a7d4ebe2fb539236a5b7d9b4f68a9263c0a38fdc2356540ac4a9cbf39",
+    "tools/inventory_media.py": "739beb1312bb546457900ef52aefd4f471a70567b4d57b77e93f2583a7a300ed",
+    "tools/inventory_notices.py": "f76e0c17bcbb6bde41a802e6eca7e6cf86029642616b6f3ac57c5ff7e48535ae",
+    "tools/lua_equivalence.cjs": "fe6d2ed47adb824174d6eb1d960970b0e94c51e1ad4cf3d3ed120f27b6e9ed1d",
+    "tools/pack_format.py": "b2c2aefd7f578af839b9b773b390c212cc19bd964b9eb55964374accab721063",
+    "tools/repository_paths.cjs": "345b5d3cd1c075f0134b636e340662c66db7a0c6dd242d020e930fadb345c8e7",
+    "tools/repository_paths.py": "8e970760af8e308c3e526548279d46de3fb585fa314f93cb89ba4e5287165b7e",
+    "tools/Resolve-Dependencies.ps1": "84abdb50defd2bbc72d887a86f80b77d004d4ccd97eaa2c94404fa7ac146c79a",
+    "tools/resolve_dependencies.py": "0beb80ce5c9f41466c0f5e1789c44000ed4dbd3b9a6b178599b07e2bb0809c86",
+    "tools/Restore-Pack.ps1": "e20b8cb16d59f9c70e6875ef2c2ad33eb53b396946c1492000702333a44a603c",
+    "tools/review_notices.py": "06cd0fcc9041c30d28c4f4756642d6e3299e790be2c24e366bb9f5fe7a83368e",
+    "tools/run_tool_tests.py": "5a2cebae3864112e18202ee7cc406fa9ae7d961c252b0c27038c59176bd274f2",
+    "tools/saved_variables.cjs": "c9ceffe13e95b6f95f46576a5e77a7a479e837b33a0d7454c566a2e033a47109",
+    "tools/test-all.cjs": "8b8cdd525c316e72cb8a3d451f65883accc1c17ef5193d9256fc568ed58bd448",
+    "tools/Test-All.ps1": "e7979b2b1c53ccf248f269b36e5bcfeb5116230c2e978700bffe94f812f47b9d",
+    "tools/Verify-Pack.ps1": "1fd3ec3069324a9542e7b86354ab9688bf36e6e4ed89842354cdd7a48523486b",
+    "tools/verify_pack.py": "d87e89f729fc4ca4d8bb82c268866e65037bffd5b36e234921447596d9e6e890",
+    "tools/verify_pinned_sources.py": "64402d4b4691e291c1a677856c9613a8ce76c9a4181f621721c222dbe19c23dd",
+    "tests/test_pack.py": "434ffed076dfdde2dfabb998c9da4069406f3bd5e68e0fc8859e4e73c614d9d1",
+    "tests/test_tools.py": "5137babb046dc2ae9a7c5e1b884d62e40952f639f2da9567227a2283989efe9e",
+    "tests/harness/adapters.lua": "c853eb57f86a331703416f4aaf0b8f0699252a40e47bdb76ae944755a661f566",
+    "tests/harness/betterbags.lua": "9f2acd33c7b6ad33486b94d6da623a3b7171c3afc6daeddc6fee8f0ea29b3c7f",
+    "tests/harness/binding_banks.lua": "5bdb4b2d7cadc7ebce415a482b87c10e20685ac1d174bc9527d9656c78b28822",
+    "tests/harness/bootstrap.lua": "ca33a2e3a1ad830449a9b4032b4a49e20a2a80c42a944fb25d23467a974b02ad",
+    "tests/harness/cinematic.lua": "eb0e6a76a6fba7ae06970931dde07167ab6ae32c4bd5e2044f9caabaf67c7dec",
+    "tests/harness/coordinator.lua": "b90ca02834371acce687cbadcfd6df5793c6e980799696b5b2f92728401c28eb",
+    "tests/harness/cp_upgrade.lua": "c8eed197995b3c0e648a19267848a0c88d0d0dcbdeeb10836366e1e3f28d1dc6",
+    "tests/harness/dynamiccam.lua": "8c658b6c204d7a0b3e486343000e7b2fbe6513340c6f529e4713c1665fada521",
+    "tests/harness/flat_integrations.lua": "4677d66676654af2531c87ec6828272f5f61d0319d8c17ea189bb121fa943576",
+    "tests/harness/focus_visuals.lua": "fbbc2a72b6409aadb64b64c37f235e10c236e2b967001e06df81b1b845cf8cde",
+    "tests/harness/foundations.lua": "35541474124e3e4a4df01bae6cab330539473e391941d3d664c83d602a2cec31",
+    "tests/harness/litemount.lua": "dce8917abf364895b20d867f0ed81b8df8c53a5a720c76300c499036d3543f67",
+    "tests/harness/map.lua": "d468efdf3a8065ae445c2b81e3dcce7d4985027637dfbb7341fe224df3271764",
+    "tests/harness/native_bindings.lua": "18e506511ed53a2fc47f103352efd5f934e0df90776ca1bd6e507c66fcbb00f4",
+    "tests/harness/policies.lua": "b2954115683ccdd1ec7ad54854e8245aa0751443bd005bf55303da1cc80338ad",
+    "tests/harness/presentation.lua": "5dc427c949466dd4cd8e441d082a8433586db40a86470f2316370d799c7ffb6c",
+    "tests/harness/prompt.lua": "a6e6f7f150e41a7b4f9f45565ad4189cad29a04f8c9b547ce8764724e78e992e",
+    "tests/harness/rings.lua": "28cc0ec19890ef321fa70aace74594b5914c8bd116d7001de3c6380fcd2e91f4",
+    "tests/harness/ring_discovery.lua": "108c98e8c4151d4d97fcdc5d9615d02c862a9550940e96c3198927d37226e4cc",
+    "tests/harness/ring_selectors.lua": "9c2b8f518a0e4830eb7da4d973eb5f05df9dbad86b93fc0fefcf4043d6f6cf55",
+    "tests/harness/secure_modes.lua": "1efb4d553e0ff3e97a6fd2eb8d9bb076ddf0c0e9e4a9a2b0ff407629ea2de600",
+    "tests/harness/ui_contexts.lua": "ea5257253286d1e6c9cd67421b1ff33653b5288865321b946b8a503d9fe82364",
+    "tests/harness/ui_scroll.lua": "bc0e45550fbf0c0039dbab44d59821968055457465dbe989e52dca407da2444a",
+    "tests/harness/ui_windows.lua": "357bcbe52c39447284f1d3164e227e10a0bde4b535b48d557ced1c9e86503888",
+    "tests/harness/visibility.lua": "45e5ed2679c9d50c862dc55501a8b7f408789eb67eaca684d4366305a0ff9cbf",
+    "tests/fixtures/historical-sandbox/installer_harness.lua": "8a2fb2bd65936c36f8e501fb778bc5355caee80e28ffffa5ef7c1a78ed43546b",
+    "tests/fixtures/historical-sandbox/runtime_harness.lua": "1b5a4bb700bb0d1741904ebdd3038999ba9df02a88b7d9f44dcca2e6e3313f51",
+    "tests/fixtures/historical-sandbox/skin_harness.lua": "f2457ff54e686bec502e9399f3727e02bbcc4336ef6f6ea74203a0ae1768ef6d",
+    "tests/fixtures/historical-sandbox/_retail_/Interface/AddOns/ConsolePort_Forever/Bindings.lua": "faecc497f79d9d7437f87e809844fc7144ab722e33afd89245578461bc232a8f",
+    "tests/fixtures/historical-sandbox/_retail_/Interface/AddOns/ConsolePort_Forever/ConsolePort_Forever.lua": "099b5a6b985d4e661beaa182c42cc48f5f275eb74978f3e345a27d5af47632c2",
+    "tests/fixtures/historical-sandbox/_retail_/Interface/AddOns/ConsolePort_Forever/ConsolePort_Forever.toc": "afda2aea59cb187a16c5d4a6e1ce34d7b9127cfa24af4da72a23c76af5bae5d3",
+    "tests/fixtures/historical-sandbox/_retail_/Interface/AddOns/ConsolePort_Forever/Layout.lua": "486f4267fe9c5ef217ec87e229ac1ced9a21ace92d579eb9d91f9c7b5e75fef3",
+    "tests/fixtures/historical-sandbox/_retail_/Interface/AddOns/ConsolePort_Forever/Profile.lua": "e18af174f280801bcb410c34d2d1cbc6ba55653bcbb08d5d9d7ba9b99eab20e4",
+    "tests/fixtures/historical-sandbox/_retail_/Interface/AddOns/ConsolePort_Forever/Runtime.lua": "fffc41c25d908e30ad011ca9798d00324d9d4d1c94672b634cbd46e3b863c26b",
+    "tests/fixtures/historical-sandbox/_retail_/Interface/AddOns/ConsolePort_Forever/Skin.lua": "4800b78ab8fba4cc6dab1db9e6ffe8f1121fe3dfd22c6515a1069f5fa6947f04",
+    "tests/fixtures/historical-sandbox/_retail_/Interface/AddOns/ConsolePort_Forever/Assets/ForeverInGame.blp": "9daccf7f192871a876ede143a14f4cc453a726ac271fc89d0e30a5610b5a673f",
+    "tests/fixtures/historical-sandbox/_retail_/Interface/AddOns/ConsolePort_Forever/Assets/ForeverTargeting.blp": "f1cbdf024b1d397abe318dd9caaf67f6c0ab6c5406d03873a456aa48e7b76760"
+  },
+  "pinnedDependencyLockSHA256": "f495048cd9c84670c6087d109406691b0dd45c964a6b2d7ffc8eb286b6495201",
+  "results": [
+    {
+      "id": "test_pack.PackDelivery.test_abrupt_exit_after_rename_recovers_from_durable_intent",
+      "status": "passed"
+    },
+    {
+      "id": "test_pack.PackDelivery.test_alias_running_game_and_backup_drift_refusal",
+      "status": "passed"
+    },
+    {
+      "id": "test_pack.PackDelivery.test_archive_digest_paths_and_missing_files",
+      "status": "passed"
+    },
+    {
+      "id": "test_pack.PackDelivery.test_code_only_and_explicit_disaster_restore",
+      "status": "passed"
+    },
+    {
+      "id": "test_pack.PackDelivery.test_copy_failure_promotion_failure_and_recovery",
+      "status": "passed"
+    },
+    {
+      "id": "test_pack.PackDelivery.test_explicit_package_retirement_is_parked_and_reversible",
+      "status": "passed"
+    },
+    {
+      "id": "test_pack.PackDelivery.test_official_assembly_and_unchanged_bytes",
+      "status": "passed"
+    },
+    {
+      "id": "test_pack.PackDelivery.test_preview_backup_links_and_owned_folder_replacement",
+      "status": "passed"
+    },
+    {
+      "id": "test_pack.PackDelivery.test_real_anchor_branch_only_on_guarded_fake_root_with_42_links",
+      "status": "passed"
+    },
+    {
+      "id": "test_pack.PackDelivery.test_restore_failures_compensate_and_preserve_newer_edits",
+      "status": "passed"
+    },
+    {
+      "id": "test_pack.PackDelivery.test_script_entry_points_default_to_read_only",
+      "status": "passed"
+    },
+    {
+      "id": "test_pack.PackDelivery.test_stage_current_and_anchor_drift_are_not_promoted",
+      "status": "passed"
+    },
+    {
+      "id": "test_tools.ToolGuards.test_archive_attacks",
+      "status": "passed"
+    },
+    {
+      "id": "test_tools.ToolGuards.test_copy_fixture_without_writing_reference",
+      "status": "passed"
+    },
+    {
+      "id": "test_tools.ToolGuards.test_fresh_official_download_and_expired_metadata",
+      "status": "passed"
+    },
+    {
+      "id": "test_tools.ToolGuards.test_live_aliases_refused",
+      "status": "passed"
+    },
+    {
+      "id": "test_tools.ToolGuards.test_matching_packaged_migration_classification",
+      "status": "passed"
+    },
+    {
+      "id": "test_tools.ToolGuards.test_native_runtime_package_closure",
+      "status": "passed"
+    },
+    {
+      "id": "test_tools.ToolGuards.test_notice_sources_are_distinct_from_permission",
+      "status": "passed"
+    },
+    {
+      "id": "test_tools.ToolGuards.test_output_links_and_immutable_scopes",
+      "status": "passed"
+    },
+    {
+      "id": "test_tools.ToolGuards.test_qualify_official_archive_without_patching",
+      "status": "passed"
+    }
+  ],
+  "limitation": "Only guarded repository scratch simulations; no actual game installation or Retail client execution."
+}

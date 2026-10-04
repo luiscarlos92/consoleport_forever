@@ -217,6 +217,16 @@ state.family='skyriding'
 assert(Addon.SecureModes.Install(bridge,api),'unbound keyboard routes blocked actual controller-only setup')
 local access=Addon.TemporaryAccess.frame
 assert(created==6 and registered==1 and cursorFrames==1)
+assert(not access.shown and not access.refs.action9.shown and not access.refs.exit.shown,
+    'editable skyriding slots produced a side bar or an empty cursor owner')
+state.family='vehicle' state.specialPage=11
+access:Execute(Addon.TemporaryAccess.Response)
+assert(access.shown,'real temporary overflow parent was not shown')
+for _,family in ipairs({'override','temporary','vehicle'}) do
+    state.family=family
+    access:Execute(Addon.TemporaryAccess.Response)
+    assert(access.shown and access.refs.action9.shown,'genuine temporary family lost retained overflow access: '..family)
+end
 assert(access.refs.action9:GetAttribute('action')==129 and access.refs.action12:GetAttribute('action')==132)
 assert(access.refs.exit.shown and access.refs.exit:GetAttribute('type')=='leavevehicle')
 assert(access.refs.action9:GetAttribute('useOnKeyDown')==false)
@@ -229,9 +239,17 @@ assert(access.refs.action9.shown and access.refs.action9:GetAttribute('action')=
 access:Execute([[local button=self:GetFrameRef('action9'); button:SetAttribute('cpf-held',nil)]])
 access:Execute(Addon.TemporaryAccess.Response)
 assert(not access.refs.action9.shown and not access.refs.exit.shown,'ordinary form displayed temporary controls after release')
-state.family='skyriding' usable=false canExit=false
+assert(not access.shown,'empty temporary parent remained a registered visible window')
+state.family='vehicle' usable=false canExit=false
 access:Execute(Addon.TemporaryAccess.Response)
 assert(not access.refs.action9.shown and not access.refs.exit.shown,'empty overflow or unavailable exit was exposed')
+assert(not access.shown)
+access:Execute([[local button=self:GetFrameRef('exit'); button:SetAttribute('cpf-held',true)]])
+access:Execute(Addon.TemporaryAccess.Response)
+assert(access.shown,'held exit owner vanished before release')
+access:Execute([[local button=self:GetFrameRef('exit'); button:SetAttribute('cpf-held',nil)]])
+access:Execute(Addon.TemporaryAccess.Response)
+assert(not access.shown,'released exit left an empty parent shown')
 assert(not Addon.SecureModes.Disable(api,bridge),'combat performed insecure cleanup')
 combat=false state.bonus=0
 assert(Addon.SecureModes.Disable(api,bridge) and not access:GetAttribute('cpf-enabled'))

@@ -9,22 +9,28 @@ Access.Response=[[
     if self:GetAttribute('cpf-enabled') then
         if HasVehicleActionBar() then page=GetVehicleBarIndex()
         elseif HasOverrideActionBar() then page=GetOverrideBarIndex()
-        elseif HasTempShapeshiftActionBar() then page=GetTempShapeshiftBarIndex()
-        elseif GetBonusBarOffset()==5 then page=11 end;
+        elseif HasTempShapeshiftActionBar() then page=GetTempShapeshiftBarIndex() end;
     end;
+    -- The editable skyriding bonus page is not evidence of temporary
+    -- vehicle/quest overflow. Keep its approved eight cells on L2R2 only.
+    local visible=false;
     for index=9,12 do
         local button=self:GetFrameRef('action'..index);
         local action=page and ((page-1)*12+index);
         if button:GetAttribute('cpf-held') then
             -- Retain the original press owner until its release.
+            visible=true;
         elseif action and HasAction(action) then
-            button:SetAttribute('action',action); button:Show()
+            button:SetAttribute('action',action); button:Show(); visible=true;
         else button:Hide() end;
     end;
     local exit=self:GetFrameRef('exit');
-    if not exit:GetAttribute('cpf-held') then
-        if page and CanExitVehicle() then exit:Show() else exit:Hide() end;
+    if exit:GetAttribute('cpf-held') then visible=true;
+    else
+        if page and CanExitVehicle() then exit:Show(); visible=true; else exit:Hide() end;
     end;
+    -- A shown empty parent is still a native cursor/window owner.
+    if visible then self:Show() else self:Hide() end;
 ]]
 function Access:Probe(bridge,api)
     return bridge.db and bridge.db.Pager and type(bridge.db.Pager.RegisterHeader)=='function'
@@ -36,6 +42,7 @@ function Access:Enable(bridge,api)
         frame:SetSize(200,36)
         frame:SetPoint('BOTTOM',api.UIParent,'BOTTOM',458,20)
         frame:SetAttribute('ActionPageChanged',self.Response)
+        frame:Hide()
         self.frame,self.api=frame,api
         self.buttons={}
         for index=9,13 do

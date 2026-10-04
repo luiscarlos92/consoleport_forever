@@ -1,0 +1,644 @@
+{
+  "at": "2026-10-04T19:54:06.133Z",
+  "snapshotSHA256": "087b77e978f081a34b1e413ebd490e761fd7ee4d47f7b8bd91e8af71569fdc85",
+  "canonicalFiles": 296,
+  "links": 42,
+  "linksUnchanged": true,
+  "added": [],
+  "removed": [],
+  "luaAndFallbackFilesParsed": 257,
+  "parseFailures": [],
+  "byteChanged": [
+    "Account/119624169#1/SavedVariables/BetterBags.lua",
+    "Account/119624169#1/SavedVariables/BetterBags.lua.bak",
+    "Account/119624169#1/SavedVariables/Blizzard_CombatLog.lua",
+    "Account/119624169#1/SavedVariables/Blizzard_CombatLog.lua.bak",
+    "Account/119624169#1/SavedVariables/ConsolePort.lua",
+    "Account/119624169#1/SavedVariables/ConsolePort.lua.bak",
+    "Account/119624169#1/SavedVariables/ConsolePort_Bar.lua",
+    "Account/119624169#1/SavedVariables/ConsolePort_Bar.lua.bak",
+    "Account/119624169#1/SavedVariables/ConsolePort_Cursor.lua",
+    "Account/119624169#1/SavedVariables/ConsolePort_Cursor.lua.bak",
+    "Account/119624169#1/SavedVariables/ConsolePort_Forever.lua",
+    "Account/119624169#1/SavedVariables/ConsolePort_Forever.lua.bak",
+    "Account/119624169#1/SavedVariables/ConsolePort_Keyboard.lua",
+    "Account/119624169#1/SavedVariables/ConsolePort_Keyboard.lua.bak",
+    "Account/119624169#1/SavedVariables/DBM-Core.lua",
+    "Account/119624169#1/SavedVariables/DBM-Core.lua.bak",
+    "Account/119624169#1/SavedVariables/DBM-StatusBarTimers.lua",
+    "Account/119624169#1/SavedVariables/DBM-StatusBarTimers.lua.bak",
+    "Account/119624169#1/SavedVariables/DynamicCam.lua",
+    "Account/119624169#1/SavedVariables/DynamicCam.lua.bak",
+    "Account/119624169#1/SavedVariables/LiteMount.lua",
+    "Account/119624169#1/SavedVariables/LiteMount.lua.bak",
+    "Account/119624169#1/SavedVariables/Masque.lua",
+    "Account/119624169#1/SavedVariables/Masque.lua.bak",
+    "Account/119624169#1/SavedVariables/Plater.lua",
+    "Account/119624169#1/SavedVariables/Plater.lua.bak",
+    "Account/119624169#1/cache.md5",
+    "Account/119624169#1/flagged-cache-account.old",
+    "Account/119624169#1/flagged-cache-account.txt",
+    "Account/_template_/SavedVariables/ConsolePort_Bar.lua",
+    "Account/_template_/SavedVariables/ConsolePort_Bar.lua.bak",
+    "Account/_template_/SavedVariables/ConsolePort_Forever.lua",
+    "Account/_template_/SavedVariables/ConsolePort_Forever.lua.bak",
+    "Account/_template_/SavedVariables/Plater.lua",
+    "Account/_template_/SavedVariables/Plater.lua.bak",
+    "Account/_template_/cache.md5",
+    "Account/_template_/config-cache.old",
+    "Account/_template_/config-cache.wtf",
+    "Account/_template_/layout-local.txt",
+    "Config.wtf",
+    "SavedVariables/Blizzard_Console.lua",
+    "SavedVariables/Blizzard_Console.lua.bak"
+  ],
+  "semanticChanges": {
+    "Account/119624169#1/SavedVariables/ConsolePort.lua.bak": {
+      "count": 1,
+      "paths": [
+        "/ConsolePortSettings/tutorialState"
+      ]
+    },
+    "Account/119624169#1/SavedVariables/ConsolePort_Cursor.lua": {
+      "count": 1,
+      "paths": [
+        "/ConsolePortUIStack/ConsolePort_Cursor/ConsolePortForeverTemporaryAccess"
+      ]
+    },
+    "Account/119624169#1/SavedVariables/ConsolePort_Cursor.lua.bak": {
+      "count": 1,
+      "paths": [
+        "/ConsolePortUIStack/ConsolePort_Cursor/ConsolePortForeverTemporaryAccess"
+      ]
+    },
+    "Account/119624169#1/SavedVariables/ConsolePort_Forever.lua": {
+      "count": 108,
+      "paths": [
+        "/ConsolePortForeverDB/managedFields/shared/extrafade/keepChatFrame/revision",
+        "/ConsolePortForeverDB/managedFields/shared/extrafade/hideFrameRate/revision",
+        "/ConsolePortForeverDB/managedFields/shared/consoleport/condition/revision",
+        "/ConsolePortForeverDB/managedFields/shared/extrafade/keepCustomFrames/revision",
+        "/ConsolePortForeverDB/managedFields/shared/immersion/strata/revision",
+        "/ConsolePortForeverDB/managedFields/shared/immersion/hideui/revision",
+        "/ConsolePortForeverDB/managedFields/shared/cvar/GamePadEmulateShift/revision",
+        "/ConsolePortForeverDB/managedFields/shared/immersion/boxoffsetX/revision",
+        "/ConsolePortForeverDB/managedFields/shared/policy/windowsEnabled/revision",
+        "/ConsolePortForeverDB/managedFields/shared/immersion/ttsenabled/revision",
+        "/ConsolePortForeverDB/managedFields/shared/consoleport/layout/value/children/L2/opacity",
+        "/ConsolePortForeverDB/managedFields/shared/consoleport/layout/value/children/L2/visibility",
+        "/ConsolePortForeverDB/managedFields/shared/consoleport/layout/value/children/L2R2/opacity",
+        "/ConsolePortForeverDB/managedFields/shared/consoleport/layout/value/children/L2R2/visibility",
+        "/ConsolePortForeverDB/managedFields/shared/consoleport/layout/value/children/Override Action Bar",
+        "/ConsolePortForeverDB/managedFields/shared/consoleport/layout/value/children/R2/opacity",
+        "/ConsolePortForeverDB/managedFields/shared/consoleport/layout/value/children/R2/visibility",
+        "/ConsolePortForeverDB/managedFields/shared/consoleport/layout/value/children/Base/opacity",
+        "/ConsolePortForeverDB/managedFields/shared/consoleport/layout/revision",
+        "/ConsolePortForeverDB/managedFields/shared/dynamiccam/2-selected/revision",
+        "/ConsolePortForeverDB/managedFields/shared/immersion/titleoffsetY/revision",
+        "/ConsolePortForeverDB/managedFields/shared/extrafade/keepPartyRaidFrame/revision",
+        "/ConsolePortForeverDB/managedFields/shared/policy/mapEnabled/revision",
+        "/ConsolePortForeverDB/managedFields/shared/extrafade/hideFrameRateCinematic/revision",
+        "/ConsolePortForeverDB/managedFields/shared/immersion/ttsvolume/revision"
+      ]
+    },
+    "Account/119624169#1/SavedVariables/ConsolePort_Forever.lua.bak": {
+      "count": 108,
+      "paths": [
+        "/ConsolePortForeverDB/managedFields/shared/extrafade/keepChatFrame/revision",
+        "/ConsolePortForeverDB/managedFields/shared/extrafade/hideFrameRate/revision",
+        "/ConsolePortForeverDB/managedFields/shared/consoleport/condition/revision",
+        "/ConsolePortForeverDB/managedFields/shared/extrafade/keepCustomFrames/revision",
+        "/ConsolePortForeverDB/managedFields/shared/immersion/strata/revision",
+        "/ConsolePortForeverDB/managedFields/shared/immersion/hideui/revision",
+        "/ConsolePortForeverDB/managedFields/shared/cvar/GamePadEmulateShift/revision",
+        "/ConsolePortForeverDB/managedFields/shared/immersion/boxoffsetX/revision",
+        "/ConsolePortForeverDB/managedFields/shared/policy/windowsEnabled/revision",
+        "/ConsolePortForeverDB/managedFields/shared/immersion/ttsenabled/revision",
+        "/ConsolePortForeverDB/managedFields/shared/mountIcon/CLICK LM_B1:LeftButton/revision",
+        "/ConsolePortForeverDB/managedFields/shared/immersion/ttsvolume/revision",
+        "/ConsolePortForeverDB/managedFields/shared/immersion/titleoffsetY/revision",
+        "/ConsolePortForeverDB/managedFields/shared/extrafade/keepPartyRaidFrame/revision",
+        "/ConsolePortForeverDB/managedFields/shared/immersion/ttsvoice/revision",
+        "/ConsolePortForeverDB/managedFields/shared/extrafade/hideFrameRateCinematic/revision",
+        "/ConsolePortForeverDB/managedFields/shared/immersion/hideminimap/revision",
+        "/ConsolePortForeverDB/managedFields/shared/extrafade/customFramesToKeep/revision",
+        "/ConsolePortForeverDB/managedFields/shared/cvar/GamePadEmulateCtrl/revision",
+        "/ConsolePortForeverDB/managedFields/shared/immersion/disableprogression/revision",
+        "/ConsolePortForeverDB/managedFields/shared/immersion/titleoffset/revision",
+        "/ConsolePortForeverDB/managedFields/shared/immersion/titlescale/revision",
+        "/ConsolePortForeverDB/managedFields/shared/policy/blizzardVisibility/revision",
+        "/ConsolePortForeverDB/managedFields/shared/immersion/showprogressbar/revision",
+        "/ConsolePortForeverDB/managedFields/shared/immersion/scale/revision"
+      ]
+    },
+    "Account/119624169#1/SavedVariables/LiteMount.lua": {
+      "count": 1,
+      "paths": [
+        "/LiteMountDB/global/summonCounts/75614"
+      ]
+    },
+    "Account/119624169#1/SavedVariables/LiteMount.lua.bak": {
+      "count": 1,
+      "paths": [
+        "/LiteMountDB/global/summonCounts/369476"
+      ]
+    },
+    "Account/119624169#1/SavedVariables/Plater.lua": {
+      "count": 20,
+      "paths": [
+        "/PlaterDB/profiles/Default/login_counter",
+        "/PlaterLogs/_general_logs/1",
+        "/PlaterLogs/_general_logs/2",
+        "/PlaterLogs/_general_logs/3",
+        "/PlaterLogs/_general_logs/4",
+        "/PlaterLogs/_general_logs/5",
+        "/PlaterLogs/_general_logs/6",
+        "/PlaterLogs/_general_logs/7",
+        "/PlaterLogs/_general_logs/8",
+        "/PlaterLogs/_general_logs/9",
+        "/PlaterLogs/_general_logs/10",
+        "/PlaterLogs/_general_logs/11",
+        "/PlaterLogs/_general_logs/12",
+        "/PlaterLogs/_general_logs/13",
+        "/PlaterLogs/_general_logs/14",
+        "/PlaterLogs/_general_logs/15",
+        "/PlaterLogs/_general_logs/16",
+        "/PlaterLogs/_general_logs/17",
+        "/PlaterLogs/_general_logs/18",
+        "/PlaterLogs/_general_logs/19"
+      ]
+    },
+    "Account/119624169#1/SavedVariables/Plater.lua.bak": {
+      "count": 20,
+      "paths": [
+        "/PlaterDB/profiles/Default/login_counter",
+        "/PlaterLogs/_general_logs/1",
+        "/PlaterLogs/_general_logs/2",
+        "/PlaterLogs/_general_logs/3",
+        "/PlaterLogs/_general_logs/4",
+        "/PlaterLogs/_general_logs/5",
+        "/PlaterLogs/_general_logs/6",
+        "/PlaterLogs/_general_logs/7",
+        "/PlaterLogs/_general_logs/8",
+        "/PlaterLogs/_general_logs/9",
+        "/PlaterLogs/_general_logs/10",
+        "/PlaterLogs/_general_logs/11",
+        "/PlaterLogs/_general_logs/12",
+        "/PlaterLogs/_general_logs/13",
+        "/PlaterLogs/_general_logs/14",
+        "/PlaterLogs/_general_logs/15",
+        "/PlaterLogs/_general_logs/16",
+        "/PlaterLogs/_general_logs/17",
+        "/PlaterLogs/_general_logs/18",
+        "/PlaterLogs/_general_logs/19"
+      ]
+    },
+    "Account/_template_/SavedVariables/ConsolePort_Bar.lua": {
+      "count": 8,
+      "paths": [
+        "/ConsolePort_BarLayout/children/L2/opacity",
+        "/ConsolePort_BarLayout/children/L2/visibility",
+        "/ConsolePort_BarLayout/children/L2R2/opacity",
+        "/ConsolePort_BarLayout/children/L2R2/visibility",
+        "/ConsolePort_BarLayout/children/Override Action Bar",
+        "/ConsolePort_BarLayout/children/R2/opacity",
+        "/ConsolePort_BarLayout/children/R2/visibility",
+        "/ConsolePort_BarLayout/children/Base/opacity"
+      ]
+    },
+    "Account/_template_/SavedVariables/ConsolePort_Bar.lua.bak": {
+      "count": 8,
+      "paths": [
+        "/ConsolePort_BarLayout/children/L2/opacity",
+        "/ConsolePort_BarLayout/children/L2/visibility",
+        "/ConsolePort_BarLayout/children/L2R2/opacity",
+        "/ConsolePort_BarLayout/children/L2R2/visibility",
+        "/ConsolePort_BarLayout/children/Override Action Bar",
+        "/ConsolePort_BarLayout/children/R2/opacity",
+        "/ConsolePort_BarLayout/children/R2/visibility",
+        "/ConsolePort_BarLayout/children/Base/opacity"
+      ]
+    },
+    "SavedVariables/Blizzard_Console.lua": {
+      "count": 1007,
+      "paths": [
+        "/Blizzard_Console_SavedVars/messageHistory/1/1",
+        "/Blizzard_Console_SavedVars/messageHistory/2/1",
+        "/Blizzard_Console_SavedVars/messageHistory/3/1",
+        "/Blizzard_Console_SavedVars/messageHistory/4/1",
+        "/Blizzard_Console_SavedVars/messageHistory/5/1",
+        "/Blizzard_Console_SavedVars/messageHistory/6/1",
+        "/Blizzard_Console_SavedVars/messageHistory/7/1",
+        "/Blizzard_Console_SavedVars/messageHistory/8/1",
+        "/Blizzard_Console_SavedVars/messageHistory/9/1",
+        "/Blizzard_Console_SavedVars/messageHistory/10/1",
+        "/Blizzard_Console_SavedVars/messageHistory/11/1",
+        "/Blizzard_Console_SavedVars/messageHistory/12/1",
+        "/Blizzard_Console_SavedVars/messageHistory/13/1",
+        "/Blizzard_Console_SavedVars/messageHistory/14/1",
+        "/Blizzard_Console_SavedVars/messageHistory/15/1",
+        "/Blizzard_Console_SavedVars/messageHistory/16/1",
+        "/Blizzard_Console_SavedVars/messageHistory/17/1",
+        "/Blizzard_Console_SavedVars/messageHistory/18/1",
+        "/Blizzard_Console_SavedVars/messageHistory/19/1",
+        "/Blizzard_Console_SavedVars/messageHistory/20/1",
+        "/Blizzard_Console_SavedVars/messageHistory/21/1",
+        "/Blizzard_Console_SavedVars/messageHistory/22/1",
+        "/Blizzard_Console_SavedVars/messageHistory/23/1",
+        "/Blizzard_Console_SavedVars/messageHistory/24/1",
+        "/Blizzard_Console_SavedVars/messageHistory/25/1"
+      ]
+    },
+    "SavedVariables/Blizzard_Console.lua.bak": {
+      "count": 966,
+      "paths": [
+        "/Blizzard_Console_SavedVars/messageHistory/1/1",
+        "/Blizzard_Console_SavedVars/messageHistory/2/1",
+        "/Blizzard_Console_SavedVars/messageHistory/3/1",
+        "/Blizzard_Console_SavedVars/messageHistory/4/1",
+        "/Blizzard_Console_SavedVars/messageHistory/5/1",
+        "/Blizzard_Console_SavedVars/messageHistory/6/1",
+        "/Blizzard_Console_SavedVars/messageHistory/7/1",
+        "/Blizzard_Console_SavedVars/messageHistory/8/1",
+        "/Blizzard_Console_SavedVars/messageHistory/9/1",
+        "/Blizzard_Console_SavedVars/messageHistory/10/1",
+        "/Blizzard_Console_SavedVars/messageHistory/11/1",
+        "/Blizzard_Console_SavedVars/messageHistory/12/1",
+        "/Blizzard_Console_SavedVars/messageHistory/13/1",
+        "/Blizzard_Console_SavedVars/messageHistory/14/1",
+        "/Blizzard_Console_SavedVars/messageHistory/15/1",
+        "/Blizzard_Console_SavedVars/messageHistory/16/1",
+        "/Blizzard_Console_SavedVars/messageHistory/17/1",
+        "/Blizzard_Console_SavedVars/messageHistory/18/1",
+        "/Blizzard_Console_SavedVars/messageHistory/19/1",
+        "/Blizzard_Console_SavedVars/messageHistory/20/1",
+        "/Blizzard_Console_SavedVars/messageHistory/21/1",
+        "/Blizzard_Console_SavedVars/messageHistory/22/1",
+        "/Blizzard_Console_SavedVars/messageHistory/23/1",
+        "/Blizzard_Console_SavedVars/messageHistory/24/1",
+        "/Blizzard_Console_SavedVars/messageHistory/25/1"
+      ]
+    }
+  },
+  "ownedFields": [
+    {
+      "id": "shared/extrafade/keepChatFrame",
+      "matches": true
+    },
+    {
+      "id": "shared/extrafade/hideFrameRate",
+      "matches": true
+    },
+    {
+      "id": "shared/consoleport/condition",
+      "matches": true
+    },
+    {
+      "id": "shared/extrafade/keepCustomFrames",
+      "matches": true
+    },
+    {
+      "id": "shared/immersion/strata",
+      "matches": true
+    },
+    {
+      "id": "shared/immersion/hideui",
+      "matches": true
+    },
+    {
+      "id": "shared/immersion/boxoffsetX",
+      "matches": true
+    },
+    {
+      "id": "shared/policy/windowsEnabled",
+      "matches": true
+    },
+    {
+      "id": "shared/consoleport/layout",
+      "matches": true
+    },
+    {
+      "id": "shared/extrafade/hideFrameRateCinematic",
+      "matches": true
+    },
+    {
+      "id": "shared/immersion/ttsenabled",
+      "matches": true
+    },
+    {
+      "id": "shared/immersion/ttsvolume",
+      "matches": true
+    },
+    {
+      "id": "shared/immersion/titleoffset",
+      "matches": true
+    },
+    {
+      "id": "shared/immersion/titleoffsetY",
+      "matches": true
+    },
+    {
+      "id": "shared/extrafade/keepPartyRaidFrame",
+      "matches": true
+    },
+    {
+      "id": "shared/immersion/flipshortcuts",
+      "matches": true
+    },
+    {
+      "id": "shared/policy/mapEnabled",
+      "matches": true
+    },
+    {
+      "id": "shared/extrafade/customFramesToKeep",
+      "matches": true
+    },
+    {
+      "id": "shared/immersion/disableprogression",
+      "matches": true
+    },
+    {
+      "id": "shared/immersion/boxpoint",
+      "matches": true
+    },
+    {
+      "id": "shared/immersion/titlescale",
+      "matches": true
+    },
+    {
+      "id": "shared/immersion/reset",
+      "matches": true
+    },
+    {
+      "id": "shared/immersion/movetalkinghead",
+      "matches": true
+    },
+    {
+      "id": "shared/policy/bagsEnabled",
+      "matches": true
+    },
+    {
+      "id": "shared/immersion/ttsvoice",
+      "matches": true
+    },
+    {
+      "id": "shared/immersion/padnext",
+      "matches": true
+    },
+    {
+      "id": "shared/immersion/boxlock",
+      "matches": true
+    },
+    {
+      "id": "shared/immersion/enablenumbers",
+      "matches": true
+    },
+    {
+      "id": "shared/immersion/immersivemode",
+      "matches": true
+    },
+    {
+      "id": "shared/immersion/accept",
+      "matches": true
+    },
+    {
+      "id": "shared/extrafade/keepTrackingBar",
+      "matches": true
+    },
+    {
+      "id": "shared/immersion/inspect",
+      "matches": true
+    },
+    {
+      "id": "shared/immersion/hidetooltip",
+      "matches": true
+    },
+    {
+      "id": "shared/extrafade/keepAlertFrames",
+      "matches": true
+    },
+    {
+      "id": "shared/immersion/ttsrate",
+      "matches": true
+    },
+    {
+      "id": "shared/immersion/hidetracker",
+      "matches": true
+    },
+    {
+      "id": "shared/immersion/hideminimap",
+      "matches": true
+    },
+    {
+      "id": "shared/extrafade/trackingBarAlpha",
+      "matches": true
+    },
+    {
+      "id": "shared/immersion/delaydivisor",
+      "matches": true
+    },
+    {
+      "id": "shared/immersion/elementscale",
+      "matches": true
+    },
+    {
+      "id": "shared/extrafade/hideNpcPortrait",
+      "matches": true
+    },
+    {
+      "id": "shared/immersion/anidivisor",
+      "matches": true
+    },
+    {
+      "id": "shared/immersion/boxoffsetY",
+      "matches": true
+    },
+    {
+      "id": "shared/immersion/titlelock",
+      "matches": true
+    },
+    {
+      "id": "shared/immersion/boxscale",
+      "matches": true
+    },
+    {
+      "id": "shared/policy/focusVisuals",
+      "matches": true
+    },
+    {
+      "id": "shared/immersion/padaccept",
+      "matches": true
+    },
+    {
+      "id": "shared/policy/blizzardVisibility",
+      "matches": true
+    },
+    {
+      "id": "shared/immersion/scale",
+      "matches": true
+    },
+    {
+      "id": "shared/policy/uiContextsEnabled",
+      "matches": true
+    },
+    {
+      "id": "shared/policy/modesEnabled",
+      "matches": true
+    },
+    {
+      "id": "shared/immersion/showprogressbar",
+      "matches": true
+    }
+  ],
+  "policy": {
+    "modesEnabled": true,
+    "windowsEnabled": true,
+    "blizzardVisibility": true,
+    "mapEnabled": true,
+    "bagsEnabled": true,
+    "uiContextsEnabled": true,
+    "focusVisuals": true
+  },
+  "characters": {
+    "Player-5-0E664CF8": {
+      "keys": [
+        "fieldBaselines",
+        "pendingChanges",
+        "controllerBindings",
+        "ringAccepted",
+        "rings",
+        "identity",
+        "lastInstallTransaction",
+        "baselineProvenance",
+        "requiredRevision",
+        "transactionIDs",
+        "runtimeBaseline",
+        "bindingAccepted",
+        "integrationStatus",
+        "ringOfferedRevision",
+        "appliedRevision"
+      ],
+      "appliedRevision": 12,
+      "pendingChanges": {
+        "1": {
+          "id": "mountIcons",
+          "reason": "CLICK LM_B2:LeftButton: current/declared icon unavailable or unsupported; distinct native action retained without a guessed dynamic mount icon"
+        }
+      },
+      "ringAccepted": true,
+      "bindingAccepted": true
+    }
+  },
+  "transactions": {
+    "1": {
+      "status": "committed",
+      "reloadVerification": {
+        "failures": {}
+      },
+      "steps": [
+        {
+          "id": "shared/dynamiccam/1-profile",
+          "scope": "dynamiccam",
+          "path": {
+            "1": "profile",
+            "2": "Console Port - Forever (Managed)"
+          }
+        },
+        {
+          "id": "shared/dynamiccam/2-selected",
+          "scope": "dynamiccam",
+          "path": {
+            "1": "selected"
+          }
+        },
+        {
+          "id": "shared/editmode",
+          "scope": "editmode",
+          "path": {
+            "1": "state"
+          }
+        },
+        {
+          "id": "shared/policy/bagsEnabled",
+          "scope": "policy",
+          "path": {
+            "1": "bagsEnabled"
+          }
+        },
+        {
+          "id": "shared/policy/blizzardVisibility",
+          "scope": "policy",
+          "path": {
+            "1": "blizzardVisibility"
+          }
+        },
+        {
+          "id": "shared/policy/focusVisuals",
+          "scope": "policy",
+          "path": {
+            "1": "focusVisuals"
+          }
+        },
+        {
+          "id": "shared/policy/mapEnabled",
+          "scope": "policy",
+          "path": {
+            "1": "mapEnabled"
+          }
+        },
+        {
+          "id": "shared/policy/uiContextsEnabled",
+          "scope": "policy",
+          "path": {
+            "1": "uiContextsEnabled"
+          }
+        },
+        {
+          "id": "shared/policy/windowsEnabled",
+          "scope": "policy",
+          "path": {
+            "1": "windowsEnabled"
+          }
+        }
+      ]
+    },
+    "2": {
+      "status": "committed",
+      "reloadVerification": {
+        "failures": {}
+      },
+      "steps": [
+        {
+          "id": "Player-5-0E664CF8/rings",
+          "scope": "rings",
+          "path": {
+            "1": "state"
+          }
+        },
+        {
+          "id": "shared/consoleport/layout",
+          "scope": "consoleport",
+          "path": {
+            "1": "layout"
+          }
+        },
+        {
+          "id": "shared/policy/modesEnabled",
+          "scope": "policy",
+          "path": {
+            "1": "modesEnabled"
+          }
+        }
+      ]
+    }
+  },
+  "savedPlaterErrors": {},
+  "previousRuntimeDiagnosticsPersisted": false,
+  "conclusions": [
+    "No profile reset, managed-field mismatch, lost manual ring or controller arrangement was found.",
+    "Config.wtf changes only gameTip; character config changes only saved camera distance/pitch. Native layout-local frame records reorder without geometry changes.",
+    "Supplemental access incorrectly treated an editable skyriding bonus page as temporary overflow and retained an empty shown cursor parent. Candidate.3 excludes bonus-only pages and hides the empty parent.",
+    "Runtime feature diagnostics were memory-only; candidate.3 retains bounded per-GUID last-session evidence.",
+    "Other exact gesture/selector/icon gates remain independent; missing saved errors cannot certify native engine behavior."
+  ]
+}

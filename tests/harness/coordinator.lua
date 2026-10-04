@@ -38,6 +38,18 @@ assert(co:Accept({["A:x"]="accept"}) and values.x==3)
 assert(co.lastJournal.status=="restored")
 for i=1,100 do Addon.Diagnostics:Log("test",i) end
 assert(#Addon.Diagnostics.entries==80)
+Addon.record={} Addon.VERSION='test-candidate' Addon.CONFIG_REVISION=12
+Addon.Diagnostics:SetFeature('temporaryAccess','pending','real overflow requires native acceptance')
+local saved=Addon.record.lastRuntimeDiagnostics
+assert(saved.codeVersion=='test-candidate' and saved.configRevision==12)
+assert(#saved.entries==80 and saved.features.temporaryAccess.status=='pending')
+Addon.Diagnostics.features.temporaryAccess.reason='changed'
+assert(saved.features.temporaryAccess.reason=='real overflow requires native acceptance','diagnostics aliased live tables')
+Addon.record={}
+Addon.Diagnostics:Log('test','new GUID session')
+assert(Addon.record.lastRuntimeDiagnostics~=saved and #Addon.record.lastRuntimeDiagnostics.entries==80)
+assert(saved.entries[80].message~='new GUID session','diagnostics rewrote previous saved snapshot')
+Addon.record=nil
 
 -- Binding selection and key changes carry their own compensating subjournal.
 for failAt=1,5 do

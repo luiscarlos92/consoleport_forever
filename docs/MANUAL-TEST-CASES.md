@@ -1,10 +1,12 @@
-# Retail test suite — candidate.3, revision 12
+# Retail tests and results — candidate.3, revision 12
 
 Latest read-only audit: [third WTF report](WTF-AUDIT-2026-10-04-THIRD.md). All 296 files/42 links are intact, 257 Lua/fallback files parse, 52 owned-field checks match and the new runtime log has no entries. Your basic skyriding retest is recorded as successful; the full action/held/combat test is still separate. Test 35 addresses the remaining BagsBar parent/visibility question.
 
 Start out of combat on the current Paladin, with unchanged addon versions and your usual controller. Use a training dummy for damaging actions. Before tests that deliberately alter a binding, ring, frame or setting, note its original value and restore it afterward. Do not reload halfway through a held-input test; normal logout at the end of each batch gives the next read-only audit a complete save.
 
-Use **PASS** only after every applicable step and expected result agrees. Use **PARTIAL** for only some completed steps, **FAIL** for an observed mismatch, and **UNAVAILABLE** when a required quest/vehicle/class/widget does not exist. An offline-verified diagnostic means setup/source checks, not a hardware pass. If a test fails, record its ID, exact step, expected versus actual behavior, class/spec and `/cpf diagnose`; stop that case and continue independent cases. Record results in [the results sheet](RETAIL-TEST-RESULTS.md).
+Use **PASS** only after every applicable step and expected result agrees. Use **PARTIAL** for only some completed steps, **FAIL** for an observed mismatch, and **UNAVAILABLE** when a required quest/vehicle/class/widget does not exist. An offline-verified diagnostic means setup/source checks, not a hardware pass. If a test fails, record its ID, exact step, expected versus actual behavior, class/spec and `/cpf diagnose`; stop that case and continue independent cases. Record the result and notes directly beneath each case in this document. For a failure, include the step letter and expected versus actual behavior.
+
+Installed code source: `c004591fb1372322f33f9bf603a8546e1d039c8e`. Each case below includes its steps, expected result and current recorded outcome.
 
 ## Current controls, from the saved bindings
 
@@ -37,6 +39,10 @@ Paste this outside combat. It has no gameplay or saved-setting action. Circle sh
 
 **Verify:** Configuration revision remains 12. Code-only fixes do not repeat accepted reviews. Existing anchors, sizes and actions remain; no old automatic preset replaces your layout. Any genuinely applied review retains its journal.
 
+**Result:** NOT RUN
+
+**Notes / failing step:** —
+
 ### 02 — persisted review
 
 - **A.** Run `/cpf status` and `/cpf diagnose` after reload.
@@ -45,6 +51,10 @@ Paste this outside combat. It has no gameplay or saved-setting action. Circle sh
 
 **Verify:** No repeated review of the same accepted fields. The old missing keyboard exit route and ring-version errors are absent. The old Edit Mode reload-verification failure clears if you kept the same managed layout. Exact gesture/icon gates may remain pending.
 
+**Result:** NOT RUN
+
+**Notes / failing step:** —
+
 ### 03 — ordinary banks
 
 - **A.** Note one assigned action in Base D-pad, L2, R2 and L2R2.
@@ -52,6 +62,10 @@ Paste this outside combat. It has no gameplay or saved-setting action. Circle sh
 - **C.** Release both triggers.
 
 **Verify:** Every action matches its displayed icon and your original slot; no new spell is inserted. Base returns to its original controls. Empty buttons stay inert.
+
+**Result:** NOT RUN
+
+**Notes / failing step:** —
 
 ### 04 — both mounts
 
@@ -62,6 +76,10 @@ Paste this outside combat. It has no gameplay or saved-setting action. Circle sh
 
 **Verify:** The two original LiteMount actions/rules remain distinct and usable. Chords are intentionally unchanged. LM_B1 retains its approved icon; an unspecified LM_B2 icon does not make its action fail.
 
+**Result:** NOT RUN
+
+**Notes / failing step:** —
+
 ### 05 — skyriding
 
 - **A.** Mount using your normal chord with skyriding selected.
@@ -71,6 +89,10 @@ Paste this outside combat. It has no gameplay or saved-setting action. Circle sh
 
 **Verify:** Only L2R2 receives actual flight-page actions. Base D-pad/L2/R2 retain ordinary actions and remain visible. No separate full replacement bank appears. Flight actions restore to your ordinary bottom actions after the temporary page ends; landing alone need not end an engine page.
 
+**Result:** PARTIAL
+
+**Notes / failing step:** User: skyriding seems okay after candidate.3; full case not yet recorded.
+
 ### 06 — steady flight
 
 - **A.** Switch to steady flight through the native game control.
@@ -78,6 +100,10 @@ Paste this outside combat. It has no gameplay or saved-setting action. Circle sh
 - **C.** Land, dismount and switch back.
 
 **Verify:** No special-bank takeover merely because you are mounted/flying; replacement occurs only if the engine actually supplies a special action page. Mount rule selection remains LiteMount-owned.
+
+**Result:** NOT RUN
+
+**Notes / failing step:** —
 
 ### 07 — visual/skin regression
 
@@ -87,6 +113,10 @@ Paste this outside combat. It has no gameplay or saved-setting action. Circle sh
 
 **Verify:** Exactly the face-button art/masks retain the intended circular appearance; D-pad remains as before. Icons, cooldowns, empty cells, ranges/usability and active/inactive scaling remain coherent. No doubled prompts/masks or reset to square face art. For the Paladin grey-icon symptom record the spell, resources, target, range, spec and displayed/resolved action.
 
+**Result:** NOT RUN
+
+**Notes / failing step:** —
+
 ### 08 — quest override
 
 - **A.** Start a quest granting temporary action buttons.
@@ -95,6 +125,10 @@ Paste this outside combat. It has no gameplay or saved-setting action. Circle sh
 
 **Verify:** Temporary actions replace only L2R2. Base/L2/R2 remain ordinary and visible. Exit restores bottom-bank contents; no quest ability is copied permanently into a spell slot.
 
+**Result:** NOT RUN
+
+**Notes / failing step:** —
+
 ### 09 — vehicle and exit
 
 - **A.** Enter a vehicle with an exit route.
@@ -102,6 +136,10 @@ Paste this outside combat. It has no gameplay or saved-setting action. Circle sh
 - **C.** Use the supplemental Exit control with mouse or interface cursor if you have no keyboard exit binding.
 
 **Verify:** Exit remains reachable even with no VEHICLEEXIT keyboard key. It leaves the vehicle once and restores ordinary routing. Exit is absent when the engine says you cannot exit.
+
+**Result:** NOT RUN
+
+**Notes / failing step:** —
 
 ### 10 — overflow
 
@@ -112,6 +150,10 @@ Paste this outside combat. It has no gameplay or saved-setting action. Circle sh
 
 **Verify:** Only real temporary overflow is shown; bonus-only skyriding produces no numbered side bar. No new paging/ring/keyboard shortcuts. Controls and their cursor parent disappear outside eligible modes after a held press releases. A real >8 case still needs separate acceptance; if none is available, leave that portion UNAVAILABLE.
 
+**Result:** NOT RUN
+
+**Notes / failing step:** —
+
 ### 11 — held transition
 
 - **A.** Hold a primary action/empowered input.
@@ -119,6 +161,10 @@ Paste this outside combat. It has no gameplay or saved-setting action. Circle sh
 - **C.** Release the original input. Repeat with a supplemental overflow control if available.
 
 **Verify:** The release belongs to the original press. It does not execute a new slot selected by the intervening mode/modifier change, cast twice or leave an action held.
+
+**Result:** NOT RUN
+
+**Notes / failing step:** —
 
 ### 12 — forms/stealth
 
@@ -128,6 +174,10 @@ Paste this outside combat. It has no gameplay or saved-setting action. Circle sh
 
 **Verify:** Ordinary class bonus states do not replace whole banks. A real vehicle/skyriding page still replaces L2R2 and later restores ordinary mapping. Engine spell overrides/usability and intentionally conditional macros may still change their own icons/effects.
 
+**Result:** NOT RUN
+
+**Notes / failing step:** —
+
 ### 13 — Edit Mode
 
 - **A.** Open Blizzard Edit Mode and check the managed layout is selected.
@@ -135,6 +185,10 @@ Paste this outside combat. It has no gameplay or saved-setting action. Circle sh
 - **C.** Repeat with Save; close and reload.
 
 **Verify:** Native editor handles work; hidden native strips/side bars give way during editing and return to intended visibility on exit. Revert restores the old position; Save retains your deliberate edit. No taint/block/error or silent switch to another profile. A genuine saved manual change can require later conflict review.
+
+**Result:** NOT RUN
+
+**Notes / failing step:** —
 
 ### 14 — shared/personal persistence
 
@@ -144,6 +198,10 @@ Paste this outside combat. It has no gameplay or saved-setting action. Circle sh
 
 **Verify:** A/B retain their own personal cells and manual rings, including migration/review state. The unmodified four face controls remain shared. Neither character receives the other's spell/ring contents just because their disk folders share a template.
 
+**Result:** NOT RUN
+
+**Notes / failing step:** —
+
 ### 15 — native spec bars
 
 - **A.** On one character, note its controller arrangement and native action slots.
@@ -151,6 +209,10 @@ Paste this outside combat. It has no gameplay or saved-setting action. Circle sh
 - **C.** Switch back.
 
 **Verify:** Controller commands/manual-ring arrangement remain character-owned. Native spell/action slot contents follow the game's existing spec/loadout behavior. No per-spec companion profile is invented or another character's contents appear.
+
+**Result:** NOT RUN
+
+**Notes / failing step:** —
 
 ### 16 — keyboard preservation
 
@@ -160,6 +222,10 @@ Paste this outside combat. It has no gameplay or saved-setting action. Circle sh
 
 **Verify:** Keyboard mappings/text entry remain usable; controller context keys do not cause hidden gameplay actions while typing. No global mount/vehicle keyboard shortcut was assigned by the hotfix.
 
+**Result:** NOT RUN
+
+**Notes / failing step:** —
+
 ### 17 — manual rings
 
 - **A.** Open the utility ring with L2+forward-menu and your existing class ring with R2+forward-menu.
@@ -167,6 +233,10 @@ Paste this outside combat. It has no gameplay or saved-setting action. Circle sh
 - **C.** Reload, reopen and then repeat test 14.
 
 **Verify:** Existing native opener/gesture works, entries/order remain, and available native quest/zone entries remain automatic. No surprise activation of the new learned-selector/pet gesture.
+
+**Result:** NOT RUN
+
+**Notes / failing step:** —
 
 ### 18 — windows/tabs
 
@@ -177,6 +247,10 @@ Paste this outside combat. It has no gameplay or saved-setting action. Circle sh
 
 **Verify:** Window-focus triggers select a real visible window. Shoulders change supported native tabs; absent/disabled tabs stay inert. No gameplay spell fires underneath a focused window. Ordinary controls return after close.
 
+**Result:** NOT RUN
+
+**Notes / failing step:** —
+
 ### 19 — scroll/tooltips
 
 - **A.** Open Achievements with keyboard Y and choose a category with enough entries to show a vertical scrollbar. Put interface-cursor focus on its scrollbar thumb or arrow, rather than a list entry. If that widget is not supported, mark this scroll portion UNAVAILABLE and record the window/widget; do not assume every list is supported.
@@ -186,6 +260,10 @@ Paste this outside combat. It has no gameplay or saved-setting action. Circle sh
 
 **Verify:** Scroll starts only after neutral qualification, stays within bounds and stops on release/focus loss. R3 refreshes/shows the focused tooltip when supported. Ordinary camera/movement returns. Unsupported widgets retain native behavior rather than being falsely marked supported.
 
+**Result:** NOT RUN
+
+**Notes / failing step:** —
+
 ### 20 — focus visuals
 
 - **A.** Note gameplay icons/highlights with UI closed.
@@ -193,6 +271,10 @@ Paste this outside combat. It has no gameplay or saved-setting action. Circle sh
 - **C.** Open a nested popup and close it; finally close UI.
 
 **Verify:** Gameplay feedback is suppressed while the approved UI owner holds focus, then restored. Ring feedback and item/window controls remain visible. No permanently blank icons or hidden gameplay cast through a focused window.
+
+**Result:** NOT RUN
+
+**Notes / failing step:** —
 
 ### 21 — popups
 
@@ -202,6 +284,10 @@ Paste this outside combat. It has no gameplay or saved-setting action. Circle sh
 - **D.** If a real four-button review appears naturally, check its displayed Cross/Circle/Square/Triangle prompts separately; otherwise mark that portion UNAVAILABLE.
 
 **Verify:** Circle cancels once and prints CPF Cancel. Cross dismisses OK without printing CPF Cancel. Neither press activates gameplay underneath the popup. Native button 1/2/3/4 and extra-button routes are tested only where those controls actually exist.
+
+**Result:** NOT RUN
+
+**Notes / failing step:** —
 
 ### 22 — quantity
 
@@ -213,6 +299,10 @@ Paste this outside combat. It has no gameplay or saved-setting action. Circle sh
 
 **Verify:** Quantity never goes below 1 or above the native maximum. Cross splits exactly the selected quantity once. Circle leaves the stack unchanged. The modal retains priority over parent focus/tab controls; ordinary bag input returns on close.
 
+**Result:** NOT RUN
+
+**Notes / failing step:** —
+
 ### 23 — bag item actions
 
 - **A.** Open Bags with L2+Back and focus a harmless, unlocked item.
@@ -223,6 +313,10 @@ Paste this outside combat. It has no gameplay or saved-setting action. Circle sh
 
 **Verify:** Triangle opens the eligible native item menu. Cross acts on the focused item. First Circle clears the carried item while keeping Bags open; second Circle closes Bags. Square performs the native right-click/use once on that item; its stack changes once if consumed. Unsupported, empty or locked nodes stay inert.
 
+**Result:** NOT RUN
+
+**Notes / failing step:** —
+
 ### 24 — bags with merchant/bank
 
 - **A.** Visit a vendor or bank and focus a harmless item.
@@ -230,6 +324,10 @@ Paste this outside combat. It has no gameplay or saved-setting action. Circle sh
 - **C.** Close/reopen the bag or change focus while a button is held.
 
 **Verify:** Native merchant/bank priority remains. The prior item is not sold/used after its slot/identity changes, and an obsolete release does not activate a new item. Protected repair/equip/sell semantics remain the game's native operations.
+
+**Result:** NOT RUN
+
+**Notes / failing step:** —
 
 ### 25 — map pan/zoom
 
@@ -241,6 +339,10 @@ Paste this outside combat. It has no gameplay or saved-setting action. Circle sh
 
 **Verify:** Pan/zoom obey native map bounds and stop after release. Search/list focus suspends canvas input. Zoom respects the native smooth/full preference. Movement, camera and autorun return with no stuck vector. A keyboard setup does not count as a controller-opener pass.
 
+**Result:** NOT RUN
+
+**Notes / failing step:** —
+
 ### 26 — map waypoint/Back
 
 - **A.** On an eligible map, place the controller cursor at a known location and press L3.
@@ -249,6 +351,10 @@ Paste this outside combat. It has no gameplay or saved-setting action. Circle sh
 
 **Verify:** Waypoint appears at the cursor's map location and can be removed through the current pin. Native prohibited maps remain prohibited. Back follows native minimize-before-close where applicable; it does not clear a gameplay target underneath the map.
 
+**Result:** NOT RUN
+
+**Notes / failing step:** —
+
 ### 27 — quest details
 
 - **A.** Open an eligible quest detail on the map.
@@ -256,6 +362,10 @@ Paste this outside combat. It has no gameplay or saved-setting action. Circle sh
 - **C.** Use Back to leave details, then close map.
 
 **Verify:** Native reward/face routes remain; Back returns through native quest detail/list/map behavior. No accidental waypoint or gameplay action while quest details own input.
+
+**Result:** NOT RUN
+
+**Notes / failing step:** —
 
 ### 28 — preserved commands
 
@@ -267,6 +377,10 @@ Paste this outside combat. It has no gameplay or saved-setting action. Circle sh
 
 **Verify:** Each existing shortcut invokes its saved native command and returns after contextual UI ownership ends. No new command is assigned to an unbound chord. Extra-action access remains separate from whole-bank replacement. Missing extra-action opportunity is UNAVAILABLE, not PASS.
 
+**Result:** NOT RUN
+
+**Notes / failing step:** —
+
 ### 29 — DynamicCam
 
 - **A.** Open its native options and note the managed profile selected for this character.
@@ -274,6 +388,10 @@ Paste this outside combat. It has no gameplay or saved-setting action. Circle sh
 - **C.** Reload and revisit.
 
 **Verify:** Original profile still exists; the managed copy retains your previous situations/scripts and camera preferences. No second independent camera/fade controller or surprise default reset. Manual managed edits remain after reload.
+
+**Result:** NOT RUN
+
+**Notes / failing step:** —
 
 ### 30 — Immersion/ExtraFade
 
@@ -283,6 +401,10 @@ Paste this outside combat. It has no gameplay or saved-setting action. Circle sh
 
 **Verify:** Dialogue controls and all retained offsets/settings remain. Fade restoration follows native Immersion/ExtraFade coordination; chat/tracker visibility follows your approved existing settings. No UI remains stuck faded after closing.
 
+**Result:** NOT RUN
+
+**Notes / failing step:** —
+
 ### 31 — update/conflicts
 
 - **A.** After the installation is stable, deliberately change one supported managed setting through its normal addon editor.
@@ -290,6 +412,10 @@ Paste this outside combat. It has no gameplay or saved-setting action. Circle sh
 - **C.** If a conflict is offered, choose Keep mine and reload.
 
 **Verify:** A newer owned edit is retained/reviewed rather than silently overwritten. Unchanged/default fields are no-ops. Do not force a conflict to appear if there is no newly proposed default; that part remains UNAVAILABLE.
+
+**Result:** NOT RUN
+
+**Notes / failing step:** —
 
 ### 32 — runtime restore (last)
 
@@ -299,6 +425,10 @@ Paste this outside combat. It has no gameplay or saved-setting action. Circle sh
 
 **Verify:** Cancel changes nothing. An applied restore preserves newer conflicting edits, restores only reviewed fields and retains its own journal. Restoring the mode-install journal can disable the new behavior, so run this last and reapply only through a later review. Disk disaster restore is a separate operation and is not part of this controller test.
 
+**Result:** NOT RUN
+
+**Notes / failing step:** —
+
 ### 33 — reconnect/focus/combat
 
 - **A.** Open a context, hold a control and disconnect/reconnect the controller or change focus.
@@ -306,6 +436,10 @@ Paste this outside combat. It has no gameplay or saved-setting action. Circle sh
 - **C.** Repeat a low-risk temporary-page transition in combat.
 
 **Verify:** No stuck modifiers/actions/vectors, no delayed release cast and no blocked protected mutation/taint. Configuration application waits until out of combat/Edit Mode.
+
+**Result:** NOT RUN
+
+**Notes / failing step:** —
 
 ### 34 — empty supplemental owner
 
@@ -315,6 +449,10 @@ Paste this outside combat. It has no gameplay or saved-setting action. Circle sh
 
 **Verify:** No invisible empty supplemental bar becomes a focus destination or leaves gameplay feedback suppressed. The next read-only WTF audit should contain bounded candidate.3 runtime diagnostics; those recorded statuses remain evidence, not a hardware pass certificate.
 
+**Result:** NOT RUN
+
+**Notes / failing step:** —
+
 ### 35 — native bag/micro strip ownership
 
 - **A.** Out of combat, close all ordinary windows and inspect the native bag/micro-menu strip and five native side bars; distinguish these from the four ConsolePort banks and BetterBags window.
@@ -322,6 +460,10 @@ Paste this outside combat. It has no gameplay or saved-setting action. Circle sh
 - **C.** Reinspect ordinary play, reload once and inspect again; run /cpf diagnose.
 
 **Verify:** The approved native strips/side bars stay hidden in ordinary play and return to the intended state after Edit Mode/reload. Any editing handle actually offered by the game remains usable. If no bag-strip handle is offered, mark that edit-access portion UNAVAILABLE. Record whether BagsBar ownership still reports pending. An unwanted visible strip, unusable offered handle or failed restoration is FAIL; the conservative parent warning alone is not proof of a visual failure.
+
+**Result:** NOT RUN
+
+**Notes / failing step:** —
 
 ## Known gates — observe baseline only
 

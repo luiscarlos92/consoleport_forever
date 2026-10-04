@@ -13,7 +13,7 @@ local function capture(api,expectedGUID)
     if type(api.UnitGUID)~='function' then return nil,'current player identity unavailable' end
     local guid=api.UnitGUID('player')
     if opaque(api,guid) or type(guid)~='string' or guid=='' or guid~=expectedGUID then return nil,'discovery belongs to another or unavailable GUID' end
-    local result={guid=guid,forms={},pet={actions={}},pending={}}
+    local result={guid=guid,forms={},formsReady=false,pet={actions={},ready=false},pending={}}
     if type(api.GetNumShapeshiftForms)~='function' or type(api.GetShapeshiftFormInfo)~='function' then
         result.pending[#result.pending+1]='native stance discovery unavailable'
     else
@@ -21,14 +21,16 @@ local function capture(api,expectedGUID)
         if opaque(api,count) or type(count)~='number' or count<0 or count>64 or count%1~=0 then
             result.pending[#result.pending+1]='native stance count opaque or invalid'
         else
+            result.formsReady=true
             for slot=1,count do
                 local texture,active,castable,spellID=api.GetShapeshiftFormInfo(slot)
                 if opaque(api,texture,active,castable,spellID) then
+                    result.formsReady=false
                     result.pending[#result.pending+1]='native stance '..slot..' opaque'
                 elseif type(spellID)=='number' and spellID>0 and spellID%1==0 then
                     result.forms[#result.forms+1]={type='spell',spell=spellID,nativeStanceSlot=slot,
                         active=not not active,castable=not not castable}
-                else result.pending[#result.pending+1]='native stance '..slot..' has no qualified spell ID' end
+                else result.formsReady=false result.pending[#result.pending+1]='native stance '..slot..' has no qualified spell ID' end
             end
         end
     end
@@ -43,10 +45,12 @@ local function capture(api,expectedGUID)
                 result.pending[#result.pending+1]='pet commands lack a qualified current pet identity'
             else
                 result.pet.guid=petGUID
+                result.pet.ready=true
                 -- Blizzard's current PetActionBar declares ten native slots.
                 for slot=1,10 do
                     local name,texture,token,active,autoAllowed,autoEnabled,spellID=api.GetPetActionInfo(slot)
                     if opaque(api,name,texture,token,active,autoAllowed,autoEnabled,spellID) then
+                        result.pet.ready=false
                         result.pending[#result.pending+1]='native pet slot '..slot..' opaque'
                     elseif type(name)=='string' and name~='' then
                         result.pet.actions[#result.pet.actions+1]={type='pet',action=slot,name=name,
@@ -55,6 +59,7 @@ local function capture(api,expectedGUID)
                     end
                 end
             end
+        else result.pet.ready=true
         end
     end
     local endGUID,endPetGUID=api.UnitGUID('player'),result.pet.guid and api.UnitGUID('pet')

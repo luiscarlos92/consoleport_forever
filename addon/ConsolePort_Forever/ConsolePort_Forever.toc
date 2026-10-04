@@ -18,6 +18,7 @@ Reference.lua
 BindingPolicy.lua
 ModePolicy.lua
 Rings\Discovery.lua
+Rings\Selectors.lua
 SecureModes.lua
 UI\Ownership.lua
 UI\InputBridge.lua

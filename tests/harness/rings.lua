@@ -92,6 +92,19 @@ local first=install(a,'A')
 assert(container.Data==dataIdentity and container.Data[1]==utilityIdentity)
 assert(Core.Equal(container.Data[1][0],metadataIdentity),'native metadata rebuild lost manual values')
 assert(account.shared.ringProjectionGUID=='A' and account.characters.A.ringAccepted)
+local ringData=container.Data
+local archiveBefore=Core.Copy(account.characters.A.rings)
+local prepared=assert(Addon.RingSelectors.Build({guid='A',formsReady=true,forms={{spell=101},{spell=102}},
+    pet={ready=true,guid='Pet-A',actions={{action=1},{action=4}}}},'A',container,'Auras',a:read({'state'}).sets))
+assert(not prepared.active and prepared.pet.bindingPreview=='CLICK NativeUtility:CPFPet')
+-- Only this isolated native-source simulation installs the inactive draft in
+-- its disposable frame data to check current native kind/action compilation.
+container.Data=Core.Copy(ringData)
+container.Data.Auras=prepared.class.set container.Data.CPFPet=prepared.pet.set
+container:RefreshAll()
+assert(container.compiled.CPFPet.actions[1].kind=='pet' and container.compiled.CPFPet.actions[2].action==4)
+assert(Core.Equal(account.characters.A.rings,archiveBefore),'selector preparation changed the GUID archive')
+container.Data=ringData container:RefreshAll()
 -- Native automatic quest/zone behavior stays on the real Container methods.
 assert(container:AssignAction({type='spell',spell=101,questID=900}))
 assert(#container.Data[1]==3 and container.Data[1][3].autoassigned)

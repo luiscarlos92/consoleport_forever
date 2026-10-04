@@ -25,6 +25,21 @@ function Proof:Text(api)
         for _,pet in ipairs(discovered.pet.actions) do lines[#lines+1]='Native pet slot '..pet.action..': '..pet.name..' autocast allowed='..tostring(pet.autoCastAllowed)..' enabled='..tostring(pet.autoCastEnabled) end
         for _,reason in ipairs(discovered.pending) do lines[#lines+1]='Discovery pending: '..reason end
     else lines[#lines+1]='Discovery pending: '..tostring(discoveryReason) end
+    local rings=Addon.adapters and Addon.adapters.rings
+    if discovered and rings and rings:Probe() then
+        local preview=Addon.RingSelectors.Build(discovered,Addon.guid,rings.rings,rings.api.classSet,
+            Addon.record.rings.sets or {},Addon.record.rings.preparedSelectors)
+        if preview then
+            lines[#lines+1]='Selector preparation is inactive: '..preview.gate
+            for _,kind in ipairs({'class','pet'}) do
+                local prepared=preview[kind]
+                if prepared then
+                    lines[#lines+1]=kind..' prepared set '..tostring(prepared.id)..' ('..#prepared.set..' entries); unopened binding preview '..prepared.key..' -> '..prepared.bindingPreview
+                end
+            end
+            for _,reason in ipairs(preview.pending) do lines[#lines+1]='Selector pending: '..reason end
+        end
+    end
     local context=Addon.UIContexts
     local input=context and context.input
     if input then

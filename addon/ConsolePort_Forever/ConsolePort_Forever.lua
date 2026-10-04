@@ -113,6 +113,8 @@ function Addon:RefreshRings()
     local ready,probeReason=adapter:Probe()
     if not ready then self.Diagnostics:SetFeature('rings','pending',probeReason) return end
     if not self.record.ringAccepted then self.Diagnostics:SetFeature('rings','review-required','GUID ring projection has not been accepted; baseline retained') return end
+    local preparedBefore=self.db.shared.ringProjectionGUID==self.guid
+    if preparedBefore then self:PrepareSelectors(adapter) end
     if not CanWrite() then return end
     if adapter.rings:IsShown() then self.Diagnostics:SetFeature('rings','pending','ring projection waits for the current native wheel to close') return end
     adapter:CaptureEdits()
@@ -141,6 +143,18 @@ function Addon:RefreshRings()
         end)
     end
     self.Diagnostics:SetFeature('rings','offline-verified','GUID personal rings; native utility extras preserved; new selector gesture remains pending')
+    if not preparedBefore then self:PrepareSelectors(adapter) end
+end
+function Addon:PrepareSelectors(adapter)
+    local snapshot,reason=self.RingDiscovery.Capture(_G,self.guid)
+    if not snapshot then self.selectorPreview=nil self.Diagnostics:SetFeature('learnedSelectors','pending',reason) return end
+    local preview,error=self.RingSelectors.Build(snapshot,self.guid,adapter.rings,adapter.api.classSet,
+        self.record.rings.sets or {},self.record.rings.preparedSelectors)
+    self.selectorPreview=preview
+    if preview then
+        self.record.rings.preparedSelectors=self.Core.Copy(preview)
+        self.Diagnostics:SetFeature('learnedSelectors','pending',preview.gate..' '..table.concat(preview.pending,'; '))
+    else self.Diagnostics:SetFeature('learnedSelectors','pending',error) end
 end
 function Addon:VerifyReload()
     local id=self.record.pendingReload

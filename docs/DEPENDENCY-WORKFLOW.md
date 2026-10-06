@@ -87,4 +87,22 @@ Exact final product/tooling hashes match the retained receipts:
 
 The WoW workspace root also has an `AGENTS.md` pointing to the Git workflow, so
 later chats starting in the gaming folder encounter the same standing rule.
-Deployment evidence will be recorded after execution.
+## Verified candidate.5 deployment
+
+Completed **October 6, 2026, 19:34:44 America/Toronto**, from pushed/tested
+source `eba070c92b1a75f6a24da1a8a1e56a6be2fcc107`. The scoped payload is
+468,619 bytes and contains only ConsolePort_Forever. No dependency package was
+downloaded or copied. Installer execution took approximately 41 seconds,
+including backup, staging and verification.
+
+- Artifact: `dist/2.0.0-candidate.5/ConsolePort-Forever-Update-companion-only.zip`.
+- SHA-256: `a8717515da5752b4a57dbc6f4d26750ab6d45e2f3ef9a8b347f43d18bd80a462`.
+- Backup: `C:\Users\luisr\WoW-Backups\ConsolePort-Forever\20261006T233402Z-755ac9a981fa`.
+- Parked previous Forever: `C:\Users\luisr\OneDrive\Documents\03 Gaming\World of Warcraft\_retail_\Interface\.cpf-companion-stage-20261006T233402Z-755ac9a981fa\previous`.
+- Receipt: `evidence/delivery/live-install-candidate5.json`.
+
+Preview, backup verification, staging and installation readback passed. A
+separate readback compared all 44 installed Forever files to the verified ZIP;
+all 3,693 vendor files and all 296 WTF files/42 links match the pre-deployment
+snapshot. No game was launched. Actual Darkmoon and Brewery controller testing
+remains the user's next step.

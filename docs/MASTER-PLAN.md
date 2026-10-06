@@ -2,6 +2,16 @@
 
 ## Current authority — October 6, 2026
 
+Candidate.5 deployment completed at **19:34:44 America/Toronto**, from pushed
+source `eba070c92b1a75f6a24da1a8a1e56a6be2fcc107`. All 18 stable dependencies
+were freshly checked; no updates existed, so only Forever was copied. All 44
+installed files match the verified small update. Independent readback confirms
+3,693 vendor files, 296 WTF files and 42 links unchanged. All 35 runtime/source
+suites and 29 tooling tests pass. Backup and receipt are retained in
+`docs/DEPENDENCY-WORKFLOW.md` and `evidence/delivery/live-install-candidate5.json`.
+The preceding no-deploy instruction was honored until the user closed WoW and
+authorized this installation. Actual Darkmoon/Brewery retesting remains pending.
+
 Newest user authorization: WoW is closed; deploy candidate.5 after verification.
 Before each future work session check every official stable Retail dependency,
 download/update only changed packages in the Git checkout, review/test/fix

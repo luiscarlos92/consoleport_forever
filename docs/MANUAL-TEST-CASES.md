@@ -1,4 +1,10 @@
-# Retail tests and results — installed candidate.4, revision 12
+# Retail tests and results — installed candidate.5, revision 12
+
+Candidate.5 is installed as of October 6, 19:34:44 Toronto, after the user closed
+WoW and authorized deployment. All dependencies were checked and already
+current; only Forever changed. Retest the October 6 Bags/tooltips/Darkmoon
+failures, then the separate Brewery extra-action button. The earlier observations
+below describe candidate.4 and are retained as history.
 
 October 6 live feedback: mounts/skyriding, normal combat, map zoom and NPC dialogue look okay; Square buys vendor items and opens containers. Backpack hides all action icons; merchant/controller Open hints need improvement; Rinling and Finlay show supplemental artifacts and empty banks. Candidate.5 fixes are being prepared **without deployment** while the user keeps WoW open. See [current feedback/fixes](DARKMOON-FIXES-2026-10-06.md). These broad observations do not certify every old test-card step.
 

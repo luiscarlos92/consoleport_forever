@@ -1,6 +1,10 @@
 # Darkmoon feedback and development fixes — October 6, 2026
 
-**Development only; do not deploy.** The user is testing installed candidate.4 with ConsolePort 3.3.9 and explicitly requires WoW to remain open. Candidate.5 retains StoreSchema 3 and configuration revision 12. No live game files, saved configuration or dependency source files are changed by this work.
+**Candidate.5 is now installed.** Initial work remained development-only while
+the user tested candidate.4 with ConsolePort 3.3.9. The user then closed WoW and
+authorized deployment. The scoped installation completed October 6 at 19:34:44
+Toronto, replacing only Forever; dependency files and WTF remained unchanged.
+StoreSchema 3 and configuration revision 12 are retained.
 
 ## Reported problems and fixes
 
@@ -28,6 +32,10 @@ All **35 runtime/source suites** and **24 tooling tests** passed. The tests cove
 
 Exact receipts: `evidence/test-results/darkmoon-candidate5-runtime.json` and `evidence/test-results/darkmoon-candidate5-tooling.json`. Every tested product/tooling hash was compared to the final working source before retaining these receipts. Their commit field identifies the pre-change base; the product hashes identify the tested candidate.5. The repository retains 34 exact ConsolePort contract files, pinned native merchant/extra-action sources, and current BetterBags theme sources.
 
-All fixes require a later deployment and focused Retail retest; /reload of the current installed candidate.4 cannot load this development work. A read-only check confirmed the live TOC still says candidate.4. No deployment was attempted.
+Candidate.5 was deployed after explicit authorization. All 44 installed Forever
+files match the verified payload, and an independent readback confirms all
+3,693 vendor files, 296 WTF files and 42 links unchanged. Exact deployment
+evidence is `evidence/delivery/live-install-candidate5.json`. Focused Retail
+retesting remains pending; the user can reopen WoW to load the corrections.
 
-Retest after a later authorized deployment: open Bags and inspect HUD; vendor Select/Buy hints; ticket-book Square/Open hint; carried-item Circle then close; Rinling shooting; Finlay actions and Exit; Brewery hammer L2+R3. Keep existing successful broad scenarios as a baseline.
+Retest now: open Bags and inspect HUD; vendor Select/Buy hints; ticket-book Square/Open hint; carried-item Circle then close; Rinling shooting; Finlay actions and Exit; Brewery hammer L2+R3. Keep existing successful broad scenarios as a baseline.

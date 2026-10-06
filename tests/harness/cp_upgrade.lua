@@ -23,6 +23,12 @@ function layers:SetAttribute(name,value) self.attributes[name]=value end
 function layers:SetFrameRef(name,frame) assert(frame:IsProtected()) self.refs[name]=frame end
 function layers:GetFrameRef(name) return self.refs[name] end
 function layers:CallMethod(name,...) return self[name](self,...) end
+local engineBindings={}
+function layers:GetName() return 'ConsolePortLayers' end
+function layers:SetBindingClick(priority,key,name,button) engineBindings[key]={priority=priority,action='CLICK '..name..':'..button} end
+function layers:SetBinding(priority,key,action) engineBindings[key]={priority=priority,action=action} end
+function layers:ClearBinding(key) engineBindings[key]=nil end
+tremove=table.remove
 CPAPI.DataHandler=function() return layers end
 function RegisterStateDriver() end
 function UnregisterStateDriver() end
@@ -66,6 +72,34 @@ layers:RegisterState(insecure,'state-visibility','[mod:SHIFT-] hide; show',nil,t
 assert(not insecure.shown and insecure:GetAttribute('statehidden'))
 PREFIX='' local index=layers.States[tostring(insecure)..'state-visibility'] layers:RunAttribute('EvaluateState',index)
 assert(insecure.shown and insecure:GetAttribute('statehidden')==nil)
+-- An unmatched driver preserves the last state in protected and ordinary frames.
+layers:RegisterState(secure,'partial','[mod:SHIFT-] 7')
+local partialIndex=layers.States[tostring(secure)..'partial']
+PREFIX='SHIFT-' layers:RunAttribute('EvaluateState',partialIndex)
+assert(secure:GetAttribute('partial')==7)
+PREFIX='' layers:RunAttribute('EvaluateState',partialIndex)
+assert(secure:GetAttribute('partial')==7,'unmatched modifier driver cleared the native state')
+layers:RegisterState(insecure,'partial','[mod:SHIFT-] 8')
+local ordinaryIndex=layers.States[tostring(insecure)..'partial']
+PREFIX='SHIFT-' layers:RunAttribute('EvaluateState',ordinaryIndex)
+PREFIX='' local priorWrites=insecure.writes layers:RunAttribute('EvaluateState',ordinaryIndex)
+assert(insecure:GetAttribute('partial')==8 and insecure.writes==priorWrites)
+
+-- Native binding claims restore the underlying owner after modal/UI closure.
+assert(layers:Claim('bar','BASE','PAD1','binding','GAMEPLAY'))
+assert(layers:Claim('interact','OVERRIDE','PAD1','binding','INTERACTTARGET'))
+assert(layers:Claim('cursor','NAV','PAD1','click','CursorButton','LeftButton'))
+assert(layers:Claim('wheel','MODAL','PAD1','click','WheelButton','PAD1'))
+assert(engineBindings.PAD1.action=='CLICK WheelButton:PAD1' and engineBindings.PAD1.priority)
+layers:ReleaseAll('wheel') assert(engineBindings.PAD1.action=='CLICK CursorButton:LeftButton')
+layers:Claim('dialogue','NAV','PAD1','click','DialogueButton','LeftButton')
+assert(engineBindings.PAD1.action=='CLICK DialogueButton:LeftButton','equal-priority newer claim lost')
+layers:ReleaseAll('dialogue') layers:ReleaseAll('cursor')
+assert(engineBindings.PAD1.action=='INTERACTTARGET' and not engineBindings.PAD1.priority)
+combat=true assert(not layers:Claim('cursor','NAV','PAD1','binding','BAD'))
+assert(not layers:ReleaseAll('interact') and engineBindings.PAD1.action=='INTERACTTARGET') combat=false
+layers:ReleaseAll('interact') assert(engineBindings.PAD1.action=='GAMEPLAY')
+layers:ReleaseAll('bar') assert(engineBindings.PAD1==nil,'released claim left an engine binding')
 
 -- Native first-login module and keyboard migrations remain upstream-owned.
 do
@@ -85,9 +119,16 @@ do
     assert(ConsolePortSettings.moduleMenus==nil and ConsolePortCharacterSettings.moduleWorld==nil)
     selected.Bar=false Modules:MigrateFromSettings() assert(selected.Bar==false,'native once-only migration repeated')
     Keyboard:MigrateButtonConvention()
-    assert(ConsolePortSettings.keyboardEraseButton=='old escape' and ConsolePortSettings.keyboardEscapeButton=='old enter' and ConsolePortSettings.keyboardEnterButton=='old erase')
-    assert(ConsolePortCharacterSettings.keyboardEscapeButton=='character enter' and ConsolePortCharacterSettings.keyboardEnterButton==nil)
-    Keyboard:MigrateButtonConvention() assert(ConsolePortSettings.keyboardEraseButton=='old escape')
+    assert(ConsolePortSettings.keyboardButtonVersion==2)
+    assert(ConsolePortSettings.keyboardEraseButton=='old erase' and ConsolePortSettings.keyboardEscapeButton=='old escape' and ConsolePortSettings.keyboardEnterButton=='old enter')
+    assert(ConsolePortCharacterSettings.keyboardEnterButton=='character enter')
+    ConsolePortSettings.keyboardButtonVersion=1
+    ConsolePortSettings.keyboardEraseButton='old escape' ConsolePortSettings.keyboardEscapeButton='old enter' ConsolePortSettings.keyboardEnterButton='old erase'
+    ConsolePortCharacterSettings={keyboardEscapeButton='character enter'}
+    Keyboard:MigrateButtonConvention()
+    assert(ConsolePortSettings.keyboardEraseButton=='old erase' and ConsolePortSettings.keyboardEscapeButton=='old escape' and ConsolePortSettings.keyboardEnterButton=='old enter')
+    assert(ConsolePortCharacterSettings.keyboardEnterButton=='character enter' and ConsolePortCharacterSettings.keyboardEscapeButton==nil)
+    Keyboard:MigrateButtonConvention() assert(ConsolePortSettings.keyboardEraseButton=='old erase','native restoration repeated')
 end
 do
     local NM,GamepadAPI='',{Index={Modifier={Blocked={['SHIFT-PAD1']=true}},Button={Binding={PAD1=true}},}}
@@ -101,7 +142,9 @@ do
     CPAPI.IsButtonValidForBinding=function() return false end
     --@NATIVE_CLEAR_BLOCKED
     GamepadAPI:ClearBlockedBindings() assert(writes==0 and #saves==0)
-    setID=2 GamepadAPI:ClearBlockedBindings() assert(writes==1 and saves[1]==2)
+    setID=2 GamepadAPI:ClearBlockedBindings() assert(writes==0 and #saves==0,'binding cleanup ran before dispatch readiness')
+    GamepadAPI.IsDispatchReady=true
+    GamepadAPI:ClearBlockedBindings() assert(writes==1 and saves[1]==2)
     GamepadAPI:ClearBlockedBindings() assert(writes==1 and #saves==1)
 end
 TEST_SUCCESS=true

@@ -1,6 +1,6 @@
 {
-  "lockSHA256": "f495048cd9c84670c6087d109406691b0dd45c964a6b2d7ffc8eb286b6495201",
-  "noticeInventorySHA256": "bdf0e775ef63bd2789326036067d7c8c1006934d9868ddd607b1f7fdaa24afb0",
+  "lockSHA256": "4df70f59aa8c6232c714e163d3cc8cf1892f6e0be006d6d7491523ae26fe2057",
+  "noticeInventorySHA256": "ad286347b23e9e2eeb69e7fa13bb33167a24b9b784d507034932e99fdaa6ba65",
   "localPersonalAssemblyReviewComplete": true,
   "publicRedistributionApproved": false,
   "scope": "All third-party dependencies use official-source local assembly. This inventory is not a license grant or approval to publish dependency code or media.",
@@ -2093,9 +2093,9 @@
     },
     {
       "repo": "seblindfors/ConsolePort",
-      "version": "3.3.5",
+      "version": "3.3.9",
       "mainTerms": "Artistic-2.0",
-      "officialRelease": "https://github.com/seblindfors/ConsolePort/releases/tag/3.3.5",
+      "officialRelease": "https://github.com/seblindfors/ConsolePort/releases/tag/3.3.9",
       "noticeFiles": [
         {
           "source": "ConsolePort/LICENSE.md",
@@ -2199,22 +2199,6 @@
           "sha256": "4b7dbcd45ce14fd9cb6a6a23284b61623fd25ca6be6189a14024094e3f92dd4e",
           "declarations": [
             "-- Licence: GPL version 2 (General Public License)\r"
-          ],
-          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
-        },
-        {
-          "source": "ConsolePort_Config/Libs/LibCompress/LibCompress.lua",
-          "sha256": "6d6bc816bd7621c2552fc62798644e36d8d9ed97ccb31330c078355a900faa02",
-          "declarations": [
-            "-- Licence: GPL version 2 (General Public License)\r"
-          ],
-          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
-        },
-        {
-          "source": "ConsolePort_Config/Libs/LibCompress/LibCompress.toc",
-          "sha256": "30913b368285b8bac45d544a4d2e11cec8e7d64ab841c6d0a870d35cbe49fb43",
-          "declarations": [
-            "## X-License: GPL v2\r"
           ],
           "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
         },

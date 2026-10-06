@@ -263,6 +263,7 @@ end
 
 db:RegisterSafeCallback('GamePadStickAxisButtons', function(self, value)
 	if not value then return end;
+	if not self.IsDispatchReady then return end;
 	local setID = GetCurrentBindingSet();
 	if ( setID ~= Enum.BindingSet.Account and setID ~= Enum.BindingSet.Character ) then
 		return;
@@ -397,6 +398,7 @@ end
 -- Wipe the incompatible bindings for a modifier when it's set.
 -- E.g. if you set ALT to PAD1, ALT-PAD1 will be removed.
 function GamepadAPI:ClearBlockedBindings()
+	if not self.IsDispatchReady then return end;
 	local setID = GetCurrentBindingSet();
 	if ( setID ~= Enum.BindingSet.Account and setID ~= Enum.BindingSet.Character ) then
 		return;
@@ -596,8 +598,6 @@ function GamepadAPI:OnNewBindings()
 	self:ClearBlockedBindings()
 	local newBindings = self:GetBindings(true)
 	db:TriggerEvent('OnNewBindings', newBindings)
-	db:TriggerEvent('OnUpdateOverrides', false, newBindings)
-	db:TriggerEvent('OnUpdateOverrides', true,  newBindings)
 end
 
 GamepadAPI.QueueOnNewBindings = CPAPI.Debounce(GamepadAPI.OnNewBindings, GamepadAPI)

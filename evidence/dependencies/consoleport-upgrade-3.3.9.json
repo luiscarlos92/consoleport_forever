@@ -1,0 +1,253 @@
+{
+  "before": {
+    "version": "3.3.5",
+    "packageSHA256": "64d653aaccca1421fd884b03bd00d2485d0190dc3e95bc79eec8cb676aa23e45"
+  },
+  "after": {
+    "version": "3.3.9",
+    "packageSHA256": "d9cd6ce097c7bbafc0963a527243fd36f8cc6d1d294785154bf1886f58dbc640",
+    "officialRelease": "https://github.com/seblindfors/ConsolePort/releases/tag/3.3.9"
+  },
+  "changedFiles": [
+    {
+      "path": "ConsolePort/CHANGELOG.md",
+      "beforeSHA256": "0c1e020e02079c8d80fc5dc4b3fdd5d048cb93780a9af7163d73a54593e7e289",
+      "afterSHA256": "61249b9f0d6655d550ec5b8d905aa1189b385ff0b6d78ae19d68ce8370930045"
+    },
+    {
+      "path": "ConsolePort/ConsolePort.toc",
+      "beforeSHA256": "de1ca51fbe5563dc63764729e411306b4ee644a20c917b24303c85d12f1efc1a",
+      "afterSHA256": "4266f68aa1331125b0ade90465045c7f9e50266874e923c58d6cff40b25f201d"
+    },
+    {
+      "path": "ConsolePort/Controller/Input.lua",
+      "beforeSHA256": "b1afa749c570a1da69b48e6d1cd38455be2976aebb814c5dae16b3ba3a49f791",
+      "afterSHA256": "e36882de5f210d81b2eff06a97aaf4cb3ca394eda2fe5e00f9f1c65c6dc285d9"
+    },
+    {
+      "path": "ConsolePort/Controller/Interact.lua",
+      "beforeSHA256": "5380f2faa3a183d9920f5bbb319a7ffd1fbd3807d596b8ecfa959a0bcb70b703",
+      "afterSHA256": "13c89b7cc69932cf21ea0825e38ca3af6d94cff701bfa32be32d7b237218edd7"
+    },
+    {
+      "path": "ConsolePort/Controller/Layers.lua",
+      "beforeSHA256": "1606b7953f8fe1ed52bafc94ef33941fed91d4609aefe0aa782109acbc4cfc7d",
+      "afterSHA256": "a8fa9d3c2dc607dd1a0ce69a5da5371758a47792efb5ee6219208356fb84779a"
+    },
+    {
+      "path": "ConsolePort/Controller/Radial.lua",
+      "beforeSHA256": "bcd3806dacb21271d0e3ddb96ff5d1dca0dc02c290807abf58174f9e0e1b7480",
+      "afterSHA256": "03b4d32f62bff59ed0466a0213a252f0d10adfacd8aef1f29fcd8d1e99206f39"
+    },
+    {
+      "path": "ConsolePort/Controller/Securenav.lua",
+      "beforeSHA256": "0668a33556f86b7e08f31f8f79239356b44e965725079734e9ac26182b90d7f4",
+      "afterSHA256": "056206b8694bfd7c3bc257ad3f2974f0f6a1effceebc4f5820825f258c4c52d2"
+    },
+    {
+      "path": "ConsolePort/Controller/Slash.lua",
+      "beforeSHA256": "c600e2f6b0471098821f51a817cedb09b191f7f00261eb14afffa64eee0ca4ed",
+      "afterSHA256": "2b3de5680aab2844c7a57c5745a4a6d14f5fb95b98241f18ebaee056b9b8b366"
+    },
+    {
+      "path": "ConsolePort/Locale/deDE.lua",
+      "beforeSHA256": "40cefb4529bfb08aed39baca4700cf54755fdfe472cd178b0763893131e7799f",
+      "afterSHA256": "28feb055887591cb59b0e4d0a12a5725d5f8544ed96ef75bc551a48e28c4e95c"
+    },
+    {
+      "path": "ConsolePort/Locale/esES.lua",
+      "beforeSHA256": "889072cd2a7306bf3e97057830510bbbfa0560406f667c04db2c306514330849",
+      "afterSHA256": "1c5f4b113d0b470d22523adac5e5d26e0fc8437fc226318a7151a4225c97bb40"
+    },
+    {
+      "path": "ConsolePort/Locale/esMX.lua",
+      "beforeSHA256": "cb86c257e425254997f32f1ce08748872299ad88bc55dc55fac8e51a192bff98",
+      "afterSHA256": "0ad005ca218b3f5d86619014bd89b9386edb375e69442e45181e2b79142eadbe"
+    },
+    {
+      "path": "ConsolePort/Locale/frFR.lua",
+      "beforeSHA256": "522e0000d1dd2baa33c260b11c017f8e3f9aa3a845b4f0744637882c8f34fb31",
+      "afterSHA256": "411e8929bd3b1a35188e746c837bdd7768d81fd6d658223ed7ab4c213ac1d32d"
+    },
+    {
+      "path": "ConsolePort/Locale/itIT.lua",
+      "beforeSHA256": "1440e408c31067bfbfa97f636fcc2f55c0ca2b37ea82381df7738391a515ba36",
+      "afterSHA256": "a6719b090e0d0a213bd2039c83d3ecc483d22632e6bfb8423cacde2badf8a209"
+    },
+    {
+      "path": "ConsolePort/Locale/koKR.lua",
+      "beforeSHA256": "00830ad175674db01e3d2c0cefc5f840c14a06b8e535d5099bcd4f6b6c5cc141",
+      "afterSHA256": "cb97a29e8bb86d3b9c425c1a45bc881414c198aa72cc92e47671fcccf52ddeef"
+    },
+    {
+      "path": "ConsolePort/Locale/ptBR.lua",
+      "beforeSHA256": "85eeb978be702a279caf174f71d117fbbb1a46b3430081d2008b25dd98f134d3",
+      "afterSHA256": "9ae201a52c24ea4eb02c707f2cb1a02bebf464c1a6a3a63084f878ecf539421f"
+    },
+    {
+      "path": "ConsolePort/Locale/ruRU.lua",
+      "beforeSHA256": "6eed5e104eb6fb533688e39a5c478a0e69f480d719c2beb341660909a9a36fe9",
+      "afterSHA256": "75fd9b05bca0bb9c05e67eebc96ba389d022e01a4daff847a1bc2e19f0a79af3"
+    },
+    {
+      "path": "ConsolePort/Locale/zhCN.lua",
+      "beforeSHA256": "3fca8595407211963321b37363ff6d40e0844c4a225d074014ff975e4202475d",
+      "afterSHA256": "e012d402459b2569c8ecac2f677998eeded0b37ba3fbcf32e38e4d3e27364392"
+    },
+    {
+      "path": "ConsolePort/Locale/zhTW.lua",
+      "beforeSHA256": "236d8a30d2365fa1b9bb9ba8eff712dc6eaa51cef21301e37cde30437a1a2da9",
+      "afterSHA256": "341df31205a93801c36175b81c02d66c1f86e2b6929c588879790d4411b66184"
+    },
+    {
+      "path": "ConsolePort/Model/Data/Console.lua",
+      "beforeSHA256": "764835ac2f9956bb5263fa9d523e66a0f324c59364de1bb8a9e567b793c61105",
+      "afterSHA256": "71d7663d875e1da610a808b7b36ea43715e95421caf7c77e2c76f611b899f4ab"
+    },
+    {
+      "path": "ConsolePort/Model/Gamepad/Gamepad.lua",
+      "beforeSHA256": "465e33ffcfabe616d847a8c1bf71cb560850e6a9b4e8d4be26f1fddb4017e901",
+      "afterSHA256": "72931c75d6a1d829ed0641d8e239249115e92963770b2eef26cd63ebfccd9b49"
+    },
+    {
+      "path": "ConsolePort/View/Cursors/Secure.lua",
+      "beforeSHA256": "4e367f536c41e531ee7e4b82de0b2c4a8e2dbbac18d1f3da78ae2b2c7b95cc2c",
+      "afterSHA256": "afc6ca436989b7b5db852c700a32343c4e81df0d9b27b11ca4640d18e3f59815"
+    },
+    {
+      "path": "ConsolePort/View/Pie/Flyout.lua",
+      "beforeSHA256": "aba8ff8edb332ee39d191d98d97e9277f5435d54fa82bf0b85bafbc04c32006c",
+      "afterSHA256": "ae5f5567ee1c873d08427e2139ba54805f9c0182a6f10ed1f50df8e515e31362"
+    },
+    {
+      "path": "ConsolePort_Bar/ConsolePort_Bar.toc",
+      "beforeSHA256": "52471c6a7f05a506e58fd5bc64877a07e320d7fcb66721e3ebdeab2579d3c0a7",
+      "afterSHA256": "34e78bb044d3284353cdcdfc11f6fc83b2cb9051506ba2b690b6c37faff09b77"
+    },
+    {
+      "path": "ConsolePort_Bar/Controller/Manager/Manager.lua",
+      "beforeSHA256": "adebeb4416575936b5092cbc605eeb2ae65460b5e1bcef9e083f09d7ed1f6367",
+      "afterSHA256": "df5fe632c7788782f0157d18b3da08c4ea74a40bd09b0e0d4beb0120be3ba370"
+    },
+    {
+      "path": "ConsolePort_Bar/Model/Presets.lua",
+      "beforeSHA256": "0e6fbec94f29c4be9caa0228cb4000f4de7bcb0834f95396d95763aceaa02298",
+      "afterSHA256": "2a6f33d33235f222f1a21aabbc55f37daa18ffa49f82c65c92b79b720da8aae2"
+    },
+    {
+      "path": "ConsolePort_Bar/Model/Utils.lua",
+      "beforeSHA256": "db1da11901d849f51897e3947448a57ca8df7031a963e86a74bad4eb86f1600e",
+      "afterSHA256": "2f451ff214e223674342275c9669d2d7caa23e102a9f3ecb00b4c41e54d50139"
+    },
+    {
+      "path": "ConsolePort_Bar/View/Config/Loadout.lua",
+      "beforeSHA256": "99703dc068110e327cb1c82cc81789d2832adb500cd5a8b5366361b8cf4f7e54",
+      "afterSHA256": "e19cfc037df244e00133fa50e46e21bf1786e27d708e842e40c6af9a295d3fa9"
+    },
+    {
+      "path": "ConsolePort_Bar/Widget/Button/Button.lua",
+      "beforeSHA256": "e49ecdccbacf38ce237528e9161c7143a8f4e7a4a1b21f4e483d62f91586727f",
+      "afterSHA256": "b6eb305c489ca99d749fa20bc3d44f00778949f347acbb6680863db7550bd5d6"
+    },
+    {
+      "path": "ConsolePort_Config/Libs/Libs.xml",
+      "beforeSHA256": "5397f1734b919d6ecc0398243c86eeaca10f404ce29faa065bdf8d72db6be37e",
+      "afterSHA256": "847a4acc717f3efd48e2e25040b7fc66961c1a0dbce6c22ed45212581519bc8e"
+    },
+    {
+      "path": "ConsolePort_Config/Model/Model.xml",
+      "beforeSHA256": "eeb05283d69965f3243673f82003f2db27ec06e493dda6ad6a79a55baa5eb8cb",
+      "afterSHA256": "306f7a9c18a2012a81bc15e550aede6aa96bd93dc51fa0b0002b295f831350fd"
+    },
+    {
+      "path": "ConsolePort_Config/Model/Serializer.lua",
+      "beforeSHA256": "bfd406096588fe9772e1807816c620b086579b095db2036ccdb80ee848b06d32",
+      "afterSHA256": "63a9b468667b73cdf10dc3c370fc8ef9d9b39260d41f84f4f25a690b0c9d3988"
+    },
+    {
+      "path": "ConsolePort_Config/View/Config/ImportExport.lua",
+      "beforeSHA256": "d9377e33677981de0d4350e7460576112a3ad0ef38e2bc372677a3cba60dfc2c",
+      "afterSHA256": "4331c9046c283340dc0be43222864179877c5f43818ac86896dac492b6dffb4c"
+    },
+    {
+      "path": "ConsolePort_Cursor/Controller/Scripts.lua",
+      "beforeSHA256": "7d2c5db805b8e776bd570dbec7a4fa60de96c00a2455755a44d632c12e323533",
+      "afterSHA256": "cb2fc5bdfb03ea9dab2700737be629f0eaeda59bf7d59f31e43700c5cb857f60"
+    },
+    {
+      "path": "ConsolePort_Keyboard/Components/Config.lua",
+      "beforeSHA256": "f528a6e82f9b81e7711fef84189272c685062aa90ebbde334d0bcd870c40f485",
+      "afterSHA256": "f5827ce143c6b5c21488cf4e9cb1b1e4c622580eb355e70cbb7e0b7bc4418df8"
+    },
+    {
+      "path": "ConsolePort_Keyboard/Database.lua",
+      "beforeSHA256": "c4de5cea6c10ff5e0ef29db5bf5ef82a5672c828c1781fe882783ffe8188bc52",
+      "afterSHA256": "2faea567b3ba2a8a608b7b821ef25e7d5e5de77fa10f26d7d74b306d2442f30e"
+    },
+    {
+      "path": "ConsolePort_Keyboard/View/Keyboard.lua",
+      "beforeSHA256": "0c73e5fe49f249d1dc1492b7f77e95503ff055794cf6d23077e22a3f6f0ec9de",
+      "afterSHA256": "d0a781ae5c8b1b0020c83356cc8014fcaf13c4c8d92d165c96ab669e5722ad69"
+    },
+    {
+      "path": "ConsolePort_Menu/Controller/UnitMenu.lua",
+      "beforeSHA256": "65da2c214c24c1a3f56d37e8407083b7566fdb2519909abe0d4f6ec571009797",
+      "afterSHA256": "a6ef5b56e20bbbfd705f463c6d1ec6e9b31aa5b8b565c91fabd4d330405ceffe"
+    },
+    {
+      "path": "ConsolePort_Menu/View/Ring.lua",
+      "beforeSHA256": "c717c668c6768243c1d6f256759099c9bad138c71dfa094a4f5034a82a360137",
+      "afterSHA256": "05563c649a2cfbd919a7bb16a45f56966122cb5e9d281aed1f957f09fa0dae4e"
+    },
+    {
+      "path": "ConsolePort_Rings/Controller/Secure.lua",
+      "beforeSHA256": "c6ecd6e022494a254e4bfd0c8ebc489bf02345da2639004f0608176d4b5b45d2",
+      "afterSHA256": "870f417c81104d13f5597808855a0fb68a079968f758f0e769ba13481afc5ca0"
+    },
+    {
+      "path": "ConsolePort_Target/Database.lua",
+      "beforeSHA256": "6805512be4fd4e1f7effc8bfad0589ea2d8141865dbe532aa1057af980ea896f",
+      "afterSHA256": "1f6d29938ff9de795638ed7f0bf3ad36ba8d468bccaba1ba7ae7c1262341fa00"
+    },
+    {
+      "path": "ConsolePort_Target/View/Cursor/Raid.lua",
+      "beforeSHA256": "5cf40caaa5d1df4ae4d06d688a1ecbe8269580657f53942c89f4a049fd429728",
+      "afterSHA256": "f6f5fc86f28136f49694a5543e3e4a371327bbc77656511e8fb49460e5997427"
+    },
+    {
+      "path": "ConsolePort_Target/View/Hotkeys/UnitHotkeys.lua",
+      "beforeSHA256": "3510e8ccc8a1146d5428086cb4dd2fc0142b3fd839f635d22990f83e02562d3b",
+      "afterSHA256": "2f75ec29efd5eb087bfad3d0341714e7f928c43b73ad7816ca6d5eca7e75868e"
+    },
+    {
+      "path": "ConsolePort_Target/View/Ring/Targetring.lua",
+      "beforeSHA256": "e06e1c9b16672fa12f1e48751e5b695947e2f8009958610ce2473610811a3dc8",
+      "afterSHA256": "6211e14c9e0444728ec442fbdb54e12aa16318409607b4c01f2eeb0a5b0771af"
+    },
+    {
+      "path": "ConsolePort_World/View/QuickMenu/QuickMenu.lua",
+      "beforeSHA256": "e533879d9852d90b0d6a18d5648429aa22513e096da6b98dadf023cb6b3dd656",
+      "afterSHA256": "fb739d39d172015387677cdaeb0ef090662d487a04b71d2482e47ba749a392f8"
+    }
+  ],
+  "addedFiles": [
+    "ConsolePort_Config/Model/Legacy.lua"
+  ],
+  "removedFiles": [
+    "ConsolePort_Config/Libs/AceSerializer-3.0/AceSerializer-3.0.lua",
+    "ConsolePort_Config/Libs/AceSerializer-3.0/AceSerializer-3.0.xml",
+    "ConsolePort_Config/Libs/LibCompress/LibCompress.lua",
+    "ConsolePort_Config/Libs/LibCompress/LibCompress.toc",
+    "ConsolePort_Config/Libs/LibCompress/lib.xml"
+  ],
+  "unchangedFiles": 557,
+  "analysis": "Audited native binding claim priority/release, dispatch readiness, unmatched modifier driver retention, keyboard version-2 restoration, personal/shared bar data-source isolation, Edit Mode hover substitutions, native C_EncodingUtil/legacy exports, guarded empty-state proxy drag and clean package runtime closure. Companion integrations retain native ownership; only audited version guards and candidate metadata change in product code.",
+  "verification": {
+    "runtimeSourceSuites": 34,
+    "toolingTests": 21,
+    "nativeContractFiles": 33,
+    "lockSHA256": "4df70f59aa8c6232c714e163d3cc8cf1892f6e0be006d6d7491523ae26fe2057",
+    "allPassed": true,
+    "RetailAcceptance": "User manual test pending"
+  }
+}

@@ -28,7 +28,7 @@ def make_pack(scope, version='candidate', complete=True, dependency=None, retire
         'assemblyComplete': complete, 'addonFolders': ['A', 'ConsolePort_Forever'],
         'requiredAddonFolders': ['A', 'ConsolePort_Forever'], 'dependencyLockSHA256': 'b'*64,
         'compatibility': {'storeSchema': 3, 'configurationRevision': 11,
-            'dependencyVersions': {'ConsolePort': '3.3.5'}},
+            'dependencyVersions': {'ConsolePort': '3.3.9'}},
         'runtimeClosure': {'A': {'toc': 'A/A.toc', 'runtimeFiles': ['A/A.toc', 'A/Main.lua']},
             'ConsolePort_Forever': {'toc': 'ConsolePort_Forever/ConsolePort_Forever.toc',
                 'runtimeFiles': ['ConsolePort_Forever/ConsolePort_Forever.toc', 'ConsolePort_Forever/Main.lua']}}}

@@ -1,5 +1,5 @@
 {
-  "lockSHA256": "f495048cd9c84670c6087d109406691b0dd45c964a6b2d7ffc8eb286b6495201",
+  "lockSHA256": "4df70f59aa8c6232c714e163d3cc8cf1892f6e0be006d6d7491523ae26fe2057",
   "discoveryComplete": true,
   "releaseNoticeReviewComplete": false,
   "packDistributionReady": false,
@@ -1255,9 +1255,9 @@
     },
     {
       "repo": "seblindfors/ConsolePort",
-      "version": "3.3.5",
-      "officialRelease": "https://github.com/seblindfors/ConsolePort/releases/tag/3.3.5",
-      "packageSHA256": "64d653aaccca1421fd884b03bd00d2485d0190dc3e95bc79eec8cb676aa23e45",
+      "version": "3.3.9",
+      "officialRelease": "https://github.com/seblindfors/ConsolePort/releases/tag/3.3.9",
+      "packageSHA256": "d9cd6ce097c7bbafc0963a527243fd36f8cc6d1d294785154bf1886f58dbc640",
       "selectedFolders": [
         "ConsolePort",
         "ConsolePort_Bar",
@@ -1320,14 +1320,6 @@
         {
           "source": "ConsolePort/Libs/Local/Tabular.lua",
           "sha256": "4b7dbcd45ce14fd9cb6a6a23284b61623fd25ca6be6189a14024094e3f92dd4e"
-        },
-        {
-          "source": "ConsolePort_Config/Libs/LibCompress/LibCompress.lua",
-          "sha256": "6d6bc816bd7621c2552fc62798644e36d8d9ed97ccb31330c078355a900faa02"
-        },
-        {
-          "source": "ConsolePort_Config/Libs/LibCompress/LibCompress.toc",
-          "sha256": "30913b368285b8bac45d544a4d2e11cec8e7d64ab841c6d0a870d35cbe49fb43"
         },
         {
           "source": "ConsolePort_Config/Libs/LibWoWQRCode/LibWoWQRCode.lua",

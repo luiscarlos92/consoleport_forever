@@ -5,7 +5,7 @@ function Bridge.New(api)
     return setmetatable({api=api},{__index=Bridge})
 end
 function Bridge:Probe()
-    if self.api.version ~= "3.3.5" then return false,"ConsolePort version has not been audited" end
+    if self.api.version ~= "3.3.9" then return false,"ConsolePort version has not been audited" end
     local db,bar=self.api.getDB(),self.api.getBar()
     if type(db)~="table" or not db.Settings or not db.Layers or type(db.Set)~="function" then return false,"ConsolePort DB/Layers not initialized" end
     if type(bar)~="table" or not bar.Layout or not bar.Manager or not bar.Manager.hasEnvironment then return false,"ConsolePort Bar not initialized" end

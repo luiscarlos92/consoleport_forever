@@ -30,7 +30,7 @@ function CinematicFinished(kind) assert(kind==7) finished=finished+1 end
 Enum={CinematicType={GameMovie=7}}
 EventRegistry={TriggerEvent=function() end}
 MovieFrame:Hide() api.MovieFrame=MovieFrame
-contexts:Enable({db=db,api={version='3.3.5'}},api,true,true)
+contexts:Enable({db=db,api={version='3.3.9'}},api,true,true)
 cursor:SetCurrentNode(leafB) assert(axis.owned)
 CinematicFrame:Show()
 assert(contexts.context==nil and not axis.owned,'cinematic display kept ordinary UI ownership')

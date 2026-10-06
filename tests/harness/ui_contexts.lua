@@ -166,7 +166,43 @@ CPAPI={ActionTypeRelease='typerelease',ActionPressAndHold='pressAndHoldAction',
     end}
 local db={table={}}
 function db:Register(key,value) self[key]=value end
+function db:RegisterSafeCallback() end
+function db:RegisterSafeCallbacks() end
 function RegisterStateDriver() end
+function UnregisterStateDriver() end
+function RegisterAttributeDriver() end
+function UnregisterAttributeDriver() end
+function Mixin(target,other) for key,value in pairs(other) do target[key]=value end return target end
+function newtable(...) return {...} end
+function wipe(value) for key in pairs(value) do value[key]=nil end end
+tremove=table.remove
+format=string.format
+string.trim=function(value) return value:match('^%s*(.-)%s*$') end
+-- Full current Layers executes its own claim resolver. Only engine writes
+-- and secure execution authority are host substitutes.
+ConsolePortLayers=CreateFrame('Frame','ConsolePortLayers',UIParent,'SecureHandlerBaseTemplate')
+CPAPI.DataHandler=function(frame) return frame end
+CPAPI.SecureEnvironmentMixin={}
+function CPAPI.SecureEnvironmentMixin:Execute(body)
+    self.layerEnv=self.layerEnv or setmetatable({},{__index=_G})
+    local fn=assert(load('return function(self,...) '..body..' end','native-claims','t',self.layerEnv))()
+    local prior=trusted trusted=true
+    local ok,result=pcall(fn,self)
+    trusted=prior assert(ok,result) return result
+end
+function CPAPI.SecureEnvironmentMixin:CreateEnvironment()
+    for key,body in pairs(self.Env) do self:SetAttribute(key,CPAPI.ConvertSecureBody(body)) end
+end
+function Frame:RunAttribute(key,...)
+    local fn=assert(load('return function(self,...) '..self:GetAttribute(key)..' end','native-claim','t',self.layerEnv))()
+    return fn(self,...)
+end
+function Frame:SetBindingClick(priority,key,target,button) SetOverrideBindingClick(self,priority,key,target,button) end
+function Frame:SetBinding(priority,key,action) SetOverrideBinding(self,priority,key,action) end
+function Frame:ClearBinding(key) if overrides[key] and overrides[key].owner==self then overrides[key]=nil end end
+function Frame:CallMethod(key,...) return self[key](self,...) end
+--@NATIVE_LAYER_CONVERSION
+--@NATIVE_UI_LAYERS
 --@CURRENT_SCRIPT_MIXIN
 --@CURRENT_INPUT
 local input=db.Input
@@ -279,7 +315,7 @@ end
 dialogs={popup}
 local contexts=Addon.UIContexts
 contexts.input=bridge
-assert(contexts:Enable({db=db,api={version='3.3.5'}},api,true))
+assert(contexts:Enable({db=db,api={version='3.3.9'}},api,true))
 assert(not contexts.context,'visible nonfocused popup stole input')
 cursor:SetCurrentNode(target)
 assert(contexts.context.kind=='popup')
@@ -329,7 +365,7 @@ cursor:SetCurrentNode(target) assert(contexts.context.kind=='popup','parent popu
 stack:Show() cursor:SetCurrentNode(stack.CancelButton)
 press(input.Widgets.PAD2,true) press(input.Widgets.PAD2,false)
 assert(amount==1 and not stack:IsShown(),'native cancel changed the selected amount')
-assert(contexts:Enable({db=db,api={version='3.3.5'}},api,false))
+assert(contexts:Enable({db=db,api={version='3.3.9'}},api,false))
 -- A partially rejected native update releases all installed CPF rows.
 contexts.enabled=true cursor:SetCurrentNode(target)
 local originalSetButton=input.SetButton
@@ -344,5 +380,5 @@ end
 assert(Addon.Diagnostics.features.uiContexts.status=='recovery-required')
 input.SetButton=originalSetButton
 assert(contexts:Refresh(true))
-assert(contexts:Enable({db=db,api={version='3.3.5'}},api,false))
+assert(contexts:Enable({db=db,api={version='3.3.9'}},api,false))
 TEST_SUCCESS=true

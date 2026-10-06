@@ -23,6 +23,7 @@ const sha = relative => crypto.createHash('sha256').update(fs.readFileSync(safe(
 const results = [];
 function check(id, fn) {
   const start = Date.now();
+  console.log('RUNNING '+id);
   try { fn(); results.push({id, status:'passed', ms:Date.now()-start}); }
   catch (e) { results.push({id, status:'failed', error:e.stack}); }
 }
@@ -232,6 +233,12 @@ function uiContextFixture() {
   const templates=read('evidence/native/Blizzard_FrameXML/SecureTemplates.lua');
   const secureClick=templates.slice(templates.indexOf('SECURE_ACTIONS.click ='),templates.indexOf('SECURE_ACTIONS.attribute ='));
   const fixture=read('tests/harness/ui_contexts.lua').replace('--@NATIVE_WRAPPED_CLICK',wrapped)
+    .replace('--@NATIVE_LAYER_CONVERSION',()=>{
+      const utils=read(base+'ConsolePort/Utils/Utils.lua');
+      const start=utils.indexOf('do\tlocal ConvertSecureBody');
+      return utils.slice(start,utils.indexOf('\nend',start)+4);
+    })
+    .replace('--@NATIVE_UI_LAYERS',()=>';(function(...)\n'+read(base+'ConsolePort/Controller/Layers.lua')+'\nend)("ConsolePort",db);')
     .replace('--@CURRENT_SCRIPT_MIXIN',database.slice(begin,end))
     .replace('--@CURRENT_INPUT','(function(...)\n'+read(base+'ConsolePort/Controller/Input.lua')+'\nend)("ConsolePort",db)')
     .replace('--@NATIVE_POPUP_CLICK',click)
@@ -430,6 +437,25 @@ check('T32.current-ConsolePort-upgrade-contracts', () => {
     .replace('--@NATIVE_KEYBOARD_MIGRATION',()=>keyboard.slice(keyboard.indexOf('local BUTTON_CONVENTION_VERSION'),keyboard.indexOf('function Keyboard:OnDataLoaded')))
     .replace('--@NATIVE_CLEAR_BLOCKED',()=>nativeFunction(base+'ConsolePort/Model/Gamepad/Gamepad.lua','GamepadAPI:ClearBlockedBindings'));
   execute(fixture,'native-ConsolePort-upgrade');
+});
+check('T33.current-native-shared-bar-layout', () => {
+  const file='evidence/consoleport-contracts/ConsolePort_Bar/Model/Utils.lua';
+  const body=read(file);
+  const start=body.indexOf('do -- Data handler');
+  const end=body.indexOf('end -- Data handler',start)+'end -- Data handler'.length;
+  if(start<0 || end<start) throw Error('native bar data-source contract changed');
+  const fixture=read('tests/harness/cp_shared_layout.lua')
+    .replace('--@NATIVE_BAR_DATA',()=>body.slice(start,end))
+    .replace('--@NATIVE_APPLY_PRESET',()=>nativeFunction(file,'env:ApplyPreset'));
+  execute(source+fixture,'native-shared-bar-layout');
+});
+check('T34.current-native-EditMode-hover-safety', () => {
+  const body=read('evidence/consoleport-contracts/ConsolePort_Cursor/Controller/Scripts.lua');
+  const start=body.indexOf("_('Blizzard_EditMode', function()");
+  const end=body.indexOf("_('Blizzard_DelvesCompanionConfiguration'",start);
+  if(start<0 || end<start) throw Error('native Edit Mode hover contract changed');
+  execute(read('tests/harness/cp_editmode_hover.lua')
+    .replace('--@NATIVE_EDITMODE_HOVERS',()=>body.slice(start,end)),'native-EditMode-hover-safety');
 });
 check('T01.data-parser', () => {
   const parse=require('./saved_variables.cjs').parse;

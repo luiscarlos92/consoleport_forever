@@ -22,6 +22,8 @@ FILES = [
     'ConsolePort/Model/Gamepad/Gamepad.lua', 'ConsolePort_Keyboard/View/Keyboard.lua',
     'ConsolePort_Menu/Controller/UnitMenu.lua',
     'ConsolePort/Utils/Macro.lua',
+    'ConsolePort_Bar/Model/Utils.lua',
+    'ConsolePort_Cursor/Controller/Scripts.lua',
 ]
 if __name__ == '__main__':
     lock = json.loads((ROOT / 'dependencies/lock.json').read_text(encoding='utf-8'))

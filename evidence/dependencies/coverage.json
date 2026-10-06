@@ -1,5 +1,5 @@
 {
-  "lockSHA256": "f495048cd9c84670c6087d109406691b0dd45c964a6b2d7ffc8eb286b6495201",
+  "lockSHA256": "4df70f59aa8c6232c714e163d3cc8cf1892f6e0be006d6d7491523ae26fe2057",
   "selectedFolders": {
     "BetterBags": {
       "owner": "Cidan/BetterBags",
@@ -2577,7 +2577,7 @@
         "Title": "Console Port\r",
         "Notes": "Gamepad addon suite\r",
         "AddonCompartmentFunc": "ConsolePort\r",
-        "Version": "3.3.5\r",
+        "Version": "3.3.9\r",
         "Author": "Sebastian Lindfors\r",
         "X-Website": "https://github.com/seblindfors/ConsolePort\r",
         "X-Feedback": "https://discord.gg/AWeHd48\r",
@@ -2650,8 +2650,8 @@
         "X-Curse-Project-ID": "91376\r",
         "X-WoWI-ID": "23536\r",
         "X-Wago-ID": "LvNAYjNo\r",
-        "SavedVariables": "ConsolePort_BarPresets\r",
-        "SavedVariablesPerCharacter": "ConsolePort_BarLayout, ConsolePort_BarDB\r"
+        "SavedVariables": "ConsolePort_BarPresets, ConsolePort_BarSharedLayout, ConsolePort_BarSharedDB, ConsolePort_BarShareAll\r",
+        "SavedVariablesPerCharacter": "ConsolePort_BarLayout, ConsolePort_BarDB, ConsolePort_BarScope\r"
       }
     },
     "ConsolePort_Config": {
@@ -2662,11 +2662,10 @@
         "ConsolePort_Config/Controller/Controller.xml",
         "ConsolePort_Config/Controller/Search.lua",
         "ConsolePort_Config/Controller/Setting.lua",
-        "ConsolePort_Config/Libs/AceSerializer-3.0/AceSerializer-3.0.lua",
-        "ConsolePort_Config/Libs/LibCompress/LibCompress.lua",
         "ConsolePort_Config/Libs/LibWoWQRCode/LibWoWQRCode.lua",
         "ConsolePort_Config/Libs/Libs.xml",
         "ConsolePort_Config/Model/Database.lua",
+        "ConsolePort_Config/Model/Legacy.lua",
         "ConsolePort_Config/Model/Loadout.lua",
         "ConsolePort_Config/Model/Model.xml",
         "ConsolePort_Config/Model/Profile.lua",

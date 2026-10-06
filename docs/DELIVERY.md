@@ -1,4 +1,8 @@
-# Current correction build: 2.0.0-candidate.3
+# Current compatibility build: 2.0.0-candidate.4
+
+The October 6 user-authorized compatibility update targets the official ConsolePort **3.3.9** release. The other 17 dependency identities are unchanged. StoreSchema remains **3**, configuration revision remains **12**, and already accepted fields need no new review solely for this code update. All 34 runtime/source suites and 21 tooling tests pass. Exact pack receipts and the live deployment outcome are recorded in [the upgrade report](CONSOLEPORT-UPGRADE-2026-10-06.md). Archives remain local under `dist/2.0.0-candidate.4`; previous candidates remain retained. Actual Retail acceptance is the user's next manual step.
+
+# Historical correction build: 2.0.0-candidate.3
 
 The second complete WTF audit reproduced an unintended skyriding supplemental bar and a shown empty cursor parent. Candidate.3 corrects those and persists bounded runtime diagnostics for future audits. Source **c004591fb1372322f33f9bf603a8546e1d039c8e** is pushed; StoreSchema remains **3** and configuration revision **12**. All 32 runtime/source suites, 21 tooling tests and Windows CI [37230130771](https://github.com/luiscarlos92/consoleport_forever/actions/runs/37230130771) passed. All 18 official dependencies remain current and unchanged.
 

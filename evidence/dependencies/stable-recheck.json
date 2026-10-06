@@ -1,17 +1,17 @@
 {
-  "checkedAt": "2026-10-04T19:49:56.807299+00:00",
-  "lockSHA256": "f495048cd9c84670c6087d109406691b0dd45c964a6b2d7ffc8eb286b6495201",
+  "checkedAt": "2026-10-06T22:06:51.327457+00:00",
+  "lockSHA256": "4df70f59aa8c6232c714e163d3cc8cf1892f6e0be006d6d7491523ae26fe2057",
   "github": [
     {
       "repo": "seblindfors/ConsolePort",
-      "url": "https://github.com/seblindfors/ConsolePort/releases/tag/3.3.5",
-      "latestStable": "3.3.5",
-      "releaseID": 402903202,
-      "publishedAt": "2026-10-04T07:43:37Z",
+      "url": "https://github.com/seblindfors/ConsolePort/releases/tag/3.3.9",
+      "latestStable": "3.3.9",
+      "releaseID": 404435689,
+      "publishedAt": "2026-10-06T07:31:44Z",
       "matchesLock": true,
-      "assetID": 609382705,
-      "digest": "sha256:64d653aaccca1421fd884b03bd00d2485d0190dc3e95bc79eec8cb676aa23e45",
-      "bytes": 17809769
+      "assetID": 614831926,
+      "digest": "sha256:d9cd6ce097c7bbafc0963a527243fd36f8cc6d1d294785154bf1886f58dbc640",
+      "bytes": 17816021
     },
     {
       "repo": "Cidan/BetterBags",
@@ -173,7 +173,7 @@
       "officialFile": "https://www.curseforge.com/wow/addons/dynamiccam/files/8995535",
       "latestStable": "2.21.1",
       "fileID": 8995535,
-      "metadataVerifiedAt": "2026-10-04T09:36:33.377792+00:00",
+      "metadataVerifiedAt": "2026-10-06T22:05:45.594275+00:00",
       "method": "Official latest-stable Retail listing and file page inspected; no floating latest fetch during assembly.",
       "matchesLock": true
     },
@@ -183,7 +183,7 @@
       "officialFile": "https://www.curseforge.com/wow/addons/immersion-extrafade/files/8995675",
       "latestStable": "1.18.0",
       "fileID": 8995675,
-      "metadataVerifiedAt": "2026-10-04T09:36:33.377805+00:00",
+      "metadataVerifiedAt": "2026-10-06T22:05:45.594275+00:00",
       "method": "Official latest-stable Retail listing and file page inspected; no floating latest fetch during assembly.",
       "matchesLock": true
     },
@@ -193,7 +193,7 @@
       "officialFile": "https://www.curseforge.com/wow/addons/sharedmedia_causese/files/7242737",
       "latestStable": "7.6",
       "fileID": 7242737,
-      "metadataVerifiedAt": "2026-10-04T09:36:33.377809+00:00",
+      "metadataVerifiedAt": "2026-10-06T22:05:45.594275+00:00",
       "method": "Official latest-stable Retail listing and file page inspected; no floating latest fetch during assembly.",
       "matchesLock": true
     }

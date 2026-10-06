@@ -19,22 +19,22 @@
     {
       "path": "ConsolePort/Assets/Textures/Cursor/RoundBorderHighlight.blp",
       "sha256": "19b5d158aac471aa0296ab588933361f46c0566a47c5dd32d04cbe3f94dd1283",
-      "packageSHA256": "64d653aaccca1421fd884b03bd00d2485d0190dc3e95bc79eec8cb676aa23e45",
-      "source": "https://github.com/seblindfors/ConsolePort/releases/tag/3.3.5",
+      "packageSHA256": "d9cd6ce097c7bbafc0963a527243fd36f8cc6d1d294785154bf1886f58dbc640",
+      "source": "https://github.com/seblindfors/ConsolePort/releases/tag/3.3.9",
       "use": "Referenced from clean official ConsolePort; not duplicated into companion."
     },
     {
       "path": "ConsolePort/Assets/Icons/64/ps_s_l1.blp",
       "sha256": "b7d6001183669a1923ffc43f6dd34c51554a738bf1299c76803ca58582cac2be",
-      "packageSHA256": "64d653aaccca1421fd884b03bd00d2485d0190dc3e95bc79eec8cb676aa23e45",
-      "source": "https://github.com/seblindfors/ConsolePort/releases/tag/3.3.5",
+      "packageSHA256": "d9cd6ce097c7bbafc0963a527243fd36f8cc6d1d294785154bf1886f58dbc640",
+      "source": "https://github.com/seblindfors/ConsolePort/releases/tag/3.3.9",
       "use": "Referenced from clean official ConsolePort; not duplicated into companion."
     },
     {
       "path": "ConsolePort/Assets/Icons/64/ps_s_r1.blp",
       "sha256": "361af17d4f6b4cd312459bcfac82a104ea0a11ea28b32ce3c4c8066bddd28fc7",
-      "packageSHA256": "64d653aaccca1421fd884b03bd00d2485d0190dc3e95bc79eec8cb676aa23e45",
-      "source": "https://github.com/seblindfors/ConsolePort/releases/tag/3.3.5",
+      "packageSHA256": "d9cd6ce097c7bbafc0963a527243fd36f8cc6d1d294785154bf1886f58dbc640",
+      "source": "https://github.com/seblindfors/ConsolePort/releases/tag/3.3.9",
       "use": "Referenced from clean official ConsolePort; not duplicated into companion."
     }
   ],

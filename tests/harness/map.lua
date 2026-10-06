@@ -50,7 +50,7 @@ api.C_Map={CanSetUserWaypointOnMap=function(id) assert(id==map.mapID) return all
 api.C_SuperTrack={SetSuperTrackedUserWaypoint=function(value) assert(hardware and value==false) superCount=superCount+1 end}
 settings['Settings/UICursorCancel']='PAD2'
 assert(nativeStack:SetFrame(map,true)) flushWindows()
-assert(contexts:Enable({db=db,api={version='3.3.5'}},api,true,true,false,true))
+assert(contexts:Enable({db=db,api={version='3.3.9'}},api,true,true,false,true))
 cursor:SetCurrentNode(pin)
 assert(contexts.context.kind=='map' and axis.owned and axis.frame.sticks.Left and axis.frame.sticks.Right)
 local function mapStick(stick,x,y,len) fire(nativeDispatcher,'OnGamePadStick',stick,x,y,len) end
@@ -130,6 +130,6 @@ cursor:SetCurrentNode(pin) combat=true contexts:Refresh() tick(.1) assert(not ax
 combat=false contexts:Refresh()
 map.mapID={} contexts:Refresh() assert(contexts.context==nil and not axis.owned)
 map.mapID=13 cursor:SetCurrentNode(pin)
-assert(contexts:Enable({db=db,api={version='3.3.5'}},api,true,true,false,false))
+assert(contexts:Enable({db=db,api={version='3.3.9'}},api,true,true,false,false))
 assert(contexts.context==nil and not axis.owned)
 TEST_SUCCESS=true

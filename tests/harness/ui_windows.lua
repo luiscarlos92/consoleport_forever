@@ -38,7 +38,7 @@ paneA:Hide() paneB:Hide()
 assert(nativeStack:SetFrame(paneA,true) and nativeStack:SetFrame(paneB,true))
 -- Registering a child does not create an additional window candidate.
 assert(nativeStack:SetFrame(leafA,true))
-contexts:Enable({db=db,api={version='3.3.5'}},api,true,true)
+contexts:Enable({db=db,api={version='3.3.9'}},api,true,true)
 cursor:SetCurrentNode(parent)
 paneA:Show() paneB:Show() flushWindows()
 -- Native face rows cover all modifier variants. The bare directional route
@@ -158,5 +158,5 @@ assert(cursor:GetCurrentNode()==leafA,'combat release changed window focus')
 combat=false contexts:Refresh()
 leafA:Hide() assert(not contexts.context,'hidden focused leaf kept a window owner')
 leafA:Show() assert(contexts.context.kind=='window')
-assert(contexts:Enable({db=db,api={version='3.3.5'}},api,false))
+assert(contexts:Enable({db=db,api={version='3.3.9'}},api,false))
 TEST_SUCCESS=true

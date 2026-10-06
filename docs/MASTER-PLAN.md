@@ -1,5 +1,9 @@
 # ConsolePort Forever: master plan, decisions, and project history
 
+## Current authority — October 6, 2026
+
+The user's current request explicitly authorizes updating the repo to ConsolePort 3.3.9, running all repo tests, and deploying the tested code to Retail before their manual test. This supersedes earlier build-only boundaries for this deployment. Candidate.4 uses clean official dependencies and preserves StoreSchema 3, configuration revision 12, WTF bytes and character junctions. All 34 runtime/source suites and 21 tooling checks pass; precise protected/client acceptance remains manual. See `docs/CONSOLEPORT-UPGRADE-2026-10-06.md` for exact source, test, artifact and deployment evidence. The October 4 status and dependency versions below remain history.
+
 Prepared: 2026-10-03  
 Updated with user clarifications: 2026-10-03  
 Status: User-authorized installation and two complete read-only accepted-login WTF audits completed October 4. Current installed version 2.0.0-candidate.3, StoreSchema 3, configuration revision 12, pushed source c004591fb1372322f33f9bf603a8546e1d039c8e. The second audit confirms accepted modes/rings and clean reload verification; it fixes the unintended bonus-page supplemental bar and shown empty cursor parent, and adds bounded per-GUID runtime diagnostics for future audits. All 32 runtime/source suites, 21 tooling tests and Windows CI pass. Deployment completed at 16:08:52 Toronto. Complete AddOns/WTF backups are retained. Final readback matches all 296 second-audit WTF files and 42 links exactly; no saved file was edited and no game was launched. Actual controller/secure/combat/rendering/persistence acceptance and the separate exact gesture/selector/icon/scroll gates remain pending. See docs/WTF-AUDIT-2026-10-04-SECOND.md, docs/LIVE-INSTALL-2026-10-04.md and docs/MANUAL-TEST-CASES.md. The user's later installation/redeployment authorization supersedes the historical build-only boundary below.

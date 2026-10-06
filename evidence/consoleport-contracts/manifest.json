@@ -1,7 +1,7 @@
 {
-  "version": "3.3.5",
-  "releaseURL": "https://github.com/seblindfors/ConsolePort/releases/tag/3.3.5",
-  "packageSHA256": "64d653aaccca1421fd884b03bd00d2485d0190dc3e95bc79eec8cb676aa23e45",
+  "version": "3.3.9",
+  "releaseURL": "https://github.com/seblindfors/ConsolePort/releases/tag/3.3.9",
+  "packageSHA256": "d9cd6ce097c7bbafc0963a527243fd36f8cc6d1d294785154bf1886f58dbc640",
   "purpose": "Exact unmodified source audit/test contracts; not deployed dependency copies.",
   "files": [
     {
@@ -18,11 +18,11 @@
     },
     {
       "path": "ConsolePort/Controller/Input.lua",
-      "sha256": "b1afa749c570a1da69b48e6d1cd38455be2976aebb814c5dae16b3ba3a49f791"
+      "sha256": "e36882de5f210d81b2eff06a97aaf4cb3ca394eda2fe5e00f9f1c65c6dc285d9"
     },
     {
       "path": "ConsolePort/Controller/Layers.lua",
-      "sha256": "1606b7953f8fe1ed52bafc94ef33941fed91d4609aefe0aa782109acbc4cfc7d"
+      "sha256": "a8fa9d3c2dc607dd1a0ce69a5da5371758a47792efb5ee6219208356fb84779a"
     },
     {
       "path": "ConsolePort/Libs/External/LibActionButton-1.0/LibActionButton-1.0.lua",
@@ -30,7 +30,7 @@
     },
     {
       "path": "ConsolePort_Bar/Widget/Button/Button.lua",
-      "sha256": "e49ecdccbacf38ce237528e9161c7143a8f4e7a4a1b21f4e483d62f91586727f"
+      "sha256": "b6eb305c489ca99d749fa20bc3d44f00778949f347acbb6680863db7550bd5d6"
     },
     {
       "path": "ConsolePort_Bar/Widget/Group/Group.lua",
@@ -54,7 +54,7 @@
     },
     {
       "path": "ConsolePort_Rings/Controller/Secure.lua",
-      "sha256": "c6ecd6e022494a254e4bfd0c8ebc489bf02345da2639004f0608176d4b5b45d2"
+      "sha256": "870f417c81104d13f5597808855a0fb68a079968f758f0e769ba13481afc5ca0"
     },
     {
       "path": "ConsolePort_Rings/Database.lua",
@@ -78,7 +78,7 @@
     },
     {
       "path": "ConsolePort/Controller/Radial.lua",
-      "sha256": "bcd3806dacb21271d0e3ddb96ff5d1dca0dc02c290807abf58174f9e0e1b7480"
+      "sha256": "03b4d32f62bff59ed0466a0213a252f0d10adfacd8aef1f29fcd8d1e99206f39"
     },
     {
       "path": "ConsolePort/Controller/Convenience.lua",
@@ -110,23 +110,31 @@
     },
     {
       "path": "ConsolePort_Bar/Controller/Manager/Manager.lua",
-      "sha256": "adebeb4416575936b5092cbc605eeb2ae65460b5e1bcef9e083f09d7ed1f6367"
+      "sha256": "df5fe632c7788782f0157d18b3da08c4ea74a40bd09b0e0d4beb0120be3ba370"
     },
     {
       "path": "ConsolePort/Model/Gamepad/Gamepad.lua",
-      "sha256": "465e33ffcfabe616d847a8c1bf71cb560850e6a9b4e8d4be26f1fddb4017e901"
+      "sha256": "72931c75d6a1d829ed0641d8e239249115e92963770b2eef26cd63ebfccd9b49"
     },
     {
       "path": "ConsolePort_Keyboard/View/Keyboard.lua",
-      "sha256": "0c73e5fe49f249d1dc1492b7f77e95503ff055794cf6d23077e22a3f6f0ec9de"
+      "sha256": "d0a781ae5c8b1b0020c83356cc8014fcaf13c4c8d92d165c96ab669e5722ad69"
     },
     {
       "path": "ConsolePort_Menu/Controller/UnitMenu.lua",
-      "sha256": "65da2c214c24c1a3f56d37e8407083b7566fdb2519909abe0d4f6ec571009797"
+      "sha256": "a6ef5b56e20bbbfd705f463c6d1ec6e9b31aa5b8b565c91fabd4d330405ceffe"
     },
     {
       "path": "ConsolePort/Utils/Macro.lua",
       "sha256": "dc517ad6e4528aaaf418e478f3bbdc32c3cc08bfb6a35f19db72401e73dad4e2"
+    },
+    {
+      "path": "ConsolePort_Bar/Model/Utils.lua",
+      "sha256": "2f451ff214e223674342275c9669d2d7caa23e102a9f3ecb00b4c41e54d50139"
+    },
+    {
+      "path": "ConsolePort_Cursor/Controller/Scripts.lua",
+      "sha256": "cb2fc5bdfb03ea9dab2700737be629f0eaeda59bf7d59f31e43700c5cb857f60"
     }
   ]
 }

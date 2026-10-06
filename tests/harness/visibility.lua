@@ -43,6 +43,29 @@ for _,name in ipairs(names) do
 end
 MicroMenuContainer=frame(UIParent) MicroMenu=frame(MicroMenuContainer) BagsBar=frame(UIParent)
 BagsBar:Hide()
+ExtraAbilityContainer=frame(UIParent)
+ExtraActionBarFrame=frame(ExtraAbilityContainer)
+ExtraActionBarFrame:Hide()
+ExtraActionButton1=frame(ExtraActionBarFrame)
+ExtraActionButton1.action=217
+local extraAvailable=false
+C_ActionBar={HasExtraActionBar=function() return extraAvailable end,GetOverrideBarSkin=function() return nil end}
+local function animation() return {Play=function() end,Stop=function() end} end
+ExtraActionBarFrame.intro,ExtraActionBarFrame.outro=animation(),animation()
+ExtraActionButton1.icon=frame(ExtraActionButton1)
+ExtraActionButton1.style={SetTexture=function() end}
+function ExtraActionButton1:UpdateUsable() end
+function ExtraActionButton1:GetButtonState() return self.state or 'NORMAL' end
+function ExtraActionButton1:SetButtonState(value) self.state=value end
+ExtraActionBarFrame.button=ExtraActionButton1
+function ExtraAbilityContainer:AddFrame(value) self.extra=value end
+function ExtraAbilityContainer:RemoveFrame() self.extra=nil end
+local extraUses=0
+function TryUseActionButton(button,down)
+    assert(button==ExtraActionButton1 and button.action==217)
+    if not down then extraUses=extraUses+1 end
+end
+--@NATIVE_EXTRA_ACTION
 local retained=frame(UIParent)
 --@RUNTIME_VISIBILITY
 local V=Addon.BlizzardVisibility
@@ -57,8 +80,17 @@ assert(MultiBarLeft.isShownExternal==true and MultiBarLeft:IsShown()==true,"nati
 assert(not MultiBarLeft:IsVisible() and not MicroMenuContainer:IsVisible() and not MicroMenu:IsVisible() and not BagsBar:IsVisible())
 assert(MicroMenu:GetParent()==MicroMenuContainer,"nested native menu parent changed")
 assert(retained:IsVisible() and MultiBarLeft.points[1]=="native geometry")
+extraAvailable=true ExtraActionBar_Update()
+assert(ExtraActionBarFrame:IsVisible() and ExtraActionButton1:IsVisible()
+    and ExtraAbilityContainer:GetParent()==UIParent,'side-bar hiding swallowed native extra ability')
+ExtraActionButtonKey(1,true) ExtraActionButtonKey(1,false)
+assert(extraUses==1,'native extra action did not execute once')
 combat=true
 for _,name in ipairs(names) do _G[name]:EditModeActionBar_OnEvent("PLAYER_REGEN_DISABLED") _G[name].showAll=true _G[name]:UpdateVisibility() assert(not _G[name]:IsVisible()) end
+ExtraActionButtonKey(1,true) ExtraActionButtonKey(1,false)
+assert(extraUses==2 and ExtraActionButton1:IsVisible(),'combat/visibility blocked the native extra action')
+extraAvailable=false ExtraActionButtonKey(1,true) ExtraActionButtonKey(1,false)
+assert(extraUses==2,'unavailable extra action executed')
 Addon.db.shared.runtimePolicy.blizzardVisibility=false V:Update()
 assert(MultiBarLeft:GetParent()==V.hidden,"combat disable mutated parent")
 combat=false V:Update()

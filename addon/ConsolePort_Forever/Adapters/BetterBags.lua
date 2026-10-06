@@ -82,6 +82,17 @@ function Bags:MenuButton()
     end)
     self.menu=button return button
 end
+function Bags:CloseTarget(frame)
+    if frame.CloseButton then return frame.CloseButton end
+    -- BetterBags' Default/ElvUI themes put the native close button on a
+    -- decoration child, not on the registered bag root. Resolve it afresh so
+    -- a hidden decoration from a previous theme cannot receive Back.
+    if not frame.GetChildren then return end
+    for _,child in ipairs({frame:GetChildren()}) do
+        local close=child.CloseButton
+        if child:IsShown() and close and close:IsShown() and close:GetParent()==child then return close end
+    end
+end
 function Bags:Enrich(context)
     if not self.enabled then return context end
     local ready,reason=self:Probe()
@@ -101,7 +112,7 @@ function Bags:Enrich(context)
     -- Preserve the existing native special/item-menu and bare Cancel rows.
     -- Clear carried items before the bag's close route can execute.
     if state and state.cursor=='item' then context.routes[self.cancel]=self:ClearButton()
-    elseif context.frame.CloseButton then context.routes[self.cancel]=context.frame.CloseButton end
+    else context.routes[self.cancel]=self:CloseTarget(context.frame) or false end
     for key in pairs(context.routes) do for _,modifier in ipairs({'','SHIFT-','CTRL-','CTRL-SHIFT-'}) do context.chords[modifier..key]=nil end end
     local validate=function()
         local current=self.current()

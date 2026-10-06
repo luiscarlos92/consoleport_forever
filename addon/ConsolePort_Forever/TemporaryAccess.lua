@@ -6,9 +6,10 @@ Addon.TemporaryAccess=Access
 -- supplemental native actions, not another bank or a new key assignment.
 Access.Response=[[
     local page;
+    local limit=12;
     if self:GetAttribute('cpf-enabled') then
-        if HasVehicleActionBar() then page=GetVehicleBarIndex()
-        elseif HasOverrideActionBar() then page=GetOverrideBarIndex()
+        if HasVehicleActionBar() then page=GetVehicleBarIndex(); limit=self:GetAttribute('cpf-override-limit')
+        elseif HasOverrideActionBar() then page=GetOverrideBarIndex(); limit=self:GetAttribute('cpf-override-limit')
         elseif HasTempShapeshiftActionBar() then page=GetTempShapeshiftBarIndex() end;
     end;
     -- The editable skyriding bonus page is not evidence of temporary
@@ -17,10 +18,12 @@ Access.Response=[[
     for index=9,12 do
         local button=self:GetFrameRef('action'..index);
         local action=page and ((page-1)*12+index);
+        local kind,identifier;
+        if action then kind,identifier=GetActionInfo(action) end;
         if button:GetAttribute('cpf-held') then
             -- Retain the original press owner until its release.
             visible=true;
-        elseif action and HasAction(action) then
+        elseif index<=limit and action and HasAction(action) and kind and identifier and identifier~=0 then
             button:SetAttribute('action',action); button:Show(); visible=true;
         else button:Hide() end;
     end;
@@ -42,6 +45,9 @@ function Access:Enable(bridge,api)
         frame:SetSize(200,36)
         frame:SetPoint('BOTTOM',api.UIParent,'BOTTOM',458,20)
         frame:SetAttribute('ActionPageChanged',self.Response)
+        -- The override page shares numeric storage with other action slots.
+        -- Occupied slots past Blizzard's declared capacity are not overflow.
+        frame:SetAttribute('cpf-override-limit',api.NUM_OVERRIDE_BUTTONS or 6)
         frame:Hide()
         self.frame,self.api=frame,api
         self.buttons={}
@@ -78,9 +84,18 @@ function Access:Enable(bridge,api)
         end
         -- Register once with the same native protected pager as all four banks.
         bridge.db.Pager:RegisterHeader(frame)
-        if api.ConsolePort and type(api.ConsolePort.AddInterfaceCursorFrame)=='function' then
-            api.ConsolePort:AddInterfaceCursorFrame(frame)
-        end
+        -- This is a gameplay surface, not an ordinary UI window. Registering
+        -- it with the interface stack enables the cursor automatically and
+        -- steals face-button/modifier actions from the temporary L2R2 page.
+        -- Keep explicit mouse access without claiming any gameplay bindings.
+        Addon.Diagnostics:SetFeature('temporaryAccess','offline-verified','mouse-accessible native exit/qualified overflow; no automatic interface-cursor ownership; Retail acceptance pending')
+    end
+    -- Earlier candidates persisted this frame in ConsolePort's cursor
+    -- registry. Omitting registration alone does not repair that saved row.
+    if api.ConsolePort and type(api.ConsolePort.RemoveInterfaceCursorFrame)=='function' then
+        api.ConsolePort:RemoveInterfaceCursorFrame(self.frame)
+        local stack=bridge.db.Stack
+        if stack and type(stack.UpdateFrames)=='function' then stack:UpdateFrames() end
     end
     self.frame:SetAttribute('cpf-enabled',true)
     self.frame:Execute(self.Response)

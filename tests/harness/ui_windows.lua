@@ -29,6 +29,9 @@ CPAPI.Index=function() return Frame end
 CPAPI.GetEnv=function() return {Attributes={PassThrough='native-pass-through'},FrameManagers={},FramePipelines={}},db,'ConsolePort_Cursor' end
 function cursor:OnStackChanged() end
 --@NATIVE_STACK
+local CURSOR_ADDON_NAME='ConsolePort_Cursor'
+EventUtil={ContinueOnAddOnLoaded=function(name,fn) assert(name==CURSOR_ADDON_NAME) fn() end}
+--@NATIVE_CURSOR_REGISTRATION
 local nativeStack=db.Stack
 local paneA=CreateFrame('Frame','APane',UIParent)
 local paneB=CreateFrame('Frame','BPane',UIParent)
@@ -38,6 +41,17 @@ paneA:Hide() paneB:Hide()
 assert(nativeStack:SetFrame(paneA,true) and nativeStack:SetFrame(paneB,true))
 -- Registering a child does not create an additional window candidate.
 assert(nativeStack:SetFrame(leafA,true))
+-- Simulate candidate.4's persisted true row and run the actual native remove
+-- API. A later Show must not revive automatic gameplay-surface ownership.
+local supplemental=CreateFrame('Frame','ConsolePortForeverTemporaryAccess',UIParent)
+assert(nativeStack:SetFrame(supplemental,true)) flushWindows()
+assert(ConsolePort:RemoveInterfaceCursorFrame(supplemental))
+nativeStack:UpdateFrames() flushWindows()
+supplemental:Hide() supplemental:Show() flushWindows()
+assert(nativeStack.Registry.ConsolePort_Cursor.ConsolePortForeverTemporaryAccess==false)
+for _,visibleFrame in ipairs({nativeStack:GetVisibleCursorFrames()}) do
+    assert(visibleFrame~=supplemental,'persisted supplemental registration survived native cleanup')
+end
 contexts:Enable({db=db,api={version='3.3.9'}},api,true,true)
 cursor:SetCurrentNode(parent)
 paneA:Show() paneB:Show() flushWindows()
@@ -159,4 +173,18 @@ combat=false contexts:Refresh()
 leafA:Hide() assert(not contexts.context,'hidden focused leaf kept a window owner')
 leafA:Show() assert(contexts.context.kind=='window')
 assert(contexts:Enable({db=db,api={version='3.3.9'}},api,false))
+-- The extra ability is an ordinary native binding, not a temporary bank.
+-- The real Layers resolver must restore it after UI R3 ownership ends.
+local extraOwner=CreateFrame('Frame','ExtraBindingOwner',UIParent)
+assert(db.Layers:Claim(extraOwner,'BASE','SHIFT-PADRSTICK','binding','EXTRAACTIONBUTTON1'))
+cursor:Hide()
+assert(contexts:Enable({db=db,api={version='3.3.9'}},api,true,true,true))
+assert(GetBindingAction('SHIFT-PADRSTICK',true)=='EXTRAACTIONBUTTON1','ordinary extra-action chord was consumed')
+cursor:Show() cursor:SetCurrentNode(leafA)
+assert(GetBindingAction('SHIFT-PADRSTICK',true)~='EXTRAACTIONBUTTON1','focused UI leaked extra-action gameplay')
+cursor:Hide()
+assert(GetBindingAction('SHIFT-PADRSTICK',true)=='EXTRAACTIONBUTTON1','closing UI did not restore extra-action chord')
+assert(contexts:Enable({db=db,api={version='3.3.9'}},api,false))
+assert(db.Layers:Release(extraOwner,'SHIFT-PADRSTICK'))
+cursor:Show()
 TEST_SUCCESS=true

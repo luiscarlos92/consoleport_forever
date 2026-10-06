@@ -1,5 +1,7 @@
 # Implementation checkpoint — October 4, 2026
 
+**Current development checkpoint — October 6:** Candidate.5 fixes the live Darkmoon feedback in `DARKMOON-FIXES-2026-10-06.md`; all 35 runtime/source suites and 24 tooling tests pass, with final product/tooling hashes verified against the retained receipts. Candidate.4 remains installed. The user explicitly prohibited deployment while WoW is open. Keep action icons visible during UI focus, decorate native item callbacks with configured-button hints, and remove the supplemental surface's persisted automatic interface-cursor registration. Native extra-action visibility/availability and L2+R3 restoration through Layers are offline-verified; Retail retesting awaits a later authorized deployment.
+
 **Latest installed checkpoint — October 6, 18:47:33 Toronto:** candidate.4 supports ConsolePort 3.3.9 and is deployed through the guarded companion-only tool. All 43 live companion files match Git. All 3,693 vendor files, 296 WTF files and 42 character links are unchanged. The earlier incomplete DBM package policy is corrected. Latest CI on `b623ceb` passes all 34 runtime/source suites and 24 tooling checks. Runtime configuration revision remains 12; manual Retail acceptance is the user's next step. See `CONSOLEPORT-UPGRADE-2026-10-06.md` and `evidence/delivery/live-install-candidate4.json`. Earlier checkpoints below are history.
 
 ## Current update — October 6, 2026

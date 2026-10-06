@@ -2,6 +2,8 @@
 
 Personal Retail controller UI companion. Version **2.0.0-candidate.4** targets clean **ConsolePort 3.3.9**. Development and simulations stay isolated from the installed game; live installation requires the user's explicit request. See [the compatibility update](docs/CONSOLEPORT-UPGRADE-2026-10-06.md), [the latest complete WTF audit](docs/WTF-AUDIT-2026-10-04-THIRD.md), [verified deployments](docs/LIVE-INSTALL-2026-10-04.md), and [35 step-by-step test cases with results](docs/MANUAL-TEST-CASES.md).
 
+**Current development: candidate.5**, addressing the user's [Darkmoon feedback](docs/DARKMOON-FIXES-2026-10-06.md). Candidate.4 remains installed; deployment is explicitly prohibited while the user keeps WoW open. Configuration revision remains 12.
+
 Read [the active master plan](docs/MASTER-PLAN.md) and [implementation status](docs/IMPLEMENTATION-STATUS.md) before continuing. The untouched installed companion, dependency snapshots, configuration, assets and junction inventory were captured and pushed as baseline `15a191ab06b6d4562d63761116ca2c248150c3cc`.
 
 From this checkout, with Node 24 and Python 3.14:

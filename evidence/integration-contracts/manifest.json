@@ -86,6 +86,20 @@
       "packageSHA256": "16c1ac70c4de2e7f2cfdbf4d2b5f3d3f44514a3f9ecf1040e29c790e8be8c0d7"
     },
     {
+      "path": "BetterBags/themes/default.lua",
+      "sha256": "198b56880c560367a8b1d8e1644f397b26500f472c5f19dd99fec46497a88304",
+      "repo": "Cidan/BetterBags",
+      "version": "v0.5.14",
+      "packageSHA256": "16c1ac70c4de2e7f2cfdbf4d2b5f3d3f44514a3f9ecf1040e29c790e8be8c0d7"
+    },
+    {
+      "path": "BetterBags/themes/elvui.lua",
+      "sha256": "39f7170ce15010426d2ebe547bcd838dfb0fbf4ad2956d470926be9ebd4808e0",
+      "repo": "Cidan/BetterBags",
+      "version": "v0.5.14",
+      "packageSHA256": "16c1ac70c4de2e7f2cfdbf4d2b5f3d3f44514a3f9ecf1040e29c790e8be8c0d7"
+    },
+    {
       "path": "BetterBags/LICENSE",
       "sha256": "b92215e6fb3d24dbe22b524d917465340aa22a8e9e018f24986554a902026bec",
       "repo": "Cidan/BetterBags",

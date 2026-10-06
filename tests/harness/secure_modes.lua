@@ -173,13 +173,15 @@ assert(Addon.SecureModes.Install(bridge,api) and wrapCount==96)
 -- Real-world controller-only configuration has no keyboard exit or overflow
 -- bindings. Verify the supplemental native secure surface instead of allowing
 -- the whole mode feature to silently remain disabled.
-local created,registered,cursorFrames=0,0,0
+local created,registered,cursorFrames,removedFrames=0,0,0,0
 local usable,canExit=true,true
 function HasAction(action) return usable and action>=129 and action<=132 end
 function CanExitVehicle() return canExit end
 api.UIParent={}
+api.NUM_OVERRIDE_BUTTONS=12 -- Model a genuine expanded native overflow page.
 api.GetActionTexture=function(action) return 'native:'..tostring(action) end
-api.ConsolePort={AddInterfaceCursorFrame=function(_,frame) assert(frame==Addon.TemporaryAccess.frame) cursorFrames=cursorFrames+1 end}
+api.ConsolePort={AddInterfaceCursorFrame=function(_,frame) assert(frame==Addon.TemporaryAccess.frame) cursorFrames=cursorFrames+1 end,
+    RemoveInterfaceCursorFrame=function(_,frame) assert(frame==Addon.TemporaryAccess.frame) removedFrames=removedFrames+1 end}
 function api.CreateFrame(kind,name,parent,template)
     assert(not combat)
     assert(template=='SecureHandlerBaseTemplate' or template=='SecureActionButtonTemplate')
@@ -216,7 +218,7 @@ routes=false
 state.family='skyriding'
 assert(Addon.SecureModes.Install(bridge,api),'unbound keyboard routes blocked actual controller-only setup')
 local access=Addon.TemporaryAccess.frame
-assert(created==6 and registered==1 and cursorFrames==1)
+assert(created==6 and registered==1 and cursorFrames==0 and removedFrames==1,'supplemental controls claimed or retained interface-cursor registration')
 assert(not access.shown and not access.refs.action9.shown and not access.refs.exit.shown,
     'editable skyriding slots produced a side bar or an empty cursor owner')
 state.family='vehicle' state.specialPage=11
@@ -230,6 +232,25 @@ end
 assert(access.refs.action9:GetAttribute('action')==129 and access.refs.action12:GetAttribute('action')==132)
 assert(access.refs.exit.shown and access.refs.exit:GetAttribute('type')=='leavevehicle')
 assert(access.refs.action9:GetAttribute('useOnKeyDown')==false)
+-- HasAction alone can report occupied slots that have no exposed temporary
+-- action identity. A one-button Darkmoon override must not show ghost 9/10.
+local nativeActionInfo=GetActionInfo
+state.family='override' canExit=false
+access:SetAttribute('cpf-override-limit',6)
+access:Execute(Addon.TemporaryAccess.Response)
+assert(not access.shown,'occupied backing slots outside native override capacity produced ghost 9/10')
+access:SetAttribute('cpf-override-limit',12)
+function GetActionInfo(action)
+    if action>=129 and action<=132 then return nil end
+    return nativeActionInfo(action)
+end
+access:Execute(Addon.TemporaryAccess.Response)
+assert(not access.shown and not access.refs.action9.shown and not access.refs.action10.shown,'unqualified Darkmoon overflow remained visible')
+function GetActionInfo(action) return 'spell',0 end
+access:Execute(Addon.TemporaryAccess.Response)
+assert(not access.shown,'zero spell identity qualified ghost overflow')
+GetActionInfo=nativeActionInfo canExit=true state.family='vehicle'
+access:Execute(Addon.TemporaryAccess.Response)
 assert(Addon.SecureModes.Install(bridge,api) and created==6 and wrapCount==96,'access or native hooks duplicated')
 combat=true
 access:Execute([[local button=self:GetFrameRef('action9'); button:SetAttribute('cpf-held',true)]])

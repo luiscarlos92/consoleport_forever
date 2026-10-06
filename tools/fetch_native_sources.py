@@ -35,6 +35,8 @@ FILES=[
     'Blizzard_MapCanvas/MapCanvas_ScrollContainerMixin.lua',
     'Blizzard_WorldMap/Blizzard_WorldMap.lua',
     'Blizzard_UIPanels_Game/Mainline/ContainerFrame.lua',
+    'Blizzard_UIPanels_Game/Mainline/MerchantFrame.lua',
+    'Blizzard_UIPanels_Game/Mainline/MerchantFrame.xml',
     'Blizzard_APIDocumentationGenerated/ContainerDocumentation.lua',
     'Blizzard_SharedMapDataProviders/WaypointLocationDataProvider.lua',
     'Blizzard_APIDocumentationGenerated/MapDocumentation.lua',
@@ -50,6 +52,8 @@ FILES=[
     'Blizzard_ActionBar/Shared/MultiActionBars.lua',
     'Blizzard_ActionBar/Shared/MultiActionBars.xml',
     'Blizzard_ActionBar/Shared/ActionBar.lua',
+    'Blizzard_ActionBar/Shared/ExtraActionBar.lua',
+    'Blizzard_ActionBar/Shared/ExtraActionBar.xml',
 ]
 
 if __name__=='__main__':

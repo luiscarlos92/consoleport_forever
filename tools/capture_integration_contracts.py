@@ -5,7 +5,7 @@ from repository_paths import ROOT, contained, output, sha
 FILES = {
     'Immersion': ['Immersion/Config.lua', 'Immersion/Settings.lua', 'Immersion/Display/Onload.lua', 'Immersion/Display/Theme.lua', 'Immersion/LICENSE.md'],
     'Immersion_ExtraFade': ['Immersion_ExtraFade/options.lua', 'Immersion_ExtraFade/main.lua', 'Immersion_ExtraFade/hide_module.lua'],
-    'BetterBags': ['BetterBags/integrations/consoleport.lua', 'BetterBags/integrations/masque.lua', 'BetterBags/frames/item.lua', 'BetterBags/frames/bag.lua', 'BetterBags/LICENSE'],
+    'BetterBags': ['BetterBags/integrations/consoleport.lua', 'BetterBags/integrations/masque.lua', 'BetterBags/frames/item.lua', 'BetterBags/frames/bag.lua', 'BetterBags/themes/default.lua', 'BetterBags/themes/elvui.lua', 'BetterBags/LICENSE'],
     'DynamicCam': ['DynamicCam/Core.lua', 'DynamicCam/DefaultSettings.lua', 'DynamicCam/LICENSE',
         'DynamicCam/Libs/LICENSE.md', 'DynamicCam/Libs/LibStub/LibStub.lua',
         'DynamicCam/Libs/CallbackHandler-1.0/CallbackHandler-1.0.lua',

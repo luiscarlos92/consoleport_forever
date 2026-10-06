@@ -107,6 +107,9 @@ function Contexts:Refresh(force)
 end
 function Contexts:Enable(bridge,api,enabled,windowsEnabled,bagsEnabled,mapEnabled)
     self.enabled=not not enabled
+    self.hints=self.hints or Addon.ItemHints.New(bridge.db,api)
+    local hinted,hintReason=self.hints:Enable(enabled,windowsEnabled,bagsEnabled)
+    if enabled then Addon.Diagnostics:SetFeature('itemHints',hinted and 'offline-verified' or 'pending',hintReason or 'native merchant Select/Buy and container Open prompts; rendered acceptance pending') end
     if not enabled then if self.input then return self:Refresh() end return true end
     local ready,reason=self:Probe(bridge,api)
     if not ready then return false,reason end

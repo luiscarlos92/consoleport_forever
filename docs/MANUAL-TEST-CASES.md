@@ -1,4 +1,6 @@
-# Retail tests and results — candidate.3, revision 12
+# Retail tests and results — installed candidate.4, revision 12
+
+October 6 live feedback: mounts/skyriding, normal combat, map zoom and NPC dialogue look okay; Square buys vendor items and opens containers. Backpack hides all action icons; merchant/controller Open hints need improvement; Rinling and Finlay show supplemental artifacts and empty banks. Candidate.5 fixes are being prepared **without deployment** while the user keeps WoW open. See [current feedback/fixes](DARKMOON-FIXES-2026-10-06.md). These broad observations do not certify every old test-card step.
 
 Latest read-only audit: [third WTF report](WTF-AUDIT-2026-10-04-THIRD.md). All 296 files/42 links are intact, 257 Lua/fallback files parse, 52 owned-field checks match and the new runtime log has no entries. Your basic skyriding retest is recorded as successful; the full action/held/combat test is still separate. Test 35 addresses the remaining BagsBar parent/visibility question.
 
@@ -282,7 +284,7 @@ Paste this outside combat. It has no gameplay or saved-setting action. Circle sh
 - **B.** Focus Character/Bags using the interface cursor.
 - **C.** Open a nested popup and close it; finally close UI.
 
-**Verify:** Gameplay feedback is suppressed while the approved UI owner holds focus, then restored. Ring feedback and item/window controls remain visible. No permanently blank icons or hidden gameplay cast through a focused window.
+**Verify:** Action icons remain visible while the approved UI owner holds focus. Transient gameplay highlights are suppressed, then restored. Ring feedback and item/window controls remain visible. No blank HUD or hidden gameplay cast through a focused window. This follows the October 6 correction to the earlier icon-suppression requirement.
 
 **Result:** NOT RUN
 

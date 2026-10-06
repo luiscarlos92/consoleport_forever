@@ -5,6 +5,10 @@
   "purpose": "Exact unmodified source audit/test contracts; not deployed dependency copies.",
   "files": [
     {
+      "path": "ConsolePort/API.lua",
+      "sha256": "fde3f6fc2ed9d66ca9b42ce1834d8c5a86163a6d53beae061ce21f5d59947b84"
+    },
+    {
       "path": "ConsolePort/Utils/Utils.lua",
       "sha256": "0dbdbf4ec319fe60ae9fb943d30ca56a90aab131b8cfea1cea75c0069f8b388b"
     },

@@ -196,6 +196,20 @@
     "url": "https://github.com/Gethe/wow-ui-source/blob/09b9db7948abc9b9648dedaab51eb0cf3ee67b31/Interface/AddOns/Blizzard_UIPanels_Game/Mainline/ContainerFrame.lua"
   },
   {
+    "path": "Blizzard_UIPanels_Game/Mainline/MerchantFrame.lua",
+    "commit": "09b9db7948abc9b9648dedaab51eb0cf3ee67b31",
+    "gitBlob": "59669dd1c0024fd224803c86ae661cf74a3e433c",
+    "sha256": "07352bd6e27a6fc929c68f118e8deb0aa8b6b7e44b838b90c277e1d570d92b89",
+    "url": "https://github.com/Gethe/wow-ui-source/blob/09b9db7948abc9b9648dedaab51eb0cf3ee67b31/Interface/AddOns/Blizzard_UIPanels_Game/Mainline/MerchantFrame.lua"
+  },
+  {
+    "path": "Blizzard_UIPanels_Game/Mainline/MerchantFrame.xml",
+    "commit": "09b9db7948abc9b9648dedaab51eb0cf3ee67b31",
+    "gitBlob": "f13c4b919abb3fdd20d42973d5735bda85d0636a",
+    "sha256": "1fb1db72c4496de05cc47ccbfd07dbbaaa38fe5aaa1cbc007819e35b7bf7d893",
+    "url": "https://github.com/Gethe/wow-ui-source/blob/09b9db7948abc9b9648dedaab51eb0cf3ee67b31/Interface/AddOns/Blizzard_UIPanels_Game/Mainline/MerchantFrame.xml"
+  },
+  {
     "path": "Blizzard_APIDocumentationGenerated/ContainerDocumentation.lua",
     "commit": "09b9db7948abc9b9648dedaab51eb0cf3ee67b31",
     "gitBlob": "355894f1572f0af7731429e59a885786a6cfc97a",
@@ -299,5 +313,19 @@
     "gitBlob": "bf258b7ca257d48e338350a3dbaf9a0ad600162f",
     "sha256": "b1f3c29d6d673e5ffb056b834f7e379e67d54261dc8fadf88fb6ca589552ad8c",
     "url": "https://github.com/Gethe/wow-ui-source/blob/09b9db7948abc9b9648dedaab51eb0cf3ee67b31/Interface/AddOns/Blizzard_ActionBar/Shared/ActionBar.lua"
+  },
+  {
+    "path": "Blizzard_ActionBar/Shared/ExtraActionBar.lua",
+    "commit": "09b9db7948abc9b9648dedaab51eb0cf3ee67b31",
+    "gitBlob": "de967925bd30c70ea1ee039dc69a7235f895cc7e",
+    "sha256": "ec951e2c1a38ae4ca92dc54ab6ad3406c7b17ef6ce3671ed23cf98f69062dcf2",
+    "url": "https://github.com/Gethe/wow-ui-source/blob/09b9db7948abc9b9648dedaab51eb0cf3ee67b31/Interface/AddOns/Blizzard_ActionBar/Shared/ExtraActionBar.lua"
+  },
+  {
+    "path": "Blizzard_ActionBar/Shared/ExtraActionBar.xml",
+    "commit": "09b9db7948abc9b9648dedaab51eb0cf3ee67b31",
+    "gitBlob": "4b43122ef9e368e0bc0a31009974837e7e7e22cb",
+    "sha256": "da26c5c913562b1a0b887efb100da7f29fd3e892aafaec1f829589e8816a0ff6",
+    "url": "https://github.com/Gethe/wow-ui-source/blob/09b9db7948abc9b9648dedaab51eb0cf3ee67b31/Interface/AddOns/Blizzard_ActionBar/Shared/ExtraActionBar.xml"
   }
 ]

@@ -2,7 +2,9 @@ local _, Addon = ...
 local Visuals={regions=setmetatable({},{__mode='k'}),focused=false}
 Addon.FocusVisuals=Visuals
 local banks={'Base','L2','R2','L2R2'}
-local regions={'icon','HighlightTexture','CheckedTexture','PushedTexture','Flash','Border','SpellHighlightTexture','NewActionTexture'}
+-- Keep action identity visible while UI owns input. Only transient gameplay
+-- feedback yields to the cursor; hiding icons made the entire HUD look empty.
+local regions={'HighlightTexture','CheckedTexture','PushedTexture','Flash','Border','SpellHighlightTexture','NewActionTexture'}
 function Visuals:Probe(bridge,api)
     return bridge.db.Cursor and type(bridge.db.RegisterCallback)=='function'
         and type(api.hooksecurefunc)=='function' or false

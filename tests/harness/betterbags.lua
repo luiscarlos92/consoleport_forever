@@ -111,8 +111,10 @@ api.C_Container=C_Container api.GetCursorInfo=GetCursorInfo api.ClearCursor=Clea
 api.C_Item=C_Item api.ItemLocation=ItemLocation
 api.MerchantFrame=MerchantFrame api.BankFrame=BankFrame api.MailFrame=MailFrame api.TradeFrame=TradeFrame
 local closed=0
-paneA.CloseButton=CreateFrame('Button','NativeBagClose',paneA)
-paneA.CloseButton:SetScript('OnClick',function() assert(hardware) closed=closed+1 end)
+local bagDecoration=CreateFrame('Frame','NativeBagTheme',paneA)
+bagDecoration.CloseButton=CreateFrame('Button','NativeBagClose',bagDecoration)
+bagDecoration.CloseButton:SetScript('OnClick',function() assert(hardware) closed=closed+1 end)
+function paneA:GetChildren() return bagDecoration end
 contexts:Enable({db=db,api={version='3.3.9'}},api,true,true,true)
 cursor:SetCurrentNode(item.button)
 assert(contexts.context.token=='native-bag-item' and contexts.context.routes.PAD1==item.button)

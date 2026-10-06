@@ -62,7 +62,7 @@ check('T01.snapshot', () => {
 check('T27.lua51', () => {
   for (const f of files('addon').filter(f=>f.endsWith('.lua'))) parser.parse(read(f),{luaVersion:'5.1'});
 });
-const modules = ['Core','Store','Plan','Transactions','BindingPolicy','ModePolicy','Rings/Discovery','Rings/Selectors','SecureModes','TemporaryAccess','UI/Ownership','UI/InputBridge','UI/Windows','UI/Scroll','UI/Map','Cinematic','Adapters/BetterBags','UI/Contexts','UI/FocusVisuals','UI/Proof','Adapters/NativeBindings',
+const modules = ['Core','Store','Plan','Transactions','BindingPolicy','ModePolicy','Rings/Discovery','Rings/Selectors','SecureModes','TemporaryAccess','UI/Ownership','UI/InputBridge','UI/Windows','UI/Scroll','UI/Map','Cinematic','Adapters/BetterBags','UI/ItemHints','UI/Contexts','UI/FocusVisuals','UI/Proof','Adapters/NativeBindings',
   'Adapters/BindingState','Adapters/BindingBanks','Diagnostics','Capability','Adapters/ConsolePort','Adapters/EditMode','Adapters/FlatConfig','Adapters/Integrations','Adapters/LiteMount','Adapters/DynamicCam','Adapters/Rings','Baseline','Coordinator','Prompt'];
 const source = 'Addon={};\n' + modules.map(m=>
   ';(function(...)\n'+read('addon/ConsolePort_Forever/'+m+'.lua')+'\nend)("ConsolePort_Forever",Addon);\n').join('');
@@ -251,6 +251,7 @@ function windowFixture() {
   const base='evidence/consoleport-contracts/';
   const windows=read('tests/harness/ui_windows.lua')
     .replace('--@NATIVE_STACK',()=>';(function(...)\n'+read(base+'ConsolePort_Cursor/Controller/Stack.lua')+'\nend)("ConsolePort_Cursor");')
+    .replace('--@NATIVE_CURSOR_REGISTRATION',()=>nativeFunction(base+'ConsolePort/API.lua','ConsolePort:RemoveInterfaceCursorFrame'))
     .replace('--@NATIVE_TABS',()=>read('evidence/native/Blizzard_SharedXML/Shared/TabSystem/TabSystemOwner.lua')+'\n'+read('evidence/native/Blizzard_SharedXML/Shared/TabSystem/TabSystemTemplates.lua'));
   return uiContextFixture()+'\n'+windows;
 }
@@ -263,7 +264,7 @@ function nativeFunction(file,signature) {
     const body=text.slice(start,end);
     parser.parse(body,{luaVersion:'5.1'}); return body;
 }
-check('T21-T22.native-BetterBags-item-guards', () => {
+function betterBagsFixture() {
   const container='evidence/native/Blizzard_UIPanels_Game/Mainline/ContainerFrame.lua';
   const base='evidence/consoleport-contracts/';
   const fixture=read('tests/harness/betterbags.lua')
@@ -272,7 +273,16 @@ check('T21-T22.native-BetterBags-item-guards', () => {
     .replace('--@NATIVE_BETTERBAGS_INTEGRATION',()=>';(function(...)\n'+read('evidence/integration-contracts/BetterBags/integrations/consoleport.lua')+'\nend)("BetterBags");')
     .replace('--@NATIVE_ITEM_MENU_SET',()=>nativeFunction(base+'ConsolePort_Menu/View/Popup/ItemMenu.lua','ItemMenu:SetItem'))
     .replace('--@NATIVE_MODULE_DEMAND',()=>['Modules:IsEnabled','Modules:Demand'].map(name=>nativeFunction(base+'ConsolePort/Controller/Modules.lua',name)).join('\n'));
-  execute(source+windowFixture()+'\n'+fixture,'BetterBags-native-item-contexts');
+  return windowFixture()+'\n'+fixture;
+}
+check('T21-T22.native-BetterBags-item-guards', () => {
+  execute(source+betterBagsFixture(),'BetterBags-native-item-contexts');
+});
+check('T35.native-merchant-container-hints', () => {
+  const fixture=read('tests/harness/item_hints.lua')
+    .replace('--@NATIVE_TOOLTIP_PROMPT',()=>nativeFunction('evidence/consoleport-contracts/ConsolePort/Model/Gamepad/Gamepad.lua','GamepadMixin:GetTooltipButtonPrompt'))
+    .replace('--@NATIVE_MERCHANT_BUTTONS',()=>['MerchantItemButton_OnLoad','MerchantItemButton_OnClick','MerchantItemButton_OnEnter'].map(name=>nativeFunction('evidence/native/Blizzard_UIPanels_Game/Mainline/MerchantFrame.lua',name)).join('\n'));
+  execute(source+betterBagsFixture()+'\n'+fixture,'native-merchant-container-hints');
 });
 function scrollFixture() {
   const base='evidence/consoleport-contracts/';
@@ -420,6 +430,7 @@ check('T31.native-visibility-parent-lifecycle', () => {
   const names=['SetupVisibilityFunctionOverrides','EditModeActionBar_OnEvent','IsShownOverride','SetShownOverride','ShowOverride','HideOverride','UpdateVisibility'];
   const fixture=read('tests/harness/visibility.lua')
     .replace('--@NATIVE_BAR_METHODS',()=>names.map(name=>nativeFunction(file,'EditModeActionBarMixin:'+name)).join('\n'))
+    .replace('--@NATIVE_EXTRA_ACTION',()=>read('evidence/native/Blizzard_ActionBar/Shared/ExtraActionBar.lua'))
     .replace('--@RUNTIME_VISIBILITY',()=>';(function(...)\n'+read('addon/ConsolePort_Forever/Runtime.lua')+'\nend)("ConsolePort_Forever",Addon);');
   execute(fixture,'native-visibility-parent-lifecycle');
 });

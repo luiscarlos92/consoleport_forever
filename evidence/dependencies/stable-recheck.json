@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-10-06T22:42:41.817625+00:00",
+  "checkedAt": "2026-10-06T23:26:52.199788+00:00",
   "lockSHA256": "ecdfd5160d00884c8bd21230ebc0166003956ad9b50c16b1b84d30b9d8938b26",
   "github": [
     {
@@ -173,7 +173,7 @@
       "officialFile": "https://www.curseforge.com/wow/addons/dynamiccam/files/8995535",
       "latestStable": "2.21.1",
       "fileID": 8995535,
-      "metadataVerifiedAt": "2026-10-06T22:05:45.594275+00:00",
+      "metadataVerifiedAt": "2026-10-06T23:26:48.971074+00:00",
       "method": "Official latest-stable Retail listing and file page inspected; no floating latest fetch during assembly.",
       "matchesLock": true
     },
@@ -183,7 +183,7 @@
       "officialFile": "https://www.curseforge.com/wow/addons/immersion-extrafade/files/8995675",
       "latestStable": "1.18.0",
       "fileID": 8995675,
-      "metadataVerifiedAt": "2026-10-06T22:05:45.594275+00:00",
+      "metadataVerifiedAt": "2026-10-06T23:26:48.971074+00:00",
       "method": "Official latest-stable Retail listing and file page inspected; no floating latest fetch during assembly.",
       "matchesLock": true
     },
@@ -193,7 +193,7 @@
       "officialFile": "https://www.curseforge.com/wow/addons/sharedmedia_causese/files/7242737",
       "latestStable": "7.6",
       "fileID": 7242737,
-      "metadataVerifiedAt": "2026-10-06T22:05:45.594275+00:00",
+      "metadataVerifiedAt": "2026-10-06T23:26:48.971074+00:00",
       "method": "Official latest-stable Retail listing and file page inspected; no floating latest fetch during assembly.",
       "matchesLock": true
     }
@@ -203,5 +203,6 @@
     "expectedCommit": "99e0c336444fd7105e1414c46f9d6a4e0cf99bc6",
     "matchesLock": true
   },
+  "updates": [],
   "allCurrent": true
 }

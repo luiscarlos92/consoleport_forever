@@ -2,6 +2,14 @@
 
 ## Current authority — October 6, 2026
 
+Newest user authorization: WoW is closed; deploy candidate.5 after verification.
+Before each future work session check every official stable Retail dependency,
+download/update only changed packages in the Git checkout, review/test/fix
+compatibility, and deploy only Forever plus dependencies that actually changed.
+Use the scoped update builder/installer and `AGENTS.md` workflow. This supersedes
+both the preceding no-deploy boundary and the older companion-only ban on all
+vendor updates. Unchanged vendor folders and live WTF remain untouched.
+
 Latest user instruction during live Darkmoon testing: fix every reported bug in the development checkout, **do not deploy while WoW is open**. This supersedes the deployment authorization recorded below for candidate.4. Candidate.5 is being prepared for visible action icons during bag/UI focus, merchant Select/Buy and container Open hints, themed BetterBags close routing, and Darkmoon override/vehicle supplemental-bar focus/ghost-slot bugs. Preserve current dependencies and live WTF. Audit the separate native extra-action route before the user's Brewery test. The user reports normal combat, mounts/skyriding, world-map zoom and NPC dialogue looking okay; these are broad observations, not full test-card passes. Findings and current evidence are in `docs/DARKMOON-FIXES-2026-10-06.md`.
 
 Deployment completed at 18:47:33 Toronto: candidate.4 beside ConsolePort 3.3.9, all 43 companion files matching Git, all 3,693 vendor files and all 296 WTF files/42 links unchanged. Latest CI passes 34 runtime/source suites and 24 tooling tests. Final update scope is companion-only; whole-pack pruning is superseded. Exact deployment evidence is `evidence/delivery/live-install-candidate4.json`. Manual Retail testing remains pending the user.

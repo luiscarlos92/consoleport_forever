@@ -40,6 +40,7 @@ def deploy(tree,pack,checksum,backup_root,execute=False,fault=lambda event:None)
     wtf=inventory(tree.wtf,True)
     vendors=vendor_fingerprints(tree.addons)
     result={'operation':'deploy-companion','sourceCommit':manifest['sourceCommit'],'packSHA256':checksum,
+        'dependencyUpdates':[],'testedDependencies':manifest.get('testedDependencies',{}),
         'root':str(tree.root),'consolePortVersion':version,'addonFolders':[NAME],
         'vendorFileCount':len(vendors),'characterLinkCount':len(wtf['links']),
         'currentConfigurationWrites':False,'vendorWrites':False,'execute':execute}

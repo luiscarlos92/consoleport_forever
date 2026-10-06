@@ -1,0 +1,90 @@
+# Check before development; deploy only changed packages
+
+The October 6 user instruction supersedes the previous companion-only rule:
+check every dependency before starting a work session, update the Git dependency
+lock/cache for new official stable Retail releases, test compatibility and repair
+the companion where necessary, then deploy Forever plus only updated packages.
+Unchanged dependencies are never copied just to redeploy Forever. Live WTF is
+never edited by the disk installer.
+
+`AGENTS.md` makes this the starting rule for later chats in this checkout. A check
+is fresh for the current work session; a prior session's cached successful
+report is not a substitute. Source discovery is distinct from downloading.
+
+## Start of work
+
+1. Freshly inspect the official CurseForge listings/file pages from
+   `dependencies/sources.json`, including stable release type and Retail support.
+   Record the observed version, file ID, filename and verification time. GitHub
+   checks are automated; CurseForge browsing is necessary when direct HTTP is
+   blocked. Do not invent fresh timestamps without inspecting the pages.
+2. Run `python tools/check_stable_sources.py --discover`. It checks all official
+   GitHub latest stable releases and source/asset identities, compares the fresh
+   CurseForge identities with the lock (including file ID, not version alone),
+   and records the update list. A missing independent GitHub asset digest still
+   requires independent bytes qualification; unavailable sources are not current.
+3. For each actual update run
+   `python tools/resolve_dependencies.py --refresh --only OWNER/REPO`, repeating
+   `--only` for multiple packages. The existing resolver merges only these
+   repositories into the lock; it does not download/extract unchanged packages.
+4. Review new upstream code, refresh affected pinned source contracts and
+   compatibility/runtime-closure evidence, and fix/test compatibility before
+   continuing the requested feature work. Keep all upstream bytes unmodified.
+   New versions can add/change/remove official folders; review that scope, retain
+   native inactive companions/helpers, and handle any genuine removed-folder
+   migration explicitly rather than silently pruning other addons.
+5. Run required final runtime/tooling checks, commit and push. Check again before
+   delivery if the work spans a long period or upstream sources changed.
+
+## Scoped delivery
+
+Build a small update rather than a full UI pack:
+
+```powershell
+python tools/build_update.py
+# If a dependency actually changed, include its complete qualified package:
+python tools/build_update.py --dependency seblindfors/ConsolePort
+```
+
+Repeat `--dependency` as needed, including updates prepared earlier but not yet
+installed. The default update builder does not read any unchanged vendor cache or
+unpacked vendor file. It includes only Forever, the selected packages' complete
+qualified folders, tested dependency identities and exact source/test hashes.
+Its artifact is locally verified and retained; it is not a full-install package.
+
+Preview `tools/deploy_update.py` with the artifact, checksum, explicit Retail
+executable root and backup directory; execute only under user authorization with
+WoW closed. It routes an empty dependency-update set through the existing tested
+companion-only installer. For actual updates it backs up/stages/swaps only the
+included folders, preserves unselected addons and WTF, verifies readback, and
+rolls back all promoted folders when an error or handled interruption occurs.
+New package folders are removed from the live tree again during rollback by
+parking them inside the verified stage. Nothing is recursively deleted. Power
+loss/process termination during a swap can still require recovery from the
+retained backups/stage; do not treat offline interruption tests as proof of
+power-loss recovery.
+
+The original full-pack builder/installer remains for deliberate full-install or
+recovery work. It is not the normal update path.
+
+## October 6 deployment check
+
+All 18 official stable package identities still match the tested lock; no new
+dependency download is needed. Fresh official CurseForge inspection confirms
+[DynamicCam 2.21.1](https://www.curseforge.com/wow/addons/dynamiccam/files/8995535),
+[Immersion ExtraFade 1.18.0](https://www.curseforge.com/wow/addons/immersion-extrafade/files/8995675),
+and [SharedMedia_Causese 7.6](https://www.curseforge.com/wow/addons/sharedmedia_causese/files/7242737).
+GitHub release/asset identities and bundled voice provenance match as well.
+The candidate.5 deployment therefore includes only ConsolePort_Forever.
+
+All 35 runtime/source suites and 29 tooling tests passed. The five additional
+checks exercise update discovery, no reads of unchanged vendor sources, complete
+selected-package delivery, refusal of inconsistent scopes, preservation of
+unselected addons/WTF and rollback after interruptions at each promotion step.
+Exact final product/tooling hashes match the retained receipts:
+`evidence/test-results/scoped-update-runtime.json` and
+`evidence/test-results/scoped-update-tooling.json`.
+
+The WoW workspace root also has an `AGENTS.md` pointing to the Git workflow, so
+later chats starting in the gaming folder encounter the same standing rule.
+Deployment evidence will be recorded after execution.

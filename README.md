@@ -4,6 +4,12 @@ Personal Retail controller UI companion. Version **2.0.0-candidate.4** targets c
 
 **Current development: candidate.5**, addressing the user's [Darkmoon feedback](docs/DARKMOON-FIXES-2026-10-06.md). Candidate.4 remains installed; deployment is explicitly prohibited while the user keeps WoW open. Configuration revision remains 12.
 
+The latest user authorization permits deployment with WoW closed. Read
+[AGENTS.md](AGENTS.md) and the [dependency workflow](docs/DEPENDENCY-WORKFLOW.md):
+check all dependencies before each work session, refresh only changed official
+packages, test compatibility, then use the small scoped update builder to deploy
+Forever and only the updated dependencies.
+
 Read [the active master plan](docs/MASTER-PLAN.md) and [implementation status](docs/IMPLEMENTATION-STATUS.md) before continuing. The untouched installed companion, dependency snapshots, configuration, assets and junction inventory were captured and pushed as baseline `15a191ab06b6d4562d63761116ca2c248150c3cc`.
 
 From this checkout, with Node 24 and Python 3.14:

@@ -15,7 +15,7 @@ The adapter reads the native active `Layout`. Tests exercise both character and 
 ## Verification
 
 - **34 runtime/source suites passed**, including actual-TOC lifecycle and persistence; native binding claims and restoration after modal/UI closure; protected/ordinary unmatched state drivers; keyboard restoration only from version 1; selected-bank/dispatch readiness; shared-layout isolation; and safe native Edit Mode hover substitutions.
-- **21 tooling tests passed**, covering path guards, dependency qualification, recipe verification and installer/restore simulations.
+- **24 tooling tests passed**, covering path guards, dependency qualification, retained inactive package companions, recipe verification, companion-only vendor/WTF preservation and interruption rollback.
 - All 18 official source identities match the dependency lock. All downloaded/unpacked dependency bytes remain clean.
 - Lua 5.1 syntax is checked; Fengari runs Lua 5.3 host semantics. These tests do not certify real protected execution, hardware input, combat, rendered appearance or saved-state behavior in Retail.
 
@@ -29,9 +29,18 @@ CurseForge reported DBM Vanilla r830 corrupt because the earlier full-pack polic
 
 The final update deploys **only ConsolePort_Forever** through `tools/deploy_companion.py`. It validates the tested ConsolePort version, backs up the companion and canonical WTF, verifies every vendor file before/after, and replaces only the companion. It never writes vendor addon files or live WTF. The earlier full candidate.4 archive is retained as superseded evidence and is used only as a checksum-verified source of the already-tested companion payload, never for full-pack installation. The slow full-pack rehearsal was stopped on the separate scratch copy; its backups remain retained.
 
-The source must be committed, pushed and tested before the pack can be built. The full personal pack uses 40 selected addon folders and the 18 pinned official packages. Generated archives stay local in `dist/2.0.0-candidate.4`; no third-party pack is published.
+The source is committed and pushed. Future full packaging preserves 42 folders from the companion and 18 official packages. The earlier 40-folder archive stays local under `dist/2.0.0-candidate.4` as superseded evidence; only its already-tested companion payload was used in the final deployment. No third-party pack is published.
 
-Deployment evidence, pack digest, fresh full AddOns/WTF backup and final readback will be appended after the guarded rehearsal and live installation. Ordinary installation never edits WTF and preserves all 42 character junctions. The user's `Backup_Addons_20261006.rar` remains retained separately.
+### Verified live deployment — 18:47:33 America/Toronto
+
+Candidate.4 is installed beside ConsolePort **3.3.9**. All **43** deployed companion files match the current Git product source. All **3,693** vendor files, **296** canonical WTF files and **42** character junctions remained unchanged. The tool replaced only `ConsolePort_Forever`; settings persistence remains owned by WoW and the in-game installer.
+
+- Product source: `de5fd2f47d0dea94c2ba7778fcefe808805517e5`; deployment tooling/package correction: `b623ceb99f28e9344cd2402a622432963c0c5129`.
+- Latest [GitHub Windows CI](https://github.com/luiscarlos92/consoleport_forever/actions/runs/37542526711): success; 34 runtime/source suites and 24 tooling tests, with fresh verification of all 18 pinned official archives.
+- Verified payload archive SHA-256: `42359d5a9eb9e05c1b8d1e500bb321290233040d9aa4133b74d3508dcc9cf27c`.
+- Fresh companion plus canonical WTF backup: `C:\Users\luisr\WoW-Backups\ConsolePort-Forever\20261006T224647Z-ad965326de5e`. Vendor files were untouched and therefore not replaced or recopied in this scoped backup. The user's full `Backup_Addons_20261006.rar` remains retained separately.
+- Parked previous companion: `C:\Users\luisr\OneDrive\Documents\03 Gaming\World of Warcraft\_retail_\Interface\.cpf-companion-stage-20261006T224647Z-ad965326de5e\previous`.
+- Exact readback evidence: `evidence/delivery/live-install-candidate4.json`.
 
 ## Manual Retail acceptance
 

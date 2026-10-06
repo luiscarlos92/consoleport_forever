@@ -1,5 +1,7 @@
 # Implementation checkpoint — October 4, 2026
 
+**Latest installed checkpoint — October 6, 18:47:33 Toronto:** candidate.4 supports ConsolePort 3.3.9 and is deployed through the guarded companion-only tool. All 43 live companion files match Git. All 3,693 vendor files, 296 WTF files and 42 character links are unchanged. The earlier incomplete DBM package policy is corrected. Latest CI on `b623ceb` passes all 34 runtime/source suites and 24 tooling checks. Runtime configuration revision remains 12; manual Retail acceptance is the user's next step. See `CONSOLEPORT-UPGRADE-2026-10-06.md` and `evidence/delivery/live-install-candidate4.json`. Earlier checkpoints below are history.
+
 ## Current update — October 6, 2026
 
 The user requested updating the repo to the newly installed ConsolePort 3.3.9, full Git-side tests, and deployment to Retail for subsequent manual testing. **2.0.0-candidate.4** qualifies that exact clean official package. All five companion version guards and current harnesses now target 3.3.9; all 33 native contract files are pinned to its archive. Native Layers claim arbitration replaces the test host's old direct-binding model. Current keyboard restoration, dispatch readiness, unmatched-state preservation, shared-layout isolation and Edit Mode hover behavior are exercised. All 34 runtime/source suites and 21 tooling tests pass. StoreSchema 3 and configuration revision 12 are unchanged. See [the complete upgrade and deployment record](CONSOLEPORT-UPGRADE-2026-10-06.md). October 4 checkpoints below are historical.

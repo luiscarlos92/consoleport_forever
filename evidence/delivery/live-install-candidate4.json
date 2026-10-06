@@ -1,0 +1,37 @@
+{
+  "operation": "deploy-companion",
+  "sourceCommit": "de5fd2f47d0dea94c2ba7778fcefe808805517e5",
+  "packSHA256": "42359d5a9eb9e05c1b8d1e500bb321290233040d9aa4133b74d3508dcc9cf27c",
+  "root": "C:\\Program Files (x86)\\World of Warcraft\\_retail_",
+  "consolePortVersion": "3.3.9",
+  "addonFolders": [
+    "ConsolePort_Forever"
+  ],
+  "vendorFileCount": 3693,
+  "characterLinkCount": 42,
+  "currentConfigurationWrites": false,
+  "vendorWrites": false,
+  "execute": true,
+  "id": "20261006T224647Z-ad965326de5e",
+  "backup": "C:\\Users\\luisr\\WoW-Backups\\ConsolePort-Forever\\20261006T224647Z-ad965326de5e",
+  "stage": "C:\\Users\\luisr\\OneDrive\\Documents\\03 Gaming\\World of Warcraft\\_retail_\\Interface\\.cpf-companion-stage-20261006T224647Z-ad965326de5e",
+  "status": "installed",
+  "startedAt": "2026-10-06T22:46:47.654371+00:00",
+  "closedAt": "2026-10-06T22:47:33.174752+00:00",
+  "wtfUnchanged": true,
+  "vendorsUnchanged": true,
+  "companionFileCount": 43,
+  "canonicalWTFFileCount": 296,
+  "matchesCurrentGitProduct": true,
+  "toolingSourceCommit": "b623ceb99f28e9344cd2402a622432963c0c5129",
+  "ci": {
+    "runID": 37542526711,
+    "conclusion": "success",
+    "url": "https://github.com/luiscarlos92/consoleport_forever/actions/runs/37542526711"
+  },
+  "retainedPriorReceipt": {
+    "ArchivedReceipt": "C:\\Users\\luisr\\WoW-Backups\\ConsolePort-Forever\\ExternalUpdateReceipts\\cpf-installed-before-curseforge-20261006T222127Z.json",
+    "SHA256": "eec31af7b92f612f3d6034bebea5797bb5e866c68e04078a0f8c0aae90f6d0dc",
+    "WTFWrites": false
+  }
+}

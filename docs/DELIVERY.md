@@ -1,5 +1,7 @@
 # Current compatibility build: 2.0.0-candidate.4
 
+**Final delivery is companion-only**, completed October 6 at 18:47:33 Toronto. All 43 deployed companion files match Git. ConsolePort remains 3.3.9; 3,693 vendor files and all 296 WTF files/42 links stayed unchanged. The earlier whole-pack archive is superseded because it omitted two DBM package companions; it must not be used for whole-pack installation. The repo now preserves those companions and all native helpers. The latest GitHub CI passes 34 runtime/source suites and 24 tooling tests. See [the verified deployment](CONSOLEPORT-UPGRADE-2026-10-06.md) and `evidence/delivery/live-install-candidate4.json`.
+
 The October 6 user-authorized compatibility update targets the official ConsolePort **3.3.9** release. The other 17 dependency identities are unchanged. StoreSchema remains **3**, configuration revision remains **12**, and already accepted fields need no new review solely for this code update. All 34 runtime/source suites and 21 tooling tests pass. Exact pack receipts and the live deployment outcome are recorded in [the upgrade report](CONSOLEPORT-UPGRADE-2026-10-06.md). Archives remain local under `dist/2.0.0-candidate.4`; previous candidates remain retained. Actual Retail acceptance is the user's next manual step.
 
 # Historical correction build: 2.0.0-candidate.3

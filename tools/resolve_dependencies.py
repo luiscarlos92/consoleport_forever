@@ -20,7 +20,7 @@ def segment(value):
     return value
 
 
-def metadata(entries):
+def metadata(entries, require_retail=True):
     toc, advisories = {}, {}
     for name, body in entries:
         if not name.lower().endswith('.toc'):
@@ -31,7 +31,7 @@ def metadata(entries):
                 raise ValueError('Unpackaged TOC metadata: ' + name)
             advisories[name] = 'Bundled unused standalone library TOC has packager tokens; official bytes retained.'
         toc[name] = dict(re.findall(r'^##\s*([^:]+):\s*(.*)$',text,re.M))
-    if not any(len(PurePosixPath(name).parts)==2 and any(int(n)>=120000 for n in re.findall(r'\d+',meta.get('Interface',''))) for name,meta in toc.items()):
+    if require_retail and not any(len(PurePosixPath(name).parts)==2 and any(int(n)>=120000 for n in re.findall(r'\d+',meta.get('Interface',''))) for name,meta in toc.items()):
         raise ValueError('No qualifying Retail addon TOC')
     return toc, advisories
 

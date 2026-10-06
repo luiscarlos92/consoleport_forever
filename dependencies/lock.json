@@ -7464,6 +7464,7 @@
     "ConsolePort_Rings",
     "ConsolePort_Target",
     "ConsolePort_World",
+    "DBM-Azeroth",
     "DBM-Brawlers",
     "DBM-BrokenIsles",
     "DBM-Cataclysm",
@@ -7484,6 +7485,7 @@
     "DBM-Scenario-MoP",
     "DBM-StatusBarTimers",
     "DBM-Test",
+    "DBM-Test-Vanilla",
     "DBM-VPVEM",
     "DynamicCam",
     "HideClassBars",
@@ -7562,14 +7564,6 @@
     "DBM-WorldEvents": {
       "owner": "DeadlyBossMods/DBM-Dungeons",
       "reason": "Not installed reference coverage or required dependency; retain archive but omit from personal pack."
-    },
-    "DBM-Azeroth": {
-      "owner": "DeadlyBossMods/DBM-Vanilla",
-      "reason": "Installed archive contains this folder, but latest upstream TOC has no Retail interface or explicitly excludes Retail. Preserve reference; omit incompatible package folder."
-    },
-    "DBM-Test-Vanilla": {
-      "owner": "DeadlyBossMods/DBM-Vanilla",
-      "reason": "Installed archive contains this folder, but latest upstream TOC has no Retail interface or explicitly excludes Retail. Preserve reference; omit incompatible package folder."
     }
   }
 }

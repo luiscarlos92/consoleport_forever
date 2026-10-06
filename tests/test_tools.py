@@ -12,6 +12,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'tools'))
 from repository_paths import ROOT, contained, output, fixture_copy, sha
 from resolve_dependencies import members
 import resolve_dependencies
+import audit_dependencies
 from audit_dependencies import runtime_closure
 from inventory_notices import inventory
 import audit_migration
@@ -71,6 +72,27 @@ class ToolGuards(unittest.TestCase):
         escape=dict(files);escape['Example/View/Main.xml']=b'<Ui><Script file="../../Other/Main.lua"/></Ui>'
         escape['Other/Main.lua']=b'not-owned'
         with self.assertRaises(ValueError): runtime_closure('Example',escape)
+
+    def test_inactive_official_package_companions_are_preserved(self):
+        files={'Retail/Retail.toc':b'## Interface: 120100\nMain.lua\n',
+               'Retail/Main.lua':b'local original=true',
+               'Classic/Classic.toc':b'## Interface: 11508\n## AllowLoadGameType: vanilla\n## RequiredDeps: Retail\nMain.lua\n',
+               'Classic/Main.lua':b'local original=true'}
+        with self.assertRaises(ValueError): runtime_closure('Classic',files)
+        closure=runtime_closure('Classic',files,require_retail=False)
+        self.assertEqual(closure['metadata']['AllowLoadGameType'],'vanilla')
+        with tempfile.TemporaryDirectory(dir=ROOT/'scratch') as temp:
+            source=Path(temp)
+            for name,data in files.items():
+                path=source/name;path.parent.mkdir(parents=True,exist_ok=True);path.write_bytes(data)
+            package={'repo':'example/Addon','unpacked':str(source.relative_to(ROOT)),
+                'addonFolders':['Retail','Classic'],'files':{name:sha(source/name) for name in files},
+                'toc':resolve_dependencies.metadata(list(files.items()))[0]}
+            with patch.object(audit_dependencies,'verify',return_value={'Retail':'example/Addon','Classic':'example/Addon'}),patch.object(audit_dependencies,'voice_provenance',return_value={}):
+                coverage=audit_dependencies.audit({'installedFolders':['Retail','Classic'],'packages':[package]})
+            self.assertEqual(set(coverage['selectedFolders']),{'Retail','Classic'})
+            self.assertFalse(coverage['selectedFolders']['Classic']['eligibleForRetail'])
+            self.assertNotIn('Classic',coverage['excludedFolders'])
 
     def test_notice_sources_are_distinct_from_permission(self):
         with tempfile.TemporaryDirectory(dir=ROOT/'scratch') as temp:

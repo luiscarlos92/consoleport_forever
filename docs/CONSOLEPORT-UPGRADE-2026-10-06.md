@@ -23,6 +23,12 @@ Exact test receipts are retained under `evidence/test-results/consoleport-3.3.9-
 
 ## Build and deployment
 
+### Packaging correction and final deployment scope
+
+CurseForge reported DBM Vanilla r830 corrupt because the earlier full-pack policy removed `DBM-Azeroth` and `DBM-Test-Vanilla`. The version and retained source bytes were correct; the package was incomplete. The user reinstalled r830 through CurseForge. Packaging now retains those native inactive companions and bundled helpers unchanged; WoW's original TOCs control load eligibility. Regression coverage brings tooling checks to **24**.
+
+The final update deploys **only ConsolePort_Forever** through `tools/deploy_companion.py`. It validates the tested ConsolePort version, backs up the companion and canonical WTF, verifies every vendor file before/after, and replaces only the companion. It never writes vendor addon files or live WTF. The earlier full candidate.4 archive is retained as superseded evidence and is used only as a checksum-verified source of the already-tested companion payload, never for full-pack installation. The slow full-pack rehearsal was stopped on the separate scratch copy; its backups remain retained.
+
 The source must be committed, pushed and tested before the pack can be built. The full personal pack uses 40 selected addon folders and the 18 pinned official packages. Generated archives stay local in `dist/2.0.0-candidate.4`; no third-party pack is published.
 
 Deployment evidence, pack digest, fresh full AddOns/WTF backup and final readback will be appended after the guarded rehearsal and live installation. Ordinary installation never edits WTF and preserves all 42 character junctions. The user's `Backup_Addons_20261006.rar` remains retained separately.

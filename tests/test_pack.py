@@ -15,6 +15,7 @@ from pack_format import FORMAT, archive_bytes, digest, read_pack, zip_entries
 from assemble_pack import assemble
 from deployment_guard import GameTree, inventory, verify_backup
 from install_pack import install, recover, restore
+from deploy_companion import deploy, vendor_fingerprints
 
 
 def make_pack(scope, version='candidate', complete=True, dependency=None, retired=False):
@@ -72,6 +73,40 @@ def junction(alias, target):
 
 
 class PackDelivery(unittest.TestCase):
+    def companion_game(self,scope):
+        root=game(scope)
+        (root/'Interface/AddOns/ConsolePort').mkdir()
+        (root/'Interface/AddOns/ConsolePort/ConsolePort.toc').write_bytes(b'## Interface: 120100\n## Version: 3.3.9\n')
+        (root/'Interface/AddOns/DBM-Azeroth').mkdir()
+        (root/'Interface/AddOns/DBM-Azeroth/DBM-Azeroth.toc').write_bytes(b'## Interface: 11509\n## ExcludeLoadGameType: standard\n')
+        return root
+
+    def test_companion_deployment_preserves_all_vendor_files_and_wtf(self):
+        scope=self.scope(); root=self.companion_game(scope)
+        tree=GameTree(root,simulation=True,process_check=lambda:False)
+        before_vendor=vendor_fingerprints(tree.addons); before_wtf=inventory(tree.wtf,True)
+        pack,checksum=make_pack(scope,'new-companion')
+        preview=deploy(tree,pack,checksum,scope/'backups')
+        self.assertFalse(preview['execute'])
+        self.assertFalse((scope/'backups').exists())
+        result=deploy(tree,pack,checksum,scope/'backups',True)
+        self.assertEqual(result['status'],'installed')
+        self.assertEqual(vendor_fingerprints(tree.addons),before_vendor)
+        self.assertEqual(inventory(tree.wtf,True),before_wtf)
+        self.assertEqual((tree.addons/'ConsolePort_Forever/Main.lua').read_bytes(),b'new-companion')
+        self.assertEqual((tree.addons/'A/obsolete.lua').read_bytes(),b'old code removed upstream')
+
+    def test_companion_deployment_rolls_back_without_vendor_or_wtf_writes(self):
+        scope=self.scope(); root=self.companion_game(scope)
+        tree=GameTree(root,simulation=True,process_check=lambda:False)
+        before=inventory(tree.addons); before_wtf=inventory(tree.wtf,True)
+        pack,checksum=make_pack(scope,'failed-companion')
+        def fail(event):
+            if event=='after-promotion': raise RuntimeError('simulated interruption')
+        with self.assertRaises(RuntimeError): deploy(tree,pack,checksum,scope/'backups',True,fail)
+        self.assertEqual(inventory(tree.addons),before)
+        self.assertEqual(inventory(tree.wtf,True),before_wtf)
+
     def scope(self):
         output(ROOT/'scratch').mkdir(exist_ok=True)
         temporary = tempfile.TemporaryDirectory(dir=ROOT/'scratch')

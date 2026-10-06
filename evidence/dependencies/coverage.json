@@ -1,8 +1,9 @@
 {
-  "lockSHA256": "4df70f59aa8c6232c714e163d3cc8cf1892f6e0be006d6d7491523ae26fe2057",
+  "lockSHA256": "ecdfd5160d00884c8bd21230ebc0166003956ad9b50c16b1b84d30b9d8938b26",
   "selectedFolders": {
     "BetterBags": {
       "owner": "Cidan/BetterBags",
+      "eligibleForRetail": true,
       "toc": "BetterBags/BetterBags.toc",
       "runtimeFiles": [
         "BetterBags/BetterBags.toc",
@@ -165,6 +166,7 @@
     },
     "Immersion": {
       "owner": "seblindfors/Immersion",
+      "eligibleForRetail": true,
       "toc": "Immersion/Immersion.toc",
       "runtimeFiles": [
         "Immersion/Compat.lua",
@@ -221,6 +223,7 @@
     },
     "LiteMount": {
       "owner": "xod-wow/LiteMount",
+      "eligibleForRetail": true,
       "toc": "LiteMount/LiteMount.toc",
       "runtimeFiles": [
         "LiteMount/ActionButton.lua",
@@ -335,6 +338,7 @@
     },
     "Masque": {
       "owner": "SFX-WoW/Masque",
+      "eligibleForRetail": true,
       "toc": "Masque/Masque.toc",
       "runtimeFiles": [
         "Masque/Core/Button.lua",
@@ -471,6 +475,7 @@
     },
     "Plater": {
       "owner": "Tercioo/Plater-Nameplates",
+      "eligibleForRetail": true,
       "toc": "Plater/Plater_Mainline.toc",
       "runtimeFiles": [
         "Plater/Definitions.lua",
@@ -683,6 +688,7 @@
     },
     "DBM-Brawlers": {
       "owner": "DeadlyBossMods/DeadlyBossMods",
+      "eligibleForRetail": true,
       "toc": "DBM-Brawlers/DBM-Brawlers.toc",
       "runtimeFiles": [
         "DBM-Brawlers/BrawlChallenges.lua",
@@ -747,6 +753,7 @@
     },
     "DBM-Core": {
       "owner": "DeadlyBossMods/DeadlyBossMods",
+      "eligibleForRetail": true,
       "toc": "DBM-Core/DBM-Core.toc",
       "runtimeFiles": [
         "DBM-Core/DBM-Arrow.lua",
@@ -882,6 +889,7 @@
     },
     "DBM-GUI": {
       "owner": "DeadlyBossMods/DeadlyBossMods",
+      "eligibleForRetail": true,
       "toc": "DBM-GUI/DBM-GUI.toc",
       "runtimeFiles": [
         "DBM-GUI/DBM-GUI.lua",
@@ -969,6 +977,7 @@
     },
     "DBM-Lairs-Midnight": {
       "owner": "DeadlyBossMods/DeadlyBossMods",
+      "eligibleForRetail": true,
       "toc": "DBM-Lairs-Midnight/DBM-Lairs-Midnight.toc",
       "runtimeFiles": [
         "DBM-Lairs-Midnight/DBM-Lairs-Midnight.toc",
@@ -1014,6 +1023,7 @@
     },
     "DBM-Midnight": {
       "owner": "DeadlyBossMods/DeadlyBossMods",
+      "eligibleForRetail": true,
       "toc": "DBM-Midnight/DBM-Midnight.toc",
       "runtimeFiles": [
         "DBM-Midnight/Cragpine.lua",
@@ -1053,6 +1063,7 @@
     },
     "DBM-Raids-Midnight": {
       "owner": "DeadlyBossMods/DeadlyBossMods",
+      "eligibleForRetail": true,
       "toc": "DBM-Raids-Midnight/DBM-Raids-Midnight.toc",
       "runtimeFiles": [
         "DBM-Raids-Midnight/DBM-Raids-Midnight.toc",
@@ -1114,6 +1125,7 @@
     },
     "DBM-StatusBarTimers": {
       "owner": "DeadlyBossMods/DeadlyBossMods",
+      "eligibleForRetail": true,
       "toc": "DBM-StatusBarTimers/DBM-StatusBarTimers.toc",
       "runtimeFiles": [
         "DBM-StatusBarTimers/DBM-StatusBarTimers.toc",
@@ -1150,6 +1162,7 @@
     },
     "DBM-Test": {
       "owner": "DeadlyBossMods/DeadlyBossMods",
+      "eligibleForRetail": true,
       "toc": "DBM-Test/DBM-Test.toc",
       "runtimeFiles": [
         "DBM-Test/DBM-Test.toc",
@@ -1189,6 +1202,7 @@
     },
     "DBM-VPVEM": {
       "owner": "DeadlyBossMods/DeadlyBossMods",
+      "eligibleForRetail": true,
       "toc": "DBM-VPVEM/DBM-VPVEM.toc",
       "runtimeFiles": [
         "DBM-VPVEM/DBM-VPVEM.toc"
@@ -1218,6 +1232,7 @@
     },
     "DBM-Challenges": {
       "owner": "DeadlyBossMods/DBM-Dungeons",
+      "eligibleForRetail": true,
       "toc": "DBM-Challenges/DBM-Challenges.toc",
       "runtimeFiles": [
         "DBM-Challenges/BfA/NzothVisionOrgrimmar.lua",
@@ -1291,8 +1306,74 @@
         "X-Wago-ID": "Rn6VLLGd\r"
       }
     },
+    "DBM-Azeroth": {
+      "owner": "DeadlyBossMods/DBM-Vanilla",
+      "eligibleForRetail": false,
+      "toc": "DBM-Azeroth/DBM-Azeroth.toc",
+      "runtimeFiles": [
+        "DBM-Azeroth/Azuregos.lua",
+        "DBM-Azeroth/DBM-Azeroth.toc",
+        "DBM-Azeroth/Emeriss.lua",
+        "DBM-Azeroth/KazzakClassic.lua",
+        "DBM-Azeroth/Lethon.lua",
+        "DBM-Azeroth/Taerar.lua",
+        "DBM-Azeroth/Thunderaan.lua",
+        "DBM-Azeroth/Ysondre.lua",
+        "DBM-Azeroth/locale.generated.lua",
+        "DBM-Azeroth/localization.br.lua",
+        "DBM-Azeroth/localization.cn.lua",
+        "DBM-Azeroth/localization.de.lua",
+        "DBM-Azeroth/localization.en.lua",
+        "DBM-Azeroth/localization.es.lua",
+        "DBM-Azeroth/localization.fr.lua",
+        "DBM-Azeroth/localization.kr.lua",
+        "DBM-Azeroth/localization.mx.lua",
+        "DBM-Azeroth/localization.ru.lua",
+        "DBM-Azeroth/localization.tw.lua"
+      ],
+      "metadata": {
+        "Interface": "11509, 20506, 30405, 38002, 40402, 50504\r",
+        "ExcludeLoadGameType": "standard\r",
+        "Category": "DBM\r",
+        "Title": "|cffffe00a<|r|cffff7d0aDBM|r|cffffe00a>|r |cff69ccf0World Bosses (Vanilla)|r\r",
+        "Title-deDE": "|cffffe00a<|r|cffff7d0aDBM|r|cffffe00a>|r |cff69ccf0World Bosses (Vanilla)|r\r",
+        "Title-esES": "|cffffe00a<|r|cffff7d0aDBM|r|cffffe00a>|r |cff69ccf0Jefes del mundo (Cl\u00e1sico)|r\r",
+        "Title-esMX": "|cffffe00a<|r|cffff7d0aDBM|r|cffffe00a>|r |cff69ccf0Jefes del mundo (Cl\u00e1sico)|r\r",
+        "Title-frFR": "|cffffe00a<|r|cffff7d0aDBM|r|cffffe00a>|r |cff69ccf0Boss mondiaux (Classique)|r\r",
+        "Title-ptBR": "|cffffe00a<|r|cffff7d0aDBM|r|cffffe00a>|r |cff69ccf0Chefes mundiais (Cl\u00e1ssico)|r\r",
+        "Title-ruRU": "|cffffe00a<|r|cffff7d0aDBM|r|cffffe00a>|r |cff69ccf0\u0410\u0437\u0435\u0440\u043e\u0442 (\u043a\u043b\u0430\u0441\u0441\u0438\u0447\u0435\u0441\u043a\u0438\u0439)|r\r",
+        "Title-koKR": "|cffffe00a<|r|cffff7d0aDBM|r|cffffe00a>|r |cff69ccf0\uc544\uc81c\ub85c\uc2a4 (\ud074\ub798\uc2dd)|r\r",
+        "Title-zhTW": "|cffffe00a<|r|cffff7d0aDBM|r|cffffe00a>|r |cff69ccf0\u827e\u6fa4\u62c9\u65af (\u7d93\u5178)|r\r",
+        "Title-zhCN": "|cffffe00a<|r|cffff7d0aDBM|r|cffffe00a>|r |cff69ccf0\u4e16\u754c\u9996\u9886 (\u7ecf\u5178)|r\r",
+        "LoadOnDemand": "1\r",
+        "RequiredDeps": "DBM-Core\r",
+        "SavedVariables": "DBMAzeroth_AllSavedVars\r",
+        "SavedVariablesPerCharacter": "DBMAzeroth_SavedStats\r",
+        "X-DBM-Mod": "1\r",
+        "X-DBM-Mod-Type": "WORLDBOSS\r",
+        "X-DBM-Mod-Category": "Classic\r",
+        "X-DBM-Mod-World-Boss": "1\r",
+        "X-DBM-StatTypes": "normal\r",
+        "X-DBM-Mod-Name": "Azeroth (Vanilla)\r",
+        "X-DBM-Mod-Name-deDE": "Azeroth (Classic)\r",
+        "X-DBM-Mod-Name-esES": "Azeroth (Cl\u00e1sico)\r",
+        "X-DBM-Mod-Name-esMX": "Azeroth (Cl\u00e1sico)\r",
+        "X-DBM-Mod-Name-frFR": "Azeroth (Classique)\r",
+        "X-DBM-Mod-Name-ptBR": "Azeroth (Cl\u00e1ssico)\r",
+        "X-DBM-Mod-Name-ruRU": "\u0410\u0437\u0435\u0440\u043e\u0442 (\u043a\u043b\u0430\u0441\u0441\u0438\u0447\u0435\u0441\u043a\u0438\u0439)\r",
+        "X-DBM-Mod-Name-koKR": "\uc544\uc81c\ub85c\uc2a4 (\ud074\ub798\uc2dd)\r",
+        "X-DBM-Mod-Name-zhTW": "\u827e\u6fa4\u62c9\u65af (\u7d93\u5178)\r",
+        "X-DBM-Mod-Name-zhCN": "\u4e16\u754c\u9996\u9886 (\u7ecf\u5178)\r",
+        "X-DBM-Mod-Sort": "1106\r",
+        "X-DBM-Mod-MapID": "0, 1, 2789, 2791, 2804, 2832\r",
+        "X-DBM-Mod-LoadCID": "14889,14888,14887,14890,12397,6109\r",
+        "X-DBM-Mod-MinCoreRevision": "20260522000000\r",
+        "X-DBM-Mod-MinExpansion": "0\r"
+      }
+    },
     "DBM-Raids-Vanilla": {
       "owner": "DeadlyBossMods/DBM-Vanilla",
+      "eligibleForRetail": true,
       "toc": "DBM-Raids-Vanilla/DBM-Raids-Vanilla.toc",
       "runtimeFiles": [
         "DBM-Raids-Vanilla/AQ20/AQ20Trash.lua",
@@ -1460,8 +1541,108 @@
         "Version": "r830\r"
       }
     },
+    "DBM-Test-Vanilla": {
+      "owner": "DeadlyBossMods/DBM-Vanilla",
+      "eligibleForRetail": false,
+      "toc": "DBM-Test-Vanilla/DBM-Test-Vanilla.toc",
+      "runtimeFiles": [
+        "DBM-Test-Vanilla/DBM-Test-Vanilla.toc",
+        "DBM-Test-Vanilla/Season of Discovery/AQ20/Ayamiss-Hardmode.lua",
+        "DBM-Test-Vanilla/Season of Discovery/AQ20/Buru-Hardmode.lua",
+        "DBM-Test-Vanilla/Season of Discovery/AQ20/Kurinaxx-Hardmode.lua",
+        "DBM-Test-Vanilla/Season of Discovery/AQ20/Moam-Hardmode.lua",
+        "DBM-Test-Vanilla/Season of Discovery/AQ20/Ossirian-Hardmode.lua",
+        "DBM-Test-Vanilla/Season of Discovery/AQ20/Rajaxx-Hardmode.lua",
+        "DBM-Test-Vanilla/Season of Discovery/AQ20/Trash.lua",
+        "DBM-Test-Vanilla/Season of Discovery/AQ40/CThun-Hardmode.lua",
+        "DBM-Test-Vanilla/Season of Discovery/AQ40/Fankriss-Hardmode.lua",
+        "DBM-Test-Vanilla/Season of Discovery/AQ40/Huhuran-Hardmode.lua",
+        "DBM-Test-Vanilla/Season of Discovery/AQ40/Ouro-Hardmode.lua",
+        "DBM-Test-Vanilla/Season of Discovery/AQ40/Sartura-Hardmode.lua",
+        "DBM-Test-Vanilla/Season of Discovery/AQ40/Skeram-Hardmode.lua",
+        "DBM-Test-Vanilla/Season of Discovery/AQ40/ThreeBugs-Hardmode.lua",
+        "DBM-Test-Vanilla/Season of Discovery/AQ40/Trash1.lua",
+        "DBM-Test-Vanilla/Season of Discovery/AQ40/Trash2.lua",
+        "DBM-Test-Vanilla/Season of Discovery/AQ40/TwinEmps-Hardmode.lua",
+        "DBM-Test-Vanilla/Season of Discovery/AQ40/Viscidus-Hardmode.lua",
+        "DBM-Test-Vanilla/Season of Discovery/Blackwing Lair/Broodlord-Heroic-Kill.lua",
+        "DBM-Test-Vanilla/Season of Discovery/Blackwing Lair/Chromaggus-Black-Synthetic.lua",
+        "DBM-Test-Vanilla/Season of Discovery/Blackwing Lair/Chromaggus-BlueGreenBronze-Kill.lua",
+        "DBM-Test-Vanilla/Season of Discovery/Blackwing Lair/Firemaw-Normal-Wipe.lua",
+        "DBM-Test-Vanilla/Season of Discovery/Blackwing Lair/Razorgore-Heroic-Kill.lua",
+        "DBM-Test-Vanilla/Season of Discovery/Blackwing Lair/SoDTrials.lua",
+        "DBM-Test-Vanilla/Season of Discovery/Blackwing Lair/SoDTrialsv2.lua",
+        "DBM-Test-Vanilla/Season of Discovery/Blackwing Lair/Vaelastrasz-Normal-Kill.lua",
+        "DBM-Test-Vanilla/Season of Discovery/Molten Core/Garr-Heat1-Kill.lua",
+        "DBM-Test-Vanilla/Season of Discovery/Molten Core/Geddon-Heat2-Kill.lua",
+        "DBM-Test-Vanilla/Season of Discovery/Molten Core/Gehennas-Heat1-Kill.lua",
+        "DBM-Test-Vanilla/Season of Discovery/Molten Core/Golemagg-Heat2-Kill.lua",
+        "DBM-Test-Vanilla/Season of Discovery/Molten Core/Lucifron-Heat3-Kill.lua",
+        "DBM-Test-Vanilla/Season of Discovery/Molten Core/Magmadar-Heat1-Kill.lua",
+        "DBM-Test-Vanilla/Season of Discovery/Molten Core/Majordomo-Heat1-Kill.lua",
+        "DBM-Test-Vanilla/Season of Discovery/Molten Core/Ragnaros-Heat2-Kill.lua",
+        "DBM-Test-Vanilla/Season of Discovery/Molten Core/Shazzrah-Heat1-Kill.lua",
+        "DBM-Test-Vanilla/Season of Discovery/Molten Core/Sulfuron-Heat2-Kill.lua",
+        "DBM-Test-Vanilla/Season of Discovery/Molten Core/TheMoltenCore-Heat3-Kill.lua",
+        "DBM-Test-Vanilla/Season of Discovery/Molten Core/TheMoltenCore-Heat3-Wipe.lua",
+        "DBM-Test-Vanilla/Season of Discovery/Naxxramas/AnubRekhan.lua",
+        "DBM-Test-Vanilla/Season of Discovery/Naxxramas/Faerlina.lua",
+        "DBM-Test-Vanilla/Season of Discovery/Naxxramas/Gluth.lua",
+        "DBM-Test-Vanilla/Season of Discovery/Naxxramas/Gothik.lua",
+        "DBM-Test-Vanilla/Season of Discovery/Naxxramas/Grobbulus.lua",
+        "DBM-Test-Vanilla/Season of Discovery/Naxxramas/Heigan.lua",
+        "DBM-Test-Vanilla/Season of Discovery/Naxxramas/Horsemen.lua",
+        "DBM-Test-Vanilla/Season of Discovery/Naxxramas/KelThuzad.lua",
+        "DBM-Test-Vanilla/Season of Discovery/Naxxramas/Loatheb.lua",
+        "DBM-Test-Vanilla/Season of Discovery/Naxxramas/Maexxna.lua",
+        "DBM-Test-Vanilla/Season of Discovery/Naxxramas/MilitaryQuarter-Synthetic.lua",
+        "DBM-Test-Vanilla/Season of Discovery/Naxxramas/Noth.lua",
+        "DBM-Test-Vanilla/Season of Discovery/Naxxramas/Patchwerk.lua",
+        "DBM-Test-Vanilla/Season of Discovery/Naxxramas/Razuvious.lua",
+        "DBM-Test-Vanilla/Season of Discovery/Naxxramas/Sapphiron.lua",
+        "DBM-Test-Vanilla/Season of Discovery/Naxxramas/Thaddius.lua",
+        "DBM-Test-Vanilla/Season of Discovery/Onyxia/Onyxia.lua",
+        "DBM-Test-Vanilla/Season of Discovery/ScarletEnclave/Balnazzar.lua",
+        "DBM-Test-Vanilla/Season of Discovery/ScarletEnclave/Beastmaster.lua",
+        "DBM-Test-Vanilla/Season of Discovery/ScarletEnclave/Beatrix-Synthetic.lua",
+        "DBM-Test-Vanilla/Season of Discovery/ScarletEnclave/Beatrix.lua",
+        "DBM-Test-Vanilla/Season of Discovery/ScarletEnclave/Caldoran.lua",
+        "DBM-Test-Vanilla/Season of Discovery/ScarletEnclave/LillianVoss.lua",
+        "DBM-Test-Vanilla/Season of Discovery/ScarletEnclave/Mason.lua",
+        "DBM-Test-Vanilla/Season of Discovery/ScarletEnclave/RebornCouncil.lua",
+        "DBM-Test-Vanilla/Season of Discovery/ScarletEnclave/Solistrasza.lua",
+        "DBM-Test-Vanilla/Season of Discovery/ScarletEnclave/Trash.lua",
+        "DBM-Test-Vanilla/Season of Discovery/Sunken Temple/AtalaiDefenders-1.lua",
+        "DBM-Test-Vanilla/Season of Discovery/Sunken Temple/AtalaiDefenders-2.lua",
+        "DBM-Test-Vanilla/Season of Discovery/Sunken Temple/Atalalarion.lua",
+        "DBM-Test-Vanilla/Season of Discovery/Sunken Temple/AvatarOfHakkar-1.lua",
+        "DBM-Test-Vanilla/Season of Discovery/Sunken Temple/AvatarOfHakkar-2.lua",
+        "DBM-Test-Vanilla/Season of Discovery/Sunken Temple/DreamscytheAndWeaver.lua",
+        "DBM-Test-Vanilla/Season of Discovery/Sunken Temple/FesteringRotslime.lua",
+        "DBM-Test-Vanilla/Season of Discovery/Sunken Temple/JammalanAndOgom-JammalanFirst.lua",
+        "DBM-Test-Vanilla/Season of Discovery/Sunken Temple/JammalanAndOgom-OgomFirst-Kill.lua",
+        "DBM-Test-Vanilla/Season of Discovery/Sunken Temple/JammalanAndOgom-OgomFirst-Wipe.lua",
+        "DBM-Test-Vanilla/Season of Discovery/Sunken Temple/MorphazAndHazzas.lua",
+        "DBM-Test-Vanilla/Season of Discovery/Sunken Temple/ShadeOfEranikus.lua",
+        "DBM-Test-Vanilla/Season of Discovery/World Bosses/Ysondre.lua",
+        "DBM-Test-Vanilla/Season of Discovery/ZulGurub/Hakkar-Kill.lua"
+      ],
+      "metadata": {
+        "Interface": "11508\r",
+        "AllowLoadGameType": "vanilla\r",
+        "Category": "DBM\r",
+        "Group": "DBM-Test\r",
+        "Title": "|cffffe00a<|r|cffff7d0aDBM Tests|r|cffffe00a>|r |cff69ccf0Tests for Vanilla and Season of Discovery mods|r\r",
+        "Title-ruRU": "|cffffe00a<|r|cffff7d0aDBM \u0422\u0435\u0441\u0442\u044b|r|cffffe00a>|r |cff69ccf0\u0422\u0435\u0441\u0442\u044b \u043c\u043e\u0434\u043e\u0432 \u041a\u043b\u0430\u0441\u0441\u0438\u043a\u0438 \u0438 \u0421\u0435\u0437\u043e\u043d\u0430 \u043e\u0442\u043a\u0440\u044b\u0442\u0438\u0439|r\r",
+        "Dependencies": "DBM-Test\r",
+        "DefaultState": "enabled\r",
+        "LoadOnDemand": "1\r",
+        "X-DBM-Test": "true\r"
+      }
+    },
     "DBM-Raids-WoTLK": {
       "owner": "DeadlyBossMods/DBM-WotLK",
+      "eligibleForRetail": true,
       "toc": "DBM-Raids-WoTLK/DBM-Raids-WoTLK.toc",
       "runtimeFiles": [
         "DBM-Raids-WoTLK/Coliseum/Anubarak.lua",
@@ -1569,6 +1750,7 @@
     },
     "DBM-Cataclysm": {
       "owner": "DeadlyBossMods/DBM-Cataclysm",
+      "eligibleForRetail": true,
       "toc": "DBM-Cataclysm/DBM-Cataclysm.toc",
       "runtimeFiles": [
         "DBM-Cataclysm/Akmahat.lua",
@@ -1620,6 +1802,7 @@
     },
     "DBM-Raids-Cata": {
       "owner": "DeadlyBossMods/DBM-Cataclysm",
+      "eligibleForRetail": true,
       "toc": "DBM-Raids-Cata/DBM-Raids-Cata.toc",
       "runtimeFiles": [
         "DBM-Raids-Cata/BaradinHold/Alizabal.lua",
@@ -1704,6 +1887,7 @@
     },
     "DBM-Pandaria": {
       "owner": "DeadlyBossMods/DBM-MoP",
+      "eligibleForRetail": true,
       "toc": "DBM-Pandaria/DBM-Pandaria.toc",
       "runtimeFiles": [
         "DBM-Pandaria/Anger.lua",
@@ -1765,6 +1949,7 @@
     },
     "DBM-Raids-MoP": {
       "owner": "DeadlyBossMods/DBM-MoP",
+      "eligibleForRetail": true,
       "toc": "DBM-Raids-MoP/DBM-Raids-MoP.toc",
       "runtimeFiles": [
         "DBM-Raids-MoP/DBM-Raids-MoP.toc",
@@ -1858,6 +2043,7 @@
     },
     "DBM-Scenario-MoP": {
       "owner": "DeadlyBossMods/DBM-MoP",
+      "eligibleForRetail": true,
       "toc": "DBM-Scenario-MoP/DBM-Scenario-MoP.toc",
       "runtimeFiles": [
         "DBM-Scenario-MoP/ALittlePatience.lua",
@@ -1928,6 +2114,7 @@
     },
     "DBM-Draenor": {
       "owner": "DeadlyBossMods/DBM-WoD",
+      "eligibleForRetail": true,
       "toc": "DBM-Draenor/DBM-Draenor.toc",
       "runtimeFiles": [
         "DBM-Draenor/Annihilon.lua",
@@ -1992,6 +2179,7 @@
     },
     "DBM-Raids-WoD": {
       "owner": "DeadlyBossMods/DBM-WoD",
+      "eligibleForRetail": true,
       "toc": "DBM-Raids-WoD/DBM-Raids-WoD.toc",
       "runtimeFiles": [
         "DBM-Raids-WoD/BlackrockFoundry/Blackhand.lua",
@@ -2069,6 +2257,7 @@
     },
     "DBM-BrokenIsles": {
       "owner": "DeadlyBossMods/DBM-Legion",
+      "eligibleForRetail": true,
       "toc": "DBM-BrokenIsles/DBM-BrokenIsles.toc",
       "runtimeFiles": [
         "DBM-BrokenIsles/Alluradel.lua",
@@ -2140,6 +2329,7 @@
     },
     "DBM-Raids-Legion": {
       "owner": "DeadlyBossMods/DBM-Legion",
+      "eligibleForRetail": true,
       "toc": "DBM-Raids-Legion/DBM-Raids-Legion.toc",
       "runtimeFiles": [
         "DBM-Raids-Legion/AntorusBurningThrone/Aggramar.lua",
@@ -2229,6 +2419,7 @@
     },
     "HideClassBars": {
       "owner": "rursache/HideClassBars",
+      "eligibleForRetail": true,
       "toc": "HideClassBars/HideClassBars.toc",
       "runtimeFiles": [
         "HideClassBars/HideClassBars.lua",
@@ -2245,6 +2436,7 @@
     },
     "DynamicCam": {
       "owner": "curseforge/DynamicCam",
+      "eligibleForRetail": true,
       "toc": "DynamicCam/DynamicCam.toc",
       "runtimeFiles": [
         "DynamicCam/Core.lua",
@@ -2372,6 +2564,7 @@
     },
     "Immersion_ExtraFade": {
       "owner": "curseforge/Immersion_ExtraFade",
+      "eligibleForRetail": true,
       "toc": "Immersion_ExtraFade/Immersion_ExtraFade.toc",
       "runtimeFiles": [
         "Immersion_ExtraFade/Immersion_ExtraFade.toc",
@@ -2448,6 +2641,7 @@
     },
     "SharedMedia_Causese": {
       "owner": "curseforge/SharedMedia_Causese",
+      "eligibleForRetail": true,
       "toc": "SharedMedia_Causese/SharedMedia_Causese.toc",
       "runtimeFiles": [
         "SharedMedia_Causese/SharedMedia_Causese.toc",
@@ -2465,6 +2659,7 @@
     },
     "ConsolePort": {
       "owner": "seblindfors/ConsolePort",
+      "eligibleForRetail": true,
       "toc": "ConsolePort/ConsolePort.toc",
       "runtimeFiles": [
         "ConsolePort/API.lua",
@@ -2590,6 +2785,7 @@
     },
     "ConsolePort_Bar": {
       "owner": "seblindfors/ConsolePort",
+      "eligibleForRetail": true,
       "toc": "ConsolePort_Bar/ConsolePort_Bar.toc",
       "runtimeFiles": [
         "ConsolePort_Bar/ConsolePort_Bar.toc",
@@ -2656,6 +2852,7 @@
     },
     "ConsolePort_Config": {
       "owner": "seblindfors/ConsolePort",
+      "eligibleForRetail": true,
       "toc": "ConsolePort_Config/ConsolePort_Config.toc",
       "runtimeFiles": [
         "ConsolePort_Config/ConsolePort_Config.toc",
@@ -2732,6 +2929,7 @@
     },
     "ConsolePort_Cursor": {
       "owner": "seblindfors/ConsolePort",
+      "eligibleForRetail": true,
       "toc": "ConsolePort_Cursor/ConsolePort_Cursor.toc",
       "runtimeFiles": [
         "ConsolePort_Cursor/ConsolePort_Cursor.toc",
@@ -2764,6 +2962,7 @@
     },
     "ConsolePort_Keyboard": {
       "owner": "seblindfors/ConsolePort",
+      "eligibleForRetail": true,
       "toc": "ConsolePort_Keyboard/ConsolePort_Keyboard.toc",
       "runtimeFiles": [
         "ConsolePort_Keyboard/Components/Charset.lua",
@@ -2797,6 +2996,7 @@
     },
     "ConsolePort_Menu": {
       "owner": "seblindfors/ConsolePort",
+      "eligibleForRetail": true,
       "toc": "ConsolePort_Menu/ConsolePort_Menu.toc",
       "runtimeFiles": [
         "ConsolePort_Menu/ConsolePort_Menu.toc",
@@ -2832,6 +3032,7 @@
     },
     "ConsolePort_Rings": {
       "owner": "seblindfors/ConsolePort",
+      "eligibleForRetail": true,
       "toc": "ConsolePort_Rings/ConsolePort_Rings.toc",
       "runtimeFiles": [
         "ConsolePort_Rings/ConsolePort_Rings.toc",
@@ -2882,6 +3083,7 @@
     },
     "ConsolePort_Target": {
       "owner": "seblindfors/ConsolePort",
+      "eligibleForRetail": true,
       "toc": "ConsolePort_Target/ConsolePort_Target.toc",
       "runtimeFiles": [
         "ConsolePort_Target/ConsolePort_Target.toc",
@@ -2917,6 +3119,7 @@
     },
     "ConsolePort_World": {
       "owner": "seblindfors/ConsolePort",
+      "eligibleForRetail": true,
       "toc": "ConsolePort_World/ConsolePort_World.toc",
       "runtimeFiles": [
         "ConsolePort_World/ConsolePort_World.toc",
@@ -3021,14 +3224,6 @@
     "DBM-WorldEvents": {
       "owner": "DeadlyBossMods/DBM-Dungeons",
       "reason": "Not installed reference coverage or required dependency; retain archive but omit from personal pack."
-    },
-    "DBM-Azeroth": {
-      "owner": "DeadlyBossMods/DBM-Vanilla",
-      "reason": "Installed archive contains this folder, but latest upstream TOC has no Retail interface or explicitly excludes Retail. Preserve reference; omit incompatible package folder."
-    },
-    "DBM-Test-Vanilla": {
-      "owner": "DeadlyBossMods/DBM-Vanilla",
-      "reason": "Installed archive contains this folder, but latest upstream TOC has no Retail interface or explicitly excludes Retail. Preserve reference; omit incompatible package folder."
     }
   },
   "voice": {

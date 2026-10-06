@@ -1,5 +1,5 @@
 {
-  "lockSHA256": "4df70f59aa8c6232c714e163d3cc8cf1892f6e0be006d6d7491523ae26fe2057",
+  "lockSHA256": "ecdfd5160d00884c8bd21230ebc0166003956ad9b50c16b1b84d30b9d8938b26",
   "discoveryComplete": true,
   "releaseNoticeReviewComplete": false,
   "packDistributionReady": false,
@@ -969,7 +969,9 @@
       "officialRelease": "https://github.com/DeadlyBossMods/DBM-Vanilla/releases/tag/r830",
       "packageSHA256": "7c559db0599ae1dac36c2836b61b7f8125d705d71cc39d76d8a2d2fe8f048463",
       "selectedFolders": [
-        "DBM-Raids-Vanilla"
+        "DBM-Azeroth",
+        "DBM-Raids-Vanilla",
+        "DBM-Test-Vanilla"
       ],
       "noticeFiles": [
         {

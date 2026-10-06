@@ -9,7 +9,7 @@ from repository_paths import ROOT, contained, output, sha
 from resolve_dependencies import metadata, verify
 
 
-def runtime_closure(folder, files):
+def runtime_closure(folder, files, require_retail=True):
     """Resolve Retail TOC includes; validate all declared locale/flavor files.
 
     This verifies file presence, not the client loader or protected execution.
@@ -49,7 +49,7 @@ def runtime_closure(folder, files):
             else:
                 visit(str(PurePosixPath(name).parent / include.replace('\\','/')))
     visit(toc)
-    meta = metadata([(toc,files[toc])])[0][toc]
+    meta = metadata([(toc,files[toc])], require_retail=require_retail)[0][toc]
     return {'toc':toc,'runtimeFiles':sorted(visited),'metadata':meta}
 
 
@@ -84,11 +84,11 @@ def audit(lock):
                 continue
             immediate = [meta for name,meta in package['toc'].items() if name.startswith(folder+'/') and len(PurePosixPath(name).parts)==2]
             retail = any(any(int(n)>=120000 for n in re.findall(r'\d+',meta.get('Interface',''))) and not set(re.split(r'[,\s]+',meta.get('ExcludeLoadGameType',''))).intersection({'standard','mainline'}) for meta in immediate)
-            if not retail:
-                exclusions[folder] = {'owner':package['repo'],'reason':'Installed archive contains this folder, but latest upstream TOC has no Retail interface or explicitly excludes Retail. Preserve reference; omit incompatible package folder.'}
-                continue
-            closure = runtime_closure(folder,files)
-            folders[folder] = {'owner':package['repo'],**closure}
+            # Preserve installed official package companions even when their
+            # native TOCs exclude Retail. Removing them makes CurseForge's
+            # otherwise correct package incomplete. WoW owns load eligibility.
+            closure = runtime_closure(folder,files,require_retail=retail)
+            folders[folder] = {'owner':package['repo'],'eligibleForRetail':retail,**closure}
     for folder, record in folders.items():
         meta = record['metadata']
         required = meta.get('RequiredDeps',meta.get('Dependencies',''))

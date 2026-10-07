@@ -35,7 +35,13 @@ def update_payload(lock, coverage, selected_repos=()):
     return {'Interface/AddOns/'+name:body for name,body in files.items()},closures,updates
 
 
-def build(selected_repos=()):
+def artifact_name(selected_key,label=None):
+    if label is not None and not re.fullmatch(r'[a-z][a-z0-9-]{0,47}',label):
+        raise ValueError('Output label must be a short lowercase slug')
+    return 'ConsolePort-Forever-Update-'+selected_key+('-'+label if label else '')+'.zip'
+
+
+def build(selected_repos=(),label=None):
     commit,tests,test_hash=verified_source()
     lock_path=ROOT/'dependencies/lock.json'
     lock=json.loads(lock_path.read_text(encoding='utf-8'))
@@ -62,7 +68,7 @@ def build(selected_repos=()):
         'runtimeReportSHA256':test_hash,'toolingReportSHA256':tests['toolingReportSHA256']}
     data=archive_bytes(rows,manifest)
     selected_key='dependencies-'+digest(json.dumps(sorted(updates)).encode())[:12] if updates else 'companion-only'
-    destination=output(ROOT/'dist'/version/('ConsolePort-Forever-Update-'+selected_key+'.zip'))
+    destination=output(ROOT/'dist'/version/artifact_name(selected_key,label))
     if destination.exists(): raise ValueError('Retain existing update artifact; choose a new version/output before rebuilding')
     destination.parent.mkdir(parents=True,exist_ok=True)
     destination.write_bytes(data)
@@ -78,4 +84,6 @@ def build(selected_repos=()):
 if __name__=='__main__':
     parser=argparse.ArgumentParser()
     parser.add_argument('--dependency',action='append',default=[],help='Updated locked repository to include; repeat as needed, default is Forever only')
-    print(json.dumps(build(parser.parse_args().dependency),indent=2))
+    parser.add_argument('--label',help='Retained artifact label when rebuilding the same candidate version')
+    args=parser.parse_args()
+    print(json.dumps(build(args.dependency,args.label),indent=2))

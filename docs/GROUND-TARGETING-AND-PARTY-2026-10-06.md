@@ -1,5 +1,10 @@
 # Candidate.6: cursor casting and Party defaults
 
+The cursor-only implementation and first ZIP described below are superseded by
+the same-version refinement in `TARGETING-PREFERENCES-AND-ICON-FIX-2026-10-07.md`.
+The Party/Better Wardrobe changes remain included. No deployment is authorized
+until the user explicitly says so, even if WoW closes.
+
 The user authorized implementation and package preparation, and prohibited
 deployment with WoW open. DBM is intentionally disabled for now. This update
 ships only Forever; no dependency/DBM bytes, addon-enable state or live WTF is

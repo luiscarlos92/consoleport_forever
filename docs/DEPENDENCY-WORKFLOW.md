@@ -56,6 +56,8 @@ Build a small update rather than a full UI pack:
 
 ```powershell
 python tools/build_update.py
+# Preserve a previous same-version artifact when refining an unshipped candidate:
+python tools/build_update.py --label targeting-options
 # If a dependency actually changed, include its complete qualified package:
 python tools/build_update.py --dependency seblindfors/ConsolePort
 ```

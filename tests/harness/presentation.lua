@@ -17,9 +17,19 @@ local function region()
     function r:AddMaskTexture(mask) self.mask=mask self.maskCalls=self.maskCalls+1 end
     function r:RemoveMaskTexture(mask) assert(self.mask==mask) self.mask=nil self.removals=(self.removals or 0)+1 end
     function r:Show() self.shown=true end function r:Hide() self.shown=false end
+    function r:SetVertexColor(...) self.tint={...} end
+    function r:SetDesaturated(value) self.desaturated=value end
+    function r:SetSwipeColor(...) self.swipe={...} end
     return r
 end
 local Frame={}
+local locked=false
+C_LevelLink={IsActionLocked=function() return locked end}
+local WoWMainline=true
+unpack=table.unpack
+local function SpellVFX_ClearReticle() end
+local function UpdateCooldown(button) button.cooldownUpdates=(button.cooldownUpdates or 0)+1 end
+--@NATIVE_AVAILABILITY
 function Frame:RegisterEvent() end function Frame:SetScript(key,fn) self[key]=fn end
 function Frame:SetSize() end function Frame:SetPoint() end function Frame:ClearAllPoints() end
 function Frame:SetParent(parent) self.parent=parent end function Frame:GetParent() return self.parent end
@@ -100,8 +110,27 @@ base:UpdateButtons({PAD1={},PAD2={},PAD3={},PAD4={},PADDUP={}}) flush()
 assert(removals==24 and base.buttons.PAD1.maskCount==1)
 combat=true base:OnMasqueLoaded(msq) flush() assert(removals==24,'combat setup modified group membership')
 combat=false Addon:RefreshConsolePortSkin() assert(removals==28)
+local face=base.buttons.PAD1
+face._state_type='action' face._state_action=1
+face.config={outOfRangeColoring='button',colors={range={1,.1,.1},mana={.1,.1,1}}}
+function face:IsUsable() return true,false end
+combat=true locked=true UpdateUsable(face) assert(face.icon.desaturated==true)
+locked=false UpdateUsable(face) assert(face.icon.desaturated==false,'party-sync unlock retained stale desaturation')
+UpdateUsable(face,false,false) assert(face.icon.tint[1]==.4,'unusable native tint was erased')
+UpdateUsable(face,false,true) assert(face.icon.tint[3]==1 and face.icon.tint[1]==.1,'resource tint was erased')
+face.outOfRange=true UpdateUsable(face) assert(face.icon.tint[1]==1 and face.icon.tint[2]==.1,'range tint was erased')
+face.zoneAbilityDisabled=true UpdateUsable(face) assert(face.icon.desaturated==true,'disabled zone action desaturation was erased')
+face.zoneAbilityDisabled=false Addon:RefreshFaceAvailability() assert(face.icon.desaturated==false)
+face.cooldown:SetSwipeColor(0,0,0,0) assert(face.cooldown.swipe[4]==0,'casting animation transparency was erased')
+SpellVFX_CastingAnim_OnHide({GetParent=function() return face end})
+assert(face.cooldown.swipe[4]==.65 and face.cooldownUpdates==1,'native cast finish made swipe opaque')
+face.lossOfControlCooldown:SetSwipeColor(.17,0,0,1)
+assert(face.lossOfControlCooldown.swipe[1]==.17 and face.lossOfControlCooldown.swipe[4]==.65)
+local dpad=base.buttons.PADDUP dpad.cooldown:SetSwipeColor(0,0,0,1) assert(dpad.cooldown.swipe[4]==1,'unowned D-pad cooldown was changed')
+combat=false
 installed=false base.buttons.PAD1.icon:SetTexture('manual-after-restore') base.buttons.PAD1:UpdateLocal()
 assert(base.buttons.PAD1.icon.texture=='manual-after-restore','inactive hook reapplied owned skin')
+base.buttons.PAD1.cooldown:SetSwipeColor(0,0,0,1) assert(base.buttons.PAD1.cooldown.swipe[4]==1,'inactive visual hook still owned cooldown color')
 installed=true
 local friendly=frames.ConsolePortForeverFriendlyPrompt
 ConsolePortGroupBase=makeBank('Base','ReplacementBase') Addon:RefreshConsolePortSkin()

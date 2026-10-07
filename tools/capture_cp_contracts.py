@@ -25,6 +25,8 @@ FILES = [
     'ConsolePort/Utils/Macro.lua',
     'ConsolePort_Bar/Model/Utils.lua',
     'ConsolePort_Cursor/Controller/Scripts.lua',
+    'ConsolePort_Config/Model/Database.lua',
+    'ConsolePort_Config/View/Config/Config.lua',
 ]
 if __name__ == '__main__':
     lock = json.loads((ROOT / 'dependencies/lock.json').read_text(encoding='utf-8'))

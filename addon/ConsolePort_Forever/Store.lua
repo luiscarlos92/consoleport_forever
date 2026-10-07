@@ -25,7 +25,7 @@ function Store.EnsureSchema(db, guid, legacyCharacter)
     end
     db.shared = db.shared or {revision = 0, geometry = {}, faceBindings = {}, utilityPolicy = {}, integrationPolicy = {}}
     if db.shared.ringProjectionGUID~=nil and (type(db.shared.ringProjectionGUID)~='string' or db.shared.ringProjectionGUID=='') then return nil,'invalid ring projection identity' end
-    for _,key in ipairs({"geometry","faceBindings","utilityPolicy","integrationPolicy","runtimePolicy","managedDynamicCamProfiles"}) do
+    for _,key in ipairs({"geometry","faceBindings","utilityPolicy","integrationPolicy","runtimePolicy","managedDynamicCamProfiles","groundTargeting","groundTargetingHistory"}) do
         if db.shared[key]~=nil and type(db.shared[key])~="table" then return nil,"invalid shared field: "..key end
         db.shared[key]=db.shared[key] or {}
     end
@@ -45,7 +45,7 @@ function Store.GetCharacter(db, guid, identity)
                   integrationStatus = {}, pendingChanges = {}, transactionIDs = {}}
         db.characters[guid] = record
     end
-    for _, key in ipairs({"identity", "controllerBindings", "rings", "fieldBaselines", "integrationStatus", "pendingChanges", "transactionIDs", "pendingBindingSelection", "bindingSelectionHistory", "bindingViewRecovery"}) do
+    for _, key in ipairs({"identity", "controllerBindings", "rings", "fieldBaselines", "integrationStatus", "pendingChanges", "transactionIDs", "pendingBindingSelection", "bindingSelectionHistory", "bindingViewRecovery", "targetingObserved"}) do
         if record[key] ~= nil and type(record[key]) ~= "table" then return nil, "invalid character field: " .. key end
     end
     for _, key in ipairs({"requiredRevision","appliedRevision","ringOfferedRevision"}) do

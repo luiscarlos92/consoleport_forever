@@ -39,8 +39,10 @@ immutable original reference to add later dependencies. See
 
 ## Deployments
 
-- Deploy only with user authorization and WoW closed. Current instruction is to
-  prepare candidate.6, **do not deploy** while WoW is open.
+- Deploy only with explicit user authorization and WoW closed. Current instruction
+  is to prepare the refined candidate.6, **do not deploy until the user says so**,
+  even if WoW later closes. Preserve the earlier candidate.6 ZIP/receipt; use the
+  scoped builder's `--label targeting-options` for the same-version refinement.
 - DBM is deliberately disabled for now. Preserve its game/user-owned enable
   state and existing files; do not enable/reconfigure it or include DBM bytes in
   the prepared update. This supersedes older DBM keep/reship instructions.

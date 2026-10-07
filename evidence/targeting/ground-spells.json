@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-10-07T01:34:08.435644+00:00",
+  "checkedAt": "2026-10-07T04:06:09.312883+00:00",
   "client": "Retail 12.1.0",
   "limitation": "Spell qualification is source evidence; offline tests do not prove live reticles. This is an explicit registry, not a universal AoE predicate. Unknown IDs and unqualified replacements remain native.",
   "spells": [
@@ -290,6 +290,42 @@
       "source": "https://nether.wowhead.com/tooltip/spell/1234796",
       "qualification": "Current Retail tooltip explicitly chooses a targeted destination; current Combat Mode defaults also register this cast-at-cursor ID.",
       "implementationSource": "https://github.com/djsmithdev/combatmode/blob/master/CombatMode/Constants/DatabaseDefaults.lua"
+    },
+    {
+      "id": 51052,
+      "name": "Anti-Magic Zone",
+      "source": "https://us.forums.blizzard.com/en/wow/t/is-this-the-worst-iteration-of-dk-so-far/2336530",
+      "qualification": "Current original player/guide/addon author explicitly uses cursor/player placement for this ability. Ground reticle source-qualified; Retail acceptance pending."
+    },
+    {
+      "id": 260243,
+      "name": "Volley",
+      "source": "https://www.skill-capped.com/wowarticles/guides/marksmanship-hunter-pvp-guide/macros/",
+      "qualification": "Current original player/guide/addon author explicitly uses cursor/player placement for this ability. Ground reticle source-qualified; Retail acceptance pending."
+    },
+    {
+      "id": 111771,
+      "name": "Demonic Gateway",
+      "source": "https://github.com/EllesmereGaming/EllesmereUI/blob/main/EUI_MacroFactory.lua",
+      "qualification": "Current original player/guide/addon author explicitly uses cursor/player placement for this ability. Ground reticle source-qualified; Retail acceptance pending."
+    },
+    {
+      "id": 444995,
+      "name": "Surging Totem",
+      "source": "https://www.icy-veins.com/wow/enhancement-shaman-pve-dps-macros-addons",
+      "qualification": "Current original player/guide/addon author explicitly uses cursor/player placement for this ability. Ground reticle source-qualified; Retail acceptance pending."
+    },
+    {
+      "id": 108287,
+      "name": "Totemic Projection",
+      "source": "https://www.icy-veins.com/wow/enhancement-shaman-pve-dps-macros-addons",
+      "qualification": "Current original player/guide/addon author explicitly uses cursor/player placement for this ability. Ground reticle source-qualified; Retail acceptance pending."
+    },
+    {
+      "id": 198838,
+      "name": "Earthen Wall Totem",
+      "source": "https://www.skill-capped.com/wowarticles/guides/restoration-shaman-pvp-guide/macros/",
+      "qualification": "Current original player/guide/addon author explicitly uses cursor/player placement for this ability. Ground reticle source-qualified; Retail acceptance pending."
     }
   ],
   "excluded": [
@@ -308,21 +344,6 @@
       "id": 202770,
       "name": "Fury of Elune",
       "reason": "Current unit-centered targeting; historical reticle list not adopted."
-    },
-    {
-      "id": 51052,
-      "name": "Anti-Magic Zone",
-      "reason": "Registry expansion requires stronger current ground-placement evidence."
-    },
-    {
-      "id": 260243,
-      "name": "Volley",
-      "reason": "Registry expansion requires stronger current ground-placement evidence."
-    },
-    {
-      "id": 111771,
-      "name": "Demonic Gateway",
-      "reason": "Multi-stage placement retained natively for initial implementation."
     },
     {
       "id": 109248,

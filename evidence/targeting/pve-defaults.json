@@ -1,0 +1,195 @@
+{
+  "checkedAt": "2026-10-07T04:06:09.315093+00:00",
+  "priority": "PvE dungeons/raids",
+  "accountScope": "One numeric spell ID per account, independent of character/spec. Explicit choices override context defaults.",
+  "supportedModes": [
+    "default",
+    "cursor",
+    "player",
+    "manual"
+  ],
+  "rules": [
+    {
+      "ids": [
+        43265,
+        152280
+      ],
+      "default": "player",
+      "sourceKeys": [
+        "blood"
+      ],
+      "interpretation": "DnD self placement is documented. Applying it to Defile is our melee-PvE recommendation, not a universal best choice."
+    },
+    {
+      "ids": [
+        121536
+      ],
+      "default": "player",
+      "sourceKeys": [
+        "holy"
+      ],
+      "interpretation": "Self placement for personal movement; cursor remains selectable for allies."
+    },
+    {
+      "default": "cursor",
+      "sourceKeys": [
+        "vengeance",
+        "druid",
+        "shaman",
+        "enhancement",
+        "authorMacros"
+      ],
+      "interpretation": "Preserve ranged/location placement. Direct examples cover many spells; extending this rule to other qualified reticles is our PvE recommendation. Temporary known reticles inherit cursor, unknown temporary spells stay native until explicit selection."
+    }
+  ],
+  "classSpells": {
+    "DEATHKNIGHT": [
+      43265,
+      152280,
+      51052
+    ],
+    "DEMONHUNTER": [
+      189110,
+      191427,
+      202137,
+      202138,
+      204596,
+      207684,
+      390163,
+      452490,
+      1234796
+    ],
+    "DRUID": [
+      102793,
+      145205,
+      205636
+    ],
+    "HUNTER": [
+      1543,
+      162488,
+      187650,
+      187698,
+      191433,
+      260243
+    ],
+    "MAGE": [
+      2120,
+      113724,
+      153561,
+      190356
+    ],
+    "MONK": [
+      115313,
+      115315,
+      116844
+    ],
+    "PRIEST": [
+      32375,
+      62618,
+      34861,
+      121536
+    ],
+    "ROGUE": [
+      1725,
+      195457
+    ],
+    "SHAMAN": [
+      2484,
+      61882,
+      73920,
+      98008,
+      51485,
+      192058,
+      192222,
+      192077,
+      207399,
+      444995,
+      108287,
+      198838
+    ],
+    "WARLOCK": [
+      1122,
+      5740,
+      30283,
+      152108,
+      111771
+    ],
+    "WARRIOR": [
+      6544,
+      376079
+    ],
+    "PALADIN": [],
+    "EVOKER": []
+  },
+  "defaults": {
+    "43265": "player",
+    "152280": "player",
+    "189110": "cursor",
+    "191427": "cursor",
+    "202137": "cursor",
+    "202138": "cursor",
+    "204596": "cursor",
+    "207684": "cursor",
+    "390163": "cursor",
+    "452490": "cursor",
+    "102793": "cursor",
+    "145205": "cursor",
+    "205636": "cursor",
+    "1543": "cursor",
+    "162488": "cursor",
+    "187650": "cursor",
+    "187698": "cursor",
+    "191433": "cursor",
+    "2120": "cursor",
+    "113724": "cursor",
+    "153561": "cursor",
+    "190356": "cursor",
+    "115313": "cursor",
+    "115315": "cursor",
+    "116844": "cursor",
+    "32375": "cursor",
+    "62618": "cursor",
+    "34861": "cursor",
+    "121536": "player",
+    "1725": "cursor",
+    "195457": "cursor",
+    "2484": "cursor",
+    "61882": "cursor",
+    "73920": "cursor",
+    "98008": "cursor",
+    "51485": "cursor",
+    "192058": "cursor",
+    "192222": "cursor",
+    "192077": "cursor",
+    "207399": "cursor",
+    "1122": "cursor",
+    "5740": "cursor",
+    "30283": "cursor",
+    "152108": "cursor",
+    "6544": "cursor",
+    "376079": "cursor",
+    "1234796": "cursor",
+    "51052": "cursor",
+    "260243": "cursor",
+    "111771": "cursor",
+    "444995": "cursor",
+    "108287": "cursor",
+    "198838": "cursor"
+  },
+  "sources": {
+    "blood": "https://www.method.gg/guides/blood-death-knight/interface-and-macros",
+    "holy": "https://www.method.gg/guides/holy-priest/interface-and-macros",
+    "vengeance": "https://www.method.gg/guides/vengeance-demon-hunter/interface-and-macros",
+    "druid": "https://www.method.gg/guides/restoration-druid/interface-and-macros",
+    "shaman": "https://www.method.gg/guides/restoration-shaman/interface-and-macros",
+    "enhancement": "https://www.icy-veins.com/wow/enhancement-shaman-pve-dps-macros-addons",
+    "authorMacros": "https://github.com/EllesmereGaming/EllesmereUI/blob/main/EUI_MacroFactory.lua",
+    "reticleTargets": "https://us.forums.blizzard.com/en/wow/t/question-about-shadowfury-macro/967848"
+  },
+  "limits": [
+    "No generic target/focus/mouseover destination for reticles.",
+    "Unknown IDs and unsupported replacements stay native.",
+    "UI includes current-class qualified reticles across specs; temporary abilities are learned from encountered pages/extra-action buttons.",
+    "No source list guarantees exhaustive future spell/quest coverage; actual Retail behavior remains pending."
+  ]
+}

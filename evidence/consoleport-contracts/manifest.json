@@ -139,6 +139,14 @@
     {
       "path": "ConsolePort_Cursor/Controller/Scripts.lua",
       "sha256": "cb2fc5bdfb03ea9dab2700737be629f0eaeda59bf7d59f31e43700c5cb857f60"
+    },
+    {
+      "path": "ConsolePort_Config/Model/Database.lua",
+      "sha256": "e3804abf6dfb8108f04c16e8516fe0a221c227383a4d7caaa335dfadefeaaa77"
+    },
+    {
+      "path": "ConsolePort_Config/View/Config/Config.lua",
+      "sha256": "30a3c0d3e6c43554a23a7b054eebd06d8076c1f4ab01fdd096efc3ff0bcb2c13"
     }
   ]
 }

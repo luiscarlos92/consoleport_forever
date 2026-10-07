@@ -2,6 +2,34 @@ local _, Addon = ...
 local BANKS, FACE = {Base=true,L2=true,R2=true,L2R2=true}, {PAD1=true,PAD2=true,PAD3=true,PAD4=true}
 local CIRCLE = [[Interface\Masks\CircleMaskScalable]]
 local RING = [[Interface\AddOns\ConsolePort\Assets\Textures\Cursor\RoundBorderHighlight]]
+local function Public(value) return not (issecretvalue and issecretvalue(value)) end
+local function Availability(button)
+    if not Addon.IsCharacterInstalled or not Addon:IsCharacterInstalled() then return end
+    if not button.icon or not button.icon.SetDesaturated then return end
+    -- LAB sets this true for a party-sync lock but its quick usability update
+    -- never clears it on unlock. Preserve its native range/resource tint.
+    local locked=false
+    if button._state_type=='action' then
+        if not C_LevelLink or not C_LevelLink.IsActionLocked or not Public(button._state_action) then return end
+        local ok,value=pcall(C_LevelLink.IsActionLocked,button._state_action)
+        if not ok or not Public(value) or type(value)~='boolean' then return end
+        locked=value
+    end
+    if not Public(button.zoneAbilityDisabled) then return end
+    button.icon:SetDesaturated(locked or button.zoneAbilityDisabled==true)
+end
+local function Swipe(cd,r,g,b,a)
+    if not Addon.IsCharacterInstalled or not Addon:IsCharacterInstalled() then return end
+    -- Native LAB restores alpha 1 at cast completion. The scoped circular
+    -- skin needs a translucent swipe, including every GCD. Preserve alpha 0
+    -- during the casting animation and the native loss-of-control color.
+    if cd.__cpfSwipeWriting or not Public(a) or not Public(r) or not Public(g) or not Public(b) then return end
+    if a==nil then a=1 end
+    if type(a)~='number' or a<=0.65 then return end
+    cd.__cpfSwipeWriting=true
+    cd:SetSwipeColor(r,g,b,0.65)
+    cd.__cpfSwipeWriting=nil
+end
 
 local function Round(texture, button)
     if not texture then return end
@@ -57,8 +85,19 @@ local function Apply(button)
     if button.SlotArt then button.SlotArt:Hide() end
     for _, texture in ipairs({button.NormalTexture,button.PushedTexture or button:GetPushedTexture(),button.HighlightTexture or button:GetHighlightTexture(),button.CheckedTexture or button:GetCheckedTexture(),button.Flash,button.Border,button.NewActionTexture,button.SpellHighlightTexture}) do Round(texture,button) end
     for _, key in ipairs({"cooldown","chargeCooldown","lossOfControlCooldown"}) do
-        local cd=button[key] if cd then cd:ClearAllPoints() cd:SetAllPoints(mask) cd:SetSwipeTexture(CIRCLE) cd:SetUseCircularEdge(true) end
+        local cd=button[key] if cd then
+            cd:ClearAllPoints() cd:SetAllPoints(mask) cd:SetSwipeTexture(CIRCLE) cd:SetUseCircularEdge(true)
+            if cd.SetSwipeColor and not cd.__cpfSwipeHook then
+                cd.__cpfSwipeHook=true hooksecurefunc(cd,'SetSwipeColor',Swipe)
+                cd:SetSwipeColor(key=='lossOfControlCooldown' and 0.17 or 0,0,0,0.65)
+            end
+        end
     end
+    if button.icon.SetVertexColor and button.__cpfAvailabilityIcon~=button.icon then
+        button.__cpfAvailabilityIcon=button.icon
+        hooksecurefunc(button.icon,'SetVertexColor',function() Availability(button) end)
+    end
+    Availability(button)
     BaseIcon(button)
 end
 
@@ -125,5 +164,14 @@ function Addon:RefreshConsolePortSkin()
 end
 
 local events=CreateFrame("Frame")
-for _,event in ipairs({"PLAYER_ENTERING_WORLD","PLAYER_TARGET_CHANGED","PLAYER_EQUIPMENT_CHANGED","PLAYER_REGEN_ENABLED"}) do events:RegisterEvent(event) end
-events:SetScript("OnEvent",function() C_Timer.After(0,function() Addon:RefreshConsolePortSkin() end) C_Timer.After(1,function() Addon:RefreshConsolePortSkin() end) end)
+function Addon:RefreshFaceAvailability()
+    for bankID in pairs(BANKS) do
+        local bank=_G['ConsolePortGroup'..bankID]
+        if bank and bank.buttons then for id in pairs(FACE) do local button=bank.buttons[id] if button then Availability(button) end end end
+    end
+end
+for _,event in ipairs({"PLAYER_ENTERING_WORLD","PLAYER_TARGET_CHANGED","PLAYER_EQUIPMENT_CHANGED","PLAYER_REGEN_ENABLED","PLAYER_REGEN_DISABLED","ACTIONBAR_UPDATE_USABLE","ACTIONBAR_SLOT_CHANGED","PARTY_SYNC_DISABLED","PARTY_SYNC_ENABLED"}) do events:RegisterEvent(event) end
+events:SetScript("OnEvent",function()
+    C_Timer.After(0,function() Addon:RefreshFaceAvailability() Addon:RefreshConsolePortSkin() end)
+    C_Timer.After(1,function() Addon:RefreshFaceAvailability() Addon:RefreshConsolePortSkin() end)
+end)

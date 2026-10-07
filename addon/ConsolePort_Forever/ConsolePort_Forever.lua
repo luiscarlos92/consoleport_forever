@@ -193,6 +193,7 @@ function Addon:Refresh()
     local adapters,error=self.RuntimeSetup.Adapters(_G,self.db)
     if not adapters then self.Diagnostics:SetFeature("configuration","pending",error) return end
     self.adapters=adapters
+    self.TargetingUI:Initialize(_G)
     self.coordinator=self.Coordinator.New(self.db,self.guid,adapters,CanWrite)
     if self.record.pendingBindingSelection then
         self.Diagnostics:SetFeature("bindingSelection","recovery-required","temporary bank inspection interrupted; /cpf recover-selection")
@@ -277,6 +278,11 @@ function Addon:FinishRestored(journal)
     self.Prompt:Reload()
 end
 function Addon:RefreshModes()
+    if self.record then
+        self.record.targetingObserved=self.record.targetingObserved or {}
+        self.GroundTargeting.observed=self.record.targetingObserved
+        self.GroundTargeting.Observe(_G)
+    end
     if not CanWrite() or not self.adapters then return end
     local bridge=self.adapters.consoleport
     if not self:IsCharacterInstalled() or not self.db.shared.runtimePolicy.modesEnabled then
@@ -297,7 +303,7 @@ function Addon:RefreshModes()
     local ok,reason=self.SecureModes.Install(bridge,_G)
     self.Diagnostics:SetFeature("secureModes",ok and "offline-verified" or "pending",reason or "native CP buttons/Layers retained; in-game secure input proof pending")
     local groundEnabled=ok and self.db.shared.runtimePolicy.groundTargetingEnabled
-    local groundReady,groundReason=self.GroundTargeting.Enable(bridge,_G,groundEnabled)
+    local groundReady,groundReason=self.GroundTargeting.Enable(bridge,_G,groundEnabled,self.TargetingPreferences.Read(self.db))
     self.Diagnostics:SetFeature('groundTargeting',groundEnabled and groundReady and 'offline-verified' or 'pending',groundReason)
     if ok and not self.modeCallbacks then
         self.modeCallbacks=true

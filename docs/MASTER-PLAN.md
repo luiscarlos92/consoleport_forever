@@ -1,5 +1,26 @@
 # ConsolePort Forever: master plan, decisions, and project history
 
+## Current authority — October 7, 2026
+
+Candidate.6 remains unshipped. The user authorized refining the same version:
+fix stale grey face-button icons while preserving the circular/Masque appearance;
+replace blanket cursor casting with a native ConsolePort Targeting tab and
+account-wide per-ability preferences shared across every character/spec. Show
+current-class ground spells across specs plus encountered temporary abilities
+and vehicle/override/temporary/extra-action defaults. PvE dungeon/raid defaults
+are preferred; cursor, player and manual placement are selectable. The catalog
+is source-qualified, not a universal reticle detector; unknown temporary spells
+stay native until explicitly assigned. Party beneath Raid and Better Wardrobe
+remain included; DBM remains disabled and excluded.
+
+**Do not deploy until the user explicitly says so**, even if WoW closes. Prepare
+an independently retained same-version artifact using `--label targeting-options`;
+the earlier candidate.6 ZIP/receipt are superseded, not overwritten. All 19
+stable Retail dependency sources were freshly checked this session and remain
+current; no vendor downloads or reshipping are needed. Details:
+`TARGETING-PREFERENCES-AND-ICON-FIX-2026-10-07.md`. Earlier blanket-cursor and
+while-open-only preparation statements below are historical and superseded.
+
 ## Current authority — October 6, 2026
 
 ### Candidate.6 preparation — implementation authorized, deployment prohibited

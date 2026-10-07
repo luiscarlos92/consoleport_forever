@@ -62,7 +62,7 @@ check('T01.snapshot', () => {
 check('T27.lua51', () => {
   for (const f of files('addon').filter(f=>f.endsWith('.lua'))) parser.parse(read(f),{luaVersion:'5.1'});
 });
-const modules = ['Core','Store','Plan','Transactions','BindingPolicy','ModePolicy','Rings/Discovery','Rings/Selectors','SecureModes','TemporaryAccess','Targeting/Registry','Targeting/Ground','UI/Ownership','UI/InputBridge','UI/Windows','UI/Scroll','UI/Map','UI/PartyLayout','Cinematic','Adapters/BetterBags','UI/ItemHints','UI/Contexts','UI/FocusVisuals','UI/Proof','Adapters/NativeBindings',
+const modules = ['Core','Store','Plan','Transactions','BindingPolicy','ModePolicy','Rings/Discovery','Rings/Selectors','SecureModes','TemporaryAccess','Targeting/Registry','Targeting/Preferences','Targeting/Ground','UI/Ownership','UI/InputBridge','UI/Windows','UI/Scroll','UI/Map','UI/PartyLayout','Cinematic','Adapters/BetterBags','UI/ItemHints','UI/Contexts','UI/FocusVisuals','UI/Proof','Adapters/NativeBindings',
   'Adapters/BindingState','Adapters/BindingBanks','Diagnostics','Capability','Adapters/ConsolePort','Adapters/EditMode','Adapters/FlatConfig','Adapters/Integrations','Adapters/LiteMount','Adapters/DynamicCam','Adapters/Rings','Baseline','Coordinator','Prompt'];
 const source = 'Addon={};\n' + modules.map(m=>
   ';(function(...)\n'+read('addon/ConsolePort_Forever/'+m+'.lua')+'\nend)("ConsolePort_Forever",Addon);\n').join('');
@@ -315,6 +315,7 @@ check('T24.current-native-presentation-lifecycle', () => {
     .replace('--@NATIVE_MASQUE_REMOVE',()=>nativeFunction(masque,'GMT:RemoveButton'))
     .replace('--@NATIVE_GROUP_SKIN_LIFECYCLE',()=>['CPGroupBar:UpdateButtons','CPGroupBar:OnMasqueLoaded'].map(name=>nativeFunction(group,name)).join('\n'))
     .replace('--@NATIVE_MANAGER_BINDINGS',()=>nativeFunction('evidence/consoleport-contracts/ConsolePort_Bar/Controller/Manager/Manager.lua','Manager:GetBindings'))
+    .replace('--@NATIVE_AVAILABILITY',()=>['UpdateUsable','SpellVFX_CastingAnim_OnHide'].map(name=>nativeFunction('evidence/consoleport-contracts/ConsolePort/Libs/External/LibActionButton-1.0/LibActionButton-1.0.lua',name)).join('\n'))
     .replace('--@PRODUCT_SKIN',()=>';(function(...)\n'+read('addon/ConsolePort_Forever/Skin.lua')+'\nend)("ConsolePort_Forever",Addon);');
   execute(source+fixture,'current-native-presentation');
 });
@@ -391,6 +392,15 @@ check('T36.native-party-layout-default', () => {
     .replace('--@NATIVE_PARTY_ORIENTATION',()=>nativeFunction(base+'Blizzard_EditMode/Shared/EditModeManager.lua','EditModeManagerFrameMixin:ShouldRaidFrameUseHorizontalRaidGroups'))
     .replace('--@NATIVE_COMPACT_GENERATE',()=>nativeFunction(base+'Blizzard_UnitFrame/Shared/CompactPartyFrame.lua','CompactPartyFrame_Generate'));
   execute(source+serializer+'\n;(function(...)\n'+read('addon/ConsolePort_Forever/RuntimeSetup.lua')+'\nend)("ConsolePort_Forever",Addon);\n'+fixture,'native-party-layout-default');
+});
+check('T38.account-targeting-native-config-panel', () => {
+  const native=read('evidence/consoleport-contracts/ConsolePort_Config/View/Config/Config.lua');
+  const lifecycle=native.slice(native.indexOf('local Panel ='),native.indexOf('local Canvas ='))+'\n'
+    +native.slice(native.indexOf('do  local panelIDGen'));
+  const fixture=read('tests/harness/targeting_preferences.lua')
+    .replace('--@NATIVE_PANEL_LIFECYCLE',()=>lifecycle)
+    .replace('--@PRODUCT_TARGETING_UI',()=>';(function(...)\n'+read('addon/ConsolePort_Forever/UI/Targeting.lua')+'\nend)("ConsolePort_Forever",Addon);');
+  execute(source+fixture,'account-targeting-native-panel');
 });
 check('T10-T11.product-bootstrap', () => {
   const entries=read('addon/ConsolePort_Forever/ConsolePort_Forever.toc').split(/\r?\n/).filter(x=>x.trim() && !x.startsWith('#'));

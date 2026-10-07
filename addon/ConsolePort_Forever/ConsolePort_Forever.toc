@@ -22,6 +22,7 @@ Rings\Selectors.lua
 SecureModes.lua
 TemporaryAccess.lua
 Targeting\Registry.lua
+Targeting\Preferences.lua
 Targeting\Ground.lua
 UI\Ownership.lua
 UI\InputBridge.lua
@@ -29,6 +30,7 @@ UI\Windows.lua
 UI\Scroll.lua
 UI\Map.lua
 UI\PartyLayout.lua
+UI\Targeting.lua
 Cinematic.lua
 Adapters\BetterBags.lua
 UI\ItemHints.lua

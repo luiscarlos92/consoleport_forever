@@ -10,12 +10,18 @@ from repository_paths import ROOT,sha
 from deployment_guard import GameTree,inventory
 from pack_format import archive_bytes,digest,read_pack
 from deploy_update import deploy
-from build_update import update_payload
+from build_update import update_payload,artifact_name
 import check_stable_sources
 from test_pack import game,make_pack
 
 
 class ScopedUpdates(unittest.TestCase):
+    def test_same_candidate_output_label_preserves_prior_artifact_names_and_rejects_paths(self):
+        self.assertEqual(artifact_name('companion-only'),'ConsolePort-Forever-Update-companion-only.zip')
+        self.assertEqual(artifact_name('companion-only','targeting-options'),'ConsolePort-Forever-Update-companion-only-targeting-options.zip')
+        for label in ['', '../overwrite', 'C:/path', 'Upper', 'x'*49]:
+            with self.assertRaises(ValueError): artifact_name('companion-only',label)
+
     def scope(self):
         temporary=tempfile.TemporaryDirectory(dir=ROOT/'scratch')
         self.addCleanup(temporary.cleanup)

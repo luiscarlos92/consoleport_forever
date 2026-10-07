@@ -1,5 +1,47 @@
 # Retail tests and results — installed candidate.5, revision 12
 
+Candidate.6's refined labeled package adds the following pending acceptance
+cases. Do not deploy/run them until the user authorizes installation. Earlier
+case 37 remains applicable, with each spell's selected placement replacing the
+old blanket cursor expectation.
+
+### 39 — account-wide targeting tab (refined candidate.6; pending)
+
+- Open ConsolePort configuration → Targeting. Verify this class's qualified
+  ground spells across all specs, plus context defaults and encountered temporary
+  abilities; other classes' catalog must not appear. Use controller focus/scroll
+  through every row and the Apply/Revert buttons.
+- Set Sigil of Flame to At player, Apply and cast its ordinary spell button with
+  every available DH spec. Expect one cast at your feet without saved macros.
+  Switch a second DH character, then reload/logout normally: the ability choice
+  must persist account-wide. Other classes retain their own ability choices.
+- Select Manual placement and test the normal reticle/cancel flow; select Default
+  and verify the displayed recommendation. Revert unsaved edits; native Defaults
+  must change the draft only until Apply. Apply during combat must save nothing.
+- Test known reticles on vehicle/override/temporary/extra bars. Explicit ability
+  preferences override context defaults. Unknown temporary spell rows initially
+  retain native targeting; deliberately select cursor/player only for a real
+  reticle. Returning to Default/manual removes that explicit interception.
+- Enter/leave a temporary mode or input owner while holding a cast; it must not
+  release a different action. Ordinary vehicle spells, empowered actions, items,
+  saved macros, extra-action availability and Exit must remain native.
+
+**Result:** PENDING; no live hardware/taint/tab/persistence claim.
+
+### 40 — round face-button availability (refined candidate.6; pending)
+
+- Inspect PAD1–PAD4 in every bank outside combat, then enter/leave dungeons and
+  combat repeatedly. Available spells must retain their colored artwork.
+- Spend resources, move out of range, cast GCD/long-cooldown/charge abilities and
+  recover. Native availability tint, cooldown progress and charges must remain
+  legible; the swipe must not completely black out the icon between every cast.
+- If available, enter/leave a party-sync lock and test a disabled zone action.
+  Legitimate locked/disabled desaturation must remain and clear on unlock.
+- Confirm round borders/masks persist after Masque refresh/reload, while D-pad
+  skin stays native. Open/close ordinary windows and return to gameplay.
+
+**Result:** PENDING; offline source reproduction does not certify the screenshot.
+
 Candidate.6/revision 13 is prepared without deployment. Its three new acceptance
 cases are below; run them only after a later authorized installation. DBM is
 deliberately disabled and must stay untouched/excluded. The other screenshot

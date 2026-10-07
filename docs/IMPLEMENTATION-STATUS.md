@@ -1,5 +1,20 @@
 # Implementation checkpoint — October 4, 2026
 
+**Current unshipped refinement — October 7, 2026:** Same candidate.6/revision 13.
+Account-wide per-ability cursor/player/manual preferences and the native
+ConsolePort Targeting tab are implemented, with current-class filtering and
+vehicle/override/temporary/extra-action context defaults. The qualified catalog
+now contains 53 IDs; unknown temporary abilities can be assigned explicitly.
+Scoped face visuals clear stale unlocked party-sync desaturation and cap opaque
+cooldown swipes without changing native availability tint, circular skin or
+D-pad Masque ownership. All 38 runtime/source suites and 33 tooling checks pass, including native
+configuration and secure-dispatch coverage. A replacement labeled package is
+the remaining preparation gate.
+All 19 official stable Retail dependencies were freshly checked and are current.
+No deployment until explicit authorization; live candidate.5/WTF/DBM are untouched.
+See `TARGETING-PREFERENCES-AND-ICON-FIX-2026-10-07.md`. The earlier candidate.6
+ZIP/receipt below remain preserved as superseded delivery evidence.
+
 **Current preparation — candidate.6, revision 13 (October 6):** The user
 now authorized implementation and package preparation, but explicitly prohibited
 deployment while WoW is open. Native ConsolePort ground-spell clicks use prepared

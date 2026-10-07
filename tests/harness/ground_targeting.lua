@@ -42,8 +42,8 @@ function securecallfunction(fn,...) return fn(...) end
 function RunMacro() error('saved macro route must remain native only') end
 C_Macro={RunMacroText=function(text,button)
     assert(hardware and trusted,'macro lacks secure hardware authority')
-    assert(button=='ControllerInput')
-    assert(text:match('^/cast %[@cursor%] [^\n]+$'),'unexpected macro text')
+    assert(button=='ControllerInput' or button=='LeftButton')
+    assert(text:match('^/cast %[@cursor%] [^\n]+$') or text:match('^/cast %[@player%] [^\n]+$'),'unexpected macro text')
     casts[#casts+1]={text=text,success=not state.terrainFailure,cursor=state.freeCursor and 'free' or 'camera'}
 end}
 C_Spell={GetSpellInfo=function(id) if names[id] then return {name=names[id],spellID=id} end end,
@@ -148,15 +148,20 @@ local function securecall(fn,...) return fn(...) end
 local wrapCount=0
 function Frame:WrapScript(button,event,pre,post)
     assert(not combat) wrapCount=wrapCount+1
+    local owner=self
     local previous=button.scripts[event]
     button.scripts[event]=function(self,key,down)
-        if event=='OnClick' then return Wrapped_Click(self,self.header,pre,post,previous,key,down,true,true) end
-        run(self.header,self,'self,button,down',pre,key,down)
+        if event=='OnClick' then return Wrapped_Click(self,owner,pre,post,previous,key,down,true,true) end
+        run(owner,self,'self,button,down',pre,key,down)
         if previous then previous(self,key,down) end
     end
 end
 local api={CPAPI=CPAPI,InCombatLockdown=InCombatLockdown,GetBindingKey=function() return 'K' end,
     C_Spell=C_Spell,C_Macro=C_Macro,GetActionInfo=GetActionInfo,GetCVarBool=GetCVarBool}
+for _,family in ipairs({'Vehicle','Override','TempShapeshift'}) do
+    api['Has'..family..'ActionBar']=_G['Has'..family..'ActionBar']
+    api['Get'..family..'BarIndex']=_G['Get'..family..'BarIndex']
+end
 function api.hooksecurefunc(object,method,callback)
     local previous=object[method]
     object[method]=function(...) local value=previous(...) callback(...) return value end
@@ -359,4 +364,48 @@ local deferredFields,deferred=Addon.RuntimeSetup.Fields(account,'G',adapters,api
 for _,field in ipairs(deferredFields) do assert(field.id~=groundField.id,'unsupported runtime offered ground conversion') end
 local found=false for _,entry in ipairs(deferred) do if entry.id=='groundTargeting' then found=true end end
 assert(found) api.C_Macro=macroAPI
+-- Account preference changes are prepared OOC, preserve a held command, and
+-- manual placement restores the native action. Explicit temporary choices
+-- qualify only that ability; context defaults never qualify unknown IDs.
+names[207684]='Sigil of Misery'
+local prefs={spells={[207684]='player'},contexts={vehicle='manual',override='player'}}
+assert(Addon.GroundTargeting.Enable(bridge,api,true,prefs))
+selectSlot(1) clear() combat=true pair(button)
+assert(#casts==1 and casts[1].text=='/cast [@player] Sigil of Misery')
+combat=false prefs.spells[207684]='manual' assert(Addon.GroundTargeting.Enable(bridge,api,true,prefs))
+clear() combat=true pair(button) assert(#casts==0 and #uses==1)
+combat=false prefs.spells[207684]=nil state.family='override' slots[133]={'spell',207684}
+assert(Addon.GroundTargeting.Enable(bridge,api,true,prefs))
+local temp=api.ConsolePortGroupL2R2.buttons.PAD1
+temp:SetAttribute('state','') temp:SetState('','action',133)
+clear() combat=true pair(temp) assert(#casts==1 and casts[1].text=='/cast [@player] Sigil of Misery')
+combat=false state.family='vehicle' assert(Addon.GroundTargeting.Enable(bridge,api,true,prefs))
+clear() combat=true pair(temp) assert(#casts==0 and #uses==1)
+combat=false state.family='override' names[999999]='Quest reticle' slots[133]={'spell',999999}
+assert(Addon.GroundTargeting.Enable(bridge,api,true,prefs)) clear() combat=true pair(temp) assert(#casts==0)
+combat=false prefs.spells[999999]='cursor' assert(Addon.GroundTargeting.Enable(bridge,api,true,prefs))
+assert(Addon.GroundTargeting.observed[999999]) clear() combat=true pair(temp) assert(#casts==1)
+combat=false prefs.spells[999999]=nil assert(Addon.GroundTargeting.Enable(bridge,api,true,prefs))
+clear() combat=true pair(temp) assert(#casts==0,'removed explicit qualification left a stale command')
+combat=false state.family=nil
+-- The existing supplemental 9-12 surface and native extra-action click use
+-- their own LeftButton macro attributes and retain ordinary native dispatch.
+local supplemental=frame() local extra=frame()
+supplemental.scripts.OnClick=SecureActionButton_OnClick extra.scripts.OnClick=SecureActionButton_OnClick
+for _,target in ipairs({supplemental,extra}) do
+    target:SetAttribute('type','action') target:SetAttribute('action',133) target:SetAttribute('useOnKeyDown',false)
+end
+local savedAccess=Addon.TemporaryAccess
+Addon.TemporaryAccess={frame=frame(),buttons={supplemental}}
+api.ExtraActionButton1=extra extra.shown=true
+slots[133]={'spell',207684} prefs={spells={},contexts={extra='player'}}
+assert(Addon.GroundTargeting.Enable(bridge,api,true,prefs))
+state.family='override' clear() combat=true pair(supplemental,'LeftButton')
+assert(#casts==1 and casts[1].text=='/cast [@cursor] Sigil of Misery')
+assert(supplemental:GetAttribute('type')=='action' and not supplemental:GetAttribute('*macrotext1'))
+state.family=nil clear() pair(extra,'LeftButton')
+assert(#casts==1 and casts[1].text=='/cast [@player] Sigil of Misery')
+combat=false assert(Addon.GroundTargeting.Disable(api)) clear() combat=true pair(extra,'LeftButton')
+assert(#casts==0 and #uses==1)
+combat=false Addon.TemporaryAccess=savedAccess api.ExtraActionButton1=nil
 TEST_SUCCESS=true

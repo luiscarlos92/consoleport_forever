@@ -1,5 +1,19 @@
 # Check before development; deploy only changed packages
 
+## Candidate.6 added dependency — Better Wardrobe and Transmog
+
+After the existing 18 packages were checked, the user installed and adopted
+Better Wardrobe and Transmog. Official stable Retail 6.12.3 is now dependency 19,
+with both BetterWardrobe and BetterWardrobe_SourceData selected through explicit
+added coverage in sources.json. The official archive was downloaded only into
+this checkout. All 149 installed files already match it, with no extras; both
+live folders remain untouched and are not recopied in the scoped update.
+The latest stable recheck covers all 19 and reports no updates. Native Retail
+TOCs qualify its two client-owned Blizzard dependencies. Closure, syntax,
+original notices and compatibility readback are recorded in
+`evidence/dependencies/betterwardrobe-2026-10-06.json`.
+No DBM bytes are shipped and no deployment is authorized.
+
 The October 6 user instruction supersedes the previous companion-only rule:
 check every dependency before starting a work session, update the Git dependency
 lock/cache for new official stable Retail releases, test compatibility and repair
@@ -67,7 +81,18 @@ power-loss recovery.
 The original full-pack builder/installer remains for deliberate full-install or
 recovery work. It is not the normal update path.
 
-## October 6 deployment check
+## Candidate.6 preparation check (later October 6)
+
+A fresh session check again found all 18 official stable Retail identities current;
+no package was downloaded or updated. Source verification timestamps and
+`evidence/dependencies/stable-recheck.json` record this check. Candidate.6 adds
+ground cursor casting and the native vertical Party default. The user requests
+package preparation only, with WoW open. DBM is intentionally disabled: preserve
+its enable state/files and omit it from this delivery. The scoped update has an
+empty dependency update set and contains only Forever. Earlier deployment
+receipts below are historical and do not authorize a candidate.6 installation.
+
+## October 6 candidate.5 deployment check
 
 All 18 official stable package identities still match the tested lock; no new
 dependency download is needed. Fresh official CurseForge inspection confirms

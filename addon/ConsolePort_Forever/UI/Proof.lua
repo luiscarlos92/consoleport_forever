@@ -78,6 +78,14 @@ function Proof:Text(api)
                     local field=button:GetAttribute('action_field')
                     local action=field and button:GetAttribute(field)
                     lines[#lines+1]=bankID..' '..key..': '..tostring(kind)..' '..tostring(action or '')..' / displayed '..tostring(button._state_type)..' '..tostring(button._state_action)..' / held '..tostring(button:GetAttribute('cpf-held') or false)
+                    if button.__cpfGround then
+                        local actionKind,spell
+                        if kind=='action' and api.GetActionInfo then actionKind,spell=api.GetActionInfo(action) end
+                        lines[#lines+1]='  Cursor cast: enabled='..tostring(button:GetAttribute('cpf-ground-enabled') or false)
+                            ..' spell='..tostring(spell or 'none')..' prepared='..tostring(actionKind=='spell' and Addon.GroundTargeting.prepared and Addon.GroundTargeting.prepared[spell]~=nil or false)
+                            ..' pressed='..tostring(button:GetAttribute('cpf-ground-pressed') or false)
+                            ..' cancelled='..tostring(button:GetAttribute('cpf-ground-cancelled') or false)
+                    end
                 end
             end
         end

@@ -1,7 +1,7 @@
 local ADDON_NAME, Addon = ...
 Addon.VERSION=C_AddOns.GetAddOnMetadata(ADDON_NAME,"Version") or "0.0.0"
 Addon.SCHEMA=Addon.Store.VERSION
-Addon.CONFIG_REVISION=12
+Addon.CONFIG_REVISION=13
 Addon.PROFILE_NAME="Console Port - Forever (Managed)"
 local function Print(message)
     if DEFAULT_CHAT_FRAME then DEFAULT_CHAT_FRAME:AddMessage("|cff69ccf0ConsolePort Forever:|r "..tostring(message)) end
@@ -280,18 +280,25 @@ function Addon:RefreshModes()
     if not CanWrite() or not self.adapters then return end
     local bridge=self.adapters.consoleport
     if not self:IsCharacterInstalled() or not self.db.shared.runtimePolicy.modesEnabled then
+        self.GroundTargeting.Disable(_G)
+        self.Diagnostics:SetFeature('groundTargeting','pending','reviewed mode policy not enabled')
         self.SecureModes.Disable(_G,bridge)
         self.Diagnostics:SetFeature("secureModes","pending","reviewed mode policy not enabled; baseline retained")
         return
     end
     local current=bridge:read({"layout"})
     if not self.Core.Equal(current,self.SecureModes.LayoutProposal(current)) then
+        self.GroundTargeting.Disable(_G)
+        self.Diagnostics:SetFeature('groundTargeting','pending','native mode layout requires review')
         self.SecureModes.Disable(_G,bridge)
         self.Diagnostics:SetFeature("secureModes","review-required","legacy special visibility/access remains; review the layout proposal")
         return
     end
     local ok,reason=self.SecureModes.Install(bridge,_G)
     self.Diagnostics:SetFeature("secureModes",ok and "offline-verified" or "pending",reason or "native CP buttons/Layers retained; in-game secure input proof pending")
+    local groundEnabled=ok and self.db.shared.runtimePolicy.groundTargetingEnabled
+    local groundReady,groundReason=self.GroundTargeting.Enable(bridge,_G,groundEnabled)
+    self.Diagnostics:SetFeature('groundTargeting',groundEnabled and groundReady and 'offline-verified' or 'pending',groundReason)
     if ok and not self.modeCallbacks then
         self.modeCallbacks=true
         local function changed() C_Timer.After(0,function() local called,error=pcall(self.RefreshModes,self) if not called then self.Diagnostics:Log("mode-error",error) end end) end
@@ -363,8 +370,11 @@ SlashCmdList.CONSOLEPORTFOREVER=function(input)
     else Addon:Status() end
 end
 local events=CreateFrame("Frame")
-for _,event in ipairs({"PLAYER_LOGIN","PLAYER_LOGOUT","PLAYER_ENTERING_WORLD","PLAYER_REGEN_ENABLED","PLAYER_REGEN_DISABLED","ADDON_LOADED","UPDATE_BINDINGS","EDIT_MODE_LAYOUTS_UPDATED","SPELLS_CHANGED","UPDATE_SHAPESHIFT_FORMS","PET_BAR_UPDATE","UNIT_PET","BAG_UPDATE_DELAYED","ITEM_LOCK_CHANGED","CURSOR_CHANGED","MERCHANT_SHOW","MERCHANT_CLOSED","CINEMATIC_START","CINEMATIC_STOP","PLAY_MOVIE","STOP_MOVIE","ADDON_ACTION_BLOCKED","ADDON_ACTION_FORBIDDEN"}) do events:RegisterEvent(event) end
+for _,event in ipairs({"PLAYER_LOGIN","PLAYER_LOGOUT","PLAYER_ENTERING_WORLD","PLAYER_REGEN_ENABLED","PLAYER_REGEN_DISABLED","ADDON_LOADED","UPDATE_BINDINGS","EDIT_MODE_LAYOUTS_UPDATED","SPELLS_CHANGED","ACTIONBAR_SLOT_CHANGED","PLAYER_SPECIALIZATION_CHANGED","TRAIT_CONFIG_UPDATED","SPELL_DATA_LOAD_RESULT","CVAR_UPDATE","UPDATE_SHAPESHIFT_FORMS","PET_BAR_UPDATE","UNIT_PET","BAG_UPDATE_DELAYED","ITEM_LOCK_CHANGED","CURSOR_CHANGED","MERCHANT_SHOW","MERCHANT_CLOSED","CINEMATIC_START","CINEMATIC_STOP","PLAY_MOVIE","STOP_MOVIE","ADDON_ACTION_BLOCKED","ADDON_ACTION_FORBIDDEN"}) do events:RegisterEvent(event) end
 events:SetScript("OnEvent",function(_,event,...)
+    if event=='CVAR_UPDATE' and tostring((...)):lower()~='actionbuttonusekeydown' then return end
+    if event=='SPELL_DATA_LOAD_RESULT' and not (Addon.GroundTargeting.requested and Addon.GroundTargeting.requested[(...)]) then return end
+    if event=='PLAYER_SPECIALIZATION_CHANGED' and (...)~='player' then return end
     if event=="PLAYER_LOGOUT" then
         Addon:CaptureControllerEdits()
         if Addon.adapters and Addon.adapters.rings then Addon.adapters.rings:CaptureEdits() end

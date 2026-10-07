@@ -1,0 +1,334 @@
+{
+  "checkedAt": "2026-10-07T01:34:08.435644+00:00",
+  "client": "Retail 12.1.0",
+  "limitation": "Spell qualification is source evidence; offline tests do not prove live reticles. This is an explicit registry, not a universal AoE predicate. Unknown IDs and unqualified replacements remain native.",
+  "spells": [
+    {
+      "id": 43265,
+      "name": "Death and Decay",
+      "source": "https://nether.wowhead.com/tooltip/spell/43265",
+      "qualification": "Current Retail spell tooltip specifies player-selected ground, area or destination."
+    },
+    {
+      "id": 152280,
+      "name": "Defile",
+      "source": "https://nether.wowhead.com/tooltip/spell/152280",
+      "qualification": "Current Retail spell tooltip specifies player-selected ground, area or destination."
+    },
+    {
+      "id": 189110,
+      "name": "Infernal Strike",
+      "source": "https://nether.wowhead.com/tooltip/spell/189110",
+      "qualification": "Current Retail spell tooltip specifies player-selected ground, area or destination."
+    },
+    {
+      "id": 191427,
+      "name": "Metamorphosis",
+      "source": "https://nether.wowhead.com/tooltip/spell/191427",
+      "qualification": "Original ConsolePort author documented the ground reticle for this cast ID; current Retail tooltip retains its area-placement effect. Live Retail revalidation remains pending.",
+      "reticleSource": "https://www.wowinterface.com/forums/archive/index.php/t-55642.html"
+    },
+    {
+      "id": 202137,
+      "name": "Sigil of Silence",
+      "source": "https://nether.wowhead.com/tooltip/spell/202137",
+      "qualification": "Current Retail spell tooltip specifies player-selected ground, area or destination."
+    },
+    {
+      "id": 202138,
+      "name": "Sigil of Chains",
+      "source": "https://nether.wowhead.com/tooltip/spell/202138",
+      "qualification": "Current Retail spell tooltip specifies player-selected ground, area or destination."
+    },
+    {
+      "id": 204596,
+      "name": "Sigil of Flame",
+      "source": "https://nether.wowhead.com/tooltip/spell/204596",
+      "qualification": "Current Retail spell tooltip specifies player-selected ground, area or destination."
+    },
+    {
+      "id": 207684,
+      "name": "Sigil of Misery",
+      "source": "https://nether.wowhead.com/tooltip/spell/207684",
+      "qualification": "Current Retail spell tooltip specifies player-selected ground, area or destination."
+    },
+    {
+      "id": 390163,
+      "name": "Sigil of Spite",
+      "source": "https://nether.wowhead.com/tooltip/spell/390163",
+      "qualification": "Current Retail spell tooltip specifies player-selected ground, area or destination."
+    },
+    {
+      "id": 452490,
+      "name": "Sigil of Doom",
+      "source": "https://nether.wowhead.com/tooltip/spell/452490",
+      "qualification": "Current Retail spell tooltip specifies player-selected ground, area or destination."
+    },
+    {
+      "id": 102793,
+      "name": "Ursol's Vortex",
+      "source": "https://nether.wowhead.com/tooltip/spell/102793",
+      "qualification": "Current Retail spell tooltip specifies player-selected ground, area or destination."
+    },
+    {
+      "id": 145205,
+      "name": "Efflorescence",
+      "source": "https://nether.wowhead.com/tooltip/spell/145205",
+      "qualification": "Current Retail spell tooltip specifies player-selected ground, area or destination."
+    },
+    {
+      "id": 205636,
+      "name": "Force of Nature",
+      "source": "https://nether.wowhead.com/tooltip/spell/205636",
+      "qualification": "Current Retail spell tooltip specifies player-selected ground, area or destination."
+    },
+    {
+      "id": 1543,
+      "name": "Flare",
+      "source": "https://nether.wowhead.com/tooltip/spell/1543",
+      "qualification": "Current Retail spell tooltip specifies player-selected ground, area or destination."
+    },
+    {
+      "id": 162488,
+      "name": "Steel Trap",
+      "source": "https://nether.wowhead.com/tooltip/spell/162488",
+      "qualification": "Current Retail spell tooltip specifies player-selected ground, area or destination."
+    },
+    {
+      "id": 187650,
+      "name": "Freezing Trap",
+      "source": "https://nether.wowhead.com/tooltip/spell/187650",
+      "qualification": "Current Retail spell tooltip specifies player-selected ground, area or destination."
+    },
+    {
+      "id": 187698,
+      "name": "Tar Trap",
+      "source": "https://nether.wowhead.com/tooltip/spell/187698",
+      "qualification": "Current Retail spell tooltip specifies player-selected ground, area or destination."
+    },
+    {
+      "id": 191433,
+      "name": "Explosive Trap",
+      "source": "https://nether.wowhead.com/tooltip/spell/191433",
+      "qualification": "Current Retail spell tooltip specifies player-selected ground, area or destination."
+    },
+    {
+      "id": 2120,
+      "name": "Flamestrike",
+      "source": "https://nether.wowhead.com/tooltip/spell/2120",
+      "qualification": "Current Retail spell tooltip specifies player-selected ground, area or destination."
+    },
+    {
+      "id": 113724,
+      "name": "Ring of Frost",
+      "source": "https://nether.wowhead.com/tooltip/spell/113724",
+      "qualification": "Current Retail spell tooltip specifies player-selected ground, area or destination."
+    },
+    {
+      "id": 153561,
+      "name": "Meteor",
+      "source": "https://nether.wowhead.com/tooltip/spell/153561",
+      "qualification": "Current Retail spell tooltip specifies player-selected ground, area or destination."
+    },
+    {
+      "id": 190356,
+      "name": "Blizzard",
+      "source": "https://nether.wowhead.com/tooltip/spell/190356",
+      "qualification": "Current Retail spell tooltip specifies player-selected ground, area or destination."
+    },
+    {
+      "id": 115313,
+      "name": "Summon Jade Serpent Statue",
+      "source": "https://nether.wowhead.com/tooltip/spell/115313",
+      "qualification": "Current Retail spell tooltip specifies player-selected ground, area or destination."
+    },
+    {
+      "id": 115315,
+      "name": "Summon Black Ox Statue",
+      "source": "https://nether.wowhead.com/tooltip/spell/115315",
+      "qualification": "Current Retail spell tooltip specifies player-selected ground, area or destination."
+    },
+    {
+      "id": 116844,
+      "name": "Ring of Peace",
+      "source": "https://nether.wowhead.com/tooltip/spell/116844",
+      "qualification": "Current Retail spell tooltip specifies player-selected ground, area or destination."
+    },
+    {
+      "id": 32375,
+      "name": "Mass Dispel",
+      "source": "https://nether.wowhead.com/tooltip/spell/32375",
+      "qualification": "Original ConsolePort author documented the ground reticle for this cast ID; current Retail tooltip retains its area-placement effect. Live Retail revalidation remains pending.",
+      "reticleSource": "https://www.wowinterface.com/forums/archive/index.php/t-55642.html"
+    },
+    {
+      "id": 62618,
+      "name": "Power Word: Barrier",
+      "source": "https://nether.wowhead.com/tooltip/spell/62618",
+      "qualification": "Current Retail spell tooltip specifies player-selected ground, area or destination."
+    },
+    {
+      "id": 34861,
+      "name": "Holy Word: Sanctify",
+      "source": "https://nether.wowhead.com/tooltip/spell/34861",
+      "qualification": "Current Retail spell tooltip specifies player-selected ground, area or destination."
+    },
+    {
+      "id": 121536,
+      "name": "Angelic Feather",
+      "source": "https://nether.wowhead.com/tooltip/spell/121536",
+      "qualification": "Current Retail spell tooltip specifies player-selected ground, area or destination."
+    },
+    {
+      "id": 1725,
+      "name": "Distract",
+      "source": "https://nether.wowhead.com/tooltip/spell/1725",
+      "qualification": "Original ConsolePort author documented the ground reticle for this cast ID; current Retail tooltip retains its area-placement effect. Live Retail revalidation remains pending.",
+      "reticleSource": "https://www.wowinterface.com/forums/archive/index.php/t-55642.html"
+    },
+    {
+      "id": 195457,
+      "name": "Grappling Hook",
+      "source": "https://nether.wowhead.com/tooltip/spell/195457",
+      "qualification": "Current Retail spell tooltip specifies player-selected ground, area or destination."
+    },
+    {
+      "id": 2484,
+      "name": "Earthbind Totem",
+      "source": "https://nether.wowhead.com/tooltip/spell/2484",
+      "qualification": "Current Retail spell tooltip specifies player-selected ground, area or destination."
+    },
+    {
+      "id": 61882,
+      "name": "Earthquake",
+      "source": "https://nether.wowhead.com/tooltip/spell/61882",
+      "qualification": "Current Retail spell tooltip specifies player-selected ground, area or destination."
+    },
+    {
+      "id": 73920,
+      "name": "Healing Rain",
+      "source": "https://nether.wowhead.com/tooltip/spell/73920",
+      "qualification": "Current Retail spell tooltip specifies player-selected ground, area or destination."
+    },
+    {
+      "id": 98008,
+      "name": "Spirit Link Totem",
+      "source": "https://nether.wowhead.com/tooltip/spell/98008",
+      "qualification": "Current Retail spell tooltip specifies player-selected ground, area or destination."
+    },
+    {
+      "id": 51485,
+      "name": "Earthgrab Totem",
+      "source": "https://nether.wowhead.com/tooltip/spell/51485",
+      "qualification": "Current Retail spell tooltip specifies player-selected ground, area or destination."
+    },
+    {
+      "id": 192058,
+      "name": "Capacitor Totem",
+      "source": "https://nether.wowhead.com/tooltip/spell/192058",
+      "qualification": "Current Retail spell tooltip specifies player-selected ground, area or destination."
+    },
+    {
+      "id": 192222,
+      "name": "Liquid Magma Totem",
+      "source": "https://nether.wowhead.com/tooltip/spell/192222",
+      "qualification": "Current Retail spell tooltip specifies player-selected ground, area or destination."
+    },
+    {
+      "id": 192077,
+      "name": "Wind Rush Totem",
+      "source": "https://nether.wowhead.com/tooltip/spell/192077",
+      "qualification": "Current Retail spell tooltip specifies player-selected ground, area or destination."
+    },
+    {
+      "id": 207399,
+      "name": "Ancestral Protection Totem",
+      "source": "https://nether.wowhead.com/tooltip/spell/207399",
+      "qualification": "Current Retail spell tooltip specifies player-selected ground, area or destination."
+    },
+    {
+      "id": 1122,
+      "name": "Summon Infernal",
+      "source": "https://nether.wowhead.com/tooltip/spell/1122",
+      "qualification": "Original ConsolePort author documented the ground reticle for this cast ID; current Retail tooltip retains its area-placement effect. Live Retail revalidation remains pending.",
+      "reticleSource": "https://www.wowinterface.com/forums/archive/index.php/t-55642.html"
+    },
+    {
+      "id": 5740,
+      "name": "Rain of Fire",
+      "source": "https://nether.wowhead.com/tooltip/spell/5740",
+      "qualification": "Current Retail spell tooltip specifies player-selected ground, area or destination."
+    },
+    {
+      "id": 30283,
+      "name": "Shadowfury",
+      "source": "https://nether.wowhead.com/tooltip/spell/30283",
+      "qualification": "Original ConsolePort author documented the ground reticle for this cast ID; current Retail tooltip retains its area-placement effect. Live Retail revalidation remains pending.",
+      "reticleSource": "https://www.wowinterface.com/forums/archive/index.php/t-55642.html"
+    },
+    {
+      "id": 152108,
+      "name": "Cataclysm",
+      "source": "https://nether.wowhead.com/tooltip/spell/152108",
+      "qualification": "Current Retail spell tooltip specifies player-selected ground, area or destination."
+    },
+    {
+      "id": 6544,
+      "name": "Heroic Leap",
+      "source": "https://nether.wowhead.com/tooltip/spell/6544",
+      "qualification": "Current Retail spell tooltip specifies player-selected ground, area or destination."
+    },
+    {
+      "id": 376079,
+      "name": "Champion's Spear",
+      "source": "https://nether.wowhead.com/tooltip/spell/376079",
+      "qualification": "Current Retail spell tooltip specifies player-selected ground, area or destination."
+    },
+    {
+      "id": 1234796,
+      "name": "Shift",
+      "source": "https://nether.wowhead.com/tooltip/spell/1234796",
+      "qualification": "Current Retail tooltip explicitly chooses a targeted destination; current Combat Mode defaults also register this cast-at-cursor ID.",
+      "implementationSource": "https://github.com/djsmithdev/combatmode/blob/master/CombatMode/Constants/DatabaseDefaults.lua"
+    }
+  ],
+  "excluded": [
+    {
+      "id": 228920,
+      "name": "Ravager",
+      "reason": "Current tooltip targets a unit, rather than selecting ground.",
+      "source": "https://nether.wowhead.com/tooltip/spell/228920"
+    },
+    {
+      "id": 191034,
+      "name": "Starfall",
+      "reason": "Current self-centered AoE; historical reticle lists are insufficient."
+    },
+    {
+      "id": 202770,
+      "name": "Fury of Elune",
+      "reason": "Current unit-centered targeting; historical reticle list not adopted."
+    },
+    {
+      "id": 51052,
+      "name": "Anti-Magic Zone",
+      "reason": "Registry expansion requires stronger current ground-placement evidence."
+    },
+    {
+      "id": 260243,
+      "name": "Volley",
+      "reason": "Registry expansion requires stronger current ground-placement evidence."
+    },
+    {
+      "id": 111771,
+      "name": "Demonic Gateway",
+      "reason": "Multi-stage placement retained natively for initial implementation."
+    },
+    {
+      "id": 109248,
+      "name": "Binding Shot",
+      "reason": "Current tooltip specifies an enemy tether; old reticle data is insufficient.",
+      "source": "https://nether.wowhead.com/tooltip/spell/109248"
+    }
+  ]
+}

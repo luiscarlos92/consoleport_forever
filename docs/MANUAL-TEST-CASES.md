@@ -1,5 +1,57 @@
 # Retail tests and results — installed candidate.5, revision 12
 
+Candidate.6/revision 13 is prepared without deployment. Its three new acceptance
+cases are below; run them only after a later authorized installation. DBM is
+deliberately disabled and must stay untouched/excluded. The other screenshot
+experiments are outside this change.
+
+### 36 — native Party default (candidate.6 only; pending)
+
+- Review the revision 13 Edit Mode proposal. Verify the differences concern
+  Party style, vertical orientation and its anchor only; use Keep mine to retain
+  a deliberate newer choice. If the known managed copy is inactive, your current
+  layout selection must remain unchanged.
+- Apply/Reload, select the managed layout if needed, and preview Party/Raid in
+  Edit Mode. Compact Party Frames must form a vertical column directly beneath
+  Raid, left aligned, with a small gap. Other frames/settings remain current.
+- Exit Edit Mode and check normal solo/party/raid visibility, reload persistence
+  and native Party targeting. Optional reviewed restore must retain its backup
+  and return previous owned settings.
+
+**Result:** PENDING; offline native contracts do not certify rendered placement.
+
+### 37 — normal ground spells at cursor (candidate.6 only; pending)
+
+- Accept only the new ground policy during revision 13 review and reload. Place
+  the ordinary Sigil of Misery spell on a controller bar; no saved macro is needed.
+  Aim the camera at nearby ground and press once. Expect one cast at the hidden
+  cursor position, without a placement-confirmation step. Try another registered
+  ground spell; unlock the free cursor and verify that its actual position is used.
+- Repeat in/out of combat, with L2/R2 modifiers, both native cast edges, held and
+  repeated presses, a changed modifier/temporary mode while held and a spec/talent
+  replacement. A release must not cast another cursor spell. Test entering UI,
+  raid cursor or native target-ring ownership while held: the outstanding ground
+  release must be cancelled.
+- Check normal spells, saved macros, items, flyouts, empowered actions and
+  unregistered spells retain native behavior. Unknown reticles still use native
+  cancellation. Check helpful ground spells without a selected ally, invalid
+  terrain/range, native cooldown/icons/tooltips and `/cpf proof`/`diagnose`.
+- Optional reviewed policy restore/Keep mine must restore native placement;
+  camera/cursor settings and the macro window remain unchanged. Other classes
+  need their own qualified-ID/live acceptance checks.
+
+**Result:** PENDING; offline secure-click models are not Retail hardware/taint proof.
+
+### 38 — Better Wardrobe dependency acceptance (pending)
+
+Candidate.6 tracks
+official stable Retail 6.12.3 and its SourceData helper, already installed
+with all 149 official files matching. After a later authorized deployment,
+verify Collections/transmog/dressing-room browsing, added tabs, filters,
+outfits, controller focus and the recolor action that loads SourceData.
+Preserve addon-owned options and helper state. Source closure/syntax/file
+matching does not certify rendered UI or actual game input.
+
 Candidate.5 is installed as of October 6, 19:34:44 Toronto, after the user closed
 WoW and authorized deployment. All dependencies were checked and already
 current; only Forever changed. Retest the October 6 Bags/tooltips/Darkmoon

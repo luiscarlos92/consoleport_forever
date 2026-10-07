@@ -22,7 +22,9 @@ function Edit:Proposal(snapshot,name,managedName)
     end
     -- First install always clones the actually active layout. A matching display
     -- name alone is not proof of companion ownership.
-    if existingIndex and snapshot.active.layoutName==managedName then return proposed end
+    -- A known managed copy can be inactive while the player experiments in a
+    -- different layout. Reuse it without changing the player's selection.
+    if existingIndex then return proposed end
     local count=0
     for _,layout in ipairs(proposed.layouts) do if layout.layoutType==self.api.AccountType then count=count+1 end end
     if self.api.limit and count>=self.api.limit then return nil,"account layout capacity reached" end

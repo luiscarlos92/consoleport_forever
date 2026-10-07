@@ -31,12 +31,19 @@ instructions supersede older historical deployment/packaging rules.
    work/tests required by the requested change.
 
 The first implementation of this rule checked all 18 packages on October 6:
-no newer releases were found. See `docs/DEPENDENCY-WORKFLOW.md`.
+no newer releases were found. Better Wardrobe and Transmog plus its SourceData
+helper were subsequently adopted as dependency 19. Explicit added coverage lives
+in `dependencies/sources.json` (`additionalAddonFolders`); do not edit the
+immutable original reference to add later dependencies. See
+`docs/DEPENDENCY-WORKFLOW.md`.
 
 ## Deployments
 
-- Deploy only with user authorization and WoW closed. Current user authorization
-  covers deploying candidate.5 and any actual dependency updates after testing.
+- Deploy only with user authorization and WoW closed. Current instruction is to
+  prepare candidate.6, **do not deploy** while WoW is open.
+- DBM is deliberately disabled for now. Preserve its game/user-owned enable
+  state and existing files; do not enable/reconfigure it or include DBM bytes in
+  the prepared update. This supersedes older DBM keep/reship instructions.
 - Never write live WTF. In-game reviewed configuration remains game-owned.
 - Default to a scoped update built by `tools/build_update.py`: Forever plus only
   explicitly updated dependency packages, with all their selected official

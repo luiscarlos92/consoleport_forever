@@ -20,6 +20,14 @@ def segment(value):
     return value
 
 
+def selected_coverage(installed, sources):
+    """Extend the immutable reference with explicitly adopted addon folders."""
+    additional = sources.get('additionalAddonFolders', [])
+    if not isinstance(additional, list):
+        raise ValueError('Additional addon coverage must be a list')
+    return sorted(set(installed) | {segment(name) for name in additional})
+
+
 def metadata(entries, require_retail=True):
     toc, advisories = {}, {}
     for name, body in entries:
@@ -30,7 +38,10 @@ def metadata(entries, require_retail=True):
             if len(PurePosixPath(name).parts)==2:
                 raise ValueError('Unpackaged TOC metadata: ' + name)
             advisories[name] = 'Bundled unused standalone library TOC has packager tokens; official bytes retained.'
-        toc[name] = dict(re.findall(r'^##\s*([^:]+):\s*(.*)$',text,re.M))
+        # Horizontal whitespace only: an empty Notes field must not consume the
+        # next line's Dependencies declaration. Normalize metadata, not bytes.
+        toc[name] = {key.strip():value.strip() for key,value in
+            re.findall(r'^##[ \t]*([^:\r\n]+):[ \t]*(.*)$',text,re.M)}
     if require_retail and not any(len(PurePosixPath(name).parts)==2 and any(int(n)>=120000 for n in re.findall(r'\d+',meta.get('Interface',''))) for name,meta in toc.items()):
         raise ValueError('No qualifying Retail addon TOC')
     return toc, advisories
@@ -273,7 +284,7 @@ def main():
                 packages.append(entry)
             if error:
                 blockers.append(error)
-    installed = [p.name for p in (ROOT / 'reference/installed-addons/2026-10-03-initial').iterdir() if p.is_dir()]
+    installed = selected_coverage([p.name for p in (ROOT / 'reference/installed-addons/2026-10-03-initial').iterdir() if p.is_dir()], sources)
     lock = {'resolvedAt': datetime.now(timezone.utc).isoformat(), 'packages': packages, 'blockers': blockers,
             'installedFolders': sorted(installed), 'complete': False}
     owners = verify(lock)

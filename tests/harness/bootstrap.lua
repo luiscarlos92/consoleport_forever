@@ -20,9 +20,10 @@ local shown
 local modules={ConsolePort=true,ConsolePort_Bar=true,ConsolePort_Menu=true,ConsolePort_Config=true,ConsolePort_Cursor=true,ConsolePort_Rings=true,Immersion=true,Immersion_ExtraFade=true,Blizzard_EditMode=true,ConsolePort_Forever=true}
 Enum={BindingSet={Account=1,Character=2},EditModeLayoutType={Account=1,Character=2}}
 C_AddOns={GetAddOnMetadata=function(name,key) if name=="ConsolePort_Rings" then return nil elseif name=="ConsolePort" then return "3.3.9" elseif name=='Immersion' then return '1.4.61' elseif name=='Immersion_ExtraFade' then return '1.18.0' end return "2.0.0-dev" end,
-    GetAddOnInfo=function(name) return modules[name] and name or nil end,
+    GetAddOnInfo=function(name) return (name=='DBM-Core' or modules[name]) and name or nil end,
     IsAddOnLoaded=function(name) return modules[name] or false end,
     GetAddOnEnableState=function(name,character) assert(character=="Player") return modules[name] and 2 or 0 end,
+    EnableAddOn=function() error('disabled addon must remain game/user owned') end,
     LoadAddOn=function(name) assert(name=="Blizzard_EditMode" and not combat) modules[name]=true return true end}
 function GetBuildInfo() return "12.1.0","69933","date",120100 end
 function UnitGUID() return guid end

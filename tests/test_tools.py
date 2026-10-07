@@ -23,6 +23,32 @@ class ToolGuards(unittest.TestCase):
     def setUpClass(cls):
         output(ROOT/'scratch').mkdir(exist_ok=True)
 
+    def test_adopted_dependency_coverage_preserves_reference(self):
+        installed = ['Existing', 'Helper']
+        sources = {'additionalAddonFolders':['BetterWardrobe', 'Existing']}
+        self.assertEqual(resolve_dependencies.selected_coverage(installed,sources), ['BetterWardrobe','Existing','Helper'])
+        self.assertEqual(installed,['Existing','Helper'])
+        for value in [['../escape'], ['C:escape'], ['CON'], 'BetterWardrobe']:
+            with self.assertRaises(ValueError):
+                resolve_dependencies.selected_coverage(installed,{'additionalAddonFolders':value})
+
+    def test_empty_toc_fields_do_not_hide_required_dependencies(self):
+        for newline in ['\n','\r\n']:
+            text=newline.join(['## Interface: 120100','## Version: 6.12.3','## Notes:','## Dependencies: Blizzard_Collections, Blizzard_Transmog','Main.lua',''])
+            row=resolve_dependencies.metadata([('BetterWardrobe/BetterWardrobe.toc',text.encode())])[0]['BetterWardrobe/BetterWardrobe.toc']
+            self.assertEqual(row['Notes'],'')
+            self.assertEqual(row['Dependencies'],'Blizzard_Collections, Blizzard_Transmog')
+            self.assertEqual(row['Version'],'6.12.3')
+
+    def test_native_required_addons_are_explicit_and_hash_qualified(self):
+        self.assertEqual(audit_dependencies.native_addon_dependencies({'Blizzard_Unknown','ThirdParty'}),{})
+        native = audit_dependencies.native_addon_dependencies({'Blizzard_Collections','Blizzard_Transmog'})
+        self.assertEqual(set(native),{'Blizzard_Collections','Blizzard_Transmog'})
+        self.assertTrue(all(row['clientOwned'] and not row['shipped'] for row in native.values()))
+        with patch.object(audit_dependencies,'sha',return_value='drift'):
+            with self.assertRaises(ValueError):
+                audit_dependencies.native_addon_dependencies({'Blizzard_Collections'})
+
     def test_matching_packaged_migration_classification(self):
         self.assertEqual(audit_migration.classify(b'x\r\n',b'x\n','Example/a.lua'),'line-endings-only')
         with tempfile.TemporaryDirectory(dir=ROOT/'scratch') as temp:

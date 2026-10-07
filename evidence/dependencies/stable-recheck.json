@@ -1,6 +1,6 @@
 {
-  "checkedAt": "2026-10-06T23:26:52.199788+00:00",
-  "lockSHA256": "ecdfd5160d00884c8bd21230ebc0166003956ad9b50c16b1b84d30b9d8938b26",
+  "checkedAt": "2026-10-07T03:24:03.098565+00:00",
+  "lockSHA256": "df98f120f865d3037f2f729a010e87cafeb82b0eb6bdabf9f22cd839ec495458",
   "github": [
     {
       "repo": "seblindfors/ConsolePort",
@@ -164,6 +164,17 @@
       "assetID": 575648661,
       "digest": "sha256:6c1bdbabb0340408cbb44e663a80ca42f26158c81457b6cf50707d5f2f4533b2",
       "bytes": 252885
+    },
+    {
+      "repo": "SLOKnightfall/BetterWardrobe",
+      "url": "https://github.com/SLOKnightfall/BetterWardrobe/releases/tag/6.12.3",
+      "latestStable": "6.12.3",
+      "releaseID": 382994483,
+      "publishedAt": "2026-09-04T20:21:01Z",
+      "matchesLock": true,
+      "assetID": 544855090,
+      "digest": "sha256:abcba6be5535c15a581721192a5c4865e05b568dbac52d79c108c89e6c763d8c",
+      "bytes": 2050932
     }
   ],
   "curseforge": [
@@ -173,7 +184,7 @@
       "officialFile": "https://www.curseforge.com/wow/addons/dynamiccam/files/8995535",
       "latestStable": "2.21.1",
       "fileID": 8995535,
-      "metadataVerifiedAt": "2026-10-06T23:26:48.971074+00:00",
+      "metadataVerifiedAt": "2026-10-07T03:07:50.143487+00:00",
       "method": "Official latest-stable Retail listing and file page inspected; no floating latest fetch during assembly.",
       "matchesLock": true
     },
@@ -183,7 +194,7 @@
       "officialFile": "https://www.curseforge.com/wow/addons/immersion-extrafade/files/8995675",
       "latestStable": "1.18.0",
       "fileID": 8995675,
-      "metadataVerifiedAt": "2026-10-06T23:26:48.971074+00:00",
+      "metadataVerifiedAt": "2026-10-07T03:07:50.143487+00:00",
       "method": "Official latest-stable Retail listing and file page inspected; no floating latest fetch during assembly.",
       "matchesLock": true
     },
@@ -193,7 +204,7 @@
       "officialFile": "https://www.curseforge.com/wow/addons/sharedmedia_causese/files/7242737",
       "latestStable": "7.6",
       "fileID": 7242737,
-      "metadataVerifiedAt": "2026-10-06T23:26:48.971074+00:00",
+      "metadataVerifiedAt": "2026-10-07T03:07:50.143487+00:00",
       "method": "Official latest-stable Retail listing and file page inspected; no floating latest fetch during assembly.",
       "matchesLock": true
     }

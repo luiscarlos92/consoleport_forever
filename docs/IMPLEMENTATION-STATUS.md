@@ -1,5 +1,19 @@
 # Implementation checkpoint — October 4, 2026
 
+**Current preparation — candidate.6, revision 13 (October 6):** The user
+now authorized implementation and package preparation, but explicitly prohibited
+deployment while WoW is open. Native ConsolePort ground-spell clicks use prepared
+internal cursor commands from a 47-ID registry, without saved ability macros.
+The reviewed Edit Mode default places compact Party Frames vertically beneath
+Raid and preserves all unrelated layout fields and the active selection when
+updating an inactive owned copy. DBM stays disabled/user owned and is excluded
+from this update. All 19 dependencies were freshly checked and are current.
+Better Wardrobe and Transmog 6.12.3 plus its SourceData helper are now adopted;
+all 149 live installed files match the official package, so the prepared scoped
+update does not repeat their installation. The other 18 packages are unchanged. See `GROUND-TARGETING-AND-PARTY-2026-10-06.md` for
+source contracts, tests, limits and package evidence. Installed candidate.5 and
+live WTF are unchanged. The earlier plan-only instruction is superseded.
+
 **Latest installed checkpoint — October 6, 19:34:44 Toronto:** candidate.5 is
 installed from `eba070c`, using the new small scoped-update path. All 18 official
 dependencies were checked and already current; none was downloaded or copied.

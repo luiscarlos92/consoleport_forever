@@ -1,5 +1,19 @@
 [
   {
+    "path": "Blizzard_Collections/Blizzard_Collections_Mainline.toc",
+    "commit": "09b9db7948abc9b9648dedaab51eb0cf3ee67b31",
+    "gitBlob": "2637bbc73c7d65347c7675d029d2cef48bb4c659",
+    "sha256": "658dc83211c5c089599bd3005d648f2d0e76c1dc6445990eeb16c3eef1bf9e3f",
+    "url": "https://github.com/Gethe/wow-ui-source/blob/09b9db7948abc9b9648dedaab51eb0cf3ee67b31/Interface/AddOns/Blizzard_Collections/Blizzard_Collections_Mainline.toc"
+  },
+  {
+    "path": "Blizzard_Transmog/Blizzard_Transmog.toc",
+    "commit": "09b9db7948abc9b9648dedaab51eb0cf3ee67b31",
+    "gitBlob": "7552eadf6e579414a607b1a2fb80e29582c29958",
+    "sha256": "a22f0d17746f81bbf07b2323096549e03acfb341b10ffce2273c70878f1bda2b",
+    "url": "https://github.com/Gethe/wow-ui-source/blob/09b9db7948abc9b9648dedaab51eb0cf3ee67b31/Interface/AddOns/Blizzard_Transmog/Blizzard_Transmog.toc"
+  },
+  {
     "path": "Blizzard_APIDocumentationGenerated/AddOnsDocumentation.lua",
     "commit": "09b9db7948abc9b9648dedaab51eb0cf3ee67b31",
     "gitBlob": "a1051ac1088f5e87bd0d390bbf248f2c6857b392",
@@ -287,11 +301,39 @@
     "url": "https://github.com/Gethe/wow-ui-source/blob/09b9db7948abc9b9648dedaab51eb0cf3ee67b31/Interface/AddOns/Blizzard_EditMode/Shared/EditModeSystemTemplates.lua"
   },
   {
+    "path": "Blizzard_EditMode/Shared/EditModeSystemTemplates.xml",
+    "commit": "09b9db7948abc9b9648dedaab51eb0cf3ee67b31",
+    "gitBlob": "76b183934bb2ae6b491afcf21cfeb75477bddf46",
+    "sha256": "801e2f342addd5de5b29968d5c426a5e246fc49b2fc63099490957550be7fb82",
+    "url": "https://github.com/Gethe/wow-ui-source/blob/09b9db7948abc9b9648dedaab51eb0cf3ee67b31/Interface/AddOns/Blizzard_EditMode/Shared/EditModeSystemTemplates.xml"
+  },
+  {
     "path": "Blizzard_EditMode/Shared/EditModeManager.lua",
     "commit": "09b9db7948abc9b9648dedaab51eb0cf3ee67b31",
     "gitBlob": "bb1a73aef507c5f0aa4e05f6946a7008e992e42c",
     "sha256": "3b96fcf292e2a1338e7fbf25473c7e0786b9db1fea0ca48737cf98a43423814e",
     "url": "https://github.com/Gethe/wow-ui-source/blob/09b9db7948abc9b9648dedaab51eb0cf3ee67b31/Interface/AddOns/Blizzard_EditMode/Shared/EditModeManager.lua"
+  },
+  {
+    "path": "Blizzard_UnitFrame/Shared/PartyFrame.xml",
+    "commit": "09b9db7948abc9b9648dedaab51eb0cf3ee67b31",
+    "gitBlob": "744bbce99e70d7c713f733eb92bc1899473a3da0",
+    "sha256": "82bcaf015ffebdd2a9b805db48fd26e39e2ef3b7c37723973656630d219bf53c",
+    "url": "https://github.com/Gethe/wow-ui-source/blob/09b9db7948abc9b9648dedaab51eb0cf3ee67b31/Interface/AddOns/Blizzard_UnitFrame/Shared/PartyFrame.xml"
+  },
+  {
+    "path": "Blizzard_UnitFrame/Shared/CompactPartyFrame.lua",
+    "commit": "09b9db7948abc9b9648dedaab51eb0cf3ee67b31",
+    "gitBlob": "b1f0980d022d9db6a913df39d8b45c0d94112532",
+    "sha256": "3a33a73243555fbd116b0d36a1b4fe60811197d1727c7e159fd61f7a8b02d684",
+    "url": "https://github.com/Gethe/wow-ui-source/blob/09b9db7948abc9b9648dedaab51eb0cf3ee67b31/Interface/AddOns/Blizzard_UnitFrame/Shared/CompactPartyFrame.lua"
+  },
+  {
+    "path": "Blizzard_CompactRaidFrames/Blizzard_CompactRaidFrameContainer.xml",
+    "commit": "09b9db7948abc9b9648dedaab51eb0cf3ee67b31",
+    "gitBlob": "322ba246e14f723cd0aca142a6959fa8b8a1e156",
+    "sha256": "371f615c173cdfce6f2e1bbc12042444dd97deebc41c841fe1426fad27ca9eab",
+    "url": "https://github.com/Gethe/wow-ui-source/blob/09b9db7948abc9b9648dedaab51eb0cf3ee67b31/Interface/AddOns/Blizzard_CompactRaidFrames/Blizzard_CompactRaidFrameContainer.xml"
   },
   {
     "path": "Blizzard_ActionBar/Shared/MultiActionBars.lua",

@@ -13,7 +13,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]/'tools'))
 from repository_paths import ROOT, output
 from pack_format import FORMAT, archive_bytes, digest, read_pack, zip_entries
 from assemble_pack import assemble
-from deployment_guard import GameTree, inventory, verify_backup
+from deployment_guard import GameTree, inventory, verify_backup, wow_is_running
 from install_pack import install, recover, restore
 from deploy_companion import deploy, vendor_fingerprints
 
@@ -277,15 +277,23 @@ class PackDelivery(unittest.TestCase):
                 if kind == 'current':
                     self.assertEqual((tree.addons/'Unrelated/manual.lua').read_bytes(), b'newer unrelated edit')
 
-    def test_script_entry_points_default_to_read_only(self):
+    def test_script_entry_points_preview_or_running_guard_are_read_only(self):
         if os.name != 'nt': self.skipTest('Windows PowerShell delivery wrappers')
         scope = self.scope(); root = game(scope); pack, checksum = make_pack(scope)
         before = inventory(root/'Interface/AddOns')
         command = ['powershell', '-NoProfile', '-ExecutionPolicy', 'Bypass', '-File', str(ROOT/'tools/Install-Pack.ps1'),
             '-RetailRoot', str(root), '-Pack', str(pack), '-ExpectedSHA256', checksum, '-Simulation']
+        # Preparation is allowed with the user's game open. The unchanged real
+        # process guard also refuses CLI scratch previews in that situation;
+        # verify its refusal rather than weakening production code or skipping
+        # the filesystem checks. Positive preview runs when WoW is closed.
+        running_before = wow_is_running()
         result = subprocess.run(command, cwd=ROOT, capture_output=True, text=True)
-        self.assertEqual(result.returncode, 0, result.stdout+result.stderr)
-        self.assertIn('"execute": false', result.stdout)
+        if result.returncode:
+            self.assertIn('WoW is running; close the game before backup, install or restore', result.stderr)
+            self.assertTrue(running_before or wow_is_running(), result.stdout+result.stderr)
+        else:
+            self.assertIn('"execute": false', result.stdout)
         self.assertEqual(inventory(root/'Interface/AddOns'), before)
         self.assertFalse((root/'CPFBackups').exists())
         wrong = command.copy(); wrong[wrong.index(checksum)] = '0'*64

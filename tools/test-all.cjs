@@ -62,7 +62,7 @@ check('T01.snapshot', () => {
 check('T27.lua51', () => {
   for (const f of files('addon').filter(f=>f.endsWith('.lua'))) parser.parse(read(f),{luaVersion:'5.1'});
 });
-const modules = ['Core','Store','Plan','Transactions','BindingPolicy','ModePolicy','Rings/Discovery','Rings/Selectors','SecureModes','TemporaryAccess','UI/Ownership','UI/InputBridge','UI/Windows','UI/Scroll','UI/Map','Cinematic','Adapters/BetterBags','UI/ItemHints','UI/Contexts','UI/FocusVisuals','UI/Proof','Adapters/NativeBindings',
+const modules = ['Core','Store','Plan','Transactions','BindingPolicy','ModePolicy','Rings/Discovery','Rings/Selectors','SecureModes','TemporaryAccess','Targeting/Registry','Targeting/Ground','UI/Ownership','UI/InputBridge','UI/Windows','UI/Scroll','UI/Map','UI/PartyLayout','Cinematic','Adapters/BetterBags','UI/ItemHints','UI/Contexts','UI/FocusVisuals','UI/Proof','Adapters/NativeBindings',
   'Adapters/BindingState','Adapters/BindingBanks','Diagnostics','Capability','Adapters/ConsolePort','Adapters/EditMode','Adapters/FlatConfig','Adapters/Integrations','Adapters/LiteMount','Adapters/DynamicCam','Adapters/Rings','Baseline','Coordinator','Prompt'];
 const source = 'Addon={};\n' + modules.map(m=>
   ';(function(...)\n'+read('addon/ConsolePort_Forever/'+m+'.lua')+'\nend)("ConsolePort_Forever",Addon);\n').join('');
@@ -346,6 +346,51 @@ check('T14.current-ConsolePort-secure-contract', () => {
   const nativeLoad=native.slice(0,native.indexOf('function SlotButton:OnLoad'));
   execute(source+read('tests/harness/secure_modes.lua').replace('--@CURRENT_CP',conversion+'\n'+nativeLoad)
     .replace('--@CURRENT_LAB',lib.slice(lib.indexOf('function Generic:SetState('),lib.indexOf('function Generic:DisableDragNDrop('))),'secure-modes-current-source');
+});
+check('T12.current-native-ground-targeting', () => {
+  const base='evidence/consoleport-contracts/';
+  const native=read(base+'ConsolePort_Bar/Widget/Button/Button.lua');
+  const utils=read(base+'ConsolePort/Utils/Utils.lua');
+  const conversion=utils.slice(utils.indexOf('do\tlocal ConvertSecureBody'),utils.indexOf('\nend',utils.indexOf('do\tlocal ConvertSecureBody'))+4);
+  const handlers=read('evidence/native/Blizzard_RestrictedAddOnEnvironment/SecureHandlers.lua');
+  const templates=read('evidence/native/Blizzard_FrameXML/SecureTemplates.lua');
+  const lib=read(base+'ConsolePort/Libs/External/LibActionButton-1.0/LibActionButton-1.0.lua');
+  const start=lib.indexOf('button.header:WrapScript(button, "OnClick", [[');
+  const end=lib.indexOf('\nend',start);
+  if(start<0 || end<start) throw Error('native LAB click contract not found');
+  const lab='local function installLABClick(button)\n'+lib.slice(start,end)+'\nend';
+  const restricted=read('evidence/native/Blizzard_RestrictedAddOnEnvironment/RestrictedEnvironment.lua');
+  for(const name of ['GetActionInfo','IsPressHoldReleaseSpell','IsModifiedClick','IsShiftKeyDown','IsControlKeyDown','IsAltKeyDown']) {
+    if(!restricted.includes(name)) throw Error('ground snippet API unavailable: '+name);
+  }
+  const fixture=read('tests/harness/ground_targeting.lua')
+    .replace('--@CURRENT_CP',conversion+'\n'+native.slice(0,native.indexOf('function SlotButton:OnLoad')))
+    .replace('--@NATIVE_MODIFIED_ATTRIBUTES',templates.slice(0,templates.indexOf('function SecureButton_GetUnit(')))
+    .replace('--@NATIVE_SECURE_ACTIONS',()=>templates.slice(templates.indexOf('SECURE_ACTIONS.action ='),templates.indexOf('SECURE_ACTIONS.pet ='))+'\n'
+      +templates.slice(templates.indexOf('SECURE_ACTIONS.macro ='),templates.indexOf('local CANCELABLE_ITEMS')))
+    .replace('--@NATIVE_SECURE_DISPATCH',templates.slice(templates.indexOf('local PRESS_TYPE_DOWN'),templates.indexOf('function SecureUnitButton_OnLoad')))
+    .replace('--@NATIVE_WRAPPED_CLICK',handlers.slice(handlers.indexOf('local function Wrapped_Click('),handlers.indexOf('local function Wrapped_OnEnter(')))
+    .replace('--@NATIVE_MANAGER_REROUTE',()=>nativeFunction(base+'ConsolePort_Bar/Controller/Manager/Manager.lua','Manager:RegisterReroute'))
+    .replace('--@NATIVE_LAB_CLICK_FACTORY',lab);
+  execute(source+'\n;(function(...)\n'+read('addon/ConsolePort_Forever/RuntimeSetup.lua')+'\nend)("ConsolePort_Forever",Addon);\n'+fixture,'ground-targeting-current-native-source');
+  const registry=read('addon/ConsolePort_Forever/Targeting/Registry.lua');
+  const evidence=JSON.parse(read('evidence/targeting/ground-spells.json'));
+  const ids=[...registry.matchAll(/\[(\d+)\]=/g)].map(m=>Number(m[1])).sort((a,b)=>a-b);
+  if(JSON.stringify(ids)!==JSON.stringify(evidence.spells.map(s=>s.id).sort((a,b)=>a-b))) throw Error('ground registry qualification drift');
+  for(const spell of evidence.spells) if(!spell.source || !spell.qualification) throw Error('unqualified ground spell '+spell.id);
+});
+check('T36.native-party-layout-default', () => {
+  const base='evidence/native/';
+  for(const [file,index] of [['Blizzard_UnitFrame/Shared/PartyFrame.xml','Party'],['Blizzard_CompactRaidFrames/Blizzard_CompactRaidFrameContainer.xml','Raid']]) {
+    const xml=read(base+file);
+    if(!xml.includes('EditModeUnitFrameSystemTemplate') || !xml.includes('value="Enum.EditModeUnitFrameSystemIndices.'+index+'"')) throw Error('native Party/Raid XML contract changed');
+  }
+  if(!read(base+'Blizzard_EditMode/Shared/EditModeSystemTemplates.xml').includes('value="Enum.EditModeSystem.UnitFrame"')) throw Error('native UnitFrame system inheritance changed');
+  const fixture=read('tests/harness/party_layout.lua')
+    .replace('--@NATIVE_ANCHOR',()=>nativeFunction(base+'Blizzard_EditMode/Shared/EditModeSystemTemplates.lua','EditModeSystemMixin:ApplySystemAnchor'))
+    .replace('--@NATIVE_PARTY_ORIENTATION',()=>nativeFunction(base+'Blizzard_EditMode/Shared/EditModeManager.lua','EditModeManagerFrameMixin:ShouldRaidFrameUseHorizontalRaidGroups'))
+    .replace('--@NATIVE_COMPACT_GENERATE',()=>nativeFunction(base+'Blizzard_UnitFrame/Shared/CompactPartyFrame.lua','CompactPartyFrame_Generate'));
+  execute(source+serializer+'\n;(function(...)\n'+read('addon/ConsolePort_Forever/RuntimeSetup.lua')+'\nend)("ConsolePort_Forever",Addon);\n'+fixture,'native-party-layout-default');
 });
 check('T10-T11.product-bootstrap', () => {
   const entries=read('addon/ConsolePort_Forever/ConsolePort_Forever.toc').split(/\r?\n/).filter(x=>x.trim() && !x.startsWith('#'));

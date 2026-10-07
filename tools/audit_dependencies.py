@@ -69,6 +69,33 @@ def voice_provenance(lock):
             'matchedUnmodifiedFiles':len(actual)-1,'generatedTOC':'Only Version packager token resolved to 99e0c33; upstream package bytes retained.'}
 
 
+NATIVE_ADDON_TOCS = {
+    'Blizzard_Collections': 'Blizzard_Collections/Blizzard_Collections_Mainline.toc',
+    'Blizzard_Transmog': 'Blizzard_Transmog/Blizzard_Transmog.toc',
+}
+
+
+def native_addon_dependencies(required):
+    """Qualify only explicit client-owned addons from hashed Retail contracts."""
+    accepted = {}
+    requested = set(required).intersection(NATIVE_ADDON_TOCS)
+    if not requested: return accepted
+    records = {r['path']:r for r in json.loads((ROOT/'evidence/native/manifest.json').read_text(encoding='utf-8'))}
+    for name in sorted(requested):
+        path = NATIVE_ADDON_TOCS[name]
+        record = records.get(path, {})
+        source = contained(ROOT/'evidence/native'/path)
+        if not record.get('sha256') or sha(source) != record['sha256']:
+            raise ValueError('Native addon contract drift: '+name)
+        meta = metadata([(path, source.read_bytes())], require_retail=False)[0][path]
+        allowed = set(re.split(r'[,\s]+', meta.get('AllowLoadGameType', '').strip()))- {''}
+        excluded = set(re.split(r'[,\s]+', meta.get('ExcludeLoadGameType', '').strip()))
+        if meta.get('Title') not in {name,name.replace('_',' ')} or (allowed and 'mainline' not in allowed) or 'mainline' in excluded or 'standard' in excluded:
+            raise ValueError('Native addon is not a qualified Retail contract: '+name)
+        accepted[name] = {**record, 'clientOwned':True, 'shipped':False}
+    return accepted
+
+
 def audit(lock):
     owners = verify(lock)
     selected = set(lock['installedFolders'])
@@ -76,7 +103,7 @@ def audit(lock):
     folders, exclusions = {}, {}
     for package in lock['packages']:
         files = {n:contained(ROOT/package['unpacked']/n).read_bytes() for n in package['files']}
-        _, package['metadataAdvisories'] = metadata(list(files.items()))
+        package['toc'], package['metadataAdvisories'] = metadata(list(files.items()))
         for folder in package['addonFolders']:
             if folder not in selected:
                 exclusions[folder] = {'owner':package['repo'],'reason':'Not installed reference coverage or required dependency; retain archive but omit from personal pack.'}
@@ -89,14 +116,19 @@ def audit(lock):
             # otherwise correct package incomplete. WoW owns load eligibility.
             closure = runtime_closure(folder,files,require_retail=retail)
             folders[folder] = {'owner':package['repo'],'eligibleForRetail':retail,**closure}
+    native = {}
     for folder, record in folders.items():
         meta = record['metadata']
         required = meta.get('RequiredDeps',meta.get('Dependencies',''))
         missing = set(re.split(r'[,\s]+',required.strip()))-set(folders)-{''}
+        qualified = native_addon_dependencies(missing)
+        native.update(qualified)
+        missing -= set(qualified)
         if missing: raise ValueError('Missing required addon closure for '+folder+': '+str(missing))
     return {'lockSHA256':None,'selectedFolders':folders,'excludedFolders':exclusions,
+            'nativeAddonDependencies':native,
             'voice':voice_provenance(lock),
-            'distribution':{'restrictedOfficialAssembly':['SFX-WoW/Masque','Tercioo/Plater-Nameplates']+[p['repo'] for p in lock['packages'] if p['repo'].startswith('DeadlyBossMods/')],
+            'distribution':{'restrictedOfficialAssembly':['SFX-WoW/Masque','Tercioo/Plater-Nameplates','SLOKnightfall/BetterWardrobe']+[p['repo'] for p in lock['packages'] if p['repo'].startswith('DeadlyBossMods/')],
                             'reason':'License/redistribution terms require an official-source assembly mechanism; do not publish these dependency bytes in the pack ZIP.',
                             'pending':'Prepare assembly mechanism, complete license/notices inventory and verify clean installed file hashes.'}}
 

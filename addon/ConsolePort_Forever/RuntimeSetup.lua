@@ -47,13 +47,14 @@ function Setup.Adapters(api,account)
         adapters.bindings.bankInspector=adapters.bindingBanks
         adapters.bindings.canWrite=adapters.bindingBanks.canWrite
     end
-    if account then adapters.policy=Addon.FlatConfigAdapter.New(function() return account.shared.runtimePolicy end,{modesEnabled=true,focusVisuals=true,uiContextsEnabled=true,windowsEnabled=true,bagsEnabled=true,mapEnabled=true,blizzardVisibility=true},api.InCombatLockdown) end
+    if account then adapters.policy=Addon.FlatConfigAdapter.New(function() return account.shared.runtimePolicy end,{modesEnabled=true,groundTargetingEnabled=true,focusVisuals=true,uiContextsEnabled=true,windowsEnabled=true,bagsEnabled=true,mapEnabled=true,blizzardVisibility=true},api.InCombatLockdown) end
     if api.C_EditMode and api.EditModePresetLayoutManager then
         adapters.editmode=Addon.EditModeAdapter.New({GetLayouts=api.C_EditMode.GetLayouts,
             SaveLayouts=api.C_EditMode.SaveLayouts,SetActiveLayout=api.C_EditMode.SetActiveLayout,
             ConvertLayoutInfoToString=api.C_EditMode.ConvertLayoutInfoToString,
             presets=function() return api.EditModePresetLayoutManager:GetCopyOfPresetLayouts() end,
             AccountType=api.Enum.EditModeLayoutType.Account,CharacterType=api.Enum.EditModeLayoutType.Character,
+            partyContract=Addon.PartyLayout.Contract(api),
             limit=api.Constants and api.Constants.EditModeConsts and api.Constants.EditModeConsts.EditModeMaxLayoutsPerType,
             inCombat=api.InCombatLockdown,isEditing=function() return api.EditModeManagerFrame and api.EditModeManagerFrame:IsShown() end})
     end
@@ -115,6 +116,10 @@ function Setup.Fields(db,guid,adapters,api,revision)
         add("shared/consoleport/layout","consoleport",{"layout"},layout,"Current ConsolePort geometry")
         deferred[#deferred+1]={id="secureModes",reason=modeReason or "mode policy unavailable"}
     end
+    local groundReady,groundReason=Addon.GroundTargeting.Probe(adapters.consoleport,api)
+    if modeReady and groundReady and adapters.policy then
+        add('shared/policy/groundTargetingEnabled','policy',{'groundTargetingEnabled'},true,'Cast verified ground spells at the cursor from ordinary controller spell slots; no saved ability macros')
+    else deferred[#deferred+1]={id='groundTargeting',reason=groundReason or 'secure mode policy unavailable'} end
     if Addon.FocusVisuals:Probe(adapters.consoleport,api) and adapters.policy then
         add("shared/policy/focusVisuals","policy",{"focusVisuals"},true,"Suppress gameplay icons and highlights while the interface cursor owns input")
     else deferred[#deferred+1]={id="focusVisuals",reason="native interface cursor not initialized"} end
@@ -145,7 +150,11 @@ function Setup.Fields(db,guid,adapters,api,revision)
         local snapshot,reason=adapters.editmode:Capture()
         if snapshot then
             local proposal,error=adapters.editmode:Proposal(snapshot,Addon.PROFILE_NAME,db.shared.managedEditModeName)
-            if proposal then add("shared/editmode","editmode",{"state"},proposal,"Managed copy of your active Edit Mode layout")
+            if proposal then
+                local party,partyReason=Addon.PartyLayout.Proposal(proposal,adapters.editmode.api,db.shared.managedEditModeName)
+                if party then proposal=party
+                else deferred[#deferred+1]={id='partyFrames',reason=partyReason} end
+                add("shared/editmode","editmode",{"state"},proposal,party and "Managed Edit Mode copy: compact vertical Party Frames beneath Raid; retain other current layout fields" or "Managed copy of your active Edit Mode layout")
             else deferred[#deferred+1]={id="editmode",reason=error} end
         else deferred[#deferred+1]={id="editmode",reason=reason} end
     else deferred[#deferred+1]={id="editmode",reason="Blizzard Edit Mode is not initialized"} end

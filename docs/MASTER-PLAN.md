@@ -2,6 +2,83 @@
 
 ## Current authority — October 6, 2026
 
+### Candidate.6 preparation — implementation authorized, deployment prohibited
+
+Latest user instructions: implement the custom ground-spell cursor casting,
+place the native compact Party Frames vertically beneath Raid in the new Edit
+Mode default, prepare the package, and **do not deploy while WoW is open**.
+DBM is deliberately disabled for now: do not enable/reconfigure it or include
+its bytes in this delivery. Its existing installation remains user/game owned.
+Ignore the other screenshot experiments. This supersedes the previous plan-only
+boundary and every older deployment/DBM keep instruction below.
+
+Candidate.6 uses StoreSchema 3 and reviewed configuration revision 13. The new
+`groundTargetingEnabled` policy is offered through the normal accept/keep review;
+no loading-time configuration write enables it. `Targeting/Ground.lua` wraps the
+existing native ConsolePort secure click, checks the resolved spell at the actual
+hardware press, and supplies temporary internal cursor commands from a qualified
+47-ID registry. No saved macros, action storage or dependency code is rewritten.
+Unknown/unqualified replacements, macros, items, assisted-combat and empowered
+actions retain native handling. Owners changing during a held cursor action
+cancel its release. Source-qualified spells still require live Retail acceptance.
+
+The reviewed Edit Mode proposal changes only Party style, vertical orientation
+and its anchor: native TOPLEFT to Raid BOTTOMLEFT, left aligned with an 8-unit gap.
+Raid and other frames/settings remain current. An existing identified managed
+copy is reused even when inactive; the user's selected experimental layout stays
+selected. Missing/ambiguous native records and direct anchor cycles defer this
+default. Native SaveLayouts/select/readback and retained transaction backups own
+application and restoration; no external WTF edit is involved.
+
+All 19 dependency identities were freshly checked this session and match the
+lock. The 18 existing packages are unchanged. Better Wardrobe and Transmog 6.12.3
+and its BetterWardrobe_SourceData helper are newly adopted dependencies. Their
+149 installed files match the qualified official package; no unchanged dependency
+needs recopying. Delivery is a small Forever-only update, with **no DBM bytes**. Implementation/source tests are documented in
+`GROUND-TARGETING-AND-PARTY-2026-10-06.md`; a prepared package is not deployment.
+Installed candidate.5/revision 12 remains the live checkpoint.
+
+Desired behavior: keep ordinary spell abilities on the existing ConsolePort
+bars. On the player's normal controller press, Forever routes recognized
+ground-targeted spells through a prepared secure `[@cursor]` cast, skipping the
+placement-confirmation step. The player should not create, maintain or place
+individual saved macros for those abilities. Internal secure macro commands
+are an implementation mechanism, not entries in the player's macro window.
+Only spells requiring ground placement qualify; other AoE spells retain their
+native behavior.
+
+Implementation and acceptance requirements:
+
+- Keep all custom code in `ConsolePort_Forever`; extend the audited ConsolePort
+  secure button/state lifecycle without patching dependencies or rewriting
+  native spell slots, spec/loadout storage or user macros.
+- Prepare the required secure attributes outside combat and execute only from
+  the player's hardware press. An ordinary callback detecting a pending reticle
+  must not attempt protected automatic placement or casting.
+- Maintain a qualified ground-spell registry, including applicable replacement
+  spell IDs. Research found no reliable universal pre-cast ground-target predicate;
+  unknown or unsupported spells retain normal targeting rather than being guessed.
+- Preserve controller modifiers, button icons/tooltips, UI focus ownership,
+  Circle cancellation, native empowered actions and temporary action routing.
+  Preserve current camera/cursor settings and crosshair visibility. Camera aiming
+  uses the hidden fixed cursor during gamepad camera control; free-cursor mode
+  uses its actual position, and the vertical centered position is configurable.
+- Prove current Retail secure macro support and compatibility before enabling
+  the feature. Test combat, repeated/held presses, spec/talent changes, action
+  replacements, vehicle/override transitions, UI/free-cursor ownership, terrain
+  and range failures, and restoration of native behavior when disabled or unsupported.
+  Source feasibility does not certify live Retail behavior.
+
+Research anchors: ConsolePort 3.3.9 documents its hidden center cursor and
+`[@cursor]` usage in [Variables.lua](https://github.com/seblindfors/ConsolePort/blob/3.3.9/ConsolePort/Model/Data/Variables.lua),
+and configurable placement in [Console.lua](https://github.com/seblindfors/ConsolePort/blob/3.3.9/ConsolePort/Model/Data/Console.lua).
+Combat Mode demonstrates spell-list-based internal cursor commands in
+[TargetingMacroBuilder.lua](https://github.com/djsmithdev/combatmode/blob/master/CombatMode/Core/ClickCasting/TargetingMacroBuilder.lua)
+and secure preparation in [BindingOverrides.lua](https://github.com/djsmithdev/combatmode/blob/master/CombatMode/Core/ClickCasting/BindingOverrides.lua).
+These are research references, not a request to install Combat Mode.
+
+### Installed checkpoint and preceding authority
+
 Candidate.5 deployment completed at **19:34:44 America/Toronto**, from pushed
 source `eba070c92b1a75f6a24da1a8a1e56a6be2fcc107`. All 18 stable dependencies
 were freshly checked; no updates existed, so only Forever was copied. All 44
@@ -61,7 +138,7 @@ Read this section first, then sections 2.3–2.18 for the detailed behavior/sour
 
 No remaining preference question is a prerequisite to the authorized implementation. Runtime proof and source availability remain technical gates. If a new ambiguity cannot be resolved from these rules, preserve current behavior, record the precise feature as pending, and continue independent work. Do not ask the unavailable user for new decisions or expand scope. Required in-game install/update/conflict prompts remain part of the product; these are distinct from questions to the implementation chat.
 
-Ground aiming/confirmation and text-entry changes remain deferred. All already-approved D22–D31 UI behaviors remain in scope. The exact secure execution path still has to be established. A complete candidate pack may have explicitly pending parity features; distinguish dependency/package completeness, offline verification and actual user acceptance.
+Ground cursor casting is implemented in candidate.6 under the current authority above; deployment and Retail acceptance remain pending. Text-entry changes remain deferred. All already-approved D22–D31 UI behaviors remain in scope. The exact secure execution path still has to be established. A complete candidate pack may have explicitly pending parity features; distinguish dependency/package completeness, offline verification and actual user acceptance.
 
 ### H1. First implementation step: copy the current product and references into Git
 
@@ -346,7 +423,7 @@ The analysis/design choices were finalized in H0. This planning pass does not im
 | D08: overflow | **Proceed with eight slots; review concrete Retail overflow separately.** | Eight-slot replacement approved. Do not add overflow paging/rings now or silently discard actions in a concrete >8 case. |
 | D09: ring activation | **Try Forever wheel behavior; unsupported gestures stay pending.** | Target right-stick selection and return-to-centre secure proof. Preserve existing openers; new pet opener approved in H0. No hold/release fallback or new question in implementation chat. |
 | D11: UI controls | User prioritizes mimicking Forever; generic right-click may be removed if Forever lacks it. | Explain native Cross pickup/repair, Square use/equip/sell, Triangle management/context, Circle cancel/close. Preserve the contextual operations; internal BetterBags right-click dispatch is distinct from a generic user-facing right-click control. Final mapping review remains open. |
-| D12: ground targeting | **Defer ground targeting for now.** | Preserve current targeting settings and behavior. R04 is deferred; do not implement a cursor/macro placement adaptation in the upcoming release. |
+| D12: ground targeting | **Custom Forever cursor casting implemented in candidate.6; no saved ability macros.** | Reviewed revision 13, qualified spell registry and native secure click. Camera/cursor settings retained; unknown actions remain native. No deployment; R04 Retail acceptance pending. |
 | D14: shared-file writers | User confirms **only one WoW instance runs**. Actual topology and installer inspected; explanation saved in 2.8. | Concurrent-client concern does not apply. Runtime GUID records must fix sequential shared-marker/current-view leakage. No active cloud conflict established; retain all 42 links. No additional concurrency approval required. |
 | D16: integration profile policy | **Managed copies where supported.** | Clone current profile; retain original. Flat-config fields use snapshots/ownership. D04 protects manual edits; current runtime layout wins. |
 | D19: ordinary pages | **Keep the current single ordinary arrangement.** | No three-page feature/page-switch chord; geometry and native spec spell-bar policy preserved. |
@@ -999,7 +1076,7 @@ Other button input in Forever's class wheel can propagate after closing it; “a
 
 #### 2.7 Ground targeting, extra actions and quests
 
-**Current scope: ground targeting deferred by D12.** The design alternatives and evidence below are retained for later investigation. Do not change cursor-targeting settings, placement macros or aiming/confirmation bindings in the upcoming implementation. This deferral does not remove the separately approved Circle cancellation requirement.
+**Current scope: custom Forever cast-at-cursor implemented in candidate.6, prepared without deployment.** The current-authority entry covers the qualified registry, normal review and native secure click. Cursor settings and saved macros are retained. The alternatives and earlier evidence below remain research history; actual Retail acceptance and the separate Circle cancellation proof remain pending.
 
 **Manual ground placement — SUPPORTED components, complete sequence PROOF R04.** ConsolePort's `mouseFreeCursorReticle` setting has values 0 Off, 1 Enabled, 2 Target. Mouse.lua watches `CURRENT_SPELL_CAST_CHANGED`, detects `SpellTargeting()`, saves stick-cursor state, enables free cursor and restores camera control afterward. The current disk `GamePadCursorForTargeting` is 0, and native cursor-click emulation is `none`; those observations do not establish the active ConsolePort click path or prove the cause of a failure. [Mouse lifecycle][D-mouse], [settings][D-vars]
 
@@ -1238,7 +1315,7 @@ Stable decision IDs are retained for traceability. H0 records the final answers;
 
 | ID, continued | Forever behavior first | Proposed adaptation / effect on current configuration | Question and current status |
 | --- | --- | --- | --- |
-| D12 | Ground reticle feedback/cancel proved; complete aim/confirm unknown; dated PS5 touchpad report only | Retain evidence/alternatives for later work; preserve current targeting behavior | **Deferred by user.** No ground-control changes or R04 implementation in upcoming release. |
+| D12 | Candidate.6 native ConsolePort/Blizzard click-contract tests pass; live Retail behavior remains unproved | Ordinary abilities on bars, qualified ground-spell registry and internal cursor commands; no saved player macros | **Implemented offline, October 6.** Review/acceptance pending; deployment prohibited while WoW is open. |
 | D13 | Native reserved faces + character action storage do not select a Retail binding-set model | Character binding set with shared fields mirrored, or per-character secure overrides over current set | **Resolved in H0:** native character binding sets with four shared faces mirrored and GUID-owned 28 cells. Preserve keyboard; linked cache remains only the current view. |
 | D14 | Forever is only a reference; it does not define the user's Retail folder topology | Existing links are required. One instance, 42 linked character folders; flat installer marker/current dependency views require runtime GUID separation | **Concurrency concern resolved for actual usage.** Sequential identity requirement and R05 proof explained in 2.8. No additional approval requested. |
 | D15 | Native gamepad setup does not define companion install/update/recovery UX | Per-character required-revision prompts are already required; decline/retry, reload UX and retained transaction backups | **Resolved in H0/H8:** per-character prompts, decline/retry, Reload now/later, fresh transaction backups retained initially, conflict-aware restore, user-run installation. |
@@ -1261,7 +1338,7 @@ Every uncertain implementation is tagged with a proof ticket below. If a proof f
 | R01: secure bank bridge | Prove access to CP lifecycle; compile one resolved action map for display/click, ordinary-bank retention and modifier ownership | Combat entry/exit, nested form/vehicle state, held key releases, class form/stealth without bank replacement, unchanged geometry. Failure → approved secure-button fallback H0, never a dependency patch. |
 | R02: native special families | Test actual skyriding, vehicle, quest override, temporary shapeshift, possession and pet-action cases; classify Soar's actual flight state | Correct family/page/action type; temporary abilities on L2R2 only, every other bank ordinary; class forms/stealth never swap banks. Restore ordinary slots on exit. Ambiguous classification/>8 → pending case, native access retained under H0. |
 | R03: cancellation | Prove selected single-success Circle chain with focused UI ownership | Cast/channel, reticle, target, idle, combined states, combat and windows; no Game Menu or double action. Failure → separate semantic fallback question. |
-| R04: ground control — DEFERRED | Future native evidence and/or specifically approved Retail proof; excluded from current implementation | Preserve current targeting configuration. Resume only after user instruction; no automatic placement substituted. |
+| R04: custom Forever cast-at-cursor — IMPLEMENTED, RETAIL ACCEPTANCE PENDING | Candidate.6 extends native secure click with source-qualified ground spells and internal cursor commands; native storage/UI/empowered/temporary routes retained | Offline native-contract tests pass. Do not deploy yet. Unknown/unsupported actions remain native; test aiming, combat, input ownership, terrain/range and review/restore in Retail after authorized deployment. |
 | R05: character projection | GUID-keyed markers/definitions; approved spec policy; dependency readiness/projection | Sequential A → B → A through existing linked files, normal logout/reload/save, independent install/update revisions and backups, manual edits, unavailable spells and optional missing addons; no ring/binding/marker leakage and no erased character record. No concurrent-client requirement. |
 | R06: transactional installer | Plan/snapshot/apply/verify/commit/recover; independent scope revisions and integration status | New account/new GUID/update, decline/retry/combat deferral, partial adapter failure, capacity/API rejection, interrupted reload, idempotency and rollback. |
 | R07: external profiles | Implement exact approved field masks and version-checked setters/refreshes | Current profile preserved, unowned fields intact, in-session effect and persistence after reload, no competing camera/fade writers. |
@@ -1272,7 +1349,7 @@ Every uncertain implementation is tagged with a proof ticket below. If a proof f
 
 Automate meaningful logic checks for approved field ownership/three-way comparison, GUID/spec isolation, mode truth tables, invalid page tokens, partial transactions and selected binding masks. Static checks should reject prohibited dependency/config writes and taint-prone live Edit Mode mutations. Reuse existing installer/runtime/skin harnesses, but update them to represent actual lifecycle and failure conditions. Offline wheel-sector tests do not prove permission to activate a spell; R11 requires actual Retail input/combat validation.
 
-**Runtime tests remain mandatory:** secure combat transitions, hardware click/cancellation, rendered geometry, BetterBags item operations and external profile lifecycle cannot be certified by Lua mocks. Ground aiming/confirmation tests belong to deferred R04; current Circle reticle-cancellation proof remains in scope. Use one consolidated checklist across the user's relevant characters/specs. Stop/review only the failing feature rather than replaying an entire preset.
+**Runtime tests remain mandatory:** secure combat transitions, hardware click/cancellation, rendered geometry, BetterBags item operations and external profile lifecycle cannot be certified by Lua mocks. Ground cursor-casting acceptance belongs to R04; current Circle reticle-cancellation proof remains in scope. Use one consolidated checklist across the user's relevant characters/specs. Stop/review only the failing feature rather than replaying an entire preset.
 
 **Implementation handoff order (updated):** H0 choices → verified current-product/reference Git baseline H1 → current stable dependency lock H2/H3 → foundation and approved features H4–H6 → automated suites H7 → commit/push and verified pack/scripts H8 → deliver to user → user installation, runtime configuration acceptance and final client checks. No live deployment by the implementation chat. Convert source anchors to verified repository reference copies during H1 so this handoff remains usable independently of old evidence directories.
 
@@ -1460,7 +1537,7 @@ The user requests as much useful automation as possible to reduce error-driven b
 - Shared generic bindings/settings versus isolated class spells, ability contents, and rings; class switches, specialization changes, unavailable spells, and shared utility entries. Exercise different character/spec keys using the same variable file and retained shared-folder topology, including reload/save ordering and no leakage between characters.
 - Special-mode entry/exit, mode priority, content restoration, L2+R2-only temporary routing with every other bank retained, class form/stealth without any bank replacement, unchanged physical bindings, and preserved panel geometry.
 - Dragonriding, quest override, possess, vehicle, extra action, and class/form cases that the approved design supports, including transitions while combat restrictions apply.
-- Circle's contextual cancel behavior including pending-reticle cancellation, no unintended Game Menu activation, and approved controller cursor priority. Ground aiming/confirmation is deferred under D12/R04.
+- Circle's contextual cancel behavior including pending-reticle cancellation, no unintended Game Menu activation, and approved controller cursor priority. Ground cursor casting is implemented; live acceptance remains pending under D12/R04.
 - Grey-icon regressions using the diagnosed usability/range/cooldown cases; BetterBags right-click dispatch through the approved controller integration.
 - Current-profile migration and clean-install default import, saved-layout versus activation indexing, profile capacity, API failure, unrelated-profile preservation, and Edit Mode save/revert.
 - Runtime creation/update of approved other-addon profiles/config, dependency initialization order, new/existing profile cases, approved-field preservation, persisted state after reload, and no reliance on external config-file edits.

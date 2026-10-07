@@ -5,6 +5,7 @@ from repository_paths import ROOT, contained, output, sha
 from resolve_dependencies import verify
 
 MAIN_TERMS = {
+    'SLOKnightfall/BetterWardrobe': 'All Rights Reserved on official CurseForge project; bundled library terms retained independently',
     'seblindfors/ConsolePort': 'Artistic-2.0',
     'Cidan/BetterBags': 'MIT',
     'seblindfors/Immersion': 'Artistic-2.0',

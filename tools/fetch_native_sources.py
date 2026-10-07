@@ -7,6 +7,8 @@ from repository_paths import ROOT, output, sha
 
 REV='09b9db7948abc9b9648dedaab51eb0cf3ee67b31'
 FILES=[
+    'Blizzard_Collections/Blizzard_Collections_Mainline.toc',
+    'Blizzard_Transmog/Blizzard_Transmog.toc',
     'Blizzard_APIDocumentationGenerated/AddOnsDocumentation.lua',
     'Blizzard_APIDocumentationGenerated/EditModeManagerDocumentation.lua',
     'Blizzard_APIDocumentationGenerated/KeyBindingsDocumentation.lua',
@@ -48,7 +50,11 @@ FILES=[
     'Blizzard_FrameXML/MovieFrame.xml',
     'Blizzard_FrameXML/Mainline/CinematicFrameButton.xml',
     'Blizzard_EditMode/Shared/EditModeSystemTemplates.lua',
+    'Blizzard_EditMode/Shared/EditModeSystemTemplates.xml',
     'Blizzard_EditMode/Shared/EditModeManager.lua',
+    'Blizzard_UnitFrame/Shared/PartyFrame.xml',
+    'Blizzard_UnitFrame/Shared/CompactPartyFrame.lua',
+    'Blizzard_CompactRaidFrames/Blizzard_CompactRaidFrameContainer.xml',
     'Blizzard_ActionBar/Shared/MultiActionBars.lua',
     'Blizzard_ActionBar/Shared/MultiActionBars.xml',
     'Blizzard_ActionBar/Shared/ActionBar.lua',

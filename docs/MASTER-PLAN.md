@@ -1,5 +1,17 @@
 # ConsolePort Forever: master plan, decisions, and project history
 
+## Current authority - October 7, 2026: visual patch only
+
+The user authorized a visual fix after testing the installed candidate.6:
+restore Circle's Exit artwork, Triangle's look/crosshair artwork, and circular
+face masks/borders across all four banks. Targeting cursor/player interception
+was reported working and remains unchanged. Prepare candidate.7; **do not
+deploy without new authorization**. Candidate.6 with ConsolePort 3.3.10 remains
+installed. No live AddOns or WTF writes, DBM changes or dependency reshipping.
+All 19 official stable Retail releases were freshly checked this work session;
+all remain current. See `FACE-VISUAL-PATCH-2026-10-07.md` for diagnosis, scope,
+verification and the eventual retained companion-only artifact.
+
 ## Installed checkpoint — October 7, 2026, 14:09:14 America/Toronto
 
 User-authorized candidate.6 deployment completed with ConsolePort 3.3.10 from

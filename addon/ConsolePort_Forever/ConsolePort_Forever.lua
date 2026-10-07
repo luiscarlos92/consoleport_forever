@@ -349,6 +349,7 @@ function Addon:RefreshUI()
     self.BlizzardVisibility:Update()
     self.Cinematic:Refresh(_G)
     if not self.adapters then return end
+    self:RequestSkinRefresh()
     local enabled=self:IsCharacterInstalled() and self.db.shared.runtimePolicy.focusVisuals
     local ok,reason=self.FocusVisuals:Enable(self.adapters.consoleport,_G,enabled)
     self.Diagnostics:SetFeature("focusVisuals",enabled and ok and "offline-verified" or "pending",reason or (enabled and "ordinary cursor ownership only; rendered acceptance pending" or "reviewed visual policy not enabled"))

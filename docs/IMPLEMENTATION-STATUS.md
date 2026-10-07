@@ -1,5 +1,14 @@
 # Implementation checkpoint — October 4, 2026
 
+**Current preparation - October 7, 2026:** candidate.7 is a visual-only patch
+for the user's installed-candidate.6 feedback. Explicit readiness initialization,
+validated event registration, owned-mask restoration and sparse border traversal
+are implemented. All 39 runtime/source suites and 33 tooling tests pass; scoped
+package readback is the remaining preparation gate. Targeting/configuration
+revision 13 remain unchanged. All 19 dependencies are freshly checked/current.
+No deployment is authorized for this patch; candidate.6 remains installed.
+See `FACE-VISUAL-PATCH-2026-10-07.md`.
+
 **Current installed checkpoint — October 7, 2026, 14:09:14 Toronto:** candidate.6
 with ConsolePort 3.3.10, source `580f1e3`, installed after user authorization.
 All 39 runtime/source suites and 33 tooling tests pass. All 651 deployed files

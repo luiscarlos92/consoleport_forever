@@ -1,9 +1,15 @@
-local installed,combat=true,false
+local installed,combat=false,false
 function Addon:IsCharacterInstalled() return installed end
 function InCombatLockdown() return combat end
-local timers,frames={},{}
+local timers,frames,eventFrames={},{},{}
 C_Timer={After=function(_,callback) timers[#timers+1]=callback end}
-local function flush() while #timers>0 do table.remove(timers,1)() end end
+local function flush()
+    local count=0
+    while #timers>0 do count=count+1 assert(count<100,'skin refresh loop') table.remove(timers,1)() end
+end
+local function fire(event)
+    for _,frame in ipairs(eventFrames) do if frame.events[event] then frame.OnEvent(frame,event) end end
+end
 function hooksecurefunc(object,key,callback)
     local native=object[key]
     object[key]=function(...) local result=native(...) callback(...) return result end
@@ -11,7 +17,10 @@ end
 local function region()
     local r={maskCalls=0}
     for _,method in ipairs({'SetTexCoord','ClearAllPoints','SetPoint','SetSize','SetColorTexture','SetAllPoints','SetSwipeTexture','SetUseCircularEdge'}) do
-        r[method]=function(self,...) self[method..'Args']={...} end
+        r[method]=function(self,...)
+            if method=='ClearAllPoints' or method=='SetPoint' or method=='SetSize' or method=='SetAllPoints' then assert(not combat,'combat geometry mutation') end
+            self[method..'Args']={...}
+        end
     end
     function r:SetTexture(value) self.texture=value end function r:SetAtlas(value) self.atlas=value end
     function r:AddMaskTexture(mask) self.mask=mask self.maskCalls=self.maskCalls+1 end
@@ -36,18 +45,26 @@ local db=setmetatable({Gamepad={UseAtlasIcons=false}},{__call=function() return 
 CPAPI=CPAPI or {}
 CPAPI.SetTextureOrAtlas=function(obj,data) obj:SetTexture(data[1]) end
 --@NATIVE_UNBOUND_GLYPH
-function Frame:RegisterEvent() end function Frame:SetScript(key,fn) self[key]=fn end
+C_EventUtils={IsEventValid=function(event) return event~='PLAYER_EQUIPMENT_CHANGED' end}
+function Frame:RegisterEvent(event)
+    assert(self.OnEvent,'skin handler must precede registration')
+    assert(not event:find('PARTY_SYNC',1,true),'obsolete event')
+    assert(event~='PLAYER_EQUIPMENT_CHANGED','invalid event was not filtered')
+    if event=='PLAYER_TARGET_CHANGED' then error('simulated unavailable event') end
+    self.events=self.events or {} self.events[event]=true
+end
+function Frame:SetScript(key,fn) self[key]=fn end
 function Frame:SetSize() end function Frame:SetPoint() end function Frame:ClearAllPoints() end
 function Frame:SetParent(parent) self.parent=parent end function Frame:GetParent() return self.parent end
 function Frame:GetName() return self.name end function Frame:GetWidth() return 50 end
 function Frame:CreateTexture() return region() end
-function Frame:CreateMaskTexture() self.maskCount=(self.maskCount or 0)+1 return region() end
+function Frame:CreateMaskTexture() assert(not combat) self.maskCount=(self.maskCount or 0)+1 return region() end
 function Frame:HookScript(key,fn) self.hooks=self.hooks or {} self.hooks[key]=fn end
 function Frame:Show() end
 function CreateFrame(_,name,parent)
     if name then assert(not frames[name],'duplicate named prompt/frame') end
     local f=setmetatable({name=name,parent=parent},{__index=Frame})
-    if name then frames[name]=f _G[name]=f end return f
+    if name then frames[name]=f _G[name]=f else f.events={} eventFrames[#eventFrames+1]=f end return f
 end
 function wipe(t) for key in pairs(t) do t[key]=nil end end
 local GMT,Group={},{}
@@ -86,7 +103,12 @@ local function makeBank(id,name)
 end
 for _,id in ipairs({'Base','L2','R2','L2R2'}) do _G['ConsolePortGroup'..id]=makeBank(id,'ConsolePortGroup'..id) end
 --@PRODUCT_SKIN
-Addon:RefreshConsolePortSkin()
+fire('PLAYER_ENTERING_WORLD') flush()
+assert(removals==0,'unaccepted configuration acquired skin ownership')
+installed=true
+Addon:RequestSkinRefresh() Addon:RequestSkinRefresh()
+assert(#timers==1,'readiness refresh did not coalesce')
+flush()
 assert(removals==16)
 for _,id in ipairs({'Base','L2','R2','L2R2'}) do
     local bank=_G['ConsolePortGroup'..id]
@@ -119,13 +141,40 @@ jump.icon=region() jump:UpdateLocal()
 assert(jump.icon.maskCalls==1 and oldIcon.mask==nil and oldIcon.removals==1)
 local previousMask=jump.IconMask
 jump.IconMask=region() jump:UpdateLocal()
-assert(jump.icon.mask==jump.IconMask and jump.icon.mask~=previousMask and jump.icon.maskCalls==2 and jump.icon.removals==1)
+assert(jump.icon.mask==previousMask and jump.IconMask==previousMask and jump.icon.maskCalls==1,'native mask field replaced the owned circle')
+jump.icon:RemoveMaskTexture(previousMask)
+assert(jump.__cpfConnectedMask==nil and #timers==1,'removed mask was still cached as attached')
+flush()
+assert(jump.icon.mask==previousMask and jump.icon.maskCalls==2 and jump.icon.removals==1,'removed mask was not restored')
+local sparse=base.buttons.PAD3
+sparse.NormalTexture=nil sparse.PushedTexture=nil
+sparse.Border:SetTexture('native-square') sparse:UpdateButtonArt()
+assert(sparse.Border.texture:find('RoundBorderHighlight',1,true),'optional region hole skipped later borders')
+local width=sparse.GetWidth
+sparse.GetWidth=function() error('simulated one-face skin failure') end
+Addon:RequestSkinRefresh() flush()
+assert(Addon.Diagnostics.features.faceSkin.status=='pending','individual skin failure was reported as ready')
+sparse.GetWidth=width
+fire('ACTIONBAR_SLOT_CHANGED') flush()
+assert(Addon.Diagnostics.features.faceSkin.status=='offline-verified','later native refresh did not recover failed face')
 local msq={Group=function(_,addon,name) assert(addon=='ConsolePort' and name) return base.msqGroup end}
 base:OnMasqueLoaded(msq) flush() assert(removals==20 and base.msqGroup.Buttons[base.buttons.PADDUP])
 base:UpdateButtons({PAD1={},PAD2={},PAD3={},PAD4={},PADDUP={}}) flush()
 assert(removals==24 and base.buttons.PAD1.maskCount==1)
-combat=true base:OnMasqueLoaded(msq) flush() assert(removals==24,'combat setup modified group membership')
-combat=false Addon:RefreshConsolePortSkin() assert(removals==28)
+combat=true base:OnMasqueLoaded(msq)
+local combatIcon=base.buttons.PAD4.icon
+local combatMask=base.buttons.PAD4.IconMask
+combatIcon:RemoveMaskTexture(combatMask)
+fire('PLAYER_REGEN_DISABLED') flush()
+assert(removals==24 and Addon.skinRefreshPending,'combat setup modified group membership or lost deferred work')
+assert(combatIcon.mask==nil,'combat removal triggered protected mask repair')
+base.buttons.PAD2.icon:SetTexture('native-ring') base.buttons.PAD2:UpdateLocal()
+assert(base.buttons.PAD2.icon.atlas=='128-redbutton-exit','combat native update lost Exit art')
+combat=false fire('PLAYER_REGEN_ENABLED') flush() assert(removals==28 and not Addon.skinRefreshPending)
+assert(combatIcon.mask==combatMask,'deferred mask repair was lost')
+base.buttons.PAD4.icon:SetTexture('native-mouse')
+fire('PLAYER_ENTERING_WORLD') flush()
+assert(base.buttons.PAD4.icon.atlas=='crosshair_unableinspect_32' and removals==28,'zone refresh lost look art or re-detached unchanged faces')
 local face=base.buttons.PAD1
 face._state_type='action' face._state_action=1
 face.config={outOfRangeColoring='button',colors={range={1,.1,.1},mana={.1,.1,1}}}

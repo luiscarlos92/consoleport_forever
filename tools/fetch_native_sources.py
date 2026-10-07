@@ -12,6 +12,7 @@ FILES=[
     'Blizzard_APIDocumentationGenerated/AddOnsDocumentation.lua',
     'Blizzard_APIDocumentationGenerated/EditModeManagerDocumentation.lua',
     'Blizzard_APIDocumentationGenerated/KeyBindingsDocumentation.lua',
+    'Blizzard_APIDocumentationGenerated/EventUtilsDocumentation.lua',
     'Blizzard_RestrictedAddOnEnvironment/RestrictedEnvironment.lua',
     'Blizzard_RestrictedAddOnEnvironment/SecureHandlers.lua',
     'Blizzard_FrameXML/SecureTemplates.lua',

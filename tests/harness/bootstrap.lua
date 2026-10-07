@@ -87,6 +87,9 @@ local function choose(button)
     if info.OnHide then info.OnHide(nil,dialog.data) end
 end
 --@LOAD_PRODUCT
+local skinRequests=0
+local requestSkin=Addon.RequestSkinRefresh
+function Addon:RequestSkinRefresh() skinRequests=skinRequests+1 return requestSkin(self) end
 --@NATIVE_RING_BOOTSTRAP
 --@LIFECYCLE
 assert(writes==0 and ConsolePortForeverDB==nil and db.Settings.bindingPresetCondition=="[] old")
@@ -107,6 +110,10 @@ assert(writes==0 and Addon.coordinator.queued)
 combat=false
 fire("PLAYER_REGEN_ENABLED") flush()
 assert(Addon:IsCharacterInstalled(),Addon.Diagnostics:Summary())
+local beforeSkinReadiness=skinRequests
+Addon:RefreshUI()
+assert(skinRequests==beforeSkinReadiness+1,'accepted runtime readiness omitted skin initialization')
+flush()
 assert(Addon.record.ringAccepted and Addon.db.shared.ringProjectionGUID=='A')
 assert(bootstrapRings.Data.Auras[1].spell==101 and Addon.record.rings.sets.Auras[1].spell==101)
 assert(bindingSet==2 and banks[2].SPACE=="JUMP" and banks[2].K==nil and banks[2].PAD1=="JUMP")

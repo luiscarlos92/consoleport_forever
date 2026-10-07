@@ -2,6 +2,7 @@ local _, Addon = ...
 local BANKS, FACE = {Base=true,L2=true,R2=true,L2R2=true}, {PAD1=true,PAD2=true,PAD3=true,PAD4=true}
 local CIRCLE = [[Interface\Masks\CircleMaskScalable]]
 local RING = [[Interface\AddOns\ConsolePort\Assets\Textures\Cursor\RoundBorderHighlight]]
+local REGION_GETTERS={NormalTexture='GetNormalTexture',PushedTexture='GetPushedTexture',HighlightTexture='GetHighlightTexture',CheckedTexture='GetCheckedTexture'}
 local function Public(value) return not (issecretvalue and issecretvalue(value)) end
 local function Availability(button)
     if not Addon.IsCharacterInstalled or not Addon:IsCharacterInstalled() then return end
@@ -72,12 +73,29 @@ end
 local function Apply(button)
     if not Addon.IsCharacterInstalled or not Addon:IsCharacterInstalled() then return end
     if not button or not button.icon then return end
+    if InCombatLockdown() then
+        Addon.skinRefreshPending=true
+        Availability(button) BaseIcon(button)
+        return
+    end
     button.MasqueSkinned = true
-    local mask = button.IconMask or button:CreateMaskTexture(nil, "BACKGROUND")
+    -- Keep our circular mask independent of native/Masque mask replacement.
+    local mask = button.__cpfFaceMask or button:CreateMaskTexture(nil, "BACKGROUND")
+    button.__cpfFaceMask=mask
     button.IconMask = mask
     if button.__cpfMaskIcon~=button.icon or button.__cpfConnectedMask~=mask then
         if button.__cpfMaskIcon and button.__cpfConnectedMask and button.__cpfMaskIcon.RemoveMaskTexture then button.__cpfMaskIcon:RemoveMaskTexture(button.__cpfConnectedMask) end
         button.icon:AddMaskTexture(mask) button.__cpfMaskIcon=button.icon button.__cpfConnectedMask=mask
+    end
+    if not button.icon.__cpfMaskWatch and button.icon.RemoveMaskTexture then
+        button.icon.__cpfMaskWatch=true
+        local watched=button.icon
+        hooksecurefunc(watched,'RemoveMaskTexture',function(_,removed)
+            if button.__cpfMaskIcon==watched and button.__cpfConnectedMask==removed then
+                button.__cpfConnectedMask=nil
+                Addon:RequestSkinRefresh()
+            end
+        end)
     end
     mask:SetTexture(CIRCLE,"CLAMPTOBLACKADDITIVE","CLAMPTOBLACKADDITIVE") mask:ClearAllPoints()
     mask:SetPoint("CENTER",button) mask:SetSize(button:GetWidth()*0.88,button:GetWidth()*0.88)
@@ -90,10 +108,17 @@ local function Apply(button)
     end
     bg:Show()
     if button.SlotArt then button.SlotArt:Hide() end
-    for _, texture in ipairs({button.NormalTexture,button.PushedTexture or button:GetPushedTexture(),button.HighlightTexture or button:GetHighlightTexture(),button.CheckedTexture or button:GetCheckedTexture(),button.Flash,button.Border,button.NewActionTexture,button.SpellHighlightTexture}) do Round(texture,button) end
+    -- Optional texture holes must not terminate an ipairs traversal.
+    for _,key in ipairs({'NormalTexture','PushedTexture','HighlightTexture','CheckedTexture','Flash','Border','NewActionTexture','SpellHighlightTexture'}) do
+        local texture=button[key]
+        local getter=REGION_GETTERS[key]
+        if not texture and getter and button[getter] then texture=button[getter](button) end
+        Round(texture,button)
+    end
     for _, key in ipairs({"cooldown","chargeCooldown","lossOfControlCooldown"}) do
         local cd=button[key] if cd then
-            cd:ClearAllPoints() cd:SetAllPoints(mask) cd:SetSwipeTexture(CIRCLE) cd:SetUseCircularEdge(true)
+            cd:ClearAllPoints() cd:SetAllPoints(mask) cd:SetSwipeTexture(CIRCLE)
+            if cd.SetUseCircularEdge then cd:SetUseCircularEdge(true) end
             if cd.SetSwipeColor and not cd.__cpfSwipeHook then
                 cd.__cpfSwipeHook=true hooksecurefunc(cd,'SetSwipeColor',Swipe)
                 cd:SetSwipeColor(key=='lossOfControlCooldown' and 0.17 or 0,0,0,0.65)
@@ -146,28 +171,48 @@ local function Prompts(bank)
 end
 
 function Addon:RefreshConsolePortSkin()
-    if not self.IsCharacterInstalled or not self:IsCharacterInstalled() or InCombatLockdown() then return end
+    if not self.IsCharacterInstalled or not self:IsCharacterInstalled() then return end
+    if InCombatLockdown() then self.skinRefreshPending=true return end
+    self.skinRefreshPending=nil
+    local ready,errors=0,{}
     for bankID in pairs(BANKS) do
         local bank=_G["ConsolePortGroup"..bankID]
         if bank and bank.buttons then
             if not bank.__cpfSkinHooks then
                 bank.__cpfSkinHooks=true
                 if type(bank.UpdateButtons)=="function" then
-                    hooksecurefunc(bank,"UpdateButtons",function() C_Timer.After(0,function() Addon:RefreshConsolePortSkin() end) end)
+                    hooksecurefunc(bank,"UpdateButtons",function() Addon:RequestSkinRefresh() end)
                 end
                 if type(bank.OnMasqueLoaded)=="function" then
-                    hooksecurefunc(bank,"OnMasqueLoaded",function() C_Timer.After(0,function() Addon:RefreshConsolePortSkin() end) end)
+                    hooksecurefunc(bank,"OnMasqueLoaded",function() Addon:RequestSkinRefresh() end)
                 end
             end
             for id in pairs(FACE) do
                 local button=bank.buttons[id]
-                DetachMasque(bank,button)
-                if button then button.isForeverFaceButton=true end
-                Install(button)
+                if button then
+                    local ok,reason=pcall(function()
+                        DetachMasque(bank,button)
+                        button.isForeverFaceButton=true
+                        Install(button)
+                    end)
+                    if ok then ready=ready+1 else errors[#errors+1]=bankID..'/'..id..': '..tostring(reason) end
+                end
             end
         end
     end
     if ConsolePortGroupBase then Prompts(ConsolePortGroupBase) end
+    if self.Diagnostics then self.Diagnostics:SetFeature('faceSkin',ready==16 and #errors==0 and 'offline-verified' or 'pending',
+        #errors>0 and table.concat(errors,'; ') or (ready..'/16 face skins prepared; rendered Retail acceptance pending')) end
+end
+
+function Addon:RequestSkinRefresh()
+    if self.skinRefreshQueued then return end
+    self.skinRefreshQueued=true
+    C_Timer.After(0,function()
+        Addon.skinRefreshQueued=nil
+        Addon:RefreshFaceAvailability()
+        Addon:RefreshConsolePortSkin()
+    end)
 end
 
 local events=CreateFrame("Frame")
@@ -177,8 +222,16 @@ function Addon:RefreshFaceAvailability()
         if bank and bank.buttons then for id in pairs(FACE) do local button=bank.buttons[id] if button then Availability(button) end end end
     end
 end
-for _,event in ipairs({"PLAYER_ENTERING_WORLD","PLAYER_TARGET_CHANGED","PLAYER_EQUIPMENT_CHANGED","PLAYER_REGEN_ENABLED","PLAYER_REGEN_DISABLED","ACTIONBAR_UPDATE_USABLE","ACTIONBAR_SLOT_CHANGED","PARTY_SYNC_DISABLED","PARTY_SYNC_ENABLED"}) do events:RegisterEvent(event) end
 events:SetScript("OnEvent",function()
-    C_Timer.After(0,function() Addon:RefreshFaceAvailability() Addon:RefreshConsolePortSkin() end)
-    C_Timer.After(1,function() Addon:RefreshFaceAvailability() Addon:RefreshConsolePortSkin() end)
+    Addon:RequestSkinRefresh()
+    C_Timer.After(1,function() Addon:RequestSkinRefresh() end)
 end)
+-- Install the handler first; unavailable events must not abort skin startup.
+for _,event in ipairs({'PLAYER_ENTERING_WORLD','PLAYER_TARGET_CHANGED','PLAYER_EQUIPMENT_CHANGED','PLAYER_REGEN_ENABLED',
+    'PLAYER_REGEN_DISABLED','ACTIONBAR_UPDATE_USABLE','ACTIONBAR_SLOT_CHANGED','GROUP_ROSTER_UPDATE','UPDATE_BINDINGS','ADDON_LOADED'}) do
+    local supported=not C_EventUtils or not C_EventUtils.IsEventValid or C_EventUtils.IsEventValid(event)
+    if supported then
+        local ok,reason=pcall(events.RegisterEvent,events,event)
+        if not ok and Addon.Diagnostics then Addon.Diagnostics:Log('skin-event',tostring(reason)) end
+    end
+end

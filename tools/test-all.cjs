@@ -307,6 +307,7 @@ check('T21.native-map-canvas-controls', () => {
   execute(source+scrollFixture()+'\n'+fixture,'map-native-canvas');
 });
 check('T24.current-native-presentation-lifecycle', () => {
+  if (!read('evidence/native/Blizzard_APIDocumentationGenerated/EventUtilsDocumentation.lua').includes('Name = "IsEventValid"')) throw Error('skin event validation lacks pinned native API evidence');
   const masque='reference/installed-addons/2026-10-03-initial/Masque/Core/Group.lua';
   const package=JSON.parse(read('dependencies/lock.json')).packages.find(p=>p.repo==='SFX-WoW/Masque');
   if(sha(masque)!==package.files['Masque/Core/Group.lua']) throw Error('Masque reference differs from current audited package');

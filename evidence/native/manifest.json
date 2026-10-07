@@ -35,6 +35,13 @@
     "url": "https://github.com/Gethe/wow-ui-source/blob/09b9db7948abc9b9648dedaab51eb0cf3ee67b31/Interface/AddOns/Blizzard_APIDocumentationGenerated/KeyBindingsDocumentation.lua"
   },
   {
+    "path": "Blizzard_APIDocumentationGenerated/EventUtilsDocumentation.lua",
+    "commit": "09b9db7948abc9b9648dedaab51eb0cf3ee67b31",
+    "gitBlob": "d4bf310d375f8f59a489cefe9b446036ba7c8a19",
+    "sha256": "b0a4bf7f2fa2eb32c5eaaca57f715c60c5df70f25c1c63f35742253c415ca635",
+    "url": "https://github.com/Gethe/wow-ui-source/blob/09b9db7948abc9b9648dedaab51eb0cf3ee67b31/Interface/AddOns/Blizzard_APIDocumentationGenerated/EventUtilsDocumentation.lua"
+  },
+  {
     "path": "Blizzard_RestrictedAddOnEnvironment/RestrictedEnvironment.lua",
     "commit": "09b9db7948abc9b9648dedaab51eb0cf3ee67b31",
     "gitBlob": "ccfc372959f2195809b804f816a3f65442cd2cfc",

@@ -1,0 +1,144 @@
+{
+  "preparedAt": "2026-10-07T19:07:22.693412+00:00",
+  "preparedOnly": true,
+  "deployed": false,
+  "deploymentAuthorization": "Visual patch preparation only; new explicit authorization and WoW closed required before deployment.",
+  "artifact": {
+    "path": "C:\\Users\\luisr\\Dev\\consoleport_forever\\dist\\2.0.0-candidate.7\\ConsolePort-Forever-Update-companion-only-visual-fix.zip",
+    "sha256": "59726ecde789ecd2c75bffe5e612d288aa4e84f145a09e4801a7eb09cf9d3b4e",
+    "bytes": 481795,
+    "sourceCommit": "a15232604b5757a2254d295e7b5ecd8fda3d5046",
+    "addonFolders": [
+      "ConsolePort_Forever"
+    ],
+    "dependencyUpdates": [],
+    "version": "2.0.0-candidate.7",
+    "testedDependencies": {
+      "Cidan/BetterBags": {
+        "version": "v0.5.14",
+        "sha256": "16c1ac70c4de2e7f2cfdbf4d2b5f3d3f44514a3f9ecf1040e29c790e8be8c0d7"
+      },
+      "seblindfors/Immersion": {
+        "version": "1.4.61",
+        "sha256": "b180a8cbd1a1d878377da5a85abfdc5576e0c04212f9e900e3e9ca505cde1f3e"
+      },
+      "xod-wow/LiteMount": {
+        "version": "12.1.0-1",
+        "sha256": "bf89ab84666266ffefd8ce56581f98467f8125c25c65e3fe68031303df28efe0"
+      },
+      "SFX-WoW/Masque": {
+        "version": "12.1.0",
+        "sha256": "9e1da4827ae60bd25d7fc427cbeeb0dc297e59d53a71a29ae95223d3374bbfa0"
+      },
+      "Tercioo/Plater-Nameplates": {
+        "version": "Plater-v656",
+        "sha256": "3353250fa63fe840d8e9444037a3debde5c82286ccbcc825a475cec5ffd90ead"
+      },
+      "DeadlyBossMods/DeadlyBossMods": {
+        "version": "12.1.12",
+        "sha256": "5c8bbcc7daabff029d8ecf4b4b95b400be1bfdd5e860123914d84ada032d40e6"
+      },
+      "DeadlyBossMods/DBM-Dungeons": {
+        "version": "r264",
+        "sha256": "63a30527dfef38975ef48d9f98c82608c286504cd7668d745e8998a1fd5c9479"
+      },
+      "DeadlyBossMods/DBM-Vanilla": {
+        "version": "r830",
+        "sha256": "7c559db0599ae1dac36c2836b61b7f8125d705d71cc39d76d8a2d2fe8f048463"
+      },
+      "DeadlyBossMods/DBM-WotLK": {
+        "version": "r353",
+        "sha256": "a62e410a8bf69bbc23ef3cb14ed20268dd175c5f7b2ccba52931b894e2c2b462"
+      },
+      "DeadlyBossMods/DBM-Cataclysm": {
+        "version": "r263",
+        "sha256": "ae87dc521de1f39ae6eccbaaf8a8dc2d91205b4be9ecc9bda72f2da79d9be145"
+      },
+      "DeadlyBossMods/DBM-MoP": {
+        "version": "r191",
+        "sha256": "074eebe2db67590f42a78d5f2dbfde24423563ff3c822c1ee6a3a082790a56d4"
+      },
+      "DeadlyBossMods/DBM-WoD": {
+        "version": "r97",
+        "sha256": "87889c77279e5c422e99ffb595c6b83e274f4e6f5be31e5142a7b75d5aa72bf6"
+      },
+      "DeadlyBossMods/DBM-Legion": {
+        "version": "r67",
+        "sha256": "6c1bdbabb0340408cbb44e663a80ca42f26158c81457b6cf50707d5f2f4533b2"
+      },
+      "rursache/HideClassBars": {
+        "version": "v1.1.0",
+        "sha256": "20b40ca768005b912400d6a64894c0607e5e60f7ee9f7b9fff94f1be5242587e"
+      },
+      "curseforge/DynamicCam": {
+        "version": "2.21.1",
+        "sha256": "10eb86230c6903e72097e1552c04de8a163a39fe3cb31fc3a3274c2c4394e072"
+      },
+      "curseforge/Immersion_ExtraFade": {
+        "version": "1.18.0",
+        "sha256": "89c59d0519b2392b41010dda34ec01d38c9c1702c644f5e57422341b1fec21c6"
+      },
+      "curseforge/SharedMedia_Causese": {
+        "version": "7.6",
+        "sha256": "12060554a2eace5438f08daa98660169a18e127b8af269c38974f9f570091711"
+      },
+      "SLOKnightfall/BetterWardrobe": {
+        "version": "6.12.3",
+        "sha256": "abcba6be5535c15a581721192a5c4865e05b568dbac52d79c108c89e6c763d8c"
+      },
+      "seblindfors/ConsolePort": {
+        "version": "3.3.10",
+        "sha256": "6175a327b3b7505b6f1d79ef0adc96c7a65db3cc8220dd59e34de6658dbb4f49"
+      }
+    },
+    "dependencyLockSHA256": "781e8946b8b727b950edd4ca8812b024d0f2536f5fb2f703941fb1e0789ce6d9"
+  },
+  "independentVerification": {
+    "matchedProductFiles": 49,
+    "onlyForeverBytes": true,
+    "noVendorBytes": true,
+    "noDBMBytes": true,
+    "noWTFBytes": true,
+    "configurationRevision": 13,
+    "storeSchema": 3,
+    "runtimeSuites": 39,
+    "toolingTests": 33,
+    "runtimeReportSHA256": "2e8c063b76fb652bf62de11a623adf590c594edd4e3efee7f86ff0dee9e3e251",
+    "toolingReportSHA256": "00ce8d3fff41d12f97df77dbb17be03844ca796c532c20990bd53fd6652281f1",
+    "sourceInventoriesMatch": true,
+    "changedProductFilesAgainstInstalledSource": [
+      "addon/ConsolePort_Forever/ConsolePort_Forever.lua",
+      "addon/ConsolePort_Forever/ConsolePort_Forever.toc",
+      "addon/ConsolePort_Forever/Skin.lua"
+    ],
+    "unchangedProductFilesAgainstInstalledSource": 46,
+    "priorArtifactsRetained": [
+      {
+        "receipt": "prepared-candidate6.json",
+        "sha256": "92ae073ddac4acaebe0d683c11cdadcb8e90e511dac4e038ad831b50656d001c"
+      },
+      {
+        "receipt": "prepared-candidate6-targeting-options.json",
+        "sha256": "20f5c234aac506555cb01bdc612453f0d62fcfbb73930fabc0609eb4b94f8c10"
+      },
+      {
+        "receipt": "live-install-candidate6.json",
+        "sha256": "035e83adf3621461d8a19a3e6822e67acc901d543026e76bad3950570cd0b252"
+      }
+    ]
+  },
+  "dependencies": {
+    "officialStablePackagesChecked": 19,
+    "dependencyUpdates": [],
+    "lockSHA256": "781e8946b8b727b950edd4ca8812b024d0f2536f5fb2f703941fb1e0789ce6d9"
+  },
+  "liveState": {
+    "installedVersion": "2.0.0-candidate.6",
+    "installedConsolePort": "3.3.10",
+    "installerRun": false,
+    "liveAddOnsWritten": false,
+    "liveWTFFilesWritten": false,
+    "dbm": "Disabled/user owned and excluded; unchanged."
+  },
+  "liveAcceptance": "Pending later authorized deployment; manual case 41 covers artwork, circular masks, transitions, native availability and combat taint."
+}

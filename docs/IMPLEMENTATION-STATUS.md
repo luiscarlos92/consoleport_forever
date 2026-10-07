@@ -3,8 +3,10 @@
 **Current preparation - October 7, 2026:** candidate.7 is a visual-only patch
 for the user's installed-candidate.6 feedback. Explicit readiness initialization,
 validated event registration, owned-mask restoration and sparse border traversal
-are implemented. All 39 runtime/source suites and 33 tooling tests pass; scoped
-package readback is the remaining preparation gate. Targeting/configuration
+are implemented. All 39 runtime/source suites and 33 tooling tests pass. The scoped ZIP
+is independently verified: 49 exact Forever files, 481,795 bytes, no dependency/
+DBM/WTF payload. Receipt: `evidence/delivery/prepared-candidate7-visual.json`.
+Targeting/configuration
 revision 13 remain unchanged. All 19 dependencies are freshly checked/current.
 No deployment is authorized for this patch; candidate.6 remains installed.
 See `FACE-VISUAL-PATCH-2026-10-07.md`.

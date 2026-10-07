@@ -1,6 +1,6 @@
 # Retail tests and results — installed candidate.5, revision 12
 
-Candidate.7 visual patch is being prepared, **not deployed**. The user reports
+Candidate.7 visual patch is prepared, **not deployed**. The user reports
 candidate.6 cursor/player interception works. Their screenshot identifies
 missing custom Circle/Triangle artwork and missing round face masks. Previous
 case 40 remains partially failing for rendering; availability acceptance is

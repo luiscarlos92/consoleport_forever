@@ -10,7 +10,7 @@ deploy without new authorization**. Candidate.6 with ConsolePort 3.3.10 remains
 installed. No live AddOns or WTF writes, DBM changes or dependency reshipping.
 All 19 official stable Retail releases were freshly checked this work session;
 all remain current. See `FACE-VISUAL-PATCH-2026-10-07.md` for diagnosis, scope,
-verification and the eventual retained companion-only artifact.
+verification and the retained companion-only artifact.
 
 ## Installed checkpoint — October 7, 2026, 14:09:14 America/Toronto
 

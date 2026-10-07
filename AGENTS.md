@@ -39,12 +39,13 @@ immutable original reference to add later dependencies. See
 
 ## Deployments
 
-- Deploy only with explicit user authorization and WoW closed. Current installed checkpoint
-  is candidate.7 with ConsolePort 3.3.10 (October 7, 15:10:51 Toronto), after
-  explicit authorization. That deployment is complete; the user will manually
-  test. Future deployments require new authorization. Preserve every earlier
-  candidate.6/candidate.7 artifact/receipt and all verified backups. See
-  `evidence/delivery/live-install-candidate7.json` for the current receipt.
+- Deploy only with explicit user authorization and WoW closed. Current installed
+  checkpoint is candidate.8/revision 14 with unchanged ConsolePort 3.3.10
+  (October 7, 17:43:12 Toronto). HideClassBars was backed up/parked by the scoped
+  installer. All 2,165 remaining vendor files, 298 WTF files and 42 links are
+  unchanged. This authorization is complete; future deployments need new
+  authorization. Retain all earlier artifacts/receipts/backups. See
+  `evidence/delivery/live-install-candidate8.json`.
 - DBM was uninstalled by the user on October 7 and retired from the active lock.
   Do not restore it. Preserve historical references, archives and receipts.
   HideClassBars is replaced by reviewed Forever controller access and explicitly

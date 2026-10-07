@@ -88,3 +88,9 @@ rendering remain manual acceptance checks. Offline tests do not certify them.
 
 All 40 runtime/source suites and 36 tooling tests passed on the final source.
 Exact reports: evidence/test-results/candidate8-runtime.json and candidate8-tooling.json.
+
+Deployment completed at 17:43:12 Toronto with exact source above. The verified ZIP
+SHA-256 is `72c945b43fa9966df0187e3fb637c1874c843c9d1ac6cd370b99ec3743217aa7` (483,855 bytes). Backup:
+`C:\Users\luisr\WoW-Backups\ConsolePort-Forever\20261007T214245Z-0232c10f0b58`. Scoped readback verifies 50 Forever files, removal/retained
+backup of HideClassBars, 2,165 untouched other addon files, 298 untouched WTF files
+and 42 untouched junctions. Exact receipt and independent readback are retained.

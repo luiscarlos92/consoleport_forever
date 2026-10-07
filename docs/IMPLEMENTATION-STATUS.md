@@ -1,5 +1,25 @@
 # Implementation checkpoint — October 4, 2026
 
+## Installed checkpoint - October 7, 2026, 17:43:12 America/Toronto
+
+Candidate.8 is installed from pushed/tested source `60c5aeb80a06e8013444b0e725cc887fecd2304a` beside
+unchanged ConsolePort 3.3.10. Scoped preview and guarded execution replaced only
+Forever (50 exact files) and backed up/parked HideClassBars outside AddOns.
+All 2,165 remaining dependency files, 298 canonical WTF files, 42 character
+junctions and executable-tree anchors are independently verified unchanged.
+DBM is absent and retired from active dependencies; SharedMedia_Causese remains
+for the saved Quazii Plater profile. No dependency was downloaded or recopied.
+All 40 runtime/source suites and 36 tooling tests passed; the 10 remaining
+stable Retail releases were freshly checked/current. StoreSchema 3 and revision
+14 are bundled; current in-game configuration is not edited by deployment.
+The normal revision-14 accept/keep review and manual case 42 follow login.
+Receipt: `evidence/delivery/live-install-candidate8.json`; independent readback:
+`evidence/delivery/candidate8-independent-readback.json`. Backup and parked
+original folders are retained. This completes the user's deployment authority;
+later deployments require new authorization. Retail input/rendering/taint remain
+manual acceptance, and no game was launched.
+
+
 ## Current authorized work - October 7, 2026
 
 Candidate.8 replaces HideClassBars with reviewed native class-ring access and a

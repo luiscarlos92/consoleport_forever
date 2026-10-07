@@ -106,4 +106,8 @@ test claims. See cases 39–40 in `MANUAL-TEST-CASES.md` after future authorizat
 Full verification passed: **38 runtime/source suites and 33 tooling tests**,
 with no failed or skipped checks. Exact result inventories are retained in
 `evidence/test-results/candidate6-targeting-options-runtime.json` and
-`candidate6-targeting-options-tooling.json`.
+`candidate6-targeting-options-tooling-final.json`.
+
+The earlier targeting-options tooling receipt is retained as superseded evidence:
+the final UI combat-test addition changed its harness inventory. The final
+33-test rerun above matches the exact current tooling and runtime inventories.

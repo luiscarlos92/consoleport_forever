@@ -23,11 +23,13 @@ function layers:SetAttribute(name,value) self.attributes[name]=value end
 function layers:SetFrameRef(name,frame) assert(frame:IsProtected()) self.refs[name]=frame end
 function layers:GetFrameRef(name) return self.refs[name] end
 function layers:CallMethod(name,...) return self[name](self,...) end
+function layers:ChildUpdate(name,value) self.childNotifications=self.childNotifications or {} self.childNotifications[#self.childNotifications+1]={name,value} end
 local engineBindings={}
 function layers:GetName() return 'ConsolePortLayers' end
 function layers:SetBindingClick(priority,key,name,button) engineBindings[key]={priority=priority,action='CLICK '..name..':'..button} end
 function layers:SetBinding(priority,key,action) engineBindings[key]={priority=priority,action=action} end
 function layers:ClearBinding(key) engineBindings[key]=nil end
+function ClearOverrideBindings(owner) assert(owner==layers and not combat) for key in pairs(engineBindings) do engineBindings[key]=nil end end
 tremove=table.remove
 CPAPI.DataHandler=function() return layers end
 function RegisterStateDriver() end
@@ -100,6 +102,24 @@ combat=true assert(not layers:Claim('cursor','NAV','PAD1','binding','BAD'))
 assert(not layers:ReleaseAll('interact') and engineBindings.PAD1.action=='INTERACTTARGET') combat=false
 layers:ReleaseAll('interact') assert(engineBindings.PAD1.action=='GAMEPLAY')
 layers:ReleaseAll('bar') assert(engineBindings.PAD1==nil,'released claim left an engine binding')
+-- 3.3.10 maps blocked self-modifier chords to the tap actually emitted by WoW.
+db.table={spairs=function(t)
+    local keys={} for k in pairs(t) do keys[#keys+1]=k end table.sort(keys)
+    local i=0 return function() i=i+1 if keys[i] then return keys[i],t[keys[i]] end end
+end}
+setmetatable(db,{__call=function() return false end})
+function db:TriggerEvent() end
+db.Gamepad.Index.Modifier.Prefix={['SHIFT-']='PADLTRIGGER',['CTRL-']='PADRTRIGGER'}
+db.Gamepad.Index.Modifier.Layered={}
+db.Gamepad.Index.Modifier.Blocked={['SHIFT-PADLTRIGGER']='SHIFT',['CTRL-PADRTRIGGER']='CTRL'}
+layers:SetModifiers()
+assert(ALIAS['SHIFT-PADLTRIGGER']=='PADLTRIGGER' and ALIAS['CTRL-PADRTRIGGER']=='PADRTRIGGER')
+assert(layers:Claim('tap','BASE','PADLTRIGGER','binding','GAMEPLAY'))
+assert(layers:Claim('blocked','NAV','SHIFT-PADLTRIGGER','click','Modal','LeftButton'))
+assert(engineBindings.PADLTRIGGER.action=='CLICK Modal:LeftButton' and not engineBindings['SHIFT-PADLTRIGGER'])
+layers:Release('blocked','SHIFT-PADLTRIGGER') assert(engineBindings.PADLTRIGGER.action=='GAMEPLAY')
+layers:ReleaseAll('tap') layers:ReleaseModifiers()
+assert(not ALIAS['SHIFT-PADLTRIGGER'] and not engineBindings.PADLTRIGGER)
 
 -- Native first-login module and keyboard migrations remain upstream-owned.
 do

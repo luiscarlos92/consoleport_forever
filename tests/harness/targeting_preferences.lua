@@ -55,7 +55,7 @@ end
 --@NATIVE_PANEL_LIFECYCLE
 env:CreatePanel({name='About',nav=false})
 ConsolePortConfig={CreatePanel=function(_,info) return env:CreatePanel(info) end}
-Addon.adapters={consoleport={api={version='3.3.9'}}}
+Addon.adapters={consoleport={api={version='3.3.10'}}}
 Addon.db=account
 local refreshes=0 function Addon:RefreshModes() refreshes=refreshes+1 end
 Addon.GroundTargeting.observed={[999001]=true}

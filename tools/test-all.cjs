@@ -316,6 +316,7 @@ check('T24.current-native-presentation-lifecycle', () => {
     .replace('--@NATIVE_GROUP_SKIN_LIFECYCLE',()=>['CPGroupBar:UpdateButtons','CPGroupBar:OnMasqueLoaded'].map(name=>nativeFunction(group,name)).join('\n'))
     .replace('--@NATIVE_MANAGER_BINDINGS',()=>nativeFunction('evidence/consoleport-contracts/ConsolePort_Bar/Controller/Manager/Manager.lua','Manager:GetBindings'))
     .replace('--@NATIVE_AVAILABILITY',()=>['UpdateUsable','SpellVFX_CastingAnim_OnHide'].map(name=>nativeFunction('evidence/consoleport-contracts/ConsolePort/Libs/External/LibActionButton-1.0/LibActionButton-1.0.lua',name)).join('\n'))
+    .replace('--@NATIVE_UNBOUND_GLYPH',()=>['ResetGlyphTexture','ProxyButtonTextureProvider'].map(name=>nativeFunction('evidence/consoleport-contracts/ConsolePort_Bar/Widget/Button/Button.lua',name)).join('\n'))
     .replace('--@PRODUCT_SKIN',()=>';(function(...)\n'+read('addon/ConsolePort_Forever/Skin.lua')+'\nend)("ConsolePort_Forever",Addon);');
   execute(source+fixture,'current-native-presentation');
 });
@@ -401,6 +402,18 @@ check('T38.account-targeting-native-config-panel', () => {
     .replace('--@NATIVE_PANEL_LIFECYCLE',()=>lifecycle)
     .replace('--@PRODUCT_TARGETING_UI',()=>';(function(...)\n'+read('addon/ConsolePort_Forever/UI/Targeting.lua')+'\nend)("ConsolePort_Forever",Addon);');
   execute(source+fixture,'account-targeting-native-panel');
+});
+check('T39.ConsolePort-3.3.10-layout-compatibility', () => {
+  const base='evidence/consoleport-contracts/';
+  const pet=read(base+'ConsolePort_Bar/View/Pet/Petring.lua');
+  const fixture=read('tests/harness/cp_3310.lua')
+    .replace('--@NATIVE_DATA_TABLE',()=>['Table:Get','Table:Set'].map(name=>nativeFunction(base+'ConsolePort/Model/Data/Data.lua',name)).join('\n'))
+    .replace('--@NATIVE_BUILD_LAYOUT',()=>nativeFunction(base+'ConsolePort_Bar/Model/Upgrade.lua','env.BuildLayout'))
+    .replace('--@NATIVE_RENAME',()=>nativeFunction(base+'ConsolePort_Bar/View/Config/Loadout.lua','Loadout:OnRename'))
+    .replace('--@NATIVE_PET_FACTORY',()=>pet.slice(pet.indexOf("env:AddFactory('Petring'")));
+  execute(source+fixture,'ConsolePort-3.3.10-current-layout-source');
+  const iface=read(base+'ConsolePort_Bar/Model/Interface.lua');
+  if(!iface.includes('Petring = false;') || !iface.includes('pos = _(Type.ComplexPoint') || !iface.includes('level    = 1;')) throw Error('current interface definitions changed');
 });
 check('T10-T11.product-bootstrap', () => {
   const entries=read('addon/ConsolePort_Forever/ConsolePort_Forever.toc').split(/\r?\n/).filter(x=>x.trim() && !x.startsWith('#'));

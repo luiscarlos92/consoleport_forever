@@ -1,7 +1,7 @@
 {
-  "version": "3.3.9",
-  "releaseURL": "https://github.com/seblindfors/ConsolePort/releases/tag/3.3.9",
-  "packageSHA256": "d9cd6ce097c7bbafc0963a527243fd36f8cc6d1d294785154bf1886f58dbc640",
+  "version": "3.3.10",
+  "releaseURL": "https://github.com/seblindfors/ConsolePort/releases/tag/3.3.10",
+  "packageSHA256": "6175a327b3b7505b6f1d79ef0adc96c7a65db3cc8220dd59e34de6658dbb4f49",
   "purpose": "Exact unmodified source audit/test contracts; not deployed dependency copies.",
   "files": [
     {
@@ -26,7 +26,7 @@
     },
     {
       "path": "ConsolePort/Controller/Layers.lua",
-      "sha256": "a8fa9d3c2dc607dd1a0ce69a5da5371758a47792efb5ee6219208356fb84779a"
+      "sha256": "988b416f28d4036cf2ff840cc7e7ce6a19a683486e0e04874388d4643e6fd2f4"
     },
     {
       "path": "ConsolePort/Libs/External/LibActionButton-1.0/LibActionButton-1.0.lua",
@@ -34,7 +34,7 @@
     },
     {
       "path": "ConsolePort_Bar/Widget/Button/Button.lua",
-      "sha256": "b6eb305c489ca99d749fa20bc3d44f00778949f347acbb6680863db7550bd5d6"
+      "sha256": "48e0834c000efd08db58bfc0ff2bd22ec7fa7f8465b9f14cf5087b7a69be4de1"
     },
     {
       "path": "ConsolePort_Bar/Widget/Group/Group.lua",
@@ -147,6 +147,30 @@
     {
       "path": "ConsolePort_Config/View/Config/Config.lua",
       "sha256": "30a3c0d3e6c43554a23a7b054eebd06d8076c1f4ab01fdd096efc3ff0bcb2c13"
+    },
+    {
+      "path": "ConsolePort/Model/Data/Data.lua",
+      "sha256": "e7c1225e309ddbc882814c81862932646d174c827d4f57ceb7b3c877281825fb"
+    },
+    {
+      "path": "ConsolePort_Bar/Model/Interface.lua",
+      "sha256": "f913930aa30ecb6692f33fefd2a035c21fa5076bdb386d2e6ad5219d9a1dd9f0"
+    },
+    {
+      "path": "ConsolePort_Bar/Model/Upgrade.lua",
+      "sha256": "37b4fddc0d80d4e7d4c12a8e1420646c1c9d9a08998df52c3ba84b622d1a3076"
+    },
+    {
+      "path": "ConsolePort_Bar/View/Config/Loadout.lua",
+      "sha256": "c04ca63b93c606a53529874e6ce8f99496e1a945848a44523ca9e00eba8349ad"
+    },
+    {
+      "path": "ConsolePort_Bar/View/Pet/Petring.lua",
+      "sha256": "c69a8aa09d1505fd36295ddaa7edfe5948a136b0c0421e038f34ac11e2650ab6"
+    },
+    {
+      "path": "ConsolePort_Menu/Model/Buttons.lua",
+      "sha256": "a326eced153e89ec6e30b1dd1b64dacd357df47a84bcd90576b0ed3d0eb9f0d2"
     }
   ]
 }

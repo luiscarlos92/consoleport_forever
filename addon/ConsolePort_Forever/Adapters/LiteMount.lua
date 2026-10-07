@@ -11,7 +11,7 @@ function Mount.New(db,api)
 end
 function Mount:Probe()
     local api,bindings=self.api,self.db.Bindings
-    if not api.C_AddOns or api.C_AddOns.GetAddOnMetadata('ConsolePort','Version')~='3.3.9'
+    if not api.C_AddOns or api.C_AddOns.GetAddOnMetadata('ConsolePort','Version')~='3.3.10'
         or api.C_AddOns.GetAddOnMetadata('LiteMount','Version')~='12.1.0-1'
         or not api.C_AddOns.IsAddOnLoaded('LiteMount') then return false,'audited loaded LiteMount/ConsolePort required' end
     if not bindings or type(bindings.Icons)~='table' or type(bindings.GetIcon)~='function' or type(bindings.SetIcon)~='function' then return false,'native binding icon API not initialized' end

@@ -1,5 +1,5 @@
 {
-  "lockSHA256": "df98f120f865d3037f2f729a010e87cafeb82b0eb6bdabf9f22cd839ec495458",
+  "lockSHA256": "781e8946b8b727b950edd4ca8812b024d0f2536f5fb2f703941fb1e0789ce6d9",
   "discoveryComplete": true,
   "releaseNoticeReviewComplete": false,
   "packDistributionReady": false,
@@ -1256,10 +1256,48 @@
       "review": "Review main addon, bundled libraries and media terms independently; filename discovery does not grant redistribution rights."
     },
     {
+      "repo": "SLOKnightfall/BetterWardrobe",
+      "version": "6.12.3",
+      "officialRelease": "https://github.com/SLOKnightfall/BetterWardrobe/releases/tag/6.12.3",
+      "packageSHA256": "abcba6be5535c15a581721192a5c4865e05b568dbac52d79c108c89e6c763d8c",
+      "selectedFolders": [
+        "BetterWardrobe",
+        "BetterWardrobe_SourceData"
+      ],
+      "noticeFiles": [
+        {
+          "source": "BetterWardrobe/LICENSE",
+          "sha256": "d8e552e5c2e72d0d14ebcd953903a2b2da544eb68be07261a5680b8e2404b61d",
+          "copy": "evidence/dependencies/notices/SLOKnightfall__BetterWardrobe/BetterWardrobe/LICENSE"
+        }
+      ],
+      "embeddedNoticeSources": [
+        {
+          "source": "BetterWardrobe/Libs/LibAppropriateitems-1.0/LibAppropriateItems-1.0.toc",
+          "sha256": "f6992d036a13cb197bde6dd7f5224286c77cb11f534beea335b6b8e0dbf1bade"
+        },
+        {
+          "source": "BetterWardrobe/Libs/LibStub/LibStub.lua",
+          "sha256": "d34235c85f869505fdd9ef321d2420f69db7d2eb873d2b3bbf57584a314060fa"
+        },
+        {
+          "source": "BetterWardrobe/Libs/LibStub/LibStub.toc",
+          "sha256": "d6ef350c07edf6be550c586e32473776e310d212bf39962cafee04a8d415405f"
+        },
+        {
+          "source": "BetterWardrobe/Libs/TaintLess/TaintLess.xml",
+          "sha256": "e415de4f24485ed310ad8a2cb9a433bdebf138790845c02017a2b62aa6b0347f"
+        }
+      ],
+      "assemblyRequiredByCoverage": true,
+      "noticeFilesAbsent": false,
+      "review": "Review main addon, bundled libraries and media terms independently; filename discovery does not grant redistribution rights."
+    },
+    {
       "repo": "seblindfors/ConsolePort",
-      "version": "3.3.9",
-      "officialRelease": "https://github.com/seblindfors/ConsolePort/releases/tag/3.3.9",
-      "packageSHA256": "d9cd6ce097c7bbafc0963a527243fd36f8cc6d1d294785154bf1886f58dbc640",
+      "version": "3.3.10",
+      "officialRelease": "https://github.com/seblindfors/ConsolePort/releases/tag/3.3.10",
+      "packageSHA256": "6175a327b3b7505b6f1d79ef0adc96c7a65db3cc8220dd59e34de6658dbb4f49",
       "selectedFolders": [
         "ConsolePort",
         "ConsolePort_Bar",
@@ -1333,44 +1371,6 @@
         }
       ],
       "assemblyRequiredByCoverage": false,
-      "noticeFilesAbsent": false,
-      "review": "Review main addon, bundled libraries and media terms independently; filename discovery does not grant redistribution rights."
-    },
-    {
-      "repo": "SLOKnightfall/BetterWardrobe",
-      "version": "6.12.3",
-      "officialRelease": "https://github.com/SLOKnightfall/BetterWardrobe/releases/tag/6.12.3",
-      "packageSHA256": "abcba6be5535c15a581721192a5c4865e05b568dbac52d79c108c89e6c763d8c",
-      "selectedFolders": [
-        "BetterWardrobe",
-        "BetterWardrobe_SourceData"
-      ],
-      "noticeFiles": [
-        {
-          "source": "BetterWardrobe/LICENSE",
-          "sha256": "d8e552e5c2e72d0d14ebcd953903a2b2da544eb68be07261a5680b8e2404b61d",
-          "copy": "evidence/dependencies/notices/SLOKnightfall__BetterWardrobe/BetterWardrobe/LICENSE"
-        }
-      ],
-      "embeddedNoticeSources": [
-        {
-          "source": "BetterWardrobe/Libs/LibAppropriateitems-1.0/LibAppropriateItems-1.0.toc",
-          "sha256": "f6992d036a13cb197bde6dd7f5224286c77cb11f534beea335b6b8e0dbf1bade"
-        },
-        {
-          "source": "BetterWardrobe/Libs/LibStub/LibStub.lua",
-          "sha256": "d34235c85f869505fdd9ef321d2420f69db7d2eb873d2b3bbf57584a314060fa"
-        },
-        {
-          "source": "BetterWardrobe/Libs/LibStub/LibStub.toc",
-          "sha256": "d6ef350c07edf6be550c586e32473776e310d212bf39962cafee04a8d415405f"
-        },
-        {
-          "source": "BetterWardrobe/Libs/TaintLess/TaintLess.xml",
-          "sha256": "e415de4f24485ed310ad8a2cb9a433bdebf138790845c02017a2b62aa6b0347f"
-        }
-      ],
-      "assemblyRequiredByCoverage": true,
       "noticeFilesAbsent": false,
       "review": "Review main addon, bundled libraries and media terms independently; filename discovery does not grant redistribution rights."
     }

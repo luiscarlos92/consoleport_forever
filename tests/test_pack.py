@@ -29,7 +29,7 @@ def make_pack(scope, version='candidate', complete=True, dependency=None, retire
         'assemblyComplete': complete, 'addonFolders': ['A', 'ConsolePort_Forever'],
         'requiredAddonFolders': ['A', 'ConsolePort_Forever'], 'dependencyLockSHA256': 'b'*64,
         'compatibility': {'storeSchema': 3, 'configurationRevision': 11,
-            'dependencyVersions': {'ConsolePort': '3.3.9'}},
+            'dependencyVersions': {'ConsolePort': '3.3.10'}},
         'runtimeClosure': {'A': {'toc': 'A/A.toc', 'runtimeFiles': ['A/A.toc', 'A/Main.lua']},
             'ConsolePort_Forever': {'toc': 'ConsolePort_Forever/ConsolePort_Forever.toc',
                 'runtimeFiles': ['ConsolePort_Forever/ConsolePort_Forever.toc', 'ConsolePort_Forever/Main.lua']}}}
@@ -76,7 +76,7 @@ class PackDelivery(unittest.TestCase):
     def companion_game(self,scope):
         root=game(scope)
         (root/'Interface/AddOns/ConsolePort').mkdir()
-        (root/'Interface/AddOns/ConsolePort/ConsolePort.toc').write_bytes(b'## Interface: 120100\n## Version: 3.3.9\n')
+        (root/'Interface/AddOns/ConsolePort/ConsolePort.toc').write_bytes(b'## Interface: 120100\n## Version: 3.3.10\n')
         (root/'Interface/AddOns/DBM-Azeroth').mkdir()
         (root/'Interface/AddOns/DBM-Azeroth/DBM-Azeroth.toc').write_bytes(b'## Interface: 11509\n## ExcludeLoadGameType: standard\n')
         return root

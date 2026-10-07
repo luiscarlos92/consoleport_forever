@@ -19,7 +19,7 @@ function UI:Initialize(api)
     if api.InCombatLockdown() then return end
     if self.panel or not api.ConsolePortConfig or type(api.ConsolePortConfig.CreatePanel)~='function' then return end
     local bridge=Addon.adapters and Addon.adapters.consoleport
-    if not bridge or bridge.api.version~='3.3.9' then return end
+    if not bridge or bridge.api.version~='3.3.10' then return end
     local panel=api.ConsolePortConfig:CreatePanel({name='Targeting',description='Account-wide ground placement preferences'})
     self.panel=panel
     function panel:OnLoad() self:SetScript('OnShow',function() UI:Render(api) end) end

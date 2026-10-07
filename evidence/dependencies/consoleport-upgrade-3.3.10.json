@@ -1,0 +1,19 @@
+{
+  "from": "3.3.9",
+  "to": "3.3.10",
+  "packageSHA256": "6175a327b3b7505b6f1d79ef0adc96c7a65db3cc8220dd59e34de6658dbb4f49",
+  "changed": [
+    "ConsolePort/CHANGELOG.md",
+    "ConsolePort/ConsolePort.toc",
+    "ConsolePort/Controller/Layers.lua",
+    "ConsolePort/Model/Data/Data.lua",
+    "ConsolePort_Bar/Model/Interface.lua",
+    "ConsolePort_Bar/Model/Upgrade.lua",
+    "ConsolePort_Bar/View/Config/Loadout.lua",
+    "ConsolePort_Bar/View/Pet/Petring.lua",
+    "ConsolePort_Bar/Widget/Button/Button.lua",
+    "ConsolePort_Menu/Model/Buttons.lua"
+  ],
+  "added": [],
+  "removed": []
+}

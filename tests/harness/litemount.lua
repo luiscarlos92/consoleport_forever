@@ -8,7 +8,7 @@ db.Bindings=Bindings
 local version='12.1.0-1'
 local api={InCombatLockdown=function() return combat end,
     C_AddOns={IsAddOnLoaded=function() return true end,GetAddOnMetadata=function(name,key)
-        if name=='ConsolePort' then return '3.3.9' end
+        if name=='ConsolePort' then return '3.3.10' end
         if key=='Version' then return version elseif key=='IconTexture' then return '132247' end
     end},LM_B1={GetName=function() return 'LM_B1' end},LM_B2={GetName=function() return 'LM_B2' end}}
 local adapter=assert(Addon.LiteMountAdapter.New(db,api))

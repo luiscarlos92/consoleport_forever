@@ -20,6 +20,7 @@ local function region()
     function r:SetVertexColor(...) self.tint={...} end
     function r:SetDesaturated(value) self.desaturated=value end
     function r:SetSwipeColor(...) self.swipe={...} end
+    function r:SetAlpha(value) self.alpha=value end
     return r
 end
 local Frame={}
@@ -30,6 +31,11 @@ unpack=table.unpack
 local function SpellVFX_ClearReticle() end
 local function UpdateCooldown(button) button.cooldownUpdates=(button.cooldownUpdates or 0)+1 end
 --@NATIVE_AVAILABILITY
+local UNBOUND_GLYPH_ALPHA=0.5
+local db=setmetatable({Gamepad={UseAtlasIcons=false}},{__call=function() return 'native-pad-glyph' end})
+CPAPI=CPAPI or {}
+CPAPI.SetTextureOrAtlas=function(obj,data) obj:SetTexture(data[1]) end
+--@NATIVE_UNBOUND_GLYPH
 function Frame:RegisterEvent() end function Frame:SetScript(key,fn) self[key]=fn end
 function Frame:SetSize() end function Frame:SetPoint() end function Frame:ClearAllPoints() end
 function Frame:SetParent(parent) self.parent=parent end function Frame:GetParent() return self.parent end
@@ -65,7 +71,7 @@ function env:Acquire(kind,name,id,bank) assert(kind==GROUP_BUTTON) return makeBu
 --@NATIVE_GROUP_SKIN_LIFECYCLE
 local Manager={bindingSnapshot={PAD1={['']='JUMP',['SHIFT-']='INTERACTTARGET'},PAD2={['']=''},PAD3={['']='INTERACTTARGET'},PAD4={['']='TURNORACTION'}}}
 --@NATIVE_MANAGER_BINDINGS
-Addon.adapters={consoleport={api={version='3.3.9'},bar={Manager=Manager}}}
+Addon.adapters={consoleport={api={version='3.3.10'},bar={Manager=Manager}}}
 C_Spell={GetSpellTexture=function(id) assert(id==6603) return 6603 end}
 function UnitExists() return false end
 local function makeBank(id,name)
@@ -91,6 +97,16 @@ for _,id in ipairs({'Base','L2','R2','L2R2'}) do
     end
 end
 local base=ConsolePortGroupBase
+local unbound=base.buttons.PAD4
+Manager.bindingSnapshot.PAD4={['']=''}
+local reset=ProxyButtonTextureProvider('PAD4',true)(unbound.icon)
+unbound:UpdateLocal()
+assert(unbound.icon.desaturated==true and unbound.icon.alpha==.5,'legitimate unbound glyph state erased')
+reset(unbound.icon) assert(unbound.icon.desaturated==false and unbound.icon.alpha==1)
+Manager.bindingSnapshot.PAD4={['']='TURNORACTION'}
+local exit=base.buttons.PAD2
+ProxyButtonTextureProvider('PAD2',true)(exit.icon) exit:UpdateLocal()
+assert(exit.icon.atlas=='128-redbutton-exit' and exit.icon.desaturated==false and exit.icon.alpha==1,'decorated Exit retained native unbound dimming')
 local jump=base.buttons.PAD1
 assert(jump.icon.texture:find('ForeverInGame',1,true))
 jump.attributes.state='SHIFT-' jump:UpdateLocal() assert(jump.icon.texture==6603,'display ignored the resolved native state')

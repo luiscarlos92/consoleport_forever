@@ -174,7 +174,7 @@ end
 function db.TargetRing:GetHoveredUnit() return 'party1' end
 function db.TargetRing:CloseAssist() self.shown=false end
 local manager=frame()
-local bridge={db=db,api={version='3.3.9'},bar={Layout={children={}},Manager=manager},Probe=function() return true end}
+local bridge={db=db,api={version='3.3.10'},bar={Layout={children={}},Manager=manager},Probe=function() return true end}
 function manager:GetBindings(key) return {['']=1,['SHIFT-']=2,['CTRL-']=3,['CTRL-SHIFT-']=61} end
 -- Manager owns a distinct managed environment, as it does in Retail.
 local managerEnvironment={ring=db.TargetRing,cursor=db.Raid,pager={GetSpellID=function(_,slot) return select(2,GetActionInfo(slot)) end}}

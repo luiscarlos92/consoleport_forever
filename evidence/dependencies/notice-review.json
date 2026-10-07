@@ -1,6 +1,6 @@
 {
-  "lockSHA256": "df98f120f865d3037f2f729a010e87cafeb82b0eb6bdabf9f22cd839ec495458",
-  "noticeInventorySHA256": "fb9a021dafd83caa8b4c215692b174d6f73df68713dfa054e32db8980e183e2c",
+  "lockSHA256": "781e8946b8b727b950edd4ca8812b024d0f2536f5fb2f703941fb1e0789ce6d9",
+  "noticeInventorySHA256": "07b037b070595bdf09a9c2d2a6a0ec8f80e1cc8106bec32c53622579a4ab8880",
   "localPersonalAssemblyReviewComplete": true,
   "publicRedistributionApproved": false,
   "scope": "All third-party dependencies use official-source local assembly. This inventory is not a license grant or approval to publish dependency code or media.",
@@ -2092,10 +2092,61 @@
       "publicRedistributionApproved": false
     },
     {
+      "repo": "SLOKnightfall/BetterWardrobe",
+      "version": "6.12.3",
+      "mainTerms": "All Rights Reserved on official CurseForge project; bundled library terms retained independently",
+      "officialRelease": "https://github.com/SLOKnightfall/BetterWardrobe/releases/tag/6.12.3",
+      "noticeFiles": [
+        {
+          "source": "BetterWardrobe/LICENSE",
+          "sha256": "d8e552e5c2e72d0d14ebcd953903a2b2da544eb68be07261a5680b8e2404b61d",
+          "copy": "evidence/dependencies/notices/SLOKnightfall__BetterWardrobe/BetterWardrobe/LICENSE"
+        }
+      ],
+      "embeddedNoticeSources": [
+        {
+          "source": "BetterWardrobe/Libs/LibAppropriateitems-1.0/LibAppropriateItems-1.0.toc",
+          "sha256": "f6992d036a13cb197bde6dd7f5224286c77cb11f534beea335b6b8e0dbf1bade",
+          "declarations": [
+            "## X-License: BSD\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "BetterWardrobe/Libs/LibStub/LibStub.lua",
+          "sha256": "d34235c85f869505fdd9ef321d2420f69db7d2eb873d2b3bbf57584a314060fa",
+          "declarations": [
+            "-- LibStub is hereby placed in the Public Domain\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "BetterWardrobe/Libs/LibStub/LibStub.toc",
+          "sha256": "d6ef350c07edf6be550c586e32473776e310d212bf39962cafee04a8d415405f",
+          "declarations": [
+            "## X-License: Public Domain\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "BetterWardrobe/Libs/TaintLess/TaintLess.xml",
+          "sha256": "e415de4f24485ed310ad8a2cb9a433bdebf138790845c02017a2b62aa6b0347f",
+          "declarations": [
+            "All rights reserved.\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        }
+      ],
+      "standaloneNoticeAbsent": false,
+      "supplemental": [],
+      "assembly": "Fetch exact official package for this user and retain all original source/media/notice bytes.",
+      "publicRedistributionApproved": false
+    },
+    {
       "repo": "seblindfors/ConsolePort",
-      "version": "3.3.9",
+      "version": "3.3.10",
       "mainTerms": "Artistic-2.0",
-      "officialRelease": "https://github.com/seblindfors/ConsolePort/releases/tag/3.3.9",
+      "officialRelease": "https://github.com/seblindfors/ConsolePort/releases/tag/3.3.10",
       "noticeFiles": [
         {
           "source": "ConsolePort/LICENSE.md",
@@ -2220,57 +2271,6 @@
           "sha256": "2c0ab83dc70fa01f4d5184a748ae9ddfa4315bf8b2d3a9ce56e37e1e65b75ed2",
           "declarations": [
             "This library includes code from [luaqrcode](https://github.com/speedata/luaqrcode), licensed under the 3-clause BSD license.\r"
-          ],
-          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
-        }
-      ],
-      "standaloneNoticeAbsent": false,
-      "supplemental": [],
-      "assembly": "Fetch exact official package for this user and retain all original source/media/notice bytes.",
-      "publicRedistributionApproved": false
-    },
-    {
-      "repo": "SLOKnightfall/BetterWardrobe",
-      "version": "6.12.3",
-      "mainTerms": "All Rights Reserved on official CurseForge project; bundled library terms retained independently",
-      "officialRelease": "https://github.com/SLOKnightfall/BetterWardrobe/releases/tag/6.12.3",
-      "noticeFiles": [
-        {
-          "source": "BetterWardrobe/LICENSE",
-          "sha256": "d8e552e5c2e72d0d14ebcd953903a2b2da544eb68be07261a5680b8e2404b61d",
-          "copy": "evidence/dependencies/notices/SLOKnightfall__BetterWardrobe/BetterWardrobe/LICENSE"
-        }
-      ],
-      "embeddedNoticeSources": [
-        {
-          "source": "BetterWardrobe/Libs/LibAppropriateitems-1.0/LibAppropriateItems-1.0.toc",
-          "sha256": "f6992d036a13cb197bde6dd7f5224286c77cb11f534beea335b6b8e0dbf1bade",
-          "declarations": [
-            "## X-License: BSD\r"
-          ],
-          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
-        },
-        {
-          "source": "BetterWardrobe/Libs/LibStub/LibStub.lua",
-          "sha256": "d34235c85f869505fdd9ef321d2420f69db7d2eb873d2b3bbf57584a314060fa",
-          "declarations": [
-            "-- LibStub is hereby placed in the Public Domain\r"
-          ],
-          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
-        },
-        {
-          "source": "BetterWardrobe/Libs/LibStub/LibStub.toc",
-          "sha256": "d6ef350c07edf6be550c586e32473776e310d212bf39962cafee04a8d415405f",
-          "declarations": [
-            "## X-License: Public Domain\r"
-          ],
-          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
-        },
-        {
-          "source": "BetterWardrobe/Libs/TaintLess/TaintLess.xml",
-          "sha256": "e415de4f24485ed310ad8a2cb9a433bdebf138790845c02017a2b62aa6b0347f",
-          "declarations": [
-            "All rights reserved.\r"
           ],
           "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
         }

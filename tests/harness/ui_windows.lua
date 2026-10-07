@@ -52,7 +52,7 @@ assert(nativeStack.Registry.ConsolePort_Cursor.ConsolePortForeverTemporaryAccess
 for _,visibleFrame in ipairs({nativeStack:GetVisibleCursorFrames()}) do
     assert(visibleFrame~=supplemental,'persisted supplemental registration survived native cleanup')
 end
-contexts:Enable({db=db,api={version='3.3.9'}},api,true,true)
+contexts:Enable({db=db,api={version='3.3.10'}},api,true,true)
 cursor:SetCurrentNode(parent)
 paneA:Show() paneB:Show() flushWindows()
 -- Native face rows cover all modifier variants. The bare directional route
@@ -172,19 +172,19 @@ assert(cursor:GetCurrentNode()==leafA,'combat release changed window focus')
 combat=false contexts:Refresh()
 leafA:Hide() assert(not contexts.context,'hidden focused leaf kept a window owner')
 leafA:Show() assert(contexts.context.kind=='window')
-assert(contexts:Enable({db=db,api={version='3.3.9'}},api,false))
+assert(contexts:Enable({db=db,api={version='3.3.10'}},api,false))
 -- The extra ability is an ordinary native binding, not a temporary bank.
 -- The real Layers resolver must restore it after UI R3 ownership ends.
 local extraOwner=CreateFrame('Frame','ExtraBindingOwner',UIParent)
 assert(db.Layers:Claim(extraOwner,'BASE','SHIFT-PADRSTICK','binding','EXTRAACTIONBUTTON1'))
 cursor:Hide()
-assert(contexts:Enable({db=db,api={version='3.3.9'}},api,true,true,true))
+assert(contexts:Enable({db=db,api={version='3.3.10'}},api,true,true,true))
 assert(GetBindingAction('SHIFT-PADRSTICK',true)=='EXTRAACTIONBUTTON1','ordinary extra-action chord was consumed')
 cursor:Show() cursor:SetCurrentNode(leafA)
 assert(GetBindingAction('SHIFT-PADRSTICK',true)~='EXTRAACTIONBUTTON1','focused UI leaked extra-action gameplay')
 cursor:Hide()
 assert(GetBindingAction('SHIFT-PADRSTICK',true)=='EXTRAACTIONBUTTON1','closing UI did not restore extra-action chord')
-assert(contexts:Enable({db=db,api={version='3.3.9'}},api,false))
+assert(contexts:Enable({db=db,api={version='3.3.10'}},api,false))
 assert(db.Layers:Release(extraOwner,'SHIFT-PADRSTICK'))
 cursor:Show()
 TEST_SUCCESS=true

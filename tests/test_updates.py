@@ -30,7 +30,7 @@ class ScopedUpdates(unittest.TestCase):
     def tree(self,scope):
         root=game(scope)
         (root/'Interface/AddOns/ConsolePort').mkdir()
-        (root/'Interface/AddOns/ConsolePort/ConsolePort.toc').write_text('## Version: 3.3.9\n')
+        (root/'Interface/AddOns/ConsolePort/ConsolePort.toc').write_text('## Version: 3.3.10\n')
         return GameTree(root,simulation=True,process_check=lambda:False)
 
     def pack(self,scope,new_folder=False):

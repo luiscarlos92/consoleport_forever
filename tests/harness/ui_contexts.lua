@@ -315,7 +315,7 @@ end
 dialogs={popup}
 local contexts=Addon.UIContexts
 contexts.input=bridge
-assert(contexts:Enable({db=db,api={version='3.3.9'}},api,true))
+assert(contexts:Enable({db=db,api={version='3.3.10'}},api,true))
 assert(not contexts.context,'visible nonfocused popup stole input')
 cursor:SetCurrentNode(target)
 assert(contexts.context.kind=='popup')
@@ -365,7 +365,7 @@ cursor:SetCurrentNode(target) assert(contexts.context.kind=='popup','parent popu
 stack:Show() cursor:SetCurrentNode(stack.CancelButton)
 press(input.Widgets.PAD2,true) press(input.Widgets.PAD2,false)
 assert(amount==1 and not stack:IsShown(),'native cancel changed the selected amount')
-assert(contexts:Enable({db=db,api={version='3.3.9'}},api,false))
+assert(contexts:Enable({db=db,api={version='3.3.10'}},api,false))
 -- A partially rejected native update releases all installed CPF rows.
 contexts.enabled=true cursor:SetCurrentNode(target)
 local originalSetButton=input.SetButton
@@ -380,5 +380,5 @@ end
 assert(Addon.Diagnostics.features.uiContexts.status=='recovery-required')
 input.SetButton=originalSetButton
 assert(contexts:Refresh(true))
-assert(contexts:Enable({db=db,api={version='3.3.9'}},api,false))
+assert(contexts:Enable({db=db,api={version='3.3.10'}},api,false))
 TEST_SUCCESS=true

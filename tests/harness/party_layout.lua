@@ -137,7 +137,7 @@ local originalProbe=Addon.SecureModes.Probe
 Addon.SecureModes.Probe=function() return false,'test main banks unavailable' end
 Addon.PROFILE_NAME='CPF managed'
 local runtimeAPI={InCombatLockdown=function() return false end,GetCVarDefault=function() return nil end}
-local bridge={api={version='3.3.9'},db={},read=function() return {children={}} end}
+local bridge={api={version='3.3.10'},db={},read=function() return {children={}} end}
 local fields=Addon.RuntimeSetup.Fields(account,'G',{consoleport=bridge,editmode=adapter,integrationReasons={},
     bindings={read=function() return {keys={},set=2} end,native={api={CharacterSet=2}}}},runtimeAPI,13)
 local field

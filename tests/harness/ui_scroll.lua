@@ -57,7 +57,7 @@ for _,frame in ipairs({scrollA,scrollB}) do
     frame:SetScrollPercentage(.5) frame:SetScript('OnMouseWheel',frame.OnMouseWheel)
 end
 leafA.parent=scrollA leafB.parent=scrollB
-contexts:Enable({db=db,api={version='3.3.9'}},api,true,true)
+contexts:Enable({db=db,api={version='3.3.10'}},api,true,true)
 cursor:SetCurrentNode(leafA)
 local axis=contexts.scroll
 assert(axis.owned and nativeDispatcher.focusFrame==axis.frame and not cursorControl)
@@ -113,6 +113,6 @@ combat=false contexts:Refresh()
 -- Unrecognized/protected wheel scripts are consumed without being called.
 scrollA:SetScript('OnMouseWheel',function() error('arbitrary wheel callback') end)
 contexts:Refresh() stick(0,0) stick(-1,1) tick(1) assert(axis.target==nil)
-assert(contexts:Enable({db=db,api={version='3.3.9'}},api,false))
+assert(contexts:Enable({db=db,api={version='3.3.10'}},api,false))
 assert(not axis.owned and not axis.direction)
 TEST_SUCCESS=true

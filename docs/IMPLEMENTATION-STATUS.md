@@ -1,5 +1,17 @@
 # Implementation checkpoint — October 4, 2026
 
+**Authorized deployment preparation — October 7, 2026:** The user requested
+installation, followed by their own manual testing. The new fresh stable check
+found ConsolePort 3.3.10. Its ten changed official files introduce blocked-chord
+aliases, unbound glyph dimming, tolerant layout upgrade, rename and multiple pet
+rings; no official files were added/removed. Current contracts are pinned and
+new native-source tests cover those relevant paths. Forever preserves deliberate
+unbound dimming and restores full opacity/color only for its meaningful custom
+art; castable spell availability fixes remain. All six exact-version guards now
+qualify 3.3.10. All 39 runtime/source suites and 33 tooling tests pass; package/guarded
+deployment are the remaining gates.
+The other 18 dependencies, DBM enable state and live WTF remain untouched.
+
 **Current unshipped refinement — October 7, 2026:** Same candidate.6/revision 13.
 Account-wide per-ability cursor/player/manual preferences and the native
 ConsolePort Targeting tab are implemented, with current-class filtering and

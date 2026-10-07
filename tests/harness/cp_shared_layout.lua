@@ -1,4 +1,4 @@
--- Native 3.3.9 data-source selection plus the actual companion adapter.
+-- Native 3.3.10 data-source selection plus the actual companion adapter.
 local C=Addon.Core
 local callbacks={}
 local db={Settings={},Layers={}}
@@ -28,7 +28,7 @@ CPAPI={Proxy=function(value) return value end}
 --@NATIVE_BAR_DATA
 --@NATIVE_APPLY_PRESET
 local function adapter()
-    return Addon.ConsolePortAdapter.New({version='3.3.9',getDB=function() return db end,
+    return Addon.ConsolePortAdapter.New({version='3.3.10',getDB=function() return db end,
         getBar=function() return env end,inCombat=function() return false end})
 end
 ConsolePort_BarDB={custom='personal'}

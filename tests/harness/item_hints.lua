@@ -54,7 +54,7 @@ local merchantButton=CreateFrame('Button','MerchantItem1ItemButton',merchantRow)
 merchantRow.ItemButton=merchantButton merchantButton:SetID(1)
 MerchantItemButton_OnLoad(merchantButton)
 merchantButton:SetScript('OnClick',MerchantItemButton_OnClick)
-assert(contexts:Enable({db=db,api={version='3.3.9'}},api,true,true,true))
+assert(contexts:Enable({db=db,api={version='3.3.10'}},api,true,true,true))
 assert(#posts==1 and #pres==1)
 cursor:Show() MerchantFrame:Show() cursor:SetCurrentNode(merchantButton)
 MerchantFrame.selectedTab=1 MerchantItemButton_OnEnter(merchantButton)
@@ -106,7 +106,7 @@ settings['Settings/UICursorRightClick']='PAD4'
 tooltipItem(item.button,{api.ITEM_OPENABLE})
 assert(rendered[1]==hintDevice:GetTooltipButtonPrompt('PAD4','Open',64),'remapped button kept a stale Square hint')
 settings['Settings/UICursorRightClick']='PAD3'
-assert(contexts:Enable({db=db,api={version='3.3.9'}},api,false))
+assert(contexts:Enable({db=db,api={version='3.3.10'}},api,false))
 tooltipItem(item.button,{api.ITEM_OPENABLE})
 assert(rendered[1]==api.ITEM_OPENABLE and #rendered==1,'disabled policy kept custom hints')
 TEST_SUCCESS=true

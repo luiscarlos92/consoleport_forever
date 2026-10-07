@@ -6,6 +6,11 @@ local function Public(value) return not (issecretvalue and issecretvalue(value))
 local function Availability(button)
     if not Addon.IsCharacterInstalled or not Addon:IsCharacterInstalled() then return end
     if not button.icon or not button.icon.SetDesaturated then return end
+    if button._state_type=='custom' then
+        local binding=Addon:ResolvedPresentationBinding(button)
+        local exit=binding=='' and button:GetParent().id=='Base' and button.id=='PAD2'
+        if not exit and binding~='JUMP' and binding~='INTERACTTARGET' and binding~='TURNORACTION' then return end
+    end
     -- LAB sets this true for a party-sync lock but its quick usability update
     -- never clears it on unlock. Preserve its native range/resource tint.
     local locked=false
@@ -40,7 +45,7 @@ end
 function Addon:ResolvedPresentationBinding(button)
     if button._state_type~='custom' or not button.GetAttribute or button:GetAttribute('cpf-held') then return end
     local bridge=self.adapters and self.adapters.consoleport
-    if not bridge or bridge.api.version~='3.3.9' then return end
+    if not bridge or bridge.api.version~='3.3.10' then return end
     local manager=bridge.bar and bridge.bar.Manager
     if not manager or type(manager.GetBindings)~='function' then return end
     local state=button:GetAttribute('state')
@@ -59,6 +64,8 @@ local function BaseIcon(button)
     elseif binding=='INTERACTTARGET' then button.icon:SetTexture(C_Spell.GetSpellTexture(6603))
     elseif binding=='TURNORACTION' then button.icon:SetAtlas(UnitExists('target') and 'crosshair_inspect_32' or 'crosshair_unableinspect_32')
     else return end
+    button.icon:SetDesaturated(false)
+    if button.icon.SetAlpha then button.icon:SetAlpha(1) end
     button.icon:Show()
 end
 

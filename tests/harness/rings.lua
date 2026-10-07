@@ -58,7 +58,7 @@ else
 end
 local sharedBefore=Core.Copy(container.Shared)
 local function adapter(guid)
-    return Bridge.New({version='3.3.9',getEnv=function() return env end,getDB=function() return db end,
+    return Bridge.New({version='3.3.10',getEnv=function() return env end,getDB=function() return db end,
         inCombat=function() return combat end,currentGUID=function() return currentGUID end,defaultSet=1,classSet='Auras'},account,guid)
 end
 db.Rings=container

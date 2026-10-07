@@ -39,10 +39,11 @@ immutable original reference to add later dependencies. See
 
 ## Deployments
 
-- Deploy only with explicit user authorization and WoW closed. Current instruction
-  is to prepare the refined candidate.6, **do not deploy until the user says so**,
-  even if WoW later closes. Preserve the earlier candidate.6 ZIP/receipt; use the
-  scoped builder's `--label targeting-options` for the same-version refinement.
+- Deploy only with explicit user authorization and WoW closed. Current user instruction
+  authorizes candidate.6 deployment followed by manual testing. The fresh release
+  check found ConsolePort 3.3.10: qualify/test it and include only its changed
+  package plus Forever. Preserve earlier candidate.6 ZIPs/receipts; use
+  `--label cp-3-3-10` for this same-version scoped update.
 - DBM is deliberately disabled for now. Preserve its game/user-owned enable
   state and existing files; do not enable/reconfigure it or include DBM bytes in
   the prepared update. This supersedes older DBM keep/reship instructions.

@@ -1,5 +1,19 @@
 # ConsolePort Forever: master plan, decisions, and project history
 
+## Current deployment authority — October 7, 2026
+
+The user now explicitly authorized deployment: "let's deploy, I'll manually test
+after". This supersedes the previous no-deploy boundary. WoW must remain closed
+for the scoped installer. Fresh official stable checks found ConsolePort 3.3.10;
+only that package was downloaded/qualified in the checkout. The other 18 versions
+remain unchanged. Include Forever plus the complete selected official ConsolePort
+folders; no unchanged dependency or DBM bytes. Keep DBM disabled/user owned and
+never write live WTF. Keep all earlier candidate.6 ZIPs/receipts unchanged.
+
+Review/test current 3.3.10 contracts, commit/push, build a labeled scoped update,
+preview, then execute that exact verified package. Candidate.6, StoreSchema 3
+and reviewed revision 13 remain the first-deployment version/configuration.
+
 ## Current authority — October 7, 2026
 
 Candidate.6 remains unshipped. The user authorized refining the same version:

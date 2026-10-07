@@ -1,0 +1,2934 @@
+{
+  "addonFolders": [
+    "ConsolePort_Forever",
+    "ConsolePort",
+    "ConsolePort_Bar",
+    "ConsolePort_Config",
+    "ConsolePort_Cursor",
+    "ConsolePort_Keyboard",
+    "ConsolePort_Menu",
+    "ConsolePort_Rings",
+    "ConsolePort_Target",
+    "ConsolePort_World"
+  ],
+  "backup": "C:\\Users\\luisr\\WoW-Backups\\ConsolePort-Forever\\20261007T180759Z-1c3cd2fcb9c3",
+  "characterLinkCount": 42,
+  "closedAt": "2026-10-07T18:09:14.834948+00:00",
+  "currentConfigurationWrites": false,
+  "dependencyUpdates": [
+    "seblindfors/ConsolePort"
+  ],
+  "execute": true,
+  "id": "20261007T180759Z-1c3cd2fcb9c3",
+  "installedAddons": {
+    "ConsolePort": {
+      "directories": [
+        "Assets",
+        "Assets/Art",
+        "Assets/Art/Background",
+        "Assets/Art/Class",
+        "Assets/Icons",
+        "Assets/Icons/32",
+        "Assets/Icons/64",
+        "Assets/Splash",
+        "Assets/Splash/Gamepad",
+        "Assets/Textures",
+        "Assets/Textures/Atlas",
+        "Assets/Textures/Button",
+        "Assets/Textures/Cooldown",
+        "Assets/Textures/Cursor",
+        "Assets/Textures/Frame",
+        "Assets/Textures/Glow",
+        "Assets/Textures/Logo",
+        "Assets/Textures/Menu",
+        "Assets/Textures/Pie",
+        "Assets/Tutorial",
+        "Controller",
+        "Libs",
+        "Libs/External",
+        "Libs/External/CallbackHandler-1.0",
+        "Libs/External/ConsolePortNode",
+        "Libs/External/LibActionButton-1.0",
+        "Libs/External/LibButtonGlow-1.0",
+        "Libs/External/LibStub",
+        "Libs/External/RelaTable",
+        "Libs/Local",
+        "Locale",
+        "Model",
+        "Model/Data",
+        "Model/Game",
+        "Model/Gamepad",
+        "Utils",
+        "View",
+        "View/Cursors",
+        "View/Pie",
+        "View/PowerLevel",
+        "View/UIHandle",
+        "Widget",
+        "Widget/HintBar",
+        "Widget/PieMenu",
+        "Widget/Popup",
+        "XML",
+        "XML/Frames",
+        "XML/Templates"
+      ],
+      "files": {
+        "API.lua": {
+          "bytes": 10679,
+          "sha256": "fde3f6fc2ed9d66ca9b42ce1834d8c5a86163a6d53beae061ce21f5d59947b84"
+        },
+        "Assets/Art/Background/DeathKnight.jpg": {
+          "bytes": 692251,
+          "sha256": "e5d7936b19766e416261bb0271c3936a374b5357f80f3b0fa33487bca63935e3"
+        },
+        "Assets/Art/Background/DemonHunter.jpg": {
+          "bytes": 693362,
+          "sha256": "c16e016594fcd51347b8dcaaf1372bc2b1b6829fc3aae66cac8b592f19fd5651"
+        },
+        "Assets/Art/Background/Druid.jpg": {
+          "bytes": 903921,
+          "sha256": "92c0479bdffc62bb199c013447dda15231f0bc879e747422aab90695af5201fa"
+        },
+        "Assets/Art/Background/Evoker.jpg": {
+          "bytes": 694375,
+          "sha256": "def5a67969794da25bfb23b63669ba158c9beb0dc40442ab62c2ac6b42e69361"
+        },
+        "Assets/Art/Background/Hunter.jpg": {
+          "bytes": 783000,
+          "sha256": "55269a8eedf9437ff39d916b8a1751a9425ae2ec0075d55aea2428dcc7661068"
+        },
+        "Assets/Art/Background/Mage.jpg": {
+          "bytes": 1032753,
+          "sha256": "78ef375d2facd2ddea278538cdc18be73c683482f901f2f8fa0bdb228d84dc48"
+        },
+        "Assets/Art/Background/Monk.jpg": {
+          "bytes": 1281471,
+          "sha256": "4f7be5e0feccce6668b918549ccfb8617c6643bed660a2569990c606ad13a45d"
+        },
+        "Assets/Art/Background/Paladin.jpg": {
+          "bytes": 820030,
+          "sha256": "79202905155f2639d3e8eaf31e7f9279dd5e878a4d2969cbd3568cc52632c02e"
+        },
+        "Assets/Art/Background/Priest.jpg": {
+          "bytes": 853978,
+          "sha256": "08e2a25cfa9e7cc5a2d2c05c935a13cff7ea4acd4382a9257e8652c870cacf39"
+        },
+        "Assets/Art/Background/Rogue.jpg": {
+          "bytes": 842252,
+          "sha256": "1c8a6910a2a6d8f44d738763442624c9092a537319bdca0ae33033f1ea3d0a7f"
+        },
+        "Assets/Art/Background/Shaman.jpg": {
+          "bytes": 934282,
+          "sha256": "e643fd14569ac9d017099f212cd6f6e91bb5c9fc59ebcc0fdd1da6039bebb1d9"
+        },
+        "Assets/Art/Background/Warlock.jpg": {
+          "bytes": 779930,
+          "sha256": "414067ead8591a0e92c0155ff784b4e0d309108a89c0ab03b6f7ed8ef0adf7e9"
+        },
+        "Assets/Art/Background/Warrior.jpg": {
+          "bytes": 723297,
+          "sha256": "6e334a0e2ac077c6835d26ebc3458ba4a5ee69473e87a17a25b78a8a277f0db1"
+        },
+        "Assets/Art/Class/Web_Class_Icons_Grid.blp": {
+          "bytes": 350724,
+          "sha256": "5050a5e9ba9cf010690565f12549b0be2a4455351f4e8e4e1712dbbda1f29f47"
+        },
+        "Assets/Icons/32/all_g_left.blp": {
+          "bytes": 2564,
+          "sha256": "117f69de4a8cd7b86614c77d2acd375a23403803dcd8cd0b7aa2ad7beef28647"
+        },
+        "Assets/Icons/32/all_g_right.blp": {
+          "bytes": 2564,
+          "sha256": "3d272c048b224ffb046f9b68e6f146ffc7ad666b1e79c8202ffb2c794d60dcd7"
+        },
+        "Assets/Icons/32/all_l_down.blp": {
+          "bytes": 2564,
+          "sha256": "b038482d20b4e75bee27e1985640c846b3ece674af5210dd98c3c1326a83186e"
+        },
+        "Assets/Icons/32/all_l_left.blp": {
+          "bytes": 2564,
+          "sha256": "27f24d89fbeff0bf755a198abbeb9df306008656145a9fd5c263b93d8481d2fa"
+        },
+        "Assets/Icons/32/all_l_right.blp": {
+          "bytes": 2564,
+          "sha256": "2b261e340ddd2655436592574628520051d22be2b17d5071e4212b37e97eafb0"
+        },
+        "Assets/Icons/32/all_l_up.blp": {
+          "bytes": 2564,
+          "sha256": "79d48d6f647babaa2c2468ea285b854bc0da783c4dc7677d14070022686a8b15"
+        },
+        "Assets/Icons/32/all_missing.blp": {
+          "bytes": 2564,
+          "sha256": "4393a099f4151ac3ab0395e4775eb77d040f6aad44522e83fd15c3bbda968e1c"
+        },
+        "Assets/Icons/32/ps_c_back.blp": {
+          "bytes": 2564,
+          "sha256": "8f2bf36bf3909b9c1059006c33bdd2e144ae2f028726731851f8faccac158850"
+        },
+        "Assets/Icons/32/ps_c_back2.blp": {
+          "bytes": 2564,
+          "sha256": "919c7d26fdd4cc71ec89a19577dd9a7a163aad5ef5168d5a39252e55a5eedf43"
+        },
+        "Assets/Icons/32/ps_c_options.blp": {
+          "bytes": 2564,
+          "sha256": "7cd64fea22ef49aa81e45c09b20bd468514d416d4ad0adcb40946cd52c3f08a6"
+        },
+        "Assets/Icons/32/ps_c_share.blp": {
+          "bytes": 2564,
+          "sha256": "329ed3ca3768eb988861513179e8ba84153eb1aada4c1ba6438d09c5c45f7f5e"
+        },
+        "Assets/Icons/32/ps_c_system.blp": {
+          "bytes": 2564,
+          "sha256": "fd2c1607b5a105c04065689afda26eafa0612d05c9b320642008bab88b4fd5f1"
+        },
+        "Assets/Icons/32/ps_r_circle.blp": {
+          "bytes": 2564,
+          "sha256": "3317adc196a1793d206a33b7fdc58861227b0a47b4b790bd021635f294b915ec"
+        },
+        "Assets/Icons/32/ps_r_cross.blp": {
+          "bytes": 2564,
+          "sha256": "9b491f23ae97a067cc65a822077b31388f13e27f22a84cc20454a99d47fe3d3e"
+        },
+        "Assets/Icons/32/ps_r_square.blp": {
+          "bytes": 2564,
+          "sha256": "907fd4c8098661aea3f03ac5306465db282cba40879051a6c12df1b555d30811"
+        },
+        "Assets/Icons/32/ps_r_triangle.blp": {
+          "bytes": 2564,
+          "sha256": "cff87c96691982d317983704079020a7f7f7caba5dcb2b2c31358c757006239f"
+        },
+        "Assets/Icons/32/ps_s_l1.blp": {
+          "bytes": 2564,
+          "sha256": "4652baf8717d4a905a077e3ba201e1fb938fe1330e6e1e2584188819ce0813fe"
+        },
+        "Assets/Icons/32/ps_s_l2.blp": {
+          "bytes": 2564,
+          "sha256": "dc65b5a9be43e4ca0a01775ceff4428fa61aef07e3d4f62ca14786c6bbd1ddec"
+        },
+        "Assets/Icons/32/ps_s_l3.blp": {
+          "bytes": 2564,
+          "sha256": "e27d83620d5f5356b685d952547ccd49b9605aabfe3a985437ddb1cb44ddba61"
+        },
+        "Assets/Icons/32/ps_s_r1.blp": {
+          "bytes": 2564,
+          "sha256": "f159397770778fc99913420653bad2de72803e4086bee142065b7d8b55f14b48"
+        },
+        "Assets/Icons/32/ps_s_r2.blp": {
+          "bytes": 2564,
+          "sha256": "40de63e5cdfbb21581abd18312def7bbb41c3a544efd2d2bacc5158db314d28f"
+        },
+        "Assets/Icons/32/ps_s_r3.blp": {
+          "bytes": 2564,
+          "sha256": "dc731dc8ef835d7df0d324d678b88546516315b307bfd92d9d61c4c51ed70af9"
+        },
+        "Assets/Icons/32/switch_c_back.blp": {
+          "bytes": 2564,
+          "sha256": "e9fb13f889abd34a737e1a24c3b7fadc92639c7938793928a5e2aa43725575cc"
+        },
+        "Assets/Icons/32/switch_c_forward.blp": {
+          "bytes": 2564,
+          "sha256": "3dd325be255a295c46170fe23bcb09415522abbb59ddb8bcbd0981561b42c690"
+        },
+        "Assets/Icons/32/switch_c_share.blp": {
+          "bytes": 2564,
+          "sha256": "f50da5da7864a81b695f2e2b847f2fed0270ae0f4539953c849988d70a132275"
+        },
+        "Assets/Icons/32/switch_c_system.blp": {
+          "bytes": 2564,
+          "sha256": "176bb33ddf5de843bdcfac05c4d174e6c8ac911cd408b8392e333e89c5cb05e4"
+        },
+        "Assets/Icons/32/xbox_c_back.blp": {
+          "bytes": 2564,
+          "sha256": "65f1263c729b13c4fae6aacfcf6da9e50e82db12635e64db4eecd8d768090d4f"
+        },
+        "Assets/Icons/32/xbox_c_forward.blp": {
+          "bytes": 2564,
+          "sha256": "d9fe43ea865e35c3a692184cc7997fc18915ebe8c61ed57e88494e94b14d3921"
+        },
+        "Assets/Icons/32/xbox_c_options.blp": {
+          "bytes": 2564,
+          "sha256": "c3f02a76aa9b90aacb46dde38928ee0d03068c35a12a2af2931be1cc5cf79e5f"
+        },
+        "Assets/Icons/32/xbox_c_share.blp": {
+          "bytes": 2564,
+          "sha256": "eda50ef5c7f4da0af9c362bc6baf8e9ef015d42f74b2e500158997f1ab97ad35"
+        },
+        "Assets/Icons/32/xbox_c_system.blp": {
+          "bytes": 2564,
+          "sha256": "ffafe571d654a33d6b55c589aa6da61116fbbe2cf5749a9ad9a8c8d70686f5ef"
+        },
+        "Assets/Icons/32/xbox_r_a.blp": {
+          "bytes": 2564,
+          "sha256": "45fbdbb125d752f350a12ef86f1dd73920f7ea48fb32b1703b5ead45d7da840b"
+        },
+        "Assets/Icons/32/xbox_r_b.blp": {
+          "bytes": 2564,
+          "sha256": "d4f73c875c1181c10b665d67ee075054fa39ce272a8d9bf6f5d2aa622a978abd"
+        },
+        "Assets/Icons/32/xbox_r_x.blp": {
+          "bytes": 2564,
+          "sha256": "db1a9d2e95d9194f35ef367c7070db64c0643b65b5f6830fbf6fb7348f42a10e"
+        },
+        "Assets/Icons/32/xbox_r_y.blp": {
+          "bytes": 2564,
+          "sha256": "9a21116aa474f03c93af1a706569ebc314c604f15da2815105d52367028583aa"
+        },
+        "Assets/Icons/32/xbox_s_lb.blp": {
+          "bytes": 2564,
+          "sha256": "0410bdac18d94ee9f5d918167b754c2581495ccf57e3f53e739af53b6e565b78"
+        },
+        "Assets/Icons/32/xbox_s_lsb.blp": {
+          "bytes": 2564,
+          "sha256": "375feaeb2a38d0a0addd573e264f6ecb898e4460437169cb6812ef7bb7b36e0c"
+        },
+        "Assets/Icons/32/xbox_s_lt.blp": {
+          "bytes": 2564,
+          "sha256": "f2446579d72d8af3292861c1238100fec4eaa3909fd4d82eea2a8d692e015e19"
+        },
+        "Assets/Icons/32/xbox_s_rb.blp": {
+          "bytes": 2564,
+          "sha256": "9486654e490c51f7e2e9981ae6633a8f6694c231b248fea88fbfb591f3ab58d4"
+        },
+        "Assets/Icons/32/xbox_s_rsb.blp": {
+          "bytes": 2564,
+          "sha256": "464bb9900b2ffebb8f8443665ad8eb5c9af97c0a2e44fe6417c11a12f4457add"
+        },
+        "Assets/Icons/32/xbox_s_rt.blp": {
+          "bytes": 2564,
+          "sha256": "a69db7d0c121e3240137738f71baf69990ff0fd85c460c8189b9ebfdb521b048"
+        },
+        "Assets/Icons/64/all_g_left.blp": {
+          "bytes": 6660,
+          "sha256": "1316a604ebeda48244856bd6486b514af0a95f292e7b373b2f0b00eb0886fce4"
+        },
+        "Assets/Icons/64/all_g_right.blp": {
+          "bytes": 6660,
+          "sha256": "0594895edaabeea40c25134457a4238fb59d9db4c71703c37cbea7fc76dbeaa2"
+        },
+        "Assets/Icons/64/all_l_down.blp": {
+          "bytes": 6660,
+          "sha256": "4e0e3dbd0a0d57e6cddac41efd6c46d6c96eb738e2f11ac16430698e9a9820ee"
+        },
+        "Assets/Icons/64/all_l_left.blp": {
+          "bytes": 6660,
+          "sha256": "6f35256d6f137bee7a1e75c2ddf2facb6e82b3179aa618732f281bebb9c1a230"
+        },
+        "Assets/Icons/64/all_l_right.blp": {
+          "bytes": 6660,
+          "sha256": "e0b905aacb8365a52f39a19e2c97d535a055c8805a30006a05c9fcbec364924f"
+        },
+        "Assets/Icons/64/all_l_stick.blp": {
+          "bytes": 6660,
+          "sha256": "bc5b7e306af7f007c8086318b412af072730f2840a4d186a059669c67b808c08"
+        },
+        "Assets/Icons/64/all_l_up.blp": {
+          "bytes": 6660,
+          "sha256": "100fab4a09e8bb9f96dd3f18230979168b96047494b4dff3467054c43a037feb"
+        },
+        "Assets/Icons/64/all_missing.blp": {
+          "bytes": 6660,
+          "sha256": "cb91de8ae48bebc18436d08cd4c5fc0975b85a1c6d8d091518b7f4fcd9cb1b31"
+        },
+        "Assets/Icons/64/all_r_stick.blp": {
+          "bytes": 6660,
+          "sha256": "b8c8a4f40a784f1523e2c478c8832d4ed602f1d98920d6f65b34c7b59b481c71"
+        },
+        "Assets/Icons/64/dpad_down.blp": {
+          "bytes": 6660,
+          "sha256": "4a140cc3eb1c367016ebe3ceebc8fdddecb416976e11d58c3a5e29c75b0f7de7"
+        },
+        "Assets/Icons/64/dpad_left.blp": {
+          "bytes": 6660,
+          "sha256": "5754092c0a88fbe2074205d6cd5644b2dc2c7c5037809c17f88986689d7afd4f"
+        },
+        "Assets/Icons/64/dpad_right.blp": {
+          "bytes": 6660,
+          "sha256": "536fccfc3e5608f9bc00f80992629f6c7f98725a797d21201ab97301ba445600"
+        },
+        "Assets/Icons/64/dpad_up.blp": {
+          "bytes": 6660,
+          "sha256": "4d143fc4a207babe4b8e5a54df30c440df0144847076bcee62e794f95f21c5a8"
+        },
+        "Assets/Icons/64/ps_c_back.blp": {
+          "bytes": 6660,
+          "sha256": "9716aa6b2d8a211f0447ec2cd5dcf34e0f77fc93703bbc3be98f463d31463628"
+        },
+        "Assets/Icons/64/ps_c_back2.blp": {
+          "bytes": 6660,
+          "sha256": "764c9c004acefa74f32309a31a202d855b6eab805efe4dfaff21f00a2eba2010"
+        },
+        "Assets/Icons/64/ps_c_options.blp": {
+          "bytes": 6660,
+          "sha256": "8484322b78c1fb0655a8f8e7381d62da1826b79f9647c05f6f1edeacdf32ab56"
+        },
+        "Assets/Icons/64/ps_c_share.blp": {
+          "bytes": 6660,
+          "sha256": "a9b08ba1eecb07beedb1dd0d39342aa3cba4db1fec753d97b3e5c407d4b39fe5"
+        },
+        "Assets/Icons/64/ps_c_system.blp": {
+          "bytes": 6660,
+          "sha256": "d15e022084714d42a3a9156c668aa3f838e819858646640e86c3f8d116251412"
+        },
+        "Assets/Icons/64/ps_r_circle.blp": {
+          "bytes": 6660,
+          "sha256": "a1fcf34f487f6714f904538059fe3859a14e3a29594cfd8c77174ca86b6874bc"
+        },
+        "Assets/Icons/64/ps_r_cross.blp": {
+          "bytes": 6660,
+          "sha256": "917a4893ac017e9922edc05a73ecfc3b874fc6a41f8a18eefe99bde347cf8639"
+        },
+        "Assets/Icons/64/ps_r_square.blp": {
+          "bytes": 6660,
+          "sha256": "26cd7e37792d40acda2c1e5ef8c5cb9be706e0c0cdb0b98ffee9fc73fc489e15"
+        },
+        "Assets/Icons/64/ps_r_triangle.blp": {
+          "bytes": 6660,
+          "sha256": "0a6edd4afdd18d153a7706fd7304e83be849c87ce8ca46da9f09342ede12136b"
+        },
+        "Assets/Icons/64/ps_s_l1.blp": {
+          "bytes": 6660,
+          "sha256": "b7d6001183669a1923ffc43f6dd34c51554a738bf1299c76803ca58582cac2be"
+        },
+        "Assets/Icons/64/ps_s_l2.blp": {
+          "bytes": 6660,
+          "sha256": "55532e270ca364669d0479c4fc665506ce7f75c1f2e20fbcdb2b6478c7c46588"
+        },
+        "Assets/Icons/64/ps_s_l3.blp": {
+          "bytes": 6660,
+          "sha256": "8eb67812b620a36799b93526e340049bbe44c80eec55ba664ed13b1873244b51"
+        },
+        "Assets/Icons/64/ps_s_r1.blp": {
+          "bytes": 6660,
+          "sha256": "361af17d4f6b4cd312459bcfac82a104ea0a11ea28b32ce3c4c8066bddd28fc7"
+        },
+        "Assets/Icons/64/ps_s_r2.blp": {
+          "bytes": 6660,
+          "sha256": "082ea753a1679f1b3b66a6a2b9cb689675ac6cebb6edef1d5d72ae2d8dd01fcf"
+        },
+        "Assets/Icons/64/ps_s_r3.blp": {
+          "bytes": 6660,
+          "sha256": "e216bd437573c93e907f754fbb99500b6429f0184bcadb85cc1b4b0642df53c7"
+        },
+        "Assets/Icons/64/steam_c_system.blp": {
+          "bytes": 6660,
+          "sha256": "0b6a3bd640015b93a6a1924a77e62153ee33d2e6cd26d0fe33500959583abfe6"
+        },
+        "Assets/Icons/64/switch_c_back.blp": {
+          "bytes": 6660,
+          "sha256": "19acfc38508246617a3028f86b659707ce2b414ca6b11f2b204ce75943cf63b1"
+        },
+        "Assets/Icons/64/switch_c_forward.blp": {
+          "bytes": 6660,
+          "sha256": "5a53c49d31cbfcd3cb6a1f8949aabd48727a7ba4b04843fd844366d61cc3fcc5"
+        },
+        "Assets/Icons/64/switch_c_share.blp": {
+          "bytes": 6660,
+          "sha256": "f129245636cbf2f8a73de00ee7ad87eaf660586139938779b3072399dbcc3da2"
+        },
+        "Assets/Icons/64/switch_c_system.blp": {
+          "bytes": 6660,
+          "sha256": "80b7daebecab082c025abdcc226efb313fecd93fe06d8bc78abe304eca4a1cb2"
+        },
+        "Assets/Icons/64/xbox_c_back.blp": {
+          "bytes": 6660,
+          "sha256": "8c58301eabb4ed935c9e665c65f739c780b94f0b2d1c31a2ee29e98cbbdda5e9"
+        },
+        "Assets/Icons/64/xbox_c_forward.blp": {
+          "bytes": 6660,
+          "sha256": "d9bcf45b211d788637fce746b613b3668e6743999f27dd7453bd5b0f9e6a5b2b"
+        },
+        "Assets/Icons/64/xbox_c_options.blp": {
+          "bytes": 6660,
+          "sha256": "b216cee886581fea7eccd0fb586378dab41f9ec94ef3f27b962718d965442262"
+        },
+        "Assets/Icons/64/xbox_c_share.blp": {
+          "bytes": 6660,
+          "sha256": "99a5c5e626aef08f8c5313ca428b093a4e0586fceea66cf05312d97ed4b2bea8"
+        },
+        "Assets/Icons/64/xbox_c_system.blp": {
+          "bytes": 6660,
+          "sha256": "c034e6ad42f08f6dde8f5f0ec39ca474b4af919cc0e1aaffa4cf90040251a9af"
+        },
+        "Assets/Icons/64/xbox_r_a.blp": {
+          "bytes": 6660,
+          "sha256": "031669a27e0c4ffc87e4c591077e3373c16d6788f3ea01ef5ba35f205d4e5b2f"
+        },
+        "Assets/Icons/64/xbox_r_b.blp": {
+          "bytes": 6660,
+          "sha256": "c80e33235325d240165163c2dde5fbb36f5c1f163d44340e3459cfef3cbe852e"
+        },
+        "Assets/Icons/64/xbox_r_x.blp": {
+          "bytes": 6660,
+          "sha256": "825d294a79bc23ed31ed27c8c3f8912f59b34e4c8002e4782131f1c58675840a"
+        },
+        "Assets/Icons/64/xbox_r_y.blp": {
+          "bytes": 6660,
+          "sha256": "866a739cc1fabdcaef2500d708e54b020f0bdded41e007ff433fcfd7497664f6"
+        },
+        "Assets/Icons/64/xbox_s_lb.blp": {
+          "bytes": 6660,
+          "sha256": "59b6ccfdabb5faabc2e92755019f792f8be66100814f3d186434cdfc333ad6b3"
+        },
+        "Assets/Icons/64/xbox_s_lsb.blp": {
+          "bytes": 6660,
+          "sha256": "c47a20584e7d7fac13fe9ff9230f8d96c7931a122be3bdf0eabad3bf87b70cf9"
+        },
+        "Assets/Icons/64/xbox_s_lt.blp": {
+          "bytes": 6660,
+          "sha256": "8f3ee706975728d7972e9b3087f06ebc024a15cb130e97c82f617a77cffb9355"
+        },
+        "Assets/Icons/64/xbox_s_rb.blp": {
+          "bytes": 6660,
+          "sha256": "bb7d454174c2713801f3275584c8c9d8284278595bc2e6ba89e0643bfa9329c3"
+        },
+        "Assets/Icons/64/xbox_s_rsb.blp": {
+          "bytes": 6660,
+          "sha256": "b1d3d246cbff676981767dc624f6d7f7b72014b608d898c9a549e72d5605f920"
+        },
+        "Assets/Icons/64/xbox_s_rt.blp": {
+          "bytes": 6660,
+          "sha256": "9b3800425f38e892b399c97ec73cf047cda65292aec51d21af9ee78b40bf36b5"
+        },
+        "Assets/Splash/Gamepad/DS4.blp": {
+          "bytes": 1399300,
+          "sha256": "b94e11321935d3894983e1acae34fce483a27051a467d866b87bba4e18563a2f"
+        },
+        "Assets/Splash/Gamepad/DS5.blp": {
+          "bytes": 1399300,
+          "sha256": "7ec969d719689a307c9af68f6009ccee5f88db843bef3a5cb167c39ad0b33f9d"
+        },
+        "Assets/Splash/Gamepad/Deck.blp": {
+          "bytes": 1399300,
+          "sha256": "cd71f5d518109ef82320c7987ae833b83791bbf1f7e0163b2443aa25ea8a57d5"
+        },
+        "Assets/Splash/Gamepad/Switch.blp": {
+          "bytes": 1399300,
+          "sha256": "1ad794511c40c4be17082750bca5ff8d98a58ad4950ea6a61d0c90a071a1574d"
+        },
+        "Assets/Splash/Gamepad/Xbox.blp": {
+          "bytes": 1399300,
+          "sha256": "e643dcf00edd85f3382c3102eba1022ff411e07cf5892c0a4d3f7f7862f7d9e4"
+        },
+        "Assets/Textures/Atlas/Dropdown.BLP": {
+          "bytes": 525460,
+          "sha256": "7b9fdb6ef488eb35634dd8580a1752362c46e10a4c6f3c66afdd0ff55f3267ca"
+        },
+        "Assets/Textures/Atlas/General_Atlas.blp": {
+          "bytes": 2797412,
+          "sha256": "bbe6f9a2e7f2a573d8016357724368996206d2c2cbd8c37658c9b07460b26aa5"
+        },
+        "Assets/Textures/Atlas/ObjectIcons_Atlas.png": {
+          "bytes": 897736,
+          "sha256": "fdf6360c78d93713f5964b02ca7fa048c932dd8d98bda5a1cbd22ad0bec08793"
+        },
+        "Assets/Textures/Atlas/Popup_Atlas.png": {
+          "bytes": 7418,
+          "sha256": "abed3ad45b73390ce467bd09a785587f40051b9b95679099f00588c193389e6c"
+        },
+        "Assets/Textures/Atlas/UIActionBar2x.BLP": {
+          "bytes": 4195476,
+          "sha256": "307cfe1b72c6f084b3963c301abd3740f66954f6986ea8fae88ee238021e93a9"
+        },
+        "Assets/Textures/Atlas/UICharacterSelectGlues2x.BLP": {
+          "bytes": 4195476,
+          "sha256": "19ae7296075560e8a311e2c12fd471ed26829a51dbacac82be77dba945ce5a54"
+        },
+        "Assets/Textures/Button/EmptyIcon.blp": {
+          "bytes": 6660,
+          "sha256": "ab231d7ca59c180d871d7df0309b53ecef74ad070834ab428acb201c57aedf96"
+        },
+        "Assets/Textures/Button/Hilite.blp": {
+          "bytes": 23044,
+          "sha256": "2fc3b6b142f6b79206a8ef34db54563632876b05d22ff09772d8995bf0789f68"
+        },
+        "Assets/Textures/Button/Icon_Mask32.blp": {
+          "bytes": 2564,
+          "sha256": "fa16adcd946d4924d0b549fabe87fa357622c4b63e961a2f2c41c43a1889fcb5"
+        },
+        "Assets/Textures/Button/Icon_Mask64.blp": {
+          "bytes": 6660,
+          "sha256": "84524f95f23805dcacf86f5944fac04a848f1ee3d7b41a305ca2646fea9633e4"
+        },
+        "Assets/Textures/Button/Icon_Mask64_Reverse.blp": {
+          "bytes": 23044,
+          "sha256": "acb81a2a48f097ebf6064cdcc63c4423f4c97a88c66f5bc672656d1d90aa8ea7"
+        },
+        "Assets/Textures/Button/Loading.blp": {
+          "bytes": 6660,
+          "sha256": "7b151ccc2366b2944e72a79a66a3deca4763cff33ac4c1bac8af394f503a1de4"
+        },
+        "Assets/Textures/Button/Mask.blp": {
+          "bytes": 6660,
+          "sha256": "1e0a08533a1629ea38e0506e9ba93eacd23a101a355582f4635216d62c304ee7"
+        },
+        "Assets/Textures/Button/Normal.blp": {
+          "bytes": 23016,
+          "sha256": "3a3f28e14ec77ea5baed9a4721ece34c756a366e996ea057f07f38d5c0c0bb66"
+        },
+        "Assets/Textures/Button/NotBound.blp": {
+          "bytes": 6660,
+          "sha256": "981db03d065a093a47668968d776f28e62ac1c32286040bc741e41eeada77f26"
+        },
+        "Assets/Textures/Button/Pushed.blp": {
+          "bytes": 6660,
+          "sha256": "8430d14de8cce52fb26f0238022ec90512655d9e23f3d1a62f348b6d14ff4bff"
+        },
+        "Assets/Textures/Button/Quest.blp": {
+          "bytes": 3220,
+          "sha256": "c02634a5996770b2caf98f77fcf31278923e6df906d61b97283ca8b729c75264"
+        },
+        "Assets/Textures/Button/Shadow.blp": {
+          "bytes": 6660,
+          "sha256": "ba2f8167361520654b30caae00f735f776f0b2c25fed7830155bdc4b71a464d7"
+        },
+        "Assets/Textures/Cooldown/Bling.blp": {
+          "bytes": 23044,
+          "sha256": "b0230b8458ab7521fc661ff66a104cf2edd9c478b7e97297f99d2df7c8c79085"
+        },
+        "Assets/Textures/Cooldown/Charge.blp": {
+          "bytes": 6660,
+          "sha256": "7f17a527cccac8543b9d1d3f95c97bade2d1d92eff77a03a436317842c924574"
+        },
+        "Assets/Textures/Cooldown/Edge.tga": {
+          "bytes": 65580,
+          "sha256": "d44e2c71bb50e09233b2d1f45522cd84b89eb666f453294ad0cbe4b47d54b44f"
+        },
+        "Assets/Textures/Cooldown/Swipe.blp": {
+          "bytes": 23016,
+          "sha256": "6988e4e20fa184a6e072858c9abe1b8cc9f14eacca01bfd9756a355134980600"
+        },
+        "Assets/Textures/Cursor/RoundBorder.blp": {
+          "bytes": 23044,
+          "sha256": "4ab84c3e2379ccac356da85c63120ef7eeb474cd717e92ac329526693b7e10ec"
+        },
+        "Assets/Textures/Cursor/RoundBorderHighlight.blp": {
+          "bytes": 23044,
+          "sha256": "19b5d158aac471aa0296ab588933361f46c0566a47c5dd32d04cbe3f94dd1283"
+        },
+        "Assets/Textures/Cursor/Spinner.blp": {
+          "bytes": 23044,
+          "sha256": "ab87caf825a25809f129a5645b39d1e7e70a62f02b7a9c2b7896959f21f5342c"
+        },
+        "Assets/Textures/Frame/Backdrop_Vertex_Checker.blp": {
+          "bytes": 1540,
+          "sha256": "09dd5d7bed46ba8c6ed97a4e5984d537b5619bc064076f8e6124c081313b79b7"
+        },
+        "Assets/Textures/Frame/Backdrop_Vertex_Noise.blp": {
+          "bytes": 1356,
+          "sha256": "a1cc3a3d44afe23e7d371346a2bf88dfd58f8e243146af1f12d4542ea2f2dafe"
+        },
+        "Assets/Textures/Frame/Backdrop_Vertex_White.blp": {
+          "bytes": 1220,
+          "sha256": "645dac833bdd58458dcd32b8eb768fbfbb52cab8ce7208eb56573ee48abf9ab6"
+        },
+        "Assets/Textures/Frame/Close.blp": {
+          "bytes": 6660,
+          "sha256": "383e07743d778d2d9b437998dfd16503b1408cd01025229fe956295a1dd4d73d"
+        },
+        "Assets/Textures/Frame/Diagonal_Sheen.png": {
+          "bytes": 4291,
+          "sha256": "3169ecadb38ba5183a00cb384fc46e0aaa34b3a55fa01c6e05b37925ad3bb355"
+        },
+        "Assets/Textures/Frame/EdgeFile_Simple_White_4x32.blp": {
+          "bytes": 1396,
+          "sha256": "9ae52fccb32c54a75f1595751af4acf8f11aad786fcbe36a77af67f21cbc57e2"
+        },
+        "Assets/Textures/Frame/Export.blp": {
+          "bytes": 6660,
+          "sha256": "1d7f8925df9366e68074580a763fb373b80308df3b4fda86b8272626aa216dbf"
+        },
+        "Assets/Textures/Frame/Gradient_Alpha_Horizontal.blp": {
+          "bytes": 350676,
+          "sha256": "9f10b6c9c3a776830da80eadaf347f3721035026bb3b491e47a03b4fa526a71f"
+        },
+        "Assets/Textures/Frame/Import.blp": {
+          "bytes": 6660,
+          "sha256": "ce36221a847dc00d4d841b21e3747d123313367ac9a2fd3dbc4ecadda9885383"
+        },
+        "Assets/Textures/Frame/InnerFrameMask.blp": {
+          "bytes": 350724,
+          "sha256": "1b80051bca3fdf3145bbcee1343c25e2738c738388b3b6d03cf617b170bfce8c"
+        },
+        "Assets/Textures/Frame/InnerFrameMaskEdge.blp": {
+          "bytes": 350724,
+          "sha256": "816126f0bbbade028eb0b13d55d05fb635d5276f9fa8d75a92c5b90aefba27e0"
+        },
+        "Assets/Textures/Frame/Menu_Top_BG.blp": {
+          "bytes": 7188,
+          "sha256": "4dbedee64e88e03d6acf73cc5df2a08cb284b569f78d10f1f86012ca064eccbd"
+        },
+        "Assets/Textures/Frame/Tint.blp": {
+          "bytes": 88580,
+          "sha256": "8f54dacfc25b5958d1754e531f86951d8c3d11809a0ed00d1269b46a93f6960a"
+        },
+        "Assets/Textures/Frame/TransparentSquareMask.BLP": {
+          "bytes": 5268,
+          "sha256": "83161388808d9819ea4ff5fa4f8125cf4ed22b7ca1413f5b530490f5f88efff0"
+        },
+        "Assets/Textures/Glow/Ants.blp": {
+          "bytes": 350724,
+          "sha256": "d7e80fe125ddde8a579c642191105efb1aefecd124ee3c5ef3e17a918258f4ee"
+        },
+        "Assets/Textures/Glow/IconAlert.blp": {
+          "bytes": 44900,
+          "sha256": "589525aa3f201512c170cb61f990fb8eb40928b6f9aa210ecb5b181dd8a7a21e"
+        },
+        "Assets/Textures/Glow/Swatch.png": {
+          "bytes": 57941,
+          "sha256": "05b2177b7e3b8c045f26b6b9ba7c9d702b27b73a040372d49ce1f29e9ee75a37"
+        },
+        "Assets/Textures/Logo/CP.blp": {
+          "bytes": 23044,
+          "sha256": "23b08ec90b461202ee48921b5397c38c7ee504168f98a69822b5cda0b600cdd2"
+        },
+        "Assets/Textures/Logo/CP_Thumb.blp": {
+          "bytes": 23016,
+          "sha256": "3a0f0c3de4c2066497f3315208507ce8347410175ea68ce9581e6d17aa97a09f"
+        },
+        "Assets/Textures/Logo/CP_Tiny.blp": {
+          "bytes": 1540,
+          "sha256": "09804f1b52a9ebc4df18713beafa3539488172fbe3f88fa285b7bca066a2406c"
+        },
+        "Assets/Textures/Logo/Discord.blp": {
+          "bytes": 23044,
+          "sha256": "f1da48f4a9eb9e5a199218076fb1007bb3091852288b762381ae5b5b0611b33b"
+        },
+        "Assets/Textures/Logo/Patreon.blp": {
+          "bytes": 23044,
+          "sha256": "01e5d6c7778c124337d957845dd50caccc1ceb8908e90a8fd726537636214f91"
+        },
+        "Assets/Textures/Logo/Paypal.blp": {
+          "bytes": 23044,
+          "sha256": "ac965ab5a9ef082ec894728f11294694741e1366d6517dfaa31cfd5929b18fdd"
+        },
+        "Assets/Textures/Menu/Gradient.jpg": {
+          "bytes": 216901,
+          "sha256": "7498871461461d87889a877992c917a9cceb3c3c6ad74e4d42b13f40c61ea315"
+        },
+        "Assets/Textures/Menu/TopBG.blp": {
+          "bytes": 22932,
+          "sha256": "d9d78577b5382fb5ffb3b99832fae4287a046f884948b7d026b2806b1b6fcaea"
+        },
+        "Assets/Textures/Menu/TopLine.blp": {
+          "bytes": 175764,
+          "sha256": "4e93931070fd67122ac08de66e97bd951a7f0c7901a9a0fcd13882011be473dc"
+        },
+        "Assets/Textures/Menu/TopLine_Emblem.blp": {
+          "bytes": 23572,
+          "sha256": "654f9d3b5a79abf136e8a0490db7e7147ac4b61c23a5afd23e2287f0812bd596"
+        },
+        "Assets/Textures/Pie/Pie_Arrow.blp": {
+          "bytes": 44932,
+          "sha256": "0ccc409477460ec63d1d777fc10fb3dab413a334da43d604855f3479b153e60a"
+        },
+        "Assets/Textures/Pie/Pie_Background.blp": {
+          "bytes": 1399316,
+          "sha256": "612017ef0236f08e9b4f5b4951d55d17c1c224886c40924034e63636761a9325"
+        },
+        "Assets/Textures/Pie/Pie_Band.blp": {
+          "bytes": 23060,
+          "sha256": "4303e1df051034e1969bf24e9b43df35911d35b41edb6d7f36d1e646c965eecf"
+        },
+        "Assets/Textures/Pie/Pie_InnerMask.blp": {
+          "bytes": 88580,
+          "sha256": "dfb6508e8a51307fba5050f246e6fc76e38042267989fc8ee18d88d371bbf3d9"
+        },
+        "Assets/Textures/Pie/Pie_Line1.blp": {
+          "bytes": 4180,
+          "sha256": "e8e8056eeae1c9384cb12e5e271c3161c4749bb45a5579e48746778e13fd438b"
+        },
+        "Assets/Textures/Pie/Pie_Line2.blp": {
+          "bytes": 4180,
+          "sha256": "413c52c7ef9dd4f4ed8cdfbae6ec92ca027fe096c9f35b4d7ff4ae80bd1b7b96"
+        },
+        "Assets/Textures/Pie/Pie_Rect.blp": {
+          "bytes": 350724,
+          "sha256": "188bb721e20b3e74a327cb9de41d2a005be05f6cc8a8af6c992324a84d249b22"
+        },
+        "Assets/Textures/Pie/Pie_RingMask.blp": {
+          "bytes": 88580,
+          "sha256": "77f58af6d38c34a2bdde03eb56f98cf558a5759bf7ad49c8f4d52404a1d0e163"
+        },
+        "Assets/Textures/Pie/Pie_Separator_Active.png": {
+          "bytes": 10935,
+          "sha256": "7f1c327f86d8b3b3e9fb7d8da21b4e86d254000cdc94b97050616080733335bf"
+        },
+        "Assets/Textures/Pie/Pie_Separator_Inactive.png": {
+          "bytes": 10273,
+          "sha256": "f42043de69375ef68b6d16b726a65666d223015b8193030cac99904e84f8a031"
+        },
+        "Assets/Tutorial/RaidCursor.blp": {
+          "bytes": 88580,
+          "sha256": "2036351910f9d5540291cac4535eaabf3500a6a83b8688d43a380c1533719581"
+        },
+        "Assets/Tutorial/TargetNearest.blp": {
+          "bytes": 175972,
+          "sha256": "0a49e93910a0a504fdaa1dcd2babdf90b4f0a56ec6953fcdffe45121eefe8240"
+        },
+        "Assets/Tutorial/TargetScan.blp": {
+          "bytes": 175972,
+          "sha256": "9d9dc1e679488688dbbf7db27fd247299764f8a4b406b75fb3ff6e50b98f0b2c"
+        },
+        "Assets/Tutorial/UnitHotkey.blp": {
+          "bytes": 88580,
+          "sha256": "4108354667f50420ac34f531d66c5baea955248b5afa2ea02a455c599207fc91"
+        },
+        "CHANGELOG.md": {
+          "bytes": 4303,
+          "sha256": "91fc6d92238223aac3377a917852a7babc945f07096808bf4b23c24645173a27"
+        },
+        "ConsolePort.toc": {
+          "bytes": 894,
+          "sha256": "8216cf7cdcd37882d03c67ab537d009747b57ba03b7c776372556b546e3bddf9"
+        },
+        "Controller/Bindings.lua": {
+          "bytes": 5363,
+          "sha256": "935c9bcf474e8d43fed76f1c47d84776f77929dcab6fea8bccb3afe922e79126"
+        },
+        "Controller/Convenience.lua": {
+          "bytes": 8111,
+          "sha256": "bcd7e97188fec2bb27ff074c2da5f31cfeb8687309634ff6f7d2e5f1014682f9"
+        },
+        "Controller/ExtraActions.lua": {
+          "bytes": 2629,
+          "sha256": "1871e0b07c90e9e57010b5487a5f92514f408668e9420cd302128e2343c44400"
+        },
+        "Controller/Input.lua": {
+          "bytes": 10213,
+          "sha256": "e36882de5f210d81b2eff06a97aaf4cb3ca394eda2fe5e00f9f1c65c6dc285d9"
+        },
+        "Controller/Interact.lua": {
+          "bytes": 1593,
+          "sha256": "13c89b7cc69932cf21ea0825e38ca3af6d94cff701bfa32be32d7b237218edd7"
+        },
+        "Controller/LED.lua": {
+          "bytes": 3296,
+          "sha256": "906e3ad35db3016bbd0515aa5c76a58b3f10f42ab8c19c704dc43e65d1584079"
+        },
+        "Controller/Layers.lua": {
+          "bytes": 29867,
+          "sha256": "988b416f28d4036cf2ff840cc7e7ce6a19a683486e0e04874388d4643e6fd2f4"
+        },
+        "Controller/Modules.lua": {
+          "bytes": 7295,
+          "sha256": "fa5c9922d40e34571dcefafccc122805166b49a06db36f5ca6d82b75078ea53b"
+        },
+        "Controller/Mouse.lua": {
+          "bytes": 15109,
+          "sha256": "8f098fda7c45ffd3d94a0dfd344568c1770da94b618092bee7221ab8b56de4bc"
+        },
+        "Controller/Movement.lua": {
+          "bytes": 7720,
+          "sha256": "2029f03490696a64387c09f4eea3ca0b1c389110fb2b1340b01c5712be23fdfe"
+        },
+        "Controller/Pager.lua": {
+          "bytes": 7952,
+          "sha256": "c5cb7c89354dbc9af876a296fabff3fe24b39cbd436ab06996955301f85c9bb4"
+        },
+        "Controller/Radial.lua": {
+          "bytes": 22708,
+          "sha256": "03b4d32f62bff59ed0466a0213a252f0d10adfacd8aef1f29fcd8d1e99206f39"
+        },
+        "Controller/Securenav.lua": {
+          "bytes": 7490,
+          "sha256": "056206b8694bfd7c3bc257ad3f2974f0f6a1effceebc4f5820825f258c4c52d2"
+        },
+        "Controller/Slash.lua": {
+          "bytes": 12004,
+          "sha256": "2b3de5680aab2844c7a57c5745a4a6d14f5fb95b98241f18ebaee056b9b8b366"
+        },
+        "Controller/Targeting.lua": {
+          "bytes": 8177,
+          "sha256": "fdf7639a8551182e3a9ea422dd4b025729db6d6ac04de65300fc9acd280cf915"
+        },
+        "Controller/__manifest.xml": {
+          "bytes": 449,
+          "sha256": "9b6e2f3748ad499cf5f7157941bc339b2eac0cda9899c5f1e9c5ef30f0ac4067"
+        },
+        "LICENSE.md": {
+          "bytes": 9108,
+          "sha256": "ae649c4a6cbf80a9eeb0edd80a59c2bf7456844a01921912cacd7520b7b3f4e6"
+        },
+        "Libs/External/CallbackHandler-1.0/CallbackHandler-1.0.lua": {
+          "bytes": 7961,
+          "sha256": "d8a175f5823a999d8a188ee5e8e1133c393fd8c25b71931ab929d4691eff750b"
+        },
+        "Libs/External/CallbackHandler-1.0/CallbackHandler-1.0.xml": {
+          "bytes": 221,
+          "sha256": "5fc06440452a82be9554fc9650fa7de0b6df786c6d188d05d7d0ec4aa3e002fd"
+        },
+        "Libs/External/ConsolePortNode/ConsolePortNode.lua": {
+          "bytes": 28005,
+          "sha256": "1c10da60d4240da12c009c752b45a72d72c3883baa7d423cd6f603170ed9197e"
+        },
+        "Libs/External/ConsolePortNode/README.md": {
+          "bytes": 2645,
+          "sha256": "c5c4f36a22a9b2de5a2a47f1e6d6bcc3d775155c1213c20400694cf875c447f4"
+        },
+        "Libs/External/LibActionButton-1.0/LibActionButton-1.0.lua": {
+          "bytes": 109396,
+          "sha256": "971cb26e95e06787f2f7d9a72dcfcda8c3ab46634495b924dff0f3eb4de1e80a"
+        },
+        "Libs/External/LibActionButton-1.0/LibActionButton-1.0.toc": {
+          "bytes": 485,
+          "sha256": "f868eb39a69ca6129738db3d1a0254d9c032b6700e26e43a2225eae996a71790"
+        },
+        "Libs/External/LibButtonGlow-1.0/LibButtonGlow-1.0.lua": {
+          "bytes": 10192,
+          "sha256": "85c4f53cad52f479a4a84203987eb155cef68730f3adc2133755dbee77c617e3"
+        },
+        "Libs/External/LibButtonGlow-1.0/LibButtonGlow-1.0.toc": {
+          "bytes": 381,
+          "sha256": "d53875d3f292895dc859cfc901933f534cef1b4ef3ab187ec41e80c320e460e2"
+        },
+        "Libs/External/LibStub/LibStub.lua": {
+          "bytes": 1397,
+          "sha256": "6000f58d740eaa2b4a006c1dabb0366f0321fc687bab9e85d97d040a1fd42dab"
+        },
+        "Libs/External/LibStub/LibStub.toc": {
+          "bytes": 262,
+          "sha256": "e01f590f6dfb5419595b640e6b5391092b5e39f8581d010adb9d852f4a30578d"
+        },
+        "Libs/External/RelaTable/RelaTable.lua": {
+          "bytes": 8264,
+          "sha256": "89ee28e8ca9dc8933901014e5644a505a0f8984bbf548685a6e846864ebc7a40"
+        },
+        "Libs/External/__manifest.xml": {
+          "bytes": 333,
+          "sha256": "b9ed669672d16a0fddbf17031e26133cb988a06348cef23204b9c45ad59f0d8e"
+        },
+        "Libs/Local/ActionButton.lua": {
+          "bytes": 24832,
+          "sha256": "e65ad2ea4b86b676bbfba5d4ea6e00f90e2f3d979ab266c423854688dbab5379"
+        },
+        "Libs/Local/Carpenter.lua": {
+          "bytes": 19022,
+          "sha256": "ce1bc2d6486e4f768c1c6dc3852a881e5e1bd9155d58813121ae5a830cf9e9a8"
+        },
+        "Libs/Local/Tabular.lua": {
+          "bytes": 18753,
+          "sha256": "4b7dbcd45ce14fd9cb6a6a23284b61623fd25ca6be6189a14024094e3f92dd4e"
+        },
+        "Libs/Local/__manifest.xml": {
+          "bytes": 111,
+          "sha256": "28bd41d22474239b9cc291a32f3f09b8c51c5269f69e8bdf3bd6b5eab9970f6b"
+        },
+        "Libs/__manifest.xml": {
+          "bytes": 99,
+          "sha256": "442d248f713a63c6b860b1f137d2569286636cb822f51da793237fc09bbb1046"
+        },
+        "Locale/deDE.lua": {
+          "bytes": 117115,
+          "sha256": "28feb055887591cb59b0e4d0a12a5725d5f8544ed96ef75bc551a48e28c4e95c"
+        },
+        "Locale/enUS.lua": {
+          "bytes": 23112,
+          "sha256": "b11942e2b95394e43f7fdb95b08138ff5d54ee57d627063782756dc0cf5dce3d"
+        },
+        "Locale/esES.lua": {
+          "bytes": 120573,
+          "sha256": "1c5f4b113d0b470d22523adac5e5d26e0fc8437fc226318a7151a4225c97bb40"
+        },
+        "Locale/esMX.lua": {
+          "bytes": 120581,
+          "sha256": "0ad005ca218b3f5d86619014bd89b9386edb375e69442e45181e2b79142eadbe"
+        },
+        "Locale/frFR.lua": {
+          "bytes": 123300,
+          "sha256": "411e8929bd3b1a35188e746c837bdd7768d81fd6d658223ed7ab4c213ac1d32d"
+        },
+        "Locale/itIT.lua": {
+          "bytes": 120809,
+          "sha256": "a6719b090e0d0a213bd2039c83d3ecc483d22632e6bfb8423cacde2badf8a209"
+        },
+        "Locale/koKR.lua": {
+          "bytes": 120262,
+          "sha256": "cb97a29e8bb86d3b9c425c1a45bc881414c198aa72cc92e47671fcccf52ddeef"
+        },
+        "Locale/ptBR.lua": {
+          "bytes": 118460,
+          "sha256": "9ae201a52c24ea4eb02c707f2cb1a02bebf464c1a6a3a63084f878ecf539421f"
+        },
+        "Locale/ruRU.lua": {
+          "bytes": 168648,
+          "sha256": "75fd9b05bca0bb9c05e67eebc96ba389d022e01a4daff847a1bc2e19f0a79af3"
+        },
+        "Locale/zhCN.lua": {
+          "bytes": 103759,
+          "sha256": "e012d402459b2569c8ecac2f677998eeded0b37ba3fbcf32e38e4d3e27364392"
+        },
+        "Locale/zhTW.lua": {
+          "bytes": 103790,
+          "sha256": "341df31205a93801c36175b81c02d66c1f86e2b6929c588879790d4411b66184"
+        },
+        "Model/Data/Console.lua": {
+          "bytes": 16003,
+          "sha256": "71d7663d875e1da610a808b7b36ea43715e95421caf7c77e2c76f611b899f4ab"
+        },
+        "Model/Data/Data.lua": {
+          "bytes": 13320,
+          "sha256": "e7c1225e309ddbc882814c81862932646d174c827d4f57ceb7b3c877281825fb"
+        },
+        "Model/Data/Shared.lua": {
+          "bytes": 3389,
+          "sha256": "b7927c97febf953b7968b6ad7aca139a742aa965781c4fb6ebd9d362074da62a"
+        },
+        "Model/Data/Variables.lua": {
+          "bytes": 25673,
+          "sha256": "e608b387aac3f89eef1efc2800ff10cea3904bc20435bb1e1294757695591eae"
+        },
+        "Model/Data/__manifest.xml": {
+          "bytes": 174,
+          "sha256": "923c1e169c855dde4f47c4db9d2b1d5b774004fd427c3368d2e9b05c12e2593a"
+        },
+        "Model/Game/ActionMap.lua": {
+          "bytes": 2396,
+          "sha256": "6ce3d5bd3701a0069a668b10dd1575e48f787ad4267bc2edc3f2a73f3dc92a5c"
+        },
+        "Model/Game/Actionbar.lua": {
+          "bytes": 9923,
+          "sha256": "32b94b7431f86d20aaaf9824f41183e6ad610b73d0dd6b1b0dae1548b4ec96c9"
+        },
+        "Model/Game/Bindings.lua": {
+          "bytes": 20576,
+          "sha256": "5252b9e84c3df01f70e8f808d0a3a2f7d8734469d583e2b8834ffd0db232ed06"
+        },
+        "Model/Game/__manifest.xml": {
+          "bytes": 141,
+          "sha256": "6b61b46aa144abcad78e9122bf1484bd46fee2db04f4b29500dd64d5b6c514ad"
+        },
+        "Model/Gamepad/Atlas.lua": {
+          "bytes": 1690,
+          "sha256": "c6b0a0d7f473cfde8dabaeeb32b83b8ef8d7cdefa2b222098c03fa42c84fb0b1"
+        },
+        "Model/Gamepad/Deck.lua": {
+          "bytes": 6380,
+          "sha256": "eaddfa6485c16a5349016cdfc9fc81a6230fa9c72c3215eadb6194024465c2c0"
+        },
+        "Model/Gamepad/Gamepad.lua": {
+          "bytes": 27491,
+          "sha256": "72931c75d6a1d829ed0641d8e239249115e92963770b2eef26cd63ebfccd9b49"
+        },
+        "Model/Gamepad/Mapper.lua": {
+          "bytes": 3623,
+          "sha256": "bee39e41d998dbaf489fa0e72b08a0c15fc62972c58eafe0033167bbcc0f1289"
+        },
+        "Model/Gamepad/PlayStation4.lua": {
+          "bytes": 5987,
+          "sha256": "bf6bf64642d345bae3afbf220778f51d70d693011a18cca009f7617c6e7bb78d"
+        },
+        "Model/Gamepad/PlayStation5.lua": {
+          "bytes": 6543,
+          "sha256": "091f8eeed56138d3d13009a674fba9e0f7399a470717df44b76935604620a7e7"
+        },
+        "Model/Gamepad/Switch.lua": {
+          "bytes": 6306,
+          "sha256": "ae2ffa5961346f9bfe548f718bcaa9e097149b8539f4a7709e0859f074c5c157"
+        },
+        "Model/Gamepad/Xbox.lua": {
+          "bytes": 5858,
+          "sha256": "d104c52d1d0ef4d5ac587cfbbb4165bcf33faec46336c93b7184fb5045c4047f"
+        },
+        "Model/Gamepad/__manifest.xml": {
+          "bytes": 330,
+          "sha256": "432b87dcab3b3451b28ac2d2d3bfe2ab4555ca81b52c559a11c584f0419c94f5"
+        },
+        "Model/__manifest.xml": {
+          "bytes": 154,
+          "sha256": "2befdc2fcdf8971e46d0fd05cabe3948d39e5bfa5a3ffaddedee1d7eafe40b9c"
+        },
+        "Utils/Animation.lua": {
+          "bytes": 2935,
+          "sha256": "1e99f143108d78845de4237842f9db832552f9041df95ad586551fbcd7c1f136"
+        },
+        "Utils/Assets.lua": {
+          "bytes": 32274,
+          "sha256": "7d0b0ca4d2365ac67f23fb66d5e6060a664e51ec01174933d532426777ba3fac"
+        },
+        "Utils/Color.lua": {
+          "bytes": 4010,
+          "sha256": "9bbb6f682b42792001fd6c28121e921795dbdb7e10074d01a0633e7ed117d74f"
+        },
+        "Utils/Const.lua": {
+          "bytes": 2761,
+          "sha256": "9c1caf10f8bd1d28fd2545de7e609adba9f1eb4b912c5ef813074bcafa0a6902"
+        },
+        "Utils/Database.lua": {
+          "bytes": 2968,
+          "sha256": "e6c79704d35f7c094de7bb7f684112e523205354440d331fae6c9bb5e77a7852"
+        },
+        "Utils/Locale.lua": {
+          "bytes": 426,
+          "sha256": "fd9ff1ef907f197c8199e85ea35a18ff7a922ad19d9c383a7b4f9049c0abb8c9"
+        },
+        "Utils/Macro.lua": {
+          "bytes": 3259,
+          "sha256": "dc517ad6e4528aaaf418e478f3bbdc32c3cc08bfb6a35f19db72401e73dad4e2"
+        },
+        "Utils/Spline.lua": {
+          "bytes": 5298,
+          "sha256": "9bd93397fd81b5a9f9df2290d84e7a82b72a4c2467f62e589401f3d365d76c8e"
+        },
+        "Utils/UIFade.lua": {
+          "bytes": 7442,
+          "sha256": "64a0373f43f8ca0d345f01e5f45bd2b26fa68e28e40fb814d72bb7d40625d592"
+        },
+        "Utils/Utils.lua": {
+          "bytes": 16501,
+          "sha256": "0dbdbf4ec319fe60ae9fb943d30ca56a90aab131b8cfea1cea75c0069f8b388b"
+        },
+        "Utils/Wrapper.lua": {
+          "bytes": 26502,
+          "sha256": "567ddd3b44df31840b54540da260677650b455f9b46c16e51c46da6ccd75c1e5"
+        },
+        "Utils/__manifest.xml": {
+          "bytes": 362,
+          "sha256": "1f9673248adda253ebd534e044517995519f8ff66e51cd6c7c601eb832b9934c"
+        },
+        "View/Cursors/Arrow.lua": {
+          "bytes": 3809,
+          "sha256": "2509b69e46f4682b0e0f35ab6ce14f0fccf4e52e219cf9895874e86a73f0c2a0"
+        },
+        "View/Cursors/Arrow.xml": {
+          "bytes": 1126,
+          "sha256": "01a809f02f427ab0173dfb487497befd1285507ca2d247145a6f05447bb47c15"
+        },
+        "View/Cursors/Crosshair.lua": {
+          "bytes": 3038,
+          "sha256": "66afe7838bda567f04ad40055c4f57cc09eb02f76c39119a374d81cb897a187a"
+        },
+        "View/Cursors/Crosshair.xml": {
+          "bytes": 331,
+          "sha256": "5d4e4841eb18f85042f7a2746025c2aeac03efae59972b58195210b2060b370b"
+        },
+        "View/Cursors/Cursors.xml": {
+          "bytes": 173,
+          "sha256": "2caa95ee855576227d4b965343ede6c1edd25b63ed280e49a0b576124a707998"
+        },
+        "View/Cursors/Secure.lua": {
+          "bytes": 3667,
+          "sha256": "afc6ca436989b7b5db852c700a32343c4e81df0d9b27b11ca4640d18e3f59815"
+        },
+        "View/Cursors/Secure.xml": {
+          "bytes": 483,
+          "sha256": "1cd776b15b3c78eb0e774feccac4ca815f03b21401d74ded82b06c6857d99600"
+        },
+        "View/Hotkey.lua": {
+          "bytes": 9989,
+          "sha256": "8e3b99cd9732680878473b567974eafeeb0112345b4d9343854309cb13c4d5da"
+        },
+        "View/Pie/Flyout.lua": {
+          "bytes": 13449,
+          "sha256": "ae5f5567ee1c873d08427e2139ba54805f9c0182a6f10ed1f50df8e515e31362"
+        },
+        "View/Pie/Petring.lua": {
+          "bytes": 4708,
+          "sha256": "6392be0e19cf163e1248328272efb28bfd14299f9bfb02b8a49019b514a1f7d4"
+        },
+        "View/Pie/Pie.xml": {
+          "bytes": 1774,
+          "sha256": "9508833dafca71fc2a67988fe61c9ca250f055eb5e760b3e126500698deda5cf"
+        },
+        "View/PowerLevel/PowerLevel.lua": {
+          "bytes": 4897,
+          "sha256": "c4842a29a8a301e5e39c614f6812ef23b8ed35e82e5228a0803f6a4f95464000"
+        },
+        "View/PowerLevel/PowerLevel.xml": {
+          "bytes": 4302,
+          "sha256": "1cca8b23d9b93986914f8376a1f79cc53dead9619ec8c2534dac6c79b9b1885e"
+        },
+        "View/UIHandle/UIHandle.lua": {
+          "bytes": 5218,
+          "sha256": "5c261b4ea23558512b03934dfbc8739f60622895e2af785f2c675d9cc6bc945c"
+        },
+        "View/UIHandle/UIHandle.xml": {
+          "bytes": 933,
+          "sha256": "53f8afb404f8683f854724e6edf53a014749185c959def18ba0cb33fbb18dd8e"
+        },
+        "View/__manifest.xml": {
+          "bytes": 249,
+          "sha256": "cd56cfc0044e1c9c3b663a85553b8dd2b505de1c318787e8733f01037df6ffe4"
+        },
+        "Widget/Button.lua": {
+          "bytes": 2054,
+          "sha256": "02b4bcee1b6f74db109fbb74911ed7fa22d00a50bee078fde8444eba99b0d4bb"
+        },
+        "Widget/Fonts.xml": {
+          "bytes": 7406,
+          "sha256": "012764d356da69ae4178967f9888df9cffd7c4702097a3edb4578993e8cd7dcb"
+        },
+        "Widget/Helpers.lua": {
+          "bytes": 8385,
+          "sha256": "f8954f1157c5c8f9cbae7caaac671b39c7b6aef46b65e0937f84acad7199fd0c"
+        },
+        "Widget/HintBar/HintBar.lua": {
+          "bytes": 5301,
+          "sha256": "847ea9eda5514e91c199438a9e539e26bce8c70a596e8096dd461daab75c9072"
+        },
+        "Widget/HintBar/HintBar.xml": {
+          "bytes": 1580,
+          "sha256": "56ffaf1fb5d4d7fb9facbecced45f1d66104e10b9918dd2d622effd54f600fce"
+        },
+        "Widget/PieMenu/PieMenu.lua": {
+          "bytes": 12364,
+          "sha256": "55682ca44d869640d053f408d6e95982b58325ac0090cac9900e943533188581"
+        },
+        "Widget/PieMenu/PieMenu.xml": {
+          "bytes": 3458,
+          "sha256": "2425348f05f5dcd6d72cd7f331854e175bc2dfb1bbc3f510dc8b75a4b07395b9"
+        },
+        "Widget/Pools.lua": {
+          "bytes": 11296,
+          "sha256": "46f4a1dc86526dd6c2262c40fa09a367cee2a83b89659e02b2fec08c0788f5dd"
+        },
+        "Widget/Popup/Popup.lua": {
+          "bytes": 5563,
+          "sha256": "5067d418984f0e8e6c423ac9e1838669cfed1a79e3f1a548066276c51b0f7af0"
+        },
+        "Widget/Popup/Popup.xml": {
+          "bytes": 9896,
+          "sha256": "8732fe13bb3a158e79c525623c334bd124199cd9cf9efae79649a6252f80dee0"
+        },
+        "Widget/__manifest.xml": {
+          "bytes": 299,
+          "sha256": "49df11a54ede0339dd1868d931896bafd8ee839a7661b150d775ec0b75b89d60"
+        },
+        "XML/Frames/Frames.xml": {
+          "bytes": 1061,
+          "sha256": "b0bc5688f05aa7efb23c9f48ff656b7937bb381a41b3159c6f6bfd2ab4ae3d73"
+        },
+        "XML/Templates/Templates.lua": {
+          "bytes": 5364,
+          "sha256": "599b104895f4a4aafac124fc971754c952e0fc77069de92fa70f653b61b35013"
+        },
+        "XML/Templates/Templates.xml": {
+          "bytes": 6404,
+          "sha256": "2b761c465c92fd908e64f742a24b74461cb1427e980ee2218c330bca37df6581"
+        },
+        "XML/__manifest.xml": {
+          "bytes": 96,
+          "sha256": "289ab7afbe319646e244a2ff7458bc0d2e094d53900f6865ae35749994b9bba4"
+        }
+      },
+      "links": {}
+    },
+    "ConsolePort_Bar": {
+      "directories": [
+        "Assets",
+        "Assets/Atlas",
+        "Assets/Covers",
+        "Assets/Textures",
+        "Assets/Textures/Button",
+        "Assets/Textures/Cooldown",
+        "Assets/Textures/Icons",
+        "Assets/Textures/Masks",
+        "Assets/Textures/Swipes",
+        "Controller",
+        "Controller/Blizzard",
+        "Controller/Manager",
+        "Model",
+        "View",
+        "View/Config",
+        "View/Pet",
+        "View/Toolbar",
+        "Widget",
+        "Widget/Art",
+        "Widget/Bar",
+        "Widget/Button",
+        "Widget/Cluster",
+        "Widget/Divider",
+        "Widget/Glyph",
+        "Widget/Group",
+        "Widget/Page",
+        "Widget/Watch"
+      ],
+      "files": {
+        "Assets/Atlas/EditModeUI.BLP": {
+          "bytes": 33940,
+          "sha256": "8566c47b64343192aa279d4c3e8f73c46eb8ba11e9237ec7315de0b96a7e3f07"
+        },
+        "Assets/Atlas/EditModeUIHighlightBackground.BLP": {
+          "bytes": 2196,
+          "sha256": "82468dfaf9e351e730da8ef1c3caed045b1dec1d171131b6688adcac456ca0e7"
+        },
+        "Assets/Atlas/EditModeUISelectedBackground.BLP": {
+          "bytes": 2196,
+          "sha256": "04ee1719b4307803e24a99e07730d5a10095612ecec3e70f579f6964f5832e86"
+        },
+        "Assets/Atlas/EditModeUIVertical.BLP": {
+          "bytes": 9364,
+          "sha256": "279a2d462c38ee2c1bc9b961e8f82920df02bdf74b4818edbb7c4f278eb15801"
+        },
+        "Assets/Atlas/UIMicroMenu2x.png": {
+          "bytes": 192420,
+          "sha256": "b975b45cf09521faaa8f42ea504b1458e073ea0a84dc490b14fe7fb1acd9e1aa"
+        },
+        "Assets/Covers/1.blp": {
+          "bytes": 1399300,
+          "sha256": "d71ac838dc01dccdcd5a08db5aa25519442e61148219fa36ab7772d81e288ce6"
+        },
+        "Assets/Covers/2.blp": {
+          "bytes": 1399300,
+          "sha256": "758dfdf5f17e4facc95e91a5f5632a24c9b74f5baaf3dc7b932c8f17c5e1bfa2"
+        },
+        "Assets/Covers/3.blp": {
+          "bytes": 1399300,
+          "sha256": "55c501b7671a0ab85040bbda2611f2b35ea326189574c394d80c7073abecce68"
+        },
+        "Assets/Textures/Bag64.blp": {
+          "bytes": 23016,
+          "sha256": "0197e1bc21716af7451a2baa9d953b49ec6598b53797a4aa015dcc531b32383d"
+        },
+        "Assets/Textures/BarEdge.tga": {
+          "bytes": 32812,
+          "sha256": "8717aa9a467f0cc0661aa2568207a1011e8002f20c022ad565a9dbca32ca4fa0"
+        },
+        "Assets/Textures/Blank64.blp": {
+          "bytes": 23016,
+          "sha256": "c2814ea2a1bb6d1dee1d6a1e22b555c5ed5bd89ddb2b468a4474efd02a0926c2"
+        },
+        "Assets/Textures/Button/BigPushed.blp": {
+          "bytes": 6660,
+          "sha256": "ad61b3b42ac9c7b0857f845e0c07d93a574416d26ad29ee4c7a2e6370e053428"
+        },
+        "Assets/Textures/Button/BigShadow.blp": {
+          "bytes": 6660,
+          "sha256": "ba2f8167361520654b30caae00f735f776f0b2c25fed7830155bdc4b71a464d7"
+        },
+        "Assets/Textures/Button/Hilite.blp": {
+          "bytes": 6660,
+          "sha256": "4f9e7aa67f00c912c335a7b88c85229bc4c829a921415edcaa7852b629bdd52f"
+        },
+        "Assets/Textures/Button/Hilite2x.png": {
+          "bytes": 7392,
+          "sha256": "245267ebd76c742e9bb8c606459d9d519c0ecf5e96ae7e13509f4686a4168298"
+        },
+        "Assets/Textures/Button/M1.blp": {
+          "bytes": 88552,
+          "sha256": "9f6646394e56ace299b7616857dc196c1ab7276abf574fcfbe3e37c37699590e"
+        },
+        "Assets/Textures/Button/M1Hilite.blp": {
+          "bytes": 23044,
+          "sha256": "ef19d6b30ace0ec0b28122640f0d98a08939769aacdc2850748afab13b4d91bc"
+        },
+        "Assets/Textures/Button/M1Mask.blp": {
+          "bytes": 23044,
+          "sha256": "ff7ee771f90716cd491b989411a9da95d5311ce1706493b05450a96fbcbc8ce9"
+        },
+        "Assets/Textures/Button/M3.blp": {
+          "bytes": 23044,
+          "sha256": "601446e4ae6f8b377b356b2809a575b36e70ea1689d69bf0797ed5e4c8b35d9a"
+        },
+        "Assets/Textures/Button/M3Hilite.blp": {
+          "bytes": 23044,
+          "sha256": "08ab8f6388ad0c3002da7e9d0ca2b0671ef39c8f8eb152fbb5b534b30caab29a"
+        },
+        "Assets/Textures/Button/M3Mask.blp": {
+          "bytes": 23044,
+          "sha256": "ae044f5186f45436bbe92cde5e84eb599c7471081867154f140a7c5986ec6e7a"
+        },
+        "Assets/Textures/Button/Normal.blp": {
+          "bytes": 23016,
+          "sha256": "b7d41f6cfd3f445cc82072ffa5efaafc2cf0f348255914eb85bdff01c2bfe004"
+        },
+        "Assets/Textures/Button/Normal2x.png": {
+          "bytes": 9704,
+          "sha256": "1c4d1059039bfd56f3eeae827f98bfa3f9a87a47daf9251bd1c4c8b26cdd9796"
+        },
+        "Assets/Textures/Button/Pet10.blp": {
+          "bytes": 23044,
+          "sha256": "d22d42cb29d2c56127b8bad9f6f25c17ab56b6e894d989e682a914157d2249bd"
+        },
+        "Assets/Textures/Button/Pet10Checked.blp": {
+          "bytes": 23044,
+          "sha256": "d22c859dbb336deb8933c4cd429225ff8aae98559811806eb1b584d5433272a1"
+        },
+        "Assets/Textures/Button/Pet10Hilite.blp": {
+          "bytes": 23044,
+          "sha256": "2231794ff11040f6a30a8b0fc1faa6c34f1bdfd2ed06e51bc2dbd8537bc8c2aa"
+        },
+        "Assets/Textures/Button/Pet10Pushed.blp": {
+          "bytes": 23044,
+          "sha256": "a34fe028de0d1e495fcb402bd54739361cecb7dcd5e872a5fb620887d9f9b937"
+        },
+        "Assets/Textures/Button/PetNormal.blp": {
+          "bytes": 23016,
+          "sha256": "398032322d79162963486e0dab9ea03d25952cbf9460c35a323e335587c83b25"
+        },
+        "Assets/Textures/Button/PetPushed.blp": {
+          "bytes": 23016,
+          "sha256": "a21053b608933d68dbd1b5ed6536317fccb24eba0428f0a063737f0c6092bac3"
+        },
+        "Assets/Textures/Button/PetRing.blp": {
+          "bytes": 88580,
+          "sha256": "9a1e52587ba2b473ba62a5bc06d6f563d2fde339a623c7c1341dc397faa134f7"
+        },
+        "Assets/Textures/Button/PetRingMask.blp": {
+          "bytes": 88580,
+          "sha256": "652610ddd04908a9a000c784033ad45af351a35356dc52987fae935cb3cc4913"
+        },
+        "Assets/Textures/Button/SmallHilite.blp": {
+          "bytes": 6660,
+          "sha256": "653b7bcec6927efe50a79273040a4f6a4b3c1d289d39e7e676bbb0c243985e49"
+        },
+        "Assets/Textures/Button/SmallNormal.blp": {
+          "bytes": 6660,
+          "sha256": "97572bd31a7bfa36d11e13faa79c81bf943ad9547606327e14b81edf8e24ce5c"
+        },
+        "Assets/Textures/Cooldown/Bling.blp": {
+          "bytes": 23044,
+          "sha256": "b0230b8458ab7521fc661ff66a104cf2edd9c478b7e97297f99d2df7c8c79085"
+        },
+        "Assets/Textures/Cooldown/Charge.blp": {
+          "bytes": 6660,
+          "sha256": "7f17a527cccac8543b9d1d3f95c97bade2d1d92eff77a03a436317842c924574"
+        },
+        "Assets/Textures/Cooldown/Edge.tga": {
+          "bytes": 65580,
+          "sha256": "d44e2c71bb50e09233b2d1f45522cd84b89eb666f453294ad0cbe4b47d54b44f"
+        },
+        "Assets/Textures/Cooldown/Edge2x.png": {
+          "bytes": 7466,
+          "sha256": "0d9ae28cfd5ac956dd189a6fe09f416b1af17e9406e9a3c043b7ab3a80009391"
+        },
+        "Assets/Textures/Cooldown/Edge2x2.png": {
+          "bytes": 8086,
+          "sha256": "0871b9c0dd3fc0a974a43a4e9429d040cb54f13c75bfdbe44d734af15a802a01"
+        },
+        "Assets/Textures/Cooldown/Edge2x3.png": {
+          "bytes": 8264,
+          "sha256": "34b28350786c19e698dbf285274c5ce2bde1097cd40a56af2ec31725bb631b40"
+        },
+        "Assets/Textures/Cooldown/Swipe.blp": {
+          "bytes": 23016,
+          "sha256": "6988e4e20fa184a6e072858c9abe1b8cc9f14eacca01bfd9756a355134980600"
+        },
+        "Assets/Textures/Cooldown/SwipeDark.blp": {
+          "bytes": 23016,
+          "sha256": "17c06422063780a603b3343d5a9e949d5ade1b41b438b51b20e7635de8652580"
+        },
+        "Assets/Textures/Cooldown/SwipeSmall.blp": {
+          "bytes": 6660,
+          "sha256": "3056690e172824f47542e8c0d73e20e0ff1b7095ef44a5b4e08f7680019f8576"
+        },
+        "Assets/Textures/Cooldown/Swipe_old.blp": {
+          "bytes": 6660,
+          "sha256": "e68f2a2d27b2e392e5920a122c99b7949c6555e08f9206e4660c6af858ecaa80"
+        },
+        "Assets/Textures/Empty.blp": {
+          "bytes": 6660,
+          "sha256": "07888f5133052a6bd55466e07df3a09e224c6c08befff6fb689a6230aed7706b"
+        },
+        "Assets/Textures/Hide.blp": {
+          "bytes": 12132,
+          "sha256": "381ee3265cb9f24e51bd242b5df1caf251f9f0bcae4883a9a51ef744cbb2d27b"
+        },
+        "Assets/Textures/IconAlert.blp": {
+          "bytes": 44884,
+          "sha256": "e705d22ac0f0491d127a7f1458c6297bb1ad8e9eacc60ec25512f6704cea9a25"
+        },
+        "Assets/Textures/Icons/Bags.png": {
+          "bytes": 28707,
+          "sha256": "e7596b9408a6d204e97942e19a7bd188ddee2b651fa7e5b72f6a5300642d453a"
+        },
+        "Assets/Textures/Icons/Chat.blp": {
+          "bytes": 6660,
+          "sha256": "8704dc60f9c45bd5f66028430780188943374dbed6da660763ea490558c7b2e9"
+        },
+        "Assets/Textures/Icons/Group.png": {
+          "bytes": 31957,
+          "sha256": "4ce8e1fbef173823066b66cd1c5c08b0ee1d11bfc4b89ab21596265f15704c26"
+        },
+        "Assets/Textures/Icons/Jump.png": {
+          "bytes": 23346,
+          "sha256": "bcbd363b6d804cc6aaf29b9b86fd70ef11e4542ade215edb1e6c0c31cc6a4b07"
+        },
+        "Assets/Textures/Icons/LMB.blp": {
+          "bytes": 6660,
+          "sha256": "fdd3224d8d1512ac0068af9b9f300d53715fa3bf55f0a933139ee20666d35840"
+        },
+        "Assets/Textures/Icons/M1.blp": {
+          "bytes": 6660,
+          "sha256": "6fd0d037a9a1c79876566b133f98131b1d25acc9145b5389dfabb3b7cb21d408"
+        },
+        "Assets/Textures/Icons/M2.blp": {
+          "bytes": 6660,
+          "sha256": "6b95f5c8dfffb5e7707bf9997c609c1cd3cf4c6985d28e709497017ab5d557b1"
+        },
+        "Assets/Textures/Icons/M3.blp": {
+          "bytes": 6660,
+          "sha256": "a477fb2db3644598603de6345f88fe21718b244fe699107832eb0ea9cd6ca8e5"
+        },
+        "Assets/Textures/Icons/Map.png": {
+          "bytes": 26181,
+          "sha256": "90ab556f539f528969a89f1411e0b8f59c54141c75bf994d1f55062e1f0f94ed"
+        },
+        "Assets/Textures/Icons/Menu.png": {
+          "bytes": 31087,
+          "sha256": "10cd12b2ad659a969ff9abe8032125564fb8a6064f6c1ec50d1ccce67bd73aa0"
+        },
+        "Assets/Textures/Icons/RMB.blp": {
+          "bytes": 6660,
+          "sha256": "8d975a5b0c2eac461ccce09ac94b400e08580138f96b570822a82414b8818486"
+        },
+        "Assets/Textures/Icons/Ring.png": {
+          "bytes": 24689,
+          "sha256": "e0f1f66cf93c48d775a2616e71019ec23e3ddec7374fe3794dbe3a220aa24f39"
+        },
+        "Assets/Textures/Icons/Run.png": {
+          "bytes": 28385,
+          "sha256": "bded39c6dd3d557a1bac7350e796d57ba007cea362b550422136ce73bf5fe78d"
+        },
+        "Assets/Textures/Icons/Target.blp": {
+          "bytes": 6660,
+          "sha256": "533008fe06149c52d8ab2fde7619c73f8a719775c9042a71972530c58d677de2"
+        },
+        "Assets/Textures/Icons/Target_Narrow_Enemy.png": {
+          "bytes": 32594,
+          "sha256": "2fd3c293755316db1e7fe1131843119553fe604b0dc4031efd2bd7945b10868c"
+        },
+        "Assets/Textures/Icons/Target_Narrow_Enemy_Wide_Friend.png": {
+          "bytes": 31738,
+          "sha256": "714e5fdf020ca74d3f711164d95c8c488d3f641d6a3a3b374122d0b92ee245a3"
+        },
+        "Assets/Textures/Icons/Target_Narrow_Friend.png": {
+          "bytes": 32633,
+          "sha256": "96919813a6383d82e2c2947e3448252f02333a0c91819f67bc1657ba76450a25"
+        },
+        "Assets/Textures/Icons/Target_Wide_Enemy.png": {
+          "bytes": 32079,
+          "sha256": "688961a16135581239047166e8c660cdc4a447df95f2882adcd4f8b741e28e99"
+        },
+        "Assets/Textures/Icons/Target_Wide_Friend.png": {
+          "bytes": 32057,
+          "sha256": "9cfca769af5d98955abe0c2334d0fde38d106a652fed6ccf0d797074ca9760aa"
+        },
+        "Assets/Textures/Icons/Target_Wide_Neutral.png": {
+          "bytes": 32204,
+          "sha256": "fbca3cea1b008f0f12083f6175b95fd26cabfff10de5175a19f99bae4d6fcf33"
+        },
+        "Assets/Textures/Icons/Unbound.blp": {
+          "bytes": 6660,
+          "sha256": "371b123e253b73aae0daa4407715a13aa1a0990023e6be573509d6734f75150a"
+        },
+        "Assets/Textures/Icons/ZoomIn.blp": {
+          "bytes": 6660,
+          "sha256": "64dfd588c398e20916ba15386cb4bef0b2844531be0d3034bdba46362d579da2"
+        },
+        "Assets/Textures/Icons/ZoomOut.blp": {
+          "bytes": 6660,
+          "sha256": "c1d76b27eae679e41d195414dc679a7bd33e8358d6d65b21a9de3ea8abea08b9"
+        },
+        "Assets/Textures/Masks/CoverArtLine.blp": {
+          "bytes": 176004,
+          "sha256": "56d62c638204823c79823798cbacec02e0c00d8927664452283ee73a1429ebde"
+        },
+        "Assets/Textures/Masks/M1_down.blp": {
+          "bytes": 6660,
+          "sha256": "512dad4f13a01fe71bee5cb9ce5494e5db98228d2ebc6d41cbb623d3ccfae386"
+        },
+        "Assets/Textures/Masks/M1_left.blp": {
+          "bytes": 6660,
+          "sha256": "54c043be429a00ccea14f93e0e5aa5c449c8be60dad097babf267070169235e2"
+        },
+        "Assets/Textures/Masks/M1_right.blp": {
+          "bytes": 6660,
+          "sha256": "8398ae317d6726f239dd2fa20ee4ad1225fb2e45c2442c60ff2ebb5eed1bd29f"
+        },
+        "Assets/Textures/Masks/M1_up.blp": {
+          "bytes": 6660,
+          "sha256": "6b7717caaccb12fcb4db9e54763e934b699843d8c33207edd06acd09f992702d"
+        },
+        "Assets/Textures/Masks/M2_down.blp": {
+          "bytes": 6660,
+          "sha256": "828589c0de94b829dde60e2262a2b838fe6f2e44d000590f8868089325ea05df"
+        },
+        "Assets/Textures/Masks/M2_left.blp": {
+          "bytes": 6660,
+          "sha256": "04b5925ad3cc5930007d74ab9b8e9dbf347715af8498d126aa96eab062bed43b"
+        },
+        "Assets/Textures/Masks/M2_right.blp": {
+          "bytes": 6660,
+          "sha256": "4b2d669e8dee34a1cbd74a555b675da5ab668595315caae4680ae8dfa215e1bd"
+        },
+        "Assets/Textures/Masks/M2_up.blp": {
+          "bytes": 6660,
+          "sha256": "057b0d193643daa3333a0313e685d06b1f3913ab4938df595407c9a7abc0c7d2"
+        },
+        "Assets/Textures/Masks/M3_down.blp": {
+          "bytes": 6660,
+          "sha256": "1e00b769cc375391ba2f824a2e54ff1de9b9dcdbc9f108fe7e0eb2209628a0a0"
+        },
+        "Assets/Textures/Masks/M3_left.blp": {
+          "bytes": 6660,
+          "sha256": "24731123f5d99cdd97de02205c695b6667a52b869f7eb5f1c4112599d9d23fe3"
+        },
+        "Assets/Textures/Masks/M3_right.blp": {
+          "bytes": 6660,
+          "sha256": "2af223b2a49c408aa4e68fa7553aa42528775b7dc5228e400663656b5c9b374e"
+        },
+        "Assets/Textures/Masks/M3_up.blp": {
+          "bytes": 6660,
+          "sha256": "48ed54892da6eb8730a49b797e1b61ae66d93e81814d42ee5ca234344e0b399c"
+        },
+        "Assets/Textures/Masks/PetPowerMask.blp": {
+          "bytes": 23060,
+          "sha256": "45006d092b7996f73d946b0ba1e1fc7525b0cecc6d106982e239c33b0b308007"
+        },
+        "Assets/Textures/Notch.blp": {
+          "bytes": 12948,
+          "sha256": "8301741022c31e2b64704d34ebb4b36d6067200b8ee2d41813659516fadc34b3"
+        },
+        "Assets/Textures/Show.blp": {
+          "bytes": 12132,
+          "sha256": "385125255f114a14d4f54dd17dcfaee71dda3b35aa22b14b5025f612d8b9c684"
+        },
+        "Assets/Textures/Swipes/M1_down.blp": {
+          "bytes": 6660,
+          "sha256": "b8f1fddb1824599710b787344607ddef8617a40b3cbd3129c6583e355b68bba0"
+        },
+        "Assets/Textures/Swipes/M1_left.blp": {
+          "bytes": 6660,
+          "sha256": "47e0c8de20d554251cfb28656c7d162da2e90d6ccb8db622195329368b48ed8f"
+        },
+        "Assets/Textures/Swipes/M1_right.blp": {
+          "bytes": 6660,
+          "sha256": "43575f4f0a28b6e7eec30a06c39320b0ba03e5bb81c62ec8e547087da4adf149"
+        },
+        "Assets/Textures/Swipes/M1_up.blp": {
+          "bytes": 6660,
+          "sha256": "33d70a2a2ea7383785db150d19714f14b4a6eea8a17288718077ae6d17680e47"
+        },
+        "Assets/Textures/Swipes/M2_down.blp": {
+          "bytes": 6660,
+          "sha256": "9dfcdaa5d762ec8736080360ae48d6f88abb89cc8d14d40b285b832df8df3b20"
+        },
+        "Assets/Textures/Swipes/M2_left.blp": {
+          "bytes": 6660,
+          "sha256": "b66754d393a172d16edece3f294fe2881a22b49fef6ff0729a206b039ea72b0f"
+        },
+        "Assets/Textures/Swipes/M2_right.blp": {
+          "bytes": 6660,
+          "sha256": "9303adb39e09ee5653a2e2fbe94691cb696cd6d8c69a06feb008bd8a5a746590"
+        },
+        "Assets/Textures/Swipes/M2_up.blp": {
+          "bytes": 6660,
+          "sha256": "b2443a177ee23d6870687a13107b9a085aef9365134d741f73668784f56ddf36"
+        },
+        "Assets/Textures/Swipes/M3_down.blp": {
+          "bytes": 6660,
+          "sha256": "7d5f155b25eafb975cfccbb7d690df3d98ab9fb7c49589ddc85c0952defdb878"
+        },
+        "Assets/Textures/Swipes/M3_left.blp": {
+          "bytes": 6660,
+          "sha256": "db7247f2cf56a023e40208868b8e073e07b5a52435c304d73cad68b17bceb23c"
+        },
+        "Assets/Textures/Swipes/M3_right.blp": {
+          "bytes": 6660,
+          "sha256": "160e370e5b0efd003914c68b720b73b7a6086df2bbe37d1ec2595791f63f894c"
+        },
+        "Assets/Textures/Swipes/M3_up.blp": {
+          "bytes": 6660,
+          "sha256": "98843c137f421e7a59e91e78ffda3d722f4995ee0da352ad6b1f2d4b782c77df"
+        },
+        "Assets/Textures/XPBar.blp": {
+          "bytes": 23572,
+          "sha256": "7938e81dcb73fdc04a097d1b070828876b011475118f1869b318ee7ef43b94d9"
+        },
+        "Assets/Textures/XPBar_Inverted.blp": {
+          "bytes": 23572,
+          "sha256": "e5452f0e0e613d762156b58ac7557421948638f04b95171ee1903a2952fd1174"
+        },
+        "ConsolePort_Bar.toc": {
+          "bytes": 1196,
+          "sha256": "34e78bb044d3284353cdcdfc11f6fc83b2cb9051506ba2b690b6c37faff09b77"
+        },
+        "Controller/Blizzard/Blizzard.xml": {
+          "bytes": 81,
+          "sha256": "18d7e95a78641b348a1ecc43ba37b1f3225dd978c6b05e1b6ae4143e06b94844"
+        },
+        "Controller/Blizzard/Classic.lua": {
+          "bytes": 3506,
+          "sha256": "9a1a86b750fe299ff7d3b01fa54eece2ff9cf8bd640018d1a54f692e17308035"
+        },
+        "Controller/Blizzard/GridLayoutUtil.lua": {
+          "bytes": 25919,
+          "sha256": "9c62aea30ca6275ee5ada2476b685b9c0cafa047d032b2d3461b5cfe088e25a6"
+        },
+        "Controller/Blizzard/Mainline.lua": {
+          "bytes": 3467,
+          "sha256": "f5db29807936ab34263f66a818de290aa9d0f1e139a6acb886b6450ad195aa75"
+        },
+        "Controller/Manager/AssistedCombat.lua": {
+          "bytes": 12932,
+          "sha256": "a77984763c373b7cf4efa5a01633171975261b9b16d3accc17ab92a41c5be7f4"
+        },
+        "Controller/Manager/Manager.lua": {
+          "bytes": 8557,
+          "sha256": "df5fe632c7788782f0157d18b3da08c4ea74a40bd09b0e0d4beb0120be3ba370"
+        },
+        "Controller/Manager/Manager.xml": {
+          "bytes": 245,
+          "sha256": "8b42abc7e82c8235fe71d1b1bb0ac18048ddc6c11680627670bd6d801b39559f"
+        },
+        "Model/Assets.lua": {
+          "bytes": 9357,
+          "sha256": "7d53fa99d95b242bd4cbc507d49092b8096002ec5b55774e225056f5aa6fe4e1"
+        },
+        "Model/Database.lua": {
+          "bytes": 23229,
+          "sha256": "9f5046cfe99745b22223648c9f732f238cb36e25c13e32e49e711ac70e0e4b7e"
+        },
+        "Model/Interface.lua": {
+          "bytes": 17964,
+          "sha256": "f913930aa30ecb6692f33fefd2a035c21fa5076bdb386d2e6ad5219d9a1dd9f0"
+        },
+        "Model/Presets.lua": {
+          "bytes": 20194,
+          "sha256": "2a6f33d33235f222f1a21aabbc55f37daa18ffa49f82c65c92b79b720da8aae2"
+        },
+        "Model/Presets2.lua": {
+          "bytes": 16829,
+          "sha256": "19eda3966e9f95252959127a7c927128f3055457e353a12f82c3c1e258e39569"
+        },
+        "Model/Upgrade.lua": {
+          "bytes": 6180,
+          "sha256": "37b4fddc0d80d4e7d4c12a8e1420646c1c9d9a08998df52c3ba84b622d1a3076"
+        },
+        "Model/Utils.lua": {
+          "bytes": 16588,
+          "sha256": "2f451ff214e223674342275c9669d2d7caa23e102a9f3ecb00b4c41e54d50139"
+        },
+        "View/Config/Advanced.lua": {
+          "bytes": 5597,
+          "sha256": "23611f09ee8f7c5054ddad1a11f1f9614fcf578ddc30020936760c4e6086e6f1"
+        },
+        "View/Config/Config.lua": {
+          "bytes": 11479,
+          "sha256": "fc44b4537fecc4be5d13ba172a3ef8b9fbc3f434c7401e7ee626f23fcfa6e7d8"
+        },
+        "View/Config/Config.xml": {
+          "bytes": 3330,
+          "sha256": "15fe338ad89b93b91e4f53f45be46a286cec39b2a1dfeb0ed9838f77f11a8599"
+        },
+        "View/Config/Loadout.lua": {
+          "bytes": 45558,
+          "sha256": "c04ca63b93c606a53529874e6ce8f99496e1a945848a44523ca9e00eba8349ad"
+        },
+        "View/Config/Panel.lua": {
+          "bytes": 2543,
+          "sha256": "a6269ebf906dc4ece17deea9664f93e4fffc6c38d1cc6443ff760043e9a74033"
+        },
+        "View/Pet/Pet.xml": {
+          "bytes": 6011,
+          "sha256": "1b5269cce8b6626eded203846d459bbf71cd69d41324a40bc38e66ffccb5603a"
+        },
+        "View/Pet/Petring.lua": {
+          "bytes": 14903,
+          "sha256": "c69a8aa09d1505fd36295ddaa7edfe5948a136b0c0421e038f34ac11e2650ab6"
+        },
+        "View/Toolbar/Toolbar.lua": {
+          "bytes": 22030,
+          "sha256": "059cd6d26ee2d7aaa0dcae3a90636edb24d0d04551e15942388eb6081228f44e"
+        },
+        "View/Toolbar/Toolbar.xml": {
+          "bytes": 6812,
+          "sha256": "cc79b160ccdec7274b80e5d6f732e8898b1d42c82d1badbbeee249f4776b1a2a"
+        },
+        "Widget/Art/Art.lua": {
+          "bytes": 3760,
+          "sha256": "4c29432ee56afa6feb1c4f261405e9d66c93860e7f6fe518e1a3b915989b5875"
+        },
+        "Widget/Art/Art.xml": {
+          "bytes": 2212,
+          "sha256": "d602dce838cfea8184e7bc907a04afc7b09c8f6d49513eecebb4026c177ce985"
+        },
+        "Widget/Bar/Bar.lua": {
+          "bytes": 4853,
+          "sha256": "711fab41025e3337d9fd82bb5a8540fe34d28c68230938fd00c9046170219e52"
+        },
+        "Widget/Bar/Bar.xml": {
+          "bytes": 247,
+          "sha256": "b8939a2d8855775532837006e834a2d60d7e0d9539ced723f3d2be56c8521bb1"
+        },
+        "Widget/Button/Button.lua": {
+          "bytes": 14043,
+          "sha256": "48e0834c000efd08db58bfc0ff2bd22ec7fa7f8465b9f14cf5087b7a69be4de1"
+        },
+        "Widget/Button/Button.xml": {
+          "bytes": 41,
+          "sha256": "74b4dde29550d684add1b9065ffb1cb5d468c921e4028cb713a08f12f602fd84"
+        },
+        "Widget/Cluster/Cluster.lua": {
+          "bytes": 18873,
+          "sha256": "a20acf2074c70684f7b939c3d9d4403e4d81b73a1bfd561419c5675a08e524d1"
+        },
+        "Widget/Cluster/Cluster.xml": {
+          "bytes": 240,
+          "sha256": "3b1c6f6f3b10ffac74c30c21ef642b218c6bd1ca095f562fa7f7a16d416a0d6e"
+        },
+        "Widget/Cluster/Skins.lua": {
+          "bytes": 4070,
+          "sha256": "70e36eedf38c37e738fc49eba79913f7274f5ca3d4070a85086cee5c6d2fa92f"
+        },
+        "Widget/Divider/Divider.lua": {
+          "bytes": 2272,
+          "sha256": "d3708b09a14e2b68c75efa99932a45efd07f7972f2dbdc5ac9d92d47b777ada6"
+        },
+        "Widget/Divider/Divider.xml": {
+          "bytes": 1229,
+          "sha256": "67f3d6e4cf2f29773cb5d9b00cef420958e03dca0757dd00979a1f35f3bafb59"
+        },
+        "Widget/Glyph/Glyph.lua": {
+          "bytes": 3200,
+          "sha256": "d1482176f34b2314805a30fbb0ad6996453b2f40c8fb9491cce0a90bad011f6f"
+        },
+        "Widget/Glyph/Glyph.xml": {
+          "bytes": 271,
+          "sha256": "76f1d9f9f0e7660f8ec8e44a897f5119e5c17580fd860fc993add21cd05ce640"
+        },
+        "Widget/Group/Group.lua": {
+          "bytes": 9020,
+          "sha256": "8c783c760a071d15efc0a099454ef4c1fbec71bb026fa5230e421e3d1e3e9724"
+        },
+        "Widget/Group/Group.xml": {
+          "bytes": 205,
+          "sha256": "50801ad49ce42c5b1cb1934b35fdfde3d7f1f03f687e96256afbbb7d3ec83bb0"
+        },
+        "Widget/Page/Page.lua": {
+          "bytes": 6229,
+          "sha256": "f90d8324751be01333b02f0a2365fb4ab0254bc42356246fc17361147e350ac4"
+        },
+        "Widget/Page/Page.xml": {
+          "bytes": 291,
+          "sha256": "a76c1b3d20965422d73fabf0d3bbb25997e6545affdf4fcda8f735ee03ea3a17"
+        },
+        "Widget/Watch/Watch.lua": {
+          "bytes": 32711,
+          "sha256": "4d6670f76eb90c68be062e0e19174f9d6696341f6add9ab04e56aa9f77fc40e6"
+        },
+        "Widget/Watch/Watch.xml": {
+          "bytes": 6229,
+          "sha256": "4d27f470ea33e993306f4a422aa6b99aa896b7afab76f0c3950572fa4bc09c71"
+        },
+        "Widget/Widget.lua": {
+          "bytes": 4994,
+          "sha256": "2b126b331c4087a64b35aa3cc8105d06ae209e899fa94755e7214a4b9be4d895"
+        }
+      },
+      "links": {}
+    },
+    "ConsolePort_Config": {
+      "directories": [
+        "Assets",
+        "Controller",
+        "Libs",
+        "Libs/LibWoWQRCode",
+        "Model",
+        "View",
+        "View/About",
+        "View/Config",
+        "View/Guide",
+        "View/Settings",
+        "Widget",
+        "Widget/Button",
+        "Widget/Mover",
+        "Widget/Scroll",
+        "Widget/Settings",
+        "Widget/Templates"
+      ],
+      "files": {
+        "Assets/Controls_Bindings.png": {
+          "bytes": 23037,
+          "sha256": "dfb5238a82c3f96fdbdee9a03e8fad026f7abe124637c9a8c0f3afb61ba4aaad"
+        },
+        "Assets/Controls_Empty.png": {
+          "bytes": 24659,
+          "sha256": "7360f55add94b1a422f4e9efb4c48ec1b7b26f91d7eebfae64e76deb9190aa68"
+        },
+        "Assets/Controls_Settings.png": {
+          "bytes": 26481,
+          "sha256": "b40233d121028dcd14a2851793428b4432c74239ae0a8b7f4cb5ffadae5c2570"
+        },
+        "Assets/Cursor_Point_96.png": {
+          "bytes": 13365,
+          "sha256": "fd3996a45d04cee32bfe2cac1b8d5cc416bc5fed69c5ae611970a75f85db5bea"
+        },
+        "Assets/Deadzone2Da.blp": {
+          "bytes": 23044,
+          "sha256": "0bd0f03ef745bb45651b2f1785f02b4a8c78152d6b17da61caa51e16cdda84b5"
+        },
+        "Assets/DeadzoneXa.blp": {
+          "bytes": 23044,
+          "sha256": "3445fed4781ece5165a657de130c988e51bfa9e8fc8ab8b6680ba4f0a35eed27"
+        },
+        "Assets/DeadzoneYa.blp": {
+          "bytes": 23044,
+          "sha256": "1d71477c2b04e94164db26689044818727ca4779fedda6786a0f6320bd8d78c7"
+        },
+        "Assets/Movement_Balanced.png": {
+          "bytes": 7411,
+          "sha256": "38f47a9ad2c67e4e96ee2e3b12de4e9c3baa07f34f58f63af1962d1c7ef0ef2a"
+        },
+        "Assets/Movement_Follow.png": {
+          "bytes": 6928,
+          "sha256": "526e8eb6a58ae0c6728b3050223cdf473b9b96d16c192143920c5153c28c3955"
+        },
+        "Assets/Movement_Tank.png": {
+          "bytes": 6571,
+          "sha256": "3820a76624d62ba88a4673d2cfe0edd664f642e3369f7e5b581fd09716df7882"
+        },
+        "Assets/jose.blp": {
+          "bytes": 23044,
+          "sha256": "16cc3614723f4e1373339c2a77c6ce863c2ac01ec36d293006d142ed666eb368"
+        },
+        "Assets/master.blp": {
+          "bytes": 12132,
+          "sha256": "415f4a0cfbf162bc0599da57069c48baea9e68a075ea02689ad696bd6b049a4e"
+        },
+        "ConsolePort_Config.toc": {
+          "bytes": 770,
+          "sha256": "113c2b607cf42b1f605c324c4d88cdd0db0e324a3c22808b0398fee73c641a00"
+        },
+        "Controller/Controller.xml": {
+          "bytes": 72,
+          "sha256": "b0770bfc39a796fdf587310e55ccf2bd61e459a9d7c7c6ed5cab4f0014e1a146"
+        },
+        "Controller/Search.lua": {
+          "bytes": 1359,
+          "sha256": "96a77622793b029ee6b6782b7c7ee17c08b41480c7f5c4183e9d687bc4cbbd3a"
+        },
+        "Controller/Setting.lua": {
+          "bytes": 4058,
+          "sha256": "5aec4093990c3fa5e86b4575b5d26ce179ab13fd5f97534cf501d89857928aa5"
+        },
+        "Libs/LibWoWQRCode/LibWoWQRCode.lua": {
+          "bytes": 45123,
+          "sha256": "589d743a542b059840d62c419b50c7f86e26e762b7bc25260bbc2a72a3967741"
+        },
+        "Libs/LibWoWQRCode/README.md": {
+          "bytes": 1319,
+          "sha256": "2c0ab83dc70fa01f4d5184a748ae9ddfa4315bf8b2d3a9ce56e37e1e65b75ed2"
+        },
+        "Libs/Libs.xml": {
+          "bytes": 60,
+          "sha256": "847a4acc717f3efd48e2e25040b7fc66961c1a0dbce6c22ed45212581519bc8e"
+        },
+        "Model/Database.lua": {
+          "bytes": 5340,
+          "sha256": "e3804abf6dfb8108f04c16e8516fe0a221c227383a4d7caaa335dfadefeaaa77"
+        },
+        "Model/Legacy.lua": {
+          "bytes": 6897,
+          "sha256": "16c12dc9ce92ad743d1bbff463f8dc4e7338b0816917b89491ac07251b3f3c3d"
+        },
+        "Model/Loadout.lua": {
+          "bytes": 23112,
+          "sha256": "caeabc4bc147af55b128ba12374e367d48512c8968caf0ad18b1878feb388fe9"
+        },
+        "Model/Model.xml": {
+          "bytes": 205,
+          "sha256": "306f7a9c18a2012a81bc15e550aede6aa96bd93dc51fa0b0002b295f831350fd"
+        },
+        "Model/Profile.lua": {
+          "bytes": 3802,
+          "sha256": "882283cd7e5cd123617af02de5812a9075dbddfe6e368e7a4ae924345c2b05bc"
+        },
+        "Model/Serializer.lua": {
+          "bytes": 1294,
+          "sha256": "63a9b468667b73cdf10dc3c370fc8ef9d9b39260d41f84f4f25a690b0c9d3988"
+        },
+        "Model/Tutorial.lua": {
+          "bytes": 336,
+          "sha256": "4e834e2ab3f9fe484051ad68624775d364dcafe76f7a4717a63577797e3874ce"
+        },
+        "View/About/About.lua": {
+          "bytes": 7866,
+          "sha256": "6ba9aa4c6bbe7b0932721d94a0e02d1f7c4fe54cf90c12a571b957e9e9e85ea6"
+        },
+        "View/About/About.xml": {
+          "bytes": 3538,
+          "sha256": "3e3a0ccf8a9625d57b48bdc70dfe7d26428959151508d810c9e3079a09b67198"
+        },
+        "View/Config/Config.lua": {
+          "bytes": 16998,
+          "sha256": "30a3c0d3e6c43554a23a7b054eebd06d8076c1f4ab01fdd096efc3ff0bcb2c13"
+        },
+        "View/Config/Config.xml": {
+          "bytes": 6134,
+          "sha256": "d4d6d679b069942f81c11b914dffa2934b73897f77a1cc41fe8e2044caeeb602"
+        },
+        "View/Config/DataBrowser.lua": {
+          "bytes": 2466,
+          "sha256": "7f52d2bd6f9238a51c425aa445ad2590260e34ceb5182faf76db181563d01ee0"
+        },
+        "View/Config/IconSelector.lua": {
+          "bytes": 4651,
+          "sha256": "f0e9a4d4db1eeed53156c68683f1f1ce7a76459d6588daff47cdc6ef5d70f25b"
+        },
+        "View/Config/ImportExport.lua": {
+          "bytes": 16035,
+          "sha256": "4331c9046c283340dc0be43222864179877c5f43818ac86896dac492b6dffb4c"
+        },
+        "View/Config/LoadoutSelector.lua": {
+          "bytes": 10131,
+          "sha256": "014f45ae913cbb9adf720064640639dbcedb7421afcd46d129de93457bc88655"
+        },
+        "View/Guide/Controls.xml": {
+          "bytes": 7195,
+          "sha256": "08e113d00ad13c0c451ef58449e8d197dac5c0c5de18cd73021ae259548c2ce7"
+        },
+        "View/Guide/ControlsMain.lua": {
+          "bytes": 33959,
+          "sha256": "b53c7bb2b7351eeae871131577b1ea4a8670dbb86133d6c352bad22205384d4d"
+        },
+        "View/Guide/ControlsTest.lua": {
+          "bytes": 13086,
+          "sha256": "8352170176cfd26a60baad78a6532dc706d02130d2e1eb140fdeac93546551e0"
+        },
+        "View/Guide/Features.lua": {
+          "bytes": 5085,
+          "sha256": "f4a8a59d05389e2f26e68e7923445b9d814a638988608313b3ec30f1cd072baa"
+        },
+        "View/Guide/Features.xml": {
+          "bytes": 2349,
+          "sha256": "3ced08f72e0ce71b03f69327287a86b5195e9ea909fe45454e2371d639fda707"
+        },
+        "View/Guide/Graphics.lua": {
+          "bytes": 10168,
+          "sha256": "c8c1013aab1226ad5847bab3033fd510efb7b7be4d9c471215af9ccda14c1f52"
+        },
+        "View/Guide/Graphics.xml": {
+          "bytes": 2912,
+          "sha256": "030fd572a855791636203aa51e38cf1339b3c84788aef471f301467b6bd58b4f"
+        },
+        "View/Guide/Guide.lua": {
+          "bytes": 4366,
+          "sha256": "f508577019fc66b17b6913f4388ef6148555eb5ef534e637f6f68e7eed2aca3c"
+        },
+        "View/Guide/Guide.xml": {
+          "bytes": 1579,
+          "sha256": "c98d033bfab0671e884a07a5d949d4c5e611e0d91336fb875670168f1fb28e39"
+        },
+        "View/Guide/Overview.xml": {
+          "bytes": 5666,
+          "sha256": "6122423ceb5a1e3609f7acd9bfbeaa4af0d7c8d05f09645f1835a652542ff6af"
+        },
+        "View/Guide/OverviewEditor.lua": {
+          "bytes": 12625,
+          "sha256": "4f0aac8c1fa9945d9271a37672b30ae375bc5a99e1604ae413528abd0b5bb43e"
+        },
+        "View/Guide/OverviewSplash.lua": {
+          "bytes": 31930,
+          "sha256": "6adbc0e7124c1dd6e8fc72a87543b70023075c31aeb034463cbeb019c2df260e"
+        },
+        "View/Settings/DataProvider.lua": {
+          "bytes": 11391,
+          "sha256": "f79cbf78e407ed08514dbbda3aafc68af7aefca096e2f18e8c4fd60bf4f8316c"
+        },
+        "View/Settings/Elements.lua": {
+          "bytes": 23424,
+          "sha256": "22aa80ca81847dfee071a1da3a9fa795d4187ba041beb7144b69afda413f880a"
+        },
+        "View/Settings/Panel.lua": {
+          "bytes": 5690,
+          "sha256": "70083d1cf7040f7c7a67484edbbc3af8390a842eb682e3e0ea07f78127f2836c"
+        },
+        "View/Settings/Renderer.lua": {
+          "bytes": 10508,
+          "sha256": "0d43eab540fc0f07d7bfed16e92e61cb11c97e4b182403a8ef20485b8ed35148"
+        },
+        "View/Settings/Settings.lua": {
+          "bytes": 1549,
+          "sha256": "fc19558fbb42c1dd890e8af48f81ec889bf4071836f0f4d06b4838758a0081c1"
+        },
+        "View/Settings/Settings.xml": {
+          "bytes": 337,
+          "sha256": "1411e9f41e46847324a86abd0ac532744b58b6d6d2891a05cb7a7e49eea7f51a"
+        },
+        "Widget/Button/Button.lua": {
+          "bytes": 12695,
+          "sha256": "9775604abb38cc874937b4684368a80b1e93aafbbf819f84c187575f1a568650"
+        },
+        "Widget/Button/Button.xml": {
+          "bytes": 11597,
+          "sha256": "198db753d2fcb10c1fa0f7dc494fc034bc52de2e414b478aae521dd60556ee1d"
+        },
+        "Widget/Button/Card.lua": {
+          "bytes": 4674,
+          "sha256": "2774a50dc273870b279b9d98eb55dbcb36849a50188eccff784942101b1c3f51"
+        },
+        "Widget/Button/Card.xml": {
+          "bytes": 9132,
+          "sha256": "73a0309586d348cc9b50bd95c08c015537edb6342f57fa8391665ff0d0c875d8"
+        },
+        "Widget/Mover/Mover.lua": {
+          "bytes": 14753,
+          "sha256": "bc9f4439a2a0c6a76a66f17f60ada35f407cde0d78cdb2ba5e3421fbbeb0e207"
+        },
+        "Widget/Mover/Mover.xml": {
+          "bytes": 42,
+          "sha256": "f43658deb1dbd6df2498a5a1e7cfd10ac6f91e45a113ac0573ee377fafefe09c"
+        },
+        "Widget/Scroll/Scroll.lua": {
+          "bytes": 12811,
+          "sha256": "b7f2de59b8ec32cb7b7b741d320b5fcfcec93654056e3c640c03dcf82cb173fb"
+        },
+        "Widget/Scroll/Scroll.xml": {
+          "bytes": 3375,
+          "sha256": "bf88d6a5016687dabc2222fff436a41dade6ad169ffdedfd4472a5451d3eff28"
+        },
+        "Widget/Settings/Settings.lua": {
+          "bytes": 31471,
+          "sha256": "67eb599c3e0981de01c6b1ca9cfb6c611bf5627e1ac30f139fa52840c2515597"
+        },
+        "Widget/Settings/Settings.xml": {
+          "bytes": 3262,
+          "sha256": "c4c5324f926e5dca83e8e4fc2fbecb305c9c647c594acd7f6cebf7429f7f5f16"
+        },
+        "Widget/Templates/Compat.lua": {
+          "bytes": 18509,
+          "sha256": "e8631582bf74d544086ca03a7f0fa73301ed31fbf43cba7f9c59f8267eb4e9ce"
+        },
+        "Widget/Templates/Compat.xml": {
+          "bytes": 8688,
+          "sha256": "864164d1696e3704f592fef1714a22cfa08a0d9a449af02963649bd826aa56d0"
+        },
+        "Widget/Templates/Elements.lua": {
+          "bytes": 24681,
+          "sha256": "2b2f01624fa2cc02663c020eff2446f887d860e79dc4c4ba3e14100848cd6c3d"
+        },
+        "Widget/Templates/Fonts.xml": {
+          "bytes": 4653,
+          "sha256": "5f1cfa0e4515e9203b05487f0714b895f577f605dfa5cb57d8e44aeb165fa38b"
+        },
+        "Widget/Templates/Mixins.lua": {
+          "bytes": 9366,
+          "sha256": "f3a2e2ef92dd96f69b4313bc8970f70e532bcc92008e64b3af9be37434d76590"
+        },
+        "Widget/Templates/Templates.lua": {
+          "bytes": 6827,
+          "sha256": "c10b6e52d747a80c8a70103e0e02aac482d03c58e723146c58e4b50b414930aa"
+        },
+        "Widget/Templates/Templates.xml": {
+          "bytes": 5394,
+          "sha256": "ae1326fc93657eeb8852fe653a69a1bd112c75750b2e3b572c6e691309e3f5a7"
+        }
+      },
+      "links": {}
+    },
+    "ConsolePort_Cursor": {
+      "directories": [
+        "Controller",
+        "View"
+      ],
+      "files": {
+        "ConsolePort_Cursor.toc": {
+          "bytes": 682,
+          "sha256": "609613f02b580e2672a90abda9b0951a8a370e4ef27fa96f4894584c5deaf7e4"
+        },
+        "Controller/Hooks.lua": {
+          "bytes": 14014,
+          "sha256": "76fb0c5b690003c344923a5544a9616557cd38bc2de7d9ed394fdc37450a45d0"
+        },
+        "Controller/Mods.lua": {
+          "bytes": 5682,
+          "sha256": "9b35953be256de5ec6e9965a8f624f8b8a7a777b692e9382f209f1a6593e201c"
+        },
+        "Controller/Nudge.lua": {
+          "bytes": 5163,
+          "sha256": "b08d6715ca26df7c0c1f5ae2188c26a30d982df3b3879dd508fd5b78886af302"
+        },
+        "Controller/Scripts.lua": {
+          "bytes": 13608,
+          "sha256": "cb2fc5bdfb03ea9dab2700737be629f0eaeda59bf7d59f31e43700c5cb857f60"
+        },
+        "Controller/Scroll.lua": {
+          "bytes": 5763,
+          "sha256": "57ecda0da021e8f9475d0f2738073f4805fbf6e3642df8d54ade68345bbc417a"
+        },
+        "Controller/Stack.lua": {
+          "bytes": 11955,
+          "sha256": "4b2d76e369579f0450ef4e1fc49c7e8ceb4b2346b2304b47499ad5f665487d33"
+        },
+        "Database.lua": {
+          "bytes": 9558,
+          "sha256": "082b36351468abb7e2755ee2ea7bbabe9963beaed81adf5acbe912ff2aedc936"
+        },
+        "View/Cursor.lua": {
+          "bytes": 20513,
+          "sha256": "eb17f90b9a7c8b524a7e5efaaf0e9bc9c48a1aaf472cc1590c5dff029ec170c8"
+        },
+        "View/Cursor.xml": {
+          "bytes": 2873,
+          "sha256": "84c9c529cce66f99f787ea9b0ad6c9801c23974250d8ccfc030d704566a1af11"
+        },
+        "View/Effects.lua": {
+          "bytes": 9391,
+          "sha256": "0e851ab6ea5608fad8133d7d6a851e0745b8cb3900e2ce5604558ccbb1dd69e1"
+        }
+      },
+      "links": {}
+    },
+    "ConsolePort_Forever": {
+      "directories": [
+        "Adapters",
+        "Assets",
+        "Rings",
+        "Targeting",
+        "UI"
+      ],
+      "files": {
+        "Adapters/BetterBags.lua": {
+          "bytes": 8560,
+          "sha256": "b3b585023ce2a06dc9e1545d00c3ab15b7fa1558ba7d71878135013557c5bf3c"
+        },
+        "Adapters/BindingBanks.lua": {
+          "bytes": 6874,
+          "sha256": "415ff7353efaa55645cb2b809fc89eaf58dcda7fd544de322edf96603a772724"
+        },
+        "Adapters/BindingState.lua": {
+          "bytes": 5962,
+          "sha256": "ae63a75e4d55e4ad51966900b71dd8ec4d6e944cdb49da83e4553a4db21c050d"
+        },
+        "Adapters/ConsolePort.lua": {
+          "bytes": 1610,
+          "sha256": "c2b03ceb1bb0b2e0cb834cf5a644fc4f0f5a9023329527f6f22bbbe9e6e3f3b0"
+        },
+        "Adapters/DynamicCam.lua": {
+          "bytes": 4744,
+          "sha256": "1313a023223048955e06d11f053134c0bb298ee310ca06a915b306f8ce15e1d1"
+        },
+        "Adapters/EditMode.lua": {
+          "bytes": 4387,
+          "sha256": "676c351c2148adcf0606c783fc02c26e41c0a0b0a80883670e200c610fbbe559"
+        },
+        "Adapters/FlatConfig.lua": {
+          "bytes": 1055,
+          "sha256": "8a9c589d6b15b844ee6da75b066992aac8cb4a01074a5fd5d40ed4203a15cef9"
+        },
+        "Adapters/Integrations.lua": {
+          "bytes": 3654,
+          "sha256": "a9ed4dbc92901a262dfa1dee533f4eb50d232c80d6a790697f17bcaa7e7a664d"
+        },
+        "Adapters/LiteMount.lua": {
+          "bytes": 2832,
+          "sha256": "fc0f6440312f73a6118d4d8bf6678d608d87ce6f0502e8984cc5e37030479877"
+        },
+        "Adapters/NativeBindings.lua": {
+          "bytes": 3130,
+          "sha256": "38f079727662edfe49f2fc5ec9b0fb8b272f68ca2ad0f4199d7f6b0400d9560a"
+        },
+        "Adapters/Rings.lua": {
+          "bytes": 6455,
+          "sha256": "add8f4520014c12fe3771121e9d591083dcc756c982f408edcbe5a659d078000"
+        },
+        "Assets/ForeverInGame.blp": {
+          "bytes": 4195476,
+          "sha256": "9daccf7f192871a876ede143a14f4cc453a726ac271fc89d0e30a5610b5a673f"
+        },
+        "Assets/ForeverTargeting.blp": {
+          "bytes": 132244,
+          "sha256": "f1cbdf024b1d397abe318dd9caaf67f6c0ab6c5406d03873a456aa48e7b76760"
+        },
+        "Baseline.lua": {
+          "bytes": 635,
+          "sha256": "01e1179abcc30856a867748bd594fe9f442b23121cbc34f2af840f34afaf6457"
+        },
+        "BindingPolicy.lua": {
+          "bytes": 1170,
+          "sha256": "e5ae98e58300d17d70dd541b0a366fcfa7fa518fef8e4c38614b1ff3302e1cc3"
+        },
+        "Capability.lua": {
+          "bytes": 1876,
+          "sha256": "80fe4f66967d5ac4cb8337713dc9b5a74b5549523393214e862ac321202447a2"
+        },
+        "Cinematic.lua": {
+          "bytes": 2671,
+          "sha256": "6fbc8ee07ce8f986580615cdb2db9288d9b786f40a3024e32c4e70765bdb89dd"
+        },
+        "ConsolePort_Forever.lua": {
+          "bytes": 26050,
+          "sha256": "f3a8d40f0757256f894603e656ac8dd6c4add22ac0ac02d4611b5a4d56c61230"
+        },
+        "ConsolePort_Forever.toc": {
+          "bytes": 1386,
+          "sha256": "79c7b5caa227ddaeb97af4bb489eccb04b973a1d15526097fa884fe6c626758c"
+        },
+        "Coordinator.lua": {
+          "bytes": 11674,
+          "sha256": "7ec5738efef6e56e1f172b9a4304126910b1aa79f1f3ae5100e68ad41a54e87e"
+        },
+        "Core.lua": {
+          "bytes": 2308,
+          "sha256": "82d58af0dae095215454d86b85a351834a4c4bf21519f549904c56d504dad8f6"
+        },
+        "Diagnostics.lua": {
+          "bytes": 1175,
+          "sha256": "12e4ce3839edf3103b971eb918563d76236803ba6d7eea2d8b95125054f6995a"
+        },
+        "ModePolicy.lua": {
+          "bytes": 937,
+          "sha256": "72ee64c6985d3fc288cce62b2351bf8254364e4f94dfba77fb34dcbc8fa739ba"
+        },
+        "Plan.lua": {
+          "bytes": 2848,
+          "sha256": "654eadebfa115b3c480d555099609114f511561aaa558a05a5af2bcf6d1500af"
+        },
+        "Prompt.lua": {
+          "bytes": 7999,
+          "sha256": "976c8cab8db6b67d6e02e377e51f44148d139f8590159bc452cff5b0dd000d9b"
+        },
+        "Reference.lua": {
+          "bytes": 10213,
+          "sha256": "eb0961ddb5afa76dc55b9d01a6663159d8c378cb5a628331a6d8264735a36d30"
+        },
+        "Rings/Discovery.lua": {
+          "bytes": 4849,
+          "sha256": "04e6c8b1e26ae570fad970815b46fe1bfbba876cb1a1fc58345c9b9b9b957e4c"
+        },
+        "Rings/Selectors.lua": {
+          "bytes": 6030,
+          "sha256": "32ac2e6a837a2f8008ab082e1d4ed991bb617528707d9b2102e8cac35e21b49d"
+        },
+        "Runtime.lua": {
+          "bytes": 4704,
+          "sha256": "326b7d9cc4a96069b2d41c37f0b286b532d939f54b1c92e5d97301360edf90a0"
+        },
+        "RuntimeSetup.lua": {
+          "bytes": 13812,
+          "sha256": "0c947a0780669bbc3d70930ee091fc137b4acd99bcd205c4b226fbb19d390497"
+        },
+        "SecureModes.lua": {
+          "bytes": 10673,
+          "sha256": "032bd31b8bb620560f5f20ac81dc1156473702217d5845d5558e336a87a659b2"
+        },
+        "Skin.lua": {
+          "bytes": 10631,
+          "sha256": "3e8ece80d12495dd4f200776c32c7d8dd8b0d6eded95648d4f22053612208a4c"
+        },
+        "Store.lua": {
+          "bytes": 5101,
+          "sha256": "80ec4ac1f181d7e7da842bc02b1456d67d552d819959b61a08a7490b43f28fa1"
+        },
+        "Targeting/Ground.lua": {
+          "bytes": 15899,
+          "sha256": "f1053e29023583f465293bb19467a7f373a10682dd2c2ac82a7c4cf43a1bb043"
+        },
+        "Targeting/Preferences.lua": {
+          "bytes": 3788,
+          "sha256": "53ad05f6c269f9138544b8efbe01b9548af609f87fe56def7c190490f5d72c0b"
+        },
+        "Targeting/Registry.lua": {
+          "bytes": 1747,
+          "sha256": "8d2719c31db73844ab3c9205b8dc97ec7f41a21f3fca26e271fb43653adabd2b"
+        },
+        "TemporaryAccess.lua": {
+          "bytes": 5703,
+          "sha256": "364f9ca8043f2ca6407baf95255949727c1034bf1420a5db94782a0c547f0247"
+        },
+        "Transactions.lua": {
+          "bytes": 6201,
+          "sha256": "b5950dd8bafcaba5eb1ce6d27dc93f7a6178d7a6d0dbb2191f59f6ede25b245a"
+        },
+        "UI/Contexts.lua": {
+          "bytes": 8639,
+          "sha256": "4b8c8e1b8ac40ab3b6556bd66a39889ceee69d81769c53be65259d881d8fd96d"
+        },
+        "UI/FocusVisuals.lua": {
+          "bytes": 2836,
+          "sha256": "faa24f4998fc8a0acdffcb9f0209af22c237880a58999cc1c3a44a69e3f1a832"
+        },
+        "UI/InputBridge.lua": {
+          "bytes": 10590,
+          "sha256": "55cce392ff52619cfb72429d54bb83a0479a419c931cbff5b713d5ddabab8b2b"
+        },
+        "UI/ItemHints.lua": {
+          "bytes": 6023,
+          "sha256": "aec2c1eab3e992358af7e48f342e834e047c56be08c56a3d0b58c85acd65a815"
+        },
+        "UI/Map.lua": {
+          "bytes": 10375,
+          "sha256": "33d7a5762ba2eae61bad42f0872ad13777c05fd14c96702c5778dad04bbb5059"
+        },
+        "UI/Ownership.lua": {
+          "bytes": 1259,
+          "sha256": "0bb3b1c386073e63c377475b783ddc370b6daba1a2bc9cf4301e90ca92b1accd"
+        },
+        "UI/PartyLayout.lua": {
+          "bytes": 4066,
+          "sha256": "a84175418653a72b581e063563f72237946c431c3c0f5cd8be852c05459705ed"
+        },
+        "UI/Proof.lua": {
+          "bytes": 9305,
+          "sha256": "dfded378c684848cfdd329d43abd1b5efdb7528f74ee2a0d9bf4098146463ec1"
+        },
+        "UI/Scroll.lua": {
+          "bytes": 6942,
+          "sha256": "f8c81f1e7710a312e38d1f5fa15929250cee951d996715f55ceb8bec3a579d25"
+        },
+        "UI/Targeting.lua": {
+          "bytes": 5707,
+          "sha256": "0302e02c427fb1d1eb637ba9ea4b99f0eb59e84461470151c4e3f83043e63f27"
+        },
+        "UI/Windows.lua": {
+          "bytes": 8619,
+          "sha256": "2301f8c937c2f41d22a6698b3bbb2d63839c42dd6bd45fdbd9fdcbbcbf58eca7"
+        }
+      },
+      "links": {}
+    },
+    "ConsolePort_Keyboard": {
+      "directories": [
+        "Assets",
+        "Components",
+        "Core",
+        "View"
+      ],
+      "files": {
+        "Assets/Char.blp": {
+          "bytes": 6660,
+          "sha256": "38327041aeb02e09a230d6a67f7d3b01540e5c3123df18db23e948899e870e0f"
+        },
+        "Assets/CharMask.blp": {
+          "bytes": 6660,
+          "sha256": "20d076a6b108a54847b26295fa9abfcb459c9f9362e1a895928508a8ef9aeb2e"
+        },
+        "Assets/IconEraser.tga": {
+          "bytes": 1068,
+          "sha256": "1a01f81889291019b879db3eb8d23028db262bd1c3229b29d75f7aeb5e226f00"
+        },
+        "Assets/IconSpace.tga": {
+          "bytes": 1068,
+          "sha256": "e9e2b87abdb842d6b22eea3e37b47852a64cfc68a1d8f60102209c2d4c321472"
+        },
+        "Assets/Palette.blp": {
+          "bytes": 350724,
+          "sha256": "2a7d72efa200f3c1e0cede5197c3281bc189adce977bf22d88abbc0c6a83ee5c"
+        },
+        "Assets/PaletteMask.blp": {
+          "bytes": 350724,
+          "sha256": "148f339caf972123d5f5b636e836926b703cefe92e119bba6d26b24fa5dd9062"
+        },
+        "Components/Charset.lua": {
+          "bytes": 2722,
+          "sha256": "91fe05a63aa95f4b4d807dfe7982280cbba12d12c2c303d8775d31234539c83e"
+        },
+        "Components/Config.lua": {
+          "bytes": 4831,
+          "sha256": "f5827ce143c6b5c21488cf4e9cb1b1e4c622580eb355e70cbb7e0b7bc4418df8"
+        },
+        "Components/Suggester.lua": {
+          "bytes": 4340,
+          "sha256": "c9d5ed0b93d54b8bb64e3d86b6de4319242b4412c4536d129981f20982da5977"
+        },
+        "ConsolePort_Keyboard.toc": {
+          "bytes": 817,
+          "sha256": "87f140a739f0e93992907a04445934343b55a2b6afe326e6e5affbfdfcec3aaf"
+        },
+        "Core/Autocorrect.lua": {
+          "bytes": 4911,
+          "sha256": "ad34d99de621cb6b57417dcaf865b72e9ee65ffee77113ef4474f32541d34e6b"
+        },
+        "Core/Dictionary.lua": {
+          "bytes": 2758,
+          "sha256": "c0ff8e1e2fb7914b63410b028f794e9549620ff303d56fbddc232670bc1eb84c"
+        },
+        "Core/Observer.lua": {
+          "bytes": 1520,
+          "sha256": "f67f1e1a0827b20e186e55d842f70bdb535af8bf38852553d3c879da20b02c13"
+        },
+        "Core/UTF8.lua": {
+          "bytes": 1215,
+          "sha256": "c59c7beaa1c6dd932e531afc3ca895188c76bcf18013dccf45ab27ea94022279"
+        },
+        "Database.lua": {
+          "bytes": 6770,
+          "sha256": "2faea567b3ba2a8a608b7b821ef25e7d5e5de77fa10f26d7d74b306d2442f30e"
+        },
+        "View/Keyboard.lua": {
+          "bytes": 12871,
+          "sha256": "d0a781ae5c8b1b0020c83356cc8014fcaf13c4c8d92d165c96ab669e5722ad69"
+        },
+        "View/Keyboard.xml": {
+          "bytes": 7649,
+          "sha256": "8057852ea69467959002e1ad77413059a06eb7db3f4086b1195b7c528383ea41"
+        }
+      },
+      "links": {}
+    },
+    "ConsolePort_Menu": {
+      "directories": [
+        "Assets",
+        "Controller",
+        "Model",
+        "View",
+        "View/Popup",
+        "View/Popup/Shared"
+      ],
+      "files": {
+        "Assets/RingMask.png": {
+          "bytes": 160554,
+          "sha256": "77aecb8b627a963baf9fe364b38a94c57b84cccd0d8eae627f4243a12a718866"
+        },
+        "Assets/SquareMask.BLP": {
+          "bytes": 5268,
+          "sha256": "ad7e95f71a2108642fcc9d8cb3a8e302eb58bfae1b2e2909ae376e3d6057d6f2"
+        },
+        "ConsolePort_Menu.toc": {
+          "bytes": 593,
+          "sha256": "e7d8ea6c8a554bc05bcdc72c59cce29afe57c9ddd0230c2971b8d17937de8b35"
+        },
+        "Controller/UnitMenu.lua": {
+          "bytes": 7991,
+          "sha256": "a6ef5b56e20bbbfd705f463c6d1ec6e9b31aa5b8b565c91fabd4d330405ceffe"
+        },
+        "Database.lua": {
+          "bytes": 1754,
+          "sha256": "f95fc4d7d0759bdf031293bc0b0d43de786b7e1b7dfac2f4362f2ef0a242b89c"
+        },
+        "Frames.xml": {
+          "bytes": 227,
+          "sha256": "d86deb68125074afd5f0e17da79773289b84a1dd7762fb06acc4055b57dccae8"
+        },
+        "Model/Buttons.lua": {
+          "bytes": 16907,
+          "sha256": "a326eced153e89ec6e30b1dd1b64dacd357df47a84bcd90576b0ed3d0eb9f0d2"
+        },
+        "Model/Visuals.lua": {
+          "bytes": 1827,
+          "sha256": "698dbdf5b71176690ea27fe5dc9c7c37890725d8152fc334458a4a2252ebefea"
+        },
+        "View/Menu.lua": {
+          "bytes": 5613,
+          "sha256": "57e9f9ff9451b065146f1681594d299e3bde43b404ecbac7469d7c2548878a30"
+        },
+        "View/Menu.xml": {
+          "bytes": 2962,
+          "sha256": "eaa47cb96ac6e9f80230610584480ac8d9f5c1c140464b0d4f18a787cf42ea09"
+        },
+        "View/Popup/ItemMenu.lua": {
+          "bytes": 13792,
+          "sha256": "e5458da7fea46b1a18aa05f39a2ec0dfe2c6c020c80b3113075c2db7f43ee227"
+        },
+        "View/Popup/Popup.xml": {
+          "bytes": 4021,
+          "sha256": "9251439ac796e2a187c4025ef1d13664695b06a7f8706045beea7c2b4d65d0df"
+        },
+        "View/Popup/Shared/Button.lua": {
+          "bytes": 7418,
+          "sha256": "67994c9002b33047f5f43a422c1d1e02f397d539b283191a2e8a75fe3d5d0876"
+        },
+        "View/Popup/Shared/Tooltip.lua": {
+          "bytes": 3589,
+          "sha256": "3a79185942c1442180c7aa1be5c9412b7d1e4fa8a0a35bc5a362225d0e6deb63"
+        },
+        "View/Popup/SpellMenu.lua": {
+          "bytes": 13571,
+          "sha256": "d2142436f55e72085f267b7f6d472b91ac07022d84fa8abebd1a690757b1946a"
+        },
+        "View/Popup/UnitMenu.lua": {
+          "bytes": 28986,
+          "sha256": "b0d9c5a0798b5d818cd8b143ead0202c80a7e18f52972ef9022d6e0c2120f685"
+        },
+        "View/Ring.lua": {
+          "bytes": 12952,
+          "sha256": "05563c649a2cfbd919a7bb16a45f56966122cb5e9d281aed1f957f09fa0dae4e"
+        }
+      },
+      "links": {}
+    },
+    "ConsolePort_Rings": {
+      "directories": [
+        "Controller",
+        "Model",
+        "View",
+        "View/Config",
+        "View/Config/Display",
+        "View/Config/Loadout",
+        "View/Config/Sets",
+        "View/Nested",
+        "View/Ring"
+      ],
+      "files": {
+        "ConsolePort_Rings.toc": {
+          "bytes": 829,
+          "sha256": "c253f04725c7f118fc840c72bd4251b7971ba78e5687b0ac1397edc688be748f"
+        },
+        "Controller/Auto.lua": {
+          "bytes": 5830,
+          "sha256": "c21476f2cbd0a188109da7731579dd1b297f9b43ea5c107f49064eb38e4cd580"
+        },
+        "Controller/Context.lua": {
+          "bytes": 976,
+          "sha256": "278d885c854e2a3c9f4f5a815a37d8360521c6c04cc7d542db544de70560f64f"
+        },
+        "Controller/Events.lua": {
+          "bytes": 3400,
+          "sha256": "bff38bed94394cda6dd41c4e3c1076a61223f0ff4609ca2b855d17c5790838fc"
+        },
+        "Controller/Observer.lua": {
+          "bytes": 2922,
+          "sha256": "80296b4bdf9b001ae7b83131af7469eacd27d3898b8453e08210c8e5c67c8348"
+        },
+        "Controller/Secure.lua": {
+          "bytes": 14794,
+          "sha256": "870f417c81104d13f5597808855a0fb68a079968f758f0e769ba13481afc5ca0"
+        },
+        "Database.lua": {
+          "bytes": 7486,
+          "sha256": "276ddf4071eacbb797657a34e8b6c641c838b496f9c0932a957bb7a97fef59ca"
+        },
+        "Model/Collection.lua": {
+          "bytes": 4411,
+          "sha256": "5b41bf8d8a706872f3944a6388887bf53741eeb6c9b278ece6317f663bf8ee86"
+        },
+        "Model/Container.lua": {
+          "bytes": 6255,
+          "sha256": "1837327a55f62b0152f5445d951a24f0ea80a3030b530525f4ced28a176a2336"
+        },
+        "Model/Map.lua": {
+          "bytes": 8495,
+          "sha256": "027b9464f1b3645d8ba08e4c2b8fbb3ea1d70e6883114ae49075d987e9380e1b"
+        },
+        "Upgrade.lua": {
+          "bytes": 880,
+          "sha256": "1c464317479d1e19507a9cbfa6e8a4fb286aff8f61a80dfb2ce08031ad25ce8f"
+        },
+        "View/Config/Config.lua": {
+          "bytes": 9124,
+          "sha256": "a2c8ab78d486d7814af868740560866f4b67eda16c8ac93d6a0bc586779125e4"
+        },
+        "View/Config/Config.xml": {
+          "bytes": 5131,
+          "sha256": "b4a4789157ed25b03703f3820aa298af932b9184206651dda7c1d374d25c1985"
+        },
+        "View/Config/Display/Details.lua": {
+          "bytes": 5466,
+          "sha256": "17b7239f3cdac4901cfb846928a79bc07c1b6918ae0cf8430a2fd4be4f4ccb7d"
+        },
+        "View/Config/Display/Display.lua": {
+          "bytes": 7075,
+          "sha256": "fcad8a99538b880e15f71cfad362820f6a3e8102142dad7d4d244db11111d3f2"
+        },
+        "View/Config/Display/Display.xml": {
+          "bytes": 101,
+          "sha256": "3e4a07f71f46a4baf65b4837742137873006e88ebced5ae21a49bcd06a80b158"
+        },
+        "View/Config/Display/Ring.lua": {
+          "bytes": 10383,
+          "sha256": "b150d593b4620daa2ade66ab7297e6a8bc7a3a13602dbbe0788240b40048c74e"
+        },
+        "View/Config/Loadout/Loadout.lua": {
+          "bytes": 3815,
+          "sha256": "a3b77432ed68eef9e94274577515340d9b570b561a66d525f1de93c811059ab5"
+        },
+        "View/Config/Loadout/Loadout.xml": {
+          "bytes": 132,
+          "sha256": "9fa1837068d41e92b5f057ddaf11d33ea81396c44b9806f1852b4b4df3503fdb"
+        },
+        "View/Config/Panel.lua": {
+          "bytes": 3104,
+          "sha256": "f18844baa4b6cae63afef32cafe501de435e9b56bfee84f37df64b26b02f5a2f"
+        },
+        "View/Config/Sets/Sets.lua": {
+          "bytes": 6968,
+          "sha256": "0e2e28cac46805b0b8cd25548c793d934e5895d3bb6c9f72112a03dcb6de58fb"
+        },
+        "View/Config/Sets/Sets.xml": {
+          "bytes": 1987,
+          "sha256": "ea8c1dc443b5aa2062e8458961f41af8148f06f42d3355abcdac9001fba0a8c1"
+        },
+        "View/Nested/Nested.lua": {
+          "bytes": 4185,
+          "sha256": "f1e9ec7f6e582fec92d958c1f02fa27cba16a1265f309da6ffce40a62b031c6e"
+        },
+        "View/Nested/Nested.xml": {
+          "bytes": 43,
+          "sha256": "43ea977476160ac36937e07d9f979cf50b73e3efe4c7cabb920448d200985f11"
+        },
+        "View/Ring/Button.lua": {
+          "bytes": 2750,
+          "sha256": "b91e5b4de4ba487e17d3e2d22b062322681eed8cff09ccc396feb148acbb7190"
+        },
+        "View/Ring/Mock.lua": {
+          "bytes": 2996,
+          "sha256": "56b9b67b59cbc4c8a6874b9ca7eb62d9b36853b184d1de48c350795fc63a0a19"
+        },
+        "View/Ring/Ring.lua": {
+          "bytes": 4915,
+          "sha256": "beddc693b52b175c7fbc4c8c29d6648da40c88806491cf9d5a0c9175f0f40d5f"
+        },
+        "View/Ring/Ring.xml": {
+          "bytes": 1493,
+          "sha256": "626ce07f8a4cf6a53e054f9f3432ee532d22664b833eaccb2c8e77964186c2e5"
+        }
+      },
+      "links": {}
+    },
+    "ConsolePort_Target": {
+      "directories": [
+        "Controller",
+        "View",
+        "View/Cursor",
+        "View/Hotkeys",
+        "View/Ring"
+      ],
+      "files": {
+        "ConsolePort_Target.toc": {
+          "bytes": 830,
+          "sha256": "c3e3022aef5c0d7099654f0bb73476733f28c3d0fc7db7bd5d1af352e6fc057f"
+        },
+        "Controller/Config.lua": {
+          "bytes": 4379,
+          "sha256": "a99a7e21eb319478aad53d730becbd001f471a0b79761e6fd417f29bb7a9e393"
+        },
+        "Controller/Securescan.lua": {
+          "bytes": 8785,
+          "sha256": "e7a742d6b9b1168e023bc5ec51cca98ce78bbe9b9313fb03a1f2e0b4a6db4f20"
+        },
+        "Controller/UnitPool.lua": {
+          "bytes": 5217,
+          "sha256": "c70eaedd81c154ed3902e8c4ff4d6d5fe4133c7834759b703327f137f4667348"
+        },
+        "Database.lua": {
+          "bytes": 12335,
+          "sha256": "1f6d29938ff9de795638ed7f0bf3ad36ba8d468bccaba1ba7ae7c1262341fa00"
+        },
+        "View/Cursor/Raid.lua": {
+          "bytes": 23738,
+          "sha256": "f6f5fc86f28136f49694a5543e3e4a371327bbc77656511e8fb49460e5997427"
+        },
+        "View/Cursor/Raid.xml": {
+          "bytes": 4422,
+          "sha256": "c479bc29d1846f02ccf8d2ec312e155e9c7bcdce0393e07434f6c24ee449d249"
+        },
+        "View/Hotkeys/UnitHotkeys.lua": {
+          "bytes": 18775,
+          "sha256": "2f75ec29efd5eb087bfad3d0341714e7f928c43b73ad7816ca6d5eca7e75868e"
+        },
+        "View/Hotkeys/UnitHotkeys.xml": {
+          "bytes": 1606,
+          "sha256": "3bfb69eda6dacefeb347d456735319f983056fbbc287fbdeb4df4ee5a71b2fc6"
+        },
+        "View/Ring/Targetframe.lua": {
+          "bytes": 7057,
+          "sha256": "ac5819739d2f46f0662d5a2dfe645aceec3e480bc2c05c75ba5e4f99aaca26ec"
+        },
+        "View/Ring/TargetframeAurasClassic.lua": {
+          "bytes": 3732,
+          "sha256": "f675cfdfdd32d622ef88e4e7727779d26e7e527f1b63d470716011a08ffa0588"
+        },
+        "View/Ring/TargetframeAurasMainline.lua": {
+          "bytes": 1985,
+          "sha256": "a20be0d737d3c6ea95c254affed6cc4c3c3df882f89eb901d04373b02b94ceeb"
+        },
+        "View/Ring/Targetring.lua": {
+          "bytes": 20282,
+          "sha256": "6211e14c9e0444728ec442fbdb54e12aa16318409607b4c01f2eeb0a5b0771af"
+        },
+        "View/Ring/Targetring.xml": {
+          "bytes": 244,
+          "sha256": "c1bc69e162d40b23f2fcbc343582673ef7c798b37799ee98fe1bd467b30057f1"
+        }
+      },
+      "links": {}
+    },
+    "ConsolePort_World": {
+      "directories": [
+        "Assets",
+        "Controller",
+        "View",
+        "View/LootFrame",
+        "View/QuickMenu",
+        "View/TempAbility",
+        "View/Templates"
+      ],
+      "files": {
+        "Assets/CooldownEdge.BLP": {
+          "bytes": 5268,
+          "sha256": "d8938965e6e2ed0f1b8acc887cc3fa17446f930578abf067a943c71fa97c5d9a"
+        },
+        "Assets/CooldownSwipe.blp": {
+          "bytes": 6676,
+          "sha256": "5becfd132719914aba5c58e9fe1cd9603892a7c517dd30a2f07f9b836d9268e5"
+        },
+        "ConsolePort_World.toc": {
+          "bytes": 773,
+          "sha256": "905d8c9192eb6be7e6e955d0462af44a013d6987944005c22fc0392681051f25"
+        },
+        "Controller/AurasClassic.lua": {
+          "bytes": 4955,
+          "sha256": "a8dca67de180bfee6c9f10858fa460b547b25646c805f76b1a63961c3bcbc55e"
+        },
+        "Controller/AurasMainline.lua": {
+          "bytes": 7317,
+          "sha256": "857678b0ce4ad9a7ed8ad7799c52d766ddbc6840627655e0cec6d0528d26e802"
+        },
+        "Controller/GroupLoot.lua": {
+          "bytes": 9309,
+          "sha256": "9c9f862521c061d192a3a43774ebd80c5b56c963be2e7dc7a13883b1e61d21a5"
+        },
+        "Controller/Items.lua": {
+          "bytes": 11711,
+          "sha256": "de5ab576065309fc6ad2182eb24b86eb0874ac36936b28e647b8cfd6d3bdddb4"
+        },
+        "Controller/Pet.lua": {
+          "bytes": 13800,
+          "sha256": "6ceae108b641f1beb8dd384651d2b832a79e02f068d1a9df0c2bd810297381b9"
+        },
+        "Controller/Ping.lua": {
+          "bytes": 5588,
+          "sha256": "253c54e24e689e6fbee65d202227bf2fa4ce0ef330c5d4c948994dfe0a36491b"
+        },
+        "Database.lua": {
+          "bytes": 3472,
+          "sha256": "8d782debfefbb68d728d6e812399dfee271077d94e814bd2449e6b88a8c4070f"
+        },
+        "View/LootFrame/LootButton.lua": {
+          "bytes": 4701,
+          "sha256": "98c8a1ccac1d111e6b351ee92b033db01e7b312e2632ba88503a4c34aee934de"
+        },
+        "View/LootFrame/LootFrame.lua": {
+          "bytes": 5936,
+          "sha256": "3991e211d58d36b293125d3a852083da54a311dc74bedb1dac5b73723ed8f3c4"
+        },
+        "View/LootFrame/LootFrame.xml": {
+          "bytes": 328,
+          "sha256": "12b4dad90eeb69deccde37e634442ea6d39670aa151e63bcb97d305edc87002a"
+        },
+        "View/QuickMenu/QuickMenu.lua": {
+          "bytes": 8027,
+          "sha256": "fb739d39d172015387677cdaeb0ef090662d487a04b71d2482e47ba749a392f8"
+        },
+        "View/QuickMenu/QuickMenu.xml": {
+          "bytes": 4669,
+          "sha256": "c9d4e1194f5ba44f573d911635d2fa9d55a98b0fadf38c57e787360fcdb77a4f"
+        },
+        "View/TempAbility/TempAbility.lua": {
+          "bytes": 7055,
+          "sha256": "43cff3ad211094a7afcfcc23d80235045d74436f52ff6334fa5e2199583468fc"
+        },
+        "View/TempAbility/TempAbility.xml": {
+          "bytes": 304,
+          "sha256": "6d1381b6b4c9022e2775082adfaa8c6fb315c18ee333cf55f53ff022b897a96e"
+        },
+        "View/Templates/Templates.lua": {
+          "bytes": 567,
+          "sha256": "180165d2388230f30ca045155cfbc2f66046a4a4d6b4888b7c36e3c30045e6f1"
+        },
+        "View/Templates/Templates.xml": {
+          "bytes": 9450,
+          "sha256": "afc303f98b6f520820c06cac2d2541d214729ef36d9db73ee0e5003fa3437933"
+        }
+      },
+      "links": {}
+    }
+  },
+  "operation": "deploy-scoped-update",
+  "packSHA256": "035e83adf3621461d8a19a3e6822e67acc901d543026e76bad3950570cd0b252",
+  "root": "C:\\Program Files (x86)\\World of Warcraft\\_retail_",
+  "sourceCommit": "580f1e37bd5d3ccc7fa00b8116a3231021e9cb73",
+  "stage": "C:\\Users\\luisr\\OneDrive\\Documents\\03 Gaming\\World of Warcraft\\_retail_\\Interface\\.cpf-update-stage-20261007T180759Z-1c3cd2fcb9c3",
+  "startedAt": "2026-10-07T18:07:59.403464+00:00",
+  "status": "installed",
+  "testedDependencies": {
+    "Cidan/BetterBags": {
+      "sha256": "16c1ac70c4de2e7f2cfdbf4d2b5f3d3f44514a3f9ecf1040e29c790e8be8c0d7",
+      "version": "v0.5.14"
+    },
+    "DeadlyBossMods/DBM-Cataclysm": {
+      "sha256": "ae87dc521de1f39ae6eccbaaf8a8dc2d91205b4be9ecc9bda72f2da79d9be145",
+      "version": "r263"
+    },
+    "DeadlyBossMods/DBM-Dungeons": {
+      "sha256": "63a30527dfef38975ef48d9f98c82608c286504cd7668d745e8998a1fd5c9479",
+      "version": "r264"
+    },
+    "DeadlyBossMods/DBM-Legion": {
+      "sha256": "6c1bdbabb0340408cbb44e663a80ca42f26158c81457b6cf50707d5f2f4533b2",
+      "version": "r67"
+    },
+    "DeadlyBossMods/DBM-MoP": {
+      "sha256": "074eebe2db67590f42a78d5f2dbfde24423563ff3c822c1ee6a3a082790a56d4",
+      "version": "r191"
+    },
+    "DeadlyBossMods/DBM-Vanilla": {
+      "sha256": "7c559db0599ae1dac36c2836b61b7f8125d705d71cc39d76d8a2d2fe8f048463",
+      "version": "r830"
+    },
+    "DeadlyBossMods/DBM-WoD": {
+      "sha256": "87889c77279e5c422e99ffb595c6b83e274f4e6f5be31e5142a7b75d5aa72bf6",
+      "version": "r97"
+    },
+    "DeadlyBossMods/DBM-WotLK": {
+      "sha256": "a62e410a8bf69bbc23ef3cb14ed20268dd175c5f7b2ccba52931b894e2c2b462",
+      "version": "r353"
+    },
+    "DeadlyBossMods/DeadlyBossMods": {
+      "sha256": "5c8bbcc7daabff029d8ecf4b4b95b400be1bfdd5e860123914d84ada032d40e6",
+      "version": "12.1.12"
+    },
+    "SFX-WoW/Masque": {
+      "sha256": "9e1da4827ae60bd25d7fc427cbeeb0dc297e59d53a71a29ae95223d3374bbfa0",
+      "version": "12.1.0"
+    },
+    "SLOKnightfall/BetterWardrobe": {
+      "sha256": "abcba6be5535c15a581721192a5c4865e05b568dbac52d79c108c89e6c763d8c",
+      "version": "6.12.3"
+    },
+    "Tercioo/Plater-Nameplates": {
+      "sha256": "3353250fa63fe840d8e9444037a3debde5c82286ccbcc825a475cec5ffd90ead",
+      "version": "Plater-v656"
+    },
+    "curseforge/DynamicCam": {
+      "sha256": "10eb86230c6903e72097e1552c04de8a163a39fe3cb31fc3a3274c2c4394e072",
+      "version": "2.21.1"
+    },
+    "curseforge/Immersion_ExtraFade": {
+      "sha256": "89c59d0519b2392b41010dda34ec01d38c9c1702c644f5e57422341b1fec21c6",
+      "version": "1.18.0"
+    },
+    "curseforge/SharedMedia_Causese": {
+      "sha256": "12060554a2eace5438f08daa98660169a18e127b8af269c38974f9f570091711",
+      "version": "7.6"
+    },
+    "rursache/HideClassBars": {
+      "sha256": "20b40ca768005b912400d6a64894c0607e5e60f7ee9f7b9fff94f1be5242587e",
+      "version": "v1.1.0"
+    },
+    "seblindfors/ConsolePort": {
+      "sha256": "6175a327b3b7505b6f1d79ef0adc96c7a65db3cc8220dd59e34de6658dbb4f49",
+      "version": "3.3.10"
+    },
+    "seblindfors/Immersion": {
+      "sha256": "b180a8cbd1a1d878377da5a85abfdc5576e0c04212f9e900e3e9ca505cde1f3e",
+      "version": "1.4.61"
+    },
+    "xod-wow/LiteMount": {
+      "sha256": "bf89ab84666266ffefd8ce56581f98467f8125c25c65e3fe68031303df28efe0",
+      "version": "12.1.0-1"
+    }
+  },
+  "unselectedVendorsUnchanged": true,
+  "vendorFileCount": 3240,
+  "vendorWrites": true,
+  "wtfUnchanged": true,
+  "independentReadback": {
+    "matchedInstalledFiles": 651,
+    "foreverFiles": 49,
+    "officialConsolePortFiles": 602,
+    "unselectedVendorFilesUnchanged": 3240,
+    "wtfFilesUnchanged": 298,
+    "wtfLinksUnchanged": 42,
+    "anchorsAndJunctionsUnchanged": true,
+    "backupsVerified": true,
+    "closedAtToronto": "2026-10-07T14:09:14.0000000-04:00",
+    "runtimeSuites": 39,
+    "toolingTests": 33,
+    "configurationRevision": 13,
+    "storeSchema": 3,
+    "noDBMDeployment": true,
+    "noLiveWTFWrites": true
+  }
+}

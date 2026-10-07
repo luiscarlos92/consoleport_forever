@@ -46,3 +46,29 @@ and unchanged unselected vendors/WTF/links. The user owns actual Retail testing.
 
 All **39 runtime/source suites and 33 tooling tests passed**, with no failed
 or skipped checks, against the exact current source and dependency lock.
+
+## Verified installation
+
+Completed **14:09:14 America/Toronto, October 7, 2026**, from pushed source
+`580f1e37bd5d3ccc7fa00b8116a3231021e9cb73` through preview plus the exact scoped
+installer execution, with WoW closed. Artifact:
+`dist/2.0.0-candidate.6/ConsolePort-Forever-Update-dependencies-1f73aea12729-cp-3-3-10.zip`.
+SHA-256: `035e83adf3621461d8a19a3e6822e67acc901d543026e76bad3950570cd0b252`.
+
+Independent archive/live/backup readback verifies all **651** installed files:
+49 Forever and 602 unmodified official ConsolePort files. All **3,240** unselected
+addon files, **298** WTF files, **42** character junctions and root anchors remain
+unchanged. No DBM file or enable state changed. All 18 other dependencies remain
+in place. No live WTF file was written. Game-owned in-game saving remains native.
+
+Backup: `C:/Users/luisr/WoW-Backups/ConsolePort-Forever/20261007T180759Z-1c3cd2fcb9c3`.
+Previous touched addon folders remain parked in the retained stage; original
+companion/ConsolePort and canonical WTF backups were independently hash-verified.
+Exact receipt: `evidence/delivery/live-install-candidate6.json`.
+
+The user will manually test after login. Check `/cpf status`, review/accept desired
+revision 13 differences and reload normally. Then inspect ConsolePort configuration
+→ Targeting, account-wide ability choices, round-face availability through combat
+and dungeon transitions, and Party beneath Raid. Keep deliberately newer settings
+through the review rather than resetting the experimental layout. Actual hardware,
+reticle intersection, rendering, combat/taint and logout persistence remain pending.

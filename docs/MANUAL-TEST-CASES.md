@@ -1,5 +1,12 @@
 # Retail tests and results — installed candidate.5, revision 12
 
+The refined candidate.6 is now installed with ConsolePort 3.3.10 as of
+October 7, 2026, 14:09:14 Toronto. User authorization supersedes earlier no-deploy
+notes below. Cases 36–40 are ready for the user's manual testing after the normal
+revision 13 review/reload. All 39 offline runtime/source suites and 33 tooling
+tests pass; no live controller/taint/rendering acceptance is claimed. DBM remains
+disabled and untouched.
+
 Candidate.6's refined labeled package adds the following pending acceptance
 cases. Do not deploy/run them until the user authorizes installation. Earlier
 case 37 remains applicable, with each spell's selected placement replacing the

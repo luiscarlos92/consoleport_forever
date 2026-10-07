@@ -1,5 +1,21 @@
 # ConsolePort Forever: master plan, decisions, and project history
 
+## Installed checkpoint — October 7, 2026, 14:09:14 America/Toronto
+
+User-authorized candidate.6 deployment completed with ConsolePort 3.3.10 from
+pushed source `580f1e37bd5d3ccc7fa00b8116a3231021e9cb73`. All 19 dependencies
+were freshly checked; only ConsolePort changed. The scoped installer replaced
+Forever (49 files) and the nine complete selected ConsolePort folders (602
+unmodified official files). All 651 installed bytes match the verified artifact.
+Independent readback confirms 3,240 unselected addon files, 298 canonical WTF
+files, 42 character junctions and root anchors unchanged. DBM stays disabled and
+untouched; no DBM bytes were shipped. Backups and exact receipt are retained in
+`evidence/delivery/live-install-candidate6.json` and
+`CANDIDATE6-DEPLOYMENT-2026-10-07.md`. All 39 runtime/source suites and 33 tooling
+tests pass. StoreSchema 3/reviewed revision 13 remain; the user will manually
+review/test in Retail. This completes the authorization below; later deployment
+again requires explicit authorization and WoW closed.
+
 ## Current deployment authority — October 7, 2026
 
 The user now explicitly authorized deployment: "let's deploy, I'll manually test

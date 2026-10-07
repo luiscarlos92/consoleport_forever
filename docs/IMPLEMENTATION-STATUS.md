@@ -1,5 +1,16 @@
 # Implementation checkpoint — October 4, 2026
 
+**Current installed checkpoint — October 7, 2026, 14:09:14 Toronto:** candidate.6
+with ConsolePort 3.3.10, source `580f1e3`, installed after user authorization.
+All 39 runtime/source suites and 33 tooling tests pass. All 651 deployed files
+(49 Forever + 602 official ConsolePort) match the scoped artifact; all 3,240
+unselected addon files, 298 WTF files and 42 junctions are unchanged. Backups
+are retained. DBM stays disabled/untouched and the other 18 dependency packages
+were not recopied. See `CANDIDATE6-DEPLOYMENT-2026-10-07.md` and
+`evidence/delivery/live-install-candidate6.json`. In-game revision 13 review,
+Targeting preferences, face-icon transitions and Party placement await the user's
+manual testing; offline verification is not Retail input/taint acceptance.
+
 **Authorized deployment preparation — October 7, 2026:** The user requested
 installation, followed by their own manual testing. The new fresh stable check
 found ConsolePort 3.3.10. Its ten changed official files introduce blocked-chord

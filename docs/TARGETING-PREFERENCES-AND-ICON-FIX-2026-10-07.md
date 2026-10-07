@@ -47,7 +47,7 @@ and are not offered as ground-placement modes.
 
 The secure click reads the actual resolved spell, and latches its command/edge
 until release. Main cells use their normal ability policy; L2R2's temporary page
-inherits context fallbacks. Existing overflow 9–12 and qualified native extra
+inherits context fallbacks. Existing overflow 9â€“12 and qualified native extra
 actions use LeftButton's native numeric attribute suffix, with full temporary
 attribute restoration. Exit is not intercepted. Native owners, pickup/alternate
 clicks, empowered/assisted actions, macros and items keep their existing routes.
@@ -67,7 +67,7 @@ IDs still require qualification; the catalog is not an exhaustive future API.
 Current ConsolePort 3.3.9 LAB `UpdateUsable` sets icon desaturation for a party-sync
 lock, but never clears it when the lock disappears. Its full Update clears it;
 quick usability/transition updates can leave grey artwork. The companion now
-refreshes only PAD1–PAD4 in the four banks, including during combat, using the
+refreshes only PAD1â€“PAD4 in the four banks, including during combat, using the
 current level-link lock and zone-disabled state. It retains LAB's actual range,
 mana and unusable vertex colors, and preserves unknown/secret lock states.
 
@@ -101,7 +101,7 @@ superseded evidence. The new receipt is
 `evidence/delivery/prepared-candidate6-targeting-options.json`. No installer runs.
 Hardware, taint, actual ground intersections, rendered tab/controller scrolling,
 face colors and logout/reload persistence remain Retail acceptance, not offline
-test claims. See cases 39–40 in `MANUAL-TEST-CASES.md` after future authorization.
+test claims. See cases 39â€“40 in `MANUAL-TEST-CASES.md` after future authorization.
 
 Full verification passed: **38 runtime/source suites and 33 tooling tests**,
 with no failed or skipped checks. Exact result inventories are retained in
@@ -111,3 +111,11 @@ with no failed or skipped checks. Exact result inventories are retained in
 The earlier targeting-options tooling receipt is retained as superseded evidence:
 the final UI combat-test addition changed its harness inventory. The final
 33-test rerun above matches the exact current tooling and runtime inventories.
+
+Prepared and independently read back: **49 exact Forever files**, 481,013 bytes,
+all 19 tested dependency identities and zero dependency/DBM/WTF payload. Artifact:
+`dist/2.0.0-candidate.6/ConsolePort-Forever-Update-companion-only-targeting-options.zip`.
+SHA-256: `20f5c234aac506555cb01bdc612453f0d62fcfbb73930fabc0609eb4b94f8c10`.
+Source: `2075892c76f05ecdac15398a9a5c5d24a95a0756`.
+The verified receipt above is retained; the earlier ZIP checksum is unchanged.
+Nothing was deployed.

@@ -1,6 +1,6 @@
-# Implementation checkpoint — October 4, 2026
+# Implementation checkpoint â€” October 4, 2026
 
-**Current unshipped refinement — October 7, 2026:** Same candidate.6/revision 13.
+**Current unshipped refinement â€” October 7, 2026:** Same candidate.6/revision 13.
 Account-wide per-ability cursor/player/manual preferences and the native
 ConsolePort Targeting tab are implemented, with current-class filtering and
 vehicle/override/temporary/extra-action context defaults. The qualified catalog
@@ -8,14 +8,17 @@ now contains 53 IDs; unknown temporary abilities can be assigned explicitly.
 Scoped face visuals clear stale unlocked party-sync desaturation and cap opaque
 cooldown swipes without changing native availability tint, circular skin or
 D-pad Masque ownership. All 38 runtime/source suites and 33 tooling checks pass, including native
-configuration and secure-dispatch coverage. A replacement labeled package is
-the remaining preparation gate.
+configuration and secure-dispatch coverage. The replacement labeled package is prepared and independently read back:
+49 exact Forever files (481,013 bytes), all 19 tested dependency identities,
+no dependency/DBM/WTF payload. Receipt:
+`evidence/delivery/prepared-candidate6-targeting-options.json`; source `2075892`.
+The prior candidate.6 ZIP remains unchanged and superseded.
 All 19 official stable Retail dependencies were freshly checked and are current.
 No deployment until explicit authorization; live candidate.5/WTF/DBM are untouched.
 See `TARGETING-PREFERENCES-AND-ICON-FIX-2026-10-07.md`. The earlier candidate.6
 ZIP/receipt below remain preserved as superseded delivery evidence.
 
-**Current preparation — candidate.6, revision 13 (October 6):** The user
+**Current preparation â€” candidate.6, revision 13 (October 6):** The user
 now authorized implementation and package preparation, but explicitly prohibited
 deployment while WoW is open. Native ConsolePort ground-spell clicks use prepared
 internal cursor commands from a 47-ID registry, without saved ability macros.
@@ -36,7 +39,7 @@ and no dependency/DBM/WTF payload. Independent receipt:
 `evidence/delivery/prepared-candidate6.json`. Nothing was deployed; WoW was still
 running. Retail hardware/taint/placement/persistence acceptance remains pending.
 
-**Latest installed checkpoint — October 6, 19:34:44 Toronto:** candidate.5 is
+**Latest installed checkpoint â€” October 6, 19:34:44 Toronto:** candidate.5 is
 installed from `eba070c`, using the new small scoped-update path. All 18 official
 dependencies were checked and already current; none was downloaded or copied.
 All 44 deployed Forever files match the artifact. All 3,693 vendor files, 296
@@ -46,15 +49,15 @@ runtime/source suites and 29 tooling tests passed. See
 `evidence/delivery/live-install-candidate5.json`. Earlier checkpoints below are
 history; live retesting is pending.
 
-**Current development checkpoint — October 6:** Candidate.5 fixes the live Darkmoon feedback in `DARKMOON-FIXES-2026-10-06.md`; all 35 runtime/source suites and 24 tooling tests pass, with final product/tooling hashes verified against the retained receipts. Candidate.4 remains installed. The user explicitly prohibited deployment while WoW is open. Keep action icons visible during UI focus, decorate native item callbacks with configured-button hints, and remove the supplemental surface's persisted automatic interface-cursor registration. Native extra-action visibility/availability and L2+R3 restoration through Layers are offline-verified; Retail retesting awaits a later authorized deployment.
+**Current development checkpoint â€” October 6:** Candidate.5 fixes the live Darkmoon feedback in `DARKMOON-FIXES-2026-10-06.md`; all 35 runtime/source suites and 24 tooling tests pass, with final product/tooling hashes verified against the retained receipts. Candidate.4 remains installed. The user explicitly prohibited deployment while WoW is open. Keep action icons visible during UI focus, decorate native item callbacks with configured-button hints, and remove the supplemental surface's persisted automatic interface-cursor registration. Native extra-action visibility/availability and L2+R3 restoration through Layers are offline-verified; Retail retesting awaits a later authorized deployment.
 
-**Latest installed checkpoint — October 6, 18:47:33 Toronto:** candidate.4 supports ConsolePort 3.3.9 and is deployed through the guarded companion-only tool. All 43 live companion files match Git. All 3,693 vendor files, 296 WTF files and 42 character links are unchanged. The earlier incomplete DBM package policy is corrected. Latest CI on `b623ceb` passes all 34 runtime/source suites and 24 tooling checks. Runtime configuration revision remains 12; manual Retail acceptance is the user's next step. See `CONSOLEPORT-UPGRADE-2026-10-06.md` and `evidence/delivery/live-install-candidate4.json`. Earlier checkpoints below are history.
+**Latest installed checkpoint â€” October 6, 18:47:33 Toronto:** candidate.4 supports ConsolePort 3.3.9 and is deployed through the guarded companion-only tool. All 43 live companion files match Git. All 3,693 vendor files, 296 WTF files and 42 character links are unchanged. The earlier incomplete DBM package policy is corrected. Latest CI on `b623ceb` passes all 34 runtime/source suites and 24 tooling checks. Runtime configuration revision remains 12; manual Retail acceptance is the user's next step. See `CONSOLEPORT-UPGRADE-2026-10-06.md` and `evidence/delivery/live-install-candidate4.json`. Earlier checkpoints below are history.
 
-## Current update — October 6, 2026
+## Current update â€” October 6, 2026
 
 The user requested updating the repo to the newly installed ConsolePort 3.3.9, full Git-side tests, and deployment to Retail for subsequent manual testing. **2.0.0-candidate.4** qualifies that exact clean official package. All five companion version guards and current harnesses now target 3.3.9; all 33 native contract files are pinned to its archive. Native Layers claim arbitration replaces the test host's old direct-binding model. Current keyboard restoration, dispatch readiness, unmatched-state preservation, shared-layout isolation and Edit Mode hover behavior are exercised. All 34 runtime/source suites and 21 tooling tests pass. StoreSchema 3 and configuration revision 12 are unchanged. See [the complete upgrade and deployment record](CONSOLEPORT-UPGRADE-2026-10-06.md). October 4 checkpoints below are historical.
 
-Two user-authorized complete accepted-login WTF audits and correction deployments are recorded. Current installed candidate is **2.0.0-candidate.3**, configuration revision **12**, source **c004591fb1372322f33f9bf603a8546e1d039c8e**. The second audit confirms revision-12 mode/ring acceptance and clean reload verification. Candidate.3 fixes the unwanted skyriding supplemental bar and shown empty cursor parent, and persists bounded runtime diagnostics. All 32 runtime/source suites, 21 tooling tests and Windows CI 37230130771 passed. Redeployment completed at 16:08:52 Toronto; complete AddOns/WTF backups are retained and final live WTF matches all 296 second-audit files and 42 links exactly. No WTF file was edited and no game was launched. See WTF-AUDIT-2026-10-04-SECOND.md, LIVE-INSTALL-2026-10-04.md and MANUAL-TEST-CASES.md. Actual Retail behavior and the independent exact parity gates remain pending. The older build-only checkpoints below are history; H0–H8 plus the later direct user authorization remain the authority.
+Two user-authorized complete accepted-login WTF audits and correction deployments are recorded. Current installed candidate is **2.0.0-candidate.3**, configuration revision **12**, source **c004591fb1372322f33f9bf603a8546e1d039c8e**. The second audit confirms revision-12 mode/ring acceptance and clean reload verification. Candidate.3 fixes the unwanted skyriding supplemental bar and shown empty cursor parent, and persists bounded runtime diagnostics. All 32 runtime/source suites, 21 tooling tests and Windows CI 37230130771 passed. Redeployment completed at 16:08:52 Toronto; complete AddOns/WTF backups are retained and final live WTF matches all 296 second-audit files and 42 links exactly. No WTF file was edited and no game was launched. See WTF-AUDIT-2026-10-04-SECOND.md, LIVE-INSTALL-2026-10-04.md and MANUAL-TEST-CASES.md. Actual Retail behavior and the independent exact parity gates remain pending. The older build-only checkpoints below are history; H0â€“H8 plus the later direct user authorization remain the authority.
 
 Latest audit: the third read-only post-exit capture parses all 257 Lua/fallback files and matches all 52 owned-field checks. Revision 12 and both clean reload verifications persist. Candidate.3 runtime diagnostics are saved with no log entries; BagsBar's retained-parent warning awaits visual case 35. The user's basic skyriding observation is recorded as partial acceptance. No product patch or redeployment was needed. See WTF-AUDIT-2026-10-04-THIRD.md, the combined 35-case tests/results document MANUAL-TEST-CASES.md.
 
@@ -83,7 +86,7 @@ The TOC now loads the replacement modules, with the new bootstrap last. Old Layo
 
 SecureModes now extends the actual current ConsolePort Group/LAB buttons and leaves Manager/Layers binding registration intact. It precompiles secure ordinary slot data independent of LAB's cosmetic maps, selects native vehicle/override/temporary pages only for the eight L2R2 cells, ignores form/stealth bonus paging for ordinary main-relative slots, retains native empowered attributes, and latches a held button through mode changes. Native header APIs execute/wrap the snippets. Rebinding, repeated setup, restoring native environments and deactivation have current-source contract coverage. Possession without one of those native action families remains pending; do not invent pet paging.
 
-Activation is reviewed and gated by the current four native groups, audited helpers, and actual retained keyboard routes for VEHICLEEXIT and native actions 9–12. Missing routes leave the previous geometry/access surface intact and expose the reason. Layout proposal retains runtime positions/scale/editor data, removes only the known legacy vehicle/override hide clauses and the misspelled old Page after readiness. No constant global Pager and no ninth cell is introduced. CONFIG_REVISION is now 4. Combat/input/visual acceptance remains pending.
+Activation is reviewed and gated by the current four native groups, audited helpers, and actual retained keyboard routes for VEHICLEEXIT and native actions 9â€“12. Missing routes leave the previous geometry/access surface intact and expose the reason. Layout proposal retains runtime positions/scale/editor data, removes only the known legacy vehicle/override hide clauses and the misspelled old Page after readiness. No constant global Pager and no ninth cell is introduced. CONFIG_REVISION is now 4. Combat/input/visual acceptance remains pending.
 
 D29 FocusVisuals listens to native ordinary interface-cursor ownership, suppresses only gameplay icon/highlight regions, preserves geometry/art/radial feedback, and restores the latest native alpha after UI focus. Rebuilt regions and native cursor reacquisition are handled. This behavior requires accepted policy. `/cpf proof` opens an on-demand scrollable native panel with saved/effective bindings, Layers prefix/chord/claims, native resolved/displayed cells, held state, dependency readiness, journals and diagnostic pending reasons. No proof panel is created until requested. Offline checks do not certify rendered Retail results.
 
@@ -125,7 +128,7 @@ Native binding lookup now verifies actual current ring-container suffix generati
 
 Coverage parameterizes 13 simulated class identities, compares discovery to full pinned Blizzard StanceBar/PetActionBar mixins, exercises no-pet/pet-swap/unavailable/secret/changed-identity cases, and executes full current ConsolePort ring Container for numeric/default/named/shared suffixes and rejected readback. Four additional current CP ring files and two native bar files are pinned. Twenty Node/Lua suites plus seven Python suites and all 18 dependency verifications pass. Latest report: evidence/test-results/ring-discovery.json.
 
-## GUID ring projection milestone — third run
+## GUID ring projection milestone â€” third run
 
 Reviewed personal rings now belong to the current player GUID in the account store. The flat native Rings.Data table remains a projection. A new character does not inherit the preceding character's spells, custom sets or manual order: its proposal uses the current native starter utility and an empty existing personal class-set address. Account Shared sets remain native. The class address is derived from the actual current binding/container suffix. Existing utility/class controls remain baseline; no new gesture or pet opener is activated.
 
@@ -139,7 +142,7 @@ Coverage exercises full pinned native container/map/automatic utility code and a
 
 Learned class/pet selector reconciliation and the new pet set/opener still need completion or a precise feature-local activation gate. Exact stick-return/close-and-continue and supported active-entry cancellation remain separate unresolved gates; no hold/release substitute or combined cancellation is introduced.
 
-## Learned selector preparation — activation gated
+## Learned selector preparation â€” activation gated
 
 The accepted GUID's private ring record now holds an inactive learned-selector preparation. Current native stance discovery qualifies the whole form snapshot, retains learned but temporarily uncastable entries and deduplicates repeated spell IDs. Current pet discovery qualifies the complete current pet snapshot; no-pet produces an empty set, a pet swap produces fresh selector identities and an unqualified/opaque snapshot offers no old commands. Class and pet readiness fail independently.
 
@@ -149,7 +152,7 @@ These preparations deliberately remain inactive: no native set is created, no pe
 
 Twenty-two Node/Lua and eight Python tooling suites pass; all 18 dependency packages verify. Coverage includes generation/ownership/manual edits/order, changed/no/unqualified pets, independent class readiness, set-name collision, bad suffixes, duplicate tags and current native kind/action compilation in an isolated disposable frame simulation. No offline test certifies protected gestures or Retail activation. Exact report: evidence/test-results/learned-selector-preparation.json. GUID projection commit c8ad5cdac4b8fd4c482ea2c7f7f765d36caf8a7d is pushed; Windows CI 37177631653 green.
 
-## Registered windows and native UI scrolling — third run
+## Registered windows and native UI scrolling â€” third run
 
 CONFIG_REVISION is now 6. The separate reviewed windowsEnabled policy adds triggers for the actual ConsolePort registered-window stack, shoulders for applicable native TabSystemOwner tabs and R3 for the focused native tooltip. Descendant registrations collapse into their registered root; opening order determines traversal. Missing/hidden/disabled tabs consume their controls. Context menus suspend paging, popup/quantity contexts retain priority, and keyboard/color-picker/native wheel focus retains its owner. A hidden focused leaf, tab selection change or changed target invalidates held releases. Existing native face/directional rows remain authoritative; uncovered controller chords, including modified D-pad and L3 gameplay routes, are consumed while the window owns input. Native later claims take precedence and the previous row is retained by reference for restoration.
 
@@ -157,7 +160,7 @@ Right-stick UI ownership uses the same pinned ConsolePort Radial dispatcher and 
 
 Previously accepted characters remain installed while a later revision awaits or is declined. New window policy remains separately reviewable. Twenty-four Node/Lua suites and eight Python suites pass; all 18 pinned dependency packages verify. Source contracts now retain 21 exact ConsolePort files and 25 native files. Exact report: evidence/test-results/native-window-scroll.json. Learned selector preparation commit 9e7aaed82e4ea3dd30381113f8081a53e8c573a8 is pushed; Windows CI 37178192240 green.
 
-## Full audited flat integration fields — third run
+## Full audited flat integration fields â€” third run
 
 CONFIG_REVISION is now 7. Immersion 1.4.61 and ExtraFade 1.18.0 capture all recognized explicit current settings, including dialogue controller keys, offsets/scales, playback/display flags and current fade/frame preferences. Native Config/default and Settings panel sources qualify the Immersion catalog; actual ExtraFade initialization qualifies its preferences. No old preset or missing/default value is materialized. Explicit false unbinds, nil/deletion and custom frame flag tables retain their meaning. Theme/fonts and unknown configuration fields remain untouched. ExtraFade UIParentAlpha is a transient runtime fade parameter and is no longer adopted as a companion preference; prior transaction history remains retained.
 
@@ -165,7 +168,7 @@ Version/loading readiness and value shape checks defer locally. Unsupported valu
 
 Twenty-five Node/Lua suites and eight Python suites pass, including actual native Config and ExtraFade initialization, native Settings AST field coverage, no mutation on capture, explicit false/missing values, nested restore identity, unknown/transient field preservation, invalid values, missing/version-changed integrations and cached-table replacement. Eighteen pinned packages verify. Exact report: evidence/test-results/flat-integration-settings.json. Contracts retain 22 exact CP, 20 integration and 29 native source files, including prerequisites for contextual bag/map/cinematic auditing. Window/scroll commit 2171fc1b8739773bf8343425b8bc93407b8e231c is pushed; Windows CI 37180546424 green.
 
-## Native BetterBags item guards — third run
+## Native BetterBags item guards â€” third run
 
 CONFIG_REVISION is now 8, with separately reviewed bagsEnabled policy. The adapter qualifies BetterBags v0.5.14, its actual bag roots and physical ItemFrame pool, the actual native ContainerFrameItemButton GetSlotAndBagID method, current capacity/item GUID/count/lock state and current distinct cursor face keys. Decoration/virtual/unknown nodes retain native behavior. Qualified Cross/Square delegate the existing native item button with LeftButton/RightButton; item targeting, pickup, use/equip/sell/buyback and modified stack split remain native. Missing/locked/unqualified item operations consume their keys. Item GUID, slot, count, cursor or relevant merchant/bank/mail/trade/auction context changes invalidate a held item press before frontend or secure click delegation, even without an intervening notification. Native pending priority owners and popup/quantity/combat contexts remain above the bag.
 
@@ -175,7 +178,7 @@ The exact eligible-item 0.5-second transient auto-loot behavior remains a precis
 
 Twenty-six Node/Lua suites and eight Python suites pass; 18 pinned dependencies verify. The new harness executes full BetterBags item construction and controller registration, actual native container click/modified-click methods, current Input/secure delegate code, native module Demand and ItemMenu.SetItem. It covers native left/right mapping, buyback refusal, item/slot changes without events, locked/empty/opaque identities, carried-item Back, disabled module demand, popup/combat takeover, modified auto-loot and stack splitting. Engine item operations, renderer and menu command preparation are substituted host services; actual repair/equip/sell/loot/taint/controller semantics remain Retail acceptance checks. Exact report: evidence/test-results/native-betterbags-guards.json. There are 24 exact CP contracts. Flat-settings commit ec5c925130e1cb9b568372cbe50a600232ac11eb is pushed; Windows CI 37181057426 green.
 
-## Native map canvas and quest-detail controls — third run
+## Native map canvas and quest-detail controls â€” third run
 
 CONFIG_REVISION is now 9, with separately reviewed mapEnabled policy. The adapter qualifies actual registered WorldMapFrame, pinned MapCanvas/scroll/quest-owner methods and canvas focus. Left-stick pan clamps native target extents; right-stick zoom retains the native smooth/full/none preference and native zoom bounds. Both sticks share the same existing ConsolePort dispatcher. Each newly focused stick needs neutral, changed map/art/node stops vectors, and a held Left stick drains to neutral before ordinary windows return to Right-only ownership. No movement, camera, autorun or ground-targeting command/CVar is changed. Native raw/virtual axis propagation and actual movement/camera/autorun return remain Retail acceptance checks.
 
@@ -183,13 +186,13 @@ L3 uses current controller cursor UI coordinates, effective-scale conversion and
 
 Twenty-seven Node/Lua suites and eight Python suites pass; 18 pinned packages verify. The map harness executes full pinned MapCanvas, scroll, quest-owner and waypoint source, actual detail-return methods and existing native Input/dispatcher/stack code. Engine rendering, map display-state geometry, waypoint services and keyboard focus are host substitutions; no offline result certifies Retail taint/input/rendering. Exact report: evidence/test-results/native-map-controls.json. Bag commit 929d5d3b56ab6a828be4699dbed85f8a1953a42b is pushed; Windows CI 37182026489 green.
 
-## Cinematic eligibility and independent exact-input gates — third run
+## Cinematic eligibility and independent exact-input gates â€” third run
 
 Cinematic.lua observes native real/movie/scene/vehicle state without binding, timer, gameplay or cancellation writes. The inspected pinned Lua/XML has native cinematic gamepad-down/menu confirmation and movie key-up confirmation; exact held right-menu duration and authorized dispatch remain unproved. No invented duration or timer skip is installed. Ordinary popup/window/map ownership releases immediately when native movie/cinematic frames show, and restores through the existing focus coordinator after they hide. Diagnostics separately expose cinematicHold, exactCircle, exactStickCommit and activeEntryCancellation rather than treating one proof as resolving the others. New class/pet selectors remain inactive.
 
 Twenty-eight Node/Lua suites and eight Python suites pass; all 18 locked packages verify. Actual native cinematic/menu/cancel and movie key-up/finish methods exercise forbidden/permitted scenes, real cinematics and vehicles, normal music bindings, native confirmation and owner release/restoration. Repeated observation/axis updates do not skip. Secret/unavailable eligibility stays local pending. Engine authority and actual cancellable cinematic/controller behavior remain Retail checks. Exact report: evidence/test-results/native-cinematic-gates.json. Map controls are pushed as 784c7db (full SHA and CI recorded in the next checkpoint).
 
-## Matching packaged migration audit and native presentation/icons — third run
+## Matching packaged migration audit and native presentation/icons â€” third run
 
 CONFIG_REVISION is now 10. tools/audit_migration.py --refresh fetched exact official ConsolePort 3.2.6 and BetterBags v0.5.11 assets, checked their independent GitHub SHA-256 digests/lengths and safe ZIP members, then compared immutable installed copies including libraries. Immersion is still the exact installed release 1.4.61, verified through the current pinned official package. Counts: 841 byte-identical files, two Cluster files with identical parsed Lua apart from formatting/comments, and five substantive Lua changes. There are no added/missing files among these matched packages. All 52 Immersion files are exact. This resolves the earlier source-checkout packaging ambiguity; metadata/locale/spline files are exact against their actual packaged originals. Lua structural equality is not a universal behavioral or licensing proof. Nine tooling tests now include classification of literal whitespace as a real change, preserved reference bytes and package-member drift rejection.
 
@@ -265,7 +268,7 @@ Begin the next run with current five-hour usage, this checkpoint and Git status.
 
 ### Earlier fourth-run priorities (historical)
 
-1. Read H0–H8/checkpoint, inspect Git and check five-hour account usage first. Reuse this repository/main only. No new copy, live writes, installation, game launch, immutable fixture edits, reset credit or preference questions.
+1. Read H0â€“H8/checkpoint, inspect Git and check five-hour account usage first. Reuse this repository/main only. No new copy, live writes, installation, game launch, immutable fixture edits, reset credit or preference questions.
 2. Finish the five additional native side bars (MultiBarLeft, MultiBarRight, MultiBar5, MultiBar6, MultiBar7) from the migration ledger. Runtime currently hides bags/micro strip, with editor handling; do not claim this implements the entire old Mainline patch. Inspect current native visibility/Edit Mode/combat ownership before choosing a reversible reviewed approach. Keep native Config access restored by clean upstream. Do not unregister native events or replace another visibility owner speculatively.
 3. LiteMount rules/two secure actions remain unchanged. LM_B1 static declared icon/current explicit data is supported; missing LM_B2 current icon is exposed pending. Preserve a native supported distinct presentation if its exact current metadata/route can be established, without guessed dynamic chosen-mount art or action changes. Other UI scroll widgets still require actual native callback contracts or precise local pending reasons.
 4. Finish notice/embedded-library/media review and official-source assembly for local personal pack. Inventory has 32 exact notices; DBM-Dungeons and SharedMedia_Causese lack standalone notice files. DBM, Plater and Masque have publication restrictions; repository reference-copy authorization is not candidate redistribution permission. No blanket permissive license fallback. Two own baseline BLPs and three native CP media paths are hash-qualified; actual atlas/path rendering and public asset rights remain separate. Dependency lock retrieval/coverage is complete; packDistributionReady remains false. Recheck stable official metadata before final packaging; retain/explain any newly available release and rerun affected tests if lock changes.

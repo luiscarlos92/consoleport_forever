@@ -1,0 +1,119 @@
+{
+  "preparedAt": "2026-10-07T04:22:32.283705+00:00",
+  "preparedOnly": true,
+  "deployed": false,
+  "deploymentAuthorization": "Prohibited until the user explicitly authorizes deployment, even if WoW closes.",
+  "wowRunningAtVerification": false,
+  "artifact": {
+    "path": "C:\\Users\\luisr\\Dev\\consoleport_forever\\dist\\2.0.0-candidate.6\\ConsolePort-Forever-Update-companion-only-targeting-options.zip",
+    "sha256": "20f5c234aac506555cb01bdc612453f0d62fcfbb73930fabc0609eb4b94f8c10",
+    "bytes": 481013,
+    "sourceCommit": "2075892c76f05ecdac15398a9a5c5d24a95a0756",
+    "addonFolders": [
+      "ConsolePort_Forever"
+    ],
+    "dependencyUpdates": [],
+    "version": "2.0.0-candidate.6",
+    "testedDependencies": {
+      "Cidan/BetterBags": {
+        "version": "v0.5.14",
+        "sha256": "16c1ac70c4de2e7f2cfdbf4d2b5f3d3f44514a3f9ecf1040e29c790e8be8c0d7"
+      },
+      "seblindfors/Immersion": {
+        "version": "1.4.61",
+        "sha256": "b180a8cbd1a1d878377da5a85abfdc5576e0c04212f9e900e3e9ca505cde1f3e"
+      },
+      "xod-wow/LiteMount": {
+        "version": "12.1.0-1",
+        "sha256": "bf89ab84666266ffefd8ce56581f98467f8125c25c65e3fe68031303df28efe0"
+      },
+      "SFX-WoW/Masque": {
+        "version": "12.1.0",
+        "sha256": "9e1da4827ae60bd25d7fc427cbeeb0dc297e59d53a71a29ae95223d3374bbfa0"
+      },
+      "Tercioo/Plater-Nameplates": {
+        "version": "Plater-v656",
+        "sha256": "3353250fa63fe840d8e9444037a3debde5c82286ccbcc825a475cec5ffd90ead"
+      },
+      "DeadlyBossMods/DeadlyBossMods": {
+        "version": "12.1.12",
+        "sha256": "5c8bbcc7daabff029d8ecf4b4b95b400be1bfdd5e860123914d84ada032d40e6"
+      },
+      "DeadlyBossMods/DBM-Dungeons": {
+        "version": "r264",
+        "sha256": "63a30527dfef38975ef48d9f98c82608c286504cd7668d745e8998a1fd5c9479"
+      },
+      "DeadlyBossMods/DBM-Vanilla": {
+        "version": "r830",
+        "sha256": "7c559db0599ae1dac36c2836b61b7f8125d705d71cc39d76d8a2d2fe8f048463"
+      },
+      "DeadlyBossMods/DBM-WotLK": {
+        "version": "r353",
+        "sha256": "a62e410a8bf69bbc23ef3cb14ed20268dd175c5f7b2ccba52931b894e2c2b462"
+      },
+      "DeadlyBossMods/DBM-Cataclysm": {
+        "version": "r263",
+        "sha256": "ae87dc521de1f39ae6eccbaaf8a8dc2d91205b4be9ecc9bda72f2da79d9be145"
+      },
+      "DeadlyBossMods/DBM-MoP": {
+        "version": "r191",
+        "sha256": "074eebe2db67590f42a78d5f2dbfde24423563ff3c822c1ee6a3a082790a56d4"
+      },
+      "DeadlyBossMods/DBM-WoD": {
+        "version": "r97",
+        "sha256": "87889c77279e5c422e99ffb595c6b83e274f4e6f5be31e5142a7b75d5aa72bf6"
+      },
+      "DeadlyBossMods/DBM-Legion": {
+        "version": "r67",
+        "sha256": "6c1bdbabb0340408cbb44e663a80ca42f26158c81457b6cf50707d5f2f4533b2"
+      },
+      "rursache/HideClassBars": {
+        "version": "v1.1.0",
+        "sha256": "20b40ca768005b912400d6a64894c0607e5e60f7ee9f7b9fff94f1be5242587e"
+      },
+      "curseforge/DynamicCam": {
+        "version": "2.21.1",
+        "sha256": "10eb86230c6903e72097e1552c04de8a163a39fe3cb31fc3a3274c2c4394e072"
+      },
+      "curseforge/Immersion_ExtraFade": {
+        "version": "1.18.0",
+        "sha256": "89c59d0519b2392b41010dda34ec01d38c9c1702c644f5e57422341b1fec21c6"
+      },
+      "curseforge/SharedMedia_Causese": {
+        "version": "7.6",
+        "sha256": "12060554a2eace5438f08daa98660169a18e127b8af269c38974f9f570091711"
+      },
+      "seblindfors/ConsolePort": {
+        "version": "3.3.9",
+        "sha256": "d9cd6ce097c7bbafc0963a527243fd36f8cc6d1d294785154bf1886f58dbc640"
+      },
+      "SLOKnightfall/BetterWardrobe": {
+        "version": "6.12.3",
+        "sha256": "abcba6be5535c15a581721192a5c4865e05b568dbac52d79c108c89e6c763d8c"
+      }
+    },
+    "dependencyLockSHA256": "df98f120f865d3037f2f729a010e87cafeb82b0eb6bdabf9f22cd839ec495458"
+  },
+  "independentVerification": {
+    "matchedProductFiles": 49,
+    "onlyForeverBytes": true,
+    "noDBMBytes": true,
+    "noWTFBytes": true,
+    "configurationRevision": 13,
+    "storeSchema": 3,
+    "runtimeSuites": 38,
+    "toolingTests": 33,
+    "runtimeReportSHA256": "11e3e2e8ba4be78c8b9a6634f4b27387a0dbd4edad8785831031085a90fec20d",
+    "toolingReportSHA256": "769041fc3fb8c3cb341314d4aaea732d42fa103ec2d240f9fab5ad788231a1ed",
+    "sourceAndDependencyInventoriesMatch": true,
+    "supersededArtifactUnchanged": true
+  },
+  "dependencies": {
+    "officialStablePackagesChecked": 19,
+    "dependencyUpdates": [],
+    "betterWardrobe": "6.12.3; BetterWardrobe and SourceData remain adopted and already installed; unchanged bytes not reshipped.",
+    "dbm": "Intentionally disabled and excluded; no enable, configuration, installation or live WTF action."
+  },
+  "supersedes": "evidence/delivery/prepared-candidate6.json; earlier ZIP and receipt retained.",
+  "liveAcceptance": "Pending later authorized deployment; actual hardware, taint, rendering, reticle coverage, tab/controller scrolling and persistence remain pending."
+}

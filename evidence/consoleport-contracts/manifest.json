@@ -5,6 +5,10 @@
   "purpose": "Exact unmodified source audit/test contracts; not deployed dependency copies.",
   "files": [
     {
+      "path": "ConsolePort_Bar/Controller/Blizzard/Mainline.lua",
+      "sha256": "f5db29807936ab34263f66a818de290aa9d0f1e139a6acb886b6450ad195aa75"
+    },
+    {
       "path": "ConsolePort/API.lua",
       "sha256": "fde3f6fc2ed9d66ca9b42ce1834d8c5a86163a6d53beae061ce21f5d59947b84"
     },

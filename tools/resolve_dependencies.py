@@ -23,9 +23,18 @@ def segment(value):
 def selected_coverage(installed, sources):
     """Extend the immutable reference with explicitly adopted addon folders."""
     additional = sources.get('additionalAddonFolders', [])
+    retired = sources.get('retiredAddonFolders', {})
     if not isinstance(additional, list):
         raise ValueError('Additional addon coverage must be a list')
-    return sorted(set(installed) | {segment(name) for name in additional})
+    if not isinstance(retired, dict):
+        raise ValueError('Retired addon coverage must be explicit')
+    for name, row in retired.items():
+        segment(name)
+        if not isinstance(row, dict) or not row.get('owner') or not row.get('reason'):
+            raise ValueError('Retired addon requires ownership and reason')
+    if set(additional).intersection(retired):
+        raise ValueError('Addon cannot be adopted and retired')
+    return sorted((set(installed) | {segment(name) for name in additional})-set(retired))
 
 
 def metadata(entries, require_retail=True):

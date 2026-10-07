@@ -45,9 +45,11 @@ immutable original reference to add later dependencies. See
   test. Future deployments require new authorization. Preserve every earlier
   candidate.6/candidate.7 artifact/receipt and all verified backups. See
   `evidence/delivery/live-install-candidate7.json` for the current receipt.
-- DBM is deliberately disabled for now. Preserve its game/user-owned enable
-  state and existing files; do not enable/reconfigure it or include DBM bytes in
-  the prepared update. This supersedes older DBM keep/reship instructions.
+- DBM was uninstalled by the user on October 7 and retired from the active lock.
+  Do not restore it. Preserve historical references, archives and receipts.
+  HideClassBars is replaced by reviewed Forever controller access and explicitly
+  retired with the scoped installer; no broad addon pruning. SharedMedia_Causese
+  stays for the saved Quazii Plater profile (164 direct sound references).
 - Never write live WTF. In-game reviewed configuration remains game-owned.
 - Default to a scoped update built by `tools/build_update.py`: Forever plus only
   explicitly updated dependency packages, with all their selected official

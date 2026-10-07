@@ -503,6 +503,15 @@ check('T31.native-visibility-parent-lifecycle', () => {
     .replace('--@RUNTIME_VISIBILITY',()=>';(function(...)\n'+read('addon/ConsolePort_Forever/Runtime.lua')+'\nend)("ConsolePort_Forever",Addon);');
   execute(fixture,'native-visibility-parent-lifecycle');
 });
+check('T40.hidden-controls-native-ring-and-seat-access', () => {
+  const fixture=read('tests/harness/hidden_access.lua')
+    .replace('--@NATIVE_RING_MAP',()=>read('evidence/consoleport-contracts/ConsolePort_Rings/Model/Map.lua'))
+    .replace('--@NATIVE_STANCE_VISIBILITY',()=>nativeFunction('evidence/native/Blizzard_ActionBar/Shared/StanceBar.lua','StanceBarMixin:ShouldShow'))
+    .replace('--@NATIVE_SEAT_VISIBILITY',()=>nativeFunction('evidence/native/Blizzard_UIPanels_Game/Shared/VehicleSeatIndicator.lua','VehicleSeatIndicatorMixin:UpdateShownState'))
+    .replace('--@HIDDEN_ACCESS',()=>';(function(...)\n'+read('addon/ConsolePort_Forever/UI/HiddenAccess.lua')+'\nend)("ConsolePort_Forever",Addon);')
+    .replace('--@VISIBILITY',()=>';(function(...)\n'+read('addon/ConsolePort_Forever/Runtime.lua')+'\nend)("ConsolePort_Forever",Addon);');
+  execute(source+fixture,'hidden-controls-native-ring-and-seat-access');
+});
 check('T32.current-ConsolePort-upgrade-contracts', () => {
   const base='evidence/consoleport-contracts/';
   const utils=read(base+'ConsolePort/Utils/Utils.lua');

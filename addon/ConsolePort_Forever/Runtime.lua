@@ -1,5 +1,5 @@
 local _, Addon = ...
-local Visibility = {names={"MultiBarLeft","MultiBarRight","MultiBar5","MultiBar6","MultiBar7","MicroButtonAndBagsBar","MicroMenuContainer","MicroMenu","BagsBar"}}
+local Visibility = {names={"MultiBarLeft","MultiBarRight","MultiBar5","MultiBar6","MultiBar7","MicroButtonAndBagsBar","MicroMenuContainer","MicroMenu","BagsBar","StanceBar","VehicleSeatIndicator"}}
 Addon.BlizzardVisibility = Visibility
 
 function Visibility:Probe(api)
@@ -16,7 +16,7 @@ function Visibility:Probe(api)
     return true
 end
 function Visibility:Release(frame,row)
-    if frame:GetParent()==self.hidden then
+    if frame:GetParent()==(row.hidden or self.hidden) then
         row.writing=true
         frame:SetParent(row.parent)
         row.writing=false
@@ -48,6 +48,14 @@ function Visibility:Refresh(api,enabled)
     local pending={}
     for _,name in ipairs(self.names) do
         local frame=api[name]
+        local access=Addon.HiddenAccess
+        local acquired=name~='StanceBar' and name~='VehicleSeatIndicator'
+            or (access and (name=='StanceBar' and access.stanceReady or name=='VehicleSeatIndicator' and access.vehicleReady))
+        if name=='StanceBar' and not (api.StanceBarMixin and frame and frame.ShouldShow==api.StanceBarMixin.ShouldShow) then acquired=false end
+        if frame and not acquired then
+            if self.rows[frame] then self:Release(frame,self.rows[frame]) end
+            frame=nil
+        end
         if frame and not (self.rows[frame:GetParent()] and frame:GetParent():GetParent()==self.hidden) then
             local row=self.rows[frame]
             if not row then
@@ -58,17 +66,18 @@ function Visibility:Refresh(api,enabled)
                 self.rows[frame]=row
                 api.hooksecurefunc(frame,"SetParent",function()
                     if row.writing or not self.enabled or self.editing then return end
-                    if frame:GetParent()~=self.hidden then row.foreign=true end
+                    if frame:GetParent()~=(row.hidden or self.hidden) then row.foreign=true end
                 end)
             end
             if row.foreign then
                 pending[#pending+1]=name..": newer or non-native parent retained"
             elseif frame:GetParent()==row.parent then
                 row.writing=true
-                frame:SetParent(self.hidden)
+                row.hidden=name=='VehicleSeatIndicator' and Addon.HiddenAccess.panel or self.hidden
+                frame:SetParent(row.hidden)
                 row.writing=false
-                if frame:GetParent()~=self.hidden then row.foreign=true pending[#pending+1]=name..": parent change rejected" end
-            elseif frame:GetParent()~=self.hidden then
+                if frame:GetParent()~=row.hidden then row.foreign=true pending[#pending+1]=name..": parent change rejected" end
+            elseif frame:GetParent()~=(row.hidden or self.hidden) then
                 row.foreign=true pending[#pending+1]=name..": newer parent retained"
             end
         end
@@ -77,6 +86,12 @@ function Visibility:Refresh(api,enabled)
 end
 function Visibility:Update()
     local enabled=Addon.IsCharacterInstalled and Addon:IsCharacterInstalled() and Addon.db and Addon.db.shared.runtimePolicy.blizzardVisibility
+    if Addon.HiddenAccess then
+        local active=enabled and Addon.db.shared.runtimePolicy.hiddenAccessEnabled
+            and not (self.editing or (EditModeManagerFrame and EditModeManagerFrame:IsShown()))
+        local ready,detail=Addon.HiddenAccess:Refresh(_G,active)
+        if Addon.Diagnostics then Addon.Diagnostics:SetFeature('hiddenAccess',ready and active and 'offline-verified' or 'pending',detail) end
+    end
     local ok,reason=self:Refresh(_G,enabled)
     if Addon.Diagnostics then Addon.Diagnostics:SetFeature("blizzardVisibility",enabled and ok and "offline-verified" or "pending",reason) end
 end
@@ -86,5 +101,5 @@ if EventRegistry and type(EventRegistry.RegisterCallback)=="function" then
     EventRegistry:RegisterCallback("EditMode.Exit",function() Visibility.editing=false Later() end,Addon)
 end
 local events=CreateFrame("Frame")
-for _,event in ipairs({"PLAYER_ENTERING_WORLD","PLAYER_REGEN_ENABLED","EDIT_MODE_LAYOUTS_UPDATED","ADDON_LOADED"}) do events:RegisterEvent(event) end
+for _,event in ipairs({"PLAYER_ENTERING_WORLD","PLAYER_REGEN_ENABLED","EDIT_MODE_LAYOUTS_UPDATED","ADDON_LOADED","UPDATE_BINDINGS","UPDATE_SHAPESHIFT_FORMS","SPELLS_CHANGED","PLAYER_SPECIALIZATION_CHANGED","UNIT_ENTERED_VEHICLE","UNIT_EXITED_VEHICLE"}) do events:RegisterEvent(event) end
 events:SetScript("OnEvent",Later)

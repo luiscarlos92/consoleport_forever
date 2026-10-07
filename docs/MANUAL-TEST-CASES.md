@@ -615,3 +615,17 @@ Paste this outside combat. It has no gameplay or saved-setting action. Circle sh
 ## Known gates — observe baseline only
 
 The following are not implemented pass criteria in this candidate: exact one-success gameplay Circle; right-stick-return ring commit/close-and-continue; active ring-entry cancellation; automatic learned class/aura/new pet selector activation; exact transient 0.5-second loot hold; exact held cinematic skip; missing LM_B2 default icon; unaudited scroll widgets. Preserve and observe existing native controls. Their absence does not become a new regression merely because other tests pass. Do not spend the first batch trying to prove an intentionally inactive feature. Real >8 temporary cases require separate review; retained emergency access is not acceptance of new paging/rings.
+
+## Case 42 - hidden class controls and vehicle seats (candidate.8)
+
+Accept or keep revision 14 normally in-game. With the new policy accepted, use
+R2 + menu for learned Warrior stances, Priest Shadowform, Rogue stealth, Druid
+forms and Paladin auras on appropriate characters. Select through ConsolePort's
+current press-point-release or explicit-confirmation preference; verify icons,
+active state, spec/talent changes and combat input. No manual ability macros.
+Open L2 + menu utility ring and select Vehicle seats in a vehicle with seats.
+Verify native seats appear, normal interface cursor can select them, Close returns
+to gameplay, reselecting the ring entry closes the panel and vehicle exit leaves
+no empty cursor owner. Entering the vehicle alone must not activate UI focus.
+Verify normal vehicle actions/exit, Edit Mode show/save/revert/exit, disable/restore
+and remapped/missing ring openers retain access without taint. Retail pending.

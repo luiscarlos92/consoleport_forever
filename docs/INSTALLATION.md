@@ -1,5 +1,18 @@
 # ConsolePort Forever personal candidate
 
+## Current authorized work - October 7, 2026
+
+Candidate.8 replaces HideClassBars with reviewed native class-ring access and a
+utility-ring vehicle-seat panel, plus fallback native visibility and Edit Mode
+restoration. StoreSchema 3/configuration revision 14. HideClassBars and all eight
+DBM packages are retired from active dependencies; original reference/cache/history
+remain preserved. DBM is already absent live. SharedMedia_Causese is retained for
+164 direct sound references in the saved Quazii Plater profile; current Default
+has none. All 19 initial releases and 10 remaining releases were freshly checked;
+no updates/downloads. User explicitly authorizes scoped deployment with WoW closed.
+See `HIDDEN-CONTROLS-AND-RETIREMENT-2026-10-07.md`. Earlier authority below is history.
+
+
 This is the personal delivery for the approved Retail setup. Run the guarded installer only when the user requests installation. No script runs the game. The dependency/package assembly can be complete while precise parity features and all actual Retail acceptance remain pending; see `Delivery/ACCEPTANCE.md` and `pack-manifest.json`.
 
 Full UI packaging preserves 42 addon folders: ConsolePort Forever and 41 folders from 18 pinned official packages. Two DBM companions are inactive on Retail according to their original TOCs; retain them so CurseForge sees a complete package. No official package files are deliberately pruned. The pack contains no WTF, binding cache, reference snapshots or test harnesses. Keep the complete personal ZIP local; publishing third-party code/media has not been approved.

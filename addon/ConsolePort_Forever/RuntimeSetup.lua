@@ -47,7 +47,7 @@ function Setup.Adapters(api,account)
         adapters.bindings.bankInspector=adapters.bindingBanks
         adapters.bindings.canWrite=adapters.bindingBanks.canWrite
     end
-    if account then adapters.policy=Addon.FlatConfigAdapter.New(function() return account.shared.runtimePolicy end,{modesEnabled=true,groundTargetingEnabled=true,focusVisuals=true,uiContextsEnabled=true,windowsEnabled=true,bagsEnabled=true,mapEnabled=true,blizzardVisibility=true},api.InCombatLockdown) end
+    if account then adapters.policy=Addon.FlatConfigAdapter.New(function() return account.shared.runtimePolicy end,{modesEnabled=true,groundTargetingEnabled=true,focusVisuals=true,uiContextsEnabled=true,windowsEnabled=true,bagsEnabled=true,mapEnabled=true,blizzardVisibility=true,hiddenAccessEnabled=true},api.InCombatLockdown) end
     if api.C_EditMode and api.EditModePresetLayoutManager then
         adapters.editmode=Addon.EditModeAdapter.New({GetLayouts=api.C_EditMode.GetLayouts,
             SaveLayouts=api.C_EditMode.SaveLayouts,SetActiveLayout=api.C_EditMode.SetActiveLayout,
@@ -142,6 +142,9 @@ function Setup.Fields(db,guid,adapters,api,revision)
     if visibilityReady and adapters.policy then
         add('shared/policy/blizzardVisibility','policy',{'blizzardVisibility'},true,'Keep five native side bars and bags/micro strip hidden; restore native parents for Edit Mode')
     else deferred[#deferred+1]={id='blizzardVisibility',reason=visibilityReason or 'native bar lifecycle unavailable'} end
+    if adapters.policy then
+        add('shared/policy/hiddenAccessEnabled','policy',{'hiddenAccessEnabled'},true,'Keep class abilities available in the native class ring and vehicle seats available from the utility ring; retain Blizzard controls when access is unavailable')
+    end
     for cvar,value in pairs({GamePadEmulateShift="PADLTRIGGER",GamePadEmulateCtrl="PADRTRIGGER"}) do
         if api.GetCVarDefault(cvar)~=nil then add("shared/cvar/"..cvar,"cvars",{cvar},value,"Controller trigger modifier: "..cvar)
         else deferred[#deferred+1]={id=cvar,reason="registered Retail CVar unavailable"} end

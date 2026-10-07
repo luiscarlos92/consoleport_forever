@@ -7,6 +7,8 @@ from repository_paths import ROOT, output, sha
 
 REV='09b9db7948abc9b9648dedaab51eb0cf3ee67b31'
 FILES=[
+    'Blizzard_UIPanels_Game/Shared/VehicleSeatIndicator.lua',
+    'Blizzard_UIPanels_Game/Shared/VehicleSeatIndicator.xml',
     'Blizzard_Collections/Blizzard_Collections_Mainline.toc',
     'Blizzard_Transmog/Blizzard_Transmog.toc',
     'Blizzard_APIDocumentationGenerated/AddOnsDocumentation.lua',

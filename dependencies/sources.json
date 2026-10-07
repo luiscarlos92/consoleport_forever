@@ -16,36 +16,7 @@
       "repo": "SFX-WoW/Masque"
     },
     {
-      "repo": "rursache/HideClassBars",
-      "sourceArchiveAddon": "HideClassBars",
-      "qualification": "Latest official tagged source is a standalone addon; qualify TOC/files and dependencies without patching"
-    },
-    {
       "repo": "Tercioo/Plater-Nameplates"
-    },
-    {
-      "repo": "DeadlyBossMods/DeadlyBossMods"
-    },
-    {
-      "repo": "DeadlyBossMods/DBM-Dungeons"
-    },
-    {
-      "repo": "DeadlyBossMods/DBM-Vanilla"
-    },
-    {
-      "repo": "DeadlyBossMods/DBM-WotLK"
-    },
-    {
-      "repo": "DeadlyBossMods/DBM-Cataclysm"
-    },
-    {
-      "repo": "DeadlyBossMods/DBM-MoP"
-    },
-    {
-      "repo": "DeadlyBossMods/DBM-WoD"
-    },
-    {
-      "repo": "DeadlyBossMods/DBM-Legion"
     },
     {
       "repo": "SLOKnightfall/BetterWardrobe"
@@ -63,7 +34,7 @@
       "latestURL": "https://www.curseforge.com/wow/addons/dynamiccam/files/all",
       "license": "MIT",
       "supportsRetail": true,
-      "metadataVerifiedAt": "2026-10-07T19:08:46.922600+00:00"
+      "metadataVerifiedAt": "2026-10-07T21:25:47.009310+00:00"
     },
     {
       "repo": "curseforge/Immersion_ExtraFade",
@@ -76,7 +47,7 @@
       "latestURL": "https://www.curseforge.com/wow/addons/immersion-extrafade/files/all",
       "license": "MIT",
       "supportsRetail": true,
-      "metadataVerifiedAt": "2026-10-07T19:08:46.922623+00:00"
+      "metadataVerifiedAt": "2026-10-07T21:25:47.009329+00:00"
     },
     {
       "repo": "curseforge/SharedMedia_Causese",
@@ -89,21 +60,179 @@
       "latestURL": "https://www.curseforge.com/wow/addons/sharedmedia_causese/files/all",
       "license": "GPL-3.0",
       "supportsRetail": true,
-      "metadataVerifiedAt": "2026-10-07T19:08:46.922628+00:00"
+      "metadataVerifiedAt": "2026-10-07T21:25:47.009333+00:00"
     }
   ],
   "manualSources": [],
-  "bundledProvenance": [
-    {
-      "addon": "DBM-VPVEM",
-      "owner": "DeadlyBossMods/DeadlyBossMods",
-      "sourceCommit": "99e0c336444fd7105e1414c46f9d6a4e0cf99bc6",
-      "evidence": "evidence/dependencies/voice-provenance.json",
-      "auditCommand": "python tools/audit_dependencies.py --record"
-    }
-  ],
+  "bundledProvenance": [],
   "additionalAddonFolders": [
     "BetterWardrobe",
     "BetterWardrobe_SourceData"
-  ]
+  ],
+  "retiredAddonFolders": {
+    "DBM-Brawlers": {
+      "owner": "DeadlyBossMods/DeadlyBossMods",
+      "reason": "User uninstalled DBM and authorized retirement from active dependencies"
+    },
+    "DBM-Core": {
+      "owner": "DeadlyBossMods/DeadlyBossMods",
+      "reason": "User uninstalled DBM and authorized retirement from active dependencies"
+    },
+    "DBM-GUI": {
+      "owner": "DeadlyBossMods/DeadlyBossMods",
+      "reason": "User uninstalled DBM and authorized retirement from active dependencies"
+    },
+    "DBM-Lairs-Midnight": {
+      "owner": "DeadlyBossMods/DeadlyBossMods",
+      "reason": "User uninstalled DBM and authorized retirement from active dependencies"
+    },
+    "DBM-Midnight": {
+      "owner": "DeadlyBossMods/DeadlyBossMods",
+      "reason": "User uninstalled DBM and authorized retirement from active dependencies"
+    },
+    "DBM-Raids-Midnight": {
+      "owner": "DeadlyBossMods/DeadlyBossMods",
+      "reason": "User uninstalled DBM and authorized retirement from active dependencies"
+    },
+    "DBM-StatusBarTimers": {
+      "owner": "DeadlyBossMods/DeadlyBossMods",
+      "reason": "User uninstalled DBM and authorized retirement from active dependencies"
+    },
+    "DBM-Test": {
+      "owner": "DeadlyBossMods/DeadlyBossMods",
+      "reason": "User uninstalled DBM and authorized retirement from active dependencies"
+    },
+    "DBM-VPVEM": {
+      "owner": "DeadlyBossMods/DeadlyBossMods",
+      "reason": "User uninstalled DBM and authorized retirement from active dependencies"
+    },
+    "DBM-Challenges": {
+      "owner": "DeadlyBossMods/DBM-Dungeons",
+      "reason": "User uninstalled DBM and authorized retirement from active dependencies"
+    },
+    "DBM-Delves-Midnight": {
+      "owner": "DeadlyBossMods/DBM-Dungeons",
+      "reason": "User uninstalled DBM and authorized retirement from active dependencies"
+    },
+    "DBM-Delves-WarWithin": {
+      "owner": "DeadlyBossMods/DBM-Dungeons",
+      "reason": "User uninstalled DBM and authorized retirement from active dependencies"
+    },
+    "DBM-Party-BC": {
+      "owner": "DeadlyBossMods/DBM-Dungeons",
+      "reason": "User uninstalled DBM and authorized retirement from active dependencies"
+    },
+    "DBM-Party-BfA": {
+      "owner": "DeadlyBossMods/DBM-Dungeons",
+      "reason": "User uninstalled DBM and authorized retirement from active dependencies"
+    },
+    "DBM-Party-Cataclysm": {
+      "owner": "DeadlyBossMods/DBM-Dungeons",
+      "reason": "User uninstalled DBM and authorized retirement from active dependencies"
+    },
+    "DBM-Party-Dragonflight": {
+      "owner": "DeadlyBossMods/DBM-Dungeons",
+      "reason": "User uninstalled DBM and authorized retirement from active dependencies"
+    },
+    "DBM-Party-Forever": {
+      "owner": "DeadlyBossMods/DBM-Dungeons",
+      "reason": "User uninstalled DBM and authorized retirement from active dependencies"
+    },
+    "DBM-Party-Legion": {
+      "owner": "DeadlyBossMods/DBM-Dungeons",
+      "reason": "User uninstalled DBM and authorized retirement from active dependencies"
+    },
+    "DBM-Party-Midnight": {
+      "owner": "DeadlyBossMods/DBM-Dungeons",
+      "reason": "User uninstalled DBM and authorized retirement from active dependencies"
+    },
+    "DBM-Party-MoP": {
+      "owner": "DeadlyBossMods/DBM-Dungeons",
+      "reason": "User uninstalled DBM and authorized retirement from active dependencies"
+    },
+    "DBM-Party-Shadowlands": {
+      "owner": "DeadlyBossMods/DBM-Dungeons",
+      "reason": "User uninstalled DBM and authorized retirement from active dependencies"
+    },
+    "DBM-Party-Vanilla": {
+      "owner": "DeadlyBossMods/DBM-Dungeons",
+      "reason": "User uninstalled DBM and authorized retirement from active dependencies"
+    },
+    "DBM-Party-WarWithin": {
+      "owner": "DeadlyBossMods/DBM-Dungeons",
+      "reason": "User uninstalled DBM and authorized retirement from active dependencies"
+    },
+    "DBM-Party-WoD": {
+      "owner": "DeadlyBossMods/DBM-Dungeons",
+      "reason": "User uninstalled DBM and authorized retirement from active dependencies"
+    },
+    "DBM-Party-WotLK": {
+      "owner": "DeadlyBossMods/DBM-Dungeons",
+      "reason": "User uninstalled DBM and authorized retirement from active dependencies"
+    },
+    "DBM-Test-Dungeons": {
+      "owner": "DeadlyBossMods/DBM-Dungeons",
+      "reason": "User uninstalled DBM and authorized retirement from active dependencies"
+    },
+    "DBM-WorldEvents": {
+      "owner": "DeadlyBossMods/DBM-Dungeons",
+      "reason": "User uninstalled DBM and authorized retirement from active dependencies"
+    },
+    "DBM-Azeroth": {
+      "owner": "DeadlyBossMods/DBM-Vanilla",
+      "reason": "User uninstalled DBM and authorized retirement from active dependencies"
+    },
+    "DBM-Raids-Vanilla": {
+      "owner": "DeadlyBossMods/DBM-Vanilla",
+      "reason": "User uninstalled DBM and authorized retirement from active dependencies"
+    },
+    "DBM-Test-Vanilla": {
+      "owner": "DeadlyBossMods/DBM-Vanilla",
+      "reason": "User uninstalled DBM and authorized retirement from active dependencies"
+    },
+    "DBM-Raids-WoTLK": {
+      "owner": "DeadlyBossMods/DBM-WotLK",
+      "reason": "User uninstalled DBM and authorized retirement from active dependencies"
+    },
+    "DBM-Cataclysm": {
+      "owner": "DeadlyBossMods/DBM-Cataclysm",
+      "reason": "User uninstalled DBM and authorized retirement from active dependencies"
+    },
+    "DBM-Raids-Cata": {
+      "owner": "DeadlyBossMods/DBM-Cataclysm",
+      "reason": "User uninstalled DBM and authorized retirement from active dependencies"
+    },
+    "DBM-Pandaria": {
+      "owner": "DeadlyBossMods/DBM-MoP",
+      "reason": "User uninstalled DBM and authorized retirement from active dependencies"
+    },
+    "DBM-Raids-MoP": {
+      "owner": "DeadlyBossMods/DBM-MoP",
+      "reason": "User uninstalled DBM and authorized retirement from active dependencies"
+    },
+    "DBM-Scenario-MoP": {
+      "owner": "DeadlyBossMods/DBM-MoP",
+      "reason": "User uninstalled DBM and authorized retirement from active dependencies"
+    },
+    "DBM-Draenor": {
+      "owner": "DeadlyBossMods/DBM-WoD",
+      "reason": "User uninstalled DBM and authorized retirement from active dependencies"
+    },
+    "DBM-Raids-WoD": {
+      "owner": "DeadlyBossMods/DBM-WoD",
+      "reason": "User uninstalled DBM and authorized retirement from active dependencies"
+    },
+    "DBM-BrokenIsles": {
+      "owner": "DeadlyBossMods/DBM-Legion",
+      "reason": "User uninstalled DBM and authorized retirement from active dependencies"
+    },
+    "DBM-Raids-Legion": {
+      "owner": "DeadlyBossMods/DBM-Legion",
+      "reason": "User uninstalled DBM and authorized retirement from active dependencies"
+    },
+    "HideClassBars": {
+      "owner": "rursache/HideClassBars",
+      "reason": "Replaced by reviewed Forever class/vehicle controller access"
+    }
+  }
 }

@@ -43,13 +43,16 @@ def untouched(root,folders):
 def deploy(tree,pack,checksum,backup_root,execute=False,fault=lambda event:None):
     manifest,rows=read_pack(pack,checksum,True)
     owners,updates=targets(manifest,rows)
-    if not updates:
+    retired=manifest.get('retiredAddonFolders',{})
+    if any(row['owner'] in manifest['compatibility']['dependencyVersions'] for row in retired.values()):
+        raise ValueError('Retired dependency remains in tested active lock')
+    if not updates and not retired:
         result=deploy_companion(tree,pack,checksum,backup_root,execute,fault)
         result['dependencyUpdates']=[]
         return result
     tree.check(force_process=True)
-    folders=[NAME]+sorted(folder for folder in owners if folder!=NAME)
-    payloads={folder:{} for folder in folders}
+    folders=[NAME]+sorted(folder for folder in owners if folder!=NAME)+sorted(retired)
+    payloads={folder:{} for folder in owners}
     for name,data in rows.items():
         parts=safe_relative(name).parts
         if parts[:2]==('Interface','AddOns'):
@@ -65,6 +68,7 @@ def deploy(tree,pack,checksum,backup_root,execute=False,fault=lambda event:None)
     if 'ConsolePort' not in folders and cp_version()!=required: raise ValueError('Installed ConsolePort differs from tested version')
     result={'operation':'deploy-scoped-update','sourceCommit':manifest['sourceCommit'],'packSHA256':checksum,
         'root':str(tree.root),'addonFolders':folders,'dependencyUpdates':sorted(updates),
+        'retiredAddonFolders':retired,
         'testedDependencies':manifest.get('testedDependencies',{}),'vendorFileCount':len(vendors),
         'characterLinkCount':len(wtf['links']),'currentConfigurationWrites':False,'vendorWrites':True,'execute':execute}
     if not execute: return result
@@ -100,10 +104,13 @@ def deploy(tree,pack,checksum,backup_root,execute=False,fault=lambda event:None)
             target=tree.guard(tree.addons/folder,tree.addons)
             if before[folder] is not None:
                 os.rename(target,tree.guard(previous/folder,stage));parked.append(folder)
-            os.rename(tree.guard(new/folder,stage),target);promoted.append(folder)
-            fault('after-promotion:'+folder)
+            if folder in retired:
+                fault('after-retirement:'+folder)
+            else:
+                os.rename(tree.guard(new/folder,stage),target);promoted.append(folder)
+                fault('after-promotion:'+folder)
         fault('after-promotion')
-        if any(inventory(tree.addons/folder)!=snapshot for folder,snapshot in staged.items()) or inventory(tree.wtf,True)!=wtf or untouched(tree.addons,folders)!=vendors:
+        if any((tree.addons/folder).exists() for folder in retired) or any(inventory(tree.addons/folder)!=snapshot for folder,snapshot in staged.items()) or inventory(tree.wtf,True)!=wtf or untouched(tree.addons,folders)!=vendors:
             raise ValueError('Scoped update readback/preservation failed')
         if cp_version()!=required: raise ValueError('Updated ConsolePort differs from tested version')
         receipt.update(status='installed',closedAt=now(),installedAddons=staged,wtfUnchanged=True,unselectedVendorsUnchanged=True)

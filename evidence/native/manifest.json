@@ -1,5 +1,19 @@
 [
   {
+    "path": "Blizzard_UIPanels_Game/Shared/VehicleSeatIndicator.lua",
+    "commit": "09b9db7948abc9b9648dedaab51eb0cf3ee67b31",
+    "gitBlob": "17c18cc9f0d049fe98a60b68e7d5cf078b247456",
+    "sha256": "b223103b40c091a7f51e81ccabc5fdbed9ed10d634ccc0e37e02e29b633dc04b",
+    "url": "https://github.com/Gethe/wow-ui-source/blob/09b9db7948abc9b9648dedaab51eb0cf3ee67b31/Interface/AddOns/Blizzard_UIPanels_Game/Shared/VehicleSeatIndicator.lua"
+  },
+  {
+    "path": "Blizzard_UIPanels_Game/Shared/VehicleSeatIndicator.xml",
+    "commit": "09b9db7948abc9b9648dedaab51eb0cf3ee67b31",
+    "gitBlob": "cdf7faae78c48d2bf24fd1d51297259a817837a2",
+    "sha256": "cc8e69efd27616e300c68a06d6285adc99dfa46b4c6680e761f582db809c07b1",
+    "url": "https://github.com/Gethe/wow-ui-source/blob/09b9db7948abc9b9648dedaab51eb0cf3ee67b31/Interface/AddOns/Blizzard_UIPanels_Game/Shared/VehicleSeatIndicator.xml"
+  },
+  {
     "path": "Blizzard_Collections/Blizzard_Collections_Mainline.toc",
     "commit": "09b9db7948abc9b9648dedaab51eb0cf3ee67b31",
     "gitBlob": "2637bbc73c7d65347c7675d029d2cef48bb4c659",

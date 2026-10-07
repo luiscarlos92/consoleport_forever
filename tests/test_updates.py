@@ -113,6 +113,43 @@ class ScopedUpdates(unittest.TestCase):
         self.assertIn('Interface/AddOns/A/helper.lua',rows)
         self.assertEqual(rows['Interface/AddOns/A/Main.lua'],b'local official=true')
 
+    def retirement_pack(self,scope):
+        original,checksum=make_pack(scope,'companion')
+        manifest,rows=read_pack(original,checksum,True)
+        rows={name:body for name,body in rows.items() if name.startswith('Interface/AddOns/ConsolePort_Forever/')}
+        manifest.update(deploymentScope='companion-and-updated-dependencies',dependencyUpdates={},
+            addonFolders=['ConsolePort_Forever'],requiredAddonFolders=['ConsolePort_Forever'],
+            runtimeClosure={'ConsolePort_Forever':manifest['runtimeClosure']['ConsolePort_Forever']},
+            retiredAddonFolders={'HideClassBars':{'owner':'rursache/HideClassBars','reason':'Reviewed replacement'}})
+        manifest['files']={name:digest(body) for name,body in rows.items()}
+        target=scope/'retirement.zip';target.write_bytes(archive_bytes(rows,manifest))
+        return target,sha(target)
+
+    def test_explicit_retirement_is_backed_up_and_parked_without_touching_other_addons(self):
+        scope=self.scope();tree=self.tree(scope)
+        retired=tree.addons/'HideClassBars';retired.mkdir();(retired/'original.lua').write_text('original')
+        before=inventory(tree.addons);wtf=inventory(tree.wtf,True)
+        pack,checksum=self.retirement_pack(scope)
+        preview=deploy(tree,pack,checksum,scope/'backups')
+        self.assertIn('HideClassBars',preview['retiredAddonFolders'])
+        self.assertEqual(inventory(tree.addons),before)
+        result=deploy(tree,pack,checksum,scope/'backups',True)
+        self.assertFalse(retired.exists())
+        self.assertEqual((Path(result['backup'])/'HideClassBars/original.lua').read_text(),'original')
+        self.assertEqual((Path(result['stage'])/'previous/HideClassBars/original.lua').read_text(),'original')
+        self.assertEqual(inventory(tree.wtf,True),wtf)
+        for name,row in before['files'].items():
+            if name.split('/')[0] not in {'HideClassBars','ConsolePort_Forever'}: self.assertEqual(sha(tree.addons/name),row['sha256'])
+
+    def test_retirement_interruption_restores_companion_and_retired_addon(self):
+        scope=self.scope();tree=self.tree(scope)
+        retired=tree.addons/'HideClassBars';retired.mkdir();(retired/'original.lua').write_text('original')
+        before=inventory(tree.addons);pack,checksum=self.retirement_pack(scope)
+        def fail(event):
+            if event=='after-retirement:HideClassBars': raise KeyboardInterrupt('interrupted retirement')
+        with self.assertRaises(KeyboardInterrupt): deploy(tree,pack,checksum,scope/'backups',True,fail)
+        self.assertEqual(inventory(tree.addons),before)
+
     def test_discovery_detects_new_releases_and_same_version_curseforge_file_ids(self):
         scope=self.scope();(scope/'dependencies').mkdir();(scope/'evidence/dependencies').mkdir(parents=True)
         current=datetime.now(timezone.utc).isoformat()

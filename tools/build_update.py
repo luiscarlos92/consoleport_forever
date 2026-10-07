@@ -41,7 +41,7 @@ def artifact_name(selected_key,label=None):
     return 'ConsolePort-Forever-Update-'+selected_key+('-'+label if label else '')+'.zip'
 
 
-def build(selected_repos=(),label=None):
+def build(selected_repos=(),label=None,retire_addons=()):
     commit,tests,test_hash=verified_source()
     lock_path=ROOT/'dependencies/lock.json'
     lock=json.loads(lock_path.read_text(encoding='utf-8'))
@@ -53,6 +53,9 @@ def build(selected_repos=(),label=None):
     age=(datetime.now(timezone.utc)-datetime.fromisoformat(stable['checkedAt'])).total_seconds()
     if not stable['allCurrent'] or not 0<=age<=86400: raise ValueError('Current official release check required')
     rows,closures,updates=update_payload(lock,coverage,selected_repos)
+    declared=json.loads((ROOT/'dependencies/sources.json').read_text(encoding='utf-8')).get('retiredAddonFolders',{})
+    if not set(retire_addons).issubset(declared): raise ValueError('Undeclared addon retirement')
+    retired={name:declared[name] for name in sorted(set(retire_addons))}
     version=closures['ConsolePort_Forever']['metadata']['Version'].strip()
     revision=int(re.search(r'Addon.CONFIG_REVISION=(\d+)',rows['Interface/AddOns/ConsolePort_Forever/ConsolePort_Forever.lua'].decode()).group(1))
     # Keep all package identities in the receipt without shipping their bytes.
@@ -61,7 +64,7 @@ def build(selected_repos=(),label=None):
         'deploymentScope':'companion-and-updated-dependencies','dependencyUpdates':updates,
         'testedDependencies':identities,'dependencyLockSHA256':lock_hash,
         'localPersonalUseOnly':True,'redistributionApproved':False,'assemblyComplete':True,
-        'addonFolders':sorted(closures),'requiredAddonFolders':sorted(closures),'retiredAddonFolders':{},
+        'addonFolders':sorted(closures),'requiredAddonFolders':sorted(closures),'retiredAddonFolders':retired,
         'compatibility':{'storeSchema':3,'configurationRevision':revision,
             'dependencyVersions':{p['repo']:p['version'] for p in lock['packages']}},
         'runtimeClosure':closures,'files':{name:digest(body) for name,body in rows.items()},
@@ -75,7 +78,7 @@ def build(selected_repos=(),label=None):
     checksum=digest(data)
     read_pack(destination,checksum,True)
     receipt={'path':str(destination),'sha256':checksum,'bytes':len(data),'sourceCommit':commit,
-        'addonFolders':manifest['addonFolders'],'dependencyUpdates':sorted(updates),'version':version,
+        'addonFolders':manifest['addonFolders'],'dependencyUpdates':sorted(updates),'retiredAddonFolders':retired,'version':version,
         'testedDependencies':identities,'dependencyLockSHA256':lock_hash}
     output(destination.with_suffix('.zip.receipt.json')).write_text(json.dumps(receipt,indent=2)+'\n',encoding='utf-8')
     return receipt
@@ -85,5 +88,6 @@ if __name__=='__main__':
     parser=argparse.ArgumentParser()
     parser.add_argument('--dependency',action='append',default=[],help='Updated locked repository to include; repeat as needed, default is Forever only')
     parser.add_argument('--label',help='Retained artifact label when rebuilding the same candidate version')
+    parser.add_argument('--retire-addon',action='append',default=[],help='Explicit declared retirement to back up and park; never broad pruning')
     args=parser.parse_args()
-    print(json.dumps(build(args.dependency,args.label),indent=2))
+    print(json.dumps(build(args.dependency,args.label,args.retire_addon),indent=2))

@@ -32,6 +32,14 @@ class ToolGuards(unittest.TestCase):
             with self.assertRaises(ValueError):
                 resolve_dependencies.selected_coverage(installed,{'additionalAddonFolders':value})
 
+    def test_retired_coverage_is_explicit_and_survives_future_resolution(self):
+        installed=['Keep','HideClassBars','DBM-Core']
+        sources={'retiredAddonFolders':{n:{'owner':'retired/Owner','reason':'User removed'} for n in installed[1:]}}
+        self.assertEqual(resolve_dependencies.selected_coverage(installed,sources),['Keep'])
+        self.assertEqual(installed,['Keep','HideClassBars','DBM-Core'])
+        for retired in [[],{'../escape':{'owner':'x','reason':'x'}},{'Keep':{}}]:
+            with self.assertRaises(ValueError): resolve_dependencies.selected_coverage(installed,{'retiredAddonFolders':retired})
+
     def test_empty_toc_fields_do_not_hide_required_dependencies(self):
         for newline in ['\n','\r\n']:
             text=newline.join(['## Interface: 120100','## Version: 6.12.3','## Notes:','## Dependencies: Blizzard_Collections, Blizzard_Transmog','Main.lua',''])

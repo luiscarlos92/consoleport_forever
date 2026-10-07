@@ -1,0 +1,686 @@
+{
+  "checkedAt": "2026-10-07T21:34:05.683Z",
+  "file": "C:/Users/luisr/OneDrive/Documents/03 Gaming/World of Warcraft/_retail_/WTF/Account/119624169#1/SavedVariables/Plater.lua",
+  "profileKeys": {
+    "F\u00c3\u00abantur\u00c3\u00af - Proudmoore": "Default",
+    "F\u00c3\u00ablagund - Proudmoore": "Default",
+    "F\u00c3\u00ablagund - Grim Batol": "Default",
+    "F\u00c3\u00aban\u00c3\u00b3l\u00c3\u00ab - Proudmoore": "Default"
+  },
+  "profiles": [
+    {
+      "name": "F\u00c3\u00abantur\u00c3\u00af - Proudmoore",
+      "castCues": []
+    },
+    {
+      "name": "Quazii Plater Season 4",
+      "castCues": [
+        {
+          "spell": "87618",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\Jump.ogg"
+        },
+        {
+          "spell": "88308",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+        },
+        {
+          "spell": "164357",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+        },
+        {
+          "spell": "169179",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+        },
+        {
+          "spell": "169929",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+        },
+        {
+          "spell": "183088",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+        },
+        {
+          "spell": "183465",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+        },
+        {
+          "spell": "188169",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+        },
+        {
+          "spell": "188404",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+        },
+        {
+          "spell": "193505",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+        },
+        {
+          "spell": "197974",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+        },
+        {
+          "spell": "200261",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+        },
+        {
+          "spell": "200291",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\CC.ogg"
+        },
+        {
+          "spell": "200345",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\CC.ogg"
+        },
+        {
+          "spell": "200768",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+        },
+        {
+          "spell": "200784",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\CC.ogg"
+        },
+        {
+          "spell": "200913",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+        },
+        {
+          "spell": "201226",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+        },
+        {
+          "spell": "226296",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+        },
+        {
+          "spell": "226304",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+        },
+        {
+          "spell": "226406",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+        },
+        {
+          "spell": "253721",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\CC.ogg"
+        },
+        {
+          "spell": "255567",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+        },
+        {
+          "spell": "256627",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+        },
+        {
+          "spell": "257288",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+        },
+        {
+          "spell": "257426",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+        },
+        {
+          "spell": "257756",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\CC.ogg"
+        },
+        {
+          "spell": "257862",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+        },
+        {
+          "spell": "257870",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\CC.ogg"
+        },
+        {
+          "spell": "260793",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+        },
+        {
+          "spell": "260894",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+        },
+        {
+          "spell": "265019",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+        },
+        {
+          "spell": "265372",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+        },
+        {
+          "spell": "265540",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\CC.ogg"
+        },
+        {
+          "spell": "265721",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+        },
+        {
+          "spell": "268202",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\CC.ogg"
+        },
+        {
+          "spell": "268260",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+        },
+        {
+          "spell": "269029",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+        },
+        {
+          "spell": "269843",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+        },
+        {
+          "spell": "272609",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+        },
+        {
+          "spell": "320822",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\CC.ogg"
+        },
+        {
+          "spell": "321834",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+        },
+        {
+          "spell": "321968",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+        },
+        {
+          "spell": "323137",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+        },
+        {
+          "spell": "323496",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+        },
+        {
+          "spell": "324323",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+        },
+        {
+          "spell": "331718",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+        },
+        {
+          "spell": "333477",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+        },
+        {
+          "spell": "333488",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+        },
+        {
+          "spell": "340160",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+        },
+        {
+          "spell": "340300",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+        },
+        {
+          "spell": "367484",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\CC.ogg"
+        },
+        {
+          "spell": "367521",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\CC.ogg"
+        },
+        {
+          "spell": "369061",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+        },
+        {
+          "spell": "369409",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+        },
+        {
+          "spell": "369465",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\CC.ogg"
+        },
+        {
+          "spell": "369563",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+        },
+        {
+          "spell": "369573",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+        },
+        {
+          "spell": "369828",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\CC.ogg"
+        },
+        {
+          "spell": "370764",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\CC.ogg"
+        },
+        {
+          "spell": "372087",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+        },
+        {
+          "spell": "372107",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+        },
+        {
+          "spell": "372201",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+        },
+        {
+          "spell": "372222",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+        },
+        {
+          "spell": "372225",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\CC.ogg"
+        },
+        {
+          "spell": "372311",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+        },
+        {
+          "spell": "372735",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\CC.ogg"
+        },
+        {
+          "spell": "373742",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+        },
+        {
+          "spell": "374361",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+        },
+        {
+          "spell": "374563",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+        },
+        {
+          "spell": "374839",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+        },
+        {
+          "spell": "375251",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+        },
+        {
+          "spell": "375327",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+        },
+        {
+          "spell": "375348",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+        },
+        {
+          "spell": "375351",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+        },
+        {
+          "spell": "375439",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+        },
+        {
+          "spell": "375727",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+        },
+        {
+          "spell": "375943",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+        },
+        {
+          "spell": "376170",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+        },
+        {
+          "spell": "376683",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+        },
+        {
+          "spell": "376892",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+        },
+        {
+          "spell": "377034",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+        },
+        {
+          "spell": "377204",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+        },
+        {
+          "spell": "377383",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+        },
+        {
+          "spell": "377559",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+        },
+        {
+          "spell": "377732",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\CC.ogg"
+        },
+        {
+          "spell": "378818",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\CC.ogg"
+        },
+        {
+          "spell": "381525",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+        },
+        {
+          "spell": "382233",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+        },
+        {
+          "spell": "382277",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+        },
+        {
+          "spell": "382708",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+        },
+        {
+          "spell": "382712",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+        },
+        {
+          "spell": "383823",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\CC.ogg"
+        },
+        {
+          "spell": "384524",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+        },
+        {
+          "spell": "384868",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+        },
+        {
+          "spell": "385536",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\CC.ogg"
+        },
+        {
+          "spell": "385578",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+        },
+        {
+          "spell": "385958",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+        },
+        {
+          "spell": "386660",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+        },
+        {
+          "spell": "387629",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+        },
+        {
+          "spell": "387910",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\CC.ogg"
+        },
+        {
+          "spell": "388060",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+        },
+        {
+          "spell": "388801",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\CC.ogg"
+        },
+        {
+          "spell": "388911",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+        },
+        {
+          "spell": "388976",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+        },
+        {
+          "spell": "391118",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+        },
+        {
+          "spell": "391723",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+        },
+        {
+          "spell": "393432",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+        },
+        {
+          "spell": "395184",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+        },
+        {
+          "spell": "396812",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\CC.ogg"
+        },
+        {
+          "spell": "397889",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\CC.ogg"
+        },
+        {
+          "spell": "397931",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+        },
+        {
+          "spell": "408141",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+        },
+        {
+          "spell": "411012",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+        },
+        {
+          "spell": "412012",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\CC.ogg"
+        },
+        {
+          "spell": "412129",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+        },
+        {
+          "spell": "412200",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\CC.ogg"
+        },
+        {
+          "spell": "412215",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+        },
+        {
+          "spell": "412505",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+        },
+        {
+          "spell": "413529",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+        },
+        {
+          "spell": "416139",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+        },
+        {
+          "spell": "419351",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+        },
+        {
+          "spell": "422414",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+        },
+        {
+          "spell": "422541",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\CC.ogg"
+        },
+        {
+          "spell": "425027",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+        },
+        {
+          "spell": "426261",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+        },
+        {
+          "spell": "426645",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+        },
+        {
+          "spell": "426860",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+        },
+        {
+          "spell": "426893",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+        },
+        {
+          "spell": "427025",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+        },
+        {
+          "spell": "427176",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\CC.ogg"
+        },
+        {
+          "spell": "427323",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+        },
+        {
+          "spell": "427342",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\CC.ogg"
+        },
+        {
+          "spell": "427359",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\CC.ogg"
+        },
+        {
+          "spell": "427376",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\CC.ogg"
+        },
+        {
+          "spell": "427616",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+        },
+        {
+          "spell": "428293",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+        },
+        {
+          "spell": "429427",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\CC.ogg"
+        },
+        {
+          "spell": "431494",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+        },
+        {
+          "spell": "432031",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\CC.ogg"
+        },
+        {
+          "spell": "432198",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+        },
+        {
+          "spell": "432520",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\CC.ogg"
+        },
+        {
+          "spell": "432967",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\CC.ogg"
+        },
+        {
+          "spell": "433662",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\CC.ogg"
+        },
+        {
+          "spell": "434779",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+        },
+        {
+          "spell": "434824",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+        },
+        {
+          "spell": "435012",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+        },
+        {
+          "spell": "437719",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\CC.ogg"
+        },
+        {
+          "spell": "439621",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+        },
+        {
+          "spell": "440218",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+        },
+        {
+          "spell": "441119",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+        },
+        {
+          "spell": "443500",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+        },
+        {
+          "spell": "445457",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+        },
+        {
+          "spell": "447395",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+        },
+        {
+          "spell": "448105",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+        },
+        {
+          "spell": "448619",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+        },
+        {
+          "spell": "448640",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+        },
+        {
+          "spell": "449090",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+        },
+        {
+          "spell": "449130",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+        },
+        {
+          "spell": "450854",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+        },
+        {
+          "spell": "451496",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+        },
+        {
+          "spell": "451543",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+        },
+        {
+          "spell": "453161",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+        },
+        {
+          "spell": "462216",
+          "path": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+        }
+      ]
+    },
+    {
+      "name": "Default",
+      "castCues": []
+    },
+    {
+      "name": "Proudmoore",
+      "castCues": []
+    }
+  ],
+  "decision": "Retain SharedMedia_Causese: saved Quazii Plater Season 4 profile references 164 cast alerts. Current Default profile has no direct cast cue references."
+}

@@ -55,13 +55,15 @@ def check(allow_updates=False):
             'metadataVerifiedAt': source['metadataVerifiedAt'],
             'method': 'Official latest-stable Retail listing and file page inspected; no floating latest fetch during assembly.',
             'matchesLock': 0 <= (now-checked).total_seconds() <= 86400 and source['supportsRetail'] and source['version'] == prior['version'] and source['fileID'] == prior.get('fileID')})
-    voice = github_api('repos/DeadlyBossMods/DBM-Voicepack-VEM/commits?per_page=1')[0]['sha']
+    voice_required=any(p['repo']=='DeadlyBossMods/DeadlyBossMods' for p in lock['packages'])
+    voice = github_api('repos/DeadlyBossMods/DBM-Voicepack-VEM/commits?per_page=1')[0]['sha'] if voice_required else None
+    voice_current=not voice_required or voice=='99e0c336444fd7105e1414c46f9d6a4e0cf99bc6'
     result = {'checkedAt': now.isoformat(), 'lockSHA256': sha(ROOT/'dependencies/lock.json'),
         'github': github, 'curseforge': curseforge,
-        'bundledVoice': {'maintainerCommit': voice, 'expectedCommit': '99e0c336444fd7105e1414c46f9d6a4e0cf99bc6',
-            'matchesLock': voice == '99e0c336444fd7105e1414c46f9d6a4e0cf99bc6'},
+        'bundledVoice': {'applicable':voice_required,'maintainerCommit': voice, 'expectedCommit': '99e0c336444fd7105e1414c46f9d6a4e0cf99bc6' if voice_required else None,
+            'matchesLock': voice_current},
         'updates': [r['repo'] for r in github+curseforge if not r['matchesLock']],
-        'allCurrent': all(r['matchesLock'] for r in github+curseforge) and voice == '99e0c336444fd7105e1414c46f9d6a4e0cf99bc6'}
+        'allCurrent': all(r['matchesLock'] for r in github+curseforge) and voice_current}
     output(ROOT/'evidence/dependencies/stable-recheck.json').write_text(json.dumps(result, indent=2), encoding='utf-8')
     if not result['allCurrent'] and not allow_updates:
         raise ValueError('Stable source changed/unavailable: refresh the affected lock and compatibility checks before packaging')

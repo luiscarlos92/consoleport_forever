@@ -54,6 +54,8 @@ def runtime_closure(folder, files, require_retail=True):
 
 
 def voice_provenance(lock):
+    if not any(p['repo']=='DeadlyBossMods/DeadlyBossMods' for p in lock['packages']):
+        return {'applicable':False,'reason':'DBM removed by user; retained historical provenance is inactive.'}
     record = json.loads((ROOT/'evidence/dependencies/voice-provenance.json').read_text(encoding='utf-8'))
     core = next(p for p in lock['packages'] if p['repo']=='DeadlyBossMods/DeadlyBossMods')
     actual = {n for n in core['files'] if n.startswith('DBM-VPVEM/')}

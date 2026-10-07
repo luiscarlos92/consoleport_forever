@@ -14,6 +14,13 @@ update does not repeat their installation. The other 18 packages are unchanged. 
 source contracts, tests, limits and package evidence. Installed candidate.5 and
 live WTF are unchanged. The earlier plan-only instruction is superseded.
 
+**Prepared delivery:** candidate.6 is committed/pushed at `cfab284`, with all
+37 runtime/source suites and 32 tooling tests passed. The scoped ZIP contains
+47 exact Forever files (474,986 bytes), dependency identities for all 19 packages,
+and no dependency/DBM/WTF payload. Independent receipt:
+`evidence/delivery/prepared-candidate6.json`. Nothing was deployed; WoW was still
+running. Retail hardware/taint/placement/persistence acceptance remains pending.
+
 **Latest installed checkpoint — October 6, 19:34:44 Toronto:** candidate.5 is
 installed from `eba070c`, using the new small scoped-update path. All 18 official
 dependencies were checked and already current; none was downloaded or copied.

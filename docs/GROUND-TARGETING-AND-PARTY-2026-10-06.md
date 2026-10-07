@@ -122,3 +122,13 @@ dependency updates, including no DBM. Its receipt is retained under
 `evidence/delivery/prepared-candidate6.json`. No installer is run. After a later
 authorized deployment, normal in-game revision 13 review enables the policy and
 applies the Party default; Apply/Reload retains its backup.
+
+Prepared artifact: `dist/2.0.0-candidate.6/ConsolePort-Forever-Update-companion-only.zip`.
+It contains 47 exact Forever files, is 474,986 bytes, and has SHA-256
+`92ae073ddac4acaebe0d683c11cdadcb8e90e511dac4e038ad831b50656d001c`.
+Tested source commit: `cfab284241348ce95d1757157e2c0f92a683046e`.
+Independent archive readback confirms revision 13, all product bytes, both test
+report hashes, the current dependency lock, Better Wardrobe in all 19 tested
+identities, and no dependency/DBM/WTF payload. WoW was still running at verification.
+No installation/preview command against the live game was run. The receipt is
+committed separately after building and does not alter the tested source bytes.

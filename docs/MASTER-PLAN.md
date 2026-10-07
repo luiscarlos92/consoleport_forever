@@ -1,5 +1,18 @@
 # ConsolePort Forever: master plan, decisions, and project history
 
+## Candidate.7 deployment authority - October 7, 2026
+
+The user explicitly authorized deployment: "WoW is closed, you can deploy".
+This supersedes the visual patch's preparation-only boundary below. Deploy the
+already tested/retained candidate.7 visual-fix ZIP (source a152326, SHA-256
+59726ecde789ecd2c75bffe5e612d288aa4e84f145a09e4801a7eb09cf9d3b4e)
+using the scoped installer preview and execution, with WoW verified closed.
+Fresh official release checks found all 19 packages unchanged. Only Forever
+is copied. Preserve all dependencies, disabled DBM, live WTF, junctions and
+prior artifacts/backups; independently verify installed files and preservation.
+All 39 runtime/source and 33 tooling results remain byte-current. No product
+code changed after qualification. Manual visual case 41 follows deployment.
+
 ## Current authority - October 7, 2026: visual patch only
 
 The user authorized a visual fix after testing the installed candidate.6:

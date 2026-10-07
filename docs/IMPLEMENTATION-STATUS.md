@@ -1,5 +1,12 @@
 # Implementation checkpoint — October 4, 2026
 
+**Current authority - October 7, 2026:** the user authorized candidate.7
+installation and reported WoW closed. Process/anchor verification confirms this.
+The exact retained visual-fix artifact and all 39 runtime/source plus 33 tooling
+reports match source; all 19 releases were freshly checked and unchanged.
+Scoped preview, backup/install and independent readback are the remaining gates.
+Only Forever is selected; dependencies, DBM and live WTF remain untouched.
+
 **Current preparation - October 7, 2026:** candidate.7 is a visual-only patch
 for the user's installed-candidate.6 feedback. Explicit readiness initialization,
 validated event registration, owned-mask restoration and sparse border traversal

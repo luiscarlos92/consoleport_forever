@@ -1,5 +1,24 @@
 # Implementation checkpoint — October 4, 2026
 
+## Installed checkpoint - October 7, 2026, 15:10:51 America/Toronto
+
+The explicitly authorized candidate.7 visual patch is installed with ConsolePort
+3.3.10 from pushed/tested source `a15232604b5757a2254d295e7b5ecd8fda3d5046`.
+The scoped installer preview and guarded execution selected only Forever. All
+49 installed files match the retained visual-fix ZIP. Independent readback
+confirms all 3,842 dependency files, 298 canonical WTF files, 42 character
+junctions and root anchors unchanged. DBM remains disabled and untouched.
+No dependencies were recopied; all 19 official stable releases were freshly
+checked and unchanged. Exact 39 runtime/source and 33 tooling reports match.
+
+Receipt: `evidence/delivery/live-install-candidate7.json`. Verified companion
+and WTF backup: `C:/Users/luisr/WoW-Backups/ConsolePort-Forever/20261007T191022Z-cb816cd1554e`.
+StoreSchema 3/configuration revision 13 and working targeting preferences are
+unchanged. Manual visual case 41 awaits the user's test after launching WoW;
+offline/readback success does not claim Retail rendering or combat acceptance.
+This completes the deployment authorization. Future deployments require new
+explicit authorization and WoW closed. All prior artifacts/backups are retained.
+
 **Current authority - October 7, 2026:** the user authorized candidate.7
 installation and reported WoW closed. Process/anchor verification confirms this.
 The exact retained visual-fix artifact and all 39 runtime/source plus 33 tooling

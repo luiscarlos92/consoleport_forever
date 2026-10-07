@@ -1,14 +1,17 @@
 # Retail tests and results — installed candidate.5, revision 12
 
-Candidate.7 visual patch is prepared, **not deployed**. The user reports
+Candidate.7 visual patch is **installed** as of October 7, 15:10:51 Toronto.
+All 49 installed files match and all dependencies/WTF/junctions are unchanged.
+User authorization supersedes earlier preparation-only notes. Case 41 is ready
+for manual testing; its live result remains pending. The user reports
 candidate.6 cursor/player interception works. Their screenshot identifies
 missing custom Circle/Triangle artwork and missing round face masks. Previous
 case 40 remains partially failing for rendering; availability acceptance is
 not inferred from the screenshot.
 
-### 41 - face artwork and circular skin restoration (candidate.7; pending deployment)
+### 41 - face artwork and circular skin restoration (candidate.7; installed, live test pending)
 
-After a later authorized deployment, verify all four face buttons in Base, L2,
+With candidate.7 now installed, verify all four face buttons in Base, L2,
 R2 and L2R2 are circular. Base Circle should show custom Exit art and Triangle
 look/crosshair art when their resolved bindings match. Jump/Interact custom art
 must remain, and ordinary spell/item icons must retain native availability,

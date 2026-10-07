@@ -74,3 +74,24 @@ Against deployed source 580f1e3, only Skin.lua, the readiness call in the main
 module, and the TOC version differ; the other 46 payload files are unchanged.
 All previous candidate.6 artifact checksums are unchanged. Candidate.6 remains
 installed; no live addon/WTF files were written and no installer was invoked.
+
+## Authorized deployment - October 7, 2026, 15:10:51 Toronto
+
+The user then said "WoW is closed, you can deploy", superseding the preparation
+boundary above. WoW closure and anchors were verified, all 19 official stable
+Retail releases freshly checked (unchanged), and the exact tested artifact
+was previewed then installed through tools/deploy_update.py. No rebuild,
+product change, dependency update or reshipping was needed.
+
+Independent readback confirms all 49 Forever files match the ZIP, all 3,842
+vendor files and directories remain unchanged, all 298 WTF files and 42 links
+match the before snapshot, and root anchors are unchanged. Both old Forever
+and canonical WTF backup bytes are verified. DBM stays disabled/user owned;
+no live WTF files were written. Backups/staging snapshots remain preserved.
+
+Installed source: `a15232604b5757a2254d295e7b5ecd8fda3d5046`.
+Receipt: `evidence/delivery/live-install-candidate7.json`.
+Backup: `C:/Users/luisr/WoW-Backups/ConsolePort-Forever/20261007T191022Z-cb816cd1554e`.
+No configuration revision or targeting changes. The user can launch WoW and
+perform manual case 41. Actual rendering, availability transitions and combat
+taint acceptance remain pending their in-game result.

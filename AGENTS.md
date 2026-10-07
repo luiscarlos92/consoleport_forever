@@ -40,10 +40,11 @@ immutable original reference to add later dependencies. See
 ## Deployments
 
 - Deploy only with explicit user authorization and WoW closed. Current installed checkpoint
-  is candidate.6 with ConsolePort 3.3.10 (October 7, 14:09:14 Toronto), after
+  is candidate.7 with ConsolePort 3.3.10 (October 7, 15:10:51 Toronto), after
   explicit authorization. That deployment is complete; the user will manually
   test. Future deployments require new authorization. Preserve every earlier
-  candidate.6 artifact/receipt and all verified backups.
+  candidate.6/candidate.7 artifact/receipt and all verified backups. See
+  `evidence/delivery/live-install-candidate7.json` for the current receipt.
 - DBM is deliberately disabled for now. Preserve its game/user-owned enable
   state and existing files; do not enable/reconfigure it or include DBM bytes in
   the prepared update. This supersedes older DBM keep/reship instructions.

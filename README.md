@@ -1,6 +1,6 @@
 # ConsolePort Forever
 
-Personal Retail controller UI companion. **2.0.0-candidate.6** is installed with clean **ConsolePort 3.3.10**. The [candidate.7 visual patch](docs/FACE-VISUAL-PATCH-2026-10-07.md) is prepared without deployment; it restores custom face artwork and circular masks after native refreshes. Working targeting behavior and configuration revision 13 remain unchanged. See the [installed checkpoint](docs/CANDIDATE6-DEPLOYMENT-2026-10-07.md) and [manual test cases](docs/MANUAL-TEST-CASES.md).
+Personal Retail controller UI companion. **2.0.0-candidate.7** is installed with clean **ConsolePort 3.3.10**. The [visual patch](docs/FACE-VISUAL-PATCH-2026-10-07.md) restores custom face artwork and circular masks after native refreshes. All 49 deployed files match; 3,842 dependency files, 298 WTF files and 42 character junctions are unchanged. Working targeting behavior and configuration revision 13 remain unchanged. See the [installed receipt](evidence/delivery/live-install-candidate7.json) and [manual test cases](docs/MANUAL-TEST-CASES.md).
 
 Read [AGENTS.md](AGENTS.md) and the [dependency workflow](docs/DEPENDENCY-WORKFLOW.md): check all 19 dependencies each session, refresh only changed official packages, test compatibility, then prepare a scoped update. Deployment requires new explicit authorization and WoW closed. Never write live WTF. DBM stays disabled and is excluded from this update.
 

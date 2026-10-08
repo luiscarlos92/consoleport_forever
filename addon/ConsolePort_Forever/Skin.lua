@@ -1,7 +1,8 @@
 local _, Addon = ...
 local BANKS, FACE = {Base=true,L2=true,R2=true,L2R2=true}, {PAD1=true,PAD2=true,PAD3=true,PAD4=true}
+local DPAD = {PADDUP=true,PADDDOWN=true,PADDLEFT=true,PADDRIGHT=true}
+local HUD = Addon.HUDPresentation
 local CIRCLE = [[Interface\Masks\CircleMaskScalable]]
-local RING = [[Interface\AddOns\ConsolePort\Assets\Textures\Cursor\RoundBorderHighlight]]
 local REGION_GETTERS={NormalTexture='GetNormalTexture',PushedTexture='GetPushedTexture',HighlightTexture='GetHighlightTexture',CheckedTexture='GetCheckedTexture'}
 local function Public(value) return not (issecretvalue and issecretvalue(value)) end
 local function Availability(button)
@@ -35,12 +36,6 @@ local function Swipe(cd,r,g,b,a)
     cd.__cpfSwipeWriting=true
     cd:SetSwipeColor(r,g,b,0.65)
     cd.__cpfSwipeWriting=nil
-end
-
-local function Round(texture, button)
-    if not texture then return end
-    texture:SetTexture(RING) texture:SetTexCoord(0,1,0,1) texture:ClearAllPoints()
-    texture:SetPoint("CENTER", button) texture:SetSize(button:GetWidth(), button:GetWidth())
 end
 
 function Addon:ResolvedPresentationBinding(button)
@@ -82,6 +77,9 @@ local function Apply(button)
     -- Keep our circular mask independent of native/Masque mask replacement.
     local mask = button.__cpfFaceMask or button:CreateMaskTexture(nil, "BACKGROUND")
     button.__cpfFaceMask=mask
+    if button.IconMask and button.IconMask~=mask and button.icon.RemoveMaskTexture then
+        pcall(button.icon.RemoveMaskTexture,button.icon,button.IconMask)
+    end
     button.IconMask = mask
     if button.__cpfMaskIcon~=button.icon or button.__cpfConnectedMask~=mask then
         if button.__cpfMaskIcon and button.__cpfConnectedMask and button.__cpfMaskIcon.RemoveMaskTexture then button.__cpfMaskIcon:RemoveMaskTexture(button.__cpfConnectedMask) end
@@ -107,14 +105,23 @@ local function Apply(button)
         bg:AddMaskTexture(mask) button.__cpfMaskBackground=bg button.__cpfBackgroundMask=mask
     end
     bg:Show()
-    if button.SlotArt then button.SlotArt:Hide() end
+    HUD.EmptySlot(button,mask)
+    local shadow=button.__cpfRoundShadow or button:CreateTexture(nil,'BACKGROUND',nil,-2)
+    button.__cpfRoundShadow=shadow
+    shadow:ClearAllPoints() shadow:SetPoint('CENTER',button, 'CENTER',0,-1)
+    shadow:SetSize(button:GetWidth()*1.08,button:GetWidth()*1.08)
+    if not HUD.Atlas(shadow,'gamepad-actionbar-circleslot-dropshadow') then
+        shadow:SetColorTexture(0,0,0,.55) HUD.Mask(shadow,mask)
+    end
+    shadow:Show()
     -- Optional texture holes must not terminate an ipairs traversal.
     for _,key in ipairs({'NormalTexture','PushedTexture','HighlightTexture','CheckedTexture','Flash','Border','NewActionTexture','SpellHighlightTexture'}) do
         local texture=button[key]
         local getter=REGION_GETTERS[key]
         if not texture and getter and button[getter] then texture=button[getter](button) end
-        Round(texture,button)
+        HUD.RoundRegion(texture,button,key,mask)
     end
+    HUD.RoundEffects(button,mask)
     for _, key in ipairs({"cooldown","chargeCooldown","lossOfControlCooldown"}) do
         local cd=button[key] if cd then
             cd:ClearAllPoints() cd:SetAllPoints(mask) cd:SetSwipeTexture(CIRCLE)
@@ -152,11 +159,10 @@ local function Install(button)
     Apply(button)
 end
 
-local targetingBank
 local targetingPrompts={}
 local function Prompts(bank)
-    if targetingBank==bank or InCombatLockdown() then return end targetingBank=bank
-    for _,i in ipairs({{n="Friendly",x=-157.5,g="ps_s_l1",t=141,b=186,l=297,r=347},{n="Hostile",x=157.5,g="ps_s_r1",t=188,b=233,l=349,r=399}}) do
+    if InCombatLockdown() then return end
+    for _,i in ipairs({{n="Friendly",x=-157.5,g="PADLSHOULDER",t=141,b=186,l=297,r=347},{n="Hostile",x=157.5,g="PADRSHOULDER",t=188,b=233,l=349,r=399}}) do
         local f=targetingPrompts[i.n]
         if f then
             f:SetParent(bank) f:ClearAllPoints() f:SetSize(34,30.6) f:SetPoint('BOTTOM',bank,'TOP',i.x,-32)
@@ -165,8 +171,9 @@ local function Prompts(bank)
         targetingPrompts[i.n]=f
         local bg=f:CreateTexture(nil,"BACKGROUND") bg:SetAllPoints() bg:SetTexture([[Interface\AddOns\ConsolePort_Forever\Assets\ForeverTargeting.blp]]) bg:SetTexCoord(i.l/512,i.r/512,1/256,46/256)
         local icon=f:CreateTexture(nil,"ARTWORK") icon:SetAllPoints() icon:SetTexture([[Interface\AddOns\ConsolePort_Forever\Assets\ForeverTargeting.blp]]) icon:SetTexCoord(223/512,273/512,i.t/256,i.b/256)
-        local glyph=f:CreateTexture(nil,"OVERLAY") glyph:SetSize(18,18) glyph:SetPoint("BOTTOM",f,"TOP",0,1) glyph:SetTexture([[Interface\AddOns\ConsolePort\Assets\Icons\64\]]..i.g)
+        f.glyph=f:CreateTexture(nil,"OVERLAY") f.glyph:SetSize(18,18) f.glyph:SetPoint("BOTTOM",f,"TOP",0,1)
         end
+        HUD.Glyph(f.glyph,i.g)
     end
 end
 
@@ -174,6 +181,7 @@ function Addon:RefreshConsolePortSkin()
     if not self.IsCharacterInstalled or not self:IsCharacterInstalled() then return end
     if InCombatLockdown() then self.skinRefreshPending=true return end
     self.skinRefreshPending=nil
+    HUD.Watch()
     local ready,errors=0,{}
     for bankID in pairs(BANKS) do
         local bank=_G["ConsolePortGroup"..bankID]
@@ -198,9 +206,25 @@ function Addon:RefreshConsolePortSkin()
                     if ok then ready=ready+1 else errors[#errors+1]=bankID..'/'..id..': '..tostring(reason) end
                 end
             end
+            for id in pairs(DPAD) do
+                local button=bank.buttons[id]
+                if button then
+                    if not button.__cpfEmptyHook then
+                        button.__cpfEmptyHook=true
+                        local function empty()
+                            if Addon:IsCharacterInstalled() and not InCombatLockdown() then HUD.EmptySlot(button) end
+                        end
+                        if type(button.UpdateLocal)=='function' then hooksecurefunc(button,'UpdateLocal',empty) end
+                        if type(button.UpdateButtonArt)=='function' then hooksecurefunc(button,'UpdateButtonArt',empty) end
+                        button:HookScript('OnSizeChanged',empty)
+                    end
+                    HUD.EmptySlot(button)
+                end
+            end
+            HUD.BankPrompt(bank,bankID)
         end
     end
-    if ConsolePortGroupBase then Prompts(ConsolePortGroupBase) end
+    if ConsolePortGroupBase then Prompts(ConsolePortGroupBase) HUD.ClassShortcut(ConsolePortGroupBase) end
     if self.Diagnostics then self.Diagnostics:SetFeature('faceSkin',ready==16 and #errors==0 and 'offline-verified' or 'pending',
         #errors>0 and table.concat(errors,'; ') or (ready..'/16 face skins prepared; rendered Retail acceptance pending')) end
 end
@@ -228,7 +252,8 @@ events:SetScript("OnEvent",function()
 end)
 -- Install the handler first; unavailable events must not abort skin startup.
 for _,event in ipairs({'PLAYER_ENTERING_WORLD','PLAYER_TARGET_CHANGED','PLAYER_EQUIPMENT_CHANGED','PLAYER_REGEN_ENABLED',
-    'PLAYER_REGEN_DISABLED','ACTIONBAR_UPDATE_USABLE','ACTIONBAR_SLOT_CHANGED','GROUP_ROSTER_UPDATE','UPDATE_BINDINGS','ADDON_LOADED'}) do
+    'PLAYER_REGEN_DISABLED','ACTIONBAR_UPDATE_USABLE','ACTIONBAR_SLOT_CHANGED','GROUP_ROSTER_UPDATE','UPDATE_BINDINGS','ADDON_LOADED',
+    'GAME_PAD_CONFIGS_CHANGED','UPDATE_SHAPESHIFT_FORMS','SPELLS_CHANGED'}) do
     local supported=not C_EventUtils or not C_EventUtils.IsEventValid or C_EventUtils.IsEventValid(event)
     if supported then
         local ok,reason=pcall(events.RegisterEvent,events,event)

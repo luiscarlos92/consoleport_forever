@@ -1,7 +1,7 @@
 local ADDON_NAME, Addon = ...
 Addon.VERSION=C_AddOns.GetAddOnMetadata(ADDON_NAME,"Version") or "0.0.0"
 Addon.SCHEMA=Addon.Store.VERSION
-Addon.CONFIG_REVISION=14
+Addon.CONFIG_REVISION=15
 -- Native recovery retains ConsolePort bindings, modes and UI ownership.
 -- Ground placement is a separate secure click adapter; it does not page actions.
 Addon.NATIVE_INPUT_RECOVERY=true
@@ -123,6 +123,9 @@ function Addon:RefreshRings()
     adapter:CaptureEdits()
     local desired,reason=adapter:Proposal()
     if not desired then self.Diagnostics:SetFeature('rings','pending',reason) return end
+    if self.record.appliedRevision>=15 and GetBindingAction(adapter.api.classChord or self.ClassActions.CHORD)==adapter.rings:GetBindingForSet(adapter.api.classSet) then
+        desired=self.ClassActions.RingProposal(desired,adapter,_G)
+    end
     local current=adapter:read({'state'})
     if not self.Core.Equal(current,desired) then
         local step={id=self.guid..'/rings',scope='rings',path={'state'},before=current,value=desired,revision=self.CONFIG_REVISION}
@@ -212,6 +215,7 @@ function Addon:Refresh()
     self:VerifyReload()
     if self:IsCharacterInstalled() then self:HydrateController() end
     self:RefreshRings()
+    self.ClassActions.Migrate(self,_G,CanWrite)
     self:RefreshModes()
     self:RefreshUI()
     if self:IsCharacterInstalled() and not self.record.ringAccepted and self.record.ringOfferedRevision~=self.CONFIG_REVISION

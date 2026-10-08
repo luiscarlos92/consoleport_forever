@@ -110,4 +110,34 @@ for cycle=1,3 do
     for _,key in ipairs(slots) do assert(GetBindingAction(key,true)=='CLICK '..gameplay[key]:GetName()..':ControllerInput') end
     leaveCombat()
 end
+-- The new class chord uses the same native engine/layer resolver and native
+-- ring Hold body. It stays distinct from every face/D-pad gameplay cell.
+local classHold
+--@NATIVE_CLASS_HOLD
+local classRing=CreateFrame('Button','CPFRegressionClassRing',UIParent,'SecureActionButtonTemplate')
+classRing.layerEnv=setmetatable({},{__index=_G})
+local classOpens,classCommits=0,0
+function classRing:Opened() classOpens=classOpens+1 end
+function classRing:Committed() classCommits=classCommits+1 end
+classRing:SetAttribute('Hold',CPAPI.ConvertSecureBody(classHold))
+classRing:SetAttribute('Enable',[[local button=...; self:SetAttribute('selected-set',button); self:CallMethod('Opened')]])
+classRing:SetAttribute('Commit',[[local button=...; assert(self:GetAttribute('selected-set')==button); self:SetAttribute('selected-set',nil); self:CallMethod('Committed')]])
+classRing:SetScript('OnClick',function(self,click,down)
+    assert(hardware)
+    local prior=trusted trusted=true
+    self:RunAttribute('Hold',click,down,false,true)
+    trusted=prior
+end)
+db.Layers:Claim('regression-class','BASE',Addon.ClassActions.CHORD,'click',classRing:GetName(),'Auras')
+for cycle=1,3 do
+    assert(bridge:Apply({frame=popup,token='class-cycle'..cycle,routes=uiRoutes},true))
+    enterCombat()
+    assert(GetBindingAction(Addon.ClassActions.CHORD,true)=='CLICK '..classRing:GetName()..':Auras')
+    dispatch(Addon.ClassActions.CHORD,true)
+    assert(classOpens==cycle and classCommits==cycle-1,'native class ring did not open on chord down')
+    dispatch(Addon.ClassActions.CHORD,false)
+    assert(classCommits==cycle,'native class ring lost chord release')
+    for _,key in ipairs(slots) do assert(GetBindingAction(key,true)=='CLICK '..gameplay[key]:GetName()..':ControllerInput') end
+    leaveCombat()
+end
 TEST_SUCCESS=true

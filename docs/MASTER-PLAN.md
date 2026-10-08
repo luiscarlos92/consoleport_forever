@@ -1,3 +1,19 @@
+## Candidate.12 Forever UI work — October 8, 2026
+
+User authorizes matching the attached native Forever controller interface and
+closed-WoW deployment, including first-login application of necessary bindings.
+Forever appearance/behavior is the reference; investigate material uncertainty
+or use its verified behavior, rather than retaining an incompatible old mapping.
+Candidate.12/revision 15 adds true round button-state surfaces, all 32 grey glyph
+backdrops, three device-specific trigger-bank prompts and class-specific native
+shoulder+trigger openers (warrior R1+R2/RB+RT; druid/paladin L1+L2/LB+LT).
+Accepted revision-14 characters migrate the class chord/ring together on first
+eligible login with an in-game transaction backup. No file edits to live WTF.
+Keep native input recovery and candidate.11 ground placement; do not re-enable
+custom SecureModes, UI takeover or hidden-control replacement. Nine current
+stable releases freshly checked; no dependency updates. Full tests and scoped
+build/preview/install/readback required. See docs/FOREVER-UI-2026-10-08.md.
+
 ## Installed candidate.11 — October 8, 2026, 00:59:13 Toronto
 
 The user's "deploy now, I'll test tomorrow" authorization is complete. Candidate.11

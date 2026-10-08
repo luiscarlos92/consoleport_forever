@@ -13,6 +13,8 @@ function Setup.Adapters(api,account)
     for key,command in pairs(Addon.ReferenceBindings) do
         if Addon.BindingPolicy.Scope(key)~="retained" or command~="" then mask[key]=true end
     end
+    mask[Addon.ClassActions.CHORD]=true
+    mask[Addon.ClassActions.LEFT_CHORD]=true
     local cp=Addon.ConsolePortAdapter.New({version=api.C_AddOns.GetAddOnMetadata("ConsolePort","Version"),
         inCombat=api.InCombatLockdown,getDB=function() return api.ConsolePort:GetData() end,
         getBar=function()
@@ -23,19 +25,14 @@ function Setup.Adapters(api,account)
     local adapters={bindings=Addon.BindingStateAdapter.New(native,mask),consoleport=cp}
     if account and Addon.guid then
         local rings=cp.db.Rings
-        local classSet
-        if rings and rings.GetSetForBindingSuffix and rings.GetName then
-            local currentClass=native.api.GetBindingAction('CTRL-PADFORWARD')
-            local name,suffix=currentClass:match('^CLICK ([^:]+):(.+)$')
-            if name==rings:GetName() then classSet=rings:GetSetForBindingSuffix(suffix) end
-        end
+        local classSet=Addon.ClassActions.ResolveSet(rings,native.api)
         -- The official Rings TOC has no Version field; qualify the suite owner.
         adapters.rings=Addon.RingsAdapter.New({version=api.C_AddOns.GetAddOnMetadata('ConsolePort_Rings','Version') or api.C_AddOns.GetAddOnMetadata('ConsolePort','Version'),
             getDB=function() return cp.db end,getEnv=function()
                 local lib=api.LibStub('RelaTable',true)
                 return lib and rawget(lib,'ConsolePort_Rings')
             end,inCombat=api.InCombatLockdown,currentGUID=function() return api.UnitGUID('player') end,
-            defaultSet=api.CPAPI.DefaultRingSetID,classSet=classSet},account,Addon.guid)
+            defaultSet=api.CPAPI.DefaultRingSetID,classSet=classSet,classChord=Addon.ClassActions.Chord(api)},account,Addon.guid)
     end
     if account and Addon.guid then
         local record=assert(Addon.Store.GetCharacter(account,Addon.guid))
@@ -93,7 +90,9 @@ function Setup.Fields(db,guid,adapters,api,revision)
     local function add(id,scope,path,value,label)
         fields[#fields+1]={id=id,scope=scope,path=path,value=Core.Encode(value),revision=revision,label=label}
     end
-    add(guid.."/controller","bindings",{"state"},Setup.BindingProposal(db,guid,adapters.bindings,Addon.ReferenceBindings),"Character controller arrangement and preserved keyboard bindings")
+    local controller=Setup.BindingProposal(db,guid,adapters.bindings,Addon.ReferenceBindings)
+    controller=Addon.ClassActions.Bindings(controller,adapters.rings)
+    add(guid.."/controller","bindings",{"state"},controller,"Forever class flyout: class-specific shoulder + trigger (R1 + R2 for warrior; L1 + L2 for druid/paladin); preserve action banks and keyboard bindings")
     if adapters.mountIcons then
         local icons,pending=adapters.mountIcons:Proposal()
         for id,value in pairs(icons or {}) do add('shared/mountIcon/'..id,'mountIcons',{id},value,'Preserve native LiteMount binding icon: '..id) end
@@ -102,7 +101,8 @@ function Setup.Fields(db,guid,adapters,api,revision)
     if adapters.rings then
         local state,reason=adapters.rings:Proposal()
         if state then
-            add(guid..'/rings','rings',{'state'},state,'Keep personal ring contents and manual order in this character GUID; native utility extras remain automatic')
+            state=Addon.ClassActions.RingProposal(state,adapters.rings,api)
+            add(guid..'/rings','rings',{'state'},state,'Forever class flyout: learned forms/stances; keep personal ring contents and manual order; native utility extras remain automatic')
             fields[#fields].requireReview=db.shared.ringProjectionGUID~=guid
         else deferred[#deferred+1]={id='rings',reason=reason} end
     end

@@ -62,7 +62,7 @@ check('T01.snapshot', () => {
 check('T27.lua51', () => {
   for (const f of files('addon').filter(f=>f.endsWith('.lua'))) parser.parse(read(f),{luaVersion:'5.1'});
 });
-const modules = ['Core','Store','Plan','Transactions','BindingPolicy','ModePolicy','Rings/Discovery','Rings/Selectors','SecureModes','TemporaryAccess','Targeting/Registry','Targeting/Preferences','Targeting/Ground','UI/Ownership','UI/InputBridge','UI/Windows','UI/Scroll','UI/Map','UI/PartyLayout','Cinematic','Adapters/BetterBags','UI/ItemHints','UI/Contexts','UI/FocusVisuals','UI/Proof','Adapters/NativeBindings',
+const modules = ['Core','Store','Plan','Transactions','BindingPolicy','ModePolicy','Rings/Discovery','Rings/Selectors','ClassActions','SecureModes','TemporaryAccess','Targeting/Registry','Targeting/Preferences','Targeting/Ground','UI/Ownership','UI/InputBridge','UI/Windows','UI/Scroll','UI/Map','UI/PartyLayout','Cinematic','Adapters/BetterBags','UI/ItemHints','UI/Contexts','UI/FocusVisuals','UI/Proof','Adapters/NativeBindings',
   'Adapters/BindingState','Adapters/BindingBanks','Diagnostics','Capability','Adapters/ConsolePort','Adapters/EditMode','Adapters/FlatConfig','Adapters/Integrations','Adapters/LiteMount','Adapters/DynamicCam','Adapters/Rings','Baseline','Coordinator','Prompt'];
 const source = 'Addon={};\n' + modules.map(m=>
   ';(function(...)\n'+read('addon/ConsolePort_Forever/'+m+'.lua')+'\nend)("ConsolePort_Forever",Addon);\n').join('');
@@ -171,6 +171,11 @@ TEST_SUCCESS=true
 `,'ring-new-VM-A-return');
 });
 check('T07.native-binding-readiness', () => execute(source+read('tests/harness/native_bindings.lua'),'native-bindings'));
+check('T43.Forever-class-chord-native-ring-proposal-and-rollback', () => {
+  const manifest=JSON.parse(read('evidence/forever-ui/native-manifest.json'));
+  for(const row of manifest) if(sha('evidence/forever-ui/native/'+row.path)!==row.sha256) throw Error('Forever source drift: '+row.path);
+  execute(source+ringFixture().split('--@LIFECYCLE')[0]+read('tests/harness/class_actions.lua'),'Forever-class-chord');
+});
 check('T09-T10.coordinator', () => execute(source+read('tests/harness/coordinator.lua'),'coordinator'));
 check('T07-T09.both-binding-bank-restore', () => execute(source+read('tests/harness/binding_banks.lua'),'binding-bank-restore'));
 check('T08-T10.review-details', () => execute(source+read('tests/harness/prompt.lua'),'review-details'));
@@ -251,7 +256,11 @@ check('T41.native-combat-engine-dispatch-after-UI-ownership', () => {
   const native=read('evidence/native/Blizzard_FrameXML/SecureTemplates.lua');
   const action=native.slice(native.indexOf('SECURE_ACTIONS.action ='),native.indexOf('SECURE_ACTIONS.actionrelease ='));
   execute(source+uiContextFixture()+'\n'+read('tests/harness/combat_dispatch.lua')
-    .replace('--@NATIVE_ACTION_DISPATCH',()=>action),'combat-engine-dispatch');
+    .replace('--@NATIVE_ACTION_DISPATCH',()=>action)
+    .replace('--@NATIVE_CLASS_HOLD',()=>{
+      const body=read('evidence/consoleport-contracts/ConsolePort_Rings/Controller/Secure.lua').match(/Hold = \[\[([\s\S]*?)\]\]/)[1];
+      return 'classHold=[=['+body+']=]';
+    }),'combat-engine-dispatch');
 });
 function windowFixture() {
   const base='evidence/consoleport-contracts/';
@@ -324,7 +333,7 @@ check('T24.current-native-presentation-lifecycle', () => {
     .replace('--@NATIVE_MANAGER_BINDINGS',()=>nativeFunction('evidence/consoleport-contracts/ConsolePort_Bar/Controller/Manager/Manager.lua','Manager:GetBindings'))
     .replace('--@NATIVE_AVAILABILITY',()=>['UpdateUsable','SpellVFX_CastingAnim_OnHide'].map(name=>nativeFunction('evidence/consoleport-contracts/ConsolePort/Libs/External/LibActionButton-1.0/LibActionButton-1.0.lua',name)).join('\n'))
     .replace('--@NATIVE_UNBOUND_GLYPH',()=>['ResetGlyphTexture','ProxyButtonTextureProvider'].map(name=>nativeFunction('evidence/consoleport-contracts/ConsolePort_Bar/Widget/Button/Button.lua',name)).join('\n'))
-    .replace('--@PRODUCT_SKIN',()=>';(function(...)\n'+read('addon/ConsolePort_Forever/Skin.lua')+'\nend)("ConsolePort_Forever",Addon);');
+    .replace('--@PRODUCT_SKIN',()=>['HUDPresentation','Skin'].map(name=>';(function(...)\n'+read('addon/ConsolePort_Forever/'+name+'.lua')+'\nend)("ConsolePort_Forever",Addon);').join('\n'));
   execute(source+fixture,'current-native-presentation');
 });
 check('T13.native-LiteMount-binding-icons', () => {
@@ -468,6 +477,33 @@ assert(Addon:IsCharacterInstalled() and Addon.record.controllerBindings['SHIFT-P
 assert(Addon.db.transactions[Addon.record.lastInstallTransaction].reloadVerification.failures[1]==nil)
 TEST_SUCCESS=true
 `,'bootstrap-persisted-reload');
+  for(const playerClass of ['WARRIOR','DRUID','PALADIN']) execute('SESSION_STATE=('+state+').installed\n'+fixture.split('--@LIFECYCLE')[0]+`
+function UnitClass() return '${playerClass}','${playerClass}' end
+local chosenChord=Addon.ClassActions.Chord(_G)
+local record=ConsolePortForeverDB.characters.A
+record.appliedRevision=14 record.pendingReload=nil record.declinedRevision=nil
+record.controllerBindings['CTRL-PADRSHOULDER']=''
+record.controllerBindings['SHIFT-PADLSHOULDER']=''
+banks[2]['CTRL-PADRSHOULDER']=nil
+banks[2]['SHIFT-PADLSHOULDER']=nil
+banks[2]['CTRL-PADFORWARD']='CLICK NativeUtility:Auras'
+local before=Addon.Core.Copy(banks)
+fire('PLAYER_LOGIN') flush()
+assert(Addon.record.appliedRevision==15 and banks[2][chosenChord]=='CLICK NativeUtility:Auras','first login did not apply actual class binding')
+assert((banks[2]['CTRL-PADFORWARD'] or '')=='' and banks[2].SPACE=='JUMP','first login retained old menu or lost keyboard binding')
+assert(shown==nil,'authorized class migration asked for another review')
+local journal=Addon.db.transactions[Addon.record.lastInstallTransaction]
+assert(journal.context.foreverClassMigration and journal.status=='committed' and journal.bindingDetails.saved)
+assert(journal.steps[1].before.keys['CTRL-PADFORWARD']=='CLICK NativeUtility:Auras','class migration omitted independent backup')
+local count,writesBefore=Addon.db.nextTransactionID,writes
+fire('PLAYER_ENTERING_WORLD') flush()
+assert(Addon.db.nextTransactionID==count and writes==writesBefore,'repeat login reapplied class migration')
+Addon:Restore('') choose(1) flush()
+while shown.name=='CPF_FIELD_REVIEW' do choose(1) flush() end
+choose(1) flush()
+assert(Addon.Core.Equal(banks,before),'native restore did not recover the pre-migration binding bank')
+TEST_SUCCESS=true
+`,'bootstrap-first-login-authorized-class-binding-migration-'+playerClass);
   execute('SESSION_STATE=('+state+').restored\n'+fixture.split('--@LIFECYCLE')[0]+`
 local preserved=Addon.Core.Copy(banks)
 fire('PLAYER_LOGIN') flush()

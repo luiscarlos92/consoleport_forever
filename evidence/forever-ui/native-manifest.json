@@ -1,0 +1,86 @@
+[
+  {
+    "path": "Blizzard_GamepadActionBars/ActionBarStyles.lua",
+    "commit": "15666a6e67938a1ab5caf041406464251db111ca",
+    "url": "https://github.com/Gethe/wow-ui-source/blob/15666a6e67938a1ab5caf041406464251db111ca/Interface/AddOns/Blizzard_GamepadActionBars/ActionBarStyles.lua",
+    "sha256": "b214c8c36b5551d7c36d82caebd2cd69265303e4a42d81b0413d0ff7d1e10662"
+  },
+  {
+    "path": "Blizzard_GamepadActionBars/ActionBarButton.lua",
+    "commit": "15666a6e67938a1ab5caf041406464251db111ca",
+    "url": "https://github.com/Gethe/wow-ui-source/blob/15666a6e67938a1ab5caf041406464251db111ca/Interface/AddOns/Blizzard_GamepadActionBars/ActionBarButton.lua",
+    "sha256": "59c1866667efe6c570ccf7eac073fb2fbe26abc8dc6c1a97a5493615a58bac85"
+  },
+  {
+    "path": "Blizzard_GamepadActionBars/ActionBarButton.xml",
+    "commit": "15666a6e67938a1ab5caf041406464251db111ca",
+    "url": "https://github.com/Gethe/wow-ui-source/blob/15666a6e67938a1ab5caf041406464251db111ca/Interface/AddOns/Blizzard_GamepadActionBars/ActionBarButton.xml",
+    "sha256": "888da6210ca826d613f29e4a9dbac9ffbd8a2746db53af2bc3333d5b861da0ed"
+  },
+  {
+    "path": "Blizzard_GamepadActionBars/ActionBar.lua",
+    "commit": "15666a6e67938a1ab5caf041406464251db111ca",
+    "url": "https://github.com/Gethe/wow-ui-source/blob/15666a6e67938a1ab5caf041406464251db111ca/Interface/AddOns/Blizzard_GamepadActionBars/ActionBar.lua",
+    "sha256": "0ed83d040f398f88e4b48228a368495dff0b3fe128e572a8f907850e0b553a05"
+  },
+  {
+    "path": "Blizzard_GamepadActionBars/MainActionBarFrame.lua",
+    "commit": "15666a6e67938a1ab5caf041406464251db111ca",
+    "url": "https://github.com/Gethe/wow-ui-source/blob/15666a6e67938a1ab5caf041406464251db111ca/Interface/AddOns/Blizzard_GamepadActionBars/MainActionBarFrame.lua",
+    "sha256": "39375bb6d7a1c1d1f340bf6301d388a7aa1187afed9bccb77a440045920b1769"
+  },
+  {
+    "path": "Blizzard_GamepadActionBars/MainActionBarFrame.xml",
+    "commit": "15666a6e67938a1ab5caf041406464251db111ca",
+    "url": "https://github.com/Gethe/wow-ui-source/blob/15666a6e67938a1ab5caf041406464251db111ca/Interface/AddOns/Blizzard_GamepadActionBars/MainActionBarFrame.xml",
+    "sha256": "7bff8b1e6512d0bc53fe69b4a30601d6088abe3aec098819223c435e1e7df86a"
+  },
+  {
+    "path": "Blizzard_GamepadActionBars/ActionBindingUtil.lua",
+    "commit": "15666a6e67938a1ab5caf041406464251db111ca",
+    "url": "https://github.com/Gethe/wow-ui-source/blob/15666a6e67938a1ab5caf041406464251db111ca/Interface/AddOns/Blizzard_GamepadActionBars/ActionBindingUtil.lua",
+    "sha256": "1e30a2ddbbb0fa1f11e92705011313b09e847b937ba45ddb260deca098b7f8f3"
+  },
+  {
+    "path": "Blizzard_GamepadActionBars/Bindings.xml",
+    "commit": "15666a6e67938a1ab5caf041406464251db111ca",
+    "url": "https://github.com/Gethe/wow-ui-source/blob/15666a6e67938a1ab5caf041406464251db111ca/Interface/AddOns/Blizzard_GamepadActionBars/Bindings.xml",
+    "sha256": "ba115fd6f11488a8905b54e250708afb6d64e7778fa3cf200389bed0d2c6a748"
+  },
+  {
+    "path": "Blizzard_GamepadSharedUtility/InputPrompts/InputPrompts.lua",
+    "commit": "15666a6e67938a1ab5caf041406464251db111ca",
+    "url": "https://github.com/Gethe/wow-ui-source/blob/15666a6e67938a1ab5caf041406464251db111ca/Interface/AddOns/Blizzard_GamepadSharedUtility/InputPrompts/InputPrompts.lua",
+    "sha256": "553e343c35759a2625a4cf37c3aa9e8cc6776440dfa9d795fb203dddff310e79"
+  },
+  {
+    "path": "Blizzard_SharedXML/Shared/GamepadConstants.lua",
+    "commit": "15666a6e67938a1ab5caf041406464251db111ca",
+    "url": "https://github.com/Gethe/wow-ui-source/blob/15666a6e67938a1ab5caf041406464251db111ca/Interface/AddOns/Blizzard_SharedXML/Shared/GamepadConstants.lua",
+    "sha256": "eb864c71d6de7c8450c7a03dde95d2f8767f7a66d0900fb268032968184cce25"
+  },
+  {
+    "path": "Blizzard_GamepadActionBars/ClassActionFlyout.lua",
+    "commit": "15666a6e67938a1ab5caf041406464251db111ca",
+    "url": "https://github.com/Gethe/wow-ui-source/blob/15666a6e67938a1ab5caf041406464251db111ca/Interface/AddOns/Blizzard_GamepadActionBars/ClassActionFlyout.lua",
+    "sha256": "124320e3a2d04957cf48717924f474333aabcf91c9e3259f57ad0ff2aa7060ad"
+  },
+  {
+    "path": "Blizzard_GamepadActionBars/ClassActionFlyout.xml",
+    "commit": "15666a6e67938a1ab5caf041406464251db111ca",
+    "url": "https://github.com/Gethe/wow-ui-source/blob/15666a6e67938a1ab5caf041406464251db111ca/Interface/AddOns/Blizzard_GamepadActionBars/ClassActionFlyout.xml",
+    "sha256": "ecb415b77953637fe45e8c13fe21ec2f1101b2bd233209b5a1d3a526a483e472"
+  },
+  {
+    "path": "Blizzard_GamepadActionBars/Camelot/ClassSpellFlyout.lua",
+    "commit": "15666a6e67938a1ab5caf041406464251db111ca",
+    "url": "https://github.com/Gethe/wow-ui-source/blob/15666a6e67938a1ab5caf041406464251db111ca/Interface/AddOns/Blizzard_GamepadActionBars/Camelot/ClassSpellFlyout.lua",
+    "sha256": "a07198daea12147fb9d9cb6439a4c1c2077420535d7dcce3ffc8f6c133fb4c42"
+  },
+  {
+    "path": "Blizzard_GamepadActionBars/PageUnit.lua",
+    "commit": "15666a6e67938a1ab5caf041406464251db111ca",
+    "url": "https://github.com/Gethe/wow-ui-source/blob/15666a6e67938a1ab5caf041406464251db111ca/Interface/AddOns/Blizzard_GamepadActionBars/PageUnit.lua",
+    "sha256": "31c684454e1b27b469e4398ea4275f48be53a971faa927e9196d09e32f64b600"
+  }
+]

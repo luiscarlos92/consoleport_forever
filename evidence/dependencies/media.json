@@ -36,16 +36,339 @@
       "packageSHA256": "6175a327b3b7505b6f1d79ef0adc96c7a65db3cc8220dd59e34de6658dbb4f49",
       "source": "https://github.com/seblindfors/ConsolePort/releases/tag/3.3.10",
       "use": "Referenced from clean official ConsolePort; not duplicated into companion."
+    },
+    {
+      "path": "ConsolePort/Assets/Icons/64/xbox_c_share.blp",
+      "sha256": "99a5c5e626aef08f8c5313ca428b093a4e0586fceea66cf05312d97ed4b2bea8",
+      "packageSHA256": "6175a327b3b7505b6f1d79ef0adc96c7a65db3cc8220dd59e34de6658dbb4f49",
+      "source": "https://github.com/seblindfors/ConsolePort/releases/tag/3.3.10",
+      "use": "Referenced from clean official ConsolePort; not duplicated into companion."
+    },
+    {
+      "path": "ConsolePort/Assets/Icons/64/all_g_right.blp",
+      "sha256": "0594895edaabeea40c25134457a4238fb59d9db4c71703c37cbea7fc76dbeaa2",
+      "packageSHA256": "6175a327b3b7505b6f1d79ef0adc96c7a65db3cc8220dd59e34de6658dbb4f49",
+      "source": "https://github.com/seblindfors/ConsolePort/releases/tag/3.3.10",
+      "use": "Referenced from clean official ConsolePort; not duplicated into companion."
+    },
+    {
+      "path": "ConsolePort/Assets/Icons/64/xbox_c_back.blp",
+      "sha256": "8c58301eabb4ed935c9e665c65f739c780b94f0b2d1c31a2ee29e98cbbdda5e9",
+      "packageSHA256": "6175a327b3b7505b6f1d79ef0adc96c7a65db3cc8220dd59e34de6658dbb4f49",
+      "source": "https://github.com/seblindfors/ConsolePort/releases/tag/3.3.10",
+      "use": "Referenced from clean official ConsolePort; not duplicated into companion."
+    },
+    {
+      "path": "ConsolePort/Assets/Icons/64/ps_s_r3.blp",
+      "sha256": "e216bd437573c93e907f754fbb99500b6429f0184bcadb85cc1b4b0642df53c7",
+      "packageSHA256": "6175a327b3b7505b6f1d79ef0adc96c7a65db3cc8220dd59e34de6658dbb4f49",
+      "source": "https://github.com/seblindfors/ConsolePort/releases/tag/3.3.10",
+      "use": "Referenced from clean official ConsolePort; not duplicated into companion."
+    },
+    {
+      "path": "ConsolePort/Assets/Icons/64/dpad_right.blp",
+      "sha256": "536fccfc3e5608f9bc00f80992629f6c7f98725a797d21201ab97301ba445600",
+      "packageSHA256": "6175a327b3b7505b6f1d79ef0adc96c7a65db3cc8220dd59e34de6658dbb4f49",
+      "source": "https://github.com/seblindfors/ConsolePort/releases/tag/3.3.10",
+      "use": "Referenced from clean official ConsolePort; not duplicated into companion."
+    },
+    {
+      "path": "ConsolePort/Assets/Icons/64/ps_s_l2.blp",
+      "sha256": "55532e270ca364669d0479c4fc665506ce7f75c1f2e20fbcdb2b6478c7c46588",
+      "packageSHA256": "6175a327b3b7505b6f1d79ef0adc96c7a65db3cc8220dd59e34de6658dbb4f49",
+      "source": "https://github.com/seblindfors/ConsolePort/releases/tag/3.3.10",
+      "use": "Referenced from clean official ConsolePort; not duplicated into companion."
+    },
+    {
+      "path": "ConsolePort/Assets/Icons/64/xbox_s_lb.blp",
+      "sha256": "59b6ccfdabb5faabc2e92755019f792f8be66100814f3d186434cdfc333ad6b3",
+      "packageSHA256": "6175a327b3b7505b6f1d79ef0adc96c7a65db3cc8220dd59e34de6658dbb4f49",
+      "source": "https://github.com/seblindfors/ConsolePort/releases/tag/3.3.10",
+      "use": "Referenced from clean official ConsolePort; not duplicated into companion."
+    },
+    {
+      "path": "ConsolePort/Assets/Icons/64/xbox_c_forward.blp",
+      "sha256": "d9bcf45b211d788637fce746b613b3668e6743999f27dd7453bd5b0f9e6a5b2b",
+      "packageSHA256": "6175a327b3b7505b6f1d79ef0adc96c7a65db3cc8220dd59e34de6658dbb4f49",
+      "source": "https://github.com/seblindfors/ConsolePort/releases/tag/3.3.10",
+      "use": "Referenced from clean official ConsolePort; not duplicated into companion."
+    },
+    {
+      "path": "ConsolePort/Assets/Icons/64/xbox_s_lsb.blp",
+      "sha256": "c47a20584e7d7fac13fe9ff9230f8d96c7931a122be3bdf0eabad3bf87b70cf9",
+      "packageSHA256": "6175a327b3b7505b6f1d79ef0adc96c7a65db3cc8220dd59e34de6658dbb4f49",
+      "source": "https://github.com/seblindfors/ConsolePort/releases/tag/3.3.10",
+      "use": "Referenced from clean official ConsolePort; not duplicated into companion."
+    },
+    {
+      "path": "ConsolePort/Assets/Icons/64/switch_c_back.blp",
+      "sha256": "19acfc38508246617a3028f86b659707ce2b414ca6b11f2b204ce75943cf63b1",
+      "packageSHA256": "6175a327b3b7505b6f1d79ef0adc96c7a65db3cc8220dd59e34de6658dbb4f49",
+      "source": "https://github.com/seblindfors/ConsolePort/releases/tag/3.3.10",
+      "use": "Referenced from clean official ConsolePort; not duplicated into companion."
+    },
+    {
+      "path": "ConsolePort/Assets/Icons/64/switch_c_share.blp",
+      "sha256": "f129245636cbf2f8a73de00ee7ad87eaf660586139938779b3072399dbcc3da2",
+      "packageSHA256": "6175a327b3b7505b6f1d79ef0adc96c7a65db3cc8220dd59e34de6658dbb4f49",
+      "source": "https://github.com/seblindfors/ConsolePort/releases/tag/3.3.10",
+      "use": "Referenced from clean official ConsolePort; not duplicated into companion."
+    },
+    {
+      "path": "ConsolePort/Assets/Icons/64/ps_c_options.blp",
+      "sha256": "8484322b78c1fb0655a8f8e7381d62da1826b79f9647c05f6f1edeacdf32ab56",
+      "packageSHA256": "6175a327b3b7505b6f1d79ef0adc96c7a65db3cc8220dd59e34de6658dbb4f49",
+      "source": "https://github.com/seblindfors/ConsolePort/releases/tag/3.3.10",
+      "use": "Referenced from clean official ConsolePort; not duplicated into companion."
+    },
+    {
+      "path": "ConsolePort/Assets/Icons/64/xbox_s_lt.blp",
+      "sha256": "8f3ee706975728d7972e9b3087f06ebc024a15cb130e97c82f617a77cffb9355",
+      "packageSHA256": "6175a327b3b7505b6f1d79ef0adc96c7a65db3cc8220dd59e34de6658dbb4f49",
+      "source": "https://github.com/seblindfors/ConsolePort/releases/tag/3.3.10",
+      "use": "Referenced from clean official ConsolePort; not duplicated into companion."
+    },
+    {
+      "path": "ConsolePort/Assets/Icons/64/all_l_down.blp",
+      "sha256": "4e0e3dbd0a0d57e6cddac41efd6c46d6c96eb738e2f11ac16430698e9a9820ee",
+      "packageSHA256": "6175a327b3b7505b6f1d79ef0adc96c7a65db3cc8220dd59e34de6658dbb4f49",
+      "source": "https://github.com/seblindfors/ConsolePort/releases/tag/3.3.10",
+      "use": "Referenced from clean official ConsolePort; not duplicated into companion."
+    },
+    {
+      "path": "ConsolePort/Assets/Icons/64/xbox_r_b.blp",
+      "sha256": "c80e33235325d240165163c2dde5fbb36f5c1f163d44340e3459cfef3cbe852e",
+      "packageSHA256": "6175a327b3b7505b6f1d79ef0adc96c7a65db3cc8220dd59e34de6658dbb4f49",
+      "source": "https://github.com/seblindfors/ConsolePort/releases/tag/3.3.10",
+      "use": "Referenced from clean official ConsolePort; not duplicated into companion."
+    },
+    {
+      "path": "ConsolePort/Assets/Icons/64/xbox_c_options.blp",
+      "sha256": "b216cee886581fea7eccd0fb586378dab41f9ec94ef3f27b962718d965442262",
+      "packageSHA256": "6175a327b3b7505b6f1d79ef0adc96c7a65db3cc8220dd59e34de6658dbb4f49",
+      "source": "https://github.com/seblindfors/ConsolePort/releases/tag/3.3.10",
+      "use": "Referenced from clean official ConsolePort; not duplicated into companion."
+    },
+    {
+      "path": "ConsolePort/Assets/Icons/64/ps_c_back.blp",
+      "sha256": "9716aa6b2d8a211f0447ec2cd5dcf34e0f77fc93703bbc3be98f463d31463628",
+      "packageSHA256": "6175a327b3b7505b6f1d79ef0adc96c7a65db3cc8220dd59e34de6658dbb4f49",
+      "source": "https://github.com/seblindfors/ConsolePort/releases/tag/3.3.10",
+      "use": "Referenced from clean official ConsolePort; not duplicated into companion."
+    },
+    {
+      "path": "ConsolePort/Assets/Icons/64/xbox_r_y.blp",
+      "sha256": "866a739cc1fabdcaef2500d708e54b020f0bdded41e007ff433fcfd7497664f6",
+      "packageSHA256": "6175a327b3b7505b6f1d79ef0adc96c7a65db3cc8220dd59e34de6658dbb4f49",
+      "source": "https://github.com/seblindfors/ConsolePort/releases/tag/3.3.10",
+      "use": "Referenced from clean official ConsolePort; not duplicated into companion."
+    },
+    {
+      "path": "ConsolePort/Assets/Icons/64/xbox_c_system.blp",
+      "sha256": "c034e6ad42f08f6dde8f5f0ec39ca474b4af919cc0e1aaffa4cf90040251a9af",
+      "packageSHA256": "6175a327b3b7505b6f1d79ef0adc96c7a65db3cc8220dd59e34de6658dbb4f49",
+      "source": "https://github.com/seblindfors/ConsolePort/releases/tag/3.3.10",
+      "use": "Referenced from clean official ConsolePort; not duplicated into companion."
+    },
+    {
+      "path": "ConsolePort/Assets/Icons/64/dpad_up.blp",
+      "sha256": "4d143fc4a207babe4b8e5a54df30c440df0144847076bcee62e794f95f21c5a8",
+      "packageSHA256": "6175a327b3b7505b6f1d79ef0adc96c7a65db3cc8220dd59e34de6658dbb4f49",
+      "source": "https://github.com/seblindfors/ConsolePort/releases/tag/3.3.10",
+      "use": "Referenced from clean official ConsolePort; not duplicated into companion."
+    },
+    {
+      "path": "ConsolePort/Assets/Icons/64/xbox_s_rsb.blp",
+      "sha256": "b1d3d246cbff676981767dc624f6d7f7b72014b608d898c9a549e72d5605f920",
+      "packageSHA256": "6175a327b3b7505b6f1d79ef0adc96c7a65db3cc8220dd59e34de6658dbb4f49",
+      "source": "https://github.com/seblindfors/ConsolePort/releases/tag/3.3.10",
+      "use": "Referenced from clean official ConsolePort; not duplicated into companion."
+    },
+    {
+      "path": "ConsolePort/Assets/Icons/64/all_l_stick.blp",
+      "sha256": "bc5b7e306af7f007c8086318b412af072730f2840a4d186a059669c67b808c08",
+      "packageSHA256": "6175a327b3b7505b6f1d79ef0adc96c7a65db3cc8220dd59e34de6658dbb4f49",
+      "source": "https://github.com/seblindfors/ConsolePort/releases/tag/3.3.10",
+      "use": "Referenced from clean official ConsolePort; not duplicated into companion."
+    },
+    {
+      "path": "ConsolePort/Assets/Icons/64/ps_s_l3.blp",
+      "sha256": "8eb67812b620a36799b93526e340049bbe44c80eec55ba664ed13b1873244b51",
+      "packageSHA256": "6175a327b3b7505b6f1d79ef0adc96c7a65db3cc8220dd59e34de6658dbb4f49",
+      "source": "https://github.com/seblindfors/ConsolePort/releases/tag/3.3.10",
+      "use": "Referenced from clean official ConsolePort; not duplicated into companion."
+    },
+    {
+      "path": "ConsolePort/Assets/Icons/64/xbox_r_x.blp",
+      "sha256": "825d294a79bc23ed31ed27c8c3f8912f59b34e4c8002e4782131f1c58675840a",
+      "packageSHA256": "6175a327b3b7505b6f1d79ef0adc96c7a65db3cc8220dd59e34de6658dbb4f49",
+      "source": "https://github.com/seblindfors/ConsolePort/releases/tag/3.3.10",
+      "use": "Referenced from clean official ConsolePort; not duplicated into companion."
+    },
+    {
+      "path": "ConsolePort/Assets/Icons/64/ps_r_square.blp",
+      "sha256": "26cd7e37792d40acda2c1e5ef8c5cb9be706e0c0cdb0b98ffee9fc73fc489e15",
+      "packageSHA256": "6175a327b3b7505b6f1d79ef0adc96c7a65db3cc8220dd59e34de6658dbb4f49",
+      "source": "https://github.com/seblindfors/ConsolePort/releases/tag/3.3.10",
+      "use": "Referenced from clean official ConsolePort; not duplicated into companion."
+    },
+    {
+      "path": "ConsolePort/Assets/Icons/64/ps_r_circle.blp",
+      "sha256": "a1fcf34f487f6714f904538059fe3859a14e3a29594cfd8c77174ca86b6874bc",
+      "packageSHA256": "6175a327b3b7505b6f1d79ef0adc96c7a65db3cc8220dd59e34de6658dbb4f49",
+      "source": "https://github.com/seblindfors/ConsolePort/releases/tag/3.3.10",
+      "use": "Referenced from clean official ConsolePort; not duplicated into companion."
+    },
+    {
+      "path": "ConsolePort/Assets/Icons/64/all_l_up.blp",
+      "sha256": "100fab4a09e8bb9f96dd3f18230979168b96047494b4dff3467054c43a037feb",
+      "packageSHA256": "6175a327b3b7505b6f1d79ef0adc96c7a65db3cc8220dd59e34de6658dbb4f49",
+      "source": "https://github.com/seblindfors/ConsolePort/releases/tag/3.3.10",
+      "use": "Referenced from clean official ConsolePort; not duplicated into companion."
+    },
+    {
+      "path": "ConsolePort/Assets/Icons/64/all_l_left.blp",
+      "sha256": "6f35256d6f137bee7a1e75c2ddf2facb6e82b3179aa618732f281bebb9c1a230",
+      "packageSHA256": "6175a327b3b7505b6f1d79ef0adc96c7a65db3cc8220dd59e34de6658dbb4f49",
+      "source": "https://github.com/seblindfors/ConsolePort/releases/tag/3.3.10",
+      "use": "Referenced from clean official ConsolePort; not duplicated into companion."
+    },
+    {
+      "path": "ConsolePort/Assets/Icons/64/xbox_r_a.blp",
+      "sha256": "031669a27e0c4ffc87e4c591077e3373c16d6788f3ea01ef5ba35f205d4e5b2f",
+      "packageSHA256": "6175a327b3b7505b6f1d79ef0adc96c7a65db3cc8220dd59e34de6658dbb4f49",
+      "source": "https://github.com/seblindfors/ConsolePort/releases/tag/3.3.10",
+      "use": "Referenced from clean official ConsolePort; not duplicated into companion."
+    },
+    {
+      "path": "ConsolePort/Assets/Icons/64/ps_c_system.blp",
+      "sha256": "d15e022084714d42a3a9156c668aa3f838e819858646640e86c3f8d116251412",
+      "packageSHA256": "6175a327b3b7505b6f1d79ef0adc96c7a65db3cc8220dd59e34de6658dbb4f49",
+      "source": "https://github.com/seblindfors/ConsolePort/releases/tag/3.3.10",
+      "use": "Referenced from clean official ConsolePort; not duplicated into companion."
+    },
+    {
+      "path": "ConsolePort/Assets/Icons/64/all_l_right.blp",
+      "sha256": "e0b905aacb8365a52f39a19e2c97d535a055c8805a30006a05c9fcbec364924f",
+      "packageSHA256": "6175a327b3b7505b6f1d79ef0adc96c7a65db3cc8220dd59e34de6658dbb4f49",
+      "source": "https://github.com/seblindfors/ConsolePort/releases/tag/3.3.10",
+      "use": "Referenced from clean official ConsolePort; not duplicated into companion."
+    },
+    {
+      "path": "ConsolePort/Assets/Icons/64/dpad_down.blp",
+      "sha256": "4a140cc3eb1c367016ebe3ceebc8fdddecb416976e11d58c3a5e29c75b0f7de7",
+      "packageSHA256": "6175a327b3b7505b6f1d79ef0adc96c7a65db3cc8220dd59e34de6658dbb4f49",
+      "source": "https://github.com/seblindfors/ConsolePort/releases/tag/3.3.10",
+      "use": "Referenced from clean official ConsolePort; not duplicated into companion."
+    },
+    {
+      "path": "ConsolePort/Assets/Icons/64/ps_r_triangle.blp",
+      "sha256": "0a6edd4afdd18d153a7706fd7304e83be849c87ce8ca46da9f09342ede12136b",
+      "packageSHA256": "6175a327b3b7505b6f1d79ef0adc96c7a65db3cc8220dd59e34de6658dbb4f49",
+      "source": "https://github.com/seblindfors/ConsolePort/releases/tag/3.3.10",
+      "use": "Referenced from clean official ConsolePort; not duplicated into companion."
+    },
+    {
+      "path": "ConsolePort/Assets/Icons/64/ps_s_r2.blp",
+      "sha256": "082ea753a1679f1b3b66a6a2b9cb689675ac6cebb6edef1d5d72ae2d8dd01fcf",
+      "packageSHA256": "6175a327b3b7505b6f1d79ef0adc96c7a65db3cc8220dd59e34de6658dbb4f49",
+      "source": "https://github.com/seblindfors/ConsolePort/releases/tag/3.3.10",
+      "use": "Referenced from clean official ConsolePort; not duplicated into companion."
+    },
+    {
+      "path": "ConsolePort/Assets/Icons/64/all_missing.blp",
+      "sha256": "cb91de8ae48bebc18436d08cd4c5fc0975b85a1c6d8d091518b7f4fcd9cb1b31",
+      "packageSHA256": "6175a327b3b7505b6f1d79ef0adc96c7a65db3cc8220dd59e34de6658dbb4f49",
+      "source": "https://github.com/seblindfors/ConsolePort/releases/tag/3.3.10",
+      "use": "Referenced from clean official ConsolePort; not duplicated into companion."
+    },
+    {
+      "path": "ConsolePort/Assets/Icons/64/switch_c_system.blp",
+      "sha256": "80b7daebecab082c025abdcc226efb313fecd93fe06d8bc78abe304eca4a1cb2",
+      "packageSHA256": "6175a327b3b7505b6f1d79ef0adc96c7a65db3cc8220dd59e34de6658dbb4f49",
+      "source": "https://github.com/seblindfors/ConsolePort/releases/tag/3.3.10",
+      "use": "Referenced from clean official ConsolePort; not duplicated into companion."
+    },
+    {
+      "path": "ConsolePort/Assets/Icons/64/xbox_s_rt.blp",
+      "sha256": "9b3800425f38e892b399c97ec73cf047cda65292aec51d21af9ee78b40bf36b5",
+      "packageSHA256": "6175a327b3b7505b6f1d79ef0adc96c7a65db3cc8220dd59e34de6658dbb4f49",
+      "source": "https://github.com/seblindfors/ConsolePort/releases/tag/3.3.10",
+      "use": "Referenced from clean official ConsolePort; not duplicated into companion."
+    },
+    {
+      "path": "ConsolePort/Assets/Icons/64/xbox_s_rb.blp",
+      "sha256": "bb7d454174c2713801f3275584c8c9d8284278595bc2e6ba89e0643bfa9329c3",
+      "packageSHA256": "6175a327b3b7505b6f1d79ef0adc96c7a65db3cc8220dd59e34de6658dbb4f49",
+      "source": "https://github.com/seblindfors/ConsolePort/releases/tag/3.3.10",
+      "use": "Referenced from clean official ConsolePort; not duplicated into companion."
+    },
+    {
+      "path": "ConsolePort/Assets/Icons/64/all_r_stick.blp",
+      "sha256": "b8c8a4f40a784f1523e2c478c8832d4ed602f1d98920d6f65b34c7b59b481c71",
+      "packageSHA256": "6175a327b3b7505b6f1d79ef0adc96c7a65db3cc8220dd59e34de6658dbb4f49",
+      "source": "https://github.com/seblindfors/ConsolePort/releases/tag/3.3.10",
+      "use": "Referenced from clean official ConsolePort; not duplicated into companion."
+    },
+    {
+      "path": "ConsolePort/Assets/Icons/64/all_g_left.blp",
+      "sha256": "1316a604ebeda48244856bd6486b514af0a95f292e7b373b2f0b00eb0886fce4",
+      "packageSHA256": "6175a327b3b7505b6f1d79ef0adc96c7a65db3cc8220dd59e34de6658dbb4f49",
+      "source": "https://github.com/seblindfors/ConsolePort/releases/tag/3.3.10",
+      "use": "Referenced from clean official ConsolePort; not duplicated into companion."
+    },
+    {
+      "path": "ConsolePort/Assets/Icons/64/dpad_left.blp",
+      "sha256": "5754092c0a88fbe2074205d6cd5644b2dc2c7c5037809c17f88986689d7afd4f",
+      "packageSHA256": "6175a327b3b7505b6f1d79ef0adc96c7a65db3cc8220dd59e34de6658dbb4f49",
+      "source": "https://github.com/seblindfors/ConsolePort/releases/tag/3.3.10",
+      "use": "Referenced from clean official ConsolePort; not duplicated into companion."
+    },
+    {
+      "path": "ConsolePort/Assets/Icons/64/ps_c_back2.blp",
+      "sha256": "764c9c004acefa74f32309a31a202d855b6eab805efe4dfaff21f00a2eba2010",
+      "packageSHA256": "6175a327b3b7505b6f1d79ef0adc96c7a65db3cc8220dd59e34de6658dbb4f49",
+      "source": "https://github.com/seblindfors/ConsolePort/releases/tag/3.3.10",
+      "use": "Referenced from clean official ConsolePort; not duplicated into companion."
+    },
+    {
+      "path": "ConsolePort/Assets/Icons/64/switch_c_forward.blp",
+      "sha256": "5a53c49d31cbfcd3cb6a1f8949aabd48727a7ba4b04843fd844366d61cc3fcc5",
+      "packageSHA256": "6175a327b3b7505b6f1d79ef0adc96c7a65db3cc8220dd59e34de6658dbb4f49",
+      "source": "https://github.com/seblindfors/ConsolePort/releases/tag/3.3.10",
+      "use": "Referenced from clean official ConsolePort; not duplicated into companion."
+    },
+    {
+      "path": "ConsolePort/Assets/Icons/64/ps_c_share.blp",
+      "sha256": "a9b08ba1eecb07beedb1dd0d39342aa3cba4db1fec753d97b3e5c407d4b39fe5",
+      "packageSHA256": "6175a327b3b7505b6f1d79ef0adc96c7a65db3cc8220dd59e34de6658dbb4f49",
+      "source": "https://github.com/seblindfors/ConsolePort/releases/tag/3.3.10",
+      "use": "Referenced from clean official ConsolePort; not duplicated into companion."
+    },
+    {
+      "path": "ConsolePort/Assets/Icons/64/ps_r_cross.blp",
+      "sha256": "917a4893ac017e9922edc05a73ecfc3b874fc6a41f8a18eefe99bde347cf8639",
+      "packageSHA256": "6175a327b3b7505b6f1d79ef0adc96c7a65db3cc8220dd59e34de6658dbb4f49",
+      "source": "https://github.com/seblindfors/ConsolePort/releases/tag/3.3.10",
+      "use": "Referenced from clean official ConsolePort; not duplicated into companion."
+    },
+    {
+      "path": "ConsolePort/Assets/Icons/64/steam_c_system.blp",
+      "sha256": "0b6a3bd640015b93a6a1924a77e62153ee33d2e6cd26d0fe33500959583abfe6",
+      "packageSHA256": "6175a327b3b7505b6f1d79ef0adc96c7a65db3cc8220dd59e34de6658dbb4f49",
+      "source": "https://github.com/seblindfors/ConsolePort/releases/tag/3.3.10",
+      "use": "Referenced from clean official ConsolePort; not duplicated into companion."
     }
   ],
   "nativeResources": [
     "CircleMaskScalable client mask",
+    "Optional gamepad-actionbar circle border/state/shadow and device empty-slot atlases, qualified at runtime by C_Texture.GetAtlasInfo; clean CP circular artwork/glyph fallback",
     "128-redbutton-exit client atlas",
     "crosshair_inspect_32/crosshair_unableinspect_32 client atlases",
-    "C_Spell.GetSpellTexture(6603) client resource",
+    "C_Spell.GetSpellTexture client resource for current class stance and 6603",
     "LiteMount IconTexture metadata; explicit current LM_B2 icon preserved"
   ],
-  "behavior": "Existing PS5 targeting glyphs/current art geometry retained. Skin does not change native usability/range colors or create dynamic chosen-mount icons.",
+  "behavior": "Round face surfaces (including the retained Forever sheet thin circle at x=1044..1089,y=552..597), grey device glyph backgrounds on all 32 cells and bank trigger prompts follow the selected native device. Class prompts follow native Forever side: warrior right shoulder+trigger, druid/paladin left shoulder+trigger. Usability/range colors and native actions remain owned upstream.",
   "acceptance": "Actual client atlas/path availability, clipping/empty slots/cooldowns/colors/glyphs remain user-rendered checks.",
   "distribution": "Personal locally assembled pack only. No public asset permission inferred; final notices/official-source assembly remain required."
 }

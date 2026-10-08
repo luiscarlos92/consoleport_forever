@@ -4,6 +4,7 @@ Addon.BindingPolicy = Policy
 local buttons = {"PAD1", "PAD2", "PAD3", "PAD4", "PADDLEFT", "PADDUP", "PADDRIGHT", "PADDDOWN"}
 local modifiers = {"", "SHIFT-", "CTRL-", "CTRL-SHIFT-"}
 function Policy.Scope(key)
+    if key=='CTRL-PADRSHOULDER' or key=='SHIFT-PADLSHOULDER' then return 'character' end
     for _, modifier in ipairs(modifiers) do
         for index, button in ipairs(buttons) do
             if key == modifier .. button then
@@ -15,6 +16,8 @@ function Policy.Scope(key)
 end
 function Policy.Compose(shared, personal, retained)
     local result = Core.Copy(retained or {})
+    if personal['CTRL-PADRSHOULDER']~=nil then result['CTRL-PADRSHOULDER']=personal['CTRL-PADRSHOULDER'] end
+    if personal['SHIFT-PADLSHOULDER']~=nil then result['SHIFT-PADLSHOULDER']=personal['SHIFT-PADLSHOULDER'] end
     for _, modifier in ipairs(modifiers) do
         for _, button in ipairs(buttons) do
             local key = modifier .. button

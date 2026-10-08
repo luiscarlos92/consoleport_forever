@@ -29,7 +29,9 @@ local function region()
     function r:SetVertexColor(...) self.tint={...} end
     function r:SetDesaturated(value) self.desaturated=value end
     function r:SetSwipeColor(...) self.swipe={...} end
-    function r:SetAlpha(value) self.alpha=value end
+function r:SetAlpha(value) self.alpha=value end
+    function r:SetText(value) self.text=value end
+    function r:SetTextColor(...) self.textColor={...} end
     return r
 end
 local Frame={}
@@ -58,9 +60,10 @@ function Frame:SetSize() end function Frame:SetPoint() end function Frame:ClearA
 function Frame:SetParent(parent) self.parent=parent end function Frame:GetParent() return self.parent end
 function Frame:GetName() return self.name end function Frame:GetWidth() return 50 end
 function Frame:CreateTexture() return region() end
+function Frame:CreateFontString() return region() end
 function Frame:CreateMaskTexture() assert(not combat) self.maskCount=(self.maskCount or 0)+1 return region() end
 function Frame:HookScript(key,fn) self.hooks=self.hooks or {} self.hooks[key]=fn end
-function Frame:Show() end
+function Frame:Show() self.shown=true end function Frame:Hide() self.shown=false end
 function CreateFrame(_,name,parent)
     if name then assert(not frames[name],'duplicate named prompt/frame') end
     local f=setmetatable({name=name,parent=parent},{__index=Frame})
@@ -79,6 +82,9 @@ function env.MakeID(format,...) return string.format(format,...) end
 local function makeButton(id,bank)
     local button=setmetatable({id=id,parent=bank,_state_type='custom',attributes={state=''},icon=region()},{__index=Frame})
     for _,key in ipairs({'NormalTexture','PushedTexture','HighlightTexture','CheckedTexture','Flash','Border','NewActionTexture','SpellHighlightTexture','cooldown','chargeCooldown','lossOfControlCooldown'}) do button[key]=region() end
+    button.SpellCastAnimFrame={Fill={FillMask=region(),InnerGlowTexture=region(),CastFill=region()},EndBurst={EndMask=region(),GlowRing=region()}}
+    button.InterruptDisplay={Base={Base=region()},Highlight={Mask=region()}}
+    button.TargetReticleAnimFrame={Base=region(),Mask=region()}
     function button:GetAttribute(key) return self.attributes[key] end
     function button:SetProps() end function button:UpdateLocal() end function button:UpdateButtonArt() end
     function button:AddToMasque(group) group:AddButton(self) end
@@ -88,8 +94,20 @@ function env:Acquire(kind,name,id,bank) assert(kind==GROUP_BUTTON) return makeBu
 --@NATIVE_GROUP_SKIN_LIFECYCLE
 local Manager={bindingSnapshot={PAD1={['']='JUMP',['SHIFT-']='INTERACTTARGET'},PAD2={['']=''},PAD3={['']='INTERACTTARGET'},PAD4={['']='TURNORACTION'}}}
 --@NATIVE_MANAGER_BINDINGS
-Addon.adapters={consoleport={api={version='3.3.10'},bar={Manager=Manager}}}
-C_Spell={GetSpellTexture=function(id) assert(id==6603) return 6603 end}
+local family='SHP'
+local device={Label=family,GetIconForButton=function(_,id) return family..'/'..id,false end}
+local callbacks={}
+local presentationDB={Gamepad={Index={Modifier={Key={SHIFT='PADLTRIGGER',CTRL='PADRTRIGGER'}}},GetActiveDevice=function() return device end},
+    RegisterCallback=function(_,event,fn) callbacks[event]=fn end}
+Addon.adapters={consoleport={api={version='3.3.10'},bar={Manager=Manager},db=presentationDB}}
+C_Spell={GetSpellTexture=function(id) return id end}
+local classBinding='CLICK NativeClassRing:Auras'
+local classChord=classBinding
+function GetBindingAction(key) assert(key=='CTRL-PADRSHOULDER' or key=='SHIFT-PADLSHOULDER') return classChord end
+local classRings={Data={Auras={{type='spell',spell=71},{type='spell',spell=2457}}},GetBindingForSet=function(_,id) assert(id=='Auras') return classBinding end}
+Addon.adapters.rings={rings=classRings,api={classSet='Auras'}}
+function GetNumShapeshiftForms() return 2 end
+function GetShapeshiftFormInfo(slot) return 1,slot==2,true,slot==2 and 2457 or 71 end
 function UnitExists() return false end
 local function makeBank(id,name)
     local bank=setmetatable({id=id,name=name,buttons={}},{__index=Frame})
@@ -98,7 +116,7 @@ local function makeBank(id,name)
     local group=setmetatable({Buttons={},db={Disabled=false}},{__index=GMT})
     function group:AddButton(button) self.Buttons[button]={} Group[button]=self end
     bank.msqGroup=group
-    bank:UpdateButtons({PAD1={},PAD2={},PAD3={},PAD4={},PADDUP={}})
+    bank:UpdateButtons({PAD1={},PAD2={},PAD3={},PAD4={},PADDUP={},PADDDOWN={},PADDLEFT={},PADDRIGHT={}})
     return bank
 end
 for _,id in ipairs({'Base','L2','R2','L2R2'}) do _G['ConsolePortGroup'..id]=makeBank(id,'ConsolePortGroup'..id) end
@@ -116,9 +134,40 @@ for _,id in ipairs({'Base','L2','R2','L2R2'}) do
     for _,key in ipairs({'PAD1','PAD2','PAD3','PAD4'}) do
         local b=bank.buttons[key]
         assert(b.maskCount==1 and b.icon.maskCalls==1 and b.SlotBackground.maskCalls==1 and not bank.msqGroup.Buttons[b])
+        assert(b.__cpfEmptyArt.shown and b.__cpfEmptyArt.mask==b.IconMask and b.__cpfEmptyArt.desaturated)
+        assert(b.Flash.mask==b.IconMask and b.__cpfRoundShadow.mask==b.IconMask,'square flash or shadow survived')
+        assert(b.SpellCastAnimFrame.Fill.CastFill.mask==b.IconMask and b.SpellCastAnimFrame.EndBurst.GlowRing.mask==b.IconMask)
+        assert(b.InterruptDisplay.Base.Base.mask==b.IconMask and b.TargetReticleAnimFrame.Base.mask==b.IconMask)
     end
+    for _,key in ipairs({'PADDUP','PADDDOWN','PADDLEFT','PADDRIGHT'}) do assert(bank.buttons[key].__cpfEmptyArt.shown and bank.buttons[key].__cpfEmptyArt.texture=='SHP/'..key) end
+    if id~='Base' then assert(bank.__cpfBankPrompt.shown and bank.__cpfBankPrompt.icons[1].texture=='SHP/PADLTRIGGER' or id=='R2') end
 end
 local base=ConsolePortGroupBase
+assert(base.__cpfClassShortcut.shown and base.__cpfClassShortcut.icon.texture==2457,'class badge did not follow active stance')
+assert(base.__cpfClassShortcut.prompt.icons[1].texture=='SHP/PADRSHOULDER' and base.__cpfClassShortcut.prompt.icons[2].texture=='SHP/PADRTRIGGER','class prompt shows a different chord')
+assert(ConsolePortGroupL2R2.__cpfBankPrompt.plus[1].shown and not ConsolePortGroupL2R2.__cpfBankPrompt.plus[2].shown)
+family='LTR' device.Label=family callbacks.OnIconsChanged() flush()
+assert(ConsolePortGroupR2.__cpfBankPrompt.icons[1].texture=='LTR/PADRTRIGGER' and base.buttons.PAD1.__cpfEmptyArt.texture=='LTR/PAD1')
+assert(frames.ConsolePortForeverFriendlyPrompt.glyph.texture=='LTR/PADLSHOULDER','target prompt retained PlayStation glyph')
+family='REV' device.Label=family callbacks.OnIconsChanged() flush()
+assert(base.buttons.PAD3.__cpfEmptyArt.texture=='REV/PAD3')
+family='SHP' device.Label=family callbacks.OnIconsChanged() flush()
+C_Texture={GetAtlasInfo=function(name) return name:find('gamepad-actionbar-',1,true) and {} or nil end}
+Addon:RefreshConsolePortSkin()
+assert(base.buttons.PAD1.__cpfEmptyArt.atlas=='gamepad-actionbar-circleslot-ps-cross-normal')
+assert(base.buttons.PADDLEFT.__cpfEmptyArt.atlas=='gamepad-actionbar-squareslot-generic-dpadleft-normal')
+assert(base.buttons.PAD1.NormalTexture.atlas=='gamepad-actionbar-circleslot-border-normal')
+assert(base.buttons.PAD1.PushedTexture.atlas=='gamepad-actionbar-circleslot-border-pressed')
+assert(base.buttons.PAD1.__cpfRoundShadow.atlas=='gamepad-actionbar-circleslot-dropshadow')
+family='REV' device.Label=family callbacks.OnIconsChanged() flush()
+assert(base.buttons.PAD3.__cpfEmptyArt.atlas=='gamepad-actionbar-circleslot-xbox-y-normal','reversed face layout was labelled as Xbox')
+C_Texture=nil family='SHP' device.Label=family callbacks.OnIconsChanged() flush()
+classChord='TARGETSCANENEMY' Addon:RefreshConsolePortSkin()
+assert(not base.__cpfClassShortcut.shown,'badge advertised an unbound class opener')
+classChord=classBinding Addon:RefreshConsolePortSkin()
+Addon.adapters.rings.api.classChord='SHIFT-PADLSHOULDER' Addon:RefreshConsolePortSkin()
+assert(base.__cpfClassShortcut.prompt.icons[1].texture=='SHP/PADLSHOULDER' and base.__cpfClassShortcut.prompt.icons[2].texture=='SHP/PADLTRIGGER','left class prompt did not match L1+L2')
+Addon.adapters.rings.api.classChord=nil Addon:RefreshConsolePortSkin()
 local unbound=base.buttons.PAD4
 Manager.bindingSnapshot.PAD4={['']=''}
 local reset=ProxyButtonTextureProvider('PAD4',true)(unbound.icon)

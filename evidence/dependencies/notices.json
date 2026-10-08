@@ -1,5 +1,5 @@
 {
-  "lockSHA256": "101ddcf8dc4007f3556b277745554b72ff0392efe6a1b23022ac4569dbcd5f8b",
+  "lockSHA256": "c5fc357e3665fb4911ca6a6c43c9ac4c4c9b2c4c58ff10085de7a8341a3f7dfe",
   "discoveryComplete": true,
   "releaseNoticeReviewComplete": false,
   "packDistributionReady": false,
@@ -949,33 +949,6 @@
       ],
       "assemblyRequiredByCoverage": false,
       "noticeFilesAbsent": false,
-      "review": "Review main addon, bundled libraries and media terms independently; filename discovery does not grant redistribution rights."
-    },
-    {
-      "repo": "curseforge/SharedMedia_Causese",
-      "version": "7.6",
-      "officialRelease": "https://www.curseforge.com/wow/addons/sharedmedia_causese/files/7242737",
-      "packageSHA256": "12060554a2eace5438f08daa98660169a18e127b8af269c38974f9f570091711",
-      "selectedFolders": [
-        "SharedMedia_Causese"
-      ],
-      "noticeFiles": [],
-      "embeddedNoticeSources": [
-        {
-          "source": "SharedMedia_Causese/libs/LibSharedMedia-3.0/LibSharedMedia-3.0.lua",
-          "sha256": "33a765d61d3dfbfc1965c48404e5d30601176fc9168c3f8360c2892f3811dd2b"
-        },
-        {
-          "source": "SharedMedia_Causese/libs/LibStub/LibStub.lua",
-          "sha256": "d34235c85f869505fdd9ef321d2420f69db7d2eb873d2b3bbf57584a314060fa"
-        },
-        {
-          "source": "SharedMedia_Causese/libs/LibStub/LibStub.toc",
-          "sha256": "0e276448cc269122f1cb10bf98087db945d923bf006825de7ebed8e647822ef1"
-        }
-      ],
-      "assemblyRequiredByCoverage": false,
-      "noticeFilesAbsent": true,
       "review": "Review main addon, bundled libraries and media terms independently; filename discovery does not grant redistribution rights."
     },
     {

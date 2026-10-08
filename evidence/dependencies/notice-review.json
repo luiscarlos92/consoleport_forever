@@ -1,6 +1,6 @@
 {
-  "lockSHA256": "101ddcf8dc4007f3556b277745554b72ff0392efe6a1b23022ac4569dbcd5f8b",
-  "noticeInventorySHA256": "0665534043a1ac2820cce633a1b3aeb266100651861e700664d7c3b423f30462",
+  "lockSHA256": "c5fc357e3665fb4911ca6a6c43c9ac4c4c9b2c4c58ff10085de7a8341a3f7dfe",
+  "noticeInventorySHA256": "e72a5fbf2904e1da167729026023d8bd47483bcfc1cdd6c049cd3770f8c22238",
   "localPersonalAssemblyReviewComplete": true,
   "publicRedistributionApproved": false,
   "scope": "All third-party dependencies use official-source local assembly. This inventory is not a license grant or approval to publish dependency code or media.",
@@ -1733,53 +1733,6 @@
       ],
       "standaloneNoticeAbsent": false,
       "supplemental": [],
-      "assembly": "Fetch exact official package for this user and retain all original source/media/notice bytes.",
-      "publicRedistributionApproved": false
-    },
-    {
-      "repo": "curseforge/SharedMedia_Causese",
-      "version": "7.6",
-      "mainTerms": "GPL-3.0 declared on official project/license page; absent from ZIP",
-      "officialRelease": "https://www.curseforge.com/wow/addons/sharedmedia_causese/files/7242737",
-      "noticeFiles": [],
-      "embeddedNoticeSources": [
-        {
-          "source": "SharedMedia_Causese/libs/LibSharedMedia-3.0/LibSharedMedia-3.0.lua",
-          "sha256": "33a765d61d3dfbfc1965c48404e5d30601176fc9168c3f8360c2892f3811dd2b",
-          "declarations": [
-            "License: LGPL v2.1\r"
-          ],
-          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
-        },
-        {
-          "source": "SharedMedia_Causese/libs/LibStub/LibStub.lua",
-          "sha256": "d34235c85f869505fdd9ef321d2420f69db7d2eb873d2b3bbf57584a314060fa",
-          "declarations": [
-            "-- LibStub is hereby placed in the Public Domain\r"
-          ],
-          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
-        },
-        {
-          "source": "SharedMedia_Causese/libs/LibStub/LibStub.toc",
-          "sha256": "0e276448cc269122f1cb10bf98087db945d923bf006825de7ebed8e647822ef1",
-          "declarations": [
-            "## X-License: Public Domain\r"
-          ],
-          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
-        }
-      ],
-      "standaloneNoticeAbsent": true,
-      "supplemental": [
-        {
-          "repo": "curseforge/SharedMedia_Causese",
-          "url": "https://www.curseforge.com/wow/addons/sharedmedia_causese/license",
-          "verifiedAt": "2026-10-04T09:36:33.361163+00:00",
-          "declaredLicense": "GPL-3.0",
-          "copy": "evidence/dependencies/notices/curseforge__SharedMedia_Causese/supplemental-GPL-3.0.txt",
-          "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986",
-          "scope": "Official project declares GPLv3; supplemental standard license text copied verbatim from qualified MountsRarity GPLv3 notice, not represented as present in SharedMedia ZIP."
-        }
-      ],
       "assembly": "Fetch exact official package for this user and retain all original source/media/notice bytes.",
       "publicRedistributionApproved": false
     },

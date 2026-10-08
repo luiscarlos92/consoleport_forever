@@ -14,7 +14,6 @@ MAIN_TERMS = {
     'Tercioo/Plater-Nameplates': 'Maintainer distribution; no permissive main-addon notice in package',
     'curseforge/DynamicCam': 'MIT; separate bundled library notices retained',
     'curseforge/Immersion_ExtraFade': 'MIT',
-    'curseforge/SharedMedia_Causese': 'GPL-3.0 declared on official project/license page; absent from ZIP',
 }
 
 

@@ -1,0 +1,1169 @@
+{
+  "checkedAt": "2026-10-08T02:36:11.805Z",
+  "file": "C:/Users/luisr/OneDrive/Documents/03 Gaming/World of Warcraft/_retail_/WTF/Account/119624169#1/SavedVariables/Plater.lua",
+  "profileKeys": {
+    "Fëanturï - Proudmoore": "Default",
+    "Fëlagund - Proudmoore": "Default",
+    "Fëlagund - Grim Batol": "Default",
+    "Fëanólë - Proudmoore": "Default"
+  },
+  "selectedProfiles": [
+    "Default"
+  ],
+  "profileSoundReferences": {
+    "Fëanturï - Proudmoore": [],
+    "Quazii Plater Season 4": [
+      {
+        "path": [
+          "cast_audiocues",
+          "87618"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\Jump.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "88308"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "164357"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "169179"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "169929"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "183088"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "183465"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "188169"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "188404"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "193505"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "197974"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "200261"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "200291"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\CC.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "200345"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\CC.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "200768"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "200784"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\CC.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "200913"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "201226"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "226296"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "226304"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "226406"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "253721"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\CC.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "255567"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "256627"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "257288"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "257426"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "257756"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\CC.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "257862"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "257870"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\CC.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "260793"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "260894"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "265019"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "265372"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "265540"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\CC.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "265721"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "268202"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\CC.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "268260"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "269029"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "269843"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "272609"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "320822"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\CC.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "321834"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "321968"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "323137"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "323496"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "324323"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "331718"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "333477"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "333488"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "340160"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "340300"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "367484"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\CC.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "367521"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\CC.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "369061"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "369409"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "369465"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\CC.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "369563"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "369573"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "369828"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\CC.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "370764"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\CC.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "372087"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "372107"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "372201"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "372222"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "372225"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\CC.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "372311"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "372735"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\CC.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "373742"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "374361"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "374563"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "374839"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "375251"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "375327"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "375348"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "375351"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "375439"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "375727"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "375943"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "376170"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "376683"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "376892"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "377034"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "377204"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "377383"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "377559"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "377732"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\CC.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "378818"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\CC.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "381525"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "382233"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "382277"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "382708"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "382712"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "383823"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\CC.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "384524"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "384868"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "385536"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\CC.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "385578"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "385958"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "386660"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "387629"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "387910"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\CC.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "388060"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "388801"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\CC.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "388911"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "388976"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "391118"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "391723"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "393432"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "395184"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "396812"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\CC.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "397889"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\CC.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "397931"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "408141"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "411012"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "412012"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\CC.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "412129"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "412200"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\CC.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "412215"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "412505"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "413529"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "416139"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "419351"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "422414"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "422541"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\CC.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "425027"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "426261"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "426645"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "426860"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "426893"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "427025"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "427176"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\CC.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "427323"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "427342"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\CC.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "427359"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\CC.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "427376"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\CC.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "427616"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "428293"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "429427"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\CC.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "431494"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "432031"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\CC.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "432198"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "432520"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\CC.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "432967"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\CC.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "433662"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\CC.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "434779"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "434824"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "435012"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "437719"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\CC.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "439621"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "440218"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "441119"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "443500"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "445457"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "447395"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "448105"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "448619"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "448640"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "449090"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "449130"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "450854"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "451496"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "451543"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "453161"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+      },
+      {
+        "path": [
+          "cast_audiocues",
+          "462216"
+        ],
+        "value": "Interface\\Addons\\SharedMedia_Causese\\sound\\Front.ogg"
+      }
+    ],
+    "Default": [],
+    "Proudmoore": []
+  },
+  "decision": "Retire SharedMedia_Causese under user authorization: all selected Plater profiles are Default, no Causese references in Default. Inactive Quazii profile retained unchanged in WTF."
+}

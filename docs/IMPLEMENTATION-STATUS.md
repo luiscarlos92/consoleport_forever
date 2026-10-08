@@ -1,5 +1,21 @@
 # Implementation checkpoint — October 4, 2026
 
+## Current authority - SharedMedia retirement, October 7, 2026
+
+A fresh read-only Plater WTF parse confirms all four profileKeys select Default.
+Default has no Causese references anywhere in its saved profile. The 164 direct
+cast-sound paths belong only to the inactive Quazii Plater Season 4 profile.
+Forever has no Plater profile adapter and the disk deployment contains addon code,
+not WTF or a Plater profile; it cannot install/select Quazii. The user explicitly
+authorized removing SharedMedia_Causese under this confirmed Default selection.
+Retire it from sources/lock/coverage/notices/capability diagnostics and park the
+live addon with verified backup through the scoped installer. Preserve Plater,
+both profiles and all live WTF. Candidate.8/revision 14 remains; this is a labeled
+same-version retirement update. All 10 pre-retirement official stable Retail
+sources were freshly checked/current, then the nine remaining sources rechecked;
+no downloads or dependency reshipping. Earlier SharedMedia keep rules are superseded.
+
+
 ## Installed checkpoint - October 7, 2026, 17:43:12 America/Toronto
 
 Candidate.8 is installed from pushed/tested source `60c5aeb80a06e8013444b0e725cc887fecd2304a` beside

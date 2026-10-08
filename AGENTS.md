@@ -50,7 +50,8 @@ immutable original reference to add later dependencies. See
   Do not restore it. Preserve historical references, archives and receipts.
   HideClassBars is replaced by reviewed Forever controller access and explicitly
   retired with the scoped installer; no broad addon pruning. SharedMedia_Causese
-  stays for the saved Quazii Plater profile (164 direct sound references).
+  is also retired under user authorization: all current Plater profileKeys select
+  Default; the unused Quazii profile is retained as game-owned saved data.
 - Never write live WTF. In-game reviewed configuration remains game-owned.
 - Default to a scoped update built by `tools/build_update.py`: Forever plus only
   explicitly updated dependency packages, with all their selected official
@@ -58,7 +59,8 @@ immutable original reference to add later dependencies. See
 - Run `tools/deploy_update.py` in preview mode, then execute the exact verified
   update. It backs up/replaces only included folders and backs up canonical WTF;
   unrelated/unchanged dependencies stay byte-for-byte intact. Retain backups.
-- Preserve CurseForge-owned inactive DBM companions and bundled helpers. No
-  broad pruning or repeated copying of unchanged addons.
+- Preserve unselected CurseForge-owned helpers and inactive addon folders.
+  Retirement requires explicit named authorization; no broad pruning or repeated
+  copying of unchanged addons. DBM, HideClassBars and SharedMedia_Causese are retired.
 - Commit and push tested source before building/deploying; retain exact receipts
   and document the installed version and dependency changes afterward.

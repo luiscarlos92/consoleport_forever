@@ -1,0 +1,22 @@
+{
+  "installedVersion": "2.0.0-candidate.14",
+  "sourceCommit": "931fd2eaa302eca7e092f447c47c7d02775019d4",
+  "packSHA256": "2641c7201c84dd85ad16bab05f63e08ed4aea7741ed2700e45e87911cb332a1b",
+  "closedAt": "2026-10-08T18:37:57.299346+00:00",
+  "installedFilesVerified": 52,
+  "unselectedFilesUnchanged": 1949,
+  "wtfFilesUnchanged": 298,
+  "junctionsUnchanged": 42,
+  "anchorsUnchanged": true,
+  "backupsVerified": true,
+  "backup": "C:\\Users\\luisr\\WoW-Backups\\ConsolePort-Forever\\20261008T183732Z-2a8235666cc9",
+  "runtimeSuites": 46,
+  "toolingChecks": 39,
+  "geometryMatrixCases": 120,
+  "configurationRevision": 16,
+  "storeSchema": 3,
+  "groundInterceptorUnchangedFromUserTestedCandidate13": true,
+  "noLiveWTFWrites": true,
+  "liveVisualAcceptance": "Pending user client rendering test",
+  "userReportedCombatAcceptance": "Candidate13 normal and cursor/player ground spells, paladin and demon hunter"
+}

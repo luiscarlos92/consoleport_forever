@@ -1,3 +1,24 @@
+## Installed candidate.14 — October 8, 2026, 14:37:57 Toronto
+
+Closed-WoW scoped deployment completed from tested/pushed source
+931fd2eaa302eca7e092f447c47c7d02775019d4. Independent readback verifies all
+52 installed Forever files, 1,949 unselected addon files unchanged, 298 WTF
+files unchanged, 42 junctions unchanged and preserved root anchors. Previous
+companion/canonical WTF backups are verified and retained at
+C:/Users/luisr/WoW-Backups/ConsolePort-Forever/20261008T183732Z-2a8235666cc9.
+All 46 runtime/source suites and 39 tooling checks pass, including 120 physical
+geometry cases, clipped/colliding hint recovery, actual Masque Normal_Custom
+negative reproduction and native aura-row/Edit Mode access. No dependency
+changed/downloaded/recopied. Revision 16 remains; visuals initialize in game.
+No filesystem live WTF writes. Ground.lua is byte-identical to candidate.13,
+which the user reported working for normal and cursor/player ground spells on
+paladin/DH. Current bank positions are restored; smaller class group is under
+R2, trigger hints use D-pad/lower-cross gaps, surviving square skin is retired.
+Native duplicate class row hides only with complete installed ring access.
+Actual candidate.14 rendering remains pending the user's test. Receipts:
+evidence/delivery/live-install-candidate14.json and
+candidate14-independent-readback.json. See docs/CANDIDATE14-VISUALS-2026-10-08.md.
+
 ## Current candidate.14 visual authority — October 8, 2026
 
 User tested candidate.13 normal and cursor/player ground spells in combat on

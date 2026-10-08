@@ -80,3 +80,15 @@ All nine official stable Retail dependencies were freshly checked this session:
 all current, no packages downloaded or recopied. Closed-WoW scoped deployment is
 already authorized. Never write live WTF or prune unrelated addons. Retain exact
 source/test/build/install/readback receipts and backups.
+
+## Verified delivery
+
+Installed at 18:37:57 UTC / 14:37:57 America/Toronto from source
+931fd2eaa302eca7e092f447c47c7d02775019d4. Scoped package SHA-256:
+2641c7201c84dd85ad16bab05f63e08ed4aea7741ed2700e45e87911cb332a1b.
+All 52 payload files independently match the checkout and installed companion.
+All 1,949 unselected files, 298 WTF files, 42 junctions and anchors remain
+unchanged. Verified previous companion and canonical WTF backup:
+C:/Users/luisr/WoW-Backups/ConsolePort-Forever/20261008T183732Z-2a8235666cc9.
+Prepared/installed/readback receipts are retained in evidence/delivery.
+No game was launched; actual visual acceptance remains the user's check.

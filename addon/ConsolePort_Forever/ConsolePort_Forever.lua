@@ -2,8 +2,8 @@ local ADDON_NAME, Addon = ...
 Addon.VERSION=C_AddOns.GetAddOnMetadata(ADDON_NAME,"Version") or "0.0.0"
 Addon.SCHEMA=Addon.Store.VERSION
 Addon.CONFIG_REVISION=14
--- Emergency recovery: native ConsolePort owns all gameplay dispatch. Keep the
--- reviewed data for later diagnosis without installing custom secure wrappers.
+-- Native recovery retains ConsolePort bindings, modes and UI ownership.
+-- Ground placement is a separate secure click adapter; it does not page actions.
 Addon.NATIVE_INPUT_RECOVERY=true
 Addon.PROFILE_NAME="Console Port - Forever (Managed)"
 local function Print(message)
@@ -282,13 +282,20 @@ function Addon:FinishRestored(journal)
 end
 function Addon:RefreshModes()
     if self.NATIVE_INPUT_RECOVERY then
-        if CanWrite() then
-            self.GroundTargeting.Disable(_G)
-            if self.adapters then self.SecureModes.Disable(_G,self.adapters.consoleport) end
+        -- Placement is independent of the suspended mode/UI interceptors.
+        -- Native ConsolePort still owns bindings, action pages and UpdateState.
+        if self.record then
+            self.record.targetingObserved=self.record.targetingObserved or {}
+            self.GroundTargeting.observed=self.record.targetingObserved
+            self.GroundTargeting.Observe(_G)
         end
+        if not CanWrite() or not self.adapters then return end
+        self.SecureModes.Disable(_G,self.adapters.consoleport)
+        local enabled=self:IsCharacterInstalled() and self.db.shared.runtimePolicy.groundTargetingEnabled
+        local ready,reason=self.GroundTargeting.Enable(self.adapters.consoleport,_G,enabled,self.TargetingPreferences.Read(self.db))
         self.Diagnostics:SetFeature('secureModes','native-recovery','Forever secure mode interception suspended; native ConsolePort dispatch retained')
-        self.Diagnostics:SetFeature('groundTargeting','native-recovery','Custom cursor/player casting suspended; native targeting retained')
-        return
+        self.Diagnostics:SetFeature('groundTargeting',ready and 'offline-verified' or 'pending',reason)
+        return ready,reason
     end
     if self.record then
         self.record.targetingObserved=self.record.targetingObserved or {}

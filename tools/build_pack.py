@@ -34,6 +34,16 @@ def git(*arguments):
     return subprocess.check_output(['git', *arguments], cwd=ROOT).decode('utf-8').strip()
 
 
+def validate_runtime_results(results, runner_source):
+    required = set(re.findall(r"check\('([^']+)',", runner_source))
+    required.update('baseline.'+name for name in ('installer', 'runtime', 'skin'))
+    ids = [row['id'] for row in results]
+    if len(ids) != len(set(ids)) or set(ids) != required:
+        raise ValueError('Complete runtime/source suite required; partial or duplicate results cannot qualify a build')
+    if any(row['status'] != 'passed' for row in results):
+        raise ValueError('Required runtime/source checks have not passed')
+
+
 def verified_source():
     if git('status', '--porcelain', '--untracked-files=normal'):
         raise ValueError('Pack source must be clean and committed')
@@ -43,8 +53,7 @@ def verified_source():
         raise ValueError('Source commit must already be pushed on main')
     report = ROOT/'scratch/test-results/latest.json'
     tests = json.loads(report.read_text(encoding='utf-8'))
-    if not tests['results'] or any(r['status'] != 'passed' for r in tests['results']):
-        raise ValueError('Required runtime/source checks have not passed')
+    validate_runtime_results(tests['results'], (ROOT/'tools/test-all.cjs').read_text(encoding='utf-8'))
     for group in ['productHashes', 'toolingHashes']:
         for name, expected in tests[group].items():
             if sha(ROOT/name) != expected:

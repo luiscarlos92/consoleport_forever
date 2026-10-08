@@ -108,8 +108,12 @@ function CopyTable(value) return Addon.Core.Copy(value) end
 SECURE_ACTIONS={}
 --@NATIVE_SECURE_ACTIONS
 --@NATIVE_SECURE_DISPATCH
+--@NATIVE_RESTRICTED_ENV
 local function run(header,self,signature,body,...)
-    local fn=assert(load('return function(owner,'..signature..') '..CPAPI.ConvertSecureBody(body)..' end'))()
+    -- Use Blizzard's actual environment manager. Only control is supplied;
+    -- inventing an owner parameter previously masked a fatal Retail error.
+    local restricted,manage=CreateRestrictedEnvironment(_G)
+    local fn=assert(load('return function('..signature..') '..CPAPI.ConvertSecureBody(body)..' end','restricted','t',restricted))()
     -- Restricted snippets receive handles, not mutable raw-frame fields.
     local function handle(raw)
         if not raw then return nil end
@@ -124,7 +128,11 @@ local function run(header,self,signature,body,...)
             Hide=function() raw.shown=false end}
     end
     local before=trusted trusted=true
-    local results=table.pack(pcall(fn,handle(header),handle(self),...))
+    header.working=header.working or {}
+    local working,control=header.working,handle(header)
+    manage(true,working,control)
+    local results=table.pack(pcall(fn,handle(self),...))
+    manage(false,working,control)
     trusted=before assert(results[1],results[2])
     return table.unpack(results,2,results.n)
 end
@@ -133,6 +141,7 @@ function Frame:RunAttribute(key,...)
 end
 function Frame:Execute(body)
     assert(not combat)
+    if body=='owner = owner or self' then return run(self,self,'self',body) end
     local button=self:GetFrameRef('cpfUpdateButton')
     assert(body:find('cpfUpdateButton',1,true))
     button:RunAttribute('UpdateState',button:GetAttribute('state'))

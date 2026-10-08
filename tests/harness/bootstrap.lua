@@ -25,6 +25,7 @@ C_AddOns={GetAddOnMetadata=function(name,key) if name=="ConsolePort_Rings" then 
     GetAddOnEnableState=function(name,character) assert(character=="Player") return modules[name] and 2 or 0 end,
     EnableAddOn=function() error('disabled addon must remain game/user owned') end,
     LoadAddOn=function(name) assert(name=="Blizzard_EditMode" and not combat) modules[name]=true return true end}
+function GetActionInfo() return nil end
 function GetBuildInfo() return "12.1.0","69933","date",120100 end
 function UnitGUID() return guid end
 function UnitName() return "Player" end
@@ -89,7 +90,9 @@ end
 --@LOAD_PRODUCT
 assert(Addon.NATIVE_INPUT_RECOVERY==true,'recovery build did not suspend custom gameplay interception')
 Addon.SecureModes.Install=function() error('recovery installed a custom secure mode interceptor') end
-Addon.GroundTargeting.Enable=function() error('recovery installed a custom casting interceptor') end
+local nativePlacementEnable=Addon.GroundTargeting.Enable
+local placementCalls=0
+Addon.GroundTargeting.Enable=function(...) placementCalls=placementCalls+1 return nativePlacementEnable(...) end
 local recoveryUIEnable=Addon.UIContexts.Enable
 function Addon.UIContexts:Enable(bridge,api,enabled,...)
     assert(not enabled,'recovery enabled a UI input takeover')
@@ -192,4 +195,5 @@ local statusText=table.concat(messages,'\n',statusMessages+1)
 assert(statusText:find('ConsolePort: 3.3.10',1,true),'status omits exact native dependency version')
 assert(statusText:find('Runtime journals retained:',1,true),'status omits retained restore identities')
 assert(writes==statusWrites,'status changed runtime configuration')
+assert(placementCalls>0,'targeting was never prepared through recovery bootstrap')
 TEST_SUCCESS=true

@@ -28,10 +28,10 @@ Ground.Pre=[[
     end;
     local previous = self:GetAttribute('cpf-ground-pressed') or self:GetAttribute('cpf-ground-cancelled');
     if not previous and not self:GetAttribute('cpf-ground-enabled') then return end;
-    local blocked = not self:GetAttribute('cpf-ground-enabled') or not self:GetAttribute('cpf-enabled');
-    local cursor = owner:GetFrameRef('cpfGroundCursor');
-    local raid = owner:GetFrameRef('cpfGroundRaid');
-    local ring = owner:GetFrameRef('cpfGroundRing');
+    local blocked = not self:GetAttribute('cpf-ground-enabled');
+    local cursor = control:GetFrameRef('cpfGroundCursor');
+    local raid = control:GetFrameRef('cpfGroundRaid');
+    local ring = control:GetFrameRef('cpfGroundRing');
     blocked = blocked or (cursor and cursor:IsShown()) or (raid and raid:IsShown()) or (ring and ring:IsShown());
     -- Do not override native dragging, alternate click actions or empowered spells.
     blocked = blocked or (((self:GetAttribute('unlockedpreventdrag') and not self:GetAttribute('buttonlock'))
@@ -49,13 +49,13 @@ Ground.Pre=[[
         if kind == 'spell' and subType ~= 'assistedcombat' and not IsPressHoldReleaseSpell(id) then
             local context='';
             if self:GetAttribute('cpf-ground-extra') then context='extra-'
-            elseif HasVehicleActionBar() then context='vehicle-'
-            elseif HasOverrideActionBar() then context='override-'
-            elseif HasTempShapeshiftActionBar() then context='temporary-' end;
-            -- Only L2R2's resolved temporary page inherits context defaults.
-            -- Ordinary cells keep the same account-wide ability preference.
-            if not self:GetAttribute('cpf-ground-temporary-bank') then context='' end;
-            text=owner:GetAttribute('cpf-ground-'..context..'spell-'..tostring(id));
+            elseif HasVehicleActionBar() and slot > (GetVehicleBarIndex()-1)*12
+                and slot <= GetVehicleBarIndex()*12 then context='vehicle-'
+            elseif HasOverrideActionBar() and slot > (GetOverrideBarIndex()-1)*12
+                and slot <= GetOverrideBarIndex()*12 then context='override-'
+            elseif HasTempShapeshiftActionBar() and slot > (GetTempShapeshiftBarIndex()-1)*12
+                and slot <= GetTempShapeshiftBarIndex()*12 then context='temporary-' end;
+            text=control:GetAttribute('cpf-ground-'..context..'spell-'..tostring(id));
         end;
         if text then
             self:SetAttribute('cpf-ground-pressed',true)
@@ -107,7 +107,8 @@ Ground.SupplementalPre=Ground.Pre:gsub('ControllerInput','LeftButton'):gsub('%-L
 Ground.SupplementalPost=Ground.Post:gsub('ControllerInput','LeftButton'):gsub('%-LeftButton','1')
 
 function Ground.Probe(bridge,api)
-    local ok,reason=Addon.SecureModes.Probe(bridge,api)
+    if not bridge or type(bridge.Probe)~='function' or not bridge.api or bridge.api.version~='3.3.10' then return false,'ConsolePort version not qualified' end
+    local ok,reason=bridge:Probe()
     if not ok then return false,reason end
     if not api.C_Macro or type(api.C_Macro.RunMacroText)~='function'
         or not api.C_Spell or type(api.C_Spell.GetSpellInfo)~='function'
@@ -121,11 +122,15 @@ function Ground.Probe(bridge,api)
     end
     for _,bank in ipairs(banks) do
         local group=api['ConsolePortGroup'..bank]
-        if type(group.SetAttribute)~='function' or type(group.SetFrameRef)~='function' then
+        if not group or not group.buttons or type(group.WrapScript)~='function'
+            or type(group.SetAttribute)~='function' or type(group.SetFrameRef)~='function'
+            or type(group.Execute)~='function' then
             return false,'native group secure attributes unavailable'
         end
         for _,key in ipairs(cells) do
-            if group.buttons[key].header~=group then return false,'native ground button/header owner changed' end
+            local button=group.buttons[key]
+            if not button or button.header~=group or type(button.GetAttribute)~='function'
+                or type(button.SetAttribute)~='function' then return false,'native ground button/header owner changed' end
         end
     end
     return true
@@ -136,6 +141,9 @@ function Ground.Commands(api,preferences,context)
     local ids={}
     for id in pairs(Addon.GroundSpells) do ids[id]=true end
     for id in pairs(preferences.spells or {}) do if Addon.TargetingPreferences.Qualified(preferences,id) then ids[id]=true end end
+    for _,spells in pairs(preferences.contextSpells or {}) do
+        for id in pairs(spells) do if Addon.TargetingPreferences.Qualified(preferences,id,context) then ids[id]=true end end
+    end
     for id in pairs(ids) do
         local mode=Addon.TargetingPreferences.Resolve(preferences,id,context)
         local ok,info=pcall(api.C_Spell.GetSpellInfo,id)
@@ -164,6 +172,15 @@ function Ground.Commands(api,preferences,context)
 end
 function Ground.Observe(api)
     Ground.observed=Ground.observed or {}
+    -- Include encountered ordinary abilities so explicit choices do not require
+    -- a curated class list. Unknown spells keep native targeting by default.
+    for slot=1,180 do
+        local kind,id=api.GetActionInfo(slot)
+        if not (api.issecretvalue and (api.issecretvalue(kind) or api.issecretvalue(id)))
+            and kind=='spell' and type(id)=='number' and id>0 and not Addon.GroundSpells[id] then
+            Ground.observed[id]=true
+        end
+    end
     for _,family in ipairs({'Vehicle','Override','TempShapeshift'}) do
         local has,index=api['Has'..family..'ActionBar'],api['Get'..family..'BarIndex']
         if has and index and has() then
@@ -197,7 +214,9 @@ function Ground.Enable(bridge,api,enabled,preferences)
     local commands,pending=Ground.Commands(api,preferences)
     local contextCommands={}
     for context in pairs(Addon.TargetingPreferences.Contexts) do contextCommands[context]=Ground.Commands(api,preferences,context) end
-    if not next(commands) then Ground.Disable(api) return false,'ground spell metadata unavailable; native targeting retained' end
+    local available=next(commands)
+    for _,prepared in pairs(contextCommands) do available=available or next(prepared) end
+    if not available then Ground.Disable(api) return false,'no placement commands prepared; native targeting retained' end
     Ground.prepared,Ground.pending=commands,pending
     local groups={}
     for _,bank in ipairs(banks) do
@@ -205,6 +224,19 @@ function Ground.Enable(bridge,api,enabled,preferences)
         local buttons={} for _,key in ipairs(cells) do buttons[#buttons+1]=group.buttons[key] end
         groups[#groups+1]={group=group,buttons=buttons,temporary=bank=='L2R2'}
     end
+    -- Native vehicle/override bars remain owned and paged by Blizzard/CP.
+    -- Wrap their actual buttons as well, including overflow, without creating
+    -- gameplay routes or installing Forever's temporary-mode environment.
+    local native={}
+    for _,prefix in ipairs({'OverrideActionBarButton','ActionButton'}) do
+        for i=1,12 do
+            local button=api[prefix..i]
+            if button and button.GetAttribute and type(button:GetAttribute('action'))=='number' then
+                native[#native+1]=button
+            end
+        end
+    end
+    if #native>0 then groups[#groups+1]={group=api.ConsolePortGroupBase,buttons=native,supplemental=true} end
     local access=Addon.TemporaryAccess
     if access and access.frame and access.buttons then
         local buttons={} for i=1,4 do if access.buttons[i] then buttons[#buttons+1]=access.buttons[i] end end
@@ -216,12 +248,17 @@ function Ground.Enable(bridge,api,enabled,preferences)
     end
     for _,definition in ipairs(groups) do
         local group=definition.group
+        -- The pinned LAB OnClick uses an owner upvalue for flyouts; native
+        -- CP's group setup does not initialize it. Supply the owning header
+        -- only if absent. Forever snippets use Blizzard's guaranteed control.
+        group:Execute('owner = owner or self')
         group:SetFrameRef('cpfGroundCursor',bridge.db.Cursor)
         group:SetFrameRef('cpfGroundRaid',bridge.db.Raid)
         group:SetFrameRef('cpfGroundRing',bridge.db.TargetRing)
         local ids=Addon.Core.Copy(Ground.ids or {})
         for id in pairs(Addon.GroundSpells) do ids[id]=true end
         for id in pairs(preferences.spells or {}) do ids[id]=true end
+        for _,spells in pairs(preferences.contextSpells or {}) do for id in pairs(spells) do ids[id]=true end end
         for id in pairs(ids) do
             group:SetAttribute('cpf-ground-spell-'..id,commands[id])
             for context,prepared in pairs(contextCommands) do group:SetAttribute('cpf-ground-'..context..'-spell-'..id,prepared[id]) end
@@ -230,7 +267,6 @@ function Ground.Enable(bridge,api,enabled,preferences)
         for _,button in ipairs(definition.buttons) do
             button:SetAttribute('cpf-ground-temporary-bank',definition.temporary)
             button:SetAttribute('cpf-ground-extra',definition.extra)
-            if definition.supplemental then button:SetAttribute('cpf-enabled',true) end
             if not button.__cpfGround then
                 group:WrapScript(button,'OnClick',definition.supplemental and Ground.SupplementalPre or Ground.Pre,definition.supplemental and Ground.SupplementalPost or Ground.Post)
                 group:WrapScript(button,'OnHide',Ground.OnHide)
@@ -258,7 +294,7 @@ function Ground.Enable(bridge,api,enabled,preferences)
     end
     Ground.buttons={}
     for _,definition in ipairs(groups) do for _,button in ipairs(definition.buttons) do Ground.buttons[#Ground.buttons+1]=button end end
-    return true,'account-wide ground placement prepared; '..#pending..' unavailable IDs retain native targeting; Retail acceptance pending'
+    return true,'account-wide ground placement prepared; '..#pending..' unavailable IDs retain native targeting; native dispatch retained; Retail acceptance pending'
 end
 function Ground.Disable(api)
     if api.InCombatLockdown() then return false end

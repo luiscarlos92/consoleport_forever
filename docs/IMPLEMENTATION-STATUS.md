@@ -1,3 +1,43 @@
+## Prepared targeting repair - October 8, 2026 (DO NOT DEPLOY)
+
+The user is playing and explicitly authorizes checkout-only diagnosis and repair.
+Candidate.11 restores only ground placement in native recovery. Native ConsolePort
+continues to own gameplay bindings, UpdateState, action pages and UI ownership;
+Forever SecureModes, UI takeover and hidden-control replacement remain suspended.
+Candidate.10 remains installed. No live AddOns/WTF writes or installer calls.
+
+ConsolePort 3.3.10 has center/free-cursor reticle settings, but its own Variables.lua
+recommends @cursor macros for single-click placement; it has no per-spell placement
+policy. Forever's existing code was suspended in candidate.10. The prior ground
+harness invented an owner argument. Actual Blizzard RestrictedExecution provides
+control, not that extra parameter. Correcting the harness reproduces the old
+nil-owner failure before dispatch (evidence/targeting/native-control-before.txt).
+Use control for Forever's references/commands. The pinned LAB click handler also
+uses an owner upvalue; initialize the native group header's missing upvalue without
+replacing an existing value. Do not patch vendor files. This establishes a concrete
+source-level failure; exact live-client taint/root cause remains unproven.
+
+Targeting preferences retain account-wide cursor/player/manual choices, add separate
+per-spell vehicle/override/temporary/extra overrides, encountered abilities and a
+spell-ID entry. Only qualified ground spells auto-place by default. Unknown spells
+retain native behavior until explicitly configured. Context selection follows the
+resolved native action slot, including Blizzard overflow/extra controls; it no longer
+depends on Forever special-bank paging or mode activation. Macros/items/flyouts,
+empowered spells and native UI/drag ownership keep native dispatch. No saved macros,
+bindings, live WTF or profile assignments are rewritten by disk preparation.
+
+T12 now uses the actual pinned Blizzard environment manager and native click/action
+handlers. New T42 joins actual Layers/Input engine destinations to CP/LAB/Manager/
+Blizzard macro and UseAction handlers: all 32 chords, both edges, repeated focused-UI
+combat transitions, foreign modal claims, native vehicle overflow/extra contexts,
+ordinary/context isolation and disabled placement. T38 covers context editing and
+custom IDs; bootstrap rejects SecureModes/UI takeover while invoking placement.
+The pack gate rejects partial, duplicate or failed runtime reports. Nine official
+stable Retail sources freshly checked/current; no dependency download or update.
+All 42 runtime/source and 39 tooling checks pass; exact reports are retained. A
+scoped prepared package is required before completion. Actual
+Retail hardware/terrain/taint acceptance remains pending; preparation is not deployment.
+
 # Implementation checkpoint — October 4, 2026
 
 ## Installed native recovery - October 8, 2026, 00:11:20 Toronto

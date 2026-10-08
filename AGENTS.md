@@ -1,3 +1,12 @@
+## Current checkout-only targeting authority
+
+October 8: the user is playing. Diagnose and prepare candidate.11 only; DO NOT
+DEPLOY or write live WTF/AddOns. Candidate.10 remains installed. Targeting may be
+restored independently of native recovery, but keep SecureModes, UI takeover and
+hidden controls suspended. Run T12 with actual Blizzard restricted environment and
+T42 full native bindings-to-action dispatch, as well as T41 and the full suite.
+See docs/TARGETING-REPAIR-2026-10-08.md. Older installed checkpoints below are history.
+
 # ConsolePort Forever working rules
 
 Read `docs/MASTER-PLAN.md` and the current implementation checkpoint. User

@@ -639,3 +639,25 @@ Verify an old held UI release does not cast/click anything and the next fresh pr
 works. Repeat leaving/re-entering combat, target changes, ground spells and vehicles.
 The offline regression must call native UseAction through engine bindings; visual
 buttons alone cannot pass this test. Actual Retail acceptance remains user-owned.
+
+## Case 44 - prepared native-recovery targeting (candidate.11; not installed)
+
+Only after a separately authorized closed-WoW deployment: enable reviewed ground
+placement and open ConsolePort settings > Targeting. Choose cursor/player/manual
+for a ground spell, Apply outside combat, and verify exactly one cast with no
+selector for cursor/player. Manual must show the normal selector. Test both
+ActionButtonUseKeyDown settings, target changes, every controller bank, normal
+non-ground abilities, pickup/drag, macros/items/flyouts and empowered spells.
+Enter dummy combat immediately after a focused popup/bag; verify the first and
+subsequent ordinary actions dispatch. Hold/release across owner/page/hide changes;
+no delayed or unrelated cast. Reconnect and repeat leaving/entering combat.
+
+Cycle Ordinary abilities / Vehicle UI / Override / Temporary / Extra action.
+Set different preferences for the same spell and verify actual native temporary
+slots select the correct context while ordinary slots retain their own choice.
+Test native overflow actions 9-12 and extra actions, including encounters where
+controls load late. For unknown reticles use Add spell ID or encountered rows;
+explicitly configure cursor/player. Unconfigured spells retain native targeting.
+Confirm terrain/range failures produce ordinary game feedback. Change spec/character,
+log out normally and verify account-wide saved choices. Check for Lua/protected-action
+errors/taint. All Retail cases remain NOT RUN; offline mocks cannot pass this case.

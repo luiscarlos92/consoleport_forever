@@ -1,0 +1,32 @@
+{
+  "preparedAt": "2026-10-08T04:39:06.594457+00:00",
+  "version": "2.0.0-candidate.11",
+  "configurationRevision": 14,
+  "deploymentAuthorized": false,
+  "deploymentPerformed": false,
+  "installedVersion": "2.0.0-candidate.10",
+  "clientFileVersionReadOnly": "12.1.0.69933",
+  "installedRecoveryReadOnlyComparison": {
+    "files": 50,
+    "mismatches": []
+  },
+  "liveWTFWrites": 0,
+  "dependencyUpdates": [],
+  "runtimeSuites": 42,
+  "toolingTests": 39,
+  "allChecksPassed": true,
+  "reports": {
+    "runtime": {
+      "path": "evidence/test-results/candidate11-runtime.json",
+      "sha256": "480165ed4b391bdfbeb45ba0c1ab95e8c8b5b1dd841298d4f5e323ff0ed3e563"
+    },
+    "tooling": {
+      "path": "evidence/test-results/candidate11-tooling.json",
+      "sha256": "b5d95bdb17a5e82e4859d07cf4c861794e6fcd406643d8590fd73c0e0cfa65ec"
+    }
+  },
+  "beforeFailure": "evidence/targeting/native-control-before.txt",
+  "rootCauseLimit": "Concrete missing-owner secure-contract failure reproduced; actual Retail taint/hardware root cause and acceptance remain unverified.",
+  "runtimeBoundary": "Native recovery retains CP bindings/pages/UI; only narrow placement adapter restored.",
+  "manualCase": 44
+}

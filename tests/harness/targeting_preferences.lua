@@ -35,6 +35,8 @@ function Frame:Hide() self.shown=false end
 function Frame:Show() local changed=not self.shown self.shown=true if changed and self.scripts.OnShow then self.scripts.OnShow(self) end end
 function Frame:SetScript(key,fn) self.scripts[key]=fn end
 function Frame:RegisterEvent() end
+function Frame:SetAutoFocus() end function Frame:SetNumeric() end
+function Frame:GetText() return self.text end
 function Frame:SetText(text) self.text=text end
 function Frame:SetPoint() end function Frame:ClearAllPoints() end function Frame:SetSize(w,h) self.w,self.h=w,h end
 function Frame:SetHeight(h) self.h=h end function Frame:SetParent(p) self.parent=p end function Frame:SetID(id) self.id=id end
@@ -76,7 +78,7 @@ assert(panel.parent==container and navCount==1)
 env:TriggerEvent('OnPanelLoad',panel.id)
 assert(panel.shown and canvas.shown and #canvas.rows==#Prefs.Classes.DEMONHUNTER+5)
 local flame
-for _,row in ipairs(canvas.rows) do if row.title.text==Addon.GroundSpells[204596] then flame=row end end
+for _,row in ipairs(canvas.rows) do if row.title.text==Addon.GroundSpells[204596]..' (204596)' then flame=row end end
 assert(flame and flame.choice.text=='At player')
 flame.choice.scripts.OnClick() assert(flame.choice.text=='Manual placement')
 assert(Prefs.Read(account).spells[204596]=='player','click saved before Apply')
@@ -87,4 +89,24 @@ assert(Prefs.Read(account).spells[204596]=='manual' and refreshes==1)
 panel:OnDefaults()
 assert(Addon.TargetingUI.draft.spells[204596]==nil and Prefs.Read(account).spells[204596]=='manual')
 assert(navCount==1) Addon.TargetingUI:Initialize(api) assert(navCount==1)
+-- Per-context spell choices override ordinary choices without changing them.
+canvas.context.scripts.OnClick()
+assert(Addon.TargetingUI.context=='vehicle')
+flame.choice.scripts.OnClick() -- Default -> cursor for this spell in vehicle UI.
+canvas.apply.scripts.OnClick()
+assert(Prefs.Read(account).contextSpells.vehicle[204596]=='cursor')
+assert(Prefs.Read(account).spells[204596]==nil)
+assert(Prefs.Resolve({spells={[204596]='player'},contexts={vehicle='manual'},contextSpells={vehicle={[204596]='cursor'}}},204596,'vehicle')=='cursor')
+assert(not Prefs.Validate({contextSpells={vehicle='bad'}}))
+assert(not Prefs.Validate({contextSpells={fake={}}}))
+canvas.spellID:SetText('999002') canvas.add.scripts.OnClick()
+assert(Addon.TargetingUI.added[999002] and #canvas.rows==#Prefs.Classes.DEMONHUNTER+6)
+canvas.spellID:SetText('invalid') canvas.add.scripts.OnClick()
+assert(canvas.status.text=='Enter a valid spell ID.')
+-- Inherited explicit custom choices must display the same mode they execute.
+Addon.TargetingUI.draft.spells[999001]='player'
+Addon.TargetingUI:Render(api,true)
+local unknown
+for _,row in ipairs(canvas.rows) do if row.title.text=='Quest reticle (999001)' then unknown=row end end
+assert(unknown.choice.text=='Inherited: At player')
 TEST_SUCCESS=true

@@ -21,12 +21,19 @@ function Prefs.Default(id,context)
 end
 function Prefs.Validate(value)
     if type(value)~='table' then return false end
-    if (value.spells~=nil and type(value.spells)~='table') or (value.contexts~=nil and type(value.contexts)~='table') then return false end
+    if (value.spells~=nil and type(value.spells)~='table') or (value.contexts~=nil and type(value.contexts)~='table')
+        or (value.contextSpells~=nil and type(value.contextSpells)~='table') then return false end
     for key,mode in pairs(value.spells or {}) do
         if type(key)~='number' or key<=0 or key%1~=0 or not Prefs.Modes[mode] then return false end
     end
     for key,mode in pairs(value.contexts or {}) do
         if not Prefs.Contexts[key] or not Prefs.Modes[mode] then return false end
+    end
+    for context,spells in pairs(value.contextSpells or {}) do
+        if not Prefs.Contexts[context] or type(spells)~='table' then return false end
+        for id,mode in pairs(spells) do
+            if type(id)~='number' or id<=0 or id%1~=0 or not Prefs.Modes[mode] then return false end
+        end
     end
     return true
 end
@@ -36,6 +43,9 @@ function Prefs.Read(db)
 end
 function Prefs.Resolve(value,id,context)
     if not Prefs.Validate(value) then return 'manual' end
+    local contextual=context and value.contextSpells and value.contextSpells[context]
+    local specific=contextual and contextual[id]
+    if specific and specific~='default' then return specific end
     local chosen=(value.spells or {})[id]
     if chosen and chosen~='default' then return chosen end
     if context then
@@ -44,11 +54,13 @@ function Prefs.Resolve(value,id,context)
     end
     return Prefs.Default(id,context)
 end
-function Prefs.Qualified(value,id)
+function Prefs.Qualified(value,id,context)
     -- An explicit player choice can qualify an encountered temporary reticle.
     -- Neither an unknown action nor a context default is evidence of a reticle.
     local chosen=Prefs.Validate(value) and (value.spells or {})[id]
-    return Addon.GroundSpells[id]~=nil or chosen=='cursor' or chosen=='player'
+    local spells=context and Prefs.Validate(value) and value.contextSpells and value.contextSpells[context]
+    local specific=spells and spells[id]
+    return Addon.GroundSpells[id]~=nil or chosen=='cursor' or chosen=='player' or specific=='cursor' or specific=='player'
 end
 function Prefs.Apply(db,draft,api)
     if api.InCombatLockdown() then return false,'Finish combat before applying targeting preferences.' end
@@ -59,14 +71,17 @@ function Prefs.Apply(db,draft,api)
     db.shared.groundTargeting=Addon.Core.Copy(draft)
     return true
 end
-function Prefs.Rows(class,api,observed)
+function Prefs.Rows(class,api,observed,saved)
     local rows,seen={},{}
     for _,id in ipairs(Prefs.Classes[class] or {}) do
         local info=api.C_Spell and api.C_Spell.GetSpellInfo(id)
         rows[#rows+1]={id=id,name=info and info.name or Addon.GroundSpells[id],known=true}
         seen[id]=true
     end
-    for id in pairs(observed or {}) do
+    local encountered=Addon.Core.Copy(observed or {})
+    for id in pairs(saved and saved.spells or {}) do encountered[id]=true end
+    for _,spells in pairs(saved and saved.contextSpells or {}) do for id in pairs(spells) do encountered[id]=true end end
+    for id in pairs(encountered) do
         if not seen[id] then
             local info=api.C_Spell.GetSpellInfo(id)
             if info and type(info.name)=='string' then rows[#rows+1]={id=id,name=info.name,known=Addon.GroundSpells[id]~=nil,temporary=true} end

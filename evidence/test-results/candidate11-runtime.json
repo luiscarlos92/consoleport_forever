@@ -1,0 +1,367 @@
+{
+  "at": "2026-10-08T04:38:16.307Z",
+  "commit": "531e1c21e266e4b16b35b9deae6d790e0c462ab5",
+  "productHashes": {
+    "addon\\ConsolePort_Forever\\Adapters\\BetterBags.lua": "b3b585023ce2a06dc9e1545d00c3ab15b7fa1558ba7d71878135013557c5bf3c",
+    "addon\\ConsolePort_Forever\\Adapters\\BindingBanks.lua": "415ff7353efaa55645cb2b809fc89eaf58dcda7fd544de322edf96603a772724",
+    "addon\\ConsolePort_Forever\\Adapters\\BindingState.lua": "ae63a75e4d55e4ad51966900b71dd8ec4d6e944cdb49da83e4553a4db21c050d",
+    "addon\\ConsolePort_Forever\\Adapters\\ConsolePort.lua": "c2b03ceb1bb0b2e0cb834cf5a644fc4f0f5a9023329527f6f22bbbe9e6e3f3b0",
+    "addon\\ConsolePort_Forever\\Adapters\\DynamicCam.lua": "1313a023223048955e06d11f053134c0bb298ee310ca06a915b306f8ce15e1d1",
+    "addon\\ConsolePort_Forever\\Adapters\\EditMode.lua": "676c351c2148adcf0606c783fc02c26e41c0a0b0a80883670e200c610fbbe559",
+    "addon\\ConsolePort_Forever\\Adapters\\FlatConfig.lua": "8a9c589d6b15b844ee6da75b066992aac8cb4a01074a5fd5d40ed4203a15cef9",
+    "addon\\ConsolePort_Forever\\Adapters\\Integrations.lua": "a9ed4dbc92901a262dfa1dee533f4eb50d232c80d6a790697f17bcaa7e7a664d",
+    "addon\\ConsolePort_Forever\\Adapters\\LiteMount.lua": "fc0f6440312f73a6118d4d8bf6678d608d87ce6f0502e8984cc5e37030479877",
+    "addon\\ConsolePort_Forever\\Adapters\\NativeBindings.lua": "38f079727662edfe49f2fc5ec9b0fb8b272f68ca2ad0f4199d7f6b0400d9560a",
+    "addon\\ConsolePort_Forever\\Adapters\\Rings.lua": "add8f4520014c12fe3771121e9d591083dcc756c982f408edcbe5a659d078000",
+    "addon\\ConsolePort_Forever\\Assets\\ForeverInGame.blp": "9daccf7f192871a876ede143a14f4cc453a726ac271fc89d0e30a5610b5a673f",
+    "addon\\ConsolePort_Forever\\Assets\\ForeverTargeting.blp": "f1cbdf024b1d397abe318dd9caaf67f6c0ab6c5406d03873a456aa48e7b76760",
+    "addon\\ConsolePort_Forever\\Baseline.lua": "01e1179abcc30856a867748bd594fe9f442b23121cbc34f2af840f34afaf6457",
+    "addon\\ConsolePort_Forever\\BindingPolicy.lua": "e5ae98e58300d17d70dd541b0a366fcfa7fa518fef8e4c38614b1ff3302e1cc3",
+    "addon\\ConsolePort_Forever\\Bindings.lua": "faecc497f79d9d7437f87e809844fc7144ab722e33afd89245578461bc232a8f",
+    "addon\\ConsolePort_Forever\\Capability.lua": "72ba730d2f821aed9a1c20204d7e93d49698d2270a503495617400f72a76d077",
+    "addon\\ConsolePort_Forever\\Cinematic.lua": "6fbc8ee07ce8f986580615cdb2db9288d9b786f40a3024e32c4e70765bdb89dd",
+    "addon\\ConsolePort_Forever\\ConsolePort_Forever.lua": "cead8c5522278fb3e6f37c784cf3fc1e3c00ffd032f69cda7b7b652dc1f973cb",
+    "addon\\ConsolePort_Forever\\ConsolePort_Forever.toc": "971385f4a24d3abb398719db9a37d0570399bd5a0a01b811896e7c654691025a",
+    "addon\\ConsolePort_Forever\\Coordinator.lua": "7ec5738efef6e56e1f172b9a4304126910b1aa79f1f3ae5100e68ad41a54e87e",
+    "addon\\ConsolePort_Forever\\Core.lua": "82d58af0dae095215454d86b85a351834a4c4bf21519f549904c56d504dad8f6",
+    "addon\\ConsolePort_Forever\\Diagnostics.lua": "12e4ce3839edf3103b971eb918563d76236803ba6d7eea2d8b95125054f6995a",
+    "addon\\ConsolePort_Forever\\Layout.lua": "486f4267fe9c5ef217ec87e229ac1ced9a21ace92d579eb9d91f9c7b5e75fef3",
+    "addon\\ConsolePort_Forever\\ModePolicy.lua": "72ee64c6985d3fc288cce62b2351bf8254364e4f94dfba77fb34dcbc8fa739ba",
+    "addon\\ConsolePort_Forever\\Plan.lua": "654eadebfa115b3c480d555099609114f511561aaa558a05a5af2bcf6d1500af",
+    "addon\\ConsolePort_Forever\\Profile.lua": "e18af174f280801bcb410c34d2d1cbc6ba55653bcbb08d5d9d7ba9b99eab20e4",
+    "addon\\ConsolePort_Forever\\Prompt.lua": "976c8cab8db6b67d6e02e377e51f44148d139f8590159bc452cff5b0dd000d9b",
+    "addon\\ConsolePort_Forever\\Reference.lua": "eb0961ddb5afa76dc55b9d01a6663159d8c378cb5a628331a6d8264735a36d30",
+    "addon\\ConsolePort_Forever\\Rings\\Discovery.lua": "04e6c8b1e26ae570fad970815b46fe1bfbba876cb1a1fc58345c9b9b9b957e4c",
+    "addon\\ConsolePort_Forever\\Rings\\Selectors.lua": "32ac2e6a837a2f8008ab082e1d4ed991bb617528707d9b2102e8cac35e21b49d",
+    "addon\\ConsolePort_Forever\\Runtime.lua": "d408e874d6293ffbd2d34b7252256bdcbf7be621cb47707fbc1ab9cf531f54bf",
+    "addon\\ConsolePort_Forever\\RuntimeSetup.lua": "d45bd15ee596f3b10ce9c9150675762f4a301318edcdf25721af780b744ecc53",
+    "addon\\ConsolePort_Forever\\SecureModes.lua": "032bd31b8bb620560f5f20ac81dc1156473702217d5845d5558e336a87a659b2",
+    "addon\\ConsolePort_Forever\\Skin.lua": "94a1b85a703985b2b8a8917678ccb14c2d9732b61027f30d2f8ea0d2f27714be",
+    "addon\\ConsolePort_Forever\\Store.lua": "80ec4ac1f181d7e7da842bc02b1456d67d552d819959b61a08a7490b43f28fa1",
+    "addon\\ConsolePort_Forever\\Targeting\\Ground.lua": "d9ca2dcd5320e1003201b79f9c1796f731acda042cb058b55f848af59844aadd",
+    "addon\\ConsolePort_Forever\\Targeting\\Preferences.lua": "3f090e78c851c8aea049f24df970d224651ace6c02eaa78266140525f06b39eb",
+    "addon\\ConsolePort_Forever\\Targeting\\Registry.lua": "8d2719c31db73844ab3c9205b8dc97ec7f41a21f3fca26e271fb43653adabd2b",
+    "addon\\ConsolePort_Forever\\TemporaryAccess.lua": "364f9ca8043f2ca6407baf95255949727c1034bf1420a5db94782a0c547f0247",
+    "addon\\ConsolePort_Forever\\Transactions.lua": "b5950dd8bafcaba5eb1ce6d27dc93f7a6178d7a6d0dbb2191f59f6ede25b245a",
+    "addon\\ConsolePort_Forever\\UI\\Contexts.lua": "0452cee7bd5337c4c0278eb87edccd178be473f53dd42c09c21f92bb6bf04b57",
+    "addon\\ConsolePort_Forever\\UI\\FocusVisuals.lua": "faa24f4998fc8a0acdffcb9f0209af22c237880a58999cc1c3a44a69e3f1a832",
+    "addon\\ConsolePort_Forever\\UI\\HiddenAccess.lua": "ecb395b7b08ba0490176c3b42eb68e566e3e92813fb32d3ac6e9cca7b077b1ca",
+    "addon\\ConsolePort_Forever\\UI\\InputBridge.lua": "381638c8a568cf048f4abca00340a55b12de04ff3fe10f5b889f0177e6ab4922",
+    "addon\\ConsolePort_Forever\\UI\\ItemHints.lua": "aec2c1eab3e992358af7e48f342e834e047c56be08c56a3d0b58c85acd65a815",
+    "addon\\ConsolePort_Forever\\UI\\Map.lua": "33d7a5762ba2eae61bad42f0872ad13777c05fd14c96702c5778dad04bbb5059",
+    "addon\\ConsolePort_Forever\\UI\\Ownership.lua": "0bb3b1c386073e63c377475b783ddc370b6daba1a2bc9cf4301e90ca92b1accd",
+    "addon\\ConsolePort_Forever\\UI\\PartyLayout.lua": "a84175418653a72b581e063563f72237946c431c3c0f5cd8be852c05459705ed",
+    "addon\\ConsolePort_Forever\\UI\\Proof.lua": "dfded378c684848cfdd329d43abd1b5efdb7528f74ee2a0d9bf4098146463ec1",
+    "addon\\ConsolePort_Forever\\UI\\Scroll.lua": "f8c81f1e7710a312e38d1f5fa15929250cee951d996715f55ceb8bec3a579d25",
+    "addon\\ConsolePort_Forever\\UI\\Targeting.lua": "f6c6e6c6827c1073f53954e40658aa74c718139b1f20c8f4179d64ad6dc372b9",
+    "addon\\ConsolePort_Forever\\UI\\Windows.lua": "2301f8c937c2f41d22a6698b3bbb2d63839c42dd6bd45fdbd9fdcbbcbf58eca7"
+  },
+  "toolingHashes": {
+    "tools\\Assemble-Pack.ps1": "369eddda7a5488b5e7fcbd6cbf9c97e7f8c615e3a13581d1e4f419e4554cb211",
+    "tools\\assemble_pack.py": "34a54aeedd33a95bf7cb2ca7737d21c31ff70a9d4c2b16e6f121c8b2cc5de6f9",
+    "tools\\audit_dependencies.py": "92bcc53f6482892214167154f5f783a78605e816f633b6f99831097bbd4fe11f",
+    "tools\\audit_migration.py": "74e6e1f2040fca2da640767dfcba27eab0d38b201e36de682db3294ec8aa0941",
+    "tools\\Build-Pack.ps1": "c9b76402cfabc5d15352dfc8e64ce153e1334abc14f7caee72331b39a88cdb41",
+    "tools\\build_pack.py": "869515318d1fa46f9449702ffda36617ca0df55fa60a32e029b0a474068f7b86",
+    "tools\\build_update.py": "05b51eee6a1699936a00974c96da82e2edcb68233cde53ac7ecc2d5c21ade111",
+    "tools\\Capture-Baseline.py": "2111abb9b1eebfd3eeca87573d4f916ecb477300cb1c1211a8315dc1099ecbdd",
+    "tools\\capture_cp_contracts.py": "a2379a0c04a1e4a5f32ac3fa5ec605bdb8d9f074744b80bd651a53864cdd676f",
+    "tools\\capture_integration_contracts.py": "70f36b9374ae12334e11bd5ea734de6cd80dec868aa973921c7b305d3cd9861e",
+    "tools\\capture_voice_provenance.py": "fb48bc562aaf3b1fe97b4bf7604a0855faefb4fc8e2c4cfb689addcad020462f",
+    "tools\\check_stable_sources.py": "ae28737882464f8b02a89f66da640594a291696330ef2d958dbf4dd978dc62e9",
+    "tools\\deployment_guard.py": "e38bcae029038554c79261d08750743e12354c2a524aaf2a7a792be7b61e346f",
+    "tools\\deploy_companion.py": "501f02335f0033d559873c78abdb68051b3684b488360442fde8cf5da9a17be0",
+    "tools\\deploy_update.py": "5ade7c36856fa2b2e78024087cedeebf3a108d5e2978fc9f49609087404f0d23",
+    "tools\\dry_run_pack.py": "bb96ff4f47cc4943b51c663e4b0b169ee6bb66d69ac9a3f7be0691a13e7b5bb9",
+    "tools\\dualsense_live_client.py": "394bd381305ffb1687a800cd1934ac17b89221f7bf4700891069fa850e8974ae",
+    "tools\\extract_reference.cjs": "13b397bbe6e057ef485b7fc8bc533e77fc63d18fd9380d69161e9d1f20cd199b",
+    "tools\\fetch_native_sources.py": "5a2d40a59f4bd9d281f4a92abc594504721efba6b802186827daff970b391671",
+    "tools\\gamepad_selftest.py": "310afaa953c8f59bcb592cc98d54d4bd86260d2e7ad0926345c06cf44d321141",
+    "tools\\Install-Pack.ps1": "3bc8b9861831955ceb181c97dd69cd445e80365db67453cff6ec4733fa729ad7",
+    "tools\\install_pack.py": "62bb972a7d4ebe2fb539236a5b7d9b4f68a9263c0a38fdc2356540ac4a9cbf39",
+    "tools\\inventory_media.py": "739beb1312bb546457900ef52aefd4f471a70567b4d57b77e93f2583a7a300ed",
+    "tools\\inventory_notices.py": "f76e0c17bcbb6bde41a802e6eca7e6cf86029642616b6f3ac57c5ff7e48535ae",
+    "tools\\lua_equivalence.cjs": "fe6d2ed47adb824174d6eb1d960970b0e94c51e1ad4cf3d3ed120f27b6e9ed1d",
+    "tools\\pack_format.py": "b2c2aefd7f578af839b9b773b390c212cc19bd964b9eb55964374accab721063",
+    "tools\\prepare_gamepad_test_client.py": "36fd44a3ae065c12b9b13aa18da541c0c00a52c587e60b38777f2814ef7d8d81",
+    "tools\\repository_paths.cjs": "345b5d3cd1c075f0134b636e340662c66db7a0c6dd242d020e930fadb345c8e7",
+    "tools\\repository_paths.py": "8e970760af8e308c3e526548279d46de3fb585fa314f93cb89ba4e5287165b7e",
+    "tools\\Resolve-Dependencies.ps1": "84abdb50defd2bbc72d887a86f80b77d004d4ccd97eaa2c94404fa7ac146c79a",
+    "tools\\resolve_dependencies.py": "de7d023d4ca60db3434d15228e5c95939a6e2f44166081371deb32c51dae8c63",
+    "tools\\Restore-Pack.ps1": "e20b8cb16d59f9c70e6875ef2c2ad33eb53b396946c1492000702333a44a603c",
+    "tools\\review_notices.py": "152533b68b39bed72f7a4b6f6360595dbef067757fa92862e247e3c351bb0887",
+    "tools\\run_tool_tests.py": "5a2cebae3864112e18202ee7cc406fa9ae7d961c252b0c27038c59176bd274f2",
+    "tools\\saved_variables.cjs": "c9ceffe13e95b6f95f46576a5e77a7a479e837b33a0d7454c566a2e033a47109",
+    "tools\\test-all.cjs": "6bf623e6773d3c617b2334f043eef9a1251f269572cb1e993ae584b4e0ef5691",
+    "tools\\Test-All.ps1": "e7979b2b1c53ccf248f269b36e5bcfeb5116230c2e978700bffe94f812f47b9d",
+    "tools\\Verify-Pack.ps1": "1fd3ec3069324a9542e7b86354ab9688bf36e6e4ed89842354cdd7a48523486b",
+    "tools\\verify_pack.py": "d87e89f729fc4ca4d8bb82c268866e65037bffd5b36e234921447596d9e6e890",
+    "tools\\verify_pinned_sources.py": "64402d4b4691e291c1a677856c9613a8ce76c9a4181f621721c222dbe19c23dd",
+    "tests\\fixtures\\historical-sandbox\\installer_harness.lua": "8a2fb2bd65936c36f8e501fb778bc5355caee80e28ffffa5ef7c1a78ed43546b",
+    "tests\\fixtures\\historical-sandbox\\runtime_harness.lua": "1b5a4bb700bb0d1741904ebdd3038999ba9df02a88b7d9f44dcca2e6e3313f51",
+    "tests\\fixtures\\historical-sandbox\\skin_harness.lua": "f2457ff54e686bec502e9399f3727e02bbcc4336ef6f6ea74203a0ae1768ef6d",
+    "tests\\fixtures\\historical-sandbox\\_retail_\\Interface\\AddOns\\ConsolePort_Forever\\Assets\\ForeverInGame.blp": "9daccf7f192871a876ede143a14f4cc453a726ac271fc89d0e30a5610b5a673f",
+    "tests\\fixtures\\historical-sandbox\\_retail_\\Interface\\AddOns\\ConsolePort_Forever\\Assets\\ForeverTargeting.blp": "f1cbdf024b1d397abe318dd9caaf67f6c0ab6c5406d03873a456aa48e7b76760",
+    "tests\\fixtures\\historical-sandbox\\_retail_\\Interface\\AddOns\\ConsolePort_Forever\\Bindings.lua": "faecc497f79d9d7437f87e809844fc7144ab722e33afd89245578461bc232a8f",
+    "tests\\fixtures\\historical-sandbox\\_retail_\\Interface\\AddOns\\ConsolePort_Forever\\ConsolePort_Forever.lua": "099b5a6b985d4e661beaa182c42cc48f5f275eb74978f3e345a27d5af47632c2",
+    "tests\\fixtures\\historical-sandbox\\_retail_\\Interface\\AddOns\\ConsolePort_Forever\\ConsolePort_Forever.toc": "afda2aea59cb187a16c5d4a6e1ce34d7b9127cfa24af4da72a23c76af5bae5d3",
+    "tests\\fixtures\\historical-sandbox\\_retail_\\Interface\\AddOns\\ConsolePort_Forever\\Layout.lua": "486f4267fe9c5ef217ec87e229ac1ced9a21ace92d579eb9d91f9c7b5e75fef3",
+    "tests\\fixtures\\historical-sandbox\\_retail_\\Interface\\AddOns\\ConsolePort_Forever\\Profile.lua": "e18af174f280801bcb410c34d2d1cbc6ba55653bcbb08d5d9d7ba9b99eab20e4",
+    "tests\\fixtures\\historical-sandbox\\_retail_\\Interface\\AddOns\\ConsolePort_Forever\\Runtime.lua": "fffc41c25d908e30ad011ca9798d00324d9d4d1c94672b634cbd46e3b863c26b",
+    "tests\\fixtures\\historical-sandbox\\_retail_\\Interface\\AddOns\\ConsolePort_Forever\\Skin.lua": "4800b78ab8fba4cc6dab1db9e6ffe8f1121fe3dfd22c6515a1069f5fa6947f04",
+    "tests\\harness\\adapters.lua": "bc55e2b7ff0ba9afd12b086fc81e06b0b2b1e40e77d81c222cc55ad73af47851",
+    "tests\\harness\\betterbags.lua": "c0601ca00c115b39a25994be8f91dd24c3f9df7d35df6aad84f6bd93dc0a2443",
+    "tests\\harness\\binding_banks.lua": "5bdb4b2d7cadc7ebce415a482b87c10e20685ac1d174bc9527d9656c78b28822",
+    "tests\\harness\\bootstrap.lua": "e44c1ac52a6dc2d91bd7b83668d41e9598e785e76f8bec90cbb78ae1d384f4d3",
+    "tests\\harness\\cinematic.lua": "4a49bd54f4b736525eafb5cee3767d984c82789594e91edef91a88216a561d9a",
+    "tests\\harness\\combat_dispatch.lua": "3476ce50bc37560c7116c319e1db8dad751cb20a1746853396e7d0fb4ee6953f",
+    "tests\\harness\\coordinator.lua": "b90ca02834371acce687cbadcfd6df5793c6e980799696b5b2f92728401c28eb",
+    "tests\\harness\\cp_3310.lua": "01584880489549aa9969b11ba4d3d192e89207846b66d24124b71cb0e5f3f682",
+    "tests\\harness\\cp_editmode_hover.lua": "ce2b6f993e41e85866b41e522c93a1c22fb2df03c64ac5b2e586f76529ab000e",
+    "tests\\harness\\cp_shared_layout.lua": "fd64db94e94fe9b848e693f1bc03a8147aa685a97eeadead53f45909996bc789",
+    "tests\\harness\\cp_upgrade.lua": "9dc0fa3aa77f9b410c530bcdd736c803ce5a63b63687b2bb1a94582a79f58b1d",
+    "tests\\harness\\dynamiccam.lua": "8c658b6c204d7a0b3e486343000e7b2fbe6513340c6f529e4713c1665fada521",
+    "tests\\harness\\flat_integrations.lua": "4677d66676654af2531c87ec6828272f5f61d0319d8c17ea189bb121fa943576",
+    "tests\\harness\\focus_visuals.lua": "c5138e8aa3a7430ecb53e93fd4a984027661dfddde1dc0839909385752b8be2e",
+    "tests\\harness\\foundations.lua": "35541474124e3e4a4df01bae6cab330539473e391941d3d664c83d602a2cec31",
+    "tests\\harness\\ground_targeting.lua": "396c531c1bf81b9a9e2dd001e5ef6b6c2b79ea161dd50c97231fb1e79bf6de29",
+    "tests\\harness\\hidden_access.lua": "77874221703fdb6919f51129d4b54915e4ccbf69a5d752f949d01c7f5ffeae5a",
+    "tests\\harness\\item_hints.lua": "85b59708c0adb63ea469e0b960e40d77eba4ef4dcb5047b016a766cb548a457d",
+    "tests\\harness\\litemount.lua": "42963ceb0483b7396a7c9c22e50936134778db196fd8277b008808a2e54a7b54",
+    "tests\\harness\\map.lua": "26aec15ce6a37be2e55f2f0c2649d42ce16348cc50ac97ff1d432be50913546f",
+    "tests\\harness\\native_bindings.lua": "18e506511ed53a2fc47f103352efd5f934e0df90776ca1bd6e507c66fcbb00f4",
+    "tests\\harness\\native_targeting_dispatch.lua": "b814ca695a3a3caccf50876d8392f111d6646561d7d5de3d2ffdfd1abf7a7f1f",
+    "tests\\harness\\party_layout.lua": "58c2b422fd250c24e57c9ef51a230b503119bca5c2b7efa9f8be676c4c28b585",
+    "tests\\harness\\policies.lua": "b2954115683ccdd1ec7ad54854e8245aa0751443bd005bf55303da1cc80338ad",
+    "tests\\harness\\presentation.lua": "cff24c618207b17cfcc0956c21b16549c675646c698c77fc357b8a13d2362613",
+    "tests\\harness\\prompt.lua": "a6e6f7f150e41a7b4f9f45565ad4189cad29a04f8c9b547ce8764724e78e992e",
+    "tests\\harness\\rings.lua": "384f0c47736333f4002787d3c8d3fa2a12f6bf569f1400a73c1810dd2577fc96",
+    "tests\\harness\\ring_discovery.lua": "108c98e8c4151d4d97fcdc5d9615d02c862a9550940e96c3198927d37226e4cc",
+    "tests\\harness\\ring_selectors.lua": "9c2b8f518a0e4830eb7da4d973eb5f05df9dbad86b93fc0fefcf4043d6f6cf55",
+    "tests\\harness\\secure_modes.lua": "88d7e650b227ae284c7fbcf6930b6c8a50db899fe9f742ccda6a2f36aa2c418b",
+    "tests\\harness\\targeting_engine.lua": "dcaab005e0d3d66bcbea3867f8f772885850e8b6a9c06527559bd2c038b02744",
+    "tests\\harness\\targeting_preferences.lua": "76485c98912dbb6fae574ed62444649eaec8d14050c2de4f12a0b02be765f170",
+    "tests\\harness\\ui_contexts.lua": "b0d1dacdfec557cb940a97a0d9c1b21c71626298664fbf08e6cf3ca1a903bc05",
+    "tests\\harness\\ui_scroll.lua": "e878b077ffde940e4d81ffe8fe6b5fc62e7d4b7210870a3eb92ddc4809ecd30f",
+    "tests\\harness\\ui_windows.lua": "333c63e7dc7a05ce0b40277bf3126b69ec0a20536ee49dee3a97b8426666aa5e",
+    "tests\\harness\\visibility.lua": "7c380a9b64030fb91b38c3e9a24477df35412f4eae09d0d9f621bcaf1f1f11c1",
+    "tests\\test_build_gates.py": "d428da9e4b42797c9c90c90ced95f5a915335f7cc15b4e0c3120e30c3ae7a2b2",
+    "tests\\test_pack.py": "728dcc265659f211e69620ebeee2f316583b96cdc4baabedfeb436fc6447e4b7",
+    "tests\\test_tools.py": "2f4653750307f646b39a81bfd63a50b301dffbfb3c2a3dfbd6b3009eeaef8803",
+    "tests\\test_updates.py": "8010eaa3c01e4295db945bfa0b0ce23a1c699cb090ba6be6fe7d37efbc21d1ac"
+  },
+  "pinnedDependencyLockSHA256": "9b4f3625885b5b90cd62a9a53b4efefd7d8bc50ad4b02ffc13372a416bb98bca",
+  "limitation": "Fengari uses Lua 5.3 semantics. Lua 5.1 syntax checked separately. No Retail secure/hardware proof.",
+  "results": [
+    {
+      "id": "T01.snapshot",
+      "status": "passed",
+      "ms": 8444
+    },
+    {
+      "id": "T27.lua51",
+      "status": "passed",
+      "ms": 114
+    },
+    {
+      "id": "T04-T09.foundations",
+      "status": "passed",
+      "ms": 298
+    },
+    {
+      "id": "T05.sequential-VM-persistence",
+      "status": "passed",
+      "ms": 346
+    },
+    {
+      "id": "T06-T14-T16.policies",
+      "status": "passed",
+      "ms": 142
+    },
+    {
+      "id": "T18.current-native-ring-discovery",
+      "status": "passed",
+      "ms": 147
+    },
+    {
+      "id": "T18.learned-selector-preparation",
+      "status": "passed",
+      "ms": 95
+    },
+    {
+      "id": "T05-T18.GUID-native-ring-projection",
+      "status": "passed",
+      "ms": 581
+    },
+    {
+      "id": "T07.native-binding-readiness",
+      "status": "passed",
+      "ms": 82
+    },
+    {
+      "id": "T09-T10.coordinator",
+      "status": "passed",
+      "ms": 122
+    },
+    {
+      "id": "T07-T09.both-binding-bank-restore",
+      "status": "passed",
+      "ms": 395
+    },
+    {
+      "id": "T08-T10.review-details",
+      "status": "passed",
+      "ms": 74
+    },
+    {
+      "id": "T12-T13.adapters",
+      "status": "passed",
+      "ms": 80
+    },
+    {
+      "id": "T13.pinned-flat-integration-settings",
+      "status": "passed",
+      "ms": 103
+    },
+    {
+      "id": "T13.current-DynamicCam-AceDB",
+      "status": "passed",
+      "ms": 952
+    },
+    {
+      "id": "T21.focus-visuals-proof",
+      "status": "passed",
+      "ms": 58
+    },
+    {
+      "id": "T16-T20-T22.current-native-UI-contexts",
+      "status": "passed",
+      "ms": 4736
+    },
+    {
+      "id": "T41.native-combat-engine-dispatch-after-UI-ownership",
+      "status": "passed",
+      "ms": 12581
+    },
+    {
+      "id": "T20.current-native-window-controls",
+      "status": "passed",
+      "ms": 11443
+    },
+    {
+      "id": "T21-T22.native-BetterBags-item-guards",
+      "status": "passed",
+      "ms": 13766
+    },
+    {
+      "id": "T35.native-merchant-container-hints",
+      "status": "passed",
+      "ms": 16460
+    },
+    {
+      "id": "T20.native-UI-stick-scroll-ownership",
+      "status": "passed",
+      "ms": 14008
+    },
+    {
+      "id": "T21.native-map-canvas-controls",
+      "status": "passed",
+      "ms": 19840
+    },
+    {
+      "id": "T24.current-native-presentation-lifecycle",
+      "status": "passed",
+      "ms": 299
+    },
+    {
+      "id": "T13.native-LiteMount-binding-icons",
+      "status": "passed",
+      "ms": 63
+    },
+    {
+      "id": "T23.native-cinematic-held-skip-gate",
+      "status": "passed",
+      "ms": 15545
+    },
+    {
+      "id": "T14.current-ConsolePort-secure-contract",
+      "status": "passed",
+      "ms": 3415
+    },
+    {
+      "id": "T12.current-native-ground-targeting",
+      "status": "passed",
+      "ms": 3741
+    },
+    {
+      "id": "T42.native-targeting-combat-bindings-full-dispatch",
+      "status": "passed",
+      "ms": 23022
+    },
+    {
+      "id": "T36.native-party-layout-default",
+      "status": "passed",
+      "ms": 608
+    },
+    {
+      "id": "T38.account-targeting-native-config-panel",
+      "status": "passed",
+      "ms": 100
+    },
+    {
+      "id": "T39.ConsolePort-3.3.10-layout-compatibility",
+      "status": "passed",
+      "ms": 77
+    },
+    {
+      "id": "T10-T11.product-bootstrap",
+      "status": "passed",
+      "ms": 1470
+    },
+    {
+      "id": "T31.native-visibility-parent-lifecycle",
+      "status": "passed",
+      "ms": 15
+    },
+    {
+      "id": "T40.hidden-controls-native-ring-and-seat-access",
+      "status": "passed",
+      "ms": 97
+    },
+    {
+      "id": "T32.current-ConsolePort-upgrade-contracts",
+      "status": "passed",
+      "ms": 78
+    },
+    {
+      "id": "T33.current-native-shared-bar-layout",
+      "status": "passed",
+      "ms": 65
+    },
+    {
+      "id": "T34.current-native-EditMode-hover-safety",
+      "status": "passed",
+      "ms": 4
+    },
+    {
+      "id": "T01.data-parser",
+      "status": "passed",
+      "ms": 1
+    },
+    {
+      "id": "baseline.installer",
+      "status": "passed",
+      "ms": 63
+    },
+    {
+      "id": "baseline.runtime",
+      "status": "passed",
+      "ms": 4
+    },
+    {
+      "id": "baseline.skin",
+      "status": "passed",
+      "ms": 11
+    }
+  ]
+}

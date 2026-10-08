@@ -390,5 +390,12 @@
     "gitBlob": "4b43122ef9e368e0bc0a31009974837e7e7e22cb",
     "sha256": "da26c5c913562b1a0b887efb100da7f29fd3e892aafaec1f829589e8816a0ff6",
     "url": "https://github.com/Gethe/wow-ui-source/blob/09b9db7948abc9b9648dedaab51eb0cf3ee67b31/Interface/AddOns/Blizzard_ActionBar/Shared/ExtraActionBar.xml"
+  },
+  {
+    "path": "Blizzard_RestrictedAddOnEnvironment/RestrictedExecution.lua",
+    "commit": "09b9db7948abc9b9648dedaab51eb0cf3ee67b31",
+    "gitBlob": "65cce4fc337d15389706b81fd267ac10a74fc728",
+    "sha256": "92651002e47b532a5b6d1ef11e5a5b28aa234af40abf9f950bdb5da4c05d39d8",
+    "url": "https://github.com/Gethe/wow-ui-source/blob/09b9db7948abc9b9648dedaab51eb0cf3ee67b31/Interface/AddOns/Blizzard_RestrictedAddOnEnvironment/RestrictedExecution.lua"
   }
 ]

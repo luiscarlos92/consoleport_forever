@@ -356,7 +356,7 @@ check('T14.current-ConsolePort-secure-contract', () => {
   execute(source+read('tests/harness/secure_modes.lua').replace('--@CURRENT_CP',conversion+'\n'+nativeLoad)
     .replace('--@CURRENT_LAB',lib.slice(lib.indexOf('function Generic:SetState('),lib.indexOf('function Generic:DisableDragNDrop('))),'secure-modes-current-source');
 });
-check('T12.current-native-ground-targeting', () => {
+function groundTargetingFixture() {
   const base='evidence/consoleport-contracts/';
   const native=read(base+'ConsolePort_Bar/Widget/Button/Button.lua');
   const utils=read(base+'ConsolePort/Utils/Utils.lua');
@@ -369,10 +369,13 @@ check('T12.current-native-ground-targeting', () => {
   if(start<0 || end<start) throw Error('native LAB click contract not found');
   const lab='local function installLABClick(button)\n'+lib.slice(start,end)+'\nend';
   const restricted=read('evidence/native/Blizzard_RestrictedAddOnEnvironment/RestrictedEnvironment.lua');
-  for(const name of ['GetActionInfo','IsPressHoldReleaseSpell','IsModifiedClick','IsShiftKeyDown','IsControlKeyDown','IsAltKeyDown']) {
+  for(const name of ['GetActionInfo','IsPressHoldReleaseSpell','IsModifiedClick','IsShiftKeyDown','IsControlKeyDown','IsAltKeyDown','GetVehicleBarIndex','GetOverrideBarIndex','GetTempShapeshiftBarIndex']) {
     if(!restricted.includes(name)) throw Error('ground snippet API unavailable: '+name);
   }
+  const execution=read('evidence/native/Blizzard_RestrictedAddOnEnvironment/RestrictedExecution.lua');
+  const environment=execution.slice(execution.indexOf('local function CreateRestrictedEnvironment('),execution.indexOf('\nend',execution.indexOf('local function CreateRestrictedEnvironment('))+4);
   const fixture=read('tests/harness/ground_targeting.lua')
+    .replace('--@NATIVE_RESTRICTED_ENV',()=>environment)
     .replace('--@CURRENT_CP',conversion+'\n'+native.slice(0,native.indexOf('function SlotButton:OnLoad')))
     .replace('--@NATIVE_MODIFIED_ATTRIBUTES',templates.slice(0,templates.indexOf('function SecureButton_GetUnit(')))
     .replace('--@NATIVE_SECURE_ACTIONS',()=>templates.slice(templates.indexOf('SECURE_ACTIONS.action ='),templates.indexOf('SECURE_ACTIONS.pet ='))+'\n'
@@ -381,12 +384,21 @@ check('T12.current-native-ground-targeting', () => {
     .replace('--@NATIVE_WRAPPED_CLICK',handlers.slice(handlers.indexOf('local function Wrapped_Click('),handlers.indexOf('local function Wrapped_OnEnter(')))
     .replace('--@NATIVE_MANAGER_REROUTE',()=>nativeFunction(base+'ConsolePort_Bar/Controller/Manager/Manager.lua','Manager:RegisterReroute'))
     .replace('--@NATIVE_LAB_CLICK_FACTORY',lab);
-  execute(source+'\n;(function(...)\n'+read('addon/ConsolePort_Forever/RuntimeSetup.lua')+'\nend)("ConsolePort_Forever",Addon);\n'+fixture,'ground-targeting-current-native-source');
+  return fixture;
+}
+check('T12.current-native-ground-targeting', () => {
+  execute(source+'\n;(function(...)\n'+read('addon/ConsolePort_Forever/RuntimeSetup.lua')+'\nend)("ConsolePort_Forever",Addon);\n'+groundTargetingFixture(),'ground-targeting-current-native-source');
   const registry=read('addon/ConsolePort_Forever/Targeting/Registry.lua');
   const evidence=JSON.parse(read('evidence/targeting/ground-spells.json'));
   const ids=[...registry.matchAll(/\[(\d+)\]=/g)].map(m=>Number(m[1])).sort((a,b)=>a-b);
   if(JSON.stringify(ids)!==JSON.stringify(evidence.spells.map(s=>s.id).sort((a,b)=>a-b))) throw Error('ground registry qualification drift');
   for(const spell of evidence.spells) if(!spell.source || !spell.qualification) throw Error('unqualified ground spell '+spell.id);
+});
+check('T42.native-targeting-combat-bindings-full-dispatch', () => {
+  const prelude=groundTargetingFixture().split('assert(Addon.SecureModes.Install(bridge,api))')[0];
+  const adapter=read('tests/harness/targeting_engine.lua');
+  const gameplay=read('tests/harness/native_targeting_dispatch.lua');
+  execute(source+uiContextFixture()+'\n'+adapter+'\nlocal scenario='+JSON.stringify(prelude+'\n'+gameplay)+'\nlocal scope=setmetatable({},{__index=_G}); scope._G=scope; scope.engine=targetingEngine; scope.Addon=Addon; assert(load(scenario,"native-targeting-dispatch","t",scope))(); TEST_SUCCESS=scope.TEST_SUCCESS;','native-targeting-full-dispatch');
 });
 check('T36.native-party-layout-default', () => {
   const base='evidence/native/';

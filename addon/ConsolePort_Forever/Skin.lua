@@ -121,6 +121,7 @@ local function Apply(button)
     if not Addon.IsCharacterInstalled or not Addon:IsCharacterInstalled() then return end
     if not button or not button.icon then return end
     HUD.RetireMasqueNormal(button)
+    HUD.FaceLayers(button)
     if InCombatLockdown() then
         Addon.skinRefreshPending=true
         if button.__cpfFaceMask then RoundStates(button,true) end
@@ -155,7 +156,7 @@ local function Apply(button)
     -- SetAtlas owns its texture coordinates; resetting them exposes its sheet.
     if not button.icon.GetAtlas or not button.icon:GetAtlas() then button.icon:SetTexCoord(0,1,0,1) end
     local bg = button.SlotBackground or button:CreateTexture(nil,"BACKGROUND")
-    button.SlotBackground = bg bg:SetColorTexture(0.04,0.04,0.04,0.65) bg:SetAllPoints(button.icon)
+    button.SlotBackground = bg bg:SetDrawLayer('BACKGROUND',-1) bg:SetColorTexture(0.04,0.04,0.04,0.65) bg:SetAllPoints(button.icon)
     if button.__cpfMaskBackground~=bg or button.__cpfBackgroundMask~=mask then
         if button.__cpfMaskBackground and button.__cpfBackgroundMask and button.__cpfMaskBackground.RemoveMaskTexture then button.__cpfMaskBackground:RemoveMaskTexture(button.__cpfBackgroundMask) end
         bg:AddMaskTexture(mask) button.__cpfMaskBackground=bg button.__cpfBackgroundMask=mask
@@ -305,6 +306,7 @@ local function VisualGetter(object,method)
     if not object or type(object[method])~='function' then return end
     local ok,a,b,c,d=pcall(object[method],object)
     if not ok then return '[query failed]' end
+    if method=='GetDrawLayer' then return {SafeVisualValue(a),SafeVisualValue(b)} end
     if method=='GetVertexColor' then return {SafeVisualValue(a),SafeVisualValue(b),SafeVisualValue(c),SafeVisualValue(d)} end
     return SafeVisualValue(a)
 end
@@ -322,7 +324,7 @@ function Addon:SnapshotFaceVisuals(force)
             snapshot.banks[bankID]=group
             for id,button in pairs(bank.buttons) do
                 local row={kind=SafeVisualValue(button._state_type),action=SafeVisualValue(button._state_action),range=SafeVisualValue(button.outOfRange),incomingColour=button.__cpfLastIncomingColour,zoneDisabled=SafeVisualValue(button.zoneAbilityDisabled),
-                    icon={colour=VisualGetter(button.icon,'GetVertexColor'),alpha=VisualGetter(button.icon,'GetAlpha'),effectiveAlpha=VisualGetter(button.icon,'GetEffectiveAlpha'),desaturated=VisualGetter(button.icon,'IsDesaturated'),desaturation=VisualGetter(button.icon,'GetDesaturation')},layers={}}
+                    icon={drawLayer=VisualGetter(button.icon,'GetDrawLayer'),colour=VisualGetter(button.icon,'GetVertexColor'),alpha=VisualGetter(button.icon,'GetAlpha'),effectiveAlpha=VisualGetter(button.icon,'GetEffectiveAlpha'),desaturated=VisualGetter(button.icon,'IsDesaturated'),desaturation=VisualGetter(button.icon,'GetDesaturation')},layers={}}
                 if type(button.IsUsable)=='function' then
                     local ok,usable,mana=pcall(button.IsUsable,button)
                     row.queryOK=ok row.usable=SafeVisualValue(usable) row.mana=SafeVisualValue(mana)
@@ -336,9 +338,9 @@ function Addon:SnapshotFaceVisuals(force)
                         row.spellQueryOK=queried row.spellUsable=SafeVisualValue(usable) row.spellMana=SafeVisualValue(mana)
                     end
                 end
-                for _,key in ipairs({'NormalTexture','PushedTexture','CheckedTexture','Flash','SpellCastAnimFrame','cooldown','chargeCooldown','lossOfControlCooldown'}) do
+                for _,key in ipairs({'SlotBackground','SlotArt','NormalTexture','PushedTexture','CheckedTexture','Flash','SpellCastAnimFrame','cooldown','chargeCooldown','lossOfControlCooldown'}) do
                     local layer=button[key]
-                    if layer then row.layers[key]={shown=VisualGetter(layer,'IsShown'),alpha=VisualGetter(layer,'GetAlpha'),effectiveAlpha=VisualGetter(layer,'GetEffectiveAlpha')} end
+                    if layer then row.layers[key]={drawLayer=VisualGetter(layer,'GetDrawLayer'),shown=VisualGetter(layer,'IsShown'),alpha=VisualGetter(layer,'GetAlpha'),effectiveAlpha=VisualGetter(layer,'GetEffectiveAlpha')} end
                 end
                 group.buttons[id]=row
             end

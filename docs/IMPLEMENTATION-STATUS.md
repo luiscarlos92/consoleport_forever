@@ -1,3 +1,20 @@
+## Candidate.17 grey-only repair authority — October 8, 2026
+
+User confirms labels, stance placement and native aura row now fixed. Freeze
+those positions/opacity behaviors and the working casting interceptor. Only
+combat grey remains. Candidate.16 saved visual data shows ready face spells with
+white tint, alpha 1, desaturation 0. Follow rendered layer composition rather
+than assuming another usability issue. Native template/actual Masque icon reset
+leaves SlotBackground after Icon in BACKGROUND/0; the filled placeholder matte
+can cover the icon. Candidate.17 puts icons on ARTWORK/0, background below, and
+retires filled backgrounds even after native combat art reset/Show. T53 executes
+actual Masque Icon/art functions, template declaration order and centre-pixel
+composition; old behavior must fail despite white icon getters. Preserve exact
+round art/masks, native gameplay, Ground.lua and class/trigger positioning.
+Revision 17 remains; runtime visuals only, no new migration or filesystem WTF
+writes. Authorized scoped deployment with WoW closed; fresh nine-package stable
+Retail check current, no dependencies changed. See docs/CANDIDATE17-COMPOSITION-2026-10-08.md.
+
 ## Installed candidate.16 — October 8, 2026, 17:07:42 Toronto
 
 Authorized closed-WoW scoped installation completed from tested/pushed source

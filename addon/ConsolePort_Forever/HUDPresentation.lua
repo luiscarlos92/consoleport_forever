@@ -106,6 +106,20 @@ function HUD.EmptySlot(button, mask)
     HUD.EmptyVisibility(button)
     if button.SlotArt then button.SlotArt:Hide() end
 end
+function HUD.FaceLayers(button)
+    -- The native template declares SlotBackground after Icon on BACKGROUND/0.
+    -- Masque's default icon reset restores that same layer. Our black matte
+    -- therefore covered the image even when its tint/opacity were fully usable.
+    button.icon:SetDrawLayer('ARTWORK',0)
+    if button.SlotBackground then button.SlotBackground:SetDrawLayer('BACKGROUND',-1) end
+    for _,key in ipairs({'SlotBackground','SlotArt'}) do
+        local texture=button[key]
+        if texture and texture.Show and not texture.__cpfFilledWatch then
+            texture.__cpfFilledWatch=true
+            hooksecurefunc(texture,'Show',function() HUD.EmptyVisibility(button) end)
+        end
+    end
+end
 function HUD.EmptyVisibility(button)
     if not button.__cpfEmptyArt then return end
     local kind=button._state_type
@@ -122,7 +136,10 @@ function HUD.EmptyVisibility(button)
         local hasAction=C_ActionBar and C_ActionBar.HasAction or HasAction
         if hasAction and Public(slot) and type(slot)=='number' then occupied=hasAction(slot) end
     end
-    if occupied then button.__cpfEmptyArt:Hide()
+    if occupied then
+        button.__cpfEmptyArt:Hide()
+        if button.__cpfFaceMask and button.SlotBackground then button.SlotBackground:Hide() end
+        if button.__cpfFaceMask and button.SlotArt then button.SlotArt:Hide() end
     else button.__cpfEmptyArt:Show() if button.icon then button.icon:Hide() end end
 end
 local STATE_ATLASES={

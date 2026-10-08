@@ -719,6 +719,31 @@ check('T49.ready-round-spells-combat-colour-and-opacity', () => {
   catch(error) { reproduced=String(error).includes('ready round combat spell remains grey'); }
   if(!reproduced) throw Error('ready spell grey tint negative control did not fail');
 });
+check('T53.ready-round-face-native-background-composition', () => {
+  const pkg=JSON.parse(read('dependencies/lock.json')).packages.find(p=>p.repo==='SFX-WoW/Masque');
+  const icon=pkg.unpacked+'/Masque/Core/Regions/Icon.lua',art=pkg.unpacked+'/Masque/Core/Button.lua';
+  if(sha(icon)!==pkg.files['Masque/Core/Regions/Icon.lua'] || sha(art)!==pkg.files['Masque/Core/Button.lua']) throw Error('Native composition source drift');
+  const xml=read('evidence/forever-ui/retail-button-template.xml');
+  const layer=xml.match(/<Layer level="BACKGROUND">([\s\S]*?)<\/Layer>/)[1];
+  const iconPos=layer.indexOf('parentKey="icon"'),bgPos=layer.indexOf('parentKey="SlotBackground"');
+  if(iconPos<0 || bgPos<=iconPos) throw Error('Native template declaration order changed');
+  const fixture=read('tests/harness/face_composition.lua')
+    .replace('--@NATIVE_MASQUE_ICON',()=>nativeFunction(icon,'Core.Skin_Icon'))
+    .replace('--@NATIVE_MASQUE_ART',()=>nativeFunction(art,'UpdateButtonArt'))
+    .replace('--@NATIVE_TEMPLATE_ORDER',()=>`local NATIVE_ICON_ORDER,NATIVE_BACKGROUND_ORDER=${iconPos},${bgPos}`);
+  const observations=JSON.parse(read('evidence/forever-ui/candidate16-ready-face-observations.json'));
+  if(!observations.observedReadyFaces.length || observations.observedReadyFaces.some(r=>r.desaturation!==0 || r.iconAlpha!==1 || r.colour.some(v=>v!==1))) throw Error('Expected actual white-ready-icon evidence absent');
+  const joined=presentationFixture()+fixture;
+  execute(source+joined,'native-round-face-composition');
+  const old=joined
+    .replace('function HUD.FaceLayers(button)','function HUD.FaceLayers(button) return end\nfunction HUD.DisabledFaceLayers(button)')
+    .replace("bg bg:SetDrawLayer('BACKGROUND',-1) bg:SetColorTexture",'bg bg:SetColorTexture')
+    .replace('if button.__cpfFaceMask and button.SlotBackground then button.SlotBackground:Hide() end','-- filled backdrop retirement disabled');
+  let reproduced=false;
+  try { execute(source+old,'unretired-native-face-backdrop'); }
+  catch(error) { reproduced=String(error).includes('ready white-tinted round spell darkened by placeholder backdrop'); }
+  if(!reproduced) throw Error('candidate16 backdrop occlusion negative control did not fail');
+});
 const report = {at:new Date().toISOString(), commit:cp.execFileSync('git',['rev-parse','HEAD'],{cwd:root}).toString().trim(),
   productHashes:Object.fromEntries(files('addon').map(f=>[f,sha(f)])),
   toolingHashes:Object.fromEntries([...files('tools'),...files('tests')].filter(f=>!f.includes('__pycache__')).map(f=>[f,sha(f)])),

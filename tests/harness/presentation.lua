@@ -14,8 +14,10 @@ function hooksecurefunc(object,key,callback)
     local native=object[key]
     object[key]=function(...) local result=native(...) callback(...) return result end
 end
+local regionSequence=0
 local function region(parent)
-    local r={maskCalls=0,parent=parent}
+    regionSequence=regionSequence+1
+    local r={maskCalls=0,parent=parent,sequence=regionSequence,layer={'BACKGROUND',0}}
     for _,method in ipairs({'SetTexCoord','ClearAllPoints','SetPoint','SetSize','SetColorTexture','SetAllPoints','SetSwipeTexture','SetUseCircularEdge'}) do
         r[method]=function(self,...)
             if method=='ClearAllPoints' or method=='SetPoint' or method=='SetSize' or method=='SetAllPoints' then assert(not combat,'combat geometry mutation') end
@@ -24,6 +26,9 @@ local function region(parent)
     end
     function r:SetTexture(value) self.texture=value self.atlas=nil end
     function r:GetAtlas() return self.atlas end
+    function r:GetDrawLayer() return self.layer[1],self.layer[2] end
+    function r:IsShown() return self.shown~=false end
+    function r:GetAlpha() return self.alpha or 1 end
     function r:GetParent() return self.parent end
     function r:SetAtlas(value)
         self.atlas=value self.texture='atlas-sheet'
@@ -105,7 +110,7 @@ function env.MakeID(format,...) return string.format(format,...) end
 local function makeButton(id,bank)
     local button=setmetatable({id=id,parent=bank,_state_type='custom',attributes={state=''},icon=region()},{__index=Frame})
     button.icon.parent=button
-    for _,key in ipairs({'NormalTexture','PushedTexture','HighlightTexture','CheckedTexture','Flash','Border','NewActionTexture','SpellHighlightTexture','cooldown','chargeCooldown','lossOfControlCooldown'}) do button[key]=region(button) end
+    for _,key in ipairs({'SlotBackground','SlotArt','NormalTexture','PushedTexture','HighlightTexture','CheckedTexture','Flash','Border','NewActionTexture','SpellHighlightTexture','cooldown','chargeCooldown','lossOfControlCooldown'}) do button[key]=region(button) end
     function button:GetNormalTexture() return self.NormalTexture end
     button.SpellCastAnimFrame={Fill={FillMask=region(),InnerGlowTexture=region(),CastFill=region()},EndBurst={EndMask=region(),GlowRing=region()}}
     local fxParent=setmetatable({},{__index=Frame})

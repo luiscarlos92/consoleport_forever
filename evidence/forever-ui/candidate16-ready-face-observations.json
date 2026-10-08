@@ -1,0 +1,172 @@
+{
+  "sourceVersion": "2.0.0-candidate.16",
+  "phase": "combat",
+  "observedReadyFaces": [
+    {
+      "bank": "L2",
+      "button": "PAD2",
+      "spell": 53385,
+      "bankAlpha": 0.4509804248809815,
+      "colour": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "iconAlpha": 1,
+      "desaturation": 0,
+      "cooldownShown": false
+    },
+    {
+      "bank": "L2",
+      "button": "PAD3",
+      "spell": 184575,
+      "bankAlpha": 0.4509804248809815,
+      "colour": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "iconAlpha": 1,
+      "desaturation": 0,
+      "cooldownShown": true
+    },
+    {
+      "bank": "L2",
+      "button": "PAD4",
+      "spell": 20271,
+      "bankAlpha": 0.4509804248809815,
+      "colour": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "iconAlpha": 1,
+      "desaturation": 0,
+      "cooldownShown": true
+    },
+    {
+      "bank": "L2",
+      "button": "PAD1",
+      "spell": 383328,
+      "bankAlpha": 0.4509804248809815,
+      "colour": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "iconAlpha": 1,
+      "desaturation": 0,
+      "cooldownShown": false
+    },
+    {
+      "bank": "L2R2",
+      "button": "PAD3",
+      "spell": 6940,
+      "bankAlpha": 0.4509804248809815,
+      "colour": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "iconAlpha": 1,
+      "desaturation": 0,
+      "cooldownShown": false
+    },
+    {
+      "bank": "L2R2",
+      "button": "PAD4",
+      "spell": 115750,
+      "bankAlpha": 0.4509804248809815,
+      "colour": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "iconAlpha": 1,
+      "desaturation": 0,
+      "cooldownShown": false
+    },
+    {
+      "bank": "L2R2",
+      "button": "PAD1",
+      "spell": 1044,
+      "bankAlpha": 0.4509804248809815,
+      "colour": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "iconAlpha": 1,
+      "desaturation": 0,
+      "cooldownShown": false
+    },
+    {
+      "bank": "R2",
+      "button": "PAD2",
+      "spell": 19750,
+      "bankAlpha": 0.4509804248809815,
+      "colour": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "iconAlpha": 1,
+      "desaturation": 0,
+      "cooldownShown": false
+    },
+    {
+      "bank": "R2",
+      "button": "PAD3",
+      "spell": 85673,
+      "bankAlpha": 0.4509804248809815,
+      "colour": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "iconAlpha": 1,
+      "desaturation": 0,
+      "cooldownShown": false
+    },
+    {
+      "bank": "R2",
+      "button": "PAD4",
+      "spell": 403876,
+      "bankAlpha": 0.4509804248809815,
+      "colour": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "iconAlpha": 1,
+      "desaturation": 0,
+      "cooldownShown": false
+    },
+    {
+      "bank": "R2",
+      "button": "PAD1",
+      "spell": 190784,
+      "bankAlpha": 0.4509804248809815,
+      "colour": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "iconAlpha": 1,
+      "desaturation": 0,
+      "cooldownShown": false
+    }
+  ],
+  "note": "Read-only saved client values; omit character/account identifiers and full saved configuration."
+}

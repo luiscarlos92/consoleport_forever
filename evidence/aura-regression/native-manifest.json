@@ -1,0 +1,56 @@
+[
+  {
+    "path": "Blizzard_UnitFrame/Mainline/PaladinPowerBar.lua",
+    "commit": "15666a6e67938a1ab5caf041406464251db111ca",
+    "sha256": "7cae90c9dc5044b2b920aefd35309a90bb982b86d720ecea176ef94794b3f39f",
+    "url": "https://github.com/Gethe/wow-ui-source/blob/15666a6e67938a1ab5caf041406464251db111ca/Interface/AddOns/Blizzard_UnitFrame/Mainline/PaladinPowerBar.lua"
+  },
+  {
+    "path": "Blizzard_UnitFrame/Mainline/PaladinPowerBar.xml",
+    "commit": "15666a6e67938a1ab5caf041406464251db111ca",
+    "sha256": "7aa3c71054c246644c3988db0a237bf11b70837be5f15462cbe55bdc778d0c23",
+    "url": "https://github.com/Gethe/wow-ui-source/blob/15666a6e67938a1ab5caf041406464251db111ca/Interface/AddOns/Blizzard_UnitFrame/Mainline/PaladinPowerBar.xml"
+  },
+  {
+    "path": "Blizzard_UnitFrame/Mainline/ClassPowerBar.lua",
+    "commit": "15666a6e67938a1ab5caf041406464251db111ca",
+    "sha256": "07259b5608766fa207659db35922353056533225b048adfe3c104bd8881a5b8f",
+    "url": "https://github.com/Gethe/wow-ui-source/blob/15666a6e67938a1ab5caf041406464251db111ca/Interface/AddOns/Blizzard_UnitFrame/Mainline/ClassPowerBar.lua"
+  },
+  {
+    "path": "Blizzard_UnitFrame/Mainline/ClassPowerBar.xml",
+    "commit": "15666a6e67938a1ab5caf041406464251db111ca",
+    "sha256": "0bf33feb7d925b3cb2920280cdc168e24d36a71c24c262d1fe3f3b40a9e34c01",
+    "url": "https://github.com/Gethe/wow-ui-source/blob/15666a6e67938a1ab5caf041406464251db111ca/Interface/AddOns/Blizzard_UnitFrame/Mainline/ClassPowerBar.xml"
+  },
+  {
+    "path": "Blizzard_UnitFrame/Mainline/PlayerFrame.lua",
+    "commit": "15666a6e67938a1ab5caf041406464251db111ca",
+    "sha256": "55ea86337799b9cf9fa16338c560c57e4199f4971ff510ed7c052595497d0fb8",
+    "url": "https://github.com/Gethe/wow-ui-source/blob/15666a6e67938a1ab5caf041406464251db111ca/Interface/AddOns/Blizzard_UnitFrame/Mainline/PlayerFrame.lua"
+  },
+  {
+    "path": "Blizzard_UnitFrame/Shared/PlayerFrame.lua",
+    "commit": "15666a6e67938a1ab5caf041406464251db111ca",
+    "sha256": "e634e15b3e4dac9d114cb006c23a5ed313a5cf774eaa2a8dd1e6389f300f3135",
+    "url": "https://github.com/Gethe/wow-ui-source/blob/15666a6e67938a1ab5caf041406464251db111ca/Interface/AddOns/Blizzard_UnitFrame/Shared/PlayerFrame.lua"
+  },
+  {
+    "path": "Blizzard_UnitFrame/Mainline/PlayerFrame.xml",
+    "commit": "15666a6e67938a1ab5caf041406464251db111ca",
+    "sha256": "63508261f319c2b561f11d24174c5e1d9b66a0e130b3a55dd0b1fc40769282df",
+    "url": "https://github.com/Gethe/wow-ui-source/blob/15666a6e67938a1ab5caf041406464251db111ca/Interface/AddOns/Blizzard_UnitFrame/Mainline/PlayerFrame.xml"
+  },
+  {
+    "path": "Blizzard_UnitFrame/Mainline/ClassResourceBarTemplate.lua",
+    "commit": "15666a6e67938a1ab5caf041406464251db111ca",
+    "sha256": "4bbd0b1747da73bc3f9923c81c108580cbebf9fca284e440fe2bda231eeaeb7d",
+    "url": "https://github.com/Gethe/wow-ui-source/blob/15666a6e67938a1ab5caf041406464251db111ca/Interface/AddOns/Blizzard_UnitFrame/Mainline/ClassResourceBarTemplate.lua"
+  },
+  {
+    "path": "Blizzard_UnitFrame/Mainline/ClassResourceBarTemplate.xml",
+    "commit": "15666a6e67938a1ab5caf041406464251db111ca",
+    "sha256": "d270c48469fb0806ac252c66bd61df21f0113d572496a71c3e99102ccc0552f3",
+    "url": "https://github.com/Gethe/wow-ui-source/blob/15666a6e67938a1ab5caf041406464251db111ca/Interface/AddOns/Blizzard_UnitFrame/Mainline/ClassResourceBarTemplate.xml"
+  }
+]

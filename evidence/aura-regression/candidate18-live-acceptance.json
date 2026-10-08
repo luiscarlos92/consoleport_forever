@@ -1,0 +1,14 @@
+{
+  "date": "2026-10-08",
+  "sourceCommit": "985d257d72d83184e92dcdf4a628e8dde3a00a43",
+  "installedVersion": "2.0.0-candidate.18",
+  "userQuote": "all working",
+  "accepted": [
+    "golden round action feedback",
+    "native circular cooldown swipe",
+    "R2/L2 symmetry"
+  ],
+  "reportedRegression": "five-symbol native player-frame strip visible",
+  "scope": "Reported fixes accepted; not certification of every Retail/hardware scenario",
+  "deploymentAuthorized": false
+}

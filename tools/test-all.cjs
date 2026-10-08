@@ -626,15 +626,16 @@ assert(bootstrapRings.Data.Auras[0].name=='B current ring')
 TEST_SUCCESS=true
 `,'bootstrap-late-ring-ready-and-declined');
 });
-check('T31.native-visibility-parent-lifecycle', () => {
+function visibilityFixture() {
   const file='evidence/native/Blizzard_ActionBar/Shared/ActionBar.lua';
   const names=['SetupVisibilityFunctionOverrides','EditModeActionBar_OnEvent','IsShownOverride','SetShownOverride','ShowOverride','HideOverride','UpdateVisibility'];
   const fixture=read('tests/harness/visibility.lua')
     .replace('--@NATIVE_BAR_METHODS',()=>names.map(name=>nativeFunction(file,'EditModeActionBarMixin:'+name)).join('\n'))
     .replace('--@NATIVE_EXTRA_ACTION',()=>read('evidence/native/Blizzard_ActionBar/Shared/ExtraActionBar.lua'))
     .replace('--@RUNTIME_VISIBILITY',()=>';(function(...)\n'+read('addon/ConsolePort_Forever/Runtime.lua')+'\nend)("ConsolePort_Forever",Addon);');
-  execute(fixture,'native-visibility-parent-lifecycle');
-});
+  return fixture;
+}
+check('T31.native-visibility-parent-lifecycle', () => execute(visibilityFixture(),'native-visibility-parent-lifecycle'));
 check('T40.hidden-controls-native-ring-and-seat-access', () => {
   const fixture=read('tests/harness/hidden_access.lua')
     .replace('--@NATIVE_RING_MAP',()=>read('evidence/consoleport-contracts/ConsolePort_Rings/Model/Map.lua'))
@@ -824,6 +825,26 @@ cases=cases+1`)+ '\nSERIALIZED_STATE=serialized(unchangedRects)';
   const before=execute(source+serializer+oldHUD(snapshot),'original-non-R2-geometry');
   const after=execute(source+serializer+snapshot,'fixed-non-R2-geometry');
   if(before!==after) throw Error('alignment changed L2 or unrelated HUD rectangles');
+});
+check('T57.native-five-rune-player-strip-redraw-and-combat-regression', () => {
+  const base='evidence/aura-regression/native/';
+  const manifest=JSON.parse(read('evidence/aura-regression/native-manifest.json'));
+  for(const row of manifest) if(sha(base+row.path)!==row.sha256) throw Error('Native player-resource contract drift: '+row.path);
+  const xml=read(base+'Blizzard_UnitFrame/Mainline/PaladinPowerBar.xml');
+  if(!xml.includes('atlas="uf-holypower-runeholder"') || !xml.includes('name="PaladinPowerBarFrame"') || [...xml.matchAll(/parentKey="rune[1-5]"/g)].length!==5) throw Error('Screenshot five-rune frame identity unqualified');
+  const fixture=visibilityFixture()+read('tests/harness/player_resource_strip.lua')
+    .replace('--@NATIVE_CLASS_POWER',()=>['GetUnit','UsesPowerToken','OnEvent','Setup'].map(n=>nativeFunction(base+'Blizzard_UnitFrame/Mainline/ClassPowerBar.lua','ClassPowerBar:'+n)).join('\n'))
+    .replace('--@NATIVE_RESOURCE_BAR',()=>['OnHideClassInfoOnPlayerFrameChanged','OnEvent','HandleBarSetup','Setup','UpdateMaxPower'].map(n=>nativeFunction(base+'Blizzard_UnitFrame/Mainline/ClassResourceBarTemplate.lua','ClassResourceBarMixin:'+n)).join('\n'))
+    .replace('--@NATIVE_PALADIN_POWER',()=>nativeFunction(base+'Blizzard_UnitFrame/Mainline/PaladinPowerBar.lua','PaladinPowerBar:UpdatePower'));
+  execute(fixture,'native-player-resource-strip');
+  for(const [name,mutated,message] of [
+    ['missing-player-resource-policy',fixture.replace('self:UpdatePlayerResource(_G,enabled)','self:UpdatePlayerResource(_G,false)'),'native five-rune strip still rendered under player frame'],
+    ['late-resource-opacity-write',fixture.replace('if not row.writing then row.alpha=value Suppress() end','if not row.writing then row.alpha=value end'),'native resource redraw leaked visible glyph'],
+  ]) {
+    let rejected=false;
+    try {execute(mutated,name);} catch(error) {rejected=String(error).includes(message);}
+    if(!rejected) throw Error(name+' mutation failed to reproduce the expected visible strip');
+  }
 });
 const report = {at:new Date().toISOString(), commit:cp.execFileSync('git',['rev-parse','HEAD'],{cwd:root}).toString().trim(),
   productHashes:Object.fromEntries(files('addon').map(f=>[f,sha(f)])),

@@ -1,3 +1,31 @@
+## Authorized candidate.19 deployment — October 8, 2026
+
+The user states "wow closed deploy", superseding the preparation-only restriction
+below. Process verification confirms WoW closed. Deploy the exact tested
+candidate.19 with the scoped builder/installer, Forever only. All nine official
+stable Retail releases were freshly checked again; none changed/downloaded.
+All 57 runtime/source suites and 39 tooling checks pass for these bytes.
+Preserve WTF, unselected addons, anchors, junctions and verified backups.
+Revision 17 and accepted candidate.18 feedback/cooldown/geometry/casting remain;
+only the native five-rune player-strip presentation changes. Do not launch WoW
+or claim live rendering/taint verification; manual case 46 remains user-owned.
+
+## Candidate.19 player-strip repair — October 8, 2026 (DO NOT DEPLOY)
+
+The user confirms candidate.18 "all working" (golden feedback, native cooldowns,
+R2 symmetry), but the five-symbol Blizzard strip below player health returned.
+User is actively playing: prepare/test only; no installer, live AddOns/WTF writes,
+reload or game interaction. Screenshot/native XML identifies PaladinPowerBarFrame,
+not the StanceBar covered by T46/T48. Candidate.19 adds scoped opacity ownership
+for this exact native player-resource instance, retaining native updates, events,
+parents, anchors and all other resource displays. T57 reproduces the old visible
+strip, tests native redraw/combat/editor/disable/replacement cycles and mandatory
+missing-policy/late-writer mutations. Full rendering/input suites remain required.
+HUDPresentation/Skin/ClassActions/Ground bytes and revision 17 stay; candidate.18
+remains installed. Nine stable Retail releases freshly checked/current; none
+downloaded/updated. See docs/CANDIDATE19-PLAYER-STRIP-2026-10-08.md and retained
+candidate19 reports. Later deployment requires separate authorization.
+
 ## Installed candidate.18 — October 8, 2026, 19:04:57 Toronto
 
 Authorized closed-WoW scoped deployment is complete from tested/pushed source

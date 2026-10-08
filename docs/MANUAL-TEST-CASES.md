@@ -1,5 +1,19 @@
 # Retail tests and results â€” installed candidate.17, revision 17
 
+## Case 46 — native five-rune player-strip regression (candidate.19)
+
+**NOT RUN; DO NOT DEPLOY while the user plays.** The user confirms candidate.18's
+feedback, cooldown swipe and R2 symmetry work. After a separately authorized
+candidate.19 deployment, the five-symbol Holy Power strip below the player frame
+must stay invisible through login, power values 0–5, combat, native redraw,
+specialization/power changes and normal play. Health/mana, circular spells,
+controller/class-ring hold/release, nameplate/PRD resources and ground casting
+must retain their behavior. Edit Mode and disabling the presentation must restore
+the native strip's latest opacity; exiting Edit Mode restores suppression.
+Check Lua/protected-action/taint errors. Live pixels and engine permissions
+remain user-owned verification; the native-source host does not certify them.
+
+
 ## Case 45 â€” candidate.18 action feedback and symmetric trigger labels
 
 **NOT RUN.** Checkout-only work; candidate.17 remains installed. Run only after

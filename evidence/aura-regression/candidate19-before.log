@@ -1,0 +1,18 @@
+RUNNING T57.native-five-rune-player-strip-redraw-and-combat-regression
+FAILED T57.native-five-rune-player-strip-redraw-and-combat-regression
+Error: [string "native-player-resource-strip"]:665: native five-rune strip still rendered under player frame
+installed=true Addon.db.shared.runtimePolicy.blizzardVisibility=true
+V:Update()
+assert(not bar.rune1:Painted(),'native five-rune strip still rendered under player frame')
+local count=0
+for cycle=1,6 do
+    at execute (C:\Users\luisr\Dev\consoleport_forever\tools\test-all.cjs:44:11)
+    at C:\Users\luisr\Dev\consoleport_forever\tools\test-all.cjs:839:3
+    at check (C:\Users\luisr\Dev\consoleport_forever\tools\test-all.cjs:27:9)
+    at Object.<anonymous> (C:\Users\luisr\Dev\consoleport_forever\tools\test-all.cjs:829:1)
+    at Module._compile (node:internal/modules/cjs/loader:1929:14)
+    at Object.<anonymous> (C:\Users\luisr\Dev\consoleport_forever\scratch\run-targeted.cjs:5:79)
+    at Module._compile (node:internal/modules/cjs/loader:1929:14)
+    at Object..js (node:internal/modules/cjs/loader:2060:10)
+    at Module.load (node:internal/modules/cjs/loader:1651:32)
+    at Module._load (node:internal/modules/cjs/loader:1443:12)

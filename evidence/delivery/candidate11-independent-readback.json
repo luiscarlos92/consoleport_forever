@@ -1,0 +1,17 @@
+{
+  "at": "2026-10-08T05:00:00.876179+00:00",
+  "sourceCommit": "66e15995aa1d608335169b1b112b997d0852c473",
+  "version": "2.0.0-candidate.11",
+  "files": 50,
+  "vendorFilesUnchanged": 1949,
+  "wtfFilesUnchanged": 298,
+  "linksUnchanged": 42,
+  "anchorsUnchanged": true,
+  "backupVerified": true,
+  "backup": "C:\\Users\\luisr\\WoW-Backups\\ConsolePort-Forever\\20261008T045847Z-fede3bd40bf1",
+  "packSHA256": "a2d2c8f2117104bc4b2606421ea1e4422bf101b29fb32f213513d5141431c563",
+  "dependencyUpdates": [],
+  "groundPlacementInstalled": true,
+  "nativeModesAndUIRecoveryRetained": true,
+  "RetailAcceptance": "Pending user test tomorrow; no game launched by agent."
+}

@@ -1,3 +1,26 @@
+## Installed candidate.11 — October 8, 2026, 00:59:13 Toronto
+
+The user's "deploy now, I'll test tomorrow" authorization is complete. Candidate.11
+is installed from tested/pushed source 66e15995aa1d608335169b1b112b997d0852c473.
+Scoped preview/installation and independent readback verify 50 Forever files against
+the exact prepared ZIP. All 1,949 vendor files, 298 WTF files, 42 character junctions
+and anchors are unchanged; original code/configuration backups are verified and
+retained. No dependency was copied or downloaded: all nine official stable Retail
+releases were freshly checked/current. Forty-two runtime/source suites and 39 tooling
+tests qualify the unchanged installed bytes. StoreSchema 3/revision 14 remain.
+
+Ground placement is restored independently of native recovery. Custom SecureModes,
+UI takeover and hidden-control replacement remain suspended; native ConsolePort owns
+bindings/pages/UI. Configure per-spell/context placement in ConsolePort > Targeting.
+Actual Retail combat/terrain/taint acceptance is pending the user's test tomorrow,
+starting with ordinary combat abilities on a dummy and then placement/manual case 44.
+No game was launched by the agent. Keep the demonstrated source defect distinct from
+unconfirmed exact live-client root cause. Receipt: evidence/delivery/live-install-candidate11.json;
+readback: evidence/delivery/candidate11-independent-readback.json. Backup:
+C:/Users/luisr/WoW-Backups/ConsolePort-Forever/20261008T045847Z-fede3bd40bf1.
+Earlier preparation/install rules below are historical. Any future deployment needs
+new user authorization with WoW closed; never write live WTF or prune other addons.
+
 # Prepared targeting repair — October 8, 2026
 
 Candidate.11 is checkout-only. The user is playing and has explicitly prohibited

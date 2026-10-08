@@ -385,6 +385,11 @@ function groundTargetingFixture() {
   const environment=execution.slice(execution.indexOf('local function CreateRestrictedEnvironment('),execution.indexOf('\nend',execution.indexOf('local function CreateRestrictedEnvironment('))+4);
   const fixture=read('tests/harness/ground_targeting.lua')
     .replace('--@NATIVE_RESTRICTED_ENV',()=>environment)
+    .replace('--@NATIVE_HANDLE_ACCESS',()=>{
+      const frames=read('evidence/native/Blizzard_RestrictedAddOnEnvironment/RestrictedFrames.lua');
+      const end=frames.indexOf('function HANDLE:IsVisible(');
+      return frames.slice(frames.indexOf('local function GetPossiblyForbiddenHandleFrame('),frames.indexOf('function HANDLE:IsShown(')).split('---------------------------------------------------------------------------')[0]+'\n'+frames.slice(frames.indexOf('function HANDLE:IsShown('),end);
+    })
     .replace('--@CURRENT_CP',conversion+'\n'+native.slice(0,native.indexOf('function SlotButton:OnLoad')))
     .replace('--@NATIVE_MODIFIED_ATTRIBUTES',templates.slice(0,templates.indexOf('function SecureButton_GetUnit(')))
     .replace('--@NATIVE_SECURE_ACTIONS',()=>templates.slice(templates.indexOf('SECURE_ACTIONS.action ='),templates.indexOf('SECURE_ACTIONS.pet ='))+'\n'
@@ -405,9 +410,32 @@ check('T12.current-native-ground-targeting', () => {
 });
 check('T42.native-targeting-combat-bindings-full-dispatch', () => {
   const prelude=groundTargetingFixture().split('assert(Addon.SecureModes.Install(bridge,api))')[0];
-  const adapter=read('tests/harness/targeting_engine.lua');
+  const manager=read('evidence/consoleport-contracts/ConsolePort_Bar/Controller/Manager/Manager.lua');
+  const utils=read('evidence/consoleport-contracts/ConsolePort/Utils/Utils.lua');
+  const parseStart=utils.indexOf('Parse = function(self, body, args)');
+  const adapter=read('tests/harness/targeting_engine.lua')
+    .replace('--@NATIVE_MANAGER_ENV',manager.slice(manager.indexOf('Manager.Env = {'),manager.indexOf('\n};')+4))
+    .replace('--@NATIVE_MANAGER_REGISTER',()=>nativeFunction('evidence/consoleport-contracts/ConsolePort_Bar/Controller/Manager/Manager.lua','Manager:RegisterOverride'))
+    .replace('--@NATIVE_MANAGER_PARSE','local native'+utils.slice(parseStart,utils.indexOf('\n\tend;',parseStart)+6));
   const gameplay=read('tests/harness/native_targeting_dispatch.lua');
   execute(source+uiContextFixture()+'\n'+adapter+'\nlocal scenario='+JSON.stringify(prelude+'\n'+gameplay)+'\nlocal scope=setmetatable({},{__index=_G}); scope._G=scope; scope.engine=targetingEngine; scope.Addon=Addon; assert(load(scenario,"native-targeting-dispatch","t",scope))(); TEST_SUCCESS=scope.TEST_SUCCESS;','native-targeting-full-dispatch');
+});
+check('T44.Forever-original-art-region-provenance', () => {
+  const evidence=JSON.parse(read('evidence/forever-ui/sprite-regions.json'));
+  if(sha('addon/ConsolePort_Forever/Assets/ForeverInGame.blp')!==evidence.assetSHA256) throw Error('Original Blizzard artwork changed');
+  const hud=read('addon/ConsolePort_Forever/HUDPresentation.lua');
+  const block=hud.slice(hud.indexOf('local SPRITES={'),hud.indexOf('HUD.Sprites=SPRITES'));
+  const actual={};
+  for(const match of block.matchAll(/(?:\['([^']+)'\]|(\w+))=\{(\d+),(\d+),(\d+),(\d+)\}/g)) actual[match[1]||match[2]]=match.slice(3).map(Number);
+  if(Object.keys(actual).length!==Object.keys(evidence.regions).length) throw Error('Missing original sprite region');
+  for(const [name,record] of Object.entries(evidence.regions)) {
+    if(JSON.stringify(actual[name])!==JSON.stringify(record.pixels)) throw Error('Wrong Blizzard sprite coordinates: '+name);
+  }
+  const lock=JSON.parse(read('dependencies/lock.json'));
+  const current=lock.packages.find(p=>p.repo==='seblindfors/ConsolePort');
+  const cursor=read(current.unpacked+'/ConsolePort_Cursor/View/Cursor.xml');
+  if(!cursor.includes('<Button name="ConsolePortCursor" hidden="true" frameStrata="TOOLTIP" frameLevel="10000">')) throw Error('Unprotected native cursor contract changed');
+  if(read(current.unpacked+'/ConsolePort_Cursor/View/Cursor.lua').includes('SetProtected')) throw Error('Native cursor protection changed');
 });
 check('T36.native-party-layout-default', () => {
   const base='evidence/native/';
@@ -477,19 +505,22 @@ assert(Addon:IsCharacterInstalled() and Addon.record.controllerBindings['SHIFT-P
 assert(Addon.db.transactions[Addon.record.lastInstallTransaction].reloadVerification.failures[1]==nil)
 TEST_SUCCESS=true
 `,'bootstrap-persisted-reload');
-  for(const playerClass of ['WARRIOR','DRUID','PALADIN']) execute('SESSION_STATE=('+state+').installed\n'+fixture.split('--@LIFECYCLE')[0]+`
+  for(const playerClass of ['WARRIOR','DRUID','PALADIN']) for(const previousRevision of [14,15]) execute('SESSION_STATE=('+state+').installed\n'+fixture.split('--@LIFECYCLE')[0]+`
 function UnitClass() return '${playerClass}','${playerClass}' end
 local chosenChord=Addon.ClassActions.Chord(_G)
 local record=ConsolePortForeverDB.characters.A
-record.appliedRevision=14 record.pendingReload=nil record.declinedRevision=nil
+record.appliedRevision=${previousRevision} record.pendingReload=nil record.declinedRevision=nil
 record.controllerBindings['CTRL-PADRSHOULDER']=''
 record.controllerBindings['SHIFT-PADLSHOULDER']=''
 banks[2]['CTRL-PADRSHOULDER']=nil
 banks[2]['SHIFT-PADLSHOULDER']=nil
+local oppositeChord=chosenChord==Addon.ClassActions.CHORD and Addon.ClassActions.LEFT_CHORD or Addon.ClassActions.CHORD
+if ${previousRevision}==15 then banks[2][oppositeChord]='CLICK NativeUtility:Auras' end
 banks[2]['CTRL-PADFORWARD']='CLICK NativeUtility:Auras'
 local before=Addon.Core.Copy(banks)
 fire('PLAYER_LOGIN') flush()
-assert(Addon.record.appliedRevision==15 and banks[2][chosenChord]=='CLICK NativeUtility:Auras','first login did not apply actual class binding')
+assert(Addon.record.appliedRevision==16 and banks[2][chosenChord]=='CLICK NativeUtility:Auras','first login did not apply actual class binding')
+assert((banks[2][oppositeChord] or '')=='','duplicate opposite-side class binding remains')
 assert((banks[2]['CTRL-PADFORWARD'] or '')=='' and banks[2].SPACE=='JUMP','first login retained old menu or lost keyboard binding')
 assert(shown==nil,'authorized class migration asked for another review')
 local journal=Addon.db.transactions[Addon.record.lastInstallTransaction]

@@ -12,6 +12,25 @@ local DPAD = {PADDUP='dpadup',PADDDOWN='dpaddown',PADDLEFT='dpadleft',PADDRIGHT=
 local CIRCLE = [[Interface\Masks\CircleMaskScalable]]
 local RING = [[Interface\AddOns\ConsolePort\Assets\Textures\Cursor\RoundBorderHighlight]]
 local ART = [[Interface\AddOns\ConsolePort_Forever\Assets\ForeverInGame.blp]]
+-- Blizzard UiTextureAtlasMember, atlas 3024 / FileDataID 6227336.
+-- Pixel boundaries from the retained original data, not reconstructed glyphs.
+local SPRITES={
+    ['ps-circle']={1990,2036,216,262}, ['ps-cross']={1990,2036,264,310},
+    ['ps-square']={1990,2036,312,358}, ['ps-triangle']={455,501,1514,1560},
+    ['xbox-a']={455,501,1562,1608}, ['xbox-b']={210,256,1942,1988},
+    ['xbox-x']={210,256,1990,2036}, ['xbox-y']={463,509,1682,1728},
+    dpadup={1282,1326,553,598}, dpaddown={469,513,1948,1993},
+    dpadleft={469,513,1995,2040}, dpadright={1236,1280,553,598},
+    frame={1093,1139,553,599}, border={1141,1187,553,599},
+    shadow={1990,2047,1,59}, toggle={1189,1234,553,599},
+    casting={1858,1900,553,595}, channel={1902,1944,553,595},
+    interrupt={1946,1988,553,595}, aoetarget={1990,2036,168,214},
+}
+HUD.Sprites=SPRITES
+function HUD.Sprite(texture,name)
+    local r=assert(SPRITES[name],'Unknown original Forever sprite')
+    texture:SetTexture(ART) texture:SetTexCoord(r[1]/2048,r[2]/2048,r[3]/2048,r[4]/2048)
+end
 local function Public(value) return not (issecretvalue and issecretvalue(value)) end
 local function DB()
     local bridge=Addon.adapters and Addon.adapters.consoleport
@@ -30,12 +49,24 @@ function HUD.Glyph(texture, id)
     if not device or not device.GetIconForButton then texture:SetTexture(nil) return false end
     local icon,atlas=device:GetIconForButton(id,64)
     if type(icon)~='string' or not Public(icon) then texture:SetTexture(nil) return false end
-    if atlas then texture:SetAtlas(icon) else texture:SetTexture(icon) end
-    texture:SetTexCoord(0,1,0,1)
+    if atlas then texture:SetAtlas(icon) else texture:SetTexture(icon) texture:SetTexCoord(0,1,0,1) end
     return true
 end
 function HUD.Mask(texture, mask)
-    if not texture or not texture.AddMaskTexture or texture.__cpfRoundMask==mask then return end
+    if not texture or not texture.AddMaskTexture then return end
+    -- WoW requires texture and mask to have the same parent. VFX textures live
+    -- in nested frames, unlike the icon/button-state textures.
+    if texture.GetParent and mask.GetParent and texture:GetParent()~=mask:GetParent() then
+        local parent=texture:GetParent()
+        local localMask=texture.__cpfLocalMask
+        if not localMask then
+            localMask=parent:CreateMaskTexture(nil,'BACKGROUND') texture.__cpfLocalMask=localMask
+            localMask:SetTexture(CIRCLE,'CLAMPTOBLACKADDITIVE','CLAMPTOBLACKADDITIVE')
+            localMask:SetAllPoints(texture)
+        end
+        mask=localMask
+    end
+    if texture.__cpfRoundMask==mask then return end
     if texture.__cpfRoundMask and texture.RemoveMaskTexture then texture:RemoveMaskTexture(texture.__cpfRoundMask) end
     texture:AddMaskTexture(mask) texture.__cpfRoundMask=mask
 end
@@ -44,21 +75,41 @@ function HUD.EmptySlot(button, mask)
     local gamepad=db and db.Gamepad
     local device=gamepad and gamepad.GetActiveDevice and gamepad:GetActiveDevice()
     local label=device and device.Label or 'LTR'
-    local name=DPAD[button.id]
-    local atlas=name and ('gamepad-actionbar-squareslot-generic-'..name..'-normal')
-        or ('gamepad-actionbar-circleslot-'..((FACE_NAMES[label] or FACE_NAMES.LTR)[button.id] or 'xbox-a')..'-normal')
+    local name=DPAD[button.id] or ((FACE_NAMES[label] or FACE_NAMES.LTR)[button.id] or 'xbox-a')
+    local atlas=DPAD[button.id] and ('gamepad-actionbar-squareslot-generic-'..name..'-normal')
+        or ('gamepad-actionbar-circleslot-'..name..'-normal')
     -- Own this layer independently of LAB's texture-dependent SlotArt visibility.
     local art=button.__cpfEmptyArt or button:CreateTexture(nil,'BACKGROUND',nil,1)
     button.__cpfEmptyArt=art
     art:ClearAllPoints() art:SetPoint('CENTER',button) art:SetSize(button:GetWidth(),button:GetWidth())
     if not HUD.Atlas(art,atlas) then
-        HUD.Glyph(art,button.id)
-        art:SetDesaturated(true) art:SetVertexColor(.55,.55,.55,1)
-    else art:SetDesaturated(false) art:SetVertexColor(1,1,1,1) end
+        HUD.Sprite(art,name)
+    end
+    art:SetDesaturated(false) art:SetVertexColor(1,1,1,1)
     art:SetAlpha(1)
-    if mask then HUD.Mask(art,mask) end
-    art:Show()
+    -- The original empty-slot image already includes its round bevel. An icon
+    -- mask would crop that bevel and change the exact reference artwork.
+    HUD.EmptyVisibility(button)
     if button.SlotArt then button.SlotArt:Hide() end
+end
+function HUD.EmptyVisibility(button)
+    if not button.__cpfEmptyArt then return end
+    local kind=button._state_type
+    if not Public(kind) then button.__cpfEmptyArt:Hide() return end
+    local occupied=kind and kind~='empty'
+    if kind=='custom' then
+        local binding=Addon:ResolvedPresentationBinding(button)
+        occupied=binding~=nil and binding~=''
+        -- Forever's Base Circle is Exit, even though CP represents it unbound.
+        occupied=occupied or (button.id=='PAD2' and button:GetParent().id=='Base')
+        if binding==nil then occupied=true end -- Don't disturb a held native action.
+    elseif kind=='action' then
+        local slot=button._state_action
+        local hasAction=C_ActionBar and C_ActionBar.HasAction or HasAction
+        if hasAction and Public(slot) and type(slot)=='number' then occupied=hasAction(slot) end
+    end
+    if occupied then button.__cpfEmptyArt:Hide()
+    else button.__cpfEmptyArt:Show() if button.icon then button.icon:Hide() end end
 end
 local STATE_ATLASES={
     NormalTexture='normal',PushedTexture='pressed',HighlightTexture='hover',CheckedTexture='selected',
@@ -71,16 +122,9 @@ function HUD.RoundRegion(texture, button, key, mask)
         or state and ('gamepad-actionbar-circleslot-border-'..state)
     local fallback=not atlas or not HUD.Atlas(texture,atlas)
     if fallback then
-        texture:SetTexture(RING)
-        if key=='NormalTexture' or key=='PushedTexture' then
-            -- Thin, bevelled circle from our retained Forever sheet. It contains
-            -- the round frame itself; no square frame is left under the icon.
-            texture:SetTexture(ART)
-            texture:SetVertexColor(key=='PushedTexture' and .6 or 1,key=='PushedTexture' and .6 or 1,key=='PushedTexture' and .6 or 1,1)
-        end
+        HUD.Sprite(texture,key=='Border' and 'border' or 'frame')
+        texture:SetVertexColor(key=='PushedTexture' and .6 or 1,key=='PushedTexture' and .6 or 1,key=='PushedTexture' and .6 or 1,1)
     end
-    texture:SetTexCoord(0,1,0,1)
-    if fallback and (key=='NormalTexture' or key=='PushedTexture') then texture:SetTexCoord(1044/2048,1089/2048,552/2048,597/2048) end
     texture:ClearAllPoints()
     texture:SetPoint('CENTER',button) texture:SetSize(button:GetWidth(),button:GetWidth())
     -- Flash is a fill, while borders and highlights have transparent centres.
@@ -94,6 +138,9 @@ function HUD.RoundEffects(button, mask)
         local fill=cast.Fill
         if fill then
             if fill.FillMask then fill.FillMask:SetTexture(CIRCLE) end
+            if fill.InnerGlowTexture then
+                if not HUD.Atlas(fill.InnerGlowTexture,'gamepad-actionbar-circleslot-casting') then HUD.Sprite(fill.InnerGlowTexture,'casting') end
+            end
             HUD.Mask(fill.InnerGlowTexture,mask) HUD.Mask(fill.CastFill,mask)
         end
         local burst=cast.EndBurst
@@ -105,11 +152,16 @@ function HUD.RoundEffects(button, mask)
     local interrupt=button.InterruptDisplay
     if interrupt then
         if interrupt.Highlight and interrupt.Highlight.Mask then interrupt.Highlight.Mask:SetTexture(CIRCLE) end
-        if interrupt.Base then HUD.Mask(interrupt.Base.Base,mask) end
+        if interrupt.Base then
+            local base=interrupt.Base.Base
+            if base and not HUD.Atlas(base,'gamepad-actionbar-circleslot-interrupt') then HUD.Sprite(base,'interrupt') end
+            HUD.Mask(base,mask)
+        end
     end
     local reticle=button.TargetReticleAnimFrame
     if reticle then
         if reticle.Mask then reticle.Mask:SetTexture(CIRCLE) end
+        if reticle.Base and not HUD.Atlas(reticle.Base,'gamepad-actionbar-circleslot-aoetarget') then HUD.Sprite(reticle.Base,'aoetarget') end
         HUD.Mask(reticle.Base,mask)
     end
 end
@@ -148,7 +200,12 @@ function HUD.BankPrompt(bank, bankID)
         if not key then if bank.__cpfBankPrompt then bank.__cpfBankPrompt:Hide() end return end
         keys[#keys+1]=key
     end
-    Prompt(bank,'__cpfBankPrompt',keys,'TOP','BOTTOM',0,-2)
+    Prompt(bank,'__cpfBankPrompt',keys,'TOP','BOTTOM',0,10)
+end
+function HUD.LiftBank(bank)
+    local pos=bank.props and bank.props.pos
+    if not pos or pos.point~='BOTTOM' or pos.relPoint~='BOTTOM' then return end
+    bank:ClearAllPoints() bank:SetPoint(pos.point,UIParent,pos.relPoint,pos.x,pos.y+64)
 end
 function HUD.ClassShortcut(bank)
     local bridge=Addon.adapters and Addon.adapters.rings
@@ -178,17 +235,21 @@ function HUD.ClassShortcut(bank)
     for _,key in ipairs(keys) do if not key then valid=false end end
     if not valid then if badge then badge:Hide() end return end
     if not badge then
-        badge=CreateFrame('Frame',nil,bank) bank.__cpfClassShortcut=badge
+        badge=CreateFrame('Frame',nil,bank:GetParent()) bank.__cpfClassShortcut=badge
+        if badge.SetIgnoreParentAlpha then badge:SetIgnoreParentAlpha(true) end
         badge.icon=badge:CreateTexture(nil,'ARTWORK') badge.icon:SetAllPoints()
         badge.mask=badge:CreateMaskTexture(nil,'BACKGROUND') badge.mask:SetAllPoints()
         badge.mask:SetTexture(CIRCLE,'CLAMPTOBLACKADDITIVE','CLAMPTOBLACKADDITIVE')
         HUD.Mask(badge.icon,badge.mask)
         badge.border=badge:CreateTexture(nil,'OVERLAY') badge.border:SetAllPoints()
-        if not HUD.Atlas(badge.border,'gamepad-actionbar-circleslot-border-normal') then badge.border:SetTexture(RING) end
+        if not HUD.Atlas(badge.border,'gamepad-actionbar-circleslot-border-normal') then HUD.Sprite(badge.border,'frame') end
     end
     badge:SetSize(34,34) badge:ClearAllPoints()
-    if classChord==Addon.ClassActions.LEFT_CHORD then badge:SetPoint('TOPLEFT',bank,'BOTTOMLEFT',12,-32)
-    else badge:SetPoint('TOPRIGHT',bank,'BOTTOMRIGHT',-12,-32) end
+    local bottom=ConsolePortGroupL2R2 or bank
+    -- Source PageUnit puts class actions outside the three modifier banks.
+    local side=classChord==Addon.ClassActions.LEFT_CHORD and -1 or 1
+    -- Native PageUnit uses +/-138,-50 against its 266x86 expanded rail.
+    badge:SetPoint('CENTER',bottom,'CENTER',side*bottom:GetWidth()*138/266,-bottom:GetHeight()*50/86)
     badge.icon:SetTexture(icon)
     Prompt(badge,'prompt',keys,'TOP','BOTTOM',0,-2)
     badge:Show()

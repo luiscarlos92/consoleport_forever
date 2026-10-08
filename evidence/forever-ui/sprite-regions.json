@@ -1,0 +1,215 @@
+{
+  "sourceBuild": "1.60.1.70009",
+  "atlasID": 3024,
+  "fileDataID": 6227336,
+  "size": [
+    2048,
+    2048
+  ],
+  "assetSHA256": "9daccf7f192871a876ede143a14f4cc453a726ac271fc89d0e30a5610b5a673f",
+  "metadataSHA256": "5570f3c65af745bc5ed080203cb59e8556c25d4c65e9e1d5f04ce443bc2ff904",
+  "metadataSource": "https://wago.tools/db2/UiTextureAtlasMember/csv?build=1.60.1.70009",
+  "retainedSource": "C:\\Users\\luisr\\OneDrive\\Documents\\03 Gaming\\World of Warcraft\\ConsolePort-Refinements-2026-09-27\\evidence\\forever-UiTextureAtlasMember.csv",
+  "regions": {
+    "ps-circle": {
+      "name": "gamepad-actionbar-circleslot-empty-pscircle",
+      "memberID": 31464,
+      "pixels": [
+        1990,
+        2036,
+        216,
+        262
+      ]
+    },
+    "ps-cross": {
+      "name": "gamepad-actionbar-circleslot-empty-pscross",
+      "memberID": 31465,
+      "pixels": [
+        1990,
+        2036,
+        264,
+        310
+      ]
+    },
+    "ps-square": {
+      "name": "gamepad-actionbar-circleslot-empty-psquare",
+      "memberID": 31466,
+      "pixels": [
+        1990,
+        2036,
+        312,
+        358
+      ]
+    },
+    "ps-triangle": {
+      "name": "gamepad-actionbar-circleslot-empty-pstriangle",
+      "memberID": 31467,
+      "pixels": [
+        455,
+        501,
+        1514,
+        1560
+      ]
+    },
+    "xbox-a": {
+      "name": "gamepad-actionbar-circleslot-empty-xba",
+      "memberID": 31468,
+      "pixels": [
+        455,
+        501,
+        1562,
+        1608
+      ]
+    },
+    "xbox-b": {
+      "name": "gamepad-actionbar-circleslot-empty-xbb",
+      "memberID": 31469,
+      "pixels": [
+        210,
+        256,
+        1942,
+        1988
+      ]
+    },
+    "xbox-x": {
+      "name": "gamepad-actionbar-circleslot-empty-xbx",
+      "memberID": 31470,
+      "pixels": [
+        210,
+        256,
+        1990,
+        2036
+      ]
+    },
+    "xbox-y": {
+      "name": "gamepad-actionbar-circleslot-empty-xby",
+      "memberID": 31471,
+      "pixels": [
+        463,
+        509,
+        1682,
+        1728
+      ]
+    },
+    "dpadup": {
+      "name": "gamepad-actionbar-squareslot-empty-dpadup",
+      "memberID": 31486,
+      "pixels": [
+        1282,
+        1326,
+        553,
+        598
+      ]
+    },
+    "dpaddown": {
+      "name": "gamepad-actionbar-squareslot-empty-dpaddown",
+      "memberID": 31483,
+      "pixels": [
+        469,
+        513,
+        1948,
+        1993
+      ]
+    },
+    "dpadleft": {
+      "name": "gamepad-actionbar-squareslot-empty-dpadleft",
+      "memberID": 31484,
+      "pixels": [
+        469,
+        513,
+        1995,
+        2040
+      ]
+    },
+    "dpadright": {
+      "name": "gamepad-actionbar-squareslot-empty-dpadright",
+      "memberID": 31485,
+      "pixels": [
+        1236,
+        1280,
+        553,
+        598
+      ]
+    },
+    "frame": {
+      "name": "gamepad-actionbar-circleslot-frame",
+      "memberID": 31473,
+      "pixels": [
+        1093,
+        1139,
+        553,
+        599
+      ]
+    },
+    "border": {
+      "name": "gamepad-actionbar-circleslot-iconframe-border",
+      "memberID": 34431,
+      "pixels": [
+        1141,
+        1187,
+        553,
+        599
+      ]
+    },
+    "shadow": {
+      "name": "gamepad-actionbar-circleslot-xtradropshadow",
+      "memberID": 31478,
+      "pixels": [
+        1990,
+        2047,
+        1,
+        59
+      ]
+    },
+    "toggle": {
+      "name": "gamepad-actionbar-circleslot-toggle",
+      "memberID": 31477,
+      "pixels": [
+        1189,
+        1234,
+        553,
+        599
+      ]
+    },
+    "casting": {
+      "name": "gamepad-actionbar-circleslot-casting",
+      "memberID": 31462,
+      "pixels": [
+        1858,
+        1900,
+        553,
+        595
+      ]
+    },
+    "channel": {
+      "name": "gamepad-actionbar-circleslot-channel",
+      "memberID": 31463,
+      "pixels": [
+        1902,
+        1944,
+        553,
+        595
+      ]
+    },
+    "interrupt": {
+      "name": "gamepad-actionbar-circleslot-interrupt",
+      "memberID": 31474,
+      "pixels": [
+        1946,
+        1988,
+        553,
+        595
+      ]
+    },
+    "aoetarget": {
+      "name": "gamepad-actionbar-circleslot-aoetarget",
+      "memberID": 31460,
+      "pixels": [
+        1990,
+        2036,
+        168,
+        214
+      ]
+    }
+  }
+}

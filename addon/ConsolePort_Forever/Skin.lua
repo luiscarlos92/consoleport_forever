@@ -70,7 +70,7 @@ local function Apply(button)
     if not button or not button.icon then return end
     if InCombatLockdown() then
         Addon.skinRefreshPending=true
-        Availability(button) BaseIcon(button)
+        Availability(button) BaseIcon(button) HUD.EmptyVisibility(button)
         return
     end
     button.MasqueSkinned = true
@@ -97,7 +97,8 @@ local function Apply(button)
     end
     mask:SetTexture(CIRCLE,"CLAMPTOBLACKADDITIVE","CLAMPTOBLACKADDITIVE") mask:ClearAllPoints()
     mask:SetPoint("CENTER",button) mask:SetSize(button:GetWidth()*0.88,button:GetWidth()*0.88)
-    button.icon:SetTexCoord(0,1,0,1)
+    -- SetAtlas owns its texture coordinates; resetting them exposes its sheet.
+    if not button.icon.GetAtlas or not button.icon:GetAtlas() then button.icon:SetTexCoord(0,1,0,1) end
     local bg = button.SlotBackground or button:CreateTexture(nil,"BACKGROUND")
     button.SlotBackground = bg bg:SetColorTexture(0.04,0.04,0.04,0.65) bg:SetAllPoints(button.icon)
     if button.__cpfMaskBackground~=bg or button.__cpfBackgroundMask~=mask then
@@ -111,14 +112,16 @@ local function Apply(button)
     shadow:ClearAllPoints() shadow:SetPoint('CENTER',button, 'CENTER',0,-1)
     shadow:SetSize(button:GetWidth()*1.08,button:GetWidth()*1.08)
     if not HUD.Atlas(shadow,'gamepad-actionbar-circleslot-dropshadow') then
-        shadow:SetColorTexture(0,0,0,.55) HUD.Mask(shadow,mask)
+        HUD.Sprite(shadow,'shadow')
     end
     shadow:Show()
     -- Optional texture holes must not terminate an ipairs traversal.
     for _,key in ipairs({'NormalTexture','PushedTexture','HighlightTexture','CheckedTexture','Flash','Border','NewActionTexture','SpellHighlightTexture'}) do
         local texture=button[key]
         local getter=REGION_GETTERS[key]
-        if not texture and getter and button[getter] then texture=button[getter](button) end
+        local actual=getter and button[getter] and button[getter](button)
+        if actual and actual~=texture then HUD.RoundRegion(actual,button,key,mask) end
+        if not texture then texture=actual end
         HUD.RoundRegion(texture,button,key,mask)
     end
     HUD.RoundEffects(button,mask)
@@ -186,6 +189,7 @@ function Addon:RefreshConsolePortSkin()
     for bankID in pairs(BANKS) do
         local bank=_G["ConsolePortGroup"..bankID]
         if bank and bank.buttons then
+            HUD.LiftBank(bank)
             if not bank.__cpfSkinHooks then
                 bank.__cpfSkinHooks=true
                 if type(bank.UpdateButtons)=="function" then
@@ -193,6 +197,9 @@ function Addon:RefreshConsolePortSkin()
                 end
                 if type(bank.OnMasqueLoaded)=="function" then
                     hooksecurefunc(bank,"OnMasqueLoaded",function() Addon:RequestSkinRefresh() end)
+                end
+                if type(bank.OnPropsUpdated)=='function' then
+                    hooksecurefunc(bank,'OnPropsUpdated',function() Addon:RequestSkinRefresh() end)
                 end
             end
             for id in pairs(FACE) do
@@ -212,7 +219,9 @@ function Addon:RefreshConsolePortSkin()
                     if not button.__cpfEmptyHook then
                         button.__cpfEmptyHook=true
                         local function empty()
-                            if Addon:IsCharacterInstalled() and not InCombatLockdown() then HUD.EmptySlot(button) end
+                            if Addon:IsCharacterInstalled() then
+                                if InCombatLockdown() then HUD.EmptyVisibility(button) else HUD.EmptySlot(button) end
+                            end
                         end
                         if type(button.UpdateLocal)=='function' then hooksecurefunc(button,'UpdateLocal',empty) end
                         if type(button.UpdateButtonArt)=='function' then hooksecurefunc(button,'UpdateButtonArt',empty) end

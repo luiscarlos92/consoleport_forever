@@ -82,6 +82,7 @@ function Proof:Text(api)
                         local actionKind,spell
                         if kind=='action' and api.GetActionInfo then actionKind,spell=api.GetActionInfo(action) end
                         lines[#lines+1]='  Cursor cast: enabled='..tostring(button:GetAttribute('cpf-ground-enabled') or false)
+                            ..' combatGuard='..tostring(button.header and button.header:GetAttribute('state-cpf-ground-combat') or false)
                             ..' spell='..tostring(spell or 'none')..' prepared='..tostring(actionKind=='spell' and Addon.GroundTargeting.prepared and Addon.GroundTargeting.prepared[spell]~=nil or false)
                             ..' pressed='..tostring(button:GetAttribute('cpf-ground-pressed') or false)
                             ..' cancelled='..tostring(button:GetAttribute('cpf-ground-cancelled') or false)

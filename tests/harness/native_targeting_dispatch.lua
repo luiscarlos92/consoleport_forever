@@ -17,7 +17,7 @@ for bankIndex,bank in ipairs(banks) do
         routes[#routes+1]={key=chord,target=target,slot=slot,ground=index%2~=0}
         engine:Register(chord,'CPFNativeTargeting'..#routes,function(down,button)
             local prior=trusted trusted,hardware=true,true
-            target.scripts.OnClick(target,button,down,true,true)
+            target.scripts.OnClick(target,button,down,state.engineFlags and true or nil,state.engineFlags and true or nil)
             trusted,hardware=prior,false
         end)
     end
@@ -31,6 +31,8 @@ end
 -- Exact engine binding -> secure CP/LAB/manager wrappers -> macro/UseAction.
 -- Test both cast edges, before combat, first press after focused UI, repeated
 -- entry/exit, and all 32 gameplay chords with unrelated abilities interleaved.
+for _,engineFlags in ipairs({true,false}) do
+state.engineFlags=engineFlags
 for _,keydown in ipairs({true,false}) do
     state.keydown=keydown
     assert(Addon.GroundTargeting.Enable(bridge,api,true) and wrapCount==wrappers)
@@ -55,6 +57,7 @@ for _,keydown in ipairs({true,false}) do
         assert(not pcall(engine.Dispatch,engine,'PAD1',true),'targeting stole foreign modal ownership')
         engine:Combat(false) combat=false engine:ForeignClaim(false)
     end
+end
 end
 -- A real native resolved temporary slot gets context preferences in ANY bank,
 -- not a hardcoded Forever special-bank policy. Ordinary slots ignore vehicle UI.

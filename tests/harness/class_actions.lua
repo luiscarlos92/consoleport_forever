@@ -22,6 +22,12 @@ assert(Class.ResolveSet(container,api)=='Auras','reload lost migrated class ring
 keys[Class.LEGACY]='TOGGLECHARACTER0'
 local custom=Class.Bindings({keys=Core.Copy(keys)},a)
 assert(custom.keys[Class.LEGACY]=='TOGGLECHARACTER0','unrelated menu shortcut was removed')
+local both={keys={[Class.CHORD]=binding,[Class.LEFT_CHORD]=binding}}
+Class.Bindings(both,a)
+assert(both.keys[Class.LEFT_CHORD]=='','opposite-side legacy class opener survived')
+local unrelated={keys={[Class.LEFT_CHORD]='TOGGLECHARACTER0'}}
+Class.Bindings(unrelated,a)
+assert(unrelated.keys[Class.LEFT_CHORD]=='TOGGLECHARACTER0','unrelated opposite-side chord was cleared')
 local scopes=Addon.BindingPolicy.Split(state.keys)
 assert(scopes.character[Class.CHORD]==binding)
 assert(Addon.BindingPolicy.Compose(scopes.shared,scopes.character,scopes.retained)[Class.CHORD]==binding,'GUID projection dropped class chord')

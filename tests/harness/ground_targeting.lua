@@ -5,7 +5,7 @@ local combat,trusted,hardware=false,false,false
 local state={page=1,bonus=0,keydown=true,keyheld=true,pickup=false}
 local slots={[1]={'spell',207684},[2]={'spell',116844},[3]={'spell',999},
     [4]={'macro',207684,'spell'},[5]={'item',207684},[6]={'flyout',207684},
-    [7]={'spell',888},[8]={'spell',207684,'assistedcombat'},[61]={'spell',207684},[73]={'spell',190356},[137]={'spell',777}}
+    [7]={'spell',888},[8]={'spell',207684,'assistedcombat'},[9]={'spell',1000},[61]={'spell',207684},[73]={'spell',190356},[137]={'spell',777}}
 local casts,uses,releases,assistOpens,flyoutHides={},{},{},0,0
 local names,overrides,loadRequests={},{},{}
 for id,name in pairs(Addon.GroundSpells) do names[id]=name end
@@ -69,7 +69,9 @@ format,tostring,gsub=string.format,tostring,string.gsub
 NUM_ACTIONBAR_BUTTONS=12
 --@CURRENT_CP
 local Frame={}
+function Frame:IsProtected() return self.protected~=false end
 function Frame:GetAttribute(prefix,name,suffix)
+    if prefix=='state-cpf-ground-combat' and self.groundCombatDriver then return combat and 'true' or nil end
     if not name then return self.attributes[prefix] end
     return self.attributes[prefix..name..suffix] or self.attributes['*'..name..suffix]
         or self.attributes[prefix..name..'*'] or self.attributes['*'..name..'*'] or self.attributes[name]
@@ -109,6 +111,16 @@ SECURE_ACTIONS={}
 --@NATIVE_SECURE_ACTIONS
 --@NATIVE_SECURE_DISPATCH
 --@NATIVE_RESTRICTED_ENV
+-- Exact Blizzard handle validation: an unprotected cursor is legal outside
+-- lockdown and illegal inside it, even when hidden. Earlier doubles missed it.
+local LOCAL_CHECK_Frame=Frame
+local function GetFrameHandleFrame(handle) return handle,handle:IsProtected() end
+local function AddReferencedFrame() end
+local function CheckForbidden() return false end
+local function PropagateForbiddenToReferencedFrames() end
+local function scrub(...) return ... end
+local HANDLE={}
+--@NATIVE_HANDLE_ACCESS
 local function run(header,self,signature,body,...)
     -- Use Blizzard's actual environment manager. Only control is supplied;
     -- inventing an owner parameter previously masked a fatal Retail error.
@@ -120,7 +132,7 @@ local function run(header,self,signature,body,...)
         return {GetAttribute=function(_,key) return raw:GetAttribute(key) end,
             SetAttribute=function(_,key,value) raw:SetAttribute(key,value) end,
             GetFrameRef=function(_,key) return handle(raw:GetFrameRef(key)) end,
-            IsShown=function() return raw:IsShown() end,IsVisible=function() return raw:IsVisible() end,
+            IsShown=function() return HANDLE.IsShown(raw) end,IsVisible=function() return raw:IsVisible() end,
             GetParent=function() return handle(raw:GetParent()) end,
             SetID=function(_,id) raw:SetID(id) end,GetID=function() return raw:GetID() end,
             CallMethod=function(_,method,...) return raw:CallMethod(method,...) end,
@@ -159,14 +171,18 @@ function Frame:WrapScript(button,event,pre,post)
     assert(not combat) wrapCount=wrapCount+1
     local owner=self
     local previous=button.scripts[event]
-    button.scripts[event]=function(self,key,down)
-        if event=='OnClick' then return Wrapped_Click(self,owner,pre,post,previous,key,down,true,true) end
+    button.scripts[event]=function(self,key,down,...)
+        if event=='OnClick' then return Wrapped_Click(self,owner,pre,post,previous,key,down,...) end
         run(owner,self,'self,button,down',pre,key,down)
         if previous then previous(self,key,down) end
     end
 end
 local api={CPAPI=CPAPI,InCombatLockdown=InCombatLockdown,GetBindingKey=function() return 'K' end,
     C_Spell=C_Spell,C_Macro=C_Macro,GetActionInfo=GetActionInfo,GetCVarBool=GetCVarBool}
+function api.RegisterStateDriver(header,id,body)
+    assert(not combat and id=='cpf-ground-combat' and body=='[combat] true; nil')
+    header.groundCombatDriver=true
+end
 for _,family in ipairs({'Vehicle','Override','TempShapeshift'}) do
     api['Has'..family..'ActionBar']=_G['Has'..family..'ActionBar']
     api['Get'..family..'BarIndex']=_G['Get'..family..'BarIndex']
@@ -176,6 +192,7 @@ function api.hooksecurefunc(object,method,callback)
     object[method]=function(...) local value=previous(...) callback(...) return value end
 end
 local db={Cursor=frame(),Raid=frame(),TargetRing=frame()}
+db.Cursor.protected=false -- Official Cursor.xml has no secure inheritance.
 for _,owner in pairs(db) do owner.shown=false end
 function db.TargetRing:OpenAssist(id)
     if id==116844 or id==999 then self.shown=true assistOpens=assistOpens+1 return true end
@@ -193,14 +210,14 @@ function manager:Hook(button,event,pre,post)
     function managerEnvironment.pager:RunAttribute(key,...) return self[key](self,...) end
     -- Preserve snippet globals such as assist in a per-manager closure.
     local source='return function(self,button,down) '..CPAPI.ConvertSecureBody(pre)..' end'
-    local function wrapped(self,key,down)
+    local function wrapped(self,key,down,...)
         local globals=setmetatable(managerEnvironment,{__index=_G})
         local before=assert(load(source,'native-manager','t',globals))()
         local after=assert(load('return function(self,message,button,down) '..CPAPI.ConvertSecureBody(post)..' end','native-manager-post','t',globals))()
         local changed,message=before(self,key,down)
         if changed==false then return end
         if changed then key=tostring(changed) end
-        if native then native(self,key,down,true,true) end
+        if native then native(self,key,down,...) end
         if message~=nil then after(self,message,key,down) end
     end
     button.scripts[event]=wrapped
@@ -246,6 +263,13 @@ local function configure(target,key,value)
 end
 local function clear() casts,uses,releases={},{},{} end
 combat=true
+-- Reproduce candidate.12 before accepting the fix, on an ordinary ability.
+selectSlot(9)
+local broken=Addon.GroundTargeting.Pre:gsub("not control:GetAttribute%('state%-cpf%-ground%-combat'%)",'true')
+local worked,handleError=pcall(run,api.ConsolePortGroupBase,button,'self,button,down',broken,'ControllerInput',true)
+assert(not worked and tostring(handleError):find('Invalid frame handle',1,true),'old combat handle failure not reproduced')
+clear() pair(button) assert(#uses==1 and #casts==0,'ordinary combat casting still intercepted')
+selectSlot(1) clear()
 assert(not pcall(button.SetAttribute,button,'type','macro'),'insecure combat mutation succeeded')
 pair(button)
 assert(#casts==1 and #uses==0 and #releases==0)
@@ -292,8 +316,11 @@ clear() pair(button) assert(#casts==1 and button:GetAttribute('macro')==17 and b
 configure(button,'macro',nil) configure(button,'unit',nil)
 -- Native owner entry while held cancels the cast; no release uses the new slot.
 for _,owner in pairs(db) do
+    local priorCombat=combat
+    if owner==db.Cursor then combat=false end -- Native UI ownership is OOC only.
     clear() click(button,true) owner.shown=true click(button,false)
     assert(#casts==0 and #uses==0,'owner change released another action') owner.shown=false
+    combat=priorCombat
 end
 -- A fresh native assist action still gets the original native selector.
 selectSlot(3) clear() local opens=assistOpens pair(button)

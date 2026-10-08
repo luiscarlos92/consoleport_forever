@@ -32,7 +32,12 @@ Ground.Pre=[[
     local cursor = control:GetFrameRef('cpfGroundCursor');
     local raid = control:GetFrameRef('cpfGroundRaid');
     local ring = control:GetFrameRef('cpfGroundRing');
-    blocked = blocked or (cursor and cursor:IsShown()) or (raid and raid:IsShown()) or (ring and ring:IsShown());
+    -- ConsolePort's interface cursor is deliberately unprotected. Its handle
+    -- may be inspected out of combat only (RestrictedFrames.GetHandleFrame).
+    -- The protected state driver changes before any combat hardware dispatch;
+    -- native Input suspends this cursor in combat, so it owns no combat casts.
+    blocked = blocked or (not control:GetAttribute('state-cpf-ground-combat')
+        and cursor and cursor:IsShown()) or (raid and raid:IsShown()) or (ring and ring:IsShown());
     -- Do not override native dragging, alternate click actions or empowered spells.
     blocked = blocked or (((self:GetAttribute('unlockedpreventdrag') and not self:GetAttribute('buttonlock'))
         or IsModifiedClick('PICKUPACTION')) and not self:GetAttribute('LABdisableDragNDrop'));
@@ -112,7 +117,8 @@ function Ground.Probe(bridge,api)
     if not ok then return false,reason end
     if not api.C_Macro or type(api.C_Macro.RunMacroText)~='function'
         or not api.C_Spell or type(api.C_Spell.GetSpellInfo)~='function'
-        or type(api.GetActionInfo)~='function' or type(api.GetCVarBool)~='function' then return false,'Retail secure macro/spell APIs unavailable' end
+        or type(api.GetActionInfo)~='function' or type(api.GetCVarBool)~='function'
+        or type(api.RegisterStateDriver)~='function' then return false,'Retail secure macro/spell APIs unavailable' end
     -- These owners are required, not guessed from unrelated visible UI frames.
     local db=bridge.db
     for _,name in ipairs({'Cursor','Raid','TargetRing'}) do
@@ -252,6 +258,10 @@ function Ground.Enable(bridge,api,enabled,preferences)
         -- CP's group setup does not initialize it. Supply the owning header
         -- only if absent. Forever snippets use Blizzard's guaranteed control.
         group:Execute('owner = owner or self')
+        if not group.__cpfGroundCombat then
+            api.RegisterStateDriver(group,'cpf-ground-combat','[combat] true; nil')
+            group.__cpfGroundCombat=true
+        end
         group:SetFrameRef('cpfGroundCursor',bridge.db.Cursor)
         group:SetFrameRef('cpfGroundRaid',bridge.db.Raid)
         group:SetFrameRef('cpfGroundRing',bridge.db.TargetRing)

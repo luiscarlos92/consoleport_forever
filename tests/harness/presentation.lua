@@ -14,16 +14,22 @@ function hooksecurefunc(object,key,callback)
     local native=object[key]
     object[key]=function(...) local result=native(...) callback(...) return result end
 end
-local function region()
-    local r={maskCalls=0}
+local function region(parent)
+    local r={maskCalls=0,parent=parent}
     for _,method in ipairs({'SetTexCoord','ClearAllPoints','SetPoint','SetSize','SetColorTexture','SetAllPoints','SetSwipeTexture','SetUseCircularEdge'}) do
         r[method]=function(self,...)
             if method=='ClearAllPoints' or method=='SetPoint' or method=='SetSize' or method=='SetAllPoints' then assert(not combat,'combat geometry mutation') end
             self[method..'Args']={...}
         end
     end
-    function r:SetTexture(value) self.texture=value end function r:SetAtlas(value) self.atlas=value end
-    function r:AddMaskTexture(mask) self.mask=mask self.maskCalls=self.maskCalls+1 end
+    function r:SetTexture(value) self.texture=value self.atlas=nil end
+    function r:GetAtlas() return self.atlas end
+    function r:GetParent() return self.parent end
+    function r:SetAtlas(value)
+        self.atlas=value self.texture='atlas-sheet'
+        self:SetTexCoord(.125,.25,.375,.5)
+    end
+    function r:AddMaskTexture(mask) assert(self.parent==mask.parent,'cross-parent mask') self.mask=mask self.maskCalls=self.maskCalls+1 end
     function r:RemoveMaskTexture(mask) assert(self.mask==mask) self.mask=nil self.removals=(self.removals or 0)+1 end
     function r:Show() self.shown=true end function r:Hide() self.shown=false end
     function r:SetVertexColor(...) self.tint={...} end
@@ -56,12 +62,12 @@ function Frame:RegisterEvent(event)
     self.events=self.events or {} self.events[event]=true
 end
 function Frame:SetScript(key,fn) self[key]=fn end
-function Frame:SetSize() end function Frame:SetPoint() end function Frame:ClearAllPoints() end
+function Frame:SetSize(w,h) self.width=w self.height=h end function Frame:SetPoint(...) self.point={...} end function Frame:ClearAllPoints() self.point=nil end
 function Frame:SetParent(parent) self.parent=parent end function Frame:GetParent() return self.parent end
-function Frame:GetName() return self.name end function Frame:GetWidth() return 50 end
-function Frame:CreateTexture() return region() end
+function Frame:GetName() return self.name end function Frame:GetWidth() return self.width or 50 end function Frame:GetHeight() return self.height or 50 end
+function Frame:CreateTexture() return region(self) end
 function Frame:CreateFontString() return region() end
-function Frame:CreateMaskTexture() assert(not combat) self.maskCount=(self.maskCount or 0)+1 return region() end
+function Frame:CreateMaskTexture() assert(not combat) self.maskCount=(self.maskCount or 0)+1 return region(self) end
 function Frame:HookScript(key,fn) self.hooks=self.hooks or {} self.hooks[key]=fn end
 function Frame:Show() self.shown=true end function Frame:Hide() self.shown=false end
 function CreateFrame(_,name,parent)
@@ -81,10 +87,13 @@ local env={}
 function env.MakeID(format,...) return string.format(format,...) end
 local function makeButton(id,bank)
     local button=setmetatable({id=id,parent=bank,_state_type='custom',attributes={state=''},icon=region()},{__index=Frame})
-    for _,key in ipairs({'NormalTexture','PushedTexture','HighlightTexture','CheckedTexture','Flash','Border','NewActionTexture','SpellHighlightTexture','cooldown','chargeCooldown','lossOfControlCooldown'}) do button[key]=region() end
+    button.icon.parent=button
+    for _,key in ipairs({'NormalTexture','PushedTexture','HighlightTexture','CheckedTexture','Flash','Border','NewActionTexture','SpellHighlightTexture','cooldown','chargeCooldown','lossOfControlCooldown'}) do button[key]=region(button) end
     button.SpellCastAnimFrame={Fill={FillMask=region(),InnerGlowTexture=region(),CastFill=region()},EndBurst={EndMask=region(),GlowRing=region()}}
-    button.InterruptDisplay={Base={Base=region()},Highlight={Mask=region()}}
-    button.TargetReticleAnimFrame={Base=region(),Mask=region()}
+    local fxParent=setmetatable({},{__index=Frame})
+    for _,part in pairs(button.SpellCastAnimFrame) do for _,tex in pairs(part) do tex.parent=fxParent end end
+    button.InterruptDisplay={Base={Base=region(fxParent)},Highlight={Mask=region(fxParent)}}
+    button.TargetReticleAnimFrame={Base=region(fxParent),Mask=region(fxParent)}
     function button:GetAttribute(key) return self.attributes[key] end
     function button:SetProps() end function button:UpdateLocal() end function button:UpdateButtonArt() end
     function button:AddToMasque(group) group:AddButton(self) end
@@ -92,7 +101,7 @@ local function makeButton(id,bank)
 end
 function env:Acquire(kind,name,id,bank) assert(kind==GROUP_BUTTON) return makeButton(id,bank) end
 --@NATIVE_GROUP_SKIN_LIFECYCLE
-local Manager={bindingSnapshot={PAD1={['']='JUMP',['SHIFT-']='INTERACTTARGET'},PAD2={['']=''},PAD3={['']='INTERACTTARGET'},PAD4={['']='TURNORACTION'}}}
+local Manager={bindingSnapshot={PADDUP={['']=''},PADDLEFT={['']=''},PADDRIGHT={['']=''},PADDDOWN={['']=''},PAD1={['']='JUMP',['SHIFT-']='INTERACTTARGET'},PAD2={['']=''},PAD3={['']='INTERACTTARGET'},PAD4={['']='TURNORACTION'}}}
 --@NATIVE_MANAGER_BINDINGS
 local family='SHP'
 local device={Label=family,GetIconForButton=function(_,id) return family..'/'..id,false end}
@@ -110,7 +119,7 @@ function GetNumShapeshiftForms() return 2 end
 function GetShapeshiftFormInfo(slot) return 1,slot==2,true,slot==2 and 2457 or 71 end
 function UnitExists() return false end
 local function makeBank(id,name)
-    local bank=setmetatable({id=id,name=name,buttons={}},{__index=Frame})
+    local bank=setmetatable({id=id,name=name,buttons={},width=277.5,height=140,props={pos={point='BOTTOM',relPoint='BOTTOM',x=0,y=id=='Base' and 160 or id=='L2R2' and 5 or 80}}},{__index=Frame})
     bank.UpdateButtons=CPGroupBar.UpdateButtons bank.OnMasqueLoaded=CPGroupBar.OnMasqueLoaded
     function bank:OnRelease() wipe(self.buttons) end
     local group=setmetatable({Buttons={},db={Disabled=false}},{__index=GMT})
@@ -134,29 +143,50 @@ for _,id in ipairs({'Base','L2','R2','L2R2'}) do
     for _,key in ipairs({'PAD1','PAD2','PAD3','PAD4'}) do
         local b=bank.buttons[key]
         assert(b.maskCount==1 and b.icon.maskCalls==1 and b.SlotBackground.maskCalls==1 and not bank.msqGroup.Buttons[b])
-        assert(b.__cpfEmptyArt.shown and b.__cpfEmptyArt.mask==b.IconMask and b.__cpfEmptyArt.desaturated)
-        assert(b.Flash.mask==b.IconMask and b.__cpfRoundShadow.mask==b.IconMask,'square flash or shadow survived')
-        assert(b.SpellCastAnimFrame.Fill.CastFill.mask==b.IconMask and b.SpellCastAnimFrame.EndBurst.GlowRing.mask==b.IconMask)
-        assert(b.InterruptDisplay.Base.Base.mask==b.IconMask and b.TargetReticleAnimFrame.Base.mask==b.IconMask)
+        assert(b.__cpfEmptyArt.shown==(key=='PAD2' and id~='Base') and not b.__cpfEmptyArt.mask and not b.__cpfEmptyArt.desaturated)
+        assert(b.Flash.mask==b.IconMask and b.__cpfRoundShadow.texture:find('ForeverInGame',1,true),'square flash or shadow survived')
+        assert(b.SpellCastAnimFrame.Fill.CastFill.mask==b.SpellCastAnimFrame.Fill.CastFill.__cpfLocalMask and b.SpellCastAnimFrame.EndBurst.GlowRing.mask==b.SpellCastAnimFrame.EndBurst.GlowRing.__cpfLocalMask)
+        assert(b.InterruptDisplay.Base.Base.mask==b.InterruptDisplay.Base.Base.__cpfLocalMask and b.TargetReticleAnimFrame.Base.mask==b.TargetReticleAnimFrame.Base.__cpfLocalMask)
     end
-    for _,key in ipairs({'PADDUP','PADDDOWN','PADDLEFT','PADDRIGHT'}) do assert(bank.buttons[key].__cpfEmptyArt.shown and bank.buttons[key].__cpfEmptyArt.texture=='SHP/'..key) end
+    for _,key in ipairs({'PADDUP','PADDDOWN','PADDLEFT','PADDRIGHT'}) do assert(bank.buttons[key].__cpfEmptyArt.shown and bank.buttons[key].__cpfEmptyArt.texture:find('ForeverInGame',1,true)) end
     if id~='Base' then assert(bank.__cpfBankPrompt.shown and bank.__cpfBankPrompt.icons[1].texture=='SHP/PADLTRIGGER' or id=='R2') end
 end
+for _,id in ipairs({'Base','L2','R2','L2R2'}) do
+    local bank=_G['ConsolePortGroup'..id]
+    assert(bank.point[5]==bank.props.pos.y+64,'bank was not lifted')
+    Addon:RefreshConsolePortSkin()
+    assert(bank.point[5]==bank.props.pos.y+64,'bank lift accumulated')
+    if id~='Base' then
+        assert(bank.__cpfBankPrompt.point[5]==10,'bank prompt still below rail')
+        assert(bank.point[5]+bank.__cpfBankPrompt.point[5]-22>0,'trigger label falls below the screen')
+    end
+end
 local base=ConsolePortGroupBase
+local bottom=ConsolePortGroupL2R2
+local badge=base.__cpfClassShortcut
+assert(badge.parent~=base,'class shortcut inherits the fading base bank')
+assert(bottom.point[5]+bottom:GetHeight()/2+badge.point[5]-17-24>0,'class prompt is clipped')
 assert(base.__cpfClassShortcut.shown and base.__cpfClassShortcut.icon.texture==2457,'class badge did not follow active stance')
 assert(base.__cpfClassShortcut.prompt.icons[1].texture=='SHP/PADRSHOULDER' and base.__cpfClassShortcut.prompt.icons[2].texture=='SHP/PADRTRIGGER','class prompt shows a different chord')
 assert(ConsolePortGroupL2R2.__cpfBankPrompt.plus[1].shown and not ConsolePortGroupL2R2.__cpfBankPrompt.plus[2].shown)
 family='LTR' device.Label=family callbacks.OnIconsChanged() flush()
-assert(ConsolePortGroupR2.__cpfBankPrompt.icons[1].texture=='LTR/PADRTRIGGER' and base.buttons.PAD1.__cpfEmptyArt.texture=='LTR/PAD1')
+assert(ConsolePortGroupR2.__cpfBankPrompt.icons[1].texture=='LTR/PADRTRIGGER' and base.buttons.PAD1.__cpfEmptyArt.SetTexCoordArgs[1]==455/2048)
 assert(frames.ConsolePortForeverFriendlyPrompt.glyph.texture=='LTR/PADLSHOULDER','target prompt retained PlayStation glyph')
 family='REV' device.Label=family callbacks.OnIconsChanged() flush()
-assert(base.buttons.PAD3.__cpfEmptyArt.texture=='REV/PAD3')
+assert(base.buttons.PAD3.__cpfEmptyArt.SetTexCoordArgs[1]==463/2048)
 family='SHP' device.Label=family callbacks.OnIconsChanged() flush()
 C_Texture={GetAtlasInfo=function(name) return name:find('gamepad-actionbar-',1,true) and {} or nil end}
 Addon:RefreshConsolePortSkin()
 assert(base.buttons.PAD1.__cpfEmptyArt.atlas=='gamepad-actionbar-circleslot-ps-cross-normal')
 assert(base.buttons.PADDLEFT.__cpfEmptyArt.atlas=='gamepad-actionbar-squareslot-generic-dpadleft-normal')
 assert(base.buttons.PAD1.NormalTexture.atlas=='gamepad-actionbar-circleslot-border-normal')
+assert(base.buttons.PAD1.NormalTexture.SetTexCoordArgs[1]==.125,'atlas UV was reset to its entire sheet')
+-- The glyph atlas has its own subregion too.
+local originalIcon=device.GetIconForButton
+function device:GetIconForButton(id) return 'test-controller-atlas',true end
+local glyph=region() Addon.HUDPresentation.Glyph(glyph,'PADRTRIGGER')
+assert(glyph.SetTexCoordArgs[1]==.125 and glyph.SetTexCoordArgs[3]==.375,'prompt atlas UV reset')
+device.GetIconForButton=originalIcon
 assert(base.buttons.PAD1.PushedTexture.atlas=='gamepad-actionbar-circleslot-border-pressed')
 assert(base.buttons.PAD1.__cpfRoundShadow.atlas=='gamepad-actionbar-circleslot-dropshadow')
 family='REV' device.Label=family callbacks.OnIconsChanged() flush()
@@ -172,7 +202,7 @@ local unbound=base.buttons.PAD4
 Manager.bindingSnapshot.PAD4={['']=''}
 local reset=ProxyButtonTextureProvider('PAD4',true)(unbound.icon)
 unbound:UpdateLocal()
-assert(unbound.icon.desaturated==true and unbound.icon.alpha==.5,'legitimate unbound glyph state erased')
+assert(unbound.__cpfEmptyArt.shown and not unbound.icon.shown,'legitimate unbound glyph state erased')
 reset(unbound.icon) assert(unbound.icon.desaturated==false and unbound.icon.alpha==1)
 Manager.bindingSnapshot.PAD4={['']='TURNORACTION'}
 local exit=base.buttons.PAD2
@@ -182,14 +212,29 @@ local jump=base.buttons.PAD1
 assert(jump.icon.texture:find('ForeverInGame',1,true))
 jump.attributes.state='SHIFT-' jump:UpdateLocal() assert(jump.icon.texture==6603,'display ignored the resolved native state')
 jump._state_type='action' jump.icon:SetTexture('native-spell') jump:UpdateLocal() assert(jump.icon.texture=='native-spell','style replaced a native spell icon')
+assert(not jump.__cpfEmptyArt.shown,'assigned spell has a background glyph')
+for _,kind in ipairs({'spell','item','macro','flyout'}) do
+    jump._state_type=kind jump:UpdateLocal()
+    assert(not jump.__cpfEmptyArt.shown,'assigned '..kind..' has a background glyph')
+end
+jump._state_type='action'
+local actualNormal=region(jump) actualNormal:SetTexture('square-normal')
+function jump:GetNormalTexture() return actualNormal end
+jump:UpdateLocal()
+assert(actualNormal.texture:find('ForeverInGame',1,true) and actualNormal.SetTexCoordArgs[1]==1093/2048,'native normal getter still has a square border')
+combat=true jump._state_type='empty' jump:UpdateLocal()
+assert(jump.__cpfEmptyArt.shown and not jump.icon.shown,'combat slot clear kept spell artwork')
+jump._state_type='action' jump:UpdateLocal()
+assert(not jump.__cpfEmptyArt.shown,'combat spell assignment kept an empty symbol')
+combat=false
 jump._state_type='custom' jump.attributes['cpf-held']=true jump.icon:SetTexture('held-native') jump:UpdateLocal() assert(jump.icon.texture=='held-native')
 jump.attributes['cpf-held']=nil
 Addon:RefreshConsolePortSkin() assert(removals==16 and jump.maskCount==1 and jump.icon.maskCalls==1)
 local oldIcon=jump.icon
-jump.icon=region() jump:UpdateLocal()
+jump.icon=region(jump) jump:UpdateLocal()
 assert(jump.icon.maskCalls==1 and oldIcon.mask==nil and oldIcon.removals==1)
 local previousMask=jump.IconMask
-jump.IconMask=region() jump:UpdateLocal()
+jump.IconMask=region(jump) jump:UpdateLocal()
 assert(jump.icon.mask==previousMask and jump.IconMask==previousMask and jump.icon.maskCalls==1,'native mask field replaced the owned circle')
 jump.icon:RemoveMaskTexture(previousMask)
 assert(jump.__cpfConnectedMask==nil and #timers==1,'removed mask was still cached as attached')
@@ -198,7 +243,7 @@ assert(jump.icon.mask==previousMask and jump.icon.maskCalls==2 and jump.icon.rem
 local sparse=base.buttons.PAD3
 sparse.NormalTexture=nil sparse.PushedTexture=nil
 sparse.Border:SetTexture('native-square') sparse:UpdateButtonArt()
-assert(sparse.Border.texture:find('RoundBorderHighlight',1,true),'optional region hole skipped later borders')
+assert(sparse.Border.texture:find('ForeverInGame',1,true),'optional region hole skipped later borders')
 local width=sparse.GetWidth
 sparse.GetWidth=function() error('simulated one-face skin failure') end
 Addon:RequestSkinRefresh() flush()

@@ -25,7 +25,10 @@ function Class.Bindings(state,adapter)
     if not id then return state end
     local command=adapter.rings:GetBindingForSet(id)
     if type(command)~='string' then return state end
-    state.keys[adapter.api.classChord or Class.CHORD]=command
+    local chord=adapter.api.classChord or Class.CHORD
+    state.keys[chord]=command
+    local other=chord==Class.LEFT_CHORD and Class.CHORD or Class.LEFT_CHORD
+    if state.keys[other]==command then state.keys[other]='' end
     -- Free only our replaced menu opener, preserving a player's unrelated menu binding.
     if state.keys[Class.LEGACY]==command then state.keys[Class.LEGACY]='' end
     return state
@@ -53,7 +56,7 @@ function Class.RingProposal(state,adapter,api)
 end
 function Class.Migrate(addon,api,canWrite)
     local record=addon.record
-    if not record or record.appliedRevision~=14 or not record.bindingAccepted or not record.ringAccepted then return false end
+    if not record or (record.appliedRevision~=14 and record.appliedRevision~=15) or not record.bindingAccepted or not record.ringAccepted then return false end
     if addon.busy or (addon.Prompt and addon.Prompt.active) or not canWrite() then return false end
     local adapters=addon.adapters
     local rings=adapters and adapters.rings
@@ -67,19 +70,19 @@ function Class.Migrate(addon,api,canWrite)
     local steps={}
     for _,entry in ipairs({{'controller','bindings',current,desired},{'rings','rings',ringBefore,ringAfter}}) do
         if not addon.Core.Equal(entry[3],entry[4]) then
-            steps[#steps+1]={id=addon.guid..'/'..entry[1],scope=entry[2],path={'state'},before=entry[3],value=entry[4],revision=15}
+            steps[#steps+1]={id=addon.guid..'/'..entry[1],scope=entry[2],path={'state'},before=entry[3],value=entry[4],revision=16}
         end
     end
     -- Explicitly authorized first-login migration, scoped to the class chord
     -- and its native ring. Existing transaction machinery owns backup/rollback.
-    local journal=addon.Transactions.Prepare(addon.db,addon.guid,steps,{revision=15,foreverClassMigration=true})
+    local journal=addon.Transactions.Prepare(addon.db,addon.guid,steps,{revision=16,foreverClassMigration=true})
     addon.busy=true
     local ok,result,reason=pcall(addon.Transactions.Apply,journal,adapters,canWrite)
     addon.busy=false
     if not ok or not result then
         addon.Diagnostics:SetFeature('classFlyout','recovery-required',tostring(reason or result)) return false
     end
-    assert(addon.Transactions.Commit(addon.db,journal,15))
+    assert(addon.Transactions.Commit(addon.db,journal,16))
     addon:CaptureControllerEdits()
     rings:CaptureEdits()
     record.lastInstallTransaction=journal.id

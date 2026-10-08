@@ -1,3 +1,16 @@
+## Current authority — candidate.13 repair, October 8, 2026
+
+The user reports candidate.11/12 combat controller casting is broken and rejects
+candidate.12 artwork/placement. Keep automatic ground placement enabled and fix
+its interceptor; do not repeat native-only isolation. Read earlier chat history.
+Deployment is authorized once WoW is closed. Preserve HUD size. Original Forever
+art/source takes precedence; ask about material uncertainty. Candidate.13 adds
+secure combat guarding of the unprotected UI cursor, exact original sprite UV,
+empty-only glyphs, raised banks/prompts and a separate class badge. Revision-14/15
+characters migrate the correct class side to revision 16 with in-game backups.
+See docs/CANDIDATE13-REPAIR-2026-10-08.md. The old preparation/installed claims below
+are historical; live hardware and final visual acceptance remain unverified.
+
 ## Installed candidate.12 — October 8, 2026, 06:16:20 UTC
 
 Authorized closed-WoW deployment is complete. Candidate.12 is installed from

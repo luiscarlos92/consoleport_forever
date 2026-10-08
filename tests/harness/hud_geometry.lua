@@ -9,6 +9,9 @@ function Frame:ClearAllPoints() self.point=nil end
 function Frame:SetSize(w,h) self.width,self.height=w,h end
 function Frame:GetWidth() return self.width end function Frame:GetHeight() return self.height end
 function Frame:GetParent() return self.parent end
+function Frame:SetScale(s) self.scale=s end
+function Frame:GetScale() return self.scale or 1 end
+function Frame:SetParent(p) self.parent=p end
 function Frame:SetTexture(t) self.texture=t end function Frame:SetAtlas(t) self.atlas=t end
 function Frame:SetTexCoord() end function Frame:SetAlpha(a) self.alpha=a end
 function Frame:SetText(t) self.width,self.height=8,16 end function Frame:SetTextColor() end
@@ -57,7 +60,7 @@ local function layout(spread,bottomY,baseY,active)
         local y=id=='Base' and baseY or id=='L2R2' and bottomY or 80
         local bank=CreateFrame('Frame',nil,UIParent)
         bank:SetSize(277.5,140) bank.scale=id==active and 1.06 or .94
-        bank.props={pos={point='BOTTOM',relPoint='BOTTOM',x=x,y=y}}
+        bank.props={rescale='[mod:SHIFT] 106; 94',pos={point='BOTTOM',relPoint='BOTTOM',x=x,y=y}}
         bank.buttons={} _G['ConsolePortGroup'..id]=bank
         HUD.PlaceBank(bank)
         for key,pos in pairs(cells) do
@@ -78,6 +81,7 @@ local function checkRect(frame,name,shadow)
     return r
 end
 local cases=0
+local fixedHints={}
 for _,resolution in ipairs({{1280,720},{1366,768},{1920,1080},{2560,1440},{3840,2160}}) do
     for _,scale in ipairs({.64,.84,1}) do
         rootScale=scale screenW,screenH=resolution[1],resolution[2]
@@ -85,7 +89,14 @@ for _,resolution in ipairs({{1280,720},{1366,768},{1920,1080},{2560,1440},{3840,
         for _,positions in ipairs({{270,5,160},{315,10,150}}) do
             for _,active in ipairs({'Base','L2','R2','L2R2'}) do
                 layout(positions[1],positions[2],positions[3],active)
-                assert(HUD.LayoutGuard(),'no clear placement')
+                assert(HUD.LayoutGuard(),'no clear placement '..screenW..' '..rootScale..' '..active)
+                local identity=table.concat({screenW,screenH,rootScale,positions[1],positions[2],positions[3]},':')
+                for _,id in ipairs({'L2','R2'}) do
+                    local rect=HUD.Rect(_G['ConsolePortGroup'..id].__cpfBankPrompt)
+                    local key=identity..id local prior=fixedHints[key]
+                    if prior then assert(math.abs(rect.x-prior.x)<.001 and math.abs(rect.y-prior.y)<.001,'trigger prompt jumps with selected bank '..id..' active='..active..' x='..rect.x..' y='..rect.y..' prior='..prior.x..','..prior.y)
+                    else fixedHints[key]=rect end
+                end
                 local buttons,decorations={},{}
                 for _,id in ipairs({'Base','L2','R2','L2R2'}) do
                     local bank=_G['ConsolePortGroup'..id]

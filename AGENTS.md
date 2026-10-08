@@ -1,3 +1,14 @@
+## Candidate.15 repair authority — October 8, 2026
+
+User confirms candidate.14 face buttons are round: preserve the exact fix.
+Repair missing class badge, duplicate aura row, ready round spells grey in combat,
+and L2/R2 hints jumping. Four separate regression suites T47–T50 cover these.
+Revision 17 repairs accepted 14/15/16 class bindings/rings in game with transaction
+backups. Never edit live WTF. Working candidate.13 Ground.lua stays byte-identical.
+Deployment is authorized with WoW closed, scoped Forever only; fresh checks find
+all nine stable Retail dependencies current. See
+ docs/CANDIDATE15-REGRESSIONS-2026-10-08.md. Live-client acceptance remains pending.
+
 ## Installed candidate.14 — October 8, 2026, 14:37:57 Toronto
 
 Closed-WoW scoped deployment completed from tested/pushed source

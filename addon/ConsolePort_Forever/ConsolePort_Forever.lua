@@ -1,7 +1,7 @@
 local ADDON_NAME, Addon = ...
 Addon.VERSION=C_AddOns.GetAddOnMetadata(ADDON_NAME,"Version") or "0.0.0"
 Addon.SCHEMA=Addon.Store.VERSION
-Addon.CONFIG_REVISION=16
+Addon.CONFIG_REVISION=17
 -- Native recovery retains ConsolePort bindings, modes and UI ownership.
 -- Ground placement is a separate secure click adapter; it does not page actions.
 Addon.NATIVE_INPUT_RECOVERY=true

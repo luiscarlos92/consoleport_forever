@@ -298,6 +298,11 @@ local face=base.buttons.PAD1
 face._state_type='action' face._state_action=1
 face.config={outOfRangeColoring='button',colors={range={1,.1,.1},mana={.1,.1,1}}}
 function face:IsUsable() return true,false end
+-- Ready combat spells recover stale native tint AND placeholder opacity.
+combat=true
+face.icon:SetVertexColor(.4,.4,.4) face.icon:SetAlpha(.5) face.icon:SetDesaturated(true)
+face:UpdateLocal()
+assert(face.icon.tint[1]==1 and face.icon.tint[2]==1 and face.icon.tint[3]==1 and face.icon.alpha==1 and not face.icon.desaturated,'ready round combat spell remains grey')
 combat=true locked=true UpdateUsable(face) assert(face.icon.desaturated==true)
 locked=false UpdateUsable(face) assert(face.icon.desaturated==false,'party-sync unlock retained stale desaturation')
 UpdateUsable(face,false,false) assert(face.icon.tint[1]==.4,'unusable native tint was erased')

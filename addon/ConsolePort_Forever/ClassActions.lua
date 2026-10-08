@@ -101,7 +101,7 @@ function Class.UpdateNativeBar(addon,api,editing)
 end
 function Class.Migrate(addon,api,canWrite)
     local record=addon.record
-    if not record or (record.appliedRevision~=14 and record.appliedRevision~=15) or not record.bindingAccepted or not record.ringAccepted then return false end
+    if not record or (record.appliedRevision~=14 and record.appliedRevision~=15 and record.appliedRevision~=16) or not record.bindingAccepted or not record.ringAccepted then return false end
     if addon.busy or (addon.Prompt and addon.Prompt.active) or not canWrite() then return false end
     local adapters=addon.adapters
     local rings=adapters and adapters.rings
@@ -115,19 +115,19 @@ function Class.Migrate(addon,api,canWrite)
     local steps={}
     for _,entry in ipairs({{'controller','bindings',current,desired},{'rings','rings',ringBefore,ringAfter}}) do
         if not addon.Core.Equal(entry[3],entry[4]) then
-            steps[#steps+1]={id=addon.guid..'/'..entry[1],scope=entry[2],path={'state'},before=entry[3],value=entry[4],revision=16}
+            steps[#steps+1]={id=addon.guid..'/'..entry[1],scope=entry[2],path={'state'},before=entry[3],value=entry[4],revision=17}
         end
     end
     -- Explicitly authorized first-login migration, scoped to the class chord
     -- and its native ring. Existing transaction machinery owns backup/rollback.
-    local journal=addon.Transactions.Prepare(addon.db,addon.guid,steps,{revision=16,foreverClassMigration=true})
+    local journal=addon.Transactions.Prepare(addon.db,addon.guid,steps,{revision=17,foreverClassMigration=true})
     addon.busy=true
     local ok,result,reason=pcall(addon.Transactions.Apply,journal,adapters,canWrite)
     addon.busy=false
     if not ok or not result then
         addon.Diagnostics:SetFeature('classFlyout','recovery-required',tostring(reason or result)) return false
     end
-    assert(addon.Transactions.Commit(addon.db,journal,16))
+    assert(addon.Transactions.Commit(addon.db,journal,17))
     addon:CaptureControllerEdits()
     rings:CaptureEdits()
     record.lastInstallTransaction=journal.id

@@ -321,7 +321,7 @@ check('T21.native-map-canvas-controls', () => {
     .replace('--@NATIVE_WAYPOINT',()=>read(base+'Blizzard_SharedMapDataProviders/WaypointLocationDataProvider.lua'));
   execute(source+scrollFixture()+'\n'+fixture,'map-native-canvas');
 });
-check('T24.current-native-presentation-lifecycle', () => {
+function presentationFixture() {
   if (!read('evidence/native/Blizzard_APIDocumentationGenerated/EventUtilsDocumentation.lua').includes('Name = "IsEventValid"')) throw Error('skin event validation lacks pinned native API evidence');
   const masque='reference/installed-addons/2026-10-03-initial/Masque/Core/Group.lua';
   const package=JSON.parse(read('dependencies/lock.json')).packages.find(p=>p.repo==='SFX-WoW/Masque');
@@ -339,6 +339,10 @@ check('T24.current-native-presentation-lifecycle', () => {
     .replace('--@NATIVE_AVAILABILITY',()=>['UpdateUsable','SpellVFX_CastingAnim_OnHide'].map(name=>nativeFunction('evidence/consoleport-contracts/ConsolePort/Libs/External/LibActionButton-1.0/LibActionButton-1.0.lua',name)).join('\n'))
     .replace('--@NATIVE_UNBOUND_GLYPH',()=>['ResetGlyphTexture','ProxyButtonTextureProvider'].map(name=>nativeFunction('evidence/consoleport-contracts/ConsolePort_Bar/Widget/Button/Button.lua',name)).join('\n'))
     .replace('--@PRODUCT_SKIN',()=>['HUDPresentation','Skin'].map(name=>';(function(...)\n'+read('addon/ConsolePort_Forever/'+name+'.lua')+'\nend)("ConsolePort_Forever",Addon);').join('\n'));
+  return fixture;
+}
+check('T24.current-native-presentation-lifecycle', () => {
+  const fixture=presentationFixture();
   execute(source+fixture,'current-native-presentation');
   // A negative control must fail with the original unretired Masque region.
   let reproduced=false;
@@ -347,7 +351,7 @@ check('T24.current-native-presentation-lifecycle', () => {
   } catch(error) { reproduced=String(error).includes('Masque private square normal remains visible'); }
   if(!reproduced) throw Error('Private square overlay regression was not reproduced');
 });
-check('T45.HUD-collision-screen-bounds-and-scale-transitions', () => {
+function geometryFixture() {
   const template=JSON.parse(read('evidence/forever-ui/retail-button-template.json'));
   if(sha('evidence/forever-ui/retail-button-template.xml')!==template.sha256 || !read('evidence/forever-ui/retail-button-template.xml').includes('<Size x="45" y="45"/>')) throw Error('Native button dimensions unqualified');
   const cp=JSON.parse(read('dependencies/lock.json')).packages.find(p=>p.repo==='seblindfors/ConsolePort');
@@ -355,8 +359,10 @@ check('T45.HUD-collision-screen-bounds-and-scale-transitions', () => {
   const fixture=read('tests/harness/hud_geometry.lua')
     .replace('--@PRODUCT_HUD',()=>';(function(...)\n'+read('addon/ConsolePort_Forever/HUDPresentation.lua')+'\nend)("ConsolePort_Forever",Addon);')
     .replace('--@NATIVE_SCALED_RECT',()=>nativeFunction(cp.unpacked+'/ConsolePort/Libs/External/ConsolePortNode/ConsolePortNode.lua','GetHitRectScaled'));
-  execute(source+fixture,'HUD-physical-rectangles');
-});
+  return fixture;
+}
+check('T45.HUD-collision-screen-bounds-and-scale-transitions', () => execute(source+geometryFixture(),'HUD-physical-rectangles'));
+check('T50.trigger-hints-stationary-across-selection', () => execute(source+geometryFixture()+read('tests/harness/stationary_hints.lua'),'stationary-trigger-hints'));
 check('T46.native-aura-bar-complete-ring-access-and-editor-release', () => {
   const fixture=read('tests/harness/class_bar.lua').replace('--@NATIVE_STANCE_VISIBILITY',()=>nativeFunction('evidence/native/Blizzard_ActionBar/Shared/StanceBar.lua','StanceBarMixin:ShouldShow'));
   execute(source+fixture,'native-class-bar');
@@ -496,6 +502,7 @@ check('T39.ConsolePort-3.3.10-layout-compatibility', () => {
   const iface=read(base+'ConsolePort_Bar/Model/Interface.lua');
   if(!iface.includes('Petring = false;') || !iface.includes('pos = _(Type.ComplexPoint') || !iface.includes('level    = 1;')) throw Error('current interface definitions changed');
 });
+let bootstrapState,bootstrapPrelude;
 check('T10-T11.product-bootstrap', () => {
   const entries=read('addon/ConsolePort_Forever/ConsolePort_Forever.toc').split(/\r?\n/).filter(x=>x.trim() && !x.startsWith('#'));
   const product='Addon={};\n'+entries.map(f=>';(function(...)\n'+read('addon/ConsolePort_Forever/'+f.replace(/\\/g,'/'))+'\nend)("ConsolePort_Forever",Addon);\n').join('');
@@ -523,6 +530,7 @@ end
 `);
   const state=execute(fixture+serializer+'\nSERIALIZED_STATE=serialized({installed=SESSION_STATE,restored=RESTORED_SESSION_STATE})','bootstrap');
   require('./saved_variables.cjs').parse('SESSION_STATE='+state);
+  bootstrapState=state; bootstrapPrelude=fixture.split('--@LIFECYCLE')[0];
   execute('SESSION_STATE=('+state+').installed\n'+fixture.split('--@LIFECYCLE')[0]+`
 fire('PLAYER_LOGIN') flush()
 assert(writes==0 and Addon.record.pendingReload==nil,'persisted login changed the accepted configuration')
@@ -530,7 +538,7 @@ assert(Addon:IsCharacterInstalled() and Addon.record.controllerBindings['SHIFT-P
 assert(Addon.db.transactions[Addon.record.lastInstallTransaction].reloadVerification.failures[1]==nil)
 TEST_SUCCESS=true
 `,'bootstrap-persisted-reload');
-  for(const playerClass of ['WARRIOR','DRUID','PALADIN']) for(const previousRevision of [14,15]) execute('SESSION_STATE=('+state+').installed\n'+fixture.split('--@LIFECYCLE')[0]+`
+  for(const playerClass of ['WARRIOR','DRUID','PALADIN']) for(const previousRevision of [14,15,16]) execute('SESSION_STATE=('+state+').installed\n'+fixture.split('--@LIFECYCLE')[0]+`
 function UnitClass() return '${playerClass}','${playerClass}' end
 local chosenChord=Addon.ClassActions.Chord(_G)
 local record=ConsolePortForeverDB.characters.A
@@ -544,7 +552,7 @@ if ${previousRevision}==15 then banks[2][oppositeChord]='CLICK NativeUtility:Aur
 banks[2]['CTRL-PADFORWARD']='CLICK NativeUtility:Auras'
 local before=Addon.Core.Copy(banks)
 fire('PLAYER_LOGIN') flush()
-assert(Addon.record.appliedRevision==16 and banks[2][chosenChord]=='CLICK NativeUtility:Auras','first login did not apply actual class binding')
+assert(Addon.record.appliedRevision==17 and banks[2][chosenChord]=='CLICK NativeUtility:Auras','first login did not apply actual class binding')
 assert((banks[2][oppositeChord] or '')=='','duplicate opposite-side class binding remains')
 assert((banks[2]['CTRL-PADFORWARD'] or '')=='' and banks[2].SPACE=='JUMP','first login retained old menu or lost keyboard binding')
 assert(shown==nil,'authorized class migration asked for another review')
@@ -678,6 +686,25 @@ for (const name of ['installer','runtime','skin']) {
     execute(harness+'\nTEST_SUCCESS=true\n','historical-'+name);
   });
 }
+check('T47.missing-class-badge-binding-first-login-repair', () => {
+  if(!bootstrapState) throw Error('native bootstrap qualification unavailable');
+  execute('SESSION_STATE=('+bootstrapState+').installed\n'+bootstrapPrelude+read('tests/harness/class_binding_repair.lua'),'missing-class-opener-repair');
+});
+check('T48.duplicate-aura-row-native-show-refresh', () => {
+  const fixture=read('tests/harness/class_bar.lua').replace('--@NATIVE_STANCE_VISIBILITY',()=>nativeFunction('evidence/native/Blizzard_ActionBar/Shared/StanceBar.lua','StanceBarMixin:ShouldShow'));
+  execute(source+fixture+read('tests/harness/aura_row_refresh.lua').replace('--@NATIVE_STANCE_UPDATE',()=>nativeFunction('evidence/native/Blizzard_ActionBar/Shared/StanceBar.lua','StanceBarMixin:Update')),'native-aura-row-refresh');
+});
+check('T49.ready-round-spells-combat-colour-and-opacity', () => {
+  const cp=JSON.parse(read('dependencies/lock.json')).packages.find(p=>p.repo==='seblindfors/ConsolePort');
+  const line=read(cp.unpacked+'/ConsolePort/Libs/External/LibActionButton-1.0/LibActionButton-1.0.lua').split(/\r?\n/).find(s=>s.startsWith('Action.IsUsable '));
+  if(!line) throw Error('native action usability contract missing');
+  const fixture=presentationFixture()+read('tests/harness/combat_colours.lua').replace('--@NATIVE_ACTION_USABILITY',()=>line);
+  execute(source+fixture,'combat-round-colour-regression');
+  let reproduced=false;
+  try { execute(source+fixture.replace('local function Availability(button,refreshUsable)','local function Availability(button,refreshUsable) refreshUsable=false'),'stale-ready-round-tint'); }
+  catch(error) { reproduced=String(error).includes('ready round combat spell remains grey'); }
+  if(!reproduced) throw Error('ready spell grey tint negative control did not fail');
+});
 const report = {at:new Date().toISOString(), commit:cp.execFileSync('git',['rev-parse','HEAD'],{cwd:root}).toString().trim(),
   productHashes:Object.fromEntries(files('addon').map(f=>[f,sha(f)])),
   toolingHashes:Object.fromEntries([...files('tools'),...files('tests')].filter(f=>!f.includes('__pycache__')).map(f=>[f,sha(f)])),

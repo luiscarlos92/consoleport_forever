@@ -196,7 +196,7 @@ local function Prompt(parent, field, keys, point, relativePoint, x, y)
         f.plus={f:CreateFontString(nil,'OVERLAY','GameFontNormal'),f:CreateFontString(nil,'OVERLAY','GameFontNormal')}
         for _,plus in ipairs(f.plus) do plus:SetText('+') plus:SetTextColor(.85,.85,.85,1) end
     end
-    f:ClearAllPoints() f:SetPoint(point,parent,relativePoint,x,y) f:SetSize(#keys*22+(#keys-1)*14,22)
+    f:SetParent(parent) f:ClearAllPoints() f:SetPoint(point,parent,relativePoint,x,y) f:SetSize(#keys*22+(#keys-1)*14,22)
     local valid=#keys>0 and #keys<=3
     for i,icon in ipairs(f.icons) do
         icon:ClearAllPoints() icon:SetPoint('LEFT',f,'LEFT',(i-1)*36,0) icon:SetSize(22,22)
@@ -220,7 +220,31 @@ function HUD.BankPrompt(bank, bankID)
     end
     local f=Prompt(bank,'__cpfBankPrompt',keys,'BOTTOM','BOTTOM',0,16)
     if bankID~='L2R2' and bank.buttons and bank.buttons.PADDRIGHT then
-        f:ClearAllPoints() f:SetPoint('TOPRIGHT',bank.buttons.PADDRIGHT,'BOTTOMRIGHT',12,-4)
+        -- A separate decorative anchor has the native INACTIVE bank transform.
+        -- Selected bank scaling moves both its cells and its anchor offsets;
+        -- inheriting either made the trigger jump on every modifier transition.
+        local pos=bank.props and bank.props.pos
+        if pos and pos.point=='BOTTOM' and pos.relPoint=='BOTTOM' and bank.SetScale then
+            local anchor=bank.__cpfInactiveHintAnchor
+            if not anchor then
+                anchor=CreateFrame('Frame',nil,bank:GetParent()) bank.__cpfInactiveHintAnchor=anchor
+                if bank.HookScript then
+                    bank:HookScript('OnHide',function() anchor:Hide() end)
+                    bank:HookScript('OnShow',function() anchor:Show() end)
+                end
+            end
+            local scale=(tonumber(tostring(bank.props.rescale or ''):match('(%d+)%s*$')) or 94)/100
+            anchor:SetScale(scale) anchor:SetSize(bank:GetWidth(),bank:GetHeight())
+            anchor:ClearAllPoints() anchor:SetPoint('BOTTOM',bank:GetParent(),'BOTTOM',pos.x,pos.y)
+            f.__cpfStationary=true f:SetParent(anchor)
+            f:ClearAllPoints()
+            -- Native right D-pad cell starts 82.5 from the bank's left edge.
+            local cell=bank.buttons.PADDRIGHT
+            f:SetPoint('TOPRIGHT',anchor,'LEFT',82.5+cell:GetWidth()+12,-cell:GetHeight()/2-4)
+            if bank.IsShown and not bank:IsShown() then anchor:Hide() else anchor:Show() end
+        else
+            f:ClearAllPoints() f:SetPoint('TOPRIGHT',bank.buttons.PADDRIGHT,'BOTTOMRIGHT',12,-4)
+        end
     end
 end
 function HUD.PlaceBank(bank)
@@ -270,13 +294,25 @@ end
 function HUD.LayoutGuard()
     if InCombatLockdown() then return end
     if not UIParent or not UIParent.GetEffectiveScale then return false end
-    local obstacles,ornaments={},{}
+    local obstacles,ornaments,extremes={},{},{}
     for _,id in ipairs({'Base','L2','R2','L2R2'}) do
         local bank=_G['ConsolePortGroup'..id]
         if bank and bank.buttons then
             for _,button in pairs(bank.buttons) do
                 local rect=HUD.Rect(button)
-                if rect then obstacles[#obstacles+1]=rect end
+                if rect then
+                    obstacles[#obstacles+1]=rect
+                    -- Fit once against both native bank size extremes, rather
+                    -- than finding a different gap after each selection.
+                    if bank.GetScale and bank.props and bank.props.pos and bank.props.pos.point=='BOTTOM' then
+                        local current=bank:GetScale()
+                        for _,scale in ipairs({.94,1.06}) do
+                            local ratio=scale/current
+                            local center=UIParent:GetWidth()/2
+                            extremes[#extremes+1]={x=center+(rect.x-center)*ratio,y=rect.y*ratio,w=rect.w*ratio,h=rect.h*ratio}
+                        end
+                    end
+                end
             end
             if bank.__cpfBankPrompt and bank.__cpfBankPrompt:IsShown() then ornaments[#ornaments+1]=bank.__cpfBankPrompt end
         end
@@ -285,15 +321,17 @@ function HUD.LayoutGuard()
     if base and base.__cpfClassShortcut and base.__cpfClassShortcut:IsShown() then ornaments[#ornaments+1]=base.__cpfClassShortcut end
     local width,height=UIParent:GetWidth(),UIParent:GetHeight()
     local failures,shifted=0,0
-    local function Fits(rect)
+    local function Fits(rect,stationary)
         if rect.x<4 or rect.y<4 or rect.x+rect.w>width-4 or rect.y+rect.h>height-4 then return false end
         for _,other in ipairs(obstacles) do if HUD.Overlap(rect,other,4) then return false end end
+        if stationary then for _,other in ipairs(extremes) do if HUD.Overlap(rect,other,4) then return false end end end
         return true
     end
     for _,frame in ipairs(ornaments) do
         local box=Bounds(frame)
         if box then
-            local placed=Fits(box)
+            local stationary=frame.__cpfStationary
+            local placed=Fits(box,stationary)
             if not placed then
                 -- Only move unprotected decorative groups. Keep all spell cells
                 -- at their native anchors. Search nearby clear, fully visible space.
@@ -304,7 +342,7 @@ function HUD.LayoutGuard()
                     for _,direction in ipairs({{0,1},{-1,0},{1,0},{0,-1},{-1,1},{1,1}}) do
                         local dx,dy=cx+direction[1]*radius,cy+direction[2]*radius
                         local candidate={x=box.x+dx,y=box.y+dy,w=box.w,h=box.h}
-                        if Fits(candidate) then
+                        if Fits(candidate,stationary) then
                             local scale=UIParent:GetEffectiveScale()/frame:GetEffectiveScale()
                             frame:ClearAllPoints()
                             frame:SetPoint('BOTTOMLEFT',UIParent,'BOTTOMLEFT',(original.x+dx)*scale,(original.y+dy)*scale)
@@ -347,7 +385,12 @@ function HUD.ClassShortcut(bank)
     local icon=entry and entry.type=='spell' and Public(entry.spell) and C_Spell.GetSpellTexture(entry.spell)
     local valid=icon and Public(icon) and #keys>0 and #keys<=3
     for _,key in ipairs(keys) do if not key then valid=false end end
-    if not valid then if badge then badge:Hide() end return end
+    if not valid then
+        if badge then badge:Hide() end
+        if Addon.Diagnostics then Addon.Diagnostics:SetFeature('classShortcut','pending',
+            not chord and 'installed class ring opener is not bound' or 'class ring icon or device glyph unavailable') end
+        return
+    end
     if not badge then
         badge=CreateFrame('Frame',nil,bank:GetParent()) bank.__cpfClassShortcut=badge
         if badge.SetIgnoreParentAlpha then badge:SetIgnoreParentAlpha(true) end
@@ -371,6 +414,7 @@ function HUD.ClassShortcut(bank)
     end
     for i,plus in ipairs(prompt.plus) do plus:ClearAllPoints() plus:SetPoint('LEFT',prompt,'LEFT',i*28-10,0) end
     badge:Show()
+    if Addon.Diagnostics then Addon.Diagnostics:SetFeature('classShortcut','offline-verified','class ring badge displayed below R2') end
 end
 function HUD.Watch()
     local db=DB()

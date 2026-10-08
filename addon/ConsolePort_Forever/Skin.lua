@@ -5,7 +5,7 @@ local HUD = Addon.HUDPresentation
 local CIRCLE = [[Interface\CharacterFrame\TempPortraitAlphaMask]]
 local REGION_GETTERS={NormalTexture='GetNormalTexture',PushedTexture='GetPushedTexture',HighlightTexture='GetHighlightTexture',CheckedTexture='GetCheckedTexture'}
 local function Public(value) return not (issecretvalue and issecretvalue(value)) end
-local function Availability(button)
+local function Availability(button,refreshUsable)
     if not Addon.IsCharacterInstalled or not Addon:IsCharacterInstalled() then return end
     if not button.icon or not button.icon.SetDesaturated then return end
     if button._state_type=='custom' then
@@ -13,17 +13,47 @@ local function Availability(button)
         local exit=binding=='' and button:GetParent().id=='Base' and button.id=='PAD2'
         if not exit and binding~='JUMP' and binding~='INTERACTTARGET' and binding~='TURNORACTION' then return end
     end
+    if refreshUsable and type(button.IsUsable)=='function' then
+        local ok,usable,mana=pcall(button.IsUsable,button)
+        local config=button.config
+        local valid=ok and (not Public(usable) or type(usable)=='boolean')
+            and (not Public(mana) or type(mana)=='boolean') and config and config.colors
+        if valid and C_CurveUtil and C_CurveUtil.EvaluateColorValueFromBoolean then
+            -- Retail permits opaque booleans through this colour evaluator.
+            -- Forward the resulting components to the texture without branching
+            -- on availability/range or inspecting protected combat values.
+            local choose=C_CurveUtil.EvaluateColorValueFromBoolean
+            local range=button.outOfRange
+            if Public(range) and type(range)~='boolean' then range=false end
+            local color={}
+            for i=1,3 do
+                color[i]=choose(usable,1,choose(mana,config.colors.mana[i],.4))
+                if config.outOfRangeColoring=='button' then color[i]=choose(range,config.colors.range[i],color[i]) end
+            end
+            button.icon:SetVertexColor(color[1],color[2],color[3])
+        elseif valid and Public(usable) and Public(mana) and Public(button.outOfRange) then
+            local color
+            if config.outOfRangeColoring=='button' and button.outOfRange then color=config.colors.range
+            elseif usable then color={1,1,1}
+            elseif mana then color=config.colors.mana
+            else color={.4,.4,.4} end
+            if color then button.icon:SetVertexColor(color[1],color[2],color[3]) end
+        end
+    end
+    -- Placeholder opacity is separate from native usability tint.
+    if button._state_type~='empty' then button.icon:SetAlpha(1) end
     -- LAB sets this true for a party-sync lock but its quick usability update
     -- never clears it on unlock. Preserve its native range/resource tint.
     local locked=false
     if button._state_type=='action' then
         if not C_LevelLink or not C_LevelLink.IsActionLocked or not Public(button._state_action) then return end
         local ok,value=pcall(C_LevelLink.IsActionLocked,button._state_action)
-        if not ok or not Public(value) or type(value)~='boolean' then return end
+        if not ok or (Public(value) and type(value)~='boolean') then return end
         locked=value
     end
     if not Public(button.zoneAbilityDisabled) then return end
-    button.icon:SetDesaturated(locked or button.zoneAbilityDisabled==true)
+    if button.zoneAbilityDisabled==true then button.icon:SetDesaturated(true)
+    else button.icon:SetDesaturated(locked) end -- Forward opaque combat booleans to the permitted texture sink.
 end
 local function Swipe(cd,r,g,b,a)
     if not Addon.IsCharacterInstalled or not Addon:IsCharacterInstalled() then return end
@@ -83,7 +113,7 @@ local function Apply(button)
         Addon.skinRefreshPending=true
         if button.__cpfFaceMask then RoundStates(button,true) end
         if button.SlotArt then button.SlotArt:Hide() end
-        Availability(button) BaseIcon(button) HUD.EmptyVisibility(button)
+        Availability(button,true) BaseIcon(button) HUD.EmptyVisibility(button)
         return
     end
     button.MasqueSkinned = true
@@ -145,7 +175,7 @@ local function Apply(button)
         button.__cpfAvailabilityIcon=button.icon
         hooksecurefunc(button.icon,'SetVertexColor',function() Availability(button) end)
     end
-    Availability(button)
+    Availability(button,true)
     BaseIcon(button)
 end
 
@@ -259,7 +289,7 @@ local events=CreateFrame("Frame")
 function Addon:RefreshFaceAvailability()
     for bankID in pairs(BANKS) do
         local bank=_G['ConsolePortGroup'..bankID]
-        if bank and bank.buttons then for id in pairs(FACE) do local button=bank.buttons[id] if button then Availability(button) end end end
+        if bank and bank.buttons then for id in pairs(FACE) do local button=bank.buttons[id] if button then Availability(button,true) end end end
     end
 end
 events:SetScript("OnEvent",function()

@@ -1,0 +1,21 @@
+{
+  "installedVersion": "2.0.0-candidate.16",
+  "sourceCommit": "64f9d7062be49b86ab5cd2fccf0c7b7e9360f06f",
+  "packSHA256": "7bd8fddec64e8e136e2e40a59ad7b177d39fb7cfffeaae54251d8f610dcb9762",
+  "closedAt": "2026-10-08T21:07:42.881198+00:00",
+  "installedFilesVerified": 52,
+  "unselectedFilesUnchanged": 1949,
+  "wtfFilesUnchanged": 298,
+  "junctionsUnchanged": 42,
+  "anchorsUnchanged": true,
+  "backupsVerified": true,
+  "backup": "C:\\Users\\luisr\\WoW-Backups\\ConsolePort-Forever\\20261008T210716Z-75556bd75700",
+  "runtimeSuites": 52,
+  "toolingChecks": 39,
+  "geometryMatrixCases": 120,
+  "configurationRevision": 17,
+  "storeSchema": 3,
+  "groundInterceptorUnchangedFromUserTestedCandidate13": true,
+  "noLiveWTFWrites": true,
+  "liveVisualAcceptance": "Pending user client rendering test; combat source failure reproduced, exact live shading cause not certified"
+}

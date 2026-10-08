@@ -1,3 +1,23 @@
+## Installed candidate.16 — October 8, 2026, 17:07:42 Toronto
+
+Authorized closed-WoW scoped installation completed from tested/pushed source
+64f9d7062be49b86ab5cd2fccf0c7b7e9360f06f. Independent readback verifies 52
+Forever files, 1,949 unselected addon files unchanged, 298 WTF files unchanged,
+42 junctions and root anchors preserved, and verified previous companion/WTF
+backups retained at C:/Users/luisr/WoW-Backups/ConsolePort-Forever/20261008T210716Z-75556bd75700.
+All 52 runtime/source suites and 39 tooling tests pass. Tests now reproduce the
+candidate.15 unanchored-manager hint failure and late cached native colour write,
+check actual glyph visibility and bank-side/continuous-opacity badge behavior,
+and retain observed client visual state safely. Roundness, corrected native aura
+row and byte-identical working candidate.13 Ground.lua stay. No dependency update,
+download or reshipping after fresh nine-package stable Retail check. Revision 17
+remains; no new config/binding migration and no filesystem live WTF edits.
+Actual client rendering/combat grey acceptance remains pending user confirmation;
+do not infer it from offline pass counts. If grey persists, /cpf diagnose during
+combat forces a public/opaque-safe visual snapshot; normal logout saves evidence.
+Receipts: evidence/delivery/live-install-candidate16.json and
+candidate16-independent-readback.json. See docs/CANDIDATE16-NATIVE-VISUALS-2026-10-08.md.
+
 ## Candidate.16 visual repair authority — October 8, 2026
 
 User confirms duplicate aura row fixed, but candidate.15 trigger labels disappeared

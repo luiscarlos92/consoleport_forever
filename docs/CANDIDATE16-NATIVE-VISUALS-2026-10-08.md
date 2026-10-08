@@ -58,3 +58,15 @@ Validation: all 52 runtime/source suites and 39 tooling checks passed. Reports
 are retained in evidence/forever-ui/candidate16-runtime-tests.json and
 candidate16-tooling-tests.json. These are offline/source execution results;
 Retail rendering acceptance remains pending the user test.
+
+Deployment completed October 8, 2026 at 17:07:42 Toronto from tested/pushed
+source 64f9d7062be49b86ab5cd2fccf0c7b7e9360f06f. Scoped ZIP SHA256:
+7bd8fddec64e8e136e2e40a59ad7b177d39fb7cfffeaae54251d8f610dcb9762.
+Preview then exact execution copied Forever only. Independent readback verifies
+52 installed files, 1,949 unselected addon files, 298 WTF files, 42 junctions,
+root anchors and previous companion/canonical WTF backups. Backup retained at
+C:/Users/luisr/WoW-Backups/ConsolePort-Forever/20261008T210716Z-75556bd75700.
+Receipts: evidence/delivery/prepared-candidate16.json, live-install-candidate16.json
+and candidate16-independent-readback.json. Actual live-client acceptance remains
+pending. If grey persists, /cpf diagnose during the failure forces the observed
+snapshot, and normal logout saves it through game-owned SavedVariables.

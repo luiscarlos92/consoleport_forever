@@ -1,0 +1,21 @@
+{
+  "installedVersion": "2.0.0-candidate.13",
+  "sourceCommit": "21a385967bba361733b4d0fbc196b6d71a87c136",
+  "packSHA256": "315a3cd5637189c67ead8dfc4d17b476aa39d307eb121be25eebda843c88a954",
+  "closedAt": "2026-10-08T17:21:08.747358+00:00",
+  "installedFilesVerified": 52,
+  "unselectedFilesUnchanged": 1949,
+  "wtfFilesUnchanged": 298,
+  "junctionsUnchanged": 42,
+  "anchorsUnchanged": true,
+  "backupsVerified": true,
+  "backup": "C:\\Users\\luisr\\WoW-Backups\\ConsolePort-Forever\\20261008T172039Z-afa2c11abd51",
+  "runtimeSuites": 44,
+  "toolingChecks": 39,
+  "configurationRevision": 16,
+  "storeSchema": 3,
+  "groundPlacementEnabled": true,
+  "nativeRecoveryRetained": true,
+  "noLiveWTFWrites": true,
+  "liveCombatAndVisualAcceptance": "Pending user hardware test"
+}

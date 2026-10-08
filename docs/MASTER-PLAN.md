@@ -1,3 +1,23 @@
+## Installed candidate.13 — October 8, 2026, 13:21:08 Toronto
+
+Authorized closed-WoW deployment completed from tested/pushed source
+21a385967bba361733b4d0fbc196b6d71a87c136. All 52 installed Forever files match
+the scoped ZIP. Independent readback verifies 1,949 unselected addon files,
+298 WTF files, 42 junctions and root anchors unchanged; backups retained and
+verified at C:/Users/luisr/WoW-Backups/ConsolePort-Forever/20261008T172039Z-afa2c11abd51.
+All 44 runtime/source suites and 39 tooling checks pass. No dependency updates
+or reshipping. Configuration revision 16; accepted revision-14/15 records migrate
+class bindings/ring in game on first eligible login. Ground placement stays enabled.
+The unprotected cursor query is guarded in combat; native UI/mode recovery stays.
+Original empty-slot sprites, preserved atlas UV, true round state frames, raised
+banks/prompts and an independently parented class badge are installed. User
+confirmed the existing aura selector is a hold-to-open ConsolePort ring; keep
+its release/selection behavior. Paladin/druid use L1+L2; warrior R1+R2, following
+Blizzard class source. Actual Retail combat/visual acceptance is pending the user's
+manual test; offline reproduction and checks are not live-client certification.
+Receipts: evidence/delivery/live-install-candidate13.json and
+candidate13-independent-readback.json. See docs/CANDIDATE13-REPAIR-2026-10-08.md.
+
 ## Current authority — candidate.13 repair, October 8, 2026
 
 The user reports candidate.11/12 combat controller casting is broken and rejects

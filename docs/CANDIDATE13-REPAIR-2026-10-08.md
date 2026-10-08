@@ -75,8 +75,16 @@ UI contexts and hidden controls remains; do not reactivate the old takeover path
 Nine official stable Retail dependencies were freshly checked this work session:
 all current, no download/update or reshipping. All 44 runtime/source suites and 39 tooling checks passed; exact reports are
 retained in evidence/forever-ui/candidate13-runtime-tests.json and
-candidate13-tooling-tests.json. Scoped package/preview/install/readback
-receipts follow after source is pushed.
+candidate13-tooling-tests.json. The scoped ZIP contains 52 verified Forever files. Preview, installation and
+independent readback succeeded at 17:21:08 UTC / 13:21:08 Toronto. Source commit:
+21a385967bba361733b4d0fbc196b6d71a87c136. SHA-256:
+315a3cd5637189c67ead8dfc4d17b476aa39d307eb121be25eebda843c88a954.
+Receipts are in evidence/delivery/prepared-candidate13.json,
+live-install-candidate13.json and candidate13-independent-readback.json.
+All 1,949 unselected addon files, 298 WTF files, 42 junctions and anchors match
+the pre-deployment inventory. The exact previous companion and canonical WTF
+backup at C:/Users/luisr/WoW-Backups/ConsolePort-Forever/20261008T172039Z-afa2c11abd51
+are verified and retained. No game was launched or live WTF written.
 No live acceptance is inferred from offline tests. Manual next checks are ordinary
 controller combat casting, then cursor/player/manual ground spells, all modifier
 banks, aura/stance selection and the actual rendered empty/assigned slot shapes.

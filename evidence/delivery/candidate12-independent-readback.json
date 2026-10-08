@@ -1,0 +1,24 @@
+{
+  "at": "2026-10-08T06:17:28.011473+00:00",
+  "sourceCommit": "e0dfd82439cf85c22443bd7c1e6b59d5597096dd",
+  "version": "2.0.0-candidate.12",
+  "configurationRevision": 15,
+  "files": 52,
+  "vendorFilesUnchanged": 1949,
+  "wtfFilesUnchanged": 298,
+  "linksUnchanged": 42,
+  "anchorsUnchanged": true,
+  "backupVerified": true,
+  "backup": "C:\\Users\\luisr\\WoW-Backups\\ConsolePort-Forever\\20261008T061555Z-0d0169ce11b0",
+  "packSHA256": "c06d71643c2aed8149fabe6e905afd2713abb9afda630ed79f082845a885cd43",
+  "dependencyUpdates": [],
+  "firstLoginClassMigrationInstalled": true,
+  "nativeRecoveryRetained": true,
+  "RetailAcceptance": "Pending first user login/visual/controller/combat acceptance; no game launched by agent.",
+  "firstLoginEligibilityVerified": {
+    "acceptedRevision14Characters": 2,
+    "bindingAccepted": true,
+    "ringAccepted": true,
+    "method": "Fresh read-only literal parse of current game-owned ConsolePortForeverDB; no saved-variable writes."
+  }
+}

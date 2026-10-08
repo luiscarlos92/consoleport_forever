@@ -91,3 +91,16 @@ and file pages were reviewed; seven GitHub latest stable identities were queried
 with check_stable_sources.py --discover. All match the lock. No dependency was
 downloaded, extracted or selected for deployment. The scoped delivery contains
 only ConsolePort_Forever, preserving all vendors, inactive helpers, WTF and links.
+
+Deployment outcome
+
+The exact Forever-only package was installed at 06:16:20 UTC on October 8.
+All 52 files match the tested ZIP. Independent readback confirms 1,949 vendor
+files, 298 WTF files, 42 links and anchors unchanged, and verifies retained
+companion/configuration backups. No dependency was copied. Both current saved
+characters are accepted revision 14 with accepted bindings/rings, so the first
+eligible login performs the authorized class migration automatically. Reports:
+`evidence/delivery/live-install-candidate12.json` and
+`evidence/delivery/candidate12-independent-readback.json`. All 43 runtime/source
+and 39 tooling suites passed. Real Retail appearance, combat and controller
+acceptance still require the user's login; the agent did not launch the game.

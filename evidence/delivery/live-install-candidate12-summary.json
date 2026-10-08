@@ -1,0 +1,62 @@
+{
+  "operation": "deploy-companion",
+  "sourceCommit": "e0dfd82439cf85c22443bd7c1e6b59d5597096dd",
+  "packSHA256": "c06d71643c2aed8149fabe6e905afd2713abb9afda630ed79f082845a885cd43",
+  "dependencyUpdates": [],
+  "testedDependencies": {
+    "Cidan/BetterBags": {
+      "sha256": "16c1ac70c4de2e7f2cfdbf4d2b5f3d3f44514a3f9ecf1040e29c790e8be8c0d7",
+      "version": "v0.5.14"
+    },
+    "SFX-WoW/Masque": {
+      "sha256": "9e1da4827ae60bd25d7fc427cbeeb0dc297e59d53a71a29ae95223d3374bbfa0",
+      "version": "12.1.0"
+    },
+    "SLOKnightfall/BetterWardrobe": {
+      "sha256": "abcba6be5535c15a581721192a5c4865e05b568dbac52d79c108c89e6c763d8c",
+      "version": "6.12.3"
+    },
+    "Tercioo/Plater-Nameplates": {
+      "sha256": "3353250fa63fe840d8e9444037a3debde5c82286ccbcc825a475cec5ffd90ead",
+      "version": "Plater-v656"
+    },
+    "curseforge/DynamicCam": {
+      "sha256": "10eb86230c6903e72097e1552c04de8a163a39fe3cb31fc3a3274c2c4394e072",
+      "version": "2.21.1"
+    },
+    "curseforge/Immersion_ExtraFade": {
+      "sha256": "89c59d0519b2392b41010dda34ec01d38c9c1702c644f5e57422341b1fec21c6",
+      "version": "1.18.0"
+    },
+    "seblindfors/ConsolePort": {
+      "sha256": "6175a327b3b7505b6f1d79ef0adc96c7a65db3cc8220dd59e34de6658dbb4f49",
+      "version": "3.3.10"
+    },
+    "seblindfors/Immersion": {
+      "sha256": "b180a8cbd1a1d878377da5a85abfdc5576e0c04212f9e900e3e9ca505cde1f3e",
+      "version": "1.4.61"
+    },
+    "xod-wow/LiteMount": {
+      "sha256": "bf89ab84666266ffefd8ce56581f98467f8125c25c65e3fe68031303df28efe0",
+      "version": "12.1.0-1"
+    }
+  },
+  "root": "C:\\Program Files (x86)\\World of Warcraft\\_retail_",
+  "consolePortVersion": "3.3.10",
+  "addonFolders": [
+    "ConsolePort_Forever"
+  ],
+  "vendorFileCount": 1949,
+  "characterLinkCount": 42,
+  "currentConfigurationWrites": false,
+  "vendorWrites": false,
+  "execute": true,
+  "id": "20261008T061555Z-0d0169ce11b0",
+  "backup": "C:\\Users\\luisr\\WoW-Backups\\ConsolePort-Forever\\20261008T061555Z-0d0169ce11b0",
+  "stage": "C:\\Users\\luisr\\OneDrive\\Documents\\03 Gaming\\World of Warcraft\\_retail_\\Interface\\.cpf-companion-stage-20261008T061555Z-0d0169ce11b0",
+  "status": "installed",
+  "startedAt": "2026-10-08T06:15:55.686254+00:00",
+  "closedAt": "2026-10-08T06:16:20.795431+00:00",
+  "wtfUnchanged": true,
+  "vendorsUnchanged": true
+}

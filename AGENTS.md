@@ -1,3 +1,29 @@
+## Installed candidate.12 — October 8, 2026, 06:16:20 UTC
+
+Authorized closed-WoW deployment is complete. Candidate.12 is installed from
+pushed/tested source e0dfd82439cf85c22443bd7c1e6b59d5597096dd; independent
+readback verifies all 52 Forever files against the exact scoped ZIP. All 1,949
+vendor files, 298 WTF files, 42 junctions and root anchors are unchanged. Backups
+of the previous companion and canonical configuration are verified and retained:
+C:/Users/luisr/WoW-Backups/ConsolePort-Forever/20261008T061555Z-0d0169ce11b0.
+Receipt: evidence/delivery/live-install-candidate12.json; independent readback:
+evidence/delivery/candidate12-independent-readback.json. All 43 runtime/source
+suites and 39 tooling tests passed. Nine stable Retail releases were freshly
+checked again before packaging; no dependency was downloaded or copied.
+
+The UI now has circular face-button state/effect surfaces, grey glyph backgrounds
+on all 32 cells, three device-specific modifier-bank prompts and native class-side
+shoulder+trigger badges. Both current saved character records are accepted revision
+14 with accepted rings, verified by fresh read-only parsing. On their first eligible
+login the addon migrates the matching bindings and learned class entries together
+with an in-game transaction backup, reaching revision 15. Warrior uses R1+R2/RB+RT;
+druid/paladin use L1+L2/LB+LT. The replaced R2+menu class binding is removed.
+Native gameplay/UI recovery and candidate.11 ground placement remain active.
+Actual Retail visual/hardware/combat acceptance is pending; no game was launched.
+This deployment authorization is complete; future deployments need fresh user
+authorization with WoW closed. Never edit live WTF or prune unrelated addons.
+See docs/FOREVER-UI-2026-10-08.md for source research and remaining client checks.
+
 ## Candidate.12 Forever UI work — October 8, 2026
 
 User authorizes matching the attached native Forever controller interface and

@@ -1,0 +1,16 @@
+{
+  "sourceCommit": "b530b09cce4f7d75824d601806156d36d4786694",
+  "packSHA256": "db32c1ac8190915baa4a023e93c77deb5677dd06c599c496da5d1aadd468eda1",
+  "installedForeverFiles": 50,
+  "unselectedAddonFilesUnchanged": 1949,
+  "wtfFilesUnchanged": 298,
+  "characterLinksUnchanged": 42,
+  "anchorsUnchanged": true,
+  "sharedMediaBackedUpAndParked": true,
+  "platerCodeUnchanged": true,
+  "platerSavedVariablesSHA256": "0c28020246a8469391a6675153531abfb1afe1c544ee4df6fc360bf9458c5796",
+  "dbmAndHideClassBarsRemainAbsent": true,
+  "selectedPlaterProfile": "Default",
+  "configurationRevision": 14,
+  "addonVersion": "2.0.0-candidate.8"
+}

@@ -33,3 +33,11 @@ evidence/dependencies/retired-sharedmedia-2026-10-07.json and final stable-reche
 
 Final checks pass: 40 runtime/source suites and 36 tooling tests. Exact current
 reports are retained under evidence/test-results/sharedmedia-retirement-*.json.
+
+Installed at 22:42:24 Toronto, from `b530b09cce4f7d75824d601806156d36d4786694`.
+ZIP SHA-256: `db32c1ac8190915baa4a023e93c77deb5677dd06c599c496da5d1aadd468eda1`; 483,812 bytes.
+Backup: `C:\Users\luisr\WoW-Backups\ConsolePort-Forever\20261008T024150Z-913e090ef9f9`.
+Independent readback confirms 50 Forever files, 1,949 unselected addon files,
+298 WTF files, 42 junctions and identical Default selection for all four recorded
+characters. SharedMedia's 216 live files match backup and parked originals.
+Receipts are retained in evidence/delivery/*sharedmedia-retirement*.json.

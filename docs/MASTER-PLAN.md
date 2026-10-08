@@ -1,5 +1,26 @@
 # ConsolePort Forever: master plan, decisions, and project history
 
+## Installed checkpoint - SharedMedia retirement, October 7, 2026, 22:42:24 Toronto
+
+The user-authorized same-version candidate.8 retirement update is installed from
+pushed/tested source `b530b09cce4f7d75824d601806156d36d4786694`. SharedMedia_Causese was backed
+up and parked outside AddOns; its 216 original live files are retained. Only
+Forever's optional capability diagnostics changed. Plater and all 1,949 remaining
+vendor files match the pre-install snapshot. All 298 WTF files, 42 character
+junctions and game anchors are unchanged. An independent fresh literal parse
+confirms all four Plater profileKeys still select Default. Deployment does not
+install/import/select a Plater profile and contains no WTF payload. Inactive
+Quazii data is retained, under the user's explicit authorization to remove its
+unused sound package. DBM and HideClassBars remain absent; nine active dependencies
+are freshly checked/current, with no downloads or dependency reshipping.
+All 40 runtime/source checks and 36 tooling tests pass. Candidate.8, StoreSchema 3
+and configuration revision 14 remain. Exact receipt:
+`evidence/delivery/live-install-candidate8-sharedmedia-retirement.json`; independent
+readback: `evidence/delivery/sharedmedia-retirement-independent-readback.json`.
+Backup, parked originals and all earlier receipts remain retained. This deployment
+authorization is complete; later deployments require new authorization.
+
+
 ## Current authority - SharedMedia retirement, October 7, 2026
 
 A fresh read-only Plater WTF parse confirms all four profileKeys select Default.

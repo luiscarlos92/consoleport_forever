@@ -1,0 +1,60 @@
+{
+  "operation": "deploy-scoped-update",
+  "sourceCommit": "b530b09cce4f7d75824d601806156d36d4786694",
+  "packSHA256": "db32c1ac8190915baa4a023e93c77deb5677dd06c599c496da5d1aadd468eda1",
+  "root": "C:\\Program Files (x86)\\World of Warcraft\\_retail_",
+  "addonFolders": [
+    "ConsolePort_Forever",
+    "SharedMedia_Causese"
+  ],
+  "dependencyUpdates": [],
+  "retiredAddonFolders": {
+    "SharedMedia_Causese": {
+      "owner": "curseforge/SharedMedia_Causese",
+      "reason": "User authorized removal: Default Plater selected; Causese references belong only to inactive Quazii profile"
+    }
+  },
+  "testedDependencies": {
+    "Cidan/BetterBags": {
+      "sha256": "16c1ac70c4de2e7f2cfdbf4d2b5f3d3f44514a3f9ecf1040e29c790e8be8c0d7",
+      "version": "v0.5.14"
+    },
+    "SFX-WoW/Masque": {
+      "sha256": "9e1da4827ae60bd25d7fc427cbeeb0dc297e59d53a71a29ae95223d3374bbfa0",
+      "version": "12.1.0"
+    },
+    "SLOKnightfall/BetterWardrobe": {
+      "sha256": "abcba6be5535c15a581721192a5c4865e05b568dbac52d79c108c89e6c763d8c",
+      "version": "6.12.3"
+    },
+    "Tercioo/Plater-Nameplates": {
+      "sha256": "3353250fa63fe840d8e9444037a3debde5c82286ccbcc825a475cec5ffd90ead",
+      "version": "Plater-v656"
+    },
+    "curseforge/DynamicCam": {
+      "sha256": "10eb86230c6903e72097e1552c04de8a163a39fe3cb31fc3a3274c2c4394e072",
+      "version": "2.21.1"
+    },
+    "curseforge/Immersion_ExtraFade": {
+      "sha256": "89c59d0519b2392b41010dda34ec01d38c9c1702c644f5e57422341b1fec21c6",
+      "version": "1.18.0"
+    },
+    "seblindfors/ConsolePort": {
+      "sha256": "6175a327b3b7505b6f1d79ef0adc96c7a65db3cc8220dd59e34de6658dbb4f49",
+      "version": "3.3.10"
+    },
+    "seblindfors/Immersion": {
+      "sha256": "b180a8cbd1a1d878377da5a85abfdc5576e0c04212f9e900e3e9ca505cde1f3e",
+      "version": "1.4.61"
+    },
+    "xod-wow/LiteMount": {
+      "sha256": "bf89ab84666266ffefd8ce56581f98467f8125c25c65e3fe68031303df28efe0",
+      "version": "12.1.0-1"
+    }
+  },
+  "vendorFileCount": 1949,
+  "characterLinkCount": 42,
+  "currentConfigurationWrites": false,
+  "vendorWrites": true,
+  "execute": false
+}

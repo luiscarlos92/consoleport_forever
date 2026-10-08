@@ -1,3 +1,28 @@
+## Candidate.17 live acceptance — October 8, 2026
+
+The user confirms the remaining combat greying repair: "it works". Installed
+source 4cbf2ebb094a7dddcd2c60e26de597b0439ab773 is the accepted visual baseline.
+Earlier user confirmations cover true round faces, stationary visible L2/R2
+labels, chord-side stance shortcut placement/fading, duplicate aura-row removal,
+and Paladin/DH ordinary plus cursor/player ground casting. Preserve those results.
+This acceptance closes the reported visual defects; unrelated H8 feature gates
+and exhaustive hardware/secure-engine coverage remain separate.
+
+T53 now exercises all 16 faces, six occupied action types and 1,152 combat/peace
+native art redraws, empty/refill transitions, native Masque icon resets, distinct
+draw order, exact mask identity and genuine resource/range colours. Mandatory
+regression mutations fail for the old matte, missing immediate Show protection
+and same-layer reset. Retain T24 roundness, T45/T50 geometry/visibility, T51
+chord-side/fade, T49 availability and T41/T42 combat dispatch/ground coverage.
+Getter colour alone is insufficient: check composed visibility and late writers.
+Offline native-source reproductions complement this user's live confirmation;
+they do not certify every Retail scenario.
+
+Acceptance evidence: evidence/forever-ui/candidate17-live-acceptance.json.
+This maintenance changes docs/tests only; installed runtime, version/revision,
+bindings and live WTF remain unchanged. No redeployment or new installer prompt.
+Historical pending-at-deployment records below remain dated evidence.
+
 ## Installed candidate.17 — October 8, 2026, 17:48:19 Toronto
 
 Authorized closed-WoW scoped installation completed from tested/pushed source
@@ -13,7 +38,8 @@ mandatory old-backdrop negative control. Filled round backgrounds retire; icons
 sit above their backdrop. Empty original grey glyphs remain. Confirmed layout,
 class side/fade and Ground.lua bytes are unchanged. No dependency changes after
 fresh nine-package stable Retail check. Revision 17 remains, no new migration and
-no filesystem live WTF writes. Actual Retail rendering acceptance still pending.
+no filesystem live WTF writes. The reported combat-grey repair is now live
+accepted by the user; see the current acceptance checkpoint above.
 Receipts: evidence/delivery/live-install-candidate17.json and
 candidate17-independent-readback.json. See docs/CANDIDATE17-COMPOSITION-2026-10-08.md.
 
@@ -287,6 +313,18 @@ in `dependencies/sources.json` (`additionalAddonFolders`); do not edit the
 immutable original reference to add later dependencies. See
 `docs/DEPENDENCY-WORKFLOW.md`.
 
+## Accepted rendering regression gate
+
+Any round-face skin, background, availability or related dependency change must
+run T24, T49 and T53 alongside the full required suite. Preserve the actual
+Masque function/template reproduction and mandatory negative controls. Check
+composed colour, immediate late Show visibility, all 16 faces, empty/refill
+transitions and genuine resource/range restrictions; white icon getters or a
+pass count alone do not prove rendered brightness. Geometry/class changes also
+require T45/T50/T51 actual native hierarchy, onscreen/collision, stationary-label
+and chord-side/opacity checks. Keep candidate.17 live acceptance as the baseline;
+new offline passes are not a replacement for subsequent user rendering evidence.
+
 ## Combat input regression gate
 
 Changes involving UI ownership or controller routing must run T41's actual native
@@ -296,9 +334,13 @@ proof of input dispatch. Check held UI release, native/late-created widgets,
 foreign modal preservation and repeated UI/combat cycles. Do not modify upstream
 ConsolePort files to fix the companion's handoff.
 
-## Current recovery boundary
+## Historical candidate.10 recovery boundary
 
-Candidate.10/native input recovery is installed (October 8, 00:11:20 Toronto).
+The candidate.17 checkpoint above is current; native input recovery stays enabled
+and the user-confirmed Ground.lua interceptor stays intact. The following is
+the historical candidate.10 boundary, not a request to disable working targeting.
+
+Candidate.10/native input recovery was installed (October 8, 00:11:20 Toronto).
 Candidate.9 failed the user's live test. Do not claim that T41 fixed the complete
 live cause. Keep native recovery active until live diagnosis/acceptance supports
 restoring custom secure modes, ground casting, UI takeover and hidden controls.
@@ -307,8 +349,8 @@ All earlier installed checkpoints below are historical. New deployment needs aut
 
 ## Deployments
 
-- Deploy only with explicit user authorization and WoW closed. Current installed
-  checkpoint is candidate.9/revision 14 with unchanged ConsolePort 3.3.10
+- Deploy only with explicit user authorization and WoW closed. The following
+  historical checkpoint is candidate.9/revision 14 with unchanged ConsolePort 3.3.10
   (October 7, 23:58:54 Toronto). Combat handoff regresses the old hidden UI claim
   failure and restores native gameplay dispatch; 41 runtime/source and 36 tooling
   checks pass. All 1,949 vendor files, 298 WTF files and 42 links are unchanged.

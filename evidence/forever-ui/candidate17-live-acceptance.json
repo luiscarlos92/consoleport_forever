@@ -1,0 +1,66 @@
+{
+  "version": "2.0.0-candidate.17",
+  "configurationRevision": 17,
+  "installedSourceCommit": "4cbf2ebb094a7dddcd2c60e26de597b0439ab773",
+  "installedPackageSHA256": "261a198ed6208250b5cadc673bc465e8dcc0ab7da85f37f70f8bce8b9a740ce6",
+  "confirmationDate": "2026-10-08",
+  "confirmationSource": "Direct user message in this Codex conversation after candidate.17 deployment",
+  "userQuote": "it works, updated any documentation needed and tests to lock in this result and not have regressions",
+  "acceptedReportedRepair": "Ready round face abilities no longer appear unavailable due to native placeholder backdrop occlusion in combat",
+  "earlierUserConfirmedResults": [
+    "True round face buttons",
+    "Visible stationary L2/R2 labels",
+    "Class shortcut on its actual chord side with owning-bank opacity",
+    "Duplicate native aura row removed",
+    "Paladin/DH normal and configured cursor/player ground casts work in combat"
+  ],
+  "manualScopeLimitation": "User confirmed the reported repair; no claim of an exhaustive execution of all offline matrix cases or unrelated H8 feature gates.",
+  "automatedRegression": {
+    "suite": "T53",
+    "faces": 16,
+    "occupiedTypes": [
+      "action",
+      "spell",
+      "item",
+      "macro",
+      "flyout",
+      "held custom"
+    ],
+    "cyclesPerType": 6,
+    "nativeRedraws": 1152,
+    "coverage": [
+      "Actual pinned Masque Skin_Icon and UpdateButtonArt",
+      "Native template declaration order",
+      "Composed RGB and native tint/alpha",
+      "Empty and occupied HasAction transitions",
+      "Immediate late SlotBackground/SlotArt Show retirement",
+      "Round mask identity",
+      "Genuine unavailable/resource/range colours"
+    ],
+    "mandatoryNegativeControls": [
+      "Old dark placeholder backdrop",
+      "Missing immediate late Show protection",
+      "Native same-layer reset"
+    ]
+  },
+  "maintenanceBoundary": {
+    "runtimeUnchanged": true,
+    "installedVersionUnchanged": true,
+    "redeployed": false,
+    "filesystemLiveWTFWrites": false,
+    "historicalDeploymentReceiptsRewritten": false
+  },
+  "historicalDeploymentReceipt": "evidence/delivery/live-install-candidate17.json",
+  "historicalReadback": "evidence/delivery/candidate17-independent-readback.json",
+  "maintenanceReports": [
+    "evidence/forever-ui/candidate17-acceptance-runtime-tests.json",
+    "evidence/forever-ui/candidate17-acceptance-tooling-tests.json"
+  ],
+  "maintenanceValidation": {
+    "runtimeSourceSuitesPassed": 53,
+    "toolingTestsPassed": 39,
+    "acceptedRuntimeHashesMatchDeploymentReport": true,
+    "runtimeReportAt": "2026-10-08T22:13:40.093Z",
+    "toolingReportAt": "2026-10-08T22:11:03.893865+00:00"
+  }
+}

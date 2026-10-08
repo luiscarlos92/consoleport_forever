@@ -1,4 +1,37 @@
-# Retail tests and results — installed candidate.5, revision 12
+# Retail tests and results — installed candidate.17, revision 17
+
+### 42 — accepted round-face composition and retained layout (candidate.17)
+
+**Live result:** user-confirmed October 8, 2026: "it works", following the
+combat-grey repair. Earlier user reports confirm round faces, visible stationary
+L2/R2 labels, correct chord-side stance shortcut placement/fading and removal
+of the duplicate aura row. Earlier Paladin/DH ordinary and cursor/player ground
+casting also worked. This records the reported defects, not an assertion that
+the user executed every matrix case below. Evidence: candidate17-live-acceptance.json.
+
+Repeat after any future rendering, native button refresh or dependency change:
+
+- In every bank, ready face spells retain coloured artwork in and out of combat,
+  with the bank selected or inactive. Spend/recover resources, move out/in range,
+  clear/refill a slot and refresh native art. Actual unavailable/range/resource
+  tint remains; empty slots show original grey device art, filled slots do not.
+- True round faces keep their circular border/mask through native/Masque refresh,
+  reload and combat transitions. D-pad art stays native. Raw white icon tint is
+  insufficient: inspect actual rendered colour and background/art visibility.
+- L2/R2 labels stay visible at their inactive-bank position during every selection.
+  L2+R2 and class badge remain on screen without collisions. L1+L2 class shortcuts
+  stay left and R1+R2 stay right; badge opacity follows its owning bank. Native
+  aura row stays suppressed. Preserve the approved sizes and coordinates.
+- Retest normal controller casts and configured cursor/player ground spells in
+  combat on Paladin/DH. Capture /cpf diagnose if any colour/input defect returns.
+
+Offline gates: T53 composition (16 faces, six types, 1,152 redraws and three
+negative controls); T24 roundness; T45/T50 collision/onscreen/fixed-label checks;
+T51 shortcut side/fade; T49 genuine availability; T41/T42 combat input/ground.
+Fengari/native-source doubles are not the Blizzard renderer/secure engine.
+Historical candidate results below keep their original dates and pending scope.
+
+# Historical candidate.5–7 test entries
 
 Candidate.7 visual patch is **installed** as of October 7, 15:10:51 Toronto.
 All 49 installed files match and all dependencies/WTF/junctions are unchanged.

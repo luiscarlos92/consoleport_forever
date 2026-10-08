@@ -743,6 +743,16 @@ check('T53.ready-round-face-native-background-composition', () => {
   try { execute(source+old,'unretired-native-face-backdrop'); }
   catch(error) { reproduced=String(error).includes('ready white-tinted round spell darkened by placeholder backdrop'); }
   if(!reproduced) throw Error('candidate16 backdrop occlusion negative control did not fail');
+  // Independent mutations prove that these visibility/layer assertions are active.
+  for (const [name,mutated,message] of [
+    ['late-native-show',joined.replace("hooksecurefunc(texture,'Show',function() HUD.EmptyVisibility(button) end)","hooksecurefunc(texture,'Show',function() end)"),'late SlotBackground Show covered a filled spell'],
+    ['same-native-layer',joined.replace('function HUD.FaceLayers(button)','function HUD.FaceLayers(button) return end\nfunction HUD.DisabledFaceLayers(button)'),'native icon reset lost distinct draw layers'],
+  ]) {
+    let rejected=false;
+    try { execute(source+mutated,name); }
+    catch(error) { rejected=String(error).includes(message); }
+    if(!rejected) throw Error(name+' regression mutation did not fail for its expected reason');
+  }
 });
 const report = {at:new Date().toISOString(), commit:cp.execFileSync('git',['rev-parse','HEAD'],{cwd:root}).toString().trim(),
   productHashes:Object.fromEntries(files('addon').map(f=>[f,sha(f)])),

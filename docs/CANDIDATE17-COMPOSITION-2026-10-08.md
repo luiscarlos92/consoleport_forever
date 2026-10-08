@@ -1,7 +1,14 @@
 # Candidate.17 — filled round backdrop occlusion
 
-The user confirms candidate.16 labels and stance placement now work. Only combat
-grey remains; no layout, class binding, bank opacity or casting changes belong
+Live acceptance: on October 8, 2026, after the installed repair, the user
+reported "it works" and requested documentation/regression protection. The
+combat-grey symptom is accepted as fixed. This supersedes this document's
+pending-at-deployment notes; installer receipts retain their historical state.
+No runtime change, version bump, migration or deployment accompanies acceptance.
+Evidence: evidence/forever-ui/candidate17-live-acceptance.json.
+
+Before candidate.17, the user confirmed candidate.16 labels and stance placement
+worked. Only combat grey remained; no layout, class binding, bank opacity or casting changes belong
 in this fix. The saved /cpf diagnose data is actual candidate.16 client evidence:
 ready action/spell queries true, icon tint (1,1,1,1), alpha 1 and desaturation 0
 on the affected round faces. Sanitized ready-face observations are retained in
@@ -34,8 +41,8 @@ centre of a filled icon, repeated combat background reactivation, empty glyph
 retention and existing round-mask identity. Candidate.16 reproduces the dark
 result while icon tint is white. Reverting the layer/filled-background repairs
 must fail. T24/T49 and full T41/T42 remain required. This is an offline composition
-model/native-source reproduction; actual Retail rendering still needs user
-confirmation. No false claim of client rendering certification from pass counts.
+model/native-source reproduction; the reported symptom now also has the
+user's live confirmation. No false claim of client rendering certification from pass counts.
 
 All nine official stable Retail packages were freshly checked; none changed.
 Keep scoped Forever-only deployment with WoW closed, verified backups/readback,
@@ -57,5 +64,16 @@ Preview and exact execution copied Forever only. Independent readback verifies
 root anchors and previous companion/canonical WTF backups. Backup retained at
 C:/Users/luisr/WoW-Backups/ConsolePort-Forever/20261008T214746Z-009b1434dce3.
 Receipts: evidence/delivery/prepared-candidate17.json, live-install-candidate17.json
-and candidate17-independent-readback.json. Actual client rendering remains to be
-confirmed by the user.
+and candidate17-independent-readback.json. The subsequent user confirmation
+is retained separately in candidate17-live-acceptance.json.
+
+Acceptance regression expansion covers every PAD1–PAD4 in Base/L2/R2/L2R2,
+six occupied types (action/spell/item/macro/flyout/held custom), six cycles each,
+and both combat/peace native art resets: 1,152 redraws. It verifies all RGB
+components of composed pixels, not only icon getters; clear/refill and empty
+HasAction slots preserve original glyphs. Each late SlotBackground/SlotArt Show
+must be retired immediately, before a later refresh can hide a defect. The same
+mask object survives. Genuine unavailable/resource/range colours remain visible.
+Three mandatory negative controls independently reproduce old matte occlusion,
+a missing immediate Show hook and native same-layer reset. Original deployment
+reports stay immutable; new maintenance reports use candidate17-acceptance-*.

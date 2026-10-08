@@ -54,3 +54,9 @@ should verify combat input on a training dummy before entering another dungeon.
 All 41 runtime/source suites and 36 tooling tests pass on the final patch.
 Exact source reports and the failing-before/passing-after reproducer are retained
 in evidence/test-results/candidate9-*.
+
+Installed at 23:58:54 Toronto, about 14 minutes after the first diagnostic read.
+Source: `096a24953d7c8ec72fb0d65768ef89af0706d125`. ZIP SHA-256: `a7d5840b95b315e56e5f8298f3b5c19882ccc2821a69813958b30c38377f5e6a`.
+Backup: `C:\Users\luisr\WoW-Backups\ConsolePort-Forever\20261008T035825Z-8e82353124f0`. Independent readback proves 50 exact Forever
+files, 1,949 unchanged vendor files, 298 unchanged WTF files and 42 unchanged links.
+Exact receipt/readback retained under evidence/delivery/candidate9*.

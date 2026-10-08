@@ -1,0 +1,15 @@
+{
+  "sourceCommit": "096a24953d7c8ec72fb0d65768ef89af0706d125",
+  "packSHA256": "a7d5840b95b315e56e5f8298f3b5c19882ccc2821a69813958b30c38377f5e6a",
+  "installedForeverFiles": 50,
+  "vendorFilesUnchanged": 1949,
+  "wtfFilesUnchanged": 298,
+  "characterLinksUnchanged": 42,
+  "anchorsUnchanged": true,
+  "retiredPackagesRemainAbsent": true,
+  "configurationRevision": 14,
+  "version": "2.0.0-candidate.9",
+  "regressionBefore": "Failed on prior code: hidden UI claim retained in combat",
+  "regressionAfter": "Passed: 32 chords dispatch native UseAction in combat; held/late/native/foreign/repeated cases",
+  "retailAcceptance": "Actual user hardware test remains required; no game launched."
+}

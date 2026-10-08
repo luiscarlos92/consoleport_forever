@@ -1,5 +1,26 @@
 # Implementation checkpoint — October 4, 2026
 
+## Installed combat hotfix - October 7, 2026, 23:58:54 Toronto
+
+Candidate.9 is deployed from pushed/tested source `096a24953d7c8ec72fb0d65768ef89af0706d125`.
+The native UI claim retention failure is reproduced before the patch and passes
+with secure combat handoff. All 41 runtime/source suites and 36 tooling tests pass,
+including native engine bindings and UseAction dispatch for all 32 gameplay chords,
+held UI cancellation, late/native widgets, foreign owners and repeated combat.
+Scoped installation replaced only Forever (50 exact files); independent readback
+confirms all 1,949 vendor files, 298 WTF files, 42 junctions and root anchors unchanged.
+DBM, HideClassBars and SharedMedia_Causese remain absent. All nine stable releases
+were freshly checked/current. No dependency was copied or downloaded. StoreSchema
+3/configuration revision 14 remain; no new configuration acceptance is needed for
+this code fix. User authorized closed-WoW deployment under a 30-minute deadline;
+installation completed about 14 minutes after diagnosis began. Backup and exact
+receipt are retained in `evidence/delivery/live-install-candidate9.json` and
+`evidence/delivery/candidate9-independent-readback.json`. All prior artifacts remain.
+Actual hardware combat verification on a training dummy remains the user's next
+step before a dungeon; offline mocks are not live Retail acceptance. This deployment
+authorization is complete; later deployments need new authorization.
+
+
 ## Combat regression hotfix authority - October 7, 2026
 
 The user reports all visible abilities stop dispatching in combat and explicitly

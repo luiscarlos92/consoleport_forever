@@ -1,0 +1,51 @@
+{
+  "path": "C:\\Users\\luisr\\Dev\\consoleport_forever\\dist\\2.0.0-candidate.9\\ConsolePort-Forever-Update-companion-only-combat-handoff.zip",
+  "sha256": "a7d5840b95b315e56e5f8298f3b5c19882ccc2821a69813958b30c38377f5e6a",
+  "bytes": 484226,
+  "sourceCommit": "096a24953d7c8ec72fb0d65768ef89af0706d125",
+  "addonFolders": [
+    "ConsolePort_Forever"
+  ],
+  "dependencyUpdates": [],
+  "retiredAddonFolders": {},
+  "version": "2.0.0-candidate.9",
+  "testedDependencies": {
+    "Cidan/BetterBags": {
+      "version": "v0.5.14",
+      "sha256": "16c1ac70c4de2e7f2cfdbf4d2b5f3d3f44514a3f9ecf1040e29c790e8be8c0d7"
+    },
+    "seblindfors/Immersion": {
+      "version": "1.4.61",
+      "sha256": "b180a8cbd1a1d878377da5a85abfdc5576e0c04212f9e900e3e9ca505cde1f3e"
+    },
+    "xod-wow/LiteMount": {
+      "version": "12.1.0-1",
+      "sha256": "bf89ab84666266ffefd8ce56581f98467f8125c25c65e3fe68031303df28efe0"
+    },
+    "SFX-WoW/Masque": {
+      "version": "12.1.0",
+      "sha256": "9e1da4827ae60bd25d7fc427cbeeb0dc297e59d53a71a29ae95223d3374bbfa0"
+    },
+    "Tercioo/Plater-Nameplates": {
+      "version": "Plater-v656",
+      "sha256": "3353250fa63fe840d8e9444037a3debde5c82286ccbcc825a475cec5ffd90ead"
+    },
+    "curseforge/DynamicCam": {
+      "version": "2.21.1",
+      "sha256": "10eb86230c6903e72097e1552c04de8a163a39fe3cb31fc3a3274c2c4394e072"
+    },
+    "curseforge/Immersion_ExtraFade": {
+      "version": "1.18.0",
+      "sha256": "89c59d0519b2392b41010dda34ec01d38c9c1702c644f5e57422341b1fec21c6"
+    },
+    "SLOKnightfall/BetterWardrobe": {
+      "version": "6.12.3",
+      "sha256": "abcba6be5535c15a581721192a5c4865e05b568dbac52d79c108c89e6c763d8c"
+    },
+    "seblindfors/ConsolePort": {
+      "version": "3.3.10",
+      "sha256": "6175a327b3b7505b6f1d79ef0adc96c7a65db3cc8220dd59e34de6658dbb4f49"
+    }
+  },
+  "dependencyLockSHA256": "ca1e7beb429a4802c398badde208645cb5fb13ca7f9ec7602ff5d93dca9eb624"
+}

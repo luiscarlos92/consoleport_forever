@@ -49,14 +49,13 @@ ConsolePort files to fix the companion's handoff.
 ## Deployments
 
 - Deploy only with explicit user authorization and WoW closed. Current installed
-  checkpoint is candidate.8/revision 14 with unchanged ConsolePort 3.3.10
-  (October 7, 22:42:24 Toronto). HideClassBars and SharedMedia_Causese were backed
-  up/parked by scoped installers. All 1,949 remaining vendor files, 298 WTF files
-  and 42 links are unchanged. Plater profileKeys still select Default for all
-  four recorded characters; deployment does not install/select a Plater profile.
-  This authorization is complete; future deployments need new authorization.
-  Retain all earlier artifacts/receipts/backups. See
-  `evidence/delivery/live-install-candidate8-sharedmedia-retirement.json`.
+  checkpoint is candidate.9/revision 14 with unchanged ConsolePort 3.3.10
+  (October 7, 23:58:54 Toronto). Combat handoff regresses the old hidden UI claim
+  failure and restores native gameplay dispatch; 41 runtime/source and 36 tooling
+  checks pass. All 1,949 vendor files, 298 WTF files and 42 links are unchanged.
+  DBM, HideClassBars and SharedMedia_Causese remain retired. This authorization is
+  complete; future deployments require new authorization. Retain every prior
+  artifact/receipt/backup. See `evidence/delivery/live-install-candidate9.json`.
 - DBM was uninstalled by the user on October 7 and retired from the active lock.
   Do not restore it. Preserve historical references, archives and receipts.
   HideClassBars is replaced by reviewed Forever controller access and explicitly

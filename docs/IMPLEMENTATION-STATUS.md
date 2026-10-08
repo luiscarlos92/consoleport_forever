@@ -1,3 +1,22 @@
+## Installed candidate.17 — October 8, 2026, 17:48:19 Toronto
+
+Authorized closed-WoW scoped installation completed from tested/pushed source
+4cbf2ebb094a7dddcd2c60e26de597b0439ab773. Independent readback verifies all 52
+Forever files, 1,949 unselected addon files unchanged, 298 WTF files unchanged,
+42 junctions and root anchors preserved, and previous companion/WTF backups
+verified at C:/Users/luisr/WoW-Backups/ConsolePort-Forever/20261008T214746Z-009b1434dce3.
+All 53 runtime/source suites and 39 tooling checks pass. Candidate.16 live ready
+icons had white tint/alpha 1/desaturation 0; the repaired defect is placeholder
+background occlusion, not another inferred availability tint. Actual Masque icon
+reset, native template order, composition and combat art reshow are tested with
+mandatory old-backdrop negative control. Filled round backgrounds retire; icons
+sit above their backdrop. Empty original grey glyphs remain. Confirmed layout,
+class side/fade and Ground.lua bytes are unchanged. No dependency changes after
+fresh nine-package stable Retail check. Revision 17 remains, no new migration and
+no filesystem live WTF writes. Actual Retail rendering acceptance still pending.
+Receipts: evidence/delivery/live-install-candidate17.json and
+candidate17-independent-readback.json. See docs/CANDIDATE17-COMPOSITION-2026-10-08.md.
+
 ## Candidate.17 grey-only repair authority — October 8, 2026
 
 User confirms labels, stance placement and native aura row now fixed. Freeze

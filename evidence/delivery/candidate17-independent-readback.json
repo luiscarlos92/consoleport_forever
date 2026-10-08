@@ -1,0 +1,21 @@
+{
+  "installedVersion": "2.0.0-candidate.17",
+  "sourceCommit": "4cbf2ebb094a7dddcd2c60e26de597b0439ab773",
+  "packSHA256": "261a198ed6208250b5cadc673bc465e8dcc0ab7da85f37f70f8bce8b9a740ce6",
+  "closedAt": "2026-10-08T21:48:19.507821+00:00",
+  "installedFilesVerified": 52,
+  "unselectedFilesUnchanged": 1949,
+  "wtfFilesUnchanged": 298,
+  "junctionsUnchanged": 42,
+  "anchorsUnchanged": true,
+  "backupsVerified": true,
+  "backup": "C:\\Users\\luisr\\WoW-Backups\\ConsolePort-Forever\\20261008T214746Z-009b1434dce3",
+  "runtimeSuites": 53,
+  "toolingChecks": 39,
+  "configurationRevision": 17,
+  "storeSchema": 3,
+  "confirmedLayoutAndClassFunctionsUnchanged": true,
+  "groundInterceptorUnchangedFromUserTestedCandidate13": true,
+  "noLiveWTFWrites": true,
+  "liveVisualAcceptance": "Pending user client rendering test; white icon observations and native backdrop occlusion source reproduction qualified"
+}

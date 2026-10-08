@@ -48,3 +48,14 @@ remain byte-identical.
 Validation: 53 runtime/source suites and 39 tooling checks pass. T53 includes
 a mandatory old-backdrop negative control. Reports retained in
 evidence/forever-ui/candidate17-runtime-tests.json and candidate17-tooling-tests.json.
+
+Scoped deployment completed October 8, 2026 at 17:48:19 Toronto from source
+4cbf2ebb094a7dddcd2c60e26de597b0439ab773. ZIP SHA256:
+261a198ed6208250b5cadc673bc465e8dcc0ab7da85f37f70f8bce8b9a740ce6.
+Preview and exact execution copied Forever only. Independent readback verifies
+52 installed files, 1,949 unselected addon files, 298 WTF files, 42 junctions,
+root anchors and previous companion/canonical WTF backups. Backup retained at
+C:/Users/luisr/WoW-Backups/ConsolePort-Forever/20261008T214746Z-009b1434dce3.
+Receipts: evidence/delivery/prepared-candidate17.json, live-install-candidate17.json
+and candidate17-independent-readback.json. Actual client rendering remains to be
+confirmed by the user.

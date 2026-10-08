@@ -2,6 +2,9 @@ local ADDON_NAME, Addon = ...
 Addon.VERSION=C_AddOns.GetAddOnMetadata(ADDON_NAME,"Version") or "0.0.0"
 Addon.SCHEMA=Addon.Store.VERSION
 Addon.CONFIG_REVISION=14
+-- Emergency recovery: native ConsolePort owns all gameplay dispatch. Keep the
+-- reviewed data for later diagnosis without installing custom secure wrappers.
+Addon.NATIVE_INPUT_RECOVERY=true
 Addon.PROFILE_NAME="Console Port - Forever (Managed)"
 local function Print(message)
     if DEFAULT_CHAT_FRAME then DEFAULT_CHAT_FRAME:AddMessage("|cff69ccf0ConsolePort Forever:|r "..tostring(message)) end
@@ -278,6 +281,15 @@ function Addon:FinishRestored(journal)
     self.Prompt:Reload()
 end
 function Addon:RefreshModes()
+    if self.NATIVE_INPUT_RECOVERY then
+        if CanWrite() then
+            self.GroundTargeting.Disable(_G)
+            if self.adapters then self.SecureModes.Disable(_G,self.adapters.consoleport) end
+        end
+        self.Diagnostics:SetFeature('secureModes','native-recovery','Forever secure mode interception suspended; native ConsolePort dispatch retained')
+        self.Diagnostics:SetFeature('groundTargeting','native-recovery','Custom cursor/player casting suspended; native targeting retained')
+        return
+    end
     if self.record then
         self.record.targetingObserved=self.record.targetingObserved or {}
         self.GroundTargeting.observed=self.record.targetingObserved
@@ -353,7 +365,7 @@ function Addon:RefreshUI()
     local enabled=self:IsCharacterInstalled() and self.db.shared.runtimePolicy.focusVisuals
     local ok,reason=self.FocusVisuals:Enable(self.adapters.consoleport,_G,enabled)
     self.Diagnostics:SetFeature("focusVisuals",enabled and ok and "offline-verified" or "pending",reason or (enabled and "ordinary cursor ownership only; rendered acceptance pending" or "reviewed visual policy not enabled"))
-    local contexts=self:IsCharacterInstalled() and self.db.shared.runtimePolicy.uiContextsEnabled
+    local contexts=not self.NATIVE_INPUT_RECOVERY and self:IsCharacterInstalled() and self.db.shared.runtimePolicy.uiContextsEnabled
     local active,error=self.UIContexts:Enable(self.adapters.consoleport,_G,contexts,self:IsCharacterInstalled() and self.db.shared.runtimePolicy.windowsEnabled,self:IsCharacterInstalled() and self.db.shared.runtimePolicy.bagsEnabled,self:IsCharacterInstalled() and self.db.shared.runtimePolicy.mapEnabled)
     self.Diagnostics:SetFeature("uiContexts",contexts and active and "offline-verified" or "pending",error or (contexts and "native popup/quantity ownership; Retail input/taint acceptance pending" or "reviewed UI context policy not enabled"))
 end

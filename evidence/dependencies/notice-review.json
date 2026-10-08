@@ -1,6 +1,6 @@
 {
-  "lockSHA256": "ca1e7beb429a4802c398badde208645cb5fb13ca7f9ec7602ff5d93dca9eb624",
-  "noticeInventorySHA256": "4c2b78b0f03e1b69b55ea338e7a4d6b5dd5f5d530a7874fbee9ca35ebcfe3e14",
+  "lockSHA256": "29cb934daf0b994d32c5a5fce60fd95ed599d8200cece5c377c94736354f1fa7",
+  "noticeInventorySHA256": "a1dec32eb4f3827192dea5fcca54f36346e00c84b99abd19ea5e74e5bfa971b0",
   "localPersonalAssemblyReviewComplete": true,
   "publicRedistributionApproved": false,
   "scope": "All third-party dependencies use official-source local assembly. This inventory is not a license grant or approval to publish dependency code or media.",

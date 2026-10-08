@@ -87,6 +87,16 @@ local function choose(button)
     if info.OnHide then info.OnHide(nil,dialog.data) end
 end
 --@LOAD_PRODUCT
+assert(Addon.NATIVE_INPUT_RECOVERY==true,'recovery build did not suspend custom gameplay interception')
+Addon.SecureModes.Install=function() error('recovery installed a custom secure mode interceptor') end
+Addon.GroundTargeting.Enable=function() error('recovery installed a custom casting interceptor') end
+local recoveryUIEnable=Addon.UIContexts.Enable
+function Addon.UIContexts:Enable(bridge,api,enabled,...)
+    assert(not enabled,'recovery enabled a UI input takeover')
+    return recoveryUIEnable(self,bridge,api,enabled,...)
+end
+local forbiddenRecoveryAPI=setmetatable({},{__index=function(_,key) error('recovery hidden controls accessed '..key) end})
+assert(Addon.HiddenAccess:Refresh(forbiddenRecoveryAPI,true)==false,'recovery acquired hidden controls')
 local skinRequests=0
 local requestSkin=Addon.RequestSkinRefresh
 function Addon:RequestSkinRefresh() skinRequests=skinRequests+1 return requestSkin(self) end

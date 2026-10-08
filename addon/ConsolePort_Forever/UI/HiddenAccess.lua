@@ -16,6 +16,7 @@ local function clear(set)
 end
 function Access:Refresh(api,enabled)
     self.stanceReady,self.vehicleReady=false,false
+    if Addon.NATIVE_INPUT_RECOVERY then return false,'native recovery: Blizzard class/vehicle controls retained; no ring or cursor takeover' end
     if api.InCombatLockdown() then return false,'hidden controls update waits for combat to end' end
     local adapter=Addon.adapters and Addon.adapters.rings
     local ready=adapter and adapter:Probe()

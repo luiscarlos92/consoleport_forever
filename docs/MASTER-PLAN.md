@@ -1,5 +1,20 @@
 # ConsolePort Forever: master plan, decisions, and project history
 
+## Emergency native recovery - October 8, 2026
+
+Candidate.9 did not fix the user's live combat failure. The earlier claim-retention
+regression was real but insufficient to establish the live root cause. Under the
+user's renewed 10-minute authorization, candidate.10 uses native ConsolePort
+gameplay dispatch: suspend Forever SecureModes, ground targeting and UI-context
+claim acquisition; suspend hidden-control/ring mutation. Preserve the HUD, approved
+bindings/data, dependency retirements and live WTF. The native UI combat claim
+handoff remains as lifecycle-only setup without CPF UI routing. Native Blizzard
+class and vehicle controls remain available. No configuration revision change.
+All nine official stable Retail releases freshly checked/current. Full checks,
+scoped deployment and exact preservation readback required. Live acceptance is
+unconfirmed; do not describe mock tests as proof that the user's issue is solved.
+
+
 ## Installed combat hotfix - October 7, 2026, 23:58:54 Toronto
 
 Candidate.9 is deployed from pushed/tested source `096a24953d7c8ec72fb0d65768ef89af0706d125`.

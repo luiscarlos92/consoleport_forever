@@ -110,7 +110,17 @@ function Contexts:Enable(bridge,api,enabled,windowsEnabled,bagsEnabled,mapEnable
     self.hints=self.hints or Addon.ItemHints.New(bridge.db,api)
     local hinted,hintReason=self.hints:Enable(enabled,windowsEnabled,bagsEnabled)
     if enabled then Addon.Diagnostics:SetFeature('itemHints',hinted and 'offline-verified' or 'pending',hintReason or 'native merchant Select/Buy and container Open prompts; rendered acceptance pending') end
-    if not enabled then if self.input then return self:Refresh() end return true end
+    if not enabled then
+        -- Recovery installs only the native combat-claim relinquishment; it
+        -- never acquires a popup/window chord or wraps gameplay buttons.
+        if Addon.NATIVE_INPUT_RECOVERY and not self.input and not api.InCombatLockdown()
+            and Addon.InputBridge.Probe(bridge.db.Input,api,bridge.db.Layers) then
+            self.api,self.db=api,bridge.db
+            self.input=Addon.InputBridge.New(self.db.Input,api,self.db.Layers)
+        end
+        if self.input then return self:Refresh() end
+        return true
+    end
     local ready,reason=self:Probe(bridge,api)
     if not ready then return false,reason end
     self.api,self.db=api,bridge.db

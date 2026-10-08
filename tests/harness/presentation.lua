@@ -36,6 +36,8 @@ local function region(parent)
     function r:SetDesaturated(value) self.desaturated=value end
     function r:SetSwipeColor(...) self.swipe={...} end
 function r:SetAlpha(value) self.alpha=value end
+    function r:SetBlendMode(value) self.blend=value end
+    function r:SetDrawLayer(...) self.layer={...} end
     function r:SetText(value) self.text=value end
     function r:SetTextColor(...) self.textColor={...} end
     return r
@@ -64,7 +66,7 @@ end
 function Frame:SetScript(key,fn) self[key]=fn end
 function Frame:SetSize(w,h) self.width=w self.height=h end function Frame:SetPoint(...) self.point={...} end function Frame:ClearAllPoints() self.point=nil end
 function Frame:SetParent(parent) self.parent=parent end function Frame:GetParent() return self.parent end
-function Frame:GetName() return self.name end function Frame:GetWidth() return self.width or 50 end function Frame:GetHeight() return self.height or 50 end
+function Frame:GetName() return self.name end function Frame:GetWidth() return self.width or 45 end function Frame:GetHeight() return self.height or 45 end
 function Frame:CreateTexture() return region(self) end
 function Frame:CreateFontString() return region() end
 function Frame:CreateMaskTexture() assert(not combat) self.maskCount=(self.maskCount or 0)+1 return region(self) end
@@ -78,7 +80,22 @@ end
 function wipe(t) for key in pairs(t) do t[key]=nil end end
 local GMT,Group={},{}
 local removals=0
-local function SkinButton(button,regions,skin) assert(skin==false) removals=removals+1 button.icon:SetTexture('native-default') end
+local Core={}
+local BASE_TEXTURE='native-square-frame'
+local BASE_BLEND,BASE_LAYER,BASE_LEVEL,BASE_SIZE='BLEND','ARTWORK',0,50
+local STR_SETATLAS,STR_SETTEXTURE='SetNormalAtlas','SetNormalTexture'
+local random=math.random
+local function GetTexCoords() return 0,1,0,1 end
+local function GetColor() return 1,1,1,1 end
+local function SetSkinPoint(region,button) region:SetAllPoints(button) end
+--@NATIVE_MASQUE_NORMAL
+local function SkinButton(button,regions,skin)
+    assert(skin==false) removals=removals+1 button.icon:SetTexture('native-default')
+    button._MSQ_CFG=button._MSQ_CFG or {
+        GetTypeSkin=function(_,_,value) return value end,GetSize=function(_,w,h) return w,h end,
+    }
+    Core.Skin_Normal(nil,button,{Texture=BASE_TEXTURE,Width=50,Height=50,UseStates=false})
+end
 --@NATIVE_MASQUE_REMOVE
 local CPGroupBar={}
 local GROUP,GROUP_BUTTON='Group','GroupButton'
@@ -89,6 +106,7 @@ local function makeButton(id,bank)
     local button=setmetatable({id=id,parent=bank,_state_type='custom',attributes={state=''},icon=region()},{__index=Frame})
     button.icon.parent=button
     for _,key in ipairs({'NormalTexture','PushedTexture','HighlightTexture','CheckedTexture','Flash','Border','NewActionTexture','SpellHighlightTexture','cooldown','chargeCooldown','lossOfControlCooldown'}) do button[key]=region(button) end
+    function button:GetNormalTexture() return self.NormalTexture end
     button.SpellCastAnimFrame={Fill={FillMask=region(),InnerGlowTexture=region(),CastFill=region()},EndBurst={EndMask=region(),GlowRing=region()}}
     local fxParent=setmetatable({},{__index=Frame})
     for _,part in pairs(button.SpellCastAnimFrame) do for _,tex in pairs(part) do tex.parent=fxParent end end
@@ -143,6 +161,8 @@ for _,id in ipairs({'Base','L2','R2','L2R2'}) do
     for _,key in ipairs({'PAD1','PAD2','PAD3','PAD4'}) do
         local b=bank.buttons[key]
         assert(b.maskCount==1 and b.icon.maskCalls==1 and b.SlotBackground.maskCalls==1 and not bank.msqGroup.Buttons[b])
+        assert(b._MSQ_CFG.Normal_Custom and not b._MSQ_CFG.Normal_Custom.shown and b._MSQ_CFG.Normal_Custom.alpha==0,'Masque private square normal remains visible')
+        assert(b.NormalTexture.shown and b.NormalTexture.alpha==1,'native round normal stays hidden after Masque reset')
         assert(b.__cpfEmptyArt.shown==(key=='PAD2' and id~='Base') and not b.__cpfEmptyArt.mask and not b.__cpfEmptyArt.desaturated)
         assert(b.Flash.mask==b.IconMask and b.__cpfRoundShadow.texture:find('ForeverInGame',1,true),'square flash or shadow survived')
         assert(b.SpellCastAnimFrame.Fill.CastFill.mask==b.SpellCastAnimFrame.Fill.CastFill.__cpfLocalMask and b.SpellCastAnimFrame.EndBurst.GlowRing.mask==b.SpellCastAnimFrame.EndBurst.GlowRing.__cpfLocalMask)
@@ -153,19 +173,19 @@ for _,id in ipairs({'Base','L2','R2','L2R2'}) do
 end
 for _,id in ipairs({'Base','L2','R2','L2R2'}) do
     local bank=_G['ConsolePortGroup'..id]
-    assert(bank.point[5]==bank.props.pos.y+64,'bank was not lifted')
+    assert(bank.point[5]==bank.props.pos.y,'bank did not return to original position')
     Addon:RefreshConsolePortSkin()
-    assert(bank.point[5]==bank.props.pos.y+64,'bank lift accumulated')
+    assert(bank.point[5]==bank.props.pos.y,'bank refresh moved the original position')
     if id~='Base' then
-        assert(bank.__cpfBankPrompt.point[5]==10,'bank prompt still below rail')
-        assert(bank.point[5]+bank.__cpfBankPrompt.point[5]-22>0,'trigger label falls below the screen')
+        if id=='L2R2' then assert(bank.__cpfBankPrompt.point[5]==16 and bank.__cpfBankPrompt.point[1]=='BOTTOM')
+        else assert(bank.__cpfBankPrompt.point[2]==bank.buttons.PADDRIGHT and bank.__cpfBankPrompt.point[5]==-4,'trigger label not beside D-pad') end
     end
 end
 local base=ConsolePortGroupBase
 local bottom=ConsolePortGroupL2R2
 local badge=base.__cpfClassShortcut
 assert(badge.parent~=base,'class shortcut inherits the fading base bank')
-assert(bottom.point[5]+bottom:GetHeight()/2+badge.point[5]-17-24>0,'class prompt is clipped')
+assert(badge.width==26 and badge.prompt.height==18 and badge.point[2]==ConsolePortGroupR2.buttons.PADDDOWN,'class shortcut not fitted under R2')
 assert(base.__cpfClassShortcut.shown and base.__cpfClassShortcut.icon.texture==2457,'class badge did not follow active stance')
 assert(base.__cpfClassShortcut.prompt.icons[1].texture=='SHP/PADRSHOULDER' and base.__cpfClassShortcut.prompt.icons[2].texture=='SHP/PADRTRIGGER','class prompt shows a different chord')
 assert(ConsolePortGroupL2R2.__cpfBankPrompt.plus[1].shown and not ConsolePortGroupL2R2.__cpfBankPrompt.plus[2].shown)
@@ -256,6 +276,11 @@ base:OnMasqueLoaded(msq) flush() assert(removals==20 and base.msqGroup.Buttons[b
 base:UpdateButtons({PAD1={},PAD2={},PAD3={},PAD4={},PADDUP={}}) flush()
 assert(removals==24 and base.buttons.PAD1.maskCount==1)
 combat=true base:OnMasqueLoaded(msq)
+local combatFace=base.buttons.PAD3
+combatFace.NormalTexture:SetAtlas('native-square')
+combatFace.SlotArt=region(combatFace) combatFace.SlotArt:Show()
+combatFace:UpdateButtonArt()
+assert(combatFace.NormalTexture.texture:find('ForeverInGame',1,true) and not combatFace.SlotArt.shown,'combat art refresh restores a square face')
 local combatIcon=base.buttons.PAD4.icon
 local combatMask=base.buttons.PAD4.IconMask
 combatIcon:RemoveMaskTexture(combatMask)

@@ -54,6 +54,51 @@ function Class.RingProposal(state,adapter,api)
     state.sets[id]=adapter.env:ValidateSet(id,set)
     return state
 end
+function Class.UpdateNativeBar(addon,api,editing)
+    if api.InCombatLockdown() then return false,'class bar update waits for combat to end' end
+    local bar=api.StanceBar
+    local native=api.StanceBarMixin
+    if not bar or not native or bar.ShouldShow~=native.ShouldShow then return false,'native stance bar identity unavailable' end
+    local record=addon.record
+    local adapter=addon.adapters and addon.adapters.rings
+    local wanted=not editing and addon:IsCharacterInstalled() and record and record.ringAccepted
+        and adapter and adapter:Probe()
+    local class=api.UnitClass and select(2,api.UnitClass('player'))
+    wanted=wanted and (class=='PALADIN' or class=='DRUID' or class=='WARRIOR')
+    local set=wanted and adapter.rings.Data[adapter.api.classSet]
+    local command=wanted and adapter.rings:GetBindingForSet(adapter.api.classSet)
+    wanted=wanted and set and api.GetBindingAction(adapter.api.classChord or Class.Chord(api))==command
+    local forms=wanted and api.GetNumShapeshiftForms()
+    wanted=wanted and forms and forms>0
+    for slot=1,wanted and forms or 0 do
+        local _,_,_,spell=api.GetShapeshiftFormInfo(slot)
+        local present=false
+        if not (api.issecretvalue and api.issecretvalue(spell)) then
+            for _,entry in ipairs(set) do if entry.type=='spell' and entry.spell==spell then present=true break end end
+        end
+        if not present then wanted=false break end
+    end
+    local row=Class.nativeBar
+    if row and row.frame~=bar then
+        if row.frame:GetParent()==Class.hiddenBar then row.frame:SetParent(row.parent) end
+        Class.nativeBar=nil row=nil
+    end
+    if not wanted then
+        if row and bar:GetParent()==Class.hiddenBar then bar:SetParent(row.parent) end
+        return false,editing and 'native class bar restored for Edit Mode' or 'native class bar retained until complete ring access is ready'
+    end
+    if not row then
+        if bar:GetParent()~=api.UIParent then return false,'foreign class bar parent retained' end
+        row={frame=bar,parent=bar:GetParent()} Class.nativeBar=row
+    end
+    if bar:GetParent()~=row.parent and bar:GetParent()~=Class.hiddenBar then return false,'foreign class bar parent retained' end
+    if not Class.hiddenBar then
+        Class.hiddenBar=api.CreateFrame('Frame',nil,api.UIParent,'SecureHandlerBaseTemplate')
+        Class.hiddenBar:Hide()
+    end
+    bar:SetParent(Class.hiddenBar)
+    return true,'native aura/form row hidden; every learned form is available through the installed secure class ring'
+end
 function Class.Migrate(addon,api,canWrite)
     local record=addon.record
     if not record or (record.appliedRevision~=14 and record.appliedRevision~=15) or not record.bindingAccepted or not record.ringAccepted then return false end

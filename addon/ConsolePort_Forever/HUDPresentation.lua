@@ -9,7 +9,7 @@ local FACE_NAMES = {
     REV={PAD1='xbox-b',PAD2='xbox-a',PAD3='xbox-y',PAD4='xbox-x'},
 }
 local DPAD = {PADDUP='dpadup',PADDDOWN='dpaddown',PADDLEFT='dpadleft',PADDRIGHT='dpadright'}
-local CIRCLE = [[Interface\Masks\CircleMaskScalable]]
+local CIRCLE = [[Interface\CharacterFrame\TempPortraitAlphaMask]]
 local RING = [[Interface\AddOns\ConsolePort\Assets\Textures\Cursor\RoundBorderHighlight]]
 local ART = [[Interface\AddOns\ConsolePort_Forever\Assets\ForeverInGame.blp]]
 -- Blizzard UiTextureAtlasMember, atlas 3024 / FileDataID 6227336.
@@ -42,6 +42,20 @@ function HUD.Atlas(texture, name)
     end
     return false
 end
+function HUD.CircleMask(mask)
+    if not HUD.Atlas(mask,'CircleMask') then
+        mask:SetTexture(CIRCLE,'CLAMPTOBLACKADDITIVE','CLAMPTOBLACKADDITIVE')
+    end
+    mask:Show()
+end
+function HUD.RetireMasqueNormal(button)
+    -- RemoveButton applies Masque's default skin; UseStates=false leaves a
+    -- separately drawn Normal_Custom region alive after its registry is cleared.
+    -- It is not returned by Button:GetNormalTexture or the native field.
+    local config=button._MSQ_CFG
+    local extra=config and config.Normal_Custom
+    if extra then extra:SetTexture(nil) extra:SetAlpha(0) extra:Hide() end
+end
 function HUD.Glyph(texture, id)
     local db=DB()
     local gamepad=db and db.Gamepad
@@ -61,7 +75,7 @@ function HUD.Mask(texture, mask)
         local localMask=texture.__cpfLocalMask
         if not localMask then
             localMask=parent:CreateMaskTexture(nil,'BACKGROUND') texture.__cpfLocalMask=localMask
-            localMask:SetTexture(CIRCLE,'CLAMPTOBLACKADDITIVE','CLAMPTOBLACKADDITIVE')
+            HUD.CircleMask(localMask)
             localMask:SetAllPoints(texture)
         end
         mask=localMask
@@ -115,7 +129,7 @@ local STATE_ATLASES={
     NormalTexture='normal',PushedTexture='pressed',HighlightTexture='hover',CheckedTexture='selected',
     SpellHighlightTexture='hover',NewActionTexture='hover',Border='iconframe-border',
 }
-function HUD.RoundRegion(texture, button, key, mask)
+function HUD.RoundRegion(texture, button, key, mask, imageOnly)
     if not texture then return end
     local state=STATE_ATLASES[key]
     local atlas=key=='Border' and 'gamepad-actionbar-circleslot-iconframe-border'
@@ -125,8 +139,12 @@ function HUD.RoundRegion(texture, button, key, mask)
         HUD.Sprite(texture,key=='Border' and 'border' or 'frame')
         texture:SetVertexColor(key=='PushedTexture' and .6 or 1,key=='PushedTexture' and .6 or 1,key=='PushedTexture' and .6 or 1,1)
     end
-    texture:ClearAllPoints()
-    texture:SetPoint('CENTER',button) texture:SetSize(button:GetWidth(),button:GetWidth())
+    if not imageOnly then
+        texture:ClearAllPoints()
+        texture:SetPoint('CENTER',button) texture:SetSize(button:GetWidth(),button:GetWidth())
+    end
+    texture:SetAlpha(1)
+    if key=='NormalTexture' then texture:Show() end
     -- Flash is a fill, while borders and highlights have transparent centres.
     if key=='Flash' then texture:SetColorTexture(1,0,0,.35) HUD.Mask(texture,mask) end
 end
@@ -200,12 +218,108 @@ function HUD.BankPrompt(bank, bankID)
         if not key then if bank.__cpfBankPrompt then bank.__cpfBankPrompt:Hide() end return end
         keys[#keys+1]=key
     end
-    Prompt(bank,'__cpfBankPrompt',keys,'TOP','BOTTOM',0,10)
+    local f=Prompt(bank,'__cpfBankPrompt',keys,'BOTTOM','BOTTOM',0,16)
+    if bankID~='L2R2' and bank.buttons and bank.buttons.PADDRIGHT then
+        f:ClearAllPoints() f:SetPoint('TOPRIGHT',bank.buttons.PADDRIGHT,'BOTTOMRIGHT',12,-4)
+    end
 end
-function HUD.LiftBank(bank)
+function HUD.PlaceBank(bank)
     local pos=bank.props and bank.props.pos
     if not pos or pos.point~='BOTTOM' or pos.relPoint~='BOTTOM' then return end
-    bank:ClearAllPoints() bank:SetPoint(pos.point,UIParent,pos.relPoint,pos.x,pos.y+64)
+    local y=pos.y
+    -- Current 160/5 geometry is unchanged. Older 150/10 layouts can overlap
+    -- Base's bottom cells with the expanded combined bank. Qualify both native
+    -- 94/106 scale extremes before a combat modifier can expand either bank.
+    if bank==ConsolePortGroupBase then
+        local lower=ConsolePortGroupL2R2
+        local lowPos=lower and lower.props and lower.props.pos
+        local baseCell=bank.buttons and bank.buttons.PAD1
+        local highCell=lower and lower.buttons and lower.buttons.PAD4
+        if lowPos and baseCell and highCell and bank.GetHeight and lower.GetHeight then
+            local bottom=bank:GetHeight()/2-45-baseCell:GetHeight()/2
+            local top=lower:GetHeight()/2+45+highCell:GetHeight()/2
+            local minimum=((lowPos.y+top)*1.06-bottom*.94)/.94+.25
+            y=math.max(y,minimum)
+        end
+    end
+    bank:ClearAllPoints() bank:SetPoint(pos.point,UIParent,pos.relPoint,pos.x,y)
+end
+function HUD.Rect(frame)
+    if not frame or not frame.GetRect or not frame.GetEffectiveScale then return end
+    local x,y,w,h=frame:GetRect()
+    local scale=frame:GetEffectiveScale()/UIParent:GetEffectiveScale()
+    if not Public(x) or not Public(y) or not Public(w) or not Public(h) or not Public(scale)
+        or type(x)~='number' or type(y)~='number' or type(w)~='number' or type(h)~='number' then return end
+    return {x=x*scale,y=y*scale,w=w*scale,h=h*scale}
+end
+function HUD.Overlap(a,b,gap)
+    gap=gap or 0
+    local epsilon=.001 -- Scaling can put touching edges a few ulps apart.
+    return a.x < b.x+b.w+gap-epsilon and a.x+a.w+gap > b.x+epsilon
+        and a.y < b.y+b.h+gap-epsilon and a.y+a.h+gap > b.y+epsilon
+end
+local function Bounds(frame)
+    local box=HUD.Rect(frame)
+    local child=frame.prompt and HUD.Rect(frame.prompt)
+    if box and child then
+        local x,y=math.min(box.x,child.x),math.min(box.y,child.y)
+        box={x=x,y=y,w=math.max(box.x+box.w,child.x+child.w)-x,h=math.max(box.y+box.h,child.y+child.h)-y}
+    end
+    return box
+end
+function HUD.LayoutGuard()
+    if InCombatLockdown() then return end
+    if not UIParent or not UIParent.GetEffectiveScale then return false end
+    local obstacles,ornaments={},{}
+    for _,id in ipairs({'Base','L2','R2','L2R2'}) do
+        local bank=_G['ConsolePortGroup'..id]
+        if bank and bank.buttons then
+            for _,button in pairs(bank.buttons) do
+                local rect=HUD.Rect(button)
+                if rect then obstacles[#obstacles+1]=rect end
+            end
+            if bank.__cpfBankPrompt and bank.__cpfBankPrompt:IsShown() then ornaments[#ornaments+1]=bank.__cpfBankPrompt end
+        end
+    end
+    local base=ConsolePortGroupBase
+    if base and base.__cpfClassShortcut and base.__cpfClassShortcut:IsShown() then ornaments[#ornaments+1]=base.__cpfClassShortcut end
+    local width,height=UIParent:GetWidth(),UIParent:GetHeight()
+    local failures,shifted=0,0
+    local function Fits(rect)
+        if rect.x<4 or rect.y<4 or rect.x+rect.w>width-4 or rect.y+rect.h>height-4 then return false end
+        for _,other in ipairs(obstacles) do if HUD.Overlap(rect,other,4) then return false end end
+        return true
+    end
+    for _,frame in ipairs(ornaments) do
+        local box=Bounds(frame)
+        if box then
+            local placed=Fits(box)
+            if not placed then
+                -- Only move unprotected decorative groups. Keep all spell cells
+                -- at their native anchors. Search nearby clear, fully visible space.
+                local original=HUD.Rect(frame)
+                local cx=math.max(4,math.min(box.x,width-box.w-4))-box.x
+                local cy=math.max(4,math.min(box.y,height-box.h-4))-box.y
+                for radius=0,96,8 do
+                    for _,direction in ipairs({{0,1},{-1,0},{1,0},{0,-1},{-1,1},{1,1}}) do
+                        local dx,dy=cx+direction[1]*radius,cy+direction[2]*radius
+                        local candidate={x=box.x+dx,y=box.y+dy,w=box.w,h=box.h}
+                        if Fits(candidate) then
+                            local scale=UIParent:GetEffectiveScale()/frame:GetEffectiveScale()
+                            frame:ClearAllPoints()
+                            frame:SetPoint('BOTTOMLEFT',UIParent,'BOTTOMLEFT',(original.x+dx)*scale,(original.y+dy)*scale)
+                            box=candidate placed=true shifted=shifted+1 break
+                        end
+                    end
+                    if placed then break end
+                end
+            end
+            if placed then obstacles[#obstacles+1]=box else failures=failures+1 end
+        else failures=failures+1 end
+    end
+    if Addon.Diagnostics then Addon.Diagnostics:SetFeature('hudGeometry',failures==0 and 'offline-verified' or 'pending',
+        failures==0 and ('Decorative groups fit visible bounds; '..shifted..' adjusted around collisions') or ('No clear space near '..failures..' groups; native cells retained')) end
+    return failures==0
 end
 function HUD.ClassShortcut(bank)
     local bridge=Addon.adapters and Addon.adapters.rings
@@ -239,19 +353,23 @@ function HUD.ClassShortcut(bank)
         if badge.SetIgnoreParentAlpha then badge:SetIgnoreParentAlpha(true) end
         badge.icon=badge:CreateTexture(nil,'ARTWORK') badge.icon:SetAllPoints()
         badge.mask=badge:CreateMaskTexture(nil,'BACKGROUND') badge.mask:SetAllPoints()
-        badge.mask:SetTexture(CIRCLE,'CLAMPTOBLACKADDITIVE','CLAMPTOBLACKADDITIVE')
+        HUD.CircleMask(badge.mask)
         HUD.Mask(badge.icon,badge.mask)
         badge.border=badge:CreateTexture(nil,'OVERLAY') badge.border:SetAllPoints()
         if not HUD.Atlas(badge.border,'gamepad-actionbar-circleslot-border-normal') then HUD.Sprite(badge.border,'frame') end
     end
-    badge:SetSize(34,34) badge:ClearAllPoints()
-    local bottom=ConsolePortGroupL2R2 or bank
-    -- Source PageUnit puts class actions outside the three modifier banks.
-    local side=classChord==Addon.ClassActions.LEFT_CHORD and -1 or 1
-    -- Native PageUnit uses +/-138,-50 against its 266x86 expanded rail.
-    badge:SetPoint('CENTER',bottom,'CENTER',side*bottom:GetWidth()*138/266,-bottom:GetHeight()*50/86)
+    badge:SetSize(26,26) badge:ClearAllPoints()
+    local right=ConsolePortGroupR2
+    local anchor=right and right.buttons and right.buttons.PADDDOWN
+    if not anchor then badge:Hide() return end
+    badge:SetPoint('TOP',anchor,'BOTTOM',0,-8)
     badge.icon:SetTexture(icon)
-    Prompt(badge,'prompt',keys,'TOP','BOTTOM',0,-2)
+    local prompt=Prompt(badge,'prompt',keys,'TOP','BOTTOM',0,-2)
+    prompt:SetSize(#keys*18+(#keys-1)*10,18)
+    for i,texture in ipairs(prompt.icons) do
+        texture:ClearAllPoints() texture:SetPoint('LEFT',prompt,'LEFT',(i-1)*28,0) texture:SetSize(18,18)
+    end
+    for i,plus in ipairs(prompt.plus) do plus:ClearAllPoints() plus:SetPoint('LEFT',prompt,'LEFT',i*28-10,0) end
     badge:Show()
 end
 function HUD.Watch()

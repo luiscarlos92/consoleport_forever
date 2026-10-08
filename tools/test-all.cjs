@@ -328,6 +328,11 @@ check('T24.current-native-presentation-lifecycle', () => {
   if(sha(masque)!==package.files['Masque/Core/Group.lua']) throw Error('Masque reference differs from current audited package');
   const group='evidence/consoleport-contracts/ConsolePort_Bar/Widget/Group/Group.lua';
   const fixture=read('tests/harness/presentation.lua')
+    .replace('--@NATIVE_MASQUE_NORMAL',()=>{
+      const file=package.unpacked+'/Masque/Core/Regions/Normal.lua';
+      if(sha(file)!==package.files['Masque/Core/Regions/Normal.lua']) throw Error('Native Masque normal source drift');
+      return ['Update_Normal','Hook_SetNormal','Core.Skin_Normal'].map(name=>nativeFunction(file,name)).join('\n');
+    })
     .replace('--@NATIVE_MASQUE_REMOVE',()=>nativeFunction(masque,'GMT:RemoveButton'))
     .replace('--@NATIVE_GROUP_SKIN_LIFECYCLE',()=>['CPGroupBar:UpdateButtons','CPGroupBar:OnMasqueLoaded'].map(name=>nativeFunction(group,name)).join('\n'))
     .replace('--@NATIVE_MANAGER_BINDINGS',()=>nativeFunction('evidence/consoleport-contracts/ConsolePort_Bar/Controller/Manager/Manager.lua','Manager:GetBindings'))
@@ -335,6 +340,26 @@ check('T24.current-native-presentation-lifecycle', () => {
     .replace('--@NATIVE_UNBOUND_GLYPH',()=>['ResetGlyphTexture','ProxyButtonTextureProvider'].map(name=>nativeFunction('evidence/consoleport-contracts/ConsolePort_Bar/Widget/Button/Button.lua',name)).join('\n'))
     .replace('--@PRODUCT_SKIN',()=>['HUDPresentation','Skin'].map(name=>';(function(...)\n'+read('addon/ConsolePort_Forever/'+name+'.lua')+'\nend)("ConsolePort_Forever",Addon);').join('\n'));
   execute(source+fixture,'current-native-presentation');
+  // A negative control must fail with the original unretired Masque region.
+  let reproduced=false;
+  try {
+    execute(source+fixture.replace("fire('PLAYER_ENTERING_WORLD') flush()", "Addon.HUDPresentation.RetireMasqueNormal=function() end\nfire('PLAYER_ENTERING_WORLD') flush()"),'unretired-Masque-square');
+  } catch(error) { reproduced=String(error).includes('Masque private square normal remains visible'); }
+  if(!reproduced) throw Error('Private square overlay regression was not reproduced');
+});
+check('T45.HUD-collision-screen-bounds-and-scale-transitions', () => {
+  const template=JSON.parse(read('evidence/forever-ui/retail-button-template.json'));
+  if(sha('evidence/forever-ui/retail-button-template.xml')!==template.sha256 || !read('evidence/forever-ui/retail-button-template.xml').includes('<Size x="45" y="45"/>')) throw Error('Native button dimensions unqualified');
+  const cp=JSON.parse(read('dependencies/lock.json')).packages.find(p=>p.repo==='seblindfors/ConsolePort');
+  if(sha(cp.unpacked+'/ConsolePort/Libs/External/ConsolePortNode/ConsolePortNode.lua')!==cp.files['ConsolePort/Libs/External/ConsolePortNode/ConsolePortNode.lua']) throw Error('Native rectangle contract drift');
+  const fixture=read('tests/harness/hud_geometry.lua')
+    .replace('--@PRODUCT_HUD',()=>';(function(...)\n'+read('addon/ConsolePort_Forever/HUDPresentation.lua')+'\nend)("ConsolePort_Forever",Addon);')
+    .replace('--@NATIVE_SCALED_RECT',()=>nativeFunction(cp.unpacked+'/ConsolePort/Libs/External/ConsolePortNode/ConsolePortNode.lua','GetHitRectScaled'));
+  execute(source+fixture,'HUD-physical-rectangles');
+});
+check('T46.native-aura-bar-complete-ring-access-and-editor-release', () => {
+  const fixture=read('tests/harness/class_bar.lua').replace('--@NATIVE_STANCE_VISIBILITY',()=>nativeFunction('evidence/native/Blizzard_ActionBar/Shared/StanceBar.lua','StanceBarMixin:ShouldShow'));
+  execute(source+fixture,'native-class-bar');
 });
 check('T13.native-LiteMount-binding-icons', () => {
   const file='evidence/consoleport-contracts/ConsolePort/Model/Game/Bindings.lua';

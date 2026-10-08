@@ -1,0 +1,5 @@
+{
+  "source": "https://raw.githubusercontent.com/Gethe/wow-ui-source/15666a6e67938a1ab5caf041406464251db111ca/Interface/AddOns/Blizzard_ActionBar/Mainline/ActionButtonTemplate.xml",
+  "sha256": "8f07e253a7691556e731cb06192caea5a1e7a7aca69dfa8f6b6ecfed796039a9",
+  "verified": "ActionButtonTemplate native size 45x45; square masks/normal state regions plus SlotArt"
+}

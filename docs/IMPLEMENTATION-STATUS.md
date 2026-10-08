@@ -1,3 +1,16 @@
+## Current candidate.14 visual authority — October 8, 2026
+
+User tested candidate.13 normal and cursor/player ground spells in combat on
+paladin/DH: working. Keep the byte-identical interceptor. Restore old bank heights;
+move smaller class badge below R2 as the new paint mock requests. Retire surviving
+Masque Normal_Custom squares and restore round native frame surfaces. Position
+trigger hints beside D-pad/lower-cross gaps; add collision/full-screen bounds
+regressions and runtime fitting for decorations. Hide duplicate native aura row
+only with complete installed class-ring access; restore it for Edit Mode. Preserve
+native input/mode recovery and hold/release ring behavior. Deployment remains
+authorized once WoW is closed. No filesystem live WTF writes: visual updates run
+in game, revision 16 stays. See docs/CANDIDATE14-VISUALS-2026-10-08.md.
+
 ## Installed candidate.13 — October 8, 2026, 13:21:08 Toronto
 
 Authorized closed-WoW deployment completed from tested/pushed source

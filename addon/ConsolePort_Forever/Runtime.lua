@@ -85,6 +85,11 @@ function Visibility:Refresh(api,enabled)
     return #pending==0, #pending>0 and table.concat(pending,"; ") or "native shown state/events retained behind hidden parent; Retail combat/rendering acceptance pending"
 end
 function Visibility:Update()
+    if Addon.ClassActions then
+        local editing=self.editing or (EditModeManagerFrame and EditModeManagerFrame:IsShown())
+        local ready,detail=Addon.ClassActions.UpdateNativeBar(Addon,_G,editing)
+        if Addon.Diagnostics then Addon.Diagnostics:SetFeature('classBarPresentation',ready and 'offline-verified' or 'pending',detail) end
+    end
     local enabled=Addon.IsCharacterInstalled and Addon:IsCharacterInstalled() and Addon.db and Addon.db.shared.runtimePolicy.blizzardVisibility
     if Addon.HiddenAccess then
         local active=enabled and Addon.db.shared.runtimePolicy.hiddenAccessEnabled

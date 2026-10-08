@@ -2,7 +2,7 @@ local _, Addon = ...
 local BANKS, FACE = {Base=true,L2=true,R2=true,L2R2=true}, {PAD1=true,PAD2=true,PAD3=true,PAD4=true}
 local DPAD = {PADDUP=true,PADDDOWN=true,PADDLEFT=true,PADDRIGHT=true}
 local HUD = Addon.HUDPresentation
-local CIRCLE = [[Interface\Masks\CircleMaskScalable]]
+local CIRCLE = [[Interface\CharacterFrame\TempPortraitAlphaMask]]
 local REGION_GETTERS={NormalTexture='GetNormalTexture',PushedTexture='GetPushedTexture',HighlightTexture='GetHighlightTexture',CheckedTexture='GetCheckedTexture'}
 local function Public(value) return not (issecretvalue and issecretvalue(value)) end
 local function Availability(button)
@@ -64,12 +64,25 @@ local function BaseIcon(button)
     if button.icon.SetAlpha then button.icon:SetAlpha(1) end
     button.icon:Show()
 end
+local function RoundStates(button,imageOnly)
+    for _,key in ipairs({'NormalTexture','PushedTexture','HighlightTexture','CheckedTexture','Flash','Border','NewActionTexture','SpellHighlightTexture'}) do
+        local texture=button[key]
+        local getter=REGION_GETTERS[key]
+        local actual=getter and button[getter] and button[getter](button)
+        if actual and actual~=texture then HUD.RoundRegion(actual,button,key,button.__cpfFaceMask,imageOnly) end
+        if not texture then texture=actual end
+        HUD.RoundRegion(texture,button,key,button.__cpfFaceMask,imageOnly)
+    end
+end
 
 local function Apply(button)
     if not Addon.IsCharacterInstalled or not Addon:IsCharacterInstalled() then return end
     if not button or not button.icon then return end
+    HUD.RetireMasqueNormal(button)
     if InCombatLockdown() then
         Addon.skinRefreshPending=true
+        if button.__cpfFaceMask then RoundStates(button,true) end
+        if button.SlotArt then button.SlotArt:Hide() end
         Availability(button) BaseIcon(button) HUD.EmptyVisibility(button)
         return
     end
@@ -95,7 +108,7 @@ local function Apply(button)
             end
         end)
     end
-    mask:SetTexture(CIRCLE,"CLAMPTOBLACKADDITIVE","CLAMPTOBLACKADDITIVE") mask:ClearAllPoints()
+    HUD.CircleMask(mask) mask:ClearAllPoints()
     mask:SetPoint("CENTER",button) mask:SetSize(button:GetWidth()*0.88,button:GetWidth()*0.88)
     -- SetAtlas owns its texture coordinates; resetting them exposes its sheet.
     if not button.icon.GetAtlas or not button.icon:GetAtlas() then button.icon:SetTexCoord(0,1,0,1) end
@@ -116,14 +129,7 @@ local function Apply(button)
     end
     shadow:Show()
     -- Optional texture holes must not terminate an ipairs traversal.
-    for _,key in ipairs({'NormalTexture','PushedTexture','HighlightTexture','CheckedTexture','Flash','Border','NewActionTexture','SpellHighlightTexture'}) do
-        local texture=button[key]
-        local getter=REGION_GETTERS[key]
-        local actual=getter and button[getter] and button[getter](button)
-        if actual and actual~=texture then HUD.RoundRegion(actual,button,key,mask) end
-        if not texture then texture=actual end
-        HUD.RoundRegion(texture,button,key,mask)
-    end
+    RoundStates(button)
     HUD.RoundEffects(button,mask)
     for _, key in ipairs({"cooldown","chargeCooldown","lossOfControlCooldown"}) do
         local cd=button[key] if cd then
@@ -189,7 +195,7 @@ function Addon:RefreshConsolePortSkin()
     for bankID in pairs(BANKS) do
         local bank=_G["ConsolePortGroup"..bankID]
         if bank and bank.buttons then
-            HUD.LiftBank(bank)
+            HUD.PlaceBank(bank)
             if not bank.__cpfSkinHooks then
                 bank.__cpfSkinHooks=true
                 if type(bank.UpdateButtons)=="function" then
@@ -234,6 +240,7 @@ function Addon:RefreshConsolePortSkin()
         end
     end
     if ConsolePortGroupBase then Prompts(ConsolePortGroupBase) HUD.ClassShortcut(ConsolePortGroupBase) end
+    HUD.LayoutGuard()
     if self.Diagnostics then self.Diagnostics:SetFeature('faceSkin',ready==16 and #errors==0 and 'offline-verified' or 'pending',
         #errors>0 and table.concat(errors,'; ') or (ready..'/16 face skins prepared; rendered Retail acceptance pending')) end
 end
@@ -262,7 +269,7 @@ end)
 -- Install the handler first; unavailable events must not abort skin startup.
 for _,event in ipairs({'PLAYER_ENTERING_WORLD','PLAYER_TARGET_CHANGED','PLAYER_EQUIPMENT_CHANGED','PLAYER_REGEN_ENABLED',
     'PLAYER_REGEN_DISABLED','ACTIONBAR_UPDATE_USABLE','ACTIONBAR_SLOT_CHANGED','GROUP_ROSTER_UPDATE','UPDATE_BINDINGS','ADDON_LOADED',
-    'GAME_PAD_CONFIGS_CHANGED','UPDATE_SHAPESHIFT_FORMS','SPELLS_CHANGED'}) do
+    'GAME_PAD_CONFIGS_CHANGED','UPDATE_SHAPESHIFT_FORMS','SPELLS_CHANGED','UI_SCALE_CHANGED','DISPLAY_SIZE_CHANGED'}) do
     local supported=not C_EventUtils or not C_EventUtils.IsEventValid or C_EventUtils.IsEventValid(event)
     if supported then
         local ok,reason=pcall(events.RegisterEvent,events,event)

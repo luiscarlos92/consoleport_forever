@@ -1,3 +1,23 @@
+## Installed candidate.19 — October 8, 2026, 19:46:29 Toronto
+
+Authorized closed-WoW scoped deployment completed from tested/pushed source
+61bd8c5f95568440b0f6e5edd08d6804e70c7feb. Only ConsolePort_Forever was
+replaced; nine official stable Retail dependencies were freshly checked again,
+none changed/downloaded/reshipped. Independent readback verifies all 52 installed
+files, 1,949 unselected addon files unchanged, 298 WTF files unchanged, 42 junctions
+and root anchors preserved. Previous candidate.18 and configuration backups are
+verified and retained at C:/Users/luisr/WoW-Backups/ConsolePort-Forever/20261008T234604Z-02718cc24421.
+All 57 runtime/source suites and 39 tooling checks pass. Revision 17 remains;
+no binding/config migration or filesystem live WTF writes. Native five-rune
+player-strip suppression is installed; accepted candidate.18 feedback/cooldown,
+R2/other HUD geometry and Ground.lua remain. Actual client visibility/combat/taint
+acceptance remains pending user manual case 46; no WoW launch or live test.
+Receipts: evidence/delivery/prepared-candidate19.json, live-install-candidate19.json
+and candidate19-independent-readback.json. Pack SHA256: 0b4ba84ad32e1fb832000f8a01c689063626ff0957389df423929e3d997d59cb.
+This deployment authorization is complete. Future deployments need new user
+authorization with WoW closed. Earlier preparation-only restrictions below are
+historical records, not current deployment instructions.
+
 ## Authorized candidate.19 deployment — October 8, 2026
 
 The user states "wow closed deploy", superseding the preparation-only restriction

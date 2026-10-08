@@ -2,9 +2,9 @@
 
 ## Case 46 — native five-rune player-strip regression (candidate.19)
 
-**NOT RUN; DO NOT DEPLOY while the user plays.** The user confirms candidate.18's
-feedback, cooldown swipe and R2 symmetry work. After a separately authorized
-candidate.19 deployment, the five-symbol Holy Power strip below the player frame
+**NOT RUN.** Candidate.19 was installed with WoW closed on October 8, 2026,
+at 19:46:29 Toronto. Candidate.18 feedback/cooldown/R2 remain user-confirmed.
+During the user's manual test, the five-symbol Holy Power strip below the player frame
 must stay invisible through login, power values 0–5, combat, native redraw,
 specialization/power changes and normal play. Health/mana, circular spells,
 controller/class-ring hold/release, nameplate/PRD resources and ground casting

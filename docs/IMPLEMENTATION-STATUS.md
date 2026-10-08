@@ -1,3 +1,12 @@
+## Authorized candidate.11 deployment — October 8, 2026
+
+The user explicitly requests "deploy now, I'll test tomorrow", superseding the
+checkout-only restriction below. Deploy the already-tested candidate.11 scoped
+Forever-only artifact with WoW closed, retaining backups and all junctions/WTF.
+Freshly recheck all nine stable Retail dependencies; do not copy unchanged packages.
+Native gameplay modes/UI/hidden-control recovery remains active; only the repaired
+placement adapter is restored. Actual Retail testing is deferred to the user.
+
 ## Prepared package retained - candidate.11 (NOT DEPLOYED)
 
 All 42 runtime/source suites and 39 tooling tests pass. Source 66e15995aa1d608335169b1b112b997d0852c473

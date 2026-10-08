@@ -1,3 +1,29 @@
+## Authorized candidate.18 deployment — October 8, 2026
+
+The user explicitly requests "deploy", superseding the earlier checkout-only
+restriction below. WoW is closed. Deploy the tested candidate.18 through the
+scoped builder/installer, Forever only: all nine official stable Retail releases
+were freshly checked again and none changed. Preserve all unselected addons,
+WTF, junctions and backups. Configuration revision 17 remains; no binding/data
+migration. All 56 runtime/source suites and 39 tooling checks pass for these
+exact bytes. Actual Retail rendering/hardware/taint acceptance remains pending
+the user's manual case 45. Do not launch WoW or claim a live test.
+
+## Candidate.18 action feedback preparation — October 8, 2026
+
+Current request is checkout-only: the user is playing. **DO NOT DEPLOY**, invoke
+an installer/live preview, copy into live AddOns/WTF, reload UI or interrupt WoW.
+Candidate.17 remains installed and accepted. Candidate.18 repairs golden native
+pressed feedback, native circular cooldown frame layering and R2 reflection of
+the final fitted L2 label. Preserve L2, all bank/class/combined-prompt geometry,
+accepted brightness/roundness and working Ground.lua. Revision 17 remains;
+no bindings/config migration. T54/T55/T56 join the existing rendering, geometry
+and native dispatch gates; full tests are required. All nine stable Retail
+releases freshly checked/current; no package downloaded or updated. Preparation
+does not grant deployment authority. Details and live verification limits:
+docs/CANDIDATE18-ACTION-FEEDBACK-2026-10-08.md. Later deployment requires separate
+user authorization with WoW closed; retain all earlier evidence/backups.
+
 ## Candidate.17 live acceptance — October 8, 2026
 
 The user confirms the remaining combat greying repair: "it works". Installed

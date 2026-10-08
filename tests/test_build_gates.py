@@ -18,7 +18,7 @@ class RuntimeBuildGateTests(unittest.TestCase):
         validate_runtime_results(self.results, self.source)
 
     def test_targeting_and_combat_suites_cannot_be_omitted(self):
-        for prefix in ('T12.', 'T41.', 'T42.'):
+        for prefix in ('T12.', 'T41.', 'T42.', 'T54.', 'T55.', 'T56.'):
             with self.subTest(prefix=prefix), self.assertRaisesRegex(ValueError, 'Complete runtime'):
                 validate_runtime_results([row for row in self.results if not row['id'].startswith(prefix)], self.source)
 

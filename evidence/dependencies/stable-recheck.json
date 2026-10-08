@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-10-08T22:04:09.195933+00:00",
+  "checkedAt": "2026-10-08T23:03:02.393768+00:00",
   "lockSHA256": "9b4f3625885b5b90cd62a9a53b4efefd7d8bc50ad4b02ffc13372a416bb98bca",
   "github": [
     {
@@ -87,7 +87,7 @@
       "officialFile": "https://www.curseforge.com/wow/addons/dynamiccam/files/8995535",
       "latestStable": "2.21.1",
       "fileID": 8995535,
-      "metadataVerifiedAt": "2026-10-08T22:03:34Z",
+      "metadataVerifiedAt": "2026-10-08T23:03:00Z",
       "method": "Official latest-stable Retail listing and file page inspected; no floating latest fetch during assembly.",
       "matchesLock": true
     },
@@ -97,7 +97,7 @@
       "officialFile": "https://www.curseforge.com/wow/addons/immersion-extrafade/files/8995675",
       "latestStable": "1.18.0",
       "fileID": 8995675,
-      "metadataVerifiedAt": "2026-10-08T22:03:34Z",
+      "metadataVerifiedAt": "2026-10-08T23:03:00Z",
       "method": "Official latest-stable Retail listing and file page inspected; no floating latest fetch during assembly.",
       "matchesLock": true
     }

@@ -1,5 +1,28 @@
 # Retail tests and results — installed candidate.17, revision 17
 
+## Case 45 — candidate.18 action feedback and symmetric trigger labels
+
+**NOT RUN.** Checkout-only work; candidate.17 remains installed. Run only after
+separately authorized deployment with WoW closed. Test PAD1–PAD4 (X, Circle,
+Square, Triangle) in Base/L2/R2/L2R2 using controller and keyboard equivalents.
+Press/hold/release ready, unusable, out-of-range, resource-starved and cooling-down
+actions: golden round feedback must appear independently of successful casting
+and return to normal on release. Check empty slots and both key-down settings.
+
+Verify actual GCD, ability cooldown, charged/LoC cooldown, off-GCD abilities with
+and without their own cooldown, failed casts and duration/haste changes. Sweeps
+must follow game state and clear on completion. Check countdown numbers, proc,
+cast/interrupt and reticle effects, empty/refill and bank switching. Preserve the
+accepted bright circular icons and native range/resource colours in combat.
+
+Compare trigger-label centres: R2 mirrors L2 across the HUD screen centreline at
+the same height; L2, banks, class shortcut and combined prompt stay in place.
+Repeat modifier selection, hide/show, combat transitions, layout refresh, UI scale
+and controller glyph changes. Check ordinary plus cursor/player ground casting,
+class-ring hold/release and Lua/protected-action/taint errors. Native engine
+pixels, timing and hardware behavior require this live test; offline suites do
+not mark it passed.
+
 ### 42 — accepted round-face composition and retained layout (candidate.17)
 
 **Live result:** user-confirmed October 8, 2026: "it works", following the

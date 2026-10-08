@@ -178,6 +178,13 @@ local function Apply(button)
         local cd=button[key] if cd then
             cd:ClearAllPoints() cd:SetAllPoints(mask) cd:SetSwipeTexture(CIRCLE)
             if cd.SetUseCircularEdge then cd:SetUseCircularEdge(true) end
+            -- The Retail template uses the button's level. Its swipe must be
+            -- above the ARTWORK icon introduced by the accepted matte repair.
+            if cd.SetUsingParentLevel and cd.SetFrameLevel and button.GetFrameLevel then
+                cd:SetUsingParentLevel(false) cd:SetFrameLevel(button:GetFrameLevel()+1)
+            end
+            -- Keep native charge-edge behavior (drawSwipe=false) unchanged.
+            if key~='chargeCooldown' and cd.SetDrawSwipe then cd:SetDrawSwipe(true) end
             if cd.SetSwipeColor and not cd.__cpfSwipeHook then
                 cd.__cpfSwipeHook=true hooksecurefunc(cd,'SetSwipeColor',Swipe)
                 cd:SetSwipeColor(key=='lossOfControlCooldown' and 0.17 or 0,0,0,0.65)

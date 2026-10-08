@@ -1,3 +1,28 @@
+## Authorized candidate.18 deployment — October 8, 2026
+
+The user explicitly requests "deploy", superseding the earlier checkout-only
+restriction below. WoW is closed. Deploy the tested candidate.18 through the
+scoped builder/installer, Forever only: all nine official stable Retail releases
+were freshly checked again and none changed. Preserve all unselected addons,
+WTF, junctions and backups. Configuration revision 17 remains; no binding/data
+migration. All 56 runtime/source suites and 39 tooling checks pass for these
+exact bytes. Actual Retail rendering/hardware/taint acceptance remains pending
+the user's manual case 45. Do not launch WoW or claim a live test.
+
+## Candidate.18 action feedback preparation — October 8, 2026
+
+Checkout-only request; user is playing: **DO NOT DEPLOY** or invoke any live
+installer/preview, write AddOns/WTF, reload UI or interrupt WoW. Candidate.17
+remains the accepted installed baseline. Candidate.18 restores golden feedback
+on native pushed regions, raises existing circular cooldown frames above icons,
+and reflects R2 from final fitted L2 geometry. All other HUD rectangles and
+accepted grey/roundness/casting repairs are preserved; configuration revision 17
+and bindings stay. New T54/T55/T56 cover these regressions and join the full
+required suite. All nine official stable Retail dependencies freshly checked;
+none changed/downloaded. See docs/CANDIDATE18-ACTION-FEEDBACK-2026-10-08.md for
+root-cause evidence, tests and limits. Ready for separately authorized deployment
+and user-owned live verification; offline results do not certify Retail rendering.
+
 ## Candidate.17 live acceptance — October 8, 2026
 
 The user confirms the remaining combat greying repair: "it works". Installed

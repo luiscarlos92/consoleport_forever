@@ -40,6 +40,10 @@ local function region(parent)
     function r:SetVertexColor(...) self.tint={...} end
     function r:SetDesaturated(value) self.desaturated=value end
     function r:SetSwipeColor(...) self.swipe={...} end
+    function r:SetUsingParentLevel(value) assert(not combat) self.useParentLevel=value end
+    function r:SetFrameLevel(value) assert(not combat) self.frameLevel=value end
+    function r:GetFrameLevel() return self.useParentLevel~=false and self.parent:GetFrameLevel() or self.frameLevel end
+    function r:SetDrawSwipe(value) self.drawSwipe=value end
 function r:SetAlpha(value) self.alpha=value end
     function r:SetBlendMode(value) self.blend=value end
     function r:SetDrawLayer(...) self.layer={...} end
@@ -72,6 +76,7 @@ function Frame:SetScript(key,fn) self[key]=fn end
 function Frame:SetSize(w,h) self.width=w self.height=h end function Frame:SetPoint(...) self.point={...} end function Frame:ClearAllPoints() self.point=nil end
 function Frame:SetParent(parent) self.parent=parent end function Frame:GetParent() return self.parent end
 function Frame:GetName() return self.name end function Frame:GetWidth() return self.width or 45 end function Frame:GetHeight() return self.height or 45 end
+function Frame:GetFrameLevel() return self.frameLevel or 10 end
 function Frame:CreateTexture() return region(self) end
 function Frame:CreateFontString() return region() end
 function Frame:CreateMaskTexture() assert(not combat) self.maskCount=(self.maskCount or 0)+1 return region(self) end
@@ -111,6 +116,9 @@ local function makeButton(id,bank)
     local button=setmetatable({id=id,parent=bank,_state_type='custom',attributes={state=''},icon=region()},{__index=Frame})
     button.icon.parent=button
     for _,key in ipairs({'SlotBackground','SlotArt','NormalTexture','PushedTexture','HighlightTexture','CheckedTexture','Flash','Border','NewActionTexture','SpellHighlightTexture','cooldown','chargeCooldown','lossOfControlCooldown'}) do button[key]=region(button) end
+    for _,key in ipairs({'cooldown','chargeCooldown','lossOfControlCooldown'}) do
+        button[key].useParentLevel=true button[key].drawSwipe=key~='chargeCooldown'
+    end
     function button:GetNormalTexture() return self.NormalTexture end
     button.SpellCastAnimFrame={Fill={FillMask=region(),InnerGlowTexture=region(),CastFill=region()},EndBurst={EndMask=region(),GlowRing=region()}}
     local fxParent=setmetatable({},{__index=Frame})
@@ -212,7 +220,7 @@ function device:GetIconForButton(id) return 'test-controller-atlas',true end
 local glyph=region() Addon.HUDPresentation.Glyph(glyph,'PADRTRIGGER')
 assert(glyph.SetTexCoordArgs[1]==.125 and glyph.SetTexCoordArgs[3]==.375,'prompt atlas UV reset')
 device.GetIconForButton=originalIcon
-assert(base.buttons.PAD1.PushedTexture.atlas=='gamepad-actionbar-circleslot-border-pressed')
+assert(base.buttons.PAD1.PushedTexture.texture==[[Interface\AddOns\ConsolePort\Assets\Textures\Cursor\RoundBorderHighlight]])
 assert(base.buttons.PAD1.__cpfRoundShadow.atlas=='gamepad-actionbar-circleslot-dropshadow')
 family='REV' device.Label=family callbacks.OnIconsChanged() flush()
 assert(base.buttons.PAD3.__cpfEmptyArt.atlas=='gamepad-actionbar-circleslot-xbox-y-normal','reversed face layout was labelled as Xbox')

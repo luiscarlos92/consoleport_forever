@@ -273,7 +273,7 @@ function windowFixture() {
 check('T20.current-native-window-controls', () => execute(source+windowFixture(),'ui-windows-native-source'));
 function nativeFunction(file,signature) {
     const text=read(file).replace(/\r\n/g,'\n');
-    const start=text.indexOf('function '+signature+'(');
+    const start=text.search(new RegExp('function '+signature.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+'\\s*\\('));
     const end=text.indexOf('\nend',start)+4;
     if(start<0 || end<start) throw Error('native function not found: '+signature);
     const body=text.slice(start,end);
@@ -753,6 +753,77 @@ check('T53.ready-round-face-native-background-composition', () => {
     catch(error) { rejected=String(error).includes(message); }
     if(!rejected) throw Error(name+' regression mutation did not fail for its expected reason');
   }
+});
+check('T54.native-pressed-round-golden-feedback-all-banks', () => {
+  const pkg=JSON.parse(read('dependencies/lock.json')).packages.find(p=>p.repo==='SFX-WoW/Masque');
+  const texture=pkg.unpacked+'/Masque/Core/Regions/Texture.lua';
+  if(sha(texture)!==pkg.files['Masque/Core/Regions/Texture.lua']) throw Error('Masque texture source drift');
+  const fixture=presentationFixture()+read('tests/harness/action_feedback.lua')
+    .replace('--@NATIVE_MASQUE_TEXTURE',()=>nativeFunction(texture,'Core.Skin_Texture'))
+    .replace('--@NATIVE_BUTTON_DOWN_UP',()=>['MultiActionButtonDown','MultiActionButtonUp'].map(name=>nativeFunction('evidence/native/Blizzard_ActionBar/Shared/MultiActionBars.lua',name)).join('\n'));
+  execute(source+fixture,'native-round-press-release');
+  for(const [name,mutation,message] of [
+    ['occluded-press',fixture.replace("texture:SetDrawLayer('OVERLAY',1)","texture:SetDrawLayer('ARTWORK',0)"),'native press feedback hidden by icon'],
+    ['grey-press',fixture.replace('texture:SetVertexColor(1,.82,.15,1)','texture:SetVertexColor(.6,.6,.6,1)'),'pressed feedback lost golden colour'],
+  ]) {
+    let rejected=false;
+    try {execute(source+mutation,name);} catch(error) {rejected=String(error).includes(message);}
+    if(!rejected) throw Error(name+' mutation did not fail for expected reason');
+  }
+});
+check('T55.native-Retail-duration-object-round-cooldown-all-banks', () => {
+  const pkg=JSON.parse(read('dependencies/lock.json')).packages.find(p=>p.repo==='seblindfors/ConsolePort');
+  const file=pkg.unpacked+'/ConsolePort/Libs/External/LibActionButton-1.0/LibActionButton-1.0.lua';
+  if(sha(file)!==pkg.files['ConsolePort/Libs/External/LibActionButton-1.0/LibActionButton-1.0.lua']) throw Error('LAB cooldown source drift');
+  const lab=read(file).replace(/\r\n/g,'\n');
+  const start=lab.indexOf('local defaultCooldownInfo ='),end=lab.indexOf('\nelse\n',start);
+  if(start<0 || end<start) throw Error('Retail duration-object branch missing');
+  // Retain Retail getters, excluding the later Classic-only LoC override.
+  const getters=lab.slice(0,lab.indexOf('-- Classic overrides for item')).split('\n').filter(line=>/^\s*Action\.(GetCooldownInfo|GetChargeInfo|GetLoCCooldownInfo|GetCooldownDuration|GetChargeDuration|GetLoCCooldownDuration)\s*=/.test(line)).join('\n');
+  const fixture=presentationFixture()+read('tests/harness/cooldown_feedback.lua')
+    .replace('--@NATIVE_ACTION_COOLDOWN_GETTERS',()=>getters)
+    .replace('--@NATIVE_RETAIL_COOLDOWN',()=>lab.slice(start,end)+'\nend\n');
+  execute(source+fixture,'native-duration-object-swipes');
+  let rejected=false;
+  try {execute(source+fixture.replace('cd:SetUsingParentLevel(false) cd:SetFrameLevel(button:GetFrameLevel()+1)','-- original useParentLevel retained'),'occluded-native-swipe');}
+  catch(error) {rejected=String(error).includes('native swipe hidden beneath ARTWORK icon');}
+  if(!rejected) throw Error('same-parent-level cooldown regression not reproduced');
+  rejected=false;
+  try {execute(source+fixture.replace('SetOrClearCooldown(self.cooldown, showNormal, self:GetCooldownDuration())','SetOrClearCooldown(self.cooldown, true, self:GetCooldownDuration())'),'invented-failed-action-cooldown');}
+  catch(error) {rejected=String(error).includes('cooldown sink disagrees with game normal/GCD state');}
+  if(!rejected) throw Error('invented cooldown mutation did not fail');
+});
+check('T56.R2-mirrors-final-L2-without-moving-other-HUD-elements', () => {
+  const fixture=geometryFixture().replace("local identity=table.concat", `
+local left=HUD.Rect(ConsolePortGroupL2.__cpfBankPrompt)
+local right=HUD.Rect(ConsolePortGroupR2.__cpfBankPrompt)
+assert(math.abs(left.y-right.y)<.001,'R2 vertical alignment differs from L2')
+assert(math.abs(left.x+left.w+right.x-UIParent:GetWidth())<.001,'R2 horizontal position does not mirror L2')
+local identity=table.concat`);
+  execute(source+fixture+read('tests/harness/stationary_hints.lua'),'mirrored-trigger-geometry');
+  const oldHUD=code=>code
+    .replace('if ConsolePortGroupR2 and frame==ConsolePortGroupR2.__cpfBankPrompt then','if false then')
+    .replace('if not placed and not (ConsolePortGroupR2 and frame==ConsolePortGroupR2.__cpfBankPrompt) then','if not placed then');
+  let rejected=false;
+  try {execute(source+oldHUD(fixture),'independently-fitted-R2');}
+  catch(error) {rejected=/R2 (vertical alignment|horizontal position)/.test(String(error));}
+  if(!rejected) throw Error('original asymmetric R2 layout not reproduced');
+  // Run original and fixed layout algorithms across all 120 cases and compare
+  // physical rectangles of L2, combo/class prompts and every gameplay cell.
+  const snapshot=geometryFixture().replace('local fixedHints={}','local fixedHints={} local unchangedRects={}').replace('cases=cases+1',`
+local row={}
+for _,id in ipairs({'Base','L2','R2','L2R2'}) do
+ local bank=_G['ConsolePortGroup'..id]
+ for key,button in pairs(bank.buttons) do row[id..key]=HUD.Rect(button) end
+ if id~='R2' and bank.__cpfBankPrompt then row[id..'prompt']=HUD.Rect(bank.__cpfBankPrompt) end
+end
+local badge=ConsolePortGroupBase.__cpfClassShortcut
+row.class=HUD.Rect(badge) row.classPrompt=HUD.Rect(badge.prompt)
+unchangedRects[#unchangedRects+1]=row
+cases=cases+1`)+ '\nSERIALIZED_STATE=serialized(unchangedRects)';
+  const before=execute(source+serializer+oldHUD(snapshot),'original-non-R2-geometry');
+  const after=execute(source+serializer+snapshot,'fixed-non-R2-geometry');
+  if(before!==after) throw Error('alignment changed L2 or unrelated HUD rectangles');
 });
 const report = {at:new Date().toISOString(), commit:cp.execFileSync('git',['rev-parse','HEAD'],{cwd:root}).toString().trim(),
   productHashes:Object.fromEntries(files('addon').map(f=>[f,sha(f)])),

@@ -1,0 +1,12 @@
+RUNNING T24.current-native-presentation-lifecycle
+RUNNING T45.HUD-collision-screen-bounds-and-scale-transitions
+RUNNING T50.trigger-hints-stationary-across-selection
+RUNNING T51.class-badge-side-and-continuous-bank-opacity
+RUNNING T49.ready-round-spells-combat-colour-and-opacity
+RUNNING T53.ready-round-face-native-background-composition
+PASSED T24.current-native-presentation-lifecycle
+PASSED T45.HUD-collision-screen-bounds-and-scale-transitions
+PASSED T50.trigger-hints-stationary-across-selection
+PASSED T51.class-badge-side-and-continuous-bank-opacity
+PASSED T49.ready-round-spells-combat-colour-and-opacity
+PASSED T53.ready-round-face-native-background-composition

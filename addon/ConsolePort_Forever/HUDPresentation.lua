@@ -156,6 +156,14 @@ function HUD.RoundRegion(texture, button, key, mask, imageOnly)
         HUD.Sprite(texture,key=='Border' and 'border' or 'frame')
         texture:SetVertexColor(key=='PushedTexture' and .6 or 1,key=='PushedTexture' and .6 or 1,key=='PushedTexture' and .6 or 1,1)
     end
+    if key=='PushedTexture' then
+        -- Reuse the original round feedback art on the native pushed region.
+        -- The engine still owns its press/release visibility, including failed
+        -- casts. Masque's ARTWORK/0 reset can otherwise hide it behind our icon.
+        texture:SetTexture(RING) texture:SetTexCoord(0,1,0,1)
+        texture:SetVertexColor(1,.82,.15,1) texture:SetBlendMode('ADD')
+        texture:SetDrawLayer('OVERLAY',1)
+    end
     if not imageOnly then
         texture:ClearAllPoints()
         texture:SetPoint('CENTER',button) texture:SetSize(button:GetWidth(),button:GetWidth())
@@ -364,11 +372,22 @@ function HUD.LayoutGuard()
         return true
     end
     for _,frame in ipairs(ornaments) do
+        if ConsolePortGroupR2 and frame==ConsolePortGroupR2.__cpfBankPrompt then
+            local left=ConsolePortGroupL2 and HUD.Rect(ConsolePortGroupL2.__cpfBankPrompt)
+            if left then
+                -- L2 has already been fitted against both bank scale extremes.
+                -- Reflect its final rectangle across the shared screen origin;
+                -- independent fitting previously displaced only the R2 label.
+                local scale=UIParent:GetEffectiveScale()/frame:GetEffectiveScale()
+                frame:ClearAllPoints()
+                frame:SetPoint('BOTTOMLEFT',UIParent,'BOTTOMLEFT',(width-left.x-left.w)*scale,left.y*scale)
+            end
+        end
         local box=Bounds(frame)
         if box then
             local stationary=frame.__cpfStationary
             local placed=Fits(box,stationary)
-            if not placed then
+            if not placed and not (ConsolePortGroupR2 and frame==ConsolePortGroupR2.__cpfBankPrompt) then
                 -- Only move unprotected decorative groups. Keep all spell cells
                 -- at their native anchors. Search nearby clear, fully visible space.
                 local original=HUD.Rect(frame)

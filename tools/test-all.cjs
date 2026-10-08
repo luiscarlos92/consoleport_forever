@@ -358,11 +358,25 @@ function geometryFixture() {
   if(sha(cp.unpacked+'/ConsolePort/Libs/External/ConsolePortNode/ConsolePortNode.lua')!==cp.files['ConsolePort/Libs/External/ConsolePortNode/ConsolePortNode.lua']) throw Error('Native rectangle contract drift');
   const fixture=read('tests/harness/hud_geometry.lua')
     .replace('--@PRODUCT_HUD',()=>';(function(...)\n'+read('addon/ConsolePort_Forever/HUDPresentation.lua')+'\nend)("ConsolePort_Forever",Addon);')
-    .replace('--@NATIVE_SCALED_RECT',()=>nativeFunction(cp.unpacked+'/ConsolePort/Libs/External/ConsolePortNode/ConsolePortNode.lua','GetHitRectScaled'));
+    .replace('--@NATIVE_SCALED_RECT',()=>nativeFunction(cp.unpacked+'/ConsolePort/Libs/External/ConsolePortNode/ConsolePortNode.lua','GetHitRectScaled'))
+    .replace('--@NATIVE_GROUP_FACTORY',()=>{
+      const group=read(cp.unpacked+'/ConsolePort_Bar/Widget/Group/Group.lua');
+      return group.slice(group.indexOf('env:AddFactory(GROUP,'),group.indexOf('env:AddFactory(GROUP_BUTTON,'));
+    });
   return fixture;
 }
 check('T45.HUD-collision-screen-bounds-and-scale-transitions', () => execute(source+geometryFixture(),'HUD-physical-rectangles'));
-check('T50.trigger-hints-stationary-across-selection', () => execute(source+geometryFixture()+read('tests/harness/stationary_hints.lua'),'stationary-trigger-hints'));
+check('T50.trigger-hints-stationary-across-selection', () => {
+  const fixture=geometryFixture()+read('tests/harness/stationary_hints.lua');
+  execute(source+fixture,'stationary-trigger-hints');
+  let reproduced=false;
+  try { execute(source+fixture.replace("anchor:SetPoint('BOTTOM',UIParent,", "anchor:SetPoint('BOTTOM',bank:GetParent(),"),'unanchored-manager-hints'); }
+  catch(error) { reproduced=String(error).includes('no clear placement'); }
+  if(!reproduced) throw Error('candidate15 unanchored manager failure was not reproduced');
+});
+check('T51.class-badge-side-and-continuous-bank-opacity', () => execute(source+geometryFixture()+read('tests/harness/class_badge_side.lua'),'class-badge-side-opacity'));
+check('T52.visual-observations-retained-without-secret-values', () => execute(source+presentationFixture()+read('tests/harness/visual_snapshot.lua'),'visual-evidence-snapshot'));
+
 check('T46.native-aura-bar-complete-ring-access-and-editor-release', () => {
   const fixture=read('tests/harness/class_bar.lua').replace('--@NATIVE_STANCE_VISIBILITY',()=>nativeFunction('evidence/native/Blizzard_ActionBar/Shared/StanceBar.lua','StanceBarMixin:ShouldShow'));
   execute(source+fixture,'native-class-bar');
@@ -701,7 +715,7 @@ check('T49.ready-round-spells-combat-colour-and-opacity', () => {
   const fixture=presentationFixture()+read('tests/harness/combat_colours.lua').replace('--@NATIVE_ACTION_USABILITY',()=>line);
   execute(source+fixture,'combat-round-colour-regression');
   let reproduced=false;
-  try { execute(source+fixture.replace('local function Availability(button,refreshUsable)','local function Availability(button,refreshUsable) refreshUsable=false'),'stale-ready-round-tint'); }
+  try { execute(source+fixture.replace('local function PaintAvailability(button,refreshUsable)','local function PaintAvailability(button,refreshUsable) refreshUsable=false'),'stale-ready-round-tint'); }
   catch(error) { reproduced=String(error).includes('ready round combat spell remains grey'); }
   if(!reproduced) throw Error('ready spell grey tint negative control did not fail');
 });

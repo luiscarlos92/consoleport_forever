@@ -5,7 +5,11 @@ local HUD = Addon.HUDPresentation
 local CIRCLE = [[Interface\CharacterFrame\TempPortraitAlphaMask]]
 local REGION_GETTERS={NormalTexture='GetNormalTexture',PushedTexture='GetPushedTexture',HighlightTexture='GetHighlightTexture',CheckedTexture='GetCheckedTexture'}
 local function Public(value) return not (issecretvalue and issecretvalue(value)) end
-local function Availability(button,refreshUsable)
+local function SafeVisualValue(value)
+    if not Public(value) then return '[opaque]' end
+    if type(value)=='number' or type(value)=='boolean' or type(value)=='string' then return value end
+end
+local function PaintAvailability(button,refreshUsable)
     if not Addon.IsCharacterInstalled or not Addon:IsCharacterInstalled() then return end
     if not button.icon or not button.icon.SetDesaturated then return end
     if button._state_type=='custom' then
@@ -15,6 +19,7 @@ local function Availability(button,refreshUsable)
     end
     if refreshUsable and type(button.IsUsable)=='function' then
         local ok,usable,mana=pcall(button.IsUsable,button)
+        if Public(mana) and mana==nil then mana=false end
         local config=button.config
         local valid=ok and (not Public(usable) or type(usable)=='boolean')
             and (not Public(mana) or type(mana)=='boolean') and config and config.colors
@@ -54,6 +59,13 @@ local function Availability(button,refreshUsable)
     if not Public(button.zoneAbilityDisabled) then return end
     if button.zoneAbilityDisabled==true then button.icon:SetDesaturated(true)
     else button.icon:SetDesaturated(locked) end -- Forward opaque combat booleans to the permitted texture sink.
+end
+local function Availability(button,refreshUsable)
+    if button.__cpfPaintingAvailability then return end
+    button.__cpfPaintingAvailability=true
+    local ok=pcall(PaintAvailability,button,refreshUsable)
+    button.__cpfPaintingAvailability=nil
+    if not ok and Addon.Diagnostics then Addon.Diagnostics:SetFeature('faceAvailability','pending','native colour/lock query could not be reconciled; visual snapshot retained') end
 end
 local function Swipe(cd,r,g,b,a)
     if not Addon.IsCharacterInstalled or not Addon:IsCharacterInstalled() then return end
@@ -173,7 +185,10 @@ local function Apply(button)
     end
     if button.icon.SetVertexColor and button.__cpfAvailabilityIcon~=button.icon then
         button.__cpfAvailabilityIcon=button.icon
-        hooksecurefunc(button.icon,'SetVertexColor',function() Availability(button) end)
+        hooksecurefunc(button.icon,'SetVertexColor',function(_,r,g,b,a)
+            if not button.__cpfPaintingAvailability then button.__cpfLastIncomingColour={SafeVisualValue(r),SafeVisualValue(g),SafeVisualValue(b),SafeVisualValue(a)} end
+            Availability(button,true)
+        end)
     end
     Availability(button,true)
     BaseIcon(button)
@@ -286,11 +301,59 @@ function Addon:RequestSkinRefresh()
 end
 
 local events=CreateFrame("Frame")
+local function VisualGetter(object,method)
+    if not object or type(object[method])~='function' then return end
+    local ok,a,b,c,d=pcall(object[method],object)
+    if not ok then return '[query failed]' end
+    if method=='GetVertexColor' then return {SafeVisualValue(a),SafeVisualValue(b),SafeVisualValue(c),SafeVisualValue(d)} end
+    return SafeVisualValue(a)
+end
+function Addon:SnapshotFaceVisuals(force)
+    if not self.record or not self.Diagnostics or not self:IsCharacterInstalled() then return end
+    local now=GetTime and GetTime() or 0
+    local combat=InCombatLockdown()
+    if not force and self.__cpfVisualSnapshotCombat==combat and self.__cpfVisualSnapshotAt and now-self.__cpfVisualSnapshotAt<2 then return end
+    self.__cpfVisualSnapshotAt=now self.__cpfVisualSnapshotCombat=combat
+    local snapshot={time=now,combat=combat,banks={}}
+    for bankID in pairs(BANKS) do
+        local bank=_G['ConsolePortGroup'..bankID]
+        if bank and bank.buttons then
+            local group={alpha=VisualGetter(bank,'GetAlpha'),effectiveAlpha=VisualGetter(bank,'GetEffectiveAlpha'),buttons={}}
+            snapshot.banks[bankID]=group
+            for id,button in pairs(bank.buttons) do
+                local row={kind=SafeVisualValue(button._state_type),action=SafeVisualValue(button._state_action),range=SafeVisualValue(button.outOfRange),incomingColour=button.__cpfLastIncomingColour,zoneDisabled=SafeVisualValue(button.zoneAbilityDisabled),
+                    icon={colour=VisualGetter(button.icon,'GetVertexColor'),alpha=VisualGetter(button.icon,'GetAlpha'),effectiveAlpha=VisualGetter(button.icon,'GetEffectiveAlpha'),desaturated=VisualGetter(button.icon,'IsDesaturated'),desaturation=VisualGetter(button.icon,'GetDesaturation')},layers={}}
+                if type(button.IsUsable)=='function' then
+                    local ok,usable,mana=pcall(button.IsUsable,button)
+                    row.queryOK=ok row.usable=SafeVisualValue(usable) row.mana=SafeVisualValue(mana)
+                end
+                local actionInfo=C_ActionBar and C_ActionBar.GetActionInfo or GetActionInfo
+                if actionInfo and Public(button._state_action) and type(button._state_action)=='number' and button._state_type=='action' then
+                    local ok,kind,spell,subType=pcall(actionInfo,button._state_action)
+                    row.actionInfoOK=ok row.slotKind=SafeVisualValue(kind) row.spell=SafeVisualValue(spell)
+                    if ok and Public(kind) and kind=='spell' and Public(spell) and type(spell)=='number' and C_Spell and C_Spell.IsSpellUsable then
+                        local queried,usable,mana=pcall(C_Spell.IsSpellUsable,spell)
+                        row.spellQueryOK=queried row.spellUsable=SafeVisualValue(usable) row.spellMana=SafeVisualValue(mana)
+                    end
+                end
+                for _,key in ipairs({'NormalTexture','PushedTexture','CheckedTexture','Flash','SpellCastAnimFrame','cooldown','chargeCooldown','lossOfControlCooldown'}) do
+                    local layer=button[key]
+                    if layer then row.layers[key]={shown=VisualGetter(layer,'IsShown'),alpha=VisualGetter(layer,'GetAlpha'),effectiveAlpha=VisualGetter(layer,'GetEffectiveAlpha')} end
+                end
+                group.buttons[id]=row
+            end
+        end
+    end
+    self.Diagnostics.visuals=self.Diagnostics.visuals or {}
+    self.Diagnostics.visuals[snapshot.combat and 'combat' or 'peace']=snapshot
+    self.Diagnostics:Persist()
+end
 function Addon:RefreshFaceAvailability()
     for bankID in pairs(BANKS) do
         local bank=_G['ConsolePortGroup'..bankID]
         if bank and bank.buttons then for id in pairs(FACE) do local button=bank.buttons[id] if button then Availability(button,true) end end end
     end
+    self:SnapshotFaceVisuals()
 end
 events:SetScript("OnEvent",function()
     Addon:RequestSkinRefresh()

@@ -8,6 +8,7 @@ function Diagnostics:Persist()
     Addon.record.lastRuntimeDiagnostics = {
         codeVersion=Addon.VERSION, configRevision=Addon.CONFIG_REVISION,
         features=Addon.Core.Copy(self.features), entries=Addon.Core.Copy(self.entries),
+        visuals=Addon.Core.Copy(self.visuals or {}),
     }
 end
 function Diagnostics:Log(kind, message)

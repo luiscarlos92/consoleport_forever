@@ -209,6 +209,29 @@ local function Prompt(parent, field, keys, point, relativePoint, x, y)
     if valid then f:Show() else f:Hide() end
     return f
 end
+function HUD.MirrorBank(frame,bank)
+    frame.__cpfMirrorBank=bank frame.__cpfMirrorEnabled=true
+    if frame.SetScript and bank.GetAlpha then
+        frame:SetScript('OnUpdate',function() frame:SetAlpha(frame.__cpfMirrorBank:GetAlpha()) end)
+        frame:SetAlpha(bank:GetAlpha())
+    end
+    if bank.HookScript then
+        bank.__cpfFollowers=bank.__cpfFollowers or setmetatable({},{__mode='k'})
+        bank.__cpfFollowers[frame]=true
+        if not bank.__cpfFollowerWatch then
+            bank.__cpfFollowerWatch=true
+            bank:HookScript('OnHide',function()
+                for follower in pairs(bank.__cpfFollowers) do if follower.__cpfMirrorBank==bank then follower:Hide() end end
+            end)
+            bank:HookScript('OnShow',function()
+                for follower in pairs(bank.__cpfFollowers) do
+                    if follower.__cpfMirrorBank==bank and follower.__cpfMirrorEnabled then follower:Show() end
+                end
+            end)
+        end
+    end
+    if bank.IsShown and not bank:IsShown() then frame:Hide() else frame:Show() end
+end
 function HUD.BankPrompt(bank, bankID)
     local mods=BANK_MODS[bankID]
     if not mods then return end
@@ -228,20 +251,16 @@ function HUD.BankPrompt(bank, bankID)
             local anchor=bank.__cpfInactiveHintAnchor
             if not anchor then
                 anchor=CreateFrame('Frame',nil,bank:GetParent()) bank.__cpfInactiveHintAnchor=anchor
-                if bank.HookScript then
-                    bank:HookScript('OnHide',function() anchor:Hide() end)
-                    bank:HookScript('OnShow',function() anchor:Show() end)
-                end
             end
             local scale=(tonumber(tostring(bank.props.rescale or ''):match('(%d+)%s*$')) or 94)/100
             anchor:SetScale(scale) anchor:SetSize(bank:GetWidth(),bank:GetHeight())
-            anchor:ClearAllPoints() anchor:SetPoint('BOTTOM',bank:GetParent(),'BOTTOM',pos.x,pos.y)
+            anchor:ClearAllPoints() anchor:SetPoint('BOTTOM',UIParent,'BOTTOM',pos.x,pos.y)
             f.__cpfStationary=true f:SetParent(anchor)
             f:ClearAllPoints()
             -- Native right D-pad cell starts 82.5 from the bank's left edge.
             local cell=bank.buttons.PADDRIGHT
             f:SetPoint('TOPRIGHT',anchor,'LEFT',82.5+cell:GetWidth()+12,-cell:GetHeight()/2-4)
-            if bank.IsShown and not bank:IsShown() then anchor:Hide() else anchor:Show() end
+            HUD.MirrorBank(anchor,bank)
         else
             f:ClearAllPoints() f:SetPoint('TOPRIGHT',bank.buttons.PADDRIGHT,'BOTTOMRIGHT',12,-4)
         end
@@ -386,14 +405,14 @@ function HUD.ClassShortcut(bank)
     local valid=icon and Public(icon) and #keys>0 and #keys<=3
     for _,key in ipairs(keys) do if not key then valid=false end end
     if not valid then
-        if badge then badge:Hide() end
+        if badge then badge.__cpfMirrorEnabled=false badge:Hide() end
         if Addon.Diagnostics then Addon.Diagnostics:SetFeature('classShortcut','pending',
             not chord and 'installed class ring opener is not bound' or 'class ring icon or device glyph unavailable') end
         return
     end
     if not badge then
         badge=CreateFrame('Frame',nil,bank:GetParent()) bank.__cpfClassShortcut=badge
-        if badge.SetIgnoreParentAlpha then badge:SetIgnoreParentAlpha(true) end
+
         badge.icon=badge:CreateTexture(nil,'ARTWORK') badge.icon:SetAllPoints()
         badge.mask=badge:CreateMaskTexture(nil,'BACKGROUND') badge.mask:SetAllPoints()
         HUD.CircleMask(badge.mask)
@@ -402,8 +421,9 @@ function HUD.ClassShortcut(bank)
         if not HUD.Atlas(badge.border,'gamepad-actionbar-circleslot-border-normal') then HUD.Sprite(badge.border,'frame') end
     end
     badge:SetSize(26,26) badge:ClearAllPoints()
-    local right=ConsolePortGroupR2
-    local anchor=right and right.buttons and right.buttons.PADDDOWN
+    local side=chord==Addon.ClassActions.LEFT_CHORD and 'L2' or 'R2'
+    local group=_G['ConsolePortGroup'..side]
+    local anchor=group and group.buttons and group.buttons.PADDDOWN
     if not anchor then badge:Hide() return end
     badge:SetPoint('TOP',anchor,'BOTTOM',0,-8)
     badge.icon:SetTexture(icon)
@@ -413,8 +433,8 @@ function HUD.ClassShortcut(bank)
         texture:ClearAllPoints() texture:SetPoint('LEFT',prompt,'LEFT',(i-1)*28,0) texture:SetSize(18,18)
     end
     for i,plus in ipairs(prompt.plus) do plus:ClearAllPoints() plus:SetPoint('LEFT',prompt,'LEFT',i*28-10,0) end
-    badge:Show()
-    if Addon.Diagnostics then Addon.Diagnostics:SetFeature('classShortcut','offline-verified','class ring badge displayed below R2') end
+    HUD.MirrorBank(badge,group)
+    if Addon.Diagnostics then Addon.Diagnostics:SetFeature('classShortcut','offline-verified','class ring badge displayed below '..side) end
 end
 function HUD.Watch()
     local db=DB()

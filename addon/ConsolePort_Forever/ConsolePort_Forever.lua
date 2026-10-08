@@ -395,6 +395,7 @@ SlashCmdList.CONSOLEPORTFOREVER=function(input)
         local ok,reason=Addon.Proof:Show(_G)
         if not ok then Print(reason) end
     elseif command=="diagnose" then
+        if Addon.SnapshotFaceVisuals then Addon:SnapshotFaceVisuals(true) end
         Addon:Status()
         for _,entry in ipairs(Addon.Diagnostics.entries) do Print(entry.kind..": "..entry.message) end
     else Addon:Status() end

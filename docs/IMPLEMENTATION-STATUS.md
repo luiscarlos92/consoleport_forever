@@ -1,3 +1,18 @@
+## Candidate.16 visual repair authority — October 8, 2026
+
+User confirms duplicate aura row fixed, but candidate.15 trigger labels disappeared
+and combat grey persists. Original tests did not prove these live behaviours.
+Use ConsolePort's actual unanchored manager hierarchy in geometry tests, verify
+actual glyph visibility/alpha, and reproduce the old anchor failure. Preserve
+roundness and byte-identical working Ground.lua. Class badge follows its actual
+L1+L2 left or R1+R2 right chord and mirrors that bank's fading opacity; approved
+size/right placement stays. Extend native usability event-order coverage to later
+cached writes, retain observed client visual data without secret values, and keep
+live combat acceptance explicitly pending. Configuration revision 17 remains:
+no new binding/config migration. Deployment authorized with WoW closed; scoped
+Forever only, never filesystem WTF edits. Fresh nine-package Retail check current.
+See docs/CANDIDATE16-NATIVE-VISUALS-2026-10-08.md.
+
 ## Installed candidate.15 — October 8, 2026, 15:40:11 Toronto
 
 Authorized closed-WoW scoped deployment completed from tested/pushed source

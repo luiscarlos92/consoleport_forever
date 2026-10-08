@@ -14,20 +14,27 @@ function Frame:GetScale() return self.scale or 1 end
 function Frame:SetParent(p) self.parent=p end
 function Frame:SetTexture(t) self.texture=t end function Frame:SetAtlas(t) self.atlas=t end
 function Frame:SetTexCoord() end function Frame:SetAlpha(a) self.alpha=a end
+function Frame:GetAlpha() return self.alpha or 1 end
+function Frame:GetEffectiveAlpha() return self:GetAlpha()*(self.ignoreParentAlpha and 1 or self.parent and self.parent:GetEffectiveAlpha() or 1) end
+function Frame:IsVisible() return self.shown and (not self.parent or self.parent:IsVisible()) end
+function Frame:SetScript(key,fn) self[key]=fn end
+function Frame:HookScript(key,fn) self[key]=fn end
+function Frame:OnLoad() end
 function Frame:SetText(t) self.width,self.height=8,16 end function Frame:SetTextColor() end
 function Frame:Show() self.shown=true end function Frame:Hide() self.shown=false end
-function Frame:IsShown() return self.shown end function Frame:SetIgnoreParentAlpha() end
+function Frame:IsShown() return self.shown end function Frame:SetIgnoreParentAlpha(value) self.ignoreParentAlpha=value end
 function Frame:GetPixels()
     if self==UIParent then return 0,0,screenW,screenH end
-    local p=assert(self.point,'missing anchor')
+    local p=self.point if not p then return end
     local left,bottom,rw,rh=p[2]:GetPixels()
+    if not left then return end
     local ra,sa=axes[p[3]],axes[p[1]]
     local s=self:GetEffectiveScale()
     local w,h=self.width*s,self.height*s
     return left+rw*ra[1]+p[4]*s-w*sa[1],bottom+rh*ra[2]+p[5]*s-h*sa[2],w,h
 end
 function Frame:GetRect()
-    local x,y,w,h=self:GetPixels() local s=self:GetEffectiveScale()
+    local x,y,w,h=self:GetPixels() if not x then return end local s=self:GetEffectiveScale()
     return x/s,y/s,w/s,h/s
 end
 function Frame:SetAllPoints() end function Frame:AddMaskTexture() end
@@ -54,12 +61,19 @@ local function issecret() return false end
 --@NATIVE_SCALED_RECT
 local cells={PAD1={195,-45},PAD2={240,0},PAD3={150,0},PAD4={195,45},PADDLEFT={-7.5,0},PADDUP={37.5,45},PADDRIGHT={82.5,0},PADDDOWN={37.5,-45}}
 local BUTTON_SIZE=45 -- Exact pinned Blizzard ActionButtonTemplate dimensions.
+-- The exact official Group factory parents banks to an unanchored manager.
+local GROUP='Group'
+local env={Manager=CreateFrame('Frame',nil,UIParent),Interface={Group={}},MakeID=function(format,id) return string.format(format,id) end}
+env.Manager:SetSize(0,0)
+function env:AddFactory(_,factory) self.groupFactory=factory end
+--@NATIVE_GROUP_FACTORY
 local function layout(spread,bottomY,baseY,active)
     for _,id in ipairs({'Base','L2','R2','L2R2'}) do
         local x=id=='L2' and -spread or id=='R2' and spread or 0
         local y=id=='Base' and baseY or id=='L2R2' and bottomY or 80
-        local bank=CreateFrame('Frame',nil,UIParent)
+        local bank=env.groupFactory(id)
         bank:SetSize(277.5,140) bank.scale=id==active and 1.06 or .94
+        bank:SetAlpha(id==active and 1 or .45)
         bank.props={rescale='[mod:SHIFT] 106; 94',pos={point='BOTTOM',relPoint='BOTTOM',x=x,y=y}}
         bank.buttons={} _G['ConsolePortGroup'..id]=bank
         HUD.PlaceBank(bank)
@@ -73,6 +87,7 @@ local function layout(spread,bottomY,baseY,active)
     HUD.ClassShortcut(ConsolePortGroupBase)
 end
 local function checkRect(frame,name,shadow)
+    assert(frame:IsVisible() and frame:GetEffectiveAlpha()>0,'decoration/frame effectively invisible '..name)
     local r=assert(HUD.Rect(frame))
     r.name=name
     assert(r.x-(shadow or 0)>=0 and r.y-(shadow or 0)>=0 and r.x+r.w+(shadow or 0)<=UIParent:GetWidth() and r.y+r.h+(shadow or 0)<=UIParent:GetHeight(),name..' out of screen')
@@ -101,7 +116,12 @@ for _,resolution in ipairs({{1280,720},{1366,768},{1920,1080},{2560,1440},{3840,
                 for _,id in ipairs({'Base','L2','R2','L2R2'}) do
                     local bank=_G['ConsolePortGroup'..id]
                     for key,button in pairs(bank.buttons) do buttons[#buttons+1]=checkRect(button,id..key,2) end
-                    if bank.__cpfBankPrompt then decorations[#decorations+1]=checkRect(bank.__cpfBankPrompt,id..' prompt') end
+                    if bank.__cpfBankPrompt then
+                        decorations[#decorations+1]=checkRect(bank.__cpfBankPrompt,id..' prompt')
+                        for _,icon in ipairs(bank.__cpfBankPrompt.icons) do
+                            if icon:IsShown() then assert(icon:IsVisible() and icon:GetEffectiveAlpha()>0 and icon.texture,'trigger glyph invisible despite valid frame geometry') end
+                        end
+                    end
                 end
                 local badge=ConsolePortGroupBase.__cpfClassShortcut
                 decorations[#decorations+1]=checkRect(badge,'class icon')

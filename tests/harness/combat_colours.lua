@@ -17,6 +17,10 @@ for _,bankID in ipairs({'Base','L2','R2','L2R2'}) do
             face.icon:SetVertexColor(.4,.4,.4) face.icon:SetAlpha(.5) face.icon:SetDesaturated(true)
             fire('ACTIONBAR_UPDATE_USABLE') flush()
             assert(face.icon.tint[1]==1 and face.icon.tint[2]==1 and face.icon.tint[3]==1 and face.icon.alpha==1 and not face.icon.desaturated,'ready combat round face remains grey '..bankID..id)
+            -- Native cached availability can arrive AFTER the custom refresh.
+            -- The actual native query says ready; do not leave its stale payload grey.
+            UpdateUsable(face,false,false)
+            assert(face.icon.tint[1]==1 and face.icon.tint[2]==1 and face.icon.tint[3]==1,'late native event greyed a ready round spell')
             usable,mana=false,true Addon:RefreshFaceAvailability()
             assert(face.icon.tint[1]==.1 and face.icon.tint[3]==1,'actual resource restriction was erased')
             usable,mana=false,false Addon:RefreshFaceAvailability()

@@ -1,0 +1,22 @@
+{
+  "installedVersion": "2.0.0-candidate.15",
+  "sourceCommit": "cec0c5fa11319c2936214628c63a1bb8239a45aa",
+  "packSHA256": "f97421ffbb2dd79df161300aefba8edfcce7ede2273066ec0a2e9e00cc8ae7d3",
+  "closedAt": "2026-10-08T19:40:11.043762+00:00",
+  "installedFilesVerified": 52,
+  "unselectedFilesUnchanged": 1949,
+  "wtfFilesUnchanged": 298,
+  "junctionsUnchanged": 42,
+  "anchorsUnchanged": true,
+  "backupsVerified": true,
+  "backup": "C:\\Users\\luisr\\WoW-Backups\\ConsolePort-Forever\\20261008T193941Z-f73fdb246d78",
+  "runtimeSuites": 50,
+  "toolingChecks": 39,
+  "geometryMatrixCases": 120,
+  "configurationRevision": 17,
+  "storeSchema": 3,
+  "groundInterceptorUnchangedFromUserTestedCandidate13": true,
+  "noLiveWTFWrites": true,
+  "firstLoginClassRepair": "In-game transaction with native save and backup; accepted revision 14/15/16",
+  "liveVisualAcceptance": "Pending user client rendering test"
+}

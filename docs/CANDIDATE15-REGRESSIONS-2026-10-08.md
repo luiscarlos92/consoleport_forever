@@ -56,3 +56,14 @@ unchanged. No game launch or gameplay automation.
 Validation: all 50 runtime/source suites and 39 tooling tests pass. Exact reports
 are retained in evidence/forever-ui/candidate15-runtime-tests.json and
 candidate15-tooling-tests.json.
+
+Deployment completed October 8, 2026 at 15:40:11 Toronto from tested/pushed
+source cec0c5fa11319c2936214628c63a1bb8239a45aa. Scoped ZIP SHA256:
+f97421ffbb2dd79df161300aefba8edfcce7ede2273066ec0a2e9e00cc8ae7d3.
+Preview then exact execution copied Forever only. Independent readback verified
+all 52 installed files, 1,949 unselected addon files, 298 WTF files, 42 junctions,
+root anchors, previous companion and canonical WTF backup. Backup retained at
+C:/Users/luisr/WoW-Backups/ConsolePort-Forever/20261008T193941Z-f73fdb246d78.
+Receipts: evidence/delivery/prepared-candidate15.json,
+live-install-candidate15.json and candidate15-independent-readback.json.
+Client rendering acceptance remains pending the user's test.

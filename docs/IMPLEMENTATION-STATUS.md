@@ -1,3 +1,21 @@
+## Installed candidate.15 — October 8, 2026, 15:40:11 Toronto
+
+Authorized closed-WoW scoped deployment completed from tested/pushed source
+cec0c5fa11319c2936214628c63a1bb8239a45aa. Independent readback verifies 52
+Forever files, all 1,949 unselected addon files, 298 WTF files and 42 junctions
+unchanged, preserved anchors and verified previous companion/WTF backups:
+C:/Users/luisr/WoW-Backups/ConsolePort-Forever/20261008T193941Z-f73fdb246d78.
+All 50 runtime/source suites and 39 tooling checks pass, including separate
+regressions for missing class opener, native aura-row refresh, ready combat
+round-face colours/opacity/opaque booleans and stationary trigger hints.
+Round-button Masque retirement remains; Ground.lua is byte-identical to working
+candidate.13. Fresh checks find all nine stable Retail dependencies current:
+none downloaded or recopied. No filesystem WTF writes. Revision 17 class
+binding/ring repair runs in game on first eligible login for accepted 14/15/16
+records, with transaction backup/native save. Actual client rendering acceptance
+is pending the user's test. Receipts: evidence/delivery/live-install-candidate15.json
+and candidate15-independent-readback.json. See docs/CANDIDATE15-REGRESSIONS-2026-10-08.md.
+
 ## Candidate.15 repair authority — October 8, 2026
 
 User confirms candidate.14 face buttons are round: preserve the exact fix.

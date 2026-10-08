@@ -46,6 +46,15 @@ proof of input dispatch. Check held UI release, native/late-created widgets,
 foreign modal preservation and repeated UI/combat cycles. Do not modify upstream
 ConsolePort files to fix the companion's handoff.
 
+## Current recovery boundary
+
+Candidate.10/native input recovery is installed (October 8, 00:11:20 Toronto).
+Candidate.9 failed the user's live test. Do not claim that T41 fixed the complete
+live cause. Keep native recovery active until live diagnosis/acceptance supports
+restoring custom secure modes, ground casting, UI takeover and hidden controls.
+Preserve saved policies/WTF. Receipt: evidence/delivery/live-install-candidate10.json.
+All earlier installed checkpoints below are historical. New deployment needs authorization.
+
 ## Deployments
 
 - Deploy only with explicit user authorization and WoW closed. Current installed

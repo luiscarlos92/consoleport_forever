@@ -1,5 +1,21 @@
 # Implementation checkpoint — October 4, 2026
 
+## Installed native recovery - October 8, 2026, 00:11:20 Toronto
+
+Candidate.10 is installed from source e2c3b5198bf5e1de80bebe5dd65415d08d496713
+within the renewed ten-minute deadline. Live root cause is not established; the
+candidate.9 UI fix did not resolve the user's report. Native recovery suspends
+Forever secure gameplay/ground-cast wrappers, UI context claims and hidden-control
+replacement, preserving the HUD and saved settings. Native ConsolePort owns dispatch.
+41 runtime/source and 36 tooling checks pass, including actual TOC bootstrap
+assertions rejecting the suspended interceptors. Fifty installed files match the
+verified ZIP; 1,949 vendor files, 298 WTF files, 42 links and anchors are unchanged.
+Receipt: evidence/delivery/live-install-candidate10.json. No game launched; actual
+combat acceptance remains pending the user. Retain native recovery until live
+failure is diagnosed; do not silently re-enable the suspended features. This
+closed-WoW deployment authorization is complete; future deployments need new authority.
+
+
 ## Emergency native recovery - October 8, 2026
 
 Candidate.9 did not fix the user's live combat failure. The earlier claim-retention

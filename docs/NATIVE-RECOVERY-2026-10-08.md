@@ -23,3 +23,6 @@ or if hidden controls access any API. Current native-action/combat tests remain.
 All nine dependencies are current; no vendor update or reshipping is selected.
 No live WTF write or game launch occurs. Exact source/testing/deployment receipts
 will be retained. Actual combat must be confirmed by the user before a dungeon.
+
+Installed 00:11:20 Toronto, under ten minutes. All 41 runtime/source and 36 tooling
+checks pass. Exact readback and backups retained; live combat remains unconfirmed.

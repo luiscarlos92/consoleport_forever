@@ -1,0 +1,12 @@
+{
+  "sourceCommit": "e2c3b5198bf5e1de80bebe5dd65415d08d496713",
+  "files": 50,
+  "vendorFilesUnchanged": 1949,
+  "wtfFilesUnchanged": 298,
+  "linksUnchanged": 42,
+  "anchorsUnchanged": true,
+  "nativeRecoveryInstalled": true,
+  "liveRootCause": "Not established; candidate.9 failed user test",
+  "liveCombatAcceptance": "Pending user test",
+  "elapsedMinutesApprox": 9
+}

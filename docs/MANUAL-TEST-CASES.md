@@ -1,9 +1,9 @@
-# Retail tests and results — installed candidate.17, revision 17
+# Retail tests and results â€” installed candidate.17, revision 17
 
-## Case 45 — candidate.18 action feedback and symmetric trigger labels
+## Case 45 â€” candidate.18 action feedback and symmetric trigger labels
 
 **NOT RUN.** Checkout-only work; candidate.17 remains installed. Run only after
-separately authorized deployment with WoW closed. Test PAD1–PAD4 (X, Circle,
+separately authorized deployment with WoW closed. Test PAD1â€“PAD4 (X, Circle,
 Square, Triangle) in Base/L2/R2/L2R2 using controller and keyboard equivalents.
 Press/hold/release ready, unusable, out-of-range, resource-starved and cooling-down
 actions: golden round feedback must appear independently of successful casting
@@ -23,7 +23,7 @@ class-ring hold/release and Lua/protected-action/taint errors. Native engine
 pixels, timing and hardware behavior require this live test; offline suites do
 not mark it passed.
 
-### 42 — accepted round-face composition and retained layout (candidate.17)
+### 42 â€” accepted round-face composition and retained layout (candidate.17)
 
 **Live result:** user-confirmed October 8, 2026: "it works", following the
 combat-grey repair. Earlier user reports confirm round faces, visible stationary
@@ -54,7 +54,7 @@ T51 shortcut side/fade; T49 genuine availability; T41/T42 combat input/ground.
 Fengari/native-source doubles are not the Blizzard renderer/secure engine.
 Historical candidate results below keep their original dates and pending scope.
 
-# Historical candidate.5–7 test entries
+# Historical candidate.5â€“7 test entries
 
 Candidate.7 visual patch is **installed** as of October 7, 15:10:51 Toronto.
 All 49 installed files match and all dependencies/WTF/junctions are unchanged.
@@ -84,7 +84,7 @@ WTF or reconfigure/enable disabled DBM for this test.
 
 The refined candidate.6 is now installed with ConsolePort 3.3.10 as of
 October 7, 2026, 14:09:14 Toronto. User authorization supersedes earlier no-deploy
-notes below. Cases 36–40 are ready for the user's manual testing after the normal
+notes below. Cases 36â€“40 are ready for the user's manual testing after the normal
 revision 13 review/reload. All 39 offline runtime/source suites and 33 tooling
 tests pass; no live controller/taint/rendering acceptance is claimed. DBM remains
 disabled and untouched.
@@ -94,9 +94,9 @@ cases. Do not deploy/run them until the user authorizes installation. Earlier
 case 37 remains applicable, with each spell's selected placement replacing the
 old blanket cursor expectation.
 
-### 39 — account-wide targeting tab (refined candidate.6; pending)
+### 39 â€” account-wide targeting tab (refined candidate.6; pending)
 
-- Open ConsolePort configuration → Targeting. Verify this class's qualified
+- Open ConsolePort configuration â†’ Targeting. Verify this class's qualified
   ground spells across all specs, plus context defaults and encountered temporary
   abilities; other classes' catalog must not appear. Use controller focus/scroll
   through every row and the Apply/Revert buttons.
@@ -117,9 +117,9 @@ old blanket cursor expectation.
 
 **Result:** PENDING; no live hardware/taint/tab/persistence claim.
 
-### 40 — round face-button availability (refined candidate.6; pending)
+### 40 â€” round face-button availability (refined candidate.6; pending)
 
-- Inspect PAD1–PAD4 in every bank outside combat, then enter/leave dungeons and
+- Inspect PAD1â€“PAD4 in every bank outside combat, then enter/leave dungeons and
   combat repeatedly. Available spells must retain their colored artwork.
 - Spend resources, move out of range, cast GCD/long-cooldown/charge abilities and
   recover. Native availability tint, cooldown progress and charges must remain
@@ -136,7 +136,7 @@ cases are below; run them only after a later authorized installation. DBM is
 deliberately disabled and must stay untouched/excluded. The other screenshot
 experiments are outside this change.
 
-### 36 — native Party default (candidate.6 only; pending)
+### 36 â€” native Party default (candidate.6 only; pending)
 
 - Review the revision 13 Edit Mode proposal. Verify the differences concern
   Party style, vertical orientation and its anchor only; use Keep mine to retain
@@ -151,7 +151,7 @@ experiments are outside this change.
 
 **Result:** PENDING; offline native contracts do not certify rendered placement.
 
-### 37 — normal ground spells at cursor (candidate.6 only; pending)
+### 37 â€” normal ground spells at cursor (candidate.6 only; pending)
 
 - Accept only the new ground policy during revision 13 review and reload. Place
   the ordinary Sigil of Misery spell on a controller bar; no saved macro is needed.
@@ -173,7 +173,7 @@ experiments are outside this change.
 
 **Result:** PENDING; offline secure-click models are not Retail hardware/taint proof.
 
-### 38 — Better Wardrobe dependency acceptance (pending)
+### 38 â€” Better Wardrobe dependency acceptance (pending)
 
 Candidate.6 tracks
 official stable Retail 6.12.3 and its SourceData helper, already installed
@@ -219,10 +219,10 @@ L2+Back (`SHIFT-PADBACK`) opens Bags; R2+Back opens Character; both triggers+Bac
 
 ## Run order
 
-1. Everyday UI: **01 → 35 → 34 → 18 → 19 → 20 → 21 → 22 → 23 → 25 → 26 → 27 → 16 → 28 → 02**. This is the first batch to report.
-2. Actions and transitions: **03 → 04 → 05 → 06 → 07 → 08 → 09 → 10 → 11 → 24 → 33**. Mark unavailable vehicle/quest/overflow cases honestly.
-3. Persistence and integrations: **12 → 14 → 15 → 17 → 29 → 30**. Other classes/characters require their own normal login/review.
-4. Deliberate edits/recovery, last: **13 → 31 → 32**. Runtime restore is optional and can undo the new mode settings if applied.
+1. Everyday UI: **01 â†’ 35 â†’ 34 â†’ 18 â†’ 19 â†’ 20 â†’ 21 â†’ 22 â†’ 23 â†’ 25 â†’ 26 â†’ 27 â†’ 16 â†’ 28 â†’ 02**. This is the first batch to report.
+2. Actions and transitions: **03 â†’ 04 â†’ 05 â†’ 06 â†’ 07 â†’ 08 â†’ 09 â†’ 10 â†’ 11 â†’ 24 â†’ 33**. Mark unavailable vehicle/quest/overflow cases honestly.
+3. Persistence and integrations: **12 â†’ 14 â†’ 15 â†’ 17 â†’ 29 â†’ 30**. Other classes/characters require their own normal login/review.
+4. Deliberate edits/recovery, last: **13 â†’ 31 â†’ 32**. Runtime restore is optional and can undo the new mode settings if applied.
 
 ## Harmless popup used by case 21
 
@@ -234,7 +234,7 @@ Paste this outside combat. It has no gameplay or saved-setting action. Circle sh
 
 ## Test cards
 
-### 01 — installed version/review
+### 01 â€” installed version/review
 
 - **A.** Log in after deployment.
 - **B.** Run `/cpf status` and verify candidate.3.
@@ -244,9 +244,9 @@ Paste this outside combat. It has no gameplay or saved-setting action. Circle sh
 
 **Result:** NOT RUN
 
-**Notes / failing step:** —
+**Notes / failing step:** â€”
 
-### 02 — persisted review
+### 02 â€” persisted review
 
 - **A.** Run `/cpf status` and `/cpf diagnose` after reload.
 - **B.** Reload once more.
@@ -256,9 +256,9 @@ Paste this outside combat. It has no gameplay or saved-setting action. Circle sh
 
 **Result:** NOT RUN
 
-**Notes / failing step:** —
+**Notes / failing step:** â€”
 
-### 03 — ordinary banks
+### 03 â€” ordinary banks
 
 - **A.** Note one assigned action in Base D-pad, L2, R2 and L2R2.
 - **B.** Press each corresponding control on an appropriate target.
@@ -268,9 +268,9 @@ Paste this outside combat. It has no gameplay or saved-setting action. Circle sh
 
 **Result:** NOT RUN
 
-**Notes / failing step:** —
+**Notes / failing step:** â€”
 
-### 04 — both mounts
+### 04 â€” both mounts
 
 - **A.** Press L2+L3 and note the mount chosen by LM_B1.
 - **B.** Dismount.
@@ -281,9 +281,9 @@ Paste this outside combat. It has no gameplay or saved-setting action. Circle sh
 
 **Result:** NOT RUN
 
-**Notes / failing step:** —
+**Notes / failing step:** â€”
 
-### 05 — skyriding
+### 05 â€” skyriding
 
 - **A.** Mount using your normal chord with skyriding selected.
 - **B.** Compare Base/L2/R2 against test 03 while grounded, then take off.
@@ -296,7 +296,7 @@ Paste this outside combat. It has no gameplay or saved-setting action. Circle sh
 
 **Notes / failing step:** User: skyriding seems okay after candidate.3; full case not yet recorded.
 
-### 06 — steady flight
+### 06 â€” steady flight
 
 - **A.** Switch to steady flight through the native game control.
 - **B.** Mount and fly.
@@ -306,9 +306,9 @@ Paste this outside combat. It has no gameplay or saved-setting action. Circle sh
 
 **Result:** NOT RUN
 
-**Notes / failing step:** —
+**Notes / failing step:** â€”
 
-### 07 — visual/skin regression
+### 07 â€” visual/skin regression
 
 - **A.** Inspect all banks with triggers released, L2, R2 and both.
 - **B.** Use an action with cooldown, then target something out of range.
@@ -318,9 +318,9 @@ Paste this outside combat. It has no gameplay or saved-setting action. Circle sh
 
 **Result:** NOT RUN
 
-**Notes / failing step:** —
+**Notes / failing step:** â€”
 
-### 08 — quest override
+### 08 â€” quest override
 
 - **A.** Start a quest granting temporary action buttons.
 - **B.** Check all four banks; use temporary ability 1 and a later available slot through L2R2.
@@ -330,9 +330,9 @@ Paste this outside combat. It has no gameplay or saved-setting action. Circle sh
 
 **Result:** NOT RUN
 
-**Notes / failing step:** —
+**Notes / failing step:** â€”
 
-### 09 — vehicle and exit
+### 09 â€” vehicle and exit
 
 - **A.** Enter a vehicle with an exit route.
 - **B.** Use its L2R2 actions.
@@ -342,11 +342,11 @@ Paste this outside combat. It has no gameplay or saved-setting action. Circle sh
 
 **Result:** NOT RUN
 
-**Notes / failing step:** —
+**Notes / failing step:** â€”
 
-### 10 — overflow
+### 10 â€” overflow
 
-- **A.** Find a genuine vehicle/override/temporary page containing action 9–12, if one is available.
+- **A.** Find a genuine vehicle/override/temporary page containing action 9â€“12, if one is available.
 - **B.** Check retained supplemental access at the former extra-page area.
 - **C.** Activate an available later action and leave the mode.
 - **D.** Mount with only a skyriding bonus page.
@@ -355,9 +355,9 @@ Paste this outside combat. It has no gameplay or saved-setting action. Circle sh
 
 **Result:** NOT RUN
 
-**Notes / failing step:** —
+**Notes / failing step:** â€”
 
-### 11 — held transition
+### 11 â€” held transition
 
 - **A.** Hold a primary action/empowered input.
 - **B.** During that hold, trigger a feasible temporary-page entry/exit or release/change triggers.
@@ -367,21 +367,21 @@ Paste this outside combat. It has no gameplay or saved-setting action. Circle sh
 
 **Result:** NOT RUN
 
-**Notes / failing step:** —
+**Notes / failing step:** â€”
 
-### 12 — forms/stealth
+### 12 â€” forms/stealth
 
 - **A.** On a Druid/Rogue, note the ordinary four-bank actions.
 - **B.** Change normal form/stealth.
-- **C.** Leave that state; if possible do form → vehicle → form.
+- **C.** Leave that state; if possible do form â†’ vehicle â†’ form.
 
 **Verify:** Ordinary class bonus states do not replace whole banks. A real vehicle/skyriding page still replaces L2R2 and later restores ordinary mapping. Engine spell overrides/usability and intentionally conditional macros may still change their own icons/effects.
 
 **Result:** NOT RUN
 
-**Notes / failing step:** —
+**Notes / failing step:** â€”
 
-### 13 — Edit Mode
+### 13 â€” Edit Mode
 
 - **A.** Open Blizzard Edit Mode and check the managed layout is selected.
 - **B.** Move a harmless frame a small distance and use native Revert.
@@ -391,21 +391,21 @@ Paste this outside combat. It has no gameplay or saved-setting action. Circle sh
 
 **Result:** NOT RUN
 
-**Notes / failing step:** —
+**Notes / failing step:** â€”
 
-### 14 — shared/personal persistence
+### 14 â€” shared/personal persistence
 
 - **A.** On character A, change one personal L2/D-pad binding and one manual ring entry through the normal editor.
 - **B.** Log out normally; enter B and complete its review.
-- **C.** Give B a different personal action and return A → B → A.
+- **C.** Give B a different personal action and return A â†’ B â†’ A.
 
 **Verify:** A/B retain their own personal cells and manual rings, including migration/review state. The unmodified four face controls remain shared. Neither character receives the other's spell/ring contents just because their disk folders share a template.
 
 **Result:** NOT RUN
 
-**Notes / failing step:** —
+**Notes / failing step:** â€”
 
-### 15 — native spec bars
+### 15 â€” native spec bars
 
 - **A.** On one character, note its controller arrangement and native action slots.
 - **B.** Switch specialization/loadout.
@@ -415,9 +415,9 @@ Paste this outside combat. It has no gameplay or saved-setting action. Circle sh
 
 **Result:** NOT RUN
 
-**Notes / failing step:** —
+**Notes / failing step:** â€”
 
-### 16 — keyboard preservation
+### 16 â€” keyboard preservation
 
 - **A.** With UI closed, try your normal jump, movement and a known keyboard action.
 - **B.** Open chat and type; close chat.
@@ -427,9 +427,9 @@ Paste this outside combat. It has no gameplay or saved-setting action. Circle sh
 
 **Result:** NOT RUN
 
-**Notes / failing step:** —
+**Notes / failing step:** â€”
 
-### 17 — manual rings
+### 17 â€” manual rings
 
 - **A.** Open the utility ring with L2+forward-menu and your existing class ring with R2+forward-menu.
 - **B.** Add/reorder one harmless manual entry in the native ring editor.
@@ -439,9 +439,9 @@ Paste this outside combat. It has no gameplay or saved-setting action. Circle sh
 
 **Result:** NOT RUN
 
-**Notes / failing step:** —
+**Notes / failing step:** â€”
 
-### 18 — windows/tabs
+### 18 â€” windows/tabs
 
 - **A.** Use the keyboard or native menu buttons to open Character and Bags together, then acquire interface-cursor focus inside one window. This sets up window cycling without depending on a gameplay opener while another window owns input.
 - **B.** Press L2 and R2 separately to cycle between these two windows.
@@ -452,9 +452,9 @@ Paste this outside combat. It has no gameplay or saved-setting action. Circle sh
 
 **Result:** NOT RUN
 
-**Notes / failing step:** —
+**Notes / failing step:** â€”
 
-### 19 — scroll/tooltips
+### 19 â€” scroll/tooltips
 
 - **A.** Open Achievements with keyboard Y and choose a category with enough entries to show a vertical scrollbar. Put interface-cursor focus on its scrollbar thumb or arrow, rather than a list entry. If that widget is not supported, mark this scroll portion UNAVAILABLE and record the window/widget; do not assume every list is supported.
 - **B.** Return the right stick to neutral, scroll down/up and release.
@@ -465,9 +465,9 @@ Paste this outside combat. It has no gameplay or saved-setting action. Circle sh
 
 **Result:** NOT RUN
 
-**Notes / failing step:** —
+**Notes / failing step:** â€”
 
-### 20 — focus visuals
+### 20 â€” focus visuals
 
 - **A.** Note gameplay icons/highlights with UI closed.
 - **B.** Focus Character/Bags using the interface cursor.
@@ -477,9 +477,9 @@ Paste this outside combat. It has no gameplay or saved-setting action. Circle sh
 
 **Result:** NOT RUN
 
-**Notes / failing step:** —
+**Notes / failing step:** â€”
 
-### 21 — popups
+### 21 â€” popups
 
 - **A.** Outside combat, paste the harmless two-button popup command at the top of this suite.
 - **B.** Close chat and move the interface cursor onto the popup; press Circle once.
@@ -490,9 +490,9 @@ Paste this outside combat. It has no gameplay or saved-setting action. Circle sh
 
 **Result:** NOT RUN
 
-**Notes / failing step:** —
+**Notes / failing step:** â€”
 
-### 22 — quantity
+### 22 â€” quantity
 
 - **A.** Open Bags with L2+Back.
 - **B.** Select a harmless stack containing at least five items and leave one bag slot free; open its native Split Stack command through the item menu or keyboard Shift-left-click.
@@ -504,9 +504,9 @@ Paste this outside combat. It has no gameplay or saved-setting action. Circle sh
 
 **Result:** NOT RUN
 
-**Notes / failing step:** —
+**Notes / failing step:** â€”
 
-### 23 — bag item actions
+### 23 â€” bag item actions
 
 - **A.** Open Bags with L2+Back and focus a harmless, unlocked item.
 - **B.** Press Triangle to open its native item menu; inspect its choices and cancel.
@@ -518,9 +518,9 @@ Paste this outside combat. It has no gameplay or saved-setting action. Circle sh
 
 **Result:** NOT RUN
 
-**Notes / failing step:** —
+**Notes / failing step:** â€”
 
-### 24 — bags with merchant/bank
+### 24 â€” bags with merchant/bank
 
 - **A.** Visit a vendor or bank and focus a harmless item.
 - **B.** Try its native eligible item action; cancel a quantity/context popup rather than buying/selling something valuable.
@@ -530,9 +530,9 @@ Paste this outside combat. It has no gameplay or saved-setting action. Circle sh
 
 **Result:** NOT RUN
 
-**Notes / failing step:** —
+**Notes / failing step:** â€”
 
-### 25 — map pan/zoom
+### 25 â€” map pan/zoom
 
 - **A.** Open the map with the Map control (`PADSYSTEM`), or use its normal keyboard opener only to set up the canvas test.
 - **B.** Acquire interface-cursor focus on the canvas and release both sticks to neutral.
@@ -544,9 +544,9 @@ Paste this outside combat. It has no gameplay or saved-setting action. Circle sh
 
 **Result:** NOT RUN
 
-**Notes / failing step:** —
+**Notes / failing step:** â€”
 
-### 26 — map waypoint/Back
+### 26 â€” map waypoint/Back
 
 - **A.** On an eligible map, place the controller cursor at a known location and press L3.
 - **B.** Focus that actual waypoint pin and press L3 again.
@@ -556,9 +556,9 @@ Paste this outside combat. It has no gameplay or saved-setting action. Circle sh
 
 **Result:** NOT RUN
 
-**Notes / failing step:** —
+**Notes / failing step:** â€”
 
-### 27 — quest details
+### 27 â€” quest details
 
 - **A.** Open an eligible quest detail on the map.
 - **B.** Use its shown controls and minimize as appropriate.
@@ -568,9 +568,9 @@ Paste this outside combat. It has no gameplay or saved-setting action. Circle sh
 
 **Result:** NOT RUN
 
-**Notes / failing step:** —
+**Notes / failing step:** â€”
 
-### 28 — preserved commands
+### 28 â€” preserved commands
 
 - **A.** With UI closed, press the Map control (`PADSYSTEM`) to open/close map; test L2+Map for zoom in and R2+Map for zoom out.
 - **B.** Press the forward-menu control (`PADFORWARD`) and close its menu.
@@ -582,9 +582,9 @@ Paste this outside combat. It has no gameplay or saved-setting action. Circle sh
 
 **Result:** NOT RUN
 
-**Notes / failing step:** —
+**Notes / failing step:** â€”
 
-### 29 — DynamicCam
+### 29 â€” DynamicCam
 
 - **A.** Open its native options and note the managed profile selected for this character.
 - **B.** Travel between city/interior/open-world and test your existing camera zoom/situations.
@@ -594,9 +594,9 @@ Paste this outside combat. It has no gameplay or saved-setting action. Circle sh
 
 **Result:** NOT RUN
 
-**Notes / failing step:** —
+**Notes / failing step:** â€”
 
-### 30 — Immersion/ExtraFade
+### 30 â€” Immersion/ExtraFade
 
 - **A.** Speak to a quest NPC.
 - **B.** Check dialogue positions/scales and fade behavior against your previous setup; finish/cancel dialogue.
@@ -606,9 +606,9 @@ Paste this outside combat. It has no gameplay or saved-setting action. Circle sh
 
 **Result:** NOT RUN
 
-**Notes / failing step:** —
+**Notes / failing step:** â€”
 
-### 31 — update/conflicts
+### 31 â€” update/conflicts
 
 - **A.** After the installation is stable, deliberately change one supported managed setting through its normal addon editor.
 - **B.** Run `/cpf update`.
@@ -618,9 +618,9 @@ Paste this outside combat. It has no gameplay or saved-setting action. Circle sh
 
 **Result:** NOT RUN
 
-**Notes / failing step:** —
+**Notes / failing step:** â€”
 
-### 32 — runtime restore (last)
+### 32 â€” runtime restore (last)
 
 - **A.** Finish and record the earlier tests.
 - **B.** Run `/cpf status` to identify a chosen runtime journal, then `/cpf restore <id>` and inspect the preview.
@@ -630,9 +630,9 @@ Paste this outside combat. It has no gameplay or saved-setting action. Circle sh
 
 **Result:** NOT RUN
 
-**Notes / failing step:** —
+**Notes / failing step:** â€”
 
-### 33 — reconnect/focus/combat
+### 33 â€” reconnect/focus/combat
 
 - **A.** Open a context, hold a control and disconnect/reconnect the controller or change focus.
 - **B.** Neutralize sticks/release buttons and return to ordinary play.
@@ -642,9 +642,9 @@ Paste this outside combat. It has no gameplay or saved-setting action. Circle sh
 
 **Result:** NOT RUN
 
-**Notes / failing step:** —
+**Notes / failing step:** â€”
 
-### 34 — empty supplemental owner
+### 34 â€” empty supplemental owner
 
 - **A.** Mount/dismount with skyriding, then open Character as the only eligible window.
 - **B.** Use window-focus triggers and the interface cursor.
@@ -654,9 +654,9 @@ Paste this outside combat. It has no gameplay or saved-setting action. Circle sh
 
 **Result:** NOT RUN
 
-**Notes / failing step:** —
+**Notes / failing step:** â€”
 
-### 35 — native bag/micro strip ownership
+### 35 â€” native bag/micro strip ownership
 
 - **A.** Out of combat, close all ordinary windows and inspect the native bag/micro-menu strip and five native side bars; distinguish these from the four ConsolePort banks and BetterBags window.
 - **B.** Enter Blizzard Edit Mode through the game menu; check any offered native editing handles, then use Revert/exit without saving a position change.
@@ -666,9 +666,9 @@ Paste this outside combat. It has no gameplay or saved-setting action. Circle sh
 
 **Result:** NOT RUN
 
-**Notes / failing step:** —
+**Notes / failing step:** â€”
 
-## Known gates — observe baseline only
+## Known gates â€” observe baseline only
 
 The following are not implemented pass criteria in this candidate: exact one-success gameplay Circle; right-stick-return ring commit/close-and-continue; active ring-entry cancellation; automatic learned class/aura/new pet selector activation; exact transient 0.5-second loot hold; exact held cinematic skip; missing LM_B2 default icon; unaudited scroll widgets. Preserve and observe existing native controls. Their absence does not become a new regression merely because other tests pass. Do not spend the first batch trying to prove an intentionally inactive feature. Real >8 temporary cases require separate review; retained emergency access is not acceptance of new paging/rings.
 

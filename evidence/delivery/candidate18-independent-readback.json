@@ -1,0 +1,19 @@
+{
+  "installedVersion": "2.0.0-candidate.18",
+  "sourceCommit": "985d257d72d83184e92dcdf4a628e8dde3a00a43",
+  "packSHA256": "bc6e23005185aeae357cb08eb8fe50a7b353f7a57d2d071ff56c61bdc1210c88",
+  "closedAt": "2026-10-08T23:04:57.019694+00:00",
+  "installedFilesVerified": 52,
+  "unselectedFilesUnchanged": 1949,
+  "wtfFilesUnchanged": 298,
+  "junctionsUnchanged": 42,
+  "anchorsUnchanged": true,
+  "backupsVerified": true,
+  "backup": "C:\\Users\\luisr\\WoW-Backups\\ConsolePort-Forever\\20261008T230430Z-f6b2d442f0d0",
+  "runtimeSuites": 56,
+  "toolingChecks": 39,
+  "configurationRevision": 17,
+  "dependencyUpdates": [],
+  "noLiveWTFWrites": true,
+  "liveVisualAcceptance": "Pending user manual case 45"
+}

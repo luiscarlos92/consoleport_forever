@@ -1,3 +1,23 @@
+## Installed candidate.18 — October 8, 2026, 19:04:57 Toronto
+
+Authorized closed-WoW scoped deployment is complete from tested/pushed source
+985d257d72d83184e92dcdf4a628e8dde3a00a43. Only ConsolePort_Forever was
+copied; all nine official stable Retail releases were freshly checked again and
+none changed/downloaded/reshipped. Independent readback verifies 52 installed
+files, 1,949 unselected addon files unchanged, 298 WTF files unchanged, 42 junctions
+and root anchors preserved. Previous companion/configuration backups are verified
+and retained at C:/Users/luisr/WoW-Backups/ConsolePort-Forever/20261008T230430Z-f6b2d442f0d0.
+All 56 runtime/source suites and 39 tooling checks pass; revision 17 remains,
+with no binding/configuration migration or filesystem live WTF writes. Golden
+native pushed feedback, round cooldown frame layering and mirrored R2 are
+installed; accepted brightness/roundness, L2/other HUD geometry and Ground.lua
+remain. Actual Retail animation/hardware/combat acceptance remains pending the
+user's manual case 45. No game launched, reload or live test performed.
+Receipts: evidence/delivery/prepared-candidate18.json, live-install-candidate18.json
+and candidate18-independent-readback.json. SHA256: bc6e23005185aeae357cb08eb8fe50a7b353f7a57d2d071ff56c61bdc1210c88.
+This deployment authority is complete; future deployments require new user
+authorization with WoW closed. Older preparation restrictions below are history.
+
 ## Authorized candidate.18 deployment — October 8, 2026
 
 The user explicitly requests "deploy", superseding the earlier checkout-only

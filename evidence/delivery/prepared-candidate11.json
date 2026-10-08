@@ -1,0 +1,19 @@
+{
+  "status": "prepared-not-deployed",
+  "artifact": "dist/2.0.0-candidate.11/ConsolePort-Forever-Update-companion-only-native-targeting.zip",
+  "sha256": "a2d2c8f2117104bc4b2606421ea1e4422bf101b29fb32f213513d5141431c563",
+  "bytes": 486094,
+  "sourceCommit": "66e15995aa1d608335169b1b112b997d0852c473",
+  "verifiedPayloadFiles": 50,
+  "exactCheckoutMatch": true,
+  "addonFolders": [
+    "ConsolePort_Forever"
+  ],
+  "dependencyUpdates": {},
+  "containsWTF": false,
+  "runtimeSuites": 42,
+  "toolingTests": 39,
+  "installedVersion": "2.0.0-candidate.10",
+  "installerInvoked": false,
+  "retailAcceptance": "Pending separately authorized closed-WoW deployment and manual case 44."
+}

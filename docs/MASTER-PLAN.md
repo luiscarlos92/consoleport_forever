@@ -1,3 +1,13 @@
+## Prepared package retained - candidate.11 (NOT DEPLOYED)
+
+All 42 runtime/source suites and 39 tooling tests pass. Source 66e15995aa1d608335169b1b112b997d0852c473
+is committed/pushed. The scoped Forever-only ZIP contains 50 files that independently
+match the checkout, with no dependency updates or WTF payload. SHA-256:
+a2d2c8f2117104bc4b2606421ea1e4422bf101b29fb32f213513d5141431c563.
+Receipt: evidence/delivery/prepared-candidate11.json. No installer invoked; candidate.10
+remains installed. User is playing; DO NOT DEPLOY without later explicit authorization
+and WoW closed. Retail manual case 44 remains pending.
+
 ## Prepared targeting repair - October 8, 2026 (DO NOT DEPLOY)
 
 The user is playing and explicitly authorizes checkout-only diagnosis and repair.

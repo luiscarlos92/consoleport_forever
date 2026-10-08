@@ -78,3 +78,14 @@ current; no vendor package was downloaded, changed or copied. Actual Retail hard
 secure/taint behavior, rendered terrain placement and persistence remain pending manual
 case 44 after a separately authorized closed-WoW deployment. Offline checks are not
 live acceptance, and the earlier candidate.9 result remains a failed user test.
+
+## Prepared artifact
+
+`dist/2.0.0-candidate.11/ConsolePort-Forever-Update-companion-only-native-targeting.zip`
+contains only Forever: 50 independently verified files, 486,094 bytes, source
+66e15995aa1d608335169b1b112b997d0852c473. SHA-256:
+`a2d2c8f2117104bc4b2606421ea1e4422bf101b29fb32f213513d5141431c563`.
+Exact preparation/verification receipt: evidence/delivery/prepared-candidate11.json.
+No dependency or WTF payload; no deployment preview/installer operation was run.
+The user is playing and candidate.10 remains installed. A future installation
+requires new explicit authorization with WoW closed.

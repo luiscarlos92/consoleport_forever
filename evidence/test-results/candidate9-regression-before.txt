@@ -1,0 +1,18 @@
+RUNNING T41.native-combat-engine-dispatch-after-UI-ownership
+FAILED T41.native-combat-engine-dispatch-after-UI-ownership
+Error: [string "combat-engine-dispatch"]:6132: combat retained a hidden UI claim instead of gameplay: PAD1
+enterCombat()
+for index,key in ipairs(slots) do
+    assert(GetBindingAction(key,true)=='CLICK '..gameplay[key]:GetName()..':ControllerInput',
+        'combat retained a hidden UI claim instead of gameplay: '..key)
+    dispatch(key,true) dispatch(key,false)
+    at execute (C:\Users\luisr\Dev\consoleport_forever\scratch\run-combat.cjs:45:11)
+    at C:\Users\luisr\Dev\consoleport_forever\scratch\run-combat.cjs:254:3
+    at check (C:\Users\luisr\Dev\consoleport_forever\scratch\run-combat.cjs:28:9)
+    at Object.<anonymous> (C:\Users\luisr\Dev\consoleport_forever\scratch\run-combat.cjs:251:1)
+    at Module._compile (node:internal/modules/cjs/loader:1929:14)
+    at Object..js (node:internal/modules/cjs/loader:2060:10)
+    at Module.load (node:internal/modules/cjs/loader:1651:32)
+    at Module._load (node:internal/modules/cjs/loader:1443:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:261:19)
+    at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:154:5)

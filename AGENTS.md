@@ -37,6 +37,15 @@ in `dependencies/sources.json` (`additionalAddonFolders`); do not edit the
 immutable original reference to add later dependencies. See
 `docs/DEPENDENCY-WORKFLOW.md`.
 
+## Combat input regression gate
+
+Changes involving UI ownership or controller routing must run T41's actual native
+Layers/Input combat transition and engine dispatch through the native UseAction
+handler for all 32 gameplay chords. Shown buttons/action attributes alone are not
+proof of input dispatch. Check held UI release, native/late-created widgets,
+foreign modal preservation and repeated UI/combat cycles. Do not modify upstream
+ConsolePort files to fix the companion's handoff.
+
 ## Deployments
 
 - Deploy only with explicit user authorization and WoW closed. Current installed

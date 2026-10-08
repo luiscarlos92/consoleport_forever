@@ -247,6 +247,12 @@ function uiContextFixture() {
   return fixture;
 }
 check('T16-T20-T22.current-native-UI-contexts', () => execute(source+uiContextFixture(),'UI-contexts-current-source'));
+check('T41.native-combat-engine-dispatch-after-UI-ownership', () => {
+  const native=read('evidence/native/Blizzard_FrameXML/SecureTemplates.lua');
+  const action=native.slice(native.indexOf('SECURE_ACTIONS.action ='),native.indexOf('SECURE_ACTIONS.actionrelease ='));
+  execute(source+uiContextFixture()+'\n'+read('tests/harness/combat_dispatch.lua')
+    .replace('--@NATIVE_ACTION_DISPATCH',()=>action),'combat-engine-dispatch');
+});
 function windowFixture() {
   const base='evidence/consoleport-contracts/';
   const windows=read('tests/harness/ui_windows.lua')

@@ -1,0 +1,219 @@
+{
+  "capturedAt": "2026-10-08T03:56:21.893Z",
+  "readOnly": true,
+  "policy": {
+    "focusVisuals": true,
+    "groundTargetingEnabled": true,
+    "bagsEnabled": true,
+    "uiContextsEnabled": true,
+    "hiddenAccessEnabled": true,
+    "modesEnabled": true,
+    "blizzardVisibility": true,
+    "mapEnabled": true,
+    "windowsEnabled": true
+  },
+  "characters": [
+    {
+      "guid": "Player-5-0E664CF8",
+      "appliedRevision": 14,
+      "diagnostics": {
+        "configRevision": 14,
+        "codeVersion": "2.0.0-candidate.8",
+        "features": {
+          "hiddenAccess": {
+            "status": "offline-verified",
+            "reason": "Class ring: R2 + menu; vehicle seats: L2 + menu utility ring. Press, point, release; native confirmation setting retained."
+          },
+          "itemHints": {
+            "status": "offline-verified",
+            "reason": "native merchant Select/Buy and container Open prompts; rendered acceptance pending"
+          },
+          "focusVisuals": {
+            "status": "offline-verified",
+            "reason": "ordinary cursor ownership only; rendered acceptance pending"
+          },
+          "bagHold": {
+            "status": "pending",
+            "reason": "exact 0.5-second transient auto-loot route unproved: native UseContainerItem has no override argument; existing native modified click retained"
+          },
+          "bags": {
+            "status": "offline-verified",
+            "reason": "native item clicks/menu; item identity guards and carried-item Back; Retail secure/hardware acceptance pending"
+          },
+          "configuration": {
+            "status": "verified",
+            "reason": "accepted fields survived reload"
+          },
+          "secureModes": {
+            "status": "offline-verified",
+            "reason": "native CP buttons/Layers retained; in-game secure input proof pending"
+          },
+          "blizzardVisibility": {
+            "status": "pending",
+            "reason": "BagsBar: newer or non-native parent retained"
+          },
+          "windows": {
+            "status": "offline-verified",
+            "reason": "registered-window triggers, audited native tabs and focused tooltip; Retail input acceptance pending"
+          },
+          "cinematicHold": {
+            "status": "pending",
+            "reason": "Exact held right-menu duration and authorized skip dispatch are unproved in the pinned Retail cinematic/movie Lua/XML. Native menu/confirmation access is retained; no timer skip or invented delay. no visible native movie/cinematic"
+          },
+          "faceSkin": {
+            "status": "offline-verified",
+            "reason": "16/16 face skins prepared; rendered Retail acceptance pending"
+          },
+          "map": {
+            "status": "offline-verified",
+            "reason": "native canvas pan/zoom, hardware waypoint and minimize/detail Back; Retail movement/camera/autorun/rendering acceptance pending"
+          },
+          "groundTargeting": {
+            "status": "offline-verified",
+            "reason": "account-wide ground placement prepared; 0 unavailable IDs retain native targeting; Retail acceptance pending"
+          },
+          "exactStickCommit": {
+            "status": "pending",
+            "reason": "Exact stick-return and close-and-continue have no audited Retail protected route; existing controls retained. Active-entry cancellation has a separate unresolved action-type gate."
+          },
+          "exactCircle": {
+            "status": "pending",
+            "reason": "One-success stop-cast/stop-targeting/clear-target secure sequencing remains unproved; existing Circle binding retained, without combined cancellation."
+          },
+          "rings": {
+            "status": "offline-verified",
+            "reason": "GUID personal rings; native utility extras preserved; new selector gesture remains pending"
+          },
+          "uiContexts": {
+            "status": "recovery-required",
+            "reason": "...erface/AddOns/ConsolePort_Forever/UI/InputBridge.lua:191: native effective UI route readback rejected"
+          },
+          "temporaryAccess": {
+            "status": "offline-verified",
+            "reason": "mouse-accessible native exit/qualified overflow; no automatic interface-cursor ownership; Retail acceptance pending"
+          },
+          "popups": {
+            "status": "offline-verified",
+            "reason": "focused native buttons 1–4/extra; Retail input/taint acceptance pending"
+          },
+          "quantity": {
+            "status": "offline-verified",
+            "reason": "native quantity buttons/bounds; Retail input acceptance pending"
+          },
+          "windowScroll": {
+            "status": "offline-verified",
+            "reason": "native right-stick dispatcher and audited ScrollController mouse-wheel callback; other widgets/Retail propagation pending"
+          },
+          "learnedSelectors": {
+            "status": "pending",
+            "reason": "Exact stick-return and close-and-continue have no audited Retail protected route; existing controls retained. Active-entry cancellation has a separate unresolved action-type gate. "
+          },
+          "activeEntryCancellation": {
+            "status": "pending",
+            "reason": "New class/pet selectors are inactive. Action-specific active-entry cancellation/close-and-continue still needs a separate authorized secure route; no generic cancellation substitute."
+          }
+        },
+        "entries": {}
+      }
+    },
+    {
+      "guid": "Player-5-0E66DE64",
+      "appliedRevision": 14,
+      "diagnostics": {
+        "configRevision": 14,
+        "entries": {},
+        "features": {
+          "hiddenAccess": {
+            "status": "offline-verified",
+            "reason": "Class ring: R2 + menu; vehicle seats: L2 + menu utility ring. Press, point, release; native confirmation setting retained."
+          },
+          "itemHints": {
+            "status": "offline-verified",
+            "reason": "native merchant Select/Buy and container Open prompts; rendered acceptance pending"
+          },
+          "focusVisuals": {
+            "status": "offline-verified",
+            "reason": "ordinary cursor ownership only; rendered acceptance pending"
+          },
+          "bagHold": {
+            "status": "pending",
+            "reason": "exact 0.5-second transient auto-loot route unproved: native UseContainerItem has no override argument; existing native modified click retained"
+          },
+          "bags": {
+            "status": "offline-verified",
+            "reason": "native item clicks/menu; item identity guards and carried-item Back; Retail secure/hardware acceptance pending"
+          },
+          "secureModes": {
+            "status": "offline-verified",
+            "reason": "native CP buttons/Layers retained; in-game secure input proof pending"
+          },
+          "blizzardVisibility": {
+            "status": "pending",
+            "reason": "BagsBar: newer or non-native parent retained; VehicleSeatIndicator: newer or non-native parent retained"
+          },
+          "windows": {
+            "status": "offline-verified",
+            "reason": "registered-window triggers, audited native tabs and focused tooltip; Retail input acceptance pending"
+          },
+          "cinematicHold": {
+            "status": "pending",
+            "reason": "Exact held right-menu duration and authorized skip dispatch are unproved in the pinned Retail cinematic/movie Lua/XML. Native menu/confirmation access is retained; no timer skip or invented delay. no visible native movie/cinematic"
+          },
+          "faceSkin": {
+            "status": "offline-verified",
+            "reason": "16/16 face skins prepared; rendered Retail acceptance pending"
+          },
+          "map": {
+            "status": "offline-verified",
+            "reason": "native canvas pan/zoom, hardware waypoint and minimize/detail Back; Retail movement/camera/autorun/rendering acceptance pending"
+          },
+          "groundTargeting": {
+            "status": "offline-verified",
+            "reason": "account-wide ground placement prepared; 1 unavailable IDs retain native targeting; Retail acceptance pending"
+          },
+          "exactStickCommit": {
+            "status": "pending",
+            "reason": "Exact stick-return and close-and-continue have no audited Retail protected route; existing controls retained. Active-entry cancellation has a separate unresolved action-type gate."
+          },
+          "exactCircle": {
+            "status": "pending",
+            "reason": "One-success stop-cast/stop-targeting/clear-target secure sequencing remains unproved; existing Circle binding retained, without combined cancellation."
+          },
+          "temporaryAccess": {
+            "status": "offline-verified",
+            "reason": "mouse-accessible native exit/qualified overflow; no automatic interface-cursor ownership; Retail acceptance pending"
+          },
+          "uiContexts": {
+            "status": "offline-verified",
+            "reason": "native popup/quantity ownership; Retail input/taint acceptance pending"
+          },
+          "activeEntryCancellation": {
+            "status": "pending",
+            "reason": "New class/pet selectors are inactive. Action-specific active-entry cancellation/close-and-continue still needs a separate authorized secure route; no generic cancellation substitute."
+          },
+          "learnedSelectors": {
+            "status": "pending",
+            "reason": "Exact stick-return and close-and-continue have no audited Retail protected route; existing controls retained. Active-entry cancellation has a separate unresolved action-type gate. "
+          },
+          "windowScroll": {
+            "status": "offline-verified",
+            "reason": "native right-stick dispatcher and audited ScrollController mouse-wheel callback; other widgets/Retail propagation pending"
+          },
+          "quantity": {
+            "status": "offline-verified",
+            "reason": "native quantity buttons/bounds; Retail input acceptance pending"
+          },
+          "popups": {
+            "status": "offline-verified",
+            "reason": "focused native buttons 1–4/extra; Retail input/taint acceptance pending"
+          },
+          "rings": {
+            "status": "offline-verified",
+            "reason": "GUID personal rings; native utility extras preserved; new selector gesture remains pending"
+          }
+        },
+        "codeVersion": "2.0.0-candidate.8"
+      }
+    }
+  ]
+}

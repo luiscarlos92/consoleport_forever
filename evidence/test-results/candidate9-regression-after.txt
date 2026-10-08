@@ -1,0 +1,2 @@
+RUNNING T41.native-combat-engine-dispatch-after-UI-ownership
+PASSED T41.native-combat-engine-dispatch-after-UI-ownership

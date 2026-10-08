@@ -73,6 +73,8 @@ local function proxy(frame)
         if type(v)=='table' and v.attributes then return nil end
         return v
     end,SetAttribute=function(_,key,v) frame:SetAttribute(key,v) end,
+        GetName=function() return frame:GetName() end,
+        RunAttribute=function(_,key,...) return frame:RunAttribute(key,...) end,
         GetFrameRef=function(_,key) return proxy(frame:GetFrameRef(key)) end,
         IsShown=function() return frame:IsShown() end,
         Hide=function() frame:Hide() end,CallMethod=function(_,method) frame[method](frame) end,
@@ -220,7 +222,7 @@ input:SetCommand('PAD1',parent,true,'LeftButton','ParentControl',function(_,down
 local nativeRow=input.Widgets.PAD1:GetOverride(true)
 local api={CreateFrame=CreateFrame,UIParent=UIParent,CPAPI=CPAPI,hooksecurefunc=hooksecurefunc,
     InCombatLockdown=InCombatLockdown,GetBindingAction=GetBindingAction}
-local bridge=Addon.InputBridge.New(input,api)
+local bridge=Addon.InputBridge.New(input,api,db.Layers)
 local popup=CreateFrame('Frame','Popup',UIParent)
 local clicked,frontend=0,0
 local target=CreateFrame('Button','PopupConfirm',popup)

@@ -629,3 +629,13 @@ to gameplay, reselecting the ring entry closes the panel and vehicle exit leaves
 no empty cursor owner. Entering the vehicle alone must not activate UI focus.
 Verify normal vehicle actions/exit, Edit Mode show/save/revert/exit, disable/restore
 and remapped/missing ring openers retain access without taint. Retail pending.
+
+## Case 43 - combat engine dispatch after UI ownership (candidate.9)
+
+Before another dungeon, open/close bags, a popup/ready check and vehicle-seat UI;
+then enter combat on a training dummy. Verify face and D-pad abilities in all four
+modifier banks dispatch, including the first press immediately after combat starts.
+Verify an old held UI release does not cast/click anything and the next fresh press
+works. Repeat leaving/re-entering combat, target changes, ground spells and vehicles.
+The offline regression must call native UseAction through engine bindings; visual
+buttons alone cannot pass this test. Actual Retail acceptance remains user-owned.

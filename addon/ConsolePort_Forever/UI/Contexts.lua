@@ -8,7 +8,7 @@ end
 function Contexts:Probe(bridge,api)
     local db=bridge.db
     if bridge.api.version~='3.3.10' or not db.Cursor or type(db.Cursor.GetCurrentNode)~='function'
-        or not Addon.InputBridge.Probe(db.Input,api) or type(api.StaticPopup_ForEachShownDialog)~='function' then
+        or not Addon.InputBridge.Probe(db.Input,api,db.Layers) or type(api.StaticPopup_ForEachShownDialog)~='function' then
         return false,'audited native popup/cursor/input APIs unavailable'
     end
     return true
@@ -122,7 +122,7 @@ function Contexts:Enable(bridge,api,enabled,windowsEnabled,bagsEnabled,mapEnable
     self.bags.enabled=not not bagsEnabled
     self.scroll=self.scroll or Addon.UIScroll.New(self.db,api,function() return self:Current() end,function() self:Refresh() end)
     if not self.input then
-        self.input=Addon.InputBridge.New(self.db.Input,api)
+        self.input=Addon.InputBridge.New(self.db.Input,api,self.db.Layers)
     end
     self.windows.inputOwner=self.input.owner
     self:Watch(api.CinematicFrame,false)

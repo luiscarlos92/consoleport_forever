@@ -1,5 +1,20 @@
 # Implementation checkpoint — October 4, 2026
 
+## Combat regression hotfix authority - October 7, 2026
+
+The user reports all visible abilities stop dispatching in combat and explicitly
+authorizes diagnosis, stronger regression tests, patch and deployment with WoW
+closed in under 30 minutes. Candidate.9 keeps revision 14 and all retired packages
+absent. A new end-to-end native Layers/Input/UseAction test reproduces candidate.8's
+hidden UI claims blocking the first combat action. The protected combat transition
+now releases only the native Input widget's claims through native Layers, restoring
+BASE gameplay and preserving other owners' claims. Attach the handoff to existing
+and future native UI widgets; no dependency patch or binding/profile rewrite.
+All nine official stable Retail dependencies are freshly checked/current; no
+updates/downloads. Exact pre-fix failure and post-fix reproduction are retained.
+The full suite and scoped Forever-only deployment are required before completion.
+
+
 ## Installed checkpoint - SharedMedia retirement, October 7, 2026, 22:42:24 Toronto
 
 The user-authorized same-version candidate.8 retirement update is installed from

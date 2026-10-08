@@ -3,6 +3,21 @@ local Bridge={}
 Addon.InputBridge=Bridge
 local modifiers={'','SHIFT-','CTRL-','CTRL-SHIFT-'}
 
+-- Native Input hides its widgets in the protected combat state driver, but
+-- Layers' public ReleaseAll refuses insecure calls after lockdown begins.
+-- Release the native widget's UI claims from that same restricted transition.
+-- Other owners' BASE/MODAL claims are resolved by Layers, never cleared here.
+Bridge.CombatRelease=[[
+    if message then
+        local layers=self:GetFrameRef('cpf-ui-layers');
+        if layers then layers:RunAttribute('ReleaseAll',self:GetName()) end;
+        self:SetAttribute('cpf-ui-active',nil)
+        self:SetAttribute('cpf-ui-held',nil)
+        self:SetAttribute('cpf-ui-front',nil)
+        self:SetAttribute('cpf-ui-allowed',nil)
+    end;
+]]
+
 -- Native Input executes frontend mouse scripts before SecureActionButton's
 -- OnClick. The Lua and restricted guards must agree on the press generation.
 Bridge.ClickGuard=[[
@@ -37,18 +52,35 @@ Bridge.PostGuard=[[
     end
 ]]
 
-function Bridge.Probe(input,api)
+function Bridge.Probe(input,api,layers)
     return api and api.CPAPI and input and type(input.GetWidget)=='function' and type(input.SetButton)=='function'
         and type(input.SetCommand)=='function' and type(input.WrapScript)=='function'
         and type(api.GetBindingAction)=='function'
         and type(api.hooksecurefunc)=='function' and api.CPAPI.ActionTypeRelease=='typerelease'
         and api.CPAPI.ActionPressAndHold=='pressAndHoldAction'
+        and layers and type(layers.GetAttribute)=='function' and type(layers:GetAttribute('ReleaseAll'))=='string'
 end
-function Bridge.New(input,api)
-    assert(Bridge.Probe(input,api),'audited ConsolePort Input unavailable')
+function Bridge:WatchCombatWidget(widget)
+    if widget.__cpfCombatRelease then return end
+    assert(not self.api.InCombatLockdown(),'combat handoff setup requires out of combat')
+    local native=widget:GetAttribute('_childupdate-combat')
+    assert(type(native)=='string' and native:find("self:CallMethod('Clear')",1,true)
+        and native:find("self:SetAttribute('clickbutton', nil)",1,true),'native Input combat lifecycle changed')
+    widget:SetFrameRef('cpf-ui-layers',self.layers)
+    widget:SetAttribute('_childupdate-combat',native..Bridge.CombatRelease)
+    widget.__cpfCombatRelease=true
+end
+function Bridge.New(input,api,layers)
+    assert(Bridge.Probe(input,api,layers),'audited ConsolePort Input/Layers combat handoff unavailable')
     local owner=api.CreateFrame('Frame',nil,api.UIParent)
     owner:Hide()
-    return setmetatable({input=input,api=api,owner=owner,states={},serial=0},{__index=Bridge})
+    local bridge=setmetatable({input=input,api=api,layers=layers,owner=owner,states={},serial=0},{__index=Bridge})
+    for _,widget in pairs(input.Widgets) do bridge:WatchCombatWidget(widget) end
+    api.hooksecurefunc(input,'GetWidget',function(_,id)
+        local widget=input.Widgets[tostring(id):upper()]
+        if widget then bridge:WatchCombatWidget(widget) end
+    end)
+    return bridge
 end
 function Bridge:Stamp(state,active)
     self.serial=self.serial+1

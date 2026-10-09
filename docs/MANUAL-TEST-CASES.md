@@ -1,8 +1,9 @@
-# Retail tests and results â€” installed candidate.17, revision 17
+# Retail tests and results - installed candidate.20, revision 17
 
 ## Case 47 — power restoration and character-owned auras (candidate.20)
 
-**NOT RUN.** After authorized closed-WoW deployment, log into Paladin normally.
+**NOT RUN.** Candidate.20 installed with WoW closed at October 08, 2026, 22:23:50 Toronto.
+Log into Paladin normally.
 Verify the Holy Power strip below player health returns and updates through
 power values 0–5, combat, specialization changes and native redraw. Verify the
 duplicate native three-aura row disappears after secure ring access is restored.

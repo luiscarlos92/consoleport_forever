@@ -1,3 +1,26 @@
+## Installed candidate.20 — October 08, 2026, 22:23:50 Toronto
+
+Authorized closed-WoW scoped deployment completed from tested/pushed source
+6a4842be5bcdb2501be87d0ae678ae7cb55ec13f. Only ConsolePort_Forever was
+replaced; nine official stable Retail dependencies freshly checked, none changed,
+downloaded or reshipped. Independent readback verifies all 52 installed files,
+1949 unselected addon files and 298 WTF files unchanged, 42 junctions
+and root anchors preserved. Previous candidate.19 and configuration backups are
+verified and retained at C:/Users/luisr/WoW-Backups/ConsolePort-Forever/20261009T022321Z-8e5e29e607b4.
+All 59 runtime/source suites and 39 tooling checks pass. Native power suppression
+is removed. Next-login game-owned one-time class repair restores Paladin-only
+GUID-owned Auras on L1+L2, removes its obsolete R2+R1 opener and hides StanceBar
+only after complete class access. Demon Hunter projection excludes foreign class
+rings and empty Auras relics; account views cannot erase character bindings.
+Revision 17 remains; no filesystem live WTF writes. Accepted action feedback,
+cooldowns, geometry, input recovery and Ground.lua remain. Actual client/hardware/
+combat/taint acceptance awaits manual case 47; no WoW launch or live test.
+Receipts: evidence/delivery/prepared-candidate20.json, live-install-candidate20.json
+and candidate20-independent-readback.json. Pack SHA256: 3801c97b017ecd638abdc67839e8dabab744a248dc2b34526cf8351b4e11d231.
+This deployment authorization is complete. Future deployments need new user
+authorization with WoW closed. Earlier candidate.19 claims are rejected history;
+older preparation-only restrictions do not apply to this completed deployment.
+
 # Candidate.20: restore power and character-owned aura access
 
 Candidate.19 hid PaladinPowerBarFrame instead of the reported native aura row.

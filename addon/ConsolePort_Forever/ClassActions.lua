@@ -1,6 +1,25 @@
 local _,Addon=...
 local Class={CHORD='CTRL-PADRSHOULDER',LEFT_CHORD='SHIFT-PADLSHOULDER',LEGACY='CTRL-PADFORWARD',SET='CPFClass'}
 Addon.ClassActions=Class
+function Class.Supported(api)
+    local class=api.UnitClass and select(2,api.UnitClass('player'))
+    return class=='PALADIN' or class=='DRUID' or class=='WARRIOR'
+end
+function Class.FilterOwnedSets(sets,guid,class)
+    for id,set in pairs(sets) do
+        local meta=set[0] or {}
+        local owner=meta.cpfForeverClassOwner
+        if owner and (owner~=guid or (class and meta.cpfForeverClass~=class)) then
+            sets[id]=nil
+        elseif class and class~='PALADIN' and class~='DRUID' and class~='WARRIOR'
+            and id=='Auras' and #set==0 and not next(meta) then
+            -- Old starter projection synthesized this empty relic on other
+            -- characters. Never delete a player's populated/named manual ring.
+            sets[id]=nil
+        end
+    end
+    return sets
+end
 function Class.Chord(api)
     local class=api.UnitClass and select(2,api.UnitClass('player'))
     return (class=='DRUID' or class=='PALADIN') and Class.LEFT_CHORD or Class.CHORD
@@ -16,7 +35,7 @@ function Class.ResolveSet(rings,api)
             if name==rings:GetName() then return rings:GetSetForBindingSuffix(suffix) end
         end
     end
-    if rings.Data and type(rings.Data.Auras)=='table' and not (rings.Shared and rings.Shared.Auras) then return 'Auras' end
+    if Class.Supported(api) and rings.Data and type(rings.Data.Auras)=='table' and not (rings.Shared and rings.Shared.Auras) then return 'Auras' end
     return Class.SET
 end
 function Class.Bindings(state,adapter)
@@ -28,7 +47,8 @@ function Class.Bindings(state,adapter)
     local chord=adapter.api.classChord or Class.CHORD
     state.keys[chord]=command
     local other=chord==Class.LEFT_CHORD and Class.CHORD or Class.LEFT_CHORD
-    if state.keys[other]==command then state.keys[other]='' end
+    local obsolete=adapter.rings:GetBindingForSet('Auras')
+    if state.keys[other]==command or (id==Class.SET and state.keys[other]==obsolete) then state.keys[other]='' end
     -- Free only our replaced menu opener, preserving a player's unrelated menu binding.
     if state.keys[Class.LEGACY]==command then state.keys[Class.LEGACY]='' end
     return state
@@ -50,6 +70,12 @@ function Class.RingProposal(state,adapter,api)
             set[#set+1]={type='spell',spell=form.spell,cpfForeverClass=true}
             spells[form.spell]=true
         end
+    end
+    if id==Class.SET then
+        set[0]=set[0] or {name='Class abilities'}
+        if not state.sets[id] and api.UnitClass and select(2,api.UnitClass('player'))=='PALADIN' then set[0].name='Auras (Forever)' end
+        set[0].cpfForeverClassOwner=Addon.guid
+        set[0].cpfForeverClass=api.UnitClass and select(2,api.UnitClass('player'))
     end
     state.sets[id]=adapter.env:ValidateSet(id,set)
     return state
@@ -101,11 +127,18 @@ function Class.UpdateNativeBar(addon,api,editing)
 end
 function Class.Migrate(addon,api,canWrite)
     local record=addon.record
-    if not record or (record.appliedRevision~=14 and record.appliedRevision~=15 and record.appliedRevision~=16) or not record.bindingAccepted or not record.ringAccepted then return false end
+    if not record or not record.bindingAccepted or not record.ringAccepted then return false end
+    local legacy=record.appliedRevision==14 or record.appliedRevision==15 or record.appliedRevision==16
+    local repair=record.appliedRevision==17 and record.classAccessRepair~=1 and Class.Supported(api)
+    if not legacy and not repair then return false end
     if addon.busy or (addon.Prompt and addon.Prompt.active) or not canWrite() then return false end
     local adapters=addon.adapters
     local rings=adapters and adapters.rings
     if not rings or not rings:Probe() or rings.rings:IsShown() or addon.db.shared.ringProjectionGUID~=addon.guid then return false end
+    if repair then
+        local snapshot=Addon.RingDiscovery.Capture(api,addon.guid)
+        if not snapshot or not snapshot.formsReady or #snapshot.forms==0 then return false end
+    end
     local current=adapters.bindings:read({'state'})
     if current.set~=adapters.bindings.native.api.CharacterSet then return false end
     local desired=Class.Bindings(addon.Core.Copy(current),rings)
@@ -118,9 +151,10 @@ function Class.Migrate(addon,api,canWrite)
             steps[#steps+1]={id=addon.guid..'/'..entry[1],scope=entry[2],path={'state'},before=entry[3],value=entry[4],revision=17}
         end
     end
+    if repair and #steps==0 then record.classAccessRepair=1 return false end
     -- Explicitly authorized first-login migration, scoped to the class chord
     -- and its native ring. Existing transaction machinery owns backup/rollback.
-    local journal=addon.Transactions.Prepare(addon.db,addon.guid,steps,{revision=17,foreverClassMigration=true})
+    local journal=addon.Transactions.Prepare(addon.db,addon.guid,steps,{revision=17,foreverClassMigration=true,classAccessRepair=repair and true or nil})
     addon.busy=true
     local ok,result,reason=pcall(addon.Transactions.Apply,journal,adapters,canWrite)
     addon.busy=false
@@ -128,6 +162,7 @@ function Class.Migrate(addon,api,canWrite)
         addon.Diagnostics:SetFeature('classFlyout','recovery-required',tostring(reason or result)) return false
     end
     assert(addon.Transactions.Commit(addon.db,journal,17))
+    record.classAccessRepair=1
     addon:CaptureControllerEdits()
     rings:CaptureEdits()
     record.lastInstallTransaction=journal.id

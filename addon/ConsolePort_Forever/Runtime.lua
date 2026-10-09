@@ -84,45 +84,6 @@ function Visibility:Refresh(api,enabled)
     end
     return #pending==0, #pending>0 and table.concat(pending,"; ") or "native shown state/events retained behind hidden parent; Retail combat/rendering acceptance pending"
 end
-function Visibility:UpdatePlayerResource(api,enabled)
-    -- The five Holy Power runes below PlayerFrame are not the StanceBar aura
-    -- buttons. Own only this native instance; nameplate/PRD clones stay native.
-    local bar,native=api.PaladinPowerBarFrame,api.PaladinPowerBar
-    local editing=self.editing or (api.EditModeManagerFrame and api.EditModeManagerFrame:IsShown())
-    local class=api.UnitClass and select(2,api.UnitClass('player'))
-    local wanted=enabled and not editing and class=='PALADIN' and bar and native
-        and bar.UpdatePower==native.UpdatePower and type(bar.GetAlpha)=='function'
-        and type(bar.SetAlpha)=='function' and type(bar.HookScript)=='function'
-        and type(api.hooksecurefunc)=='function'
-    local row=self.playerResourceRow
-    if row and (row.frame~=bar or not wanted) then
-        if row.active then
-            row.active=false row.writing=true row.frame:SetAlpha(row.alpha) row.writing=false
-        end
-        if row.frame~=bar then self.playerResourceRow=nil row=nil end
-    end
-    if not wanted then return false,'native player resource strip retained outside the installed presentation or during Edit Mode' end
-    if not row then
-        if api.InCombatLockdown() then return false,'player resource presentation initializes after combat' end
-        local alpha=bar:GetAlpha()
-        if (api.issecretvalue and api.issecretvalue(alpha)) or type(alpha)~='number' then return false,'native resource opacity unavailable' end
-        row={frame=bar,alpha=alpha} self.playerResourceRow=row
-        local function Suppress()
-            if row.active and not row.writing then
-                row.writing=true bar:SetAlpha(0) row.writing=false
-            end
-        end
-        api.hooksecurefunc(bar,'SetAlpha',function(_,value)
-            if not row.writing then row.alpha=value Suppress() end
-        end)
-        bar:HookScript('OnShow',Suppress)
-    elseif not row.active then row.alpha=bar:GetAlpha() end
-    row.active=true row.writing=true bar:SetAlpha(0) row.writing=false
-    -- Preserve resource events/values, native shown state, managed parent and
-    -- geometry. Inheritance hides all five runes, even after a combat reshow;
-    -- latest native opacity is restored on disable/editor/replacement.
-    return true,'native five-rune player strip visually suppressed; resource updates and other resource displays retained'
-end
 function Visibility:Update()
     if Addon.ClassActions then
         local editing=self.editing or (EditModeManagerFrame and EditModeManagerFrame:IsShown())
@@ -130,8 +91,6 @@ function Visibility:Update()
         if Addon.Diagnostics then Addon.Diagnostics:SetFeature('classBarPresentation',ready and 'offline-verified' or 'pending',detail) end
     end
     local enabled=Addon.IsCharacterInstalled and Addon:IsCharacterInstalled() and Addon.db and Addon.db.shared.runtimePolicy.blizzardVisibility
-    local resourceReady,resourceDetail=self:UpdatePlayerResource(_G,enabled)
-    if Addon.Diagnostics then Addon.Diagnostics:SetFeature('playerResourcePresentation',resourceReady and 'offline-verified' or 'pending',resourceDetail) end
     if Addon.HiddenAccess then
         local active=enabled and Addon.db.shared.runtimePolicy.hiddenAccessEnabled
             and not (self.editing or (EditModeManagerFrame and EditModeManagerFrame:IsShown()))

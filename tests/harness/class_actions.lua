@@ -8,6 +8,7 @@ local binding=container:GetBindingForSet('Auras')
 local keys={['CTRL-PADFORWARD']=binding,['CTRL-PADRSHOULDER']='TARGETSCANENEMY',PADRSHOULDER='TARGETSCANENEMY',
     ['SHIFT-PAD1']='ACTIONBUTTON1',SPACE='JUMP'}
 local api={GetBindingAction=function(key) return keys[key] or '' end,
+    UnitClass=function() return 'Warrior','WARRIOR' end,
     UnitGUID=function() return 'A' end,GetNumShapeshiftForms=function() return 2 end,
     GetShapeshiftFormInfo=function(slot) return 1,slot==1,true,slot==1 and 101 or 102 end,
     PetHasActionBar=function() return false end,GetPetActionInfo=function() end}

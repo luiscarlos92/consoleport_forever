@@ -58,7 +58,7 @@ assert(bar:IsVisible() and bar.rune1:Painted() and PlayerFrame.classPowerBar==ba
 local nativeParent,nativePoints,nativeEvent,nativePower=bar:GetParent(),bar.points,bar.OnEvent,bar.UpdatePower
 installed=true Addon.db.shared.runtimePolicy.blizzardVisibility=true
 V:Update()
-assert(not bar.rune1:Painted(),'native five-rune strip still rendered under player frame')
+assert(bar.rune1:Painted() and bar:GetAlpha()==.73,'native power strip unexpectedly suppressed')
 local count=0
 for cycle=1,6 do
     combat=cycle%2==0
@@ -74,7 +74,7 @@ for cycle=1,6 do
         bar:Hide() bar:Show()
         local lastAlpha=.2+.1*value
         bar:SetAlpha(lastAlpha)
-        for i=1,5 do assert(not bar['rune'..i]:Painted(),'native resource redraw leaked visible glyph') end
+        for i=1,5 do assert(bar['rune'..i]:Painted(),'native power redraw was suppressed') end
         assert(bar.lastPower==power and bar.rune1.visualState==(power==0 and 1 or power>=3 and 3 or 2),'hiding broke native resource state')
         assert(bar.OnEvent==nativeEvent and bar.UpdatePower==nativePower and bar:GetParent()==nativeParent and bar.points==nativePoints,'resource policy replaced native gameplay or geometry')
         assert(bar.events.UNIT_POWER_FREQUENT=='player' and bar.events.UNIT_MAXPOWER=='player','hiding disabled native resource events')
@@ -88,20 +88,20 @@ editing=true EventRegistry:TriggerEvent('EditMode.Enter')
 assert(bar.rune1:Painted() and bar:GetAlpha()==.7,'Edit Mode did not restore latest native opacity')
 editing=false EventRegistry:TriggerEvent('EditMode.Exit')
 for _,callback in ipairs(queue) do callback() end queue={}
-assert(not bar.rune1:Painted(),'Edit Mode exit leaked the strip')
+assert(bar.rune1:Painted(),'Edit Mode exit hid native power')
 installed=false V:Update()
 assert(bar.rune1:Painted() and bar:GetAlpha()==.7,'disable did not restore original/latest native opacity')
 bar:SetAlpha(.4)
 assert(bar:GetAlpha()==.4,'inactive hooks still suppress native resource art')
 installed=true V:Update()
-assert(not bar.rune1:Painted())
+assert(bar.rune1:Painted())
 Addon.db.shared.runtimePolicy.blizzardVisibility=false V:Update()
 assert(bar:GetAlpha()==.4,'disabled visibility policy did not restore opacity')
 Addon.db.shared.runtimePolicy.blizzardVisibility=true V:Update()
 local previous=bar
 PaladinPowerBarFrame=resourceFrame(container,'PaladinPowerBarFrame')
 bar=PaladinPowerBarFrame bar:Setup() V:Update()
-assert(previous:GetAlpha()==.4 and not bar.rune1:Painted(),'late/replaced native strip retained stale ownership')
+assert(previous:GetAlpha()==.4 and bar.rune1:Painted(),'late/replaced native power was suppressed')
 previous:SetAlpha(.6) assert(previous:GetAlpha()==.6,'stale frame hook still active')
 class='WARRIOR' V:Update()
 assert(bar:GetAlpha()==.73,'different class retained Paladin visual override')
@@ -110,5 +110,5 @@ local realPower=bar.UpdatePower
 bar.UpdatePower=function() end V:Update()
 assert(bar:GetAlpha()==.73,'foreign resource method retained owned override')
 bar.UpdatePower=realPower V:Update()
-assert(not bar.rune1:Painted())
+assert(bar.rune1:Painted())
 TEST_SUCCESS=true

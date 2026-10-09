@@ -31,6 +31,11 @@ function Addon:CaptureControllerEdits()
     if self.busy or not self.adapters or not self.record or not self.record.bindingAccepted or self.db.lastProjectedGUID~=self.guid then return end
     local ok,state=pcall(self.adapters.bindings.read,self.adapters.bindings,{"state"})
     if not ok then return end
+    local native=self.adapters.bindings.native
+    if not native or state.set~=native.api.CharacterSet then
+        self.Diagnostics:SetFeature('controllerCapture','pending','account binding view retained; GUID character archive not overwritten')
+        return
+    end
     local scopes=self.BindingPolicy.Split(state.keys)
     self.record.controllerBindings=self.Core.Copy(scopes.character)
     self.db.shared.faceBindings=self.Core.Copy(scopes.shared)

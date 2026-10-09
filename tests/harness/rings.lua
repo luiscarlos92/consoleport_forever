@@ -118,14 +118,13 @@ container:RefreshAll() assert(a:CaptureEdits())
 local aArchive=Core.Copy(account.characters.A.rings.sets)
 currentGUID='B'
 local bProposal=assert(b:Proposal())
-assert(#bProposal.sets.Auras==0 and bProposal.sets.Manual==nil and #bProposal.sets[1]==2)
+assert(bProposal.sets.Auras==nil and bProposal.sets.Manual==nil and #bProposal.sets[1]==2,'new character inherited class placeholder')
 assert(bProposal.sets[1][1].type=='custom','new GUID inherited prior personal spells')
 local second=install(b,'B')
-assert(account.shared.ringProjectionGUID=='B' and #container.Data.Auras==0 and container.Data.Manual==nil)
+assert(account.shared.ringProjectionGUID=='B' and container.Data.Auras==nil and container.Data.Manual==nil)
 assert(container.Data[1][3].autoassigned and container.Data[1][3].questID==900)
 assert(Core.Equal(container.Shared,sharedBefore))
-container.Data.Auras[1]={type='spell',spell=101}
-container.Data.Auras[0].name='B own order'
+container.Data.Auras={[0]={name='B own order'},{type='spell',spell=101}}
 container:RefreshAll() assert(b:CaptureEdits())
 assert(Core.Equal(account.characters.A.rings.sets,aArchive),'B overwrote A archive')
 -- Return projection through an independently retained transaction.

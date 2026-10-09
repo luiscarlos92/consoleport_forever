@@ -1,0 +1,26 @@
+{
+  "installedCandidateObserved": "2.0.0-candidate.19",
+  "inspection": "Strict read-only saved-variable parsing after WoW closed; no evaluation or live WTF writes",
+  "userReports": [
+    "Native aura row still present after candidate.19",
+    "Power bar disappeared unexpectedly and must return",
+    "Old Auras ring deliberately deleted because it appeared on Demon Hunter and used obsolete R2+R1",
+    "Restore only for its character and bind Paladin L1+L2"
+  ],
+  "savedState": {
+    "configurationRevision": 17,
+    "bindingAccepted": true,
+    "ringAccepted": true,
+    "classShortcut": "pending: installed class ring opener is not bound",
+    "classBarPresentation": "pending: native class bar retained until complete ring access is ready",
+    "playerResourcePresentation": "candidate.19 incorrectly suppressed native five-rune player strip",
+    "currentCharacterRing": "utility-only; class ring absent",
+    "otherCharacterRing": "anonymous empty Auras placeholder"
+  },
+  "independentReproductions": [
+    "Accepted revision17 missing ring/opener was excluded by old revision14-16 migration gate",
+    "Account binding capture can erase character archive without a CharacterSet guard"
+  ],
+  "causalLimit": "Account capture defect is reproduced independently; it is not asserted to have caused the user's intentional ring deletion",
+  "actualRetailAcceptance": "Pending user manual case47; no game launch or hardware/taint certification"
+}

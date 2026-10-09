@@ -25,14 +25,15 @@ function Setup.Adapters(api,account)
     local adapters={bindings=Addon.BindingStateAdapter.New(native,mask),consoleport=cp}
     if account and Addon.guid then
         local rings=cp.db.Rings
-        local classSet=Addon.ClassActions.ResolveSet(rings,native.api)
+        local classSet=Addon.ClassActions.ResolveSet(rings,api)
         -- The official Rings TOC has no Version field; qualify the suite owner.
         adapters.rings=Addon.RingsAdapter.New({version=api.C_AddOns.GetAddOnMetadata('ConsolePort_Rings','Version') or api.C_AddOns.GetAddOnMetadata('ConsolePort','Version'),
             getDB=function() return cp.db end,getEnv=function()
                 local lib=api.LibStub('RelaTable',true)
                 return lib and rawget(lib,'ConsolePort_Rings')
             end,inCombat=api.InCombatLockdown,currentGUID=function() return api.UnitGUID('player') end,
-            defaultSet=api.CPAPI.DefaultRingSetID,classSet=classSet,classChord=Addon.ClassActions.Chord(api)},account,Addon.guid)
+            defaultSet=api.CPAPI.DefaultRingSetID,classSet=classSet,classChord=Addon.ClassActions.Chord(api),
+            classForGUID=function() return api.UnitClass and select(2,api.UnitClass('player')) end},account,Addon.guid)
     end
     if account and Addon.guid then
         local record=assert(Addon.Store.GetCharacter(account,Addon.guid))

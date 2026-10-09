@@ -826,7 +826,7 @@ cases=cases+1`)+ '\nSERIALIZED_STATE=serialized(unchangedRects)';
   const after=execute(source+serializer+snapshot,'fixed-non-R2-geometry');
   if(before!==after) throw Error('alignment changed L2 or unrelated HUD rectangles');
 });
-check('T57.native-five-rune-player-strip-redraw-and-combat-regression', () => {
+check('T57.native-player-power-remains-visible-through-redraw-and-combat', () => {
   const base='evidence/aura-regression/native/';
   const manifest=JSON.parse(read('evidence/aura-regression/native-manifest.json'));
   for(const row of manifest) if(sha(base+row.path)!==row.sha256) throw Error('Native player-resource contract drift: '+row.path);
@@ -837,14 +837,36 @@ check('T57.native-five-rune-player-strip-redraw-and-combat-regression', () => {
     .replace('--@NATIVE_RESOURCE_BAR',()=>['OnHideClassInfoOnPlayerFrameChanged','OnEvent','HandleBarSetup','Setup','UpdateMaxPower'].map(n=>nativeFunction(base+'Blizzard_UnitFrame/Mainline/ClassResourceBarTemplate.lua','ClassResourceBarMixin:'+n)).join('\n'))
     .replace('--@NATIVE_PALADIN_POWER',()=>nativeFunction(base+'Blizzard_UnitFrame/Mainline/PaladinPowerBar.lua','PaladinPowerBar:UpdatePower'));
   execute(fixture,'native-player-resource-strip');
-  for(const [name,mutated,message] of [
-    ['missing-player-resource-policy',fixture.replace('self:UpdatePlayerResource(_G,enabled)','self:UpdatePlayerResource(_G,false)'),'native five-rune strip still rendered under player frame'],
-    ['late-resource-opacity-write',fixture.replace('if not row.writing then row.alpha=value Suppress() end','if not row.writing then row.alpha=value end'),'native resource redraw leaked visible glyph'],
-  ]) {
-    let rejected=false;
-    try {execute(mutated,name);} catch(error) {rejected=String(error).includes(message);}
-    if(!rejected) throw Error(name+' mutation failed to reproduce the expected visible strip');
-  }
+  let rejected=false;
+  const suppressed=fixture.replace('local ok,reason=self:Refresh(_G,enabled)',"if PaladinPowerBarFrame then PaladinPowerBarFrame:SetAlpha(0) end\n    local ok,reason=self:Refresh(_G,enabled)");
+  try {execute(suppressed,'wrong-power-target');} catch(error) {rejected=String(error).includes('native power strip unexpectedly suppressed');}
+  if(!rejected) throw Error('wrong power-bar suppression mutation was not reproduced');
+});
+check('T58.revision17-lost-class-access-native-recovery-and-aura-row', () => {
+  if(!bootstrapState) throw Error('native bootstrap fixture unavailable');
+  const fixture=read('tests/harness/class_access_recovery.lua')
+    .replace('--@NATIVE_STANCE_VISIBILITY',()=>nativeFunction('evidence/native/Blizzard_ActionBar/Shared/StanceBar.lua','StanceBarMixin:ShouldShow'))
+    .replace('--@NATIVE_STANCE_UPDATE',()=>nativeFunction('evidence/native/Blizzard_ActionBar/Shared/StanceBar.lua','StanceBarMixin:Update'));
+  for(const cls of ['PALADIN','DRUID','WARRIOR']) execute('SESSION_STATE=('+bootstrapState+').installed\nRECOVERY_CLASS="'+cls+'"\n'+bootstrapPrelude+fixture,'lost-native-class-access-'+cls);
+  let rejected=false;
+  const original=bootstrapPrelude.replace("local repair=record.appliedRevision==17 and record.classAccessRepair~=1 and Class.Supported(api)","local repair=false");
+  try {execute('SESSION_STATE=('+bootstrapState+').installed\nRECOVERY_CLASS="PALADIN"\n'+original+fixture,'skipped-revision17-class-repair');}
+  catch(error) {rejected=String(error).includes('revision17 lost class opener was not recovered');}
+  if(!rejected) throw Error('accepted17 class recovery negative control did not fail');
+  rejected=false;
+  const leaked=bootstrapPrelude.replace('sets=Addon.ClassActions.FilterOwnedSets(sets,self.guid,self.api.classForGUID and self.api.classForGUID())','-- owner filtering removed');
+  try {execute('SESSION_STATE=('+bootstrapState+').installed\nRECOVERY_CLASS="PALADIN"\n'+leaked+fixture,'foreign-class-ring-leak');}
+  catch(error) {rejected=String(error).includes('Paladin aura ring leaked into Demon Hunter proposal');}
+  if(!rejected) throw Error('cross-character class-ring leak negative control did not fail');
+});
+check('T59.character-binding-capture-rejects-account-view', () => {
+  if(!bootstrapState) throw Error('native bootstrap fixture unavailable');
+  execute('SESSION_STATE=('+bootstrapState+').installed\n'+bootstrapPrelude+read('tests/harness/character_capture_owner.lua'),'character-capture-owner');
+  let rejected=false;
+  const old=bootstrapPrelude.replace('if not native or state.set~=native.api.CharacterSet then','if false then');
+  try {execute('SESSION_STATE=('+bootstrapState+').installed\n'+old+read('tests/harness/character_capture_owner.lua'),'account-overwrites-character');}
+  catch(error) {rejected=String(error).includes('account view erased character class binding');}
+  if(!rejected) throw Error('account character-capture negative control did not fail');
 });
 const report = {at:new Date().toISOString(), commit:cp.execFileSync('git',['rev-parse','HEAD'],{cwd:root}).toString().trim(),
   productHashes:Object.fromEntries(files('addon').map(f=>[f,sha(f)])),

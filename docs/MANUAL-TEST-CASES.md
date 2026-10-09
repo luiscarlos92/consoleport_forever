@@ -1,18 +1,26 @@
 # Retail tests and results â€” installed candidate.17, revision 17
 
-## Case 46 — native five-rune player-strip regression (candidate.19)
+## Case 47 — power restoration and character-owned auras (candidate.20)
 
-**NOT RUN.** Candidate.19 was installed with WoW closed on October 8, 2026,
-at 19:46:29 Toronto. Candidate.18 feedback/cooldown/R2 remain user-confirmed.
-During the user's manual test, the five-symbol Holy Power strip below the player frame
-must stay invisible through login, power values 0–5, combat, native redraw,
-specialization/power changes and normal play. Health/mana, circular spells,
-controller/class-ring hold/release, nameplate/PRD resources and ground casting
-must retain their behavior. Edit Mode and disabling the presentation must restore
-the native strip's latest opacity; exiting Edit Mode restores suppression.
-Check Lua/protected-action/taint errors. Live pixels and engine permissions
-remain user-owned verification; the native-source host does not certify them.
+**NOT RUN.** After authorized closed-WoW deployment, log into Paladin normally.
+Verify the Holy Power strip below player health returns and updates through
+power values 0–5, combat, specialization changes and native redraw. Verify the
+duplicate native three-aura row disappears after secure ring access is restored.
+Hold L1+L2: the restored Auras (Forever) ring must contain all learned auras and
+select them through normal ConsolePort controls, including combat. R2+R1 must
+not open that old aura ring. Utility and unrelated bindings must remain usable.
+Switch to Demon Hunter: no Paladin ring or aura opener may appear; ordinary
+bindings and ground casting must work. Return to Paladin: its ring and L1+L2
+opener must return. Relog and repeat; no repeated repair/full installation prompt.
+Verify native Edit Mode access/restoration, accepted bright round faces, golden
+pressed feedback, cooldowns and symmetric L2/R2. Check Lua/protected-action/taint
+errors. Actual Retail rendering and engine permission remain user-owned.
 
+## Case 46 — candidate.19 wrong-bar suppression (REJECTED)
+
+The user reports the aura row still visible and unwanted Holy Power loss.
+Candidate.19 suppressed the wrong bar. Its invisibility expectation is retired;
+case 47 requires visible native power and character-owned aura-ring access.
 
 ## Case 45 â€” candidate.18 action feedback and symmetric trigger labels
 

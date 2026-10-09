@@ -50,10 +50,10 @@ function Bridge:Proposal()
         -- A new GUID receives the current upstream starter utility. It never
         -- imports the prior character's personal spells or manual arrangement.
         sets={[self.api.defaultSet]=Core.Copy(self.env:GetStarterSet())}
-        -- Keep an existing class opener address available, with empty contents.
-        local classSet=self.api.classSet
-        if classSet and classSet~=self.api.defaultSet and self.rings.Data[classSet] and not self.rings.Shared[classSet] then sets[classSet]={[0]={}} end
+        -- Class access is generated for the eligible GUID by ClassActions, not
+        -- copied as an empty Auras placeholder from the previous character.
     end
+    sets=Addon.ClassActions.FilterOwnedSets(sets,self.guid,self.api.classForGUID and self.api.classForGUID())
     -- Native validation is applied to detached data only. The accepted proposal
     -- contains exactly the qualified view; unavailable actions stay archived.
     for id,set in pairs(sets) do sets[id]=self.env:ValidateSet(id,Core.Copy(set)) end
@@ -85,6 +85,7 @@ function Bridge:CaptureEdits()
     local ok,state=pcall(self.read,self,{'state'})
     if not ok then return false end
     local sets=state.sets
+    Addon.ClassActions.FilterOwnedSets(sets,self.guid,self.api.classForGUID and self.api.classForGUID())
     local dormant={}
     -- A native refresh may hide an unavailable manual spell. Keep its archived
     -- position until it can project again; an explicit whole-set deletion wins.

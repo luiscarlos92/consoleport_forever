@@ -1,0 +1,38 @@
+RUNNING T10-T11.product-bootstrap
+RUNNING T58.revision17-lost-class-access-native-recovery-and-aura-row
+RUNNING T59.character-binding-capture-rejects-account-view
+PASSED T10-T11.product-bootstrap
+FAILED T58.revision17-lost-class-access-native-recovery-and-aura-row
+Error: [string "lost-native-class-access-PALADIN"]:7681: revision17 lost class opener was not recovered
+local set=Addon.adapters.rings.api.classSet
+local command=bootstrapRings:GetBindingForSet(set)
+assert(banks[2][chord]==command,'revision17 lost class opener was not recovered')
+assert(record.classAccessRepair==1 and record.appliedRevision==17,'one-time repair marker/revision incorrect')
+local nativeSet=bootstrapRings.Data[set]
+    at execute (C:\Users\luisr\Dev\consoleport_forever\tools\test-all.cjs:44:11)
+    at C:\Users\luisr\Dev\consoleport_forever\tools\test-all.cjs:854:51
+    at check (C:\Users\luisr\Dev\consoleport_forever\tools\test-all.cjs:27:9)
+    at Object.<anonymous> (C:\Users\luisr\Dev\consoleport_forever\tools\test-all.cjs:849:1)
+    at Module._compile (node:internal/modules/cjs/loader:1929:14)
+    at Object.<anonymous> (C:\Users\luisr\Dev\consoleport_forever\scratch\run-targeted.cjs:5:79)
+    at Module._compile (node:internal/modules/cjs/loader:1929:14)
+    at Object..js (node:internal/modules/cjs/loader:2060:10)
+    at Module.load (node:internal/modules/cjs/loader:1651:32)
+    at Module._load (node:internal/modules/cjs/loader:1443:12)
+FAILED T59.character-binding-capture-rejects-account-view
+Error: [string "character-capture-owner"]:7675: account view erased character class binding
+bindingSet=accountSet banks[accountSet][chord]='TARGETNEARESTFRIEND'
+Addon:CaptureControllerEdits()
+assert(Addon.Core.Equal(Addon.record.controllerBindings,before),'account view erased character class binding')
+assert(Addon.Core.Equal(Addon.db.shared.faceBindings,sharedBefore),'account view rewrote owned face bindings')
+bindingSet=characterSet
+    at execute (C:\Users\luisr\Dev\consoleport_forever\tools\test-all.cjs:44:11)
+    at C:\Users\luisr\Dev\consoleport_forever\tools\test-all.cjs:858:3
+    at check (C:\Users\luisr\Dev\consoleport_forever\tools\test-all.cjs:27:9)
+    at Object.<anonymous> (C:\Users\luisr\Dev\consoleport_forever\tools\test-all.cjs:856:1)
+    at Module._compile (node:internal/modules/cjs/loader:1929:14)
+    at Object.<anonymous> (C:\Users\luisr\Dev\consoleport_forever\scratch\run-targeted.cjs:5:79)
+    at Module._compile (node:internal/modules/cjs/loader:1929:14)
+    at Object..js (node:internal/modules/cjs/loader:2060:10)
+    at Module.load (node:internal/modules/cjs/loader:1651:32)
+    at Module._load (node:internal/modules/cjs/loader:1443:12)

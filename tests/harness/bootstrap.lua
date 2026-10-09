@@ -29,6 +29,7 @@ function GetActionInfo() return nil end
 function GetBuildInfo() return "12.1.0","69933","date",120100 end
 function UnitGUID() return guid end
 function UnitName() return "Player" end
+function UnitClass() return 'Paladin','PALADIN' end
 function GetRealmName() return "Realm" end
 function InCombatLockdown() return combat end
 function GetCurrentBindingSet() return bindingSet end

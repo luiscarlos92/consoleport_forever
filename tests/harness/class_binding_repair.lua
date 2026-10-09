@@ -5,6 +5,7 @@ record.appliedRevision=16 record.pendingReload=nil record.declinedRevision=nil
 record.controllerBindings['SHIFT-PADLSHOULDER']=''
 record.controllerBindings['CTRL-PADRSHOULDER']=''
 banks[2]['SHIFT-PADLSHOULDER']=nil banks[2]['CTRL-PADRSHOULDER']=nil
+banks[2][Addon.ClassActions.LEGACY]='CLICK NativeUtility:Auras'
 local before=Addon.Core.Copy(banks)
 fire('PLAYER_LOGIN') flush()
 local chord=Addon.ClassActions.LEFT_CHORD

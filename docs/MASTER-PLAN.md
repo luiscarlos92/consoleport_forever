@@ -1,3 +1,23 @@
+## Candidate.20 aura recovery and power restoration — October 8, 2026
+
+User authorizes "investigate deeper, write tests, fix and deploy", and requires
+the restored Paladin Auras ring on L1+L2 only for its character. The user deleted
+the old ring because it leaked onto Demon Hunter and used obsolete R2+R1.
+Candidate.19 targeted the wrong native bar: its Holy Power suppression is
+rejected and removed. Candidate.20 restores native power rendering, repairs
+missing accepted-revision-17 class access once through native saved transactions,
+and hides StanceBar only when all learned forms and the correct opener exist.
+Recovered CPFClass metadata is GUID/class-owned; foreign rings and old empty
+Auras placeholders are excluded from other characters. Account binding views
+cannot overwrite GUID character archives. No filesystem live WTF writes.
+All 59 runtime/source suites and 39 tooling checks pass. Nine official stable
+Retail dependency releases freshly checked; none changed/downloaded/reshipped.
+Deploy Forever only with WoW closed using the scoped tested builder/installer.
+Accepted feedback/cooldowns, HUD geometry, input recovery and Ground.lua stay.
+Actual Retail rendering/hardware/combat/taint acceptance awaits manual case 47.
+Details: docs/CANDIDATE20-AURA-RECOVERY-2026-10-08.md. Earlier candidate.19 claims
+and preparation-only checkpoints are dated history superseded by this correction.
+
 ## Installed candidate.19 — October 8, 2026, 19:46:29 Toronto
 
 Authorized closed-WoW scoped deployment completed from tested/pushed source

@@ -786,3 +786,32 @@ function and ping public-focus details. Native server cooldown/eligibility error
 remain ordinary feedback. Actual Retail input ordering/cursor timing/taint is
 NOT RUN by the agent. Dragonriding is accepted by the user on October 10;
 other case49 families retain their separate live acceptance gates.
+
+## Case 51 - paired secure macro ping repair (candidate.24)
+
+First use R3 in ordinary camera control aimed at valid terrain, with the mouse
+previously parked over a window. Tap and release should send one contextual ping.
+Hold R3, move the right stick to each of the six labelled types, and release;
+each should send exactly the chosen type. The selector opens immediately. Neutral
+release is contextual even after pointing at a type. Circle/B or the seventh
+Cancel wedge sends nothing. If ping is rebound to Circle/B, use the Cancel wedge.
+
+Aim at a soft enemy/friend and check unit pings; keep a different offscreen hard
+target selected and verify it is not used. Test a unit disappearing while held,
+invalid terrain and normal cooldown/group restrictions. Prior centering should
+return after a ground ping; unit pings/cancel should not change it. Repeat with
+ActionButtonUseKeyDown enabled/disabled and prior GamePadCursorCentering 0/1.
+
+Test wholly within combat and across combat entry/exit. Open UI/raid/target ring
+or another modal while held, change modifiers, cancel, then release R3; no delayed
+ping or stuck camera should result. Disconnect while held and reconnect; use a
+fresh R3 press to start a new gesture. Check keyboard F2 retains native behavior.
+Standard modifier layers are qualified; tap-latch/doubled/ordered layer modes
+retain native ping and report pending in /cpf status.
+
+Do not run all scenarios before reporting the first failure. Capture /cpf diagnose
+and the exact error/blocked function if an error occurs. Retail cursor timing,
+taint/secure authority and actual reconnect event ordering remain NOT RUN until
+user evidence. The two-agent offline agreement is readiness for this test, not
+certification that the live client works. Dragonriding remains user-accepted;
+other temporary-bar families retain case49 live acceptance.

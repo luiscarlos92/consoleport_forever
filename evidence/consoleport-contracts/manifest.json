@@ -5,6 +5,30 @@
   "purpose": "Exact unmodified source audit/test contracts; not deployed dependency copies.",
   "files": [
     {
+      "path": "ConsolePort/View/Pie/Pie.xml",
+      "sha256": "9508833dafca71fc2a67988fe61c9ca250f055eb5e760b3e126500698deda5cf"
+    },
+    {
+      "path": "ConsolePort_Cursor/View/Cursor.xml",
+      "sha256": "84c9c529cce66f99f787ea9b0ad6c9801c23974250d8ccfc030d704566a1af11"
+    },
+    {
+      "path": "ConsolePort_Target/View/Cursor/Raid.lua",
+      "sha256": "f6f5fc86f28136f49694a5543e3e4a371327bbc77656511e8fb49460e5997427"
+    },
+    {
+      "path": "ConsolePort_Target/View/Cursor/Raid.xml",
+      "sha256": "c479bc29d1846f02ccf8d2ec312e155e9c7bcdce0393e07434f6c24ee449d249"
+    },
+    {
+      "path": "ConsolePort_Target/View/Ring/Targetring.lua",
+      "sha256": "6211e14c9e0444728ec442fbdb54e12aa16318409607b4c01f2eeb0a5b0771af"
+    },
+    {
+      "path": "ConsolePort_Target/View/Ring/Targetring.xml",
+      "sha256": "c1bc69e162d40b23f2fcbc343582673ef7c798b37799ee98fe1bd467b30057f1"
+    },
+    {
       "path": "ConsolePort/Controller/Pager.lua",
       "sha256": "c5cb7c89354dbc9af876a296fabff3fe24b39cbd436ab06996955301f85c9bb4"
     },

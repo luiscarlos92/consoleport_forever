@@ -1,3 +1,25 @@
+## Candidate.24 paired ping repair — October 10, 2026 (QUALIFIED: BOTH AGENTS ACCEPT)
+
+The user requested two agents to challenge each other's implementation/tests until
+both agree and checks are green. This continues the authorized ping repair after
+candidate.23's audit exposed observer ordering and native mouse-radial gaps.
+Controller ping now uses native ConsolePort Layers/Radial and Blizzard's secure
+macro dispatcher. Explicit @cursor bypasses blocking UI; aimed soft units use
+exists conditions. No addon restricted ping call. Native keyboard ping remains.
+The pair caught recursion, state-driver startup ordering, incorrectly protected
+UI cursor fixtures, disappearing-unit fallback and public callback trust flaws.
+All 62 runtime/source suites and 39 tooling tests pass for exact current hashes.
+Both agents independently checked the reports and ACCEPT ready for the user test.
+T60 includes 14 mandatory defect mutations; T61 covers 4,160 class/state/chord cases.
+Keep TemporaryRouting.lua/Ground.lua byte-identical to candidate.23, revision17,
+accepted visuals/class access/layouts. Nine official stable Retail dependencies
+freshly checked/current; none changed or needs shipping. Scope remains Forever only.
+Retail cursor timing/secure engine/reconnect acceptance is pending user case51.
+See docs/CANDIDATE24-PAIR-PING-2026-10-10.md. Verify WoW closed before the scoped
+installer; preserve unselected addons, WTF, junctions and backups. No game launch
+or live WTF filesystem writes. Historical future-authorization notes below do not
+cancel the human's continuing authorized request to fix and deploy this ping issue.
+
 ## Installed candidate.23 — October 10, 2026, 00:43:27 Toronto
 
 Authorized closed-WoW Forever-only deployment completed from tested/pushed source

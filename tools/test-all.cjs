@@ -870,41 +870,72 @@ check('T59.character-binding-capture-rejects-account-view', () => {
   catch(error) {rejected=String(error).includes('account view erased character class binding');}
   if(!rejected) throw Error('account character-capture negative control did not fail');
 });
-check('T60.native-secure-ping-binding-and-passive-cursor-observer', () => {
-  const nativeBase='evidence/native/Blizzard_PingUI/';
-  const manifest=JSON.parse(read('evidence/native/manifest.json'));
-  for(const name of ['Blizzard_PingUI/Bindings.xml','Blizzard_PingUI/Blizzard_PingManager.lua','Blizzard_PingUI/Blizzard_PingUI.lua','Blizzard_APIDocumentationGenerated/PingManagerDocumentation.lua']) {
-    const row=manifest.find(r=>r.path===name);
-    if(!row || sha('evidence/native/'+name)!==row.sha256) throw Error('Native ping source drift: '+name);
-  }
-  const api=read('evidence/native/Blizzard_APIDocumentationGenerated/PingManagerDocumentation.lua');
-  if(!/Name = "TogglePingListener"[\s\S]*?HasRestrictions = true/.test(api)) throw Error('Restricted ping API contract unavailable');
-  const mousePath='ConsolePort/Controller/Mouse.lua';
+check('T60.native-secure-macro-ping-stick-selection-and-owner-cancellation', () => {
+  const nativeManifest=JSON.parse(read('evidence/native/manifest.json'));
   const cpManifest=JSON.parse(read('evidence/consoleport-contracts/manifest.json'));
-  if(sha('evidence/consoleport-contracts/'+mousePath)!==cpManifest.files.find(r=>r.path===mousePath)?.sha256) throw Error('Native mouse input drift');
+  for(const name of ['Blizzard_ChatFrameBase/Mainline/SlashCommandsOverrides.lua','Blizzard_PingUI/Blizzard_PingManager.lua','Blizzard_FrameXML/SecureTemplates.lua','Blizzard_RestrictedAddOnEnvironment/SecureHandlers.lua','Blizzard_RestrictedAddOnEnvironment/RestrictedFrames.lua']) {
+    const row=nativeManifest.find(r=>r.path===name);
+    if(!row || sha('evidence/native/'+name)!==row.sha256) throw Error('Native secure ping source drift: '+name);
+  }
+  for(const name of ['ConsolePort/Controller/Radial.lua','ConsolePort/Controller/Layers.lua','ConsolePort/Utils/Utils.lua','ConsolePort/Utils/Database.lua','ConsolePort_Cursor/View/Cursor.xml','ConsolePort_Target/View/Cursor/Raid.xml','ConsolePort_Target/View/Ring/Targetring.xml','ConsolePort/View/Pie/Pie.xml']) {
+    const row=cpManifest.files.find(r=>r.path===name);
+    if(!row || sha('evidence/consoleport-contracts/'+name)!==row.sha256) throw Error('ConsolePort secure ping source drift: '+name);
+  }
+  // The UI cursor is unprotected; the raid cursor and target ring are protected.
+  // A synthetic all-protected model would wrongly qualify an unusable startup guard.
+  if(/Secure/.test(read('evidence/consoleport-contracts/ConsolePort_Cursor/View/Cursor.xml'))) throw Error('Native UI cursor protection contract changed');
+  if(!/SecureHandlerStateTemplate/.test(read('evidence/consoleport-contracts/ConsolePort_Target/View/Cursor/Raid.xml')) || !/ConsolePortSecurePie/.test(read('evidence/consoleport-contracts/ConsolePort_Target/View/Ring/Targetring.xml')) || !/SecureActionButtonTemplate/.test(read('evidence/consoleport-contracts/ConsolePort/View/Pie/Pie.xml'))) throw Error('Native protected target owners unavailable');
   const product=read('addon/ConsolePort_Forever/Targeting/Ping.lua');
-  if(/TogglePingListener\s*\(|RunBinding\s*\(|layers:Claim|C_PingSecure\./.test(product)) throw Error('Addon ping dispatch crossed protected boundary');
+  if(/(?:C_Ping(?:Secure)?\.|TogglePingListener\s*\(|RunBinding\s*\(|RunMacroText\s*\()/.test(product)) throw Error('Public addon ping crossed protected dispatch boundary');
   if(fs.existsSync(path.join(root,'addon/ConsolePort_Forever/Bindings.xml'))) throw Error('Insecure custom ping binding retained');
-  const body=read(nativeBase+'Bindings.xml').match(/<Binding name="TOGGLEPINGLISTENER"[^>]*runOnUp="true"[^>]*>([\s\S]*?)<\/Binding>/)?.[1];
-  if(!body) throw Error('Native press/release binding missing');
-  const manager=['GetTargetPingReceiverInfo_Insecure','GetTargetPingReceiverInfo','PingManager:DeterminePingTarget','PingManager:DeterminePingTargetAndSend','PingManager:SendContextualWorldPing'];
-  const listener=['PingListenerFrameMixin:TogglePingListener','PingListenerFrameMixin:GetPingMode','PingListenerFrameMixin:SetCursorPositions','PingListenerFrameMixin:BeginPendingPing','PingListenerFrameMixin:EndPendingPing'];
-  const fixture=source+uiContextFixture()+'\n'+read('tests/harness/ping_targeting.lua')
-    .replace('--@NATIVE_PING_METHODS',()=>manager.map(n=>nativeFunction(nativeBase+'Blizzard_PingManager.lua',n)).concat(listener.map(n=>nativeFunction(nativeBase+'Blizzard_PingUI.lua',n))).join('\n'))
-    .replace('--@NATIVE_MOUSE_DOWN',()=>nativeFunction('evidence/consoleport-contracts/'+mousePath,'Mouse:OnGamePadButtonDown').replaceAll('Mouse:','mouse:'))
-    .replace('--@NATIVE_PING_BINDING',()=>`local function nativeBinding(keystate)\n${body}\nend`);
-  execute(fixture,'native-secure-ping');
+  const normalized=p=>read(p).replace(/\r\n/g,'\n');
+  const utils=normalized('evidence/consoleport-contracts/ConsolePort/Utils/Utils.lua');
+  const database=normalized('evidence/consoleport-contracts/ConsolePort/Utils/Database.lua');
+  const handlers=normalized('evidence/native/Blizzard_RestrictedAddOnEnvironment/SecureHandlers.lua');
+  const native=normalized('evidence/native/Blizzard_FrameXML/SecureTemplates.lua');
+  const manager=normalized('evidence/native/Blizzard_PingUI/Blizzard_PingManager.lua');
+  const slash=normalized('evidence/native/Blizzard_ChatFrameBase/Mainline/SlashCommandsOverrides.lua');
+  const wrap=p=>';(function(...)\n'+normalized(p)+'\nend)("ConsolePort",db);';
+  const fixture=source+'\n'+normalized('tests/harness/ping_targeting.lua')
+    .replace('--@CURRENT_CONVERSION',()=>utils.slice(utils.indexOf('do\tlocal ConvertSecureBody'),utils.indexOf('\nend',utils.indexOf('do\tlocal ConvertSecureBody'))+4))
+    .replace('--@CURRENT_SECURE_ENV',()=>utils.slice(utils.indexOf('CPAPI.SecureExportMixin ='),utils.indexOf('do local UIHider;')))
+    .replace('--@CURRENT_SCRIPT_MIXIN',()=>database.slice(database.indexOf('db.table.mixin ='),database.indexOf('return obj\nend;',database.indexOf('db.table.mixin ='))+15))
+    .replace('--@CURRENT_LAYERS',()=>wrap('evidence/consoleport-contracts/ConsolePort/Controller/Layers.lua'))
+    .replace('--@CURRENT_RADIAL',()=>wrap('evidence/consoleport-contracts/ConsolePort/Controller/Radial.lua'))
+    .replace('--@NATIVE_WRAPPED_CLICK',()=>handlers.slice(handlers.indexOf('local function Wrapped_Click('),handlers.indexOf('local function Wrapped_OnEnter(')))
+    .replace('--@NATIVE_WRAPPED_OTHER',()=>handlers.slice(handlers.indexOf('local function CreateSimpleWrapper('),handlers.indexOf('local function Wrapped_Drag('))+handlers.slice(handlers.indexOf('local function Wrapped_Attribute('),handlers.indexOf('local LOCAL_Wrap_Handlers')))
+    .replace('--@NATIVE_ACTION_DISPATCH',()=>native.slice(native.indexOf('SECURE_ACTIONS.macro ='),native.indexOf('local CANCELABLE_ITEMS'))+native.slice(native.indexOf('local PRESS_TYPE_DOWN'),native.indexOf('function SecureUnitButton_OnLoad')))
+    .replace('--@NATIVE_PING_METHODS',()=>manager.slice(manager.indexOf('function PingManager:SendMacroPing('),manager.indexOf('function PingManager:CancelPendingPing(')))
+    .replace('--@NATIVE_PING_SLASH',()=>slash.slice(slash.indexOf('\tlocal function CleanupPingTypeString('),slash.indexOf('\n\tSlashCommandUtil.CheckAddSecureSlashCommand(SLASH_COMMAND.PING_SPELL')));
+  if(/--@(?:CURRENT|NATIVE)_/.test(fixture)) throw Error('Unfilled secure ping contract marker');
+  execute(fixture,'secure-macro-controller-ping');
   for(const [name,from,to,expected] of [
-    ['insecure-hardware-dispatch',"self.held=button","api.C_Ping.TogglePingListener(true) self.held=button",'ADDON_ACTION_FORBIDDEN'],
-    ['stale-controller-pointer',"api.SetCVar(CENTER, '1')",'-- centering removed','parked pointer blocked controller tap'],
-    ['early-pointer-restoration','api.C_Timer.After(0,function()','local immediate=function(_,callback) callback() end; immediate(0,function()','parked pointer blocked controller tap'],
-    ['missing-ping-restoration','self:ReleaseCenter(api)','do end','tap did not restore prior centering']
+    ['unprotected-cursor-startup-rejection',"(name~='Cursor' and not owner:IsProtected())","not owner:IsProtected()",'qualified unprotected UI cursor prevented ping startup'],
+    ['unprotected-cursor-combat-inspection',"(owner:IsProtected() or self:GetAttribute('state-cpf-combat')~='combat')",'true','restricted unprotected handle in combat'],
+    ['vanished-soft-unit-fallback',"..unit..',exists]'","..unit..']'",'vanished aimed unit fell back to stale hit test'],
+    ['public-onshow-protected-write',"frame:HookScript('OnShow',function()","frame:HookScript('OnShow',function() frame:SetAttribute('cpf-public-bug',true)",'insecure protected attribute write'],
+    ['missing-inline-centering',"body='/console GamePadCursorCentering 1","body='/console GamePadCursorCentering 0",'point ping used parked UI receiver'],
+    ['other-native-radial-handoff',"self:CaptureRadialOwners(bridge)",'do end','other native radial did not cancel ping gesture'],
+    ['already-open-native-radial',"for index=1,(self:GetAttribute('cpf-radial-owner-count') or 0) do",'for index=1,0 do','ping started over another radial'],
+    ['insecure-public-macro-ping',"function frame:CaptureCenter()", "function frame:CaptureCenter() api.C_Ping.SendMacroPing({targetToken='cursor'})", 'ADDON_ACTION_FORBIDDEN'],
+    ['plain-ping-ui-blocker','/ping [@cursor]','/ping ', 'contextual point tap not sent'],
+    ['wrong-selected-ping-type',"(' '..index)","(' '..1)",'selected ping type not dispatched'],
+    ['missing-cursor-restoration',"self:CallMethod('RestoreCenter')",'do end','release did not restore/clear'],
+    ['foreign-modal-delayed-release',"then ping:RunAttribute('cpf-cancel') end",'then do end end','foreign modal takeover did not cancel'],
+    ['cancel-wedge-sends-ping',"if index==7 then self:RunAttribute('cpf-cancel') return end",'do end','Cancel wedge sent ping']
   ]) {
+    if(!fixture.includes(from)) throw Error('Stale ping negative-control needle: '+name);
     let rejected=false;
     try {execute(fixture.replaceAll(from,to),name);}
     catch(error) {rejected=String(error).includes(expected);}
-    if(!rejected) throw Error('Ping negative control did not fail: '+name);
+    if(!rejected) throw Error('Secure ping negative control did not fail for expected reason: '+name);
   }
+  const registration="api.RegisterStateDriver(frame,'cpf-combat','[combat] combat; peace')";
+  if(!fixture.includes(registration)) throw Error('Initial combat-state registration missing');
+  const early=fixture.replace(registration,'do end').replace("radial:Register(frame,'ForeverPing'",registration+"\nradial:Register(frame,'ForeverPing'");
+  let rejected=false;
+  try {execute(early,'early-combat-registration');} catch(error) {rejected=String(error).includes('nil value');}
+  if(!rejected) throw Error('Initial state-driver ordering negative control did not fail');
 });
 check('T61.all-classes-native-dragonriding-and-temporary-L2R2-engine-dispatch', () => {
   const base='evidence/consoleport-contracts/';

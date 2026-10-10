@@ -1,0 +1,67 @@
+{
+  "version": "2.0.0-candidate.24",
+  "stage": "qualified-ready-for-user-test",
+  "roles": {
+    "implementer": "/root/ping_implementer",
+    "independentReviewer": "/root"
+  },
+  "acceptedSourceHashes": {
+    "addon/ConsolePort_Forever/Targeting/Ping.lua": "6fab9a74fc1b982dac21005280a64c8f1be469459768033f51f7fb93e1d9acd1",
+    "tests/harness/ping_targeting.lua": "74546639209cd4da003e8622130fab4e522fbc6a61c326d3677b5c6f6a2ce51b",
+    "tools/test-all.cjs": "ecad1f61366e37fe8c9569477be86d6265d8a62f5ffa95c5efc694b5cbf55b8d"
+  },
+  "mandatoryMutationCount": 14,
+  "mutations": [
+    "unprotected cursor startup rejection",
+    "unprotected cursor combat inspection",
+    "vanished soft unit fallback",
+    "public OnShow protected write",
+    "missing inline centering",
+    "other native radial handoff",
+    "already open native radial",
+    "insecure public macro ping",
+    "plain ping blocked UI",
+    "wrong selected type",
+    "missing restoration",
+    "foreign modal delayed release",
+    "cancel wedge sends ping",
+    "early state driver registration"
+  ],
+  "withdrawnEarlierAcceptance": true,
+  "remainingAcceptanceGates": [
+    "Retail secure authority/taint",
+    "same-macro centering and actual world hit test",
+    "real device/reconnect event ordering",
+    "arbitrary late third-party radial creation before native-module refresh"
+  ],
+  "preservedFiles": {
+    "TemporaryRouting.lua": "f857288263f1124cc9c66eab37564ccbf56ec7844af46f4a799fe37981d4cdbf",
+    "Targeting/Ground.lua": "8703e0a7f5731845c43dd3e892a3682d42cde6e034a3658553319287886b7130"
+  },
+  "qualifiedStableRetailCheck": "2026-10-10T06:26:44.738028+00:00",
+  "deploymentScope": [
+    "ConsolePort_Forever"
+  ],
+  "retailAcceptance": "NOT RUN; ready-for-user-test agreement is not live certification",
+  "agreement": {
+    "implementer": {
+      "verdict": "ACCEPT",
+      "independentlyVerified": "62 runtime/source suites and 39 tooling tests pass; current hashes match reports; preserved routing/ground bytes match installed baseline; final explanation reread; no known source blocker in qualified native contract."
+    },
+    "independentReviewer": {
+      "verdict": "ACCEPT",
+      "independentlyVerified": "Complete required IDs/statuses verified with builder validator; all product/tooling hashes match; 14 adversarial mutations reject known flaws for expected reasons; actual native source/owner contracts reread; no known source blocker in qualified native contract."
+    },
+    "bothAgree": true,
+    "meaning": "Ready for user Retail testing; not live hardware/engine certification"
+  },
+  "runtimeSuites": 62,
+  "toolingChecks": 39,
+  "temporaryRoutingCases": 4160,
+  "greenReports": {
+    "candidate24-runtime.json": "f9b396451e66ece9660df23e798425f16c88b7ef82d2f046b3c6eb7c8718ce23",
+    "candidate24-tooling.json": "c499cbd6187eb03920dc8d32dafe195fe66b8d14e6914c7ed4af087628567b0c"
+  },
+  "finalFullRuntimeCompletedAt": "2026-10-10T07:08:36.831Z",
+  "preservedAgainstSourceCommit": "5eff38bad40312b887db9ed44983a292513855e3"
+}

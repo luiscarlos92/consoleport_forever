@@ -3,6 +3,12 @@ import json
 from repository_paths import ROOT, contained, output, sha
 
 FILES = [
+    'ConsolePort/View/Pie/Pie.xml',
+    'ConsolePort_Cursor/View/Cursor.xml',
+    'ConsolePort_Target/View/Cursor/Raid.lua',
+    'ConsolePort_Target/View/Cursor/Raid.xml',
+    'ConsolePort_Target/View/Ring/Targetring.lua',
+    'ConsolePort_Target/View/Ring/Targetring.xml',
     'ConsolePort/Controller/Pager.lua',
     'ConsolePort_Bar/Widget/Bar/Bar.lua',
     'ConsolePort/Controller/Mouse.lua',

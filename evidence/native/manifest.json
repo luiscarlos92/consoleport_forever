@@ -439,5 +439,12 @@
     "gitBlob": "bf34751888ac7d36d03086d75f9ccc420ea72b73",
     "sha256": "18d8d0bff4b8c839a34bcb1245587cbae7441b21263261b5cdf89f76f144620e",
     "url": "https://github.com/Gethe/wow-ui-source/blob/09b9db7948abc9b9648dedaab51eb0cf3ee67b31/Interface/AddOns/Blizzard_APIDocumentationGenerated/PingManagerSecureDocumentation.lua"
+  },
+  {
+    "path": "Blizzard_ChatFrameBase/Mainline/SlashCommandsOverrides.lua",
+    "commit": "09b9db7948abc9b9648dedaab51eb0cf3ee67b31",
+    "gitBlob": "dbb9f409d1cb1d3fb02abcbda21b87119689fb13",
+    "sha256": "53ee85582decf9ac0981f5c7d95f50706d8c0f0b9e156db6c8a3c98afec14ed8",
+    "url": "https://github.com/Gethe/wow-ui-source/blob/09b9db7948abc9b9648dedaab51eb0cf3ee67b31/Interface/AddOns/Blizzard_ChatFrameBase/Mainline/SlashCommandsOverrides.lua"
   }
 ]

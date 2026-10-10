@@ -7,6 +7,7 @@ from repository_paths import ROOT, output, sha
 
 REV='09b9db7948abc9b9648dedaab51eb0cf3ee67b31'
 FILES=[
+    'Blizzard_ChatFrameBase/Mainline/SlashCommandsOverrides.lua',
     'Blizzard_PingUI/Bindings.xml',
     'Blizzard_PingUI/Blizzard_PingManager.lua',
     'Blizzard_PingUI/Blizzard_PingUI.lua',

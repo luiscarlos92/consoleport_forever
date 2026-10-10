@@ -1,3 +1,28 @@
+## Installed candidate.26 — October 10, 2026, 15:35:48 Toronto
+
+The user-authorized emergency update is installed with WoW closed from tested,
+pushed source f39aee6915b18c85deea07aa155e73bae3e8f82a. All 64 runtime/source
+suites and 39 tooling checks pass. Scoped deployment included Forever plus only
+previously prepared changed LiteMount12.1.0-2 and Plater-v658. All nine official
+stable Retail releases were freshly checked this session; no new downloads.
+Independent readback verifies 694 exact installed files, 1,859 unselected addon
+files and all 306 WTF files unchanged, 42 junctions and root anchors preserved,
+and prior addon/configuration backups verified at
+C:/Users/luisr/WoW-Backups/ConsolePort-Forever/20261010T193431Z-6eb87ea8a53b.
+ZIP SHA256 f412e4d744a26f06341b235c75344ef49e2a9435ed683de84e4d07581f953c0d.
+
+Next Paladin/Retribution login attempts learned-spell restoration from the same
+character's earlier Forever diagnostic backup after two seconds of ordinary
+state. This emergency reference contains 21 exact original spell/slot pairs;
+macros/items/flyouts are preserved. Future good snapshots are GUID/spec owned.
+The incomplete class-binding archive/projection defect is also reproduced/fixed;
+normal/temporary transition refresh and stale quest-header recovery are covered.
+Revision17, native input, ground placement and HUD remain. Filesystem WTF writes
+and game launch/input were not performed. Copybara was not used. Actual in-game
+restoration and the underlying cause of action storage loss remain unverified
+until the user's login test. See candidate26 diagnosis, tests, scoped preview,
+install and independent readback receipts. This deployment authorization is
+fulfilled; further deployments need new user authorization with WoW closed.
 ## Candidate.26 emergency Paladin action recovery — October 10, 2026 (DEPLOYMENT AUTHORIZED)
 
 The user reports catastrophic empty/misplaced Paladin abilities during the Midnight

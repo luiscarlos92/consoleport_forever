@@ -1,0 +1,22 @@
+{
+  "installedVersion": "2.0.0-candidate.26",
+  "sourceCommit": "f39aee6915b18c85deea07aa155e73bae3e8f82a",
+  "packSHA256": "f412e4d744a26f06341b235c75344ef49e2a9435ed683de84e4d07581f953c0d",
+  "closedAt": "2026-10-10T19:35:48.128945+00:00",
+  "installedFilesVerified": 694,
+  "unselectedFilesUnchanged": 1859,
+  "wtfFilesUnchanged": 306,
+  "junctionsUnchanged": 42,
+  "anchorsUnchanged": true,
+  "backupsVerified": true,
+  "backup": "C:\\Users\\luisr\\WoW-Backups\\ConsolePort-Forever\\20261010T193431Z-6eb87ea8a53b",
+  "runtimeSuites": 64,
+  "toolingChecks": 39,
+  "configurationRevision": 17,
+  "dependencyUpdates": [
+    "Tercioo/Plater-Nameplates",
+    "xod-wow/LiteMount"
+  ],
+  "noLiveWTFWrites": true,
+  "liveAcceptance": "Next Paladin login performs game-owned spell restoration. Actual client restoration and underlying storage-loss trigger remain unverified."
+}

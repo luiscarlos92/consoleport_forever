@@ -1,3 +1,25 @@
+## Installed candidate.27 — October 10, 2026, 17:00:18 Toronto
+
+The user's "deploy now" authorization is fulfilled. With WoW closed, installed
+only Forever from tested/pushed source 8008608235d6a0816ab85e0c45dc8d42c29307a5.
+All 64 runtime/source suites and 39 tooling checks remain exact to source hashes.
+Fresh official stable Retail recheck: nine packages current, none changed or
+reshipped. Scoped preview/installer and independent readback verify 55 exact
+installed files, 2498 unselected addon files and 306 WTF files unchanged,
+42 junctions/root anchors preserved, and verified prior code/config backups at
+C:/Users/luisr/WoW-Backups/ConsolePort-Forever/20261010T205951Z-639a836187d3.
+ZIP SHA256 c945e45adc2151275a5fc3a6137cfe7c2d2572765d4824eda9a3fc8c602cc5ef.
+
+Automatic slot restoration is removed; native drag/cache/binding refresh fixes
+preserve edits and resolve the current temporary page after held-action handoff.
+R3 hold uses the approved native ConsolePort ring, with tap/release and Circle/B
+cancel. Revision17, accepted ground placement, class data and HUD remain. No live
+WTF filesystem editing, addon pruning or game launch/input. Actual Retail edit,
+controller and rendering acceptance remains the user's test; the original quest
+wipe's exact writer is still unconfirmed. See candidate27 install/readback receipts.
+Further deployment requires new authorization with WoW closed. Older limits below
+are historical and do not describe the installed state.
+
 # Candidate.27: hold ring and native bar editing — preparation only
 
 The user confirms candidate.26 restored the Paladin, requests the R3 behavior

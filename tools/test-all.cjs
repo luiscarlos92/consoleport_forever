@@ -656,6 +656,7 @@ function visibilityFixture() {
 check('T31.native-visibility-parent-lifecycle', () => execute(visibilityFixture(),'native-visibility-parent-lifecycle'));
 check('T40.hidden-controls-native-ring-and-seat-access', () => {
   const fixture=read('tests/harness/hidden_access.lua')
+    .replace('--@NATIVE_LIBSTUB',()=>normalized('evidence/consoleport-contracts/ConsolePort/Libs/External/LibStub/LibStub.lua'))
     .replace('--@NATIVE_RING_MAP',()=>read('evidence/consoleport-contracts/ConsolePort_Rings/Model/Map.lua'))
     .replace('--@NATIVE_STANCE_VISIBILITY',()=>nativeFunction('evidence/native/Blizzard_ActionBar/Shared/StanceBar.lua','StanceBarMixin:ShouldShow'))
     .replace('--@NATIVE_SEAT_VISIBILITY',()=>nativeFunction('evidence/native/Blizzard_UIPanels_Game/Shared/VehicleSeatIndicator.lua','VehicleSeatIndicatorMixin:UpdateShownState'))
@@ -886,7 +887,7 @@ check('T59.character-binding-capture-rejects-account-view', () => {
   catch(error) {rejected=String(error).includes('account view erased character class binding');}
   if(!rejected) throw Error('account character-capture negative control did not fail');
 });
-check('T60.native-secure-macro-ping-stick-selection-and-owner-cancellation', () => {
+check('T60.inactive-candidate27-secure-ping-fallback', () => {
   const nativeManifest=JSON.parse(read('evidence/native/manifest.json'));
   const cpManifest=JSON.parse(read('evidence/consoleport-contracts/manifest.json'));
   for(const name of ['Blizzard_ChatFrameBase/Mainline/SlashCommandsOverrides.lua','Blizzard_PingUI/Blizzard_PingManager.lua','Blizzard_FrameXML/SecureTemplates.lua','Blizzard_RestrictedAddOnEnvironment/SecureHandlers.lua','Blizzard_RestrictedAddOnEnvironment/RestrictedFrames.lua','Blizzard_RestrictedAddOnEnvironment/RestrictedExecution.lua']) {
@@ -913,7 +914,8 @@ check('T60.native-secure-macro-ping-stick-selection-and-owner-cancellation', () 
   const slash=normalized('evidence/native/Blizzard_ChatFrameBase/Mainline/SlashCommandsOverrides.lua');
   const compiler=normalized('evidence/native/Blizzard_RestrictedAddOnEnvironment/RestrictedExecution.lua');
   const wrap=p=>';(function(...)\n'+normalized(p)+'\nend)("ConsolePort",db);';
-  const fixture=source+'\n'+normalized('tests/harness/ping_targeting.lua')
+  const legacy=read('fallbacks/ping-candidate27/Ping.lua.disabled');
+  const fixture=source.replace(product,legacy)+'\n'+normalized('fallbacks/ping-candidate27/ping_targeting.lua.disabled')
     .replace('--@CURRENT_PIE_STYLE',()=> 'CPPieSliceMixin={}\nlocal SLICE_FRACTION,BG_FRACTION,MASK_FRACTION=512/300,480/300,512/300;\n'+['CPPieMenuMixin:UpdatePieSlices','CPPieSliceMixin:SetIndex','CPPieSliceMixin:RotateMasks','CPPieSliceMixin:UpdateSize'].map(name=>nativeFunction('evidence/consoleport-contracts/ConsolePort/Widget/PieMenu/PieMenu.lua',name)).join('\n'))
     .replace('--@CURRENT_CONVERSION',()=>utils.slice(utils.indexOf('do\tlocal ConvertSecureBody'),utils.indexOf('\nend',utils.indexOf('do\tlocal ConvertSecureBody'))+4))
     .replace('--@CURRENT_SECURE_ENV',()=>utils.slice(utils.indexOf('CPAPI.SecureExportMixin ='),utils.indexOf('do local UIHider;')))
@@ -1104,6 +1106,68 @@ check('T64.action-storage-observers-never-restore-or-rewrite-bars', () => {
   try {execute(source+'\n;(function(...)\n'+read('evidence/action-recovery/ActionRecovery-candidate26.lua')+'\nend)("ConsolePort_Forever",Addon);\n'+read('tests/harness/action_recovery.lua'),'removed-automatic-restoration');}
   catch(error) {rejected=String(error).includes('automatic action-slot restoration rewrote edited bars');}
   if(!rejected) throw Error('Automatic action-slot rewrite regression was not reproduced');
+});
+check('T65.native-account-ping-ring-immediate-press-and-native-controls', () => {
+  const product=read('addon/ConsolePort_Forever/Targeting/Ping.lua');
+  if(/CreateFrame\('PieMenu'|CreateTexture|CreateMaskTexture|cpfIcons|SetFocusByIndex|GetIndexForPos/.test(product)) throw Error('Separate ping renderer or selector retained');
+  if(/C_Ping(?:Secure)?\.|RunMacroText\s*\(/.test(product)) throw Error('Public privileged ping dispatch');
+  const manifest=JSON.parse(read('evidence/consoleport-contracts/manifest.json'));
+  for(const name of ['Database.lua','Model/Map.lua','Model/Container.lua','Controller/Secure.lua','View/Ring/Ring.lua','View/Ring/Button.lua']) {
+    const relative='ConsolePort_Rings/'+name;
+    if(sha('evidence/consoleport-contracts/'+relative)!==manifest.files.find(row=>row.path===relative)?.sha256) throw Error('Native account ring contract drift: '+relative);
+  }
+  const normalized=p=>read(p).replace(/\r\n/g,'\n');
+  const utils=normalized('evidence/consoleport-contracts/ConsolePort/Utils/Utils.lua');
+  const database=normalized('evidence/consoleport-contracts/ConsolePort/Utils/Database.lua');
+  const handlers=normalized('evidence/native/Blizzard_RestrictedAddOnEnvironment/SecureHandlers.lua');
+  const native=normalized('evidence/native/Blizzard_FrameXML/SecureTemplates.lua');
+  const manager=normalized('evidence/native/Blizzard_PingUI/Blizzard_PingManager.lua');
+  const slash=normalized('evidence/native/Blizzard_ChatFrameBase/Mainline/SlashCommandsOverrides.lua');
+  const compiler=normalized('evidence/native/Blizzard_RestrictedAddOnEnvironment/RestrictedExecution.lua');
+  const wrap=p=>';(function(...)\n'+normalized(p)+'\nend)("ConsolePort",db);';
+  let fixture=source+'\n'+normalized('tests/harness/ping_account_ring.lua').replace('--@NATIVE_ACCOUNT_RING_HOST',()=>normalized('tests/harness/ping_account_ring_host.lua')).replace('--@NATIVE_ACCOUNT_RING_CHECKS',()=>normalized('tests/harness/ping_account_ring_checks.lua'))
+    .replace('--@CURRENT_PIE_STYLE',()=> 'CPPieSliceMixin={}\nlocal SLICE_FRACTION,BG_FRACTION,MASK_FRACTION=512/300,480/300,512/300;\n'+['CPPieMenuMixin:UpdatePieSlices','CPPieSliceMixin:SetIndex','CPPieSliceMixin:RotateMasks','CPPieSliceMixin:UpdateSize'].map(name=>nativeFunction('evidence/consoleport-contracts/ConsolePort/Widget/PieMenu/PieMenu.lua',name)).join('\n'))
+    .replace('--@CURRENT_CONVERSION',()=>utils.slice(utils.indexOf('do\tlocal ConvertSecureBody'),utils.indexOf('\nend',utils.indexOf('do\tlocal ConvertSecureBody'))+4))
+    .replace('--@CURRENT_SECURE_ENV',()=>utils.slice(utils.indexOf('CPAPI.SecureExportMixin ='),utils.indexOf('do local UIHider;')))
+    .replace('--@CURRENT_SCRIPT_MIXIN',()=>database.slice(database.indexOf('db.table.mixin ='),database.indexOf('return obj\nend;',database.indexOf('db.table.mixin ='))+15))
+    .replace('--@CURRENT_LAYERS',()=>wrap('evidence/consoleport-contracts/ConsolePort/Controller/Layers.lua'))
+    .replace('--@CURRENT_RADIAL',()=>wrap('evidence/consoleport-contracts/ConsolePort/Controller/Radial.lua'))
+    .replace('--@NATIVE_RESTRICTED_COMPILER',()=>compiler.slice(compiler.indexOf('local function SelfScrub('),compiler.indexOf('-- Max number of cached closures')))
+    .replace('--@NATIVE_WRAPPED_CLICK',()=>handlers.slice(handlers.indexOf('local function Wrapped_Click('),handlers.indexOf('local function Wrapped_OnEnter(')))
+    .replace('--@NATIVE_WRAPPED_OTHER',()=>handlers.slice(handlers.indexOf('local function CreateSimpleWrapper('),handlers.indexOf('local function Wrapped_Drag('))+handlers.slice(handlers.indexOf('local function Wrapped_Attribute('),handlers.indexOf('local LOCAL_Wrap_Handlers')))
+    .replace('--@NATIVE_ACTION_DISPATCH',()=>native.slice(native.indexOf('SECURE_ACTIONS.macro ='),native.indexOf('local CANCELABLE_ITEMS'))+native.slice(native.indexOf('local PRESS_TYPE_DOWN'),native.indexOf('function SecureUnitButton_OnLoad')))
+    .replace('--@NATIVE_PING_METHODS',()=>manager.slice(manager.indexOf('function PingManager:SendMacroPing('),manager.indexOf('function PingManager:CancelPendingPing(')))
+    .replace('--@NATIVE_PING_SLASH',()=>slash.slice(slash.indexOf('\tlocal function CleanupPingTypeString('),slash.indexOf('\n\tSlashCommandUtil.CheckAddSecureSlashCommand(SLASH_COMMAND.PING_SPELL')));
+  const ringBase='evidence/consoleport-contracts/ConsolePort_Rings/';
+  fixture=fixture.replace('--@NATIVE_RING_DATABASE',()=>normalized(ringBase+'Database.lua').slice(normalized(ringBase+'Database.lua').indexOf('env.Attributes ='),normalized(ringBase+'Database.lua').indexOf('env.LABConfig ='))+normalized(ringBase+'Database.lua').slice(normalized(ringBase+'Database.lua').indexOf('function env:GetData(')))
+    .replace('--@NATIVE_LIBSTUB',()=>normalized('evidence/consoleport-contracts/ConsolePort/Libs/External/LibStub/LibStub.lua'))
+    .replace('--@NATIVE_RING_MAP',()=>';(function(...)\n'+normalized(ringBase+'Model/Map.lua')+'\nend)("ConsolePort_Rings",db);')
+    .replace('--@NATIVE_RING_CONTAINER',()=>';(function(...)\n'+normalized(ringBase+'Model/Container.lua')+'\nend)("ConsolePort_Rings",db);')
+    .replace('--@NATIVE_RING_SECURE',()=>';(function(...)\n'+normalized(ringBase+'Controller/Secure.lua')+'\nend)("ConsolePort_Rings",db);')
+    .replace('--@NATIVE_RING_FRONTEND',()=>';(function(...)\n'+normalized(ringBase+'View/Ring/Ring.lua')+'\nend)("ConsolePort_Rings",db);')
+    .replace('--@NATIVE_RING_BUTTON',()=>';(function(...)\n'+normalized(ringBase+'View/Ring/Button.lua')+'\nend)("ConsolePort_Rings",db);')
+    .replace('--@NATIVE_TEXTURE_ADAPTER',()=>nativeFunction('evidence/consoleport-contracts/ConsolePort/Libs/Local/ActionButton.lua','Lib.SkinUtility.SetTexture'))
+    .replace('--@NATIVE_CLICK_ACTION',()=>native.slice(native.indexOf('SECURE_ACTIONS.click ='),native.indexOf('SECURE_ACTIONS.attribute =')));
+  if(/--@(?:CURRENT|NATIVE)_/.test(fixture)) throw Error('Unfilled native account ring marker');
+  execute(fixture,'native-account-ping-ring');
+  for(const [name,from,to,expected] of [
+    ['callable-LibStub-startup',"type(cp.Static)~='function'","type(cp.Static)~='function' or type(api.LibStub)~='function'",'qualified native secure ping selector unavailable'],
+    ['missing-immediate-press',"self:SetAttribute('type','macro')","self:SetAttribute('type',nil)",'press did not send immediately'],
+    ['native-open-before-press',"self:SetAttribute('type','macro')","self:GetFrameRef('ring'):RunAttribute('Main',self:GetAttribute('cpf-ring-id'),true) self:SetAttribute('type','macro')",'immediate ping sent after camera capture'],
+    ['tap-artwork',"ring:SetAlpha(0)","ring:SetAlpha(1)",'tap displayed selector'],
+    ['personal-ring-storage',"self.ring,self.env=ring,env","ring.Data[id]=ring.Shared[id] ring.Shared[id]=nil self.ring,self.env=ring,env",'native account Shared container missing'],
+    ['missing-native-release',"self:SetAttribute('typerelease','click')","self:SetAttribute('typerelease',nil)",'neutral tap release retained ring or sent extra ping'],
+    ['reseed-account-edits',"if not ring.Shared[id] then", "if true then",'native account creation rejected'],
+    ['missing-centering',"/console GamePadCursorCentering 1","/console GamePadCursorCentering 0",'point ping used parked UI receiver'],
+    ['shared-header-state-hijack',"ring:RunAttribute('Main',self:GetAttribute('cpf-ring-id'),true)","ring:RunAttribute('SetContextAttribute','state',self:GetAttribute('cpf-ring-id')) ring:RunAttribute('Main',self:GetAttribute('cpf-ring-id'),true)",'ping context hijacked aura opener'],
+    ['atlas-widget-unmount',"return function(texture) texture:SetTexCoord(0,1,0,1) end","return nil",'ping atlas UVs leaked into aura icon'],
+    ['native-skin-bypassed',"button:OnLoad()","do end",'native skin/initializer missing']
+  ]) {
+    if(!fixture.includes(from)) throw Error('Stale account-ring mutation: '+name);
+    let rejected=false;
+    try {execute(fixture.replaceAll(from,to),name);} catch(error) {rejected=String(error).includes(expected);}
+    if(!rejected) throw Error('Account-ring mutation did not fail for expected reason: '+name);
+  }
 });
 const report = {at:new Date().toISOString(), commit:cp.execFileSync('git',['rev-parse','HEAD'],{cwd:root}).toString().trim(),
   productHashes:Object.fromEntries(files('addon').map(f=>[f,sha(f)])),

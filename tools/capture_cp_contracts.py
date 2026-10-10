@@ -3,6 +3,11 @@ import json
 from repository_paths import ROOT, contained, output, sha
 
 FILES = [
+    'ConsolePort/Libs/External/LibStub/LibStub.lua',
+    'ConsolePort/Widget/PieMenu/PieMenu.lua',
+    'ConsolePort/Widget/PieMenu/PieMenu.xml',
+    'ConsolePort_Rings/View/Ring/Ring.xml',
+
     'ConsolePort/View/Pie/Pie.xml',
     'ConsolePort_Cursor/View/Cursor.xml',
     'ConsolePort_Target/View/Cursor/Raid.lua',
@@ -24,6 +29,7 @@ FILES = [
     'ConsolePort_Rings/Model/Container.lua', 'ConsolePort_Rings/Model/Map.lua',
     'ConsolePort_Rings/Controller/Secure.lua', 'ConsolePort_Rings/Database.lua',
     'ConsolePort_Rings/Controller/Auto.lua',
+    'ConsolePort_Rings/View/Ring/Ring.lua', 'ConsolePort_Rings/View/Ring/Button.lua',
     'ConsolePort_Cursor/Controller/Stack.lua', 'ConsolePort_Cursor/Controller/Scroll.lua',
     'ConsolePort/Libs/External/RelaTable/RelaTable.lua',
     'ConsolePort/Controller/Radial.lua', 'ConsolePort/Controller/Convenience.lua',

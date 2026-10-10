@@ -1,0 +1,19 @@
+{
+  "baseline": "installed candidate.27",
+  "unchangedFiles": {
+    "ActionRecovery.lua": "02c8108068501da27aabf56d4d15fca0ed37694a6e219b1295f208686271f828",
+    "TemporaryRouting.lua": "a31bb8af8454351efc309966648d3c29ecc58569ff1967f7a3c6c480c8de9555",
+    "Targeting/Ground.lua": "8703e0a7f5731845c43dd3e892a3682d42cde6e034a3658553319287886b7130",
+    "Adapters/Rings.lua": "1a053d9853f214fb7c91efeebad65887b7de12551e35b9af35f3bffba578feff",
+    "ClassActions.lua": "8db90609dde641f02acff81a5350094f87b45114be600b76d4f342619ccf1c67",
+    "ConsolePort_Forever.lua": "4a5bfccb36cb12e33b2c48300b159eaf3bfad28aef771822428c5f29ca75641e"
+  },
+  "noDeployment": true,
+  "noLiveWTFWrites": true,
+  "nativeConsolePortSourcesModified": false,
+  "totalProductFiles": 58,
+  "changedProductFiles": [
+    "addon/ConsolePort_Forever/ConsolePort_Forever.toc",
+    "addon/ConsolePort_Forever/Targeting/Ping.lua"
+  ]
+}

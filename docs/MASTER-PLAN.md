@@ -1,3 +1,35 @@
+## Candidate.28 true account ping ring — October 10, 2026 (DO NOT DEPLOY)
+
+The user confirms candidate.27 bar editing and ping/selection work, but its
+separate frame has broken visuals. Keep that exact functional ping source as an
+inactive fallback outside the addon/TOC, with hashes and its regression harness.
+Replace it with a real native ConsolePort account ring in ConsolePortRingsShared.
+R3 sends an aimed contextual ping immediately on button-down, with no tap menu;
+a hold reveals the actual native ring after 0.15 seconds. The initial ping is
+sent before the ring takes the camera. A hold also sends this initial press ping.
+Native release/stick/sticky/edit/cancel behavior remains; no custom Circle/B claim.
+Only artwork uses a public clock, never privileged dispatch or protected writes.
+
+Native Shared account data is seeded once and preserves order/removals/edits across
+characters. Other personal/shared rings are preserved; naming collisions fail
+closed. A secure release alias matches the native set ID without hijacking other
+set openers on the same header. The native ring frontend/LAB pool/skins provide
+the presentation; no separate PieMenu/slice/icon renderer remains.
+
+Candidate.27 ActionRecovery, TemporaryRouting, Ground, class rings/data, main
+addon and revision17 stay byte-identical. Automatic slot restoration stays removed.
+All nine official stable Retail dependencies freshly checked: none changed.
+T60 retains the inactive fallback; T65 covers the actual full native account ring
+backend/frontend plus the native restricted compiler and macro dispatcher.
+Full runtime/tooling qualification and preparation receipts are required before
+packaging. Actual Retail hardware/rendering acceptance remains the user's test.
+
+No deployment, installer preview, live AddOns/WTF writes, game input, reload or
+restart. The user is playing; installed candidate.27 remains unchanged. This
+preparation-only instruction supersedes earlier fulfilled deployment authorizations.
+See docs/CANDIDATE28-NATIVE-ACCOUNT-PING-RING-2026-10-10.md and
+fallbacks/ping-candidate27/manifest.json.
+
 ## Installed candidate.27 — October 10, 2026, 17:00:18 Toronto
 
 The user's "deploy now" authorization is fulfilled. With WoW closed, installed

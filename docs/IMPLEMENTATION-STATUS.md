@@ -1,3 +1,33 @@
+All 67 runtime/source suites and 39 tooling checks pass on exact frozen source.
+T66 reproduces the pinned Required Items measurement defect and qualifies the
+additive correction; T67 verifies saved layout capture without native save/select
+calls and preservation of manual Party edits. Installed candidate.27 remains
+unchanged; the options-list request was explicitly withdrawn, with no code change.
+Preparation only; actual Retail acceptance remains in the cumulative checklist.
+
+## Candidate.29 Required Items and current Edit Mode reference — October 10, 2026 (DO NOT DEPLOY)
+
+The user authorized Forever-owned runtime interception for Immersion Required
+Items and synchronization of the known default with their saved Edit Mode layout.
+Keep Immersion files/ImmersionSetup unchanged; no dependency update or live WTF
+filesystem writes. Revision17 remains; a single backed-up Forever integration
+policy field enables the repair without replaying the full installer.
+Use additive post-hooks and deferred native SetExtraOffset after native measurement,
+with same-dialog/quest, version, anchor/dynamic, combat/Edit Mode and close guards.
+
+Retain the user's complete saved managed layout as a read-only packaged reference
+(52 systems). Native saved layouts remain authoritative on login and after edits;
+track the active layout per GUID and owned account layout as known default without
+saving/importing/selecting layouts. Existing owned copies preserve Party/manual
+edits; Party defaults apply only to new managed copies.
+Carry forward candidate.28 native account ping ring and the disabled candidate.27
+functional fallback. Preserve installed candidate.27 bar repair and ground/class
+behavior. Fresh official stable Retail check: nine current dependencies, no updates.
+Full exact-source qualification and packaging remain required. See
+[implementation](CANDIDATE29-IMMERSION-EDITMODE-2026-10-10.md) and the
+[cumulative test checklist](NEXT-DEPLOYMENT-CHECKLIST.md).
+No deployment/installer preview/game input/reload/restart while the user plays.
+
 ## Candidate.28 true account ping ring — October 10, 2026 (DO NOT DEPLOY)
 
 The user confirms candidate.27 bar editing and ping/selection work, but its

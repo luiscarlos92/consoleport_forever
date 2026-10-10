@@ -45,7 +45,11 @@ function Setup.Adapters(api,account)
         adapters.bindings.bankInspector=adapters.bindingBanks
         adapters.bindings.canWrite=adapters.bindingBanks.canWrite
     end
-    if account then adapters.policy=Addon.FlatConfigAdapter.New(function() return account.shared.runtimePolicy end,{modesEnabled=true,groundTargetingEnabled=true,focusVisuals=true,uiContextsEnabled=true,windowsEnabled=true,bagsEnabled=true,mapEnabled=true,blizzardVisibility=true,hiddenAccessEnabled=true},api.InCombatLockdown) end
+    if account then
+        adapters.policy=Addon.FlatConfigAdapter.New(function() return account.shared.runtimePolicy end,{modesEnabled=true,groundTargetingEnabled=true,focusVisuals=true,uiContextsEnabled=true,windowsEnabled=true,bagsEnabled=true,mapEnabled=true,blizzardVisibility=true,hiddenAccessEnabled=true},api.InCombatLockdown)
+        adapters.immersionProgress=Addon.FlatConfigAdapter.New(function() return account.shared.integrationPolicy end,
+            {immersionProgressRepairVersion=true},api.InCombatLockdown)
+    end
     if api.C_EditMode and api.EditModePresetLayoutManager then
         adapters.editmode=Addon.EditModeAdapter.New({GetLayouts=api.C_EditMode.GetLayouts,
             SaveLayouts=api.C_EditMode.SaveLayouts,SetActiveLayout=api.C_EditMode.SetActiveLayout,
@@ -167,9 +171,14 @@ function Setup.Fields(db,guid,adapters,api,revision)
         if snapshot then
             local proposal,error=adapters.editmode:Proposal(snapshot,Addon.PROFILE_NAME,db.shared.managedEditModeName)
             if proposal then
-                local party,partyReason=Addon.PartyLayout.Proposal(proposal,adapters.editmode.api,db.shared.managedEditModeName)
+                -- Party defaults belong only to creation of a new copy. Later
+                -- player edits to an owned layout are the authoritative default.
+                local party,partyReason
+                if #proposal.layouts>#snapshot.layouts then
+                    party,partyReason=Addon.PartyLayout.Proposal(proposal,adapters.editmode.api,db.shared.managedEditModeName)
+                end
                 if party then proposal=party
-                else deferred[#deferred+1]={id='partyFrames',reason=partyReason} end
+                elseif partyReason then deferred[#deferred+1]={id='partyFrames',reason=partyReason} end
                 add("shared/editmode","editmode",{"state"},proposal,party and "Managed Edit Mode copy: compact vertical Party Frames beneath Raid; retain other current layout fields" or "Managed copy of your active Edit Mode layout")
             else deferred[#deferred+1]={id="editmode",reason=error} end
         else deferred[#deferred+1]={id="editmode",reason=reason} end

@@ -3,7 +3,9 @@ import json
 from repository_paths import ROOT, contained, output, sha
 
 FILES = {
-    'Immersion': ['Immersion/Config.lua', 'Immersion/Settings.lua', 'Immersion/Display/Onload.lua', 'Immersion/Display/Theme.lua', 'Immersion/LICENSE.md'],
+    'Immersion': ['Immersion/Config.lua', 'Immersion/Settings.lua', 'Immersion/Display/Onload.lua', 'Immersion/Display/Theme.lua', 'Immersion/LICENSE.md',
+        'Immersion/Logic/Events.lua', 'Immersion/Logic/Frame.lua', 'Immersion/Logic/Talkbox.lua',
+        'Immersion/Components/Elements.lua', 'Immersion/Components/Scaler.lua', 'Immersion/Display/Frame.xml'],
     'Immersion_ExtraFade': ['Immersion_ExtraFade/options.lua', 'Immersion_ExtraFade/main.lua', 'Immersion_ExtraFade/hide_module.lua'],
     'BetterBags': ['BetterBags/integrations/consoleport.lua', 'BetterBags/integrations/masque.lua', 'BetterBags/frames/item.lua', 'BetterBags/frames/bag.lua', 'BetterBags/themes/default.lua', 'BetterBags/themes/elvui.lua', 'BetterBags/LICENSE'],
     'DynamicCam': ['DynamicCam/Core.lua', 'DynamicCam/DefaultSettings.lua', 'DynamicCam/LICENSE',

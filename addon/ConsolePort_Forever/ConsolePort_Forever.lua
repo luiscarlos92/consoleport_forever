@@ -223,6 +223,10 @@ function Addon:Refresh()
         end
     end
     self:VerifyReload()
+    local repaired,repairReason=self.ImmersionProgress:Refresh(self,_G)
+    self.Diagnostics:SetFeature('immersionProgress',repaired and 'offline-verified' or 'pending',repairReason)
+    local captured,captureReason=self.EditModeReference:Refresh(self,_G)
+    self.Diagnostics:SetFeature('editModeReference',captured and 'captured' or 'pending',captureReason)
     self.ActionRecovery:Refresh(self,_G)
     if self:IsCharacterInstalled() then self:HydrateController() end
     self:RefreshRings()

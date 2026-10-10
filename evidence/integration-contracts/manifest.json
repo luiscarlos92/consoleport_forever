@@ -37,6 +37,48 @@
       "packageSHA256": "b180a8cbd1a1d878377da5a85abfdc5576e0c04212f9e900e3e9ca505cde1f3e"
     },
     {
+      "path": "Immersion/Logic/Events.lua",
+      "sha256": "10d9907c62d4c7efefbd31fb4594a9b82af2aff1f13dcb4aecbef2fc555180d5",
+      "repo": "seblindfors/Immersion",
+      "version": "1.4.61",
+      "packageSHA256": "b180a8cbd1a1d878377da5a85abfdc5576e0c04212f9e900e3e9ca505cde1f3e"
+    },
+    {
+      "path": "Immersion/Logic/Frame.lua",
+      "sha256": "7ac9e35945801d22915f837c6b180e9e6097a1c96dd328df61d300fd21426f16",
+      "repo": "seblindfors/Immersion",
+      "version": "1.4.61",
+      "packageSHA256": "b180a8cbd1a1d878377da5a85abfdc5576e0c04212f9e900e3e9ca505cde1f3e"
+    },
+    {
+      "path": "Immersion/Logic/Talkbox.lua",
+      "sha256": "57c70782a54ccd24b9a8202f0d22f4a58451f906aed74e4c7415d2ed0d6147ba",
+      "repo": "seblindfors/Immersion",
+      "version": "1.4.61",
+      "packageSHA256": "b180a8cbd1a1d878377da5a85abfdc5576e0c04212f9e900e3e9ca505cde1f3e"
+    },
+    {
+      "path": "Immersion/Components/Elements.lua",
+      "sha256": "eead0cf84abdeb9a502620ff7ed03d3b3ae68ccfe53f8966cf5fc600e3b6cb86",
+      "repo": "seblindfors/Immersion",
+      "version": "1.4.61",
+      "packageSHA256": "b180a8cbd1a1d878377da5a85abfdc5576e0c04212f9e900e3e9ca505cde1f3e"
+    },
+    {
+      "path": "Immersion/Components/Scaler.lua",
+      "sha256": "32880cc2c1cbe835850d32e38031995c1d8a88e5ffb835c92ff7402372c18626",
+      "repo": "seblindfors/Immersion",
+      "version": "1.4.61",
+      "packageSHA256": "b180a8cbd1a1d878377da5a85abfdc5576e0c04212f9e900e3e9ca505cde1f3e"
+    },
+    {
+      "path": "Immersion/Display/Frame.xml",
+      "sha256": "d30804a5bf00bf4d4950652b42b11444491429f3313c61990e5061d415935035",
+      "repo": "seblindfors/Immersion",
+      "version": "1.4.61",
+      "packageSHA256": "b180a8cbd1a1d878377da5a85abfdc5576e0c04212f9e900e3e9ca505cde1f3e"
+    },
+    {
       "path": "Immersion_ExtraFade/options.lua",
       "sha256": "0379dfe8363d168a4fd2f43e5a4ea1cd1dc504e1a73807fdd5877206401dde13",
       "repo": "curseforge/Immersion_ExtraFade",

@@ -79,7 +79,7 @@ check('T27.lua51', () => {
   for (const f of files('addon').filter(f=>f.endsWith('.lua'))) parser.parse(read(f),{luaVersion:'5.1'});
 });
 const modules = ['Core','Store','Plan','Transactions','BindingPolicy','ModePolicy','Rings/Discovery','Rings/Selectors','ClassActions','SecureModes','TemporaryAccess','TemporaryRouting','Targeting/Registry','Targeting/Preferences','Targeting/Ground','Targeting/Ping','UI/Ownership','UI/InputBridge','UI/Windows','UI/Scroll','UI/Map','UI/PartyLayout','Cinematic','Adapters/BetterBags','UI/ItemHints','UI/Contexts','UI/FocusVisuals','UI/Proof','Adapters/NativeBindings',
-  'Adapters/BindingState','Adapters/BindingBanks','Diagnostics','Capability','Adapters/ConsolePort','Adapters/EditMode','Adapters/FlatConfig','Adapters/Integrations','Adapters/LiteMount','Adapters/DynamicCam','Adapters/Rings','Baseline','Coordinator','Prompt'];
+  'Adapters/BindingState','Adapters/BindingBanks','Diagnostics','Capability','Adapters/ConsolePort','Adapters/EditMode','Adapters/FlatConfig','Adapters/Integrations','SavedEditModeReference','UI/ImmersionProgress','UI/EditModeReference','Adapters/LiteMount','Adapters/DynamicCam','Adapters/Rings','Baseline','Coordinator','Prompt'];
 const source = 'Addon={};\n' + modules.map(m=>
   ';(function(...)\n'+read('addon/ConsolePort_Forever/'+m+'.lua')+'\nend)("ConsolePort_Forever",Addon);\n').join('');
 const serializer=`
@@ -1168,6 +1168,27 @@ check('T65.native-account-ping-ring-immediate-press-and-native-controls', () => 
     try {execute(fixture.replaceAll(from,to),name);} catch(error) {rejected=String(error).includes(expected);}
     if(!rejected) throw Error('Account-ring mutation did not fail for expected reason: '+name);
   }
+});
+check('T66.native-immersion-required-items', () => {
+  const base='evidence/integration-contracts/Immersion/';
+  const fixture=read('tests/harness/immersion_progress.lua')
+    .replace('--@NATIVE_ADJUST_CHILDREN',()=>['IterateChildren','GetAdjustableChildren','AdjustToChildren'].map(name=>nativeFunction(base+'Components/Scaler.lua','AdjustMixin:'+name)).join('\n'))
+    .replace('--@NATIVE_BOUNDARIES',()=>nativeFunction(base+'Components/Elements.lua','Elements:UpdateBoundaries'))
+    .replace('--@NATIVE_TALKBOX_OFFSETS',()=> 'local GetOffset=UIParent.GetBottom\n'+['SetOffset','SetExtraOffset'].map(name=>nativeFunction(base+'Logic/Talkbox.lua','TalkBox:'+name)).join('\n'))
+    .replace('--@NATIVE_QUEST_EVENTS',()=>['QUEST_PROGRESS','QUEST_COMPLETE','QUEST_ITEM_UPDATE'].map(name=>nativeFunction(base+'Logic/Events.lua','Events:'+name)).join('\n'))
+    .replace('--@NATIVE_FRAME_EVENT',()=>nativeFunction(base+'Logic/Frame.lua','Frame:OnEvent'));
+  execute(source+fixture,'native-immersion-required-items');
+  // The native defect must still reproduce if the correction disappears.
+  let rejected=false;
+  try {execute((source+fixture).replace('frame.TalkBox:SetExtraOffset(offset)','do end'),'missing-required-items-correction');}
+  catch(error) {rejected=String(error).includes('assertion failed');}
+  if(!rejected) throw Error('Required Items negative control did not detect missing correction');
+});
+check('T67.saved-editmode-default-reference', () => {
+  const captured=JSON.parse(read('evidence/editmode/saved-reference-2026-10-10.json'));
+  if(captured.systemCount!==52 || captured.records.length!==52 || !read('addon/ConsolePort_Forever/SavedEditModeReference.lua').includes(captured.export)) throw Error('Packaged saved layout reference differs from captured cache');
+  const fixture=source+serializer+'\n;(function(...)\n'+read('addon/ConsolePort_Forever/RuntimeSetup.lua')+'\nend)("ConsolePort_Forever",Addon);\n'+read('tests/harness/editmode_reference.lua');
+  execute(fixture,'saved-editmode-default-reference');
 });
 const report = {at:new Date().toISOString(), commit:cp.execFileSync('git',['rev-parse','HEAD'],{cwd:root}).toString().trim(),
   productHashes:Object.fromEntries(files('addon').map(f=>[f,sha(f)])),

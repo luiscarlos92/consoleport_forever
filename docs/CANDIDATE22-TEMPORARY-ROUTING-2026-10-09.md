@@ -94,3 +94,12 @@ page return, held release, UI/combat handoff and character A-B-A behavior.
 Final verification: all 62 runtime/source suites and all 39 tooling checks pass
 for unchanged source hashes. Reports: evidence/test-results/candidate22-runtime.json,
 candidate22-tooling.json and candidate22-plater-live-readback.json.
+
+Installed October 9, 2026, 22:59:10 Toronto from source 9c3556fd440bb5729f7673dbbe70b754271df1b2.
+Independent readback verifies all 55 installed files, 2,498 unselected files,
+304 WTF files and 42 junctions unchanged/preserved as scoped. Previous code and
+configuration backups are verified and retained at C:/Users/luisr/WoW-Backups/ConsolePort-Forever/20261010T025816Z-894f53729e4d.
+Only Forever was copied; Plater and other addons remain byte-for-byte unchanged.
+Receipts: evidence/delivery/prepared-candidate22.json, live-install-candidate22.json
+and candidate22-independent-readback.json. The authorization is fulfilled.
+Manual cases 48/49 remain pending; no game launch or client test was performed.

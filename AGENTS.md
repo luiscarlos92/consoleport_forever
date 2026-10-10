@@ -1,3 +1,26 @@
+## Installed candidate.22 — October 9, 2026, 22:59:10 Toronto
+
+Authorized closed-WoW scoped deployment completed from tested/pushed source
+9c3556fd440bb5729f7673dbbe70b754271df1b2. Forever alone was replaced. All nine
+official stable Retail dependencies were freshly checked; none downloaded or
+reshipped. Plater v657 already matches all 524 official live files. Independent
+readback verifies all 55 installed files, 2,498 unselected addon files and 304 WTF
+files unchanged, 42 junctions/root anchors preserved, and verified prior Forever/
+configuration backups at C:/Users/luisr/WoW-Backups/ConsolePort-Forever/20261010T025816Z-894f53729e4d.
+All 62 runtime/source suites and 39 tooling checks pass. Dragonriding, possession,
+quest override, vehicle UI and temporary shapeshift replacements use only L2+R2
+across every installed class. T61 covers 4,160 class/state/chord cases; T62 checks
+actual recovery startup and rejects skipping this adapter. Native layout rebuild,
+ordinary class/manual pages, held release, assist lookup, modal priority and
+accepted ground placement are covered. Candidate.21 ping repair is included.
+Revision 17, saved layouts/bindings, rendering, class rings and Ground.lua remain.
+Actual Retail engine/hardware/combat/taint acceptance awaits manual cases 48/49;
+no game launch, reload or live execution was performed. Receipts are
+evidence/delivery/prepared-candidate22.json, live-install-candidate22.json and
+candidate22-independent-readback.json. Pack SHA256: 7bd0d98a207a362b74b56e1e412ea630c2bd5c67cb09580e5adfa2aa1db340dc.
+This deployment authorization is complete; future deployment needs new user
+authorization and WoW closed. Older preparation restrictions below are history.
+
 ## Candidate.22 temporary routing — October 9, 2026 (DEPLOYMENT AUTHORIZED AFTER TESTS)
 
 User requires dragonriding, possession, quest override, vehicle UI and all native

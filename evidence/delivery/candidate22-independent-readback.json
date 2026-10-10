@@ -1,0 +1,20 @@
+{
+  "installedVersion": "2.0.0-candidate.22",
+  "sourceCommit": "9c3556fd440bb5729f7673dbbe70b754271df1b2",
+  "packSHA256": "7bd0d98a207a362b74b56e1e412ea630c2bd5c67cb09580e5adfa2aa1db340dc",
+  "closedAt": "2026-10-10T02:59:10.705966+00:00",
+  "installedFilesVerified": 55,
+  "unselectedFilesUnchanged": 2498,
+  "wtfFilesUnchanged": 304,
+  "junctionsUnchanged": 42,
+  "anchorsUnchanged": true,
+  "backupsVerified": true,
+  "backup": "C:\\Users\\luisr\\WoW-Backups\\ConsolePort-Forever\\20261010T025816Z-894f53729e4d",
+  "runtimeSuites": 62,
+  "toolingChecks": 39,
+  "configurationRevision": 17,
+  "dependencyUpdates": [],
+  "PlaterAlreadyOfficialCurrent": true,
+  "noLiveWTFWrites": true,
+  "liveAcceptance": "Pending user manual cases 48 (ping) and 49 (temporary bars); no game launch or client execution."
+}

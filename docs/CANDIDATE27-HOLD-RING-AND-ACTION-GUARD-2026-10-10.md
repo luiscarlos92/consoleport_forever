@@ -135,3 +135,11 @@ Readback verifies all 55 live Forever files still exact installed candidate.26;
 no installer/preview or live filesystem writes. Retail acceptance remains pending
 later deployment authorization and the user's test.
 
+Prepared Forever-only update from tested/pushed source
+8008608235d6a0816ab85e0c45dc8d42c29307a5; ZIP SHA256
+c945e45adc2151275a5fc3a6137cfe7c2d2572765d4824eda9a3fc8c602cc5ef.
+55 package files match source/manifest, revision17, zero dependency updates or
+retirements. After-build readback again verifies 55 live Forever files remain
+exact candidate.26. No installer/preview ran. See
+`evidence/delivery/prepared-candidate27.json`. NOT DEPLOYED.
+

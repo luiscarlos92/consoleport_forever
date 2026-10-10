@@ -219,6 +219,18 @@
     {
       "path": "ConsolePort_Menu/Model/Buttons.lua",
       "sha256": "a326eced153e89ec6e30b1dd1b64dacd357df47a84bcd90576b0ed3d0eb9f0d2"
+    },
+    {
+      "path": "ConsolePort/Widget/PieMenu/PieMenu.lua",
+      "sha256": "55682ca44d869640d053f408d6e95982b58325ac0090cac9900e943533188581"
+    },
+    {
+      "path": "ConsolePort/Widget/PieMenu/PieMenu.xml",
+      "sha256": "2425348f05f5dcd6d72cd7f331854e175bc2dfb1bbc3f510dc8b75a4b07395b9"
+    },
+    {
+      "path": "ConsolePort_Rings/View/Ring/Ring.xml",
+      "sha256": "626ce07f8a4cf6a53e054f9f3432ee532d22664b833eaccb2c8e77964186c2e5"
     }
   ]
 }

@@ -893,7 +893,7 @@ check('T60.native-secure-macro-ping-stick-selection-and-owner-cancellation', () 
     const row=nativeManifest.find(r=>r.path===name);
     if(!row || sha('evidence/native/'+name)!==row.sha256) throw Error('Native secure ping source drift: '+name);
   }
-  for(const name of ['ConsolePort/Controller/Radial.lua','ConsolePort/Controller/Layers.lua','ConsolePort/Utils/Utils.lua','ConsolePort/Utils/Database.lua','ConsolePort_Cursor/View/Cursor.xml','ConsolePort_Target/View/Cursor/Raid.xml','ConsolePort_Target/View/Ring/Targetring.xml','ConsolePort/View/Pie/Pie.xml']) {
+  for(const name of ['ConsolePort/Controller/Radial.lua','ConsolePort/Controller/Layers.lua','ConsolePort/Utils/Utils.lua','ConsolePort/Utils/Database.lua','ConsolePort_Cursor/View/Cursor.xml','ConsolePort_Target/View/Cursor/Raid.xml','ConsolePort_Target/View/Ring/Targetring.xml','ConsolePort/View/Pie/Pie.xml','ConsolePort/Widget/PieMenu/PieMenu.lua','ConsolePort/Widget/PieMenu/PieMenu.xml','ConsolePort_Rings/View/Ring/Ring.xml']) {
     const row=cpManifest.files.find(r=>r.path===name);
     if(!row || sha('evidence/consoleport-contracts/'+name)!==row.sha256) throw Error('ConsolePort secure ping source drift: '+name);
   }
@@ -914,6 +914,7 @@ check('T60.native-secure-macro-ping-stick-selection-and-owner-cancellation', () 
   const compiler=normalized('evidence/native/Blizzard_RestrictedAddOnEnvironment/RestrictedExecution.lua');
   const wrap=p=>';(function(...)\n'+normalized(p)+'\nend)("ConsolePort",db);';
   const fixture=source+'\n'+normalized('tests/harness/ping_targeting.lua')
+    .replace('--@CURRENT_PIE_STYLE',()=> 'CPPieSliceMixin={}\nlocal SLICE_FRACTION,BG_FRACTION,MASK_FRACTION=512/300,480/300,512/300;\n'+['CPPieMenuMixin:UpdatePieSlices','CPPieSliceMixin:SetIndex','CPPieSliceMixin:RotateMasks','CPPieSliceMixin:UpdateSize'].map(name=>nativeFunction('evidence/consoleport-contracts/ConsolePort/Widget/PieMenu/PieMenu.lua',name)).join('\n'))
     .replace('--@CURRENT_CONVERSION',()=>utils.slice(utils.indexOf('do\tlocal ConvertSecureBody'),utils.indexOf('\nend',utils.indexOf('do\tlocal ConvertSecureBody'))+4))
     .replace('--@CURRENT_SECURE_ENV',()=>utils.slice(utils.indexOf('CPAPI.SecureExportMixin ='),utils.indexOf('do local UIHider;')))
     .replace('--@CURRENT_SCRIPT_MIXIN',()=>database.slice(database.indexOf('db.table.mixin ='),database.indexOf('return obj\nend;',database.indexOf('db.table.mixin ='))+15))
@@ -939,9 +940,10 @@ check('T60.native-secure-macro-ping-stick-selection-and-owner-cancellation', () 
     ['insecure-public-macro-ping',"function frame:CaptureCenter()", "function frame:CaptureCenter() api.C_Ping.SendMacroPing({targetToken='cursor'})", 'ADDON_ACTION_FORBIDDEN'],
     ['plain-ping-ui-blocker','/ping [@cursor]','/ping ', 'contextual point tap not sent'],
     ['wrong-selected-ping-type',"(' '..index)","(' '..1)",'selected ping type not dispatched'],
+    ['ring-on-tap',"frame:SetAlpha(0) frame:OnInput(0,0,0)","frame:SetAlpha(1) frame:OnInput(0,0,0)",'tap displayed the ping ring on press'],
     ['missing-cursor-restoration',"self:CallMethod('RestoreCenter')",'do end','release did not restore/clear'],
     ['foreign-modal-delayed-release',"then ping:RunAttribute('cpf-cancel') end",'then do end end','foreign modal takeover did not cancel'],
-    ['cancel-wedge-sends-ping',"if index==7 then self:RunAttribute('cpf-cancel') return end",'do end','Cancel wedge sent ping']
+    ['camera-tap-cancels',"local index=self:RunAttribute('GetIndex',nil,6)","local index=self:RunAttribute('GetIndex',nil,6) if index==6 then self:RunAttribute('cpf-cancel') return end",'selected ping type not dispatched: 6']
   ]) {
     if(!fixture.includes(from)) throw Error('Stale ping negative-control needle: '+name);
     let rejected=false;
@@ -976,6 +978,15 @@ check('T61.all-classes-native-dragonriding-and-temporary-L2R2-engine-dispatch', 
     .replace('--@NATIVE_MANAGER_REGISTER',()=>nativeFunction(base+'ConsolePort_Bar/Controller/Manager/Manager.lua','Manager:RegisterOverride'))
     .replace('--@NATIVE_MANAGER_PARSE','local native'+utils.slice(start,utils.indexOf('\n\tend;',start)+6));
   const fixture=read('tests/harness/temporary_routing.lua')
+    .replace('--@NATIVE_EDIT_SNIPPETS',()=>{
+      const lib=read(base+'ConsolePort/Libs/External/LibActionButton-1.0/LibActionButton-1.0.lua');
+      const button=read(base+'ConsolePort_Bar/Widget/Button/Button.lua');
+      const drag=lib.match(/button:SetAttribute\("OnDragStart", \[\[([\s\S]*?)\]\]\)/)?.[1];
+      const pickup=lib.match(/button:SetAttribute\("PickupButton", \[\[([\s\S]*?)\]\]\)/)?.[1];
+      const receive=button.match(/OnReceiveDrag =\[\[([\s\S]*?)\]\];/)?.[1];
+      if(!drag || !pickup || !receive) throw Error('Native drag editing contract unavailable');
+      return `nativeDragStart=[==[${drag}]==]\nnativeReceiveDrag=[==[${receive}]==]\nnativePickup=[==[${pickup}]==]`;
+    })
     .replace('--@NATIVE_PAGER_RESPONSE',()=>`nativePageBody=[=[${response}\n${header}]=]`)
     .replace('--@NATIVE_PAGER_ACTION_HELPERS',()=>{
       const actionID=pager.match(/GetActionID = \(\[\[([\s\S]*?)\]\]\):format\(NUM_ACTIONBAR_BUTTONS\)/)?.[1].replace('%d','12');
@@ -1004,6 +1015,27 @@ check('T61.all-classes-native-dragonriding-and-temporary-L2R2-engine-dispatch', 
   try {execute(wrong+'\nlocal scenario='+JSON.stringify(scenario)+'\nlocal scope=setmetatable({},{__index=_G}); scope._G=scope; scope.engine=targetingEngine; scope.Addon=Addon; assert(load(scenario,"wrong-bank","t",scope))(); TEST_SUCCESS=scope.TEST_SUCCESS;','wrong-bank-temporary-routing');}
   catch(error) {rejected=String(error).includes('dragonriding still possesses L2');}
   if(!rejected) throw Error('Wrong temporary bank regression was not reproduced');
+  const editProbe=scenario.slice(0,scenario.indexOf('local classes='))+`
+local edited=api.ConsolePortGroupL2R2.buttons.PAD1
+edited:SetAttribute('LABdisableDragNDrop',nil)
+page(nil) edited:SetState('CTRL-SHIFT-','spell',902)
+assert(Routing:Refresh(bridge,api,true))
+assert(edited:GetAttribute('type')=='spell' and edited:GetAttribute('spell')==902,'ordinary edit reset by unchanged bindings')
+run(edited.header,edited,'self,button,down',Routing.PreClick,'LeftButton',true)
+edited:RunAttribute('OnDragStart')
+assert(edited:GetAttribute('type')=='empty','ordinary dragged-off ability came back')
+TEST_SUCCESS=true
+`;
+  for(const [name,changed,message] of [
+    ['refresh-overwrites-edit',prefix.replace('if bindings and not Addon.Core.Equal(button.__cpfTemporary.bindings,bindings) then','if bindings then'),'ordinary edit reset by unchanged bindings'],
+    ['drag-resurrects-action',prefix.replace(/    if dragStart then[\s\S]*?\n    end/,''),'ordinary dragged-off ability came back'],
+    ['drag-keeps-held-action',prefix.replaceAll("self:SetAttribute('cpf-temp-held',nil)",'do end'),'ordinary dragged-off ability came back']
+  ]) {
+    rejected=false;
+    try {execute(changed+'\nlocal scenario='+JSON.stringify(editProbe)+'\nlocal scope=setmetatable({},{__index=_G}); scope._G=scope; scope.engine=targetingEngine; scope.Addon=Addon; assert(load(scenario,"native-edit-regression","t",scope))(); TEST_SUCCESS=scope.TEST_SUCCESS;',name);}
+    catch(error) {rejected=String(error).includes(message);}
+    if(!rejected) throw Error('Native editing regression was not reproduced: '+name);
+  }
 });
 check('T62.recovery-startup-enables-temporary-routing-for-every-character', () => {
   if(!bootstrapState) throw Error('native bootstrap fixture unavailable');
@@ -1064,8 +1096,14 @@ TEST_SUCCESS=true
   try {execute(original+test,'old-incomplete-archive');} catch(error) {rejected=String(error).includes('incomplete Paladin archive rejects');}
   if(!rejected) throw Error('Original incomplete archive defect was not reproduced');
 });
-check('T64.catastrophic-action-storage-rescue-and-snapshot-isolation', () => {
+check('T64.action-storage-observers-never-restore-or-rewrite-bars', () => {
+  const legacy=JSON.parse(read('evidence/action-recovery/candidate27-diagnosis.json')).legacyAutomaticWriter;
+  if(sha(legacy.path)!==legacy.sha256) throw Error('Legacy automatic writer regression source drift');
   execute(source+'\n;(function(...)\n'+read('addon/ConsolePort_Forever/ActionRecovery.lua')+'\nend)("ConsolePort_Forever",Addon);\n'+read('tests/harness/action_recovery.lua'),'action-storage-recovery');
+  let rejected=false;
+  try {execute(source+'\n;(function(...)\n'+read('evidence/action-recovery/ActionRecovery-candidate26.lua')+'\nend)("ConsolePort_Forever",Addon);\n'+read('tests/harness/action_recovery.lua'),'removed-automatic-restoration');}
+  catch(error) {rejected=String(error).includes('automatic action-slot restoration rewrote edited bars');}
+  if(!rejected) throw Error('Automatic action-slot rewrite regression was not reproduced');
 });
 const report = {at:new Date().toISOString(), commit:cp.execFileSync('git',['rev-parse','HEAD'],{cwd:root}).toString().trim(),
   productHashes:Object.fromEntries(files('addon').map(f=>[f,sha(f)])),

@@ -48,9 +48,27 @@ function Routing.Environment(button)
         ['_childupdate-cpf-temp-page']=scoped(Addon.SecureModes.ChildResponse)}
     -- Keep drag-to-bind updates in the ordinary model, never the temporary page.
     if native.OnReceiveDrag then
-        environment.OnReceiveDrag=native.OnReceiveDrag:gsub('self::UpdateState%(state%)',[[self:SetAttribute('cpf-temp-kind-'..tostring(state), kind)
+        environment.OnReceiveDrag=native.OnReceiveDrag:gsub('local buttonType, buttonAction =',[[self:SetAttribute('cpf-temp-held',nil)
+            self:RunAttribute("UpdateState",state)
+            -- A vehicle/quest page may expose fewer cells than the controller
+            -- bank. An unavailable temporary cell must not consume a drop or
+            -- turn that drop into a permanent ordinary binding.
+            if self:GetAttribute('cpf-temp-enabled') and self:GetAttribute('cpf-temp-special-cell')
+                and self:GetAttribute('type')=='empty'
+                and (self:GetAttribute('actionpage') or 1)>(self:GetAttribute('cpf-temp-basepages') or 6)+4 then return false end;
+            local buttonType, buttonAction =]]):gsub('self::UpdateState%(state%)',[[self:SetAttribute('cpf-temp-kind-'..tostring(state), kind)
             self:SetAttribute('cpf-temp-action-'..tostring(state), value)
             self::UpdateState(state)]])
+    end
+    -- Native removal of a direct spell/item/macro must clear the cached
+    -- ordinary model too, or the next UpdateState resurrects that action.
+    local dragStart=native.OnDragStart or button:GetAttribute('OnDragStart')
+    if dragStart then
+        environment.OnDragStart=dragStart:gsub('local type = self:GetAttribute%("type"%)',[[self:SetAttribute('cpf-temp-held',nil)
+            self:RunAttribute("UpdateState",state)
+            local type = self:GetAttribute("type")]]):gsub('self:RunAttribute%("UpdateState", state%)',[[self:SetAttribute('cpf-temp-kind-'..tostring(state), 'empty')
+            self:SetAttribute('cpf-temp-action-'..tostring(state), nil)
+            self:RunAttribute("UpdateState", state)]])
     end
     return environment
 end
@@ -105,6 +123,7 @@ function Routing:Refresh(bridge,api,enabled)
             local button=group.buttons[key]
             if not button.__cpfTemporary then
                 local native=Addon.Core.Copy(button.Env)
+                native.OnDragStart=native.OnDragStart or button:GetAttribute('OnDragStart')
                 local ordinary={}
                 button.__cpfTemporary={nativeEnv=native,ordinary=ordinary}
                 button.CPFTempContentsChanged=function(self,state,kind,value)
@@ -128,7 +147,10 @@ function Routing:Refresh(bridge,api,enabled)
             button:SetAttribute('cpf-temp-limit',api.NUM_OVERRIDE_BUTTONS or 6)
             -- Re-capture unpaged native bindings, including per-character edits.
             local bindings=bridge.bar.Manager:GetBindings(key)
-            if bindings then button:SetBindings(bindings) end
+            if bindings and not Addon.Core.Equal(button.__cpfTemporary.bindings,bindings) then
+                button:SetBindings(bindings)
+                button.__cpfTemporary.bindings=Addon.Core.Copy(bindings)
+            end
             button:CreateEnvironment(assert(Routing.Environment(button)))
             button:SetAttribute('cpf-temp-enabled',true)
             Addon.SecureModes.RefreshButton(button)

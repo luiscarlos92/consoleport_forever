@@ -204,6 +204,7 @@ function Addon:Refresh()
     local adapters,error=self.RuntimeSetup.Adapters(_G,self.db)
     if not adapters then self.Diagnostics:SetFeature("configuration","pending",error) return end
     self.adapters=adapters
+    self.ActionRecovery:InstallObservers(self,_G)
     if self.PingTargeting then
         local ready,reason=self.PingTargeting:Refresh(_G,self:IsCharacterInstalled(),adapters.consoleport)
         self.Diagnostics:SetFeature('pingTargeting',ready and 'offline-verified' or 'pending',reason)
@@ -404,8 +405,8 @@ SlashCmdList.CONSOLEPORTFOREVER=function(input)
     elseif command=="recover-selection" then Addon:RecoverBindingSelection()
     elseif command=="recover-view" then Addon:ReviewBindingView()
     elseif command=="action-recovery" and Addon.record then
-        Addon.record.actionRecoveryDisabled=arg:lower()=='off'
-        Print(Addon.record.actionRecoveryDisabled and 'Action layout recovery disabled for this character.' or 'Action layout recovery enabled for this character.')
+        Addon.record.actionRecoveryDisabled=true
+        Print('Automatic action-slot restoration was removed. Your bar edits remain game-owned.')
     elseif command=="proof" then
         local ok,reason=Addon.Proof:Show(_G)
         if not ok then Print(reason) end
@@ -426,6 +427,10 @@ events:SetScript("OnEvent",function(_,event,...)
     if event=='CVAR_UPDATE' and tostring((...)):lower()~='actionbuttonusekeydown' then return end
     if event=='SPELL_DATA_LOAD_RESULT' and not (Addon.GroundTargeting.requested and Addon.GroundTargeting.requested[(...)]) then return end
     if event=='PLAYER_SPECIALIZATION_CHANGED' and (...)~='player' then return end
+    if Addon.ActionRecovery and (event=='ACTIONBAR_SLOT_CHANGED' or event=='PLAYER_LEVEL_UP' or event=='TRAIT_CONFIG_UPDATED'
+        or event=='ACTIONBAR_PAGE_CHANGED' or event=='UPDATE_OVERRIDE_ACTIONBAR' or event=='UPDATE_VEHICLE_ACTIONBAR') then
+        Addon.ActionRecovery:Record(Addon,_G,event,...)
+    end
     if event=="PLAYER_LOGOUT" then
         Addon:CaptureControllerEdits()
         if Addon.adapters and Addon.adapters.rings then Addon.adapters.rings:CaptureEdits() end
@@ -467,4 +472,4 @@ end)
 events:RegisterEvent('PING_SYSTEM_ERROR')
 -- Quest/vehicle replacement can change without a spell or binding event.
 -- Rebuild only runtime button state; normal action storage stays game-owned.
-for _,event in ipairs({'ACTIONBAR_PAGE_CHANGED','UPDATE_BONUS_ACTIONBAR','UPDATE_OVERRIDE_ACTIONBAR','UPDATE_VEHICLE_ACTIONBAR','UPDATE_POSSESS_BAR','UPDATE_SHAPESHIFT_FORM'}) do events:RegisterEvent(event) end
+for _,event in ipairs({'ACTIONBAR_PAGE_CHANGED','UPDATE_BONUS_ACTIONBAR','UPDATE_OVERRIDE_ACTIONBAR','UPDATE_VEHICLE_ACTIONBAR','UPDATE_POSSESS_BAR','UPDATE_SHAPESHIFT_FORM','PLAYER_LEVEL_UP'}) do events:RegisterEvent(event) end

@@ -1,0 +1,49 @@
+{
+  "checkedAt": "2026-10-10T20:22:33.404917+00:00",
+  "deploymentAuthorized": false,
+  "installedCandidate": "26",
+  "userConfirmsRestored": true,
+  "originalStorageWriter": "unconfirmed",
+  "copybaraUsed": false,
+  "incidentEvidence": "evidence/action-recovery/candidate26-diagnosis.json",
+  "levelingReapply": "Plausible only; source capability and last saved autoApplyOnLevelUp=true are not proof of incident execution.",
+  "changes": "Automatic action-slot writer removed; native drag clears stale ordinary cache/held latch; unchanged bindings no longer reset edits; native temporary drop/remove persistence and overflow rejection; passive writer history; hold-only CP ring.",
+  "liveFilesModified": false,
+  "sourceAudit": [
+    {
+      "path": "C:\\Program Files (x86)\\World of Warcraft\\_retail_\\Interface\\AddOns\\TalentLoadoutManager\\modules\\Leveling.lua",
+      "sha256": "03070a618ea697f0a863a6876238f189fb610114bde4f2635a3e0a5e7d244c41",
+      "startLine": 18,
+      "endLine": 109,
+      "auditMethod": "Read-only inspection of the installed primary source; retained hash and line span, no vendor edits."
+    },
+    {
+      "path": "C:\\Program Files (x86)\\World of Warcraft\\_retail_\\Interface\\AddOns\\TalentLoadoutManager\\core\\BlizzardLoadoutChangerV2.lua",
+      "sha256": "7b0fa7930cf5ca33dac3f5f6949b81051c36d05c9326da7cded08952cc4a11b8",
+      "startLine": 40,
+      "endLine": 61,
+      "auditMethod": "Read-only inspection of the installed primary source; retained hash and line span, no vendor edits."
+    },
+    {
+      "path": "C:\\Program Files (x86)\\World of Warcraft\\_retail_\\Interface\\AddOns\\ConsolePort_Config\\View\\Config\\ImportExport.lua",
+      "sha256": "4331c9046c283340dc0be43222864179877c5f43818ac86896dac492b6dffb4c",
+      "startLine": 1,
+      "endLine": 190,
+      "auditMethod": "Read-only inspection of the installed primary source; retained hash and line span, no vendor edits."
+    }
+  ],
+  "laterUserReports": [
+    "Recovery-off toggle alone did not clear intermittent rearrangement reversion.",
+    "Logout/login temporarily helped; reversion still sometimes occurs while rearranging."
+  ],
+  "barEditingSourceDefects": [
+    "TemporaryRouting reapplied unchanged binding declarations on every refresh.",
+    "Native OnDragStart removal did not clear cached ordinary action data.",
+    "Native drag interaction did not release the custom held-action latch."
+  ],
+  "legacyAutomaticWriter": {
+    "sourceCommit": "f39aee6915b18c85deea07aa155e73bae3e8f82a",
+    "path": "evidence/action-recovery/ActionRecovery-candidate26.lua",
+    "sha256": "70e1a3bb44bce5103fbf0739b551c82ed3f913ae559c67dfb5c51b31bb2c4f9e"
+  }
+}

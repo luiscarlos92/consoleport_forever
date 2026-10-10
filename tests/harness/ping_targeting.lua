@@ -6,6 +6,9 @@ math.atan2=math.atan2 or math.atan
 -- and Blizzard macro ping manager execute unchanged. The Retail engine APIs,
 -- macro parser, cursor/CVar timing, art and hardware events are modeled.
 local combat, trusted, hardware=false,false,false
+local clock=0
+function GetTime() return clock end
+CPPieMenuMixin={}
 local frames, overrides,allFrames={}, {},{}
 local secureScripts=setmetatable({},{__mode='k'})
 local Frame={}
@@ -59,6 +62,12 @@ function Frame:SetWidth(x) self.w=x end
 function Frame:SetHeight(y) self.h=y end
 function Frame:GetWidth() return self.w or 400 end
 function Frame:GetHeight() return self.h or 400 end
+function Frame:GetSize() return self:GetWidth(),self:GetHeight() end
+function Frame:UpdateColorSettings() self.nativeColors=true end
+function Frame:UpdatePieSlices(shown,count) self.nativeSlices=shown and (count or self:GetNumVisible()) or 0 end
+function Frame:UpdateBackgroundFocus(index) self.nativeFocus=index end
+function Frame:ReflectStickPosition(x,y,len,valid) self.nativeStick={x=x,y=y,len=len,valid=valid} end
+function Frame:SetActiveSliceText(text) self.activeSliceText=text end
 function Frame:SetScale(value) self.scale=value end
 function Frame:SetPoint(...) self.point={...} end
 function Frame:ClearAllPoints() end
@@ -68,8 +77,12 @@ function Frame:EnableGamePadButton(value) self.buttonEnabled=value end
 function Frame:SetPropagateKeyboardInput(value) self.propagate=value end
 function Frame:SetFrameStrata(value) self.strata=value end
 local Region={SetAllPoints=function() end,SetPoint=function() end,SetAtlas=function(self,value) self.atlas=value end,
+    SetSize=function(self,x,y) self.size={x,y} end,SetTexture=function(self,value) self.texture=value end,
+    AddMaskTexture=function(self,mask) self.mask=mask end,SetAlpha=function(self,value) self.alpha=value end,
+    SetRotation=function(self,value) self.rotation=value end,SetShown=function(self,value) self.shown=value end,
     SetVertexColor=function(self,r,g,b) self.color={r,g,b} end,SetText=function(self,value) self.text=value end}
 function Frame:CreateTexture() return setmetatable({},{__index=Region}) end
+function Frame:CreateMaskTexture() return setmetatable({},{__index=Region}) end
 function Frame:CreateFontString() return setmetatable({},{__index=Region}) end
 function Frame:RegisterEvent() end
 function Frame:UnregisterEvent() end
@@ -181,7 +194,31 @@ function CreateFrame(kind,name,parent,template)
     local frame=setmetatable({name=name,parent=parent,attrs={},refs={},scripts={},shown=true,protected=template and template:find('Secure')~=nil or false},{__index=Frame})
     if name then frames[name]=frame _G[name]=frame end
     allFrames[#allFrames+1]=frame
-    if template and template:find('SecureActionButton') then frame:SetScript('OnClick',SecureActionButton_OnClick) end
+    if kind=='PieMenu' then
+        frame.isSlicedPie=true
+        local function slice()
+            local value={parent=frame,RectMask1=frame:CreateTexture(),RectMask2=frame:CreateTexture(),Separator1=frame:CreateTexture(),Separator2=frame:CreateTexture(),Slice=frame:CreateTexture()}
+            function value:GetParent() return self.parent end
+            function value:SetID(id) self.id=id end
+            function value:SetSize(x,y) self.w,self.h=x,y end
+            function value:SetPoint(...) self.point={...} end
+            function value:SetOpacity(alpha) self.alpha=alpha end
+            function value:Show() self.shown=true end
+            function value:SetText() end function value:SetTextAlpha() end function value:SetTextSize() end
+            function value:SynchronizeAnimation() end function value:RotateLines(angle) self.center=angle end
+            return setmetatable(value,{__index=CPPieSliceMixin})
+        end
+        frame.ActiveSlice=slice()
+        frame.SlicePool={active={}}
+        function frame.SlicePool:ReleaseAll() self.active={} end
+        function frame.SlicePool:Acquire() local value=slice() self.active[#self.active+1]=value return value,true end
+        frame.UpdatePieSlices=function(self,shown,count)
+            CPPieMenuMixin.UpdatePieSlices(self,shown,count)
+            self.sliceCalls=(self.sliceCalls or '')..tostring(shown)..':'..tostring(count)..':'..tostring(#self.SlicePool.active)..';'
+        end
+    end
+    frame.template=template
+    if template and (template:find('SecureActionButton') or template:find('ConsolePortSecurePie')) then frame:SetScript('OnClick',SecureActionButton_OnClick) end
     return frame
 end
 UIParent=CreateFrame('Frame','UIParent')
@@ -210,7 +247,8 @@ function cos(a) return math.cos(math.rad(a)) end
 function sin(a) return math.sin(math.rad(a)) end
 function nop() end
 C_Timer={NewTimer=function(_,fn) return {Cancel=function() end,fn=fn} end}
-CPAPI={ActionPressAndHold='pressAndHoldAction',DataHandler=function(frame) return frame end}
+CPAPI={ActionPressAndHold='pressAndHoldAction',DataHandler=function(frame) return frame end,GetAsset=function(path) return 'Interface/AddOns/ConsolePort/Assets/'..path end}
+--@CURRENT_PIE_STYLE
 function CPAPI.Start(frame) for key,fn in pairs(frame) do if type(fn)=='function' and frame:HasScript(key) then frame:SetScript(key,fn) end end end
 local dispatcher
 local originalStart=CPAPI.Start
@@ -312,7 +350,7 @@ local function click(key,down)
 end
 local function vector(index)
     if not index then mapped.sticks[2]={x=0,y=0,len=0} return end
-    local angle=(index-1)*2*math.pi/7
+    local angle=(index-1)*2*math.pi/6
     mapped.sticks[2]={x=math.sin(angle),y=math.cos(angle),len=1}
 end
 assert(not nativeOwners.Cursor:IsProtected(),'fixture incorrectly protected native UI cursor')
@@ -328,6 +366,16 @@ assert(Ping:Refresh(_G,true,bridge),'standard native ping failed to resume after
 assert(not Ping.frame:IsShown() and dispatcher and not dispatcher.focusFrame and not dispatcher.stickEnabled,'setup stole stick focus')
 assert(savedBinding('PADRSTICK')=='TOGGLEPINGLISTENER' and GetBindingAction('F2',true)=='TOGGLEPINGLISTENER')
 click('PADRSTICK',true)
+assert(Ping.frame.alpha==0,'tap displayed the ping ring on press')
+clock=clock+.149 fire(Ping.frame,'OnUpdate',.149)
+assert(Ping.frame.alpha==0,'ping ring appeared before hold threshold')
+clock=clock+.002 fire(Ping.frame,'OnUpdate',.002)
+assert(Ping.frame.alpha==1 and #Ping.frame.SlicePool.active==6 and Ping.frame.nativeColors,'hold did not display native ConsolePort sliced ring: '..tostring(Ping.frame.alpha)..'/'..tostring(#Ping.frame.SlicePool.active)..'/'..tostring(Ping.frame.sliceCalls))
+for index,slice in ipairs(Ping.frame.SlicePool.active) do
+    assert(slice.id==index and slice.RectMask1.shown and slice.RectMask2.shown and slice.w==Ping.frame:GetWidth()*512/300,'native six-slice geometry/masks missing')
+end
+assert(Ping.frame.template=='ConsolePortSecurePie,ConsolePortSlicedPie' and not Ping.frame.cpfHint,'floating custom selector retained')
+assert(Ping.frame.cpfIcons[1].border.atlas=='ring-metallight' and Ping.frame.cpfIcons[1].selected.atlas=='ring-select' and Ping.frame.cpfIcons[1].icon.mask,'native ring icon skin missing')
 assert(Ping.frame:IsShown() and cvars.GamePadCursorCentering=='0','holding ping changed cursor')
 assert(dispatcher.focusFrame==Ping.frame and dispatcher.stickEnabled,'native radial did not own stick while held')
 dispatcher:OnGamePadStick('Right',0,1,1)
@@ -358,11 +406,11 @@ for _,keydown in ipairs({'0','1'}) do
     end
 end
 cvars.ActionButtonUseKeyDown='1' cvars.ActionButtonUseKeyHeldSpell='0'
-for index=1,7 do
+for index=1,6 do
     vector(index) local count=#sent
     click('PADRSTICK',true) click('PADRSTICK',false)
-    if index==7 then assert(#sent==count,'Cancel wedge sent ping')
-    else assert(#sent==count+1 and sent[#sent].type==index-1,'selected ping type not dispatched: '..index) end
+    assert(Ping.frame.alpha==0,'deflected-stick tap displayed selector')
+    assert(#sent==count+1 and sent[#sent].type==index-1,'selected ping type not dispatched: '..index)
 end
 vector(nil)
 units.softenemy='aimed-enemy' units.target='stale-offscreen-hard-target'
@@ -469,7 +517,11 @@ assert(#sent==count and not Ping.frame:IsShown(),'still-held spurious release di
 click('PADRSTICK',true) trusted=true Ping.frame:RunAttribute('_onstate-cpf-combat') trusted=false
 combat=true trusted=true Ping.frame:SetAttribute('state-cpf-combat','combat') trusted=false
 click('PADRSTICK',false) assert(#sent==count,'combat boundary sent stale gesture')
-click('PADRSTICK',true) click('PADRSTICK',false) assert(#sent==count+1) combat=false
+click('PADRSTICK',true)
+assert(Ping.frame.alpha==0,'combat tap revealed ring')
+clock=clock+.16 fire(Ping.frame,'OnUpdate',.16)
+assert(Ping.frame.alpha==1,'combat hold artwork required public protected writes')
+click('PADRSTICK',false) assert(#sent==count+1) combat=false
 trusted=true Ping.frame:SetAttribute('state-cpf-combat','peace') trusted=false
 count=#sent
 -- Prefix changes cancel before release, including a changed logical layer
@@ -521,7 +573,7 @@ hardware=true trusted=true mapped.buttons[2]=true
 fire(Ping.frame,'PreClick','PAD2',true)
 fire(Ping.frame,'OnClick','PAD2',true,true,true)
 fire(Ping.frame,'PostClick','PAD2',true)
-assert(not GetBindingAction('PAD2',true):find(':Cancel',1,true) and Ping.frame.cpfHint.text:find('cancel wedge',1,true),'remapped cancel control has false hint')
+assert(not GetBindingAction('PAD2',true):find(':Cancel',1,true) and not Ping.frame.cpfHint,'remapped cancel control has false hint')
 mapped.buttons[2]=false
 fire(Ping.frame,'PreClick','PAD2',false) fire(Ping.frame,'OnClick','PAD2',false,true,true) fire(Ping.frame,'PostClick','PAD2',false)
 trusted=false hardware=false

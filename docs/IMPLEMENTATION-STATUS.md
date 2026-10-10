@@ -1,3 +1,43 @@
+## Candidate.27 editing repair — October 10, 2026 (DO NOT DEPLOY)
+
+The user confirms candidate.26 restored the Paladin, then reports dragonriding
+edits reverted and removed actions returning. The recovery-off toggle alone did
+not clear it; logout/login gave temporary relief, but editing still reverted. Undo automatic restoration entirely:
+no automatic spell pickup/place, cursor clearing, emergency seed or repair timer.
+Historical snapshots remain read-only diagnostic evidence; legacy opt-in cannot
+reactivate writes. The original quest-loss writer remains unconfirmed. TLM's
+level-up reapply is a source-audited lead, not an established cause.
+
+TemporaryRouting now preserves native editing: do not reapply unchanged binding
+declarations on every refresh; clear its ordinary cache when native OnDragStart
+removes a direct action; release stale held-action latches during native edits;
+keep current-page action-slot drag/drop native; reject
+unavailable temporary overflow drops without corrupting ordinary bindings.
+Retain L2+R2 temporary routing, accepted casting/ground placement, revision17,
+HUD/class data and all backups. Add passive bounded writer/loadout/event context.
+The full regression gate must include actual native drag persistence tests.
+
+R3 uses the user-approved existing ConsolePort sliced ring/masks/colours/arrow
+and round icon renderer. Artwork appears after 0.15-second hold, never on a tap.
+Six Blizzard ping types; right-stick selection/release send; Circle/B cancels.
+Native secure macro/input ownership remains. Deflected-stick taps can send that
+type; do not claim a restricted clock gate or live Retail acceptance.
+
+Fresh official stable Retail check: nine packages current, none changed. Prepare
+Forever only. No installer or preview, live AddOns/WTF writes, game input, reload
+or restart. The no-deployment instruction remains binding while the user plays.
+See `docs/CANDIDATE27-HOLD-RING-AND-ACTION-GUARD-2026-10-10.md` and exact-source
+qualification/preparation receipts below.
+
+All 64 runtime/source suites and 39 tooling checks pass for exact current
+product/tools/tests hashes, including native compiler/macro ping, 4,160 all-class
+temporary dispatch cases and mandatory edit-overwrite/cache/latch regressions.
+The exact candidate.26 automatic writer is rejected by the read-only regression.
+See evidence/test-results/candidate27-runtime.json and candidate27-tooling.json.
+Readback verifies all 55 live Forever files still exact installed candidate.26;
+no installer/preview or live filesystem writes. Retail acceptance remains pending
+later deployment authorization and the user's test.
+
 ## Installed candidate.26 — October 10, 2026, 15:35:48 Toronto
 
 The user-authorized emergency update is installed with WoW closed from tested,

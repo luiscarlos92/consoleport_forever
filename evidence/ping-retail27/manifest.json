@@ -1,0 +1,32 @@
+[
+  {
+    "path": "Blizzard_SharedXML/Blizzard_RadialWheel.lua",
+    "sha256": "928860fa106713e3b2f8d761284fe9ddd9db9f2200ace09ebd70c611be88c13c",
+    "url": "https://raw.githubusercontent.com/Gethe/wow-ui-source/09b9db7948abc9b9648dedaab51eb0cf3ee67b31/Interface/AddOns/Blizzard_SharedXML/Blizzard_RadialWheel.lua"
+  },
+  {
+    "path": "Blizzard_SharedXML/Blizzard_RadialWheel.xml",
+    "sha256": "bab9c4ca73753670b84c27b2e52aeb50301817de8abca667f92b255ef24b5c58",
+    "url": "https://raw.githubusercontent.com/Gethe/wow-ui-source/09b9db7948abc9b9648dedaab51eb0cf3ee67b31/Interface/AddOns/Blizzard_SharedXML/Blizzard_RadialWheel.xml"
+  },
+  {
+    "path": "Blizzard_PingUI/Blizzard_PingUI.xml",
+    "sha256": "d7e25348768754b14ecd6f0e80d2c0210c1a941c5645a9bbdee14024d8c0168b",
+    "url": "https://raw.githubusercontent.com/Gethe/wow-ui-source/09b9db7948abc9b9648dedaab51eb0cf3ee67b31/Interface/AddOns/Blizzard_PingUI/Blizzard_PingUI.xml"
+  },
+  {
+    "path": "Blizzard_APIDocumentationGenerated/GamePadDocumentation.lua",
+    "sha256": "6b63e7e0f7db4bc1ba2cf1f47072f552db6218c4aee08b02c93aa64536f74490",
+    "url": "https://raw.githubusercontent.com/Gethe/wow-ui-source/09b9db7948abc9b9648dedaab51eb0cf3ee67b31/Interface/AddOns/Blizzard_APIDocumentationGenerated/GamePadDocumentation.lua"
+  },
+  {
+    "path": "Blizzard_APIDocumentationGenerated/ClassTalentsDocumentation.lua",
+    "sha256": "f78a3c8af0b812a6f705c078f18a70a763687cb9217b09f8aaf20e5c45510358",
+    "url": "https://raw.githubusercontent.com/Gethe/wow-ui-source/09b9db7948abc9b9648dedaab51eb0cf3ee67b31/Interface/AddOns/Blizzard_APIDocumentationGenerated/ClassTalentsDocumentation.lua"
+  },
+  {
+    "path": "Blizzard_APIDocumentationGenerated/ActionBarSharedDocumentation.lua",
+    "sha256": "5404f7a1faeed5a9e6bc97ed96356299cb7676d52d3cc8add81049c5e6729167",
+    "url": "https://raw.githubusercontent.com/Gethe/wow-ui-source/09b9db7948abc9b9648dedaab51eb0cf3ee67b31/Interface/AddOns/Blizzard_APIDocumentationGenerated/ActionBarSharedDocumentation.lua"
+  }
+]

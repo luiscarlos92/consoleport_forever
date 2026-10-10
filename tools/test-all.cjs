@@ -915,7 +915,7 @@ check('T60.inactive-candidate27-secure-ping-fallback', () => {
   const compiler=normalized('evidence/native/Blizzard_RestrictedAddOnEnvironment/RestrictedExecution.lua');
   const wrap=p=>';(function(...)\n'+normalized(p)+'\nend)("ConsolePort",db);';
   const legacy=read('fallbacks/ping-candidate27/Ping.lua.disabled');
-  const fixture=source.replace(product,legacy)+'\n'+normalized('fallbacks/ping-candidate27/ping_targeting.lua.disabled')
+  const fixture=source.replace(product,()=>legacy)+'\n'+normalized('fallbacks/ping-candidate27/ping_targeting.lua.disabled')
     .replace('--@CURRENT_PIE_STYLE',()=> 'CPPieSliceMixin={}\nlocal SLICE_FRACTION,BG_FRACTION,MASK_FRACTION=512/300,480/300,512/300;\n'+['CPPieMenuMixin:UpdatePieSlices','CPPieSliceMixin:SetIndex','CPPieSliceMixin:RotateMasks','CPPieSliceMixin:UpdateSize'].map(name=>nativeFunction('evidence/consoleport-contracts/ConsolePort/Widget/PieMenu/PieMenu.lua',name)).join('\n'))
     .replace('--@CURRENT_CONVERSION',()=>utils.slice(utils.indexOf('do\tlocal ConvertSecureBody'),utils.indexOf('\nend',utils.indexOf('do\tlocal ConvertSecureBody'))+4))
     .replace('--@CURRENT_SECURE_ENV',()=>utils.slice(utils.indexOf('CPAPI.SecureExportMixin ='),utils.indexOf('do local UIHider;')))

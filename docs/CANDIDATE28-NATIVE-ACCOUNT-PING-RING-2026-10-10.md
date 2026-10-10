@@ -90,3 +90,7 @@ All nine official stable Retail dependencies were freshly checked this session:
 none changed or downloaded. Only Forever is eligible for a future scoped update.
 No deployment, installer preview, game input, restart or reload is authorized.
 Installed candidate.27 stays in place.
+
+Qualification complete: all 65 runtime/source suites and 39 tooling checks pass
+on exact frozen source hashes. Reports: evidence/test-results/candidate28-runtime.json
+and candidate28-tooling.json. No deployment or installer preview ran.

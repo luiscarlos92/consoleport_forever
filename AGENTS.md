@@ -30,6 +30,11 @@ preparation-only instruction supersedes earlier fulfilled deployment authorizati
 See docs/CANDIDATE28-NATIVE-ACCOUNT-PING-RING-2026-10-10.md and
 fallbacks/ping-candidate27/manifest.json.
 
+All 65 runtime/source suites and 39 tooling checks pass on exact frozen hashes.
+T65 includes real callable-table LibStub startup, native ring backend/frontend,
+secure press-before-camera dispatch, same-header aura handoff and atlas UV cleanup
+negative controls. The inactive fallback remains qualified by T60.
+
 ## Installed candidate.27 — October 10, 2026, 17:00:18 Toronto
 
 The user's "deploy now" authorization is fulfilled. With WoW closed, installed

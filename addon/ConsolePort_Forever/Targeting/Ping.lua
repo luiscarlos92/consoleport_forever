@@ -31,7 +31,7 @@ Ping.Pre = [[
     local layers=self:GetFrameRef('layers')
     local physical=button:match('([^%-]+)$')
     local state=GetGamePadState()
-    for _,name in ipairs({'Cursor','Raid','TargetRing'}) do
+    for _,name in ipairs(newtable('Cursor','Raid','TargetRing')) do
         local owner=self:GetFrameRef(name)
         -- Cursor is natively unprotected and relinquishes input in combat.
         -- Restricted handles may only inspect its visibility out of combat.

@@ -189,3 +189,9 @@ C:/Users/luisr/WoW-Backups/ConsolePort-Forever/20261010T071208Z-8710da38c2df. Re
 evidence/delivery/*candidate24*.json. All 54 installed native ConsolePort source
 contracts were also checked against the tested official source before installation.
 No game launch or hardware test was performed.
+
+Post-install correction, October 10: the user reports no selector/no ping.
+The actual restricted closure compiler rejects the raw table literal in the
+PreClick body; the old fixture omitted that compiler. Candidate24 readiness is
+rejected by both agents. See CANDIDATE25-SILENT-PING-2026-10-10.md and the retained
+candidate25 compiler reproduction. Candidate25 is prepared only, NOT DEPLOYED.

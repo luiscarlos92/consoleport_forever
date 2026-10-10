@@ -36,6 +36,22 @@ function execute(source, name) {
   }
   lua.lua_pushnil(L); lua.lua_setglobal(L,to_luastring('dofile'));
   lua.lua_pushnil(L); lua.lua_setglobal(L,to_luastring('loadfile'));
+  // Lua 5.1 setfenv compatibility for the unchanged Blizzard restricted compiler.
+  // Kept outside restricted snippet environments; no debug library is exposed.
+  lua.lua_pushcfunction(L, S => {
+    lauxlib.luaL_checktype(S,1,lua.LUA_TFUNCTION);
+    lauxlib.luaL_checktype(S,2,lua.LUA_TTABLE);
+    for(let i=1;;i++) {
+      const name=lua.lua_getupvalue(S,1,i);
+      if(name===null) break;
+      lua.lua_pop(S,1);
+      if(to_jsstring(name)==='_ENV') {
+        lua.lua_pushvalue(S,2); lua.lua_setupvalue(S,1,i); break;
+      }
+    }
+    lua.lua_pushvalue(S,1); return 1;
+  });
+  lua.lua_setglobal(L,to_luastring('CPFSetFunctionEnvironment'));
   const rc = lauxlib.luaL_loadbuffer(L,to_luastring(source),null,to_luastring(name)) || lua.lua_pcall(L,0,0,0);
   if (rc !== lua.LUA_OK) {
     const message=to_jsstring(lua.lua_tostring(L,-1));
@@ -384,7 +400,7 @@ check('T46.native-aura-bar-complete-ring-access-and-editor-release', () => {
 check('T13.native-LiteMount-binding-icons', () => {
   const file='evidence/consoleport-contracts/ConsolePort/Model/Game/Bindings.lua';
   const fixture=read('tests/harness/litemount.lua').replace('--@NATIVE_BINDING_ICON_METHODS',()=>['Bindings:GetIcon','Bindings:SetIcon'].map(name=>nativeFunction(file,name)).join('\n'));
-  execute(source+fixture,'native-LiteMount-icons');
+  for(const version of ['12.1.0-1','12.1.0-2']) execute(source+fixture.replace("local version='12.1.0-1'","local version='"+version+"'"),'native-LiteMount-icons-'+version);
 });
 check('T23.native-cinematic-held-skip-gate', () => {
   const base='evidence/native/Blizzard_FrameXML/';
@@ -873,7 +889,7 @@ check('T59.character-binding-capture-rejects-account-view', () => {
 check('T60.native-secure-macro-ping-stick-selection-and-owner-cancellation', () => {
   const nativeManifest=JSON.parse(read('evidence/native/manifest.json'));
   const cpManifest=JSON.parse(read('evidence/consoleport-contracts/manifest.json'));
-  for(const name of ['Blizzard_ChatFrameBase/Mainline/SlashCommandsOverrides.lua','Blizzard_PingUI/Blizzard_PingManager.lua','Blizzard_FrameXML/SecureTemplates.lua','Blizzard_RestrictedAddOnEnvironment/SecureHandlers.lua','Blizzard_RestrictedAddOnEnvironment/RestrictedFrames.lua']) {
+  for(const name of ['Blizzard_ChatFrameBase/Mainline/SlashCommandsOverrides.lua','Blizzard_PingUI/Blizzard_PingManager.lua','Blizzard_FrameXML/SecureTemplates.lua','Blizzard_RestrictedAddOnEnvironment/SecureHandlers.lua','Blizzard_RestrictedAddOnEnvironment/RestrictedFrames.lua','Blizzard_RestrictedAddOnEnvironment/RestrictedExecution.lua']) {
     const row=nativeManifest.find(r=>r.path===name);
     if(!row || sha('evidence/native/'+name)!==row.sha256) throw Error('Native secure ping source drift: '+name);
   }
@@ -895,6 +911,7 @@ check('T60.native-secure-macro-ping-stick-selection-and-owner-cancellation', () 
   const native=normalized('evidence/native/Blizzard_FrameXML/SecureTemplates.lua');
   const manager=normalized('evidence/native/Blizzard_PingUI/Blizzard_PingManager.lua');
   const slash=normalized('evidence/native/Blizzard_ChatFrameBase/Mainline/SlashCommandsOverrides.lua');
+  const compiler=normalized('evidence/native/Blizzard_RestrictedAddOnEnvironment/RestrictedExecution.lua');
   const wrap=p=>';(function(...)\n'+normalized(p)+'\nend)("ConsolePort",db);';
   const fixture=source+'\n'+normalized('tests/harness/ping_targeting.lua')
     .replace('--@CURRENT_CONVERSION',()=>utils.slice(utils.indexOf('do\tlocal ConvertSecureBody'),utils.indexOf('\nend',utils.indexOf('do\tlocal ConvertSecureBody'))+4))
@@ -902,6 +919,7 @@ check('T60.native-secure-macro-ping-stick-selection-and-owner-cancellation', () 
     .replace('--@CURRENT_SCRIPT_MIXIN',()=>database.slice(database.indexOf('db.table.mixin ='),database.indexOf('return obj\nend;',database.indexOf('db.table.mixin ='))+15))
     .replace('--@CURRENT_LAYERS',()=>wrap('evidence/consoleport-contracts/ConsolePort/Controller/Layers.lua'))
     .replace('--@CURRENT_RADIAL',()=>wrap('evidence/consoleport-contracts/ConsolePort/Controller/Radial.lua'))
+    .replace('--@NATIVE_RESTRICTED_COMPILER',()=>compiler.slice(compiler.indexOf('local function SelfScrub('),compiler.indexOf('-- Max number of cached closures')))
     .replace('--@NATIVE_WRAPPED_CLICK',()=>handlers.slice(handlers.indexOf('local function Wrapped_Click('),handlers.indexOf('local function Wrapped_OnEnter(')))
     .replace('--@NATIVE_WRAPPED_OTHER',()=>handlers.slice(handlers.indexOf('local function CreateSimpleWrapper('),handlers.indexOf('local function Wrapped_Drag('))+handlers.slice(handlers.indexOf('local function Wrapped_Attribute('),handlers.indexOf('local LOCAL_Wrap_Handlers')))
     .replace('--@NATIVE_ACTION_DISPATCH',()=>native.slice(native.indexOf('SECURE_ACTIONS.macro ='),native.indexOf('local CANCELABLE_ITEMS'))+native.slice(native.indexOf('local PRESS_TYPE_DOWN'),native.indexOf('function SecureUnitButton_OnLoad')))
@@ -910,6 +928,7 @@ check('T60.native-secure-macro-ping-stick-selection-and-owner-cancellation', () 
   if(/--@(?:CURRENT|NATIVE)_/.test(fixture)) throw Error('Unfilled secure ping contract marker');
   execute(fixture,'secure-macro-controller-ping');
   for(const [name,from,to,expected] of [
+    ['raw-restricted-table-literal',"ipairs(newtable('Cursor','Raid','TargetRing'))","ipairs({'Cursor','Raid','TargetRing'})",'Direct table creation is not permitted'],
     ['unprotected-cursor-startup-rejection',"(name~='Cursor' and not owner:IsProtected())","not owner:IsProtected()",'qualified unprotected UI cursor prevented ping startup'],
     ['unprotected-cursor-combat-inspection',"(owner:IsProtected() or self:GetAttribute('state-cpf-combat')~='combat')",'true','restricted unprotected handle in combat'],
     ['vanished-soft-unit-fallback',"..unit..',exists]'","..unit..']'",'vanished aimed unit fell back to stale hit test'],

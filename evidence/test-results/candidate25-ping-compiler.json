@@ -1,0 +1,42 @@
+{
+  "scope": "checkout only; user playing; DO NOT DEPLOY",
+  "rejectedInstalledVersion": "2.0.0-candidate.24",
+  "installedSourceCommit": "28429e5db4cf7fe66d83aa485fa1d3d5c7cd1058",
+  "failure": "Native BuildRestrictedClosure rejects raw PreClick table literal before selector Show or macro preparation",
+  "nativeError": "Direct table creation is not permitted",
+  "nativeCompilerPath": "evidence/native/Blizzard_RestrictedAddOnEnvironment/RestrictedExecution.lua",
+  "nativeCompilerSHA256": "92651002e47b532a5b6d1ef11e5a5b28aa234af40abf9f950bdb5da4c05d39d8",
+  "previousFixtureGap": "Ordinary Lua load omitted the actual restricted closure compiler",
+  "runtimePingFixOneLineOfCode": true,
+  "currentPingSHA256": "9c65305587e03c207a0374618e7db1abf9348a91d07866b5902b5f4388bf27a4",
+  "fixtureSHA256": "e153c2ac6b8cce61528be3e5e48d26330360f252dff2c55d60d35f43e021340e",
+  "nativeRestrictedCompilerAllFixtureExecutions": true,
+  "requiredMutations": 15,
+  "closureEnvironmentIsolationSelfScrubAndSignatureChecks": true,
+  "existingSecureMacroAndCursorUIBypassPreserved": true,
+  "remainingEngineGates": [
+    "Actual input/device sampling",
+    "Actual cursor centering/macro timing",
+    "Full taint and secret-value tagging",
+    "Server ping acceptance"
+  ],
+  "stableCheck": "2026-10-10T17:39:06.857369+00:00",
+  "pendingDeploymentDependencies": [
+    "xod-wow/LiteMount",
+    "Tercioo/Plater-Nameplates"
+  ],
+  "finalQualification": "Both agents ACCEPT compiler repair and preparation readiness; exact complete reports green; NOT DEPLOYED; live Retail validation pending",
+  "pairVerdicts": {
+    "rootReviewer": "ACCEPT: independently reproduced exact installed-source compiler rejection, validated all report/source hashes, and preserved temporary/ground routing",
+    "pingImplementer": "ACCEPT: independently verified 62 runtime/source and 39 tooling checks against frozen source hashes; current Ping differs from installed candidate24 only by supported newtable constructor; no blocker within repair scope"
+  },
+  "runnerSHA256": "dfd47d17184b383bfdf96d55edf588cd14a9adcf7bcf956bc6a9eeefa66a5ecc",
+  "runtimeSuites": 62,
+  "toolingChecks": 39,
+  "runtimeCompletedAt": "2026-10-10T18:00:00.208Z",
+  "toolingCompletedAt": "2026-10-10T17:52:11.071254+00:00",
+  "greenReportHashes": {
+    "candidate25-runtime.json": "660a9373fc7fd7654e4760ae63098bdb62f12c90c56186b9a123c595635c18d2",
+    "candidate25-tooling.json": "1b7d6092cca55bc63e42295d7e5debc4638fdd83c1a792eef2174dcfa688048b"
+  }
+}

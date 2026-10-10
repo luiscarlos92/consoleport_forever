@@ -1,5 +1,6 @@
 local _,Addon=...
 local Mount={}
+local auditedVersions={['12.1.0-1']=true,['12.1.0-2']=true}
 Addon.LiteMountAdapter=Mount
 local ids={'CLICK LM_B1:LeftButton','CLICK LM_B2:LeftButton'}
 function Mount.New(db,api)
@@ -12,7 +13,7 @@ end
 function Mount:Probe()
     local api,bindings=self.api,self.db.Bindings
     if not api.C_AddOns or api.C_AddOns.GetAddOnMetadata('ConsolePort','Version')~='3.3.10'
-        or api.C_AddOns.GetAddOnMetadata('LiteMount','Version')~='12.1.0-1'
+        or not auditedVersions[api.C_AddOns.GetAddOnMetadata('LiteMount','Version')]
         or not api.C_AddOns.IsAddOnLoaded('LiteMount') then return false,'audited loaded LiteMount/ConsolePort required' end
     if not bindings or type(bindings.Icons)~='table' or type(bindings.GetIcon)~='function' or type(bindings.SetIcon)~='function' then return false,'native binding icon API not initialized' end
     if self.icons and (bindings~=self.bindings or bindings.Icons~=self.icons) then return false,'native binding icon table replaced; refresh review' end

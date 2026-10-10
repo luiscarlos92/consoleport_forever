@@ -1,0 +1,8 @@
+{
+  "scope": "read-only live Forever code verification while user is playing",
+  "installedVersion": "2.0.0-candidate.24",
+  "installedFilesStillMatch": 54,
+  "noLiveAddonWrites": true,
+  "noLiveWTFWrites": true,
+  "noInstallerOrGameInteraction": true
+}

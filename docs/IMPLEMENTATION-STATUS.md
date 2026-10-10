@@ -1,3 +1,29 @@
+## Candidate.25 compiler repair qualified — October 10, 2026 (DO NOT DEPLOY)
+
+The user rejects candidate.24: no output, no error/popup and no ping; holding the
+button shows no selector. The user is actively playing and explicitly forbids
+any deployment. Checkout preparation/test only: no live AddOns/WTF writes,
+installer, game input, reload or restart. Candidate.24 remains installed.
+Pair review found the raw PreClick body contains a table literal rejected by
+Blizzard's actual restricted closure compiler before Show can run. Prior offline
+readiness is rejected: its host used ordinary Lua load and omitted this compiler.
+Require the unchanged native compiler for every T60 restricted execution and a
+mandatory old-literal regression. Keep secure macro/@cursor and native ownership;
+TemporaryRouting.lua/Ground.lua, revision17 and accepted rendering/class data stay.
+All nine stable Retail dependencies freshly checked: LiteMount12.1.0-2 and
+Plater-v658 changed/downloaded only into the checkout. Native mount button/icon
+contracts remain unchanged; both audited LiteMount versions are supported, with
+changed-source Lua51/closure/notices qualification and focused compatibility green.
+Any future separately authorized update must include these two changed packages.
+The present user no-deployment instruction supersedes all earlier authorizations.
+
+Both agents independently ACCEPT the compiler repair and preparation readiness.
+All 62 runtime/source suites and 39 tooling checks pass for exact current hashes.
+T60 now uses the unchanged native compiler and rejects the old table literal;
+T61 retains 4,160 all-character temporary-state/chord cases. See the detailed
+candidate25 diagnosis and retained compiler/pair/report evidence. NOT DEPLOYED;
+Retail gameplay acceptance remains pending separate authorization and testing.
+
 ## Installed candidate.24 — 2026-10-10 03:12:45 Toronto
 
 The continuing authorized ping repair was deployed with WoW closed from tested,

@@ -102,6 +102,7 @@ local function SafeCallWrappedHandler(frame,fn,...)
     return table.unpack(result,2)
 end
 local handleCache=setmetatable({},{__mode='k'})
+local frameHandles=setmetatable({},{__mode='k'})
 local proxy
 proxy=function(frame)
     if not frame then return nil end
@@ -124,7 +125,7 @@ proxy=function(frame)
     handle.SetBinding=function(_,priority,key,action) overrides[key]={action=action,owner=frame} end
     handle.ClearBinding=function(_,key) if overrides[key] and overrides[key].owner==frame then overrides[key]=nil end end
     handle.ChildUpdate=function() end
-    handleCache[frame]=handle return handle
+    handleCache[frame]=handle frameHandles[handle]=true return handle
 end
 function newtable(...) return {...} end
 function wipe(t) for key in pairs(t) do t[key]=nil end end
@@ -132,9 +133,17 @@ tremove=table.remove
 local restricted={math=math,string=string,tonumber=tonumber,tostring=tostring,type=type,select=select,
     pairs=pairs,ipairs=ipairs,unpack=table.unpack,newtable=newtable,wipe=wipe,tremove=tremove,
     GetGamePadState=GetGamePadState,UnitExists=UnitExists,format=string.format,SecureCmdOptionParse=function() end}
+-- Only the host's Lua 5.1 compatibility boundary is substituted. These helpers
+-- are private to the fixture and absent from every restricted environment.
+local loadstring_untainted=function(body) return load(body,'restricted-ping','t',{}) end
+local setfenv=function(fn,env) return CPFSetFunctionEnvironment(fn,env) end
+local IsFrameHandle=function(value) return frameHandles[value]==true end
+local scrub=function(...) return ... end
+--@NATIVE_RESTRICTED_COMPILER
 local function restrictedCall(frame,signature,body,...)
     frame.secureEnv=frame.secureEnv or copy(restricted)
-    local fn=assert(load('return function('..signature..') '..body..' end','restricted-ping','t',frame.secureEnv))()
+    local fn,reason=BuildRestrictedClosure(body,frame.secureEnv,signature)
+    assert(fn,reason)
     local prior=trusted trusted=true
     local result={pcall(fn,...)} trusted=prior
     assert(result[1],result[2]) return table.unpack(result,2)
@@ -265,6 +274,27 @@ C_Macro={RunMacroText=function(text)
     end
 end}
 local Ping=Addon.PingTargeting
+-- The shipped candidate.24 failed before any input body could execute: its raw
+-- owner list was a Lua table literal, forbidden by Blizzard's actual compiler.
+local candidate24Pre=Ping.Pre:gsub("newtable%('Cursor','Raid','TargetRing'%)","{'Cursor','Raid','TargetRing'}")
+local oldClosure,oldError=BuildRestrictedClosure(candidate24Pre,copy(restricted),'self,button,down')
+assert(not oldClosure and oldError=='Direct table creation is not permitted','candidate24 forbidden raw-table input was not reproduced')
+local fixedClosure,fixedError=BuildRestrictedClosure(Ping.Pre,copy(restricted),'self,button,down')
+assert(fixedClosure and not fixedError,'current ping input rejected by native compiler: '..tostring(fixedError))
+local keywordClosure,keywordError=BuildRestrictedClosure('function accidental() end',copy(restricted),'self')
+assert(not keywordClosure and keywordError=='The function keyword is not permitted','native compiler accepted function keyword')
+local signatureClosure,signatureError=BuildRestrictedClosure('return self',copy(restricted),'self; invalid')
+assert(not signatureClosure and signatureError:find('Signature contains invalid characters',1,true),'native compiler accepted malformed signature')
+-- Every factory starts in its own empty environment before the actual compiler
+-- installs the restricted environment. Neither host shims nor globals escape.
+local envA=copy(restricted,{probe='A'}) local envB=copy(restricted,{probe='B'})
+local isolatedA=assert(BuildRestrictedClosure('return probe, CPFSetFunctionEnvironment, debug, load, _G',envA,'self'))
+local isolatedB=assert(BuildRestrictedClosure('return probe',envB,'self'))
+local valueA,shim,debugAccess,loader,globals=isolatedA(nil)
+assert(valueA=='A' and isolatedB(nil)=='B' and isolatedA(nil)=='A','native compiler environments shared host state')
+assert(not shim and not debugAccess and not loader and not globals,'host compiler adapter leaked into restricted environment')
+local selfOnly=assert(BuildRestrictedClosure('return self',copy(restricted),'self'))
+assert(selfOnly(UIParent)==nil and selfOnly(proxy(UIParent))==proxy(UIParent),'native SelfScrub accepted raw frame or rejected qualified handle')
 local function click(key,down)
     hardware=true trusted=true
     local physical=key:match('([^%-]+)$')

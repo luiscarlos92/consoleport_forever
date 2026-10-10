@@ -1,0 +1,40 @@
+{
+  "packages": [
+    {
+      "repo": "xod-wow/LiteMount",
+      "previousVersion": "12.1.0-1",
+      "version": "12.1.0-2",
+      "changedFiles": [
+        "LiteMount/LiteMount.toc",
+        "LiteMount/CHANGELOG.md",
+        "LiteMount/Conditions.lua",
+        "LiteMount/Libs/MountsRarity-2.0/MountsRarity.lua",
+        "LiteMount/Libs/AceDB-3.0/AceDB-3.0.lua"
+      ],
+      "removedFiles": [],
+      "changedLua51SyntaxChecks": 3,
+      "scope": "checkout only; no live installation"
+    },
+    {
+      "repo": "Tercioo/Plater-Nameplates",
+      "previousVersion": "Plater-v657",
+      "version": "Plater-v658",
+      "changedFiles": [
+        "Plater/Plater_Mainline.toc",
+        "Plater/Plater_TBC.toc",
+        "Plater/Plater.toc",
+        "Plater/Plater_Vanilla.toc",
+        "Plater/Plater_Mists.toc",
+        "Plater/libs/LibSharedMedia-3.0/LibSharedMedia-3.0.lua",
+        "Plater/Plater_Camelot.toc",
+        "Plater/Plater_DefaultSettings.lua"
+      ],
+      "removedFiles": [],
+      "changedLua51SyntaxChecks": 2,
+      "scope": "checkout only; no live installation"
+    }
+  ],
+  "LiteMountNativeButtonsAndBindingImplementationUnchanged": true,
+  "PlaterMainRuntimeUnchanged": true,
+  "compatibility": "Changed native button/action/ConsolePort icon contracts reviewed unchanged; only additional audited LiteMount version allowed. Full required suites remain final gate."
+}

@@ -815,3 +815,19 @@ taint/secure authority and actual reconnect event ordering remain NOT RUN until
 user evidence. The two-agent offline agreement is readiness for this test, not
 certification that the live client works. Dragonriding remains user-accepted;
 other temporary-bar families retain case49 live acceptance.
+
+## Case 52 - native compiler repair of silent ping (candidate.25, NOT DEPLOYED)
+
+Only after a later explicitly authorized closed-WoW installation: hold R3 in
+ordinary camera control. The six ping types and Cancel should now appear. Test
+a contextual tap on valid terrain, then all six typed releases and cancellation.
+Repeat with the mouse previously parked over UI, aimed enemies/friends and a
+different stale hard target. Check both key-down settings and centering 0/1.
+Repeat combat, modal/other-ring handoff, modifiers and disconnect cases from51.
+
+If no selector appears, capture the pingTargeting line from /cpf status and
+/cpf diagnose before reloading. If the selector appears but no ping is sent,
+report that distinction and any normal ping error. Do not equate hidden Lua
+errors with successful restricted compilation. Existing dragonriding/temporary
+bar acceptance remains separate. Candidate.25 has not been tested in Retail;
+offline native compiler and dispatcher results do not pass this manual case.

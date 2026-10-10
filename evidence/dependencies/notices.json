@@ -1,5 +1,5 @@
 {
-  "lockSHA256": "9fae7cbbd007cf06055d9eae6c00578806c6a2cd8e96ac042c8a99e58117139d",
+  "lockSHA256": "2e49961920e5f8c4b3966ba42a9ab3f35bb0c55dd233b75b5587bf2830d59c2a",
   "discoveryComplete": true,
   "releaseNoticeReviewComplete": false,
   "packDistributionReady": false,
@@ -87,10 +87,468 @@
       "review": "Review main addon, bundled libraries and media terms independently; filename discovery does not grant redistribution rights."
     },
     {
+      "repo": "SFX-WoW/Masque",
+      "version": "12.1.0",
+      "officialRelease": "https://github.com/SFX-WoW/Masque/releases/tag/12.1.0",
+      "packageSHA256": "9e1da4827ae60bd25d7fc427cbeeb0dc297e59d53a71a29ae95223d3374bbfa0",
+      "selectedFolders": [
+        "Masque"
+      ],
+      "noticeFiles": [
+        {
+          "source": "Masque/LICENSE.txt",
+          "sha256": "42bd6cd191a045f474b8dc2635b86793cf4c6bd38a1c31dd31a4effe50f7ce6d",
+          "copy": "evidence/dependencies/notices/SFX-WoW__Masque/Masque/LICENSE.txt"
+        }
+      ],
+      "embeddedNoticeSources": [
+        {
+          "source": "Masque/Core/Button.lua",
+          "sha256": "7843a82ba91585a172489f0f3b70fc8238ff71556ee3cc9469650fa426b9d547"
+        },
+        {
+          "source": "Masque/Core/Core.lua",
+          "sha256": "5408653113dd1f901f0a98b9b1bfe299b284461f9efca6358b5398d51824a0fe"
+        },
+        {
+          "source": "Masque/Core/Group.lua",
+          "sha256": "7b2b8006d652e136114dcfcc6e729f17ac8952cdff50555ed182235135d3b7b8"
+        },
+        {
+          "source": "Masque/Core/Groups.lua",
+          "sha256": "29cdf83cb1f2e570b9dd37ebcb8d15658f0a3a95c7b95d0eee7c067cb27bae27"
+        },
+        {
+          "source": "Masque/Core/Regions/AssistedCombat.lua",
+          "sha256": "662f18965df4351cbfce3a32e1d78130dc0e6284d7508d4364b73df2722d4b2c"
+        },
+        {
+          "source": "Masque/Core/Regions/AutoCast.lua",
+          "sha256": "7a4fe5a25190febb791f64abd7448d15384d0fc366f24c8df3bc48b61d226e6b"
+        },
+        {
+          "source": "Masque/Core/Regions/Backdrop.lua",
+          "sha256": "c3404a0c35bdb443b5fbd74789944d638146beed15fb2934c49c1ed1892676c9"
+        },
+        {
+          "source": "Masque/Core/Regions/Cooldown.lua",
+          "sha256": "f1ee1b3211e42945823f70e76cffb74f7698a53a1b95ffdf24ddc79ea7154448"
+        },
+        {
+          "source": "Masque/Core/Regions/Gloss.lua",
+          "sha256": "fe39569d0e59b759155f9e2964a541ee0fe020dc94f2f56fe3f72a0e76e75ad0"
+        },
+        {
+          "source": "Masque/Core/Regions/Icon.lua",
+          "sha256": "6545ead0b578214eb95b23df43f87a13f76a8bd0325d87b325c65bceba59da13"
+        },
+        {
+          "source": "Masque/Core/Regions/IconBorder.lua",
+          "sha256": "a40caf9027e8e4bed13105b3217fe16d33587a87093194adb026c1e373b3df1f"
+        },
+        {
+          "source": "Masque/Core/Regions/Mask.lua",
+          "sha256": "61b71b2afe755683f4866087b0037ebf123b944d9c7b35f64ef11eca65eb3b1e"
+        },
+        {
+          "source": "Masque/Core/Regions/NewItem.lua",
+          "sha256": "e6570bb8540e46e6cf7c750d62a09d779a33d3e51bcb98b8adefded508d7b46d"
+        },
+        {
+          "source": "Masque/Core/Regions/Normal.lua",
+          "sha256": "9781982f86db9158c262042841871b32412183b35bbc437fcbcf77c36232e906"
+        },
+        {
+          "source": "Masque/Core/Regions/QuestBorder.lua",
+          "sha256": "f883a23d8a3a6927ba9b49235643cdedb7129975c311389989a790c6d3a9150b"
+        },
+        {
+          "source": "Masque/Core/Regions/Shadow.lua",
+          "sha256": "89a618ab33f282148a7cf8651ecbf68e091e92c7201cf56424c182da66c193c4"
+        },
+        {
+          "source": "Masque/Core/Regions/SpellAlert.lua",
+          "sha256": "72a6283b846b5c023ce53e2b4d9c94936007c8b40cf322c76ac645c8e4670853"
+        },
+        {
+          "source": "Masque/Core/Regions/Text.lua",
+          "sha256": "f5b76993f67e62f472db0a5c1aa3a94c23aaa82e8220dc31acb0bd1b09200480"
+        },
+        {
+          "source": "Masque/Core/Regions/Texture.lua",
+          "sha256": "4374e1e2c33d80df6e84f9ce830033ea96477886857c4404b87ce6b85db310aa"
+        },
+        {
+          "source": "Masque/Core/Utility.lua",
+          "sha256": "f371c74e4a80e99e420de2f659119544a8243cdaf7262e7b24918b29df0f77d0"
+        },
+        {
+          "source": "Masque/Libs/AceGUI-3.0_SFX-Widgets/LibStub/LibStub.lua",
+          "sha256": "d34235c85f869505fdd9ef321d2420f69db7d2eb873d2b3bbf57584a314060fa"
+        },
+        {
+          "source": "Masque/Libs/AceGUI-3.0_SFX-Widgets/Widgets/SFX-Header-II.lua",
+          "sha256": "921ab99843d96999f144280f08b4df35a097ad2df2700e7203a9d43e74e03d32"
+        },
+        {
+          "source": "Masque/Libs/AceGUI-3.0_SFX-Widgets/Widgets/SFX-Header.lua",
+          "sha256": "9ed380c3adde793cd9a694e989274a3b411d871477ad997806fb0e6827e29279"
+        },
+        {
+          "source": "Masque/Libs/AceGUI-3.0_SFX-Widgets/Widgets/SFX-Info-URL.lua",
+          "sha256": "c44eaab0951a0d4a4c4fb09f90d801fab0abb91138e38878c1911e14935c77a2"
+        },
+        {
+          "source": "Masque/Libs/AceGUI-3.0_SFX-Widgets/Widgets/SFX-Info.lua",
+          "sha256": "c2690efc4947da576d3152a4ff223cec340aee7158be8208c2e289f9a031d301"
+        },
+        {
+          "source": "Masque/Libs/LibDualSpec-1.0/LibDualSpec-1.0.lua",
+          "sha256": "62b722c9d657193638f41bcd95bc115f005f9c6240646ec1d08928a856a3b3f6"
+        },
+        {
+          "source": "Masque/Libs/LibDualSpec-1.0/LibStub.lua",
+          "sha256": "6000f58d740eaa2b4a006c1dabb0366f0321fc687bab9e85d97d040a1fd42dab"
+        },
+        {
+          "source": "Masque/Libs/LibStub/LibStub.lua",
+          "sha256": "02d25b7433af734b59f0c4571bfaa73b2b660992d71d2fb6a8809b32de3f964c"
+        },
+        {
+          "source": "Masque/Locales/deDE.lua",
+          "sha256": "e13949ffa87a465a8cd136c901f07167e51c57e233ce75bbf3ca792fa7d71b25"
+        },
+        {
+          "source": "Masque/Locales/enUS.lua",
+          "sha256": "ccb412d7e2d777878125145bcb120dd080d4a523ce5bfb793414a30da0491e5b"
+        },
+        {
+          "source": "Masque/Locales/esES.lua",
+          "sha256": "9dd142eddc8bc74fa19d44d2d9485f256168ed915a0c4d53d478c27ff9b9ae52"
+        },
+        {
+          "source": "Masque/Locales/frFR.lua",
+          "sha256": "8aa8abd105e691250631e8c69d6731cbabd8e865a4bfbe4034b4b725b5c8eda0"
+        },
+        {
+          "source": "Masque/Locales/itIT.lua",
+          "sha256": "04b0bf6dcb6c574b49e5c41f5766cc3ec3c79da02b90438fc4233e69b6bd3810"
+        },
+        {
+          "source": "Masque/Locales/koKR.lua",
+          "sha256": "1e453b38c82704c1ccca3143a109e10a7b3afdfcf3d897226980515529a49bbd"
+        },
+        {
+          "source": "Masque/Locales/ptBR.lua",
+          "sha256": "e01387b56c512ef6249923a72f3b971eb7a963de89e8b5a0dc2d21fc3605df9c"
+        },
+        {
+          "source": "Masque/Locales/ruRU.lua",
+          "sha256": "d13aad645d62f22ac0858208141c92fa7b4d0844515a4cde0e97580d8487f6b9"
+        },
+        {
+          "source": "Masque/Locales/zhCN.lua",
+          "sha256": "559fc22cd9ea066f44c1b7087f26745daaa0556e9ee785a4177a808c8bcd89c4"
+        },
+        {
+          "source": "Masque/Locales/zhTW.lua",
+          "sha256": "2d170a7ba90a23442713ace84b276cbcd8369ba64e2ed7bf0759c7c56ae0e186"
+        },
+        {
+          "source": "Masque/Masque.lua",
+          "sha256": "2ebfce0ce77f6ff0c30743abab43b71303130127a4cf168a9700566c681be6ab"
+        },
+        {
+          "source": "Masque/Options/About.lua",
+          "sha256": "c9f34e38d3d7e9f0a05b9a3f5f6ff7fb27a9a3823065c134b005ed2c68942d98"
+        },
+        {
+          "source": "Masque/Options/Core.lua",
+          "sha256": "80f67fd2d3b64933a063c014bc17a84f64d0939842a7801bb470b9366a3b7393"
+        },
+        {
+          "source": "Masque/Options/General.lua",
+          "sha256": "7e7b2229c10577db229db0d47b78cfde7808b29ce31fe7dd87dca0fd83251f45"
+        },
+        {
+          "source": "Masque/Options/Info.lua",
+          "sha256": "cf11cb13385b81ca3ee26081a25969cdce076497ab597918a6f3fe2dbff04fa9"
+        },
+        {
+          "source": "Masque/Options/LDB.lua",
+          "sha256": "c0cb7e18b845764190c73b837b4c6abd7170007a47e856e9a1f29d55c322db6d"
+        },
+        {
+          "source": "Masque/Options/Profiles.lua",
+          "sha256": "bdb3a7c1bd2f6b60983ac42ffeac74b7fe85d7dcb9d4e1ab0a78e9065629cb2a"
+        },
+        {
+          "source": "Masque/Options/Skins.lua",
+          "sha256": "7062bfc67f5f1359852c5ea58c53815bea5bc07968f4fcd35cea1f780adfe22e"
+        },
+        {
+          "source": "Masque/Skins/Blizzard_Classic.lua",
+          "sha256": "091a3eb5d7097bf2bf24671ffc44f8b890f9930c42158c71c4d7ee6083615795"
+        },
+        {
+          "source": "Masque/Skins/Blizzard_Modern.lua",
+          "sha256": "23e9a7b710409299930a17bef38243377e8dacfdff898793dd20a879797eb94e"
+        },
+        {
+          "source": "Masque/Skins/Classic_Enhanced.lua",
+          "sha256": "c93f856ff8ac318cc94991efd05c25a23e4c1f3bf6cffc85a862eb5608e51d71"
+        },
+        {
+          "source": "Masque/Skins/Defaults.lua",
+          "sha256": "01a99cacb42dc0d42d8dee273a5d012db5b15c72657b930d022d698f40d8b082"
+        },
+        {
+          "source": "Masque/Skins/Dream.lua",
+          "sha256": "35774fc7e98dc915f0ced6a9ee11743477d7314d87475f39272267bf66c40051"
+        },
+        {
+          "source": "Masque/Skins/Modern_Enhanced.lua",
+          "sha256": "0d74b3de33ada64c56d4c4c8098b2330755795098dbf4015fe873f630d070fdd"
+        },
+        {
+          "source": "Masque/Skins/Regions.lua",
+          "sha256": "5da2ba09949fc367237607317e4926b22e914e6f72b71f7c6a16a8d7ee3a3347"
+        },
+        {
+          "source": "Masque/Skins/Skins.lua",
+          "sha256": "85bb0dd0d459f83215811557a47282c10b8a763e2ec461d4da3a0d5423d68360"
+        },
+        {
+          "source": "Masque/Skins/Zoomed.lua",
+          "sha256": "c3d3c27f0549fc4a7afe374df7bf90b63f4135b715419f181b3e7b1f579e0fec"
+        }
+      ],
+      "assemblyRequiredByCoverage": true,
+      "noticeFilesAbsent": false,
+      "review": "Review main addon, bundled libraries and media terms independently; filename discovery does not grant redistribution rights."
+    },
+    {
+      "repo": "curseforge/DynamicCam",
+      "version": "2.21.1",
+      "officialRelease": "https://www.curseforge.com/wow/addons/dynamiccam/files/8995535",
+      "packageSHA256": "10eb86230c6903e72097e1552c04de8a163a39fe3cb31fc3a3274c2c4394e072",
+      "selectedFolders": [
+        "DynamicCam"
+      ],
+      "noticeFiles": [
+        {
+          "source": "DynamicCam/LICENSE",
+          "sha256": "d073ad048c4a17bfb5a1c69eea17c60f262aa6f542a8ebb10c81e07c6876e6b1",
+          "copy": "evidence/dependencies/notices/curseforge__DynamicCam/DynamicCam/LICENSE"
+        },
+        {
+          "source": "DynamicCam/Libs/LICENSE.md",
+          "sha256": "af51766e056af139f94de73afdc907b860d11707a20e709654ad0bf110f6fb3a",
+          "copy": "evidence/dependencies/notices/curseforge__DynamicCam/DynamicCam/Libs/LICENSE.md"
+        },
+        {
+          "source": "DynamicCam/Libs/LibCamera/LICENSE.md",
+          "sha256": "42989df156027d106f8ef55a8f330f27f09255d6500470dbea5960b32dd43998",
+          "copy": "evidence/dependencies/notices/curseforge__DynamicCam/DynamicCam/Libs/LibCamera/LICENSE.md"
+        },
+        {
+          "source": "DynamicCam/Libs/LibEasing/LICENSE.md",
+          "sha256": "42989df156027d106f8ef55a8f330f27f09255d6500470dbea5960b32dd43998",
+          "copy": "evidence/dependencies/notices/curseforge__DynamicCam/DynamicCam/Libs/LibEasing/LICENSE.md"
+        },
+        {
+          "source": "DynamicCam/Libs/LibMountInfo/LICENSE",
+          "sha256": "17167210cb8256bf1ceaf8b76bce60d544e7415589a6b88bccc91bc3ea792dbd",
+          "copy": "evidence/dependencies/notices/curseforge__DynamicCam/DynamicCam/Libs/LibMountInfo/LICENSE"
+        }
+      ],
+      "embeddedNoticeSources": [
+        {
+          "source": "DynamicCam/DynamicCam.toc",
+          "sha256": "bb23006ec5240b376dd3c8463cc8066ce57c6a3a26bd2854b33760668a2676c7"
+        },
+        {
+          "source": "DynamicCam/Libs/LibCompress/LibCompress.lua",
+          "sha256": "1d3a6bb930d4134689105c74003851b2aecd7f568a2898d5d85c0591b0fa8ddb"
+        },
+        {
+          "source": "DynamicCam/Libs/LibCompress/LibCompress.toc",
+          "sha256": "bef6c501fe7fedc8cfff074aa5a685a724fc8bdaea9e248d574b4796ecdcb471"
+        },
+        {
+          "source": "DynamicCam/Libs/LibEasing/LibEasing.lua",
+          "sha256": "d01905038a55bb8f4c1b6dce2af381616d4ac8f25615f0b3dfb1fb7a26ceaa58"
+        },
+        {
+          "source": "DynamicCam/Libs/LibStub/LibStub.lua",
+          "sha256": "186bac9553513504fac3a5c4550ff59f3aee9e8a497376134f3ca01de2ed18d0"
+        },
+        {
+          "source": "DynamicCam/Libs/LibStub/LibStub.toc",
+          "sha256": "1f64542bc3921a190963e7bbd92a706b61fe2e8c411a03cd060a9c6097e6f4fa"
+        }
+      ],
+      "assemblyRequiredByCoverage": false,
+      "noticeFilesAbsent": false,
+      "review": "Review main addon, bundled libraries and media terms independently; filename discovery does not grant redistribution rights."
+    },
+    {
+      "repo": "curseforge/Immersion_ExtraFade",
+      "version": "1.18.0",
+      "officialRelease": "https://www.curseforge.com/wow/addons/immersion-extrafade/files/8995675",
+      "packageSHA256": "89c59d0519b2392b41010dda34ec01d38c9c1702c644f5e57422341b1fec21c6",
+      "selectedFolders": [
+        "Immersion_ExtraFade"
+      ],
+      "noticeFiles": [
+        {
+          "source": "Immersion_ExtraFade/LICENSE",
+          "sha256": "21fa609537edd30918bd7703c8d5e7ca5ebd1ebf90a5c9a7fe68b781db7750c2",
+          "copy": "evidence/dependencies/notices/curseforge__Immersion_ExtraFade/Immersion_ExtraFade/LICENSE"
+        }
+      ],
+      "embeddedNoticeSources": [
+        {
+          "source": "Immersion_ExtraFade/Immersion_ExtraFade.toc",
+          "sha256": "b26a8c04a5b2ed7abdc268da42d44f3dbf145c0084a6b02eb5b8408581bdf3d7"
+        },
+        {
+          "source": "Immersion_ExtraFade/Libs/LibStub/LibStub.lua",
+          "sha256": "186bac9553513504fac3a5c4550ff59f3aee9e8a497376134f3ca01de2ed18d0"
+        },
+        {
+          "source": "Immersion_ExtraFade/Libs/LibStub/LibStub.toc",
+          "sha256": "1f64542bc3921a190963e7bbd92a706b61fe2e8c411a03cd060a9c6097e6f4fa"
+        }
+      ],
+      "assemblyRequiredByCoverage": false,
+      "noticeFilesAbsent": false,
+      "review": "Review main addon, bundled libraries and media terms independently; filename discovery does not grant redistribution rights."
+    },
+    {
+      "repo": "SLOKnightfall/BetterWardrobe",
+      "version": "6.12.3",
+      "officialRelease": "https://github.com/SLOKnightfall/BetterWardrobe/releases/tag/6.12.3",
+      "packageSHA256": "abcba6be5535c15a581721192a5c4865e05b568dbac52d79c108c89e6c763d8c",
+      "selectedFolders": [
+        "BetterWardrobe",
+        "BetterWardrobe_SourceData"
+      ],
+      "noticeFiles": [
+        {
+          "source": "BetterWardrobe/LICENSE",
+          "sha256": "d8e552e5c2e72d0d14ebcd953903a2b2da544eb68be07261a5680b8e2404b61d",
+          "copy": "evidence/dependencies/notices/SLOKnightfall__BetterWardrobe/BetterWardrobe/LICENSE"
+        }
+      ],
+      "embeddedNoticeSources": [
+        {
+          "source": "BetterWardrobe/Libs/LibAppropriateitems-1.0/LibAppropriateItems-1.0.toc",
+          "sha256": "f6992d036a13cb197bde6dd7f5224286c77cb11f534beea335b6b8e0dbf1bade"
+        },
+        {
+          "source": "BetterWardrobe/Libs/LibStub/LibStub.lua",
+          "sha256": "d34235c85f869505fdd9ef321d2420f69db7d2eb873d2b3bbf57584a314060fa"
+        },
+        {
+          "source": "BetterWardrobe/Libs/LibStub/LibStub.toc",
+          "sha256": "d6ef350c07edf6be550c586e32473776e310d212bf39962cafee04a8d415405f"
+        },
+        {
+          "source": "BetterWardrobe/Libs/TaintLess/TaintLess.xml",
+          "sha256": "e415de4f24485ed310ad8a2cb9a433bdebf138790845c02017a2b62aa6b0347f"
+        }
+      ],
+      "assemblyRequiredByCoverage": true,
+      "noticeFilesAbsent": false,
+      "review": "Review main addon, bundled libraries and media terms independently; filename discovery does not grant redistribution rights."
+    },
+    {
+      "repo": "seblindfors/ConsolePort",
+      "version": "3.3.10",
+      "officialRelease": "https://github.com/seblindfors/ConsolePort/releases/tag/3.3.10",
+      "packageSHA256": "6175a327b3b7505b6f1d79ef0adc96c7a65db3cc8220dd59e34de6658dbb4f49",
+      "selectedFolders": [
+        "ConsolePort",
+        "ConsolePort_Bar",
+        "ConsolePort_Config",
+        "ConsolePort_Cursor",
+        "ConsolePort_Keyboard",
+        "ConsolePort_Menu",
+        "ConsolePort_Rings",
+        "ConsolePort_Target",
+        "ConsolePort_World"
+      ],
+      "noticeFiles": [
+        {
+          "source": "ConsolePort/LICENSE.md",
+          "sha256": "ae649c4a6cbf80a9eeb0edd80a59c2bf7456844a01921912cacd7520b7b3f4e6",
+          "copy": "evidence/dependencies/notices/seblindfors__ConsolePort/ConsolePort/LICENSE.md"
+        }
+      ],
+      "embeddedNoticeSources": [
+        {
+          "source": "ConsolePort/Libs/External/ConsolePortNode/ConsolePortNode.lua",
+          "sha256": "1c10da60d4240da12c009c752b45a72d72c3883baa7d423cd6f603170ed9197e"
+        },
+        {
+          "source": "ConsolePort/Libs/External/ConsolePortNode/README.md",
+          "sha256": "c5c4f36a22a9b2de5a2a47f1e6d6bcc3d775155c1213c20400694cf875c447f4"
+        },
+        {
+          "source": "ConsolePort/Libs/External/LibActionButton-1.0/LibActionButton-1.0.lua",
+          "sha256": "971cb26e95e06787f2f7d9a72dcfcda8c3ab46634495b924dff0f3eb4de1e80a"
+        },
+        {
+          "source": "ConsolePort/Libs/External/LibActionButton-1.0/LibActionButton-1.0.toc",
+          "sha256": "f868eb39a69ca6129738db3d1a0254d9c032b6700e26e43a2225eae996a71790"
+        },
+        {
+          "source": "ConsolePort/Libs/External/LibButtonGlow-1.0/LibButtonGlow-1.0.lua",
+          "sha256": "85c4f53cad52f479a4a84203987eb155cef68730f3adc2133755dbee77c617e3"
+        },
+        {
+          "source": "ConsolePort/Libs/External/LibButtonGlow-1.0/LibButtonGlow-1.0.toc",
+          "sha256": "d53875d3f292895dc859cfc901933f534cef1b4ef3ab187ec41e80c320e460e2"
+        },
+        {
+          "source": "ConsolePort/Libs/External/LibStub/LibStub.lua",
+          "sha256": "6000f58d740eaa2b4a006c1dabb0366f0321fc687bab9e85d97d040a1fd42dab"
+        },
+        {
+          "source": "ConsolePort/Libs/External/LibStub/LibStub.toc",
+          "sha256": "e01f590f6dfb5419595b640e6b5391092b5e39f8581d010adb9d852f4a30578d"
+        },
+        {
+          "source": "ConsolePort/Libs/External/RelaTable/RelaTable.lua",
+          "sha256": "89ee28e8ca9dc8933901014e5644a505a0f8984bbf548685a6e846864ebc7a40"
+        },
+        {
+          "source": "ConsolePort/Libs/Local/Carpenter.lua",
+          "sha256": "ce1bc2d6486e4f768c1c6dc3852a881e5e1bd9155d58813121ae5a830cf9e9a8"
+        },
+        {
+          "source": "ConsolePort/Libs/Local/Tabular.lua",
+          "sha256": "4b7dbcd45ce14fd9cb6a6a23284b61623fd25ca6be6189a14024094e3f92dd4e"
+        },
+        {
+          "source": "ConsolePort_Config/Libs/LibWoWQRCode/LibWoWQRCode.lua",
+          "sha256": "589d743a542b059840d62c419b50c7f86e26e762b7bc25260bbc2a72a3967741"
+        },
+        {
+          "source": "ConsolePort_Config/Libs/LibWoWQRCode/README.md",
+          "sha256": "2c0ab83dc70fa01f4d5184a748ae9ddfa4315bf8b2d3a9ce56e37e1e65b75ed2"
+        }
+      ],
+      "assemblyRequiredByCoverage": false,
+      "noticeFilesAbsent": false,
+      "review": "Review main addon, bundled libraries and media terms independently; filename discovery does not grant redistribution rights."
+    },
+    {
       "repo": "xod-wow/LiteMount",
-      "version": "12.1.0-1",
-      "officialRelease": "https://github.com/xod-wow/LiteMount/releases/tag/12.1.0-1",
-      "packageSHA256": "bf89ab84666266ffefd8ce56581f98467f8125c25c65e3fe68031303df28efe0",
+      "version": "12.1.0-2",
+      "officialRelease": "https://github.com/xod-wow/LiteMount/releases/tag/12.1.0-2",
+      "packageSHA256": "2ea930083a18a002bab72423f9efc2a22f912e195add574ddc39361850883a55",
       "selectedFolders": [
         "LiteMount"
       ],
@@ -130,7 +588,7 @@
         },
         {
           "source": "LiteMount/Conditions.lua",
-          "sha256": "2a69de90c277a36164c17b4ddcb405cba11717537e72e46bd1894247a24438b6"
+          "sha256": "fcb2797c3af0cc555ea10fea51069a460a361925d370dfae452fa84b48182309"
         },
         {
           "source": "LiteMount/Core.lua",
@@ -202,7 +660,7 @@
         },
         {
           "source": "LiteMount/Libs/MountsRarity-2.0/MountsRarity.lua",
-          "sha256": "0e0a9754570de341a09a00b444a8174c6aafcafc04062efde8bf23766ecf6090"
+          "sha256": "5d503f30b485ecccdf277ed7640baddab11b50e7e889ae3635e0441eb62f1515"
         },
         {
           "source": "LiteMount/Localization.lua",
@@ -454,251 +912,10 @@
       "review": "Review main addon, bundled libraries and media terms independently; filename discovery does not grant redistribution rights."
     },
     {
-      "repo": "SFX-WoW/Masque",
-      "version": "12.1.0",
-      "officialRelease": "https://github.com/SFX-WoW/Masque/releases/tag/12.1.0",
-      "packageSHA256": "9e1da4827ae60bd25d7fc427cbeeb0dc297e59d53a71a29ae95223d3374bbfa0",
-      "selectedFolders": [
-        "Masque"
-      ],
-      "noticeFiles": [
-        {
-          "source": "Masque/LICENSE.txt",
-          "sha256": "42bd6cd191a045f474b8dc2635b86793cf4c6bd38a1c31dd31a4effe50f7ce6d",
-          "copy": "evidence/dependencies/notices/SFX-WoW__Masque/Masque/LICENSE.txt"
-        }
-      ],
-      "embeddedNoticeSources": [
-        {
-          "source": "Masque/Core/Button.lua",
-          "sha256": "7843a82ba91585a172489f0f3b70fc8238ff71556ee3cc9469650fa426b9d547"
-        },
-        {
-          "source": "Masque/Core/Core.lua",
-          "sha256": "5408653113dd1f901f0a98b9b1bfe299b284461f9efca6358b5398d51824a0fe"
-        },
-        {
-          "source": "Masque/Core/Group.lua",
-          "sha256": "7b2b8006d652e136114dcfcc6e729f17ac8952cdff50555ed182235135d3b7b8"
-        },
-        {
-          "source": "Masque/Core/Groups.lua",
-          "sha256": "29cdf83cb1f2e570b9dd37ebcb8d15658f0a3a95c7b95d0eee7c067cb27bae27"
-        },
-        {
-          "source": "Masque/Core/Regions/AssistedCombat.lua",
-          "sha256": "662f18965df4351cbfce3a32e1d78130dc0e6284d7508d4364b73df2722d4b2c"
-        },
-        {
-          "source": "Masque/Core/Regions/AutoCast.lua",
-          "sha256": "7a4fe5a25190febb791f64abd7448d15384d0fc366f24c8df3bc48b61d226e6b"
-        },
-        {
-          "source": "Masque/Core/Regions/Backdrop.lua",
-          "sha256": "c3404a0c35bdb443b5fbd74789944d638146beed15fb2934c49c1ed1892676c9"
-        },
-        {
-          "source": "Masque/Core/Regions/Cooldown.lua",
-          "sha256": "f1ee1b3211e42945823f70e76cffb74f7698a53a1b95ffdf24ddc79ea7154448"
-        },
-        {
-          "source": "Masque/Core/Regions/Gloss.lua",
-          "sha256": "fe39569d0e59b759155f9e2964a541ee0fe020dc94f2f56fe3f72a0e76e75ad0"
-        },
-        {
-          "source": "Masque/Core/Regions/Icon.lua",
-          "sha256": "6545ead0b578214eb95b23df43f87a13f76a8bd0325d87b325c65bceba59da13"
-        },
-        {
-          "source": "Masque/Core/Regions/IconBorder.lua",
-          "sha256": "a40caf9027e8e4bed13105b3217fe16d33587a87093194adb026c1e373b3df1f"
-        },
-        {
-          "source": "Masque/Core/Regions/Mask.lua",
-          "sha256": "61b71b2afe755683f4866087b0037ebf123b944d9c7b35f64ef11eca65eb3b1e"
-        },
-        {
-          "source": "Masque/Core/Regions/NewItem.lua",
-          "sha256": "e6570bb8540e46e6cf7c750d62a09d779a33d3e51bcb98b8adefded508d7b46d"
-        },
-        {
-          "source": "Masque/Core/Regions/Normal.lua",
-          "sha256": "9781982f86db9158c262042841871b32412183b35bbc437fcbcf77c36232e906"
-        },
-        {
-          "source": "Masque/Core/Regions/QuestBorder.lua",
-          "sha256": "f883a23d8a3a6927ba9b49235643cdedb7129975c311389989a790c6d3a9150b"
-        },
-        {
-          "source": "Masque/Core/Regions/Shadow.lua",
-          "sha256": "89a618ab33f282148a7cf8651ecbf68e091e92c7201cf56424c182da66c193c4"
-        },
-        {
-          "source": "Masque/Core/Regions/SpellAlert.lua",
-          "sha256": "72a6283b846b5c023ce53e2b4d9c94936007c8b40cf322c76ac645c8e4670853"
-        },
-        {
-          "source": "Masque/Core/Regions/Text.lua",
-          "sha256": "f5b76993f67e62f472db0a5c1aa3a94c23aaa82e8220dc31acb0bd1b09200480"
-        },
-        {
-          "source": "Masque/Core/Regions/Texture.lua",
-          "sha256": "4374e1e2c33d80df6e84f9ce830033ea96477886857c4404b87ce6b85db310aa"
-        },
-        {
-          "source": "Masque/Core/Utility.lua",
-          "sha256": "f371c74e4a80e99e420de2f659119544a8243cdaf7262e7b24918b29df0f77d0"
-        },
-        {
-          "source": "Masque/Libs/AceGUI-3.0_SFX-Widgets/LibStub/LibStub.lua",
-          "sha256": "d34235c85f869505fdd9ef321d2420f69db7d2eb873d2b3bbf57584a314060fa"
-        },
-        {
-          "source": "Masque/Libs/AceGUI-3.0_SFX-Widgets/Widgets/SFX-Header-II.lua",
-          "sha256": "921ab99843d96999f144280f08b4df35a097ad2df2700e7203a9d43e74e03d32"
-        },
-        {
-          "source": "Masque/Libs/AceGUI-3.0_SFX-Widgets/Widgets/SFX-Header.lua",
-          "sha256": "9ed380c3adde793cd9a694e989274a3b411d871477ad997806fb0e6827e29279"
-        },
-        {
-          "source": "Masque/Libs/AceGUI-3.0_SFX-Widgets/Widgets/SFX-Info-URL.lua",
-          "sha256": "c44eaab0951a0d4a4c4fb09f90d801fab0abb91138e38878c1911e14935c77a2"
-        },
-        {
-          "source": "Masque/Libs/AceGUI-3.0_SFX-Widgets/Widgets/SFX-Info.lua",
-          "sha256": "c2690efc4947da576d3152a4ff223cec340aee7158be8208c2e289f9a031d301"
-        },
-        {
-          "source": "Masque/Libs/LibDualSpec-1.0/LibDualSpec-1.0.lua",
-          "sha256": "62b722c9d657193638f41bcd95bc115f005f9c6240646ec1d08928a856a3b3f6"
-        },
-        {
-          "source": "Masque/Libs/LibDualSpec-1.0/LibStub.lua",
-          "sha256": "6000f58d740eaa2b4a006c1dabb0366f0321fc687bab9e85d97d040a1fd42dab"
-        },
-        {
-          "source": "Masque/Libs/LibStub/LibStub.lua",
-          "sha256": "02d25b7433af734b59f0c4571bfaa73b2b660992d71d2fb6a8809b32de3f964c"
-        },
-        {
-          "source": "Masque/Locales/deDE.lua",
-          "sha256": "e13949ffa87a465a8cd136c901f07167e51c57e233ce75bbf3ca792fa7d71b25"
-        },
-        {
-          "source": "Masque/Locales/enUS.lua",
-          "sha256": "ccb412d7e2d777878125145bcb120dd080d4a523ce5bfb793414a30da0491e5b"
-        },
-        {
-          "source": "Masque/Locales/esES.lua",
-          "sha256": "9dd142eddc8bc74fa19d44d2d9485f256168ed915a0c4d53d478c27ff9b9ae52"
-        },
-        {
-          "source": "Masque/Locales/frFR.lua",
-          "sha256": "8aa8abd105e691250631e8c69d6731cbabd8e865a4bfbe4034b4b725b5c8eda0"
-        },
-        {
-          "source": "Masque/Locales/itIT.lua",
-          "sha256": "04b0bf6dcb6c574b49e5c41f5766cc3ec3c79da02b90438fc4233e69b6bd3810"
-        },
-        {
-          "source": "Masque/Locales/koKR.lua",
-          "sha256": "1e453b38c82704c1ccca3143a109e10a7b3afdfcf3d897226980515529a49bbd"
-        },
-        {
-          "source": "Masque/Locales/ptBR.lua",
-          "sha256": "e01387b56c512ef6249923a72f3b971eb7a963de89e8b5a0dc2d21fc3605df9c"
-        },
-        {
-          "source": "Masque/Locales/ruRU.lua",
-          "sha256": "d13aad645d62f22ac0858208141c92fa7b4d0844515a4cde0e97580d8487f6b9"
-        },
-        {
-          "source": "Masque/Locales/zhCN.lua",
-          "sha256": "559fc22cd9ea066f44c1b7087f26745daaa0556e9ee785a4177a808c8bcd89c4"
-        },
-        {
-          "source": "Masque/Locales/zhTW.lua",
-          "sha256": "2d170a7ba90a23442713ace84b276cbcd8369ba64e2ed7bf0759c7c56ae0e186"
-        },
-        {
-          "source": "Masque/Masque.lua",
-          "sha256": "2ebfce0ce77f6ff0c30743abab43b71303130127a4cf168a9700566c681be6ab"
-        },
-        {
-          "source": "Masque/Options/About.lua",
-          "sha256": "c9f34e38d3d7e9f0a05b9a3f5f6ff7fb27a9a3823065c134b005ed2c68942d98"
-        },
-        {
-          "source": "Masque/Options/Core.lua",
-          "sha256": "80f67fd2d3b64933a063c014bc17a84f64d0939842a7801bb470b9366a3b7393"
-        },
-        {
-          "source": "Masque/Options/General.lua",
-          "sha256": "7e7b2229c10577db229db0d47b78cfde7808b29ce31fe7dd87dca0fd83251f45"
-        },
-        {
-          "source": "Masque/Options/Info.lua",
-          "sha256": "cf11cb13385b81ca3ee26081a25969cdce076497ab597918a6f3fe2dbff04fa9"
-        },
-        {
-          "source": "Masque/Options/LDB.lua",
-          "sha256": "c0cb7e18b845764190c73b837b4c6abd7170007a47e856e9a1f29d55c322db6d"
-        },
-        {
-          "source": "Masque/Options/Profiles.lua",
-          "sha256": "bdb3a7c1bd2f6b60983ac42ffeac74b7fe85d7dcb9d4e1ab0a78e9065629cb2a"
-        },
-        {
-          "source": "Masque/Options/Skins.lua",
-          "sha256": "7062bfc67f5f1359852c5ea58c53815bea5bc07968f4fcd35cea1f780adfe22e"
-        },
-        {
-          "source": "Masque/Skins/Blizzard_Classic.lua",
-          "sha256": "091a3eb5d7097bf2bf24671ffc44f8b890f9930c42158c71c4d7ee6083615795"
-        },
-        {
-          "source": "Masque/Skins/Blizzard_Modern.lua",
-          "sha256": "23e9a7b710409299930a17bef38243377e8dacfdff898793dd20a879797eb94e"
-        },
-        {
-          "source": "Masque/Skins/Classic_Enhanced.lua",
-          "sha256": "c93f856ff8ac318cc94991efd05c25a23e4c1f3bf6cffc85a862eb5608e51d71"
-        },
-        {
-          "source": "Masque/Skins/Defaults.lua",
-          "sha256": "01a99cacb42dc0d42d8dee273a5d012db5b15c72657b930d022d698f40d8b082"
-        },
-        {
-          "source": "Masque/Skins/Dream.lua",
-          "sha256": "35774fc7e98dc915f0ced6a9ee11743477d7314d87475f39272267bf66c40051"
-        },
-        {
-          "source": "Masque/Skins/Modern_Enhanced.lua",
-          "sha256": "0d74b3de33ada64c56d4c4c8098b2330755795098dbf4015fe873f630d070fdd"
-        },
-        {
-          "source": "Masque/Skins/Regions.lua",
-          "sha256": "5da2ba09949fc367237607317e4926b22e914e6f72b71f7c6a16a8d7ee3a3347"
-        },
-        {
-          "source": "Masque/Skins/Skins.lua",
-          "sha256": "85bb0dd0d459f83215811557a47282c10b8a763e2ec461d4da3a0d5423d68360"
-        },
-        {
-          "source": "Masque/Skins/Zoomed.lua",
-          "sha256": "c3d3c27f0549fc4a7afe374df7bf90b63f4135b715419f181b3e7b1f579e0fec"
-        }
-      ],
-      "assemblyRequiredByCoverage": true,
-      "noticeFilesAbsent": false,
-      "review": "Review main addon, bundled libraries and media terms independently; filename discovery does not grant redistribution rights."
-    },
-    {
       "repo": "Tercioo/Plater-Nameplates",
-      "version": "Plater-v657",
-      "officialRelease": "https://github.com/Tercioo/Plater-Nameplates/releases/tag/Plater-v657",
-      "packageSHA256": "9ee9f99b394eb10e338f4e4bfe7ff2ff3719a6b3d48984164642bed9df1b87ff",
+      "version": "Plater-v658",
+      "officialRelease": "https://github.com/Tercioo/Plater-Nameplates/releases/tag/Plater-v658",
+      "packageSHA256": "faeda3f14a2b109d2ceaa2a176be4a2e2d016b5e8c12d6c70e8222505bf461e0",
       "selectedFolders": [
         "Plater"
       ],
@@ -839,7 +1056,7 @@
         },
         {
           "source": "Plater/libs/LibSharedMedia-3.0/LibSharedMedia-3.0.lua",
-          "sha256": "db6c60a0cdca4921d35c9a27225ae16f28187dac5a4866c2d75240c3226373f9"
+          "sha256": "d75f2b4b108711e7e0a56d9d515fe1905063040b3db91d765e2df96d144bf56c"
         },
         {
           "source": "Plater/libs/LibStub/LibStub.lua",
@@ -859,223 +1076,6 @@
         }
       ],
       "assemblyRequiredByCoverage": true,
-      "noticeFilesAbsent": false,
-      "review": "Review main addon, bundled libraries and media terms independently; filename discovery does not grant redistribution rights."
-    },
-    {
-      "repo": "curseforge/DynamicCam",
-      "version": "2.21.1",
-      "officialRelease": "https://www.curseforge.com/wow/addons/dynamiccam/files/8995535",
-      "packageSHA256": "10eb86230c6903e72097e1552c04de8a163a39fe3cb31fc3a3274c2c4394e072",
-      "selectedFolders": [
-        "DynamicCam"
-      ],
-      "noticeFiles": [
-        {
-          "source": "DynamicCam/LICENSE",
-          "sha256": "d073ad048c4a17bfb5a1c69eea17c60f262aa6f542a8ebb10c81e07c6876e6b1",
-          "copy": "evidence/dependencies/notices/curseforge__DynamicCam/DynamicCam/LICENSE"
-        },
-        {
-          "source": "DynamicCam/Libs/LICENSE.md",
-          "sha256": "af51766e056af139f94de73afdc907b860d11707a20e709654ad0bf110f6fb3a",
-          "copy": "evidence/dependencies/notices/curseforge__DynamicCam/DynamicCam/Libs/LICENSE.md"
-        },
-        {
-          "source": "DynamicCam/Libs/LibCamera/LICENSE.md",
-          "sha256": "42989df156027d106f8ef55a8f330f27f09255d6500470dbea5960b32dd43998",
-          "copy": "evidence/dependencies/notices/curseforge__DynamicCam/DynamicCam/Libs/LibCamera/LICENSE.md"
-        },
-        {
-          "source": "DynamicCam/Libs/LibEasing/LICENSE.md",
-          "sha256": "42989df156027d106f8ef55a8f330f27f09255d6500470dbea5960b32dd43998",
-          "copy": "evidence/dependencies/notices/curseforge__DynamicCam/DynamicCam/Libs/LibEasing/LICENSE.md"
-        },
-        {
-          "source": "DynamicCam/Libs/LibMountInfo/LICENSE",
-          "sha256": "17167210cb8256bf1ceaf8b76bce60d544e7415589a6b88bccc91bc3ea792dbd",
-          "copy": "evidence/dependencies/notices/curseforge__DynamicCam/DynamicCam/Libs/LibMountInfo/LICENSE"
-        }
-      ],
-      "embeddedNoticeSources": [
-        {
-          "source": "DynamicCam/DynamicCam.toc",
-          "sha256": "bb23006ec5240b376dd3c8463cc8066ce57c6a3a26bd2854b33760668a2676c7"
-        },
-        {
-          "source": "DynamicCam/Libs/LibCompress/LibCompress.lua",
-          "sha256": "1d3a6bb930d4134689105c74003851b2aecd7f568a2898d5d85c0591b0fa8ddb"
-        },
-        {
-          "source": "DynamicCam/Libs/LibCompress/LibCompress.toc",
-          "sha256": "bef6c501fe7fedc8cfff074aa5a685a724fc8bdaea9e248d574b4796ecdcb471"
-        },
-        {
-          "source": "DynamicCam/Libs/LibEasing/LibEasing.lua",
-          "sha256": "d01905038a55bb8f4c1b6dce2af381616d4ac8f25615f0b3dfb1fb7a26ceaa58"
-        },
-        {
-          "source": "DynamicCam/Libs/LibStub/LibStub.lua",
-          "sha256": "186bac9553513504fac3a5c4550ff59f3aee9e8a497376134f3ca01de2ed18d0"
-        },
-        {
-          "source": "DynamicCam/Libs/LibStub/LibStub.toc",
-          "sha256": "1f64542bc3921a190963e7bbd92a706b61fe2e8c411a03cd060a9c6097e6f4fa"
-        }
-      ],
-      "assemblyRequiredByCoverage": false,
-      "noticeFilesAbsent": false,
-      "review": "Review main addon, bundled libraries and media terms independently; filename discovery does not grant redistribution rights."
-    },
-    {
-      "repo": "curseforge/Immersion_ExtraFade",
-      "version": "1.18.0",
-      "officialRelease": "https://www.curseforge.com/wow/addons/immersion-extrafade/files/8995675",
-      "packageSHA256": "89c59d0519b2392b41010dda34ec01d38c9c1702c644f5e57422341b1fec21c6",
-      "selectedFolders": [
-        "Immersion_ExtraFade"
-      ],
-      "noticeFiles": [
-        {
-          "source": "Immersion_ExtraFade/LICENSE",
-          "sha256": "21fa609537edd30918bd7703c8d5e7ca5ebd1ebf90a5c9a7fe68b781db7750c2",
-          "copy": "evidence/dependencies/notices/curseforge__Immersion_ExtraFade/Immersion_ExtraFade/LICENSE"
-        }
-      ],
-      "embeddedNoticeSources": [
-        {
-          "source": "Immersion_ExtraFade/Immersion_ExtraFade.toc",
-          "sha256": "b26a8c04a5b2ed7abdc268da42d44f3dbf145c0084a6b02eb5b8408581bdf3d7"
-        },
-        {
-          "source": "Immersion_ExtraFade/Libs/LibStub/LibStub.lua",
-          "sha256": "186bac9553513504fac3a5c4550ff59f3aee9e8a497376134f3ca01de2ed18d0"
-        },
-        {
-          "source": "Immersion_ExtraFade/Libs/LibStub/LibStub.toc",
-          "sha256": "1f64542bc3921a190963e7bbd92a706b61fe2e8c411a03cd060a9c6097e6f4fa"
-        }
-      ],
-      "assemblyRequiredByCoverage": false,
-      "noticeFilesAbsent": false,
-      "review": "Review main addon, bundled libraries and media terms independently; filename discovery does not grant redistribution rights."
-    },
-    {
-      "repo": "SLOKnightfall/BetterWardrobe",
-      "version": "6.12.3",
-      "officialRelease": "https://github.com/SLOKnightfall/BetterWardrobe/releases/tag/6.12.3",
-      "packageSHA256": "abcba6be5535c15a581721192a5c4865e05b568dbac52d79c108c89e6c763d8c",
-      "selectedFolders": [
-        "BetterWardrobe",
-        "BetterWardrobe_SourceData"
-      ],
-      "noticeFiles": [
-        {
-          "source": "BetterWardrobe/LICENSE",
-          "sha256": "d8e552e5c2e72d0d14ebcd953903a2b2da544eb68be07261a5680b8e2404b61d",
-          "copy": "evidence/dependencies/notices/SLOKnightfall__BetterWardrobe/BetterWardrobe/LICENSE"
-        }
-      ],
-      "embeddedNoticeSources": [
-        {
-          "source": "BetterWardrobe/Libs/LibAppropriateitems-1.0/LibAppropriateItems-1.0.toc",
-          "sha256": "f6992d036a13cb197bde6dd7f5224286c77cb11f534beea335b6b8e0dbf1bade"
-        },
-        {
-          "source": "BetterWardrobe/Libs/LibStub/LibStub.lua",
-          "sha256": "d34235c85f869505fdd9ef321d2420f69db7d2eb873d2b3bbf57584a314060fa"
-        },
-        {
-          "source": "BetterWardrobe/Libs/LibStub/LibStub.toc",
-          "sha256": "d6ef350c07edf6be550c586e32473776e310d212bf39962cafee04a8d415405f"
-        },
-        {
-          "source": "BetterWardrobe/Libs/TaintLess/TaintLess.xml",
-          "sha256": "e415de4f24485ed310ad8a2cb9a433bdebf138790845c02017a2b62aa6b0347f"
-        }
-      ],
-      "assemblyRequiredByCoverage": true,
-      "noticeFilesAbsent": false,
-      "review": "Review main addon, bundled libraries and media terms independently; filename discovery does not grant redistribution rights."
-    },
-    {
-      "repo": "seblindfors/ConsolePort",
-      "version": "3.3.10",
-      "officialRelease": "https://github.com/seblindfors/ConsolePort/releases/tag/3.3.10",
-      "packageSHA256": "6175a327b3b7505b6f1d79ef0adc96c7a65db3cc8220dd59e34de6658dbb4f49",
-      "selectedFolders": [
-        "ConsolePort",
-        "ConsolePort_Bar",
-        "ConsolePort_Config",
-        "ConsolePort_Cursor",
-        "ConsolePort_Keyboard",
-        "ConsolePort_Menu",
-        "ConsolePort_Rings",
-        "ConsolePort_Target",
-        "ConsolePort_World"
-      ],
-      "noticeFiles": [
-        {
-          "source": "ConsolePort/LICENSE.md",
-          "sha256": "ae649c4a6cbf80a9eeb0edd80a59c2bf7456844a01921912cacd7520b7b3f4e6",
-          "copy": "evidence/dependencies/notices/seblindfors__ConsolePort/ConsolePort/LICENSE.md"
-        }
-      ],
-      "embeddedNoticeSources": [
-        {
-          "source": "ConsolePort/Libs/External/ConsolePortNode/ConsolePortNode.lua",
-          "sha256": "1c10da60d4240da12c009c752b45a72d72c3883baa7d423cd6f603170ed9197e"
-        },
-        {
-          "source": "ConsolePort/Libs/External/ConsolePortNode/README.md",
-          "sha256": "c5c4f36a22a9b2de5a2a47f1e6d6bcc3d775155c1213c20400694cf875c447f4"
-        },
-        {
-          "source": "ConsolePort/Libs/External/LibActionButton-1.0/LibActionButton-1.0.lua",
-          "sha256": "971cb26e95e06787f2f7d9a72dcfcda8c3ab46634495b924dff0f3eb4de1e80a"
-        },
-        {
-          "source": "ConsolePort/Libs/External/LibActionButton-1.0/LibActionButton-1.0.toc",
-          "sha256": "f868eb39a69ca6129738db3d1a0254d9c032b6700e26e43a2225eae996a71790"
-        },
-        {
-          "source": "ConsolePort/Libs/External/LibButtonGlow-1.0/LibButtonGlow-1.0.lua",
-          "sha256": "85c4f53cad52f479a4a84203987eb155cef68730f3adc2133755dbee77c617e3"
-        },
-        {
-          "source": "ConsolePort/Libs/External/LibButtonGlow-1.0/LibButtonGlow-1.0.toc",
-          "sha256": "d53875d3f292895dc859cfc901933f534cef1b4ef3ab187ec41e80c320e460e2"
-        },
-        {
-          "source": "ConsolePort/Libs/External/LibStub/LibStub.lua",
-          "sha256": "6000f58d740eaa2b4a006c1dabb0366f0321fc687bab9e85d97d040a1fd42dab"
-        },
-        {
-          "source": "ConsolePort/Libs/External/LibStub/LibStub.toc",
-          "sha256": "e01f590f6dfb5419595b640e6b5391092b5e39f8581d010adb9d852f4a30578d"
-        },
-        {
-          "source": "ConsolePort/Libs/External/RelaTable/RelaTable.lua",
-          "sha256": "89ee28e8ca9dc8933901014e5644a505a0f8984bbf548685a6e846864ebc7a40"
-        },
-        {
-          "source": "ConsolePort/Libs/Local/Carpenter.lua",
-          "sha256": "ce1bc2d6486e4f768c1c6dc3852a881e5e1bd9155d58813121ae5a830cf9e9a8"
-        },
-        {
-          "source": "ConsolePort/Libs/Local/Tabular.lua",
-          "sha256": "4b7dbcd45ce14fd9cb6a6a23284b61623fd25ca6be6189a14024094e3f92dd4e"
-        },
-        {
-          "source": "ConsolePort_Config/Libs/LibWoWQRCode/LibWoWQRCode.lua",
-          "sha256": "589d743a542b059840d62c419b50c7f86e26e762b7bc25260bbc2a72a3967741"
-        },
-        {
-          "source": "ConsolePort_Config/Libs/LibWoWQRCode/README.md",
-          "sha256": "2c0ab83dc70fa01f4d5184a748ae9ddfa4315bf8b2d3a9ce56e37e1e65b75ed2"
-        }
-      ],
-      "assemblyRequiredByCoverage": false,
       "noticeFilesAbsent": false,
       "review": "Review main addon, bundled libraries and media terms independently; filename discovery does not grant redistribution rights."
     }

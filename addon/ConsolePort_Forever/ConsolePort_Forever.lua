@@ -222,6 +222,7 @@ function Addon:Refresh()
         end
     end
     self:VerifyReload()
+    self.ActionRecovery:Refresh(self,_G)
     if self:IsCharacterInstalled() then self:HydrateController() end
     self:RefreshRings()
     self.ClassActions.Migrate(self,_G,CanWrite)
@@ -402,6 +403,9 @@ SlashCmdList.CONSOLEPORTFOREVER=function(input)
     elseif command=="recover" then Addon:Recover(arg)
     elseif command=="recover-selection" then Addon:RecoverBindingSelection()
     elseif command=="recover-view" then Addon:ReviewBindingView()
+    elseif command=="action-recovery" and Addon.record then
+        Addon.record.actionRecoveryDisabled=arg:lower()=='off'
+        Print(Addon.record.actionRecoveryDisabled and 'Action layout recovery disabled for this character.' or 'Action layout recovery enabled for this character.')
     elseif command=="proof" then
         local ok,reason=Addon.Proof:Show(_G)
         if not ok then Print(reason) end
@@ -461,3 +465,6 @@ events:SetScript("OnEvent",function(_,event,...)
     end
 end)
 events:RegisterEvent('PING_SYSTEM_ERROR')
+-- Quest/vehicle replacement can change without a spell or binding event.
+-- Rebuild only runtime button state; normal action storage stays game-owned.
+for _,event in ipairs({'ACTIONBAR_PAGE_CHANGED','UPDATE_BONUS_ACTIONBAR','UPDATE_OVERRIDE_ACTIONBAR','UPDATE_VEHICLE_ACTIONBAR','UPDATE_POSSESS_BAR','UPDATE_SHAPESHIFT_FORM'}) do events:RegisterEvent(event) end

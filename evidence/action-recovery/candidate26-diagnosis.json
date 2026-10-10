@@ -1,0 +1,48 @@
+{
+  "checkedAt": "2026-10-10T19:27:05.696Z",
+  "causeOfStorageLoss": "unconfirmed",
+  "copybaraUsed": false,
+  "current": {
+    "file": "C:/Users/luisr/OneDrive/Documents/03 Gaming/World of Warcraft/_retail_/WTF/Account/119624169#1/SavedVariables/ConsolePort_Forever.lua",
+    "sha256": "d48d87c1a67076fade1724f714ec5c7975ecd268ca7512e6c7a992d3c6f44144",
+    "time": 88197.71800000001,
+    "spellSlots": {
+      "1": 255937,
+      "2": 184575,
+      "52": 375576,
+      "61": 20271,
+      "63": 404542,
+      "64": 383328
+    },
+    "count": 6
+  },
+  "backup": {
+    "file": "C:/Users/luisr/WoW-Backups/ConsolePort-Forever/20261010T071208Z-8710da38c2df/WTF/Account/119624169#1/SavedVariables/ConsolePort_Forever.lua",
+    "sha256": "542090cbb42a79c4d225d5abd8ec5a15031fc9649fb56d2ccd922ee6e0dec50e",
+    "time": 34274.098,
+    "spellSlots": {
+      "1": 383328,
+      "2": 53385,
+      "3": 184575,
+      "4": 20271,
+      "6": 255937,
+      "8": 375576,
+      "10": 853,
+      "12": 96231,
+      "49": 1044,
+      "50": 1022,
+      "51": 6940,
+      "52": 115750,
+      "53": 7328,
+      "55": 391054,
+      "56": 62124,
+      "61": 190784,
+      "62": 19750,
+      "63": 85673,
+      "64": 403876,
+      "66": 633,
+      "68": 642
+    },
+    "count": 21
+  }
+}

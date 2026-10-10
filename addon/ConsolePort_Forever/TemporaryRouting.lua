@@ -26,7 +26,8 @@ Routing.Before=scoped(Addon.SecureModes.Before)
     -- flags differ. Ordinary main pages and class bonus pages 1-4 stay ordinary.
     if not specialPage then
         local nativePage = self:GetParent():GetAttribute('actionpage');
-        if type(nativePage)=='number' and nativePage > self:GetAttribute('cpf-temp-basepages') + 4 then specialPage=nativePage end;
+        if type(nativePage)=='number' and nativePage > self:GetAttribute('cpf-temp-basepages') + 4
+            and GetActionBarPage() > self:GetAttribute('cpf-temp-basepages') + 4 then specialPage=nativePage end;
     end;
     local kind = self:GetAttribute]])
 Routing.After=scoped(Addon.SecureModes.After)

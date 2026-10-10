@@ -1,3 +1,38 @@
+## Candidate.26 emergency Paladin action recovery — October 10, 2026 (DEPLOYMENT AUTHORIZED)
+
+The user reports catastrophic empty/misplaced Paladin abilities during the Midnight
+intro and requests an emergency patch, then confirms WoW is closed. This supersedes
+the earlier candidate.25 preparation-only restriction for this emergency update.
+Read-only live diagnostic evidence shows normal slots 1-12/49-56/61-68, only six
+spell slots populated, and many successful GetActionInfo queries returning empty.
+This is actual action storage loss/reassignment, not merely a retained override
+page. The game/addon responsible for that loss is not established. The same GUID's
+October 10 Forever deployment backup retains 21 spell/slot pairs from the previous
+layout. Copybara is uninstalled/stale and must not be used.
+
+ActionRecovery restores learned Paladin/Retribution spell slots from that retained
+layout after a two-second ordinary-state recheck, outside combat/Edit Mode and
+without consuming a player's cursor. Macros/items/flyouts survive. Before-state
+and outcome remain in the character record. Future good snapshots are GUID/spec
+owned; empty transitions cannot replace them, and a missing majority triggers
+recovery. Ordinary partial edits/spec changes remain distinct; `/cpf action-recovery
+off` disables this protection per character. Runtime writes are game-owned; no
+filesystem WTF editing. Native pickup/place compatibility requires live acceptance.
+
+The Paladin archive also lacks both newer class-access mask keys while its committed
+GUID transaction retains the correct aura opener. This causes repeated rejected
+projection/readback and rollback. Recover only absent class keys from that GUID's
+committed fields; preserve explicit empty edits and normalize the full mask.
+Temporary routing rejects stale quest headers after authoritative normal-page return,
+and action-page/override/vehicle/possession/form events refresh the runtime adapter.
+Revision17, native input ownership, ground placement and HUD geometry remain.
+
+Nine official stable Retail packages freshly checked this session: none newly
+changed. Previously prepared LiteMount12.1.0-2 and Plater-v658 still differ from
+live files (five/eight official file differences), so include only these changed
+packages plus Forever. Existing candidate.25 compiler repair is included.
+Full runtime/source and tooling checks plus scoped builder/preview/installer and
+preservation readback are required. Actual Retail gameplay remains user-tested.
 ## Candidate.25 compiler repair qualified — October 10, 2026 (DO NOT DEPLOY)
 
 The user rejects candidate.24: no output, no error/popup and no ping; holding the

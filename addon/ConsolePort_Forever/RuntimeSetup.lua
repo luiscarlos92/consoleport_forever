@@ -82,7 +82,19 @@ function Setup.BindingProposal(db,guid,adapter,reference)
     if not next(record.controllerBindings) and db.lastProjectedGUID and db.lastProjectedGUID~=guid then
         personal=Addon.BindingPolicy.Split(reference).character
     end
+    personal=Core.Copy(personal)
+    -- Older character archives predate the two class-access mask entries.
+    -- Recover only absent entries from this GUID's committed transaction;
+    -- an explicit empty binding remains a player edit.
+    local committed=db.managedFields and db.managedFields[guid..'/controller']
+    local accepted=committed and committed.value and committed.value.keys
+    for _,key in ipairs({'CTRL-PADRSHOULDER','SHIFT-PADLSHOULDER'}) do
+        if personal[key]==nil and accepted then personal[key]=accepted[key] end
+    end
     state.keys=Addon.BindingPolicy.Compose(shared,personal,split.retained)
+    -- The reader returns every masked key, including empty keys. A proposal
+    -- must have the same domain or a no-op projection fails its readback.
+    for key in pairs(adapter.mask or {}) do if state.keys[key]==nil then state.keys[key]='' end end
     state.set=adapter.native.api.CharacterSet
     return state
 end

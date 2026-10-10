@@ -1039,6 +1039,34 @@ TEST_SUCCESS=true
   catch(error) {rejected=String(error).includes('installed recovery startup omitted temporary routing');}
   if(!rejected) throw Error('Skipped recovery routing mutation was not reproduced');
 });
+check('T63.incomplete-character-archive-projection-recovery', () => {
+  const setup=source+'\n;(function(...)\n'+read('addon/ConsolePort_Forever/RuntimeSetup.lua')+'\nend)("ConsolePort_Forever",Addon);\n';
+  const test=`
+local db={characters={PAL={controllerBindings={['SHIFT-PAD1']='ACTIONBUTTON1'}},DH={controllerBindings={['SHIFT-PAD1']='ACTIONBUTTON2'}}},
+ shared={faceBindings={PAD1='JUMP'}},managedFields={['PAL/controller']={value={keys={['SHIFT-PADLSHOULDER']='CLICK ConsolePortUtilityToggle:CPFClass',['CTRL-PADRSHOULDER']=''}}}}}
+local current={set=2,keys={PAD1='JUMP',['SHIFT-PAD1']='ACTIONBUTTON1',['SHIFT-PADLSHOULDER']='CLICK ConsolePortUtilityToggle:CPFClass',['CTRL-PADRSHOULDER']=''},keyboard={G='TOGGLEPINGLISTENER'}}
+local adapter={mask={PAD1=true,['SHIFT-PAD1']=true,['SHIFT-PADLSHOULDER']=true,['CTRL-PADRSHOULDER']=true},native={api={CharacterSet=2}},read=function() return Addon.Core.Copy(current) end}
+Addon.Store.GetCharacter(db,'PAL') Addon.Store.GetCharacter(db,'DH')
+local before=Addon.Core.Copy(db)
+local desired=Addon.RuntimeSetup.BindingProposal(db,'PAL',adapter,{})
+assert(Addon.Core.Equal(current,desired),'incomplete Paladin archive rejects a no-op binding readback')
+local dh=Addon.RuntimeSetup.BindingProposal(db,'DH',adapter,{})
+assert(dh.keys['SHIFT-PADLSHOULDER']=='' and dh.keys['CTRL-PADRSHOULDER']=='','Paladin class keys leaked into DH')
+db.characters.PAL.controllerBindings['SHIFT-PADLSHOULDER']=''
+assert(Addon.RuntimeSetup.BindingProposal(db,'PAL',adapter,{}).keys['SHIFT-PADLSHOULDER']=='','explicit player removal was overwritten')
+db.characters.PAL.controllerBindings['SHIFT-PADLSHOULDER']=nil
+assert(Addon.Core.Equal(db,before),'proposal mutated saved archives')
+TEST_SUCCESS=true
+`;
+  execute(setup+test,'incomplete-Paladin-character-archive');
+  const original=setup.replace('personal=Core.Copy(personal)', 'personal=Core.Copy(personal)').replace(/    local committed=db.managedFields[\s\S]*?    state.set=adapter.native.api.CharacterSet/, '    state.keys=Addon.BindingPolicy.Compose(shared,personal,split.retained)\n    state.set=adapter.native.api.CharacterSet');
+  let rejected=false;
+  try {execute(original+test,'old-incomplete-archive');} catch(error) {rejected=String(error).includes('incomplete Paladin archive rejects');}
+  if(!rejected) throw Error('Original incomplete archive defect was not reproduced');
+});
+check('T64.catastrophic-action-storage-rescue-and-snapshot-isolation', () => {
+  execute(source+'\n;(function(...)\n'+read('addon/ConsolePort_Forever/ActionRecovery.lua')+'\nend)("ConsolePort_Forever",Addon);\n'+read('tests/harness/action_recovery.lua'),'action-storage-recovery');
+});
 const report = {at:new Date().toISOString(), commit:cp.execFileSync('git',['rev-parse','HEAD'],{cwd:root}).toString().trim(),
   productHashes:Object.fromEntries(files('addon').map(f=>[f,sha(f)])),
   toolingHashes:Object.fromEntries([...files('tools'),...files('tests')].filter(f=>!f.includes('__pycache__')).map(f=>[f,sha(f)])),

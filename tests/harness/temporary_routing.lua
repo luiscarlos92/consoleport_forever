@@ -153,6 +153,13 @@ page('possess-native-page',0,12)
 assert(api.ConsolePortGroupL2.buttons.PAD1:GetAttribute('action')==13,'unflagged possession lost ordinary main page')
 assert(api.ConsolePortGroupL2R2.buttons.PAD1:GetAttribute('action')==133)
 page(nil)
+-- The native header can still carry the quest page when a fresh ordinary
+-- press runs before its page callback. It must not keep replacing L2R2.
+local exiting=api.ConsolePortGroupL2R2.buttons.PAD1
+api.ConsolePortGroupL2R2:SetAttribute('actionpage',12)
+Addon.SecureModes.RefreshButton(exiting)
+assert(exiting:GetAttribute('action')==74,'stale quest header retained temporary actions after exit')
+api.ConsolePortGroupL2R2:SetAttribute('actionpage',1)
 -- A native layout rebuild can reinstall its default page callback. The
 -- registered callback repairs it without changing the shared saved layout.
 api.ConsolePortGroupL2R2:RegisterPageResponse(nativeResponse)

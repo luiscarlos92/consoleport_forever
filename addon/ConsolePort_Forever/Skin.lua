@@ -355,6 +355,7 @@ function Addon:SnapshotFaceVisuals(force)
     end
     self.Diagnostics.visuals=self.Diagnostics.visuals or {}
     self.Diagnostics.visuals[snapshot.combat and 'combat' or 'peace']=snapshot
+    if self.ActionRecovery then self.ActionRecovery:Observe(self,_G,snapshot) end
     self.Diagnostics:Persist()
 end
 function Addon:RefreshFaceAvailability()

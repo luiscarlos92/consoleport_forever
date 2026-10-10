@@ -91,3 +91,12 @@ Both the implementing agent and the root reviewing agent independently ACCEPT
 the compiler repair and preparation readiness after checking the frozen sources
 against these complete reports. The verdict qualifies this concrete source
 repair for a future user test; it does not claim observed Retail success.
+
+Prepared locally from pushed source `63dd52d98ce7a744a5ca1eb2324998fb295035ed`:
+`dist/2.0.0-candidate.25/ConsolePort-Forever-Update-dependencies-e4442d7d7b1c-compiler-ping.zip`.
+SHA256: `267a372be0a98e1730bfca56704ef6bdf3f95d3d35993bd08709b59de626587e`.
+It contains only Forever, updated LiteMount and updated Plater. Receipt:
+`evidence/delivery/prepared-candidate25.json`. No preview or installation ran.
+Read-only verification after preparation confirms all 54 installed Forever
+files still match the candidate.24 installation receipt. Preparation is complete;
+deployment remains prohibited until separately authorized with WoW closed.

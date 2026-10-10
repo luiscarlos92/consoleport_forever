@@ -4,5 +4,9 @@
   "installedFilesStillMatch": 54,
   "noLiveAddonWrites": true,
   "noLiveWTFWrites": true,
-  "noInstallerOrGameInteraction": true
+  "noInstallerOrGameInteraction": true,
+  "preparedVersion": "2.0.0-candidate.25",
+  "preparedPackSHA256": "267a372be0a98e1730bfca56704ef6bdf3f95d3d35993bd08709b59de626587e",
+  "afterPreparationReadbackAt": "2026-10-10T18:07:58.1328838Z",
+  "afterPreparationInstalledFilesStillMatch": 54
 }

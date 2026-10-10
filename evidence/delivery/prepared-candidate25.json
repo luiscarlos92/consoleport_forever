@@ -1,0 +1,56 @@
+{
+  "path": "C:\\Users\\luisr\\Dev\\consoleport_forever\\dist\\2.0.0-candidate.25\\ConsolePort-Forever-Update-dependencies-e4442d7d7b1c-compiler-ping.zip",
+  "sha256": "267a372be0a98e1730bfca56704ef6bdf3f95d3d35993bd08709b59de626587e",
+  "bytes": 5610817,
+  "sourceCommit": "63dd52d98ce7a744a5ca1eb2324998fb295035ed",
+  "addonFolders": [
+    "ConsolePort_Forever",
+    "LiteMount",
+    "Plater"
+  ],
+  "dependencyUpdates": [
+    "Tercioo/Plater-Nameplates",
+    "xod-wow/LiteMount"
+  ],
+  "retiredAddonFolders": {},
+  "version": "2.0.0-candidate.25",
+  "testedDependencies": {
+    "Cidan/BetterBags": {
+      "version": "v0.5.14",
+      "sha256": "16c1ac70c4de2e7f2cfdbf4d2b5f3d3f44514a3f9ecf1040e29c790e8be8c0d7"
+    },
+    "seblindfors/Immersion": {
+      "version": "1.4.61",
+      "sha256": "b180a8cbd1a1d878377da5a85abfdc5576e0c04212f9e900e3e9ca505cde1f3e"
+    },
+    "SFX-WoW/Masque": {
+      "version": "12.1.0",
+      "sha256": "9e1da4827ae60bd25d7fc427cbeeb0dc297e59d53a71a29ae95223d3374bbfa0"
+    },
+    "curseforge/DynamicCam": {
+      "version": "2.21.1",
+      "sha256": "10eb86230c6903e72097e1552c04de8a163a39fe3cb31fc3a3274c2c4394e072"
+    },
+    "curseforge/Immersion_ExtraFade": {
+      "version": "1.18.0",
+      "sha256": "89c59d0519b2392b41010dda34ec01d38c9c1702c644f5e57422341b1fec21c6"
+    },
+    "SLOKnightfall/BetterWardrobe": {
+      "version": "6.12.3",
+      "sha256": "abcba6be5535c15a581721192a5c4865e05b568dbac52d79c108c89e6c763d8c"
+    },
+    "seblindfors/ConsolePort": {
+      "version": "3.3.10",
+      "sha256": "6175a327b3b7505b6f1d79ef0adc96c7a65db3cc8220dd59e34de6658dbb4f49"
+    },
+    "xod-wow/LiteMount": {
+      "version": "12.1.0-2",
+      "sha256": "2ea930083a18a002bab72423f9efc2a22f912e195add574ddc39361850883a55"
+    },
+    "Tercioo/Plater-Nameplates": {
+      "version": "Plater-v658",
+      "sha256": "faeda3f14a2b109d2ceaa2a176be4a2e2d016b5e8c12d6c70e8222505bf461e0"
+    }
+  },
+  "dependencyLockSHA256": "2e49961920e5f8c4b3966ba42a9ab3f35bb0c55dd233b75b5587bf2830d59c2a"
+}

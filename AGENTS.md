@@ -24,6 +24,12 @@ T61 retains 4,160 all-character temporary-state/chord cases. See the detailed
 candidate25 diagnosis and retained compiler/pair/report evidence. NOT DEPLOYED;
 Retail gameplay acceptance remains pending separate authorization and testing.
 
+Prepared scoped ZIP from pushed source 63dd52d98ce7a744a5ca1eb2324998fb295035ed.
+SHA256 267a372be0a98e1730bfca56704ef6bdf3f95d3d35993bd08709b59de626587e.
+Only Forever, changed LiteMount and changed Plater are in the local artifact;
+see evidence/delivery/prepared-candidate25.json. No installer/preview ran.
+After-preparation readback confirms 54 live Forever files still exact candidate24.
+
 ## Installed candidate.24 — 2026-10-10 03:12:45 Toronto
 
 The continuing authorized ping repair was deployed with WoW closed from tested,

@@ -1,3 +1,22 @@
+## Candidate.22 temporary routing — October 9, 2026 (DEPLOYMENT AUTHORIZED AFTER TESTS)
+
+User requires dragonriding, possession, quest override, vehicle UI and all native
+replacement pages on L2+R2 for every character, and explicitly authorizes
+deployment when the fix is complete. Verify WoW closed and full tests first.
+Native recovery disabled the old page adapter, allowing main-slot L2 to follow
+page 11. A separate class-neutral temporary adapter restores only combined-bank
+replacement, retains native Manager/Layers/UI ownership and ordinary class pages,
+and repairs native assist lookup for resolved low slots. Native rebuild callbacks
+prevent recurrence. T61/T62 cover all classes, families and actual recovery startup;
+full T41/T42/rendering/tooling gates remain required. Revision 17, Ground.lua,
+accepted rendering/class rings and candidate.21 ping repair remain. All nine
+stable Retail sources freshly checked/current; no downloads. Live Plater v657
+already matches all 524 official files, so use scoped Forever-only deployment.
+Preserve unselected addons, WTF, junctions and backups. Actual client/hardware/
+combat/taint acceptance remains pending manual case 49. See
+docs/CANDIDATE22-TEMPORARY-ROUTING-2026-10-09.md. This new authorization supersedes
+the earlier no-deployment restriction for this completed work.
+
 ## Candidate.21 ping targeting — October 9, 2026 (DO NOT DEPLOY)
 
 User requests diagnosis/fix only. Candidate.20 remains installed; no live

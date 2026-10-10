@@ -304,6 +304,8 @@ function Addon:RefreshModes()
         end
         if not CanWrite() or not self.adapters then return end
         self.SecureModes.Disable(_G,self.adapters.consoleport)
+        local routed,routeReason=self.TemporaryRouting:Refresh(self.adapters.consoleport,_G,self:IsCharacterInstalled())
+        self.Diagnostics:SetFeature('temporaryRouting',routed and 'offline-verified' or 'pending',routeReason)
         local enabled=self:IsCharacterInstalled() and self.db.shared.runtimePolicy.groundTargetingEnabled
         local ready,reason=self.GroundTargeting.Enable(self.adapters.consoleport,_G,enabled,self.TargetingPreferences.Read(self.db))
         self.Diagnostics:SetFeature('secureModes','native-recovery','Forever secure mode interception suspended; native ConsolePort dispatch retained')

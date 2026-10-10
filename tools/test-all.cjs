@@ -62,7 +62,7 @@ check('T01.snapshot', () => {
 check('T27.lua51', () => {
   for (const f of files('addon').filter(f=>f.endsWith('.lua'))) parser.parse(read(f),{luaVersion:'5.1'});
 });
-const modules = ['Core','Store','Plan','Transactions','BindingPolicy','ModePolicy','Rings/Discovery','Rings/Selectors','ClassActions','SecureModes','TemporaryAccess','Targeting/Registry','Targeting/Preferences','Targeting/Ground','Targeting/Ping','UI/Ownership','UI/InputBridge','UI/Windows','UI/Scroll','UI/Map','UI/PartyLayout','Cinematic','Adapters/BetterBags','UI/ItemHints','UI/Contexts','UI/FocusVisuals','UI/Proof','Adapters/NativeBindings',
+const modules = ['Core','Store','Plan','Transactions','BindingPolicy','ModePolicy','Rings/Discovery','Rings/Selectors','ClassActions','SecureModes','TemporaryAccess','TemporaryRouting','Targeting/Registry','Targeting/Preferences','Targeting/Ground','Targeting/Ping','UI/Ownership','UI/InputBridge','UI/Windows','UI/Scroll','UI/Map','UI/PartyLayout','Cinematic','Adapters/BetterBags','UI/ItemHints','UI/Contexts','UI/FocusVisuals','UI/Proof','Adapters/NativeBindings',
   'Adapters/BindingState','Adapters/BindingBanks','Diagnostics','Capability','Adapters/ConsolePort','Adapters/EditMode','Adapters/FlatConfig','Adapters/Integrations','Adapters/LiteMount','Adapters/DynamicCam','Adapters/Rings','Baseline','Coordinator','Prompt'];
 const source = 'Addon={};\n' + modules.map(m=>
   ';(function(...)\n'+read('addon/ConsolePort_Forever/'+m+'.lua')+'\nend)("ConsolePort_Forever",Addon);\n').join('');
@@ -894,6 +894,89 @@ check('T60.native-controller-ping-tap-hold-pointer-and-owner-dispatch', () => {
   try {execute(fixture.replaceAll("self:ReleaseCenter(api)",'do end'),'missing-ping-restoration');}
   catch(error) {rejected=String(error).includes('tap did not restore prior centering');}
   if(!rejected) throw Error('Missing ping restoration negative control did not fail');
+});
+check('T61.all-classes-native-dragonriding-and-temporary-L2R2-engine-dispatch', () => {
+  const base='evidence/consoleport-contracts/';
+  const manifest=JSON.parse(read(base+'manifest.json'));
+  for(const name of ['ConsolePort/Controller/Pager.lua','ConsolePort_Bar/Widget/Bar/Bar.lua']) {
+    const row=manifest.files.find(r=>r.path===name);
+    if(!row || sha(base+name)!==row.sha256) throw Error('Native temporary paging contract drift: '+name);
+  }
+  const pager=read(base+'ConsolePort/Controller/Pager.lua');
+  const response=pager.match(/local DEFAULT_PAGE_RESPONSE = \(\[\[([\s\S]*?)\]\]\):format\(NUM_ACTIONBAR_PAGES\)/)?.[1].replace('%s','6');
+  const header=pager.match(/local HEADER_RESPONSE = \[\[([\s\S]*?)\]\];/)?.[1];
+  if(!response || !header) throw Error('Native pager response unavailable');
+  const prelude=groundTargetingFixture().split('assert(Addon.SecureModes.Install(bridge,api))')[0];
+  const manager=read(base+'ConsolePort_Bar/Controller/Manager/Manager.lua');
+  const utils=read(base+'ConsolePort/Utils/Utils.lua');
+  const start=utils.indexOf('Parse = function(self, body, args)');
+  const engine=read('tests/harness/targeting_engine.lua')
+    .replace('--@NATIVE_MANAGER_ENV',manager.slice(manager.indexOf('Manager.Env = {'),manager.indexOf('\n};')+4))
+    .replace('--@NATIVE_MANAGER_REGISTER',()=>nativeFunction(base+'ConsolePort_Bar/Controller/Manager/Manager.lua','Manager:RegisterOverride'))
+    .replace('--@NATIVE_MANAGER_PARSE','local native'+utils.slice(start,utils.indexOf('\n\tend;',start)+6));
+  const fixture=read('tests/harness/temporary_routing.lua')
+    .replace('--@NATIVE_PAGER_RESPONSE',()=>`nativePageBody=[=[${response}\n${header}]=]`)
+    .replace('--@NATIVE_PAGER_ACTION_HELPERS',()=>{
+      const actionID=pager.match(/GetActionID = \(\[\[([\s\S]*?)\]\]\):format\(NUM_ACTIONBAR_BUTTONS\)/)?.[1].replace('%d','12');
+      const info=pager.match(/GetActionInfo = \[\[([\s\S]*?)\]\];/)?.[1];
+      const spell=pager.match(/GetSpellID = \[\[([\s\S]*?)\]\];/)?.[1];
+      if(!actionID || !info || !spell) throw Error('Native pager action helpers unavailable');
+      return [['GetActionID',actionID],['GetActionInfo',info],['GetSpellID',spell]].map(([k,b])=>`pager:SetAttribute('${k}',[=[${b}]=])`).join('\n');
+    });
+  const scenario=prelude.replace('CallMethod=function(_,method,...) return raw:CallMethod(method,...) end,',
+    'ChildUpdate=function(_,name,value) return raw:ChildUpdate(name,value) end, CallMethod=function(_,method,...) return raw:CallMethod(method,...) end,')+'\n'+fixture;
+  const prefix=source+uiContextFixture()+'\n'+engine+'\n';
+  const wrap=s=>prefix+'\nlocal scenario='+JSON.stringify(s)+'\nlocal scope=setmetatable({},{__index=_G}); scope._G=scope; scope.engine=targetingEngine; scope.Addon=Addon; assert(load(scenario,"temporary-routing","t",scope))(); TEST_SUCCESS=scope.TEST_SUCCESS;';
+  try {execute(wrap(scenario),'all-class-native-temporary-routing');}
+  catch(error) {
+    const line=Number(String(error).match(/\[string "temporary-routing"\]:(\d+)/)?.[1]);
+    if(line) error.message+='\nScenario context:\n'+scenario.split('\n').slice(Math.max(0,line-3),line+2).join('\n');
+    throw error;
+  }
+  let rejected=false;
+  const skipped=scenario.replace('assert(Routing:Refresh(bridge,api,true))','assert(true)');
+  try {execute(wrap(skipped),'native-recovery-skips-temporary-routing');}
+  catch(error) {rejected=String(error).includes('dragonriding still possesses L2');}
+  if(!rejected) throw Error('Native recovery L2 regression was not reproduced');
+  rejected=false;
+  const wrong=prefix.replace("name=='L2R2' and index or nil","name=='L2' and index or nil");
+  try {execute(wrong+'\nlocal scenario='+JSON.stringify(scenario)+'\nlocal scope=setmetatable({},{__index=_G}); scope._G=scope; scope.engine=targetingEngine; scope.Addon=Addon; assert(load(scenario,"wrong-bank","t",scope))(); TEST_SUCCESS=scope.TEST_SUCCESS;','wrong-bank-temporary-routing');}
+  catch(error) {rejected=String(error).includes('dragonriding still possesses L2');}
+  if(!rejected) throw Error('Wrong temporary bank regression was not reproduced');
+});
+check('T62.recovery-startup-enables-temporary-routing-for-every-character', () => {
+  if(!bootstrapState) throw Error('native bootstrap fixture unavailable');
+  const test=`
+local routed={}
+Addon.TemporaryRouting.Refresh=function(_,bridge,api,enabled)
+ assert(Addon.NATIVE_INPUT_RECOVERY and bridge,'temporary routing requires full mode/UI takeover')
+ routed[UnitGUID()]=enabled
+ return true,'test route'
+end
+fire('PLAYER_LOGIN') flush()
+assert(routed.A==true,'installed recovery startup omitted temporary routing')
+Addon.db.shared.runtimePolicy.modesEnabled=false
+for _,class in ipairs({'DEMONHUNTER','PALADIN','DRUID','WARRIOR','DEATHKNIGHT','EVOKER','HUNTER','MAGE','MONK','PRIEST','ROGUE','SHAMAN','WARLOCK'}) do
+ guid='TEMP-'..class
+ function UnitClass() return class,class end
+ local record=Addon.Store.GetCharacter(Addon.db,guid)
+ record.appliedRevision=17 record.classAccessRepair=1 record.ringOfferedRevision=17
+ record.bindingAccepted=false record.ringAccepted=false
+ fire('PLAYER_LOGIN') flush()
+ assert(routed[guid]==true,'class startup omitted combined temporary bank: '..class)
+end
+Addon.record.appliedRevision=0
+Addon:RefreshModes()
+assert(routed[guid]==false,'restored character kept temporary routing')
+TEST_SUCCESS=true
+`;
+  const setup='SESSION_STATE=('+bootstrapState+').installed\n'+bootstrapPrelude;
+  execute(setup+test,'class-neutral-recovery-startup');
+  let rejected=false;
+  const skipped=setup.replace('local routed,routeReason=self.TemporaryRouting:Refresh(self.adapters.consoleport,_G,self:IsCharacterInstalled())',"local routed,routeReason=false,'skipped'");
+  try {execute(skipped+test,'skipped-recovery-routing');}
+  catch(error) {rejected=String(error).includes('installed recovery startup omitted temporary routing');}
+  if(!rejected) throw Error('Skipped recovery routing mutation was not reproduced');
 });
 const report = {at:new Date().toISOString(), commit:cp.execFileSync('git',['rev-parse','HEAD'],{cwd:root}).toString().trim(),
   productHashes:Object.fromEntries(files('addon').map(f=>[f,sha(f)])),

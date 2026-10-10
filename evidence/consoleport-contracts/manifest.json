@@ -5,6 +5,14 @@
   "purpose": "Exact unmodified source audit/test contracts; not deployed dependency copies.",
   "files": [
     {
+      "path": "ConsolePort/Controller/Pager.lua",
+      "sha256": "c5cb7c89354dbc9af876a296fabff3fe24b39cbd436ab06996955301f85c9bb4"
+    },
+    {
+      "path": "ConsolePort_Bar/Widget/Bar/Bar.lua",
+      "sha256": "711fab41025e3337d9fd82bb5a8540fe34d28c68230938fd00c9046170219e52"
+    },
+    {
       "path": "ConsolePort/Controller/Mouse.lua",
       "sha256": "8f098fda7c45ffd3d94a0dfd344568c1770da94b618092bee7221ab8b56de4bc"
     },

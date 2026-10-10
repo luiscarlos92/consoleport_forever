@@ -755,3 +755,18 @@ public mouse-focus/CVar evidence. No exact privileged receiver is exposed.
 Actual CVar timing, hardware API permission, unit/world hit test, radial position,
 held owner handoff, combat and taint remain NOT RUN. Offline tests cannot pass
 this case. See CANDIDATE21-PING-TARGETING-2026-10-09.md.
+
+
+## Case 49 - all-character combined temporary bank (candidate.22)
+
+After deployment, test L2+R2 on Demon Hunter and other characters during riding
+ground/takeoff/landing/dismount, possession, quest overrides, vehicles and
+temporary shapeshifts. Only L2+R2 replaces/restores temporary actions; other banks
+retain ordinary abilities. Check original class forms/stealth, ordinary manual
+pages, held page-change releases, exit/dismissal/overflow, native extra actions,
+ground casting, UI/combat first input, layout rebuild and A-B-A character changes.
+Repeat native cap checks: vehicle/override unused positions cannot show foreign
+slot contents. Keyboard and native controller UI/modal priority remain. Inspect
+/cpf status for temporaryRouting and test for errors/taint.
+Actual engine/hardware/rendering acceptance remains NOT RUN until user evidence.
+See CANDIDATE22-TEMPORARY-ROUTING-2026-10-09.md.

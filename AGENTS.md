@@ -1,3 +1,21 @@
+## Candidate.23 protected ping repair — October 10, 2026 (DEPLOYMENT AUTHORIZED)
+
+User rejects candidate.22 ping: screenshot shows ConsolePort_Forever protected-action
+popup. Dragonriding is confirmed working; retain exact candidate.22 routing bytes.
+User says WoW closed and explicitly authorizes patch/deploy. Restricted C_Ping call
+from custom addon binding is removed, including custom Bindings.xml. Native
+TOGGLEPINGLISTENER retains secure press/release dispatch; passive native Mouse
+hooks only prepare/restore cursor, with restore deferred past native release.
+The old hardware-only T60 security model was insufficient; require separate native
+trusted authority and mandatory insecure-call/centering/restore mutations. All 62
+runtime/source and 39 tooling gates are required, including T61/T62. Nine official
+stable Retail releases freshly checked/current; no dependency update/reshipping.
+Revision 17, Ground.lua, temporary routing and accepted rendering remain unchanged.
+Closed-WoW scoped Forever-only build/preview/install/readback with retained backups;
+no live WTF edits/game launch. Actual ping hardware/taint acceptance remains case50
+user-owned. See docs/CANDIDATE23-NATIVE-PING-2026-10-10.md and research evidence.
+Earlier candidate.21/22 ping claims are rejected history, not live acceptance.
+
 ## Installed candidate.22 — October 9, 2026, 22:59:10 Toronto
 
 Authorized closed-WoW scoped deployment completed from tested/pushed source

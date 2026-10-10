@@ -870,30 +870,41 @@ check('T59.character-binding-capture-rejects-account-view', () => {
   catch(error) {rejected=String(error).includes('account view erased character class binding');}
   if(!rejected) throw Error('account character-capture negative control did not fail');
 });
-check('T60.native-controller-ping-tap-hold-pointer-and-owner-dispatch', () => {
+check('T60.native-secure-ping-binding-and-passive-cursor-observer', () => {
   const nativeBase='evidence/native/Blizzard_PingUI/';
   const manifest=JSON.parse(read('evidence/native/manifest.json'));
-  for(const name of ['Blizzard_PingUI/Bindings.xml','Blizzard_PingUI/Blizzard_PingManager.lua','Blizzard_PingUI/Blizzard_PingUI.lua']) {
+  for(const name of ['Blizzard_PingUI/Bindings.xml','Blizzard_PingUI/Blizzard_PingManager.lua','Blizzard_PingUI/Blizzard_PingUI.lua','Blizzard_APIDocumentationGenerated/PingManagerDocumentation.lua']) {
     const row=manifest.find(r=>r.path===name);
     if(!row || sha('evidence/native/'+name)!==row.sha256) throw Error('Native ping source drift: '+name);
   }
-  const xml=read('addon/ConsolePort_Forever/Bindings.xml');
-  const body=xml.match(/<Binding name="CPF_GAMEPAD_PING"[^>]*runOnUp="true">([\s\S]*?)<\/Binding>/)?.[1];
-  if(!body) throw Error('Ping hardware press/release binding missing');
+  const api=read('evidence/native/Blizzard_APIDocumentationGenerated/PingManagerDocumentation.lua');
+  if(!/Name = "TogglePingListener"[\s\S]*?HasRestrictions = true/.test(api)) throw Error('Restricted ping API contract unavailable');
+  const mousePath='ConsolePort/Controller/Mouse.lua';
+  const cpManifest=JSON.parse(read('evidence/consoleport-contracts/manifest.json'));
+  if(sha('evidence/consoleport-contracts/'+mousePath)!==cpManifest.files.find(r=>r.path===mousePath)?.sha256) throw Error('Native mouse input drift');
+  const product=read('addon/ConsolePort_Forever/Targeting/Ping.lua');
+  if(/TogglePingListener\s*\(|RunBinding\s*\(|layers:Claim|C_PingSecure\./.test(product)) throw Error('Addon ping dispatch crossed protected boundary');
+  if(fs.existsSync(path.join(root,'addon/ConsolePort_Forever/Bindings.xml'))) throw Error('Insecure custom ping binding retained');
+  const body=read(nativeBase+'Bindings.xml').match(/<Binding name="TOGGLEPINGLISTENER"[^>]*runOnUp="true"[^>]*>([\s\S]*?)<\/Binding>/)?.[1];
+  if(!body) throw Error('Native press/release binding missing');
   const manager=['GetTargetPingReceiverInfo_Insecure','GetTargetPingReceiverInfo','PingManager:DeterminePingTarget','PingManager:DeterminePingTargetAndSend','PingManager:SendContextualWorldPing'];
   const listener=['PingListenerFrameMixin:TogglePingListener','PingListenerFrameMixin:GetPingMode','PingListenerFrameMixin:SetCursorPositions','PingListenerFrameMixin:BeginPendingPing','PingListenerFrameMixin:EndPendingPing'];
   const fixture=source+uiContextFixture()+'\n'+read('tests/harness/ping_targeting.lua')
     .replace('--@NATIVE_PING_METHODS',()=>manager.map(n=>nativeFunction(nativeBase+'Blizzard_PingManager.lua',n)).concat(listener.map(n=>nativeFunction(nativeBase+'Blizzard_PingUI.lua',n))).join('\n'))
-    .replace('--@PRODUCT_PING_BINDING',()=>`local function bindingHardware(keystate)\n${body}\nend`);
-  execute(fixture,'native-controller-ping');
-  let rejected=false;
-  try {execute(fixture.replace("api.SetCVar(CENTER, '1')",'-- centering removed'),'stale-controller-pointer');}
-  catch(error) {rejected=String(error).includes('parked pointer blocked controller tap');}
-  if(!rejected) throw Error('Missing pointer centering negative control did not fail');
-  rejected=false;
-  try {execute(fixture.replaceAll("self:ReleaseCenter(api)",'do end'),'missing-ping-restoration');}
-  catch(error) {rejected=String(error).includes('tap did not restore prior centering');}
-  if(!rejected) throw Error('Missing ping restoration negative control did not fail');
+    .replace('--@NATIVE_MOUSE_DOWN',()=>nativeFunction('evidence/consoleport-contracts/'+mousePath,'Mouse:OnGamePadButtonDown').replaceAll('Mouse:','mouse:'))
+    .replace('--@NATIVE_PING_BINDING',()=>`local function nativeBinding(keystate)\n${body}\nend`);
+  execute(fixture,'native-secure-ping');
+  for(const [name,from,to,expected] of [
+    ['insecure-hardware-dispatch',"self.held=button","api.C_Ping.TogglePingListener(true) self.held=button",'ADDON_ACTION_FORBIDDEN'],
+    ['stale-controller-pointer',"api.SetCVar(CENTER, '1')",'-- centering removed','parked pointer blocked controller tap'],
+    ['early-pointer-restoration','api.C_Timer.After(0,function()','local immediate=function(_,callback) callback() end; immediate(0,function()','parked pointer blocked controller tap'],
+    ['missing-ping-restoration','self:ReleaseCenter(api)','do end','tap did not restore prior centering']
+  ]) {
+    let rejected=false;
+    try {execute(fixture.replaceAll(from,to),name);}
+    catch(error) {rejected=String(error).includes(expected);}
+    if(!rejected) throw Error('Ping negative control did not fail: '+name);
+  }
 });
 check('T61.all-classes-native-dragonriding-and-temporary-L2R2-engine-dispatch', () => {
   const base='evidence/consoleport-contracts/';

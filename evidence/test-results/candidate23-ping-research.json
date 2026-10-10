@@ -1,0 +1,41 @@
+{
+  "date": "2026-10-10",
+  "reportedResult": "Candidate.22 ping failed with ConsolePort_Forever protected-action popup; dragonriding accepted by user.",
+  "sources": [
+    {
+      "url": "https://github.com/Gethe/wow-ui-source/blob/live/Interface/AddOns/Blizzard_APIDocumentationGenerated/PingManagerDocumentation.lua",
+      "finding": "C_Ping.TogglePingListener and SendMacroPing have HasRestrictions=true."
+    },
+    {
+      "url": "https://github.com/Gethe/wow-ui-source/blob/live/Interface/AddOns/Blizzard_PingUI/Bindings.xml",
+      "finding": "Native TOGGLEPINGLISTENER runOnUp=true dispatches down and up within Blizzard binding."
+    },
+    {
+      "url": "https://raw.githubusercontent.com/seblindfors/ConsolePort/3.3.10/ConsolePort/Controller/Mouse.lua",
+      "finding": "Native mouse handler observes OnGamePadButtonDown, modifies cursor mode and propagates input; preserve its binding dispatcher."
+    },
+    {
+      "url": "https://raw.githubusercontent.com/seblindfors/ConsolePort/master/ConsolePort_World/Controller/Ping.lua",
+      "finding": "Upstream explicit contextual QMenu pings use secure macro buttons with /ping, not addon C_Ping calls."
+    },
+    {
+      "url": "https://raw.githubusercontent.com/Gethe/wow-ui-source/live/Interface/AddOns/Blizzard_RestrictedAddOnEnvironment/RestrictedEnvironment.lua",
+      "finding": "Restricted scope does not expose RunBinding; insecure forwarding is not a secure solution."
+    }
+  ],
+  "pinnedNativeCommit": "09b9db7948abc9b9648dedaab51eb0cf3ee67b31",
+  "officialDependenciesFreshlyChecked": "2026-10-10T04:16:52.556456+00:00",
+  "allNineCurrent": true,
+  "changedDependencies": [],
+  "oldTestGap": "Hardware boolean alone allowed the addon callback through restricted C_Ping; new test requires independent trusted native binding authority.",
+  "limits": "Input callback/binding ordering and cursor movement timing remain host models; actual Retail controller, secure environment and combat acceptance pending user test.",
+  "savedNativePingBindingsVerifiedReadOnly": true,
+  "nativeMouseSetting": "No saved disabling override found; qualified ConsolePort default is true",
+  "preservedRuntimeHashes": {
+    "TemporaryRouting.lua": "f857288263f1124cc9c66eab37564ccbf56ec7844af46f4a799fe37981d4cdbf",
+    "Targeting/Ground.lua": "8703e0a7f5731845c43dd3e892a3682d42cde6e034a3658553319287886b7130"
+  },
+  "finalOfficialStableCheck": "2026-10-10T04:41:22.488786+00:00",
+  "qualifiedRuntimeSuites": 62,
+  "qualifiedToolingChecks": 39
+}

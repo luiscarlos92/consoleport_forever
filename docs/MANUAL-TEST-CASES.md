@@ -770,3 +770,19 @@ slot contents. Keyboard and native controller UI/modal priority remain. Inspect
 /cpf status for temporaryRouting and test for errors/taint.
 Actual engine/hardware/rendering acceptance remains NOT RUN until user evidence.
 See CANDIDATE22-TEMPORARY-ROUTING-2026-10-09.md.
+
+
+## Case 50 - native secure controller ping (candidate.23)
+
+Candidate.22 ping is rejected by the user's protected-action popup. After
+candidate.23 deployment, tap R3 in camera freelook at valid world terrain/a unit,
+including a mouse parked over UI before returning to camera control. Hold R3 and
+release through the native radial flow. Repeat in and out of combat. Confirm no
+ConsolePort_Forever blocked-action popup or Lua error. Check keyboard F2/free
+cursor/UI/raid/target-ring modes, rebound chords, modal UI and quick repeated taps.
+Check prior GamePadCursorCentering restores after release. If a popup/error
+remains, run /cpf diagnose before reloading and retain the reported blocked
+function and ping public-focus details. Native server cooldown/eligibility errors
+remain ordinary feedback. Actual Retail input ordering/cursor timing/taint is
+NOT RUN by the agent. Dragonriding is accepted by the user on October 10;
+other case49 families retain their separate live acceptance gates.

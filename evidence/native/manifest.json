@@ -397,5 +397,47 @@
     "gitBlob": "65cce4fc337d15389706b81fd267ac10a74fc728",
     "sha256": "92651002e47b532a5b6d1ef11e5a5b28aa234af40abf9f950bdb5da4c05d39d8",
     "url": "https://github.com/Gethe/wow-ui-source/blob/09b9db7948abc9b9648dedaab51eb0cf3ee67b31/Interface/AddOns/Blizzard_RestrictedAddOnEnvironment/RestrictedExecution.lua"
+  },
+  {
+    "path": "Blizzard_PingUI/Bindings.xml",
+    "commit": "09b9db7948abc9b9648dedaab51eb0cf3ee67b31",
+    "gitBlob": "8c14d79444ec4175cd4c1c6093f55a28d1629a73",
+    "sha256": "1ffa1bcfda853c9bedaf05a294cfcc296b4fd1713097c4a3223dc36d529bdeb3",
+    "url": "https://github.com/Gethe/wow-ui-source/blob/09b9db7948abc9b9648dedaab51eb0cf3ee67b31/Interface/AddOns/Blizzard_PingUI/Bindings.xml"
+  },
+  {
+    "path": "Blizzard_PingUI/Blizzard_PingManager.lua",
+    "commit": "09b9db7948abc9b9648dedaab51eb0cf3ee67b31",
+    "gitBlob": "4e28f6d29adafe3fd4d27473cfd6064f10649255",
+    "sha256": "217634c17fc6a672cef074b351e8db26b312a9de8f4ed418cff41ad2fd97da7e",
+    "url": "https://github.com/Gethe/wow-ui-source/blob/09b9db7948abc9b9648dedaab51eb0cf3ee67b31/Interface/AddOns/Blizzard_PingUI/Blizzard_PingManager.lua"
+  },
+  {
+    "path": "Blizzard_PingUI/Blizzard_PingUI.lua",
+    "commit": "09b9db7948abc9b9648dedaab51eb0cf3ee67b31",
+    "gitBlob": "aa79b6034de37a2383b361a942991dad2e14e18d",
+    "sha256": "5a4d3ab3ec63d4f1f251248ec45f0b8819872d0e6c7b41c5b7fe949f2a9e8695",
+    "url": "https://github.com/Gethe/wow-ui-source/blob/09b9db7948abc9b9648dedaab51eb0cf3ee67b31/Interface/AddOns/Blizzard_PingUI/Blizzard_PingUI.lua"
+  },
+  {
+    "path": "Blizzard_PingUI/Blizzard_PingUtil.lua",
+    "commit": "09b9db7948abc9b9648dedaab51eb0cf3ee67b31",
+    "gitBlob": "06792262bb676d24585be77c12c8a5daca4a4ffc",
+    "sha256": "42592b85816f40367ea16809e701778174ab558edd954e9de2d01d68a8ebc199",
+    "url": "https://github.com/Gethe/wow-ui-source/blob/09b9db7948abc9b9648dedaab51eb0cf3ee67b31/Interface/AddOns/Blizzard_PingUI/Blizzard_PingUtil.lua"
+  },
+  {
+    "path": "Blizzard_APIDocumentationGenerated/PingManagerDocumentation.lua",
+    "commit": "09b9db7948abc9b9648dedaab51eb0cf3ee67b31",
+    "gitBlob": "abc9720b853ef3e4f6175fa6936638d99202832d",
+    "sha256": "41edbf9a42ef0985e03315e847529ec90d15441a4a5a263f44a7a949b512ebf9",
+    "url": "https://github.com/Gethe/wow-ui-source/blob/09b9db7948abc9b9648dedaab51eb0cf3ee67b31/Interface/AddOns/Blizzard_APIDocumentationGenerated/PingManagerDocumentation.lua"
+  },
+  {
+    "path": "Blizzard_APIDocumentationGenerated/PingManagerSecureDocumentation.lua",
+    "commit": "09b9db7948abc9b9648dedaab51eb0cf3ee67b31",
+    "gitBlob": "bf34751888ac7d36d03086d75f9ccc420ea72b73",
+    "sha256": "18d8d0bff4b8c839a34bcb1245587cbae7441b21263261b5cdf89f76f144620e",
+    "url": "https://github.com/Gethe/wow-ui-source/blob/09b9db7948abc9b9648dedaab51eb0cf3ee67b31/Interface/AddOns/Blizzard_APIDocumentationGenerated/PingManagerSecureDocumentation.lua"
   }
 ]

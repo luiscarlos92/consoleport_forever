@@ -1,0 +1,277 @@
+{
+  "at": "2026-10-10T01:02:59.061290+00:00",
+  "python": "3.14.7",
+  "overallPassed": true,
+  "testsRun": 39,
+  "commit": "6386b394eda8cdf64ca8c5656b0bbf194deef665",
+  "sourceHashes": {
+    "tools/Assemble-Pack.ps1": "369eddda7a5488b5e7fcbd6cbf9c97e7f8c615e3a13581d1e4f419e4554cb211",
+    "tools/assemble_pack.py": "34a54aeedd33a95bf7cb2ca7737d21c31ff70a9d4c2b16e6f121c8b2cc5de6f9",
+    "tools/audit_dependencies.py": "92bcc53f6482892214167154f5f783a78605e816f633b6f99831097bbd4fe11f",
+    "tools/audit_migration.py": "74e6e1f2040fca2da640767dfcba27eab0d38b201e36de682db3294ec8aa0941",
+    "tools/Build-Pack.ps1": "c9b76402cfabc5d15352dfc8e64ce153e1334abc14f7caee72331b39a88cdb41",
+    "tools/build_pack.py": "869515318d1fa46f9449702ffda36617ca0df55fa60a32e029b0a474068f7b86",
+    "tools/build_update.py": "05b51eee6a1699936a00974c96da82e2edcb68233cde53ac7ecc2d5c21ade111",
+    "tools/Capture-Baseline.py": "2111abb9b1eebfd3eeca87573d4f916ecb477300cb1c1211a8315dc1099ecbdd",
+    "tools/capture_cp_contracts.py": "ae3baf25ef65a9a40611e79042db823586470c7e304683d55cf82d34a4c6aef9",
+    "tools/capture_integration_contracts.py": "70f36b9374ae12334e11bd5ea734de6cd80dec868aa973921c7b305d3cd9861e",
+    "tools/capture_voice_provenance.py": "fb48bc562aaf3b1fe97b4bf7604a0855faefb4fc8e2c4cfb689addcad020462f",
+    "tools/check_stable_sources.py": "ae28737882464f8b02a89f66da640594a291696330ef2d958dbf4dd978dc62e9",
+    "tools/deployment_guard.py": "e38bcae029038554c79261d08750743e12354c2a524aaf2a7a792be7b61e346f",
+    "tools/deploy_companion.py": "501f02335f0033d559873c78abdb68051b3684b488360442fde8cf5da9a17be0",
+    "tools/deploy_update.py": "5ade7c36856fa2b2e78024087cedeebf3a108d5e2978fc9f49609087404f0d23",
+    "tools/dry_run_pack.py": "bb96ff4f47cc4943b51c663e4b0b169ee6bb66d69ac9a3f7be0691a13e7b5bb9",
+    "tools/dualsense_live_client.py": "394bd381305ffb1687a800cd1934ac17b89221f7bf4700891069fa850e8974ae",
+    "tools/extract_reference.cjs": "13b397bbe6e057ef485b7fc8bc533e77fc63d18fd9380d69161e9d1f20cd199b",
+    "tools/fetch_native_sources.py": "6de8ec4da97ba57be6548d576a6a2edf733bc0b0eafe71ff1ef35f14957a9409",
+    "tools/gamepad_selftest.py": "310afaa953c8f59bcb592cc98d54d4bd86260d2e7ad0926345c06cf44d321141",
+    "tools/Install-Pack.ps1": "3bc8b9861831955ceb181c97dd69cd445e80365db67453cff6ec4733fa729ad7",
+    "tools/install_pack.py": "62bb972a7d4ebe2fb539236a5b7d9b4f68a9263c0a38fdc2356540ac4a9cbf39",
+    "tools/inventory_media.py": "ed196e0719cc31f933db6913e4b3ee85ab371f01b9dd845eb36d3573b46d6577",
+    "tools/inventory_notices.py": "f76e0c17bcbb6bde41a802e6eca7e6cf86029642616b6f3ac57c5ff7e48535ae",
+    "tools/lua_equivalence.cjs": "fe6d2ed47adb824174d6eb1d960970b0e94c51e1ad4cf3d3ed120f27b6e9ed1d",
+    "tools/pack_format.py": "b2c2aefd7f578af839b9b773b390c212cc19bd964b9eb55964374accab721063",
+    "tools/prepare_gamepad_test_client.py": "36fd44a3ae065c12b9b13aa18da541c0c00a52c587e60b38777f2814ef7d8d81",
+    "tools/repository_paths.cjs": "345b5d3cd1c075f0134b636e340662c66db7a0c6dd242d020e930fadb345c8e7",
+    "tools/repository_paths.py": "8e970760af8e308c3e526548279d46de3fb585fa314f93cb89ba4e5287165b7e",
+    "tools/Resolve-Dependencies.ps1": "84abdb50defd2bbc72d887a86f80b77d004d4ccd97eaa2c94404fa7ac146c79a",
+    "tools/resolve_dependencies.py": "de7d023d4ca60db3434d15228e5c95939a6e2f44166081371deb32c51dae8c63",
+    "tools/Restore-Pack.ps1": "e20b8cb16d59f9c70e6875ef2c2ad33eb53b396946c1492000702333a44a603c",
+    "tools/review_notices.py": "152533b68b39bed72f7a4b6f6360595dbef067757fa92862e247e3c351bb0887",
+    "tools/run_tool_tests.py": "5a2cebae3864112e18202ee7cc406fa9ae7d961c252b0c27038c59176bd274f2",
+    "tools/saved_variables.cjs": "c9ceffe13e95b6f95f46576a5e77a7a479e837b33a0d7454c566a2e033a47109",
+    "tools/test-all.cjs": "e08a39839f981b0c6cfba3dd65ea7a45238ac2251859b9b00c16f2aaaa7b2a11",
+    "tools/Test-All.ps1": "e7979b2b1c53ccf248f269b36e5bcfeb5116230c2e978700bffe94f812f47b9d",
+    "tools/Verify-Pack.ps1": "1fd3ec3069324a9542e7b86354ab9688bf36e6e4ed89842354cdd7a48523486b",
+    "tools/verify_pack.py": "d87e89f729fc4ca4d8bb82c268866e65037bffd5b36e234921447596d9e6e890",
+    "tools/verify_pinned_sources.py": "64402d4b4691e291c1a677856c9613a8ce76c9a4181f621721c222dbe19c23dd",
+    "tests/test_build_gates.py": "86ed5d7395cd6cdda66db6f1d481fe1546503d294d1ec27833c4511f4ce083ed",
+    "tests/test_pack.py": "728dcc265659f211e69620ebeee2f316583b96cdc4baabedfeb436fc6447e4b7",
+    "tests/test_tools.py": "2f4653750307f646b39a81bfd63a50b301dffbfb3c2a3dfbd6b3009eeaef8803",
+    "tests/test_updates.py": "8010eaa3c01e4295db945bfa0b0ce23a1c699cb090ba6be6fe7d37efbc21d1ac",
+    "tests/harness/action_feedback.lua": "fff249e50b8a9ea69f2d138bd56ccb109b939b2936cc15a2b6eec2145a8270be",
+    "tests/harness/adapters.lua": "bc55e2b7ff0ba9afd12b086fc81e06b0b2b1e40e77d81c222cc55ad73af47851",
+    "tests/harness/aura_row_refresh.lua": "40796d6c188945eabd5ba55118509df16a512c95229994cdc74d79fec2a59737",
+    "tests/harness/betterbags.lua": "c0601ca00c115b39a25994be8f91dd24c3f9df7d35df6aad84f6bd93dc0a2443",
+    "tests/harness/binding_banks.lua": "5bdb4b2d7cadc7ebce415a482b87c10e20685ac1d174bc9527d9656c78b28822",
+    "tests/harness/bootstrap.lua": "665fb9d111773fc0efbf4ba8f635148ecf6b4ce798b5e1e217ad32ffe04132ca",
+    "tests/harness/character_capture_owner.lua": "d19266e5acb5a4dab6054189981d85e8dec2e4f7f02e4d3355da8b896379730d",
+    "tests/harness/cinematic.lua": "4a49bd54f4b736525eafb5cee3767d984c82789594e91edef91a88216a561d9a",
+    "tests/harness/class_access_recovery.lua": "1579d68ddcb6acd780f82210641797215f7456cb14e44922b38a739cc57c6585",
+    "tests/harness/class_actions.lua": "1f4115ede2a9fcff4922fe5bb95f13419e0e3900aa65cbb9cee7071e34748cfd",
+    "tests/harness/class_badge_side.lua": "ecf6c7858a7fbbeb0b4ae4c7f470f9009b445919fc0a4c936e697a450087febf",
+    "tests/harness/class_bar.lua": "9558d880a8084d357e92f06c2fbf465f31790e848094460911703c47d91f4ea7",
+    "tests/harness/class_binding_repair.lua": "8081bf2c7475cb0dfba10b4d31f69af2a574cb38197e64289aa43487394a0d60",
+    "tests/harness/combat_colours.lua": "5a606cba1335852bf3726b4569a802ebb55664775eb92437f249c5a843227574",
+    "tests/harness/combat_dispatch.lua": "832f174c6fa2a45e99c15803df3a6fc3584be4267e5265e9e902aa849760f058",
+    "tests/harness/cooldown_feedback.lua": "4e9bf14460af30bdeabffa7c4968f46f21bde0baaef1826c9b35322344c316a3",
+    "tests/harness/coordinator.lua": "b90ca02834371acce687cbadcfd6df5793c6e980799696b5b2f92728401c28eb",
+    "tests/harness/cp_3310.lua": "01584880489549aa9969b11ba4d3d192e89207846b66d24124b71cb0e5f3f682",
+    "tests/harness/cp_editmode_hover.lua": "ce2b6f993e41e85866b41e522c93a1c22fb2df03c64ac5b2e586f76529ab000e",
+    "tests/harness/cp_shared_layout.lua": "fd64db94e94fe9b848e693f1bc03a8147aa685a97eeadead53f45909996bc789",
+    "tests/harness/cp_upgrade.lua": "9dc0fa3aa77f9b410c530bcdd736c803ce5a63b63687b2bb1a94582a79f58b1d",
+    "tests/harness/dynamiccam.lua": "8c658b6c204d7a0b3e486343000e7b2fbe6513340c6f529e4713c1665fada521",
+    "tests/harness/face_composition.lua": "435c7795a86286b5571413d082ee95e40ed2c546d72a3e706f98d65abb1fa638",
+    "tests/harness/flat_integrations.lua": "4677d66676654af2531c87ec6828272f5f61d0319d8c17ea189bb121fa943576",
+    "tests/harness/focus_visuals.lua": "c5138e8aa3a7430ecb53e93fd4a984027661dfddde1dc0839909385752b8be2e",
+    "tests/harness/foundations.lua": "35541474124e3e4a4df01bae6cab330539473e391941d3d664c83d602a2cec31",
+    "tests/harness/ground_targeting.lua": "d16e848a0b0cee7dde59afee58450fd6743a577c86c3e1f48922f217ab6f0ddf",
+    "tests/harness/hidden_access.lua": "77874221703fdb6919f51129d4b54915e4ccbf69a5d752f949d01c7f5ffeae5a",
+    "tests/harness/hud_geometry.lua": "baa983db56623038f5749eb43e3342f53842de67e08efb5ea1ac2e3a31822964",
+    "tests/harness/item_hints.lua": "85b59708c0adb63ea469e0b960e40d77eba4ef4dcb5047b016a766cb548a457d",
+    "tests/harness/litemount.lua": "42963ceb0483b7396a7c9c22e50936134778db196fd8277b008808a2e54a7b54",
+    "tests/harness/map.lua": "26aec15ce6a37be2e55f2f0c2649d42ce16348cc50ac97ff1d432be50913546f",
+    "tests/harness/native_bindings.lua": "18e506511ed53a2fc47f103352efd5f934e0df90776ca1bd6e507c66fcbb00f4",
+    "tests/harness/native_targeting_dispatch.lua": "0418e703a981ca7d773a4a8406e493df5edb18de35566ec4a3dbd512d6508023",
+    "tests/harness/party_layout.lua": "58c2b422fd250c24e57c9ef51a230b503119bca5c2b7efa9f8be676c4c28b585",
+    "tests/harness/ping_targeting.lua": "6139c9cb4ece151571ea18a88c39cf0d16d5119c8f81a2d904e56014be7142e4",
+    "tests/harness/player_resource_strip.lua": "0a4aca9f1a58431fd3fb08a11aba7fc4334d908fbd1ba42a36de63ba73c2e182",
+    "tests/harness/policies.lua": "b2954115683ccdd1ec7ad54854e8245aa0751443bd005bf55303da1cc80338ad",
+    "tests/harness/presentation.lua": "f6c2d5b47166c0f02bed94c157f010e8f8494fd9b52c24befbbc1a70c892497d",
+    "tests/harness/prompt.lua": "a6e6f7f150e41a7b4f9f45565ad4189cad29a04f8c9b547ce8764724e78e992e",
+    "tests/harness/rings.lua": "28341f76a0d71e64d2d82655a67e0083e6671d63f55a6f53b7d3d15a537ec083",
+    "tests/harness/ring_discovery.lua": "108c98e8c4151d4d97fcdc5d9615d02c862a9550940e96c3198927d37226e4cc",
+    "tests/harness/ring_selectors.lua": "9c2b8f518a0e4830eb7da4d973eb5f05df9dbad86b93fc0fefcf4043d6f6cf55",
+    "tests/harness/secure_modes.lua": "88d7e650b227ae284c7fbcf6930b6c8a50db899fe9f742ccda6a2f36aa2c418b",
+    "tests/harness/stationary_hints.lua": "f6af93a4962480abd4286f4db26f8106089005fb25a102bd7341bb188e02cbfa",
+    "tests/harness/targeting_engine.lua": "4e390761c9dc633be6d23b5ae8839527e6535b58e5420d266ae77d4bc80d4f07",
+    "tests/harness/targeting_preferences.lua": "76485c98912dbb6fae574ed62444649eaec8d14050c2de4f12a0b02be765f170",
+    "tests/harness/ui_contexts.lua": "b0d1dacdfec557cb940a97a0d9c1b21c71626298664fbf08e6cf3ca1a903bc05",
+    "tests/harness/ui_scroll.lua": "e878b077ffde940e4d81ffe8fe6b5fc62e7d4b7210870a3eb92ddc4809ecd30f",
+    "tests/harness/ui_windows.lua": "333c63e7dc7a05ce0b40277bf3126b69ec0a20536ee49dee3a97b8426666aa5e",
+    "tests/harness/visibility.lua": "7c380a9b64030fb91b38c3e9a24477df35412f4eae09d0d9f621bcaf1f1f11c1",
+    "tests/harness/visual_snapshot.lua": "bad992e5ef08808e5bc70b22f3a8a9cd21b18199d49c747a5e4814399800df77",
+    "tests/fixtures/historical-sandbox/installer_harness.lua": "8a2fb2bd65936c36f8e501fb778bc5355caee80e28ffffa5ef7c1a78ed43546b",
+    "tests/fixtures/historical-sandbox/runtime_harness.lua": "1b5a4bb700bb0d1741904ebdd3038999ba9df02a88b7d9f44dcca2e6e3313f51",
+    "tests/fixtures/historical-sandbox/skin_harness.lua": "f2457ff54e686bec502e9399f3727e02bbcc4336ef6f6ea74203a0ae1768ef6d",
+    "tests/fixtures/historical-sandbox/_retail_/Interface/AddOns/ConsolePort_Forever/Bindings.lua": "faecc497f79d9d7437f87e809844fc7144ab722e33afd89245578461bc232a8f",
+    "tests/fixtures/historical-sandbox/_retail_/Interface/AddOns/ConsolePort_Forever/ConsolePort_Forever.lua": "099b5a6b985d4e661beaa182c42cc48f5f275eb74978f3e345a27d5af47632c2",
+    "tests/fixtures/historical-sandbox/_retail_/Interface/AddOns/ConsolePort_Forever/ConsolePort_Forever.toc": "afda2aea59cb187a16c5d4a6e1ce34d7b9127cfa24af4da72a23c76af5bae5d3",
+    "tests/fixtures/historical-sandbox/_retail_/Interface/AddOns/ConsolePort_Forever/Layout.lua": "486f4267fe9c5ef217ec87e229ac1ced9a21ace92d579eb9d91f9c7b5e75fef3",
+    "tests/fixtures/historical-sandbox/_retail_/Interface/AddOns/ConsolePort_Forever/Profile.lua": "e18af174f280801bcb410c34d2d1cbc6ba55653bcbb08d5d9d7ba9b99eab20e4",
+    "tests/fixtures/historical-sandbox/_retail_/Interface/AddOns/ConsolePort_Forever/Runtime.lua": "fffc41c25d908e30ad011ca9798d00324d9d4d1c94672b634cbd46e3b863c26b",
+    "tests/fixtures/historical-sandbox/_retail_/Interface/AddOns/ConsolePort_Forever/Skin.lua": "4800b78ab8fba4cc6dab1db9e6ffe8f1121fe3dfd22c6515a1069f5fa6947f04",
+    "tests/fixtures/historical-sandbox/_retail_/Interface/AddOns/ConsolePort_Forever/Assets/ForeverInGame.blp": "9daccf7f192871a876ede143a14f4cc453a726ac271fc89d0e30a5610b5a673f",
+    "tests/fixtures/historical-sandbox/_retail_/Interface/AddOns/ConsolePort_Forever/Assets/ForeverTargeting.blp": "f1cbdf024b1d397abe318dd9caaf67f6c0ab6c5406d03873a456aa48e7b76760"
+  },
+  "pinnedDependencyLockSHA256": "aeaa88665434d2993b198b74ab8635ffb753f519d510c546e80f96877787cacd",
+  "results": [
+    {
+      "id": "test_build_gates.RuntimeBuildGateTests.test_duplicate_or_failed_results_cannot_qualify",
+      "status": "passed"
+    },
+    {
+      "id": "test_build_gates.RuntimeBuildGateTests.test_full_current_suite_qualifies",
+      "status": "passed"
+    },
+    {
+      "id": "test_build_gates.RuntimeBuildGateTests.test_targeting_and_combat_suites_cannot_be_omitted",
+      "status": "passed"
+    },
+    {
+      "id": "test_pack.PackDelivery.test_abrupt_exit_after_rename_recovers_from_durable_intent",
+      "status": "passed"
+    },
+    {
+      "id": "test_pack.PackDelivery.test_alias_running_game_and_backup_drift_refusal",
+      "status": "passed"
+    },
+    {
+      "id": "test_pack.PackDelivery.test_archive_digest_paths_and_missing_files",
+      "status": "passed"
+    },
+    {
+      "id": "test_pack.PackDelivery.test_code_only_and_explicit_disaster_restore",
+      "status": "passed"
+    },
+    {
+      "id": "test_pack.PackDelivery.test_companion_deployment_preserves_all_vendor_files_and_wtf",
+      "status": "passed"
+    },
+    {
+      "id": "test_pack.PackDelivery.test_companion_deployment_rolls_back_without_vendor_or_wtf_writes",
+      "status": "passed"
+    },
+    {
+      "id": "test_pack.PackDelivery.test_copy_failure_promotion_failure_and_recovery",
+      "status": "passed"
+    },
+    {
+      "id": "test_pack.PackDelivery.test_explicit_package_retirement_is_parked_and_reversible",
+      "status": "passed"
+    },
+    {
+      "id": "test_pack.PackDelivery.test_official_assembly_and_unchanged_bytes",
+      "status": "passed"
+    },
+    {
+      "id": "test_pack.PackDelivery.test_preview_backup_links_and_owned_folder_replacement",
+      "status": "passed"
+    },
+    {
+      "id": "test_pack.PackDelivery.test_real_anchor_branch_only_on_guarded_fake_root_with_42_links",
+      "status": "passed"
+    },
+    {
+      "id": "test_pack.PackDelivery.test_restore_failures_compensate_and_preserve_newer_edits",
+      "status": "passed"
+    },
+    {
+      "id": "test_pack.PackDelivery.test_script_entry_points_preview_or_running_guard_are_read_only",
+      "status": "passed"
+    },
+    {
+      "id": "test_pack.PackDelivery.test_stage_current_and_anchor_drift_are_not_promoted",
+      "status": "passed"
+    },
+    {
+      "id": "test_tools.ToolGuards.test_adopted_dependency_coverage_preserves_reference",
+      "status": "passed"
+    },
+    {
+      "id": "test_tools.ToolGuards.test_archive_attacks",
+      "status": "passed"
+    },
+    {
+      "id": "test_tools.ToolGuards.test_copy_fixture_without_writing_reference",
+      "status": "passed"
+    },
+    {
+      "id": "test_tools.ToolGuards.test_empty_toc_fields_do_not_hide_required_dependencies",
+      "status": "passed"
+    },
+    {
+      "id": "test_tools.ToolGuards.test_fresh_official_download_and_expired_metadata",
+      "status": "passed"
+    },
+    {
+      "id": "test_tools.ToolGuards.test_inactive_official_package_companions_are_preserved",
+      "status": "passed"
+    },
+    {
+      "id": "test_tools.ToolGuards.test_live_aliases_refused",
+      "status": "passed"
+    },
+    {
+      "id": "test_tools.ToolGuards.test_matching_packaged_migration_classification",
+      "status": "passed"
+    },
+    {
+      "id": "test_tools.ToolGuards.test_native_required_addons_are_explicit_and_hash_qualified",
+      "status": "passed"
+    },
+    {
+      "id": "test_tools.ToolGuards.test_native_runtime_package_closure",
+      "status": "passed"
+    },
+    {
+      "id": "test_tools.ToolGuards.test_notice_sources_are_distinct_from_permission",
+      "status": "passed"
+    },
+    {
+      "id": "test_tools.ToolGuards.test_output_links_and_immutable_scopes",
+      "status": "passed"
+    },
+    {
+      "id": "test_tools.ToolGuards.test_qualify_official_archive_without_patching",
+      "status": "passed"
+    },
+    {
+      "id": "test_tools.ToolGuards.test_retired_coverage_is_explicit_and_survives_future_resolution",
+      "status": "passed"
+    },
+    {
+      "id": "test_updates.ScopedUpdates.test_companion_payload_never_reads_unchanged_vendor_sources",
+      "status": "passed"
+    },
+    {
+      "id": "test_updates.ScopedUpdates.test_discovery_detects_new_releases_and_same_version_curseforge_file_ids",
+      "status": "passed"
+    },
+    {
+      "id": "test_updates.ScopedUpdates.test_explicit_retirement_is_backed_up_and_parked_without_touching_other_addons",
+      "status": "passed"
+    },
+    {
+      "id": "test_updates.ScopedUpdates.test_interruption_rolls_back_every_promoted_folder_including_new_folders",
+      "status": "passed"
+    },
+    {
+      "id": "test_updates.ScopedUpdates.test_retirement_interruption_restores_companion_and_retired_addon",
+      "status": "passed"
+    },
+    {
+      "id": "test_updates.ScopedUpdates.test_same_candidate_output_label_preserves_prior_artifact_names_and_rejects_paths",
+      "status": "passed"
+    },
+    {
+      "id": "test_updates.ScopedUpdates.test_undeclared_or_mismatched_dependency_scope_is_refused_before_backup",
+      "status": "passed"
+    },
+    {
+      "id": "test_updates.ScopedUpdates.test_update_replaces_only_selected_packages_and_backs_up_only_touched_folders",
+      "status": "passed"
+    }
+  ],
+  "limitation": "Only guarded repository scratch simulations; no actual game installation or Retail client execution."
+}

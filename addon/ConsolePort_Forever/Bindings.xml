@@ -1,0 +1,5 @@
+<Bindings>
+    <Binding name="CPF_GAMEPAD_PING" header="PING_SYSTEM" runOnUp="true">
+        ConsolePortForever_GamepadPing(keystate == "down");
+    </Binding>
+</Bindings>

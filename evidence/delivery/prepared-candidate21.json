@@ -1,0 +1,15 @@
+{
+  "at": "2026-10-10T01:04:36.416500+00:00",
+  "preparedVersion": "2.0.0-candidate.21",
+  "configRevision": 17,
+  "deployed": false,
+  "runtimeSuitesPassed": 60,
+  "toolingChecksPassed": 39,
+  "changedDependencies": [
+    "Tercioo/Plater-Nameplates"
+  ],
+  "installedVersionRetained": "2.0.0-candidate.20",
+  "rootCauseEvidence": "Actual native error branch reproduced for controller stale-pointer UI obstruction; actual client blocking frame not captured.",
+  "liveAcceptance": "NOT RUN; manual case 48 required after separately authorized installation.",
+  "scope": "Checkout only; no installer/game interaction or filesystem live AddOns/WTF writes."
+}

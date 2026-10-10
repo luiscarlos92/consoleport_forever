@@ -204,6 +204,10 @@ function Addon:Refresh()
     local adapters,error=self.RuntimeSetup.Adapters(_G,self.db)
     if not adapters then self.Diagnostics:SetFeature("configuration","pending",error) return end
     self.adapters=adapters
+    if self.PingTargeting then
+        local ready,reason=self.PingTargeting:Refresh(_G,self:IsCharacterInstalled(),adapters.consoleport)
+        self.Diagnostics:SetFeature('pingTargeting',ready and 'offline-verified' or 'pending',reason)
+    end
     self.TargetingUI:Initialize(_G)
     self.coordinator=self.Coordinator.New(self.db,self.guid,adapters,CanWrite)
     if self.record.pendingBindingSelection then
@@ -400,6 +404,7 @@ SlashCmdList.CONSOLEPORTFOREVER=function(input)
         local ok,reason=Addon.Proof:Show(_G)
         if not ok then Print(reason) end
     elseif command=="diagnose" then
+        if Addon.PingTargeting then Addon.PingTargeting:Observe(_G) end
         if Addon.SnapshotFaceVisuals then Addon:SnapshotFaceVisuals(true) end
         Addon:Status()
         for _,entry in ipairs(Addon.Diagnostics.entries) do Print(entry.kind..": "..entry.message) end
@@ -408,6 +413,10 @@ end
 local events=CreateFrame("Frame")
 for _,event in ipairs({"PLAYER_LOGIN","PLAYER_LOGOUT","PLAYER_ENTERING_WORLD","PLAYER_REGEN_ENABLED","PLAYER_REGEN_DISABLED","ADDON_LOADED","UPDATE_BINDINGS","EDIT_MODE_LAYOUTS_UPDATED","SPELLS_CHANGED","ACTIONBAR_SLOT_CHANGED","PLAYER_SPECIALIZATION_CHANGED","TRAIT_CONFIG_UPDATED","SPELL_DATA_LOAD_RESULT","CVAR_UPDATE","UPDATE_SHAPESHIFT_FORMS","PET_BAR_UPDATE","UNIT_PET","BAG_UPDATE_DELAYED","ITEM_LOCK_CHANGED","CURSOR_CHANGED","MERCHANT_SHOW","MERCHANT_CLOSED","CINEMATIC_START","CINEMATIC_STOP","PLAY_MOVIE","STOP_MOVIE","ADDON_ACTION_BLOCKED","ADDON_ACTION_FORBIDDEN"}) do events:RegisterEvent(event) end
 events:SetScript("OnEvent",function(_,event,...)
+    if event=='PING_SYSTEM_ERROR' then
+        if Addon.PingTargeting then Addon.PingTargeting:Observe(_G,...) end
+        return
+    end
     if event=='CVAR_UPDATE' and tostring((...)):lower()~='actionbuttonusekeydown' then return end
     if event=='SPELL_DATA_LOAD_RESULT' and not (Addon.GroundTargeting.requested and Addon.GroundTargeting.requested[(...)]) then return end
     if event=='PLAYER_SPECIALIZATION_CHANGED' and (...)~='player' then return end
@@ -449,3 +458,4 @@ events:SetScript("OnEvent",function(_,event,...)
         end)
     end
 end)
+events:RegisterEvent('PING_SYSTEM_ERROR')

@@ -3,6 +3,9 @@ import json
 from repository_paths import ROOT, contained, output, sha
 
 FILES = [
+    'ConsolePort/Controller/Mouse.lua',
+    'ConsolePort/View/Cursors/Crosshair.lua',
+    'ConsolePort_World/Controller/Ping.lua',
     'ConsolePort_Bar/Controller/Blizzard/Mainline.lua',
     'ConsolePort/API.lua',
     'ConsolePort/Utils/Utils.lua', 'ConsolePort/Utils/Database.lua', 'ConsolePort/Utils/Const.lua',

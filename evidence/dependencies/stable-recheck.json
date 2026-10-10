@@ -1,6 +1,6 @@
 {
-  "checkedAt": "2026-10-09T01:51:38.087890+00:00",
-  "lockSHA256": "9b4f3625885b5b90cd62a9a53b4efefd7d8bc50ad4b02ffc13372a416bb98bca",
+  "checkedAt": "2026-10-10T00:58:31.132251+00:00",
+  "lockSHA256": "aeaa88665434d2993b198b74ab8635ffb753f519d510c546e80f96877787cacd",
   "github": [
     {
       "repo": "seblindfors/ConsolePort",
@@ -59,14 +59,14 @@
     },
     {
       "repo": "Tercioo/Plater-Nameplates",
-      "url": "https://github.com/Tercioo/Plater-Nameplates/releases/tag/Plater-v656",
-      "latestStable": "Plater-v656",
-      "releaseID": 392139015,
-      "publishedAt": "2026-09-19T16:38:47Z",
+      "url": "https://github.com/Tercioo/Plater-Nameplates/releases/tag/Plater-v657",
+      "latestStable": "Plater-v657",
+      "releaseID": 407758679,
+      "publishedAt": "2026-10-09T09:26:52Z",
       "matchesLock": true,
-      "assetID": 575104334,
-      "digest": "sha256:3353250fa63fe840d8e9444037a3debde5c82286ccbcc825a475cec5ffd90ead",
-      "bytes": 4545532
+      "assetID": 624497577,
+      "digest": "sha256:9ee9f99b394eb10e338f4e4bfe7ff2ff3719a6b3d48984164642bed9df1b87ff",
+      "bytes": 4575085
     },
     {
       "repo": "SLOKnightfall/BetterWardrobe",
@@ -87,7 +87,7 @@
       "officialFile": "https://www.curseforge.com/wow/addons/dynamiccam/files/8995535",
       "latestStable": "2.21.1",
       "fileID": 8995535,
-      "metadataVerifiedAt": "2026-10-09T01:51:36Z",
+      "metadataVerifiedAt": "2026-10-10T00:50:30Z",
       "method": "Official latest-stable Retail listing and file page inspected; no floating latest fetch during assembly.",
       "matchesLock": true
     },
@@ -97,7 +97,7 @@
       "officialFile": "https://www.curseforge.com/wow/addons/immersion-extrafade/files/8995675",
       "latestStable": "1.18.0",
       "fileID": 8995675,
-      "metadataVerifiedAt": "2026-10-09T01:51:36Z",
+      "metadataVerifiedAt": "2026-10-10T00:50:30Z",
       "method": "Official latest-stable Retail listing and file page inspected; no floating latest fetch during assembly.",
       "matchesLock": true
     }

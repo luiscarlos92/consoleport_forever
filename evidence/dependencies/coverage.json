@@ -1,5 +1,5 @@
 {
-  "lockSHA256": "9b4f3625885b5b90cd62a9a53b4efefd7d8bc50ad4b02ffc13372a416bb98bca",
+  "lockSHA256": "aeaa88665434d2993b198b74ab8635ffb753f519d510c546e80f96877787cacd",
   "selectedFolders": {
     "BetterBags": {
       "owner": "Cidan/BetterBags",
@@ -681,7 +681,7 @@
         "OptionalDeps": "Masque",
         "IconTexture-blank": "982414",
         "IconTexture": "Interface\\AddOns\\Plater\\images\\cast_bar",
-        "Version": "Plater-v656-Forever",
+        "Version": "Plater-v657-Retail",
         "X-Curse-Project-ID": "100547",
         "X-Wago-ID": "kRNLep6o"
       }

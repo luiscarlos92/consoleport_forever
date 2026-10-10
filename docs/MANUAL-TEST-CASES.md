@@ -740,3 +740,18 @@ explicitly configure cursor/player. Unconfigured spells retain native targeting.
 Confirm terrain/range failures produce ordinary game feedback. Change spec/character,
 log out normally and verify account-wide saved choices. Check for Lua/protected-action
 errors/taint. All Retail cases remain NOT RUN; offline mocks cannot pass this case.
+
+
+## Case 48 - controller ping pointer and native tap/hold (candidate.21, NOT DEPLOYED)
+
+After a separately authorized installation only, park the mouse over UI, return
+to controller camera freelook, then tap R3 aimed at a valid world/unit. Hold R3,
+select a native radial ping and release; repeat in/out of combat and verify the
+prior GamePadCursorCentering preference returns. Check free pointer, native UI,
+raid/target ring ownership, keyboard F2, remapped chords and modal handoff while
+held. Native invalid-target, leader restriction and cooldown errors must remain.
+If the generic error persists, /cpf diagnose and normal game-owned saving retain
+public mouse-focus/CVar evidence. No exact privileged receiver is exposed.
+Actual CVar timing, hardware API permission, unit/world hit test, radial position,
+held owner handoff, combat and taint remain NOT RUN. Offline tests cannot pass
+this case. See CANDIDATE21-PING-TARGETING-2026-10-09.md.

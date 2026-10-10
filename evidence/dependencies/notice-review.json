@@ -1,6 +1,6 @@
 {
-  "lockSHA256": "9b4f3625885b5b90cd62a9a53b4efefd7d8bc50ad4b02ffc13372a416bb98bca",
-  "noticeInventorySHA256": "56e6f5810dfcd25af5f6ec1be858418009867706ba52fead182a1dbc0d9dd0c6",
+  "lockSHA256": "aeaa88665434d2993b198b74ab8635ffb753f519d510c546e80f96877787cacd",
+  "noticeInventorySHA256": "e0b5a630c79b8928db7b1f085b5142a6d4fc2bee139a458bab678f06d57a4b85",
   "localPersonalAssemblyReviewComplete": true,
   "publicRedistributionApproved": false,
   "scope": "All third-party dependencies use official-source local assembly. This inventory is not a license grant or approval to publish dependency code or media.",
@@ -1318,9 +1318,9 @@
     },
     {
       "repo": "Tercioo/Plater-Nameplates",
-      "version": "Plater-v656",
+      "version": "Plater-v657",
       "mainTerms": "Maintainer distribution; no permissive main-addon notice in package",
-      "officialRelease": "https://github.com/Tercioo/Plater-Nameplates/releases/tag/Plater-v656",
+      "officialRelease": "https://github.com/Tercioo/Plater-Nameplates/releases/tag/Plater-v657",
       "noticeFiles": [
         {
           "source": "Plater/fonts/SIL Open Font License.txt",
@@ -1331,6 +1331,11 @@
           "source": "Plater/libs/DF/LICENSE",
           "sha256": "20c17d8b8c48a600800dfd14f95d5cb9ff47066a9641ddeab48dc54aec96e331",
           "copy": "evidence/dependencies/notices/Tercioo__Plater-Nameplates/Plater/libs/DF/LICENSE"
+        },
+        {
+          "source": "Plater/libs/LibCompress/LICENSE",
+          "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643",
+          "copy": "evidence/dependencies/notices/Tercioo__Plater-Nameplates/Plater/libs/LibCompress/LICENSE"
         },
         {
           "source": "Plater/libs/LibCustomGlow-1.0/LICENSE",
@@ -1377,7 +1382,7 @@
         },
         {
           "source": "Plater/libs/LibCompress/LibCompress.lua",
-          "sha256": "6d6bc816bd7621c2552fc62798644e36d8d9ed97ccb31330c078355a900faa02",
+          "sha256": "f091aa81ae3672319a90d6ed4548cf950c03301f727a2ab092bcd805e0fd6ed2",
           "declarations": [
             "-- Licence: GPL version 2 (General Public License)\r"
           ],
@@ -1385,7 +1390,7 @@
         },
         {
           "source": "Plater/libs/LibCompress/LibCompress.toc",
-          "sha256": "30913b368285b8bac45d544a4d2e11cec8e7d64ab841c6d0a870d35cbe49fb43",
+          "sha256": "6c4007c807dd4b297bc4666c94e6670118002c7cd99444e7a96c8e9a813862a0",
           "declarations": [
             "## X-License: GPL v2\r"
           ],
@@ -1404,6 +1409,14 @@
           "sha256": "f61649b1747c7deeea2fc9010cd66aa68c5039541ae8fb75b06611e94cf377af",
           "declarations": [
             "## X-License: Public Domain\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "Plater/libs/LibCompress/ReadMe.md",
+          "sha256": "32cca4841ccd4835c44475eb578b3f683f2f3bf676431d23d2417bed5c5bd435",
+          "declarations": [
+            "LibStub is used as the library loader and is pulled in from https://repos.curseforge.com/wow/libstub/trunk when the package is built. It is public domain, written by Kaelten, Cladhaire, ckknight, Mikk, Ammo, Nevcairiel and joshborke.\r"
           ],
           "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
         },
@@ -1498,7 +1511,7 @@
         },
         {
           "source": "Plater/libs/LibRangeCheck-3.0/LibRangeCheck-3.0.lua",
-          "sha256": "9dc1cd5ab514b22be029d44b06ee9b7348d04f33f03618ae284422995e53c61a",
+          "sha256": "7e5d6430d7e9d1bd9036d2c8e19c547b6ab148a56aa2a6c126ed33ee0ab31892",
           "declarations": [
             "License: MIT\r"
           ],
@@ -1506,7 +1519,7 @@
         },
         {
           "source": "Plater/libs/LibRangeCheck-3.0/LibRangeCheck-3.0.toc",
-          "sha256": "2940384b7c2b2411391b9918758941ba98cc94e3154626171fde278541c86d9c",
+          "sha256": "2422e47fb709612f56e7c28cd85dc7c997c48e9349aa926421e98812608916f1",
           "declarations": [
             "## X-License: MIT\r"
           ],
@@ -1514,7 +1527,7 @@
         },
         {
           "source": "Plater/libs/LibRangeCheck-3.0/LibRangeCheck-3.0_Cata.toc",
-          "sha256": "c7435320972d3f3d5022b7deb62a243f93b649ee5f6ed4132f2062c286c95b20",
+          "sha256": "deaee3c16abf171e3a83b7f00873d6869daada525edce1e085efe5fd820824b4",
           "declarations": [
             "## X-License: MIT\r"
           ],
@@ -1522,7 +1535,7 @@
         },
         {
           "source": "Plater/libs/LibRangeCheck-3.0/LibRangeCheck-3.0_Mists.toc",
-          "sha256": "cda18a57c192ee7fe1ea648abfd514edf1612f426d0e2871b272eafa53057130",
+          "sha256": "7506a3267ceb122c9ed6a1223cbf7ebffb4b5b25684aa297e249e5afd1bae15a",
           "declarations": [
             "## X-License: MIT\r"
           ],
@@ -1530,7 +1543,7 @@
         },
         {
           "source": "Plater/libs/LibRangeCheck-3.0/LibRangeCheck-3.0_TBC.toc",
-          "sha256": "1e070bf26a6b4114c4b54ccf25314f7afffe54108b630b268080f2c089b06ab7",
+          "sha256": "7159f2753fc0a571f29b4f5e70d49236db0ca4491492a1e0b4cc0515f517c0e5",
           "declarations": [
             "## X-License: MIT\r"
           ],
@@ -1538,7 +1551,7 @@
         },
         {
           "source": "Plater/libs/LibRangeCheck-3.0/LibRangeCheck-3.0_Vanilla.toc",
-          "sha256": "cba325eee3968f8915c1bf0f5652f23ca0669db30a4b84cda6e435aee07471fb",
+          "sha256": "e7c81d23a1d050f36eecf22bb269f47768645a2dd3ff9b9f0c16246131cce383",
           "declarations": [
             "## X-License: MIT\r"
           ],
@@ -1546,7 +1559,7 @@
         },
         {
           "source": "Plater/libs/LibRangeCheck-3.0/LibRangeCheck-3.0_Wrath.toc",
-          "sha256": "66ac3db533ab73379e42281c97d6fe1dbdc5b124bb21b9fab58511200d16a4b5",
+          "sha256": "cb1b55208955fac1bf3e7428f59332b570b55c98f0d04130312e1ebbed3863d5",
           "declarations": [
             "## X-License: MIT\r"
           ],

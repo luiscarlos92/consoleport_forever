@@ -1,3 +1,19 @@
+## Candidate.21 ping targeting — October 9, 2026 (DO NOT DEPLOY)
+
+User requests diagnosis/fix only. Candidate.20 remains installed; no live
+AddOns/WTF writes, installer, reload or game interaction. Native R3 ping samples
+a parked pointer while ConsolePort draws a separate camera crosshair. Actual
+Blizzard listener/manager tests reproduce the blocking-UI generic error path.
+Candidate.21 centers the pointer around hardware tap/hold through native Layers
+arbitration, retains UI/modal priority, restores prior centering and records
+public focus diagnostics. Actual blocking frame, engine timing and hardware/
+combat/taint acceptance remain pending manual case 48; offline tests are not
+live certification. Revision 17 and accepted visuals/class/casting remain.
+Nine stable Retail sources freshly checked: only Plater-v656 -> Plater-v657
+changed/downloaded in the checkout; 189 Lua syntax checks and Retail closure
+pass. A future authorized scoped update must include changed Plater plus Forever.
+See docs/CANDIDATE21-PING-TARGETING-2026-10-09.md and retained test reports.
+
 ## Installed candidate.20 — October 08, 2026, 22:23:50 Toronto
 
 Authorized closed-WoW scoped deployment completed from tested/pushed source

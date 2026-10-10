@@ -7,6 +7,12 @@ from repository_paths import ROOT, output, sha
 
 REV='09b9db7948abc9b9648dedaab51eb0cf3ee67b31'
 FILES=[
+    'Blizzard_PingUI/Bindings.xml',
+    'Blizzard_PingUI/Blizzard_PingManager.lua',
+    'Blizzard_PingUI/Blizzard_PingUI.lua',
+    'Blizzard_PingUI/Blizzard_PingUtil.lua',
+    'Blizzard_APIDocumentationGenerated/PingManagerDocumentation.lua',
+    'Blizzard_APIDocumentationGenerated/PingManagerSecureDocumentation.lua',
     'Blizzard_UIPanels_Game/Shared/VehicleSeatIndicator.lua',
     'Blizzard_UIPanels_Game/Shared/VehicleSeatIndicator.xml',
     'Blizzard_Collections/Blizzard_Collections_Mainline.toc',
@@ -16,6 +22,7 @@ FILES=[
     'Blizzard_APIDocumentationGenerated/KeyBindingsDocumentation.lua',
     'Blizzard_APIDocumentationGenerated/EventUtilsDocumentation.lua',
     'Blizzard_RestrictedAddOnEnvironment/RestrictedEnvironment.lua',
+    'Blizzard_RestrictedAddOnEnvironment/RestrictedExecution.lua',
     'Blizzard_RestrictedAddOnEnvironment/SecureHandlers.lua',
     'Blizzard_FrameXML/SecureTemplates.lua',
     'Blizzard_ActionBarController/ActionBarController.lua',

@@ -5,6 +5,18 @@
   "purpose": "Exact unmodified source audit/test contracts; not deployed dependency copies.",
   "files": [
     {
+      "path": "ConsolePort/Controller/Mouse.lua",
+      "sha256": "8f098fda7c45ffd3d94a0dfd344568c1770da94b618092bee7221ab8b56de4bc"
+    },
+    {
+      "path": "ConsolePort/View/Cursors/Crosshair.lua",
+      "sha256": "66afe7838bda567f04ad40055c4f57cc09eb02f76c39119a374d81cb897a187a"
+    },
+    {
+      "path": "ConsolePort_World/Controller/Ping.lua",
+      "sha256": "253c54e24e689e6fbee65d202227bf2fa4ce0ef330c5d4c948994dfe0a36491b"
+    },
+    {
       "path": "ConsolePort_Bar/Controller/Blizzard/Mainline.lua",
       "sha256": "f5db29807936ab34263f66a818de290aa9d0f1e139a6acb886b6450ad195aa75"
     },

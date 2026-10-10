@@ -62,7 +62,7 @@ check('T01.snapshot', () => {
 check('T27.lua51', () => {
   for (const f of files('addon').filter(f=>f.endsWith('.lua'))) parser.parse(read(f),{luaVersion:'5.1'});
 });
-const modules = ['Core','Store','Plan','Transactions','BindingPolicy','ModePolicy','Rings/Discovery','Rings/Selectors','ClassActions','SecureModes','TemporaryAccess','Targeting/Registry','Targeting/Preferences','Targeting/Ground','UI/Ownership','UI/InputBridge','UI/Windows','UI/Scroll','UI/Map','UI/PartyLayout','Cinematic','Adapters/BetterBags','UI/ItemHints','UI/Contexts','UI/FocusVisuals','UI/Proof','Adapters/NativeBindings',
+const modules = ['Core','Store','Plan','Transactions','BindingPolicy','ModePolicy','Rings/Discovery','Rings/Selectors','ClassActions','SecureModes','TemporaryAccess','Targeting/Registry','Targeting/Preferences','Targeting/Ground','Targeting/Ping','UI/Ownership','UI/InputBridge','UI/Windows','UI/Scroll','UI/Map','UI/PartyLayout','Cinematic','Adapters/BetterBags','UI/ItemHints','UI/Contexts','UI/FocusVisuals','UI/Proof','Adapters/NativeBindings',
   'Adapters/BindingState','Adapters/BindingBanks','Diagnostics','Capability','Adapters/ConsolePort','Adapters/EditMode','Adapters/FlatConfig','Adapters/Integrations','Adapters/LiteMount','Adapters/DynamicCam','Adapters/Rings','Baseline','Coordinator','Prompt'];
 const source = 'Addon={};\n' + modules.map(m=>
   ';(function(...)\n'+read('addon/ConsolePort_Forever/'+m+'.lua')+'\nend)("ConsolePort_Forever",Addon);\n').join('');
@@ -518,7 +518,9 @@ check('T39.ConsolePort-3.3.10-layout-compatibility', () => {
 });
 let bootstrapState,bootstrapPrelude;
 check('T10-T11.product-bootstrap', () => {
-  const entries=read('addon/ConsolePort_Forever/ConsolePort_Forever.toc').split(/\r?\n/).filter(x=>x.trim() && !x.startsWith('#'));
+  // Hardware Binding XML is exercised separately by T60; only Lua belongs in
+  // the bootstrap VM's ordered module compilation.
+  const entries=read('addon/ConsolePort_Forever/ConsolePort_Forever.toc').split(/\r?\n/).filter(x=>x.trim() && !x.startsWith('#') && x.endsWith('.lua'));
   const product='Addon={};\n'+entries.map(f=>';(function(...)\n'+read('addon/ConsolePort_Forever/'+f.replace(/\\/g,'/'))+'\nend)("ConsolePort_Forever",Addon);\n').join('');
   const ringPrelude=ringFixture().split('local account=')[0]
     .replace('function InCombatLockdown() return combat end','');
@@ -867,6 +869,31 @@ check('T59.character-binding-capture-rejects-account-view', () => {
   try {execute('SESSION_STATE=('+bootstrapState+').installed\n'+old+read('tests/harness/character_capture_owner.lua'),'account-overwrites-character');}
   catch(error) {rejected=String(error).includes('account view erased character class binding');}
   if(!rejected) throw Error('account character-capture negative control did not fail');
+});
+check('T60.native-controller-ping-tap-hold-pointer-and-owner-dispatch', () => {
+  const nativeBase='evidence/native/Blizzard_PingUI/';
+  const manifest=JSON.parse(read('evidence/native/manifest.json'));
+  for(const name of ['Blizzard_PingUI/Bindings.xml','Blizzard_PingUI/Blizzard_PingManager.lua','Blizzard_PingUI/Blizzard_PingUI.lua']) {
+    const row=manifest.find(r=>r.path===name);
+    if(!row || sha('evidence/native/'+name)!==row.sha256) throw Error('Native ping source drift: '+name);
+  }
+  const xml=read('addon/ConsolePort_Forever/Bindings.xml');
+  const body=xml.match(/<Binding name="CPF_GAMEPAD_PING"[^>]*runOnUp="true">([\s\S]*?)<\/Binding>/)?.[1];
+  if(!body) throw Error('Ping hardware press/release binding missing');
+  const manager=['GetTargetPingReceiverInfo_Insecure','GetTargetPingReceiverInfo','PingManager:DeterminePingTarget','PingManager:DeterminePingTargetAndSend','PingManager:SendContextualWorldPing'];
+  const listener=['PingListenerFrameMixin:TogglePingListener','PingListenerFrameMixin:GetPingMode','PingListenerFrameMixin:SetCursorPositions','PingListenerFrameMixin:BeginPendingPing','PingListenerFrameMixin:EndPendingPing'];
+  const fixture=source+uiContextFixture()+'\n'+read('tests/harness/ping_targeting.lua')
+    .replace('--@NATIVE_PING_METHODS',()=>manager.map(n=>nativeFunction(nativeBase+'Blizzard_PingManager.lua',n)).concat(listener.map(n=>nativeFunction(nativeBase+'Blizzard_PingUI.lua',n))).join('\n'))
+    .replace('--@PRODUCT_PING_BINDING',()=>`local function bindingHardware(keystate)\n${body}\nend`);
+  execute(fixture,'native-controller-ping');
+  let rejected=false;
+  try {execute(fixture.replace("api.SetCVar(CENTER, '1')",'-- centering removed'),'stale-controller-pointer');}
+  catch(error) {rejected=String(error).includes('parked pointer blocked controller tap');}
+  if(!rejected) throw Error('Missing pointer centering negative control did not fail');
+  rejected=false;
+  try {execute(fixture.replaceAll("self:ReleaseCenter(api)",'do end'),'missing-ping-restoration');}
+  catch(error) {rejected=String(error).includes('tap did not restore prior centering');}
+  if(!rejected) throw Error('Missing ping restoration negative control did not fail');
 });
 const report = {at:new Date().toISOString(), commit:cp.execFileSync('git',['rev-parse','HEAD'],{cwd:root}).toString().trim(),
   productHashes:Object.fromEntries(files('addon').map(f=>[f,sha(f)])),

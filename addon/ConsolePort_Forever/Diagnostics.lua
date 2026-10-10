@@ -9,6 +9,7 @@ function Diagnostics:Persist()
         codeVersion=Addon.VERSION, configRevision=Addon.CONFIG_REVISION,
         features=Addon.Core.Copy(self.features), entries=Addon.Core.Copy(self.entries),
         visuals=Addon.Core.Copy(self.visuals or {}),
+        ping=Addon.Core.Copy(self.ping or {}),
     }
 end
 function Diagnostics:Log(kind, message)

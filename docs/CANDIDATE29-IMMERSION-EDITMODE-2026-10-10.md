@@ -72,3 +72,11 @@ work. No game input, reload, restart, installer preview or deployment is authori
 All 67 runtime/source suites and 39 tooling checks passed on frozen source.
 The user withdrew the later gossip/options-list request after read-only inspection;
 no options-list code, scale, anchor, scrolling or settings changes were made.
+
+Prepared Forever-only candidate.29 from tested/pushed source 71d018266cc7d604137f01179ee0a8079aa3d3cb.
+ZIP SHA256 692cb4b3cc0e438ed561fe83356a82c0c73e5572cdf7ccf6703f02f70b517e06; 58 exact source/manifest files.
+No dependency updates or retirements. Independent post-build readback verifies
+all 55 installed Forever files remain candidate.27 and all 52 Immersion
+files remain the unchanged pinned release. No installer/preview or live writes.
+See evidence/delivery/prepared-candidate29.json. NOT DEPLOYED.
+

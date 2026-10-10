@@ -1,3 +1,14 @@
+## Candidate.27 deployment authorized — October 10, 2026
+
+The user now says "deploy now", superseding the earlier preparation-only limit.
+Deploy the exact tested/pushed candidate.27 Forever-only artifact with WoW closed.
+Freshly rechecked all nine official stable Retail packages this deployment session:
+none changed; no downloads or unchanged dependencies to copy. Existing 64 runtime
+and 39 tooling passes remain exact to all current product/tools/tests hashes.
+Use scoped preview/installer, verify backups, all installed files, unselected
+addons, canonical WTF inventories, root anchors and junctions. Do not edit WTF,
+launch the game or claim live controller acceptance. Record final receipts.
+
 ## Candidate.27 editing repair — October 10, 2026 (DO NOT DEPLOY)
 
 The user confirms candidate.26 restored the Paladin, then reports dragonriding

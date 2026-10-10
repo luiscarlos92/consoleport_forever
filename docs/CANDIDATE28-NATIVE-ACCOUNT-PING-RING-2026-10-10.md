@@ -94,3 +94,10 @@ Installed candidate.27 stays in place.
 Qualification complete: all 65 runtime/source suites and 39 tooling checks pass
 on exact frozen source hashes. Reports: evidence/test-results/candidate28-runtime.json
 and candidate28-tooling.json. No deployment or installer preview ran.
+
+Prepared Forever-only candidate.28 from tested/pushed source 30fd9d0bb9f4080466d0f0f917c86962ede8f230;
+ZIP SHA256 8b789218ed0ba073fe8ac47bc4ef17db8ed3a0a675359c4e88d5396c0ab9645e.
+All 55 package files match source/manifest; revision17, no dependency
+updates or retirements. Independent after-build readback verifies all 55 live
+Forever files remain installed candidate.27. No installer/preview or live
+filesystem writes. See evidence/delivery/prepared-candidate28.json. NOT DEPLOYED.

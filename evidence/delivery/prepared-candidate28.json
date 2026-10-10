@@ -1,0 +1,65 @@
+{
+  "path": "C:\\Users\\luisr\\Dev\\consoleport_forever\\dist\\2.0.0-candidate.28\\ConsolePort-Forever-Update-companion-only-native-account-ping-ring.zip",
+  "sha256": "8b789218ed0ba073fe8ac47bc4ef17db8ed3a0a675359c4e88d5396c0ab9645e",
+  "bytes": 512707,
+  "sourceCommit": "30fd9d0bb9f4080466d0f0f917c86962ede8f230",
+  "addonFolders": [
+    "ConsolePort_Forever"
+  ],
+  "dependencyUpdates": [],
+  "retiredAddonFolders": {},
+  "version": "2.0.0-candidate.28",
+  "testedDependencies": {
+    "Cidan/BetterBags": {
+      "version": "v0.5.14",
+      "sha256": "16c1ac70c4de2e7f2cfdbf4d2b5f3d3f44514a3f9ecf1040e29c790e8be8c0d7"
+    },
+    "seblindfors/Immersion": {
+      "version": "1.4.61",
+      "sha256": "b180a8cbd1a1d878377da5a85abfdc5576e0c04212f9e900e3e9ca505cde1f3e"
+    },
+    "SFX-WoW/Masque": {
+      "version": "12.1.0",
+      "sha256": "9e1da4827ae60bd25d7fc427cbeeb0dc297e59d53a71a29ae95223d3374bbfa0"
+    },
+    "curseforge/DynamicCam": {
+      "version": "2.21.1",
+      "sha256": "10eb86230c6903e72097e1552c04de8a163a39fe3cb31fc3a3274c2c4394e072"
+    },
+    "curseforge/Immersion_ExtraFade": {
+      "version": "1.18.0",
+      "sha256": "89c59d0519b2392b41010dda34ec01d38c9c1702c644f5e57422341b1fec21c6"
+    },
+    "SLOKnightfall/BetterWardrobe": {
+      "version": "6.12.3",
+      "sha256": "abcba6be5535c15a581721192a5c4865e05b568dbac52d79c108c89e6c763d8c"
+    },
+    "seblindfors/ConsolePort": {
+      "version": "3.3.10",
+      "sha256": "6175a327b3b7505b6f1d79ef0adc96c7a65db3cc8220dd59e34de6658dbb4f49"
+    },
+    "xod-wow/LiteMount": {
+      "version": "12.1.0-2",
+      "sha256": "2ea930083a18a002bab72423f9efc2a22f912e195add574ddc39361850883a55"
+    },
+    "Tercioo/Plater-Nameplates": {
+      "version": "Plater-v658",
+      "sha256": "faeda3f14a2b109d2ceaa2a176be4a2e2d016b5e8c12d6c70e8222505bf461e0"
+    }
+  },
+  "dependencyLockSHA256": "2e49961920e5f8c4b3966ba42a9ab3f35bb0c55dd233b75b5587bf2830d59c2a",
+  "preparationStatus": "Prepared only; not installed or previewed",
+  "runtimeSuites": 65,
+  "toolingChecks": 39,
+  "configurationRevision": 17,
+  "packFilesVerified": 55,
+  "inactiveFallback": "fallbacks/ping-candidate27",
+  "liveReadback": {
+    "checkedAt": "2026-10-10T22:19:30.065903+00:00",
+    "installedVersion": "2.0.0-candidate.27",
+    "exactForeverFiles": 55,
+    "noInstallerOrPreview": true,
+    "noLiveFilesystemWrites": true
+  },
+  "retailAcceptance": "User-owned rendering/controller test after separately authorized future deployment"
+}

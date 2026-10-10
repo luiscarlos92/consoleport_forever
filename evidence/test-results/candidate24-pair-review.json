@@ -63,5 +63,15 @@
     "candidate24-tooling.json": "c499cbd6187eb03920dc8d32dafe195fe66b8d14e6914c7ed4af087628567b0c"
   },
   "finalFullRuntimeCompletedAt": "2026-10-10T07:08:36.831Z",
-  "preservedAgainstSourceCommit": "5eff38bad40312b887db9ed44983a292513855e3"
+  "preservedAgainstSourceCommit": "5eff38bad40312b887db9ed44983a292513855e3",
+  "installation": {
+    "version": "2.0.0-candidate.24",
+    "sourceCommit": "28429e5db4cf7fe66d83aa485fa1d3d5c7cd1058",
+    "packSHA256": "752ccd1738017f1dc7ec63f4a0c5780d763f12dd733dfae86876fc389ab06328",
+    "closedAt": "2026-10-10T07:12:45.716467+00:00",
+    "independentReadback": "evidence/delivery/candidate24-independent-readback.json",
+    "installedNativeContractsMatched": 54,
+    "noGameLaunch": true,
+    "noLiveWTFWrites": true
+  }
 }

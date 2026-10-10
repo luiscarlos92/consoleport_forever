@@ -1,3 +1,28 @@
+## Installed candidate.24 — 2026-10-10 03:12:45 Toronto
+
+The continuing authorized ping repair was deployed with WoW closed from tested,
+pushed source 28429e5db4cf7fe66d83aa485fa1d3d5c7cd1058. Both agents independently
+agree ACCEPT ready for the user's Retail test. All 62 runtime/source suites and
+39 tooling tests pass for exact current hashes; T60 includes 14 mandatory defect
+mutations, and T61 covers 4,160 all-character temporary-state/chord cases.
+Controller ping uses native ConsolePort Layers/Radial and the native Blizzard
+secure macro dispatcher, with aimed soft-unit exists checks or explicit @cursor
+forced points. Competing native radial, modal, UI, modifier and combat handoffs
+cancel safely in the qualified source tests. Native keyboard ping remains.
+Independent readback verifies 54 installed files, 2498 unselected addon files and
+306 WTF files unchanged, 42 junctions/root anchors preserved, and verified backups
+at C:/Users/luisr/WoW-Backups/ConsolePort-Forever/20261010T071208Z-8710da38c2df.
+All nine stable Retail dependencies freshly checked/current; none reshipped.
+TemporaryRouting.lua/Ground.lua stay byte-identical to candidate.23, preserving
+accepted dragonriding and L2+R2 temporary-family routing; revision17, saved layouts,
+class rings and accepted action rendering stay. No game launch or live WTF edits.
+Retail engine authority/taint, same-macro cursor timing and actual controller event
+ordering remain user-owned manual case51, not offline certification. Detailed
+rubber-duck explanation and withdrawn/revised pair verdicts are documented in
+docs/CANDIDATE24-PAIR-PING-2026-10-10.md and candidate24-pair-review.json.
+Pack SHA256: 752ccd1738017f1dc7ec63f4a0c5780d763f12dd733dfae86876fc389ab06328.
+This installation is complete; the next live acceptance step is the user's test.
+
 ## Candidate.24 paired ping repair — October 10, 2026 (QUALIFIED: BOTH AGENTS ACCEPT)
 
 The user requested two agents to challenge each other's implementation/tests until

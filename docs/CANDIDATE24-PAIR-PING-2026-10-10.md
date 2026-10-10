@@ -179,3 +179,13 @@ Final qualification: all 62 runtime/source suites and 39 tooling tests pass for
 the exact frozen source. T60 includes 14 mandatory adversarial mutations. Both
 agents independently verified the reports/hashes and recorded ACCEPT for user
 Retail testing. No remaining known source blocker in the qualified native contract.
+
+Authorized installation completed 2026-10-10 03:12:45 Toronto from source
+28429e5db4cf7fe66d83aa485fa1d3d5c7cd1058. Scoped Forever-only package SHA256:
+752ccd1738017f1dc7ec63f4a0c5780d763f12dd733dfae86876fc389ab06328. Independent readback confirms all 54 installed
+files, 2498 other addon files and 306 WTF files unchanged, 42 junctions/anchors
+preserved, and prior code/configuration backups verified at
+C:/Users/luisr/WoW-Backups/ConsolePort-Forever/20261010T071208Z-8710da38c2df. Reports are retained under
+evidence/delivery/*candidate24*.json. All 54 installed native ConsolePort source
+contracts were also checked against the tested official source before installation.
+No game launch or hardware test was performed.

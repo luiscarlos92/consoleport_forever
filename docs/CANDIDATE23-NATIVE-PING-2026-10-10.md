@@ -67,3 +67,15 @@ other temporary families retain the existing automated coverage/pending live che
 All 62 runtime/source suites and 39 tooling checks now pass for the exact current
 product/tooling hashes. Reports: evidence/test-results/candidate23-runtime.json
 and candidate23-tooling.json. The final nine-source official recheck remains current.
+
+## Installed result
+
+Deployed 2026-10-10T00:43:27.513795-04:00 Toronto from 5eff38bad40312b887db9ed44983a292513855e3.
+Forever only: 54 files exactly match the ZIP; 2498 other addon files,
+306 WTF files and all 42 junctions/root anchors remain unchanged.
+Removed custom Bindings.xml is absent. Accepted TemporaryRouting.lua and Ground.lua
+match the prior installed backup byte-for-byte. Prior companion and all canonical
+configuration files are verified in retained backup `C:\Users\luisr\WoW-Backups\ConsolePort-Forever\20261010T044244Z-72440b4bba18`.
+SHA256: `ec8e7422c13ffb0ccccb7cdd3b65108d763b561f8ae799657872a2d1da7ba47f`.
+All 62 runtime/source suites and 39 tooling checks passed for the packaged source.
+Native controller/taint/cursor-ordering acceptance remains user-owned case50.

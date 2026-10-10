@@ -1,0 +1,20 @@
+{
+  "installedVersion": "2.0.0-candidate.23",
+  "sourceCommit": "5eff38bad40312b887db9ed44983a292513855e3",
+  "packSHA256": "ec8e7422c13ffb0ccccb7cdd3b65108d763b561f8ae799657872a2d1da7ba47f",
+  "closedAt": "2026-10-10T04:43:27.513795+00:00",
+  "installedFilesVerified": 54,
+  "unselectedFilesUnchanged": 2498,
+  "wtfFilesUnchanged": 306,
+  "junctionsUnchanged": 42,
+  "anchorsUnchanged": true,
+  "backupsVerified": true,
+  "backup": "C:\\Users\\luisr\\WoW-Backups\\ConsolePort-Forever\\20261010T044244Z-72440b4bba18",
+  "runtimeSuites": 62,
+  "toolingChecks": 39,
+  "configurationRevision": 17,
+  "dependencyUpdates": [],
+  "noLiveWTFWrites": true,
+  "nativePingBindingRetained": true,
+  "liveAcceptance": "Ping pending user manual case50; dragonriding confirmed by user October10. No game launch/client execution."
+}

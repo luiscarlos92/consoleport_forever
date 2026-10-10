@@ -1,3 +1,25 @@
+## Installed candidate.23 — October 10, 2026, 00:43:27 Toronto
+
+Authorized closed-WoW Forever-only deployment completed from tested/pushed source
+5eff38bad40312b887db9ed44983a292513855e3. Native Blizzard TOGGLEPINGLISTENER now owns ping press/release;
+Forever's restricted addon call/custom binding is removed. Passive native input
+observers prepare/restore the pointer without dispatching privileged actions.
+The prior hardware-only test missed this boundary; T60 now separately models
+hardware/native trust and rejects insecure dispatch, missing centering and bad
+restore timing. All 62 runtime/source suites and 39 tooling checks pass.
+User confirms dragonriding working; TemporaryRouting.lua and Ground.lua remain
+byte-identical to candidate.22. Native temporary family/class regressions stay.
+Nine stable Retail dependencies freshly checked/current; none downloaded/reshipped.
+Readback verifies 54 installed files, 2498 unselected addon files unchanged,
+306 WTF files unchanged, 42 junctions/root anchors preserved and prior code/config
+backups verified at C:\Users\luisr\WoW-Backups\ConsolePort-Forever\20261010T044244Z-72440b4bba18.
+Revision 17, saved bindings/layouts/class rings/accepted rendering stay. No game
+launch or live controller test. Actual ping secure/input/cursor-timing/combat
+acceptance remains user manual case50; do not call offline results live proof.
+See docs/CANDIDATE23-NATIVE-PING-2026-10-10.md and candidate23 delivery receipts.
+Pack SHA256: ec8e7422c13ffb0ccccb7cdd3b65108d763b561f8ae799657872a2d1da7ba47f. This deployment authority is fulfilled; future
+deployment needs new authorization and WoW closed. Prior ping claims are rejected.
+
 ## Candidate.23 protected ping repair — October 10, 2026 (DEPLOYMENT AUTHORIZED)
 
 User rejects candidate.22 ping: screenshot shows ConsolePort_Forever protected-action

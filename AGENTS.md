@@ -1,3 +1,34 @@
+All 67 runtime/source suites and 39 tooling checks pass on exact frozen hashes.
+T65 executes native secure wrappers/backend/frontend and includes repeated
+opens, active-gesture refreshes, release-only dispatch and artwork/ownership
+negative controls. Candidate.29 Immersion/Edit Mode/bar fixes are unchanged.
+The user authorized deployment while AFK with WoW closed; packaging/installation
+and independent readback are the remaining steps. Required Items Retail
+acceptance remains pending the next suitable quest.
+
+## Candidate.30 ping repair; deployment authorized — October 10, 2026
+
+The user reports candidate.29 native ring artwork opens once, then disappears
+until reload, and rejects a ping on hold's initial press. Button-down must send
+nothing. Hardware release sends one native selected ping or one contextual aimed
+fallback for an empty selection; tap sends on release, hold reveals the native
+account ring. No clock/alpha may gate privileged dispatch or protected writes.
+A user-run direct C_Ping API probe produced a blocked-action popup; do not use it.
+
+Preserve active gestures across unchanged ordinary refreshes and move artwork
+lifecycle to an independent cosmetic monitor with alpha unwind and transient
+controller-sample tolerance. Keep native account ring, skins, selection and edits;
+retain collision/state/owner/taint guards and the inactive candidate.27 backup.
+Do not change Immersion, Edit Mode, action recovery, routing, ground/class/HUD or
+revision17. Required Items live acceptance is still pending a suitable quest.
+
+The later user instruction "wow is closed, you can deploy, I'ma AFK" supersedes
+the initial preparation-only limit for this fix. Run complete exact-source gates,
+commit/push, build a scoped Forever-only package, freshly recheck stable Retail
+identities and confirm the game remains closed, then preview/install and verify
+backups/files/WTF/vendors/junctions. Do not reopen the game or claim Retail proof.
+See docs/CANDIDATE30-PING-RELEASE-LIFECYCLE-2026-10-10.md and the cumulative checklist.
+
 ## Installed candidate.29 — October 10, 2026, 20:15:55 Toronto
 
 The user's "you can deploy now" authorization is fulfilled. With WoW confirmed

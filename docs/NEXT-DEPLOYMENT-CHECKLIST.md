@@ -6,9 +6,13 @@ verified backups and independent readback retain prior candidate.27/settings.
 The tests below remain pending in Retail. Another deployment requires new user
 authorization with WoW closed.
 
+Candidate.30 is currently being qualified to fix repeated ring visibility and
+remove the initial ping on holds. The user separately authorized its deployment
+with WoW closed while AFK. Required Items acceptance is still pending a quest.
+
 ## Changes awaiting Retail acceptance
 
-- Native ConsolePort account ring ForeverPings: immediate aimed R3 press ping;
+- Native ConsolePort account ring ForeverPings: aimed R3 release ping; no initial hold ping;
   no tap artwork; hold reveals the real native ring. Native release, stick,
   sticky, cancel and editor behavior. Six ping types; account data seeded once
   without overwriting later edits. Candidate.27 functional code retained as
@@ -46,7 +50,7 @@ authorization with WoW closed.
 
 ## In-game tests after deployment
 
-1. R3 neutral tap and aimed unit/world press: immediate correct ping with no menu.
+1. R3 neutral tap: one aimed unit/world ping on release with no menu. Holding must send no initial ping. Repeat holds without reload and during ordinary refreshes; each selected release sends once. A neutral hold release sends the aimed fallback.
    Hold: native ring artwork, readable icons and native selection/release/cancel
    behavior. Test all six types, combat/noncombat and account availability on DH.
    Edit/reorder/remove a ping entry and reload: edits persist without reseeding.

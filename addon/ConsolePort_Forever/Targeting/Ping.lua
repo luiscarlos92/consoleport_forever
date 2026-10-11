@@ -74,6 +74,7 @@ Ping.Cancel = [[
     if trigger and ring:GetAttribute('state')==self:GetAttribute('cpf-ring-id') then
         ring:RunAttribute('Disable')
     end
+    self:CallMethod('EndArtwork')
     self:Hide()
 ]]
 Ping.Pre = [[
@@ -111,17 +112,6 @@ Ping.Pre = [[
         self:SetAttribute('cpf-chord',layers:GetAttribute('chord') or '')
         self:SetAttribute('cpf-prefix',layers:GetAttribute('prefix') or '')
         self:Show()
-        local unit;
-        if UnitExists('softenemy') then unit='softenemy'
-        elseif UnitExists('softfriend') then unit='softfriend' end
-        local body;
-        if unit then body='/ping [@'..unit..',exists]'
-        else
-            self:CallMethod('CaptureCenter')
-            body='/console GamePadCursorCentering 1\n/ping [@cursor]'
-        end
-        self:SetAttribute('macrotext',body)
-        self:SetAttribute('type','macro')
         return
     end
     if self:GetAttribute('cpf-trigger')~=button or not self:IsShown()
@@ -141,13 +131,14 @@ Ping.Post = [[
     self:SetAttribute('typerelease',nil)
     self:SetAttribute('macrotext',nil)
     self:CallMethod('RestoreCenter')
-    -- Dispatch the immediate ping before the native ring captures the camera.
+    -- Press only arms the native ring. All sends happen on hardware release.
     if down and self:GetAttribute('cpf-trigger') then
         local ring=self:GetFrameRef('ring')
         -- This opener always uses the native default hold mode. Global ring
         -- preferences, sticky selection, stick routing and controls stay native.
         ring:RunAttribute('SetContextAttribute','pressAndHold',true)
         ring:RunAttribute('Main',self:GetAttribute('cpf-ring-id'),true)
+        self:CallMethod('BeginArtwork')
     elseif not down and not self:GetFrameRef('ring'):IsShown() then self:RunAttribute('cpf-cancel') end
 ]]
 Ping.Resolve = [[
@@ -187,51 +178,96 @@ function Ping:Create(api,bridge)
         owner.cpfCenterBefore=nil
     end
     frame.CaptureCenter,frame.RestoreCenter=capture,restore
+    -- A separate unprotected timer owns only visibility. Never depend on the
+    -- shared ring's OnUpdate, or turn cosmetic timing into secure input state.
+    local monitor=api.CreateFrame('Frame',nil,api.UIParent)
+    monitor:Hide()
+    frame.EndArtwork=function()
+        monitor:Hide()
+        monitor.cpfMissingSince=nil
+        ring.cpfVisibleAt=nil
+        if ring.cpfAlphaBefore~=nil then
+            ring:SetAlpha(ring.cpfAlphaBefore) ring.cpfAlphaBefore=nil
+        end
+    end
+    frame.BeginArtwork=function()
+        frame.EndArtwork()
+        local alpha=ring:GetAlpha()
+        ring.cpfAlphaBefore=alpha>0 and alpha or 1
+        ring.cpfVisibleAt=api.GetTime()+self.HOLD_SECONDS
+        ring:SetAlpha(0)
+        monitor:Show()
+    end
+    monitor:SetScript('OnUpdate',function()
+        if not frame:GetAttribute('cpf-trigger') or not ring:IsShown()
+            or ring:GetAttribute('state')~=self.RING_ID then return frame.EndArtwork() end
+        if ring.cpfVisibleAt and api.GetTime()>=ring.cpfVisibleAt then
+            ring:SetAlpha(ring.cpfAlphaBefore or 1) ring.cpfVisibleAt=nil
+        end
+        -- Only a definitive device change suppresses artwork. A transient nil
+        -- sample cannot strand the shared header at alpha zero indefinitely.
+        local state=api.C_GamePad.GetDeviceMappedState()
+        if not state then monitor.cpfMissingSince=monitor.cpfMissingSince or api.GetTime()
+        else monitor.cpfMissingSince=nil end
+        if (state and state.name~=frame:GetAttribute('cpf-device'))
+            or (monitor.cpfMissingSince and api.GetTime()-monitor.cpfMissingSince>=.25) then
+            ring:ClearInstantly()
+            frame.EndArtwork()
+            if not api.InCombatLockdown() then frame:Execute([[self:RunAttribute('cpf-cancel')]]) end
+        end
+    end)
+    self.monitor=monitor
     ring.CPFCaptureCenter,ring.CPFRestoreCenter=capture,restore
     ring:SetAttribute('cpf-ping-ring-id',self.RING_ID)
     ring:SetFrameRef('cpf-ping',frame)
     -- Native account ring can also be opened normally through CP settings.
     -- Capture/restore its inline cursor centering without dispatching publicly.
     ring:WrapScript(ring,'PreClick',[[
+        self:SetAttribute('cpf-ping-release',nil)
         local id=self:GetAttribute('cpf-ping-ring-id')
         local ping=self:GetFrameRef('cpf-ping')
         if button==id or self:GetAttribute('state')==id then self:CallMethod('CPFCaptureCenter') end
         -- Alias only this opener's release for native LAST matching. Do not
         -- override the shared header's state: other rings must choose their set.
-        if ping and ping:GetAttribute('cpf-trigger')==button and self:GetAttribute('state')==id then return id end
+        if ping and ping:GetAttribute('cpf-trigger')==button and self:GetAttribute('state')==id then
+            local index=self:RunAttribute('GetIndex')
+            if not index and self:RunAttribute('GetContextAttribute','stickySelect') then
+                index=self:RunAttribute('GetStickyIndex')
+            end
+            self:SetAttribute('cpf-ping-release',not index)
+            return id,true
+        end
+    ]],[[
+        -- Native Main/Commit has already selected its action. With no selected
+        -- type, this opener supplies a contextual aimed release action. Never
+        -- add a second ping to a selected/sticky/native custom ring action.
+        if self:GetAttribute('cpf-ping-release') and not self:IsShown() and not self:GetAttribute('typerelease') then
+            local unit;
+            if UnitExists('softenemy') then unit='softenemy'
+            elseif UnitExists('softfriend') then unit='softfriend' end
+            local body=unit and ('/ping [@'..unit..',exists]')
+                or '/console GamePadCursorCentering 1\n/ping [@cursor]'
+            self:SetAttribute('macrotext',body)
+            self:SetAttribute('typerelease','macro')
+            self:SetAttribute('cpf-ping-fallback',true)
+        end
     ]])
-    ring:WrapScript(ring,'PostClick',[[self:CallMethod('CPFRestoreCenter')]])
+    ring:WrapScript(ring,'PostClick',[[
+        self:CallMethod('CPFRestoreCenter')
+        self:SetAttribute('cpf-ping-release',nil)
+        if self:GetAttribute('cpf-ping-fallback') then
+            self:SetAttribute('cpf-ping-fallback',nil)
+            self:SetAttribute('typerelease',nil)
+            self:SetAttribute('macrotext',nil)
+        end
+    ]])
     frame:WrapScript(frame,'PreClick',self.Pre)
     frame:WrapScript(frame,'PostClick',self.Post)
     frame:WrapScript(frame,'OnHide',[[self:RunAttribute('cpf-cancel')]])
     frame:WrapScript(ring,'OnHide',[[
         if control:GetAttribute('cpf-trigger') then control:RunAttribute('cpf-cancel') end
     ]])
-    ring:HookScript('OnShow',function()
-        if ring:GetAttribute('state')==self.RING_ID and frame:GetAttribute('cpf-trigger') then
-            ring.cpfAlphaBefore=ring:GetAlpha()
-            ring.cpfVisibleAt=api.GetTime()+self.HOLD_SECONDS
-            ring:SetAlpha(0)
-        end
-    end)
-    ring:HookScript('OnHide',function()
-        ring.cpfVisibleAt=nil
-        if ring.cpfAlphaBefore~=nil then ring:SetAlpha(ring.cpfAlphaBefore) ring.cpfAlphaBefore=nil end
-    end)
-    ring:HookScript('OnUpdate',function()
-        -- The clock controls artwork only, including in combat. Native secure
-        -- ring input/selection stays native; no public protected frame writes.
-        if ring.cpfVisibleAt and api.GetTime()>=ring.cpfVisibleAt then
-            ring:SetAlpha(ring.cpfAlphaBefore or 1) ring.cpfVisibleAt=nil
-        end
-        if frame:GetAttribute('cpf-trigger') then
-            local state=api.C_GamePad.GetDeviceMappedState()
-            if not state or state.name~=frame:GetAttribute('cpf-device') then
-                ring:ClearInstantly() ring:SetAlpha(0) ring.cpfVisibleAt=nil
-                if not api.InCombatLockdown() then frame:Execute([[self:RunAttribute('cpf-cancel')]]) end
-            end
-        end
-    end)
+    ring:HookScript('OnHide',frame.EndArtwork)
     layers:WrapScript(layers,'OnAttributeChanged',[[
         local ping=self:GetFrameRef('cpf-ping')
         if ping and ping:IsShown() and (name=='chord' or name=='prefix')
@@ -274,13 +310,17 @@ function Ping:CaptureRadialOwners(bridge)
 end
 function Ping:Refresh(api,enabled,bridge)
     if api.InCombatLockdown() then return false,'secure ping update deferred until combat ends' end
-    if self.frame then
-        self.frame:Execute([[self:SetAttribute('cpf-commit',nil) self:RunAttribute('cpf-cancel')]])
-        self.frame:SetAttribute('cpf-enabled',nil)
-        self.layers:ReleaseAll(OWNER)
-        self.claims={}
+    local function release()
+        if self.frame then
+            self.frame:Execute([[self:SetAttribute('cpf-commit',nil) self:RunAttribute('cpf-cancel')]])
+            self.frame:SetAttribute('cpf-enabled',nil)
+            self.layers:ReleaseAll(OWNER)
+            self.claims={}
+        end
     end
+    local function unavailable(reason) release() return false,reason end
     if not enabled then
+        release()
         if self.layers and self.layers:GetAttribute('Resolve')==self.Resolve then
             self.layers:CreateEnvironment({Resolve=self.originalResolve})
             self.originalResolve=nil
@@ -300,23 +340,18 @@ function Ping:Refresh(api,enabled,bridge)
         or (type(api.LibStub)~='function' and (type(api.LibStub)~='table'
             or type((getmetatable(api.LibStub) or {}).__call)~='function'))
         or not api.C_GamePad or type(api.C_GamePad.GetDeviceMappedState)~='function' then
-        return false,'qualified native secure ping selector unavailable; native binding retained'
+        return unavailable('qualified native secure ping selector unavailable; native binding retained')
     end
     for _,name in ipairs({'Cursor','Raid','TargetRing'}) do
         local owner=bridge.db[name]
         if not owner or type(owner.IsShown)~='function' or type(owner.IsProtected)~='function'
             or (name~='Cursor' and not owner:IsProtected()) then
-            return false,'qualified native ping owner unavailable: '..name..'; native binding retained'
+            return unavailable('qualified native ping owner unavailable: '..name..'; native binding retained')
         end
     end
     if bridge.db('layersTapLatch') or bridge.db('layersDoubleBar') or bridge.db('layersOrdered') then
-        return false,'secure ping selector requires standard native modifier layers; native binding retained'
+        return unavailable('secure ping selector requires standard native modifier layers; native binding retained')
     end
-    local ready,reason=self:PrepareAccountRing(api,bridge)
-    if not ready then return false,reason end
-    if not self.frame then self:Create(api,bridge) end
-    self:CaptureRadialOwners(bridge)
-    if not self:InstallResolver() then return false,'native resolver changed by another owner; native ping binding retained' end
     local keys={}
     for _,key in ipairs({api.GetBindingKey('TOGGLEPINGLISTENER')}) do if key:match('PAD') then keys[key]=true end end
     local gamepad=bridge.db.Gamepad
@@ -325,11 +360,25 @@ function Ping:Refresh(api,enabled,bridge)
             for prefix,binding in pairs(row) do if binding=='TOGGLEPINGLISTENER' then keys[prefix..button]=true end end
         end
     end
+    if self.frame and self.frame:GetAttribute('cpf-enabled') and self.ring==bridge.db.Rings
+        and self.layers==bridge.db.Layers and self.layers:GetAttribute('Resolve')==self.Resolve
+        and self.env.IsDataReady and self.env.IsSpellValidationReady and not self.ring.Data[self.RING_ID]
+        and self.ring.Shared[self.RING_ID] and (self.ring.Shared[self.RING_ID][0] or {}).cpfPingVersion
+        and Addon.Core.Equal(self.claims,keys) then
+        self:CaptureRadialOwners(bridge)
+        return true,'secure release-only ping; native account ring gesture preserved'
+    end
+    release()
+    local ready,reason=self:PrepareAccountRing(api,bridge)
+    if not ready then return false,reason end
+    if not self.frame then self:Create(api,bridge) end
+    self:CaptureRadialOwners(bridge)
+    if not self:InstallResolver() then return false,'native resolver changed by another owner; native ping binding retained' end
     self.frame:SetAttribute('cpf-enabled',true)
     for key in pairs(keys) do
         if self.layers:Claim(OWNER,'OVERRIDE',key,'click',self.frame,key) then self.claims[key]=true end
     end
-    return true,'R3 press aimed ping; hold-only native account ring; native ring controls; Retail acceptance pending'
+    return true,'R3 release aimed/selected ping; no button-down ping; hold-only native account ring; Retail acceptance pending'
 end
 function Ping:Observe(api,error)
     local snapshot={error=type(error)=='string' and error or 'ping target diagnostic',centering=api.GetCVar(CENTER),pingMode=api.GetCVar('pingMode'),foci={}}

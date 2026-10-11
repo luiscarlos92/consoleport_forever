@@ -1107,7 +1107,7 @@ check('T64.action-storage-observers-never-restore-or-rewrite-bars', () => {
   catch(error) {rejected=String(error).includes('automatic action-slot restoration rewrote edited bars');}
   if(!rejected) throw Error('Automatic action-slot rewrite regression was not reproduced');
 });
-check('T65.native-account-ping-ring-immediate-press-and-native-controls', () => {
+check('T65.native-account-ping-ring-release-only-and-repeatable-native-controls', () => {
   const product=read('addon/ConsolePort_Forever/Targeting/Ping.lua');
   if(/CreateFrame\('PieMenu'|CreateTexture|CreateMaskTexture|cpfIcons|SetFocusByIndex|GetIndexForPos/.test(product)) throw Error('Separate ping renderer or selector retained');
   if(/C_Ping(?:Secure)?\.|RunMacroText\s*\(/.test(product)) throw Error('Public privileged ping dispatch');
@@ -1152,8 +1152,9 @@ check('T65.native-account-ping-ring-immediate-press-and-native-controls', () => 
   execute(fixture,'native-account-ping-ring');
   for(const [name,from,to,expected] of [
     ['callable-LibStub-startup',"type(cp.Static)~='function'","type(cp.Static)~='function' or type(api.LibStub)~='function'",'qualified native secure ping selector unavailable'],
-    ['missing-immediate-press',"self:SetAttribute('type','macro')","self:SetAttribute('type',nil)",'press did not send immediately'],
-    ['native-open-before-press',"self:SetAttribute('type','macro')","self:GetFrameRef('ring'):RunAttribute('Main',self:GetAttribute('cpf-ring-id'),true) self:SetAttribute('type','macro')",'immediate ping sent after camera capture'],
+    ['unwanted-initial-ping',"self:SetAttribute('cpf-prefix',layers:GetAttribute('prefix') or '')","self:SetAttribute('cpf-prefix',layers:GetAttribute('prefix') or '') self:SetAttribute('macrotext','/ping [@cursor]') self:SetAttribute('type','macro')",'press sent an unwanted immediate ping'],
+    ['missing-neutral-release',"self:SetAttribute('typerelease','macro')","self:SetAttribute('typerelease',nil)",'neutral tap release retained ring or sent extra ping'],
+    ['missing-wrapper-message',"return id,true","return id",'neutral tap release retained ring or sent extra ping'],
     ['tap-artwork',"ring:SetAlpha(0)","ring:SetAlpha(1)",'tap displayed selector'],
     ['personal-ring-storage',"self.ring,self.env=ring,env","ring.Data[id]=ring.Shared[id] ring.Shared[id]=nil self.ring,self.env=ring,env",'native account Shared container missing'],
     ['missing-native-release',"self:SetAttribute('typerelease','click')","self:SetAttribute('typerelease',nil)",'neutral tap release retained ring or sent extra ping'],
@@ -1161,6 +1162,8 @@ check('T65.native-account-ping-ring-immediate-press-and-native-controls', () => 
     ['missing-centering',"/console GamePadCursorCentering 1","/console GamePadCursorCentering 0",'point ping used parked UI receiver'],
     ['shared-header-state-hijack',"ring:RunAttribute('Main',self:GetAttribute('cpf-ring-id'),true)","ring:RunAttribute('SetContextAttribute','state',self:GetAttribute('cpf-ring-id')) ring:RunAttribute('Main',self:GetAttribute('cpf-ring-id'),true)",'ping context hijacked aura opener'],
     ['atlas-widget-unmount',"return function(texture) texture:SetTexCoord(0,1,0,1) end","return nil",'ping atlas UVs leaked into aura icon'],
+    ['missing-artwork-unwind',"ring:SetAlpha(ring.cpfAlphaBefore) ring.cpfAlphaBefore=nil","ring:SetAlpha(0) ring.cpfAlphaBefore=nil",'repeat release failed or retained the artwork lease'],
+    ['refresh-cancels-held-ring',"return true,'secure release-only ping; native account ring gesture preserved'","self.frame:Execute([[self:RunAttribute('cpf-cancel')]]) return true,'secure release-only ping; native account ring gesture preserved'",'ordinary refresh interrupted an active ping gesture'],
     ['native-skin-bypassed',"button:OnLoad()","do end",'native skin/initializer missing']
   ]) {
     if(!fixture.includes(from)) throw Error('Stale account-ring mutation: '+name);

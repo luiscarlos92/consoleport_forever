@@ -1,3 +1,6 @@
+Installed candidate.29; preparation-only language below is historical.
+See NEXT-DEPLOYMENT-CHECKLIST.md and candidate29 deployment/readback receipts.
+
 # Candidate.29 preparation: Required Items and current Edit Mode reference
 
 The user authorized a Forever-owned runtime correction, reference capture and

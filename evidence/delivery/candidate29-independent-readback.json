@@ -1,0 +1,19 @@
+{
+  "installedVersion": "2.0.0-candidate.29",
+  "sourceCommit": "71d018266cc7d604137f01179ee0a8079aa3d3cb",
+  "packSHA256": "692cb4b3cc0e438ed561fe83356a82c0c73e5572cdf7ccf6703f02f70b517e06",
+  "closedAt": "2026-10-11T00:15:55.302477+00:00",
+  "installedFilesVerified": 58,
+  "unselectedFilesUnchanged": 2498,
+  "wtfFilesUnchanged": 306,
+  "junctionsUnchanged": 42,
+  "anchorsUnchanged": true,
+  "backupsVerified": true,
+  "backup": "C:\\Users\\luisr\\WoW-Backups\\ConsolePort-Forever\\20261011T001527Z-3b511ef3df90",
+  "runtimeSuites": 67,
+  "toolingChecks": 39,
+  "configurationRevision": 17,
+  "dependencyUpdates": [],
+  "noLiveWTFWrites": true,
+  "liveAcceptance": "User-owned Retail ping rendering, Required Items, Edit Mode and bar tests remain pending."
+}

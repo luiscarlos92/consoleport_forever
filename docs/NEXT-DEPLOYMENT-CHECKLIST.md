@@ -1,10 +1,10 @@
 # Pending deployment and cumulative acceptance
 
-Status: preparation only. Installed candidate.27 is the user's working version.
-Candidate.29 supersedes the undeployed candidate.28 package, carrying all its
-native account ping changes plus Required Items repair and current Edit Mode
-reference tracking. Do not install until the user authorizes deployment and
-confirms WoW is closed. This checklist is the record for the next deployment.
+Status: candidate.29 installed on October 10, 2026 at 20:15:55 Toronto.
+The user's deployment authorization is fulfilled. Only Forever was updated;
+verified backups and independent readback retain prior candidate.27/settings.
+The tests below remain pending in Retail. Another deployment requires new user
+authorization with WoW closed.
 
 ## Changes awaiting Retail acceptance
 

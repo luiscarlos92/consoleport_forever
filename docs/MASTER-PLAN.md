@@ -1,3 +1,25 @@
+## Installed candidate.29 — October 10, 2026, 20:15:55 Toronto
+
+The user's "you can deploy now" authorization is fulfilled. With WoW confirmed
+closed, the scoped installer copied only Forever from tested/pushed source
+71d018266cc7d604137f01179ee0a8079aa3d3cb. All 67 runtime/source suites and
+39 tooling checks remain exact to product/tools/fixture hashes. Fresh official
+stable Retail check: nine packages current, no updates or unchanged dependencies
+reshipped. Independent readback verifies all 58 installed files, 2498 unselected
+addon files and 306 WTF files unchanged, all 42 junctions/root anchors preserved,
+and verified prior code/config backups at
+C:/Users/luisr/WoW-Backups/ConsolePort-Forever/20261011T001527Z-3b511ef3df90.
+ZIP SHA256 692cb4b3cc0e438ed561fe83356a82c0c73e5572cdf7ccf6703f02f70b517e06.
+
+Includes the native account ping ring, Forever-owned Required Items correction
+and current saved Edit Mode reference tracking. Revision17 and accepted bar/
+ground/class behavior remain; Immersion is unchanged. The withdrawn options-list
+request remains excluded. No live WTF filesystem editing, pruning or game input.
+Actual Retail acceptance is pending in NEXT-DEPLOYMENT-CHECKLIST.md.
+Further deployment requires new authorization with WoW closed. Older no-deploy
+limits below are historical and do not describe the installed state.
+See evidence/delivery/live-install-candidate29.json and the independent readback.
+
 ## Candidate.29 deployment authorized — October 10, 2026
 
 The user now says "you can deploy now" and confirms WoW is closed. This

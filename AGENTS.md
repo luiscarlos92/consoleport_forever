@@ -1,3 +1,13 @@
+## User-confirmed Retail acceptance — October 10, 2026 (Toronto)
+
+The user reports: "all fixed on ring and required item frame. note it down".
+Candidate.30 ping ring and the Forever-owned Immersion Required Items frame
+correction are now accepted in game. This supersedes older pending acceptance
+notes for these two reported defects. The confirmation does not establish that
+every combat, account, preference or Edit Mode regression case was exercised.
+No runtime, addon, live WTF or deployment changes accompany this record.
+See evidence/forever-ui/candidate30-live-acceptance.json.
+
 ## Installed candidate.30 — October 10, 2026, 20:54:04 Toronto
 
 The user's later "wow is closed, you can deploy, I'ma AFK" authorization is

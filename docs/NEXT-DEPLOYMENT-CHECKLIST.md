@@ -3,12 +3,13 @@
 Status: candidate.30 installed on October 10, 2026 at 20:54:04 Toronto.
 The user's deployment authorization is fulfilled. Only Forever was updated;
 verified backups and independent readback retain prior candidate.29/settings.
-Only the ping module and version TOC changed. The tests below remain pending in
-Retail, especially repeated ring opens and release-only sends. Required Items
-acceptance still awaits a suitable quest. Game left closed while the user is AFK.
+Only the ping module and version TOC changed. On October 10, 2026 (Toronto), the
+user confirmed "all fixed on ring and required item frame". Both reported defects
+are accepted in Retail; broader regression cases below remain available and are
+not individually claimed as tested by this confirmation.
 Another deployment requires new user authorization with WoW closed.
 
-## Changes awaiting Retail acceptance
+## Accepted fixes and remaining layout acceptance
 
 - Native ConsolePort account ring ForeverPings: aimed R3 release ping; no initial hold ping;
   no tap artwork; hold reveals the real native ring. Native release, stick,
@@ -46,7 +47,7 @@ Another deployment requires new user authorization with WoW closed.
    directly edit live WTF, prune CurseForge helpers or reship unchanged addons.
 4. Record installed version/hash and retain previous package/code/config backups.
 
-## In-game tests after deployment
+## Regression checklist (reported ring and Required Items defects accepted)
 
 1. R3 neutral tap: one aimed unit/world ping on release with no menu. Holding must send no initial ping. Repeat holds without reload and during ordinary refreshes; each selected release sends once. A neutral hold release sends the aimed fallback.
    Hold: native ring artwork, readable icons and native selection/release/cancel

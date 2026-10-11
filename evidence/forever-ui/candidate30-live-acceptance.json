@@ -1,0 +1,13 @@
+{
+  "candidate": "2.0.0-candidate.30",
+  "reportedDate": "2026-10-10",
+  "timezone": "America/Toronto",
+  "source": "Direct user confirmation in the current conversation",
+  "userStatement": "all fixed on ring and required item frame. note it down",
+  "accepted": [
+    "Native ConsolePort account ping ring: reported behavior and repeat-opening defect resolved",
+    "Forever-owned Immersion Required Items frame correction: reported visual defect resolved"
+  ],
+  "scope": "User-reported Retail acceptance of these two defects; individual broader regression cases are not asserted.",
+  "changes": "Documentation only; no runtime changes or deployment."
+}

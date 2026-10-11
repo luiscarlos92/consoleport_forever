@@ -1,0 +1,52 @@
+{
+  "at": "2026-10-11T05:39:27.581746+00:00",
+  "installedVersion": "2.0.0-candidate.30",
+  "sourceCommit": "99f0a29eae9b74015861c9923e480838494a84bd",
+  "runtimeChanges": false,
+  "deployment": false,
+  "liveWTFWrites": false,
+  "officialDependencyCheck": "evidence/dependencies/stable-recheck.json",
+  "checks": [
+    {
+      "id": "T41.native-combat-engine-dispatch-after-UI-ownership",
+      "status": "passed",
+      "ms": 13872
+    },
+    {
+      "id": "T61.all-classes-native-dragonriding-and-temporary-L2R2-engine-dispatch",
+      "status": "passed",
+      "ms": 312198
+    }
+  ],
+  "addedProbe": {
+    "status": "passed",
+    "contexts": [
+      "normal",
+      "skyriding",
+      "vehicle",
+      "possess",
+      "override",
+      "quest",
+      "temporary",
+      "possess-native-page"
+    ],
+    "effectiveCommands": {
+      "PAD1": "JUMP",
+      "PAD3": "INTERACTTARGET",
+      "PAD4": "TURNORACTION"
+    },
+    "transitions": [
+      "before UI",
+      "during UI/combat",
+      "L2R2 Square press/release",
+      "after UI/combat"
+    ],
+    "circle": "Shipped PAD2 is empty; actual user customization not inferred",
+    "runner": "scratch/temporary-command-analysis.cjs",
+    "runnerSHA256": "c3405083de52543a0818a312f2eb761e5af02e91b5bcb6fb47821eb99102e376"
+  },
+  "report": "scratch/test-results/temporary-command-analysis.json",
+  "reportedQuest": "Unknown; both triggers released, hand visible, Square ineffective, physical mouse click successful",
+  "conclusion": "No blanket main-bank disable reproduced; exact live interaction failure and patch target unconfirmed",
+  "limitation": "Fengari uses Lua 5.3 semantics. Lua 5.1 syntax checked separately. No Retail secure/hardware proof. Actual quest object and native interact-target selection are not modeled."
+}

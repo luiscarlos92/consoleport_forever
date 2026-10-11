@@ -1,0 +1,24 @@
+{
+  "installedVersion": "2.0.0-candidate.30",
+  "sourceCommit": "dcc0fbabebe701af138b98c98633274c18875a32",
+  "packSHA256": "7c97e466c5ea19e69e98015c1861021521173df108fd88a4782128a13c000914",
+  "closedAt": "2026-10-11T00:54:04.427367+00:00",
+  "installedFilesVerified": 58,
+  "changedRuntimeFiles": [
+    "ConsolePort_Forever.toc",
+    "Targeting/Ping.lua"
+  ],
+  "unselectedFilesUnchanged": 2498,
+  "wtfFilesUnchanged": 306,
+  "junctionsUnchanged": 42,
+  "anchorsUnchanged": true,
+  "backupsVerified": true,
+  "backup": "C:\\Users\\luisr\\WoW-Backups\\ConsolePort-Forever\\20261011T005331Z-85e7a46df891",
+  "runtimeSuites": 67,
+  "toolingChecks": 39,
+  "configurationRevision": 17,
+  "dependencyUpdates": [],
+  "noLiveWTFWrites": true,
+  "gameLeftClosed": true,
+  "retailAcceptance": "User-owned repeated ring rendering and release behavior pending; Required Items still awaits a suitable quest."
+}

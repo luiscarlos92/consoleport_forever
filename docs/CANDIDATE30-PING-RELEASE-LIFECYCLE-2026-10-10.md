@@ -79,3 +79,29 @@ The user authorized deployment while AFK with WoW closed; packaging/installation
 and independent readback are the remaining steps. Required Items Retail
 acceptance remains pending the next suitable quest.
 
+
+## Installed candidate.30 — October 10, 2026, 20:54:04 Toronto
+
+The user's later "wow is closed, you can deploy, I'ma AFK" authorization is
+fulfilled. Scoped installer copied only Forever from tested/pushed source
+dcc0fbabebe701af138b98c98633274c18875a32. All 67 runtime/source and 39 tooling
+passes remain exact. Fresh official stable Retail recheck: nine current packages,
+no updates or unchanged dependencies reshipped. Independent readback verifies
+all 58 installed files; only Targeting/Ping.lua and the version TOC differ from
+candidate.29. All 2498 unselected addon files and 306 WTF files are unchanged;
+all 42 junctions/root anchors and verified prior code/config backups remain at
+C:/Users/luisr/WoW-Backups/ConsolePort-Forever/20261011T005331Z-85e7a46df891.
+ZIP SHA256 7c97e466c5ea19e69e98015c1861021521173df108fd88a4782128a13c000914.
+
+R3 button-down sends nothing. Native selected/sticky release sends once; an
+empty release sends one contextual aimed fallback. The native account ring is
+revealed cosmetically on hold with an independent timer and stable declarations;
+unchanged ordinary refreshes preserve the active gesture. No public privileged
+ping calls or clock/alpha-based protected action gate. Immersion/Edit Mode/bar/
+ground/class/HUD and revision17 remain unchanged. Required Items live acceptance
+still awaits the next suitable quest. Game left closed; no input/reload/launch.
+Repeated Retail ring visibility/release acceptance is pending the user's check.
+Further deployment requires new authorization with WoW closed. Historical
+preparation-only sections below do not describe the current installed state.
+See evidence/delivery/live-install-candidate30.json and independent readback.
+

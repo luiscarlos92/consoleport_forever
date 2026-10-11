@@ -1,14 +1,12 @@
 # Pending deployment and cumulative acceptance
 
-Status: candidate.29 installed on October 10, 2026 at 20:15:55 Toronto.
+Status: candidate.30 installed on October 10, 2026 at 20:54:04 Toronto.
 The user's deployment authorization is fulfilled. Only Forever was updated;
-verified backups and independent readback retain prior candidate.27/settings.
-The tests below remain pending in Retail. Another deployment requires new user
-authorization with WoW closed.
-
-Candidate.30 is currently being qualified to fix repeated ring visibility and
-remove the initial ping on holds. The user separately authorized its deployment
-with WoW closed while AFK. Required Items acceptance is still pending a quest.
+verified backups and independent readback retain prior candidate.29/settings.
+Only the ping module and version TOC changed. The tests below remain pending in
+Retail, especially repeated ring opens and release-only sends. Required Items
+acceptance still awaits a suitable quest. Game left closed while the user is AFK.
+Another deployment requires new user authorization with WoW closed.
 
 ## Changes awaiting Retail acceptance
 

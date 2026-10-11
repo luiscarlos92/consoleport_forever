@@ -1,0 +1,358 @@
+{
+  "bindings": [
+    {
+      "path": "/ConsolePortDevices/PlayStation 5/Generator/Center/PADFORWARD/",
+      "before": "TOGGLEWORLDMAP",
+      "after": "CLICK ConsolePortMenuTrigger:LeftButton"
+    },
+    {
+      "path": "/ConsolePortDevices/PlayStation 5/Generator/Center/PADFORWARD/SHIFT-",
+      "before": "CAMERAZOOMOUT",
+      "after": "CLICK ConsolePortMenuTrigger:LeftButton"
+    },
+    {
+      "path": "/ConsolePortDevices/PlayStation 5/Generator/Center/PADFORWARD/CTRL-",
+      "before": "CAMERAZOOMIN",
+      "after": "CLICK ConsolePortMenuTrigger:LeftButton"
+    },
+    {
+      "path": "/ConsolePortDevices/PlayStation 5/Generator/Center/PADFORWARD/CTRL-SHIFT-",
+      "after": "CLICK ConsolePortMenuTrigger:LeftButton"
+    },
+    {
+      "path": "/ConsolePortDevices/PlayStation 5/Generator/Center/PADBACK/",
+      "before": "CLICK ConsolePortMenuTrigger:LeftButton",
+      "after": "TOGGLEWORLDMAP"
+    },
+    {
+      "path": "/ConsolePortDevices/PlayStation 5/Generator/Center/PADBACK/SHIFT-",
+      "before": "CLICK ConsolePortMenuTrigger:LeftButton",
+      "after": "TOGGLEWORLDMAP"
+    },
+    {
+      "path": "/ConsolePortDevices/PlayStation 5/Generator/Center/PADBACK/CTRL-",
+      "before": "CLICK ConsolePortMenuTrigger:LeftButton",
+      "after": "TOGGLEWORLDMAP"
+    },
+    {
+      "path": "/ConsolePortDevices/PlayStation 5/Generator/Center/PADBACK/CTRL-SHIFT-",
+      "before": "CLICK ConsolePortMenuTrigger:LeftButton",
+      "after": "TOGGLEWORLDMAP"
+    },
+    {
+      "path": "/ConsolePortShared/Fëlagund (Arcane) Proudmoore/Bindings/PADBACK/CTRL-",
+      "before": "CLICK ConsolePortMenuTrigger:LeftButton",
+      "after": "TOGGLEWORLDMAP"
+    },
+    {
+      "path": "/ConsolePortShared/Fëlagund (Arcane) Proudmoore/Bindings/PADBACK/SHIFT-",
+      "before": "CLICK ConsolePortMenuTrigger:LeftButton",
+      "after": "TOGGLEWORLDMAP"
+    },
+    {
+      "path": "/ConsolePortShared/Fëlagund (Arcane) Proudmoore/Bindings/PADBACK/",
+      "before": "CLICK ConsolePortMenuTrigger:LeftButton",
+      "after": "TOGGLEWORLDMAP"
+    },
+    {
+      "path": "/ConsolePortShared/Fëlagund (Arcane) Proudmoore/Bindings/PADBACK/CTRL-SHIFT-",
+      "before": "CLICK ConsolePortMenuTrigger:LeftButton",
+      "after": "TOGGLEWORLDMAP"
+    },
+    {
+      "path": "/ConsolePortShared/Forever Controller/Bindings/PADBACK/",
+      "before": "CLICK ConsolePortMenuTrigger:LeftButton",
+      "after": "TOGGLEWORLDMAP"
+    },
+    {
+      "path": "/ConsolePortShared/Forever Controller/Bindings/PADBACK/SHIFT-",
+      "before": "CLICK ConsolePortMenuTrigger:LeftButton",
+      "after": "TOGGLEWORLDMAP"
+    },
+    {
+      "path": "/ConsolePortShared/Forever Controller/Bindings/PADBACK/CTRL-",
+      "before": "CLICK ConsolePortMenuTrigger:LeftButton",
+      "after": "TOGGLEWORLDMAP"
+    },
+    {
+      "path": "/ConsolePortShared/Forever Controller/Bindings/PADBACK/CTRL-SHIFT-",
+      "before": "CLICK ConsolePortMenuTrigger:LeftButton",
+      "after": "TOGGLEWORLDMAP"
+    },
+    {
+      "path": "/ConsolePortShared/Fëlagund (Arcanes) Grim Batol/Bindings/PADBACK/CTRL-",
+      "before": "CLICK ConsolePortMenuTrigger:LeftButton",
+      "after": "TOGGLEWORLDMAP"
+    },
+    {
+      "path": "/ConsolePortShared/Fëlagund (Arcanes) Grim Batol/Bindings/PADBACK/SHIFT-",
+      "before": "CLICK ConsolePortMenuTrigger:LeftButton",
+      "after": "TOGGLEWORLDMAP"
+    },
+    {
+      "path": "/ConsolePortShared/Fëlagund (Arcanes) Grim Batol/Bindings/PADBACK/",
+      "before": "CLICK ConsolePortMenuTrigger:LeftButton",
+      "after": "TOGGLEWORLDMAP"
+    },
+    {
+      "path": "/ConsolePortShared/Fëlagund (Arcanes) Grim Batol/Bindings/PADBACK/CTRL-SHIFT-",
+      "before": "CLICK ConsolePortMenuTrigger:LeftButton",
+      "after": "TOGGLEWORLDMAP"
+    },
+    {
+      "path": "/ConsolePortShared/Fëlagund (Arcanes) Grim Batol/Bindings/PADFORWARD/CTRL-",
+      "before": "CAMERAZOOMIN",
+      "after": "CLICK ConsolePortMenuTrigger:LeftButton"
+    },
+    {
+      "path": "/ConsolePortShared/Fëlagund (Arcanes) Grim Batol/Bindings/PADFORWARD/SHIFT-",
+      "before": "CAMERAZOOMOUT",
+      "after": "CLICK ConsolePortMenuTrigger:LeftButton"
+    },
+    {
+      "path": "/ConsolePortShared/Fëlagund (Arcanes) Grim Batol/Bindings/PADFORWARD/",
+      "before": "TOGGLEWORLDMAP",
+      "after": "CLICK ConsolePortMenuTrigger:LeftButton"
+    },
+    {
+      "path": "/ConsolePortShared/Fëlagund (Arcanes) Grim Batol/Bindings/PADFORWARD/CTRL-SHIFT-",
+      "before": "",
+      "after": "CLICK ConsolePortMenuTrigger:LeftButton"
+    },
+    {
+      "path": "/ConsolePortShared/Fëlagund (Arcane) Grim Batol/Bindings/PADBACK/CTRL-",
+      "before": "CLICK ConsolePortMenuTrigger:LeftButton",
+      "after": "TOGGLEWORLDMAP"
+    },
+    {
+      "path": "/ConsolePortShared/Fëlagund (Arcane) Grim Batol/Bindings/PADBACK/SHIFT-",
+      "before": "CLICK ConsolePortMenuTrigger:LeftButton",
+      "after": "TOGGLEWORLDMAP"
+    },
+    {
+      "path": "/ConsolePortShared/Fëlagund (Arcane) Grim Batol/Bindings/PADBACK/",
+      "before": "CLICK ConsolePortMenuTrigger:LeftButton",
+      "after": "TOGGLEWORLDMAP"
+    },
+    {
+      "path": "/ConsolePortShared/Fëlagund (Arcane) Grim Batol/Bindings/PADBACK/CTRL-SHIFT-",
+      "before": "CLICK ConsolePortMenuTrigger:LeftButton",
+      "after": "TOGGLEWORLDMAP"
+    },
+    {
+      "path": "/ConsolePortShared/Fëlagund (Arcane) Grim Batol/Bindings/PADFORWARD/CTRL-",
+      "before": "CAMERAZOOMIN",
+      "after": "CLICK ConsolePortMenuTrigger:LeftButton"
+    },
+    {
+      "path": "/ConsolePortShared/Fëlagund (Arcane) Grim Batol/Bindings/PADFORWARD/SHIFT-",
+      "before": "CAMERAZOOMOUT",
+      "after": "CLICK ConsolePortMenuTrigger:LeftButton"
+    },
+    {
+      "path": "/ConsolePortShared/Fëlagund (Arcane) Grim Batol/Bindings/PADFORWARD/",
+      "before": "TOGGLEWORLDMAP",
+      "after": "CLICK ConsolePortMenuTrigger:LeftButton"
+    },
+    {
+      "path": "/ConsolePortShared/Fëlagund (Arcane) Grim Batol/Bindings/PADFORWARD/CTRL-SHIFT-",
+      "before": "",
+      "after": "CLICK ConsolePortMenuTrigger:LeftButton"
+    },
+    {
+      "path": "/ConsolePortShared/Fëanólë () Proudmoore/Bindings/PADBACK/CTRL-",
+      "before": "CLICK ConsolePortMenuTrigger:LeftButton",
+      "after": "TOGGLEWORLDMAP"
+    },
+    {
+      "path": "/ConsolePortShared/Fëanólë () Proudmoore/Bindings/PADBACK/SHIFT-",
+      "before": "CLICK ConsolePortMenuTrigger:LeftButton",
+      "after": "TOGGLEWORLDMAP"
+    },
+    {
+      "path": "/ConsolePortShared/Fëanólë () Proudmoore/Bindings/PADBACK/",
+      "before": "CLICK ConsolePortMenuTrigger:LeftButton",
+      "after": "TOGGLEWORLDMAP"
+    },
+    {
+      "path": "/ConsolePortShared/Fëanólë () Proudmoore/Bindings/PADBACK/CTRL-SHIFT-",
+      "before": "CLICK ConsolePortMenuTrigger:LeftButton",
+      "after": "TOGGLEWORLDMAP"
+    }
+  ],
+  "layout": [
+    {
+      "path": "/ConsolePort_BarLayout/children/L2/width",
+      "before": 250,
+      "after": 277.5
+    },
+    {
+      "path": "/ConsolePort_BarLayout/children/L2/children/PAD2/pos/x",
+      "before": 235,
+      "after": 262.5
+    },
+    {
+      "path": "/ConsolePort_BarLayout/children/L2/children/PAD1/pos/x",
+      "before": 190,
+      "after": 217.5
+    },
+    {
+      "path": "/ConsolePort_BarLayout/children/L2/children/PAD3/pos/x",
+      "before": 145,
+      "after": 172.5
+    },
+    {
+      "path": "/ConsolePort_BarLayout/children/L2/children/PAD4/pos/x",
+      "before": 190,
+      "after": 217.5
+    },
+    {
+      "path": "/ConsolePort_BarLayout/children/L2R2/width",
+      "before": 250,
+      "after": 277.5
+    },
+    {
+      "path": "/ConsolePort_BarLayout/children/L2R2/children/PAD2/pos/x",
+      "before": 235,
+      "after": 262.5
+    },
+    {
+      "path": "/ConsolePort_BarLayout/children/L2R2/children/PAD1/pos/x",
+      "before": 190,
+      "after": 217.5
+    },
+    {
+      "path": "/ConsolePort_BarLayout/children/L2R2/children/PAD3/pos/x",
+      "before": 145,
+      "after": 172.5
+    },
+    {
+      "path": "/ConsolePort_BarLayout/children/L2R2/children/PAD4/pos/x",
+      "before": 190,
+      "after": 217.5
+    },
+    {
+      "path": "/ConsolePort_BarLayout/children/Base/width",
+      "before": 250,
+      "after": 277.5
+    },
+    {
+      "path": "/ConsolePort_BarLayout/children/Base/children/PAD2/pos/x",
+      "before": 235,
+      "after": 262.5
+    },
+    {
+      "path": "/ConsolePort_BarLayout/children/Base/children/PAD1/pos/x",
+      "before": 190,
+      "after": 217.5
+    },
+    {
+      "path": "/ConsolePort_BarLayout/children/Base/children/PAD3/pos/x",
+      "before": 145,
+      "after": 172.5
+    },
+    {
+      "path": "/ConsolePort_BarLayout/children/Base/children/PAD4/pos/x",
+      "before": 190,
+      "after": 217.5
+    },
+    {
+      "path": "/ConsolePort_BarLayout/children/R2/width",
+      "before": 250,
+      "after": 277.5
+    },
+    {
+      "path": "/ConsolePort_BarLayout/children/R2/children/PAD2/pos/x",
+      "before": 235,
+      "after": 262.5
+    },
+    {
+      "path": "/ConsolePort_BarLayout/children/R2/children/PAD1/pos/x",
+      "before": 190,
+      "after": 217.5
+    },
+    {
+      "path": "/ConsolePort_BarLayout/children/R2/children/PAD3/pos/x",
+      "before": 145,
+      "after": 172.5
+    },
+    {
+      "path": "/ConsolePort_BarLayout/children/R2/children/PAD4/pos/x",
+      "before": 190,
+      "after": 217.5
+    }
+  ],
+  "immersion": [
+    {
+      "path": "/ImmersionSetup/boxoffsetX",
+      "before": 7.797380447387695,
+      "after": 0
+    }
+  ],
+  "geometry": [
+    {
+      "bank": "Base",
+      "frame_gap": 22.5,
+      "nominal_gap_94": 21.15,
+      "nominal_gap_106": 23.85,
+      "bank_anchor": {
+        "y": 150,
+        "strata": "MEDIUM",
+        "point": "BOTTOM",
+        "relPoint": "BOTTOM",
+        "level": 2,
+        "x": 0,
+        "offsetscale": false
+      },
+      "opposite_cross_displacement": 13.75
+    },
+    {
+      "bank": "L2",
+      "frame_gap": 22.5,
+      "nominal_gap_94": 21.15,
+      "nominal_gap_106": 23.85,
+      "bank_anchor": {
+        "y": 80,
+        "strata": "MEDIUM",
+        "point": "BOTTOM",
+        "relPoint": "BOTTOM",
+        "level": 2,
+        "x": -280,
+        "offsetscale": false
+      },
+      "opposite_cross_displacement": 13.75
+    },
+    {
+      "bank": "R2",
+      "frame_gap": 22.5,
+      "nominal_gap_94": 21.15,
+      "nominal_gap_106": 23.85,
+      "bank_anchor": {
+        "y": 80,
+        "strata": "MEDIUM",
+        "point": "BOTTOM",
+        "relPoint": "BOTTOM",
+        "level": 2,
+        "x": 280,
+        "offsetscale": false
+      },
+      "opposite_cross_displacement": 13.75
+    },
+    {
+      "bank": "L2R2",
+      "frame_gap": 22.5,
+      "nominal_gap_94": 21.15,
+      "nominal_gap_106": 23.85,
+      "bank_anchor": {
+        "y": 10,
+        "strata": "MEDIUM",
+        "point": "BOTTOM",
+        "relPoint": "BOTTOM",
+        "level": 2,
+        "x": 0,
+        "offsetscale": false
+      },
+      "opposite_cross_displacement": 13.75
+    }
+  ]
+}

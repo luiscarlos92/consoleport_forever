@@ -1,0 +1,40 @@
+{
+  "created": "2026-09-27T22:06:13.7541636-04:00",
+  "addonVersion": "1.2.0",
+  "layoutSchema": 2,
+  "profileName": "Console Port - Forever",
+  "profileExport": {
+    "length": 2560,
+    "sha256": "B8A123DAE338B118083B7DCA679BF8E19966B1578B61354C3750486193ECA497"
+  },
+  "validation": {
+    "luaExecution": true,
+    "combinedEditModeSaveAndActivation": true,
+    "existingProfileMigration": true,
+    "cleanBundledProfileImport": true,
+    "failClosedTransaction": true,
+    "controllerInstallHarness": true,
+    "synchronousReload": true,
+    "editModeSafeMenuRuntime": true,
+    "masqueResistantRoundSkin": true,
+    "noLiveEditModeFrameMutation": true,
+    "externalAddonSourcesRestored": true,
+    "wowClosed": true
+  },
+  "files": [
+    {"path":"after\\docs\\ConsolePort-Forever-Implementation-Report.md","sha256":"B7CC99EF2B2B0E680834A20BD251BA3A8FFB9D448DC1F2D30EA192CA2EDD83BD"},
+    {"path":"after\\docs\\ConsolePort-Forever-Public-Addon-Roadmap.md","sha256":"1544036D166C6EAC2D1C0C0C8B3BAAE031CF0023181DB7BBF8D13969D794BDFF"},
+    {"path":"after\\docs\\ConsolePort-Forever-Standalone-Architecture.md","sha256":"DCD59D7A5C662A2EE05E3114C3A859CCD9DEFC2778A7EF9420D486632D859173"},
+    {"path":"after\\Interface\\AddOns\\ConsolePort_Bar-Group.restored.lua","sha256":"8C783C760A071D15EFC0A099454EF4C1FBEC71BB026FA5230E421E3D1E3E9724"},
+    {"path":"after\\Interface\\AddOns\\ConsolePort_Forever\\Assets\\ForeverInGame.blp","sha256":"9DACCF7F192871A876EDE143A14F4CC453A726AC271FC89D0E30A5610B5A673F"},
+    {"path":"after\\Interface\\AddOns\\ConsolePort_Forever\\Assets\\ForeverTargeting.blp","sha256":"F1CBDF024B1D397ABE318DD9CAAF67F6C0AB6C5406D03873A456AA48E7B76760"},
+    {"path":"after\\Interface\\AddOns\\ConsolePort_Forever\\Bindings.lua","sha256":"FAECC497F79D9D7437F87E809844FC7144AB722E33AFD89245578461BC232A8F"},
+    {"path":"after\\Interface\\AddOns\\ConsolePort_Forever\\ConsolePort_Forever.lua","sha256":"099B5A6B985D4E661BEAA182C42CC48F5F275EB74978F3E345A27D5AF47632C2"},
+    {"path":"after\\Interface\\AddOns\\ConsolePort_Forever\\ConsolePort_Forever.toc","sha256":"AFDA2AEA59CB187A16C5D4A6E1CE34D7B9127CFA24AF4DA72A23C76AF5BAE5D3"},
+    {"path":"after\\Interface\\AddOns\\ConsolePort_Forever\\Layout.lua","sha256":"486F4267FE9C5EF217EC87E229AC1CED9A21ACE92D579EB9D91F9C7B5E75FEF3"},
+    {"path":"after\\Interface\\AddOns\\ConsolePort_Forever\\Profile.lua","sha256":"E18AF174F280801BCB410C34D2D1CBC6BA55653BCBB08D5D9D7BA9B99EAB20E4"},
+    {"path":"after\\Interface\\AddOns\\ConsolePort_Forever\\Runtime.lua","sha256":"FFFC41C25D908E30AD011CA9798D00324D9D4D1C94672B634CBD46E3B863C26B"},
+    {"path":"after\\Interface\\AddOns\\ConsolePort_Forever\\Skin.lua","sha256":"4800B78AB8FBA4CC6DAB1DB9E6FFE8F1121FE3DFD22C6515A1069F5FA6947F04"},
+    {"path":"after\\Interface\\AddOns\\ConsolePort-PlayStation5.restored.lua","sha256":"8E259DECC1589835002FE63A5928FB6E8717B4A611FB31FCC7D09A43C88CC65D"}
+  ]
+}

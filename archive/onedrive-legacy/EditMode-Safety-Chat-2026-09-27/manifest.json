@@ -1,0 +1,37 @@
+{
+  "createdLocal": "2026-09-27T20:44:32.6636269-04:00",
+  "purpose": "Remove ConsolePort_Forever Edit Mode taint and reduce chat width",
+  "wowProcessCountAtEdit": 0,
+  "sourceEvidence": {
+    "log": "WTF/SavedVariables/Blizzard_Console.lua",
+    "lines": [4162, 4166, 4170, 4174],
+    "attribution": "ConsolePort_Forever",
+    "entryPath": "EditModeManager:OnEditModeEnter -> RefreshArenaFrames -> CompactArenaFrame:RefreshMembers",
+    "failure": "secret health and range values evaluated in tainted execution"
+  },
+  "files": [
+    {
+      "relativePath": "Interface/AddOns/ConsolePort_Forever/ConsolePort_Forever.lua",
+      "beforeSha256": "D84B21C490E0C9013379AADBCB6F8E00D3816292B4CD81D88321C7BE281D5838",
+      "afterSha256": "71C36AB2293A350098EE2396D5259EFBF5DD3F74596AAC05814601F399ABF21C"
+    },
+    {
+      "relativePath": "WTF/Account/_template_/chat-cache.txt",
+      "beforeSha256": "37DEC9D5C90400E3EBF9746F32019AC39C3BB0C200C7DD1E6421C54883B3495E",
+      "afterSha256": "41ED0FB1BCA0D8F19E8F0F1B2B961E6ABB3C601532F286532C23A9260D841810"
+    },
+    {
+      "relativePath": "WTF/Account/119624169#1/edit-mode-cache-account.txt",
+      "beforeSha256": "6EC4B884F95771E1030012B0C4B4FCA41348942307B90B71EE42207C73D52F39",
+      "afterSha256": "17EAE01A2A169138F9E9ABB36A4BD11FBD0CBAF73DE3F4B19989094271F39554"
+    }
+  ],
+  "result": {
+    "chatWidthBefore": 430,
+    "chatWidthAfter": 400,
+    "chatHeight": 120,
+    "chatActionClearance": 95,
+    "addonUpdateSystemCalls": 0,
+    "editModeRuntimeGuards": true
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "capturedAtUTC": "2026-10-03T20:14:28.1148605Z",
+  "targetGame": "Retail",
+  "userConfirmedWoWInstances": 1,
+  "characterFolderCount": 42,
+  "linkGroups": [
+    {
+      "count": 42,
+      "linkType": "Junction",
+      "target": "C:\\Users\\luisr\\OneDrive\\Documents\\03 Gaming\\World of Warcraft\\_retail_\\WTF\\Account\\_template_"
+    }
+  ],
+  "companionCharacterStorage": "Flat ConsolePortForeverCharacterDB, SavedVariablesPerCharacter",
+  "knownIssue": "Sequential characters share flat installed marker and dependency current view, requiring runtime GUID-keyed ownership",
+  "liveChangesPerformed": false,
+  "stateMapCrosscheck": {
+    "repository": "Nevcairiel/Bartender4",
+    "commit": "0b95f8a85d982583dfc5e4e5d89a4b8572f347f3",
+    "sourceUrl": "https://github.com/Nevcairiel/Bartender4/blob/0b95f8a85d982583dfc5e4e5d89a4b8572f347f3/StateBar.lua",
+    "snapshotPath": "C:\\Users\\luisr\\OneDrive\\Documents\\03 Gaming\\World of Warcraft\\Forever-Design-2026-10-03\\source\\Bartender4-StateBar.lua",
+    "sha256": "247F01E45F334EB1058E2425A9BEEABA39B49FDC83042DFFAFD8662B51908B5A",
+    "purpose": "Developer-source cross-check of Retail stance families; not a dependency or engine guarantee"
+  }
+}

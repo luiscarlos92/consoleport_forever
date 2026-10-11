@@ -1,0 +1,15 @@
+## Interface: 120100
+## Title: ConsolePort |cff69ccf0Forever HUD|r
+## Notes: One-click controller UI profile, layout, and artwork companion for ConsolePort.
+## Author: Console Port - Forever
+## Version: 1.2.0
+## RequiredDeps: ConsolePort, ConsolePort_Bar, ConsolePort_Menu, Immersion
+## SavedVariables: ConsolePortForeverDB
+## SavedVariablesPerCharacter: ConsolePortForeverCharacterDB
+
+Layout.lua
+Bindings.lua
+Profile.lua
+ConsolePort_Forever.lua
+Skin.lua
+Runtime.lua

@@ -1,0 +1,138 @@
+{
+  "capturedAtUTC": "2026-10-03T20:50:38.7021052Z",
+  "scope": "Controller play in Retail; local versus streaming excluded by user clarification",
+  "sourceCommit": "e3ecc27b64d30fdc735a3f6579b866858f9f9df1",
+  "publishedForeverHead": "e3ecc27b64d30fdc735a3f6579b866858f9f9df1",
+  "publishedForeverVersion": "1.60.1 (70205)",
+  "publishedHeadMatchesSnapshot": true,
+  "installedRetailBuild": "12.1.0.69933 (installation .build.info); active client not queried",
+  "installedConsolePortVersion": "3.2.6 (installed TOC); enabled runtime modules not queried",
+  "files": [
+    {
+      "path": "C:\\Users\\luisr\\OneDrive\\Documents\\03 Gaming\\World of Warcraft\\Forever-Investigation-2026-10-03\\source\\wow-ui-source\\Interface\\AddOns\\Blizzard_GamepadSharedUtility\\FrameControlsManager.lua",
+      "sha256": "9BD6B6E594E93968672B8440F0F8AFD45F1A618E99FDFF563705112788A9529A",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_GamepadSharedUtility/FrameControlsManager.lua"
+    },
+    {
+      "path": "C:\\Users\\luisr\\OneDrive\\Documents\\03 Gaming\\World of Warcraft\\Forever-Investigation-2026-10-03\\source\\wow-ui-source\\Interface\\AddOns\\Blizzard_StaticPopup\\StaticPopupGamepad.lua",
+      "sha256": "C2253731B22AF6E70C51CB597233B76D816CF3859FBD956F11B22D727B1247D9",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_StaticPopup/StaticPopupGamepad.lua"
+    },
+    {
+      "path": "C:\\Users\\luisr\\OneDrive\\Documents\\03 Gaming\\World of Warcraft\\Forever-Investigation-2026-10-03\\source\\wow-ui-source\\Interface\\AddOns\\Blizzard_GamepadSharedUtility\\Tab\\TabIndicators.lua",
+      "sha256": "9D1B81DA84422BD625CF7DABC93D0B9BF485101F76655966781086178ACF7C3E",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_GamepadSharedUtility/Tab/TabIndicators.lua"
+    },
+    {
+      "path": "C:\\Users\\luisr\\OneDrive\\Documents\\03 Gaming\\World of Warcraft\\Forever-Investigation-2026-10-03\\source\\wow-ui-source\\Interface\\AddOns\\Blizzard_GamepadSmartNavigation\\SmartNavigation.lua",
+      "sha256": "2C9F2094960C3C300796EB7D0F492B07EE763A3DB71F1D52E66DE40CCA7A2467",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_GamepadSmartNavigation/SmartNavigation.lua"
+    },
+    {
+      "path": "C:\\Users\\luisr\\OneDrive\\Documents\\03 Gaming\\World of Warcraft\\Forever-Investigation-2026-10-03\\source\\wow-ui-source\\Interface\\AddOns\\Blizzard_GamepadSharedUtility\\PromptedBindings\\PromptedBindingFooter.lua",
+      "sha256": "95406B9FCCC6116B2A7C7655A3EC720C2631A6270119BF0284D247875428B8FB",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_GamepadSharedUtility/PromptedBindings/PromptedBindingFooter.lua"
+    },
+    {
+      "path": "C:\\Users\\luisr\\OneDrive\\Documents\\03 Gaming\\World of Warcraft\\Forever-Investigation-2026-10-03\\source\\wow-ui-source\\Interface\\AddOns\\Blizzard_GamepadSharedUtility\\InputBindingStack\\InputBindingManager.lua",
+      "sha256": "CC6A80AD885C329D98D330BEF8442FE093E75CFC86C9054B8774D507F5FFD518",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_GamepadSharedUtility/InputBindingStack/InputBindingManager.lua"
+    },
+    {
+      "path": "C:\\Users\\luisr\\OneDrive\\Documents\\03 Gaming\\World of Warcraft\\Forever-Investigation-2026-10-03\\source\\wow-ui-source\\Interface\\AddOns\\Blizzard_GamepadSharedUtility\\InputHandlers\\InputButtonUtility.lua",
+      "sha256": "A47EB766AF6EAB3B0274A45A077B19A1421B4AD69AE4BC150ED54B297DA0503C",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_GamepadSharedUtility/InputHandlers/InputButtonUtility.lua"
+    },
+    {
+      "path": "C:\\Users\\luisr\\OneDrive\\Documents\\03 Gaming\\World of Warcraft\\Forever-Investigation-2026-10-03\\source\\wow-ui-source\\Interface\\AddOns\\Blizzard_GamepadActionBars\\FlyoutRadial.lua",
+      "sha256": "725327F98DCA5B8EC82E9E25433044FE3B64C2DDE23FF4B62FDB0F1F15420D97",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_GamepadActionBars/FlyoutRadial.lua"
+    },
+    {
+      "path": "C:\\Users\\luisr\\OneDrive\\Documents\\03 Gaming\\World of Warcraft\\Forever-Investigation-2026-10-03\\source\\wow-ui-source\\Interface\\AddOns\\Blizzard_GamepadActionBars\\ClassActionFlyout.lua",
+      "sha256": "124320E3A2D04957CF48717924F474333AABCF91C9E3259F57AD0FF2AA7060AD",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_GamepadActionBars/ClassActionFlyout.lua"
+    },
+    {
+      "path": "C:\\Users\\luisr\\OneDrive\\Documents\\03 Gaming\\World of Warcraft\\Forever-Investigation-2026-10-03\\source\\wow-ui-source\\Interface\\AddOns\\Blizzard_GamepadActionBars\\MainActionBarFrame.lua",
+      "sha256": "39375BB6D7A1C1D1F340BF6301D388A7AA1187AFED9BCCB77A440045920B1769",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_GamepadActionBars/MainActionBarFrame.lua"
+    },
+    {
+      "path": "C:\\Users\\luisr\\OneDrive\\Documents\\03 Gaming\\World of Warcraft\\Forever-Investigation-2026-10-03\\source\\wow-ui-source\\Interface\\AddOns\\Blizzard_GamepadActionBars\\Camelot\\PetActionFlyoutButton.lua",
+      "sha256": "3F9F5F67A36C316D520D394AA4BED572D7F2574708BDB257B3E2389F40094657",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_GamepadActionBars/Camelot/PetActionFlyoutButton.lua"
+    },
+    {
+      "path": "C:\\Users\\luisr\\OneDrive\\Documents\\03 Gaming\\World of Warcraft\\Forever-Investigation-2026-10-03\\source\\wow-ui-source\\Interface\\AddOns\\Blizzard_GamepadActionBars\\Camelot\\PetActionFlyout.lua",
+      "sha256": "BD749CD1DE59A302B6380AB2269583EAD7A58CB347DEC067D434549F05013AD9",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_GamepadActionBars/Camelot/PetActionFlyout.lua"
+    },
+    {
+      "path": "C:\\Users\\luisr\\OneDrive\\Documents\\03 Gaming\\World of Warcraft\\Forever-Investigation-2026-10-03\\source\\wow-ui-source\\Interface\\AddOns\\Blizzard_UIPanels_Game\\Mainline\\ContainerFrame.lua",
+      "sha256": "32C58D4024652370CFA53548C8CC11A929E9182BA7E6CF613F01EEC43A753057",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_UIPanels_Game/Mainline/ContainerFrame.lua"
+    },
+    {
+      "path": "C:\\Users\\luisr\\OneDrive\\Documents\\03 Gaming\\World of Warcraft\\Forever-Investigation-2026-10-03\\source\\wow-ui-source\\Interface\\AddOns\\Blizzard_UIPanels_Game\\Blizzard_UIPanels_Game.toc",
+      "sha256": "C4F57E9B6DF5597C134F8434391E71F8019D9BD7A2F7682D87F3B893449BA7B1",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_UIPanels_Game/Blizzard_UIPanels_Game.toc"
+    },
+    {
+      "path": "C:\\Users\\luisr\\OneDrive\\Documents\\03 Gaming\\World of Warcraft\\Forever-Investigation-2026-10-03\\source\\wow-ui-source\\Interface\\AddOns\\Blizzard_FrameXML\\Mainline\\StackSplitFrame.lua",
+      "sha256": "FAC9E8D25E4DE1C4B9E9403191F46DFA549C92D0294FE5CF7EA936B710AAECDD",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_FrameXML/Mainline/StackSplitFrame.lua"
+    },
+    {
+      "path": "C:\\Users\\luisr\\OneDrive\\Documents\\03 Gaming\\World of Warcraft\\Forever-Investigation-2026-10-03\\source\\wow-ui-source\\Interface\\AddOns\\Blizzard_WorldMap\\Blizzard_WorldMap.lua",
+      "sha256": "288C5897F854A4A2A6F84A121C3BD7E01B4158FAE4D72071AC226CF557F8DC67",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_WorldMap/Blizzard_WorldMap.lua"
+    },
+    {
+      "path": "C:\\Users\\luisr\\OneDrive\\Documents\\03 Gaming\\World of Warcraft\\Forever-Investigation-2026-10-03\\source\\wow-ui-source\\Interface\\AddOns\\Blizzard_WorldMap\\Camelot\\Blizzard_WorldMap.lua",
+      "sha256": "966289FEF060D5355B438B74E89868C01D23D73E1B5C3AA6B23E36A1DB8D3AA9",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_WorldMap/Camelot/Blizzard_WorldMap.lua"
+    },
+    {
+      "path": "C:\\Users\\luisr\\OneDrive\\Documents\\03 Gaming\\World of Warcraft\\Forever-Investigation-2026-10-03\\source\\wow-ui-source\\Interface\\AddOns\\Blizzard_Gamepad\\UI\\CinematicMovie.lua",
+      "sha256": "DEACA70F27EC434EE5317FE79D4731D812FC2DE016CBB3C996B0412E209C5772",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_Gamepad/UI/CinematicMovie.lua"
+    },
+    {
+      "path": "C:\\Users\\luisr\\OneDrive\\Documents\\03 Gaming\\World of Warcraft\\Forever-Investigation-2026-10-03\\source\\wow-ui-source\\Interface\\AddOns\\Blizzard_Gamepad\\UI\\HUDMode\\GamepadHudMode.lua",
+      "sha256": "F51F734415F4EB7106EB6A15FE74B6AB7821144FBEC02FB94A082F16CA062F98",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_Gamepad/UI/HUDMode/GamepadHudMode.lua"
+    },
+    {
+      "path": "C:\\Users\\luisr\\OneDrive\\Documents\\03 Gaming\\World of Warcraft\\Forever-Investigation-2026-10-03\\source\\wow-ui-source\\Interface\\AddOns\\Blizzard_SharedXML\\InputUtil.lua",
+      "sha256": "293593AA1C50F1706A19CB0B2ED6B8C5F3E07558225489D6A236E2E22CBA50CE",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_SharedXML/InputUtil.lua"
+    },
+    {
+      "path": "C:\\Users\\luisr\\OneDrive\\Documents\\03 Gaming\\World of Warcraft\\Forever-Investigation-2026-10-03\\source\\wow-ui-source\\Interface\\AddOns\\Blizzard_APIDocumentationGenerated\\GamePadDocumentation.lua",
+      "sha256": "B42CBB4B4A10A2106C116126F7FE93ACB652020B1AFFAFCBEC47533957519C35",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_APIDocumentationGenerated/GamePadDocumentation.lua"
+    },
+    {
+      "path": "C:\\Users\\luisr\\OneDrive\\Documents\\03 Gaming\\World of Warcraft\\Forever-Design-2026-10-03\\controller-audit\\installed-source\\ConsolePort\\Controller\\Radial.lua",
+      "sourcePath": "C:\\Users\\luisr\\OneDrive\\Documents\\03 Gaming\\World of Warcraft\\_retail_\\Interface\\AddOns\\ConsolePort\\Controller\\Radial.lua",
+      "sha256": "2F3CC9982ABB1B3F4ABF7CCD8291A458F80C6A56254A77F8128CFA67820891E2"
+    },
+    {
+      "path": "C:\\Users\\luisr\\OneDrive\\Documents\\03 Gaming\\World of Warcraft\\Forever-Design-2026-10-03\\controller-audit\\installed-source\\ConsolePort_Keyboard\\Database.lua",
+      "sourcePath": "C:\\Users\\luisr\\OneDrive\\Documents\\03 Gaming\\World of Warcraft\\_retail_\\Interface\\AddOns\\ConsolePort_Keyboard\\Database.lua",
+      "sha256": "5FD777E2E0FC43F705BEE4F85E8005D2C4EBF210CB9AEED9C764374D2801854A"
+    },
+    {
+      "path": "C:\\Users\\luisr\\OneDrive\\Documents\\03 Gaming\\World of Warcraft\\Forever-Design-2026-10-03\\controller-audit\\installed-source\\ConsolePort_Keyboard\\View\\Keyboard.lua",
+      "sourcePath": "C:\\Users\\luisr\\OneDrive\\Documents\\03 Gaming\\World of Warcraft\\_retail_\\Interface\\AddOns\\ConsolePort_Keyboard\\View\\Keyboard.lua",
+      "sha256": "5FB15BCB4C1B7A80DE9E619A0DFA3FD84A127E1898DDCEC58D0970FC5CF77527"
+    },
+    {
+      "path": "C:\\Users\\luisr\\OneDrive\\Documents\\03 Gaming\\World of Warcraft\\Forever-Design-2026-10-03\\controller-audit\\installed-source\\ConsolePort_Keyboard\\Core\\Observer.lua",
+      "sourcePath": "C:\\Users\\luisr\\OneDrive\\Documents\\03 Gaming\\World of Warcraft\\_retail_\\Interface\\AddOns\\ConsolePort_Keyboard\\Core\\Observer.lua",
+      "sha256": "F67F1E1A0827B20E186E55D842F70BDB535AF8BF38852553D3C879DA20B02C13"
+    }
+  ],
+  "runtimeTestsPerformed": false
+}

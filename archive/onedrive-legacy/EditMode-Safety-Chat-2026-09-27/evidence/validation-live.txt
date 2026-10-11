@@ -1,0 +1,11 @@
+2026-09-27T20:44:32.6636269-04:00
+PASS: live helper parses as Lua 5.1.
+PASS: independent buff/debuff systems share a left-growing, down-wrapping lane and follow dynamic height.
+PASS: every registered Edit Mode frame retains native systemInfo; addon UpdateSystem calls are absent.
+PASS: action prompts and unit frames share the symmetric center-out grid.
+PASS: helper rewrites pause during Edit Mode and resume only after the editor is inactive.
+PASS: Edit Mode policy removed, active guards present, and chat width is 400 in all native caches.
+PASS: chat-to-action horizontal clearance is 95 UI units.
+PASS: manifest, rollback, and evidence parse.
+PASS: all three live files match validated after snapshots.
+PASS: WoW remained closed.

@@ -1,0 +1,8 @@
+{
+  "timestampUtc": "2026-09-27T23:57:04.693243+00:00",
+  "operation": "deploy",
+  "wowProcessCount": 0,
+  "relativePath": "Interface/AddOns/ConsolePort_Forever/ConsolePort_Forever.lua",
+  "beforeSha256": "b77ad851a602cf1230a96724b043d1127b322f72a938ebb9f3aa90e356d1f6cb",
+  "installedSha256": "6b2b3fe9e60f6677f4d74f6fd83a696decd4c2c9498fcbab93c6036e4fdc0267"
+}

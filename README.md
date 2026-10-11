@@ -1,5 +1,13 @@
 # ConsolePort Forever
 
+This checkout is the sole working source of truth. OneDrive holds production
+data in `_retail_` and the user's untouched `Documents` folder. See the
+[workspace organization record](docs/WORKSPACE-ORGANIZATION-2026-10-11.md) for
+imported historical work, relocated provisioning scripts, and the native UI
+reference reserved for a later feature request. Current runtime acceptance is
+candidate.30's ping ring and Required Items correction; older version notes
+below are historical checkpoints.
+
 Personal Retail controller UI companion. **2.0.0-candidate.7** is installed with clean **ConsolePort 3.3.10**. The [visual patch](docs/FACE-VISUAL-PATCH-2026-10-07.md) restores custom face artwork and circular masks after native refreshes. All 49 deployed files match; 3,842 dependency files, 298 WTF files and 42 character junctions are unchanged. Working targeting behavior and configuration revision 13 remain unchanged. See the [installed receipt](evidence/delivery/live-install-candidate7.json) and [manual test cases](docs/MANUAL-TEST-CASES.md).
 
 Read [AGENTS.md](AGENTS.md) and the [dependency workflow](docs/DEPENDENCY-WORKFLOW.md): check all 9 dependencies each session, refresh only changed official packages, test compatibility, then prepare a scoped update. Deployment requires new explicit authorization and WoW closed. Never write live WTF. DBM is uninstalled and retired from active dependencies.

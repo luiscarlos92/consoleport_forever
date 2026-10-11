@@ -1,0 +1,36 @@
+{
+  "createdLocal": "2026-09-27T20:23:40.9183270-04:00",
+  "purpose": "Symmetric center-out ConsolePort HUD spacing",
+  "wowProcessCountAtEdit": 0,
+  "geometry": {
+    "centerline": 0,
+    "halfStep": 78.75,
+    "buttonWidth": 45,
+    "buttonAnchor": "LEFT edge",
+    "childAnchorCorrection": -22.5,
+    "localCrossCenters": [-78.75, 78.75],
+    "shoulderPrompts": [-157.5, 157.5],
+    "sideBanks": [-315, 315],
+    "unitFrames": [-315, 315],
+    "clusterCenters": [-393.75, -236.25, -78.75, 78.75, 236.25, 393.75],
+    "clusterGap": 157.5
+  },
+  "files": [
+    {
+      "relativePath": "Interface/AddOns/ConsolePort_Forever/ConsolePort_Forever.lua",
+      "beforeSha256": "6B2B3FE9E60F6677F4D74F6FD83A696DECD4C2C9498FCBAB93C6036E4FDC0267",
+      "afterSha256": "D84B21C490E0C9013379AADBCB6F8E00D3816292B4CD81D88321C7BE281D5838"
+    },
+    {
+      "relativePath": "WTF/Account/_template_/SavedVariables/ConsolePort_Bar.lua",
+      "beforeSha256": "1A3FBDECAEC98FD53EC729694F363B67789B7D994CD619259B74FF8D7CE37279",
+      "afterSha256": "261D556B15A9A0368128A2C9FC08663AD1A54766B75140D046549E4A79904CF1"
+    }
+  ],
+  "validation": {
+    "lua51Parse": "PASS",
+    "runtimeHarness": "PASS",
+    "collisionModel": "PASS",
+    "unexpectedOverlaps": []
+  }
+}

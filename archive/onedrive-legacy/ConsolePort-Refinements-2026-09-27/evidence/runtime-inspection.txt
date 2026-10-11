@@ -1,0 +1,77 @@
+One launch through the native Computer Use API exposed no window. WoW exited; no input or forced termination. Current and prior startup crash signatures follow.
+
+2026-09-27_04.48.58_Error_27852.txt
+﻿==============================================================================
+World of Warcraft: Retail Build (build 69933)
+------------------------------------------------------------------------------
+==============================================================================
+Exception: 0xC0000374 (HEAP_CORRUPTION) at 00007ffcf8af81f5 0x00007ffcf8bad0e0
+ProcessID: 27852
+ThreadID: 8936
+------------------------------------------------------------------------------
+
+<Exception.IssueType> Exception
+<ExceptionType> Crash
+<Exception.Summary:>
+0xC0000374 (HEAP_CORRUPTION) at 00007ffcf8af81f5 0x00007ffcf8bad0e0
+(DBG-OPTIONS<FunctionsOnly SingleLine> DBG-ADDR<00007ffcf8af81f5>("ntdll.dll") <- DBG-ADDR<00007ffcf8a59265>("ntdll.dll") <- DBG-ADDR<00007ffcf89eae02>("ntdll.dll") DBG-OPTIONS<>)
+<:Exception.Summary>
+<Exception.Assertion:>
+DBG-ADDR<00007ffcf8af81f5>("ntdll.dll")
+DBG-ADDR<00007ffcf8a59265>("ntdll.dll")
+DBG-ADDR<00007ffcf89eae02>("ntdll.dll")
+DBG-ADDR<00007ffcf8b009da>("ntdll.dll")
+DBG-ADDR<00007ffcf89e6e23>("ntdll.dll")
+DBG-ADDR<00007ffcf8a1769d>("ntdll.dll")
+DBG-ADDR<00007ffcf8a078b0>("ntdll.dll")
+DBG-ADDR<00007ffcf64f2d7b>("ucrtbase.dll")
+DBG-ADDR<00007ffc923c0909>("RzChromaSDK64.dll")
+DBG-ADDR<00007ffc923ae3d8>("RzChromaSDK64.dll")
+DBG-ADDR<00007ffc923ca521>("RzChromaSDK64.dll")
+DBG-ADDR<00007ffc8e77ae18>("RzChromatic64.dll")
+DBG-ADDR<00007ffc8e73239a>("RzChromatic64.dll")
+DBG-ADDR<00007ffc8e73314a>("RzChromatic64.dll")
+DBG-ADDR<00007ffcf650cd30>("ucrtbase.dll")
+DBG-ADDR<00007ffcf7aecdf7>("KERNEL32.DLL")
+DBG-ADDR<00007ffc2059d322>("<unknown>")
+DBG-ADDR<00007ffcf8a5ee4c>("ntdll.dll")
+<:Exception.Assertion>
+<Exception.HashBlock:>
+
+2026-09-26_19.02.08_Error_25372.txt
+﻿==============================================================================
+World of Warcraft: Retail Build (build 69933)
+------------------------------------------------------------------------------
+==============================================================================
+Exception: 0xC0000374 (HEAP_CORRUPTION) at 00007ffcf8af81f5 0x00007ffcf8bad0e0
+ProcessID: 25372
+ThreadID: 18204
+------------------------------------------------------------------------------
+
+<Exception.IssueType> Exception
+<ExceptionType> Crash
+<Exception.Summary:>
+0xC0000374 (HEAP_CORRUPTION) at 00007ffcf8af81f5 0x00007ffcf8bad0e0
+(DBG-OPTIONS<FunctionsOnly SingleLine> DBG-ADDR<00007ffcf8af81f5>("ntdll.dll") <- DBG-ADDR<00007ffcf8a59265>("ntdll.dll") <- DBG-ADDR<00007ffcf89eae02>("ntdll.dll") DBG-OPTIONS<>)
+<:Exception.Summary>
+<Exception.Assertion:>
+DBG-ADDR<00007ffcf8af81f5>("ntdll.dll")
+DBG-ADDR<00007ffcf8a59265>("ntdll.dll")
+DBG-ADDR<00007ffcf89eae02>("ntdll.dll")
+DBG-ADDR<00007ffcf8b009da>("ntdll.dll")
+DBG-ADDR<00007ffcf89e6e23>("ntdll.dll")
+DBG-ADDR<00007ffcf8a1769d>("ntdll.dll")
+DBG-ADDR<00007ffcf8a078b0>("ntdll.dll")
+DBG-ADDR<00007ffcf64f2d7b>("ucrtbase.dll")
+DBG-ADDR<00007ffc93360909>("RzChromaSDK64.dll")
+DBG-ADDR<00007ffc9334e3d8>("RzChromaSDK64.dll")
+DBG-ADDR<00007ffc9336a521>("RzChromaSDK64.dll")
+DBG-ADDR<00007ffc926eae18>("RzChromatic64.dll")
+DBG-ADDR<00007ffc926a076d>("RzChromatic64.dll")
+DBG-ADDR<00007ffc926ea16e>("RzChromatic64.dll")
+DBG-ADDR<00007ffcf650cd30>("ucrtbase.dll")
+DBG-ADDR<00007ffcf7aecdf7>("KERNEL32.DLL")
+DBG-ADDR<00007ffc286bd322>("<unknown>")
+DBG-ADDR<00007ffcf8a5ee4c>("ntdll.dll")
+<:Exception.Assertion>
+<Exception.HashBlock:>

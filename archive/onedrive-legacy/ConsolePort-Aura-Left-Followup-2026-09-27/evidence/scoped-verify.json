@@ -1,0 +1,12 @@
+{
+  "time": "2026-09-27T16:52:29.791883+00:00",
+  "wow_processes": 0,
+  "installed_hashes_verified": 10,
+  "helper_after_hash": "b77ad851a602cf1230a96724b043d1127b322f72a938ebb9f3aa90e356d1f6cb",
+  "rollback_before_hash": "37036890e6c7f70f606779e90389d0388457c1f3f4efb74ffea4cb100f1af931",
+  "anchor_relative_to": "PlayerFrame",
+  "anchor_points": "BuffFrame TOPRIGHT -> PlayerFrame TOPLEFT (-12, +5), with corresponding bottom points for upward wrap",
+  "growth": "left (addIconsToRight=false)",
+  "harness": "PASS: staged and live Lua 5.1 plus login/reload/Edit Mode/grid/combat/late-load mocks",
+  "game_launch_attempted": false
+}

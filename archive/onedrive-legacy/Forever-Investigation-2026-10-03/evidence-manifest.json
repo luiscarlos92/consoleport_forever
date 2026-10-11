@@ -1,0 +1,3200 @@
+{
+  "investigationDate": "2026-10-03",
+  "evidenceType": "Static source inspection and saved disk configuration; no client runtime tests",
+  "repository": "https://github.com/Gethe/wow-ui-source",
+  "branch": "forever",
+  "commit": "e3ecc27b64d30fdc735a3f6579b866858f9f9df1",
+  "commitVersion": "2026-10-03T02:01:07Z 1.60.1 (70205)",
+  "sourceWorkingTreeStatus": [],
+  "files": [
+    {
+      "path": "Interface/AddOns/Blizzard_ActionBar/Shared/MainActionBar.lua",
+      "sha256": "4372BA37A4FF1B03F0FBF20DA36AF1FD598EC7DBFC8DB78177436D1BCF401FF8",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_ActionBar/Shared/MainActionBar.lua",
+      "entryPoints": [
+        {
+          "line": 31,
+          "text": "function MainActionBar_InitializeGamepad()"
+        }
+      ]
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_ActionBar/Shared/SpellFlyout.lua",
+      "sha256": "6BD7419EAE09E842380EA17602FEAFE58C7A33A63CE82DCBF9A6772D7AA05D92",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_ActionBar/Shared/SpellFlyout.lua",
+      "entryPoints": [
+        {
+          "line": 189,
+          "text": "function SpellFlyoutMixin:SetUpGamepad()"
+        },
+        {
+          "line": 190,
+          "text": "local bindSpell = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_FACE_LEFT, GenerateClosure(self.BindToGamepadActionBar, self), CONTEXT_ACTION_LABEL_BIND_TO_GAMEPAD_ACTION_BAR);"
+        },
+        {
+          "line": 194,
+          "text": "local castSpell = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_FACE_BOTTOM, nil, CONTEXT_ACTION_LABEL_CAST);"
+        },
+        {
+          "line": 198,
+          "text": "self.frameFooter = GamepadSharedUtility.CreatePromptedBindingFooter(self, \"SpellFlyoutFrameFooter\");"
+        }
+      ]
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_BuffFrame/BuffFrame.lua",
+      "sha256": "02E25F57F1458043A2E4543B6FA9AE81C574CD1A34E2037A34F4399478AE7AFC",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_BuffFrame/BuffFrame.lua",
+      "entryPoints": [
+        {
+          "line": 854,
+          "text": "function BuffFrameMixin:SetupGamepad()"
+        },
+        {
+          "line": 855,
+          "text": "local cancelBuff = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_FACE_LEFT, GenerateClosure(self.CancelSelectedBuff, self), CONTEXT_ACTION_LABEL_CANCEL_BUFF);"
+        },
+        {
+          "line": 859,
+          "text": "self.footer = GamepadSharedUtility.CreatePromptedBindingFooter(GameTooltip, \"BuffFrameFooter\")"
+        },
+        {
+          "line": 877,
+          "text": "function BuffFrameMixin:InitializeGamepad()"
+        },
+        {
+          "line": 881,
+          "text": "function BuffFrameMixin:UninitializeGamepad()"
+        },
+        {
+          "line": 887,
+          "text": "InputUtil.RegisterGamepadSetup(self, GenerateClosure(self.SetupGamepad, self));"
+        },
+        {
+          "line": 1107,
+          "text": "InputUtil.RegisterGamepadSetup(self, GenerateClosure(self.SetupGamepad, self));"
+        },
+        {
+          "line": 1110,
+          "text": "function DebuffFrameMixin:SetupGamepad()"
+        },
+        {
+          "line": 1111,
+          "text": "self.footer = GamepadSharedUtility.CreatePromptedBindingFooter(GameTooltip, \"DebuffFrameFooter\");"
+        }
+      ]
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_CharacterCreate/Camelot/Blizzard_CharacterCreate.lua",
+      "sha256": "4A68AAA78EA1DF058F62C5941FF0FF948641783F42B31B90BCCF289E2A8AAB94",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_CharacterCreate/Camelot/Blizzard_CharacterCreate.lua",
+      "entryPoints": [
+        {
+          "line": 994,
+          "text": "InputUtil.RegisterGamepadSetup(self, GenerateClosure(self.SetupGamepad, self));"
+        },
+        {
+          "line": 999,
+          "text": "function CharacterCreateMixin:SetupGamepad()"
+        },
+        {
+          "line": 1003,
+          "text": "function CharacterCreateMixin:InitializeGamepad()"
+        },
+        {
+          "line": 1016,
+          "text": "function CharacterCreateMixin:UninitializeGamepad()"
+        },
+        {
+          "line": 2156,
+          "text": "InputUtil.RegisterGamepadSetup(self, GenerateClosure(self.SetupGamepad, self));"
+        },
+        {
+          "line": 2161,
+          "text": "function CharacterCreateRaceAndClassMixin:SetupGamepad()"
+        },
+        {
+          "line": 2168,
+          "text": "local customizeAction = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_FACE_LEFT, function() self:GetParent().ForwardButton:Click(); end);"
+        },
+        {
+          "line": 2182,
+          "text": "local resetView = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_STICK_RIGHT_PRESS, function()"
+        },
+        {
+          "line": 2187,
+          "text": "self.footer = GamepadSharedUtility.CreatePromptedBindingFooter(self);"
+        },
+        {
+          "line": 2202,
+          "text": "function CharacterCreateRaceAndClassMixin:InitializeGamepad()"
+        },
+        {
+          "line": 2211,
+          "text": "function CharacterCreateRaceAndClassMixin:UninitializeGamepad()"
+        },
+        {
+          "line": 3018,
+          "text": "function CharacterCreateNameAvailabilityStateMixin:InitializeGamepad()"
+        },
+        {
+          "line": 3023,
+          "text": "function CharacterCreateNameAvailabilityStateMixin:UninitializeGamepad()"
+        }
+      ]
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_CharacterCustomize/Camelot/Blizzard_CharacterCustomize.lua",
+      "sha256": "05AA28662E99D4B98D867BB171CD3E796DA8D137B75A1EFFDE22E003484B6456",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_CharacterCustomize/Camelot/Blizzard_CharacterCustomize.lua",
+      "entryPoints": [
+        {
+          "line": 726,
+          "text": "InputUtil.RegisterGamepadSetup(self, GenerateClosure(self.SetupGamepad, self));"
+        },
+        {
+          "line": 736,
+          "text": "function CharCustomizeMixin:SetupGamepad()"
+        },
+        {
+          "line": 740,
+          "text": "local finishAction = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_FACE_LEFT, function() self:GetParent().ForwardButton:Click(); end, FINISH);"
+        },
+        {
+          "line": 750,
+          "text": "local randomizeName = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_MENU_LEFT, RandomizeName, ACTION_LABEL_RANDOMIZE_NAME);"
+        },
+        {
+          "line": 753,
+          "text": "local randomizeAppearance = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_FACE_TOP,"
+        },
+        {
+          "line": 757,
+          "text": "local prevCategory = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_SHOULDER_LEFT, GenerateClosure(self.SelectPrevCategoryFrame, self));"
+        },
+        {
+          "line": 760,
+          "text": "local nextCategory = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_SHOULDER_RIGHT, GenerateClosure(self.SelectNextCategoryFrame, self));"
+        },
+        {
+          "line": 763,
+          "text": "local resetView = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_STICK_RIGHT_PRESS, function()"
+        },
+        {
+          "line": 767,
+          "text": "self.footer = GamepadSharedUtility.CreatePromptedBindingFooter(self);"
+        },
+        {
+          "line": 781,
+          "text": "function CharCustomizeMixin:InitializeGamepad()"
+        },
+        {
+          "line": 809,
+          "text": "function CharCustomizeMixin:UninitializeGamepad()"
+        }
+      ]
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_ChatFrameBase/Mainline/FloatingChatFrame.lua",
+      "sha256": "9A50365E694CB2828A89B837BE50DE480E4539953B66DFD51078BCE9339FEF53",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_ChatFrameBase/Mainline/FloatingChatFrame.lua",
+      "entryPoints": [
+        {
+          "line": 151,
+          "text": "InputUtil.RegisterGamepadSetup(self, GenerateClosure(self.SetupGamepad, self));"
+        },
+        {
+          "line": 156,
+          "text": "function FloatingChatFrameMixin:SetupGamepad()"
+        },
+        {
+          "line": 166,
+          "text": "function FloatingChatFrameMixin:InitializeGamepad()"
+        },
+        {
+          "line": 170,
+          "text": "function FloatingChatFrameMixin:UninitializeGamepad()"
+        },
+        {
+          "line": 214,
+          "text": "local chatChannels = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_FACE_LEFT, GenerateClosure(self.OpenGamepadChatMenu, self), ACTION_LABEL_CHAT_CHANNELS);"
+        },
+        {
+          "line": 217,
+          "text": "local tabSettings = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_FACE_TOP, GenerateClosure(self.OpenGamepadTabMenu, self), ACTION_LABEL_TAB_SETTINGS);"
+        },
+        {
+          "line": 220,
+          "text": "local sendMessage = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_FACE_BOTTOM, GenerateClosure(self.editBox.SendMessage, self.editBox), ACTION_LABEL_SEND);"
+        },
+        {
+          "line": 224,
+          "text": "self.footer = GamepadSharedUtility.CreatePromptedBindingFooter(self, \"FloatingChatFrame\");"
+        },
+        {
+          "line": 2187,
+          "text": "InputUtil.RegisterGamepadSetup(self, GenerateClosure(self.SetUpGamepad, self));"
+        },
+        {
+          "line": 2192,
+          "text": "function FloatingChatFrameDockMixin:SetUpGamepad()"
+        },
+        {
+          "line": 2193,
+          "text": "local tabLeftPrompt = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_SHOULDER_LEFT, GenerateClosure(self.SelectPrevWindow, self));"
+        },
+        {
+          "line": 2200,
+          "text": "local tabRightPrompt = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_SHOULDER_RIGHT, GenerateClosure(self.SelectNextWindow, self));"
+        },
+        {
+          "line": 2208,
+          "text": "self.footer = GamepadSharedUtility.CreatePromptedBindingFooter(self, \"FloatingChatFrameDock\");"
+        }
+      ]
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_ColorPickerFrame/Mainline/ColorPickerFrame.lua",
+      "sha256": "D29B858EC1B56020358B15EA340A6A4B2D23AE832B2FEA89778D1BF294949B47",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_ColorPickerFrame/Mainline/ColorPickerFrame.lua",
+      "entryPoints": [
+        {
+          "line": 184,
+          "text": "function ColorPickerFrameMixin:SetUpGamepadCursorAndShow()"
+        },
+        {
+          "line": 236,
+          "text": "InputUtil.RegisterGamepadSetup(self, GenerateFlatClosure(self.SetupGamepad, self));"
+        },
+        {
+          "line": 241,
+          "text": "function ColorPickerFrameMixin:SetupGamepad()"
+        },
+        {
+          "line": 242,
+          "text": "local colorPickerSelect = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_FACE_BOTTOM, GenerateFlatClosure(self.OnOkay, self), ACTION_LABEL_SELECT);"
+        },
+        {
+          "line": 243,
+          "text": "local colorPickerColor = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_STICK_RIGHT, nil, ACTION_LABEL_ADJUST_COLOR);"
+        },
+        {
+          "line": 244,
+          "text": "local colorPickerBrightness = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_STICK_LEFT, nil, ACTION_LABEL_ADJUST_BRIGHTNESS);"
+        },
+        {
+          "line": 245,
+          "text": "local colorPickerCancel = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_FACE_RIGHT, GenerateFlatClosure(self.OnCancel, self), FRAME_ACTION_CANCEL);"
+        },
+        {
+          "line": 247,
+          "text": "self.colorPickerDetailsFooter = GamepadSharedUtility.CreatePromptedBindingFooter(self, \"ColorPickerDetailsFooter\");"
+        },
+        {
+          "line": 267,
+          "text": "function ColorPickerFrameMixin:InitializeGamepad()"
+        },
+        {
+          "line": 272,
+          "text": "function ColorPickerFrameMixin:UninitializeGamepad()"
+        }
+      ]
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_CompactRaidFrames/Mainline/Blizzard_CompactRaidFrameManager.lua",
+      "sha256": "6579341E488AC464CAE0019BD65594321C3173F194AF8AE883C5E7C52DEDFF12",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_CompactRaidFrames/Mainline/Blizzard_CompactRaidFrameManager.lua",
+      "entryPoints": [
+        {
+          "line": 441,
+          "text": "local back = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_FACE_RIGHT, CompactRaidFrameManager_Collapse, FRAME_ACTION_BACK);"
+        },
+        {
+          "line": 443,
+          "text": "local moreOptions = GamepadSharedUtility.CreateMoreActionsPromptedBinding(GAMEPAD_FACE_TOP);"
+        },
+        {
+          "line": 448,
+          "text": "self.footer = GamepadSharedUtility.CreatePromptedBindingFooter(self, \"CompactRaidFrameManager\");"
+        },
+        {
+          "line": 487,
+          "text": "function CompactRaidFrameManager_SetupGamepad(self)"
+        },
+        {
+          "line": 503,
+          "text": "function CompactRaidFrameManager_InitializeGamepad(self)"
+        },
+        {
+          "line": 517,
+          "text": "InputUtil.RegisterGamepadSetup(self, GenerateClosure(CompactRaidFrameManager_SetupGamepad, self));"
+        }
+      ]
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_CustomizationUI/Blizzard_CustomizationOptionTemplates.lua",
+      "sha256": "E14D54649E67D65068BB2BC36D92359C28D78BD367B359008D9BD9A67E6BCA52",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_CustomizationUI/Blizzard_CustomizationOptionTemplates.lua",
+      "entryPoints": [
+        {
+          "line": 171,
+          "text": "local bindings = GamepadSharedUtility.CreatePromptedBindingFooter(UIParent and UIParent or GlueParent, \"CustomizationOptionCheckButton\");"
+        },
+        {
+          "line": 265,
+          "text": "local bindings = GamepadSharedUtility.CreatePromptedBindingFooter(UIParent and UIParent or GlueParent, \"CustomizationDropdownWithSteppersAndLabel\");"
+        }
+      ]
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_FrameXML/EquipmentFlyout.lua",
+      "sha256": "DC628B6923736BEFB02397489A097036A0CC45F3ACE6062437F2C2CED1591D0A",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_FrameXML/EquipmentFlyout.lua",
+      "entryPoints": [
+        {
+          "line": 62,
+          "text": "InputUtil.RegisterGamepadSetup(self, GenerateClosure(self.SetupGamepad, self));"
+        },
+        {
+          "line": 67,
+          "text": "function EquipmentFlyoutMixin:SetupGamepad()"
+        },
+        {
+          "line": 71,
+          "text": "self.gamepadFooter = GamepadSharedUtility.CreatePromptedBindingFooter(self, \"EquipmentFlyoutFooter\");"
+        },
+        {
+          "line": 80,
+          "text": "function EquipmentFlyoutMixin:InitializeGamepad()"
+        },
+        {
+          "line": 93,
+          "text": "function EquipmentFlyoutMixin:UninitializeGamepad()"
+        }
+      ]
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_FrameXML/Camelot/EquipmentFlyout.lua",
+      "sha256": "C97F76E35C2950523ADDD1C09E2FBE92D4C70E8931F37EA26B18B9144396A67E",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_FrameXML/Camelot/EquipmentFlyout.lua",
+      "entryPoints": [
+        {
+          "line": 62,
+          "text": "InputUtil.RegisterGamepadSetup(self, GenerateClosure(self.SetupGamepad, self));"
+        },
+        {
+          "line": 67,
+          "text": "function EquipmentFlyoutMixin:SetupGamepad()"
+        },
+        {
+          "line": 71,
+          "text": "self.gamepadFooter = GamepadSharedUtility.CreatePromptedBindingFooter(self, \"EquipmentFlyoutFooter\");"
+        },
+        {
+          "line": 80,
+          "text": "function EquipmentFlyoutMixin:InitializeGamepad()"
+        },
+        {
+          "line": 93,
+          "text": "function EquipmentFlyoutMixin:UninitializeGamepad()"
+        }
+      ]
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_FrameXML/Mainline/LootHistory.lua",
+      "sha256": "B1C4A321C5BF82AC705701FF664551F6DC6C8BD82F76E1141CFB964B94142F52",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_FrameXML/Mainline/LootHistory.lua",
+      "entryPoints": [
+        {
+          "line": 636,
+          "text": "function LootHistoryFrameMixin:SetupGamepad()"
+        },
+        {
+          "line": 637,
+          "text": "self.lootHistoryFooter = GamepadSharedUtility.CreatePromptedBindingFooter(self, \"LootHistoryFooter\");"
+        },
+        {
+          "line": 649,
+          "text": "function LootHistoryFrameMixin:InitializeGamepad()"
+        },
+        {
+          "line": 654,
+          "text": "function LootHistoryFrameMixin:UninitializeGamepad()"
+        },
+        {
+          "line": 661,
+          "text": "InputUtil.RegisterGamepadSetup(self, GenerateClosure(self.SetupGamepad, self));"
+        }
+      ]
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_FrameXML/Mainline/ReadyCheck.lua",
+      "sha256": "9C5A57FEE54CE5F2AF4D0A8094B99574D533FA32AD97B08D5476E40DB17F45A4",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_FrameXML/Mainline/ReadyCheck.lua",
+      "entryPoints": [
+        {
+          "line": 132,
+          "text": "function ReadyCheckListenerFrameMixin:SetupGamepad()"
+        },
+        {
+          "line": 154,
+          "text": "InputUtil.RegisterGamepadSetup(self, GenerateClosure(self.SetupGamepad, self));"
+        }
+      ]
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_FrameXML/Mainline/RolePoll.lua",
+      "sha256": "A5B7ED284A965CEF23E9BBD7461677424C425410E860B5B497286DC7BE59BCCE",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_FrameXML/Mainline/RolePoll.lua",
+      "entryPoints": [
+        {
+          "line": 59,
+          "text": "function RolePollPopup_SetupGamepad(self)"
+        },
+        {
+          "line": 64,
+          "text": "local accept = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_FACE_LEFT, Accept, ACCEPT);"
+        },
+        {
+          "line": 66,
+          "text": "self.footer = GamepadSharedUtility.CreatePromptedBindingFooter(self, \"RollPollFooter\");"
+        },
+        {
+          "line": 83,
+          "text": "function RolePollPopup_InitializeGamepad(self)"
+        },
+        {
+          "line": 93,
+          "text": "InputUtil.RegisterGamepadSetup(self, GenerateClosure(RolePollPopup_SetupGamepad, self));"
+        }
+      ]
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_FrameXML/Mainline/StackSplitFrame.lua",
+      "sha256": "FAC9E8D25E4DE1C4B9E9403191F46DFA549C92D0294FE5CF7EA936B710AAECDD",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_FrameXML/Mainline/StackSplitFrame.lua",
+      "entryPoints": [
+        {
+          "line": 36,
+          "text": "InputUtil.RegisterGamepadSetup(self, GenerateClosure(self.SetupGamepad, self));"
+        },
+        {
+          "line": 40,
+          "text": "function StackSplitMixin:SetupGamepad()"
+        },
+        {
+          "line": 41,
+          "text": "local amountBinding = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_DPAD_HORIZONTAL, \"StackSplitFooter_AmountBinding\");"
+        },
+        {
+          "line": 46,
+          "text": "local okayBinding = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_FACE_BOTTOM, \"StackSplitFooter_OkayBinding\");"
+        },
+        {
+          "line": 54,
+          "text": "local cancelBinding = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_FACE_RIGHT, \"StackSplitFooter_CancelBinding\");"
+        },
+        {
+          "line": 62,
+          "text": "self.footer = GamepadSharedUtility.CreatePromptedBindingFooter(self, \"StackSplitFooter\");"
+        },
+        {
+          "line": 77,
+          "text": "function StackSplitMixin:InitializeGamepad()"
+        }
+      ]
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_GameMenu/Shared/GameMenuFrame.lua",
+      "sha256": "7DACCC27BB50BAA2B7F0D701779BC0F315C1B2CC80792B82CE55714A59FCC7C8",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_GameMenu/Shared/GameMenuFrame.lua",
+      "entryPoints": [
+        {
+          "line": 131,
+          "text": "function GameMenuFrameMixin:SetupGamepadButtons()"
+        },
+        {
+          "line": 303,
+          "text": "InputUtil.RegisterGamepadSetup(self, GenerateClosure(self.SetupGamepad, self));"
+        },
+        {
+          "line": 307,
+          "text": "function GameMenuFrameMixin:SetupGamepad()"
+        },
+        {
+          "line": 308,
+          "text": "local selectPromptedBinding = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_FACE_BOTTOM, nil, ACTION_LABEL_SELECT);"
+        },
+        {
+          "line": 310,
+          "text": "self.gamepadFooter = GamepadSharedUtility.CreatePromptedBindingFooter(self, \"GlueMenuFooter\");"
+        },
+        {
+          "line": 318,
+          "text": "function GameMenuFrameMixin:UninitializeGamepad()"
+        }
+      ]
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_Gamepad/Bindings.xml",
+      "sha256": "C9C0792ADB753ADE847B4622F5583B7DB4194FD6C0F57B8CB4208635CA11E770",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_Gamepad/Bindings.xml",
+      "entryPoints": []
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_Gamepad/Blizzard_Gamepad.toc",
+      "sha256": "382C8D0E17FF7C755916233886131693021230DF1499AB9D7F06C693550066CA",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_Gamepad/Blizzard_Gamepad.toc",
+      "entryPoints": []
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_Gamepad/Core.lua",
+      "sha256": "0AFDEFCE640EB0ACDCA76AB2C31A6F296C92EFF22828C9842585E060E51A5938",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_Gamepad/Core.lua",
+      "entryPoints": []
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_Gamepad/SmartNavigationInGame/FrameBoltOns/GamepadItemPickupCursor.lua",
+      "sha256": "D509098DEC2B94E18DC00421493682A093CEFCF43CBC3263FB18FFA212DEF307",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_Gamepad/SmartNavigationInGame/FrameBoltOns/GamepadItemPickupCursor.lua",
+      "entryPoints": []
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_Gamepad/SmartNavigationInGame/FrameBoltOns/GamepadItemPickupCursor.xml",
+      "sha256": "532BBC526A4A83211C9A68BBE05495D084FFAAD12001166BB5661E71E3491799",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_Gamepad/SmartNavigationInGame/FrameBoltOns/GamepadItemPickupCursor.xml",
+      "entryPoints": []
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_Gamepad/UI/CinematicMovie.lua",
+      "sha256": "DEACA70F27EC434EE5317FE79D4731D812FC2DE016CBB3C996B0412E209C5772",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_Gamepad/UI/CinematicMovie.lua",
+      "entryPoints": [
+        {
+          "line": 45,
+          "text": "local function SetupGamepad()"
+        },
+        {
+          "line": 59,
+          "text": "InputUtil.RegisterGamepadSetup(gamepadCinematic, function ()"
+        }
+      ]
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_Gamepad/UI/ConsoleHUD/ConsoleTemplates.lua",
+      "sha256": "C7BAF1D7E8F23EE75C31CC47B57939A5BA5AFDEB378513741D7707FC0AA4C409",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_Gamepad/UI/ConsoleHUD/ConsoleTemplates.lua",
+      "entryPoints": []
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_Gamepad/UI/ConsoleHUD/ConsoleTemplates.xml",
+      "sha256": "8C7F9A7C751877320D2B32C5F575EE05F71E51FED6A1C315E7AB839560CB11F8",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_Gamepad/UI/ConsoleHUD/ConsoleTemplates.xml",
+      "entryPoints": []
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_Gamepad/UI/FrameReforms/StackSplitFrame.lua",
+      "sha256": "F1945CD6C19E56B3C1C78943EF5EC18116907A4CA1EFC40A57D48AB1DB7ADFC5",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_Gamepad/UI/FrameReforms/StackSplitFrame.lua",
+      "entryPoints": []
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_Gamepad/UI/HUDMode/GamepadHudMode.lua",
+      "sha256": "F51F734415F4EB7106EB6A15FE74B6AB7821144FBEC02FB94A082F16CA062F98",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_Gamepad/UI/HUDMode/GamepadHudMode.lua",
+      "entryPoints": []
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_Gamepad/UI/HUDMode/GamepadHudMode.xml",
+      "sha256": "5719E568EC305D8D85D48F8D1BBA5E8C3DEDA1DCC6FEAFB2858D702D63E0C9EB",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_Gamepad/UI/HUDMode/GamepadHudMode.xml",
+      "entryPoints": []
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_Gamepad/UI/PersistentInputLegend/GamepadPersistentInputLegend.lua",
+      "sha256": "3D780446AF2628899DDD69B9CD43110E8D3E5A8FF292325CD9261F9B94B85F2A",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_Gamepad/UI/PersistentInputLegend/GamepadPersistentInputLegend.lua",
+      "entryPoints": []
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_Gamepad/UI/PersistentInputLegend/GamepadPersistentInputLegend.xml",
+      "sha256": "EF0EC548B62B46E1B6A1454BAE13CB408C7815EDDC992FDBC54841744671BB1F",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_Gamepad/UI/PersistentInputLegend/GamepadPersistentInputLegend.xml",
+      "entryPoints": []
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_Gamepad/UI/Radials/GamepadRadial.lua",
+      "sha256": "25CFDBDBCA18F473EE2AEC5AA9023B5FD9D1647141698F6784D4429EC9DBCE50",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_Gamepad/UI/Radials/GamepadRadial.lua",
+      "entryPoints": []
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_Gamepad/UI/Radials/GamepadRadial.xml",
+      "sha256": "C5E60E1A1663ADB8BE046E20F10EF73763A790FC823B752D63129EE1974D21E6",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_Gamepad/UI/Radials/GamepadRadial.xml",
+      "entryPoints": []
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_Gamepad/UI/Reticle/GamepadReticle.lua",
+      "sha256": "13459258C3BDC7B4E591B12625BC72EEC25B2A1DF9CA328C23D96A9BB4B5F12B",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_Gamepad/UI/Reticle/GamepadReticle.lua",
+      "entryPoints": []
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_Gamepad/UI/Reticle/GamepadReticle.xml",
+      "sha256": "82DBD4A5114FC85562C459A3F9A366CD0D6B0634A7F5A4629D73F5B8686AAF3F",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_Gamepad/UI/Reticle/GamepadReticle.xml",
+      "entryPoints": []
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_Gamepad/Utility/Bindings/HoldBindings.lua",
+      "sha256": "C754AA97D95BD88EF73067EF09C10871271258CA90FBC8AB22BB65BEB4E17277",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_Gamepad/Utility/Bindings/HoldBindings.lua",
+      "entryPoints": []
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_GamepadActionBars/ActionBar.lua",
+      "sha256": "0ED83D040F398F88E4B48228A368495DFF0B3FE128E572A8F907850E0B553A05",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_GamepadActionBars/ActionBar.lua",
+      "entryPoints": []
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_GamepadActionBars/ActionBarButton.lua",
+      "sha256": "59C1866667EFE6C570CCF7EAC073FB2FBE26ABC8DC6C1A97A5493615A58BAC85",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_GamepadActionBars/ActionBarButton.lua",
+      "entryPoints": []
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_GamepadActionBars/ActionBarButton.xml",
+      "sha256": "888DA6210CA826D613F29E4A9DBAC9FFBD8A2746DB53AF2BC3333D5B861DA0ED",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_GamepadActionBars/ActionBarButton.xml",
+      "entryPoints": []
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_GamepadActionBars/ActionBarEditFrame.lua",
+      "sha256": "3AD5BD9A52E66B97AA6D265AA583F01FD22BBA1492C82E38AE967D81601D5C00",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_GamepadActionBars/ActionBarEditFrame.lua",
+      "entryPoints": [
+        {
+          "line": 76,
+          "text": "function GamepadActionBarEditFrameMixin:InitializeGamepad()"
+        },
+        {
+          "line": 159,
+          "text": "local cancel = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_FACE_RIGHT, GenerateClosure(self.ExitActiveMode, self), FRAME_ACTION_CANCEL);"
+        },
+        {
+          "line": 160,
+          "text": "self.editModeFooter = GamepadSharedUtility.CreatePromptedBindingFooter(self.EditActionBarsInfoFrame, \"EditModeFooter\");"
+        },
+        {
+          "line": 165,
+          "text": "local tooltips = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_STICK_RIGHT_PRESS,  GenerateClosure(ToggleTooltips, self), PROMPT_TOGGLE_TOOLTIPS);"
+        },
+        {
+          "line": 169,
+          "text": "local back = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_FACE_RIGHT, GenerateClosure(self.ExitActiveMode, self), FRAME_ACTION_BACK);"
+        },
+        {
+          "line": 173,
+          "text": "local undoEdit = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_FACE_RIGHT, GenerateClosure(self.UndoEdit, self), FRAME_ACTION_CANCEL);"
+        },
+        {
+          "line": 177,
+          "text": "local enterEditMode = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_FACE_TOP, GenerateClosure(self.SwitchFromBindingModeToEditMode, self), FRAME_ACTION_EDIT_ACTION_BAR);"
+        },
+        {
+          "line": 181,
+          "text": "local clearAction = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_FACE_LEFT, GenerateClosure(self.TryClearHeldAction, self), FRAME_ACTION_UNBIND);"
+        },
+        {
+          "line": 185,
+          "text": "self.bindingModeFooter = GamepadSharedUtility.CreatePromptedBindingFooter(self.BindingInfoFrame, \"BindingModeFooter\");"
+        }
+      ]
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_GamepadActionBars/ActionBarEditFrame.xml",
+      "sha256": "59516BFC0453E6B9472A84363AC5336FF37171A2DB013197621176C36C2090CB",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_GamepadActionBars/ActionBarEditFrame.xml",
+      "entryPoints": []
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_GamepadActionBars/ActionBarFocusFX.lua",
+      "sha256": "F4BAE267CFDA4EA652F69439EB89F300172B6535BF42D586DA0089EE2F9A40AE",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_GamepadActionBars/ActionBarFocusFX.lua",
+      "entryPoints": []
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_GamepadActionBars/ActionBarStyles.lua",
+      "sha256": "B214C8C36B5551D7C36D82CAEBD2CD69265303E4A42D81B0413D0FF7D1E10662",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_GamepadActionBars/ActionBarStyles.lua",
+      "entryPoints": []
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_GamepadActionBars/ActionBarTemplates.xml",
+      "sha256": "F60D9EC7533D388C46E5686ADAEEA7536895D1F34A21DF9239876F12B20BFA23",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_GamepadActionBars/ActionBarTemplates.xml",
+      "entryPoints": []
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_GamepadActionBars/ActionBindingUtil.lua",
+      "sha256": "1E30A2DDBBB0FA1F11E92705011313B09E847B937BA45DDB260DECA098B7F8F3",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_GamepadActionBars/ActionBindingUtil.lua",
+      "entryPoints": []
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_GamepadActionBars/Bindings.xml",
+      "sha256": "BA115FD6F11488A8905B54E250708AFB6D64E7778FA3CF200389BED0D2C6A748",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_GamepadActionBars/Bindings.xml",
+      "entryPoints": []
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_GamepadActionBars/Blizzard_GamepadActionBars.toc",
+      "sha256": "B31C73C19106BF58E765E418EA009E72FF907B14E56830E423C7910BCE01F7C3",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_GamepadActionBars/Blizzard_GamepadActionBars.toc",
+      "entryPoints": []
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_GamepadActionBars/ClassActionFlyout.lua",
+      "sha256": "124320E3A2D04957CF48717924F474333AABCF91C9E3259F57AD0FF2AA7060AD",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_GamepadActionBars/ClassActionFlyout.lua",
+      "entryPoints": []
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_GamepadActionBars/ClassActionFlyout.xml",
+      "sha256": "ECB415B77953637FE45E8C13FE21EC2F1101B2BD233209B5A1D3A526A483E472",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_GamepadActionBars/ClassActionFlyout.xml",
+      "entryPoints": []
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_GamepadActionBars/FlyoutRadial.lua",
+      "sha256": "725327F98DCA5B8EC82E9E25433044FE3B64C2DDE23FF4B62FDB0F1F15420D97",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_GamepadActionBars/FlyoutRadial.lua",
+      "entryPoints": []
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_GamepadActionBars/FlyoutRadial.xml",
+      "sha256": "669B6467B31480258F7C9D5A5102923E52408BAA0A520AF269AC5FD768672CCB",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_GamepadActionBars/FlyoutRadial.xml",
+      "entryPoints": []
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_GamepadActionBars/GamepadOverrideBarMixin.lua",
+      "sha256": "0FFEB8B0A8FB4B855E5970B1C4B1D1FF6179371FC0BCF67829D68F8DCA6B6FBD",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_GamepadActionBars/GamepadOverrideBarMixin.lua",
+      "entryPoints": []
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_GamepadActionBars/IconIntro.lua",
+      "sha256": "7EEB2290AD7C9E7451777E365B1D399ECA3252D450B3338E0146A3403661C72C",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_GamepadActionBars/IconIntro.lua",
+      "entryPoints": []
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_GamepadActionBars/IconIntro.xml",
+      "sha256": "A2E10CFF600CFFB627E7A6AFCC8FA96052FDF8F74F6EC517CBB9B37969D9FFFE",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_GamepadActionBars/IconIntro.xml",
+      "entryPoints": []
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_GamepadActionBars/MainActionBarFrame.lua",
+      "sha256": "39375BB6D7A1C1D1F340BF6301D388A7AA1187AFED9BCCB77A440045920B1769",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_GamepadActionBars/MainActionBarFrame.lua",
+      "entryPoints": [
+        {
+          "line": 81,
+          "text": "function GamepadMainActionBarFrameMixin:InitializeGamepad()"
+        },
+        {
+          "line": 87,
+          "text": "function GamepadMainActionBarFrameMixin:UninitializeGamepad()"
+        }
+      ]
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_GamepadActionBars/MainActionBarFrame.xml",
+      "sha256": "7BFF8B1E6512D0BC53FE69B4A30601D6088ABE3AEC098819223C435E1E7DF86A",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_GamepadActionBars/MainActionBarFrame.xml",
+      "entryPoints": []
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_GamepadActionBars/PageUnit.lua",
+      "sha256": "31C684454E1B27B469E4398EA4275F48BE53A971FAA927E9196D09E32F64B600",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_GamepadActionBars/PageUnit.lua",
+      "entryPoints": [
+        {
+          "line": 262,
+          "text": "function GamepadActionBarPageUnitMixin:InitializeGamepad()"
+        },
+        {
+          "line": 270,
+          "text": "function GamepadActionBarPageUnitMixin:UninitializeGamepad()"
+        }
+      ]
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_GamepadActionBars/PossessBar.lua",
+      "sha256": "58A9BCDC053EEAA48E3754D4BD50FD613BAA74A080F8E49FC3CD958FD15DBC48",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_GamepadActionBars/PossessBar.lua",
+      "entryPoints": []
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_GamepadActionBars/SpellFlyoutRadial.lua",
+      "sha256": "8FCAE72127E89287A210A5F8B1D139684D94D189ECEF481DDFCED44C3DC9ED9E",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_GamepadActionBars/SpellFlyoutRadial.lua",
+      "entryPoints": []
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_GamepadActionBars/SpellFlyoutRadial.xml",
+      "sha256": "182D7712AFEB97A1C1BBF0542A6500A0852D7F6D760B4DF31B5404332548323C",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_GamepadActionBars/SpellFlyoutRadial.xml",
+      "entryPoints": []
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_GamepadActionBars/StanceBar.lua",
+      "sha256": "C26E14EBC1E1B4C863C169FF5D3C4E292368B7FCD322858B1E310917CC467350",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_GamepadActionBars/StanceBar.lua",
+      "entryPoints": []
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_GamepadActionBars/Camelot/ClassSpellFlyout.lua",
+      "sha256": "A07198DAEA12147FB9D9CB6439A4C1C2077420535D7DCCE3FFC8F6C133FB4C42",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_GamepadActionBars/Camelot/ClassSpellFlyout.lua",
+      "entryPoints": []
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_GamepadActionBars/Camelot/PetActionFlyout.lua",
+      "sha256": "BD749CD1DE59A302B6380AB2269583EAD7A58CB347DEC067D434549F05013AD9",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_GamepadActionBars/Camelot/PetActionFlyout.lua",
+      "entryPoints": []
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_GamepadActionBars/Camelot/PetActionFlyoutButton.lua",
+      "sha256": "3F9F5F67A36C316D520D394AA4BED572D7F2574708BDB257B3E2389F40094657",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_GamepadActionBars/Camelot/PetActionFlyoutButton.lua",
+      "entryPoints": []
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_GamepadActionBars/Camelot/PetClassFlyouts.xml",
+      "sha256": "FC4D8B929B5D819AA876DC77AAE4297B28527148DF60CDA9759930526A7CEF97",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_GamepadActionBars/Camelot/PetClassFlyouts.xml",
+      "entryPoints": []
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_GamepadActionBars/Camelot/PetSpellFlyout.lua",
+      "sha256": "5757D6087039B6642E65E63E352312624F0EFFBC5143E196030871DB15EA4D7E",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_GamepadActionBars/Camelot/PetSpellFlyout.lua",
+      "entryPoints": []
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_GamepadActionBars/TargetActionBars/FriendlyTargetingActionBar.lua",
+      "sha256": "2B57696E993A98E02FD048C4A55BE7CD50DEF8050E84AD769EF5D526CBB7DFFB",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_GamepadActionBars/TargetActionBars/FriendlyTargetingActionBar.lua",
+      "entryPoints": []
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_GamepadActionBars/TargetActionBars/HostileTargetingActionBar.lua",
+      "sha256": "E3AEA800155F90362CFBA5509E7F93B9BC6E8154C521C8973C60510CB1091FF2",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_GamepadActionBars/TargetActionBars/HostileTargetingActionBar.lua",
+      "entryPoints": []
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_GamepadActionBars/TargetActionBars/Shared.lua",
+      "sha256": "4CF8C7BD9ADCC6850378462F706CFEB5ACBCCDD5D23E586052CD0D933C72BDDC",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_GamepadActionBars/TargetActionBars/Shared.lua",
+      "entryPoints": []
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_GamepadActionBars/TargetActionBars/ShortcutsActionBar.lua",
+      "sha256": "38483E4030A8300788118FE7D736D891EA1CE686FD87DB5199F87CFBFDE089B8",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_GamepadActionBars/TargetActionBars/ShortcutsActionBar.lua",
+      "entryPoints": []
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_GamepadActionBars/TargetActionBars/StaticOverrideActionBar.lua",
+      "sha256": "E42E0EABFB48DBC012E6A08E0858DD26D52D244E3F954C031F90D664E88AD25B",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_GamepadActionBars/TargetActionBars/StaticOverrideActionBar.lua",
+      "entryPoints": []
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_GamepadSharedUtility/Blizzard_GamepadSharedUtility.toc",
+      "sha256": "799D236301C34AC9D7073348183830C8F2B0FE9CA7C70308A0890086F4F018D5",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_GamepadSharedUtility/Blizzard_GamepadSharedUtility.toc",
+      "entryPoints": []
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_GamepadSharedUtility/FrameControlsManager.lua",
+      "sha256": "9BD6B6E594E93968672B8440F0F8AFD45F1A618E99FDFF563705112788A9529A",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_GamepadSharedUtility/FrameControlsManager.lua",
+      "entryPoints": [
+        {
+          "line": 309,
+          "text": "function GamepadFrameControlsManagerMixin:UninitializeGamepad()"
+        }
+      ]
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_GamepadSharedUtility/FrameReformUtility.lua",
+      "sha256": "97AC8F8E0B3E481EDA5B26A63D8BF2DE9AD001E58EC085D03E761E2B23A9D096",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_GamepadSharedUtility/FrameReformUtility.lua",
+      "entryPoints": []
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_GamepadSharedUtility/GamepadSharedUtility.lua",
+      "sha256": "CF3422144C24537671CE6DA01C5B6C13436181A0DA943F27335DA59B3B5DF869",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_GamepadSharedUtility/GamepadSharedUtility.lua",
+      "entryPoints": []
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_GamepadSharedUtility/InputBindingStack/BindingSetFactory.lua",
+      "sha256": "B6D9E85B9C98913514ED7F6AE36C3B03A5C6D306362D87F94814EEF7675A0AE4",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_GamepadSharedUtility/InputBindingStack/BindingSetFactory.lua",
+      "entryPoints": []
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_GamepadSharedUtility/InputBindingStack/InputActionBinding.lua",
+      "sha256": "757533646B30F700FB50ED031A7C25B6243E9780ABB57FC1624B4F8423A1C1E8",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_GamepadSharedUtility/InputBindingStack/InputActionBinding.lua",
+      "entryPoints": []
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_GamepadSharedUtility/InputBindingStack/InputAxisBinding.lua",
+      "sha256": "27069FA4560AF6C722F3D2A2CA73A59BD980593B785A10B526E3DEE924FEDD54",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_GamepadSharedUtility/InputBindingStack/InputAxisBinding.lua",
+      "entryPoints": []
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_GamepadSharedUtility/InputBindingStack/InputBindingManager.lua",
+      "sha256": "CC6A80AD885C329D98D330BEF8442FE093E75CFC86C9054B8774D507F5FFD518",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_GamepadSharedUtility/InputBindingStack/InputBindingManager.lua",
+      "entryPoints": []
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_GamepadSharedUtility/InputBindingStack/InputBindingSet.lua",
+      "sha256": "CA2A75E002B99EAF2BB8C071A6467F43E573D854E8D4DD167797E4941548F696",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_GamepadSharedUtility/InputBindingStack/InputBindingSet.lua",
+      "entryPoints": []
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_GamepadSharedUtility/InputBindingStack/InputButtonBinding.lua",
+      "sha256": "DF2BF7A8DB048C4801F21AD57C863EE93F708839A0488D4B1D1691B84A95DB71",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_GamepadSharedUtility/InputBindingStack/InputButtonBinding.lua",
+      "entryPoints": []
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_GamepadSharedUtility/InputBindingStack/InputFunctionBinding.lua",
+      "sha256": "9B2BD523664066B65FC8B20709CE8EB176D46E90D584BCB4EC8C0CE36260921A",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_GamepadSharedUtility/InputBindingStack/InputFunctionBinding.lua",
+      "entryPoints": []
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_GamepadSharedUtility/InputHandlers/InputButtonUtility.lua",
+      "sha256": "A47EB766AF6EAB3B0274A45A077B19A1421B4AD69AE4BC150ED54B297DA0503C",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_GamepadSharedUtility/InputHandlers/InputButtonUtility.lua",
+      "entryPoints": []
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_GamepadSharedUtility/InputPrompts/InputLegendPromptGroup.lua",
+      "sha256": "0F31CA7A5350897DB956E6FA4FEA000A57F0B5D639F6CA2B18C5C03C25280F66",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_GamepadSharedUtility/InputPrompts/InputLegendPromptGroup.lua",
+      "entryPoints": []
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_GamepadSharedUtility/InputPrompts/InputPrompts.lua",
+      "sha256": "553E343C35759A2625A4CF37C3AA9E8CC6776440DFA9D795FB203DDDFF310E79",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_GamepadSharedUtility/InputPrompts/InputPrompts.lua",
+      "entryPoints": []
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_GamepadSharedUtility/InputPrompts/InputPrompts.xml",
+      "sha256": "629053ABF7C9BF160D024BFB32FAC4522F375CBE3F5EED0D985B85E984B3DAB5",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_GamepadSharedUtility/InputPrompts/InputPrompts.xml",
+      "entryPoints": []
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_GamepadSharedUtility/InputPrompts/ScrollBarHint.lua",
+      "sha256": "F7AB3E1ABD8EB2DE8C0AA71F7EB88B4EEB1D33B1A5F6275B2C0969627C045AEF",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_GamepadSharedUtility/InputPrompts/ScrollBarHint.lua",
+      "entryPoints": []
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_GamepadSharedUtility/InputPrompts/ScrollBarHint.xml",
+      "sha256": "EF633009FBD6F22E7E417800DB353CDBA4C12C4D296370688409B43881630292",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_GamepadSharedUtility/InputPrompts/ScrollBarHint.xml",
+      "entryPoints": []
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_GamepadSharedUtility/InputSequence/InputSequence.lua",
+      "sha256": "E834AF91CE3D89F91CF28AA50537437CD06DE70F9D35AA336DB582B6A56EDD68",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_GamepadSharedUtility/InputSequence/InputSequence.lua",
+      "entryPoints": [
+        {
+          "line": 9,
+          "text": "InputUtil.RegisterGamepadSetup(self, GenerateClosure(self.SetupGamepad, self));"
+        },
+        {
+          "line": 16,
+          "text": "function GamepadInputSequenceMixin:SetupGamepad()"
+        }
+      ]
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_GamepadSharedUtility/InputSequence/InputSequence.xml",
+      "sha256": "0F6C4A5513AE7E4B3851FDED1C58FCEA4139D053138E6359BE2D65DD81553A74",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_GamepadSharedUtility/InputSequence/InputSequence.xml",
+      "entryPoints": []
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_GamepadSharedUtility/Page/PageIndicators.lua",
+      "sha256": "8FDBD8E6A02144C7B2E032FCE3EA6AC9CCA3D160F9FEFBE2E9B5B4DD90085B29",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_GamepadSharedUtility/Page/PageIndicators.lua",
+      "entryPoints": []
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_GamepadSharedUtility/Page/PageIndicators.xml",
+      "sha256": "C67B14F07FFCBC5A0D0DA224B016C388886CAA6D69FC4108CE2F592A633B568D",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_GamepadSharedUtility/Page/PageIndicators.xml",
+      "entryPoints": []
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_GamepadSharedUtility/PromptedBindings/PromptedBinding.lua",
+      "sha256": "8B237BFFA2BC88CAA938235367C712D64980C6EB212F4006897D6F446E3FA40F",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_GamepadSharedUtility/PromptedBindings/PromptedBinding.lua",
+      "entryPoints": [
+        {
+          "line": 656,
+          "text": "function GamepadSharedUtility.CreateExtensiblePromptedBinding(keys, debugName, overboundCallbacks)"
+        },
+        {
+          "line": 670,
+          "text": "function GamepadSharedUtility.CreatePromptedBinding(key, bindingFunction, label, debugName)"
+        },
+        {
+          "line": 672,
+          "text": "return GamepadSharedUtility.CreateExtensiblePromptedBinding(key, bindingFunction, label);"
+        },
+        {
+          "line": 674,
+          "text": "local promptedBinding = GamepadSharedUtility.CreateExtensiblePromptedBinding(key, debugName or \"PromptedBinding\");"
+        },
+        {
+          "line": 727,
+          "text": "function GamepadSharedUtility.CreateDoublePromptedBinding(leftKey, rightKey, leftFunction, rightFunction, label, debugName)"
+        },
+        {
+          "line": 728,
+          "text": "local promptedBinding = GamepadSharedUtility.CreateExtensiblePromptedBinding({ leftKey, rightKey }, debugName or \"DoublePromptedBinding\");"
+        },
+        {
+          "line": 734,
+          "text": "function GamepadSharedUtility.CreateTapOrHoldPromptedBinding(key, holdTime, onTapFunction, onHeldFunction, label, onDownFunction, onHeldReleasedFunction, onBindingOverboundFunction, debugName)"
+        },
+        {
+          "line": 735,
+          "text": "local promptedBinding = GamepadSharedUtility.CreateExtensiblePromptedBinding(key,"
+        },
+        {
+          "line": 749,
+          "text": "function GamepadSharedUtility.CreateMoreActionsPromptedBinding(key)"
+        },
+        {
+          "line": 750,
+          "text": "local promptedBinding = GamepadSharedUtility.CreateExtensiblePromptedBinding(key, \"MoreActionsPromptedBinding\");"
+        }
+      ]
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_GamepadSharedUtility/PromptedBindings/PromptedBindingFooter.lua",
+      "sha256": "95406B9FCCC6116B2A7C7655A3EC720C2631A6270119BF0284D247875428B8FB",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_GamepadSharedUtility/PromptedBindings/PromptedBindingFooter.lua",
+      "entryPoints": [
+        {
+          "line": 79,
+          "text": "local promptedBinding = GamepadSharedUtility.CreatePromptedBinding(key, \"FunctionPromptedBinding\");"
+        },
+        {
+          "line": 90,
+          "text": "local promptedBinding = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_FACE_BOTTOM, \"StandardSelectPromptedBinding\");"
+        },
+        {
+          "line": 107,
+          "text": "local promptedBinding = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_FACE_BOTTOM, \"NonFallbackSelectPromptedBinding\");"
+        },
+        {
+          "line": 118,
+          "text": "local nextBinding = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_TRIGGER_RIGHT, \"FCMRTPromptedBinding\");"
+        },
+        {
+          "line": 123,
+          "text": "local prevBinding = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_TRIGGER_LEFT, \"FCMLTPromptBinding\");"
+        },
+        {
+          "line": 134,
+          "text": "local promptedBinding = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_FACE_RIGHT, \"StandardBackPromptedBinding\");"
+        },
+        {
+          "line": 404,
+          "text": "function GamepadSharedUtility.CreatePromptedBindingFooter(parentFrame, debugName)"
+        },
+        {
+          "line": 413,
+          "text": "suspendFooter = GamepadSharedUtility.CreatePromptedBindingFooter(UIParent, \"SuspendFooter\");"
+        }
+      ]
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_GamepadSharedUtility/Tab/TabIndicators.lua",
+      "sha256": "9D1B81DA84422BD625CF7DABC93D0B9BF485101F76655966781086178ACF7C3E",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_GamepadSharedUtility/Tab/TabIndicators.lua",
+      "entryPoints": []
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_GamepadSharedUtility/Tab/TabIndicators.xml",
+      "sha256": "7FE9B0DF37CF387F95FA9A97355A0943A483EDBE26EAF0AEC75CBE678BF3AFEA",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_GamepadSharedUtility/Tab/TabIndicators.xml",
+      "entryPoints": []
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_GamepadSmartNavigation/Blizzard_GamepadSmartNavigation.toc",
+      "sha256": "D90FFECF8C24AD4667E9E7A2937D940DE2FF4BEA59E99EAAA9602D40A19EC5DB",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_GamepadSmartNavigation/Blizzard_GamepadSmartNavigation.toc",
+      "entryPoints": []
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_GamepadSmartNavigation/Debug.lua",
+      "sha256": "AC0A289E04D0A3E47344894B3040EDABF50763A0E5AB6F0B87DFA884025CF8AE",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_GamepadSmartNavigation/Debug.lua",
+      "entryPoints": []
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_GamepadSmartNavigation/SmartNavigation.lua",
+      "sha256": "2C9F2094960C3C300796EB7D0F492B07EE763A3DB71F1D52E66DE40CCA7A2467",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_GamepadSmartNavigation/SmartNavigation.lua",
+      "entryPoints": [
+        {
+          "line": 155,
+          "text": "function SmartNavigationMixin:InitializeGamepad()"
+        },
+        {
+          "line": 159,
+          "text": "function SmartNavigationMixin:UninitializeGamepad()"
+        }
+      ]
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_GamepadSmartNavigation/SmartNavigation.xml",
+      "sha256": "28DFBA6AA16559C6A307C9B8957F437E8EF74DFA57F5F78563F1C127B67A1A83",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_GamepadSmartNavigation/SmartNavigation.xml",
+      "entryPoints": []
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_GamepadSmartNavigation/Utility.lua",
+      "sha256": "C52519D5A4A36952FAA400CF9E4E30A64AA081310732B8F96F6150EEAB0C003E",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_GamepadSmartNavigation/Utility.lua",
+      "entryPoints": []
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_GamepadSoftCursor/Blizzard_GamepadSoftCursor.toc",
+      "sha256": "A32C9350D1026D12DD2D43394CA77C58AE59B08E8B83074EE1AE81DE3F354F3E",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_GamepadSoftCursor/Blizzard_GamepadSoftCursor.toc",
+      "entryPoints": []
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_GamepadSoftCursor/SoftCursor.lua",
+      "sha256": "C0F4983F4E0495E6B2ED6913723567638BF7C4F787E18E5C335C59A4D30C1BDF",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_GamepadSoftCursor/SoftCursor.lua",
+      "entryPoints": []
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_GamepadSoftCursor/SoftCursor.xml",
+      "sha256": "A12BFF0469278335D3B0B53C9DBDBB8E06C25B0DFECA3BCDA2DA0445AE2F50FE",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_GamepadSoftCursor/SoftCursor.xml",
+      "entryPoints": []
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_GamepadTargeting/Bindings.xml",
+      "sha256": "C6B3F3D7834F8B901048C3B1FD809F4BC11ADE99668666F19E816817CBAF92F4",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_GamepadTargeting/Bindings.xml",
+      "entryPoints": []
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_GamepadTargeting/Blizzard_GamepadTargeting.toc",
+      "sha256": "4EE3B9DADE9FF454ABF2031E3241D668413F1B4CDB936340B4E8D683C8D32925",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_GamepadTargeting/Blizzard_GamepadTargeting.toc",
+      "entryPoints": []
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_GamepadTargeting/GroupTargeting.lua",
+      "sha256": "0942BD3A2C745A13399A3AF9CF9C6582CB2E00BDC61282839A74D20A0C6B46C5",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_GamepadTargeting/GroupTargeting.lua",
+      "entryPoints": [
+        {
+          "line": 214,
+          "text": "local navigateDPad = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_DPAD, nil, ACTION_LABEL_SELECT);"
+        },
+        {
+          "line": 215,
+          "text": "local closeTargeting = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_SHOULDER_LEFT, nil, GROUP_TARGETING_CLOSE);"
+        },
+        {
+          "line": 217,
+          "text": "self.targetingActiveDPadFooter = GamepadSharedUtility.CreatePromptedBindingFooter(PartyFrame, \"TargetingActiveDPadFooter\");"
+        }
+      ]
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_GamepadTargeting/TargetLogic.lua",
+      "sha256": "F2891ACFF8F34712C0DF2BBD387198283458172703869ED0C80D083D6E7DCB3F",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_GamepadTargeting/TargetLogic.lua",
+      "entryPoints": []
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_GamepadTargeting/RaidPartyTargeting/RaidTargetDPAD.lua",
+      "sha256": "E7E33199D0354EBEB0D9669CC140DF2CCE1B67D7F3AB4D3D618173E1386A762E",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_GamepadTargeting/RaidPartyTargeting/RaidTargetDPAD.lua",
+      "entryPoints": [
+        {
+          "line": 52,
+          "text": "local open = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_SHOULDER_LEFT, nil, \"\");"
+        },
+        {
+          "line": 58,
+          "text": "self.raidTargetingFooter = GamepadSharedUtility.CreatePromptedBindingFooter(self, \"RaidTargetingFooter\");"
+        },
+        {
+          "line": 100,
+          "text": "function RaidTargetingFreeSelectionMixin:InitializeGamepad()"
+        },
+        {
+          "line": 104,
+          "text": "function RaidTargetingFreeSelectionMixin:UninitializeGamepad()"
+        }
+      ]
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_GamepadTargeting/RaidPartyTargeting/RaidTargeting.lua",
+      "sha256": "DAAB78DDE8A6E8072F6D4B47962D0972D98460C0E737FCFA570DEB57FFA61A3E",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_GamepadTargeting/RaidPartyTargeting/RaidTargeting.lua",
+      "entryPoints": []
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_GamepadTargeting/RaidPartyTargeting/RaidTargeting.xml",
+      "sha256": "A11311462473734BDBFF719E6CEC38318938D2493E2E51CEB90FD41D8F710713",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_GamepadTargeting/RaidPartyTargeting/RaidTargeting.xml",
+      "entryPoints": []
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_GlueMenuFrame/Mainline/GlueMenuFrame.lua",
+      "sha256": "55BC17568510BCFB1166E8C2C8CD3D8E0D56E659586FE73D226BA0DA6061A3A6",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_GlueMenuFrame/Mainline/GlueMenuFrame.lua",
+      "entryPoints": [
+        {
+          "line": 46,
+          "text": "function GlueMenuFrameMixin:SetupGamepadButtons()"
+        },
+        {
+          "line": 129,
+          "text": "InputUtil.RegisterGamepadSetup(self, GenerateClosure(self.SetupGamepad, self));"
+        },
+        {
+          "line": 133,
+          "text": "function GlueMenuFrameMixin:SetupGamepad()"
+        },
+        {
+          "line": 134,
+          "text": "local selectPromptedBinding = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_FACE_BOTTOM, nil, ACTION_LABEL_SELECT);"
+        },
+        {
+          "line": 136,
+          "text": "self.gamepadFooter = GamepadSharedUtility.CreatePromptedBindingFooter(self, \"GlueMenuFooter\");"
+        },
+        {
+          "line": 144,
+          "text": "function GlueMenuFrameMixin:UninitializeGamepad()"
+        }
+      ]
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_GlueXML/Mainline/AccountLogin.lua",
+      "sha256": "98E4E97168A4B798B56F8378BD661F4230916C7A03B831492DE88CE2A73A644C",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_GlueXML/Mainline/AccountLogin.lua",
+      "entryPoints": [
+        {
+          "line": 307,
+          "text": "function AccountLogin_SetUpGamepad(self)"
+        },
+        {
+          "line": 334,
+          "text": "function AccountLogin_InitializeGamepad(self)"
+        },
+        {
+          "line": 345,
+          "text": "InputUtil.RegisterGamepadSetup(self, GenerateClosure(AccountLogin_SetUpGamepad, self));"
+        },
+        {
+          "line": 480,
+          "text": "function WoWAccountSelect_SetUpGamepad(self)"
+        },
+        {
+          "line": 481,
+          "text": "self.frameFooter = GamepadSharedUtility.CreatePromptedBindingFooter(self, \"AccountSelectFooter\");"
+        },
+        {
+          "line": 505,
+          "text": "InputUtil.RegisterGamepadSetup(self, GenerateClosure(WoWAccountSelect_SetUpGamepad, self));"
+        }
+      ]
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_GlueXML/Mainline/CharacterSelect.lua",
+      "sha256": "16B91D257018EC873B5153822407B308F444F62550975DE769DA0A45D595511D",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_GlueXML/Mainline/CharacterSelect.lua",
+      "entryPoints": [
+        {
+          "line": 3026,
+          "text": "function CharacterSelectFrameMixin:SetUpGamepad()"
+        },
+        {
+          "line": 3050,
+          "text": "local selectElement = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_FACE_BOTTOM, GenerateClosure(self.SelectElement, self), ACTION_LABEL_SELECT);"
+        },
+        {
+          "line": 3054,
+          "text": "local enterWorldAction = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_FACE_BOTTOM, CharacterSelect_EnterWorld, ENTER_WORLD);"
+        },
+        {
+          "line": 3059,
+          "text": "local backAction = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_FACE_RIGHT, GenerateClosure(self.OnGamepadCloseButton, self), CHARACTER_SELECT_BACK);"
+        },
+        {
+          "line": 3061,
+          "text": "local createCharacterAction = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_FACE_LEFT, function() CharSelectCreateCharacterButton:Click() end, CREATE_CHARACTER);"
+        },
+        {
+          "line": 3065,
+          "text": "local charSelectMoreActions = GamepadSharedUtility.CreateMoreActionsPromptedBinding(GAMEPAD_FACE_TOP);"
+        },
+        {
+          "line": 3073,
+          "text": "local placeCharacterFromMove = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_FACE_BOTTOM, GenerateClosure(self.ExitMoveCharacterState, self, true), CONTEXT_ACTION_LABEL_PLACE);"
+        },
+        {
+          "line": 3077,
+          "text": "local confirmCharacterMove = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_FACE_LEFT, GenerateClosure(self.ExitMoveCharacterState, self, false), FRAME_ACTION_CONFIRM);"
+        },
+        {
+          "line": 3081,
+          "text": "local pickupCharacterAction = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_FACE_BOTTOM, GenerateClosure(self.EnterMoveCharacterState, self), CONTEXT_ACTION_LABEL_MOVE);"
+        },
+        {
+          "line": 3086,
+          "text": "local restoreCharacterAction = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_FACE_BOTTOM, GenerateClosure(self.RestoreSelectedCharacter, self), CONTEXT_ACTION_LABEL_RESTORE);"
+        },
+        {
+          "line": 3090,
+          "text": "local toggleUIAction = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_STICK_LEFT_PRESS, GenerateClosure(self.ToggleVisibilityStateBindings, self), ACTION_LABEL_TOGGLE_UI);"
+        },
+        {
+          "line": 3094,
+          "text": "self.frameFooter = GamepadSharedUtility.CreatePromptedBindingFooter(self, \"CharacterSelectFooter\");"
+        },
+        {
+          "line": 3122,
+          "text": "function CharacterSelectFrameMixin:InitializeGamepad()"
+        },
+        {
+          "line": 3164,
+          "text": "function CharacterSelectFrameMixin:UninitializeGamepad()"
+        },
+        {
+          "line": 3193,
+          "text": "InputUtil.RegisterGamepadSetup(self, GenerateClosure(self.SetUpGamepad, self));"
+        }
+      ]
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_GlueXML/Mainline/RealmList.lua",
+      "sha256": "BF82F322BBF6E4A514BED0CC9521230E84DFDC5637A9ADA8B8B575C714EB7CF3",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_GlueXML/Mainline/RealmList.lua",
+      "entryPoints": [
+        {
+          "line": 19,
+          "text": "InputUtil.RegisterGamepadSetup(RealmList, RealmList_SetupGamepad);"
+        },
+        {
+          "line": 742,
+          "text": "function RealmList_SetupGamepad()"
+        },
+        {
+          "line": 760,
+          "text": "local realmListSelectBinding = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_FACE_BOTTOM, RealmList_OnOk, ACTION_LABEL_SELECT);"
+        },
+        {
+          "line": 763,
+          "text": "RealmList.footer = GamepadSharedUtility.CreatePromptedBindingFooter(RealmListBackground, \"RealmList\");"
+        },
+        {
+          "line": 784,
+          "text": "function RealmList_InitializeGamepad()"
+        },
+        {
+          "line": 797,
+          "text": "function RealmList_UninitializeGamepad()"
+        }
+      ]
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_GlueXML/Mainline/CharacterSelect/CharacterSelectListElements.lua",
+      "sha256": "1F2C27DEF3C5D6AB6BBD631B1E720BA8BAA420C4A36E2D794CB373C9728B4C25",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_GlueXML/Mainline/CharacterSelect/CharacterSelectListElements.lua",
+      "entryPoints": [
+        {
+          "line": 574,
+          "text": "function CharacterSelectListCharacterMixin:InitializeGamepad()"
+        },
+        {
+          "line": 583,
+          "text": "function CharacterSelectListCharacterMixin:UninitializeGamepad()"
+        }
+      ]
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_GlueXML/Mainline/CharacterSelect/CharacterSelectUI.lua",
+      "sha256": "248FA17198461FC347BAE5E3EC171786C1423D768036FFDFEC52C0871BEEB739",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_GlueXML/Mainline/CharacterSelect/CharacterSelectUI.lua",
+      "entryPoints": [
+        {
+          "line": 872,
+          "text": "function CharacterDeletionDialogMixin:SetupGamepad()"
+        },
+        {
+          "line": 892,
+          "text": "function CharacterDeletionDialogMixin:InitializeGamepad()"
+        },
+        {
+          "line": 900,
+          "text": "function CharacterDeletionDialogMixin:UninitializeGamepad()"
+        },
+        {
+          "line": 910,
+          "text": "InputUtil.RegisterGamepadSetup(self, GenerateClosure(self.SetupGamepad, self));"
+        }
+      ]
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_InspectUI/Camelot/Blizzard_InspectUI.lua",
+      "sha256": "AB1A2B4932EDA1B6F953E31FF217673FF2B557BC7902B5FE797B60CAC7945761",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_InspectUI/Camelot/Blizzard_InspectUI.lua",
+      "entryPoints": [
+        {
+          "line": 337,
+          "text": "function InspectFrameMixin:SetupGamepad()"
+        },
+        {
+          "line": 399,
+          "text": "local inspectTalent = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_FACE_LEFT, GenerateClosure(self.OnGamepadInspectTalents, self), TALENTS);"
+        },
+        {
+          "line": 402,
+          "text": "local dressingRoom = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_FACE_TOP, GenerateClosure(self.OnGamepadOpenDressingRoom, self), DRESSUP_FRAME);"
+        },
+        {
+          "line": 405,
+          "text": "local tooltips = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_STICK_LEFT_PRESS,"
+        },
+        {
+          "line": 408,
+          "text": "self.frameFooter = GamepadSharedUtility.CreatePromptedBindingFooter(self, \"InspectFrameFooter\");"
+        },
+        {
+          "line": 430,
+          "text": "function InspectFrameMixin:InitializeGamepad()"
+        },
+        {
+          "line": 434,
+          "text": "function InspectFrameMixin:UninitializeGamepad()"
+        },
+        {
+          "line": 440,
+          "text": "InputUtil.RegisterGamepadSetup(self, GenerateClosure(self.SetupGamepad, self));"
+        }
+      ]
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_InspectUI/Mainline/InspectPaperDollFrame.lua",
+      "sha256": "675355F5E43BF2E661EEC6EF136C8FA85AFD1EB078C9A44B3762A9A5F1F9A158",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_InspectUI/Mainline/InspectPaperDollFrame.lua",
+      "entryPoints": [
+        {
+          "line": 136,
+          "text": "function InspectPaperDollFrameMixin:SetupGamepad()"
+        },
+        {
+          "line": 150,
+          "text": "local paperDollZoom = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_STICK_RIGHT_VERTICAL, nil, FRAME_ACTION_ZOOM);"
+        },
+        {
+          "line": 151,
+          "text": "local paperDollRotate = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_STICK_RIGHT_HORIZONTAL, nil, ACTION_LABEL_ROTATE);"
+        },
+        {
+          "line": 152,
+          "text": "local paperDollReset = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_STICK_RIGHT_PRESS, GenerateClosure(self.ResetCharacter, self), RESET);"
+        },
+        {
+          "line": 154,
+          "text": "self.frameFooter = GamepadSharedUtility.CreatePromptedBindingFooter(self, \"InspectPaperDollFrameFooter\");"
+        },
+        {
+          "line": 163,
+          "text": "function InspectPaperDollFrameMixin:InitializeGamepad()"
+        },
+        {
+          "line": 167,
+          "text": "function InspectPaperDollFrameMixin:UninitializeGamepad()"
+        },
+        {
+          "line": 174,
+          "text": "InputUtil.RegisterGamepadSetup(self, GenerateClosure(self.SetupGamepad, self));"
+        }
+      ]
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_LegacySystem/Blizzard_LegacySystem.lua",
+      "sha256": "1966A54DD8EA7211721FE5493AAFF7B21436336A93AEB3D52841FAEE0F8A6E9B",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_LegacySystem/Blizzard_LegacySystem.lua",
+      "entryPoints": [
+        {
+          "line": 83,
+          "text": "InputUtil.RegisterGamepadSetup(self, GenerateClosure(self.SetupGamepad, self));"
+        },
+        {
+          "line": 159,
+          "text": "function LegacySystemFrameMixin:SetupGamepadRewardTrackFooter(navigateElements, toggleTooltips)"
+        },
+        {
+          "line": 160,
+          "text": "local rewardTrackFooter = GamepadSharedUtility.CreatePromptedBindingFooter(self, \"LegacySystemFooter_RewardTrack\");"
+        },
+        {
+          "line": 170,
+          "text": "function LegacySystemFrameMixin:SetupGamepadChallengeFooter(navigateElements, toggleTooltips)"
+        },
+        {
+          "line": 183,
+          "text": "local focusSearchBox = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_MENU_LEFT, FocusSearchBox, nil);"
+        },
+        {
+          "line": 194,
+          "text": "local filterDropdown = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_MENU_RIGHT, OpenFilter, nil);"
+        },
+        {
+          "line": 216,
+          "text": "local linkInChat = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_FACE_LEFT, LinkInChat, SOCIAL_SHARE_TEXT);"
+        },
+        {
+          "line": 220,
+          "text": "local challengeFooter = GamepadSharedUtility.CreatePromptedBindingFooter(self, \"LegacySystemFooter_Challenge\");"
+        },
+        {
+          "line": 234,
+          "text": "function LegacySystemFrameMixin:SetupGamepadTreeFooter(navigateElements, toggleTooltips)"
+        },
+        {
+          "line": 246,
+          "text": "local addPoint = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_FACE_BOTTOM, AddPoint, GAMEPAD_TALENT_ADD_POINT);"
+        },
+        {
+          "line": 285,
+          "text": "local removePoint = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_FACE_TOP, \"LegacyTree_RemovePoint_PromptedBinding\");"
+        },
+        {
+          "line": 297,
+          "text": "local undoChanges = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_FACE_TOP, \"LegacyTree_UndoChanges_PromptedBinding\");"
+        },
+        {
+          "line": 324,
+          "text": "local resetChanges = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_FACE_TOP, \"LegacyTree_ResetChanges_PromptedBinding\");"
+        },
+        {
+          "line": 356,
+          "text": "local selectBinding = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_FACE_BOTTOM, Select, ACTION_LABEL_SELECT);"
+        },
+        {
+          "line": 372,
+          "text": "local focusSearchBox = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_MENU_LEFT, FocusSearchBox, nil);"
+        },
+        {
+          "line": 384,
+          "text": "local applyChanges = GamepadSharedUtility.CreateTapOrHoldPromptedBinding(GAMEPAD_FACE_LEFT, 0.5, nil, ApplyChanges, GAMEPAD_TALENT_APPLY);"
+        },
+        {
+          "line": 390,
+          "text": "local treeFooter = GamepadSharedUtility.CreatePromptedBindingFooter(self, \"LegacySystemFooter_Tree\");"
+        },
+        {
+          "line": 407,
+          "text": "function LegacySystemFrameMixin:SetupGamepad()"
+        },
+        {
+          "line": 408,
+          "text": "local toggleTooltips = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_STICK_RIGHT_PRESS, nil, PROMPT_TOGGLE_TOOLTIPS);"
+        },
+        {
+          "line": 410,
+          "text": "local navigateElements = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_DPAD, nil, FRAME_ACTION_NAVIGATE);"
+        },
+        {
+          "line": 429,
+          "text": "function LegacySystemFrameMixin:InitializeGamepad()"
+        }
+      ]
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_MacroUI/Blizzard_MacroUI.lua",
+      "sha256": "B1D922AABA7E9B888CBCC675AAC69039CB133E2BBADDADE9ED7210DDE6C15D59",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_MacroUI/Blizzard_MacroUI.lua",
+      "entryPoints": [
+        {
+          "line": 380,
+          "text": "function MacroFrameMixin:SetUpGamepad()"
+        },
+        {
+          "line": 381,
+          "text": "local bind = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_FACE_LEFT,"
+        },
+        {
+          "line": 386,
+          "text": "self.footer = GamepadSharedUtility.CreatePromptedBindingFooter(self, \"MacroUIFooter\");"
+        },
+        {
+          "line": 395,
+          "text": "InputUtil.RegisterGamepadSetup(self, GenerateClosure(MacroFrameMixin.SetUpGamepad, self));"
+        }
+      ]
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_MailFrame/MailFrame.lua",
+      "sha256": "99963637396BAC3E640F8E553A6886B671DDFC298CAD34B5D727834462167074",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_MailFrame/MailFrame.lua",
+      "entryPoints": [
+        {
+          "line": 65,
+          "text": "InputUtil.RegisterGamepadSetup(self, GenerateClosure(self.SetupGamepad, self));"
+        },
+        {
+          "line": 70,
+          "text": "function MailMixin:SetupGamepad()"
+        },
+        {
+          "line": 77,
+          "text": "function MailMixin:InitializeGamepad()"
+        },
+        {
+          "line": 81,
+          "text": "function MailMixin:UninitializeGamepad()"
+        },
+        {
+          "line": 267,
+          "text": "InputUtil.RegisterGamepadSetup(self, GenerateClosure(self.SetupGamepad, self));"
+        },
+        {
+          "line": 272,
+          "text": "function InboxMixin:SetupGamepad()"
+        },
+        {
+          "line": 275,
+          "text": "local promptedBindingOpenAllMail = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_FACE_LEFT, GenerateClosure(self.OpenAllMail.OnClick, self.OpenAllMail), OPEN_ALL_MAIL_BUTTON);"
+        },
+        {
+          "line": 277,
+          "text": "self.gamepadFooter = GamepadSharedUtility.CreatePromptedBindingFooter(self, \"InboxFooter\");"
+        },
+        {
+          "line": 285,
+          "text": "function InboxMixin:InitializeGamepad()"
+        },
+        {
+          "line": 293,
+          "text": "function InboxMixin:UninitializeGamepad()"
+        },
+        {
+          "line": 593,
+          "text": "InputUtil.RegisterGamepadSetup(self, GenerateClosure(self.SetupGamepad, self));"
+        },
+        {
+          "line": 598,
+          "text": "function OpenMailMixin:SetupGamepad()"
+        },
+        {
+          "line": 599,
+          "text": "local promptedBindingReply = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_FACE_LEFT, GenerateClosure(self.ReplyButton.Reply, self.ReplyButton), REPLY_MESSAGE);"
+        },
+        {
+          "line": 600,
+          "text": "local promptedBindingOptions = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_FACE_TOP, GenerateClosure(self.ShowOptions, self), CONTEXT_ACTION_LABEL_OPTIONS);"
+        },
+        {
+          "line": 602,
+          "text": "self.gamepadFooter = GamepadSharedUtility.CreatePromptedBindingFooter(self, \"OpenMailFooter\");"
+        },
+        {
+          "line": 610,
+          "text": "function OpenMailMixin:InitializeGamepad()"
+        },
+        {
+          "line": 618,
+          "text": "function OpenMailMixin:UninitializeGamepad()"
+        },
+        {
+          "line": 1189,
+          "text": "InputUtil.RegisterGamepadSetup(self, GenerateClosure(self.SetupGamepad, self));"
+        },
+        {
+          "line": 1194,
+          "text": "function SendMailMixin:SetupGamepad()"
+        },
+        {
+          "line": 1200,
+          "text": "local promptedBindingSend = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_FACE_LEFT, GenerateClosure(self.SendButton.OnClick, self.SendButton), SEND_LABEL);"
+        },
+        {
+          "line": 1202,
+          "text": "self.gamepadFooter = GamepadSharedUtility.CreatePromptedBindingFooter(self, \"SendMailFooter\");"
+        },
+        {
+          "line": 1210,
+          "text": "function SendMailMixin:InitializeGamepad()"
+        },
+        {
+          "line": 1216,
+          "text": "function SendMailMixin:UninitializeGamepad()"
+        }
+      ]
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_Menu/Menu.lua",
+      "sha256": "D4A4CB262D84EF57F89D565C48EBDEB3A47C33940F06D323E2304F0740C4B324",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_Menu/Menu.lua",
+      "entryPoints": [
+        {
+          "line": 1783,
+          "text": "InputUtil.RegisterGamepadSetup(self, GenerateClosure(self.SetupGamepad, self));"
+        },
+        {
+          "line": 1786,
+          "text": "function MenuProxyMixin:SetupGamepad()"
+        },
+        {
+          "line": 1787,
+          "text": "self.footer = GamepadSharedUtility.CreatePromptedBindingFooter(self, \"MenuFooter\");"
+        }
+      ]
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_Minimap/Mainline/Minimap.lua",
+      "sha256": "57C1821606F7C06487EDD00C5C078F3A9F9F013843A8002C445A71F036A43C4D",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_Minimap/Mainline/Minimap.lua",
+      "entryPoints": [
+        {
+          "line": 605,
+          "text": "function MiniMapTrackingButtonMixin:SetupGamepad()"
+        },
+        {
+          "line": 606,
+          "text": "local zoomMinimap = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_STICK_RIGHT_VERTICAL, nil, FRAME_ACTION_ZOOM);"
+        },
+        {
+          "line": 609,
+          "text": "self.footer = GamepadSharedUtility.CreatePromptedBindingFooter(GameTooltip, \"MinimapFooter\")"
+        }
+      ]
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_ObjectiveTracker/Blizzard_ObjectiveTracker.lua",
+      "sha256": "798AAC53146AE03E28E9B520BBD6A051C1AEF2F76B85EA9F6FBFD772C7CB1C74",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_ObjectiveTracker/Blizzard_ObjectiveTracker.lua",
+      "entryPoints": [
+        {
+          "line": 288,
+          "text": "function ObjectiveTrackerFrameMixin:SetUpGamepad()"
+        },
+        {
+          "line": 289,
+          "text": "local focusAction = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_FACE_BOTTOM, GenerateClosure(self.FocusQuestFromTracker, self), CONTEXT_ACTION_LABEL_FOCUS);"
+        },
+        {
+          "line": 292,
+          "text": "local optionsAction = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_FACE_TOP, GenerateClosure(self.OpenQuestOptionsFromTracker, self), CONTEXT_ACTION_LABEL_OPTIONS);"
+        },
+        {
+          "line": 296,
+          "text": "local detailsAction = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_FACE_LEFT, GenerateClosure(self.OpenQuestDetailsFromTracker, self), OBJECTIVES_SHOW_QUEST_MAP);"
+        },
+        {
+          "line": 299,
+          "text": "local detailsHeaderAction = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_FACE_BOTTOM, GenerateClosure(self.OpenQuestDetailsFromTracker, self), CONTEXT_ACTION_LABEL_DETAILS);"
+        },
+        {
+          "line": 302,
+          "text": "local untrackAction = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_FACE_LEFT, GenerateClosure(self.UntrackQuestFromTracker, self), OBJECTIVES_STOP_TRACKING);"
+        },
+        {
+          "line": 305,
+          "text": "local minimizeAction = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_FACE_BOTTOM, GenerateClosure(self.MinimizeTrackerModule, self), ACTION_LABEL_SELECT);"
+        },
+        {
+          "line": 308,
+          "text": "local bindQuestItemAction = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_FACE_LEFT, GenerateClosure(self.BindQuestItemFromTracker, self), CONTEXT_ACTION_LABEL_BIND_TO_GAMEPAD_ACTION_BAR);"
+        },
+        {
+          "line": 317,
+          "text": "self.gamepadFooter = GamepadSharedUtility.CreatePromptedBindingFooter(self, \"ObjectiveTrackerFooter\");"
+        },
+        {
+          "line": 335,
+          "text": "function ObjectiveTrackerFrameMixin:InitializeGamepad()"
+        },
+        {
+          "line": 339,
+          "text": "function ObjectiveTrackerFrameMixin:UninitializeGamepad()"
+        },
+        {
+          "line": 345,
+          "text": "InputUtil.RegisterGamepadSetup(self, GenerateClosure(self.SetUpGamepad, self));"
+        }
+      ]
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_PlayerSpells/Blizzard_PlayerSpellsFrame.lua",
+      "sha256": "8EB8D7C80385FCB00CBAE6236D3A3CD633DF22ED6EAF5686E44C57AE37F0A928",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_PlayerSpells/Blizzard_PlayerSpellsFrame.lua",
+      "entryPoints": [
+        {
+          "line": 812,
+          "text": "local bindSpell = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_FACE_LEFT, GenerateClosure(self.BindToGamepadActionBar, self), CONTEXT_ACTION_LABEL_BIND_TO_GAMEPAD_ACTION_BAR);"
+        },
+        {
+          "line": 825,
+          "text": "local castSpell = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_FACE_BOTTOM, ClickSelectedSpellBookButton);"
+        },
+        {
+          "line": 836,
+          "text": "local backAction = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_FACE_RIGHT, Back, FRAME_ACTION_BACK);"
+        },
+        {
+          "line": 838,
+          "text": "local autoCastOptions = GamepadSharedUtility.CreateMoreActionsPromptedBinding(GAMEPAD_FACE_BOTTOM);"
+        },
+        {
+          "line": 847,
+          "text": "local openSettings = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_MENU_RIGHT, GenerateFlatClosure(self.OpenSpellBookSettings, self), nil);"
+        },
+        {
+          "line": 850,
+          "text": "local enterSearchBox = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_MENU_LEFT, function() self.SpellBookFrame.SearchBox:SetFocus(); end, nil);"
+        },
+        {
+          "line": 853,
+          "text": "local editActionBar = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_FACE_TOP, GenerateClosure(GamepadActionBarEditFrame.EnterEditMode, GamepadActionBarEditFrame), FRAME_ACTION_EDIT_ACTION_BAR);"
+        },
+        {
+          "line": 855,
+          "text": "local previousCategory = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_SHOULDER_LEFT, GenerateFlatClosure(self.SelectNextSpellBookCategory, self, false), nil);"
+        },
+        {
+          "line": 858,
+          "text": "local nextCategory = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_SHOULDER_RIGHT, GenerateFlatClosure(self.SelectNextSpellBookCategory, self, true), nil);"
+        },
+        {
+          "line": 861,
+          "text": "local tooltips = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_STICK_RIGHT_PRESS, nil, PROMPT_TOGGLE_TOOLTIPS);"
+        },
+        {
+          "line": 882,
+          "text": "local navigateElements = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_DPAD, nil, FRAME_ACTION_NAVIGATE);"
+        },
+        {
+          "line": 884,
+          "text": "self.spellsFrameFooter = GamepadSharedUtility.CreatePromptedBindingFooter(self, \"SpellsFrameFooter\");"
+        },
+        {
+          "line": 983,
+          "text": "local primarySpecTab = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_SHOULDER_LEFT, function()"
+        },
+        {
+          "line": 993,
+          "text": "local secondarySpecTab = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_SHOULDER_RIGHT, function()"
+        },
+        {
+          "line": 1005,
+          "text": "local addPoint = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_FACE_BOTTOM, AddPoint, GAMEPAD_TALENT_ADD_POINT);"
+        },
+        {
+          "line": 1010,
+          "text": "local select = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_FACE_BOTTOM, Select, ACTION_LABEL_SELECT);"
+        },
+        {
+          "line": 1015,
+          "text": "local removePoint = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_FACE_TOP, \"ClassTalents_RemovePoint_PromptedBinding\");"
+        },
+        {
+          "line": 1027,
+          "text": "local undoChanges = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_FACE_TOP, \"ClassTalents_UndoChanges_PromptedBinding\");"
+        },
+        {
+          "line": 1045,
+          "text": "local applyChanges = GamepadSharedUtility.CreateTapOrHoldPromptedBinding(GAMEPAD_FACE_LEFT, 0.5, nil, ApplyChanges, GAMEPAD_TALENT_APPLY);"
+        },
+        {
+          "line": 1060,
+          "text": "local tooltips = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_STICK_RIGHT_PRESS, nil, PROMPT_TOGGLE_TOOLTIPS);"
+        },
+        {
+          "line": 1063,
+          "text": "local navigateElements = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_DPAD, nil, FRAME_ACTION_NAVIGATE);"
+        },
+        {
+          "line": 1066,
+          "text": "local openSettings = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_MENU_RIGHT, GenerateFlatClosure(self.OpenTalentSettings, self), nil);"
+        },
+        {
+          "line": 1070,
+          "text": "local enterSearchBox = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_MENU_LEFT, function() talentFrame.SearchBox:SetFocus(); end, nil);"
+        },
+        {
+          "line": 1073,
+          "text": "self.classTalentsFrameFooter = GamepadSharedUtility.CreatePromptedBindingFooter(self, \"ClassTalentsFrameFooter\");"
+        },
+        {
+          "line": 1114,
+          "text": "local clear = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_FACE_LEFT, ClearText, NARRATION_OBJECT_CLEAR_BUTTON);"
+        },
+        {
+          "line": 1116,
+          "text": "local back = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_FACE_RIGHT, Back, BACK);"
+        },
+        {
+          "line": 1117,
+          "text": "local unfocusSearch = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_MENU_LEFT, Back, nil);"
+        },
+        {
+          "line": 1121,
+          "text": "local searchBoxFooter = GamepadSharedUtility.CreatePromptedBindingFooter(self, footerName);"
+        },
+        {
+          "line": 1169,
+          "text": "function PlayerSpellsFrameMixin:SetUpGamepad()"
+        },
+        {
+          "line": 1207,
+          "text": "function PlayerSpellsFrameMixin:InitializeGamepad()"
+        },
+        {
+          "line": 1226,
+          "text": "function PlayerSpellsFrameMixin:UninitializeGamepad()"
+        },
+        {
+          "line": 1246,
+          "text": "InputUtil.RegisterGamepadSetup(self, GenerateClosure(self.SetUpGamepad, self));"
+        }
+      ]
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_Professions/Blizzard_ProfessionsCraftingOutputLog.lua",
+      "sha256": "C5A3E90B9349789311D5BB36F758D5407990B5483BAADCFD613F8BED1DC172E5",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_Professions/Blizzard_ProfessionsCraftingOutputLog.lua",
+      "entryPoints": [
+        {
+          "line": 427,
+          "text": "function ProfessionsCraftingOutputLogMixin:SetupGamepad()"
+        },
+        {
+          "line": 472,
+          "text": "local moreOptions = GamepadSharedUtility.CreateMoreActionsPromptedBinding(GAMEPAD_FACE_TOP);"
+        },
+        {
+          "line": 476,
+          "text": "self.footer = GamepadSharedUtility.CreatePromptedBindingFooter(self, \"CraftingOutputFooter\");"
+        },
+        {
+          "line": 504,
+          "text": "InputUtil.RegisterGamepadSetup(self, GenerateClosure(self.SetupGamepad, self));"
+        }
+      ]
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_Professions/Blizzard_ProfessionsFrame.lua",
+      "sha256": "3DC68B79BF6C31B6E5FD6276EBEF3129EF492240BFFAF18677C12D06F77CCC93",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_Professions/Blizzard_ProfessionsFrame.lua",
+      "entryPoints": [
+        {
+          "line": 752,
+          "text": "function ProfessionsMixin:SetUpGamepadBookPageFooter(toggleTooltips)"
+        },
+        {
+          "line": 766,
+          "text": "local unlearnProfession = GamepadSharedUtility.CreateTapOrHoldPromptedBinding(GAMEPAD_FACE_LEFT, 0.5, nil, UnlearnProfession, FRAME_ACTION_HOLD_TO_UNLEARN);"
+        },
+        {
+          "line": 804,
+          "text": "local moreOptions = GamepadSharedUtility.CreateMoreActionsPromptedBinding(GAMEPAD_FACE_TOP);"
+        },
+        {
+          "line": 809,
+          "text": "self.bookPageFooter = GamepadSharedUtility.CreatePromptedBindingFooter(self, \"ProfessionsBookPageFooter\");"
+        },
+        {
+          "line": 861,
+          "text": "local recipeMoreOptions = GamepadSharedUtility.CreateMoreActionsPromptedBinding(GAMEPAD_FACE_TOP);"
+        },
+        {
+          "line": 956,
+          "text": "local reagentMoreOptions = GamepadSharedUtility.CreateMoreActionsPromptedBinding(GAMEPAD_FACE_TOP);"
+        },
+        {
+          "line": 965,
+          "text": "function ProfessionsMixin:SetUpGamepadCraftingPageFooter(toggleTooltips)"
+        },
+        {
+          "line": 1018,
+          "text": "local filterDropdown = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_MENU_RIGHT, OpenFilter, nil);"
+        },
+        {
+          "line": 1022,
+          "text": "local focusSearchBox = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_MENU_LEFT, FocusSearchBox, nil);"
+        },
+        {
+          "line": 1028,
+          "text": "local create = GamepadSharedUtility.CreateTapOrHoldPromptedBinding(GAMEPAD_FACE_LEFT, 0.5, Create, CreateAll, CONTEXT_ACTION_LABEL_CREATE_ALL);"
+        },
+        {
+          "line": 1043,
+          "text": "self.craftingPageFooter = GamepadSharedUtility.CreatePromptedBindingFooter(self, \"ProfessionsCraftingPageFooter\");"
+        },
+        {
+          "line": 1057,
+          "text": "function ProfessionsMixin:SetUpGamepad()"
+        },
+        {
+          "line": 1058,
+          "text": "local toggleTooltips = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_STICK_LEFT_PRESS, nil, PROMPT_TOGGLE_TOOLTIPS);"
+        },
+        {
+          "line": 1084,
+          "text": "function ProfessionsMixin:InitializeGamepad()"
+        },
+        {
+          "line": 1122,
+          "text": "InputUtil.RegisterGamepadSetup(self, GenerateClosure(self.SetUpGamepad, self));"
+        }
+      ]
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_PTRFeedback/Blizzard_PTRFeedback_Gamepad.lua",
+      "sha256": "FAA9C493E97E4DCEDA9EEFAD434C723613E5064D5A00FF0AE89E66D04CC0EB64",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_PTRFeedback/Blizzard_PTRFeedback_Gamepad.lua",
+      "entryPoints": [
+        {
+          "line": 3,
+          "text": "InputUtil.RegisterGamepadSetup(self, GenerateClosure(self.SetupGamepad, self));"
+        },
+        {
+          "line": 8,
+          "text": "function PTR_IssueReporter:SetupGamepad()"
+        },
+        {
+          "line": 14,
+          "text": "local promptedBinding = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_FACE_TOP, TriggerIssueReport, \"Report Issue\");"
+        },
+        {
+          "line": 16,
+          "text": "self.buttonFooter = GamepadSharedUtility.CreatePromptedBindingFooter(self, \"PTRIssueReporterFooter\");"
+        },
+        {
+          "line": 34,
+          "text": "function PTR_IssueReporter:InitializeGamepad()"
+        },
+        {
+          "line": 49,
+          "text": "function PTR_IssueReporter:UninitializeGamepad()"
+        },
+        {
+          "line": 96,
+          "text": "InputUtil.RegisterGamepadSetup(surveyFrame, function()"
+        },
+        {
+          "line": 97,
+          "text": "surveyFrame.gamepadFooter = GamepadSharedUtility.CreatePromptedBindingFooter(surveyFrame, \"PTRIssueReporterSurvey\");"
+        },
+        {
+          "line": 165,
+          "text": "InputUtil.RegisterGamepadSetup(surveyFrame, function()"
+        },
+        {
+          "line": 166,
+          "text": "surveyFrame.gamepadFooter = GamepadSharedUtility.CreatePromptedBindingFooter(surveyFrame, \"PTRIssueReporterAttachedSurvey\");"
+        }
+      ]
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_ScriptErrorsFrame/Blizzard_ScriptErrorsFrame.lua",
+      "sha256": "83B85B798560F2CBE76CB5C206C3CE994808DD493C5D341ACBD014002F5688F8",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_ScriptErrorsFrame/Blizzard_ScriptErrorsFrame.lua",
+      "entryPoints": [
+        {
+          "line": 273,
+          "text": "InputUtil.RegisterGamepadSetup(self, GenerateClosure(self.SetupGamepad, self));"
+        },
+        {
+          "line": 276,
+          "text": "function ScriptErrorsFrameMixin:SetupGamepad()"
+        },
+        {
+          "line": 278,
+          "text": "local reloadUiAction = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_FACE_TOP, ReloadUI, FRAME_ACTION_RELOAD_UI);"
+        },
+        {
+          "line": 280,
+          "text": "local cycleErrorsPrompt = GamepadSharedUtility.CreateDoublePromptedBinding(GAMEPAD_DPAD_LEFT,"
+        },
+        {
+          "line": 293,
+          "text": "self.inputLegend = GamepadSharedUtility.CreatePromptedBindingFooter(self, \"ScriptErrorsFrame\");"
+        }
+      ]
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_SettingsDefinitions_Shared/Graphics.lua",
+      "sha256": "8476C5C4C1FC5A89B1D7E41CEB0284091115D6DF2F7152FB30C503C614A41DF6",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_SettingsDefinitions_Shared/Graphics.lua",
+      "entryPoints": [
+        {
+          "line": 272,
+          "text": "local controlDropdownGroup = GamepadSharedUtility.CreatePromptedBindingFooter(UIParent or GlueParent, \"GraphicsSettingsDropDownControl\");"
+        },
+        {
+          "line": 337,
+          "text": "local sliderBindingGroup = GamepadSharedUtility.CreatePromptedBindingFooter(UIParent or GlueParent, \"GraphicsSettingsSliderControl\");"
+        }
+      ]
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_Settings_Shared/Blizzard_SettingControls.lua",
+      "sha256": "4BDB59EF80260F66E31C91A0098D719AE3C28C23C3A8B58FF185A533A93204C0",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_Settings_Shared/Blizzard_SettingControls.lua",
+      "entryPoints": [
+        {
+          "line": 684,
+          "text": "local bindings = GamepadSharedUtility.CreatePromptedBindingFooter(UIParent and UIParent or GlueParent, \"SettingsSliderControl\");"
+        },
+        {
+          "line": 793,
+          "text": "local bindings = GamepadSharedUtility.CreatePromptedBindingFooter(UIParent and UIParent or GlueParent, \"SettingsDropdownControl\");"
+        },
+        {
+          "line": 1319,
+          "text": "local bindings = GamepadSharedUtility.CreatePromptedBindingFooter(UIParent and UIParent or GlueParent, \"SettingsCheckboxSliderControl\");"
+        },
+        {
+          "line": 1526,
+          "text": "local bindings = GamepadSharedUtility.CreatePromptedBindingFooter(UIParent and UIParent or GlueParent, \"SettingsCheckboxDropdownControl\");"
+        },
+        {
+          "line": 1699,
+          "text": "local bindings = GamepadSharedUtility.CreatePromptedBindingFooter(UIParent and UIParent or GlueParent, \"SettingsCheckboxWithColorSwatchControl\");"
+        }
+      ]
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_Settings_Shared/Blizzard_SettingsPanel.lua",
+      "sha256": "7364411457D721CD0A7DEEB10DCBE798570C2F4E22489A77AA18020DC5980B5E",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_Settings_Shared/Blizzard_SettingsPanel.lua",
+      "entryPoints": [
+        {
+          "line": 1162,
+          "text": "function SettingsPanelMixin:SetupGamepad()"
+        },
+        {
+          "line": 1203,
+          "text": "function SettingsPanelMixin:InitializeGamepad()"
+        },
+        {
+          "line": 1211,
+          "text": "InputUtil.RegisterGamepadSetup(self, GenerateClosure(self.SetupGamepad, self));"
+        }
+      ]
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_SharedXML/InputUtil.lua",
+      "sha256": "293593AA1C50F1706A19CB0B2ED6B8C5F3E07558225489D6A236E2E22CBA50CE",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_SharedXML/InputUtil.lua",
+      "entryPoints": [
+        {
+          "line": 164,
+          "text": "function InputUtil.RegisterGamepadSetup(subscriber, callback)"
+        }
+      ]
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_SharedXML/Mainline/SharedUIPanelTemplates.lua",
+      "sha256": "F0A8977020887B411435C25EB5AE14EC6ED57435D2C98F37A339527D66888B07",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_SharedXML/Mainline/SharedUIPanelTemplates.lua",
+      "entryPoints": [
+        {
+          "line": 2074,
+          "text": "function IconSelectorPopupFrameTemplateMixin:SetupGamepad()"
+        },
+        {
+          "line": 2077,
+          "text": "local selectIcon =  GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_FACE_BOTTOM, GenerateClosure(SmartNavigation.Click, SmartNavigation), ACTION_LABEL_SELECT);"
+        },
+        {
+          "line": 2078,
+          "text": "local confirmSelection = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_FACE_TOP, GenerateClosure(self.ConfirmIcon, self), FRAME_ACTION_CONFIRM);"
+        },
+        {
+          "line": 2079,
+          "text": "local exitSelection = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_FACE_RIGHT, GenerateClosure(self.ExitIconSelector, self), FRAME_ACTION_EXIT);"
+        },
+        {
+          "line": 2081,
+          "text": "self.iconSelectorFooter = GamepadSharedUtility.CreatePromptedBindingFooter(self, \"IconSelectorFooter\");"
+        },
+        {
+          "line": 2088,
+          "text": "function IconSelectorPopupFrameTemplateMixin:InitializeGamepad()"
+        },
+        {
+          "line": 2095,
+          "text": "function IconSelectorPopupFrameTemplateMixin:UninitializeGamepad()"
+        },
+        {
+          "line": 2104,
+          "text": "InputUtil.RegisterGamepadSetup(self, GenerateClosure(self.SetupGamepad, self));"
+        }
+      ]
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_StableUI/Camelot/Blizzard_StableUI.lua",
+      "sha256": "E0A5D0A0198A4D0A0DF6F3CC949C81C783C0F21240ACC6B3E277C87555FD6BC3",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_StableUI/Camelot/Blizzard_StableUI.lua",
+      "entryPoints": [
+        {
+          "line": 69,
+          "text": "InputUtil.RegisterGamepadSetup(self, GenerateClosure(self.SetupGamepad, self));"
+        },
+        {
+          "line": 74,
+          "text": "function StableFrameMixin:SetupGamepad()"
+        },
+        {
+          "line": 108,
+          "text": "local placePetBinding = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_FACE_BOTTOM, PlacePet, ACTION_LABEL_SELECT);"
+        },
+        {
+          "line": 113,
+          "text": "local pickUpPetBinding = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_FACE_BOTTOM, PickUpPet, ACTION_LABEL_SELECT);"
+        },
+        {
+          "line": 118,
+          "text": "local purchaseSlotBinding = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_FACE_BOTTOM, PurchaseSlot, PURCHASE);"
+        },
+        {
+          "line": 123,
+          "text": "local paperDollZoom = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_STICK_RIGHT_VERTICAL, nil, FRAME_ACTION_ZOOM);"
+        },
+        {
+          "line": 124,
+          "text": "local paperDollRotate = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_STICK_RIGHT_HORIZONTAL, nil, ACTION_LABEL_ROTATE);"
+        },
+        {
+          "line": 125,
+          "text": "local paperDollReset = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_STICK_RIGHT_PRESS, GenerateClosure(self.modelScene.Reset, self.modelScene), RESET);"
+        },
+        {
+          "line": 126,
+          "text": "self.footer = GamepadSharedUtility.CreatePromptedBindingFooter(self, \"StableFrameFooter\");"
+        },
+        {
+          "line": 149,
+          "text": "function StableFrameMixin:InitializeGamepad()"
+        },
+        {
+          "line": 167,
+          "text": "function StableFrameMixin:UninitializeGamepad()"
+        }
+      ]
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_TrainerUI/Mainline/Blizzard_TrainerUI.lua",
+      "sha256": "F528D57AE23F3EA688E83EF9A4D7D75FB3FBAAFC7158006B3FA25D968AE2E05E",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_TrainerUI/Mainline/Blizzard_TrainerUI.lua",
+      "entryPoints": [
+        {
+          "line": 75,
+          "text": "function ClassTrainerFrameMixin:SetUpGamepad()"
+        },
+        {
+          "line": 104,
+          "text": "local selectBinding = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_FACE_BOTTOM, SelectAction, TRAIN);"
+        },
+        {
+          "line": 110,
+          "text": "local filterBinding = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_MENU_RIGHT, OpenFilter, FRAME_ACTION_FILTER);"
+        },
+        {
+          "line": 113,
+          "text": "local openSpellBook = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_FACE_TOP, OpenSpellBook, RADIAL_LABEL_SPELLBOOK);"
+        },
+        {
+          "line": 115,
+          "text": "self.footer = GamepadSharedUtility.CreatePromptedBindingFooter(self, \"TrainerUIFooter\");"
+        },
+        {
+          "line": 126,
+          "text": "function ClassTrainerFrameMixin:InitializeGamepad()"
+        },
+        {
+          "line": 131,
+          "text": "function ClassTrainerFrameMixin:UninitializeGamepad()"
+        },
+        {
+          "line": 149,
+          "text": "InputUtil.RegisterGamepadSetup(self, GenerateClosure(self.SetUpGamepad, self));"
+        }
+      ]
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_UIPanels_Game/Camelot/CharacterFrame.lua",
+      "sha256": "0EF8D8CBE8160DB311D436BD648391ABCBE788E8CD68F11ACB626A3DA355B5BD",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_UIPanels_Game/Camelot/CharacterFrame.lua",
+      "entryPoints": [
+        {
+          "line": 539,
+          "text": "function CharacterFrameMixin:SetupGamepad()"
+        },
+        {
+          "line": 638,
+          "text": "self.leftFooter = GamepadSharedUtility.CreatePromptedBindingFooter(self, \"CharacterLeftFooter\");"
+        },
+        {
+          "line": 646,
+          "text": "self.rightFooter = GamepadSharedUtility.CreatePromptedBindingFooter(self, \"CharacterRightFooter\");"
+        },
+        {
+          "line": 694,
+          "text": "function CharacterFrameMixin:InitializeGamepad()"
+        },
+        {
+          "line": 700,
+          "text": "function CharacterFrameMixin:UninitializeGamepad()"
+        },
+        {
+          "line": 706,
+          "text": "InputUtil.RegisterGamepadSetup(self, GenerateClosure(self.SetupGamepad, self));"
+        },
+        {
+          "line": 1107,
+          "text": "function CharacterStatsPaneScrollBoxMixin:SetUpGamepadNavigation(button)"
+        },
+        {
+          "line": 1314,
+          "text": "function CharacterStatsPanePetScrollBoxMixin:SetUpGamepadNavigation(button)"
+        }
+      ]
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_UIPanels_Game/Camelot/PaperDollFrame.lua",
+      "sha256": "20980A035C36E7690B6E500286D0CD201FCD6037A901E7F0276A9CB683F0535A",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_UIPanels_Game/Camelot/PaperDollFrame.lua",
+      "entryPoints": [
+        {
+          "line": 1678,
+          "text": "function PaperDollFrameMixin:SetupGamepad()"
+        },
+        {
+          "line": 1698,
+          "text": "local panCharacterViewer = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_STICK_LEFT, nil, FRAME_ACTION_PAN);"
+        },
+        {
+          "line": 1699,
+          "text": "local zoomTurnCharacterViewer = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_STICK_RIGHT, nil, ACTION_LABEL_ZOOM_SLASH_ROTATE);"
+        },
+        {
+          "line": 1700,
+          "text": "local resetCharacterViewer = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_FACE_TOP, nil, ACTION_LABEL_RESET_VIEW);"
+        },
+        {
+          "line": 1702,
+          "text": "self.CharacterViewerFooter = GamepadSharedUtility.CreatePromptedBindingFooter(CharacterFrame, \"CharacterViewerFooter\");"
+        },
+        {
+          "line": 1711,
+          "text": "function PaperDollFrameMixin:InitializeGamepad()"
+        },
+        {
+          "line": 1715,
+          "text": "function PaperDollFrameMixin:UninitializeGamepad()"
+        },
+        {
+          "line": 1721,
+          "text": "InputUtil.RegisterGamepadSetup(self, GenerateClosure(self.SetupGamepad, self));"
+        },
+        {
+          "line": 1846,
+          "text": "local repairSingleItem = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_FACE_BOTTOM, GenerateClosure(self.RepairSingleItemContextAction, self), CONTEXT_ACTION_LABEL_REPAIR);"
+        },
+        {
+          "line": 1851,
+          "text": "local applyEnchant = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_FACE_BOTTOM, ClickButton, CONTEXT_ACTION_LABEL_APPLY);"
+        },
+        {
+          "line": 1856,
+          "text": "local targetItem = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_FACE_BOTTOM, ClickButton, ACTION_LABEL_SELECT);"
+        },
+        {
+          "line": 1861,
+          "text": "local openEquipmentFlyout = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_FACE_BOTTOM, GenerateClosure(self.OpenEquipmentFlyoutForFocusedButton, self), ACTION_LABEL_SELECT);"
+        },
+        {
+          "line": 1865,
+          "text": "local openCharacterViewer = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_FACE_LEFT, GenerateClosure(self.FocusCharacterView, self), CONTEXT_ACTION_LABEL_CHARACTER_VIEWER);"
+        },
+        {
+          "line": 1870,
+          "text": "local moreEquipmentActions = GamepadSharedUtility.CreateMoreActionsPromptedBinding(GAMEPAD_FACE_TOP);"
+        },
+        {
+          "line": 2810,
+          "text": "function PaperDollEquipmentManagerPaneMixin:InitializeGamepad()"
+        },
+        {
+          "line": 2827,
+          "text": "function PaperDollEquipmentManagerPaneMixin:UninitializeGamepad()"
+        },
+        {
+          "line": 2942,
+          "text": "--local createGearSet = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_FACE_BOTTOM, nil, ACTION_LABEL_SELECT);"
+        },
+        {
+          "line": 2946,
+          "text": "local openEquipmentSetMenu = GamepadSharedUtility.CreateMoreActionsPromptedBinding(GAMEPAD_FACE_BOTTOM);"
+        }
+      ]
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_UIPanels_Game/Mainline/ContainerFrame.lua",
+      "sha256": "32C58D4024652370CFA53548C8CC11A929E9182BA7E6CF613F01EEC43A753057",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_UIPanels_Game/Mainline/ContainerFrame.lua",
+      "entryPoints": [
+        {
+          "line": 2995,
+          "text": "function ContainerFrameCombinedBagsMixin:InitializeGamepad()"
+        },
+        {
+          "line": 3012,
+          "text": "function ContainerFrameCombinedBagsMixin:UninitializeGamepad()"
+        },
+        {
+          "line": 3230,
+          "text": "function ContainerFrameCombinedBagsMixin:SetupGamepad()"
+        },
+        {
+          "line": 3231,
+          "text": "local manageBag = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_FACE_TOP,"
+        },
+        {
+          "line": 3238,
+          "text": "local pickupAction = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_FACE_BOTTOM,"
+        },
+        {
+          "line": 3245,
+          "text": "local repairAction = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_FACE_BOTTOM,"
+        },
+        {
+          "line": 3252,
+          "text": "local sellAction = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_FACE_LEFT,"
+        },
+        {
+          "line": 3259,
+          "text": "local readAction = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_FACE_LEFT,"
+        },
+        {
+          "line": 3267,
+          "text": "local openAction = GamepadSharedUtility.CreateTapOrHoldPromptedBinding(GAMEPAD_FACE_LEFT, holdTimeUntilAutoLootSettingUsed,"
+        },
+        {
+          "line": 3275,
+          "text": "local useAction = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_FACE_LEFT,"
+        },
+        {
+          "line": 3282,
+          "text": "local equipAction = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_FACE_LEFT,"
+        },
+        {
+          "line": 3298,
+          "text": "local itemMoreActions = GamepadSharedUtility.CreateMoreActionsPromptedBinding(GAMEPAD_FACE_TOP);"
+        },
+        {
+          "line": 3313,
+          "text": "local backAction = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_FACE_RIGHT, GenerateFlatClosure(Gamepad_DoBackAction, self), FRAME_ACTION_CLOSE);"
+        },
+        {
+          "line": 3316,
+          "text": "self.gamepadFooter = GamepadSharedUtility.CreatePromptedBindingFooter(self, \"ContainerFrameCombinedBagsFooter\");"
+        },
+        {
+          "line": 3387,
+          "text": "InputUtil.RegisterGamepadSetup(self, GenerateFlatClosure(self.SetupGamepad, self));"
+        }
+      ]
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_UIPanels_Game/Mainline/GossipFrame.lua",
+      "sha256": "277CF47491C0809E69BFA556341E0BD82A44456840ECFB4730DB710A83788D1F",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_UIPanels_Game/Mainline/GossipFrame.lua",
+      "entryPoints": [
+        {
+          "line": 115,
+          "text": "function GossipFrameMixin:SetUpGamepad()"
+        },
+        {
+          "line": 116,
+          "text": "self.gamepadFooter = GamepadSharedUtility.CreatePromptedBindingFooter(self, \"GossipFrameFooter\");"
+        },
+        {
+          "line": 134,
+          "text": "function GossipFrameMixin:InitializeGamepad()"
+        },
+        {
+          "line": 139,
+          "text": "function GossipFrameMixin:UninitializeGamepad()"
+        },
+        {
+          "line": 146,
+          "text": "InputUtil.RegisterGamepadSetup(self, GenerateClosure(self.SetUpGamepad, self));"
+        }
+      ]
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_UIPanels_Game/Mainline/GroupLootFrame.lua",
+      "sha256": "600E4DF9CFB731CB12041911E6FF832C111729A0C0E5B55F78507D5DEAEDA1CD",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_UIPanels_Game/Mainline/GroupLootFrame.lua",
+      "entryPoints": [
+        {
+          "line": 834,
+          "text": "local function MasterLooterFrame_InitializeGamepad(self)"
+        },
+        {
+          "line": 839,
+          "text": "local function MasterLooterFrame_UninitializeGamepad(self)"
+        },
+        {
+          "line": 1258,
+          "text": "function GamepadGroupLootFrame_SetupGamepad(self)"
+        },
+        {
+          "line": 1316,
+          "text": "local passAction = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_FACE_RIGHT, SimulatePassClick, PASS);"
+        },
+        {
+          "line": 1317,
+          "text": "local needAction = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_FACE_BOTTOM, SimulateNeedClick, NEED);"
+        },
+        {
+          "line": 1320,
+          "text": "local greedAction = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_FACE_LEFT, SimulateGreedOrTransmogClick, GREED);"
+        },
+        {
+          "line": 1324,
+          "text": "local transmogAction = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_FACE_LEFT, SimulateGreedOrTransmogClick, TRANSMOGRIFICATION);"
+        },
+        {
+          "line": 1329,
+          "text": "local previousRollAction = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_DPAD_TOP, SelectPreviousRoll, nil);"
+        },
+        {
+          "line": 1333,
+          "text": "local nextRollAction = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_DPAD_BOTTOM, SelectNextRoll, nil);"
+        },
+        {
+          "line": 1338,
+          "text": "self.gamepadFooter = GamepadSharedUtility.CreatePromptedBindingFooter(footerParent, \"GroupLootFrameFooter\");"
+        },
+        {
+          "line": 1415,
+          "text": "function GamepadGroupLootRollFrameMixin:InitializeGamepad()"
+        },
+        {
+          "line": 1428,
+          "text": "function GamepadGroupLootRollFrameMixin:UninitializeGamepad()"
+        }
+      ]
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_UIPanels_Game/Mainline/ItemTextFrame.lua",
+      "sha256": "6DE4778A1BF0C5D0FAAB2C97547B6664A4836107A1A6C6F9ADD13B678D0529B9",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_UIPanels_Game/Mainline/ItemTextFrame.lua",
+      "entryPoints": [
+        {
+          "line": 240,
+          "text": "InputUtil.RegisterGamepadSetup(self, GenerateFlatClosure(self.SetupGamepad, self));"
+        },
+        {
+          "line": 245,
+          "text": "function ItemTextFrameMixin:SetupGamepad()"
+        },
+        {
+          "line": 247,
+          "text": "local itemTextFramePrevious = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_DPAD_LEFT, ItemTextFrame_PrevPageOnClick, PREV);"
+        },
+        {
+          "line": 252,
+          "text": "local itemTextFrameNext = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_DPAD_RIGHT, ItemTextFrame_NextPageOnClick, NEXT);"
+        },
+        {
+          "line": 267,
+          "text": "self.itemTextFrameFooter = GamepadSharedUtility.CreatePromptedBindingFooter(self, \"ItemTextFrameFooter\");"
+        },
+        {
+          "line": 274,
+          "text": "function ItemTextFrameMixin:InitializeGamepad()"
+        },
+        {
+          "line": 282,
+          "text": "function ItemTextFrameMixin:UninitializeGamepad()"
+        }
+      ]
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_UIPanels_Game/Mainline/LootFrame.lua",
+      "sha256": "ED1E80FE7FC59FB41DF6562DD7F79AF7C1A87BA355D1470AC8B818315C6C3153",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_UIPanels_Game/Mainline/LootFrame.lua",
+      "entryPoints": [
+        {
+          "line": 330,
+          "text": "InputUtil.RegisterGamepadSetup(self, GenerateClosure(self.SetupGamepad, self));"
+        },
+        {
+          "line": 335,
+          "text": "function LootFrameMixin:SetupGamepad()"
+        },
+        {
+          "line": 340,
+          "text": "local lootPromptedBinding = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_FACE_BOTTOM, nil, FRAME_ACTION_LOOT);"
+        },
+        {
+          "line": 343,
+          "text": "local lootAllPromptedBinding = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_FACE_LEFT, AutoLoot, FRAME_ACTION_LOOT_ALL);"
+        },
+        {
+          "line": 345,
+          "text": "self.gamepadFooter = GamepadSharedUtility.CreatePromptedBindingFooter(self, \"LootFrameFooter\");"
+        },
+        {
+          "line": 354,
+          "text": "function LootFrameMixin:InitializeGamepad()"
+        },
+        {
+          "line": 358,
+          "text": "function LootFrameMixin:UninitializeGamepad()"
+        }
+      ]
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_UIPanels_Game/Mainline/MerchantFrame.lua",
+      "sha256": "BF710BFBCBFFA381D23B00BF3833DA3A7790E002C73233D92862F786D32E3954",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_UIPanels_Game/Mainline/MerchantFrame.lua",
+      "entryPoints": [
+        {
+          "line": 1181,
+          "text": "function MerchantFrame_SetupGamepad(self)"
+        },
+        {
+          "line": 1191,
+          "text": "local buyItem = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_FACE_BOTTOM, BuyItem, CONTEXT_ACTION_LABEL_BUY);"
+        },
+        {
+          "line": 1212,
+          "text": "local multibuyItem = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_FACE_LEFT, MultiBuyItem, CONTEXT_ACTION_LABEL_MULTI_BUY);"
+        },
+        {
+          "line": 1238,
+          "text": "local inspectItem = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_FACE_LEFT, InspectItem, CONTEXT_ACTION_LABEL_INSPECT);"
+        },
+        {
+          "line": 1244,
+          "text": "self.footer = GamepadSharedUtility.CreatePromptedBindingFooter(self, \"MerchantFrameFooter\");"
+        },
+        {
+          "line": 1321,
+          "text": "function MerchantFrame_InitializeGamepad(self)"
+        },
+        {
+          "line": 1327,
+          "text": "function MerchantFrame_UninitializeGamepad(self)"
+        },
+        {
+          "line": 1337,
+          "text": "InputUtil.RegisterGamepadSetup(self, GenerateClosure(MerchantFrame_SetupGamepad, self));"
+        }
+      ]
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_UIPanels_Game/Mainline/QuestFrame.lua",
+      "sha256": "BCDC87D75370C3811DBE5734A9B2399FC5EDC72C33FEFD7108395990BB5BC57E",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_UIPanels_Game/Mainline/QuestFrame.lua",
+      "entryPoints": [
+        {
+          "line": 760,
+          "text": "function QuestFrame_SetupGamepad(self)"
+        },
+        {
+          "line": 763,
+          "text": "local selectQuestAction = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_FACE_BOTTOM, generalQuestConfirmFunction, ACTION_LABEL_SELECT);"
+        },
+        {
+          "line": 767,
+          "text": "local acceptQuestAction = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_FACE_BOTTOM, generalQuestConfirmFunction, FRAME_ACTION_ACCEPT);"
+        },
+        {
+          "line": 771,
+          "text": "local continueQuestAction = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_FACE_BOTTOM, generalQuestConfirmFunction, FRAME_ACTION_CONTINUE);"
+        },
+        {
+          "line": 774,
+          "text": "local completeQuestAction = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_FACE_BOTTOM, generalQuestConfirmFunction, FRAME_ACTION_COMPLETE);"
+        },
+        {
+          "line": 778,
+          "text": "local selectRewardAction = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_FACE_BOTTOM, GenerateClosure(QuestFrame_SelectFocusedButton, self), CONTEXT_ACTION_LABEL_CHOOSE_REWARD);"
+        },
+        {
+          "line": 783,
+          "text": "self.gamepadFooter = GamepadSharedUtility.CreatePromptedBindingFooter(self, \"QuestFrameFooter\");"
+        },
+        {
+          "line": 843,
+          "text": "function QuestFrame_InitializeGamepad(self)"
+        },
+        {
+          "line": 853,
+          "text": "function QuestFrame_UninitializeGamepad(self)"
+        },
+        {
+          "line": 865,
+          "text": "InputUtil.RegisterGamepadSetup(self, GenerateClosure(QuestFrame_SetupGamepad, self));"
+        }
+      ]
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_UIPanels_Game/Mainline/QuestMapFrame.lua",
+      "sha256": "CB1EA7FE7649C30D03DED1EABFAFD5AF75AC8BC6F70319CC95F49F4DDC1FC6A5",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_UIPanels_Game/Mainline/QuestMapFrame.lua",
+      "entryPoints": [
+        {
+          "line": 2545,
+          "text": "InputUtil.RegisterGamepadSetup(self, GenerateClosure(self.SetupGamepad, self));"
+        },
+        {
+          "line": 2550,
+          "text": "function QuestLogPopupDetailMixin:SetupGamepad()"
+        },
+        {
+          "line": 2551,
+          "text": "local questDetailsFocusPage = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_FACE_LEFT, GenerateClosure(self.ToggleQuestFocus, self), CONTEXT_ACTION_LABEL_FOCUS);"
+        },
+        {
+          "line": 2552,
+          "text": "local questDetailsOptionsPage = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_FACE_TOP, GenerateClosure(self.OpenQuestOptions, self), CONTEXT_ACTION_LABEL_OPTIONS);"
+        },
+        {
+          "line": 2554,
+          "text": "self.questDetailsFooter = GamepadSharedUtility.CreatePromptedBindingFooter(self, \"QuestDetailsFooter\");"
+        },
+        {
+          "line": 2561,
+          "text": "function QuestLogPopupDetailMixin:InitializeGamepad()"
+        },
+        {
+          "line": 2565,
+          "text": "function QuestLogPopupDetailMixin:UninitializeGamepad()"
+        }
+      ]
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_WorldMap/Blizzard_WorldMap.lua",
+      "sha256": "288C5897F854A4A2A6F84A121C3BD7E01B4158FAE4D72071AC226CF557F8DC67",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_WorldMap/Blizzard_WorldMap.lua",
+      "entryPoints": [
+        {
+          "line": 1093,
+          "text": "function WorldMapMixin:SetupGamepad()"
+        },
+        {
+          "line": 1102,
+          "text": "local questOptions = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_FACE_TOP, GenerateClosure(self.OpenQuestOptions, self), CONTEXT_ACTION_LABEL_MORE_ACTIONS);"
+        },
+        {
+          "line": 1106,
+          "text": "local focusMap = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_DPAD_LEFT, GenerateClosure(self.FocusMap, self), WORLD_MAP);"
+        },
+        {
+          "line": 1110,
+          "text": "local focusSearch = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_MENU_LEFT, GenerateClosure(self.FocusSearchBox, self));"
+        },
+        {
+          "line": 1113,
+          "text": "local settingsDropdown = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_MENU_RIGHT, GenerateClosure(self.HandleMainMenu, self));"
+        },
+        {
+          "line": 1116,
+          "text": "self.questLogFooter = GamepadSharedUtility.CreatePromptedBindingFooter(self, \"QuestLogFooter\");"
+        },
+        {
+          "line": 1131,
+          "text": "local questDetailsFocusPage = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_FACE_LEFT, GenerateClosure(self.FocusSelectedQuest, self), CONTEXT_ACTION_LABEL_FOCUS);"
+        },
+        {
+          "line": 1132,
+          "text": "local questDetailsOptionsPage = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_FACE_TOP, GenerateClosure(self.OpenQuestOptions, self), CONTEXT_ACTION_LABEL_OPTIONS);"
+        },
+        {
+          "line": 1133,
+          "text": "local questDetailsFocusMap = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_DPAD_LEFT, GenerateClosure(self.FocusMap, self), WORLD_MAP);"
+        },
+        {
+          "line": 1134,
+          "text": "local questDetailsBackPage = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_FACE_RIGHT, GenerateClosure(self.CloseQuestDetails, self), FRAME_ACTION_BACK);"
+        },
+        {
+          "line": 1136,
+          "text": "self.questDetailsFooter = GamepadSharedUtility.CreatePromptedBindingFooter(self, \"QuestDetailsFooter\");"
+        },
+        {
+          "line": 1144,
+          "text": "local changeMap = GamepadSharedUtility.CreateDoublePromptedBinding(GAMEPAD_FACE_BOTTOM, GAMEPAD_FACE_LEFT, GenerateClosure(self.GamepadMapClick, self), GenerateClosure(self.GamepadMapUp, self), FRAME_ACTION_CHANGE_MAP)"
+        },
+        {
+          "line": 1145,
+          "text": "local closeWorldMap = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_FACE_RIGHT, GenerateClosure(self.GamepadBack, self), FRAME_ACTION_BACK);"
+        },
+        {
+          "line": 1147,
+          "text": "local focusQuests = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_DPAD_RIGHT, GenerateClosure(self.FocusQuestLogFromMap, self), QUESTS_LABEL);"
+        },
+        {
+          "line": 1155,
+          "text": "local showFullMap = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_DPAD_BOTTOM, GenerateClosure(self.ToggleFullMap, self), FRAME_ACTION_OPEN_FULLMAP);"
+        },
+        {
+          "line": 1159,
+          "text": "local showSmallMap = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_DPAD_TOP, GenerateClosure(self.ToggleFullMap, self), FRAME_ACTION_OPEN_MAP);"
+        },
+        {
+          "line": 1163,
+          "text": "local mapMarker = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_STICK_LEFT_PRESS, GenerateClosure(self.GamepadTryPlaceWaypoint, self), FRAME_ACTION_MAP_MARKER);"
+        },
+        {
+          "line": 1164,
+          "text": "local mapZoom = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_STICK_RIGHT_VERTICAL, nil, FRAME_ACTION_ZOOM);"
+        },
+        {
+          "line": 1166,
+          "text": "local areaDropdown = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_FACE_TOP, GenerateClosure(self.OpenCurrentAreaDropdownList, self), CONTEXT_ACTION_LABEL_MORE_ACTIONS);"
+        },
+        {
+          "line": 1169,
+          "text": "local filterDropdown = GamepadSharedUtility.CreatePromptedBinding(GAMEPAD_MENU_RIGHT, GenerateClosure(self.HandleMainMenu, self));"
+        },
+        {
+          "line": 1172,
+          "text": "self.worldMapFooter = GamepadSharedUtility.CreatePromptedBindingFooter(self, \"WorldMapFooter\");"
+        },
+        {
+          "line": 1235,
+          "text": "function WorldMapMixin:InitializeGamepad()"
+        },
+        {
+          "line": 1261,
+          "text": "function WorldMapMixin:UninitializeGamepad()"
+        },
+        {
+          "line": 1288,
+          "text": "InputUtil.RegisterGamepadSetup(self, GenerateClosure(self.SetupGamepad, self));"
+        }
+      ]
+    }
+  ],
+  "settingsNames": [
+    "GamePadBackPedalThreshold",
+    "GamepadCameraFollowOnStick",
+    "GamepadCameraFollowPitchOffset",
+    "GamePadCameraPitchSpeed",
+    "GamePadCameraYawSpeed",
+    "GamePadFaceMovementFreeFlying",
+    "GamePadFaceMovementMaxAngle",
+    "GamePadFaceMovementMaxAngleCombat",
+    "GamePadFaceMovementMount",
+    "GamePadFaceMovementSwimming",
+    "GamepadFocusStateColor",
+    "GamepadFocusStateOpacity",
+    "GamepadHudModifierUsesToggle",
+    "gamepadInvertPitch",
+    "gamepadInvertYaw",
+    "GamepadPossessBarOverride",
+    "GamepadRaidTargetingHoverMode",
+    "GamePadRunThreshold",
+    "GamepadShowActionBarButtonPrompts",
+    "GamepadShowActionBarHighlight",
+    "GamepadShowActionBarScaling",
+    "GamepadShowEmptyActionbars",
+    "GamepadShowPersistentInputLegend",
+    "GamepadStanceBarOverride",
+    "GamepadSwapFriendlyTargetActions",
+    "GamepadSwapHostileTargetActions",
+    "GamepadSwapTargetModifiers",
+    "GamePadTurnWithCamera",
+    "GamepadUseCompactActionBar",
+    "GamepadUsePartyTargeting"
+  ],
+  "baselineReadOnlyFiles": [
+    {
+      "path": "C:\\Program Files (x86)\\World of Warcraft\\_retail_\\WTF\\Config.wtf",
+      "sha256": "169BE4BC3A2E7764B9BF681FC70B5EA770C55ECD210157A462AFCD781BB41B77"
+    },
+    {
+      "path": "C:\\Program Files (x86)\\World of Warcraft\\_retail_\\WTF\\Account\\_template_\\bindings-cache.wtf",
+      "sha256": "62D82BBB390469E7D889CC6D93A78469129CC155A2E09E32EF4A62A92F445819"
+    },
+    {
+      "path": "C:\\Program Files (x86)\\World of Warcraft\\_retail_\\WTF\\Account\\_template_\\SavedVariables\\ConsolePort_Bar.lua",
+      "sha256": "1022F48D5FC16DC9D1B102483388F46F26B94736776C122DD517907C6C029D5B"
+    },
+    {
+      "path": "C:\\Program Files (x86)\\World of Warcraft\\_retail_\\Interface\\AddOns\\ConsolePort_Forever\\Bindings.lua",
+      "sha256": "FAECC497F79D9D7437F87E809844FC7144AB722E33AFD89245578461BC232A8F"
+    },
+    {
+      "path": "C:\\Program Files (x86)\\World of Warcraft\\_retail_\\Interface\\AddOns\\ConsolePort_Forever\\ConsolePort_Forever.lua",
+      "sha256": "099B5A6B985D4E661BEAA182C42CC48F5F275EB74978F3E345A27D5AF47632C2"
+    },
+    {
+      "path": "C:\\Program Files (x86)\\World of Warcraft\\_retail_\\Interface\\AddOns\\ConsolePort_Forever\\ConsolePort_Forever.toc",
+      "sha256": "AFDA2AEA59CB187A16C5D4A6E1CE34D7B9127CFA24AF4DA72A23C76AF5BAE5D3"
+    },
+    {
+      "path": "C:\\Program Files (x86)\\World of Warcraft\\_retail_\\Interface\\AddOns\\ConsolePort_Forever\\Layout.lua",
+      "sha256": "486F4267FE9C5EF217EC87E229AC1CED9A21ACE92D579EB9D91F9C7B5E75FEF3"
+    },
+    {
+      "path": "C:\\Program Files (x86)\\World of Warcraft\\_retail_\\Interface\\AddOns\\ConsolePort_Forever\\Profile.lua",
+      "sha256": "E18AF174F280801BCB410C34D2D1CBC6BA55653BCBB08D5D9D7BA9B99EAB20E4"
+    },
+    {
+      "path": "C:\\Program Files (x86)\\World of Warcraft\\_retail_\\Interface\\AddOns\\ConsolePort_Forever\\Runtime.lua",
+      "sha256": "FFFC41C25D908E30AD011CA9798D00324D9D4D1C94672B634CBD46E3B863C26B"
+    },
+    {
+      "path": "C:\\Program Files (x86)\\World of Warcraft\\_retail_\\Interface\\AddOns\\ConsolePort_Forever\\Skin.lua",
+      "sha256": "4800B78AB8FBA4CC6DAB1DB9E6FFE8F1121FE3DFD22C6515A1069F5FA6947F04"
+    },
+    {
+      "path": "C:\\Program Files (x86)\\World of Warcraft\\_retail_\\Interface\\AddOns\\ConsolePort_Forever\\Assets\\ForeverInGame.blp",
+      "sha256": "9DACCF7F192871A876EDE143A14F4CC453A726AC271FC89D0E30A5610B5A673F"
+    },
+    {
+      "path": "C:\\Program Files (x86)\\World of Warcraft\\_retail_\\Interface\\AddOns\\ConsolePort_Forever\\Assets\\ForeverTargeting.blp",
+      "sha256": "F1CBDF024B1D397ABE318DD9CAAF67F6C0AB6C5406D03873A456AA48E7B76760"
+    }
+  ],
+  "reportReferenceFiles": [
+    {
+      "path": "Interface/AddOns/Blizzard_GamepadActionBars/ActionBindingUtil.lua",
+      "sha256": "1E30A2DDBBB0FA1F11E92705011313B09E847B937BA45DDB260DECA098B7F8F3",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_GamepadActionBars/ActionBindingUtil.lua"
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_GamepadActionBars/PageUnit.lua",
+      "sha256": "31C684454E1B27B469E4398EA4275F48BE53A971FAA927E9196D09E32F64B600",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_GamepadActionBars/PageUnit.lua"
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_GamepadActionBars/GamepadOverrideBarMixin.lua",
+      "sha256": "0FFEB8B0A8FB4B855E5970B1C4B1D1FF6179371FC0BCF67829D68F8DCA6B6FBD",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_GamepadActionBars/GamepadOverrideBarMixin.lua"
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_GamepadActionBars/ActionBarEditFrame.lua",
+      "sha256": "3AD5BD9A52E66B97AA6D265AA583F01FD22BBA1492C82E38AE967D81601D5C00",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_GamepadActionBars/ActionBarEditFrame.lua"
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_GamepadActionBars/MainActionBarFrame.lua",
+      "sha256": "39375BB6D7A1C1D1F340BF6301D388A7AA1187AFED9BCCB77A440045920B1769",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_GamepadActionBars/MainActionBarFrame.lua"
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_GamepadActionBars/Camelot/ClassSpellFlyout.lua",
+      "sha256": "A07198DAEA12147FB9D9CB6439A4C1C2077420535D7DCCE3FFC8F6C133FB4C42",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_GamepadActionBars/Camelot/ClassSpellFlyout.lua"
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_GamepadActionBars/ClassActionFlyout.lua",
+      "sha256": "124320E3A2D04957CF48717924F474333AABCF91C9E3259F57AD0FF2AA7060AD",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_GamepadActionBars/ClassActionFlyout.lua"
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_GamepadActionBars/FlyoutRadial.lua",
+      "sha256": "725327F98DCA5B8EC82E9E25433044FE3B64C2DDE23FF4B62FDB0F1F15420D97",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_GamepadActionBars/FlyoutRadial.lua"
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_GamepadActionBars/SpellFlyoutRadial.lua",
+      "sha256": "8FCAE72127E89287A210A5F8B1D139684D94D189ECEF481DDFCED44C3DC9ED9E",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_GamepadActionBars/SpellFlyoutRadial.lua"
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_GamepadActionBars/ActionBarButton.lua",
+      "sha256": "59C1866667EFE6C570CCF7EAC073FB2FBE26ABC8DC6C1A97A5493615A58BAC85",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_GamepadActionBars/ActionBarButton.lua"
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_ActionBar/Shared/ActionButton.lua",
+      "sha256": "84E69D8E80484D88F632E0E2DA28F4C65E57E0EF09EBF245B7A95636B9761269",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_ActionBar/Shared/ActionButton.lua"
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_GamepadActionBars/StanceBar.lua",
+      "sha256": "C26E14EBC1E1B4C863C169FF5D3C4E292368B7FCD322858B1E310917CC467350",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_GamepadActionBars/StanceBar.lua"
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_GamepadActionBars/PossessBar.lua",
+      "sha256": "58A9BCDC053EEAA48E3754D4BD50FD613BAA74A080F8E49FC3CD958FD15DBC48",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_GamepadActionBars/PossessBar.lua"
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_GamepadActionBars/Camelot/PetActionFlyout.lua",
+      "sha256": "BD749CD1DE59A302B6380AB2269583EAD7A58CB347DEC067D434549F05013AD9",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_GamepadActionBars/Camelot/PetActionFlyout.lua"
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_GamepadActionBars/Camelot/PetSpellFlyout.lua",
+      "sha256": "5757D6087039B6642E65E63E352312624F0EFFBC5143E196030871DB15EA4D7E",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_GamepadActionBars/Camelot/PetSpellFlyout.lua"
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_GamepadActionBars/Camelot/PetActionFlyoutButton.lua",
+      "sha256": "3F9F5F67A36C316D520D394AA4BED572D7F2574708BDB257B3E2389F40094657",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_GamepadActionBars/Camelot/PetActionFlyoutButton.lua"
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_GamepadTargeting/TargetLogic.lua",
+      "sha256": "F2891ACFF8F34712C0DF2BBD387198283458172703869ED0C80D083D6E7DCB3F",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_GamepadTargeting/TargetLogic.lua"
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_Gamepad/Utility/Bindings/HoldBindings.lua",
+      "sha256": "C754AA97D95BD88EF73067EF09C10871271258CA90FBC8AB22BB65BEB4E17277",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_Gamepad/Utility/Bindings/HoldBindings.lua"
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_GamepadActionBars/TargetActionBars/FriendlyTargetingActionBar.lua",
+      "sha256": "2B57696E993A98E02FD048C4A55BE7CD50DEF8050E84AD769EF5D526CBB7DFFB",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_GamepadActionBars/TargetActionBars/FriendlyTargetingActionBar.lua"
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_GamepadActionBars/TargetActionBars/HostileTargetingActionBar.lua",
+      "sha256": "E3AEA800155F90362CFBA5509E7F93B9BC6E8154C521C8973C60510CB1091FF2",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_GamepadActionBars/TargetActionBars/HostileTargetingActionBar.lua"
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_GamepadActionBars/TargetActionBars/ShortcutsActionBar.lua",
+      "sha256": "38483E4030A8300788118FE7D736D891EA1CE686FD87DB5199F87CFBFDE089B8",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_GamepadActionBars/TargetActionBars/ShortcutsActionBar.lua"
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_SettingsDefinitions_Shared/Gamepad.lua",
+      "sha256": "78A41D2FB61CCDAA19129106EB691782AB339388F135DA18C889DCDD960E013E",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_SettingsDefinitions_Shared/Gamepad.lua"
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_Gamepad/Core.lua",
+      "sha256": "0AFDEFCE640EB0ACDCA76AB2C31A6F296C92EFF22828C9842585E060E51A5938",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_Gamepad/Core.lua"
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_GamepadSharedUtility/FrameControlsManager.lua",
+      "sha256": "9BD6B6E594E93968672B8440F0F8AFD45F1A618E99FDFF563705112788A9529A",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_GamepadSharedUtility/FrameControlsManager.lua"
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_GamepadSmartNavigation/SmartNavigation.lua",
+      "sha256": "2C9F2094960C3C300796EB7D0F492B07EE763A3DB71F1D52E66DE40CCA7A2467",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_GamepadSmartNavigation/SmartNavigation.lua"
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_Gamepad/UI/Radials/GamepadRadial.lua",
+      "sha256": "25CFDBDBCA18F473EE2AEC5AA9023B5FD9D1647141698F6784D4429EC9DBCE50",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_Gamepad/UI/Radials/GamepadRadial.lua"
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_Gamepad/UI/HUDMode/GamepadHudMode.lua",
+      "sha256": "F51F734415F4EB7106EB6A15FE74B6AB7821144FBEC02FB94A082F16CA062F98",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_Gamepad/UI/HUDMode/GamepadHudMode.lua"
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_GamepadSoftCursor/SoftCursor.lua",
+      "sha256": "C0F4983F4E0495E6B2ED6913723567638BF7C4F787E18E5C335C59A4D30C1BDF",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_GamepadSoftCursor/SoftCursor.lua"
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_Gamepad/UI/Reticle/GamepadReticle.lua",
+      "sha256": "13459258C3BDC7B4E591B12625BC72EEC25B2A1DF9CA328C23D96A9BB4B5F12B",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_Gamepad/UI/Reticle/GamepadReticle.lua"
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_APIDocumentationGenerated/SpellDocumentation.lua",
+      "sha256": "86583940D9A2C4594092EB248A1396A93A285084872AF1F3F4875169796E7D2B",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_APIDocumentationGenerated/SpellDocumentation.lua"
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_ObjectiveTracker/Blizzard_ObjectiveTracker.lua",
+      "sha256": "798AAC53146AE03E28E9B520BBD6A051C1AEF2F76B85EA9F6FBFD772C7CB1C74",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_ObjectiveTracker/Blizzard_ObjectiveTracker.lua"
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_ActionBar/Shared/ExtraActionBar.lua",
+      "sha256": "EC951E2C1A38AE4CA92DC54AB6AD3406C7B17EF6CE3671ED23CF98F69062DCF2",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_ActionBar/Shared/ExtraActionBar.lua"
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_UIPanels_Game/Mainline/ContainerFrame.lua",
+      "sha256": "32C58D4024652370CFA53548C8CC11A929E9182BA7E6CF613F01EEC43A753057",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_UIPanels_Game/Mainline/ContainerFrame.lua"
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_UIPanels_Game/Mainline/MerchantFrame.lua",
+      "sha256": "BF710BFBCBFFA381D23B00BF3833DA3A7790E002C73233D92862F786D32E3954",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_UIPanels_Game/Mainline/MerchantFrame.lua"
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_UIPanels_Game/Mainline/QuestFrame.lua",
+      "sha256": "BCDC87D75370C3811DBE5734A9B2399FC5EDC72C33FEFD7108395990BB5BC57E",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_UIPanels_Game/Mainline/QuestFrame.lua"
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_MailFrame/MailFrame.lua",
+      "sha256": "99963637396BAC3E640F8E553A6886B671DDFC298CAD34B5D727834462167074",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_MailFrame/MailFrame.lua"
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_UIPanels_Game/Blizzard_UIPanels_Game.toc",
+      "sha256": "C4F57E9B6DF5597C134F8434391E71F8019D9BD7A2F7682D87F3B893449BA7B1",
+      "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/e3ecc27b64d30fdc735a3f6579b866858f9f9df1/Interface/AddOns/Blizzard_UIPanels_Game/Blizzard_UIPanels_Game.toc"
+    }
+  ]
+}

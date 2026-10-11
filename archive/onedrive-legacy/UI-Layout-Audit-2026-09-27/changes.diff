@@ -1,0 +1,333 @@
+diff --git "a/.\\UI-Layout-Audit-2026-09-27\\before\\Interface\\AddOns\\ConsolePort_Forever\\ConsolePort_Forever.lua" "b/.\\UI-Layout-Audit-2026-09-27\\staged\\Interface\\AddOns\\ConsolePort_Forever\\ConsolePort_Forever.lua"
+index 1df76a5..455e701 100644
+--- "a/.\\UI-Layout-Audit-2026-09-27\\before\\Interface\\AddOns\\ConsolePort_Forever\\ConsolePort_Forever.lua"
++++ "b/.\\UI-Layout-Audit-2026-09-27\\staged\\Interface\\AddOns\\ConsolePort_Forever\\ConsolePort_Forever.lua"
+@@ -14,17 +14,56 @@ local function HideBlizzardMenuBar()
+     return true
+ end
+ 
+-local function MoveUnitFrames()
+-    if InCombatLockdown() then return false end
++local unitFramesHooked = {};
++local unitFramesApplying, unitFramesQueued;
++local MoveUnitFrames;
++local function QueueUnitFrames()
++    if unitFramesApplying or unitFramesQueued then return end
++    unitFramesQueued = true
++    C_Timer.After(0, function()
++        unitFramesQueued = false
++        MoveUnitFrames()
++    end)
++end
++
++local function HookUnitFrame(frame)
++    if not frame or unitFramesHooked[frame] then return end
++    unitFramesHooked[frame] = true
++    for _, method in ipairs({'SetPoint', 'ClearAllPoints', 'ApplySystemAnchor',
++        'OnEditModeExit', 'UpdateSystemSettingBuffsOnTop'}) do
++        if type(frame[method]) == 'function' then
++            hooksecurefunc(frame, method, QueueUnitFrames)
++        end
++    end
++    frame:HookScript('OnShow', QueueUnitFrames)
++end
+ 
+-    if PlayerFrame then
+-        PlayerFrame:ClearAllPoints()
+-        PlayerFrame:SetPoint('CENTER', UIParent, 'CENTER', -310, -175)
++MoveUnitFrames = function()
++    if InCombatLockdown() or unitFramesApplying then return false end
++    unitFramesApplying = true
++    for _, layout in ipairs({
++        {frame = PlayerFrame, x = -310},
++        {frame = TargetFrame, x = 310},
++    }) do
++        local frame = layout.frame
++        if frame then
++            HookUnitFrame(frame)
++            local clear = frame.ClearAllPointsBase or frame.ClearAllPoints
++            local point = frame.SetPointBase or frame.SetPoint
++            clear(frame)
++            point(frame, 'CENTER', UIParent, 'CENTER', layout.x, -175)
++        end
+     end
+-    if TargetFrame then
+-        TargetFrame:ClearAllPoints()
+-        TargetFrame:SetPoint('CENTER', UIParent, 'CENTER', 310, -175)
++    -- The custom low target-frame position needs its attached auras above it;
++    -- Blizzard Modern's below-frame direction would expand into the HUD.
++    if TargetFrame and TargetFrame.buffsOnTop ~= true then
++        TargetFrame.buffsOnTop = true
++        if type(TargetFrame.UpdateAuras) == 'function' then TargetFrame:UpdateAuras() end
++        if type(TargetFrame.UpdateAuraContainerAnchors) == 'function' then
++            TargetFrame:UpdateAuraContainerAnchors()
++        end
+     end
++    unitFramesApplying = false
+     return true
+ end
+ 
+@@ -94,50 +133,193 @@ MovePlayerCastBar = function()
+     castApplying = false
+ end
+ 
+--- Player auras are created by BuffFrame.AuraContainer; their tooltip uses
+--- AuraButtonMixin:OnEnter. Keep the actual aura display beside the health bar.
+--- Its native layout/collapse code still owns icon sizes, durations and sorting.
+-local buffFrame, buffsQueued, buffsApplying;
+-local MovePlayerBuffs;
+-local function QueuePlayerBuffs()
+-    if buffsApplying or buffsQueued then return end
+-    buffsQueued = true
++-- BuffFrame and DebuffFrame are independent Edit Mode systems. Treat them as
++-- one lane beside the player frame: buffs own the first rows, and debuffs are
++-- attached to the changing bottom edge of the buff container. Both grow left
++-- and wrap down, so neither can expand across the portrait or health bars.
++local auraFrames = {};
++local auraLaneQueued, auraLaneApplying;
++local MovePlayerAuraLane;
++local function QueuePlayerAuraLane()
++    if auraLaneApplying or auraLaneQueued then return end
++    auraLaneQueued = true
+     C_Timer.After(0, function()
+-        buffsQueued = false
+-        MovePlayerBuffs()
++        auraLaneQueued = false
++        MovePlayerAuraLane()
+     end)
+ end
+ 
+-MovePlayerBuffs = function()
+-    if InCombatLockdown() or buffsApplying then return end
+-    local frame = BuffFrame
++local function HookAuraFrame(frame)
++    if auraFrames[frame] then return end
++    auraFrames[frame] = true
++    for _, method in ipairs({'SetPoint', 'ClearAllPoints', 'ApplySystemAnchor',
++        'OnEditModeExit', 'UpdateGridLayout', 'UpdateSize'}) do
++        if type(frame[method]) == 'function' then
++            hooksecurefunc(frame, method, QueuePlayerAuraLane)
++        end
++    end
++    frame:HookScript('OnShow', QueuePlayerAuraLane)
++end
++
++MovePlayerAuraLane = function()
++    if InCombatLockdown() or auraLaneApplying then return end
++    local buffs = BuffFrame
++    local debuffs = DebuffFrame
+     local player = PlayerFrame
+-    if not frame or not frame.AuraContainer or not player then return end
+-    if buffFrame ~= frame then
+-        buffFrame = frame
+-        for _, method in ipairs({'SetPoint', 'ClearAllPoints', 'ApplySystemAnchor',
+-            'OnEditModeExit', 'UpdateGridLayout'}) do
+-            if type(frame[method]) == 'function' then
+-                hooksecurefunc(frame, method, QueuePlayerBuffs)
+-            end
++    if not buffs or not buffs.AuraContainer or
++       not debuffs or not debuffs.AuraContainer or not player then return end
++
++    HookAuraFrame(buffs)
++    HookAuraFrame(debuffs)
++    auraLaneApplying = true
++
++    for _, frame in ipairs({buffs, debuffs}) do
++        local container = frame.AuraContainer
++        local changed = container.addIconsToRight ~= false or
++                        container.addIconsToTop ~= false
++        container.addIconsToRight = false
++        container.addIconsToTop = false
++        if changed and type(frame.UpdateGridLayout) == 'function' then
++            frame:UpdateGridLayout()
++        end
++
++        local clear = frame.ClearAllPointsBase or frame.ClearAllPoints
++        clear(frame)
++        if frame == buffs then
++            local point = frame.SetPointBase or frame.SetPoint
++            point(frame, 'TOPRIGHT', player, 'TOPLEFT', -12, 5)
++        else
++            local point = frame.SetPointBase or frame.SetPoint
++            point(frame, 'TOPRIGHT', buffs, 'BOTTOMRIGHT', 0, -6)
+         end
+-        frame:HookScript('OnShow', QueuePlayerBuffs)
+     end
+-    buffsApplying = true
+-    -- Anchor on the health bar's left and grow farther left, so additional auras
+-    -- cannot cover the health/portrait. Native UpdateGridLayout keeps its
+-    -- collapse button and aura anchors in sync.
+-    if frame.AuraContainer.addIconsToRight ~= false then
+-        frame.AuraContainer.addIconsToRight = false
+-        frame:UpdateGridLayout()
++    auraLaneApplying = false
++end
++
++-- The saved RealUI layouts predate the current Retail Edit Mode roster. Use
++-- Blizzard's shipped Modern system records as the baseline for everything the
++-- user did not ask us to preserve. This is an in-memory policy: it leaves the
++-- serialized custom layouts intact and is reapplied after login, reload, scale
++-- changes, late frame registration and Edit Mode exit.
++local modernQueued, modernApplying, modernHooksInstalled;
++local ApplyModernLayoutPolicy;
++
++local function DeepCopy(value, seen)
++    if type(value) ~= 'table' then return value end
++    seen = seen or {}
++    if seen[value] then return seen[value] end
++    local copy = {}
++    seen[value] = copy
++    for key, child in pairs(value) do
++        copy[DeepCopy(key, seen)] = DeepCopy(child, seen)
+     end
+-    local clear = frame.ClearAllPointsBase or frame.ClearAllPoints
+-    local point = frame.SetPointBase or frame.SetPoint
+-    clear(frame)
+-    local upward = frame.AuraContainer.addIconsToTop
+-    point(frame, upward and 'BOTTOMRIGHT' or 'TOPRIGHT', player,
+-        upward and 'BOTTOMLEFT' or 'TOPLEFT', -12, upward and -5 or 5)
+-    buffsApplying = false
++    return copy
++end
++
++local function IsProtectedModernSystem(frame)
++    if not Enum or not Enum.EditModeSystem then return true end
++    local system = frame.system
++    local systems = Enum.EditModeSystem
++    if system == systems.ActionBar or system == systems.CastBar or
++       system == systems.ChatFrame or system == systems.Minimap or
++       system == systems.ObjectiveTracker or system == systems.MicroMenu or
++       system == systems.Bags then
++        return true
++    end
++    if system == systems.UnitFrame and Enum.EditModeUnitFrameSystemIndices then
++        local units = Enum.EditModeUnitFrameSystemIndices
++        return frame.systemIndex == units.Player or frame.systemIndex == units.Target
++    end
++    return false
++end
++
++local function FindModernSystemInfo(frame)
++    if not EditModePresetLayoutManager or
++       type(EditModePresetLayoutManager.GetModernSystems) ~= 'function' then return end
++    for _, info in ipairs(EditModePresetLayoutManager:GetModernSystems() or {}) do
++        if info.system == frame.system and info.systemIndex == frame.systemIndex then
++            return DeepCopy(info)
++        end
++    end
++end
++
++local function SetAnchor(info, point, relativePoint, offsetX, offsetY)
++    info.anchorInfo = {
++        point = point, relativeTo = 'UIParent', relativePoint = relativePoint,
++        offsetX = offsetX, offsetY = offsetY,
++    }
++end
++
++local function ApplyControllerSafeAnchor(frame, info)
++    local systems = Enum.EditModeSystem
++    local system = frame.system
++    if system == systems.ExtraAbilities then
++        SetAnchor(info, 'BOTTOM', 'CENTER', 0, -80)
++    elseif system == systems.EncounterBar then
++        SetAnchor(info, 'BOTTOM', 'CENTER', 0, 0)
++    elseif system == systems.TalkingHeadFrame then
++        SetAnchor(info, 'TOP', 'TOP', -420, -220)
++    elseif system == systems.VehicleLeaveButton then
++        SetAnchor(info, 'BOTTOM', 'CENTER', 92, -80)
++    elseif system == systems.ArchaeologyBar then
++        SetAnchor(info, 'TOP', 'TOP', 300, -225)
++    elseif system == systems.CooldownViewer and
++           Enum.EditModeCooldownViewerSystemIndices then
++        local cooldowns = Enum.EditModeCooldownViewerSystemIndices
++        if frame.systemIndex == cooldowns.Essential then
++            SetAnchor(info, 'BOTTOM', 'CENTER', 0, 110)
++        elseif frame.systemIndex == cooldowns.Utility then
++            SetAnchor(info, 'BOTTOM', 'CENTER', 0, 55)
++        elseif frame.systemIndex == cooldowns.BuffIcon then
++            SetAnchor(info, 'BOTTOM', 'CENTER', 0, 165)
++        elseif frame.systemIndex == cooldowns.BuffBar then
++            SetAnchor(info, 'BOTTOMRIGHT', 'CENTER', -460, -40)
++        end
++    end
++end
++
++local function QueueModernLayoutPolicy()
++    if modernApplying or modernQueued then return end
++    modernQueued = true
++    C_Timer.After(0, function()
++        modernQueued = false
++        ApplyModernLayoutPolicy()
++    end)
++end
++
++local function InstallModernPolicyHooks()
++    local manager = EditModeManagerFrame
++    if modernHooksInstalled or not manager then return end
++    modernHooksInstalled = true
++    if type(manager.RegisterSystemFrame) == 'function' then
++        hooksecurefunc(manager, 'RegisterSystemFrame', QueueModernLayoutPolicy)
++    end
++    if type(manager.ExitEditMode) == 'function' then
++        hooksecurefunc(manager, 'ExitEditMode', QueueModernLayoutPolicy)
++    end
++end
++
++ApplyModernLayoutPolicy = function()
++    if modernApplying or InCombatLockdown() then return end
++    local manager = EditModeManagerFrame
++    if not manager or manager.editModeActive or
++       type(manager.registeredSystemFrames) ~= 'table' then return end
++    InstallModernPolicyHooks()
++
++    modernApplying = true
++    for _, frame in ipairs(manager.registeredSystemFrames) do
++        if frame and type(frame.UpdateSystem) == 'function' and
++           not IsProtectedModernSystem(frame) and
++           (type(frame.IsInitialized) ~= 'function' or frame:IsInitialized()) then
++            local info = FindModernSystemInfo(frame)
++            if info then
++                ApplyControllerSafeAnchor(frame, info)
++                frame:UpdateSystem(info)
++            end
++        end
++    end
++    modernApplying = false
++    MovePlayerAuraLane()
+ end
+ 
+ local targetingBank;
+@@ -181,10 +363,11 @@ local function RefreshBaseArt()
+ end
+ 
+ local function RefreshForeverHUD()
++    ApplyModernLayoutPolicy()
+     MoveUnitFrames()
+     HideBlizzardMenuBar()
+     MovePlayerCastBar()
+-    MovePlayerBuffs()
++    MovePlayerAuraLane()
+     AddTargetingPrompts()
+     RefreshBaseArt()
+ end
+@@ -195,14 +378,18 @@ events:RegisterEvent('PLAYER_REGEN_ENABLED')
+ events:RegisterEvent('PLAYER_TARGET_CHANGED')
+ events:RegisterEvent('PLAYER_EQUIPMENT_CHANGED')
+ events:RegisterEvent('ADDON_LOADED')
++events:RegisterEvent('DISPLAY_SIZE_CHANGED')
++events:RegisterEvent('UI_SCALE_CHANGED')
++events:RegisterEvent('PLAYER_SPECIALIZATION_CHANGED')
+ events:SetScript('OnEvent', function(_, event)
+     if event == 'PLAYER_TARGET_CHANGED' or event == 'PLAYER_EQUIPMENT_CHANGED' then
+         RefreshBaseArt()
+         return
+     end
+     if event == 'ADDON_LOADED' then
+-        -- Buff/Edit Mode modules can load after this helper.
+-        QueuePlayerBuffs()
++        -- Aura and Edit Mode modules can load after this helper.
++        QueuePlayerAuraLane()
++        QueueModernLayoutPolicy()
+         return
+     end
+     if event == 'PLAYER_REGEN_ENABLED' then

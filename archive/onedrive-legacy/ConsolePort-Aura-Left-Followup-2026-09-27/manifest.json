@@ -1,0 +1,7 @@
+{
+  "time": "2026-09-27T16:52:29.367758+00:00",
+  "live": "Interface/AddOns/ConsolePort_Forever/ConsolePort_Forever.lua",
+  "before_sha256": "37036890e6c7f70f606779e90389d0388457c1f3f4efb74ffea4cb100f1af931",
+  "after_sha256": "b77ad851a602cf1230a96724b043d1127b322f72a938ebb9f3aa90e356d1f6cb",
+  "change": "Aura frame anchor moved from HealthBarsContainer left edge to full PlayerFrame left edge; x=-12 and leftward growth retained."
+}

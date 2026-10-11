@@ -1,3 +1,25 @@
+## Workspace authority — October 11, 2026 (Toronto)
+
+The user designates this Git checkout as the only working source of truth.
+Keep all development scripts, plans, Markdown, research, evidence and generated
+working material inside this checkout. OneDrive's World of Warcraft root is
+production/deployment storage and contains only `_retail_` and the user's
+`Documents`. Never modify or reorganize `Documents`.
+
+Historical working material is imported under `archive/onedrive-legacy`; its
+scripts and absolute paths are historical evidence, not executable deployment
+instructions. Use the current scoped builder/installer for authorized updates.
+The two user-owned provisioning scripts live under `tools/local`; moving them
+does not authorize executing them. The native gamepad UI reference is preserved
+under `docs/references/pending` for a later feature request, without implementing
+or treating its content as active instructions now.
+
+The user explicitly authorized deleting OneDrive RARs and assistant-created
+legacy backups during this organization run. That limited cleanup supersedes
+older blanket retention notes for those listed paths only. Preserve production
+data/junctions, immutable repo references, and external deployment backups.
+See `docs/WORKSPACE-ORGANIZATION-2026-10-11.md` and the migration receipt.
+
 ## User-confirmed Retail acceptance — October 10, 2026 (Toronto)
 
 The user reports: "all fixed on ring and required item frame. note it down".

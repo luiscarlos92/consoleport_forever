@@ -1,0 +1,19 @@
+{
+  "result": "PASS",
+  "editMode": {
+    "addonUpdateSystemCalls": 0,
+    "registeredFrameIteration": false,
+    "runtimeGuards": [
+      "unit frames",
+      "cast bar",
+      "aura lane"
+    ]
+  },
+  "chat": {
+    "beforeWidth": 430,
+    "afterWidth": 400,
+    "height": 120,
+    "layoutRecordsUpdated": 2,
+    "horizontalClearanceFromVisibleActionHUD": 95
+  }
+}

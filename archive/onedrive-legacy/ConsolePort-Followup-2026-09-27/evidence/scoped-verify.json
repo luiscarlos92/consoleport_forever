@@ -1,0 +1,9 @@
+{
+  "time": "2026-09-27T16:46:43.185672+00:00",
+  "wow_processes": 0,
+  "installed_hashes_verified": 10,
+  "helper_after_hash": "37036890e6c7f70f606779e90389d0388457c1f3f4efb74ffea4cb100f1af931",
+  "rollback_before_hash": "3379551850b1bb8018e2c63c4079754b0987b581df19be3a8f07fa8b0801f35c",
+  "lua_harness": "PASS (see validation-live.txt)",
+  "scope_note": "Only ConsolePort_Forever.lua was changed in the game tree during this follow-up. The prior whole-tree preserved baseline is not rerun because the user normal-login test legitimately rewrote mutable WoW files including WTF/Config.wtf."
+}

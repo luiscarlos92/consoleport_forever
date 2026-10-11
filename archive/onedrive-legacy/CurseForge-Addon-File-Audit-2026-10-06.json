@@ -1,0 +1,193 @@
+{
+  "Packages": [
+    {
+      "Package": "Cidan/BetterBags",
+      "Version": "v0.5.14",
+      "ArchiveHashMatches": true,
+      "ComparedFiles": 197
+    },
+    {
+      "Package": "seblindfors/Immersion",
+      "Version": "1.4.61",
+      "ArchiveHashMatches": true,
+      "ComparedFiles": 52
+    },
+    {
+      "Package": "xod-wow/LiteMount",
+      "Version": "12.1.0-1",
+      "ArchiveHashMatches": true,
+      "ComparedFiles": 115
+    },
+    {
+      "Package": "SFX-WoW/Masque",
+      "Version": "12.1.0",
+      "ArchiveHashMatches": true,
+      "ComparedFiles": 161
+    },
+    {
+      "Package": "Tercioo/Plater-Nameplates",
+      "Version": "Plater-v656",
+      "ArchiveHashMatches": true,
+      "ComparedFiles": 521
+    },
+    {
+      "Package": "DeadlyBossMods/DeadlyBossMods",
+      "Version": "12.1.12",
+      "ArchiveHashMatches": true,
+      "ComparedFiles": 999
+    },
+    {
+      "Package": "DeadlyBossMods/DBM-Dungeons",
+      "Version": "r264",
+      "ArchiveHashMatches": true,
+      "ComparedFiles": 29
+    },
+    {
+      "Package": "DeadlyBossMods/DBM-Vanilla",
+      "Version": "r830",
+      "ArchiveHashMatches": true,
+      "ComparedFiles": 135
+    },
+    {
+      "Package": "DeadlyBossMods/DBM-WotLK",
+      "Version": "r353",
+      "ArchiveHashMatches": true,
+      "ComparedFiles": 85
+    },
+    {
+      "Package": "DeadlyBossMods/DBM-Cataclysm",
+      "Version": "r263",
+      "ArchiveHashMatches": true,
+      "ComparedFiles": 65
+    },
+    {
+      "Package": "DeadlyBossMods/DBM-MoP",
+      "Version": "r191",
+      "ArchiveHashMatches": true,
+      "ComparedFiles": 105
+    },
+    {
+      "Package": "DeadlyBossMods/DBM-WoD",
+      "Version": "r97",
+      "ArchiveHashMatches": true,
+      "ComparedFiles": 67
+    },
+    {
+      "Package": "DeadlyBossMods/DBM-Legion",
+      "Version": "r67",
+      "ArchiveHashMatches": true,
+      "ComparedFiles": 85
+    },
+    {
+      "Package": "rursache/HideClassBars",
+      "Version": "v1.1.0",
+      "ArchiveHashMatches": true,
+      "ComparedFiles": 5
+    },
+    {
+      "Package": "curseforge/DynamicCam",
+      "Version": "2.21.1",
+      "ArchiveHashMatches": true,
+      "ComparedFiles": 102
+    },
+    {
+      "Package": "curseforge/Immersion_ExtraFade",
+      "Version": "1.18.0",
+      "ArchiveHashMatches": true,
+      "ComparedFiles": 50
+    },
+    {
+      "Package": "curseforge/SharedMedia_Causese",
+      "Version": "7.6",
+      "ArchiveHashMatches": true,
+      "ComparedFiles": 216
+    },
+    {
+      "Package": "seblindfors/ConsolePort",
+      "Version": "3.3.5",
+      "ArchiveHashMatches": true,
+      "ComparedFiles": 606
+    }
+  ],
+  "MissingFolders": [
+    {
+      "Package": "DeadlyBossMods/DBM-Dungeons",
+      "Folder": "DBM-Delves-Midnight"
+    },
+    {
+      "Package": "DeadlyBossMods/DBM-Dungeons",
+      "Folder": "DBM-Delves-WarWithin"
+    },
+    {
+      "Package": "DeadlyBossMods/DBM-Dungeons",
+      "Folder": "DBM-Party-BC"
+    },
+    {
+      "Package": "DeadlyBossMods/DBM-Dungeons",
+      "Folder": "DBM-Party-BfA"
+    },
+    {
+      "Package": "DeadlyBossMods/DBM-Dungeons",
+      "Folder": "DBM-Party-Cataclysm"
+    },
+    {
+      "Package": "DeadlyBossMods/DBM-Dungeons",
+      "Folder": "DBM-Party-Dragonflight"
+    },
+    {
+      "Package": "DeadlyBossMods/DBM-Dungeons",
+      "Folder": "DBM-Party-Forever"
+    },
+    {
+      "Package": "DeadlyBossMods/DBM-Dungeons",
+      "Folder": "DBM-Party-Legion"
+    },
+    {
+      "Package": "DeadlyBossMods/DBM-Dungeons",
+      "Folder": "DBM-Party-Midnight"
+    },
+    {
+      "Package": "DeadlyBossMods/DBM-Dungeons",
+      "Folder": "DBM-Party-MoP"
+    },
+    {
+      "Package": "DeadlyBossMods/DBM-Dungeons",
+      "Folder": "DBM-Party-Shadowlands"
+    },
+    {
+      "Package": "DeadlyBossMods/DBM-Dungeons",
+      "Folder": "DBM-Party-Vanilla"
+    },
+    {
+      "Package": "DeadlyBossMods/DBM-Dungeons",
+      "Folder": "DBM-Party-WarWithin"
+    },
+    {
+      "Package": "DeadlyBossMods/DBM-Dungeons",
+      "Folder": "DBM-Party-WoD"
+    },
+    {
+      "Package": "DeadlyBossMods/DBM-Dungeons",
+      "Folder": "DBM-Party-WotLK"
+    },
+    {
+      "Package": "DeadlyBossMods/DBM-Dungeons",
+      "Folder": "DBM-Test-Dungeons"
+    },
+    {
+      "Package": "DeadlyBossMods/DBM-Dungeons",
+      "Folder": "DBM-WorldEvents"
+    },
+    {
+      "Package": "DeadlyBossMods/DBM-Vanilla",
+      "Folder": "DBM-Azeroth"
+    },
+    {
+      "Package": "DeadlyBossMods/DBM-Vanilla",
+      "Folder": "DBM-Test-Vanilla"
+    }
+  ],
+  "Differences": [],
+  "ExtraFiles": [],
+  "ComparedFiles": 3595
+}

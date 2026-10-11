@@ -1,0 +1,27 @@
+{
+  "verifiedAt": "2026-10-11T23:34:03.536145+00:00",
+  "summary": {
+    "movedFiles": 6843,
+    "movedBytes": 464301197,
+    "deletedFiles": 7515,
+    "deletedBytes": 2147218198,
+    "rarArchives": 7
+  },
+  "verifiedMovedFiles": 6843,
+  "remainingOneDriveRoot": [
+    "Documents",
+    "_retail_"
+  ],
+  "documentsTraversed": false,
+  "documentsAnchorUnchanged": true,
+  "retailFiles": 16674,
+  "retailLinks": 42,
+  "retailFilesByteIdentical": true,
+  "retailChangedFiles": [],
+  "retailLinksUnchanged": true,
+  "rootAnchorsUnchanged": true,
+  "deployed": false,
+  "runtimeChanged": false,
+  "failures": [],
+  "allMigrationChecksPassed": true
+}

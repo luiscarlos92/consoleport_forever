@@ -1,0 +1,6 @@
+2026-09-27T03:43:06.687789+00:00
+PASS: 8 edited Lua files parse as Lua 5.1; 39 scoped SavedVariables differences; stable preset + four snapshots + both generators + both caches; all other bindings/settings preserved.
+PASS: real Group factories and ProxyButton skin chain; 16 face / 16 D-pad slots; early/late Masque + rebuild; 48 actual LAB populated/custom/empty updates; state textures, masks, cooldowns and proc dispatch.
+PASS: cast login, attachment restore, Edit Mode reset, combat deferral/recovery, relative bank anchor, loaded size/skin retained; unit-frame positions unchanged.
+PASS: cast reload, attachment restore, Edit Mode reset, combat deferral/recovery, relative bank anchor, loaded size/skin retained; unit-frame positions unchanged.
+PASS: native Immersion rest (0,150), reward rise to 282, objective rise to 298, animated return to 150; title offsets and scale 1.2 retained.

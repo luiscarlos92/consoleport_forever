@@ -1,3 +1,14 @@
+## Workspace organization — October 11, 2026 (Toronto)
+
+The Git checkout is the sole working source of truth. Development files,
+scripts, plans and evidence belong here; OneDrive is production/deployment
+storage with only `_retail_` and the untouched user-owned `Documents` folder.
+Historical imported work is indexed in `../archive/onedrive-legacy/README.md`.
+User provisioning scripts live in `../tools/local`. The native gamepad UI
+reference is retained in `references/pending` for a later feature request;
+this organization run does not activate that feature or deploy anything.
+See `WORKSPACE-ORGANIZATION-2026-10-11.md` for the migration and cleanup receipt.
+
 ## User-confirmed Retail acceptance — October 10, 2026 (Toronto)
 
 The user reports: "all fixed on ring and required item frame. note it down".

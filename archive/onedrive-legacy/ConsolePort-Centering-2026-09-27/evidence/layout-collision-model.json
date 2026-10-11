@@ -1,0 +1,134 @@
+{
+  "referenceCanvas": "1920x1080 UIParent-centered conservative model",
+  "assumptions": {
+    "buffs": "32 icons, 11 per row, 30 size, 5 padding, plus collapse control",
+    "debuffs": "16 icons, 8 per row, 30 size, 5 padding",
+    "transients": "boxes intentionally larger than their Blizzard templates",
+    "horizontalGrid": "78.75-unit half-step; six cluster centers uniformly spaced by 157.5",
+    "buttonAnchors": "45-unit buttons use LEFT anchors; child X values include the 22.5-unit half-width correction"
+  },
+  "horizontalGeometry": {
+    "centerline": 0,
+    "localCrossCenters": [
+      -78.75,
+      78.75
+    ],
+    "shoulders": [
+      -157.5,
+      157.5
+    ],
+    "sideBankAndUnitFrameCenters": [
+      -315.0,
+      315.0
+    ],
+    "clusterCenters": [
+      -393.75,
+      -236.25,
+      -78.75,
+      78.75,
+      236.25,
+      393.75
+    ],
+    "clusterGaps": [
+      157.5,
+      157.5,
+      157.5,
+      157.5,
+      157.5
+    ]
+  },
+  "zones": {
+    "console_action_hud": {
+      "left": -430,
+      "right": 430,
+      "bottom": -530,
+      "top": -240
+    },
+    "player_frame": {
+      "left": -435,
+      "right": -195,
+      "bottom": -205,
+      "top": -145
+    },
+    "target_frame": {
+      "left": 195,
+      "right": 435,
+      "bottom": -205,
+      "top": -145
+    },
+    "chat": {
+      "left": -925,
+      "right": -495,
+      "bottom": -505,
+      "top": -335
+    },
+    "buff_lane_32": {
+      "left": -847,
+      "right": -447,
+      "bottom": -245,
+      "top": -140
+    },
+    "debuff_lane_16": {
+      "left": -727,
+      "right": -447,
+      "bottom": -321,
+      "top": -251
+    },
+    "extra_ability": {
+      "left": -40,
+      "right": 40,
+      "bottom": -80,
+      "top": 0
+    },
+    "vehicle_leave": {
+      "left": 69.5,
+      "right": 114.5,
+      "bottom": -80,
+      "top": -35
+    },
+    "encounter_bar": {
+      "left": -115,
+      "right": 115,
+      "bottom": 0,
+      "top": 30
+    },
+    "cooldown_utility": {
+      "left": -157.5,
+      "right": 157.5,
+      "bottom": 55,
+      "top": 100
+    },
+    "cooldown_essential": {
+      "left": -270,
+      "right": 270,
+      "bottom": 110,
+      "top": 155
+    },
+    "cooldown_buff_icon": {
+      "left": -22.5,
+      "right": 22.5,
+      "bottom": 165,
+      "top": 210
+    },
+    "cooldown_buff_bar": {
+      "left": -700,
+      "right": -460,
+      "bottom": -40,
+      "top": 10
+    },
+    "talking_head": {
+      "left": -705,
+      "right": -135,
+      "bottom": 165,
+      "top": 320
+    },
+    "archaeology": {
+      "left": 150,
+      "right": 450,
+      "bottom": 285,
+      "top": 315
+    }
+  },
+  "unexpectedOverlaps": [],
+  "result": "PASS"
+}

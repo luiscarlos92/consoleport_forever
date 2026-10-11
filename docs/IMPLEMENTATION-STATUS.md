@@ -1,3 +1,15 @@
+## Workspace organization — October 11, 2026 (Toronto)
+
+This checkout is the sole development source of truth. OneDrive's World of
+Warcraft root is reserved for `_retail_` production data and the untouched
+user-owned `Documents` folder. Historical working files are archived in the
+repo; provisioning scripts are under `tools/local`; the user's native gamepad
+UI Markdown is retained under `docs/references/pending` for a later request.
+No runtime behavior or installed candidate changes accompany this migration.
+Fresh official stable Retail check: all nine packages current, no updates.
+See `WORKSPACE-ORGANIZATION-2026-10-11.md` and
+`evidence/organization/2026-10-11/migration-plan.json`.
+
 ## User-confirmed Retail acceptance — October 10, 2026 (Toronto)
 
 The user reports: "all fixed on ring and required item frame. note it down".

@@ -1,0 +1,6 @@
+{
+  "sourceUrl": "https://github.com/Gethe/wow-ui-source/blob/09b9db7948abc9b9648dedaab51eb0cf3ee67b31/Interface/AddOns/Blizzard_APIDocumentationGenerated/ClassTalentsDocumentation.lua",
+  "sha256": "F78A3C8AF0B812A6F705C078F18A70A763687CB9217B09F8AAF20E5C45510358",
+  "purpose": "Native Retail loadout action-bar sharing API; do not alter existing policy under D05 without approval",
+  "foreverScope": "Inspected action storage and learned class selectors do not prove native spec persistence"
+}

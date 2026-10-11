@@ -1,0 +1,572 @@
+--- before/Interface/AddOns/ConsolePort_Bar/Widget/Group/Group.lua
++++ after/Interface/AddOns/ConsolePort_Bar/Widget/Group/Group.lua
+@@ -8,6 +8,28 @@
+ local ForeverFaceButtons = { PAD1 = true; PAD2 = true; PAD3 = true; PAD4 = true };
+ local ForeverCircle = [[Interface\Masks\CircleMaskScalable]];
+ local ForeverRing = [[Interface\AddOns\ConsolePort\Assets\Textures\Cursor\RoundBorderHighlight]];
++
++-- Original Forever art, traced to MainActionBarFrame.lua (1.60.1.70009).
++-- Only the four fixed base actions get this art; ability layers remain native.
++local ForeverBaseBindings = { PAD1 = 'JUMP'; PAD2 = ''; PAD3 = 'INTERACTTARGET'; PAD4 = 'TURNORACTION' };
++local function UpdateForeverBaseIcon(self)
++	if self:GetParent().id ~= 'Base' or self._state_type ~= 'custom' then return end;
++	if GetBindingAction(self.id) ~= ForeverBaseBindings[self.id] then return end;
++	local icon = self.icon;
++	if self.id == 'PAD1' then
++		-- gamepad-ability-icon-jump; original sheet, exact DB2 member coordinates.
++		icon:SetTexture([[Interface\AddOns\ConsolePort_Forever\Assets\ForeverInGame.blp]])
++		icon:SetTexCoord(397/2048, 461/2048, 1682/2048, 1746/2048)
++	elseif self.id == 'PAD2' then
++		icon:SetAtlas('128-redbutton-exit')
++	elseif self.id == 'PAD3' then
++		-- Forever's default interact/attack symbol, not a change to the binding.
++		icon:SetTexture(C_Spell.GetSpellTexture(6603))
++	elseif self.id == 'PAD4' then
++		icon:SetAtlas(UnitExists('target') and 'crosshair_inspect_32' or 'crosshair_unableinspect_32')
++	end
++	icon:Show()
++end
+ 
+ local function SetForeverRoundRegion(texture, button)
+ 	if not texture then return end;
+@@ -65,6 +87,7 @@
+ 			cooldown:SetUseCircularEdge(true)
+ 		end
+ 	end
++	UpdateForeverBaseIcon(self)
+ 	self.Name:SetWidth(self:GetWidth())
+ end
+ 
+@@ -382,4 +405,4 @@
+ 	});
+ 	button:OnLoad()
+ 	return button;
+-end)+end)
+--- before/Interface/AddOns/ConsolePort_Forever/ConsolePort_Forever.lua
++++ after/Interface/AddOns/ConsolePort_Forever/ConsolePort_Forever.lua
+@@ -89,21 +89,122 @@
+     local clear = frame.ClearAllPointsBase or frame.ClearAllPoints
+     local point = frame.SetPointBase or frame.SetPoint
+     clear(frame)
+-    point(frame, 'BOTTOM', bank, 'TOP', 0, 12)
++    -- Five physical pixels above the original approved gap, at the bar's scale.
++    point(frame, 'BOTTOM', bank, 'TOP', 0, 12 + 5 / frame:GetEffectiveScale())
+     castApplying = false
+ end
+ 
++-- Player auras are created by BuffFrame.AuraContainer; their tooltip uses
++-- AuraButtonMixin:OnEnter. Keep the actual aura display beside the health bar.
++-- Its native layout/collapse code still owns icon sizes, durations and sorting.
++local buffFrame, buffsQueued, buffsApplying;
++local MovePlayerBuffs;
++local function QueuePlayerBuffs()
++    if buffsApplying or buffsQueued then return end
++    buffsQueued = true
++    C_Timer.After(0, function()
++        buffsQueued = false
++        MovePlayerBuffs()
++    end)
++end
++
++MovePlayerBuffs = function()
++    if InCombatLockdown() or buffsApplying then return end
++    local frame = BuffFrame
++    local player = PlayerFrame
++    if not frame or not frame.AuraContainer or not player then return end
++    if buffFrame ~= frame then
++        buffFrame = frame
++        for _, method in ipairs({'SetPoint', 'ClearAllPoints', 'ApplySystemAnchor',
++            'OnEditModeExit', 'UpdateGridLayout'}) do
++            if type(frame[method]) == 'function' then
++                hooksecurefunc(frame, method, QueuePlayerBuffs)
++            end
++        end
++        frame:HookScript('OnShow', QueuePlayerBuffs)
++    end
++    buffsApplying = true
++    -- Anchor on the health bar's left and grow farther left, so additional auras
++    -- cannot cover the health/portrait. Native UpdateGridLayout keeps its
++    -- collapse button and aura anchors in sync.
++    if frame.AuraContainer.addIconsToRight ~= false then
++        frame.AuraContainer.addIconsToRight = false
++        frame:UpdateGridLayout()
++    end
++    local clear = frame.ClearAllPointsBase or frame.ClearAllPoints
++    local point = frame.SetPointBase or frame.SetPoint
++    clear(frame)
++    local upward = frame.AuraContainer.addIconsToTop
++    point(frame, upward and 'BOTTOMRIGHT' or 'TOPRIGHT', player,
++        upward and 'BOTTOMLEFT' or 'TOPLEFT', -12, upward and -5 or 5)
++    buffsApplying = false
++end
++
++local targetingBank;
++local function AddTargetingPrompts()
++    local bank = ConsolePortGroupBase
++    if not bank or InCombatLockdown() then return end
++    if targetingBank == bank then return end
++    targetingBank = bank
++    -- Decorative children inherit the bank's visibility (vehicle/pet battle),
++    -- alpha and scale. They neither receive input nor introduce new bindings.
++    for _, info in ipairs({
++        {name = 'Friendly', x = -155, glyph = 'ps_s_l1', top = 141, bottom = 186, left = 297, right = 347},
++        {name = 'Hostile', x = 155, glyph = 'ps_s_r1', top = 188, bottom = 233, left = 349, right = 399},
++    }) do
++        local prompt = CreateFrame('Frame', 'ConsolePortForever'..info.name..'Prompt', bank)
++        prompt:SetSize(34, 30.6)
++        prompt:SetPoint('BOTTOM', bank, 'TOP', info.x, -32)
++        prompt:EnableMouse(false)
++        local background = prompt:CreateTexture(nil, 'BACKGROUND')
++        background:SetAllPoints()
++        background:SetTexture([[Interface\AddOns\ConsolePort_Forever\Assets\ForeverTargeting.blp]])
++        background:SetTexCoord(info.left/512, info.right/512, 1/256, 46/256)
++        local icon = prompt:CreateTexture(nil, 'ARTWORK')
++        icon:SetAllPoints()
++        icon:SetTexture([[Interface\AddOns\ConsolePort_Forever\Assets\ForeverTargeting.blp]])
++        icon:SetTexCoord(223/512, 273/512, info.top/256, info.bottom/256)
++        local glyph = prompt:CreateTexture(nil, 'OVERLAY')
++        glyph:SetSize(18, 18)
++        glyph:SetPoint('BOTTOM', prompt, 'TOP', 0, 1)
++        glyph:SetTexture([[Interface\AddOns\ConsolePort\Assets\Icons\64\]]..info.glyph)
++    end
++end
++
++local function RefreshBaseArt()
++    local bank = ConsolePortGroupBase
++    if not bank or not bank.buttons then return end
++    for _, id in ipairs({'PAD1', 'PAD2', 'PAD3', 'PAD4'}) do
++        local button = bank.buttons[id]
++        if button and button.isForeverFaceButton then button:UpdateLocal() end
++    end
++end
+ 
+ local function RefreshForeverHUD()
+     MoveUnitFrames()
+     HideBlizzardMenuBar()
+     MovePlayerCastBar()
++    MovePlayerBuffs()
++    AddTargetingPrompts()
++    RefreshBaseArt()
+ end
+ 
+ local events = CreateFrame('Frame')
+ events:RegisterEvent('PLAYER_ENTERING_WORLD')
+ events:RegisterEvent('PLAYER_REGEN_ENABLED')
++events:RegisterEvent('PLAYER_TARGET_CHANGED')
++events:RegisterEvent('PLAYER_EQUIPMENT_CHANGED')
++events:RegisterEvent('ADDON_LOADED')
+ events:SetScript('OnEvent', function(_, event)
++    if event == 'PLAYER_TARGET_CHANGED' or event == 'PLAYER_EQUIPMENT_CHANGED' then
++        RefreshBaseArt()
++        return
++    end
++    if event == 'ADDON_LOADED' then
++        -- Buff/Edit Mode modules can load after this helper.
++        QueuePlayerBuffs()
++        return
++    end
+     if event == 'PLAYER_REGEN_ENABLED' then
+         RefreshForeverHUD()
+         return
+--- before/Interface/AddOns/ConsolePort/Model/Gamepad/PlayStation/PlayStation5.lua
++++ after/Interface/AddOns/ConsolePort/Model/Gamepad/PlayStation/PlayStation5.lua
+@@ -110,14 +110,15 @@
+ 				['CTRL-SHIFT-'] = "TOGGLEWORLDMAP";
+ 			};
+ 			PADFORWARD = {
+-				['']            = 'TOGGLEWORLDMAP';
+-				['SHIFT-']      = 'CAMERAZOOMOUT';
+-				['CTRL-']       = 'CAMERAZOOMIN';
+-			};
+-		["PADBACK"] = {[""] = "CLICK ConsolePortMenuTrigger:LeftButton",
+-["SHIFT-"] = "CLICK ConsolePortMenuTrigger:LeftButton",
+-["CTRL-"] = "CLICK ConsolePortMenuTrigger:LeftButton",
+-["CTRL-SHIFT-"] = "CLICK ConsolePortMenuTrigger:LeftButton",},
++				['']            = "CLICK ConsolePortMenuTrigger:LeftButton";
++				['SHIFT-']      = "CLICK ConsolePortMenuTrigger:LeftButton";
++				['CTRL-']       = "CLICK ConsolePortMenuTrigger:LeftButton";
++			["CTRL-SHIFT-"] = "CLICK ConsolePortMenuTrigger:LeftButton",
++};
++		["PADBACK"] = {[""] = "TOGGLEWORLDMAP",
++["SHIFT-"] = "TOGGLEWORLDMAP",
++["CTRL-"] = "TOGGLEWORLDMAP",
++["CTRL-SHIFT-"] = "TOGGLEWORLDMAP",},
+ };
+ 	};
+ }, { -- metaData
+--- before/WTF/Account/119624169#1/SavedVariables/ConsolePort.lua
++++ after/WTF/Account/119624169#1/SavedVariables/ConsolePort.lua
+@@ -481,9 +481,10 @@
+ ["CTRL-SHIFT-"] = "",
+ },
+ ["PADFORWARD"] = {
+-[""] = "TOGGLEWORLDMAP",
+-["SHIFT-"] = "CAMERAZOOMOUT",
+-["CTRL-"] = "CAMERAZOOMIN",
++[""] = "CLICK ConsolePortMenuTrigger:LeftButton",
++["SHIFT-"] = "CLICK ConsolePortMenuTrigger:LeftButton",
++["CTRL-"] = "CLICK ConsolePortMenuTrigger:LeftButton",
++["CTRL-SHIFT-"] = "CLICK ConsolePortMenuTrigger:LeftButton",
+ },
+ ["PADSOCIAL"] = {
+ [""] = "OPENALLBAGS",
+@@ -504,10 +505,10 @@
+ ["CTRL-SHIFT-"] = "TOGGLEWORLDMAP",
+ },
+ ["PADBACK"] = {
+-[""] = "CLICK ConsolePortMenuTrigger:LeftButton",
+-["SHIFT-"] = "CLICK ConsolePortMenuTrigger:LeftButton",
+-["CTRL-"] = "CLICK ConsolePortMenuTrigger:LeftButton",
+-["CTRL-SHIFT-"] = "CLICK ConsolePortMenuTrigger:LeftButton",
++[""] = "TOGGLEWORLDMAP",
++["SHIFT-"] = "TOGGLEWORLDMAP",
++["CTRL-"] = "TOGGLEWORLDMAP",
++["CTRL-SHIFT-"] = "TOGGLEWORLDMAP",
+ },
+ },
+ ["Triggers"] = {
+@@ -767,10 +768,10 @@
+ ["CTRL-SHIFT-"] = "TOGGLEWORLDMAP",
+ },
+ ["PADBACK"] = {
+-["CTRL-"] = "CLICK ConsolePortMenuTrigger:LeftButton",
+-["SHIFT-"] = "CLICK ConsolePortMenuTrigger:LeftButton",
+-[""] = "CLICK ConsolePortMenuTrigger:LeftButton",
+-["CTRL-SHIFT-"] = "CLICK ConsolePortMenuTrigger:LeftButton",
++["CTRL-"] = "TOGGLEWORLDMAP",
++["SHIFT-"] = "TOGGLEWORLDMAP",
++[""] = "TOGGLEWORLDMAP",
++["CTRL-SHIFT-"] = "TOGGLEWORLDMAP",
+ },
+ ["PADLSTICK"] = {
+ ["CTRL-"] = "",
+@@ -925,10 +926,10 @@
+ ["CTRL-SHIFT-"] = "TOGGLEWORLDMAP",
+ },
+ ["PADBACK"] = {
+-[""] = "CLICK ConsolePortMenuTrigger:LeftButton",
+-["SHIFT-"] = "CLICK ConsolePortMenuTrigger:LeftButton",
+-["CTRL-"] = "CLICK ConsolePortMenuTrigger:LeftButton",
+-["CTRL-SHIFT-"] = "CLICK ConsolePortMenuTrigger:LeftButton",
++[""] = "TOGGLEWORLDMAP",
++["SHIFT-"] = "TOGGLEWORLDMAP",
++["CTRL-"] = "TOGGLEWORLDMAP",
++["CTRL-SHIFT-"] = "TOGGLEWORLDMAP",
+ },
+ ["PADLSTICK"] = {
+ [""] = "TOGGLEAUTORUN",
+@@ -1086,10 +1087,10 @@
+ ["CTRL-SHIFT-"] = "TOGGLEWORLDMAP",
+ },
+ ["PADBACK"] = {
+-["CTRL-"] = "CLICK ConsolePortMenuTrigger:LeftButton",
+-["SHIFT-"] = "CLICK ConsolePortMenuTrigger:LeftButton",
+-[""] = "CLICK ConsolePortMenuTrigger:LeftButton",
+-["CTRL-SHIFT-"] = "CLICK ConsolePortMenuTrigger:LeftButton",
++["CTRL-"] = "TOGGLEWORLDMAP",
++["SHIFT-"] = "TOGGLEWORLDMAP",
++[""] = "TOGGLEWORLDMAP",
++["CTRL-SHIFT-"] = "TOGGLEWORLDMAP",
+ },
+ ["PADLSTICK"] = {
+ ["CTRL-"] = "",
+@@ -1128,10 +1129,10 @@
+ ["CTRL-SHIFT-"] = "",
+ },
+ ["PADFORWARD"] = {
+-["CTRL-"] = "CAMERAZOOMIN",
+-["SHIFT-"] = "CAMERAZOOMOUT",
+-[""] = "TOGGLEWORLDMAP",
+-["CTRL-SHIFT-"] = "",
++["CTRL-"] = "CLICK ConsolePortMenuTrigger:LeftButton",
++["SHIFT-"] = "CLICK ConsolePortMenuTrigger:LeftButton",
++[""] = "CLICK ConsolePortMenuTrigger:LeftButton",
++["CTRL-SHIFT-"] = "CLICK ConsolePortMenuTrigger:LeftButton",
+ },
+ ["PADRSTICKLEFT"] = {
+ ["CTRL-"] = "",
+@@ -1289,10 +1290,10 @@
+ ["CTRL-SHIFT-"] = "TOGGLEWORLDMAP",
+ },
+ ["PADBACK"] = {
+-["CTRL-"] = "CLICK ConsolePortMenuTrigger:LeftButton",
+-["SHIFT-"] = "CLICK ConsolePortMenuTrigger:LeftButton",
+-[""] = "CLICK ConsolePortMenuTrigger:LeftButton",
+-["CTRL-SHIFT-"] = "CLICK ConsolePortMenuTrigger:LeftButton",
++["CTRL-"] = "TOGGLEWORLDMAP",
++["SHIFT-"] = "TOGGLEWORLDMAP",
++[""] = "TOGGLEWORLDMAP",
++["CTRL-SHIFT-"] = "TOGGLEWORLDMAP",
+ },
+ ["PADLSTICK"] = {
+ ["CTRL-"] = "",
+@@ -1349,10 +1350,10 @@
+ ["CTRL-SHIFT-"] = "CLICK LM_B1:LeftButton",
+ },
+ ["PADFORWARD"] = {
+-["CTRL-"] = "CAMERAZOOMIN",
+-["SHIFT-"] = "CAMERAZOOMOUT",
+-[""] = "TOGGLEWORLDMAP",
+-["CTRL-SHIFT-"] = "",
++["CTRL-"] = "CLICK ConsolePortMenuTrigger:LeftButton",
++["SHIFT-"] = "CLICK ConsolePortMenuTrigger:LeftButton",
++[""] = "CLICK ConsolePortMenuTrigger:LeftButton",
++["CTRL-SHIFT-"] = "CLICK ConsolePortMenuTrigger:LeftButton",
+ },
+ ["PADRSHOULDER"] = {
+ ["CTRL-"] = "TARGETSCANENEMY",
+@@ -1492,10 +1493,10 @@
+ ["CTRL-SHIFT-"] = "",
+ },
+ ["PADBACK"] = {
+-["CTRL-"] = "CLICK ConsolePortMenuTrigger:LeftButton",
+-["SHIFT-"] = "CLICK ConsolePortMenuTrigger:LeftButton",
+-[""] = "CLICK ConsolePortMenuTrigger:LeftButton",
+-["CTRL-SHIFT-"] = "CLICK ConsolePortMenuTrigger:LeftButton",
++["CTRL-"] = "TOGGLEWORLDMAP",
++["SHIFT-"] = "TOGGLEWORLDMAP",
++[""] = "TOGGLEWORLDMAP",
++["CTRL-SHIFT-"] = "TOGGLEWORLDMAP",
+ },
+ ["PADLSTICK"] = {
+ ["CTRL-"] = "",
+--- before/WTF/Account/119624169#1/SavedVariables/Immersion.lua
++++ after/WTF/Account/119624169#1/SavedVariables/Immersion.lua
+@@ -15,7 +15,7 @@
+ ["anidivisor"] = 5,
+ ["ttsenabled"] = false,
+ ["hidetracker"] = true,
+-["boxoffsetX"] = 7.797380447387695,
++["boxoffsetX"] = 0,
+ ["hidetooltip"] = true,
+ ["accept"] = "SPACE",
+ ["boxlock"] = false,
+--- before/WTF/Account/_template_/SavedVariables/ConsolePort_Bar.lua
++++ after/WTF/Account/_template_/SavedVariables/ConsolePort_Bar.lua
+@@ -5,7 +5,7 @@
+ ["L2"] = {
+ ["type"] = "Group",
+ ["opacity"] = "[vehicleui][overridebar] 0; [mod:M2M1] 45; [mod:M1] 100; 45",
+-["width"] = 250,
++["width"] = 277.5,
+ ["override"] = "shown",
+ ["visibility"] = "[vehicleui][overridebar] hide; show",
+ ["modifier"] = "[] M1",
+@@ -44,7 +44,7 @@
+ ["y"] = 0,
+ ["relPoint"] = "LEFT",
+ ["point"] = "LEFT",
+-["x"] = 235,
++["x"] = 262.5,
+ },
+ ["type"] = "GroupButton",
+ },
+@@ -53,7 +53,7 @@
+ ["y"] = -45,
+ ["relPoint"] = "LEFT",
+ ["point"] = "LEFT",
+-["x"] = 190,
++["x"] = 217.5,
+ },
+ ["type"] = "GroupButton",
+ },
+@@ -62,7 +62,7 @@
+ ["y"] = 0,
+ ["relPoint"] = "LEFT",
+ ["point"] = "LEFT",
+-["x"] = 145,
++["x"] = 172.5,
+ },
+ ["type"] = "GroupButton",
+ },
+@@ -71,7 +71,7 @@
+ ["y"] = 45,
+ ["relPoint"] = "LEFT",
+ ["point"] = "LEFT",
+-["x"] = 190,
++["x"] = 217.5,
+ },
+ ["type"] = "GroupButton",
+ },
+@@ -98,7 +98,7 @@
+ ["L2R2"] = {
+ ["type"] = "Group",
+ ["opacity"] = "[vehicleui][overridebar] 0; [mod:M2M1] 100; 45",
+-["width"] = 250,
++["width"] = 277.5,
+ ["override"] = "shown",
+ ["visibility"] = "[vehicleui][overridebar] hide; show",
+ ["modifier"] = "[] M2M1",
+@@ -137,7 +137,7 @@
+ ["y"] = 0,
+ ["relPoint"] = "LEFT",
+ ["point"] = "LEFT",
+-["x"] = 235,
++["x"] = 262.5,
+ },
+ ["type"] = "GroupButton",
+ },
+@@ -146,7 +146,7 @@
+ ["y"] = -45,
+ ["relPoint"] = "LEFT",
+ ["point"] = "LEFT",
+-["x"] = 190,
++["x"] = 217.5,
+ },
+ ["type"] = "GroupButton",
+ },
+@@ -155,7 +155,7 @@
+ ["y"] = 0,
+ ["relPoint"] = "LEFT",
+ ["point"] = "LEFT",
+-["x"] = 145,
++["x"] = 172.5,
+ },
+ ["type"] = "GroupButton",
+ },
+@@ -164,7 +164,7 @@
+ ["y"] = 45,
+ ["relPoint"] = "LEFT",
+ ["point"] = "LEFT",
+-["x"] = 190,
++["x"] = 217.5,
+ },
+ ["type"] = "GroupButton",
+ },
+@@ -301,7 +301,7 @@
+ ["Base"] = {
+ ["type"] = "Group",
+ ["opacity"] = "[vehicleui][overridebar] 0; [nomod] 100; 45",
+-["width"] = 250,
++["width"] = 277.5,
+ ["override"] = "shown",
+ ["visibility"] = "[vehicleui][overridebar] hide; show",
+ ["modifier"] = "[nomod]  ; [mod]  ",
+@@ -340,7 +340,7 @@
+ ["y"] = 0,
+ ["relPoint"] = "LEFT",
+ ["point"] = "LEFT",
+-["x"] = 235,
++["x"] = 262.5,
+ },
+ ["type"] = "GroupButton",
+ },
+@@ -349,7 +349,7 @@
+ ["y"] = -45,
+ ["relPoint"] = "LEFT",
+ ["point"] = "LEFT",
+-["x"] = 190,
++["x"] = 217.5,
+ },
+ ["type"] = "GroupButton",
+ },
+@@ -358,7 +358,7 @@
+ ["y"] = 0,
+ ["relPoint"] = "LEFT",
+ ["point"] = "LEFT",
+-["x"] = 145,
++["x"] = 172.5,
+ },
+ ["type"] = "GroupButton",
+ },
+@@ -367,7 +367,7 @@
+ ["y"] = 45,
+ ["relPoint"] = "LEFT",
+ ["point"] = "LEFT",
+-["x"] = 190,
++["x"] = 217.5,
+ },
+ ["type"] = "GroupButton",
+ },
+@@ -394,7 +394,7 @@
+ ["R2"] = {
+ ["type"] = "Group",
+ ["opacity"] = "[vehicleui][overridebar] 0; [mod:M2M1] 45; [mod:M2] 100; 45",
+-["width"] = 250,
++["width"] = 277.5,
+ ["override"] = "shown",
+ ["visibility"] = "[vehicleui][overridebar] hide; show",
+ ["modifier"] = "[] M2",
+@@ -433,7 +433,7 @@
+ ["y"] = 0,
+ ["relPoint"] = "LEFT",
+ ["point"] = "LEFT",
+-["x"] = 235,
++["x"] = 262.5,
+ },
+ ["type"] = "GroupButton",
+ },
+@@ -442,7 +442,7 @@
+ ["y"] = -45,
+ ["relPoint"] = "LEFT",
+ ["point"] = "LEFT",
+-["x"] = 190,
++["x"] = 217.5,
+ },
+ ["type"] = "GroupButton",
+ },
+@@ -451,7 +451,7 @@
+ ["y"] = 0,
+ ["relPoint"] = "LEFT",
+ ["point"] = "LEFT",
+-["x"] = 145,
++["x"] = 172.5,
+ },
+ ["type"] = "GroupButton",
+ },
+@@ -460,7 +460,7 @@
+ ["y"] = 45,
+ ["relPoint"] = "LEFT",
+ ["point"] = "LEFT",
+-["x"] = 190,
++["x"] = 217.5,
+ },
+ ["type"] = "GroupButton",
+ },
+--- before/WTF/Account/119624169#1/bindings-cache.wtf
++++ after/WTF/Account/119624169#1/bindings-cache.wtf
+@@ -57,7 +57,7 @@
+ bind NUMPAD3 NONE
+ bind SHIFT-C TOGGLECHARACTER0
+ bind T MULTIACTIONBAR1BUTTON5
+-bind PADBACK CLICK ConsolePortMenuTrigger:LeftButton
++bind PADBACK TOGGLEWORLDMAP
+ bind PADRSHOULDER TARGETSCANENEMY
+ bind PADRTRIGGER NONE
+ bind PAD1 JUMP
+@@ -186,9 +186,9 @@
+ bind CTRL-PADSYSTEM TOGGLEWORLDMAP
+ bind SHIFT-PADSYSTEM TOGGLEWORLDMAP
+ bind CTRL-SHIFT-PADSYSTEM TOGGLEWORLDMAP
+-bind CTRL-PADBACK CLICK ConsolePortMenuTrigger:LeftButton
+-bind SHIFT-PADBACK CLICK ConsolePortMenuTrigger:LeftButton
+-bind CTRL-SHIFT-PADBACK CLICK ConsolePortMenuTrigger:LeftButton
++bind CTRL-PADBACK TOGGLEWORLDMAP
++bind SHIFT-PADBACK TOGGLEWORLDMAP
++bind CTRL-SHIFT-PADBACK TOGGLEWORLDMAP
+ bind CTRL-PADLSTICK NONE
+ bind SHIFT-PADLSTICK NONE
+ bind CTRL-SHIFT-PADLSTICK NONE
+--- before/WTF/Account/_template_/bindings-cache.wtf
++++ after/WTF/Account/_template_/bindings-cache.wtf
+@@ -1,4 +1,4 @@
+-bind PADBACK CLICK ConsolePortMenuTrigger:LeftButton
++bind PADBACK TOGGLEWORLDMAP
+ bind PADRSHOULDER TARGETSCANENEMY
+ bind PADRTRIGGER NONE
+ bind PAD1 JUMP
+@@ -42,11 +42,11 @@
+ bind CTRL-PADDLEFT MULTIACTIONBAR1BUTTON5
+ bind CTRL-PADDRIGHT MULTIACTIONBAR1BUTTON7
+ bind PADSYSTEM TOGGLEWORLDMAP
+-bind SHIFT-PADBACK CLICK ConsolePortMenuTrigger:LeftButton
++bind SHIFT-PADBACK TOGGLEWORLDMAP
+ bind SHIFT-PADSYSTEM TOGGLEWORLDMAP
+-bind CTRL-PADBACK CLICK ConsolePortMenuTrigger:LeftButton
++bind CTRL-PADBACK TOGGLEWORLDMAP
+ bind CTRL-PADSYSTEM TOGGLEWORLDMAP
+-bind CTRL-SHIFT-PADBACK CLICK ConsolePortMenuTrigger:LeftButton
++bind CTRL-SHIFT-PADBACK TOGGLEWORLDMAP
+ bind CTRL-SHIFT-PADSYSTEM TOGGLEWORLDMAP
+ bind CTRL-PADLSTICKDOWN NONE
+ bind SHIFT-PADLSTICKDOWN NONE

@@ -1,0 +1,8 @@
+{
+  "path": "tools/local/Setup-WoW-OneDrive.ps1",
+  "originalSHA256": "6be61e2b196f1ca987103711d57763d461068785e5904ddec7eab00005fa71cf",
+  "finalSHA256": "4854ca2574beaead392ece19229bdc1df51c66a5eff669bfc1b6edd213fa3c04",
+  "change": "Replace script-relative production destination with the original explicit OneDrive Retail path after relocation.",
+  "syntaxErrors": 0,
+  "executed": false
+}

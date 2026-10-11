@@ -1,0 +1,113 @@
+{
+  "checkedAt": "2026-10-11T23:24:17.737046+00:00",
+  "lockSHA256": "2e49961920e5f8c4b3966ba42a9ab3f35bb0c55dd233b75b5587bf2830d59c2a",
+  "github": [
+    {
+      "repo": "seblindfors/ConsolePort",
+      "url": "https://github.com/seblindfors/ConsolePort/releases/tag/3.3.10",
+      "latestStable": "3.3.10",
+      "releaseID": 405545932,
+      "publishedAt": "2026-10-07T08:30:22Z",
+      "matchesLock": true,
+      "assetID": 618078958,
+      "digest": "sha256:6175a327b3b7505b6f1d79ef0adc96c7a65db3cc8220dd59e34de6658dbb4f49",
+      "bytes": 17817460
+    },
+    {
+      "repo": "Cidan/BetterBags",
+      "url": "https://github.com/Cidan/BetterBags/releases/tag/v0.5.14",
+      "latestStable": "v0.5.14",
+      "releaseID": 401468770,
+      "publishedAt": "2026-10-02T01:12:16Z",
+      "matchesLock": true,
+      "assetID": 604493194,
+      "digest": "sha256:16c1ac70c4de2e7f2cfdbf4d2b5f3d3f44514a3f9ecf1040e29c790e8be8c0d7",
+      "bytes": 551933
+    },
+    {
+      "repo": "seblindfors/Immersion",
+      "url": "https://github.com/seblindfors/Immersion/releases/tag/1.4.61",
+      "latestStable": "1.4.61",
+      "releaseID": 395415546,
+      "publishedAt": "2026-09-24T06:59:53Z",
+      "matchesLock": true,
+      "assetID": 585356687,
+      "digest": "sha256:b180a8cbd1a1d878377da5a85abfdc5576e0c04212f9e900e3e9ca505cde1f3e",
+      "bytes": 145146
+    },
+    {
+      "repo": "xod-wow/LiteMount",
+      "url": "https://github.com/xod-wow/LiteMount/releases/tag/12.1.0-2",
+      "latestStable": "12.1.0-2",
+      "releaseID": 408865862,
+      "publishedAt": "2026-10-10T10:18:47Z",
+      "matchesLock": true,
+      "assetID": 627647140,
+      "digest": "sha256:2ea930083a18a002bab72423f9efc2a22f912e195add574ddc39361850883a55",
+      "bytes": 439607
+    },
+    {
+      "repo": "SFX-WoW/Masque",
+      "url": "https://github.com/SFX-WoW/Masque/releases/tag/12.1.0",
+      "latestStable": "12.1.0",
+      "releaseID": 375817118,
+      "publishedAt": "2026-08-24T15:48:33Z",
+      "matchesLock": true,
+      "assetID": 527819371,
+      "digest": "sha256:9e1da4827ae60bd25d7fc427cbeeb0dc297e59d53a71a29ae95223d3374bbfa0",
+      "bytes": 3025889
+    },
+    {
+      "repo": "Tercioo/Plater-Nameplates",
+      "url": "https://github.com/Tercioo/Plater-Nameplates/releases/tag/Plater-v658",
+      "latestStable": "Plater-v658",
+      "releaseID": 409023939,
+      "publishedAt": "2026-10-10T15:13:34Z",
+      "matchesLock": true,
+      "assetID": 628267712,
+      "digest": "sha256:faeda3f14a2b109d2ceaa2a176be4a2e2d016b5e8c12d6c70e8222505bf461e0",
+      "bytes": 4575143
+    },
+    {
+      "repo": "SLOKnightfall/BetterWardrobe",
+      "url": "https://github.com/SLOKnightfall/BetterWardrobe/releases/tag/6.12.3",
+      "latestStable": "6.12.3",
+      "releaseID": 382994483,
+      "publishedAt": "2026-09-04T20:21:01Z",
+      "matchesLock": true,
+      "assetID": 544855090,
+      "digest": "sha256:abcba6be5535c15a581721192a5c4865e05b568dbac52d79c108c89e6c763d8c",
+      "bytes": 2050932
+    }
+  ],
+  "curseforge": [
+    {
+      "repo": "curseforge/DynamicCam",
+      "latestURL": "https://www.curseforge.com/wow/addons/dynamiccam/files/all",
+      "officialFile": "https://www.curseforge.com/wow/addons/dynamiccam/files/8995535",
+      "latestStable": "2.21.1",
+      "fileID": 8995535,
+      "metadataVerifiedAt": "2026-10-11T23:24:16.047286+00:00",
+      "method": "Official latest-stable Retail listing and file page inspected; no floating latest fetch during assembly.",
+      "matchesLock": true
+    },
+    {
+      "repo": "curseforge/Immersion_ExtraFade",
+      "latestURL": "https://www.curseforge.com/wow/addons/immersion-extrafade/files/all",
+      "officialFile": "https://www.curseforge.com/wow/addons/immersion-extrafade/files/8995675",
+      "latestStable": "1.18.0",
+      "fileID": 8995675,
+      "metadataVerifiedAt": "2026-10-11T23:24:16.047286+00:00",
+      "method": "Official latest-stable Retail listing and file page inspected; no floating latest fetch during assembly.",
+      "matchesLock": true
+    }
+  ],
+  "bundledVoice": {
+    "applicable": false,
+    "maintainerCommit": null,
+    "expectedCommit": null,
+    "matchesLock": true
+  },
+  "updates": [],
+  "allCurrent": true
+}

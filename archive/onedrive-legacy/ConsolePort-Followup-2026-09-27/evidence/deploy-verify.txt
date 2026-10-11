@@ -1,0 +1,2 @@
+PASS: exact installed hashes: 10; follow-up helper before/after hashes: exact; WoW processes: 0.
+Whole-tree baseline intentionally not asserted after the user normal-login test rewrote mutable WoW files.

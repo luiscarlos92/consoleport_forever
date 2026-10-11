@@ -1,0 +1,12 @@
+[
+  {
+    "path": "tools\\local\\Setup-WoW-OneDrive.ps1",
+    "syntaxErrors": 0,
+    "executed": false
+  },
+  {
+    "path": "tools\\local\\Setup-WoW-CharacterTemplateLinks.ps1",
+    "syntaxErrors": 0,
+    "executed": false
+  }
+]

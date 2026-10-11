@@ -5,3 +5,12 @@ __pycache__/
 *.pyc
 dependencies/cache/
 dependencies/unpacked/
+
+# Imported legacy upstream checkouts and reproducible package/reference caches.
+# Their bytes remain inside the repo workspace and are indexed in the migration
+# manifest; development scripts, documents and evidence are tracked separately.
+/archive/onedrive-legacy/**/source/
+/archive/onedrive-legacy/**/installed-source/
+/archive/onedrive-legacy/**/current-source/
+/archive/onedrive-legacy/**/current-packages/
+/archive/onedrive-legacy/**/packages/

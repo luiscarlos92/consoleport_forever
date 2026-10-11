@@ -1,0 +1,67 @@
+{
+  "Date": "2026-10-03",
+  "Authorization": "User requested archive originals and keep one active document",
+  "MasterDocument": "C:\\Users\\luisr\\OneDrive\\Documents\\03 Gaming\\World of Warcraft\\ConsolePort-Forever-Phased-Plan-2026-10-03.md",
+  "Files": [
+    {
+      "Name": "ConsolePort-Forever-Configuration-Plan.md",
+      "OriginalPath": "C:\\Users\\luisr\\OneDrive\\Documents\\03 Gaming\\World of Warcraft\\ConsolePort-Forever-Configuration-Plan.md",
+      "ArchivedPath": "C:\\Users\\luisr\\OneDrive\\Documents\\03 Gaming\\World of Warcraft\\ConsolePort-Forever-Documentation-Archive-2026-10-03\\ConsolePort-Forever-Configuration-Plan.md",
+      "SHA256": "5345AC19C441F0E5CA9A9ECDE174235CC98C6332DCDF3F05CE78AA47BD7A2B8C"
+    },
+    {
+      "Name": "ConsolePort-Forever-Research-Handoff.md",
+      "OriginalPath": "C:\\Users\\luisr\\OneDrive\\Documents\\03 Gaming\\World of Warcraft\\ConsolePort-Forever-Research-Handoff.md",
+      "ArchivedPath": "C:\\Users\\luisr\\OneDrive\\Documents\\03 Gaming\\World of Warcraft\\ConsolePort-Forever-Documentation-Archive-2026-10-03\\ConsolePort-Forever-Research-Handoff.md",
+      "SHA256": "E16B854B39DC761FB76662F975DD7617C33719BE4BCAF07F28ADA2B0E6734235"
+    },
+    {
+      "Name": "ConsolePort-Addon-Compatibility-Ledger.md",
+      "OriginalPath": "C:\\Users\\luisr\\OneDrive\\Documents\\03 Gaming\\World of Warcraft\\ConsolePort-Addon-Compatibility-Ledger.md",
+      "ArchivedPath": "C:\\Users\\luisr\\OneDrive\\Documents\\03 Gaming\\World of Warcraft\\ConsolePort-Forever-Documentation-Archive-2026-10-03\\ConsolePort-Addon-Compatibility-Ledger.md",
+      "SHA256": "909287E18D950B74E5E8968FECFDBAE20053E3544B3FDA5B07FA854C2B1A226F"
+    },
+    {
+      "Name": "ConsolePort-Addon-Cleanup-Recommendation.md",
+      "OriginalPath": "C:\\Users\\luisr\\OneDrive\\Documents\\03 Gaming\\World of Warcraft\\ConsolePort-Addon-Cleanup-Recommendation.md",
+      "ArchivedPath": "C:\\Users\\luisr\\OneDrive\\Documents\\03 Gaming\\World of Warcraft\\ConsolePort-Forever-Documentation-Archive-2026-10-03\\ConsolePort-Addon-Cleanup-Recommendation.md",
+      "SHA256": "26C28A5F92E195D16B846C15F1FA8BCBA8569AB59A0C23A939FF5FA63016716D"
+    },
+    {
+      "Name": "ConsolePort-Forever-Second-Pass-Handoff.md",
+      "OriginalPath": "C:\\Users\\luisr\\OneDrive\\Documents\\03 Gaming\\World of Warcraft\\ConsolePort-Forever-Second-Pass-Handoff.md",
+      "ArchivedPath": "C:\\Users\\luisr\\OneDrive\\Documents\\03 Gaming\\World of Warcraft\\ConsolePort-Forever-Documentation-Archive-2026-10-03\\ConsolePort-Forever-Second-Pass-Handoff.md",
+      "SHA256": "FD2623B764B45C3C9FDDEE837D12E46C4141E3CC7D1EE2BBEFA6E23116D59B4B"
+    },
+    {
+      "Name": "ConsolePort-Forever-Implementation-Report.md",
+      "OriginalPath": "C:\\Users\\luisr\\OneDrive\\Documents\\03 Gaming\\World of Warcraft\\ConsolePort-Forever-Implementation-Report.md",
+      "ArchivedPath": "C:\\Users\\luisr\\OneDrive\\Documents\\03 Gaming\\World of Warcraft\\ConsolePort-Forever-Documentation-Archive-2026-10-03\\ConsolePort-Forever-Implementation-Report.md",
+      "SHA256": "B7CC99EF2B2B0E680834A20BD251BA3A8FFB9D448DC1F2D30EA192CA2EDD83BD"
+    },
+    {
+      "Name": "ConsolePort-Circular-Buttons-Handoff.md",
+      "OriginalPath": "C:\\Users\\luisr\\OneDrive\\Documents\\03 Gaming\\World of Warcraft\\ConsolePort-Circular-Buttons-Handoff.md",
+      "ArchivedPath": "C:\\Users\\luisr\\OneDrive\\Documents\\03 Gaming\\World of Warcraft\\ConsolePort-Forever-Documentation-Archive-2026-10-03\\ConsolePort-Circular-Buttons-Handoff.md",
+      "SHA256": "F9A988C5BC944456041BEEAEECF2DF02614AD1F2106A99E1DA991CAEDC88EC94"
+    },
+    {
+      "Name": "ConsolePort-Refinements-2026-09-27-Handoff.md",
+      "OriginalPath": "C:\\Users\\luisr\\OneDrive\\Documents\\03 Gaming\\World of Warcraft\\ConsolePort-Refinements-2026-09-27-Handoff.md",
+      "ArchivedPath": "C:\\Users\\luisr\\OneDrive\\Documents\\03 Gaming\\World of Warcraft\\ConsolePort-Forever-Documentation-Archive-2026-10-03\\ConsolePort-Refinements-2026-09-27-Handoff.md",
+      "SHA256": "1CFFFA1C8689EC72CD0A1AD3CFF9E9657E10C6BBCC5989C9D225C47BB7A94EF3"
+    },
+    {
+      "Name": "ConsolePort-Forever-Standalone-Architecture.md",
+      "OriginalPath": "C:\\Users\\luisr\\OneDrive\\Documents\\03 Gaming\\World of Warcraft\\ConsolePort-Forever-Standalone-Architecture.md",
+      "ArchivedPath": "C:\\Users\\luisr\\OneDrive\\Documents\\03 Gaming\\World of Warcraft\\ConsolePort-Forever-Documentation-Archive-2026-10-03\\ConsolePort-Forever-Standalone-Architecture.md",
+      "SHA256": "DCD59D7A5C662A2EE05E3114C3A859CCD9DEFC2778A7EF9420D486632D859173"
+    },
+    {
+      "Name": "ConsolePort-Forever-Public-Addon-Roadmap.md",
+      "OriginalPath": "C:\\Users\\luisr\\OneDrive\\Documents\\03 Gaming\\World of Warcraft\\ConsolePort-Forever-Public-Addon-Roadmap.md",
+      "ArchivedPath": "C:\\Users\\luisr\\OneDrive\\Documents\\03 Gaming\\World of Warcraft\\ConsolePort-Forever-Documentation-Archive-2026-10-03\\ConsolePort-Forever-Public-Addon-Roadmap.md",
+      "SHA256": "1544036D166C6EAC2D1C0C0C8B3BAAE031CF0023181DB7BBF8D13969D794BDFF"
+    }
+  ]
+}

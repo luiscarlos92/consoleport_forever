@@ -1,0 +1,10 @@
+2026-09-27 staged validation at usage handoff
+LIVE UNCHANGED: B77AD851A602CF1230A96724B043D1127B322F72A938EBB9F3AA90E356D1F6CB
+STAGED: 589630C9A455DE87E13B8D8B32ADE1ADFAD9317D8DD5FBE41B84B40CE1A2A551
+PASS: Lua 5.1 parse for helper and harness.
+PASS: independent buff/debuff systems share a left-growing, down-wrapping lane and follow dynamic height.
+PASS: protected HUD systems are untouched; other registered systems receive Blizzard Modern records.
+PASS: controller-safe transient rail survives retries, Edit Mode exit, late registration and combat deferral.
+PASS: target auras restore above the approved low target frame.
+PASS: conservative expansion envelopes do not intersect approved or managed zones.
+No live files or SavedVariables were changed.

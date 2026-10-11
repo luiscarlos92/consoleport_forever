@@ -1,0 +1,8 @@
+PASS: live helper and harness parse as Lua 5.1
+PASS: independent buff/debuff systems share a left-growing, down-wrapping lane and follow dynamic height.
+PASS: all unit frames and protected HUD systems are untouched; other registered systems receive Blizzard Modern records.
+PASS: target position is preserved without persistent target-frame writes, aura calls or method hooks.
+PASS: controller-safe transient rail survives retries, Edit Mode exit, late registration and combat deferral.
+PASS: conservative expansion envelopes do not intersect approved or managed zones.
+PASS: 41 live custom addon folders exactly match 41 enabled shared AddOns.txt entries; zero missing, stale or disabled entries.
+PASS: installed hash 6B2B3FE9E60F6677F4D74F6FD83A696DECD4C2C9498FCBAB93C6036E4FDC0267 matches staged.

@@ -1,0 +1,13 @@
+2026-09-27T20:23:40.9183270-04:00
+PASS: both live Lua files parse as Lua 5.1
+PASS: independent buff/debuff systems share a left-growing, down-wrapping lane and follow dynamic height.
+PASS: all unit frames and protected HUD systems are untouched; other registered systems receive Blizzard Modern records.
+PASS: action prompts and unit frames share the symmetric center-out grid.
+PASS: controller-safe transient rail survives retries, Edit Mode exit, late registration and combat deferral.
+PASS: conservative expansion envelopes do not intersect approved or managed zones.
+PASS: rollback source and JSON evidence parse.
+PASS: both live files match their validated after snapshots.
+PASS: WoW remained closed.
+2026-09-27 correction after screenshots 1000103032/1000103034:
+PASS: all 32 LEFT-anchored buttons include the -22.5 half-width correction.
+PASS: local square/circle cross centers are -78.75/+78.75 around the bank centerline.

@@ -1,0 +1,19 @@
+Blizzard_Console.lua:4162
+ConsolePort_Forever taint reached CompactUnitFrame_UpdateHealthColor while
+EditModeManager:OnEditModeEnter called RefreshArenaFrames and
+CompactArenaFrame:RefreshMembers. The client rejected comparison of secret
+health color values.
+
+Blizzard_Console.lua:4166, 4170
+The same tainted session rejected secret range booleans in
+CompactUnitFrame_UpdateInRange.
+
+Blizzard_Console.lua:4174
+The same tainted session rejected secret max-health values in
+CompactUnitFrame_UpdateHealPrediction.
+
+Corrective boundary:
+- no addon-created systemInfo is passed to any Edit Mode frame;
+- no registered Edit Mode frame iteration or manager method hooks remain;
+- helper-owned unit, cast, and aura positioning returns immediately while
+  Edit Mode is active.

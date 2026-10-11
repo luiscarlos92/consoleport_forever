@@ -1,0 +1,104 @@
+{
+  "source_commit": "bd2470aed543f72697a044e989285b6c83e63f73",
+  "forever_build": "1.60.1.70009",
+  "retail_build": "12.1.0.69933",
+  "sources": [
+    "https://github.com/Gethe/wow-ui-source/blob/bd2470aed543f72697a044e989285b6c83e63f73/Interface/AddOns/Blizzard_GamepadActionBars/MainActionBarFrame.lua",
+    "https://wago.tools/db2/UiTextureAtlasMember/csv?build=1.60.1.70009",
+    "https://wago.tools/db2/UiTextureAtlasMember/csv?build=12.1.0.69933"
+  ],
+  "assets": [
+    {
+      "fileDataID": 6227336,
+      "source": "https://wago.tools/api/casc/6227336?version=1.60.1.70009",
+      "sha256": "9daccf7f192871a876ede143a14f4cc453a726ac271fc89d0e30a5610b5a673f"
+    },
+    {
+      "fileDataID": 8395116,
+      "source": "https://wago.tools/api/casc/8395116?version=1.60.1.70009",
+      "sha256": "f1cbdf024b1d397abe318dd9caaf67f6c0ab6c5406d03873a456aa48e7b76760"
+    }
+  ],
+  "atlas_members": [
+    {
+      "CommittedName": "gamepad-ability-icon-jump",
+      "ID": "29111",
+      "UiTextureAtlasID": "3024",
+      "Width": "64",
+      "Height": "64",
+      "CommittedLeft": "397",
+      "CommittedRight": "461",
+      "CommittedTop": "1682",
+      "CommittedBottom": "1746",
+      "UiTextureAtlasElementID": "28827",
+      "OverrideWidth": "0",
+      "OverrideHeight": "0",
+      "CommittedFlags": "0",
+      "UiCanvasID": "0"
+    },
+    {
+      "CommittedName": "gamepad-targeting-friendly",
+      "ID": "42747",
+      "UiTextureAtlasID": "4251",
+      "Width": "50",
+      "Height": "45",
+      "CommittedLeft": "223",
+      "CommittedRight": "273",
+      "CommittedTop": "141",
+      "CommittedBottom": "186",
+      "UiTextureAtlasElementID": "37444",
+      "OverrideWidth": "0",
+      "OverrideHeight": "0",
+      "CommittedFlags": "0",
+      "UiCanvasID": "0"
+    },
+    {
+      "CommittedName": "gamepad-targeting-hostile",
+      "ID": "42748",
+      "UiTextureAtlasID": "4251",
+      "Width": "50",
+      "Height": "45",
+      "CommittedLeft": "223",
+      "CommittedRight": "273",
+      "CommittedTop": "188",
+      "CommittedBottom": "233",
+      "UiTextureAtlasElementID": "37445",
+      "OverrideWidth": "0",
+      "OverrideHeight": "0",
+      "CommittedFlags": "0",
+      "UiCanvasID": "0"
+    },
+    {
+      "CommittedName": "gamepad-targeting-left-shoulder-bg",
+      "ID": "42749",
+      "UiTextureAtlasID": "4251",
+      "Width": "50",
+      "Height": "45",
+      "CommittedLeft": "297",
+      "CommittedRight": "347",
+      "CommittedTop": "1",
+      "CommittedBottom": "46",
+      "UiTextureAtlasElementID": "37446",
+      "OverrideWidth": "0",
+      "OverrideHeight": "0",
+      "CommittedFlags": "0",
+      "UiCanvasID": "0"
+    },
+    {
+      "CommittedName": "gamepad-targeting-right-shoulder-bg",
+      "ID": "42750",
+      "UiTextureAtlasID": "4251",
+      "Width": "50",
+      "Height": "45",
+      "CommittedLeft": "349",
+      "CommittedRight": "399",
+      "CommittedTop": "1",
+      "CommittedBottom": "46",
+      "UiTextureAtlasElementID": "37447",
+      "OverrideWidth": "0",
+      "OverrideHeight": "0",
+      "CommittedFlags": "0",
+      "UiCanvasID": "0"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "time": "2026-09-27T16:45:11.531946+00:00",
+  "live": "Interface/AddOns/ConsolePort_Forever/ConsolePort_Forever.lua",
+  "before_sha256": "3379551850b1bb8018e2c63c4079754b0987b581df19be3a8f07fa8b0801f35c",
+  "after_sha256": "37036890e6c7f70f606779e90389d0388457c1f3f4efb74ffea4cb100f1af931",
+  "changes": {
+    "cast_extra_physical_pixels_total": 5,
+    "prompt_anchor_y": -32,
+    "aura_side": "left",
+    "aura_clearance_ui_units": 12,
+    "aura_growth": "left"
+  }
+}

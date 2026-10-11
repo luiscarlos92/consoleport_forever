@@ -1,0 +1,7 @@
+Interface/AddOns/Blizzard_ActionBar/Shared/ActionButton.lua
+Interface/AddOns/Blizzard_EditMode/Shared/EditModeSystemTemplates.lua
+Interface/AddOns/Blizzard_HousingTemplates/Blizzard_HousingActionButton.lua
+Interface/AddOns/Blizzard_UIPanels_Game/Mainline/WorldMapActionButton.lua
+Interface/AddOns/Blizzard_UIPanels_Game/Shared/CastingBarFrame.lua
+Interface/AddOns/Blizzard_UnitFrame/Mainline/PlayerFrame.lua
+Interface/AddOns/Blizzard_UnitFrame/Shared/PlayerFrame.lua

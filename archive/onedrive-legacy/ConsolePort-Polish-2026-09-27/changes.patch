@@ -1,0 +1,560 @@
+--- before/Interface/AddOns/ConsolePort_Bar/Widget/Group/Group.lua
++++ after/Interface/AddOns/ConsolePort_Bar/Widget/Group/Group.lua
+@@ -1,6 +1,85 @@
+ local env, db = CPAPI.GetEnv(...)
+ ---------------------------------------------------------------
+ local GROUP, GROUP_BUTTON = 'Group', 'GroupButton';
++
++-- Forever's saved layout uses GroupButton, not ClusterButton. These sixteen
++-- buttons own their art; the remaining group buttons keep their native/Masque skin.
++local ForeverBanks = { Base = true; L2 = true; R2 = true; L2R2 = true };
++local ForeverFaceButtons = { PAD1 = true; PAD2 = true; PAD3 = true; PAD4 = true };
++local ForeverCircle = [[Interface\Masks\CircleMaskScalable]];
++local ForeverRing = [[Interface\AddOns\ConsolePort\Assets\Textures\Cursor\RoundBorderHighlight]];
++
++local function SetForeverRoundRegion(texture, button)
++	if not texture then return end;
++	texture:SetTexture(ForeverRing)
++	texture:SetTexCoord(0, 1, 0, 1)
++	texture:ClearAllPoints()
++	texture:SetPoint('CENTER', button, 'CENTER', 0, 0)
++	local size = button:GetWidth();
++	texture:SetSize(size, size)
++end
++
++local function UpdateForeverFaceButton(self)
++	-- LAB calls UpdateLocal after its populated/empty texture update. MasqueSkinned
++	-- suppresses LAB's square reset, while the two enrollment guards below prevent
++	-- Masque from acquiring these buttons (PreventSkinning alone does NOT do that).
++	local mask = env.LIB.SkinUtility.GetIconMask(self);
++	mask:SetTexture(ForeverCircle, 'CLAMPTOBLACKADDITIVE', 'CLAMPTOBLACKADDITIVE')
++	mask:ClearAllPoints()
++	mask:SetPoint('CENTER', self, 'CENTER', 0, 0)
++	-- The supplied ring has transparent outer padding; keep the fill inside it.
++	local diameter = self:GetWidth() * 0.88;
++	mask:SetSize(diameter, diameter)
++	self.icon:AddMaskTexture(mask)
++	self.icon:SetTexCoord(0, 1, 0, 1)
++
++	local background = env.LIB.SkinUtility.GetSlotBackground(self);
++	background:SetColorTexture(0.04, 0.04, 0.04, 0.65)
++	background:SetDrawLayer('BACKGROUND', -8)
++	background:ClearAllPoints()
++	background:SetAllPoints(self.icon)
++	background:AddMaskTexture(mask)
++	background:Show()
++	if self.SlotArt then
++		self.SlotArt:SetTexture(nil)
++		self.SlotArt:Hide()
++	end
++	SetForeverRoundRegion(self.NormalTexture, self)
++	SetForeverRoundRegion(self.PushedTexture or self:GetPushedTexture(), self)
++	SetForeverRoundRegion(self.HighlightTexture or self:GetHighlightTexture(), self)
++	SetForeverRoundRegion(self.CheckedTexture or self:GetCheckedTexture(), self)
++	SetForeverRoundRegion(self.Flash, self)
++	SetForeverRoundRegion(self.Border, self)
++	SetForeverRoundRegion(self.NewActionTexture, self)
++	SetForeverRoundRegion(self.SpellHighlightTexture, self)
++	if self.BorderShadow then self.BorderShadow:SetTexture(nil) end;
++
++	-- Retail creates all three cooldowns in ActionButtonTemplate. Do not alter
++	-- timers, colors, numbers or charge drawSwipe; only their outline and bounds.
++	for _, key in ipairs({'cooldown', 'chargeCooldown', 'lossOfControlCooldown'}) do
++		local cooldown = self[key];
++		if cooldown then
++			cooldown:ClearAllPoints()
++			cooldown:SetAllPoints(mask)
++			cooldown:SetSwipeTexture(ForeverCircle)
++			cooldown:SetUseCircularEdge(true)
++		end
++	end
++	self.Name:SetWidth(self:GetWidth())
++end
++
++local function InstallForeverFaceSkin(self)
++	self.UpdateLocal = UpdateForeverFaceButton;
++	self.ShowOverlayGlow = env.LIB.RoundGlow.ShowOverlayGlow;
++	self.HideOverlayGlow = env.LIB.RoundGlow.HideOverlayGlow;
++	-- Native art refreshes can run independently of LAB's UpdateLocal.
++	if self.UpdateButtonArt then
++		hooksecurefunc(self, 'UpdateButtonArt', UpdateForeverFaceButton)
++	end
++	self:HookScript('OnSizeChanged', UpdateForeverFaceButton)
++	self:UpdateLocal()
++end
++
+ 
+ ---------------------------------------------------------------
+ local Button = CreateFromMixins(env.ProxyButton, env.ConfigurableWidgetMixin);
+@@ -54,6 +133,7 @@
+ function Button:OnLoad()
+ 	env.ProxyButton.OnLoad(self)
+ 	Mixin(self.cooldown, env.ProxyCooldown):OnLoad()
++	if self.isForeverFaceButton then InstallForeverFaceSkin(self) end;
+ 
+ 	self:SetAttribute('id', self.id)
+ 	self:SetAttribute('flyoutDirection', 'DOWN')
+@@ -195,7 +275,7 @@
+ 		button:Show()
+ 		button:SetProps(props)
+ 		self.buttons[buttonID] = button;
+-		if self.msqGroup then
++		if self.msqGroup and not button.isForeverFaceButton then
+ 			self.msqGroup:AddButton(button)
+ 		end
+ 	end
+@@ -275,7 +355,7 @@
+ 	local groupID = ('%s: %s'):format(YELLOW_FONT_COLOR:WrapTextInColorCode(GROUP), self.id)
+ 	self.msqGroup = msq:Group('ConsolePort', groupID)
+ 	for _, button in pairs(self.buttons) do
+-		button:AddToMasque(self.msqGroup)
++		if not button.isForeverFaceButton then button:AddToMasque(self.msqGroup) end;
+ 	end
+ end
+ 
+@@ -291,6 +371,8 @@
+ 
+ env:AddFactory(GROUP_BUTTON, function(id, buttonID, parent)
+ 	local button = Mixin(env.LAB:CreateButton(buttonID, id, parent, env.Button:GetConfig()), Button)
++	button.isForeverFaceButton = not not (ForeverBanks[parent.id] and ForeverFaceButtons[buttonID]);
++	if button.isForeverFaceButton then env.LIB.SkinUtility.PreventSkinning(button) end;
+ 	button.Hotkey = Mixin(CreateFrame('Frame', nil, button), env.ProxyHotkey)
+ 	button.Hotkey.icon = button.Hotkey:CreateTexture(nil, 'OVERLAY', nil, 7)
+ 	button.Hotkey.icon:SetAllPoints()
+--- before/Interface/AddOns/ConsolePort_Bar/Widget/Cluster/Cluster.lua
++++ after/Interface/AddOns/ConsolePort_Bar/Widget/Cluster/Cluster.lua
+@@ -3,7 +3,6 @@
+ local NOMOD, _, _, _, ALT = env.Const.Cluster.ModNames();
+ local CLUSTER_BAR, CLUSTER_HANDLE, CLUSTER_BUTTON, CLUSTER_SHADOW = env.Const.Cluster.Types();
+ local ClusterLayout = env.Const.Cluster.Layout;
+-local ForeverFaceButtons = { PAD1 = true; PAD2 = true; PAD3 = true; PAD4 = true };
+ ---------------------------------------------------------------
+ local Cluster = CreateFromMixins(env.DynamicWidgetMixin, env.MovableWidgetMixin);
+ ---------------------------------------------------------------
+@@ -586,7 +585,6 @@
+ 
+ env:AddFactory(CLUSTER_BUTTON, function(id, buttonID, modifier, parent, layoutData)
+ 	local button = Mixin(env.LAB:CreateButton(buttonID, id, parent, env.Button:GetConfig()), Button)
+-	button.isForeverFaceButton = modifier == NOMOD and ForeverFaceButtons[buttonID] or false;
+ 	env.LIB.SkinUtility.PreventSkinning(button)
+ 	for i, hotkeyData in ipairs(layoutData.Hotkey) do
+ 		local hotkeyID = env.MakeID('%s_%s_%d', id, modifier, i)
+--- before/Interface/AddOns/ConsolePort_Bar/Widget/Cluster/Skins.lua
++++ after/Interface/AddOns/ConsolePort_Bar/Widget/Cluster/Skins.lua
+@@ -12,32 +12,7 @@
+ local GetHighlightTexture, GetPushedTexture = env.LIB.SkinUtility.GetHighlightTexture, env.LIB.SkinUtility.GetPushedTexture;
+ local GetSlotBackground = env.LIB.SkinUtility.GetSlotBackground;
+ local SkinChargeCooldown = env.LIB.SkinUtility.SkinChargeCooldown;
+-local CircleMask = [[Interface\Masks\CircleMaskScalable]];
+-local RoundBorder = [[Interface\AddOns\ConsolePort\Assets\Textures\Cursor\RoundBorder]];
+-local RoundHighlight = [[Interface\AddOns\ConsolePort\Assets\Textures\Cursor\RoundBorderHighlight]];
+ ---------------------------------------------------------------
+-
+-local function SetRoundTexture(texture, file, button, size)
+-	if not texture then return end;
+-	texture:SetTexture(file)
+-	texture:SetTexCoord(0, 1, 0, 1)
+-	texture:ClearAllPoints()
+-	texture:SetPoint('CENTER', button, 'CENTER', 0, 0)
+-	texture:SetSize(size, size)
+-end
+-
+-local function SetFaceButtonStyle(self, mask, size)
+-	if not self.isForeverFaceButton then return end;
+-	mask:SetTexture(CircleMask, 'CLAMPTOBLACKADDITIVE', 'CLAMPTOBLACKADDITIVE')
+-	mask:SetAllPoints(self.icon)
+-	SetRoundTexture(self.NormalTexture, RoundBorder, self, size)
+-	SetRoundTexture(self.PushedTexture, RoundHighlight, self, size)
+-	SetRoundTexture(self.HighlightTexture, RoundHighlight, self, size)
+-	SetRoundTexture(self.CheckedTexture, RoundHighlight, self, size)
+-	SetRoundTexture(self.Flash, RoundHighlight, self, size)
+-	self.cooldown:SetSwipeTexture(CircleMask)
+-	self.cooldown:SetUseCircularEdge(true)
+-end
+ 
+ local function SetRotatedMaskTexture(self, mask, prefix, direction)
+ 	local maskTexture = Masks[prefix][direction];
+@@ -102,11 +77,7 @@
+ 	bg:SetDesaturated(true)
+ 	bg:SetVertexColor(0.5, 0.5, 0.5, 1)
+ 	if ( self.mod == NOMOD ) then
+-		if self.isForeverFaceButton then
+-			mask:SetTexture(CircleMask, 'CLAMPTOBLACKADDITIVE', 'CLAMPTOBLACKADDITIVE')
+-		else
+-			mask:SetTexture(Assets.MainMask)
+-		end
++		mask:SetTexture(Assets.MainMask)
+ 	end
+ 	mask:SetAllPoints(self.icon)
+ end
+@@ -141,7 +112,6 @@
+ 		local tcoords = coords or direction and data[direction].Coords;
+ 		SetTextures(self, adjust, tcoords, size * offset)
+ 		SetBackground(self, mask)
+-		SetFaceButtonStyle(self, mask, size * offset)
+ 		if direction then
+ 			SetRotatedMaskTexture(self, mask, prefix, direction)
+ 			--SkinOverlayGlow(self)
+--- before/Interface/AddOns/ConsolePort_Forever/ConsolePort_Forever.lua
++++ after/Interface/AddOns/ConsolePort_Forever/ConsolePort_Forever.lua
+@@ -28,9 +28,76 @@
+     return true
+ end
+ 
++-- Retail's toolbar deliberately skips cast bars. Keep the loaded look/size and
++-- give the player's real cast/progress frame a position owned by this helper.
++local castFrame, castLayout;
++local castApplying, castQueued;
++local MovePlayerCastBar;
++
++local function QueuePlayerCastBar()
++    if castApplying or castQueued then return end
++    castQueued = true
++    C_Timer.After(0, function()
++        castQueued = false
++        MovePlayerCastBar()
++    end)
++end
++
++MovePlayerCastBar = function()
++    if InCombatLockdown() or castApplying then return end
++    local frame = PlayerCastingBarFrame
++    local bank = ConsolePortGroupBase
++    if not frame or not bank then return end
++
++    if castFrame ~= frame then
++        castFrame = frame
++        castLayout = {
++            width = frame:GetWidth(), height = frame:GetHeight(),
++            scale = frame:GetEffectiveScale() / UIParent:GetEffectiveScale(),
++            look = frame.look, strata = frame:GetFrameStrata(),
++        }
++        -- Post-hooks preserve Blizzard's functions and never write Edit Mode's
++        -- saved systemInfo or snapped-frame tables.
++        for _, method in ipairs({
++            'SetPoint', 'ClearAllPoints', 'SetParent', 'SetScale', 'SetLook',
++            'ApplySystemAnchor', 'OnEditModeExit',
++        }) do
++            if type(frame[method]) == 'function' then
++                hooksecurefunc(frame, method, QueuePlayerCastBar)
++            end
++        end
++        frame:HookScript('OnShow', QueuePlayerCastBar)
++        for _, name in ipairs({'PlayerFrame_AttachCastBar', 'PlayerFrame_DetachCastBar'}) do
++            if type(_G[name]) == 'function' then hooksecurefunc(name, QueuePlayerCastBar) end
++        end
++        if GetBottomManagedFrameContainer then
++            GetBottomManagedFrameContainer():RemoveManagedFrame(frame)
++        end
++    end
++
++    castApplying = true
++    frame.ignoreFramePositionManager = true
++    frame.attachedToPlayerFrame = false
++    if frame:GetParent() ~= UIParent then frame:SetParent(UIParent) end
++    if castLayout.look and frame.look ~= castLayout.look then frame:SetLook(castLayout.look) end
++    frame:SetSize(castLayout.width, castLayout.height)
++    -- Reparenting must not change the bar's effective size. Using the base
++    -- methods also avoids Edit Mode's SetPointOverride/SetScaleOverride bookkeeping.
++    local setScale = frame.SetScaleBase or frame.SetScale
++    setScale(frame, castLayout.scale)
++    frame:SetFrameStrata(castLayout.strata)
++    local clear = frame.ClearAllPointsBase or frame.ClearAllPoints
++    local point = frame.SetPointBase or frame.SetPoint
++    clear(frame)
++    point(frame, 'BOTTOM', bank, 'TOP', 0, 12)
++    castApplying = false
++end
++
++
+ local function RefreshForeverHUD()
+     MoveUnitFrames()
+     HideBlizzardMenuBar()
++    MovePlayerCastBar()
+ end
+ 
+ local events = CreateFrame('Frame')
+--- before/Interface/AddOns/ConsolePort/Model/Gamepad/PlayStation/PlayStation5.lua
++++ after/Interface/AddOns/ConsolePort/Model/Gamepad/PlayStation/PlayStation5.lua
+@@ -87,7 +87,7 @@
+ 				['']            = 'ACTIONBUTTON10';
+ 				['SHIFT-']      = 'MULTIACTIONBAR2BUTTON2';
+ 				['CTRL-']       = 'MULTIACTIONBAR2BUTTON6';
+-				['CTRL-SHIFT-'] = 'MULTIACTIONBAR2BUTTON10';
++				['CTRL-SHIFT-'] = "CLICK LM_B1:LeftButton";
+ 			};
+ 			PADDDOWN = {
+ 				['']            = 'ACTIONBUTTON12';
+@@ -104,17 +104,21 @@
+ 				['CTRL-SHIFT-'] = 'TOGGLETALENTS';
+ 			};
+ 			PADSYSTEM = {
+-				['']            = 'TOGGLEGAMEMENU';
+-				['SHIFT-']      = 'CLICK ConsolePortRaidCursorToggle:LeftButton';
+-				['CTRL-']       = 'TOGGLEAUTORUN';
+-				['CTRL-SHIFT-'] = 'OPENCHAT';
++				['']            = "TOGGLEWORLDMAP";
++				['SHIFT-']      = "TOGGLEWORLDMAP";
++				['CTRL-']       = "TOGGLEWORLDMAP";
++				['CTRL-SHIFT-'] = "TOGGLEWORLDMAP";
+ 			};
+ 			PADFORWARD = {
+ 				['']            = 'TOGGLEWORLDMAP';
+ 				['SHIFT-']      = 'CAMERAZOOMOUT';
+ 				['CTRL-']       = 'CAMERAZOOMIN';
+ 			};
+-		};
++		["PADBACK"] = {[""] = "CLICK ConsolePortMenuTrigger:LeftButton",
++["SHIFT-"] = "CLICK ConsolePortMenuTrigger:LeftButton",
++["CTRL-"] = "CLICK ConsolePortMenuTrigger:LeftButton",
++["CTRL-SHIFT-"] = "CLICK ConsolePortMenuTrigger:LeftButton",},
++};
+ 	};
+ }, { -- metaData
+ 	Label = 'SHP';
+--- before/Interface/AddOns/ConsolePort/Model/Game/Bindings.lua
++++ after/Interface/AddOns/ConsolePort/Model/Game/Bindings.lua
+@@ -376,6 +376,7 @@
+ 	}; Bindings.CustomIcons = CustomIcons;
+ 
+ 	Bindings.DefaultIcons = {
++		['CLICK LM_B1:LeftButton']          = 132247; -- LiteMount's declared addon icon
+ 		---------------------------------------------------------------
+ 		CAMERAORSELECTORMOVE               = CustomIcons.MBLeft;
+ 		TURNORACTION                       = CustomIcons.MBRight;
+--- before/WTF/Account/119624169#1/SavedVariables/ConsolePort.lua
++++ after/WTF/Account/119624169#1/SavedVariables/ConsolePort.lua
+@@ -416,10 +416,10 @@
+ ["CTRL-SHIFT-"] = "TOGGLETALENTS",
+ },
+ ["PADSYSTEM"] = {
+-[""] = "CLICK ConsolePortMenuTrigger:LeftButton",
+-["SHIFT-"] = "CLICK ConsolePortRaidCursorToggle:LeftButton",
+-["CTRL-"] = "TOGGLEAUTORUN",
+-["CTRL-SHIFT-"] = "OPENCHAT",
++[""] = "TOGGLEWORLDMAP",
++["SHIFT-"] = "TOGGLEWORLDMAP",
++["CTRL-"] = "TOGGLEWORLDMAP",
++["CTRL-SHIFT-"] = "TOGGLEWORLDMAP",
+ },
+ ["PADRSTICK"] = {
+ [""] = "TOGGLEPINGLISTENER",
+@@ -427,6 +427,10 @@
+ ["CTRL-"] = "",
+ ["CTRL-SHIFT-"] = "",
+ },
++["PADBACK"] = {[""] = "CLICK ConsolePortMenuTrigger:LeftButton",
++["SHIFT-"] = "CLICK ConsolePortMenuTrigger:LeftButton",
++["CTRL-"] = "CLICK ConsolePortMenuTrigger:LeftButton",
++["CTRL-SHIFT-"] = "CLICK ConsolePortMenuTrigger:LeftButton",},
+ },
+ ["Face"] = {
+ ["PADDDOWN"] = {
+@@ -445,7 +449,7 @@
+ [""] = "ACTIONBUTTON10",
+ ["SHIFT-"] = "ACTIONBUTTON6",
+ ["CTRL-"] = "MULTIACTIONBAR1BUTTON6",
+-["CTRL-SHIFT-"] = "MULTIACTIONBAR2BUTTON6",
++["CTRL-SHIFT-"] = "CLICK LM_B1:LeftButton",
+ },
+ ["PAD2"] = {
+ [""] = "",
+@@ -755,10 +759,10 @@
+ ["CTRL-SHIFT-"] = "MULTIACTIONBAR2BUTTON5",
+ },
+ ["PADSYSTEM"] = {
+-["CTRL-"] = "CLICK ConsolePortMenuTrigger:LeftButton",
+-["SHIFT-"] = "CLICK ConsolePortMenuTrigger:LeftButton",
+-[""] = "CLICK ConsolePortMenuTrigger:LeftButton",
+-["CTRL-SHIFT-"] = "CLICK ConsolePortMenuTrigger:LeftButton",
++["CTRL-"] = "TOGGLEWORLDMAP",
++["SHIFT-"] = "TOGGLEWORLDMAP",
++[""] = "TOGGLEWORLDMAP",
++["CTRL-SHIFT-"] = "TOGGLEWORLDMAP",
+ },
+ ["PADBACK"] = {
+ ["CTRL-"] = "CLICK ConsolePortMenuTrigger:LeftButton",
+@@ -818,7 +822,7 @@
+ ["CTRL-"] = "MULTIACTIONBAR1BUTTON6",
+ ["SHIFT-"] = "ACTIONBUTTON6",
+ [""] = "ACTIONBUTTON10",
+-["CTRL-SHIFT-"] = "MULTIACTIONBAR2BUTTON6",
++["CTRL-SHIFT-"] = "CLICK LM_B1:LeftButton",
+ },
+ ["PADFORWARD"] = {
+ ["CTRL-"] = "CLICK ConsolePortMenuTrigger:LeftButton",
+@@ -913,10 +917,10 @@
+ ["CTRL-SHIFT-"] = "MULTIACTIONBAR2BUTTON3",
+ },
+ ["PADSYSTEM"] = {
+-[""] = "CLICK ConsolePortMenuTrigger:LeftButton",
+-["SHIFT-"] = "CLICK ConsolePortMenuTrigger:LeftButton",
+-["CTRL-"] = "CLICK ConsolePortMenuTrigger:LeftButton",
+-["CTRL-SHIFT-"] = "CLICK ConsolePortMenuTrigger:LeftButton",
++[""] = "TOGGLEWORLDMAP",
++["SHIFT-"] = "TOGGLEWORLDMAP",
++["CTRL-"] = "TOGGLEWORLDMAP",
++["CTRL-SHIFT-"] = "TOGGLEWORLDMAP",
+ },
+ ["PADBACK"] = {
+ [""] = "CLICK ConsolePortMenuTrigger:LeftButton",
+@@ -940,7 +944,7 @@
+ [""] = "ACTIONBUTTON10",
+ ["SHIFT-"] = "ACTIONBUTTON6",
+ ["CTRL-"] = "MULTIACTIONBAR1BUTTON6",
+-["CTRL-SHIFT-"] = "MULTIACTIONBAR2BUTTON6",
++["CTRL-SHIFT-"] = "CLICK LM_B1:LeftButton",
+ },
+ ["PAD1"] = {
+ [""] = "JUMP",
+@@ -1074,16 +1078,16 @@
+ ["CTRL-SHIFT-"] = "MULTIACTIONBAR2BUTTON5",
+ },
+ ["PADSYSTEM"] = {
+-["CTRL-"] = "TOGGLEAUTORUN",
+-["SHIFT-"] = "CLICK ConsolePortRaidCursorToggle:LeftButton",
++["CTRL-"] = "TOGGLEWORLDMAP",
++["SHIFT-"] = "TOGGLEWORLDMAP",
++[""] = "TOGGLEWORLDMAP",
++["CTRL-SHIFT-"] = "TOGGLEWORLDMAP",
++},
++["PADBACK"] = {
++["CTRL-"] = "CLICK ConsolePortMenuTrigger:LeftButton",
++["SHIFT-"] = "CLICK ConsolePortMenuTrigger:LeftButton",
+ [""] = "CLICK ConsolePortMenuTrigger:LeftButton",
+-["CTRL-SHIFT-"] = "OPENCHAT",
+-},
+-["PADBACK"] = {
+-["CTRL-"] = "",
+-["SHIFT-"] = "",
+-[""] = "",
+-["CTRL-SHIFT-"] = "",
++["CTRL-SHIFT-"] = "CLICK ConsolePortMenuTrigger:LeftButton",
+ },
+ ["PADLSTICK"] = {
+ ["CTRL-"] = "",
+@@ -1137,7 +1141,7 @@
+ ["CTRL-"] = "MULTIACTIONBAR1BUTTON6",
+ ["SHIFT-"] = "ACTIONBUTTON6",
+ [""] = "ACTIONBUTTON10",
+-["CTRL-SHIFT-"] = "MULTIACTIONBAR2BUTTON6",
++["CTRL-SHIFT-"] = "CLICK LM_B1:LeftButton",
+ },
+ ["PADFORWARD"] = {
+ ["CTRL-"] = "CAMERAZOOMIN",
+@@ -1277,10 +1281,10 @@
+ ["CTRL-SHIFT-"] = "MULTIACTIONBAR2BUTTON3",
+ },
+ ["PADSYSTEM"] = {
+-["CTRL-"] = "CLICK ConsolePortMenuTrigger:LeftButton",
+-["SHIFT-"] = "CLICK ConsolePortMenuTrigger:LeftButton",
+-[""] = "CLICK ConsolePortMenuTrigger:LeftButton",
+-["CTRL-SHIFT-"] = "CLICK ConsolePortMenuTrigger:LeftButton",
++["CTRL-"] = "TOGGLEWORLDMAP",
++["SHIFT-"] = "TOGGLEWORLDMAP",
++[""] = "TOGGLEWORLDMAP",
++["CTRL-SHIFT-"] = "TOGGLEWORLDMAP",
+ },
+ ["PADBACK"] = {
+ ["CTRL-"] = "CLICK ConsolePortMenuTrigger:LeftButton",
+@@ -1414,10 +1418,10 @@
+ ["CTRL-SHIFT-"] = "",
+ },
+ ["PADSYSTEM"] = {
+-["CTRL-"] = "TOGGLEAUTORUN",
+-["SHIFT-"] = "CLICK ConsolePortRaidCursorToggle:LeftButton",
+-[""] = "CLICK ConsolePortMenuTrigger:LeftButton",
+-["CTRL-SHIFT-"] = "OPENCHAT",
++["CTRL-"] = "TOGGLEWORLDMAP",
++["SHIFT-"] = "TOGGLEWORLDMAP",
++[""] = "TOGGLEWORLDMAP",
++["CTRL-SHIFT-"] = "TOGGLEWORLDMAP",
+ },
+ ["PADRTRIGGER"] = {
+ ["CTRL-"] = "",
+@@ -1486,10 +1490,10 @@
+ ["CTRL-SHIFT-"] = "",
+ },
+ ["PADBACK"] = {
+-["CTRL-"] = "",
+-["SHIFT-"] = "",
+-[""] = "",
+-["CTRL-SHIFT-"] = "",
++["CTRL-"] = "CLICK ConsolePortMenuTrigger:LeftButton",
++["SHIFT-"] = "CLICK ConsolePortMenuTrigger:LeftButton",
++[""] = "CLICK ConsolePortMenuTrigger:LeftButton",
++["CTRL-SHIFT-"] = "CLICK ConsolePortMenuTrigger:LeftButton",
+ },
+ ["PADLSTICK"] = {
+ ["CTRL-"] = "",
+@@ -1543,7 +1547,7 @@
+ ["CTRL-"] = "MULTIACTIONBAR1BUTTON6",
+ ["SHIFT-"] = "ACTIONBUTTON6",
+ [""] = "ACTIONBUTTON10",
+-["CTRL-SHIFT-"] = "MULTIACTIONBAR2BUTTON6",
++["CTRL-SHIFT-"] = "CLICK LM_B1:LeftButton",
+ },
+ ["PADRSTICKDOWN"] = {
+ ["CTRL-"] = "",
+@@ -1593,4 +1597,5 @@
+ ConsolePortBindingIcons = {
+ ["CLICK ConsolePortUtilityToggle:LeftButton"] = "Interface\\AddOns\\ConsolePort_Bar\\Assets\\Textures\\Icons\\Map.png",
+ ["CLICK ConsolePortUtilityToggle:OPie"] = "Interface\\AddOns\\ConsolePort_Bar\\Assets\\Textures\\Icons\\Bags.png",
++["CLICK LM_B1:LeftButton"] = 132247,
+ }
+--- before/WTF/Account/119624169#1/SavedVariables/Immersion.lua
++++ after/WTF/Account/119624169#1/SavedVariables/Immersion.lua
+@@ -1,7 +1,7 @@
+ 
+ ImmersionSetup = {
+ ["strata"] = "MEDIUM",
+-["boxoffsetY"] = 204.111328125,
++["boxoffsetY"] = 150,
+ ["scale"] = 1.2,
+ ["elementscale"] = 1,
+ ["titlescale"] = 1,
+@@ -15,7 +15,7 @@
+ ["anidivisor"] = 5,
+ ["ttsenabled"] = false,
+ ["boxlock"] = false,
+-["boxoffsetX"] = 12.36656450478768,
++["boxoffsetX"] = 0,
+ ["hidetooltip"] = true,
+ ["accept"] = "SPACE",
+ ["boxscale"] = 1,
+--- before/WTF/Account/119624169#1/bindings-cache.wtf
++++ after/WTF/Account/119624169#1/bindings-cache.wtf
+@@ -155,7 +155,7 @@
+ bind CTRL-SHIFT-PADLSHOULDER TARGETNEARESTFRIEND
+ bind PADLSTICK TOGGLEAUTORUN
+ bind PADFORWARD CLICK ConsolePortMenuTrigger:LeftButton
+-bind PADSYSTEM CLICK ConsolePortMenuTrigger:LeftButton
++bind PADSYSTEM TOGGLEWORLDMAP
+ bind SHIFT-PADSOCIAL OPENALLBAGS
+ bind CTRL-PADSOCIAL TOGGLECHARACTER0
+ bind CTRL-SHIFT-PADSOCIAL TOGGLESPELLBOOK
+@@ -183,9 +183,9 @@
+ bind SHIFT-PADLTRIGGER NONE
+ bind PADLTRIGGER NONE
+ bind CTRL-SHIFT-PADLTRIGGER NONE
+-bind CTRL-PADSYSTEM CLICK ConsolePortMenuTrigger:LeftButton
+-bind SHIFT-PADSYSTEM CLICK ConsolePortMenuTrigger:LeftButton
+-bind CTRL-SHIFT-PADSYSTEM CLICK ConsolePortMenuTrigger:LeftButton
++bind CTRL-PADSYSTEM TOGGLEWORLDMAP
++bind SHIFT-PADSYSTEM TOGGLEWORLDMAP
++bind CTRL-SHIFT-PADSYSTEM TOGGLEWORLDMAP
+ bind CTRL-PADBACK CLICK ConsolePortMenuTrigger:LeftButton
+ bind SHIFT-PADBACK CLICK ConsolePortMenuTrigger:LeftButton
+ bind CTRL-SHIFT-PADBACK CLICK ConsolePortMenuTrigger:LeftButton
+--- before/WTF/Account/_template_/bindings-cache.wtf
++++ after/WTF/Account/_template_/bindings-cache.wtf
+@@ -0,0 +1,9 @@
++bind PADBACK CLICK ConsolePortMenuTrigger:LeftButton
++bind PADSYSTEM TOGGLEWORLDMAP
++bind SHIFT-PADBACK CLICK ConsolePortMenuTrigger:LeftButton
++bind SHIFT-PADSYSTEM TOGGLEWORLDMAP
++bind CTRL-PADBACK CLICK ConsolePortMenuTrigger:LeftButton
++bind CTRL-PADSYSTEM TOGGLEWORLDMAP
++bind CTRL-SHIFT-PADBACK CLICK ConsolePortMenuTrigger:LeftButton
++bind CTRL-SHIFT-PADSYSTEM TOGGLEWORLDMAP
++bind CTRL-SHIFT-PADDUP CLICK LM_B1:LeftButton

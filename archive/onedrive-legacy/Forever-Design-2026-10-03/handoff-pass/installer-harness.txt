@@ -1,0 +1,1 @@
+PASS exact migration + portable clean install + combined index + fail-closed transaction

@@ -1,0 +1,12 @@
+{
+  "Interface/AddOns/ConsolePort_Bar/Widget/Group/Group.lua": "0eb998a36b0f7ae2ea2ffa5fb51f41a0616b7baca072e90c6f3e3c7e3f7c4bbd",
+  "Interface/AddOns/ConsolePort_Forever/ConsolePort_Forever.lua": "b77ad851a602cf1230a96724b043d1127b322f72a938ebb9f3aa90e356d1f6cb",
+  "Interface/AddOns/ConsolePort/Model/Gamepad/PlayStation/PlayStation5.lua": "c6c42500aedd98faa616452830b6325a37308b06ff6c5200b0bed0d80609838a",
+  "WTF/Account/119624169#1/SavedVariables/ConsolePort.lua": "784dc3c1e559a9e708f6b386dbea4ae9272571dc3538c6249256dbfcc9a55e9a",
+  "WTF/Account/119624169#1/SavedVariables/Immersion.lua": "6a7fc4307b686511626edbd6251eb3ec0c97c4c959b3a725e5962090cc549355",
+  "WTF/Account/_template_/SavedVariables/ConsolePort_Bar.lua": "0f770fe1a632b8b7018729043e162f68176378e859954a35fb43bbc6b8e92447",
+  "WTF/Account/119624169#1/bindings-cache.wtf": "5e5e05e132e86f281cac3d92c0819ffea23e5252f6c51c70ec3b0fac14cbb02a",
+  "WTF/Account/_template_/bindings-cache.wtf": "fb20467dbca379f5552c881a057d3b96f01e82ed1c5904d54f9de34366a24074",
+  "Interface/AddOns/ConsolePort_Forever/Assets/ForeverInGame.blp": "9daccf7f192871a876ede143a14f4cc453a726ac271fc89d0e30a5610b5a673f",
+  "Interface/AddOns/ConsolePort_Forever/Assets/ForeverTargeting.blp": "f1cbdf024b1d397abe318dd9caaf67f6c0ab6c5406d03873a456aa48e7b76760"
+}

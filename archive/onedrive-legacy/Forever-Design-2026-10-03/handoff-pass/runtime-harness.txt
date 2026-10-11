@@ -1,0 +1,1 @@
+PASS menu hidden normally -> restored for Edit Mode -> hidden on exit

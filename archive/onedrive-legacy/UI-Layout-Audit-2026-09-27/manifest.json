@@ -1,0 +1,15 @@
+{
+  "createdUtc": "2026-09-27T20:23:31Z",
+  "purpose": "Retail UI collision policy, independent DebuffFrame correction, and unit-frame taint regression fix",
+  "wowRoot": "C:\\Program Files (x86)\\World of Warcraft\\_retail_",
+  "blizzardSourceCommit": "09b9db7948abc9b9648dedaab51eb0cf3ee67b31",
+  "files": [
+    {
+      "relativePath": "Interface/AddOns/ConsolePort_Forever/ConsolePort_Forever.lua",
+      "beforeSha256": "B77AD851A602CF1230A96724B043D1127B322F72A938EBB9F3AA90E356D1F6CB",
+      "deployedSha256": "6B2B3FE9E60F6677F4D74F6FD83A696DECD4C2C9498FCBAB93C6036E4FDC0267"
+    }
+  ],
+  "savedVariablesChanged": false,
+  "bindingCachesChanged": false
+}

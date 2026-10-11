@@ -1,3 +1,15 @@
+## Candidate.29 deployment authorized — October 10, 2026
+
+The user now says "you can deploy now" and confirms WoW is closed. This
+supersedes the previous preparation-only limit. Freshly rechecked all nine
+official stable Retail releases this session: all current, no dependency updates.
+The complete 67 runtime/source and 39 tooling passes still match exact product,
+tools and fixture hashes. Deploy only the tested candidate.29 Forever package
+using scoped preview/installer, with fresh verified backups and independent
+readback. Keep Immersion, other addons, live WTF and junctions unchanged.
+No game launch/input or claim of Retail acceptance. The gossip-list request
+was withdrawn and remains excluded. Record the final receipts and checklist.
+
 Prepared Forever-only candidate.29 from tested/pushed source 71d018266cc7d604137f01179ee0a8079aa3d3cb.
 ZIP SHA256 692cb4b3cc0e438ed561fe83356a82c0c73e5572cdf7ccf6703f02f70b517e06; 58 exact source/manifest files.
 No dependency updates or retirements. Independent post-build readback verifies

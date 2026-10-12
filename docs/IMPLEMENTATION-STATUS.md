@@ -2,21 +2,31 @@
 
 Status: maintained
 Reviewed: 2026-10-12
-Evidence: [candidate.34 install](../evidence/delivery/live-install-candidate34.json),
-[independent readback](../evidence/delivery/candidate34-independent-readback.json),
+Evidence: [candidate.35 install](../evidence/delivery/live-install-candidate35.json),
+[independent readback](../evidence/delivery/candidate35-independent-readback.json),
 [Circle acceptance](../evidence/circle/candidate34-live-acceptance-2026-10-12.json).
 
 ## Installed checkpoint
 
-Candidate.35 performance work is prepared in this checkout, retaining StoreSchema
-3/configuration revision20 and accepted native behavior. It reduces reproduced
+Candidate `2.0.0-candidate.35` was installed October 12, 2026 at **19:52:51 Toronto**
+from tested/pushed source `5359b52b92b5f4fb97178327f902f1203e31e9eb`, retaining
+StoreSchema 3/configuration revision20 and native behavior. It reduces reproduced
 diagnostic copying, routine skin/layout work and broad event initialization, and
 adds disabled-by-default bounded callback timing. Final qualification passed all
 76 runtime/source checks and 66 tooling tests, retaining the 72/66 baseline and
-new defect/fallback controls. Scoped delivery remains separate from Retail
-performance acceptance. K04 remains open.
+new defect/fallback controls. Independent readback verifies all 59 selected files,
+2,252 unselected addon files, 310 WTF files, 42 links, all root anchors and all 23,611
+prior backup files preserved. Eight runtime files changed; no dependency/WTF
+writes or game input. User owns reload; an accepted revision20 character needs
+no new setup review. Retail CPU/visual/input/taint acceptance remains unverified;
+K04 remains open. Delivery is separate from performance acceptance.
 [Qualification](../evidence/test-results/candidate35-hud-qualification.json).
 [Investigation](reference/HUD-PERFORMANCE-2026-10-12.md).
+Fresh Windows CI passed the same 76 runtime/source checks and 66 tooling tests;
+complete product/tool/test and lock inventories match the local qualification.
+[CI receipt](../evidence/test-results/candidate35-fresh-ci.json).
+
+### Previous candidate.34 checkpoint and scoped acceptance
 
 Candidate `2.0.0-candidate.34` was installed October 12, 2026 at 17:08:57 Toronto
 from tested/pushed source `36466db91a88a97c4627cdf5863d8dbdd23de6ab`.

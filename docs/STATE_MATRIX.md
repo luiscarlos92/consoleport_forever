@@ -7,7 +7,10 @@ Evidence: [routing](../addon/ConsolePort_Forever/TemporaryRouting.lua),
 [bootstrap](../addon/ConsolePort_Forever/ConsolePort_Forever.lua),
 [test runner](../tools/test-all.cjs).
 
-Candidate.34 is installed; Circle cast interruption is user-confirmed. Ground
+Candidate.35 is installed with source-qualified performance repairs and unchanged
+controller/state contracts. Circle cast interruption was user-confirmed on
+candidate.34; performance and broader candidate.35 Retail acceptance remain open.
+Ground
 placement cancellation is untested because the user reports targeting interception.
 Activation requires explicit review; other states are not individually asserted.
 [Acceptance](../evidence/circle/candidate34-live-acceptance-2026-10-12.json).

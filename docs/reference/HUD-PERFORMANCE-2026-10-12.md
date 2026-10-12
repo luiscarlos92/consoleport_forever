@@ -6,6 +6,8 @@ Evidence: [operation comparison](../../evidence/hud-performance/operations.json)
 [research identities](../../evidence/hud-performance/research.json),
 [baseline gates](../../evidence/test-results/hud-performance-baseline-runtime.json),
 [final qualification](../../evidence/test-results/candidate35-hud-qualification.json),
+[installed/readback](../../evidence/delivery/candidate35-independent-readback.json),
+[fresh CI](../../evidence/test-results/candidate35-fresh-ci.json),
 [source](../../addon/ConsolePort_Forever/Skin.lua).
 
 ## Scope and evidence
@@ -141,6 +143,8 @@ rendered pixels, engine timing, taint or persisted engine authority.
 The baseline passed 72 runtime/source checks and 66 tooling tests. The complete
 final gate passed 76 runtime/source checks and 66 tooling tests, with current
 product/tool/test inventories and 38 maintained documentation files checked.
+Fresh Windows CI passed the same 76/66 gates with complete product/tool/test and
+dependency-lock inventories matching local qualification.
 New T73–T76
 cover detached immediate incremental diagnostics, unchanged-state copy counts,
 per-slot and immediate target visuals, bounded structural retries, inactive and

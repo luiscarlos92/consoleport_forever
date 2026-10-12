@@ -9,9 +9,9 @@ Dates below use America/Toronto. This is a curated change index, not invented
 release tags or blanket gameplay certification. Detailed receipts own exact
 source/artifact/file identities. Prepared, installed and accepted are separate.
 
-## HUD performance preparation — October 12, 2026
+## HUD performance update installed — October 12, 2026
 
-Candidate.35 performance preparation removes demonstrated redundant diagnostic
+Candidate.35 removes demonstrated redundant diagnostic
 history copies, routine full skin/layout refreshes and unrelated routine event
 initialization. Visual updates remain immediate; native secure/pressed/cooldown/
 power ownership and configuration revision20 remain. Bounded optional callback
@@ -20,6 +20,15 @@ retain old-defect negative controls. Retail CPU improvement and K04 acceptance
 remain unverified. [Report](docs/reference/HUD-PERFORMANCE-2026-10-12.md).
 Full qualification passed 76 runtime/source checks and 66 tooling tests.
 [Receipt](evidence/test-results/candidate35-hud-qualification.json).
+Installed at 19:52:51 Toronto from tested/pushed
+`5359b52b92b5f4fb97178327f902f1203e31e9eb`. Independent readback verified 59 payload
+files, eight runtime changes, 2,252 other addon files, 310 WTF files, 42 links and
+23,611 prior backup files preserved. No dependency/WTF writes or game input.
+User-owned reload activates the code; revision20 is retained.
+[Installation](evidence/delivery/live-install-candidate35.json),
+[readback](evidence/delivery/candidate35-independent-readback.json).
+Fresh Windows CI passed the same 76/66 gates with complete inventories matching
+local qualification. [CI receipt](evidence/test-results/candidate35-fresh-ci.json).
 
 ## Circle cast interruption accepted — October 12, 2026
 

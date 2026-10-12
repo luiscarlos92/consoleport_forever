@@ -1,15 +1,15 @@
 # Runtime state and coverage matrix
 
 Status: maintained
-Reviewed: 2026-10-11
+Reviewed: 2026-10-12
 Evidence: [routing](../addon/ConsolePort_Forever/TemporaryRouting.lua),
 [mode policy](../addon/ConsolePort_Forever/ModePolicy.lua),
 [bootstrap](../addon/ConsolePort_Forever/ConsolePort_Forever.lua),
 [test runner](../tools/test-all.cjs).
 
-This matrix describes working source, with candidate.30 still installed and
-candidate.31 Circle changes uninstalled. It does not claim blanket
-Retail acceptance. [Requirements](REQUIREMENTS.md) owns intended behavior;
+This matrix describes candidate.31 working/installed source. Circle activation
+requires explicit review; its actual Retail behavior remains unaccepted.
+It does not claim blanket Retail acceptance. [Requirements](REQUIREMENTS.md) owns intended behavior;
 [testing](TESTING.md) explains what offline coverage can establish.
 
 ## Context transitions

@@ -1,0 +1,33 @@
+{
+  "at": "2026-10-12T04:25:04.843396+00:00",
+  "installedVersion": "2.0.0-candidate.31",
+  "sourceCommit": "a74aa8fd27ebb4e24b99ef580daeedab503235e9",
+  "packSHA256": "743f09090b1c10c2613dbea3110b8a7d50c3b0a34fdcf5d776463af3041c6668",
+  "closedAt": "2026-10-12T04:24:05.512851+00:00",
+  "installedFilesVerified": 59,
+  "changedRuntimeFiles": [
+    "Cinematic.lua",
+    "Circle.lua",
+    "ConsolePort_Forever.lua",
+    "ConsolePort_Forever.toc",
+    "RuntimeSetup.lua",
+    "Skin.lua"
+  ],
+  "unselectedFilesUnchanged": 2617,
+  "wtfFilesUnchanged": 308,
+  "junctionsUnchanged": 42,
+  "anchorsUnchanged": true,
+  "backupsVerified": true,
+  "priorBackupFilesUnchanged": 22136,
+  "priorBackupDirectoriesPreserved": 2180,
+  "backup": "C:\\Users\\luisr\\WoW-Backups\\ConsolePort-Forever\\20261012T042333Z-4fbff89a3d73",
+  "beforeSnapshotSHA256": "8395769d890f30d8059a3516b33270586af508bf2311b2b6a5739e67be636d9d",
+  "runtimeSuites": 69,
+  "toolingChecks": 50,
+  "configurationRevision": 17,
+  "dependencyUpdates": [],
+  "noLiveWTFWrites": true,
+  "gameLeftClosed": true,
+  "circleActivation": "Explicit /cpf update review, Proposed for empty Base PAD2; no forced revision bump or automatic binding change.",
+  "retailAcceptance": "Not run: engine authority/taint, hardware timing, rendering, persistence and reported prior fixes require user-owned acceptance."
+}

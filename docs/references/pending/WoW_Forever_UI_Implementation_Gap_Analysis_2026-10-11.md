@@ -26,7 +26,7 @@ For navigation: [coverage summary](#2-feature-coverage-at-a-glance),
 ## 1. Purpose, baseline and reading rules
 
 **Later Circle-only implementation:** the user selected Circle and rejected native
-Escape/Options. Uninstalled candidate.31 now offers a reviewed native cancel-all
+Escape/Options. Candidate.31, installed October 12, offers a reviewed native cancel-all
 approximation; exact first-success parity remains gated. The tables below retain
 the candidate.30 comparison baseline. Current findings and proof are in the
 [Circle research record](../../reference/CIRCLE-CANCEL-RESEARCH-2026-10-11.md).

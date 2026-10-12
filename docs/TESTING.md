@@ -1,7 +1,7 @@
 # Validation and proof boundaries
 
 Status: maintained
-Reviewed: 2026-10-11
+Reviewed: 2026-10-12
 Evidence: [runner](../tools/test-all.cjs), [tool tests](../tools/run_tool_tests.py),
 [CI](../.github/workflows/tests.yml), [test instructions](../tests/AGENTS.md).
 
@@ -40,6 +40,7 @@ scratch copies. `tools/local` scripts can be hashed/parsed; they must not execut
 | Circle cancel-all | T68 native Layers/Input, secure click/macro/slash dispatch, edges/modifiers/owners, explicit review and manual preservation, with negative controls. T69 independently retains original Forever first-success semantics; passing T68 is not exact parity. |
 | Executable tooling | Python simulations: scope/path/link/archive/hash checks, preview/backup/promotion/readback, interruption/rollback and preserved later edits. |
 | Research source cache | Five tooling tests cover verified fetch/cache reuse, size/hash drift, preservation of drifted cached inputs, unsafe paths/URLs/identities, failed downloads and redirects. The explicit CI download stage reconstructs ignored inputs from the tracked Circle manifest before offline tests. |
+| Pinned dependency inputs | Seven tooling tests reproduce a fresh checkout's absent unpacked inputs and verify reconstruction of exact pinned archives/files, source-root normalization, read-only reuse, missing-file recovery, rejection/preservation of drift or foreign files, invalid payloads and escaping destinations. No lock refresh or installed-addon change. |
 | Maintained docs/skills | Checker and its missing-target/anchor/escape/manifest cases; manual semantic review. |
 
 The runner's check IDs and build validator determine required suite membership;

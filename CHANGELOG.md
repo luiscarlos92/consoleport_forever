@@ -1,7 +1,7 @@
 # ConsolePort Forever change history
 
 Status: maintained
-Reviewed: 2026-10-11
+Reviewed: 2026-10-12
 Evidence: [current status](docs/IMPLEMENTATION-STATUS.md),
 [historical chronology](docs/archive/ai-native-2026-10-11/IMPLEMENTATION-STATUS.pre-restructure.md).
 
@@ -9,9 +9,19 @@ Dates below use America/Toronto. This is a curated change index, not invented
 release tags or blanket gameplay certification. Detailed receipts own exact
 source/artifact/file identities. Prepared, installed and accepted are separate.
 
+## Circle deployment — October 12, 2026
+
+Candidate.31 was installed from tested/pushed source `a74aa8fd27ebb4e24b99ef580daeedab503235e9`.
+Only Forever changed; 59 installed files matched the verified artifact.
+Other addons, WTF, junctions/root anchors and retained backups passed independent
+preservation readback. Circle activation still requires explicit `/cpf update`
+review; actual Retail acceptance is pending. The installed source passed 69
+runtime/source checks and 50 tooling tests.
+[Readback](evidence/delivery/candidate31-independent-readback.json).
+
 ## Repository system — October 11, 2026
 
-Uninstalled candidate.31 adds Circle-only reviewed secure cancel-all access for
+Candidate.31 source adds Circle-only reviewed secure cancel-all access for
 an explicitly empty Base binding. It uses no Escape/menu or custom UI takeover,
 preserves manual commands/removals and native Layers ownership, and makes the
 first-success parity limit explicit. Configuration revision remains 17; schema 3.

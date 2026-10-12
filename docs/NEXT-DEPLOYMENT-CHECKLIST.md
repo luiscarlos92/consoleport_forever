@@ -1,20 +1,21 @@
 # Pending deployment and cumulative acceptance
 
-Status: candidate.30 installed on October 10, 2026 at 20:54:04 Toronto.
+Status: candidate.31 installed on October 12, 2026 at 00:24:05 Toronto.
 The user's deployment authorization is fulfilled. Only Forever was updated;
-verified backups and independent readback retain prior candidate.29/settings.
-Only the ping module and version TOC changed. On October 10, 2026 (Toronto), the
-user confirmed "all fixed on ring and required item frame". Both reported defects
-are accepted in Retail; broader regression cases below remain available and are
-not individually claimed as tested by this confirmation.
+verified backups and independent readback preserve candidate.30, current WTF,
+unselected addons, junctions/root anchors and all inventoried prior backups.
+[Installation](../evidence/delivery/live-install-candidate31.json),
+[independent readback](../evidence/delivery/candidate31-independent-readback.json).
+Candidate.31's Circle behavior and regressions await user-owned Retail acceptance.
+The earlier reported ping and Required Items fixes remain scoped candidate.30
+acceptance, not a candidate.31 gameplay certification.
 Another deployment requires new user authorization with WoW closed.
 
-## Uninstalled candidate.31 Circle work
+## Installed candidate.31 Circle acceptance
 
-The user subsequently authorized scoped deployment with WoW closed. Working source
-offers an empty Base Circle native secure cancel-all click through explicit
-configuration review; it does not map Escape or open Options. Exact first-success
-stock parity remains gated. After a later separately authorized installation:
+Circle uses a native secure cancel-all click through explicit configuration
+review for empty Base PAD2; it does not map Escape or open Options.
+Exact first-success stock parity remains gated. After installation:
 
 1. On an already installed character, `/cpf update` explicitly opens review;
    no configuration-revision bump forces a full prompt. Review before/after bindings.

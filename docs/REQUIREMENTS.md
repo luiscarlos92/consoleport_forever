@@ -1,7 +1,7 @@
 # Approved requirements and scope
 
 Status: maintained
-Reviewed: 2026-10-11
+Reviewed: 2026-10-12
 Evidence: [confirmed historical decisions](archive/ai-native-2026-10-11/MASTER-PLAN.pre-restructure.md),
 [current status](IMPLEMENTATION-STATUS.md), [candidate.30 requirement](CANDIDATE30-PING-RELEASE-LIFECYCLE-2026-10-10.md).
 
@@ -26,7 +26,7 @@ feature may be approved in direction yet still deferred or gated.
 | R10 | Reviewed configuration runs in game with conflict review, before-state journals, guarded readback and recovery; disk installers do not edit live WTF. | Store/Plan/Transactions/Coordinator. |
 | R11 | Native execution owns protected dispatch. Preserve recovery boundary and accepted working features when repairing another subsystem. | [native execution decision](decisions/0002-native-execution-and-proof.md). |
 | R12 | Check official stable Retail dependencies for product/tooling sessions, qualify changed contracts and deliver only actual changed packages. Preparation is distinct from installation. | [delivery decision](decisions/0004-scoped-delivery.md); docs-only exemption in decision 0001. |
-| R13 | October 11 Circle-only work: best qualified Retail cancellation without native Escape/Options; preserve native UI/ring and manual binding ownership. Scoped deployment later authorized with WoW closed. | Candidate.31 offers an explicitly reviewed empty Base PAD2 secure cancel-all command. Cast/ground/hard target cancel together; exact first-success parity remains gated. [Research and implementation](reference/CIRCLE-CANCEL-RESEARCH-2026-10-11.md). |
+| R13 | October 11 Circle-only work: best qualified Retail cancellation without native Escape/Options; preserve native UI/ring and manual binding ownership. Scoped deployment authorized and completed with WoW closed on October 12. | Candidate.31 offers an explicitly reviewed empty Base PAD2 secure cancel-all command. Cast/ground/hard target cancel together; exact first-success parity remains gated. [Research and implementation](reference/CIRCLE-CANCEL-RESEARCH-2026-10-11.md). |
 
 R04's action-slot preservation does not imply an unconditional no-add rule for
 learned class rings: current class augmentation appends missing learned forms

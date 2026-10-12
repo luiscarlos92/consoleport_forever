@@ -7,7 +7,32 @@ import subprocess
 from urllib.request import urlopen
 from assemble_pack import fetch_official
 from pack_format import digest, zip_entries
-from repository_paths import ROOT, contained, output, sha
+from repository_paths import ROOT, contained, output, sha, immutable_hashes
+
+
+def retain_verified_inputs(package, data, files):
+    """Prepare identical pinned test inputs; reject rather than repair drift."""
+    cache = output(ROOT/package['cache'], ROOT/'dependencies/cache')
+    unpacked = output(ROOT/package['unpacked'], ROOT/'dependencies/unpacked')
+    expected = package['files']
+    if not files or digest(data) != package['sha256'] or len(data) != package['bytes'] or {name: digest(body) for name, body in files.items()} != expected:
+        raise ValueError('Pinned inputs must be fully verified before retention')
+    if cache.exists() and sha(cache) != package['sha256']:
+        raise ValueError('Retained pinned archive drift')
+    existing = immutable_hashes(unpacked) if unpacked.exists() else {}
+    if any(expected.get(name) != value for name, value in existing.items()):
+        raise ValueError('Retained unpacked input drift')
+    # Validate all destinations before any creation, including link ancestors.
+    targets = {name: output(unpacked/name, unpacked) for name in files}
+    if not cache.exists():
+        cache.parent.mkdir(parents=True, exist_ok=True)
+        cache.write_bytes(data)
+    for name, target in targets.items():
+        if name not in existing:
+            target.parent.mkdir(parents=True, exist_ok=True)
+            target.write_bytes(files[name])
+    if sha(cache) != package['sha256'] or immutable_hashes(unpacked) != expected:
+        raise ValueError('Pinned input retention readback failed')
 
 
 def fetch_research_bytes(url):
@@ -49,6 +74,7 @@ def verify_download(package):
         files = {package['addonFolders'][0]+'/'+name.split('/', 1)[1]: body for name, body in files.items()}
     if {name: digest(body) for name, body in files.items()} != package['files']:
         raise ValueError('Pinned whole package file inventory drift: '+package['repo'])
+    retain_verified_inputs(package, data, files)
     return {'repo': package['repo'], 'version': package['version'], 'sha256': package['sha256'], 'status': 'passed'}
 
 

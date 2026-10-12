@@ -1,34 +1,36 @@
 # Current implementation and acceptance
 
 Status: maintained
-Reviewed: 2026-10-11
-Evidence: [candidate.30 install](../evidence/delivery/live-install-candidate30.json),
-[independent readback](../evidence/delivery/candidate30-independent-readback.json),
+Reviewed: 2026-10-12
+Evidence: [candidate.31 install](../evidence/delivery/live-install-candidate31.json),
+[independent readback](../evidence/delivery/candidate31-independent-readback.json),
 [user acceptance](../evidence/forever-ui/candidate30-live-acceptance.json).
 
 ## Installed checkpoint
 
-Candidate `2.0.0-candidate.30` was installed October 10, 2026 at 20:54:04 Toronto
-from tested/pushed source `dcc0fbabebe701af138b98c98633274c18875a32`.
-Only Forever was replaced. Retained readback verifies 58 installed files,
-2,498 unselected addon files and 306 WTF files unchanged, and 42 junctions/root
-anchors preserved. Backups are recorded in the receipt. This describes the
-recorded installation, not a fresh live inventory. Further installation requires
-current authorization with WoW closed.
+Candidate `2.0.0-candidate.31` was installed October 12, 2026 at 00:24:05 Toronto
+from tested/pushed source `a74aa8fd27ebb4e24b99ef580daeedab503235e9`.
+Only Forever was replaced. Independent readback verifies all 59 installed files,
+2,617 unselected addon files and 308 WTF files unchanged, 42 junctions/root
+anchors preserved, and 22,136 prior backup files unchanged. A new verified
+candidate.30/code and current-configuration backup is retained in the receipt.
+The current deployment authorization is fulfilled; this grants no later install
+or game-input permission.
 
 ## Acceptance
 
-Working source is now candidate.31/configuration revision 17 for the user's
-Circle-only request. An explicitly reviewed empty Base PAD2 can use a native
-secure cancel-all click without Escape/Options. This is a Retail approximation:
-cast/placement/hard target cancel together, unlike stock first-success behavior.
-Manual bindings/removals and native UI/ring priority remain. Candidate.31 is
-**not installed or Retail accepted**; deployment is now authorized with WoW closed, following the original
-checkout-only work. [Research and proof](reference/CIRCLE-CANCEL-RESEARCH-2026-10-11.md).
-The working source passed the complete entry point: 69 runtime/source checks and
-50 tooling tests, including 285 Circle assertions and 40 native-reference
-assertions. [Exact-source qualification](../evidence/circle/qualification-2026-10-11.json)
-records current inventories and no deployment/live acceptance.
+Candidate.31/configuration revision 17 implements the user's Circle-only request.
+An explicitly reviewed empty Base PAD2 can use a native secure cancel-all click
+without Escape/Options. Cast, placement and hard target cancel together, unlike
+stock first-success behavior. Manual bindings/removals and native UI/ring priority
+remain. Deployment does not activate the new binding automatically: existing
+characters use `/cpf update` and review the proposed binding outside combat/Edit Mode.
+Candidate.31 is installed but **not Retail accepted**.
+[Research and proof](reference/CIRCLE-CANCEL-RESEARCH-2026-10-11.md).
+The installed source passed 69 runtime/source checks and 50 tooling tests,
+including 285 Circle assertions and 40 native-reference assertions.
+[Preparation qualification](../evidence/circle/qualification-2026-10-11.json)
+describes the tested preparation stage; installation/readback are separate records.
 
 On October 10 the user reported: "all fixed on ring and required item frame".
 The native account ping ring's reported behavior/reopening defect and Forever's

@@ -1,7 +1,7 @@
 # Circle/B cancellation: research, implementation and proof boundary
 
 Status: maintained
-Reviewed: 2026-10-11
+Reviewed: 2026-10-12
 Evidence: [implementation](../../addon/ConsolePort_Forever/Circle.lua),
 [native research snapshots](../../evidence/circle/research/sources.json),
 [native dispatch/review tests](../../tests/harness/circle.lua),
@@ -26,10 +26,13 @@ first-success Forever parity**. If casting and a hard target coexist, the cast
 is cancelled and the target is also cleared. That tradeoff appears in the setup
 review label and tests. The exact native priority remains an explicit gate.
 
-Candidate.31/configuration revision 17 is prepared for the subsequently authorized
-scoped deployment. Candidate.30 remains the recorded installed/accepted version
-until installation readback is retained. Game input and live WTF writes remain
-outside this request.
+Candidate.31/configuration revision 17 was installed through the authorized
+Forever-only update on October 12 at 00:24:05 Toronto.
+[Installation receipt](../../evidence/delivery/live-install-candidate31.json) and
+[independent readback](../../evidence/delivery/candidate31-independent-readback.json)
+verify source/artifact identity and preservation. Candidate.30's reported acceptance
+remains historical. Candidate.31 Circle acceptance is not run; activation requires
+explicit in-game review. Game input and live WTF writes remain outside this request.
 
 ## What native Forever actually does
 

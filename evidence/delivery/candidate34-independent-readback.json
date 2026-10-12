@@ -1,0 +1,31 @@
+{
+  "at": "2026-10-12T21:09:30.368569+00:00",
+  "installedVersion": "2.0.0-candidate.34",
+  "sourceCommit": "36466db91a88a97c4627cdf5863d8dbdd23de6ab",
+  "packSHA256": "08eeb85176943c9649aaad875fd788454dd609830c64ca22f9c34700aa33372c",
+  "closedAt": "2026-10-12T21:08:57.745312+00:00",
+  "installedFilesVerified": 59,
+  "changedRuntimeFiles": [
+    "Circle.lua",
+    "ConsolePort_Forever.lua",
+    "ConsolePort_Forever.toc"
+  ],
+  "unselectedFilesUnchanged": 2617,
+  "wtfFilesUnchangedDuringInstall": 308,
+  "preflightToInstallGameWTFChangesPreserved": 0,
+  "installSnapshotSHA256": "d98cec4a5f5f3374d22b5133b020200d61246b465b9254d8d7b4637dda0dcd49",
+  "junctionsUnchanged": 42,
+  "anchorsUnchanged": true,
+  "backupsVerified": true,
+  "priorBackupFilesUnchanged": 23242,
+  "priorBackupDirectoriesPreserved": 2234,
+  "backup": "C:\\Users\\luisr\\WoW-Backups\\ConsolePort-Forever\\20261012T210810Z-7d789be6e8a7",
+  "beforeSnapshotSHA256": "e647bfb4f52a339dbfdc0aa123fbee25b86e0619447ec6b1162566b9655dc3ea",
+  "configurationRevision": 20,
+  "dependencyUpdates": [],
+  "noLiveWTFWrites": true,
+  "gameInputPerformed": false,
+  "authorization": "Standing qualified Forever-only permission while playing unless explicitly prohibited",
+  "activation": "User reload, automatic revision20 review: Use proposed for owned Circle migration then Apply",
+  "retailAcceptance": "Pending: exact API formatting and casting interruption are not certified offline"
+}

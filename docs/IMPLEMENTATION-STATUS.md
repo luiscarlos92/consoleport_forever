@@ -2,23 +2,23 @@
 
 Status: maintained
 Reviewed: 2026-10-12
-Evidence: [candidate.33 install](../evidence/delivery/live-install-candidate33.json),
-[independent readback](../evidence/delivery/candidate33-independent-readback.json),
+Evidence: [candidate.34 install](../evidence/delivery/live-install-candidate34.json),
+[independent readback](../evidence/delivery/candidate34-independent-readback.json),
 [user acceptance](../evidence/forever-ui/candidate30-live-acceptance.json).
 
 ## Installed checkpoint
 
-Candidate `2.0.0-candidate.33` was installed October 12, 2026 at 16:33:01 Toronto
-from tested/pushed source `6797d0edbec48d8bc8247d37ddbbf3c73415b9f6`.
+Candidate `2.0.0-candidate.34` was installed October 12, 2026 at 17:08:57 Toronto
+from tested/pushed source `36466db91a88a97c4627cdf5863d8dbdd23de6ab`.
 Standing user permission authorizes qualified Forever updates while playing
 unless explicitly prohibited; it remains active until revoked.
 Independent readback verifies 59 files, 2,617 unselected addon files and 308 WTF
-files unchanged from installer start, 42 links/root anchors preserved and 22,873
-prior backup files unchanged. Candidate.32 code and current configuration have a
-new verified backup. Game writes between preflight and installer start were
-captured and preserved. No game input or direct WTF writes occurred.
-[Installation](../evidence/delivery/live-install-candidate33.json),
-[independent readback](../evidence/delivery/candidate33-independent-readback.json).
+files unchanged from installer start, 42 links/root anchors preserved and 23,242
+prior backup files unchanged. Candidate.33 code and current configuration have a
+new verified backup. Three runtime files changed; no game input or direct WTF
+writes occurred.
+[Installation](../evidence/delivery/live-install-candidate34.json),
+[independent readback](../evidence/delivery/candidate34-independent-readback.json).
 
 Candidate.32/revision 18 replaces forbidden RunMacroText dispatch with native
 saved-macro RunMacro and preserves inherited OnClick. The automatic login review
@@ -30,7 +30,7 @@ including 328 Circle assertions. Retail repair acceptance remains user-owned.
 [Investigation](reference/CIRCLE-BLOCKED-ACTION-2026-10-12.md),
 [fresh CI](../evidence/test-results/candidate32-fresh-ci.json).
 
-## Candidate.33 migration deferred and prepared candidate.34
+## Candidate.33 migration deferred and installed candidate.34
 
 The user reports no error but continued lack of interruption. Saved revision19
 retains legacy CLICK with a macro-edited resource deferral, so the direct native
@@ -79,7 +79,8 @@ These are scoped observations; later changes still require regression gates.
 
 ## Current execution boundaries
 
-- Store schema 3; installed configuration revision 19, prepared revision 20.
+- Store schema 3; installed code offers configuration revision20. Last read-only
+  saved acceptance was revision19; revision20 activation awaits user review.
 - Native ConsolePort input recovery enabled. Full custom modes/UI takeover and
   hidden-control replacement remain suspended.
 - Temporary native-family routing uses L2+R2, preserving ordinary banks.

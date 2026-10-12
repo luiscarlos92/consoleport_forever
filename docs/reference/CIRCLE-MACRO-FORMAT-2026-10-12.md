@@ -71,3 +71,16 @@ Controller/architecture/testing contracts explain formatting-aware resource
 identity and review. Original Forever behavior and its detailed UI reference are
 unchanged: combined cancellation remains an approximation of first-success
 behavior, and broader implementation priorities are outside this repair.
+
+## Delivery
+
+Candidate.34 was installed at 17:08:57 Toronto from tested/pushed source
+`36466db91a88a97c4627cdf5863d8dbdd23de6ab`, under standing running-game permission.
+Independent artifact checksum and installed-file readback verify 59 payload files
+and three runtime changes. All 2,617 unselected addon files, 308 WTF files,
+42 links/root anchors, 23,242 prior backup files and the new code/WTF backup were
+preserved. [Artifact](../../evidence/delivery/candidate34-artifact.json),
+[receipt](../../evidence/delivery/live-install-candidate34.json),
+[readback](../../evidence/delivery/candidate34-independent-readback.json).
+User reload and automatic revision20 review activate the migration. Retail
+interruption remains unconfirmed; no game input or direct WTF write occurred.

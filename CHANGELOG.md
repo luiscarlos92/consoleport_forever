@@ -9,7 +9,7 @@ Dates below use America/Toronto. This is a curated change index, not invented
 release tags or blanket gameplay certification. Detailed receipts own exact
 source/artifact/file identities. Prepared, installed and accepted are separate.
 
-## Prepared Circle resource comparison repair — October 12, 2026
+## Circle resource comparison repair deployed — October 12, 2026
 
 Candidate.33 installed successfully, but saved revision19 retains the old CLICK
 binding with a macro-edited deferral. The direct native route was not active in
@@ -20,6 +20,12 @@ interruption is still unconfirmed.
 [Investigation](docs/reference/CIRCLE-MACRO-FORMAT-2026-10-12.md).
 Full qualification passed 72 runtime checks and 66 tooling tests, with 94 native
 binding/log assertions and 328 retained legacy assertions.
+Candidate.34 installed at 17:08:57 Toronto from tested/pushed source
+`36466db91a88a97c4627cdf5863d8dbdd23de6ab`. Independent readback verified 59
+payload files, three runtime changes, 2,617 other addon files, 308 WTF files,
+42 links and all 23,242 prior backup files. No dependency/WTF writes or game input.
+[Installation](evidence/delivery/live-install-candidate34.json),
+[readback](evidence/delivery/candidate34-independent-readback.json).
 
 ## Native Circle binding and automatic evidence deployed — October 12, 2026
 

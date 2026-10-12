@@ -1,17 +1,17 @@
 # Pending deployment and cumulative acceptance
 
-Status: candidate.33 installed October 12, 2026 at 16:33:01 Toronto.
+Status: candidate.34 installed October 12, 2026 at 17:08:57 Toronto.
 Standing user permission authorizes qualified Forever updates while playing unless
 explicitly prohibited. Independent verification preserved installer-start WTF,
-other addons, topology and all 22,873 prior backup files. No game
+other addons, topology and all 23,242 prior backup files. No game
 input or WTF writes; user owns reload.
-[Installation](../evidence/delivery/live-install-candidate33.json),
-[readback](../evidence/delivery/candidate33-independent-readback.json).
+[Installation](../evidence/delivery/live-install-candidate34.json),
+[readback](../evidence/delivery/candidate34-independent-readback.json).
 
-## Candidate.34 preparation
+## Candidate.34 activation and acceptance
 
 Candidate.33 review committed revision19, but a changed-resource deferral retained
-the legacy CLICK binding. Casting remains uninterrupted. Prepare/review the
+the legacy CLICK binding. Casting remains uninterrupted in that report. Review the
 formatting-aware resource comparison and owned native migration; verify automatic
 bounded format/cast/native-call logs. Standing permission allows qualified
 Forever deployment while playing unless explicitly prohibited. After user reload,

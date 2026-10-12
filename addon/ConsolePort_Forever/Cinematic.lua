@@ -32,7 +32,7 @@ end
 function Cinematic:Refresh(api)
     local observed=self:Observe(api)
     Addon.Diagnostics:SetFeature('cinematicHold','pending',self.GATE..' '..observed)
-    Addon.Diagnostics:SetFeature('exactCircle','pending','One-success stop-cast/stop-targeting/clear-target secure sequencing remains unproved; existing Circle binding retained, without combined cancellation.')
+    Addon.Diagnostics:SetFeature('exactCircle','pending','Exact first-success Circle remains unproved. Reviewed cancel-all uses a native secure click, never Escape; manual Circle bindings remain owned.')
     Addon.Diagnostics:SetFeature('exactStickCommit','pending',Addon.RingSelectors.GATE)
     Addon.Diagnostics:SetFeature('activeEntryCancellation','pending','New class/pet selectors are inactive. Action-specific active-entry cancellation/close-and-continue still needs a separate authorized secure route; no generic cancellation substitute.')
     return observed

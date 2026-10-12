@@ -78,7 +78,7 @@ check('T01.snapshot', () => {
 check('T27.lua51', () => {
   for (const f of files('addon').filter(f=>f.endsWith('.lua'))) parser.parse(read(f),{luaVersion:'5.1'});
 });
-const modules = ['Core','Store','Plan','Transactions','BindingPolicy','ModePolicy','Rings/Discovery','Rings/Selectors','ClassActions','SecureModes','TemporaryAccess','TemporaryRouting','Targeting/Registry','Targeting/Preferences','Targeting/Ground','Targeting/Ping','UI/Ownership','UI/InputBridge','UI/Windows','UI/Scroll','UI/Map','UI/PartyLayout','Cinematic','Adapters/BetterBags','UI/ItemHints','UI/Contexts','UI/FocusVisuals','UI/Proof','Adapters/NativeBindings',
+const modules = ['Core','Store','Plan','Transactions','BindingPolicy','ModePolicy','Rings/Discovery','Rings/Selectors','ClassActions','SecureModes','TemporaryAccess','TemporaryRouting','Targeting/Registry','Targeting/Preferences','Targeting/Ground','Targeting/Ping','Circle','UI/Ownership','UI/InputBridge','UI/Windows','UI/Scroll','UI/Map','UI/PartyLayout','Cinematic','Adapters/BetterBags','UI/ItemHints','UI/Contexts','UI/FocusVisuals','UI/Proof','Adapters/NativeBindings',
   'Adapters/BindingState','Adapters/BindingBanks','Diagnostics','Capability','Adapters/ConsolePort','Adapters/EditMode','Adapters/FlatConfig','Adapters/Integrations','SavedEditModeReference','UI/ImmersionProgress','UI/EditModeReference','Adapters/LiteMount','Adapters/DynamicCam','Adapters/Rings','Baseline','Coordinator','Prompt'];
 const source = 'Addon={};\n' + modules.map(m=>
   ';(function(...)\n'+read('addon/ConsolePort_Forever/'+m+'.lua')+'\nend)("ConsolePort_Forever",Addon);\n').join('');
@@ -366,6 +366,12 @@ check('T24.current-native-presentation-lifecycle', () => {
     execute(source+fixture.replace("fire('PLAYER_ENTERING_WORLD') flush()", "Addon.HUDPresentation.RetireMasqueNormal=function() end\nfire('PLAYER_ENTERING_WORLD') flush()"),'unretired-Masque-square');
   } catch(error) { reproduced=String(error).includes('Masque private square normal remains visible'); }
   if(!reproduced) throw Error('Private square overlay regression was not reproduced');
+  const oldCircle="binding=='' or (Addon.CircleCancel and binding==Addon.CircleCancel.BINDING)";
+  if(!fixture.includes(oldCircle)) throw Error('Stale Circle artwork negative control');
+  let circleRejected=false;
+  try {execute(source+fixture.replaceAll(oldCircle,"binding==''"),'missing-Circle-exit-art');}
+  catch(error) {circleRejected=String(error).includes('reviewed Circle cancel command lost accepted exit artwork');}
+  if(!circleRejected) throw Error('Circle artwork negative control did not reject missing exit art');
 });
 function geometryFixture() {
   const template=JSON.parse(read('evidence/forever-ui/retail-button-template.json'));
@@ -1192,6 +1198,63 @@ check('T67.saved-editmode-default-reference', () => {
   if(captured.systemCount!==52 || captured.records.length!==52 || !read('addon/ConsolePort_Forever/SavedEditModeReference.lua').includes(captured.export)) throw Error('Packaged saved layout reference differs from captured cache');
   const fixture=source+serializer+'\n;(function(...)\n'+read('addon/ConsolePort_Forever/RuntimeSetup.lua')+'\nend)("ConsolePort_Forever",Addon);\n'+read('tests/harness/editmode_reference.lua');
   execute(fixture,'saved-editmode-default-reference');
+});
+function circleFixture() {
+  const base='evidence/circle/research/';
+  const manifest=JSON.parse(read(base+'sources.json'));
+  for(const row of manifest.files) if(sha(manifest.localCache+'/'+row.file)!==row.sha256) throw Error('Circle research source drift: '+row.file);
+  const native=read('evidence/native/Blizzard_FrameXML/SecureTemplates.lua').replace(/\r\n/g,'\n');
+  const slash=read(manifest.localCache+'/Retail-SlashCommands.lua').replace(/\r\n/g,'\n');
+  const registrations=['STOPCASTING','STOPSPELLTARGET','CLEARTARGET','STOPMACRO'].map(name=>{
+    const start=slash.indexOf('SlashCommandUtil.CheckAddSecureSlashCommand(SLASH_COMMAND.'+name+',');
+    const end=slash.indexOf('\nend);',start)+7;
+    if(start<0 || end<start) throw Error('Native Circle slash registration missing: '+name);
+    return slash.slice(start,end);
+  }).join('\n');
+  return source+uiContextFixture()+'\n;(function(...)\n'+read('addon/ConsolePort_Forever/RuntimeSetup.lua')+'\nend)("ConsolePort_Forever",Addon);\n'+read('tests/harness/circle.lua')
+    .replace('--@NATIVE_CIRCLE_ATTRIBUTES',()=>['SecureButton_GetModifierPrefix','SecureButton_GetButtonSuffix','SecureButton_GetModifiedAttribute','SecureButton_GetAttribute','SecureButton_GetModifiedUnit'].map(name=>nativeFunction('evidence/native/Blizzard_FrameXML/SecureTemplates.lua',name)).join('\n'))
+    .replace('--@NATIVE_CIRCLE_MACRO_ACTION',()=>native.slice(native.indexOf('SECURE_ACTIONS.macro ='),native.indexOf('local CANCELABLE_ITEMS')))
+    .replace('--@NATIVE_CIRCLE_CLICK',()=>native.slice(native.indexOf('local PRESS_TYPE_DOWN'),native.indexOf('function SecureUnitButton_OnLoad')))
+    .replace('--@CURRENT_CIRCLE_REFRESH',()=>nativeFunction('addon/ConsolePort_Forever/ConsolePort_Forever.lua','Addon:RefreshUI'))
+    .replace('--@NATIVE_CIRCLE_SLASH',()=>registrations);
+}
+check('T68.circle-native-cancel-all-ownership-review-and-manual-preservation', () => {
+  const fixture=circleFixture();
+  console.log(execute(fixture,'native-circle-cancel-all'));
+  for(const [name,from,to,expected] of [
+    ['missing-cast-cancel','/stopcasting\\n','', 'cancel-all did not execute once on down'],
+    ['missing-ground-cancel','/stopspelltarget\\n','', 'cancel-all did not execute once on down'],
+    ['missing-target-clear','\\n/cleartarget','', 'cancel-all did not execute once on down'],
+    ['wrong-click-edge',"frame:SetAttribute('useOnKeyDown',true)","frame:SetAttribute('useOnKeyDown',false)",'combat refresh mutated prepared action'],
+    ['modifier-spill','/stopmacro [mod]\\n','', 'modified click reached Base cancellation'],
+    ['manual-overwrite',"if proposed.keys.PAD2~='' then return proposed,false end","if false then return proposed,false end",'manual Circle binding overwritten'],
+    ['automatic-review',"fields[#fields].requireReview=circleChanged or nil","fields[#fields].requireReview=nil",'Circle bypassed explicit configuration review'],
+    ['combat-creation',"if api.InCombatLockdown() or (api.EditModeManagerFrame and api.EditModeManagerFrame:IsShown()) then","if false then",'Circle attempted secure creation in combat'],
+    ['editmode-creation',"(api.EditModeManagerFrame and api.EditModeManagerFrame:IsShown())","false",'created secure button in Edit Mode'],
+    ['foreign-frame-overwrite',"if current and current~=self.frame then return false,'Circle frame name belongs to another owner' end","if false then return false end",'foreign frame name overwritten'],
+    ['insecure-run',"Circle.MACRO='/stopmacro [mod]", "Circle.MACRO='/run SpellStopCasting()\\n/stopmacro [mod]",'unexpected non-cancellation macro command'],
+    ['missing-startup',"self.CircleCancel:Refresh(_G,self:IsCharacterInstalled())","do end",'bootstrap omitted/reordered Circle preparation']
+  ]) {
+    if(!fixture.includes(from)) throw Error('Stale Circle negative control: '+name);
+    let rejected=false;
+    try {execute(fixture.replaceAll(from,to),name);} catch(error) {rejected=String(error).includes(expected);}
+    if(!rejected) throw Error('Circle negative control not rejected for expected reason: '+name);
+  }
+});
+check('T69.original-Forever-Circle-priority-and-edge-oracle', () => {
+  const manifest=JSON.parse(read('evidence/circle/research/sources.json'));
+  const reference=manifest.localCache+'/Forever-MainActionBarFrame.lua';
+  const actual=sha(reference);
+  if(actual!=='39375bb6d7a1c1d1f340bf6301d388a7aa1187afed9bccb77a440045920b1769') throw Error('Original Forever Circle research drift');
+  const fixture=read('tests/harness/circle_reference.lua')
+    .replace('--@NATIVE_FOREVER_BACK',()=>nativeFunction(reference,'SetupNonBindableBack'));
+  console.log(execute(fixture,'original-Forever-Circle'));
+  const from='elseif ( SpellStopTargeting() ) then';
+  if(!fixture.includes(from)) throw Error('Native Circle oracle changed');
+  let rejected=false;
+  try {execute(fixture.replace(from,'end; if ( SpellStopTargeting() ) then'),'combined-stock-cancellation');}
+  catch(error) {rejected=String(error).includes('native first-success priority changed');}
+  if(!rejected) throw Error('Native first-success negative control did not reject combined cancellation');
 });
 const report = {at:new Date().toISOString(), commit:cp.execFileSync('git',['rev-parse','HEAD'],{cwd:root}).toString().trim(),
   productHashes:Object.fromEntries(files('addon').map(f=>[f,sha(f)])),

@@ -42,6 +42,8 @@ Down cell. It needs an actual matching class chord, native ring/learned icon and
 device glyph. Public active-form icon wins, otherwise qualified ring content is
 used. It continuously mirrors bank opacity; unavailable glyph/content hides it.
 The Circle empty-cell exit art is cosmetic and does not install gameplay cancel.
+Candidate.31's separately reviewed cancel-all binding reuses that exit art and
+availability treatment on Base only; held/manual/modified icons remain native.
 
 Creation/geometry waits out combat; existing cosmetic surfaces can refresh in
 combat. Native local/art/size/Masque lifecycle hooks and deferred refreshes repair

@@ -37,7 +37,9 @@ scratch copies. `tools/local` scripts can be hashed/parsed; they must not execut
 | Account ping ring | T65 native wrappers/backend/frontend/compiler/macro dispatch, repeated opens/refreshes, release-only sends, other-ring/UV/account/owner negative controls. T60 separately retains inactive candidate.27 fallback. |
 | Immersion Required Items | T66 native measurement defect reproduction, additive correction and missing-correction negative control. |
 | Saved Edit Mode tracking | T67 native saved capture, no tracking save/select, preservation of Party/manual edits. Initial installer adapter is a separate contract. |
+| Circle cancel-all | T68 native Layers/Input, secure click/macro/slash dispatch, edges/modifiers/owners, explicit review and manual preservation, with negative controls. T69 independently retains original Forever first-success semantics; passing T68 is not exact parity. |
 | Executable tooling | Python simulations: scope/path/link/archive/hash checks, preview/backup/promotion/readback, interruption/rollback and preserved later edits. |
+| Research source cache | Five tooling tests cover verified fetch/cache reuse, size/hash drift, preservation of drifted cached inputs, unsafe paths/URLs/identities, failed downloads and redirects. The explicit CI download stage reconstructs ignored inputs from the tracked Circle manifest before offline tests. |
 | Maintained docs/skills | Checker and its missing-target/anchor/escape/manifest cases; manual semantic review. |
 
 The runner's check IDs and build validator determine required suite membership;

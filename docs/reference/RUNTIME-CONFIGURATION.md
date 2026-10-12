@@ -27,6 +27,7 @@ different scope and do not turn a runtime journal into immediate disk durability
 | Scope | Proposal and ownership contract |
 | --- | --- |
 | Controller bindings | Shared base-face archive plus current GUID's personal archive, or qualified current/reference fallback; normalize the scoped mask and propose native Character selection. Preserve explicit empty values. |
+| Circle cancel-all | Candidate.31 review alone can propose a native secure click for an explicitly empty Base PAD2. The changed controller field requires explicit Use Proposed. Nonempty/missing values, Keep and subsequent manual removals retain ownership; ordinary hydration never makes this proposal. |
 | ConsolePort layout | Start from captured current layout. The qualified proposal removes legacy special vehicle visibility/opacity and the standalone override-page declaration; runtime temporary routing is separate. |
 | Preset condition | Propose an empty `bindingPresetCondition`, disabling the old automatic preset condition. |
 | Runtime policies | Offer modes, ground, focus, context/window/bag/map, sidebar visibility and hidden-access fields only where their probes allow. Saved true fields may remain dormant under native recovery. |

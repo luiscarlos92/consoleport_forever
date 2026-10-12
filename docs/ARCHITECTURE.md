@@ -9,7 +9,7 @@ Evidence: [TOC](../addon/ConsolePort_Forever/ConsolePort_Forever.toc),
 ## Loading and initialization
 
 The TOC requires ConsolePort and ConsolePort_Bar, declares optional integrations
-and loads 55 Lua files in order. There is no current Forever XML entry point.
+and loads 56 Lua files in order. There is no current Forever XML entry point.
 Modules share the addon namespace supplied through `...`. `Core`, storage,
 planning, transactions and capability modules precede policies and adapters;
 the main addon file loads last. `Bindings.lua`, `Layout.lua` and `Profile.lua`
@@ -104,6 +104,7 @@ committed/restored journal after a later session and keeps pending work on failu
 | SecureModes, TemporaryRouting, TemporaryAccess | Native secure button extensions. Full SecureModes installer is disabled by native recovery; TemporaryRouting reuses qualified snippets independently. |
 | Targeting/Registry, Preferences, Ground | Qualified spell/context placement choices, observation and secure click adapter. Active under accepted policy without owning action pages. |
 | Targeting/Ping | Actual ConsolePort account ring, native secure release dispatch, cosmetic hold visibility and owner/collision guards. |
+| Circle | Prepare a fixed native secure click outside combat/Edit Mode; configuration review alone offers its cancel-all command for empty Base PAD2. No custom layer/takeover or hydration rebinding. Exact stock first-success remains gated. |
 | ClassActions, Rings/Discovery, Rings/Selectors, Adapters/Rings | Class chord/access repair, learned read-only discovery, GUID projection and privately prepared selectors. Preparation is not activation. |
 | HUDPresentation, Skin | Original art, round state surfaces, glyphs, feedback, geometry and late native refresh repair. |
 | Runtime, ClassActions, UI/HiddenAccess | Owned sidebar/bag/micro visibility and separately qualified StanceBar suppression remain possible. Full hidden-control replacement is suspended; native power UI retained. |
@@ -136,6 +137,7 @@ native combat-claim relinquishment bridge. See [states](STATE_MATRIX.md).
 | Temporary routing | Installed character and writable refresh/native readiness. In recovery it does **not** require `modesEnabled`. |
 | Ground placement | Installed character plus `groundTargetingEnabled`, writable refresh, qualified native buttons/compiler and spell/context. |
 | Account ping | Installed character, audited native ring/layers and gamepad keys actually bound to `TOGGLEPINGLISTENER`; refresh defers in combat. No separate ping policy flag. |
+| Circle cancel-all | Inert prepared frame plus accepted/current native click binding. Review change requires Use Proposed; existing binding is not automatically installed/restored by frame refresh. Native UI/ring Layers priority remains. |
 | Skin/HUD | Installed character and native button/device readiness; protected geometry work defers while existing cosmetic surfaces can refresh. |
 | Focus feedback | Installed character plus `focusVisuals`, qualified ordinary interface-cursor ownership; released in combat. |
 | Sidebar/bag/micro visibility | Installed character plus `blizzardVisibility` and native identity/parent guards; released for Edit Mode. |

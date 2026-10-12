@@ -24,6 +24,10 @@ These are explicit limits, not newly discovered failures:
 - Exact additional stick-return/close-and-continue and active-entry cancellation,
   one-success gameplay Circle, additional learned class/pet selector activation,
   transient 0.5-second loot hold and held cinematic skip remain proof gates.
+- Candidate.31 supplies an uninstalled, reviewed Circle cancel-all approximation.
+  It clears a coexisting hard target when stopping a cast/reticle. Exact native
+  first-success behavior remains unavailable; Escape was explicitly rejected.
+  [Research/proof boundary](reference/CIRCLE-CANCEL-RESEARCH-2026-10-11.md).
 - LM_B2 has no proven current default icon; preserve explicit/native data.
 - Other unaudited scroll widgets retain native input. Offline UI/map/window tests
   do not assert that disabled custom context routes are enabled.

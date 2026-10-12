@@ -1,0 +1,101 @@
+{
+  "retailCommit": "09b9db7948abc9b9648dedaab51eb0cf3ee67b31",
+  "files": [
+    {
+      "file": "Retail-Game-Shared.lua",
+      "path": "Blizzard_Game/Shared/Game.lua",
+      "url": "https://raw.githubusercontent.com/Gethe/wow-ui-source/09b9db7948abc9b9648dedaab51eb0cf3ee67b31/Interface/AddOns/Blizzard_Game/Shared/Game.lua",
+      "sha256": "212b5719a933f5a3dfe6aca6aea2a3a9b5f94f8819f8844955e86a74f5844d64",
+      "bytes": 1779
+    },
+    {
+      "file": "Retail-Game-Mainline.lua",
+      "path": "Blizzard_Game/Mainline/Game.lua",
+      "url": "https://raw.githubusercontent.com/Gethe/wow-ui-source/09b9db7948abc9b9648dedaab51eb0cf3ee67b31/Interface/AddOns/Blizzard_Game/Mainline/Game.lua",
+      "sha256": "688ba7af2dd43e25b5f61aa52f40aa35d5dcdd6297b0e2fd7a3cb915a31d4c4b",
+      "bytes": 794
+    },
+    {
+      "file": "Retail-GameMenuEsc.lua",
+      "path": "Blizzard_GameMenuEsc/Blizzard_GameMenuEsc.lua",
+      "url": "https://raw.githubusercontent.com/Gethe/wow-ui-source/09b9db7948abc9b9648dedaab51eb0cf3ee67b31/Interface/AddOns/Blizzard_GameMenuEsc/Blizzard_GameMenuEsc.lua",
+      "sha256": "79af4c01bb0025401e581d61fdc049be79369711f0aa4942a8d41f496218a49c",
+      "bytes": 2868
+    },
+    {
+      "file": "Retail-Bindings_Standard.xml",
+      "path": "Blizzard_FrameXML/Bindings_Standard.xml",
+      "url": "https://raw.githubusercontent.com/Gethe/wow-ui-source/09b9db7948abc9b9648dedaab51eb0cf3ee67b31/Interface/AddOns/Blizzard_FrameXML/Bindings_Standard.xml",
+      "sha256": "475f4491242960227ce9c6e4275685ea497dfa89c49cc5504936202055ea49e5",
+      "bytes": 69829
+    },
+    {
+      "file": "Retail-RestrictedEnvironment.lua",
+      "path": "Blizzard_RestrictedAddOnEnvironment/RestrictedEnvironment.lua",
+      "url": "https://raw.githubusercontent.com/Gethe/wow-ui-source/09b9db7948abc9b9648dedaab51eb0cf3ee67b31/Interface/AddOns/Blizzard_RestrictedAddOnEnvironment/RestrictedEnvironment.lua",
+      "sha256": "5e42ec4807156002470d957a140d107619b068c941e182af4c4a4b62e1fcd895",
+      "bytes": 8851
+    },
+    {
+      "file": "Retail-SlashCommands.lua",
+      "path": "Blizzard_ChatFrameBase/Shared/SlashCommands.lua",
+      "url": "https://raw.githubusercontent.com/Gethe/wow-ui-source/09b9db7948abc9b9648dedaab51eb0cf3ee67b31/Interface/AddOns/Blizzard_ChatFrameBase/Shared/SlashCommands.lua",
+      "sha256": "730e612cc460c50420dd7783a374e876249915730bb0986691db52529d9c1a6f",
+      "bytes": 57140
+    },
+    {
+      "file": "Retail-GamePadDocumentation.lua",
+      "path": "Blizzard_APIDocumentationGenerated/GamePadDocumentation.lua",
+      "url": "https://raw.githubusercontent.com/Gethe/wow-ui-source/09b9db7948abc9b9648dedaab51eb0cf3ee67b31/Interface/AddOns/Blizzard_APIDocumentationGenerated/GamePadDocumentation.lua",
+      "sha256": "6b63e7e0f7db4bc1ba2cf1f47072f552db6218c4aee08b02c93aa64536f74490",
+      "bytes": 10208
+    },
+    {
+      "file": "Retail-SecureTemplates.lua",
+      "path": "Blizzard_FrameXML/SecureTemplates.lua",
+      "url": "https://raw.githubusercontent.com/Gethe/wow-ui-source/09b9db7948abc9b9648dedaab51eb0cf3ee67b31/Interface/AddOns/Blizzard_FrameXML/SecureTemplates.lua",
+      "sha256": "5fd1efcbfc20b4d426187f55dbee52542d37befd1ef52082db1f466f1049929a",
+      "bytes": 32240
+    },
+    {
+      "file": "Retail-UIParent.lua",
+      "path": "Blizzard_UIParent/UIParent.lua",
+      "url": "https://raw.githubusercontent.com/Gethe/wow-ui-source/09b9db7948abc9b9648dedaab51eb0cf3ee67b31/Interface/AddOns/Blizzard_UIParent/UIParent.lua",
+      "sha256": "7ee72baff31b5df22643508aaedcccc53f16420b8787adabe0f11b177eb5503b",
+      "bytes": 370
+    },
+    {
+      "file": "Retail-UIParentUtil.lua",
+      "path": "Blizzard_UIParentUtil/UIParentUtil.lua",
+      "url": "https://raw.githubusercontent.com/Gethe/wow-ui-source/09b9db7948abc9b9648dedaab51eb0cf3ee67b31/Interface/AddOns/Blizzard_UIParentUtil/UIParentUtil.lua",
+      "sha256": "1761bced2afb305cb753093bb385d76165cb84c74adef6a0873a7300ce330ab8",
+      "bytes": 606
+    },
+    {
+      "file": "Retail-UIParentPanelManager.lua",
+      "path": "Blizzard_UIParentPanelManager/Shared/UIParentPanelManager.lua",
+      "url": "https://raw.githubusercontent.com/Gethe/wow-ui-source/09b9db7948abc9b9648dedaab51eb0cf3ee67b31/Interface/AddOns/Blizzard_UIParentPanelManager/Shared/UIParentPanelManager.lua",
+      "sha256": "3987ca8721c3ee9fda39f75a3606efdcb7db5d5ed12d848979a882a6e4727cac",
+      "bytes": 42525
+    }
+  ],
+  "forever": {
+    "file": "Forever-MainActionBarFrame.lua",
+    "commit": "15666a6e67938a1ab5caf041406464251db111ca",
+    "url": "https://raw.githubusercontent.com/Gethe/wow-ui-source/15666a6e67938a1ab5caf041406464251db111ca/Interface/AddOns/Blizzard_GamepadActionBars/MainActionBarFrame.lua",
+    "sha256": "39375bb6d7a1c1d1f340bf6301d388a7aa1187afed9bccb77a440045920b1769",
+    "bytes": 19141
+  },
+  "latestForever": {
+    "file": "Forever-70338-MainActionBarFrame.lua",
+    "commit": "943764493e6b16d63ded3ab304150d1f05e58b57",
+    "build": "1.60.1 (70338)",
+    "committedAt": "2026-10-10T05:16:18Z",
+    "url": "https://raw.githubusercontent.com/Gethe/wow-ui-source/943764493e6b16d63ded3ab304150d1f05e58b57/Interface/AddOns/Blizzard_GamepadActionBars/MainActionBarFrame.lua",
+    "sha256": "655c83c320540c74e96636d9c0572fcf2d82869c3592a474c5abbc93d45a0935",
+    "bytes": 19835,
+    "backCallbackMatchesOriginal": true
+  },
+  "localCache": "scratch/circle-research",
+  "sourceBytesTracked": false
+}

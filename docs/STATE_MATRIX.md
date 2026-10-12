@@ -7,7 +7,8 @@ Evidence: [routing](../addon/ConsolePort_Forever/TemporaryRouting.lua),
 [bootstrap](../addon/ConsolePort_Forever/ConsolePort_Forever.lua),
 [test runner](../tools/test-all.cjs).
 
-This matrix describes candidate.30's actual activation boundaries, not blanket
+This matrix describes working source, with candidate.30 still installed and
+candidate.31 Circle changes uninstalled. It does not claim blanket
 Retail acceptance. [Requirements](REQUIREMENTS.md) owns intended behavior;
 [testing](TESTING.md) explains what offline coverage can establish.
 
@@ -52,6 +53,9 @@ Retail acceptance. [Requirements](REQUIREMENTS.md) owns intended behavior;
 | Interrupted bank selection or applying journal | Main refresh pauses normal hydration; explicit guarded recovery is required. |
 | Native saved layout changed | Read-only capture after eligible refresh/Edit Mode close; no tracking selection/save. |
 | Passive action/visual/ping event | Saved diagnostic evidence may change; no spell pickup/place restoration. |
+| Candidate.31 Circle frame prepared | Inert until the native click command is accepted/bound. Readiness does not prove live activation. |
+| Reviewed Circle command on Base PAD2 | Native secure down-edge cancel-all; no release send or Escape/menu. Native UI/ring claims supersede Base; modified action routes stay ordinary. |
+| Manual Circle command / later empty | Preserve command/removal. Circle proposal is only in explicit review, never ordinary hydration. |
 
 Native readiness, saved state, effective engine ownership and Retail acceptance
 are independent axes. [Architecture](ARCHITECTURE.md#native-execution-and-refresh)

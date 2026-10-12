@@ -11,6 +11,13 @@ source/artifact/file identities. Prepared, installed and accepted are separate.
 
 ## Repository system — October 11, 2026
 
+Uninstalled candidate.31 adds Circle-only reviewed secure cancel-all access for
+an explicitly empty Base binding. It uses no Escape/menu or custom UI takeover,
+preserves manual commands/removals and native Layers ownership, and makes the
+first-success parity limit explicit. Configuration revision remains 17; schema 3.
+Added native dispatch/review and original Forever callback oracle regressions.
+[Research and implementation](docs/reference/CIRCLE-CANCEL-RESEARCH-2026-10-11.md).
+
 Follow-up code/document reconciliation clarifies actual feature activation,
 reviewed setup, binding-bank recovery, class-ring augmentation, early native ping
 selection, visual composition and dormant UI routes. Added detailed configuration

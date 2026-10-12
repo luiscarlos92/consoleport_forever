@@ -18,9 +18,19 @@ edits remain authoritative; the reference is a preset, not a live engine dump.
 | Face | Key | Shipped Base command |
 | --- | --- | --- |
 | Cross/X | PAD1 | JUMP |
-| Circle/B | PAD2 | Empty; user/native contextual edits may differ. |
+| Circle/B | PAD2 | Captured preset remains empty; candidate.31 review can offer a native secure cancel-all click for an explicitly empty Base binding. Manual commands/Keep/removal retained. |
 | Square | PAD3 | INTERACTTARGET |
 | Triangle | PAD4 | TURNORACTION |
+
+Candidate.31's reviewed Circle acts on down, not release: stop casting/channeling,
+cancel ground placement and clear the hard target together. It never invokes
+Escape/Options or closes native windows itself. This is an explicit Retail
+approximation, not Forever's first-success chain; cancellation also clears a
+coexisting hard target. Native Layers retains UI/ring priority. Modified clicks
+are blocked by the fixed macro guard; ordinary modified actions stay native.
+Preparation is inert and outside combat/Edit Mode; hydration never installs the
+proposal, preserving later manual removals. See the
+[research/proof record](reference/CIRCLE-CANCEL-RESEARCH-2026-10-11.md).
 
 Square is native interaction, not an unconditional mouse click at the pointer.
 A floating hand and successful mouse click do not prove that the native soft

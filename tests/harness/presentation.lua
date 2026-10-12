@@ -241,6 +241,37 @@ Manager.bindingSnapshot.PAD4={['']='TURNORACTION'}
 local exit=base.buttons.PAD2
 ProxyButtonTextureProvider('PAD2',true)(exit.icon) exit:UpdateLocal()
 assert(exit.icon.atlas=='128-redbutton-exit' and exit.icon.desaturated==false and exit.icon.alpha==1,'decorated Exit retained native unbound dimming')
+-- The new secure Circle command keeps accepted exit art through native updates.
+Manager.bindingSnapshot.PAD2={['']=Addon.CircleCancel.BINDING}
+ProxyButtonTextureProvider('PAD2',true)(exit.icon) exit:UpdateLocal()
+assert(exit.icon.atlas=='128-redbutton-exit' and exit.icon.desaturated==false and exit.icon.alpha==1,
+    'reviewed Circle cancel command lost accepted exit artwork')
+combat=true
+ProxyButtonTextureProvider('PAD2',true)(exit.icon) exit:UpdateLocal()
+assert(exit.icon.atlas=='128-redbutton-exit' and exit.icon.desaturated==false and exit.icon.alpha==1,
+    'combat Circle native refresh lost exit availability')
+combat=false
+local baseState=exit.attributes.state
+exit.attributes['cpf-held']=true exit.icon:SetTexture('held-circle') exit:UpdateLocal()
+assert(exit.icon.texture=='held-circle','held Circle artwork replaced native gesture')
+exit.attributes['cpf-held']=nil
+for _,foreign in ipairs({'CLICK Other:LeftButton','ACTIONBUTTON9','TOGGLEGAMEMENU'}) do
+    Manager.bindingSnapshot.PAD2={['']=foreign}
+    exit.icon:SetTexture('manual-circle') exit:UpdateLocal()
+    assert(exit.icon.texture=='manual-circle','Circle skin replaced a manual command icon')
+end
+Manager.bindingSnapshot.PAD2={['']=Addon.CircleCancel.BINDING,['SHIFT-']='CLICK Other:LeftButton'}
+exit.attributes.state='SHIFT-' exit.icon:SetTexture('modified-circle') exit:UpdateLocal()
+assert(exit.icon.texture=='modified-circle','Circle skin spilled into another modifier state')
+exit.attributes.state=baseState
+for _,bankID in ipairs({'L2','R2','L2R2'}) do
+    local modified=_G['ConsolePortGroup'..bankID].buttons.PAD2
+    local kind,old=modified._state_type,modified.icon.texture
+    modified._state_type='custom' modified.icon:SetTexture('native-modified-circle') modified:UpdateLocal()
+    assert(modified.icon.texture=='native-modified-circle','Circle Base artwork changed another bank')
+    modified._state_type=kind modified.icon:SetTexture(old)
+end
+Manager.bindingSnapshot.PAD2={['']=''} exit:UpdateLocal()
 local jump=base.buttons.PAD1
 assert(jump.icon.texture:find('ForeverInGame',1,true))
 jump.attributes.state='SHIFT-' jump:UpdateLocal() assert(jump.icon.texture==6603,'display ignored the resolved native state')

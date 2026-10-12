@@ -9,6 +9,33 @@ are accepted in Retail; broader regression cases below remain available and are
 not individually claimed as tested by this confirmation.
 Another deployment requires new user authorization with WoW closed.
 
+## Uninstalled candidate.31 Circle work
+
+The user subsequently authorized scoped deployment with WoW closed. Working source
+offers an empty Base Circle native secure cancel-all click through explicit
+configuration review; it does not map Escape or open Options. Exact first-success
+stock parity remains gated. After a later separately authorized installation:
+
+1. On an already installed character, `/cpf update` explicitly opens review;
+   no configuration-revision bump forces a full prompt. Review before/after bindings.
+   Use Proposed for the new Circle only if desired;
+   Keep and existing manual Circle commands must remain unchanged. Confirm all
+   other ordinary/modified/D-pad, keyboard, class, utility, mount and ping bindings.
+2. With a hard target while casting/channeling or placing a ground spell, Circle
+   cancels the spell/placement **and clears the hard target**. This is deliberate
+   cancel-all behavior. Idle Circle opens no menu; release performs no second action.
+3. Native ping/aura/utility rings and dialogs retain their own Circle cancel. Test
+   held UI input into combat, repeated use, ground-placement fallback and all banks.
+4. Remove/rebind Circle, reload/login and switch GUID: removal/manual command must
+   persist without automatic restoration. Shared Base ownership remains explicit.
+5. Recheck accepted HUD/power, ping, Required Items, saved layouts, class access,
+   ordinary/temporary drag/remove and keyboard/foreign owner behavior. Inspect
+   actual native authority/taint and distinguish hard target from soft indicators.
+
+Source/offline proof is recorded in the
+[Circle research](reference/CIRCLE-CANCEL-RESEARCH-2026-10-11.md); none of these
+Retail cases has been performed for candidate.31.
+
 ## Accepted fixes and remaining layout acceptance
 
 - Native ConsolePort account ring ForeverPings: aimed R3 release ping; no initial hold ping;

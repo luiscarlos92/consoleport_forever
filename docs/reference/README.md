@@ -20,7 +20,7 @@ Evidence: [migration record](../WORKSPACE-ORGANIZATION-2026-10-11.md),
 | [Retail acceptance](../../evidence/forever-ui) | Scoped user observations alongside visual source/test evidence. |
 | [Pre-restructure snapshots](../archive/ai-native-2026-10-11/README.md) | Original combined guidance preserved exactly. |
 | [Imported work](../../archive/onedrive-legacy/README.md) | Historical scripts/plans/research; never executable deployment authority. |
-| [Pending native UI reference](../references/pending/README.md) | User-owned reference reserved for a later feature request. |
+| [Native UI reference and gap analysis](../references/pending/README.md) | Original native reference plus user-requested current implementation comparison; proposed features still await selection. |
 
 Read [evidence conventions](EVIDENCE.md) before comparing behavior. The
 [development history analysis](DEVELOPMENT-HISTORY.md) records sources, patterns
@@ -32,6 +32,9 @@ plural pending-reference directory is intentionally retained without moving it.
 - [Runtime configuration](RUNTIME-CONFIGURATION.md): actual setup proposals,
   binding-bank consent, GUID rings/class augmentation, preferences, integration
   lifecycle, saved layouts, commands and diagnostic retention.
+- [Circle cancellation research](CIRCLE-CANCEL-RESEARCH-2026-10-11.md): Circle-only
+  native-source/addon/forum investigation, rejected Escape route, reviewed
+  cancel-all approximation and original first-success oracle.
 - [Presentation and UI](PRESENTATION-AND-UI.md): composed face/HUD feedback,
   visibility ownership and guarded dormant UI routes.
 - [October 11 code/document reconciliation](CODE-DOCUMENTATION-RECONCILIATION-2026-10-11.md):

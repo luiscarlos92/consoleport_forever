@@ -387,6 +387,7 @@ function Addon:Status()
 end
 function Addon:RefreshUI()
     self.BlizzardVisibility:Update()
+    self.CircleCancel:Refresh(_G,self:IsCharacterInstalled())
     self.Cinematic:Refresh(_G)
     if not self.adapters then return end
     self:RequestSkinRefresh()

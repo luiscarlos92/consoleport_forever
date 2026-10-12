@@ -109,7 +109,14 @@ function Setup.Fields(db,guid,adapters,api,revision)
     end
     local controller=Setup.BindingProposal(db,guid,adapters.bindings,Addon.ReferenceBindings)
     controller=Addon.ClassActions.Bindings(controller,adapters.rings)
-    add(guid.."/controller","bindings",{"state"},controller,"Forever class flyout: class-specific shoulder + trigger (R1 + R2 for warrior; L1 + L2 for druid/paladin); preserve action banks and keyboard bindings")
+    local circleReady,circleReason=Addon.CircleCancel:Prepare(api)
+    local circleChanged=false
+    if circleReady then controller,circleChanged=Addon.CircleCancel.Proposal(controller)
+    else deferred[#deferred+1]={id='circleCancel',reason=circleReason} end
+    local controllerLabel="Forever class flyout: class-specific shoulder + trigger (R1 + R2 for warrior; L1 + L2 for druid/paladin); preserve action banks and keyboard bindings"
+    if circleChanged then controllerLabel=controllerLabel.."; Base Circle: cancel cast, ground placement and hard target together; no Escape/menu" end
+    add(guid.."/controller","bindings",{"state"},controller,controllerLabel)
+    fields[#fields].requireReview=circleChanged or nil
     if adapters.mountIcons then
         local icons,pending=adapters.mountIcons:Proposal()
         for id,value in pairs(icons or {}) do add('shared/mountIcon/'..id,'mountIcons',{id},value,'Preserve native LiteMount binding icon: '..id) end

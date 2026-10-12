@@ -18,6 +18,18 @@ current authorization with WoW closed.
 
 ## Acceptance
 
+Working source is now candidate.31/configuration revision 17 for the user's
+Circle-only request. An explicitly reviewed empty Base PAD2 can use a native
+secure cancel-all click without Escape/Options. This is a Retail approximation:
+cast/placement/hard target cancel together, unlike stock first-success behavior.
+Manual bindings/removals and native UI/ring priority remain. Candidate.31 is
+**not installed or Retail accepted**; deployment is now authorized with WoW closed, following the original
+checkout-only work. [Research and proof](reference/CIRCLE-CANCEL-RESEARCH-2026-10-11.md).
+The working source passed the complete entry point: 69 runtime/source checks and
+50 tooling tests, including 285 Circle assertions and 40 native-reference
+assertions. [Exact-source qualification](../evidence/circle/qualification-2026-10-11.json)
+records current inventories and no deployment/live acceptance.
+
 On October 10 the user reported: "all fixed on ring and required item frame".
 The native account ping ring's reported behavior/reopening defect and Forever's
 Immersion Required Items correction are accepted in Retail. Broader combat,
@@ -29,7 +41,7 @@ These are scoped observations; later changes still require regression gates.
 
 ## Current execution boundaries
 
-- Store schema 3; configuration revision 17.
+- Store schema 3; configuration revision 17 for installed and working source.
 - Native ConsolePort input recovery enabled. Full custom modes/UI takeover and
   hidden-control replacement remain suspended.
 - Temporary native-family routing uses L2+R2, preserving ordinary banks.

@@ -8,6 +8,16 @@ Evidence: [candidate.34 install](../evidence/delivery/live-install-candidate34.j
 
 ## Installed checkpoint
 
+Candidate.35 performance work is prepared in this checkout, retaining StoreSchema
+3/configuration revision20 and accepted native behavior. It reduces reproduced
+diagnostic copying, routine skin/layout work and broad event initialization, and
+adds disabled-by-default bounded callback timing. Final qualification passed all
+76 runtime/source checks and 66 tooling tests, retaining the 72/66 baseline and
+new defect/fallback controls. Scoped delivery remains separate from Retail
+performance acceptance. K04 remains open.
+[Qualification](../evidence/test-results/candidate35-hud-qualification.json).
+[Investigation](reference/HUD-PERFORMANCE-2026-10-12.md).
+
 Candidate `2.0.0-candidate.34` was installed October 12, 2026 at 17:08:57 Toronto
 from tested/pushed source `36466db91a88a97c4627cdf5863d8dbdd23de6ab`.
 Standing user permission authorizes qualified Forever updates while playing

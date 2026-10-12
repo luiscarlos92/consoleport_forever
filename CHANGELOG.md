@@ -9,6 +9,18 @@ Dates below use America/Toronto. This is a curated change index, not invented
 release tags or blanket gameplay certification. Detailed receipts own exact
 source/artifact/file identities. Prepared, installed and accepted are separate.
 
+## HUD performance preparation — October 12, 2026
+
+Candidate.35 performance preparation removes demonstrated redundant diagnostic
+history copies, routine full skin/layout refreshes and unrelated routine event
+initialization. Visual updates remain immediate; native secure/pressed/cooldown/
+power ownership and configuration revision20 remain. Bounded optional callback
+timing is disabled by default. New work-count/native lifecycle regression gates
+retain old-defect negative controls. Retail CPU improvement and K04 acceptance
+remain unverified. [Report](docs/reference/HUD-PERFORMANCE-2026-10-12.md).
+Full qualification passed 76 runtime/source checks and 66 tooling tests.
+[Receipt](evidence/test-results/candidate35-hud-qualification.json).
+
 ## Circle cast interruption accepted — October 12, 2026
 
 The user confirms candidate.34 successfully interrupts casting. K03's reported

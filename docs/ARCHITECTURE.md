@@ -34,6 +34,19 @@ migration, modes/UI and optional setup review. `ADDON_LOADED` and state changes
 retry readiness; ordinary events coalesce through a zero-delay callback and
 pause while a review is active. Logout captures owned binding/ring edits.
 
+Candidate.35 retains that complete initialization for readiness, bindings,
+spells/specs, layouts and recovery. After a successful full refresh in native
+recovery, event batches merge modes (slot/page), contexts (cursor/locks/merchant),
+bags (rings plus contexts), or cinematic (eligibility plus contexts); full work
+takes precedence. Incomplete readiness, a deferred review or pending reload
+verification falls back to full setup. Native
+button feedback is immediate; these zero-delay batches reconcile public setup
+with existing protected-write guards. Skin separates immediate cosmetic events
+from structural geometry/readiness work. Diagnostic persistence copies only the
+changed detached section/feature, with a full snapshot for new record/version/
+revision owners. Optional fixed-scope inclusive timing is off by default.
+[Evidence and limits](reference/HUD-PERFORMANCE-2026-10-12.md).
+
 ## Configuration and ownership
 
 | Layer | Contract |

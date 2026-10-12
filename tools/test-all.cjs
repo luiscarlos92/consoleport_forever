@@ -1223,7 +1223,7 @@ function circleFixture() {
     .replace('--@NATIVE_CIRCLE_MACRO_ACTION',()=>native.slice(native.indexOf('SECURE_ACTIONS.macro ='),native.indexOf('local CANCELABLE_ITEMS')))
     .replace('--@NATIVE_CIRCLE_SAVE_MACRO',()=>nativeFunction('evidence/native/Blizzard_FrameXML/SecureTemplates.lua','SaveMacro'))
     .replace('--@NATIVE_CIRCLE_CLICK',()=>native.slice(native.indexOf('local PRESS_TYPE_DOWN'),native.indexOf('function SecureUnitButton_OnLoad')))
-    .replace('--@CURRENT_CIRCLE_REFRESH',()=>nativeFunction('addon/ConsolePort_Forever/ConsolePort_Forever.lua','Addon:RefreshUI'))
+    .replace('--@CURRENT_CIRCLE_REFRESH',()=>['Addon:RefreshContextPresentation','Addon:RefreshUI'].map(name=>nativeFunction('addon/ConsolePort_Forever/ConsolePort_Forever.lua',name)).join('\n'))
     .replace('--@NATIVE_CIRCLE_TEMPLATE',()=>"assert(template=='SecureActionButtonTemplate','Circle lost protected native template')")
     .replace('--@NATIVE_CIRCLE_SLASH',()=>registrations);
 }
@@ -1277,7 +1277,7 @@ check('T71.native-Circle-macro-binding-row-ownership-and-automatic-logs', () => 
     ['resource=Addon.Core.Copy(log.resource or {})','resource={}','format-only resource refresh was deduplicated'],
     ['if ok then return Public(api,value) end',"if ok then return Public(api,value) or 'unavailable' end",'false modifier became unavailable'],
     ['if #log.rows>80 then','if false then','automatic log is unbounded'],
-    ['circle=Addon.Core.Copy(self.circle or {}),','', 'native call log not persisted automatically']
+    ["Addon.Diagnostics:Persist('circle')",'do end', 'native call log not persisted automatically']
   ]) {
     if(!fixture.includes(from)) throw Error('stale native Circle/log negative control');
     let rejected=false;try {execute(fixture.replaceAll(from,to),'native-Circle-log-negative');} catch(e){rejected=String(e).includes(message);}
@@ -1306,6 +1306,61 @@ check('T69.original-Forever-Circle-priority-and-edge-oracle', () => {
   try {execute(fixture.replace(from,'end; if ( SpellStopTargeting() ) then'),'combined-stock-cancellation');}
   catch(error) {rejected=String(error).includes('native first-success priority changed');}
   if(!rejected) throw Error('Native first-success negative control did not reject combined cancellation');
+});
+check('T73.diagnostic-changes-persist-without-copying-unrelated-histories', () => {
+  const fixture=source+read('tests/harness/diagnostics_performance.lua');
+  execute(fixture,'diagnostic-incremental-persistence');
+  let rejected=false;
+  // Inject candidate.34 semantics before the defect reproduction, without
+  // relying on wall-clock thresholds or an immutable fixture modification.
+  const legacy="function Addon.Diagnostics:SetFeature(id,status,reason) self.features[id]={status=status,reason=reason} self:Persist() end\n";
+  try {execute(source+legacy+read('tests/harness/diagnostics_performance.lua'),'old-full-diagnostic-copy');}
+  catch(e){rejected=String(e).includes('unchanged diagnostics copied history');}
+  if(!rejected) throw Error('candidate34 diagnostic copying not rejected');
+  rejected=false;
+  try {execute(fixture.replace("self:Persist('features',id)",'self:Persist()'),'unrelated-history-copy');}
+  catch(e){rejected=String(e).includes('one feature copied unrelated diagnostics');}
+  if(!rejected) throw Error('incremental diagnostic persistence negative control survived');
+});
+check('T74.routine-HUD-events-avoid-layout-and-bounded-readiness-retries', () => {
+  const joined=source+presentationFixture()+read('tests/harness/skin_performance.lua');
+  execute(joined,'skin-incremental-events');
+  const old="events:SetScript(\"OnEvent\",function() Addon:RequestSkinRefresh() C_Timer.After(1,function() Addon:RequestSkinRefresh() end) end)\n";
+  const mutated=joined.replace(/events:SetScript\("OnEvent",function\(_,event,slot\)[\s\S]*?\nend\)/,old);
+  if(mutated===joined) throw Error('skin event negative control stale');
+  let rejected=false;
+  try {execute(mutated,'candidate34-skin-event-reconstruction');}
+  catch(e){rejected=String(e).includes('usability event queued structural refresh or delayed feedback');}
+  if(!rejected) throw Error('candidate34 routine skin rebuilding not rejected');
+  rejected=false;
+  try {execute(joined.replace('if InCombatLockdown() then return end\n        local feature=Addon.Diagnostics.features.faceSkin','local feature=Addon.Diagnostics.features.faceSkin'),'combat-pending-skin-worker-loop');}
+  catch(e){rejected=String(e).includes('pending combat geometry caused routine timer loop');}
+  if(!rejected) throw Error('pending combat worker loop negative control survived');
+});
+check('T75.runtime-event-domains-preserve-readiness-combat-and-invalidation', () => {
+  const joined='SESSION_STATE=('+bootstrapState+').installed\n'+bootstrapPrelude+read('tests/harness/event_performance.lua');
+  execute(joined,'runtime-event-domains');
+  let rejected=false;
+  const fullGuard=/if work\.full or not self\.runtimeReady or not self\.NATIVE_INPUT_RECOVERY\s+or self\.forcePrompt or \(self\.record and self\.record\.pendingReload\) then/;
+  if(!fullGuard.test(joined)) throw Error('runtime full-refresh guard negative control stale');
+  try {execute(joined.replace(fullGuard,"if true then"),'candidate34-all-events-full-refresh');}
+  catch(e){rejected=String(e).includes('action event rebuilt configuration/rings');}
+  if(!rejected) throw Error('candidate34 broad runtime refresh not rejected');
+  rejected=false;
+  try {execute(joined.replace("if work.bags then self.Diagnostics:Measure('runtime.rings',self.RefreshRings,self) end",'do end'),'missing-bag-ring-invalidation');}
+  catch(e){rejected=String(e).includes('bag event lost ring invalidation');}
+  if(!rejected) throw Error('bag ring invalidation negative control survived');
+  rejected=false;
+  try {execute(joined.replace('or self.forcePrompt or (self.record and self.record.pendingReload)','or (self.record and self.record.pendingReload)'),'missing-deferred-review-retry');}
+  catch(e){rejected=String(e).includes('deferred review stranded');}
+  if(!rejected) throw Error('deferred-review fallback negative control survived');
+  rejected=false;
+  try {execute(joined.replace('or self.forcePrompt or (self.record and self.record.pendingReload)','or self.forcePrompt'),'missing-reload-verification-retry');}
+  catch(e){rejected=String(e).includes('pending reload verification skipped');}
+  if(!rejected) throw Error('reload-verification fallback negative control survived');
+});
+check('T76.optional-profile-disabled-bounded-public-and-return-transparent', () => {
+  execute(source+read('tests/harness/performance_profiling.lua'),'optional-performance-profiler');
 });
 const report = {at:new Date().toISOString(), commit:cp.execFileSync('git',['rev-parse','HEAD'],{cwd:root}).toString().trim(),
   productHashes:Object.fromEntries(files('addon').map(f=>[f,sha(f)])),

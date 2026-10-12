@@ -100,7 +100,11 @@ function Visibility:Update()
     local ok,reason=self:Refresh(_G,enabled)
     if Addon.Diagnostics then Addon.Diagnostics:SetFeature("blizzardVisibility",enabled and ok and "offline-verified" or "pending",reason) end
 end
-local function Later() C_Timer.After(0,function() Visibility:Update() end) end
+local function Later()
+    if Visibility.queued then return end
+    Visibility.queued=true
+    C_Timer.After(0,function() Visibility.queued=nil Visibility:Update() end)
+end
 if EventRegistry and type(EventRegistry.RegisterCallback)=="function" then
     EventRegistry:RegisterCallback("EditMode.Enter",function() Visibility.editing=true Visibility:Update() end,Addon)
     EventRegistry:RegisterCallback("EditMode.Exit",function() Visibility.editing=false Later() end,Addon)

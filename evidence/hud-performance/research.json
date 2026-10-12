@@ -1,0 +1,20 @@
+{
+  "checkedAt": "2026-10-12T23:23:49.984932+00:00",
+  "sources": [
+    {
+      "repo": "NumyAddon/AddonProfiler",
+      "commit": "fc979feb52cffc1a2f19842d5c1b885069a5f186",
+      "localCache": "scratch/hud-performance/AddonProfiler-v1.4.37.lua",
+      "sha256": "67689cef569c8c20c3e7f3884dc5e439ba700a503b69c13694ebf22ca485eca2"
+    },
+    {
+      "repo": "Gethe/wow-ui-source",
+      "commit": "09b9db7948abc9b9648dedaab51eb0cf3ee67b31",
+      "localCache": "scratch/hud-performance/AddOnProfilerDocumentation.lua",
+      "sha256": "78532c1d1162a327e288522bc9bd130d4789157d463b83ad50b73273bb0ee112"
+    }
+  ],
+  "dependencyRecheck": "evidence/dependencies/stable-recheck.json",
+  "attachmentSHA256": "5bef7ea94ed266a20d4a960aaa7710c3f88a31d5f3acffbce42e5fa2e7bf9f3d",
+  "liveGameInput": false
+}

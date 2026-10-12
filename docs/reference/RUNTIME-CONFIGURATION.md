@@ -174,6 +174,7 @@ Party/manual edits are not reapplied.
 | `/cpf action-recovery` with any argument | Set the compatibility disabled flag. An `on` argument cannot restore the removed action writer. |
 | `/cpf proof` | Open the scrollable source/state/diagnostic panel outside combat. |
 | `/cpf diagnose` | Refresh ping/visual observations and print status plus diagnostic entries. |
+| `/cpf perf on`, `off`, `reset`, `report` | Optional fixed-scope inclusive callback timing, off by default each login/reload. Reset counters; report/off prints and stores aggregates in the current GUID's lastPerformanceEvidence. No worker, payload history, restricted data or automatic output. |
 
 [ActionRecovery](../../addon/ConsolePort_Forever/ActionRecovery.lua) is passive
 toward game actions, not read-only toward its own saved evidence. Hooks observe
@@ -184,6 +185,13 @@ and anomaly context; partial wipes do not replace retained good snapshots.
 entries and latest runtime/visual/ping summaries. Transactions, preference history
 and loadout archives have separate retention behavior; do not call all saved
 evidence globally bounded.
+
+Candidate.35 keeps automatic snapshots immediate but copies only changed
+diagnostic sections/feature rows; identical public feature statuses do no copy.
+New record/version/revision ownership forces a full detached snapshot. Optional
+performance evidence has ten fixed scope aggregates; nested totals overlap and
+do not substitute for per-tick AddonProfiler results.
+[Procedure and limits](HUD-PERFORMANCE-2026-10-12.md).
 
 Feature strings such as `offline-verified` or “Retail acceptance pending” are
 runtime readiness text. They do not automatically ingest the user's later

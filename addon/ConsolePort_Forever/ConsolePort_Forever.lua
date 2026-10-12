@@ -195,6 +195,7 @@ function Addon:VerifyReload()
     else self.Diagnostics:SetFeature("configuration","review-required","reload fields changed; /cpf diagnose") end
 end
 function Addon:Refresh()
+    self.runtimeReady=nil
     local ok,reason=self:InitializeStore()
     if not ok then self.Diagnostics:SetFeature("configuration","pending",reason) return end
     local probe=self.Capability.Probe({C_AddOns=C_AddOns,UnitGUID=UnitGUID,UnitName=UnitName,GetBuildInfo=GetBuildInfo,
@@ -237,6 +238,7 @@ function Addon:Refresh()
     if self:IsCharacterInstalled() and not self.record.ringAccepted and self.record.ringOfferedRevision~=self.CONFIG_REVISION
         and adapters.rings and adapters.rings:Probe() then self.forcePrompt=true end
     if self.forcePrompt then self.forcePrompt=nil self:ShowPrompt(true) else self:ShowPrompt(false) end
+    self.runtimeReady=true
 end
 function Addon:Restore(id)
     if not self.coordinator then Print("Configuration is not initialized.") return end
@@ -386,12 +388,8 @@ function Addon:Status()
         for index=math.max(1,#journals-9),#journals do Print(journals[index]) end
     end
 end
-function Addon:RefreshUI()
-    self.BlizzardVisibility:Update()
-    self.CircleCancel:Refresh(_G,self:IsCharacterInstalled())
-    self.Cinematic:Refresh(_G)
+function Addon:RefreshContextPresentation()
     if not self.adapters then return end
-    self:RequestSkinRefresh()
     local enabled=self:IsCharacterInstalled() and self.db.shared.runtimePolicy.focusVisuals
     local ok,reason=self.FocusVisuals:Enable(self.adapters.consoleport,_G,enabled)
     self.Diagnostics:SetFeature("focusVisuals",enabled and ok and "offline-verified" or "pending",reason or (enabled and "ordinary cursor ownership only; rendered acceptance pending" or "reviewed visual policy not enabled"))
@@ -399,13 +397,48 @@ function Addon:RefreshUI()
     local active,error=self.UIContexts:Enable(self.adapters.consoleport,_G,contexts,self:IsCharacterInstalled() and self.db.shared.runtimePolicy.windowsEnabled,self:IsCharacterInstalled() and self.db.shared.runtimePolicy.bagsEnabled,self:IsCharacterInstalled() and self.db.shared.runtimePolicy.mapEnabled)
     self.Diagnostics:SetFeature("uiContexts",contexts and active and "offline-verified" or "pending",error or (contexts and "native popup/quantity ownership; Retail input/taint acceptance pending" or "reviewed UI context policy not enabled"))
 end
+function Addon:RefreshUI()
+    self.BlizzardVisibility:Update()
+    self.CircleCancel:Refresh(_G,self:IsCharacterInstalled())
+    self.Cinematic:Refresh(_G)
+    if not self.adapters then return end
+    self:RequestSkinRefresh()
+    self:RefreshContextPresentation()
+end
+-- Native button callbacks retain immediate rendering/dispatch. These requests
+-- only reconcile public setup; full readiness/recovery work wins each batch.
+local EVENT_WORK={ACTIONBAR_SLOT_CHANGED='modes',ACTIONBAR_PAGE_CHANGED='modes',UPDATE_BONUS_ACTIONBAR='modes',
+    UPDATE_OVERRIDE_ACTIONBAR='modes',UPDATE_VEHICLE_ACTIONBAR='modes',UPDATE_POSSESS_BAR='modes',UPDATE_SHAPESHIFT_FORM='modes',
+    CURSOR_CHANGED='context',ITEM_LOCK_CHANGED='context',MERCHANT_SHOW='context',MERCHANT_CLOSED='context',
+    BAG_UPDATE_DELAYED='bags',CINEMATIC_START='cinematic',CINEMATIC_STOP='cinematic',PLAY_MOVIE='cinematic',STOP_MOVIE='cinematic'}
+function Addon:RefreshEventWork(work)
+    if work.full or not self.runtimeReady or not self.NATIVE_INPUT_RECOVERY
+        or self.forcePrompt or (self.record and self.record.pendingReload) then
+        return self.Diagnostics:Measure('runtime.full',self.Refresh,self)
+    end
+    if work.modes then self.Diagnostics:Measure('runtime.modes',self.RefreshModes,self) end
+    if work.bags then self.Diagnostics:Measure('runtime.rings',self.RefreshRings,self) end
+    if work.cinematic then self.Diagnostics:Measure('runtime.cinematic',self.Cinematic.Refresh,self.Cinematic,_G) end
+    -- Preserve automatic public route observations without rescanning unchanged
+    -- macro resources. UPDATE_MACROS still validates synchronously before this queue.
+    self.CircleCancel:Record(_G,'refresh')
+    if work.context or work.bags or work.cinematic then
+        self.Diagnostics:Measure('runtime.context',self.RefreshContextPresentation,self)
+    end
+    if self.SnapshotFaceVisuals then self:SnapshotFaceVisuals() end
+end
 Addon.Prompt:Initialize({dialogs=StaticPopupDialogs,show=StaticPopup_Show,reload=ReloadUI,defer=function(callback) C_Timer.After(0,callback) end,
     details=function(text) local ok,reason=Addon.Proof:Show(_G,text) if not ok then Print(reason) end end})
 SLASH_CONSOLEPORTFOREVER1="/cpf"
 SlashCmdList.CONSOLEPORTFOREVER=function(input)
     local command,arg=(input or ""):match("^%s*(%S*)%s*(.-)%s*$")
     command=command:lower()
-    if command=="install" or command=="update" then Addon:ShowPrompt(true)
+    if command=='perf' then
+        if arg=='on' then local ok,reason=Addon.Diagnostics:SetPerformance(true) Print(ok and 'Optional callback profiling enabled. /cpf perf reset starts a fresh scenario.' or reason)
+        elseif arg=='off' then Addon.Diagnostics:SetPerformance(false) Print(Addon.Diagnostics:PerformanceSummary())
+        elseif arg=='reset' then Addon.Diagnostics:ResetPerformance() Print('Callback profiling counters reset.')
+        else Print(Addon.Diagnostics:PerformanceSummary()) end
+    elseif command=="install" or command=="update" then Addon:ShowPrompt(true)
     elseif command=="restore" then Addon:Restore(arg)
     elseif command=="recover" then Addon:Recover(arg)
     elseif command=="recover-selection" then Addon:RecoverBindingSelection()
@@ -462,10 +495,13 @@ events:SetScript("OnEvent",function(_,event,...)
     end
     if event=="PLAYER_LOGIN" and not C_AddOns.IsAddOnLoaded("Blizzard_EditMode") and CanWrite() then C_AddOns.LoadAddOn("Blizzard_EditMode") end
     if Addon.busy then return end
+    Addon.pendingRefreshWork=Addon.pendingRefreshWork or {}
+    Addon.pendingRefreshWork[EVENT_WORK[event] or 'full']=true
     if not Addon.refreshQueued then
         Addon.refreshQueued=true
         C_Timer.After(0,function()
             Addon.refreshQueued=false
+            local work=Addon.pendingRefreshWork Addon.pendingRefreshWork=nil
             if Addon.Prompt.active then return end
             if Addon.restoreRequested and CanWrite() then
                 local id=Addon.restoreRequested Addon.restoreRequested=nil Addon:Restore(id) return
@@ -480,7 +516,7 @@ events:SetScript("OnEvent",function(_,event,...)
                     else Addon:FinishAccepted(journal) end
                 else Print("Queued review changed; reopen its review.") end
             else
-                local ok,error=pcall(Addon.Refresh,Addon)
+                local ok,error=pcall(Addon.RefreshEventWork,Addon,work)
                 if not ok then Addon.Diagnostics:Log("error",error) end
             end
         end)
@@ -488,5 +524,5 @@ events:SetScript("OnEvent",function(_,event,...)
 end)
 events:RegisterEvent('PING_SYSTEM_ERROR')
 -- Quest/vehicle replacement can change without a spell or binding event.
--- Rebuild only runtime button state; normal action storage stays game-owned.
+-- Refresh only runtime mode setup after readiness; action storage stays game-owned.
 for _,event in ipairs({'ACTIONBAR_PAGE_CHANGED','UPDATE_BONUS_ACTIONBAR','UPDATE_OVERRIDE_ACTIONBAR','UPDATE_VEHICLE_ACTIONBAR','UPDATE_POSSESS_BAR','UPDATE_SHAPESHIFT_FORM','PLAYER_LEVEL_UP'}) do events:RegisterEvent(event) end

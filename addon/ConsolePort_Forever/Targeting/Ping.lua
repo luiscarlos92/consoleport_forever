@@ -392,6 +392,7 @@ function Ping:Observe(api,error)
     end
     if Addon.Diagnostics then
         Addon.Diagnostics.ping=snapshot
+        Addon.Diagnostics:Persist('ping')
         Addon.Diagnostics:Log('ping',snapshot.error..'; centering='..tostring(snapshot.centering)..'; public focus='..(#snapshot.foci>0 and snapshot.foci[1].name or '<world>'))
     end
     return snapshot

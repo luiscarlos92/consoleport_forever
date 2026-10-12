@@ -1,7 +1,7 @@
 # ConsolePort Forever agent instructions
 
 Status: maintained
-Reviewed: 2026-10-11
+Reviewed: 2026-10-12
 Evidence: [approved repository system](docs/decisions/0001-repository-development-system.md).
 
 ## Start here
@@ -77,6 +77,10 @@ manufacturing public state. See [compatibility](docs/COMPATIBILITY.md).
   qualification. Reports must match the complete current source inventories.
 - Report proof limits: offline results do not certify Retail engine authority,
   hardware timing, taint, rendering or persistence. Acceptance covers reported cases.
+- For HUD/event/cooldown/input changes, follow the
+  [performance rules](docs/DEVELOPMENT.md#addon-performance): preserve immediate
+  native feedback, bound workers, invalidate public caches correctly, and retain
+  work-count defect reproductions plus comparable Retail profiling limits.
 
 ## Delivery and upkeep
 

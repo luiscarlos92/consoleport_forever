@@ -119,7 +119,7 @@ local function RoundStates(button,imageOnly)
     end
 end
 
-local function Apply(button)
+local function PaintSkin(button)
     if not Addon.IsCharacterInstalled or not Addon:IsCharacterInstalled() then return end
     if not button or not button.icon then return end
     HUD.RetireMasqueNormal(button)
@@ -202,6 +202,10 @@ local function Apply(button)
     end
     Availability(button,true)
     BaseIcon(button)
+end
+
+local function Apply(button)
+    return Addon.Diagnostics:Measure('skin.button',PaintSkin,button)
 end
 
 local function DetachMasque(bank, button)
@@ -306,7 +310,7 @@ function Addon:RequestSkinRefresh()
     C_Timer.After(0,function()
         Addon.skinRefreshQueued=nil
         Addon:RefreshFaceAvailability()
-        Addon:RefreshConsolePortSkin()
+        Addon.Diagnostics:Measure('skin.full',Addon.RefreshConsolePortSkin,Addon)
     end)
 end
 
@@ -358,23 +362,54 @@ function Addon:SnapshotFaceVisuals(force)
     self.Diagnostics.visuals=self.Diagnostics.visuals or {}
     self.Diagnostics.visuals[snapshot.combat and 'combat' or 'peace']=snapshot
     if self.ActionRecovery then self.ActionRecovery:Observe(self,_G,snapshot) end
-    self.Diagnostics:Persist()
+    self.Diagnostics:Persist('visuals')
 end
-function Addon:RefreshFaceAvailability()
+local function PaintFaces(slot)
+    local specific=Public(slot) and type(slot)=='number' and slot>0
     for bankID in pairs(BANKS) do
         local bank=_G['ConsolePortGroup'..bankID]
-        if bank and bank.buttons then for id in pairs(FACE) do local button=bank.buttons[id] if button then Availability(button,true) end end end
+        if bank and bank.buttons then
+            for id in pairs(FACE) do
+                local button=bank.buttons[id]
+                if button and (not specific or (Public(button._state_action) and button._state_action==slot)) then
+                    Availability(button,true) BaseIcon(button) HUD.EmptyVisibility(button)
+                end
+            end
+        end
     end
-    self:SnapshotFaceVisuals()
+    Addon:SnapshotFaceVisuals()
 end
-events:SetScript("OnEvent",function()
+function Addon:RefreshFaceAvailability(slot)
+    if not self.IsCharacterInstalled or not self:IsCharacterInstalled() then return end
+    return self.Diagnostics:Measure('skin.visual',PaintFaces,slot)
+end
+local VISUAL_EVENTS={PLAYER_TARGET_CHANGED=true,PLAYER_REGEN_ENABLED=true,PLAYER_REGEN_DISABLED=true,
+    ACTIONBAR_UPDATE_USABLE=true,ACTIONBAR_SLOT_CHANGED=true,GROUP_ROSTER_UPDATE=true}
+events:SetScript("OnEvent",function(_,event,slot)
+    if not Addon.IsCharacterInstalled or not Addon:IsCharacterInstalled() then return end
+    if VISUAL_EVENTS[event] then
+        Addon:RefreshFaceAvailability(event=='ACTIONBAR_SLOT_CHANGED' and slot or nil)
+        -- Cosmetic feedback stays immediate; pending geometry cannot be
+        -- reconciled in combat, so wait for the existing combat-end event.
+        if InCombatLockdown() then return end
+        local feature=Addon.Diagnostics.features.faceSkin
+        if feature and feature.status=='offline-verified' and not Addon.skinRefreshPending then return end
+        Addon:RequestSkinRefresh()
+        return
+    end
+    if InCombatLockdown() then Addon.skinRefreshPending=true return end
     Addon:RequestSkinRefresh()
-    C_Timer.After(1,function() Addon:RequestSkinRefresh() end)
+    -- One readiness retry for a structural burst; routine usability/target
+    -- notifications never enqueue delayed reconstruction.
+    if not Addon.skinRetryQueued then
+        Addon.skinRetryQueued=true
+        C_Timer.After(1,function() Addon.skinRetryQueued=nil Addon:RequestSkinRefresh() end)
+    end
 end)
 -- Install the handler first; unavailable events must not abort skin startup.
 for _,event in ipairs({'PLAYER_ENTERING_WORLD','PLAYER_TARGET_CHANGED','PLAYER_EQUIPMENT_CHANGED','PLAYER_REGEN_ENABLED',
     'PLAYER_REGEN_DISABLED','ACTIONBAR_UPDATE_USABLE','ACTIONBAR_SLOT_CHANGED','GROUP_ROSTER_UPDATE','UPDATE_BINDINGS','ADDON_LOADED',
-    'GAME_PAD_CONFIGS_CHANGED','UPDATE_SHAPESHIFT_FORMS','SPELLS_CHANGED','UI_SCALE_CHANGED','DISPLAY_SIZE_CHANGED'}) do
+    'GAME_PAD_CONFIGS_CHANGED','UPDATE_SHAPESHIFT_FORMS','UPDATE_SHAPESHIFT_FORM','SPELLS_CHANGED','UI_SCALE_CHANGED','DISPLAY_SIZE_CHANGED'}) do
     local supported=not C_EventUtils or not C_EventUtils.IsEventValid or C_EventUtils.IsEventValid(event)
     if supported then
         local ok,reason=pcall(events.RegisterEvent,events,event)

@@ -29,6 +29,10 @@ plural pending-reference directory is intentionally retained without moving it.
 
 ## Current code contracts
 
+- [HUD performance investigation](HUD-PERFORMANCE-2026-10-12.md): confirmed redundant
+  work, operation comparison, native lifecycle audit, optional profiling and
+  user-owned Retail scenario validation.
+
 - [Runtime configuration](RUNTIME-CONFIGURATION.md): actual setup proposals,
   binding-bank consent, GUID rings/class augmentation, preferences, integration
   lifecycle, saved layouts, commands and diagnostic retention.

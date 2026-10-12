@@ -237,7 +237,10 @@ end
 function HUD.MirrorBank(frame,bank)
     frame.__cpfMirrorBank=bank frame.__cpfMirrorEnabled=true
     if frame.SetScript and bank.GetAlpha then
-        frame:SetScript('OnUpdate',function() frame:SetAlpha(frame.__cpfMirrorBank:GetAlpha()) end)
+        if not frame.__cpfMirrorUpdate then
+            frame.__cpfMirrorUpdate=true
+            frame:SetScript('OnUpdate',function() frame:SetAlpha(frame.__cpfMirrorBank:GetAlpha()) end)
+        end
         frame:SetAlpha(bank:GetAlpha())
     end
     if bank.HookScript then

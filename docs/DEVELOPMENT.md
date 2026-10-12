@@ -69,6 +69,31 @@ Use the app's `codex/` prefix when creating a branch. No new branch/PR policy,
 mandatory hook or publishing workflow is introduced. Build tooling currently
 requires clean source pushed on main; do not silently rewrite that contract.
 
+## Addon performance
+
+Preserve functionality, visual fidelity and controller responsiveness when
+reducing CPU work. Trace native ownership/event order first; aggregate profiler
+attribution is not a function-level diagnosis. Use events/change detection for
+state reconciliation and incremental visual updates; reserve per-frame work for
+continuous native animation/input requirements. Avoid full setup/layout work on
+ordinary usability, target, cursor or item-lock notifications.
+
+Bound/coalesce equivalent setup requests and readiness retries. Register hooks
+once per actual frame/owner and preserve late replacement, disable/re-enable,
+combat/Edit Mode deferral and native lifecycle invalidation. Cache only public,
+stable data with explicit binding/spec/form/equipment/action/character/configuration
+invalidation; never compare/hash/serialize secrets to detect changes. Timers and
+observation cannot authorize protected writes or dispatch. Do not delay feedback,
+skip necessary states or disable features to improve the numbers.
+
+Performance repairs require old-defect work counters/negative controls and
+existing meaningful native/visual/input regression gates. Do not use mock timing
+thresholds as Retail CPU evidence. Use disabled-by-default bounded instrumentation
+and comparable client/addon/scenario/profiler windows; identify average, peak and
+spike counts separately. Inclusive callback timings overlap. See the
+[HUD investigation](reference/HUD-PERFORMANCE-2026-10-12.md) and
+[validation map](TESTING.md) for retained procedures and limits.
+
 ## Documentation maintenance
 
 For every change, identify which rows apply; update those pages or state why

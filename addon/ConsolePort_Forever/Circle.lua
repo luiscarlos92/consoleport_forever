@@ -212,7 +212,7 @@ function Circle:Record(api,event)
             entry.observations=Addon.Core.Copy(log)
         end
     end
-    Addon.Diagnostics:Persist()
+    Addon.Diagnostics:Persist('circle')
 end
 function Circle:GetLog()
     if self.logOwner~=Addon.record then

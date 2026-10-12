@@ -1,7 +1,7 @@
 # Presentation and implemented UI routes
 
 Status: maintained
-Reviewed: 2026-10-11
+Reviewed: 2026-10-12
 Evidence: [skin](../../addon/ConsolePort_Forever/Skin.lua),
 [HUD](../../addon/ConsolePort_Forever/HUDPresentation.lua),
 [visibility](../../addon/ConsolePort_Forever/Runtime.lua),
@@ -50,6 +50,15 @@ combat. Native local/art/size/Masque lifecycle hooks and deferred refreshes repa
 late recreation. Saved visual snapshots retain separate recent combat/peace
 observations and opaque markers; ordinary snapshots are throttled, diagnosis can
 force one. They remain source-state observations, not screenshots or live proof.
+
+Candidate.35 handles ready usability/target/group/slot cosmetics immediately,
+without full skin/layout reconstruction; positive public slots narrow affected
+face queries. Native local/art/size hooks still repair the surface. Structural
+readiness/layout changes retain one worker and one bounded retry; failed/combat
+setup resumes through the existing guards. Diagnostic observations persist only
+their detached changed section, rather than copying unrelated histories.
+Continuous native bank fading and secure/visual feedback remain unchanged.
+[Performance evidence](HUD-PERFORMANCE-2026-10-12.md).
 
 ## Focus effects and hidden native frames
 

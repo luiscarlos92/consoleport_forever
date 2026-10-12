@@ -12,6 +12,13 @@ feature may be approved in direction yet still deferred or gated.
 
 ## Current contracts
 
+October 12 scheduled performance request: investigate HUD-attributed gameplay CPU
+spikes with evidence, implement focused optimizations and prevent recurrence.
+Preserve all implemented features/appearance/input timing, native secure ownership,
+manual edits and SavedVariables. Comparable Retail profiling is separate from
+offline work-count proof; do not declare the reported freezes resolved without it.
+[Investigation](reference/HUD-PERFORMANCE-2026-10-12.md).
+
 Latest October 12: the user confirms candidate.34 Circle cast interruption works.
 Ground-placement cancellation was not tried because existing targeting interception
 prevented that test; the user accepts leaving it untested. Record scoped acceptance
@@ -47,6 +54,7 @@ with no WTF writes or game input; the initial no-deploy instruction is supersede
 | R11 | Native execution owns protected dispatch. Preserve recovery boundary and accepted working features when repairing another subsystem. | [native execution decision](decisions/0002-native-execution-and-proof.md). |
 | R12 | Check official stable Retail dependencies for product/tooling sessions, qualify changed contracts and deliver only actual changed packages. Preparation is distinct from installation. | [delivery decision](decisions/0004-scoped-delivery.md); docs-only exemption in decision 0001. |
 | R13 | Circle-only work: best qualified Retail cancellation without native Escape/Options; preserve native UI/ring and manual binding ownership. Standing qualified Forever-only deployment permission applies while playing unless explicitly prohibited. | Candidate.34 offers reviewed native MACRO binding for empty or owned legacy Base PAD2. Cast interruption is user-confirmed; ground-placement cancellation untested due reported interception. Combined cast/ground/hard-target cancellation remains the implementation, with exact first-success parity gated. [Acceptance](../evidence/circle/candidate34-live-acceptance-2026-10-12.json), [research](reference/CIRCLE-CANCEL-RESEARCH-2026-10-11.md). |
+| R14 | Eliminate avoidable HUD CPU work/spikes while preserving full functionality, visuals, immediate controller feedback and Retail security. Establish causes/reproductions, controlled before/after evidence, regression protection and future guidance. | Candidate.35 reduces demonstrated diagnostic copies, routine structural refreshes and broad event setup. Optional bounded timing is off by default. K04 Retail CPU/visual/input acceptance remains open; [report](reference/HUD-PERFORMANCE-2026-10-12.md). |
 
 R04's action-slot preservation does not imply an unconditional no-add rule for
 learned class rings: current class augmentation appends missing learned forms

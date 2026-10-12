@@ -10,6 +10,15 @@ input or WTF writes; user owns reload.
 
 ## Candidate.34 activation and acceptance
 
+Candidate.35 performance validation additionally needs consistent one-minute
+Active-mode captures for idle/movement, mount/combat/casts/target/loot/quests,
+modifiers/banks/forms/vehicles, death/resurrection and login/reload. Preserve all
+appearance/input/native feedback and watch taint. `/cpf perf on`, `reset`,
+`report` and `off` provide optional bounded inclusive callback timings; off is the
+default. Compare same client/configuration/scenario windows and retain average,
+peak and threshold counts. Offline work reduction does not close K04.
+[Scenario matrix](reference/HUD-PERFORMANCE-2026-10-12.md#optional-timing-and-scenario-validation).
+
 **User-confirmed October 12:** Circle successfully interrupts casting. This
 resolves the reported cast failure; earlier menu closure remains confirmed.
 Ground-placement cancellation was not tried because the existing targeting

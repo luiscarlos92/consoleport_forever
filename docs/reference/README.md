@@ -69,4 +69,4 @@ bytes before those notices. Current routine release commands are documented in
 as evidence. Historical “current” headings and NOT RUN cases do not override
 later scoped acceptance.
 
-[Circle protected-action report and automatic review](CIRCLE-BLOCKED-ACTION-2026-10-12.md) — prepared candidate.32; not deployed or Retail accepted.
+[Circle protected-action report and automatic review](CIRCLE-BLOCKED-ACTION-2026-10-12.md) — candidate.32 installed; source/delivery proof is separate from pending Retail acceptance.

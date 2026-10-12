@@ -9,17 +9,19 @@ Dates below use America/Toronto. This is a curated change index, not invented
 release tags or blanket gameplay certification. Detailed receipts own exact
 source/artifact/file identities. Prepared, installed and accepted are separate.
 
-## Prepared Circle regression repair — October 12, 2026
+## Circle regression repair deployed — October 12, 2026
 
-Candidate.32/revision 18 replaces the reported forbidden RunMacroText route with a
-reviewed account macro through native RunMacro and retains the inherited OnClick.
-Automatic login update review returns for revision-17 characters. Macro ownership,
-resource failure, compensating restore, native dispatch and startup integration
-regressions cover the repair. Native menus/rings and accepted/manual data remain.
-The explicitly authorized running-game installer option is qualified only for an
-existing Forever-only update with an exact receipt and unchanged StoreSchema.
-Candidate.31 remains installed until delivery; live repair acceptance is pending.
-[Investigation](docs/reference/CIRCLE-BLOCKED-ACTION-2026-10-12.md).
+Candidate.32/revision 18 was installed at 15:08:29 Toronto while WoW ran, under
+explicit current user authorization. It replaces forbidden RunMacroText with
+reviewed native saved-macro RunMacro, retains inherited OnClick and restores
+automatic login update review. Only four Forever files changed; 59 payload files,
+2,617 unselected addon files, 308 WTF files, 42 links/root anchors and 22,504 prior
+backup files were independently verified. No dependency/WTF writes or game input.
+Local and fresh Windows CI passed 70 runtime checks/66 tooling tests, with 328
+Circle assertions. User reload, macro review and Retail cast acceptance remain.
+[Install](evidence/delivery/live-install-candidate32.json),
+[readback](evidence/delivery/candidate32-independent-readback.json),
+[investigation](docs/reference/CIRCLE-BLOCKED-ACTION-2026-10-12.md).
 
 ## Circle deployment â€” October 12, 2026
 

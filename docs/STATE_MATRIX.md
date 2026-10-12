@@ -7,7 +7,7 @@ Evidence: [routing](../addon/ConsolePort_Forever/TemporaryRouting.lua),
 [bootstrap](../addon/ConsolePort_Forever/ConsolePort_Forever.lua),
 [test runner](../tools/test-all.cjs).
 
-This matrix describes candidate.32 prepared source; candidate.31 remains installed. Circle activation
+This matrix describes candidate.32 installed source; user-owned repair acceptance remains pending. Circle activation
 requires explicit review; its actual Retail behavior remains unaccepted.
 It does not claim blanket Retail acceptance. [Requirements](REQUIREMENTS.md) owns intended behavior;
 [testing](TESTING.md) explains what offline coverage can establish.

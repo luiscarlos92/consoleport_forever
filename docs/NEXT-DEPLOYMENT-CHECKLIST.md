@@ -1,32 +1,27 @@
 # Pending deployment and cumulative acceptance
 
-Status: candidate.31 installed on October 12, 2026 at 00:24:05 Toronto.
-The user's deployment authorization is fulfilled. Only Forever was updated;
-verified backups and independent readback preserve candidate.30, current WTF,
-unselected addons, junctions/root anchors and all inventoried prior backups.
-[Installation](../evidence/delivery/live-install-candidate31.json),
-[independent readback](../evidence/delivery/candidate31-independent-readback.json).
-Candidate.31's Circle behavior and regressions await user-owned Retail acceptance.
-The earlier reported ping and Required Items fixes remain scoped candidate.30
-acceptance, not a candidate.31 gameplay certification.
-The authorization above was fulfilled. Current exceptions require explicit new
-user instruction under the guarded delivery contract.
+Status: candidate.32 installed October 12, 2026 at 15:08:29 Toronto.
+The user explicitly authorized Forever-only delivery while WoW ran. This authority
+is fulfilled; future installs need new current permission. Independent verification
+preserved WTF, other addons, topology and all 22,504 prior backup files. No game
+input or WTF writes; user owns reload.
+[Installation](../evidence/delivery/live-install-candidate32.json),
+[readback](../evidence/delivery/candidate32-independent-readback.json).
 
-## Candidate.32 preparation and current delivery authority
+## Installed candidate.32 acceptance
 
-The live diagnostic confirms ADDON_ACTION_FORBIDDEN: RunMacroText(). Candidate.32
-uses a reviewed saved account macro, retains inherited OnClick and restores
-revision-18 automatic login update review. Candidate.31 remains installed until
-delivery completes. The user explicitly permits this Forever-only update while
-WoW runs. Qualify/preview the guarded running-game option; preserve WTF, all other
-addons, topology and backups. User reloads after completion.
+The diagnose image confirms ADDON_ACTION_FORBIDDEN: RunMacroText(). The repair uses
+native saved-macro RunMacro, inherited OnClick and revision-18 automatic review.
+After reload outside combat/Edit Mode, review should offer one account CPF Circle
+macro for an existing Forever binding or empty Base Circle. Use Proposed/Keep,
+then Apply; no /cpf update command is required. Preserve accepted/manual data.
+Check cast/channel/ground/target cancellation without a protected popup or Options,
+down/release/modifier behavior, native menu/ring ownership and macro edit/deletion
+preservation. Full local and fresh CI gates passed; these Retail cases remain
+pending. Exact Forever first-success ordering remains gated.
+[Investigation](reference/CIRCLE-BLOCKED-ACTION-2026-10-12.md).
 
-After reload, automatic review must offer CPF Circle for an existing Forever
-binding or empty Base Circle, preserve every accepted/manual setting, and require
-Use Proposed/Keep plus Apply. Verify cast/channel/ground/target cancellation with
-no protected popup or Options menu, down/release/modifier behavior, native menu/ring
-ownership and macro edit/deletion preservation. Exact first-success ordering
-remains gated. [Investigation](reference/CIRCLE-BLOCKED-ACTION-2026-10-12.md).
+The candidate.31 cases below are retained historical acceptance context.
 
 ## Installed candidate.31 Circle acceptance
 

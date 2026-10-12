@@ -2,31 +2,31 @@
 
 Status: maintained
 Reviewed: 2026-10-12
-Evidence: [candidate.31 install](../evidence/delivery/live-install-candidate31.json),
-[independent readback](../evidence/delivery/candidate31-independent-readback.json),
+Evidence: [candidate.32 install](../evidence/delivery/live-install-candidate32.json),
+[independent readback](../evidence/delivery/candidate32-independent-readback.json),
 [user acceptance](../evidence/forever-ui/candidate30-live-acceptance.json).
 
 ## Installed checkpoint
 
-Candidate `2.0.0-candidate.31` was installed October 12, 2026 at 00:24:05 Toronto
-from tested/pushed source `a74aa8fd27ebb4e24b99ef580daeedab503235e9`.
-Only Forever was replaced. Independent readback verifies all 59 installed files,
-2,617 unselected addon files and 308 WTF files unchanged, 42 junctions/root
-anchors preserved, and 22,136 prior backup files unchanged. A new verified
-candidate.30/code and current-configuration backup is retained in the receipt.
-The current deployment authorization is fulfilled; this grants no later install
-or game-input permission.
+Candidate `2.0.0-candidate.32` was installed October 12, 2026 at 15:08:29 Toronto
+from tested/pushed source `dce5c5016344fbc8df1e72d98063f898cae294a3`.
+The user explicitly authorized this Forever-only update while WoW was running.
+Independent readback verifies 59 files, 2,617 unselected addon files and 308 WTF
+files unchanged, 42 links/root anchors preserved and 22,504 prior backup files
+unchanged. Candidate.31 code and current configuration have a new verified backup.
+[Installation](../evidence/delivery/live-install-candidate32.json),
+[independent readback](../evidence/delivery/candidate32-independent-readback.json).
+This authorization is fulfilled and grants no later installation or game input.
 
-## Prepared Circle repair
-
-Candidate.32/revision 18 replaces the confirmed forbidden RunMacroText route with
-native saved-macro dispatch, preserves the inherited handler and restores the
-automatic login review. One account macro CPF Circle is explicitly reviewed;
-manual macros/bindings, accepted features and StoreSchema 3 remain.
-Candidate.31 is installed until scoped delivery completes. The user now explicitly
-authorizes Forever-only installation while WoW runs; reload remains user-owned.
-Offline/source repair is not Retail acceptance.
-[Investigation](reference/CIRCLE-BLOCKED-ACTION-2026-10-12.md).
+Candidate.32/revision 18 replaces forbidden RunMacroText dispatch with native
+saved-macro RunMacro and preserves inherited OnClick. The automatic login review
+returns for accepted revision-17 characters; one account CPF Circle macro needs
+Use Proposed and Apply. Macro names/bodies, manual bindings and accepted features
+retain guarded ownership; StoreSchema remains 3. No dependency or WTF writes.
+Full local and fresh Windows CI passed 70 runtime checks and 66 tooling tests,
+including 328 Circle assertions. Retail repair acceptance remains user-owned.
+[Investigation](reference/CIRCLE-BLOCKED-ACTION-2026-10-12.md),
+[fresh CI](../evidence/test-results/candidate32-fresh-ci.json).
 
 ## Acceptance
 

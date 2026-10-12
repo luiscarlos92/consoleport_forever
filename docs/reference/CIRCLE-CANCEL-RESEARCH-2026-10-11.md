@@ -14,7 +14,8 @@ menu closure works. Candidate.32 replaces macrotext with reviewed saved-macro
 RunMacro dispatch, retains inherited OnClick and restores revision-18 automatic
 login review. The latest user instruction permits this Forever-only update while
 WoW runs; no game input or WTF writes. Earlier qualification below describes
-candidate.31 and its narrower model, not current live acceptance.
+candidate.31 and its narrower model, not current live acceptance. Candidate.32 was
+installed October 12 at 15:08:29 Toronto; [readback](../../evidence/delivery/candidate32-independent-readback.json) verifies preservation.
 [Current investigation](CIRCLE-BLOCKED-ACTION-2026-10-12.md).
 
 ## Authorized scope and user decision

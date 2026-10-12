@@ -10,7 +10,7 @@ Evidence: [TOC](../addon/ConsolePort_Forever/ConsolePort_Forever.toc),
 ## Target and support boundary
 
 The current personal target is Retail, TOC interface `120100`, ConsolePort
-3.3.10, Store schema 3 and prepared configuration revision 18 (installed candidate.31 uses 17). The capability probe records
+3.3.10, Store schema 3 and installed configuration revision 18 (candidate.32). The capability probe records
 `GetBuildInfo` metadata/readiness; it does not itself establish an all-build
 support guarantee. No Classic or native Forever client support claim is made
 for this companion. Third-party multi-client TOCs do not extend our support scope.

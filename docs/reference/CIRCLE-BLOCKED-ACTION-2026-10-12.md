@@ -124,6 +124,14 @@ junction checks, untouched-file readback, drift refusal and code-only rollback
 remain required; no live WTF writes or game input occur. See
 [delivery decision](../decisions/0004-scoped-delivery.md).
 
+Candidate.32 was installed at 15:08:29 Toronto with WoW open, from tested/pushed
+source dce5c5016344fbc8df1e72d98063f898cae294a3. Independent readback verifies the
+59-file payload, all unselected addons/WTF/topology and 22,504 prior backup files.
+No dependencies, live WTF or game input were changed. The deployment permission
+is fulfilled. [Installation](../../evidence/delivery/live-install-candidate32.json),
+[readback](../../evidence/delivery/candidate32-independent-readback.json) and
+[fresh Windows CI](../../evidence/test-results/candidate32-fresh-ci.json) retain proof.
+
 Offline results reject modeled defects, but do not certify Retail C API permission,
 provenance, taint, hardware timing, rendering or immediate disk persistence.
 Installation readback is separate from user-owned cast/channel/reticle/target,

@@ -1,0 +1,33 @@
+{
+  "at": "2026-10-12T19:11:25.213816+00:00",
+  "installedVersion": "2.0.0-candidate.32",
+  "sourceCommit": "dce5c5016344fbc8df1e72d98063f898cae294a3",
+  "packSHA256": "a2312e7b76ffae251a27f0854b87aeca43230dcc3d18e7e11e008f5ca4d9e58c",
+  "closedAt": "2026-10-12T19:08:29.038383+00:00",
+  "installedFilesVerified": 59,
+  "changedRuntimeFiles": [
+    "Circle.lua",
+    "ConsolePort_Forever.lua",
+    "ConsolePort_Forever.toc",
+    "RuntimeSetup.lua"
+  ],
+  "unselectedFilesUnchanged": 2617,
+  "wtfFilesUnchanged": 308,
+  "junctionsUnchanged": 42,
+  "anchorsUnchanged": true,
+  "backupsVerified": true,
+  "priorBackupFilesUnchanged": 22504,
+  "priorBackupDirectoriesPreserved": 2198,
+  "backup": "C:\\Users\\luisr\\WoW-Backups\\ConsolePort-Forever\\20261012T190747Z-dd64f31f3d4e",
+  "beforeSnapshotSHA256": "827db0db94559fd105ddac79d16f0be04e5c46dbcd60259f4594e9b33dc55b0c",
+  "runtimeSuites": 70,
+  "toolingChecks": 66,
+  "circleAssertions": 328,
+  "configurationRevision": 18,
+  "dependencyUpdates": [],
+  "noLiveWTFWrites": true,
+  "gameRunningAtInstall": true,
+  "gameInputPerformed": false,
+  "circleActivation": "User reload then automatic revision18 review; Use Proposed for one account CPF Circle macro and Apply. No command required.",
+  "retailAcceptance": "Pending user cast/channel/reticle/target, menu/ring and login review; offline models do not certify engine authority, taint, timing or rendering."
+}

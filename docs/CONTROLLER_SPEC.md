@@ -18,14 +18,17 @@ edits remain authoritative; the reference is a preset, not a live engine dump.
 | Face | Key | Shipped Base command |
 | --- | --- | --- |
 | Cross/X | PAD1 | JUMP |
-| Circle/B | PAD2 | Captured preset remains empty; candidate.32 review can offer a native secure cancel-all click for an explicitly empty Base binding. Manual commands/Keep/removal retained. |
+| Circle/B | PAD2 | Captured preset remains empty; candidate.34 review offers MACRO CPF Circle for empty or owned legacy Base binding. Cast interruption is user-confirmed; manual commands/Keep/removal retained. |
 | Square | PAD3 | INTERACTTARGET |
 | Triangle | PAD4 | TURNORACTION |
 
 Candidate.34 review offers native MACRO binding for an empty or owned legacy Circle.
 Resource identity tolerates CRLF and final LF blank lines only when the exact
 owned commands match. Native macro bytes are never rewritten for normalization.
-The engine owns its key edge; native dispatch timing awaits live acceptance.
+The engine owns its key edge. Candidate.34 cast interruption is user-confirmed;
+ground-placement cancellation is untested because the user reports interception
+by the existing targeting adapter. Detailed timing and other contexts remain
+individually unasserted. [Acceptance](../evidence/circle/candidate34-live-acceptance-2026-10-12.json).
 The unchanged body will stop casting/channeling,
 cancel ground placement and clear the hard target together. It never invokes
 Escape/Options or closes native windows itself. This is an explicit Retail

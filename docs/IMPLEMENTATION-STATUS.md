@@ -4,7 +4,7 @@ Status: maintained
 Reviewed: 2026-10-12
 Evidence: [candidate.34 install](../evidence/delivery/live-install-candidate34.json),
 [independent readback](../evidence/delivery/candidate34-independent-readback.json),
-[user acceptance](../evidence/forever-ui/candidate30-live-acceptance.json).
+[Circle acceptance](../evidence/circle/candidate34-live-acceptance-2026-10-12.json).
 
 ## Installed checkpoint
 
@@ -38,15 +38,30 @@ binding was not active in that session. Cached commands match the intended body;
 exact API format remains unknown. Candidate.34/revision20 tolerates CRLF/final LF
 only for identical commands, preserves native bytes and restores reviewed owned
 migration. Automatic format/cast/native-call logs require no diagnose command.
-Cause and Retail interruption remain unconfirmed.
+Retail cast interruption is now user-confirmed on candidate.34. The exact
+candidate.33 API body difference remains unconfirmed; successful repair does not
+independently establish those earlier bytes.
 [Investigation](reference/CIRCLE-MACRO-FORMAT-2026-10-12.md).
 The full candidate.34 gate passed 72 runtime checks and 66 tooling tests, with
 328 retained legacy Circle assertions and 94 native binding/log assertions.
 [Qualification](../evidence/test-results/candidate34-circle-format-qualification.json).
+Fresh Windows CI passed the same 72 runtime checks and 66 tooling tests with
+matching source inventories. [CI receipt](../evidence/test-results/candidate34-fresh-ci.json).
 The user's standing permission authorizes qualified updates while playing unless
 explicitly prohibited; it supersedes one-off authorization expiry.
 
 ## Acceptance
+
+On October 12 the user confirmed candidate.34: "it worked", resolving the reported
+Circle cast-interruption failure. Menu closure was confirmed in earlier reports.
+Ground-placement cancellation was **not tested**: the user reports the existing
+ground-targeting adapter intercepts those casts and accepts leaving this case
+untested. Channel cancellation, independent hard-target clearing and broader
+combat/modifier/character cases are not individually asserted. Exact Forever
+first-success ordering remains gated.
+[Acceptance record](../evidence/circle/candidate34-live-acceptance-2026-10-12.json).
+
+### Historical Circle implementation and qualification
 
 Candidate.31/configuration revision 17 implements the user's Circle-only request.
 An explicitly reviewed empty Base PAD2 can use a native secure cancel-all click
@@ -54,9 +69,9 @@ without Escape/Options. Cast, placement and hard target cancel together, unlike
 stock first-success behavior. Manual bindings/removals and native UI/ring priority
 remain. Deployment does not activate the new binding automatically: existing
 characters use `/cpf update` and review the proposed binding outside combat/Edit Mode.
-Candidate.31 is installed but **not Retail accepted**.
+Candidate.31 was installed and subsequently replaced; it was **not Retail accepted**.
 [Research and proof](reference/CIRCLE-CANCEL-RESEARCH-2026-10-11.md).
-The installed source passed 69 runtime/source checks and 50 tooling tests,
+That candidate's source passed 69 runtime/source checks and 50 tooling tests,
 including 285 Circle assertions and 40 native-reference assertions.
 [Preparation qualification](../evidence/circle/qualification-2026-10-11.json)
 describes the tested preparation stage; installation/readback are separate records.
@@ -79,8 +94,9 @@ These are scoped observations; later changes still require regression gates.
 
 ## Current execution boundaries
 
-- Store schema 3; installed code offers configuration revision20. Last read-only
-  saved acceptance was revision19; revision20 activation awaits user review.
+- Store schema 3; installed code offers configuration revision20. Circle cast
+  interruption is user-confirmed. Last independently read saved acceptance was
+  revision19 before that confirmation; appliedRevision20 was not separately read.
 - Native ConsolePort input recovery enabled. Full custom modes/UI takeover and
   hidden-control replacement remain suspended.
 - Temporary native-family routing uses L2+R2, preserving ordinary banks.

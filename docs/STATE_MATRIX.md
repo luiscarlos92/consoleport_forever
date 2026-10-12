@@ -7,8 +7,10 @@ Evidence: [routing](../addon/ConsolePort_Forever/TemporaryRouting.lua),
 [bootstrap](../addon/ConsolePort_Forever/ConsolePort_Forever.lua),
 [test runner](../tools/test-all.cjs).
 
-Candidate.32 is installed and has a reported silent cast failure; candidate.33 native binding/log source is prepared. User-owned repair acceptance remains pending. Circle activation
-requires explicit review; its actual Retail behavior remains unaccepted.
+Candidate.34 is installed; Circle cast interruption is user-confirmed. Ground
+placement cancellation is untested because the user reports targeting interception.
+Activation requires explicit review; other states are not individually asserted.
+[Acceptance](../evidence/circle/candidate34-live-acceptance-2026-10-12.json).
 It does not claim blanket Retail acceptance. [Requirements](REQUIREMENTS.md) owns intended behavior;
 [testing](TESTING.md) explains what offline coverage can establish.
 
@@ -53,9 +55,9 @@ It does not claim blanket Retail acceptance. [Requirements](REQUIREMENTS.md) own
 | Interrupted bank selection or applying journal | Main refresh pauses normal hydration; explicit guarded recovery is required. |
 | Native saved layout changed | Read-only capture after eligible refresh/Edit Mode close; no tracking selection/save. |
 | Passive action/visual/ping event | Saved diagnostic evidence may change; no spell pickup/place restoration. |
-| Candidate.32 Circle frame prepared | Inert until the reviewed unique account CPF Circle macro exists and native click command is bound. No RunMacroText fallback; readiness is not live proof. |
-| Reviewed Circle command on Base PAD2 | Native secure down-edge cancel-all; no release send or Escape/menu. Native UI/ring claims supersede Base; modified action routes stay ordinary. |
-| Revision-17 installed character under revision-18 source | Automatic login update review, deferred in combat/Edit Mode; accepted features remain active and review does not write settings. |
+| Retained legacy Circle frame prepared | Inert until the reviewed unique account CPF Circle macro exists and legacy native click command is bound. Current native MACRO binding bypasses this helper. No RunMacroText fallback; readiness is not live proof. |
+| Reviewed Circle command on Base PAD2 | Native MACRO cancel-all with engine-owned timing; no Escape/menu. Native UI/ring claims supersede Base; modified action routes stay ordinary. Candidate.34 cast interruption is accepted for the reported case; ground cancellation untested. |
+| Older accepted character under revision20 source | Automatic login update review, deferred in combat/Edit Mode; accepted features remain active and review does not write settings. |
 | Manual Circle command / later empty | Preserve command/removal. Circle proposal is only in explicit review, never ordinary hydration. |
 | Saved Circle macro edited/deleted/duplicated | Synchronous revalidation reports pending. Native MACRO edits retain engine semantics; legacy helper can disable its type. No automatic recreation, rebinding or overwrite. |
 

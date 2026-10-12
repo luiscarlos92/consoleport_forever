@@ -10,6 +10,19 @@ Use current scoped tools and root AGENTS.md for new work.
 
 The [original exact bytes](archive/ai-native-2026-10-11/MANUAL-TEST-CASES.pre-restructure.md) are retained.
 
+## Candidate.34 Circle acceptance — October 12, 2026
+
+**User-confirmed:** Circle successfully interrupts casting after the candidate.34
+repair. This resolves K03's reported cast-cancellation failure. Earlier user reports
+confirmed closing open menus.
+
+**Not tested:** cancelling manual ground placement. The user reports that the
+existing targeting adapter intercepts those casts and accepts leaving this case
+untested. Do not mark it passed. Channels, independent target clearing, detailed
+combat/modifier/key timing and other character/owner/edit transitions are not
+individually asserted. No agent game operation was performed.
+[Direct user acceptance](../evidence/circle/candidate34-live-acceptance-2026-10-12.json).
+
 ---
 
 # Retail tests and results - installed candidate.20, revision 17

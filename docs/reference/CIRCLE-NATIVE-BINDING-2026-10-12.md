@@ -7,6 +7,11 @@ Evidence: [user report and sanitized saved evidence](../../evidence/circle/candi
 [native row/log tests](../../tests/harness/circle_native_binding.lua),
 [automatic event tests](../../tests/harness/circle_logging_bootstrap.lua).
 
+Later outcome: candidate.34 repairs resource comparison and the user confirms
+cast interruption. Ground-placement cancellation remains untested due reported
+targeting interception. This page retains candidate.32/33 investigation history;
+see the [current repair and scoped acceptance](CIRCLE-MACRO-FORMAT-2026-10-12.md).
+
 ## Established observation
 
 The user accepted Use proposed and Apply in candidate.32. Menus close and the

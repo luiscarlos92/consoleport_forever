@@ -1,7 +1,7 @@
 # Project navigation and planning
 
 Status: maintained
-Reviewed: 2026-10-11
+Reviewed: 2026-10-12
 Evidence: [approved documentation separation](decisions/0001-repository-development-system.md).
 
 The former combined master plan is preserved byte-for-byte in the
@@ -17,5 +17,8 @@ historical evidence, not a current executable plan.
 - [Plans](plans/README.md): bounded future work and completion records.
 - [Reference index](reference/README.md): sources and historical path mapping.
 
-The native UI reference remains parked for a later request. Documentation work
-does not authorize implementing it or resuming superseded plans.
+The [native UI gap analysis](references/pending/WoW_Forever_UI_Implementation_Gap_Analysis_2026-10-11.md)
+records the comparison and later Circle-only selection. Candidate.34 is installed
+and cast interruption is user-confirmed; ground-placement cancellation is untested
+due reported targeting interception. Other proposed features still await selection.
+Documentation work does not authorize implementing them or resuming superseded plans.

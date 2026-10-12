@@ -12,7 +12,6 @@ Evidence: [current status](IMPLEMENTATION-STATUS.md),
 | ID | Status and established facts | Missing observation / next boundary |
 | --- | --- | --- |
 | K01: quest-object Square interaction | User-reported failure with triggers released and floating hand; mouse interaction worked. Source/offline main-command analysis does not establish blanket ordinary-bank disabling. | Quest identity and effective PAD3 binding/native interaction target during recurrence. INTERACTTARGET differs from unconditional pointer click. Do not patch a guessed cause. |
-| K03: Circle cast cancellation | Candidate.31 RunMacroText was forbidden. Candidate.32/33 close menus without stopping casts. Candidate.33 saved revision19 retains legacy CLICK with resource-edited deferral; the direct macro route was not active in that session. | Candidate.34 addresses formatting-only macro comparison and records automatic format evidence. Exact API difference and Retail interruption remain unconfirmed. [Current investigation](reference/CIRCLE-MACRO-FORMAT-2026-10-12.md). [Prior follow-up](reference/CIRCLE-NATIVE-BINDING-2026-10-12.md). |
 | K02: original Paladin quest action loss | Read-only evidence established lost/reassigned action storage. The exact original writer remains unconfirmed. Candidate.26 restoration was followed by editing regressions and removed in candidate.27. | Passive event/loadout/writer context on recurrence. Do not restore automatic pickup/place or use stale Copybara backups. |
 
 ## Inactive or gated capabilities
@@ -25,7 +24,8 @@ These are explicit limits, not newly discovered failures:
 - Exact additional stick-return/close-and-continue and active-entry cancellation,
   one-success gameplay Circle, additional learned class/pet selector activation,
   transient 0.5-second loot hold and held cinematic skip remain proof gates.
-- Candidate.31 supplies an uninstalled, reviewed Circle cancel-all approximation.
+- Candidate.34 supplies the installed, reviewed Circle cancel-all approximation;
+  cast interruption is user-confirmed and ground cancellation remains untested.
   It clears a coexisting hard target when stopping a cast/reticle. Exact native
   first-success behavior remains unavailable; Escape was explicitly rejected.
   [Research/proof boundary](reference/CIRCLE-CANCEL-RESEARCH-2026-10-11.md).
@@ -54,6 +54,14 @@ established source limits, not new user defect reports. See
 [reconciliation record](reference/CODE-DOCUMENTATION-RECONCILIATION-2026-10-11.md).
 
 ## Resolved reported defects and acceptance limits
+
+K03 Circle cast cancellation is **resolved for the user's reported candidate.34
+Retail test** on October 12. Prior menu closure remains confirmed. Ground-placement
+cancellation was not tested because the user reports targeting interception;
+channel/independent target cancellation and exhaustive transitions remain unasserted.
+The exact prior API formatting difference is still unknown.
+[Acceptance](../evidence/circle/candidate34-live-acceptance-2026-10-12.json),
+[investigation](reference/CIRCLE-MACRO-FORMAT-2026-10-12.md).
 
 Candidate.30's native account ring/reopening and Required Items correction are
 [user accepted](../evidence/forever-ui/candidate30-live-acceptance.json). Candidate.17

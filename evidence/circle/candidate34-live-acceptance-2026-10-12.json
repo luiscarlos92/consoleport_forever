@@ -1,0 +1,30 @@
+{
+  "candidate": "2.0.0-candidate.34",
+  "reportedDate": "2026-10-12",
+  "timezone": "America/Toronto",
+  "source": "Direct user confirmation in this conversation after candidate34 deployment and activation instructions",
+  "userStatement": "it worked. just didnt try ground cast cancel cause all our cast target get intercepted, so thats okay",
+  "installedSourceCommit": "36466db91a88a97c4627cdf5863d8dbdd23de6ab",
+  "offeredConfigurationRevision": 20,
+  "configurationRevisionEvidence": "Installed code offers revision20; this acceptance does not independently read back the character's saved appliedRevision",
+  "accepted": [
+    "Circle successfully interrupts spellcasting in the user's reported Retail test; K03 cast-cancellation failure resolved"
+  ],
+  "earlierConfirmedBehavior": [
+    "Circle closes open menus; earlier user reports confirmed this before the cast repair"
+  ],
+  "notTested": [
+    "Circle cancellation of manual ground placement: user reports existing ground-target interception prevented this test"
+  ],
+  "notIndividuallyAsserted": [
+    "Channel cancellation, independent hard-target clearing and idle-menu behavior",
+    "Every combat/modifier/key-edge/UI/ring/character transition",
+    "Macro editing/deletion/rollback and automatic-log persistence across all sessions"
+  ],
+  "proofLimits": [
+    "Successful casting repair does not independently establish candidate33's exact API-returned macro body formatting",
+    "Combined cancellation remains an approved Retail approximation; exact Forever first-success ordering is not claimed",
+    "Acceptance covers the user's reported case, not universal zero-regression certification"
+  ],
+  "changesThisTurn": "Documentation and retained evidence only; no runtime/test/tool changes, deployment, direct WTF writes or game input"
+}

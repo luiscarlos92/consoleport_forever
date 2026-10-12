@@ -6,6 +6,17 @@ Evidence: [saved observations](../../evidence/circle/candidate33-resource-pendin
 [adapter and observer](../../addon/ConsolePort_Forever/Circle.lua),
 [regressions](../../tests/harness/circle_native_binding.lua).
 
+## Reported Retail acceptance
+
+The user confirms October 12 that candidate.34 interrupts casting: "it worked".
+K03's reported cast failure is resolved for that case. Menu closure was confirmed
+earlier. Ground-placement cancellation was not tested because the user reports
+the existing targeting adapter intercepts those casts; this untested case is
+accepted as a remaining proof limit. Other cancellation/transition cases and
+exact Forever first-success parity are not individually asserted.
+[Acceptance](../../evidence/circle/candidate34-live-acceptance-2026-10-12.json).
+This result does not independently establish candidate.33's API body bytes.
+
 ## Established state and remaining uncertainty
 
 The user reports candidate.33 still closes menus without interrupting casts or
@@ -62,6 +73,8 @@ with current inventories of 62 product and 130 tooling/test files. T68 retains
 [tooling report](../../evidence/test-results/candidate34-circle-format-tooling.json)
 and [qualification](../../evidence/test-results/candidate34-circle-format-qualification.json)
 retain exact source hashes and proof limits.
+Fresh Windows CI passed the same checks with matching source inventories.
+[CI receipt](../../evidence/test-results/candidate34-fresh-ci.json).
 
 ## Documentation impact
 
@@ -82,5 +95,6 @@ and three runtime changes. All 2,617 unselected addon files, 308 WTF files,
 preserved. [Artifact](../../evidence/delivery/candidate34-artifact.json),
 [receipt](../../evidence/delivery/live-install-candidate34.json),
 [readback](../../evidence/delivery/candidate34-independent-readback.json).
-User reload and automatic revision20 review activate the migration. Retail
-interruption remains unconfirmed; no game input or direct WTF write occurred.
+User reload and automatic revision20 review activate the migration. The later
+user report confirms cast interruption; the saved appliedRevision was not read
+again in this documentation-only turn. No game input or direct WTF write occurred.

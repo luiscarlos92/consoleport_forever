@@ -10,6 +10,16 @@ input or WTF writes; user owns reload.
 
 ## Candidate.34 activation and acceptance
 
+**User-confirmed October 12:** Circle successfully interrupts casting. This
+resolves the reported cast failure; earlier menu closure remains confirmed.
+Ground-placement cancellation was not tried because the existing targeting
+adapter intercepts those casts. The user accepts this untested case; do not count
+it as a pass or require another diagnose command. Broader channel/target,
+combat/modifier/character and edit/rollback cases remain individually unasserted.
+[Acceptance](../evidence/circle/candidate34-live-acceptance-2026-10-12.json).
+
+The pre-acceptance repair sequence below explains the installed migration:
+
 Candidate.33 review committed revision19, but a changed-resource deferral retained
 the legacy CLICK binding. Casting remains uninterrupted in that report. Review the
 formatting-aware resource comparison and owned native migration; verify automatic
@@ -29,8 +39,9 @@ macro for an existing Forever binding or empty Base Circle. Use Proposed/Keep,
 then Apply; no /cpf update command is required. Preserve accepted/manual data.
 Check cast/channel/ground/target cancellation without a protected popup or Options,
 down/release/modifier behavior, native menu/ring ownership and macro edit/deletion
-preservation. Full local and fresh CI gates passed; these Retail cases remain
-pending. Exact Forever first-success ordering remains gated.
+preservation. Full local and fresh CI gates passed. These candidate.32 cases are
+historical; the scoped candidate.34 casting acceptance above supersedes its open
+cast report. Exact Forever first-success ordering remains gated.
 [Investigation](reference/CIRCLE-BLOCKED-ACTION-2026-10-12.md).
 
 The candidate.31 cases below are retained historical acceptance context.

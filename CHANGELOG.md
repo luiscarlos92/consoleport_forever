@@ -9,6 +9,17 @@ Dates below use America/Toronto. This is a curated change index, not invented
 release tags or blanket gameplay certification. Detailed receipts own exact
 source/artifact/file identities. Prepared, installed and accepted are separate.
 
+## Circle cast interruption accepted — October 12, 2026
+
+The user confirms candidate.34 successfully interrupts casting. K03's reported
+cast failure is resolved; earlier menu closure remains confirmed. Ground-placement
+cancellation was not tested because the user reports targeting interception and
+accepts that limitation. This does not assert channel/independent target or
+exhaustive transition coverage, or exact Forever first-success behavior.
+[Acceptance](evidence/circle/candidate34-live-acceptance-2026-10-12.json).
+Fresh Windows CI also passed 72 runtime checks and 66 tooling tests, matching
+the retained exact-source inventories. [CI receipt](evidence/test-results/candidate34-fresh-ci.json).
+
 ## Circle resource comparison repair deployed — October 12, 2026
 
 Candidate.33 installed successfully, but saved revision19 retains the old CLICK
@@ -16,7 +27,8 @@ binding with a macro-edited deferral. The direct native route was not active in
 that session. Candidate.34/revision20 reuses identical commands across CRLF/final
 LF formatting without editing native macro bytes and adds automatic body-format
 evidence. Genuine edits remain preserved; automatic review returns. Retail cast
-interruption is still unconfirmed.
+interruption was unconfirmed at deployment; the later scoped acceptance above
+resolves the reported cast failure.
 [Investigation](docs/reference/CIRCLE-MACRO-FORMAT-2026-10-12.md).
 Full qualification passed 72 runtime checks and 66 tooling tests, with 94 native
 binding/log assertions and 328 retained legacy assertions.

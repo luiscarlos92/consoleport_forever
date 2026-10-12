@@ -71,6 +71,6 @@ later scoped acceptance.
 
 [Circle silent failure, native binding and automatic logs](CIRCLE-NATIVE-BINDING-2026-10-12.md) — candidate.33 installed; direct binding migration was deferred.
 
-[Circle macro format comparison](CIRCLE-MACRO-FORMAT-2026-10-12.md) — candidate.34 installed repair of formatting-only resource mismatches; activation/Retail acceptance pending user review and test.
+[Circle macro format comparison](CIRCLE-MACRO-FORMAT-2026-10-12.md) — candidate.34 installed; cast interruption user-confirmed, ground-placement cancellation untested due targeting interception. [Acceptance record](../../evidence/circle/candidate34-live-acceptance-2026-10-12.json).
 
 [Circle protected-action report and automatic review](CIRCLE-BLOCKED-ACTION-2026-10-12.md) — candidate.32 installed; source/delivery proof is separate from pending Retail acceptance.

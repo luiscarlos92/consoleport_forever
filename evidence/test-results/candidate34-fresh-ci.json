@@ -1,0 +1,9 @@
+{
+  "sourceCommit": "36466db91a88a97c4627cdf5863d8dbdd23de6ab",
+  "runID": 38308654341,
+  "conclusion": "success",
+  "runtimeChecks": 72,
+  "toolingChecks": 66,
+  "exactInventoriesMatchRetainedReports": true,
+  "limit": "Offline CI does not certify Retail dispatch, timing or taint; live acceptance is a separate user report"
+}

@@ -192,7 +192,7 @@ parity. Deployment authorization does not authorize game launch or input.
 
 ## Final offline qualification
 
-The complete Test-All entry point passed **69 runtime/source checks and 50
+The source used for installation passed **69 runtime/source checks and 50
 tooling tests**. T68 contains 285 assertions; T69 contains 40 independent native
 reference assertions. Fourteen new negative controls cover the cancellation,
 ownership/review/creation/startup, exit art and stock-chain boundaries. Full
@@ -206,3 +206,11 @@ official stable sources match the unchanged lock; no dependency refresh was need
 These fingerprint the tested working tree. Installation and independent readback
 are separate receipts; the qualification receipt describes the preparation stage.
 No game input or live WTF write is authorized.
+
+The later CI setup repair reconstructs exact pinned dependency cache/unpacked
+inputs before tests, preserving the lock and rejecting cached drift. Seven
+additional regression tests and the complete rerun passed: 69 runtime/source
+checks and 57 tooling tests. Fresh Windows CI passed the same complete suites,
+and its product/tooling inventories match the local reports.
+The installed product is unchanged.
+[Follow-up exact-source/CI qualification](../../evidence/test-results/candidate31-ci-inputs-qualification.json).

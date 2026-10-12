@@ -32,6 +32,13 @@ including 285 Circle assertions and 40 native-reference assertions.
 [Preparation qualification](../evidence/circle/qualification-2026-10-11.json)
 describes the tested preparation stage; installation/readback are separate records.
 
+The later repository-only CI input repair reconstructs missing pinned dependency
+archives/files from the explicit verification stage, rejecting existing drift.
+It changes no installed product or lock. Complete local checks and fresh Windows
+CI passed 69 runtime/source suites and 57 tooling tests, with matching complete
+source inventories. The CI run and retained reports are recorded in the
+[follow-up qualification](../evidence/test-results/candidate31-ci-inputs-qualification.json).
+
 On October 10 the user reported: "all fixed on ring and required item frame".
 The native account ping ring's reported behavior/reopening defect and Forever's
 Immersion Required Items correction are accepted in Retail. Broader combat,

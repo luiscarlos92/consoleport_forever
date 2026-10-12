@@ -19,6 +19,14 @@ review; actual Retail acceptance is pending. The installed source passed 69
 runtime/source checks and 50 tooling tests.
 [Readback](evidence/delivery/candidate31-independent-readback.json).
 
+Fixed the pre-existing fresh-CI setup failure by retaining fully verified pinned
+dependency archives/files in ignored test-input caches. Drift/foreign files are
+rejected rather than repaired. Added seven regression tests; the complete local
+entry point and fresh Windows CI pass 69 runtime/source suites and 57 tooling
+tests, with matching exact inventories. No installed
+addon or dependency-lock change.
+[Qualification](evidence/test-results/candidate31-ci-inputs-qualification.json).
+
 ## Repository system — October 11, 2026
 
 Candidate.31 source adds Circle-only reviewed secure cancel-all access for

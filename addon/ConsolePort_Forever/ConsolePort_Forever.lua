@@ -1,7 +1,7 @@
 local ADDON_NAME, Addon = ...
 Addon.VERSION=C_AddOns.GetAddOnMetadata(ADDON_NAME,"Version") or "0.0.0"
 Addon.SCHEMA=Addon.Store.VERSION
-Addon.CONFIG_REVISION=17
+Addon.CONFIG_REVISION=18
 -- Native recovery retains ConsolePort bindings, modes and UI ownership.
 -- Ground placement is a separate secure click adapter; it does not page actions.
 Addon.NATIVE_INPUT_RECOVERY=true
@@ -423,8 +423,13 @@ SlashCmdList.CONSOLEPORTFOREVER=function(input)
     else Addon:Status() end
 end
 local events=CreateFrame("Frame")
+events:RegisterEvent('UPDATE_MACROS')
 for _,event in ipairs({"PLAYER_LOGIN","PLAYER_LOGOUT","PLAYER_ENTERING_WORLD","PLAYER_REGEN_ENABLED","PLAYER_REGEN_DISABLED","ADDON_LOADED","UPDATE_BINDINGS","EDIT_MODE_LAYOUTS_UPDATED","SPELLS_CHANGED","ACTIONBAR_SLOT_CHANGED","PLAYER_SPECIALIZATION_CHANGED","TRAIT_CONFIG_UPDATED","SPELL_DATA_LOAD_RESULT","CVAR_UPDATE","UPDATE_SHAPESHIFT_FORMS","PET_BAR_UPDATE","UNIT_PET","BAG_UPDATE_DELAYED","ITEM_LOCK_CHANGED","CURSOR_CHANGED","MERCHANT_SHOW","MERCHANT_CLOSED","CINEMATIC_START","CINEMATIC_STOP","PLAY_MOVIE","STOP_MOVIE","ADDON_ACTION_BLOCKED","ADDON_ACTION_FORBIDDEN"}) do events:RegisterEvent(event) end
 events:SetScript("OnEvent",function(_,event,...)
+    if event=='UPDATE_MACROS' then
+        -- Synchronous native edits invalidate the route before deferred refresh.
+        Addon.CircleCancel:Refresh(_G,Addon:IsCharacterInstalled())
+    end
     if event=='PING_SYSTEM_ERROR' then
         if Addon.PingTargeting then Addon.PingTargeting:Observe(_G,...) end
         return

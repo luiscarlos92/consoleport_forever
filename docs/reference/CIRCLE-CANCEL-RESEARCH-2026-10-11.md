@@ -7,6 +7,16 @@ Evidence: [implementation](../../addon/ConsolePort_Forever/Circle.lua),
 [native dispatch/review tests](../../tests/harness/circle.lua),
 [original Forever oracle](../../tests/harness/circle_reference.lua).
 
+## Candidate.32 follow-up
+
+The live diagnostic identifies ADDON_ACTION_FORBIDDEN: RunMacroText() while casting;
+menu closure works. Candidate.32 replaces macrotext with reviewed saved-macro
+RunMacro dispatch, retains inherited OnClick and restores revision-18 automatic
+login review. The latest user instruction permits this Forever-only update while
+WoW runs; no game input or WTF writes. Earlier qualification below describes
+candidate.31 and its narrower model, not current live acceptance.
+[Current investigation](CIRCLE-BLOCKED-ACTION-2026-10-12.md).
+
 ## Authorized scope and user decision
 
 The October 11 request authorizes research and implementation of Circle only,
@@ -78,9 +88,9 @@ guarantee of support. The supplied October 10 reference remains unchanged.
 | Native Escape / TOGGLEGAMEMENU. | [Bindings_Standard](https://github.com/Gethe/wow-ui-source/blob/09b9db7948abc9b9648dedaab51eb0cf3ee67b31/Interface/AddOns/Blizzard_FrameXML/Bindings_Standard.xml), [GameMenuEsc](https://github.com/Gethe/wow-ui-source/blob/09b9db7948abc9b9648dedaab51eb0cf3ee67b31/Interface/AddOns/Blizzard_GameMenuEsc/Blizzard_GameMenuEsc.lua), [shared Game](https://github.com/Gethe/wow-ui-source/blob/09b9db7948abc9b9648dedaab51eb0cf3ee67b31/Interface/AddOns/Blizzard_Game/Shared/Game.lua), [Retail Game](https://github.com/Gethe/wow-ui-source/blob/09b9db7948abc9b9648dedaab51eb0cf3ee67b31/Interface/AddOns/Blizzard_Game/Mainline/Game.lua). | Secure native route, but dialog/menu priorities, cursor handoff, native panel handling, charm/spectating cases and idle Game Menu differ. Explicitly rejected by the user. |
 | Hook/suppress Escape's idle menu or copy its registry handler. | The current dispatcher calls registered handlers in ordered native priorities. | Would couple Circle to global Escape behavior and possibly other owners. Rejected; no hooks or registrations are installed. |
 | Dynamic macro chosen by a timer/cast event/public getter. | Public callbacks cannot mutate protected configuration freely in combat; a state observation is not authority. | Rejected. No timer, cast observer, public protected call or late macro substitution. |
-| `/run` calling protected APIs or simulated Click. | Native secure template dispatch and addon taint distinctions. | Rejected. Direct physical key → native secure click → registered secure slash handlers is required. |
+| `/run` calling protected APIs or simulated Click. | Native secure template dispatch and addon taint distinctions. | Rejected. Direct physical key â†’ native secure click â†’ registered secure slash handlers is required. |
 | Channeling-only conditional or click sequence. | PlayerIsChanneling is available, but does not cover ordinary casts, queued casts and reticle state. | Cannot claim full priority. A click-count cycle invents a new gesture and is not implemented. |
-| Fixed secure cancellation macro. | Native macro action invokes C_Macro.RunMacroText; [secure slash registrations](https://github.com/Gethe/wow-ui-source/blob/09b9db7948abc9b9648dedaab51eb0cf3ee67b31/Interface/AddOns/Blizzard_ChatFrameBase/Shared/SlashCommands.lua) expose stopcasting, stopspelltarget and cleartarget. | **Selected.** Hardware-authorized and menu-free; deliberately executes all three rather than the first successful one. |
+| Fixed secure cancellation macro. | Native macro action invokes C_Macro.RunMacroText; [secure slash registrations](https://github.com/Gethe/wow-ui-source/blob/09b9db7948abc9b9648dedaab51eb0cf3ee67b31/Interface/AddOns/Blizzard_ChatFrameBase/Shared/SlashCommands.lua) expose stopcasting, stopspelltarget and cleartarget. | **Candidate.31 selection, superseded after the live forbidden RunMacroText report.** The replacement uses the native saved-macro branch; deliberately executes all three rather than the first successful one. |
 
 ## Other addons and forum research
 

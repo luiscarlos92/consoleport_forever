@@ -7,7 +7,7 @@ Evidence: [routing](../addon/ConsolePort_Forever/TemporaryRouting.lua),
 [bootstrap](../addon/ConsolePort_Forever/ConsolePort_Forever.lua),
 [test runner](../tools/test-all.cjs).
 
-This matrix describes candidate.31 working/installed source. Circle activation
+This matrix describes candidate.32 prepared source; candidate.31 remains installed. Circle activation
 requires explicit review; its actual Retail behavior remains unaccepted.
 It does not claim blanket Retail acceptance. [Requirements](REQUIREMENTS.md) owns intended behavior;
 [testing](TESTING.md) explains what offline coverage can establish.
@@ -53,9 +53,11 @@ It does not claim blanket Retail acceptance. [Requirements](REQUIREMENTS.md) own
 | Interrupted bank selection or applying journal | Main refresh pauses normal hydration; explicit guarded recovery is required. |
 | Native saved layout changed | Read-only capture after eligible refresh/Edit Mode close; no tracking selection/save. |
 | Passive action/visual/ping event | Saved diagnostic evidence may change; no spell pickup/place restoration. |
-| Candidate.31 Circle frame prepared | Inert until the native click command is accepted/bound. Readiness does not prove live activation. |
+| Candidate.32 Circle frame prepared | Inert until the reviewed unique account CPF Circle macro exists and native click command is bound. No RunMacroText fallback; readiness is not live proof. |
 | Reviewed Circle command on Base PAD2 | Native secure down-edge cancel-all; no release send or Escape/menu. Native UI/ring claims supersede Base; modified action routes stay ordinary. |
+| Revision-17 installed character under revision-18 source | Automatic login update review, deferred in combat/Edit Mode; accepted features remain active and review does not write settings. |
 | Manual Circle command / later empty | Preserve command/removal. Circle proposal is only in explicit review, never ordinary hydration. |
+| Saved Circle macro edited/deleted/duplicated | Synchronous UPDATE_MACROS revalidation disables the route; preserve native edits. No automatic recreation, overwrite or macrotext fallback. |
 
 Native readiness, saved state, effective engine ownership and Retail acceptance
 are independent axes. [Architecture](ARCHITECTURE.md#native-execution-and-refresh)

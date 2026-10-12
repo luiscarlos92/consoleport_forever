@@ -9,7 +9,24 @@ unselected addons, junctions/root anchors and all inventoried prior backups.
 Candidate.31's Circle behavior and regressions await user-owned Retail acceptance.
 The earlier reported ping and Required Items fixes remain scoped candidate.30
 acceptance, not a candidate.31 gameplay certification.
-Another deployment requires new user authorization with WoW closed.
+The authorization above was fulfilled. Current exceptions require explicit new
+user instruction under the guarded delivery contract.
+
+## Candidate.32 preparation and current delivery authority
+
+The live diagnostic confirms ADDON_ACTION_FORBIDDEN: RunMacroText(). Candidate.32
+uses a reviewed saved account macro, retains inherited OnClick and restores
+revision-18 automatic login update review. Candidate.31 remains installed until
+delivery completes. The user explicitly permits this Forever-only update while
+WoW runs. Qualify/preview the guarded running-game option; preserve WTF, all other
+addons, topology and backups. User reloads after completion.
+
+After reload, automatic review must offer CPF Circle for an existing Forever
+binding or empty Base Circle, preserve every accepted/manual setting, and require
+Use Proposed/Keep plus Apply. Verify cast/channel/ground/target cancellation with
+no protected popup or Options menu, down/release/modifier behavior, native menu/ring
+ownership and macro edit/deletion preservation. Exact first-success ordering
+remains gated. [Investigation](reference/CIRCLE-BLOCKED-ACTION-2026-10-12.md).
 
 ## Installed candidate.31 Circle acceptance
 

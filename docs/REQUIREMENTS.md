@@ -12,6 +12,14 @@ feature may be approved in direction yet still deferred or gated.
 
 ## Current contracts
 
+October 12 follow-up: cast cancellation reports ADDON_ACTION_FORBIDDEN:
+RunMacroText(). Replace that route with reviewed native saved-macro dispatch;
+preserve native menu closure and avoid Escape. Restore automatic login update
+review with Proposed/Keep/Apply and accepted/manual data preserved. The latest
+user instruction explicitly authorizes this Forever-only update while WoW runs,
+with no WTF writes or game input; the initial no-deploy instruction is superseded. See
+[Circle regression](reference/CIRCLE-BLOCKED-ACTION-2026-10-12.md).
+
 | ID | Approved requirement | Current implementation/evidence |
 | --- | --- | --- |
 | R01 | Personal Retail companion with Forever-inspired expanded controller HUD; preserve approved size/art/layout and native feedback. | HUDPresentation/Skin; retained candidate.17 acceptance and later feedback gates. |

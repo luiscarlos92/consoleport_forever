@@ -1,4 +1,7 @@
 -- Replay the real bootstrap against the observed accepted-revision-16 gap.
+-- Preserve the original revision-17 repair contract independently of later
+-- configuration revisions. T70 covers the revision-18 login review alongside it.
+Addon.CONFIG_REVISION=17
 function UnitClass() return 'Paladin','PALADIN' end
 local record=ConsolePortForeverDB.characters.A
 record.appliedRevision=16 record.pendingReload=nil record.declinedRevision=nil

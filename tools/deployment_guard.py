@@ -26,9 +26,12 @@ def anchor_info(path):
 
 
 class GameTree:
-    def __init__(self, root, simulation=False, user_install=False, process_check=wow_is_running):
+    def __init__(self, root, simulation=False, user_install=False, process_check=wow_is_running, allow_running_companion=False):
         self.root = Path(root).absolute()
         self.simulation, self.process_check = simulation, process_check
+        self.allow_running_companion = allow_running_companion
+        if allow_running_companion and not (user_install or simulation):
+            raise ValueError('Running-game companion mode requires explicit user installation')
         plain_path(self.root, self.root)
         if not self.root.is_dir() or self.root.name.casefold() != '_retail_':
             raise ValueError('Select an existing, explicit _retail_ directory')
@@ -62,12 +65,20 @@ class GameTree:
         # Per-file guards still revalidate every anchor. Process enumeration is
         # bounded to once a second, with forced checks at promotion boundaries.
         if force_process or checked-getattr(self, '_last_process_check', 0) >= 1:
-            if self.process_check():
+            self.game_running = self.process_check()
+            if self.game_running and not self.allow_running_companion:
                 raise ValueError('WoW is running; close the game before backup, install or restore')
             self._last_process_check = checked
         current = {key: anchor_info(path) for key, path in self.lexical.items()}
         if current != self.identity:
             raise ValueError('Game root/junction identity changed during operation')
+
+    def closed_operation(self):
+        # The explicit exception is qualified only by deploy_companion. Never
+        # carry it into full install, configuration restore or backup workflows.
+        if self.allow_running_companion:
+            raise ValueError('Running-game permission is limited to an existing companion-only update')
+        self.check(force_process=True)
 
     def guard(self, path, scope):
         self.check()
@@ -151,6 +162,7 @@ def write_json(path, data, guard):
 
 
 def backup_current(tree, backup_root, identity, guard, fault=lambda event: None):
+    tree.closed_operation()
     tree.check(force_process=True)
     snapshot = {'anchors': tree.identity, 'addons': inventory(tree.addons),
         'wtf': inventory(tree.wtf, allow_links=True)}

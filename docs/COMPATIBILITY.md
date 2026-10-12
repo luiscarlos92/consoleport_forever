@@ -1,7 +1,7 @@
 # Client and integration compatibility
 
 Status: maintained
-Reviewed: 2026-10-11
+Reviewed: 2026-10-12
 Evidence: [TOC](../addon/ConsolePort_Forever/ConsolePort_Forever.toc),
 [locked packages](../dependencies/lock.json),
 [native source manifest](../evidence/native/manifest.json),
@@ -10,7 +10,7 @@ Evidence: [TOC](../addon/ConsolePort_Forever/ConsolePort_Forever.toc),
 ## Target and support boundary
 
 The current personal target is Retail, TOC interface `120100`, ConsolePort
-3.3.10, Store schema 3 and configuration revision 17. The capability probe records
+3.3.10, Store schema 3 and prepared configuration revision 18 (installed candidate.31 uses 17). The capability probe records
 `GetBuildInfo` metadata/readiness; it does not itself establish an all-build
 support guarantee. No Classic or native Forever client support claim is made
 for this companion. Third-party multi-client TOCs do not extend our support scope.
@@ -65,6 +65,13 @@ On an update, inspect affected upstream source/closure/notices and refresh pinne
 contracts only through their capture workflow. Changing a guard string alone is
 not qualification. See [dependency procedure](DEPENDENCY-WORKFLOW.md) and
 [testing](TESTING.md). Update this page when a supported assumption changes.
+
+Circle qualification additionally uses the pinned native saved-macro branch,
+inherited secure template, synchronous UPDATE_MACROS and constants for 120 account
+and 30 character macros. Unknown limits/APIs, secret reads, edited/duplicate names
+and full capacity defer without overwrite. Native RunMacro permissions and secure
+provenance still require Retail acceptance; the reported RunMacroText route is
+removed. [Repair research](reference/CIRCLE-BLOCKED-ACTION-2026-10-12.md).
 
 ## Optional integration behavior
 

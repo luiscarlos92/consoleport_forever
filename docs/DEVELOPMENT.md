@@ -114,7 +114,10 @@ Current routine release preparation uses `python -B tools/build_update.py` with
 to retain earlier same-version artifacts. It requires clean tested source pushed
 on main. The scoped installer accepts `--retail-root`, `--pack`, `--sha256`,
 `--backup-root` and `--user-install`; preview omits `--execute`. Check current user
-delivery authority and closed WoW before that stage; only add `--execute` for the
+delivery authority and closed WoW by default before that stage. Explicitly requested
+existing-Forever-only updates use `--allow-running-companion` under
+[decision 0004](decisions/0004-scoped-delivery.md); full install, dependencies and
+restore cannot use it. Only add `--execute` for the
 authorized installation. Independently verify selected files, other addons,
 canonical WTF, topology and prior backups; retain receipts. The [release skill](../.agents/skills/forever-scoped-release/SKILL.md)
 routes the full workflow. Retained older procedure pages are historical context,

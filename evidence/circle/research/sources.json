@@ -77,6 +77,41 @@
       "url": "https://raw.githubusercontent.com/Gethe/wow-ui-source/09b9db7948abc9b9648dedaab51eb0cf3ee67b31/Interface/AddOns/Blizzard_UIParentPanelManager/Shared/UIParentPanelManager.lua",
       "sha256": "3987ca8721c3ee9fda39f75a3606efdcb7db5d5ed12d848979a882a6e4727cac",
       "bytes": 42525
+    },
+    {
+      "file": "Retail-SecureTemplates.xml",
+      "path": "Blizzard_FrameXML/SecureTemplates.xml",
+      "url": "https://raw.githubusercontent.com/Gethe/wow-ui-source/09b9db7948abc9b9648dedaab51eb0cf3ee67b31/Interface/AddOns/Blizzard_FrameXML/SecureTemplates.xml",
+      "sha256": "32e3bd4db8498bb0d9bd9ff93f1e1d21141cf21ef0b192d333188b326202851b",
+      "bytes": 1304
+    },
+    {
+      "file": "Retail-UIMacrosDocumentation.lua",
+      "path": "Blizzard_APIDocumentationGenerated/UIMacrosDocumentation.lua",
+      "url": "https://raw.githubusercontent.com/Gethe/wow-ui-source/09b9db7948abc9b9648dedaab51eb0cf3ee67b31/Interface/AddOns/Blizzard_APIDocumentationGenerated/UIMacrosDocumentation.lua",
+      "sha256": "0995b6b5f61a98e3840ddfc9dff2d7e0e9c7c0487562bbfbc66314de7aabd55a",
+      "bytes": 1591
+    },
+    {
+      "file": "Retail-MacroConstantsDocumentation.lua",
+      "path": "Blizzard_APIDocumentationGenerated/MacroConstantsDocumentation.lua",
+      "url": "https://raw.githubusercontent.com/Gethe/wow-ui-source/09b9db7948abc9b9648dedaab51eb0cf3ee67b31/Interface/AddOns/Blizzard_APIDocumentationGenerated/MacroConstantsDocumentation.lua",
+      "sha256": "b620bc1975b152370ac1a08a06c54d34643ef09305b538291ccb80149d51cb4c",
+      "bytes": 337
+    },
+    {
+      "file": "Retail-MacroUI.lua",
+      "path": "Blizzard_MacroUI/Blizzard_MacroUI.lua",
+      "url": "https://raw.githubusercontent.com/Gethe/wow-ui-source/09b9db7948abc9b9648dedaab51eb0cf3ee67b31/Interface/AddOns/Blizzard_MacroUI/Blizzard_MacroUI.lua",
+      "sha256": "683ea4687eb1c3803b2d457d23782122fda1a934d12a65ef8b6a836e69c1544f",
+      "bytes": 9478
+    },
+    {
+      "file": "Retail-MacroIconSelector.lua",
+      "path": "Blizzard_MacroUI/Blizzard_MacroIconSelector.lua",
+      "url": "https://raw.githubusercontent.com/Gethe/wow-ui-source/09b9db7948abc9b9648dedaab51eb0cf3ee67b31/Interface/AddOns/Blizzard_MacroUI/Blizzard_MacroIconSelector.lua",
+      "sha256": "effd523d7e0d5714e23a477013556cac0803166bf277f59f830f40d9aa7f1be2",
+      "bytes": 4703
     }
   ],
   "forever": {

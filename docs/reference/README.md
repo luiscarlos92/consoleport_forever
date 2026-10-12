@@ -68,3 +68,5 @@ bytes before those notices. Current routine release commands are documented in
 [development](../DEVELOPMENT.md), with the source freshness procedure retained
 as evidence. Historical “current” headings and NOT RUN cases do not override
 later scoped acceptance.
+
+[Circle protected-action report and automatic review](CIRCLE-BLOCKED-ACTION-2026-10-12.md) — prepared candidate.32; not deployed or Retail accepted.

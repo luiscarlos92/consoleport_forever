@@ -161,6 +161,7 @@ def restore_marker(tree, receipt, stage):
 
 
 def install(tree, pack_path, expected_sha256, backup_root=None, execute=False, fault=lambda event: None):
+    tree.closed_operation()
     manifest, rows = read_pack(pack_path, expected_sha256, require_complete=True)
     if Path(pack_path).absolute().is_relative_to(tree.root):
         raise ValueError('Keep the pack outside the selected game root')
@@ -284,6 +285,7 @@ def load_receipt(tree, backup):
 
 
 def recover(tree, backup, execute=False):
+    tree.closed_operation()
     receipt, snapshot = load_receipt(tree, backup)
     if receipt['status'] not in {'applying', 'recovery-required'}:
         raise ValueError('No interrupted folder promotion to recover')
@@ -359,6 +361,7 @@ def apply_configuration(tree, source, target, before, after, fault=lambda event:
 
 
 def restore(tree, backup, execute=False, restore_config=False, accept_config_loss=False, fault=lambda event: None):
+    tree.closed_operation()
     original, old = load_receipt(tree, backup)
     if original['status'] != 'installed':
         raise ValueError('Choose a successfully installed receipt; interrupted installs use recover')

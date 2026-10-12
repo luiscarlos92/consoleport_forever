@@ -50,6 +50,7 @@ def deploy(tree,pack,checksum,backup_root,execute=False,fault=lambda event:None)
         result=deploy_companion(tree,pack,checksum,backup_root,execute,fault)
         result['dependencyUpdates']=[]
         return result
+    tree.closed_operation()
     tree.check(force_process=True)
     folders=[NAME]+sorted(folder for folder in owners if folder!=NAME)+sorted(retired)
     payloads={folder:{} for folder in owners}
@@ -133,7 +134,8 @@ if __name__=='__main__':
     parser.add_argument('--backup-root',required=True)
     parser.add_argument('--user-install',action='store_true')
     parser.add_argument('--execute',action='store_true')
+    parser.add_argument('--allow-running-companion',action='store_true',help='Explicit existing Forever-only update; no dependency/configuration writes')
     args=parser.parse_args()
-    tree=GameTree(args.retail_root,user_install=args.user_install)
+    tree=GameTree(args.retail_root,user_install=args.user_install,allow_running_companion=args.allow_running_companion)
     result=deploy(tree,args.pack,args.sha256,args.backup_root,args.execute)
     print(json.dumps({key:value for key,value in result.items() if key not in {'installedFiles','installedAddons'}},indent=2))

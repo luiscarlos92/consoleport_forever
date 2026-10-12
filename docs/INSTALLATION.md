@@ -10,6 +10,15 @@ Use current scoped tools and root AGENTS.md for new work.
 
 The [original exact bytes](archive/ai-native-2026-10-11/INSTALLATION.pre-restructure.md) are retained.
 
+Current exception, October 12: explicitly requested installation while WoW runs
+may use `tools/deploy_update.py --allow-running-companion` with the existing
+root/artifact/checksum/backup/user-install arguments. Preview before execution.
+It requires an exact known existing Forever receipt and unchanged StoreSchema,
+selects Forever alone, preserves WTF/other addons, refuses concurrent drift and
+retains verified backups. The user reloads after completion; no tool controls the
+game. Default/full installation, dependencies and restore require closed WoW.
+See [decision 0004](decisions/0004-scoped-delivery.md) for the current contract.
+
 ---
 
 # ConsolePort Forever personal candidate

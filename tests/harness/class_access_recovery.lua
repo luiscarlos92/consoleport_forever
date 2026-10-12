@@ -1,5 +1,7 @@
 -- Replay the saved candidate.19 condition through real bootstrap, bindings,
 -- GUID ring projection, native validation/compiler and transaction machinery.
+-- This is the captured revision-17 recovery case; T70 covers a newer startup review.
+Addon.CONFIG_REVISION=17
 function UnitClass() return RECOVERY_CLASS,RECOVERY_CLASS end
 function GetNumShapeshiftForms() return 2 end
 function GetShapeshiftFormInfo(slot) return 1,slot==1,true,100+slot end

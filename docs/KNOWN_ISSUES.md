@@ -1,7 +1,7 @@
 # Known issues, limitations and deferred proof
 
 Status: maintained
-Reviewed: 2026-10-11
+Reviewed: 2026-10-12
 Evidence: [current status](IMPLEMENTATION-STATUS.md),
 [interaction analysis](TEMPORARY-MAIN-BANK-ANALYSIS-2026-10-11.md),
 [candidate.27 diagnosis](../evidence/action-recovery/candidate27-diagnosis.json),
@@ -12,6 +12,7 @@ Evidence: [current status](IMPLEMENTATION-STATUS.md),
 | ID | Status and established facts | Missing observation / next boundary |
 | --- | --- | --- |
 | K01: quest-object Square interaction | User-reported failure with triggers released and floating hand; mouse interaction worked. Source/offline main-command analysis does not establish blanket ordinary-bank disabling. | Quest identity and effective PAD3 binding/native interaction target during recurrence. INTERACTTARGET differs from unconditional pointer click. Do not patch a guessed cause. |
+| K03: candidate.31 Circle cast cancellation | Live diagnose confirms ADDON_ACTION_FORBIDDEN: RunMacroText(); menus close correctly. Candidate.32 uses reviewed saved-macro dispatch, retains inherited handler and restores automatic review. | Complete taint stack and repaired Retail cast/channel/reticle/target acceptance remain pending. [Investigation](reference/CIRCLE-BLOCKED-ACTION-2026-10-12.md). |
 | K02: original Paladin quest action loss | Read-only evidence established lost/reassigned action storage. The exact original writer remains unconfirmed. Candidate.26 restoration was followed by editing regressions and removed in candidate.27. | Passive event/loadout/writer context on recurrence. Do not restore automatic pickup/place or use stale Copybara backups. |
 
 ## Inactive or gated capabilities

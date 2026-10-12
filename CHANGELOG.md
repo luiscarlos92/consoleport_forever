@@ -9,7 +9,19 @@ Dates below use America/Toronto. This is a curated change index, not invented
 release tags or blanket gameplay certification. Detailed receipts own exact
 source/artifact/file identities. Prepared, installed and accepted are separate.
 
-## Circle deployment — October 12, 2026
+## Prepared Circle regression repair — October 12, 2026
+
+Candidate.32/revision 18 replaces the reported forbidden RunMacroText route with a
+reviewed account macro through native RunMacro and retains the inherited OnClick.
+Automatic login update review returns for revision-17 characters. Macro ownership,
+resource failure, compensating restore, native dispatch and startup integration
+regressions cover the repair. Native menus/rings and accepted/manual data remain.
+The explicitly authorized running-game installer option is qualified only for an
+existing Forever-only update with an exact receipt and unchanged StoreSchema.
+Candidate.31 remains installed until delivery; live repair acceptance is pending.
+[Investigation](docs/reference/CIRCLE-BLOCKED-ACTION-2026-10-12.md).
+
+## Circle deployment â€” October 12, 2026
 
 Candidate.31 was installed from tested/pushed source `a74aa8fd27ebb4e24b99ef580daeedab503235e9`.
 Only Forever changed; 59 installed files matched the verified artifact.
@@ -27,7 +39,7 @@ tests, with matching exact inventories. No installed
 addon or dependency-lock change.
 [Qualification](evidence/test-results/candidate31-ci-inputs-qualification.json).
 
-## Repository system — October 11, 2026
+## Repository system â€” October 11, 2026
 
 Candidate.31 source adds Circle-only reviewed secure cancel-all access for
 an explicitly empty Base binding. It uses no Escape/menu or custom UI takeover,
@@ -56,7 +68,7 @@ Earlier October 11 workspace organization imported OneDrive working material,
 relocated user provisioning scripts and retained the native UI reference for a
 later request. [Organization record](docs/WORKSPACE-ORGANIZATION-2026-10-11.md).
 
-## Candidate.30 — October 10, 2026
+## Candidate.30 â€” October 10, 2026
 
 Installed: release-only R3 dispatch, repeated native account-ring artwork lifecycle
 and stable active gestures across unchanged refreshes. No down ping; cosmetic
@@ -64,14 +76,14 @@ timer does not gate protected dispatch. [Implementation](docs/CANDIDATE30-PING-R
 The user accepted reported ring and Required Items defects; broader cases remain
 unclaimed. [Acceptance](evidence/forever-ui/candidate30-live-acceptance.json).
 
-## Candidate.29 — October 10, 2026
+## Candidate.29 â€” October 10, 2026
 
 Installed: Forever-owned deferred Immersion Required Items offset correction and
 native saved Edit Mode reference tracking. Preserve Immersion bytes/settings and
 manual/Party edits. Options-list request withdrawn.
 [Implementation](docs/CANDIDATE29-IMMERSION-EDITMODE-2026-10-10.md).
 
-## Candidates.28 and .27 — October 10, 2026
+## Candidates.28 and .27 â€” October 10, 2026
 
 Candidate.28 was prepared but not installed: genuine Shared account ping ring;
 its immediate-down behavior was later superseded by candidate.30.
@@ -82,7 +94,7 @@ editing/cache/held-action transitions and provided the then-functional hold-ring
 path, now retained inactive outside runtime.
 [Editing repair](docs/CANDIDATE27-HOLD-RING-AND-ACTION-GUARD-2026-10-10.md).
 
-## Candidates.26 through .21 — October 9–10, 2026
+## Candidates.26 through .21 â€” October 9â€“10, 2026
 
 Candidate.26 installed emergency Paladin recovery plus incomplete archive/stale
 header repair and changed LiteMount/Plater packages. Its automatic writer was
@@ -96,7 +108,7 @@ behavior. Preserve their rejected/source evidence and compiler lessons.
 Candidate.22 restored all-class temporary native families to L2R2.
 [Routing](docs/CANDIDATE22-TEMPORARY-ROUTING-2026-10-09.md).
 
-## Candidates.20 through .10 — October 7–8, 2026
+## Candidates.20 through .10 â€” October 7â€“8, 2026
 
 Native input recovery, independent repaired ground placement, actual round
 surfaces/composition, class access, stationary trigger hints and native feedback

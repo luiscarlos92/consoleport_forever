@@ -1,7 +1,7 @@
 # Runtime configuration, persistence and recovery
 
 Status: maintained
-Reviewed: 2026-10-11
+Reviewed: 2026-10-12
 Evidence: [bootstrap](../../addon/ConsolePort_Forever/ConsolePort_Forever.lua),
 [setup proposals](../../addon/ConsolePort_Forever/RuntimeSetup.lua),
 [store](../../addon/ConsolePort_Forever/Store.lua),
@@ -12,6 +12,11 @@ separate from checkout/package installation. [Architecture](../ARCHITECTURE.md)
 owns lifecycle and activation; [requirements](../REQUIREMENTS.md) owns intent.
 
 ## What setup actually offers
+
+Revision 18 restores the automatic review popup for previously accepted revision-17
+characters. Current acceptance/decline suppresses repeat prompts; older declines
+do not accept a newer update. Combat/Edit Mode defers review. The popup itself
+does not apply settings, and prior accepted feature scope stays active.
 
 Setup captures current native state, builds sorted field proposals and defers
 unavailable contracts. Use Proposed/Keep decisions and final confirmation precede
@@ -27,7 +32,7 @@ different scope and do not turn a runtime journal into immediate disk durability
 | Scope | Proposal and ownership contract |
 | --- | --- |
 | Controller bindings | Shared base-face archive plus current GUID's personal archive, or qualified current/reference fallback; normalize the scoped mask and propose native Character selection. Preserve explicit empty values. |
-| Circle cancel-all | Candidate.31 review alone can propose a native secure click for an explicitly empty Base PAD2. The changed controller field requires explicit Use Proposed. Nonempty/missing values, Keep and subsequent manual removals retain ownership; ordinary hydration never makes this proposal. |
+| Circle cancel-all | Candidate.32 automatic login update review (revision 18) or explicit review can propose a native secure click for an explicitly empty Base PAD2. The changed controller field requires explicit Use Proposed. Existing Forever Circle clicks can receive just the resource repair. A separate circleMacro state field reviews one account CPF Circle macro through native CreateMacro/readback/guarded deletion; duplicate/edited/full resources defer without overwrite. No auto recreation or RunMacroText fallback. Nonempty/missing values, Keep and subsequent manual removals retain ownership; ordinary hydration never makes this proposal. |
 | ConsolePort layout | Start from captured current layout. The qualified proposal removes legacy special vehicle visibility/opacity and the standalone override-page declaration; runtime temporary routing is separate. |
 | Preset condition | Propose an empty `bindingPresetCondition`, disabling the old automatic preset condition. |
 | Runtime policies | Offer modes, ground, focus, context/window/bag/map, sidebar visibility and hidden-access fields only where their probes allow. Saved true fields may remain dormant under native recovery. |

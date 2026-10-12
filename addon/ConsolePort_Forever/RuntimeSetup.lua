@@ -23,6 +23,7 @@ function Setup.Adapters(api,account)
         end})
     if not cp:Probe() then return nil,"ConsolePort settings/bar data not initialized" end
     local adapters={bindings=Addon.BindingStateAdapter.New(native,mask),consoleport=cp}
+    adapters.circleMacro=Addon.CircleCancel.NewMacroAdapter(api)
     if account and Addon.guid then
         local rings=cp.db.Rings
         local classSet=Addon.ClassActions.ResolveSet(rings,api)
@@ -111,8 +112,18 @@ function Setup.Fields(db,guid,adapters,api,revision)
     controller=Addon.ClassActions.Bindings(controller,adapters.rings)
     local circleReady,circleReason=Addon.CircleCancel:Prepare(api)
     local circleChanged=false
-    if circleReady then controller,circleChanged=Addon.CircleCancel.Proposal(controller)
-    else deferred[#deferred+1]={id='circleCancel',reason=circleReason} end
+    local circleWanted=controller.keys.PAD2=='' or controller.keys.PAD2==Addon.CircleCancel.BINDING
+    local macro,macroReason
+    if circleReady and circleWanted and adapters.circleMacro then
+        macro,macroReason=adapters.circleMacro:Proposal()
+        if macro then
+            add('shared/circleMacro','circleMacro',{'state'},macro,'Circle cancellation: create/reuse one account macro CPF Circle; preserve existing macros; cancel cast, ground placement and target together; no Escape/menu')
+            fields[#fields].requireReview=true
+        end
+    end
+    if circleReady and macro then controller,circleChanged=Addon.CircleCancel.Proposal(controller)
+    elseif circleWanted then deferred[#deferred+1]={id='circleMacro',reason=macroReason or circleReason or 'native saved-macro adapter unavailable'} end
+    if not circleReady then deferred[#deferred+1]={id='circleCancel',reason=circleReason} end
     local controllerLabel="Forever class flyout: class-specific shoulder + trigger (R1 + R2 for warrior; L1 + L2 for druid/paladin); preserve action banks and keyboard bindings"
     if circleChanged then controllerLabel=controllerLabel.."; Base Circle: cancel cast, ground placement and hard target together; no Escape/menu" end
     add(guid.."/controller","bindings",{"state"},controller,controllerLabel)

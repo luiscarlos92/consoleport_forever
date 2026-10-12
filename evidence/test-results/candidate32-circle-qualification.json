@@ -1,0 +1,13 @@
+{
+  "at": "2026-10-12T19:04:50.227780+00:00",
+  "runtimeChecks": 70,
+  "toolingChecks": 66,
+  "productFiles": 62,
+  "toolingFiles": 128,
+  "currentInventoriesVerified": true,
+  "circleAssertions": 328,
+  "researchSnapshotsVerified": 18,
+  "dependencyUpdates": [],
+  "noGameInput": true,
+  "limit": "Offline host models do not certify Retail engine permissions, taint, input timing or rendering."
+}

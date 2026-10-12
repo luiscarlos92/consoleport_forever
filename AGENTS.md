@@ -78,7 +78,10 @@ manufacturing public state. See [compatibility](docs/COMPATIBILITY.md).
 
 ## Delivery and upkeep
 
-Deployment requires explicit current authorization and WoW closed. Commit/push
+Deployment requires explicit current authorization and WoW closed by default.
+An explicitly requested running-game Forever-only update may use the qualified
+exception in [decision 0004](docs/decisions/0004-scoped-delivery.md); this never
+authorizes game input, dependency replacement or WTF writes. Commit/push
 exact tested source before packaging; use `tools/build_update.py` and scoped
 `tools/deploy_update.py` preview/installer. Include only Forever and actual
 qualified changed packages. Preserve other addons, WTF, junctions and verified

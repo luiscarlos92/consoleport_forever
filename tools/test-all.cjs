@@ -593,7 +593,9 @@ fire('PLAYER_LOGIN') flush()
 assert(Addon.record.appliedRevision==17 and banks[2][chosenChord]=='CLICK NativeUtility:Auras','first login did not apply actual class binding')
 assert((banks[2][oppositeChord] or '')=='','duplicate opposite-side class binding remains')
 assert((banks[2]['CTRL-PADFORWARD'] or '')=='' and banks[2].SPACE=='JUMP','first login retained old menu or lost keyboard binding')
-assert(shown==nil,'authorized class migration asked for another review')
+assert(shown and shown.name=='CPF_PLAN_REVIEW' and record.appliedRevision==17,
+ 'revision18 review did not follow completed revision17 class migration')
+choose(2) -- Decline the new revision while retaining the authorized class repair.
 local journal=Addon.db.transactions[Addon.record.lastInstallTransaction]
 assert(journal.context.foreverClassMigration and journal.status=='committed' and journal.bindingDetails.saved)
 assert(journal.steps[1].before.keys['CTRL-PADFORWARD']=='CLICK NativeUtility:Auras','class migration omitted independent backup')
@@ -1058,6 +1060,9 @@ fire('PLAYER_LOGIN') flush()
 assert(routed.A==true,'installed recovery startup omitted temporary routing')
 Addon.db.shared.runtimePolicy.modesEnabled=false
 for _,class in ipairs({'DEMONHUNTER','PALADIN','DRUID','WARRIOR','DEATHKNIGHT','EVOKER','HUNTER','MAGE','MONK','PRIEST','ROGUE','SHAMAN','WARLOCK'}) do
+ -- Real character login creates a new UI. End the previous character's review
+ -- before the harness changes GUID within one VM; retain revision17 coverage.
+ if Addon.Prompt.active then choose(2) end
  guid='TEMP-'..class
  function UnitClass() return class,class end
  local record=Addon.Store.GetCharacter(Addon.db,guid)
@@ -1205,6 +1210,8 @@ function circleFixture() {
   for(const row of manifest.files) if(sha(manifest.localCache+'/'+row.file)!==row.sha256) throw Error('Circle research source drift: '+row.file);
   const native=read('evidence/native/Blizzard_FrameXML/SecureTemplates.lua').replace(/\r\n/g,'\n');
   const slash=read(manifest.localCache+'/Retail-SlashCommands.lua').replace(/\r\n/g,'\n');
+  const xml=read(manifest.localCache+'/Retail-SecureTemplates.xml');
+  if(!/<Button name="SecureActionButtonTemplate" inherits="SecureFrameTemplate"[^>]*>[\s\S]*?<OnClick function="SecureActionButton_OnClick"\/>/.test(xml)) throw Error('Circle template-native script contract changed');
   const registrations=['STOPCASTING','STOPSPELLTARGET','CLEARTARGET','STOPMACRO'].map(name=>{
     const start=slash.indexOf('SlashCommandUtil.CheckAddSecureSlashCommand(SLASH_COMMAND.'+name+',');
     const end=slash.indexOf('\nend);',start)+7;
@@ -1214,8 +1221,10 @@ function circleFixture() {
   return source+uiContextFixture()+'\n;(function(...)\n'+read('addon/ConsolePort_Forever/RuntimeSetup.lua')+'\nend)("ConsolePort_Forever",Addon);\n'+read('tests/harness/circle.lua')
     .replace('--@NATIVE_CIRCLE_ATTRIBUTES',()=>['SecureButton_GetModifierPrefix','SecureButton_GetButtonSuffix','SecureButton_GetModifiedAttribute','SecureButton_GetAttribute','SecureButton_GetModifiedUnit'].map(name=>nativeFunction('evidence/native/Blizzard_FrameXML/SecureTemplates.lua',name)).join('\n'))
     .replace('--@NATIVE_CIRCLE_MACRO_ACTION',()=>native.slice(native.indexOf('SECURE_ACTIONS.macro ='),native.indexOf('local CANCELABLE_ITEMS')))
+    .replace('--@NATIVE_CIRCLE_SAVE_MACRO',()=>nativeFunction('evidence/native/Blizzard_FrameXML/SecureTemplates.lua','SaveMacro'))
     .replace('--@NATIVE_CIRCLE_CLICK',()=>native.slice(native.indexOf('local PRESS_TYPE_DOWN'),native.indexOf('function SecureUnitButton_OnLoad')))
     .replace('--@CURRENT_CIRCLE_REFRESH',()=>nativeFunction('addon/ConsolePort_Forever/ConsolePort_Forever.lua','Addon:RefreshUI'))
+    .replace('--@NATIVE_CIRCLE_TEMPLATE',()=>"assert(template=='SecureActionButtonTemplate','Circle lost protected native template')")
     .replace('--@NATIVE_CIRCLE_SLASH',()=>registrations);
 }
 check('T68.circle-native-cancel-all-ownership-review-and-manual-preservation', () => {
@@ -1233,13 +1242,25 @@ check('T68.circle-native-cancel-all-ownership-review-and-manual-preservation', (
     ['editmode-creation',"(api.EditModeManagerFrame and api.EditModeManagerFrame:IsShown())","false",'created secure button in Edit Mode'],
     ['foreign-frame-overwrite',"if current and current~=self.frame then return false,'Circle frame name belongs to another owner' end","if false then return false end",'foreign frame name overwritten'],
     ['insecure-run',"Circle.MACRO='/stopmacro [mod]", "Circle.MACRO='/run SpellStopCasting()\\n/stopmacro [mod]",'unexpected non-cancellation macro command'],
-    ['missing-startup',"self.CircleCancel:Refresh(_G,self:IsCharacterInstalled())","do end",'bootstrap omitted/reordered Circle preparation']
+    ['missing-startup',"self.CircleCancel:Refresh(_G,self:IsCharacterInstalled())","do end",'bootstrap omitted/reordered Circle preparation'],
+    ['addon-replaces-template-handler',"frame:SetAttribute('useOnKeyDown',true)","frame:SetAttribute('useOnKeyDown',true) frame:SetScript('OnClick',api.SecureActionButton_OnClick)",'Circle script provenance lost'],
+    ['missing-template-handler-guard',"if frame:GetScript('OnClick')~=api.SecureActionButton_OnClick then",'if false then','invalid inherited Circle handler accepted']
+    ,['forbidden-macrotext',"frame:SetAttribute('macro',self.MACRO_NAME)","frame:SetAttribute('macrotext',self.MACRO)",'Circle used forbidden macrotext route']
   ]) {
     if(!fixture.includes(from)) throw Error('Stale Circle negative control: '+name);
     let rejected=false;
     try {execute(fixture.replaceAll(from,to),name);} catch(error) {rejected=String(error).includes(expected);}
     if(!rejected) throw Error('Circle negative control not rejected for expected reason: '+name);
   }
+});
+check('T70.automatic-startup-Circle-review-preserves-accepted-configuration', () => {
+  if(!bootstrapState) throw Error('native bootstrap fixture unavailable');
+  const fixture='SESSION_STATE=('+bootstrapState+').installed\n'+bootstrapPrelude+read('tests/harness/startup_circle_review.lua');
+  execute(fixture,'automatic-Circle-update-review');
+  let rejected=false;
+  try {execute(fixture.replace('Addon.CONFIG_REVISION=18','Addon.CONFIG_REVISION=17'),'old-revision-no-update');}
+  catch(error) {rejected=String(error).includes('new Circle update does not have a new review revision');}
+  if(!rejected) throw Error('old revision startup suppression was not rejected');
 });
 check('T69.original-Forever-Circle-priority-and-edge-oracle', () => {
   const manifest=JSON.parse(read('evidence/circle/research/sources.json'));

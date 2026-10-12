@@ -6,7 +6,7 @@ from pathlib import Path
 import re
 from deployment_guard import GameTree, copy_inventory, inventory, write_json
 from install_pack import identity, now, prepare_backups
-from pack_format import digest, file_hash, is_link, read_pack, safe_relative
+from pack_format import digest, file_hash, is_link, plain_path, read_pack, safe_relative
 
 NAME='ConsolePort_Forever'
 
@@ -23,6 +23,32 @@ def vendor_fingerprints(root):
     return result
 
 
+def qualify_running_companion(tree, manifest, rows, before):
+    if not tree.allow_running_companion:
+        return
+    prefix='Interface/AddOns/'+NAME+'/'
+    if (manifest.get('deploymentScope')!='companion-and-updated-dependencies'
+            or manifest.get('dependencyUpdates')!={} or manifest.get('retiredAddonFolders')
+            or manifest['addonFolders']!=[NAME] or any(not name.startswith(prefix) for name in rows)):
+        raise ValueError('Running-game update requires an exclusive companion-only payload')
+    # A known exact prior receipt and unchanged store schema are mandatory.
+    marker=plain_path(tree.addons.parent/'.cpf-companion-installed.json',tree.addons.parent)
+    prior=json.loads(marker.read_text(encoding='utf-8'))
+    if (prior.get('status')!='installed' or prior.get('addonFolders')!=[NAME]
+            or prior.get('installedFiles')!=before['files']
+            or not re.fullmatch('[0-9a-f]{40}',prior.get('sourceCommit',''))
+            or not re.fullmatch('[0-9a-f]{64}',prior.get('packSHA256',''))):
+        raise ValueError('Running-game update requires an exact known installed companion receipt')
+    def schema(body):
+        match=re.search(rb'Core,\s*Store\s*=\s*Addon\.Core,\s*\{VERSION\s*=\s*(\d+)\}',body)
+        if not match: raise ValueError('Running-game update has unknown StoreSchema')
+        return int(match.group(1))
+    current=(tree.addons/NAME/'Store.lua').read_bytes()
+    incoming=rows.get(prefix+'Store.lua',b'')
+    if schema(current)!=schema(incoming) or schema(incoming)!=manifest['compatibility']['storeSchema']:
+        raise ValueError('Running-game update cannot change StoreSchema')
+
+
 def deploy(tree,pack,checksum,backup_root,execute=False,fault=lambda event:None):
     manifest,all_rows=read_pack(pack,checksum,True)
     prefix='Interface/AddOns/'+NAME+'/'
@@ -37,13 +63,16 @@ def deploy(tree,pack,checksum,backup_root,execute=False,fault=lambda event:None)
     if version!=required: raise ValueError('Installed ConsolePort differs from tested dependency')
     target=tree.addons/NAME
     before=inventory(target)
+    qualify_running_companion(tree,manifest,all_rows,before)
     wtf=inventory(tree.wtf,True)
     vendors=vendor_fingerprints(tree.addons)
     result={'operation':'deploy-companion','sourceCommit':manifest['sourceCommit'],'packSHA256':checksum,
         'dependencyUpdates':[],'testedDependencies':manifest.get('testedDependencies',{}),
         'root':str(tree.root),'consolePortVersion':version,'addonFolders':[NAME],
         'vendorFileCount':len(vendors),'characterLinkCount':len(wtf['links']),
-        'currentConfigurationWrites':False,'vendorWrites':False,'execute':execute}
+        'currentConfigurationWrites':False,'vendorWrites':False,'execute':execute,
+        'allowRunningCompanion':tree.allow_running_companion,'gameRunningAtPreview':tree.game_running,
+        'reloadRequired':tree.allow_running_companion}
     if not execute: return result
     backups,guard=prepare_backups(tree,backup_root)
     run_id=identity(); backup=guard(backups/run_id);backup.mkdir()
@@ -67,6 +96,9 @@ def deploy(tree,pack,checksum,backup_root,execute=False,fault=lambda event:None)
     previous=stage/'previous';failed=stage/'failed';parked=False;promoted=False
     try:
         fault('before-promotion')
+        tree.check(force_process=True)
+        if inventory(target)!=before or inventory(tree.wtf,True)!=wtf or vendor_fingerprints(tree.addons)!=vendors:
+            raise ValueError('Live files changed before promotion; deployment refused')
         os.rename(tree.guard(target,tree.addons),tree.guard(previous,stage));parked=True
         os.rename(tree.guard(new,stage),tree.guard(target,tree.addons));promoted=True
         fault('after-promotion')
@@ -75,7 +107,7 @@ def deploy(tree,pack,checksum,backup_root,execute=False,fault=lambda event:None)
         receipt.update(status='installed',closedAt=now(),installedFiles=expected,wtfUnchanged=True,vendorsUnchanged=True)
         write_json(backup/'install-receipt.json',receipt,guard)
         write_json(tree.addons.parent/'.cpf-companion-installed.json',receipt,lambda p:tree.guard(p,tree.addons.parent))
-    except Exception as error:
+    except BaseException as error:
         if promoted: os.rename(tree.guard(target,tree.addons),tree.guard(failed,stage))
         if parked: os.rename(tree.guard(previous,stage),tree.guard(target,tree.addons))
         receipt.update(status='rolled-back',error=str(error),closedAt=now())

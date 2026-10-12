@@ -17,6 +17,17 @@ candidate.30/code and current-configuration backup is retained in the receipt.
 The current deployment authorization is fulfilled; this grants no later install
 or game-input permission.
 
+## Prepared Circle repair
+
+Candidate.32/revision 18 replaces the confirmed forbidden RunMacroText route with
+native saved-macro dispatch, preserves the inherited handler and restores the
+automatic login review. One account macro CPF Circle is explicitly reviewed;
+manual macros/bindings, accepted features and StoreSchema 3 remain.
+Candidate.31 is installed until scoped delivery completes. The user now explicitly
+authorizes Forever-only installation while WoW runs; reload remains user-owned.
+Offline/source repair is not Retail acceptance.
+[Investigation](reference/CIRCLE-BLOCKED-ACTION-2026-10-12.md).
+
 ## Acceptance
 
 Candidate.31/configuration revision 17 implements the user's Circle-only request.
@@ -50,7 +61,7 @@ These are scoped observations; later changes still require regression gates.
 
 ## Current execution boundaries
 
-- Store schema 3; configuration revision 17 for installed and working source.
+- Store schema 3; installed configuration revision 17, prepared revision 18.
 - Native ConsolePort input recovery enabled. Full custom modes/UI takeover and
   hidden-control replacement remain suspended.
 - Temporary native-family routing uses L2+R2, preserving ordinary banks.

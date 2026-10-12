@@ -16,7 +16,11 @@ historical receipts or execute old scratch/archive deploy scripts.
 Identify preparation versus installation/restore, exact candidate/source,
 qualified changed dependency set and artifact identity. Preparation may proceed
 within its authorization; actual production installation needs current explicit
-user authority and verified closed WoW. Scope cannot expand to game launch/input,
+user authority and verified closed WoW by default. An explicit current request
+may use the qualified existing-Forever-only running-game option described in
+[decision 0004](../../../docs/decisions/0004-scoped-delivery.md). It does not apply
+to full installs, dependencies, restore or configuration replacement.
+Scope cannot expand to game launch/input,
 filesystem WTF editing, broad pruning or unrelated package updates.
 
 ## Prepare with existing gates

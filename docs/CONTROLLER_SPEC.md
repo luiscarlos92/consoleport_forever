@@ -1,7 +1,7 @@
 # Controller behavior specification
 
 Status: maintained
-Reviewed: 2026-10-11
+Reviewed: 2026-10-12
 Evidence: [binding policy](../addon/ConsolePort_Forever/BindingPolicy.lua),
 [shipped reference](../addon/ConsolePort_Forever/Reference.lua),
 [temporary routing](../addon/ConsolePort_Forever/TemporaryRouting.lua),
@@ -18,19 +18,24 @@ edits remain authoritative; the reference is a preset, not a live engine dump.
 | Face | Key | Shipped Base command |
 | --- | --- | --- |
 | Cross/X | PAD1 | JUMP |
-| Circle/B | PAD2 | Captured preset remains empty; candidate.31 review can offer a native secure cancel-all click for an explicitly empty Base binding. Manual commands/Keep/removal retained. |
+| Circle/B | PAD2 | Captured preset remains empty; candidate.32 review can offer a native secure cancel-all click for an explicitly empty Base binding. Manual commands/Keep/removal retained. |
 | Square | PAD3 | INTERACTTARGET |
 | Triangle | PAD4 | TURNORACTION |
 
-Candidate.31's reviewed Circle acts on down, not release: stop casting/channeling,
+Candidate.32's reviewed Circle acts on down, not release: stop casting/channeling,
 cancel ground placement and clear the hard target together. It never invokes
 Escape/Options or closes native windows itself. This is an explicit Retail
 approximation, not Forever's first-success chain; cancellation also clears a
 coexisting hard target. Native Layers retains UI/ring priority. Modified clicks
 are blocked by the fixed macro guard; ordinary modified actions stay native.
-Preparation is inert and outside combat/Edit Mode; hydration never installs the
-proposal, preserving later manual removals. See the
-[research/proof record](reference/CIRCLE-CANCEL-RESEARCH-2026-10-11.md).
+Preparation preserves inherited OnClick and uses the native saved-macro branch,
+never macrotext/RunMacroText. One account macro CPF Circle needs explicit review;
+full storage, name collisions and edited macros remain untouched. Missing/edited
+resources disable the route; refresh never recreates them. Macro creation and
+attribute writes wait outside combat/Edit Mode. Hydration never installs the
+binding proposal, preserving later manual removals. See the
+[research/proof record](reference/CIRCLE-CANCEL-RESEARCH-2026-10-11.md) and
+[blocked-action investigation](reference/CIRCLE-BLOCKED-ACTION-2026-10-12.md).
 
 Square is native interaction, not an unconditional mouse click at the pointer.
 A floating hand and successful mouse click do not prove that the native soft

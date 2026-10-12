@@ -110,9 +110,12 @@ function Setup.Fields(db,guid,adapters,api,revision)
     end
     local controller=Setup.BindingProposal(db,guid,adapters.bindings,Addon.ReferenceBindings)
     controller=Addon.ClassActions.Bindings(controller,adapters.rings)
-    local circleReady,circleReason=Addon.CircleCancel:Prepare(api)
+    local circleReady,circleReason=Addon.CircleCancel.Probe(api)
     local circleChanged=false
+    local managed=db.managedFields[guid..'/controller']
+    local legacyOwned=managed and managed.value and managed.value.keys and managed.value.keys.PAD2==Addon.CircleCancel.LEGACY_BINDING
     local circleWanted=controller.keys.PAD2=='' or controller.keys.PAD2==Addon.CircleCancel.BINDING
+        or (legacyOwned and controller.keys.PAD2==Addon.CircleCancel.LEGACY_BINDING)
     local macro,macroReason
     if circleReady and circleWanted and adapters.circleMacro then
         macro,macroReason=adapters.circleMacro:Proposal()
@@ -121,11 +124,11 @@ function Setup.Fields(db,guid,adapters,api,revision)
             fields[#fields].requireReview=true
         end
     end
-    if circleReady and macro then controller,circleChanged=Addon.CircleCancel.Proposal(controller)
+    if circleReady and macro then controller,circleChanged=Addon.CircleCancel.Proposal(controller,legacyOwned)
     elseif circleWanted then deferred[#deferred+1]={id='circleMacro',reason=macroReason or circleReason or 'native saved-macro adapter unavailable'} end
     if not circleReady then deferred[#deferred+1]={id='circleCancel',reason=circleReason} end
     local controllerLabel="Forever class flyout: class-specific shoulder + trigger (R1 + R2 for warrior; L1 + L2 for druid/paladin); preserve action banks and keyboard bindings"
-    if circleChanged then controllerLabel=controllerLabel.."; Base Circle: cancel cast, ground placement and hard target together; no Escape/menu" end
+    if circleChanged then controllerLabel=controllerLabel.."; Base Circle: native MACRO binding; cancel cast, ground placement and hard target together; no Escape/menu" end
     add(guid.."/controller","bindings",{"state"},controller,controllerLabel)
     fields[#fields].requireReview=circleChanged or nil
     if adapters.mountIcons then

@@ -366,7 +366,7 @@ check('T24.current-native-presentation-lifecycle', () => {
     execute(source+fixture.replace("fire('PLAYER_ENTERING_WORLD') flush()", "Addon.HUDPresentation.RetireMasqueNormal=function() end\nfire('PLAYER_ENTERING_WORLD') flush()"),'unretired-Masque-square');
   } catch(error) { reproduced=String(error).includes('Masque private square normal remains visible'); }
   if(!reproduced) throw Error('Private square overlay regression was not reproduced');
-  const oldCircle="binding=='' or (Addon.CircleCancel and binding==Addon.CircleCancel.BINDING)";
+  const oldCircle="binding=='' or (Addon.CircleCancel and Addon.CircleCancel.IsBinding(binding))";
   if(!fixture.includes(oldCircle)) throw Error('Stale Circle artwork negative control');
   let circleRejected=false;
   try {execute(source+fixture.replaceAll(oldCircle,"binding==''"),'missing-Circle-exit-art');}
@@ -1236,7 +1236,7 @@ check('T68.circle-native-cancel-all-ownership-review-and-manual-preservation', (
     ['missing-target-clear','\\n/cleartarget','', 'cancel-all did not execute once on down'],
     ['wrong-click-edge',"frame:SetAttribute('useOnKeyDown',true)","frame:SetAttribute('useOnKeyDown',false)",'combat refresh mutated prepared action'],
     ['modifier-spill','/stopmacro [mod]\\n','', 'modified click reached Base cancellation'],
-    ['manual-overwrite',"if proposed.keys.PAD2~='' then return proposed,false end","if false then return proposed,false end",'manual Circle binding overwritten'],
+    ['manual-overwrite',"if proposed.keys.PAD2~='' and not (legacyOwned and proposed.keys.PAD2==Circle.LEGACY_BINDING) then return proposed,false end","if false then return proposed,false end",'manual Circle binding overwritten'],
     ['automatic-review',"fields[#fields].requireReview=circleChanged or nil","fields[#fields].requireReview=nil",'Circle bypassed explicit configuration review'],
     ['combat-creation',"if api.InCombatLockdown() or (api.EditModeManagerFrame and api.EditModeManagerFrame:IsShown()) then","if false then",'Circle attempted secure creation in combat'],
     ['editmode-creation',"(api.EditModeManagerFrame and api.EditModeManagerFrame:IsShown())","false",'created secure button in Edit Mode'],
@@ -1258,9 +1258,37 @@ check('T70.automatic-startup-Circle-review-preserves-accepted-configuration', ()
   const fixture='SESSION_STATE=('+bootstrapState+').installed\n'+bootstrapPrelude+read('tests/harness/startup_circle_review.lua');
   execute(fixture,'automatic-Circle-update-review');
   let rejected=false;
-  try {execute(fixture.replace('Addon.CONFIG_REVISION=18','Addon.CONFIG_REVISION=17'),'old-revision-no-update');}
+  try {execute(fixture.replace('Addon.CONFIG_REVISION=19','Addon.CONFIG_REVISION=18'),'old-revision-no-update');}
   catch(error) {rejected=String(error).includes('new Circle update does not have a new review revision');}
   if(!rejected) throw Error('old revision startup suppression was not rejected');
+});
+check('T71.native-Circle-macro-binding-row-ownership-and-automatic-logs', () => {
+  const formatter=read('evidence/consoleport-contracts/ConsolePort/Utils/Utils.lua');
+  const start=formatter.indexOf('CPAPI.FormatSecureBody  = function');
+  const end=formatter.indexOf('\n\tend',start)+5;
+  if(start<0 || end<start) throw Error('native secure formatter missing');
+  const fixture=circleFixture().split('-- Preparation is inert')[0]+read('tests/harness/circle_native_binding.lua')
+    .replace('--@NATIVE_CIRCLE_FORMATTER',()=>('local ConvertSecureBody=CPAPI.ConvertSecureBody\n'+formatter.slice(start,end)));
+  console.log(execute(fixture,'native-Circle-binding-logs'));
+  for(const [from,to,message] of [
+    ["Circle.BINDING='MACRO '..Circle.MACRO_NAME","Circle.BINDING=Circle.LEGACY_BINDING",'Circle still routes through addon button'],
+    ['legacyOwned and proposed.keys.PAD2==Circle.LEGACY_BINDING','false','reviewed legacy click did not migrate'],
+    ['if ok then return Public(api,value) end',"if ok then return Public(api,value) or 'unavailable' end",'false modifier became unavailable'],
+    ['if #log.rows>80 then','if false then','automatic log is unbounded'],
+    ['circle=Addon.Core.Copy(self.circle or {}),','', 'native call log not persisted automatically']
+  ]) {
+    if(!fixture.includes(from)) throw Error('stale native Circle/log negative control');
+    let rejected=false;try {execute(fixture.replaceAll(from,to),'native-Circle-log-negative');} catch(e){rejected=String(e).includes(message);}
+    if(!rejected) throw Error('native Circle/log negative control survived: '+message);
+  }
+});
+check('T72.Circle-observations-persist-without-diagnose-command', () => {
+  const fixture='SESSION_STATE=('+bootstrapState+').installed\n'+bootstrapPrelude+read('tests/harness/circle_logging_bootstrap.lua');
+  execute(fixture,'automatic-Circle-log-bootstrap');
+  let rejected=false;
+  try {execute(fixture.replace('self.CircleCancel:InstallLog(_G)','do end'),'missing-automatic-Circle-log');}
+  catch(e){rejected=String(e).includes('automatic native cancel call observation not installed');}
+  if(!rejected) throw Error('missing automatic cancellation observer not rejected');
 });
 check('T69.original-Forever-Circle-priority-and-edge-oracle', () => {
   const manifest=JSON.parse(read('evidence/circle/research/sources.json'));

@@ -8,6 +8,17 @@ input or WTF writes; user owns reload.
 [Installation](../evidence/delivery/live-install-candidate32.json),
 [readback](../evidence/delivery/candidate32-independent-readback.json).
 
+## Candidate.33 preparation
+
+Candidate.32 review succeeded without a protected popup, but casting remains
+uninterrupted. Prepare/review direct native MACRO binding for the managed legacy
+Circle and verify automatic bounded logs. Standing permission allows qualified
+Forever deployment while playing unless explicitly prohibited. After user reload,
+automatic revision19 review must preserve the existing macro and change only the
+reviewed Circle binding; native menus/rings/modified actions retain priority.
+Read persisted session logs after normal reload/logout; do not ask for diagnose.
+[Follow-up](reference/CIRCLE-NATIVE-BINDING-2026-10-12.md).
+
 ## Installed candidate.32 acceptance
 
 The diagnose image confirms ADDON_ACTION_FORBIDDEN: RunMacroText(). The repair uses

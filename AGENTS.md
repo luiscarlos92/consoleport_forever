@@ -19,7 +19,9 @@ The [reference index](docs/reference/README.md) routes evidence and history.
   research and generated work here. OneDrive WoW storage is production; never
   modify or reorganize the user's `Documents`.
 - User instructions and confirmed decisions override older records. Historical
-  deployment permissions are fulfilled, not reusable authorization.
+  one-off permissions are fulfilled. The October 12 standing user instruction
+  authorizes qualified Forever updates while playing unless explicitly prohibited;
+  it remains active until revoked. See delivery decision 0004.
 - Do not edit upstream addons, immutable `reference/`, `tests/fixtures/`, pinned
   source evidence or the inactive ping fallback. Fixes belong in Forever.
 - Preserve accepted functionality, manual edits, native power/feedback and
@@ -78,8 +80,8 @@ manufacturing public state. See [compatibility](docs/COMPATIBILITY.md).
 
 ## Delivery and upkeep
 
-Deployment requires explicit current authorization and WoW closed by default.
-An explicitly requested running-game Forever-only update may use the qualified
+Deployment follows the standing user authorization unless the user says otherwise.
+Running-game Forever-only updates use the qualified
 exception in [decision 0004](docs/decisions/0004-scoped-delivery.md); this never
 authorizes game input, dependency replacement or WTF writes. Commit/push
 exact tested source before packaging; use `tools/build_update.py` and scoped

@@ -12,6 +12,12 @@ feature may be approved in direction yet still deferred or gated.
 
 ## Current contracts
 
+Later October 12: candidate.32 applies without an error but does not interrupt
+casting. Continue native-route repair, preserving menu closure and all accepted
+features. Capture evidence automatically rather than asking for diagnose again.
+Standing deployment permission now applies while playing unless explicitly
+prohibited; payload/readback and no-direct-WTF/game-input boundaries remain.
+
 October 12 follow-up: cast cancellation reports ADDON_ACTION_FORBIDDEN:
 RunMacroText(). Replace that route with reviewed native saved-macro dispatch;
 preserve native menu closure and avoid Escape. Restore automatic login update

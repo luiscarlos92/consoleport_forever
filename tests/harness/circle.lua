@@ -3,6 +3,10 @@
 -- models; actual Blizzard attribute/secure-click/slash functions run below.
 TEST_SUCCESS=nil
 local Circle,C=Addon.CircleCancel,Addon.Core
+-- Retain candidate31/32's intermediate-button contract as historical coverage.
+-- T71 separately runs the current engine-owned binding and full native row.
+local requestedBinding=Circle.BINDING
+Circle.BINDING=Circle.LEGACY_BINDING
 local cases=0
 local function verify(condition,message) cases=cases+1 assert(condition,message) end
 local editing,keydown,mod=false,true,false
@@ -113,6 +117,7 @@ function RunMacro(name,button)
         if stopped then break end
     end
 end
+function SetBindingMacro() error('preparation wrote a native macro binding') end
 local circleApi={CreateFrame=function(kind,name,parent,template)
         assert(not combat,'Circle attempted secure creation in combat')
         local frame=CreateFrame(kind,name,parent,template)
@@ -121,7 +126,7 @@ local circleApi={CreateFrame=function(kind,name,parent,template)
         templateSlots[frame]={secure=true}
         return frame
     end,UIParent=UIParent,C_Macro=C_Macro,Constants=Constants,
-    GetMacroInfo=GetMacroInfo,GetNumMacros=GetNumMacros,CreateMacro=CreateMacro,DeleteMacro=DeleteMacro,RunMacro=RunMacro,
+    GetMacroInfo=GetMacroInfo,GetNumMacros=GetNumMacros,CreateMacro=CreateMacro,DeleteMacro=DeleteMacro,RunMacro=RunMacro,SetBindingMacro=SetBindingMacro,
     InCombatLockdown=InCombatLockdown,SecureActionButton_OnClick=SecureActionButton_OnClick,
     EditModeManagerFrame={IsShown=function() return editing end}}
 setmetatable(circleApi,{__index=_G})
@@ -463,4 +468,5 @@ for _=1,5 do Circle:Refresh(circleApi,true) end
 verify(C.Equal(afterRename,macros) and macroCreates==createdBefore,'refresh repaired a user macro rename')
 row.name=Circle.MACRO_NAME Circle:Prepare(circleApi)
 SERIALIZED_STATE='Circle regression assertions: '..cases
+Circle.BINDING=requestedBinding
 TEST_SUCCESS=true

@@ -9,6 +9,15 @@ Dates below use America/Toronto. This is a curated change index, not invented
 release tags or blanket gameplay certification. Detailed receipts own exact
 source/artifact/file identities. Prepared, installed and accepted are separate.
 
+## Prepared native Circle binding and automatic evidence — October 12, 2026
+
+Candidate.32 installed/applied without errors but did not stop casting. Candidate.33
+/revision19 proposes direct native MACRO binding for an owned legacy Circle,
+reuses the saved resource and adds automatic bounded logs across four sessions per
+GUID. Native input/UI/ring ownership and artwork remain. No live repair claim.
+Standing permission now authorizes qualified updates while playing unless explicitly
+prohibited. [Investigation](docs/reference/CIRCLE-NATIVE-BINDING-2026-10-12.md).
+
 ## Circle regression repair deployed — October 12, 2026
 
 Candidate.32/revision 18 was installed at 15:08:29 Toronto while WoW ran, under

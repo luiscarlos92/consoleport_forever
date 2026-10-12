@@ -1,0 +1,12 @@
+{
+  "at": "2026-10-12T20:29:08.339089+00:00",
+  "runtimeChecks": 72,
+  "toolingChecks": 66,
+  "currentInventoriesVerified": true,
+  "productFiles": 62,
+  "toolingFiles": 130,
+  "legacyCircleAssertions": 328,
+  "nativeBindingLogAssertions": 60,
+  "dependencyUpdates": [],
+  "limit": "C macro binding dispatch, post-hook trust, key timing, permissions/taint and live casting remain unproved offline; user acceptance is separate."
+}

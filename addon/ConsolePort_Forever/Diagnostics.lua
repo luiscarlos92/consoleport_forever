@@ -10,6 +10,7 @@ function Diagnostics:Persist()
         features=Addon.Core.Copy(self.features), entries=Addon.Core.Copy(self.entries),
         visuals=Addon.Core.Copy(self.visuals or {}),
         ping=Addon.Core.Copy(self.ping or {}),
+        circle=Addon.Core.Copy(self.circle or {}),
     }
 end
 function Diagnostics:Log(kind, message)

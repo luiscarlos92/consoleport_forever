@@ -13,8 +13,8 @@ owns lifecycle and activation; [requirements](../REQUIREMENTS.md) owns intent.
 
 ## What setup actually offers
 
-Revision 18 restores the automatic review popup for previously accepted revision-17
-characters. Current acceptance/decline suppresses repeat prompts; older declines
+Revision 19 offers direct native MACRO migration for previously accepted revision-18
+characters, preserving the earlier automatic update review. Current acceptance/decline suppresses repeat prompts; older declines
 do not accept a newer update. Combat/Edit Mode defers review. The popup itself
 does not apply settings, and prior accepted feature scope stays active.
 
@@ -31,6 +31,7 @@ different scope and do not turn a runtime journal into immediate disk durability
 
 | Scope | Proposal and ownership contract |
 | --- | --- |
+| Circle evidence | Automatic native call, player spell/channel, modifier and binding observations; unknown secret values, bounded four sessions/80 rows per GUID. WoW persists through reload/logout, without /cpf diagnose or direct file I/O. |
 | Controller bindings | Shared base-face archive plus current GUID's personal archive, or qualified current/reference fallback; normalize the scoped mask and propose native Character selection. Preserve explicit empty values. |
 | Circle cancel-all | Candidate.32 automatic login update review (revision 18) or explicit review can propose a native secure click for an explicitly empty Base PAD2. The changed controller field requires explicit Use Proposed. Existing Forever Circle clicks can receive just the resource repair. A separate circleMacro state field reviews one account CPF Circle macro through native CreateMacro/readback/guarded deletion; duplicate/edited/full resources defer without overwrite. No auto recreation or RunMacroText fallback. Nonempty/missing values, Keep and subsequent manual removals retain ownership; ordinary hydration never makes this proposal. |
 | ConsolePort layout | Start from captured current layout. The qualified proposal removes legacy special vehicle visibility/opacity and the standalone override-page declaration; runtime temporary routing is separate. |

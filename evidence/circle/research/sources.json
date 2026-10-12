@@ -112,6 +112,13 @@
       "url": "https://raw.githubusercontent.com/Gethe/wow-ui-source/09b9db7948abc9b9648dedaab51eb0cf3ee67b31/Interface/AddOns/Blizzard_MacroUI/Blizzard_MacroIconSelector.lua",
       "sha256": "effd523d7e0d5714e23a477013556cac0803166bf277f59f830f40d9aa7f1be2",
       "bytes": 4703
+    },
+    {
+      "file": "Retail-RestrictedFrames.lua",
+      "path": "Blizzard_RestrictedAddOnEnvironment/RestrictedFrames.lua",
+      "url": "https://raw.githubusercontent.com/Gethe/wow-ui-source/09b9db7948abc9b9648dedaab51eb0cf3ee67b31/Interface/AddOns/Blizzard_RestrictedAddOnEnvironment/RestrictedFrames.lua",
+      "sha256": "d934a9ff9bcad70b754047498eb0a130a210ac7d4eacec67f321f04dcdfd7bb3",
+      "bytes": 23328
     }
   ],
   "forever": {

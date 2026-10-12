@@ -1,0 +1,25 @@
+{
+  "recordedAt": "2026-10-12T20:15:42.872104+00:00",
+  "candidate": "2.0.0-candidate.32",
+  "liveUserReport": {
+    "installSuccessful": true,
+    "UseProposedAndApplyAccepted": true,
+    "noProtectedPopup": true,
+    "nativeMenusClose": true,
+    "castNotInterrupted": true
+  },
+  "readOnlyPersistedEvidence": {
+    "appliedRevision": 18,
+    "macroResourceJournalCommitted": true,
+    "expectedMacroBodyPresent": true,
+    "baseBinding": "CLICK ConsolePortForeverCircleCancel:LeftButton",
+    "legacyControllerBaselineOwned": true,
+    "circleFeatureClaim": "offline-verified"
+  },
+  "unknowns": [
+    "Live effective owner/key edge/modifier state",
+    "Whether native click/RunMacro was invoked",
+    "Complete Retail execution chain"
+  ],
+  "authority": "Standing qualified companion deployment while playing unless explicitly prohibited; no game input/direct WTF writes. Automatic logs requested instead of diagnose commands."
+}

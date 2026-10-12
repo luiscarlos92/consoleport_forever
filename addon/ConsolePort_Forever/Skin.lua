@@ -14,7 +14,7 @@ local function PaintAvailability(button,refreshUsable)
     if not button.icon or not button.icon.SetDesaturated then return end
     if button._state_type=='custom' then
         local binding=Addon:ResolvedPresentationBinding(button)
-        local exit=(binding=='' or (Addon.CircleCancel and binding==Addon.CircleCancel.BINDING))
+        local exit=(binding=='' or (Addon.CircleCancel and Addon.CircleCancel.IsBinding(binding)))
             and button:GetParent().id=='Base' and button.id=='PAD2'
         if not exit and binding~='JUMP' and binding~='INTERACTTARGET' and binding~='TURNORACTION' then return end
     end
@@ -99,7 +99,7 @@ end
 local function BaseIcon(button)
     local binding=Addon:ResolvedPresentationBinding(button)
     if binding=='JUMP' then button.icon:SetTexture([[Interface\AddOns\ConsolePort_Forever\Assets\ForeverInGame.blp]]) button.icon:SetTexCoord(397/2048,461/2048,1682/2048,1746/2048)
-    elseif (binding=='' or (Addon.CircleCancel and binding==Addon.CircleCancel.BINDING))
+    elseif (binding=='' or (Addon.CircleCancel and Addon.CircleCancel.IsBinding(binding)))
         and button:GetParent().id=='Base' and button.id=='PAD2' then button.icon:SetAtlas('128-redbutton-exit')
     elseif binding=='INTERACTTARGET' then button.icon:SetTexture(C_Spell.GetSpellTexture(6603))
     elseif binding=='TURNORACTION' then button.icon:SetAtlas(UnitExists('target') and 'crosshair_inspect_32' or 'crosshair_unableinspect_32')

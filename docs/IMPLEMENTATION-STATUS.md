@@ -28,6 +28,17 @@ including 328 Circle assertions. Retail repair acceptance remains user-owned.
 [Investigation](reference/CIRCLE-BLOCKED-ACTION-2026-10-12.md),
 [fresh CI](../evidence/test-results/candidate32-fresh-ci.json).
 
+## Candidate.32 silent failure and prepared candidate.33
+
+The user reports successful review/install with no protected popup, but Circle
+still does not stop casting. Saved evidence confirms revision18 and the macro
+resource committed. Candidate.33/revision19 proposes direct native MACRO binding
+for the owned legacy Circle, with no helper dependency, plus automatic bounded
+logs retaining four sessions per GUID. Cause and live repair remain unconfirmed.
+[Investigation](reference/CIRCLE-NATIVE-BINDING-2026-10-12.md).
+The user's standing permission authorizes qualified updates while playing unless
+explicitly prohibited; it supersedes one-off authorization expiry.
+
 ## Acceptance
 
 Candidate.31/configuration revision 17 implements the user's Circle-only request.
@@ -61,7 +72,7 @@ These are scoped observations; later changes still require regression gates.
 
 ## Current execution boundaries
 
-- Store schema 3; installed configuration revision 17, prepared revision 18.
+- Store schema 3; installed configuration revision 18, prepared revision 19.
 - Native ConsolePort input recovery enabled. Full custom modes/UI takeover and
   hidden-control replacement remain suspended.
 - Temporary native-family routing uses L2+R2, preserving ordinary banks.

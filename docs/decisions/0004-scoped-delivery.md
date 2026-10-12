@@ -34,6 +34,14 @@ authorization. User reload timing and engine acceptance are separate proof.
 [Regressions](../../tests/test_running_companion.py) reject scope expansion,
 unknown prior code/schema, default running-game use, drift and interrupted promotion.
 
+Later October 12 user instruction: "you can now always deploy while I'm playing
+unless I specifically said the contrary". This establishes standing authority
+for qualified companion updates until revoked or contradicted for a task. It
+supersedes the amendment's requirement to obtain another one-off permission for
+each such update. Payload/schema/receipt/backup/readback guards remain; no game
+input or direct WTF writing is authorized. Full installs, dependency replacement
+and restore still cannot use the companion-only running-game mechanism.
+
 Alternatives: full-pack build/install remains for deliberate full installation or
 recovery, not routine fixes. Public redistribution remains unapproved despite
 local notice/assembly review. Retired DBM/HideClassBars/SharedMedia packages are

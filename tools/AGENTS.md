@@ -15,10 +15,11 @@ official folders; do not silently widen version guards or retire helpers.
 Routine delivery uses build_update.py/deploy_update.py. Existing clean pushed
 source, full exact-current inventories, lock/source/notices and preview/readback
 gates remain binding. Do not bypass them for documentation or create another
-installer. Explicit current installation authorization and closed WoW are required
-by default; the qualified existing-companion-only running-game exception needs
-explicit current user instruction (see [decision 0004](../docs/decisions/0004-scoped-delivery.md)). It excludes full install, restore, dependencies and WTF writes.
-before mutation. Preserve unselected addons, WTF, root anchors, junctions and
+installer. The October 12 standing user permission authorizes qualified Forever
+updates while playing unless explicitly prohibited; it remains active until revoked.
+Use the existing-companion-only running-game option under
+[decision 0004](../docs/decisions/0004-scoped-delivery.md). It excludes full install,
+restore, dependencies and WTF writes. Preserve unselected addons, WTF, root anchors, junctions and
 verified backups; recovery must reject newer drift rather than erase later play.
 
 `tools/local` contains user provisioning scripts with destructive operations.

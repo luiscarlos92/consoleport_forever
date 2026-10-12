@@ -1,7 +1,7 @@
 local ADDON_NAME, Addon = ...
 Addon.VERSION=C_AddOns.GetAddOnMetadata(ADDON_NAME,"Version") or "0.0.0"
 Addon.SCHEMA=Addon.Store.VERSION
-Addon.CONFIG_REVISION=18
+Addon.CONFIG_REVISION=19
 -- Native recovery retains ConsolePort bindings, modes and UI ownership.
 -- Ground placement is a separate secure click adapter; it does not page actions.
 Addon.NATIVE_INPUT_RECOVERY=true
@@ -204,6 +204,7 @@ function Addon:Refresh()
     local adapters,error=self.RuntimeSetup.Adapters(_G,self.db)
     if not adapters then self.Diagnostics:SetFeature("configuration","pending",error) return end
     self.adapters=adapters
+    self.CircleCancel:InstallLog(_G)
     self.ActionRecovery:InstallObservers(self,_G)
     if self.PingTargeting then
         local ready,reason=self.PingTargeting:Refresh(_G,self:IsCharacterInstalled(),adapters.consoleport)
@@ -423,9 +424,14 @@ SlashCmdList.CONSOLEPORTFOREVER=function(input)
     else Addon:Status() end
 end
 local events=CreateFrame("Frame")
+for _,event in ipairs({'UNIT_SPELLCAST_START','UNIT_SPELLCAST_STOP','UNIT_SPELLCAST_INTERRUPTED','UNIT_SPELLCAST_SUCCEEDED','UNIT_SPELLCAST_FAILED','UNIT_SPELLCAST_CHANNEL_START','UNIT_SPELLCAST_CHANNEL_STOP','MODIFIER_STATE_CHANGED'}) do events:RegisterEvent(event) end
 events:RegisterEvent('UPDATE_MACROS')
 for _,event in ipairs({"PLAYER_LOGIN","PLAYER_LOGOUT","PLAYER_ENTERING_WORLD","PLAYER_REGEN_ENABLED","PLAYER_REGEN_DISABLED","ADDON_LOADED","UPDATE_BINDINGS","EDIT_MODE_LAYOUTS_UPDATED","SPELLS_CHANGED","ACTIONBAR_SLOT_CHANGED","PLAYER_SPECIALIZATION_CHANGED","TRAIT_CONFIG_UPDATED","SPELL_DATA_LOAD_RESULT","CVAR_UPDATE","UPDATE_SHAPESHIFT_FORMS","PET_BAR_UPDATE","UNIT_PET","BAG_UPDATE_DELAYED","ITEM_LOCK_CHANGED","CURSOR_CHANGED","MERCHANT_SHOW","MERCHANT_CLOSED","CINEMATIC_START","CINEMATIC_STOP","PLAY_MOVIE","STOP_MOVIE","ADDON_ACTION_BLOCKED","ADDON_ACTION_FORBIDDEN"}) do events:RegisterEvent(event) end
 events:SetScript("OnEvent",function(_,event,...)
+    if event:find('^UNIT_SPELLCAST_') or event=='MODIFIER_STATE_CHANGED' then
+        Addon.CircleCancel:OnLogEvent(_G,event,...)
+        return
+    end
     if event=='UPDATE_MACROS' then
         -- Synchronous native edits invalidate the route before deferred refresh.
         Addon.CircleCancel:Refresh(_G,Addon:IsCharacterInstalled())
@@ -442,6 +448,7 @@ events:SetScript("OnEvent",function(_,event,...)
         Addon.ActionRecovery:Record(Addon,_G,event,...)
     end
     if event=="PLAYER_LOGOUT" then
+        Addon.CircleCancel:Record(_G,event)
         Addon:CaptureControllerEdits()
         if Addon.adapters and Addon.adapters.rings then Addon.adapters.rings:CaptureEdits() end
         return

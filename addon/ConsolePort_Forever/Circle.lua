@@ -1,7 +1,8 @@
 local _,Addon=...
 local Circle={NAME='ConsolePortForeverCircleCancel',MACRO_NAME='CPF Circle'}
 Addon.CircleCancel=Circle
-Circle.BINDING='CLICK '..Circle.NAME..':LeftButton'
+Circle.LEGACY_BINDING='CLICK '..Circle.NAME..':LeftButton'
+Circle.BINDING='MACRO '..Circle.MACRO_NAME
 -- A direct native secure click, never Escape or an insecure /run callback.
 -- Retail exposes no qualified first-success result branch to addon snippets.
 -- This deliberately cancels all three states; it does not claim exact parity.
@@ -118,18 +119,115 @@ end
 
 -- Only configuration review may offer the new command. Hydration never calls
 -- this helper, so a later manual removal/empty binding is not restored.
-function Circle.Proposal(state)
+function Circle.Proposal(state,legacyOwned)
     local proposed=Addon.Core.Copy(state)
-    if proposed.keys.PAD2~='' then return proposed,false end
+    if proposed.keys.PAD2~='' and not (legacyOwned and proposed.keys.PAD2==Circle.LEGACY_BINDING) then return proposed,false end
     proposed.keys.PAD2=Circle.BINDING
     return proposed,true
 end
 
+function Circle.Probe(api)
+    local adapter,reason=Circle.NewMacroAdapter(api)
+    if not adapter then return false,reason end
+    if type(api.SetBindingMacro)~='function' then return false,'native macro binding API unavailable' end
+    return true,'native MACRO binding available; engine execution remains unverified'
+end
+function Circle.IsBinding(binding)
+    return binding==Circle.BINDING or binding==Circle.LEGACY_BINDING
+end
+
 function Circle:Refresh(api,installed)
     if not installed then return false,'character configuration not installed' end
-    local ready,reason=self:Prepare(api)
-    ready=ready and self.activeType=='macro'
-    if not ready and self.frame and not self.activeType then reason='Circle awaits reviewed saved macro; no RunMacroText fallback' end
-    Addon.Diagnostics:SetFeature('circleCancel',ready and 'offline-verified' or 'pending',reason)
+    local ready,reason=self.Probe(api)
+    if ready then
+        local adapter=self.NewMacroAdapter(api)
+        local ok,macro=pcall(adapter.read,adapter,{'state'})
+        ready=ok and Addon.Core.Equal(macro,{name=self.MACRO_NAME,body=self.MACRO})
+        reason=ready and 'native MACRO resource ready; effective engine dispatch is logged, not certified' or 'Circle saved macro missing/changed/unreadable; no automatic repair'
+    end
+    local binding=api.GetBindingAction and api.GetBindingAction('PAD2')
+    if api.issecretvalue and api.issecretvalue(binding) then binding=nil end
+    if binding==self.LEGACY_BINDING then
+        local prepared,legacyReason=self:Prepare(api)
+        ready=prepared and self.activeType=='macro'
+        reason='legacy click retained pending reviewed native MACRO migration: '..tostring(legacyReason)
+    elseif binding~=self.BINDING then ready=false reason='Circle binding manually changed/unreadable; retained' end
+    Addon.Diagnostics:SetFeature('circleCancel',ready and 'resource-ready' or 'pending',reason)
+    self:Record(api,'refresh')
     return ready,reason
+end
+
+-- Bounded public observations only. No protected actions, spell predicates or
+-- routing writes occur in the logger. WoW persists this through SavedVariables.
+local function Public(api,value)
+    if api.issecretvalue and api.issecretvalue(value) then return 'unknown' end
+    local kind=type(value)
+    if kind=='string' or kind=='number' or kind=='boolean' then return value end
+    return 'unknown'
+end
+local function Observe(api,name,...)
+    if type(api[name])~='function' then return 'unavailable' end
+    local ok,value=pcall(api[name],...)
+    if ok then return Public(api,value) end
+    return 'unavailable'
+end
+function Circle:Record(api,event)
+    local log=self:GetLog()
+    log.sequence=log.sequence+1
+    local row={sequence=log.sequence,event=event,time=Observe(api,'GetTime'),
+        saved=Observe(api,'GetBindingAction','PAD2'),effective=Observe(api,'GetBindingAction','PAD2',true),
+        shift=Observe(api,'IsShiftKeyDown'),ctrl=Observe(api,'IsControlKeyDown'),alt=Observe(api,'IsAltKeyDown'),
+        useKeyDown=Observe(api,'GetCVar','ActionButtonUseKeyDown'),calls=Addon.Core.Copy(log.calls)}
+    if event=='refresh' and log.lastRefresh then
+        local a,b=Addon.Core.Copy(row),Addon.Core.Copy(log.lastRefresh)
+        a.sequence,a.time=nil,nil b.sequence,b.time=nil,nil
+        if Addon.Core.Equal(a,b) then return end
+    end
+    if event=='refresh' then log.lastRefresh=Addon.Core.Copy(row) end
+    log.rows[#log.rows+1]=row
+    if #log.rows>80 then table.remove(log.rows,1) end
+    local record=Addon.record
+    if record and (record.circleLogSessions==nil or type(record.circleLogSessions)=='table') then
+        record.circleLogSessions=record.circleLogSessions or {}
+        if not self.logSession then
+            local count=record.circleLogSequence
+            if type(count)~='number' or count<0 or count%1~=0 then count=0 end
+            record.circleLogSequence=count+1 self.logSession=count+1
+            record.circleLogSessions[#record.circleLogSessions+1]={session=self.logSession}
+            if #record.circleLogSessions>4 then table.remove(record.circleLogSessions,1) end
+        end
+        local entry=record.circleLogSessions[#record.circleLogSessions]
+        if entry and entry.session==self.logSession then
+            entry.codeVersion,entry.configRevision=Addon.VERSION,Addon.CONFIG_REVISION
+            entry.observations=Addon.Core.Copy(log)
+        end
+    end
+    Addon.Diagnostics:Persist()
+end
+function Circle:GetLog()
+    if self.logOwner~=Addon.record then
+        self.logOwner=Addon.record self.logSession=nil Addon.Diagnostics.circle=nil
+    end
+    Addon.Diagnostics.circle=Addon.Diagnostics.circle or {sequence=0,rows={},calls={}}
+    return Addon.Diagnostics.circle
+end
+function Circle:InstallLog(api)
+    self.logHooks=self.logHooks or {}
+    if type(api.hooksecurefunc)~='function' then return end
+    for _,name in ipairs({'RunMacro','SpellStopCasting','SpellStopTargeting','ClearTarget'}) do
+        if type(api[name])=='function' and not self.logHooks[name] then
+            local ok=pcall(api.hooksecurefunc,name,function()
+                local log=self:GetLog()
+                log.calls[name]=(log.calls[name] or 0)+1
+                self:Record(api,'native-call:'..name)
+            end)
+            if ok then self.logHooks[name]=true end
+        end
+    end
+end
+function Circle:OnLogEvent(api,event,unit)
+    if event:find('^UNIT_SPELLCAST_') then
+        if Public(api,unit)~='player' then return end
+    end
+    self:Record(api,event)
 end

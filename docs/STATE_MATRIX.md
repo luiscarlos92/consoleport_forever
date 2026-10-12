@@ -7,7 +7,7 @@ Evidence: [routing](../addon/ConsolePort_Forever/TemporaryRouting.lua),
 [bootstrap](../addon/ConsolePort_Forever/ConsolePort_Forever.lua),
 [test runner](../tools/test-all.cjs).
 
-This matrix describes candidate.32 installed source; user-owned repair acceptance remains pending. Circle activation
+Candidate.32 is installed and has a reported silent cast failure; candidate.33 native binding/log source is prepared. User-owned repair acceptance remains pending. Circle activation
 requires explicit review; its actual Retail behavior remains unaccepted.
 It does not claim blanket Retail acceptance. [Requirements](REQUIREMENTS.md) owns intended behavior;
 [testing](TESTING.md) explains what offline coverage can establish.
@@ -57,7 +57,7 @@ It does not claim blanket Retail acceptance. [Requirements](REQUIREMENTS.md) own
 | Reviewed Circle command on Base PAD2 | Native secure down-edge cancel-all; no release send or Escape/menu. Native UI/ring claims supersede Base; modified action routes stay ordinary. |
 | Revision-17 installed character under revision-18 source | Automatic login update review, deferred in combat/Edit Mode; accepted features remain active and review does not write settings. |
 | Manual Circle command / later empty | Preserve command/removal. Circle proposal is only in explicit review, never ordinary hydration. |
-| Saved Circle macro edited/deleted/duplicated | Synchronous UPDATE_MACROS revalidation disables the route; preserve native edits. No automatic recreation, overwrite or macrotext fallback. |
+| Saved Circle macro edited/deleted/duplicated | Synchronous revalidation reports pending. Native MACRO edits retain engine semantics; legacy helper can disable its type. No automatic recreation, rebinding or overwrite. |
 
 Native readiness, saved state, effective engine ownership and Retail acceptance
 are independent axes. [Architecture](ARCHITECTURE.md#native-execution-and-refresh)

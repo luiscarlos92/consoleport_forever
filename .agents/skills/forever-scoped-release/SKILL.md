@@ -16,8 +16,9 @@ historical receipts or execute old scratch/archive deploy scripts.
 Identify preparation versus installation/restore, exact candidate/source,
 qualified changed dependency set and artifact identity. Preparation may proceed
 within its authorization; actual production installation needs current explicit
-user authority and verified closed WoW by default. An explicit current request
-may use the qualified existing-Forever-only running-game option described in
+user authority. The October 12 standing instruction permits qualified Forever
+updates while playing unless explicitly prohibited; it persists until revoked.
+Use the qualified existing-Forever-only running-game option described in
 [decision 0004](../../../docs/decisions/0004-scoped-delivery.md). It does not apply
 to full installs, dependencies, restore or configuration replacement.
 Scope cannot expand to game launch/input,
@@ -51,5 +52,6 @@ Record prepared or installed status accurately, changed packages, source/artifac
 hashes, backup/readback evidence and remaining Retail cases. Update current status,
 changelog and checklist as applicable; historical acceptance covers only reported
 cases. Completion is exact scoped evidence, not a game test or permission for
-another deployment. On drift/failure, use supported recovery and report the stage;
+an unrelated operation. Standing deployment permission remains subject to explicit
+contrary instructions and all guards. On drift/failure, use supported recovery and report the stage;
 do not bypass protection or delete retained backups to finish.

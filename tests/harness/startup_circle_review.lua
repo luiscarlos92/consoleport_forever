@@ -2,7 +2,7 @@
 -- Native frame creation here models template inheritance, not Retail authority.
 TEST_SUCCESS=nil
 local C=Addon.Core
-assert(Addon.CONFIG_REVISION==19,'new Circle update does not have a new review revision')
+assert(Addon.CONFIG_REVISION==20,'new Circle update does not have a new review revision')
 local originalCreate=CreateFrame
 UIParent={}
 function SecureActionButton_OnClick() error('startup dispatched protected Circle action') end
@@ -38,18 +38,18 @@ local function snapshot()
         edit=editInfo,immersion=ImmersionSetup,fade=IEF_Config,rings=bootstrapRings.Data,sharedRings=bootstrapRings.Shared,macros=macros})
 end
 local record=ConsolePortForeverDB.characters.A
-record.appliedRevision=18 record.declinedRevision=nil record.pendingReload=nil
+record.appliedRevision=19 record.declinedRevision=nil record.pendingReload=nil
 record.classAccessRepair=1
 local before=snapshot() local initialWrites=writes
 fire('PLAYER_LOGIN') flush()
 assert(shown and shown.name=='CPF_PLAN_REVIEW','revision17 login omitted automatic Circle update review')
-assert(Addon:IsCharacterInstalled() and record.appliedRevision==18,'prompt disabled or silently upgraded prior acceptance')
+assert(Addon:IsCharacterInstalled() and record.appliedRevision==19,'prompt disabled or silently upgraded prior acceptance')
 assert(C.Equal(before,snapshot()) and writes==initialWrites,'automatic review replayed accepted bindings/layout/settings/rings')
 local active=Addon.Prompt.active
 fire('PLAYER_ENTERING_WORLD') flush()
 assert(Addon.Prompt.active==active,'duplicate world event replaced active update review')
 choose(2) -- Decline: existing configuration remains installed and unchanged.
-assert(record.declinedRevision==19 and record.appliedRevision==18 and Addon:IsCharacterInstalled())
+assert(record.declinedRevision==20 and record.appliedRevision==19 and Addon:IsCharacterInstalled())
 fire('PLAYER_ENTERING_WORLD') flush()
 assert(not Addon.Prompt.active and C.Equal(before,snapshot()),'declined update repeatedly prompted or mutated old state')
 record.declinedRevision=nil
@@ -65,10 +65,10 @@ assert(shown and shown.name=='CPF_PLAN_REVIEW','deferred Edit Mode review did no
 choose(2)
 -- Current-revision acceptance suppresses prompts; old cancellation/Keep decisions
 -- do not silently accept a new revision. Manual Circle remains authoritative.
-record.appliedRevision=19 record.declinedRevision=nil shown=nil
+record.appliedRevision=20 record.declinedRevision=nil shown=nil
 fire('PLAYER_LOGIN') flush()
-assert(not Addon.Prompt.active and shown==nil,'accepted revision18 repeated its update prompt')
-record.appliedRevision=18 record.declinedRevision=18 shown=nil
+assert(not Addon.Prompt.active and shown==nil,'accepted revision19 repeated its update prompt')
+record.appliedRevision=19 record.declinedRevision=19 shown=nil
 banks[2].PAD2='CLICK ManualCircle:LeftButton'
 record.controllerBindings.PAD2=nil
 ConsolePortForeverDB.shared.faceBindings.PAD2='CLICK ManualCircle:LeftButton'
@@ -79,13 +79,13 @@ assert(C.Equal(before,snapshot()),'startup update replaced manual Circle or unre
 local field
 for _,row in ipairs(Addon.Prompt.active.plan.fields or {}) do if row.id=='A/controller' then field=row end end
 -- Validate the actual setup proposal independently of UI rendering.
-local fields=Addon.RuntimeSetup.Fields(Addon.db,'A',Addon.adapters,_G,18)
+local fields=Addon.RuntimeSetup.Fields(Addon.db,'A',Addon.adapters,_G,19)
 for _,row in ipairs(fields) do if row.id=='A/controller' then field=row end end
 assert(field and C.Decode(field.value).keys.PAD2=='CLICK ManualCircle:LeftButton','new revision proposed over manual Circle')
 choose(2)
 -- Existing candidate31 Circle binding receives the resource repair on the
 -- automatic login review, without another binding command or Escape route.
-record.appliedRevision=18 record.declinedRevision=nil
+record.appliedRevision=19 record.declinedRevision=nil
 banks[2].PAD2=Addon.CircleCancel.BINDING
 ConsolePortForeverDB.shared.faceBindings.PAD2=Addon.CircleCancel.BINDING
 before=snapshot() initialWrites=writes
@@ -98,7 +98,7 @@ assert(offered,'automatic review omitted explicit saved-macro resource decision'
 choose(1) flush()
 while shown.name=='CPF_FIELD_REVIEW' do choose(1) flush() end
 assert(shown.name=='CPF_PLAN_APPLY') choose(1) flush()
-assert(record.appliedRevision==19 and GetNumMacros()==1,'accepted automatic repair did not create macro/commit revision19')
+assert(record.appliedRevision==20 and GetNumMacros()==1,'accepted automatic repair did not create macro/commit revision20')
 assert(GetBindingAction('PAD2')==Addon.CircleCancel.BINDING,'accepted repair did not retain native MACRO binding')
 local repaired=snapshot() repaired.macros=before.macros
 assert(C.Equal(repaired,before) and writes==initialWrites+1,'macro-only repair replayed bindings/settings/layouts/rings')
@@ -109,10 +109,10 @@ assert(Addon.Diagnostics.features.circleCancel.status=='pending','native macro e
 flush() assert(macros[1].body=='/say user edit' and GetBindingAction('PAD2')==Addon.CircleCancel.BINDING,'macro refresh overwrote manual edit/binding')
 macros[1]=nil fire('UPDATE_MACROS') flush()
 assert(GetNumMacros()==0 and Addon.Diagnostics.features.circleCancel.status=='pending','native deletion auto-restored macro')
--- Reproduce the user's accepted revision18 record: valid saved resource and
--- reviewed legacy click binding. Revision19 reviews only native binding change.
-record.appliedRevision=18 record.declinedRevision=nil record.pendingReload=nil
-macros[1]={name=Addon.CircleCancel.MACRO_NAME,body=Addon.CircleCancel.MACRO}
+-- Reproduce the user's accepted revision19 record: valid saved resource and
+-- reviewed legacy click binding. Revision20 reviews only native binding change.
+record.appliedRevision=19 record.declinedRevision=nil record.pendingReload=nil
+macros[1]={name=Addon.CircleCancel.MACRO_NAME,body=Addon.CircleCancel.MACRO.."\n"}
 banks[2].PAD2=Addon.CircleCancel.LEGACY_BINDING
 ConsolePortForeverDB.shared.faceBindings.PAD2=Addon.CircleCancel.LEGACY_BINDING
 ConsolePortForeverDB.managedFields['A/controller'].value.keys.PAD2=Addon.CircleCancel.LEGACY_BINDING
@@ -126,7 +126,7 @@ assert(C.Equal(before,snapshot()) and writes==initialWrites,'migration review ch
 choose(1) flush()
 while shown.name=='CPF_FIELD_REVIEW' do choose(1) flush() end
 assert(shown.name=='CPF_PLAN_APPLY') choose(1) flush()
-assert(record.appliedRevision==19 and banks[2].PAD2==Addon.CircleCancel.BINDING,'native binding migration did not commit')
+assert(record.appliedRevision==20 and banks[2].PAD2==Addon.CircleCancel.BINDING,'native binding migration did not commit')
 before.banks[2].PAD2=Addon.CircleCancel.BINDING
 assert(C.Equal(before,snapshot()) and GetNumMacros()==1 and writes==initialWrites+2,'native binding migration changed macros/other configuration or unsafely saved bindings')
 TEST_SUCCESS=true

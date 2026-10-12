@@ -69,6 +69,8 @@ bytes before those notices. Current routine release commands are documented in
 as evidence. Historical “current” headings and NOT RUN cases do not override
 later scoped acceptance.
 
-[Circle silent failure, native binding and automatic logs](CIRCLE-NATIVE-BINDING-2026-10-12.md) — candidate.33 prepared; candidate.32 accepted installation did not interrupt casting.
+[Circle silent failure, native binding and automatic logs](CIRCLE-NATIVE-BINDING-2026-10-12.md) — candidate.33 installed; direct binding migration was deferred.
+
+[Circle macro format comparison](CIRCLE-MACRO-FORMAT-2026-10-12.md) — candidate.34 repair of formatting-only resource mismatches; no Retail acceptance claim.
 
 [Circle protected-action report and automatic review](CIRCLE-BLOCKED-ACTION-2026-10-12.md) — candidate.32 installed; source/delivery proof is separate from pending Retail acceptance.

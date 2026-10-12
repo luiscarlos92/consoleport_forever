@@ -1,0 +1,21 @@
+{
+  "reportedVersion": "2.0.0-candidate.33",
+  "userObservation": "Same behaviour: menus close, no error, casts are not interrupted.",
+  "evidenceType": "Read-only persisted state and native macro cache, not a live engine snapshot",
+  "appliedRevision": 19,
+  "baseBinding": "CLICK ConsolePortForeverCircleCancel:LeftButton",
+  "featureStatus": "pending",
+  "featureReason": "legacy click retained pending reviewed native MACRO migration: Circle macro manually edited; route disabled",
+  "deferredMacroReason": "Circle macro manually edited; no overwrite",
+  "managedMacroRevision": 18,
+  "managedBody": "/stopmacro [mod]\n/stopcasting\n/stopspelltarget\n/cleartarget",
+  "nativeCacheCommandsMatch": true,
+  "nativeCacheRecordLineEndings": "CRLF",
+  "savedSessionSeconds": 7.39,
+  "savedSessionNativeCalls": {},
+  "APIResourceBodyDifference": "Unknown: candidate33 did not record the API body's format",
+  "inference": "Formatting is a plausible reason for the strict identity failure; native MACRO binding was not active in this persisted session",
+  "repairScope": "Compare only exact owned commands allowing CRLF and terminal LF blank lines; preserve native bytes and genuine edits",
+  "primaryResearch": "https://github.com/tg123/myslot/blob/42b9e4de0a95e471c5b7b6fab8a6b59af58f0e07/Myslot.lua#L1168",
+  "privacy": "Account/GUID identifiers and unrelated bindings omitted"
+}

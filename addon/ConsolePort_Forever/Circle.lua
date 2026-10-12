@@ -3,7 +3,7 @@ local Circle={NAME='ConsolePortForeverCircleCancel',MACRO_NAME='CPF Circle'}
 Addon.CircleCancel=Circle
 Circle.LEGACY_BINDING='CLICK '..Circle.NAME..':LeftButton'
 Circle.BINDING='MACRO '..Circle.MACRO_NAME
--- A direct native secure click, never Escape or an insecure /run callback.
+-- Native saved macro dispatch, never Escape or an insecure /run callback.
 -- Retail exposes no qualified first-success result branch to addon snippets.
 -- This deliberately cancels all three states; it does not claim exact parity.
 Circle.MACRO='/stopmacro [mod]\n/stopcasting\n/stopspelltarget\n/cleartarget'
@@ -18,17 +18,25 @@ local function MacroLimits(api)
 end
 local function MacroState(api)
     local account,character=MacroLimits(api)
-    local found,index
+    local found,index,format
     -- Scan both banks: name dispatch must never select a character duplicate.
     for slot=1,account+character do
         local name,_,body=api.GetMacroInfo(slot)
         assert(not api.issecretvalue or (not api.issecretvalue(name) and not api.issecretvalue(body)),'unreadable native macro')
         if name==Circle.MACRO_NAME then
             assert(not found and slot<=account,'Circle macro name collision; no overwrite')
-            found,index={name=name,body=body},slot
+            -- Native cache/editor round trips may add CRLF or terminal blank
+            -- lines. Canonicalize only the exact four commands we own; never
+            -- trim spaces, rearrange commands or rewrite the native macro.
+            local canonical=type(body)=='string' and body:gsub('\r\n','\n'):gsub('\n+$','') or body
+            format={length=type(body)=='string' and #body or 0,
+                crlf=type(body)=='string' and select(2,body:gsub('\r\n','')) or 0,
+                terminalNewlines=type(body)=='string' and #(body:gsub('\r\n','\n'):match('\n+$') or '') or 0,
+                expectedCommands=canonical==Circle.MACRO}
+            found,index={name=name,body=canonical==Circle.MACRO and Circle.MACRO or body},slot
         end
     end
-    return found,index
+    return found,index,format
 end
 local MacroAdapter={}
 function Circle.NewMacroAdapter(api)
@@ -141,7 +149,8 @@ function Circle:Refresh(api,installed)
     local ready,reason=self.Probe(api)
     if ready then
         local adapter=self.NewMacroAdapter(api)
-        local ok,macro=pcall(adapter.read,adapter,{'state'})
+        local ok,macro,_,format=pcall(adapter.read,adapter,{'state'})
+        self:GetLog().resource=ok and (format or {missing=true}) or {unreadable=true}
         ready=ok and Addon.Core.Equal(macro,{name=self.MACRO_NAME,body=self.MACRO})
         reason=ready and 'native MACRO resource ready; effective engine dispatch is logged, not certified' or 'Circle saved macro missing/changed/unreadable; no automatic repair'
     end
@@ -177,7 +186,8 @@ function Circle:Record(api,event)
     local row={sequence=log.sequence,event=event,time=Observe(api,'GetTime'),
         saved=Observe(api,'GetBindingAction','PAD2'),effective=Observe(api,'GetBindingAction','PAD2',true),
         shift=Observe(api,'IsShiftKeyDown'),ctrl=Observe(api,'IsControlKeyDown'),alt=Observe(api,'IsAltKeyDown'),
-        useKeyDown=Observe(api,'GetCVar','ActionButtonUseKeyDown'),calls=Addon.Core.Copy(log.calls)}
+        useKeyDown=Observe(api,'GetCVar','ActionButtonUseKeyDown'),calls=Addon.Core.Copy(log.calls),
+        resource=Addon.Core.Copy(log.resource or {})}
     if event=='refresh' and log.lastRefresh then
         local a,b=Addon.Core.Copy(row),Addon.Core.Copy(log.lastRefresh)
         a.sequence,a.time=nil,nil b.sequence,b.time=nil,nil

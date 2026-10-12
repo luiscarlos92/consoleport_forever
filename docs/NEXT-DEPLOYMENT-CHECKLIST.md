@@ -1,23 +1,24 @@
 # Pending deployment and cumulative acceptance
 
-Status: candidate.32 installed October 12, 2026 at 15:08:29 Toronto.
-The user explicitly authorized Forever-only delivery while WoW ran. This authority
-is fulfilled; future installs need new current permission. Independent verification
-preserved WTF, other addons, topology and all 22,504 prior backup files. No game
+Status: candidate.33 installed October 12, 2026 at 16:33:01 Toronto.
+Standing user permission authorizes qualified Forever updates while playing unless
+explicitly prohibited. Independent verification preserved installer-start WTF,
+other addons, topology and all 22,873 prior backup files. No game
 input or WTF writes; user owns reload.
-[Installation](../evidence/delivery/live-install-candidate32.json),
-[readback](../evidence/delivery/candidate32-independent-readback.json).
+[Installation](../evidence/delivery/live-install-candidate33.json),
+[readback](../evidence/delivery/candidate33-independent-readback.json).
 
-## Candidate.33 preparation
+## Candidate.34 preparation
 
-Candidate.32 review succeeded without a protected popup, but casting remains
-uninterrupted. Prepare/review direct native MACRO binding for the managed legacy
-Circle and verify automatic bounded logs. Standing permission allows qualified
+Candidate.33 review committed revision19, but a changed-resource deferral retained
+the legacy CLICK binding. Casting remains uninterrupted. Prepare/review the
+formatting-aware resource comparison and owned native migration; verify automatic
+bounded format/cast/native-call logs. Standing permission allows qualified
 Forever deployment while playing unless explicitly prohibited. After user reload,
-automatic revision19 review must preserve the existing macro and change only the
+automatic revision20 review must preserve the existing macro and change only the
 reviewed Circle binding; native menus/rings/modified actions retain priority.
 Read persisted session logs after normal reload/logout; do not ask for diagnose.
-[Follow-up](reference/CIRCLE-NATIVE-BINDING-2026-10-12.md).
+[Follow-up](reference/CIRCLE-MACRO-FORMAT-2026-10-12.md).
 
 ## Installed candidate.32 acceptance
 

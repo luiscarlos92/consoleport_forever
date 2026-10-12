@@ -22,7 +22,9 @@ edits remain authoritative; the reference is a preset, not a live engine dump.
 | Square | PAD3 | INTERACTTARGET |
 | Triangle | PAD4 | TURNORACTION |
 
-Candidate.33 review offers native MACRO binding for an empty or owned legacy Circle.
+Candidate.34 review offers native MACRO binding for an empty or owned legacy Circle.
+Resource identity tolerates CRLF and final LF blank lines only when the exact
+owned commands match. Native macro bytes are never rewritten for normalization.
 The engine owns its key edge; native dispatch timing awaits live acceptance.
 The unchanged body will stop casting/channeling,
 cancel ground placement and clear the hard target together. It never invokes

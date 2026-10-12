@@ -2,21 +2,23 @@
 
 Status: maintained
 Reviewed: 2026-10-12
-Evidence: [candidate.32 install](../evidence/delivery/live-install-candidate32.json),
-[independent readback](../evidence/delivery/candidate32-independent-readback.json),
+Evidence: [candidate.33 install](../evidence/delivery/live-install-candidate33.json),
+[independent readback](../evidence/delivery/candidate33-independent-readback.json),
 [user acceptance](../evidence/forever-ui/candidate30-live-acceptance.json).
 
 ## Installed checkpoint
 
-Candidate `2.0.0-candidate.32` was installed October 12, 2026 at 15:08:29 Toronto
-from tested/pushed source `dce5c5016344fbc8df1e72d98063f898cae294a3`.
-The user explicitly authorized this Forever-only update while WoW was running.
+Candidate `2.0.0-candidate.33` was installed October 12, 2026 at 16:33:01 Toronto
+from tested/pushed source `6797d0edbec48d8bc8247d37ddbbf3c73415b9f6`.
+Standing user permission authorizes qualified Forever updates while playing
+unless explicitly prohibited; it remains active until revoked.
 Independent readback verifies 59 files, 2,617 unselected addon files and 308 WTF
-files unchanged, 42 links/root anchors preserved and 22,504 prior backup files
-unchanged. Candidate.31 code and current configuration have a new verified backup.
-[Installation](../evidence/delivery/live-install-candidate32.json),
-[independent readback](../evidence/delivery/candidate32-independent-readback.json).
-This authorization is fulfilled and grants no later installation or game input.
+files unchanged from installer start, 42 links/root anchors preserved and 22,873
+prior backup files unchanged. Candidate.32 code and current configuration have a
+new verified backup. Game writes between preflight and installer start were
+captured and preserved. No game input or direct WTF writes occurred.
+[Installation](../evidence/delivery/live-install-candidate33.json),
+[independent readback](../evidence/delivery/candidate33-independent-readback.json).
 
 Candidate.32/revision 18 replaces forbidden RunMacroText dispatch with native
 saved-macro RunMacro and preserves inherited OnClick. The automatic login review
@@ -28,14 +30,19 @@ including 328 Circle assertions. Retail repair acceptance remains user-owned.
 [Investigation](reference/CIRCLE-BLOCKED-ACTION-2026-10-12.md),
 [fresh CI](../evidence/test-results/candidate32-fresh-ci.json).
 
-## Candidate.32 silent failure and prepared candidate.33
+## Candidate.33 migration deferred and prepared candidate.34
 
-The user reports successful review/install with no protected popup, but Circle
-still does not stop casting. Saved evidence confirms revision18 and the macro
-resource committed. Candidate.33/revision19 proposes direct native MACRO binding
-for the owned legacy Circle, with no helper dependency, plus automatic bounded
-logs retaining four sessions per GUID. Cause and live repair remain unconfirmed.
-[Investigation](reference/CIRCLE-NATIVE-BINDING-2026-10-12.md).
+The user reports no error but continued lack of interruption. Saved revision19
+retains legacy CLICK with a macro-edited resource deferral, so the direct native
+binding was not active in that session. Cached commands match the intended body;
+exact API format remains unknown. Candidate.34/revision20 tolerates CRLF/final LF
+only for identical commands, preserves native bytes and restores reviewed owned
+migration. Automatic format/cast/native-call logs require no diagnose command.
+Cause and Retail interruption remain unconfirmed.
+[Investigation](reference/CIRCLE-MACRO-FORMAT-2026-10-12.md).
+The full candidate.34 gate passed 72 runtime checks and 66 tooling tests, with
+328 retained legacy Circle assertions and 94 native binding/log assertions.
+[Qualification](../evidence/test-results/candidate34-circle-format-qualification.json).
 The user's standing permission authorizes qualified updates while playing unless
 explicitly prohibited; it supersedes one-off authorization expiry.
 
@@ -72,7 +79,7 @@ These are scoped observations; later changes still require regression gates.
 
 ## Current execution boundaries
 
-- Store schema 3; installed configuration revision 18, prepared revision 19.
+- Store schema 3; installed configuration revision 19, prepared revision 20.
 - Native ConsolePort input recovery enabled. Full custom modes/UI takeover and
   hidden-control replacement remain suspended.
 - Temporary native-family routing uses L2+R2, preserving ordinary banks.

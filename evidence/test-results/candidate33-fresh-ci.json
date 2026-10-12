@@ -1,0 +1,9 @@
+{
+  "sourceCommit": "6797d0edbec48d8bc8247d37ddbbf3c73415b9f6",
+  "runID": 38304655183,
+  "conclusion": "success",
+  "runtimeChecks": 72,
+  "toolingChecks": 66,
+  "exactInventoriesMatchRetainedReports": true,
+  "limit": "Offline CI does not certify Retail dispatch, timing or taint"
+}

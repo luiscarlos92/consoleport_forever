@@ -17,6 +17,30 @@ proposal.keys.PAD2=Circle.LEGACY_BINDING
 verify(C.Equal(old,proposal),'migration altered other native/manual bindings')
 verify(not select(2,Circle.Proposal(old,false)),'unowned legacy click was migrated')
 
+-- Model native post-reload body formatting, which was absent from the original
+-- accepted-record fixture. Readback equality must tolerate only line endings
+-- and final empty lines, without a native edit/delete/create or lost user text.
+local macroAdapter=assert(Circle.NewMacroAdapter(circleApi))
+local bodyBefore=macros[3].body
+local createsBefore,deletesBefore=macroCreates,macroDeletes
+for _,body in ipairs({Circle.MACRO, Circle.MACRO..'\n', Circle.MACRO..'\n\n',
+    Circle.MACRO:gsub('\n','\r\n'), ((Circle.MACRO..'\n'):gsub('\n','\r\n'))}) do
+    macros[3].body=body
+    local observed,index,format=macroAdapter:read({'state'})
+    verify(observed.body==Circle.MACRO and index==3 and format.expectedCommands,'native line endings misclassified as manual macro edit')
+    verify(macroAdapter:Proposal() and macroAdapter:write({'state'},observed),'equivalent native macro cannot be reused/read back')
+    verify(macros[3].body==body and macroCreates==createsBefore and macroDeletes==deletesBefore,'normalization rewrote native macro bytes')
+end
+for _,body in ipairs({' '..Circle.MACRO, Circle.MACRO..' ', Circle.MACRO..'\n/say edited',
+    Circle.MACRO:gsub('/stopcasting','/say casting'), Circle.MACRO:gsub('\n','\r'),
+    Circle.MACRO:gsub('/stopmacro %[mod%]\n',''), (Circle.MACRO:gsub('\n/cleartarget',''))}) do
+    macros[3].body=body
+    local observed=macroAdapter:read({'state'})
+    verify(observed.body==body and not macroAdapter:Proposal(),'actual manual macro edit normalized/accepted')
+    verify(not macroAdapter:write({'state'},{name=Circle.MACRO_NAME,body=Circle.MACRO}) and not macroAdapter:write({'state'},nil),'manual macro edit overwritten/deleted')
+end
+macros[3].body=bodyBefore
+
 -- Native OnNewBindings mirrors the real saved command as a binding, not a test
 -- shortcut claiming the CPF frame directly. Formatter is captured native code.
 db.Gamepad={Index={Modifier={Blocked={}}}}
@@ -105,6 +129,21 @@ secretApi.GetTime=function() return secret end
 Circle:Record(secretApi,'secret-test')
 local row=log.rows[#log.rows]
 verify(row.saved=='unknown' and row.effective=='unknown' and row.shift=='unknown' and row.time=='unknown','logger disclosed secret values')
+macros[3].body=Circle.MACRO..'\n'
+Circle:Refresh(circleApi,true)
+verify(log.resource.length==#Circle.MACRO+1 and log.resource.terminalNewlines==1 and log.resource.expectedCommands,'automatic native macro format evidence missing')
+verify(Addon.record.lastRuntimeDiagnostics.circle.resource.terminalNewlines==1,'native macro format evidence not automatically persisted')
+local hiddenBody={} local hiddenApi=C.Copy(circleApi)
+hiddenApi.GetMacroInfo=function(slot) if slot==3 then return Circle.MACRO_NAME,134400,hiddenBody end end
+hiddenApi.issecretvalue=function(value) return value==hiddenBody end
+Circle:Refresh(hiddenApi,true)
+verify(log.resource.unreadable and log.resource.length==nil,'secret macro body formatted/disclosed')
+macros[3].body=bodyBefore Circle:Refresh(circleApi,true)
+local rowsBefore=#log.rows
+macros[3].body=bodyBefore..'\n' Circle:Refresh(circleApi,true)
+verify(#log.rows==rowsBefore+1 and log.rows[#log.rows].resource.terminalNewlines==1,'format-only resource refresh was deduplicated')
+verify(Addon.record.circleLogSessions[#Addon.record.circleLogSessions].observations.resource.terminalNewlines==1,'format-only resource refresh absent from retained session')
+macros[3].body=bodyBefore Circle:Refresh(circleApi,true)
 seq=log.sequence Circle:OnLogEvent(secretApi,'UNIT_SPELLCAST_START',secret)
 verify(log.sequence==seq,'secret unit inferred player')
 for i=1,200 do Circle:OnLogEvent(circleApi,'MODIFIER_STATE_CHANGED') end

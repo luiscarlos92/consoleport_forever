@@ -1,0 +1,15 @@
+{
+  "at": "2026-10-12T21:07:00.771Z",
+  "runtimeChecks": 72,
+  "toolingChecks": 66,
+  "productFiles": 62,
+  "toolingFiles": 130,
+  "currentInventoriesVerified": true,
+  "legacyCircleAssertions": 328,
+  "nativeBindingLogAssertions": 94,
+  "dependencyUpdates": [],
+  "establishedDefect": "Strict body equality rejects identical commands after line ending/final LF formatting; owned migration is deferred",
+  "liveEvidenceLimit": "Candidate33 persisted resource deferral and cache command equality are established; exact API body difference remains unknown",
+  "regressionProof": "Strict-comparison and dropped format-log negative controls rejected; actual startup revision19-to20 review preserves final-LF macro bytes",
+  "limit": "Native C formatting/dispatch, secure taint, hardware and live casting remain outside offline certification"
+}

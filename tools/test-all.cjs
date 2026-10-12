@@ -1258,7 +1258,7 @@ check('T70.automatic-startup-Circle-review-preserves-accepted-configuration', ()
   const fixture='SESSION_STATE=('+bootstrapState+').installed\n'+bootstrapPrelude+read('tests/harness/startup_circle_review.lua');
   execute(fixture,'automatic-Circle-update-review');
   let rejected=false;
-  try {execute(fixture.replace('Addon.CONFIG_REVISION=19','Addon.CONFIG_REVISION=18'),'old-revision-no-update');}
+  try {execute(fixture.replace('Addon.CONFIG_REVISION=20','Addon.CONFIG_REVISION=19'),'old-revision-no-update');}
   catch(error) {rejected=String(error).includes('new Circle update does not have a new review revision');}
   if(!rejected) throw Error('old revision startup suppression was not rejected');
 });
@@ -1273,6 +1273,8 @@ check('T71.native-Circle-macro-binding-row-ownership-and-automatic-logs', () => 
   for(const [from,to,message] of [
     ["Circle.BINDING='MACRO '..Circle.MACRO_NAME","Circle.BINDING=Circle.LEGACY_BINDING",'Circle still routes through addon button'],
     ['legacyOwned and proposed.keys.PAD2==Circle.LEGACY_BINDING','false','reviewed legacy click did not migrate'],
+    ["body=canonical==Circle.MACRO and Circle.MACRO or body","body=body",'native line endings misclassified as manual macro edit'],
+    ['resource=Addon.Core.Copy(log.resource or {})','resource={}','format-only resource refresh was deduplicated'],
     ['if ok then return Public(api,value) end',"if ok then return Public(api,value) or 'unavailable' end",'false modifier became unavailable'],
     ['if #log.rows>80 then','if false then','automatic log is unbounded'],
     ['circle=Addon.Core.Copy(self.circle or {}),','', 'native call log not persisted automatically']

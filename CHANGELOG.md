@@ -9,7 +9,19 @@ Dates below use America/Toronto. This is a curated change index, not invented
 release tags or blanket gameplay certification. Detailed receipts own exact
 source/artifact/file identities. Prepared, installed and accepted are separate.
 
-## Prepared native Circle binding and automatic evidence — October 12, 2026
+## Prepared Circle resource comparison repair — October 12, 2026
+
+Candidate.33 installed successfully, but saved revision19 retains the old CLICK
+binding with a macro-edited deferral. The direct native route was not active in
+that session. Candidate.34/revision20 reuses identical commands across CRLF/final
+LF formatting without editing native macro bytes and adds automatic body-format
+evidence. Genuine edits remain preserved; automatic review returns. Retail cast
+interruption is still unconfirmed.
+[Investigation](docs/reference/CIRCLE-MACRO-FORMAT-2026-10-12.md).
+Full qualification passed 72 runtime checks and 66 tooling tests, with 94 native
+binding/log assertions and 328 retained legacy assertions.
+
+## Native Circle binding and automatic evidence deployed — October 12, 2026
 
 Candidate.32 installed/applied without errors but did not stop casting. Candidate.33
 /revision19 proposes direct native MACRO binding for an owned legacy Circle,
@@ -17,6 +29,11 @@ reuses the saved resource and adds automatic bounded logs across four sessions p
 GUID. Native input/UI/ring ownership and artwork remain. No live repair claim.
 Standing permission now authorizes qualified updates while playing unless explicitly
 prohibited. [Investigation](docs/reference/CIRCLE-NATIVE-BINDING-2026-10-12.md).
+Candidate.33 installed at 16:33:01 Toronto from source `6797d0edbec48d8bc8247d37ddbbf3c73415b9f6`.
+Independent readback preserved 2,617 other addon files, 308 installer-start WTF
+files, 42 links and 22,873 prior backup files. Game writes between preflight and
+installer start were captured and preserved. [Receipt](evidence/delivery/live-install-candidate33.json),
+[readback](evidence/delivery/candidate33-independent-readback.json).
 
 ## Circle regression repair deployed — October 12, 2026
 

@@ -1,0 +1,279 @@
+{
+  "date": "2026-10-11",
+  "timezone": "America/Toronto",
+  "baseCommit": "99d63ef4a04fc7bec04701087e1aeb7b74a9db78",
+  "authorization": "User: I approve all, proceed with restructure",
+  "snapshots": [
+    {
+      "source": "AGENTS.md",
+      "snapshot": "docs/archive/ai-native-2026-10-11/AGENTS.pre-restructure.txt",
+      "bytes": 70461,
+      "sha256": "c972454de479dc0131a370dfb1ee77349e9f8e70e5c3c7730c1dc7969c7dfabd"
+    },
+    {
+      "source": "README.md",
+      "snapshot": "docs/archive/ai-native-2026-10-11/README.pre-restructure.md",
+      "bytes": 4003,
+      "sha256": "ed40665b287e2c0e8ee74a560d8d80f681e34fa7349ca09827c10bc7614053b8"
+    },
+    {
+      "source": "docs/MASTER-PLAN.md",
+      "snapshot": "docs/archive/ai-native-2026-10-11/MASTER-PLAN.pre-restructure.md",
+      "bytes": 624261,
+      "sha256": "5dde2ed116ebafe7f3ddb69bfff4feb51ede980f4cccc17ada8be730dd503771"
+    },
+    {
+      "source": "docs/IMPLEMENTATION-STATUS.md",
+      "snapshot": "docs/archive/ai-native-2026-10-11/IMPLEMENTATION-STATUS.pre-restructure.md",
+      "bytes": 150596,
+      "sha256": "67b541db147e887da3fd8e80e7e29e52ee1f0da3f3ff8d80e2d61bcda1170d85"
+    },
+    {
+      "source": "docs/INSTALLATION.md",
+      "snapshot": "docs/archive/ai-native-2026-10-11/INSTALLATION.pre-restructure.md",
+      "bytes": 10613,
+      "sha256": "59c281b7a8ef81c9102a7d00c57333adf5cb61aab7c129c967e7959871b8a411"
+    },
+    {
+      "source": "docs/DEPENDENCY-WORKFLOW.md",
+      "snapshot": "docs/archive/ai-native-2026-10-11/DEPENDENCY-WORKFLOW.pre-restructure.md",
+      "bytes": 9993,
+      "sha256": "19ed769a8e23a8c5bcf7b29359b965ceae507f6c2c7a288861c9cae31691ff74"
+    },
+    {
+      "source": "docs/DELIVERY.md",
+      "snapshot": "docs/archive/ai-native-2026-10-11/DELIVERY.pre-restructure.md",
+      "bytes": 9327,
+      "sha256": "96b70ab058bafd9a1d78cda27cdb3eeb6f2c11ca5ae3a0ad0cfd8059d30370c8"
+    },
+    {
+      "source": "docs/ACCEPTANCE.md",
+      "snapshot": "docs/archive/ai-native-2026-10-11/ACCEPTANCE.pre-restructure.md",
+      "bytes": 6264,
+      "sha256": "3aa6c999c762a854e2cc8b341814682b62574d43952e5cd89289d53263c2d964"
+    },
+    {
+      "source": "docs/MANUAL-TEST-CASES.md",
+      "snapshot": "docs/archive/ai-native-2026-10-11/MANUAL-TEST-CASES.pre-restructure.md",
+      "bytes": 52336,
+      "sha256": "6360386c4e074e3eef960cb057a09ff07652fbbd58e9e4a6c220ef0ae831ca4e"
+    }
+  ],
+  "preservedTreesBefore": {
+    "addon": {
+      "fileCount": 61,
+      "aggregateSHA256": "6600fff6f26d459937dd0d8afbd4847f78351ec9b26eb72786cc691f1f198f09"
+    },
+    "reference": {
+      "fileCount": 3964,
+      "aggregateSHA256": "08b0fa5a4a38c3e59d343da6d38f4016c75f20e4014a0bec69695837a831ab81"
+    },
+    "tests/fixtures": {
+      "fileCount": 12,
+      "aggregateSHA256": "d9ff2b015833d21bb8af8c57725169aed9ae56e3aeb0f9365c84d71425a42bf1"
+    },
+    "fallbacks": {
+      "fileCount": 4,
+      "aggregateSHA256": "ac7995b267446495aad02b7421e9e843c483e0e5bfa4c26b522592f0c8acbeaf"
+    },
+    "evidence/native": {
+      "fileCount": 65,
+      "aggregateSHA256": "9920c0ff33adfe784ac84af15092eaa2853b4afa9ad45d12fcafeca10473c071"
+    },
+    "evidence/consoleport-contracts": {
+      "fileCount": 61,
+      "aggregateSHA256": "31e2fee577d5196037383cd20d93324dc60a23114ba6fc02950194ea0086cb55"
+    },
+    "archive/onedrive-legacy": {
+      "fileCount": 6745,
+      "aggregateSHA256": "179917f097180168e34e0902ead8799132379541679ab09fffcc0569215e91fb"
+    }
+  },
+  "scope": "Documentation, three repository-local skills, scoped instructions and documentation checker/CI; no runtime or deployment changes.",
+  "preservedTreesAfter": {
+    "addon": {
+      "fileCount": 61,
+      "aggregateSHA256": "6600fff6f26d459937dd0d8afbd4847f78351ec9b26eb72786cc691f1f198f09"
+    },
+    "reference": {
+      "fileCount": 3964,
+      "aggregateSHA256": "08b0fa5a4a38c3e59d343da6d38f4016c75f20e4014a0bec69695837a831ab81"
+    },
+    "tests/fixtures": {
+      "fileCount": 12,
+      "aggregateSHA256": "d9ff2b015833d21bb8af8c57725169aed9ae56e3aeb0f9365c84d71425a42bf1"
+    },
+    "fallbacks": {
+      "fileCount": 4,
+      "aggregateSHA256": "ac7995b267446495aad02b7421e9e843c483e0e5bfa4c26b522592f0c8acbeaf"
+    },
+    "evidence/native": {
+      "fileCount": 65,
+      "aggregateSHA256": "9920c0ff33adfe784ac84af15092eaa2853b4afa9ad45d12fcafeca10473c071"
+    },
+    "evidence/consoleport-contracts": {
+      "fileCount": 61,
+      "aggregateSHA256": "31e2fee577d5196037383cd20d93324dc60a23114ba6fc02950194ea0086cb55"
+    },
+    "archive/onedrive-legacy": {
+      "fileCount": 6745,
+      "aggregateSHA256": "179917f097180168e34e0902ead8799132379541679ab09fffcc0569215e91fb"
+    }
+  },
+  "snapshotsVerified": true,
+  "preservedTreesUnchanged": true,
+  "completedAtUTC": "2026-10-12T00:11:33.946638+00:00",
+  "outcome": "complete in local checkout; not committed/pushed or deployed",
+  "retainedProcedureBodiesExact": true,
+  "validation": {
+    "runtimeSourceSuitesPassed": 67,
+    "toolingTestsPassed": 45,
+    "newCheckerTestsIncluded": 6,
+    "maintainedFilesChecked": 30,
+    "documentationErrors": 0,
+    "skillCreatorManifestsPassed": 3,
+    "skillValidatorSupport": "Standard Skill Creator quick_validate with isolated PyYAML 6.0.3 under ignored repo scratch; no global/project dependency added.",
+    "fullEntryPoint": "tools/Test-All.ps1",
+    "sourceInventoriesCurrent": true,
+    "whitespaceCheck": "passed with existing CR-at-EOL policy",
+    "limitations": "Offline logic/native-source/guarded simulations only; no Retail hardware, taint, rendering or game persistence proof."
+  },
+  "reports": {
+    "runtime": "evidence/test-results/ai-native-restructure-runtime-2026-10-11.json",
+    "tooling": "evidence/test-results/ai-native-restructure-tooling-2026-10-11.json"
+  },
+  "dependencyCheck": {
+    "record": "evidence/dependencies/stable-recheck.json",
+    "officialPackages": 9,
+    "allCurrent": true,
+    "updates": [],
+    "lockUnchanged": true
+  },
+  "createdFiles": [
+    ".agents/skills/forever-dependency-qualification/SKILL.md",
+    ".agents/skills/forever-regression-investigation/SKILL.md",
+    ".agents/skills/forever-scoped-release/SKILL.md",
+    "CHANGELOG.md",
+    "docs/ARCHITECTURE.md",
+    "docs/COMPATIBILITY.md",
+    "docs/CONTROLLER_SPEC.md",
+    "docs/DEVELOPMENT.md",
+    "docs/KNOWN_ISSUES.md",
+    "docs/REQUIREMENTS.md",
+    "docs/STATE_MATRIX.md",
+    "docs/TESTING.md",
+    "docs/archive/ai-native-2026-10-11/ACCEPTANCE.pre-restructure.md",
+    "docs/archive/ai-native-2026-10-11/AGENTS.pre-restructure.txt",
+    "docs/archive/ai-native-2026-10-11/DELIVERY.pre-restructure.md",
+    "docs/archive/ai-native-2026-10-11/DEPENDENCY-WORKFLOW.pre-restructure.md",
+    "docs/archive/ai-native-2026-10-11/IMPLEMENTATION-STATUS.pre-restructure.md",
+    "docs/archive/ai-native-2026-10-11/INSTALLATION.pre-restructure.md",
+    "docs/archive/ai-native-2026-10-11/MANUAL-TEST-CASES.pre-restructure.md",
+    "docs/archive/ai-native-2026-10-11/MASTER-PLAN.pre-restructure.md",
+    "docs/archive/ai-native-2026-10-11/README.md",
+    "docs/archive/ai-native-2026-10-11/README.pre-restructure.md",
+    "docs/decisions/0001-repository-development-system.md",
+    "docs/decisions/0002-native-execution-and-proof.md",
+    "docs/decisions/0003-character-state-and-manual-edits.md",
+    "docs/decisions/0004-scoped-delivery.md",
+    "docs/decisions/0005-native-account-ping-ring.md",
+    "docs/decisions/0006-native-saved-layout-authority.md",
+    "docs/decisions/README.md",
+    "docs/plans/AI-NATIVE-RESTRUCTURE-2026-10-11.md",
+    "docs/plans/README.md",
+    "docs/reference/DEVELOPMENT-HISTORY.md",
+    "docs/reference/EVIDENCE.md",
+    "docs/reference/README.md",
+    "evidence/organization/2026-10-11/ai-native-restructure.json",
+    "evidence/test-results/ai-native-restructure-runtime-2026-10-11.json",
+    "evidence/test-results/ai-native-restructure-tooling-2026-10-11.json",
+    "tests/AGENTS.md",
+    "tests/test_documentation.py",
+    "tools/AGENTS.md",
+    "tools/check_documentation.py"
+  ],
+  "modifiedFiles": [
+    ".github/workflows/tests.yml",
+    "AGENTS.md",
+    "README.md",
+    "dependencies/sources.json",
+    "docs/ACCEPTANCE.md",
+    "docs/DELIVERY.md",
+    "docs/DEPENDENCY-WORKFLOW.md",
+    "docs/IMPLEMENTATION-STATUS.md",
+    "docs/INSTALLATION.md",
+    "docs/MANUAL-TEST-CASES.md",
+    "docs/MASTER-PLAN.md",
+    "evidence/dependencies/stable-recheck.json",
+    "tools/Test-All.ps1"
+  ],
+  "changedFileCount": 54,
+  "fileHashes": {
+    ".github/workflows/tests.yml": "e8e7af7c317ae0d8db4ce02d3e285d761eb8e497834ec4f35f76975946e63f03",
+    "AGENTS.md": "94dd7e5550158f857937e6716a536bb17c44b5bf9ed48d81f208de1af7b63e56",
+    "README.md": "aaca136347ecd6d1d9d3545ef792d29e5c5e412591537b52c0b7440d53714303",
+    "dependencies/sources.json": "03e8fb7ec6029f5b730899b0a680e45e55fb24c760095fcf49d269b7d1ac766a",
+    "docs/ACCEPTANCE.md": "da6a56e558c892141fd30df29793d61a04835e3740a71c9fe573b8479898da33",
+    "docs/DELIVERY.md": "22f7f307196f69ec9868bd3a4a22ac32d99966d6b01bc4b878d1970acd48d542",
+    "docs/DEPENDENCY-WORKFLOW.md": "f846483e53cea9823e4982a7d15a36fd8984f50c59d2ccdc4b3491d6c347443f",
+    "docs/IMPLEMENTATION-STATUS.md": "03fe1634b44a056e2844bbba39749ed9116a00c30a9414db3508643080285882",
+    "docs/INSTALLATION.md": "a00cbb5e6709a91c27641fe37d6d1562f25c443f08503fcb58d1d39cb43b7125",
+    "docs/MANUAL-TEST-CASES.md": "fbd01310ca0086d9d301f44356e048981b1e33893c9c02d3980d114d926137f4",
+    "docs/MASTER-PLAN.md": "553c26a07c24e2adb58fd72fa46255ed585a60cda49d111751ca5312bb214ea8",
+    "evidence/dependencies/stable-recheck.json": "e74a75001c75336e640359e0ef82569093561799298dafe268c5a53c9aba318d",
+    "tools/Test-All.ps1": "b4a488cf8805609bd6105d27fe26fdb9c203b2b2e6d8200ec9015cc4667c96d7",
+    ".agents/skills/forever-dependency-qualification/SKILL.md": "d7695e31d57e2fc7db6c1c030ac7093553fd27fbba0660b73b47111f2e21fd7e",
+    ".agents/skills/forever-regression-investigation/SKILL.md": "cbfe880ca220daf8a84d03ff40db089b5b9528d7023a5ab3fc7f77bcb2a87bdf",
+    ".agents/skills/forever-scoped-release/SKILL.md": "1d0505bc8d757e21bb5ed3299848192a7e36229f9715dddee962d67d25a2e637",
+    "CHANGELOG.md": "47a89ad271e75568d613946f4f4f9655c3c5251103a16a79ffcacd2ed10b594d",
+    "docs/ARCHITECTURE.md": "2b2e96646016f92fb4069b07af8a47a3f2ccd29ad1d15833e282dc1af9be5375",
+    "docs/COMPATIBILITY.md": "0c9857a8ea36d59aa1614c11e5d48fa88e947ecfab906717d90a19c462895035",
+    "docs/CONTROLLER_SPEC.md": "00161f0f0b150e7a1c6026b3af01f793c854669b97d3b913077092836a58c47f",
+    "docs/DEVELOPMENT.md": "d1a5cb6206f4859882e390fa3a77532b6829d7f000a5b96bd4a5288c6d15befc",
+    "docs/KNOWN_ISSUES.md": "174d50448314351b2bf88687209daf7b756211bf5af1efab1b3d9f11f21ffdad",
+    "docs/REQUIREMENTS.md": "2ee6b61ff32ead2de26974d64548d5eb58b04cf3fda718975330f2feb04c4f71",
+    "docs/STATE_MATRIX.md": "fc26860323b8ee576f39310cc2de384c0813e748a83d4c24317f2f390b06032d",
+    "docs/TESTING.md": "78670f5293e2367d98cb22ee1ad346843ff68d1ceace8f2ca70425e9b8758b61",
+    "docs/archive/ai-native-2026-10-11/ACCEPTANCE.pre-restructure.md": "3aa6c999c762a854e2cc8b341814682b62574d43952e5cd89289d53263c2d964",
+    "docs/archive/ai-native-2026-10-11/AGENTS.pre-restructure.txt": "c972454de479dc0131a370dfb1ee77349e9f8e70e5c3c7730c1dc7969c7dfabd",
+    "docs/archive/ai-native-2026-10-11/DELIVERY.pre-restructure.md": "96b70ab058bafd9a1d78cda27cdb3eeb6f2c11ca5ae3a0ad0cfd8059d30370c8",
+    "docs/archive/ai-native-2026-10-11/DEPENDENCY-WORKFLOW.pre-restructure.md": "19ed769a8e23a8c5bcf7b29359b965ceae507f6c2c7a288861c9cae31691ff74",
+    "docs/archive/ai-native-2026-10-11/IMPLEMENTATION-STATUS.pre-restructure.md": "67b541db147e887da3fd8e80e7e29e52ee1f0da3f3ff8d80e2d61bcda1170d85",
+    "docs/archive/ai-native-2026-10-11/INSTALLATION.pre-restructure.md": "59c281b7a8ef81c9102a7d00c57333adf5cb61aab7c129c967e7959871b8a411",
+    "docs/archive/ai-native-2026-10-11/MANUAL-TEST-CASES.pre-restructure.md": "6360386c4e074e3eef960cb057a09ff07652fbbd58e9e4a6c220ef0ae831ca4e",
+    "docs/archive/ai-native-2026-10-11/MASTER-PLAN.pre-restructure.md": "5dde2ed116ebafe7f3ddb69bfff4feb51ede980f4cccc17ada8be730dd503771",
+    "docs/archive/ai-native-2026-10-11/README.md": "3eb093bca2746bee9265e70993fd203cdde8195dc780a60dcfe3e0955ad23014",
+    "docs/archive/ai-native-2026-10-11/README.pre-restructure.md": "ed40665b287e2c0e8ee74a560d8d80f681e34fa7349ca09827c10bc7614053b8",
+    "docs/decisions/0001-repository-development-system.md": "abf6eb7ad2a3e62eed0b144c060d8f260fecfa57d2c0058f2a5d6e0892eb043a",
+    "docs/decisions/0002-native-execution-and-proof.md": "27c3c7abe71559c54be8d22d9ab3a38ca5873d85f9ef8042fbcec48e3fb453f3",
+    "docs/decisions/0003-character-state-and-manual-edits.md": "1fdebd28243a02a74fb3a80b1083dff4ed9fcf749355998004eef320096d541a",
+    "docs/decisions/0004-scoped-delivery.md": "6193fb0e0d8ea184efdd464c3dbf6f34459438cda3c2793041b1f2fb94f6b756",
+    "docs/decisions/0005-native-account-ping-ring.md": "2b8a9ef02aa3dbf6bd6762a7b18c6d8053ff58e82787fd1b224f5908d5998981",
+    "docs/decisions/0006-native-saved-layout-authority.md": "bc115e1991f45ba2f76eee87d3f868f36ea3865b64722b7002c29d83b02a35ae",
+    "docs/decisions/README.md": "4fa6dd7658d58eb7311b98c9f033528e0b325068ec49728736161d41cbcb3168",
+    "docs/plans/AI-NATIVE-RESTRUCTURE-2026-10-11.md": "ffbb79981d5644a9bd23e52b49887fd62bfbe3fbdc7d47ccb8a2ba293fa7c1ae",
+    "docs/plans/README.md": "0ccf1f8fc3de53d0a734fa7d3fe441e108f70a9cc721d71efa375936d4390ffa",
+    "docs/reference/DEVELOPMENT-HISTORY.md": "9d9a18d1dd854b36c915b6246069c9f22aa80f7c3713c6b0b3feb8e46190c3c3",
+    "docs/reference/EVIDENCE.md": "beec2eb0d0e804433ad6a8b202a34cbf94339e656574fb046dfd41b5462b1ff9",
+    "docs/reference/README.md": "0191bad0ba1095d00bc23f5415ce0f59f3ecdc7d17486486079b5760c2d4447a",
+    "evidence/test-results/ai-native-restructure-runtime-2026-10-11.json": "7a4aeb3509e647eb232d85638daae598e217e823278dc41fa9b1f317072860b0",
+    "evidence/test-results/ai-native-restructure-tooling-2026-10-11.json": "f2f3ee710e221a2b9c8579cfc6ffbf594c0abac1b9fd08ee29529fef0c215d5d",
+    "tests/AGENTS.md": "168bd1faf7b9a9049478d7bd4e6282d37ffa6bfe8a68ba3d1be38fb3598eeaad",
+    "tests/test_documentation.py": "f59ad0e71c0d09c9f143e7a52e17a92a6b41e7d85372d86b7ce337949515fecb",
+    "tools/AGENTS.md": "ea94026a591ee21d9ca1dfdb9416ae13ed523f466e99340db788a89a31b27296",
+    "tools/check_documentation.py": "bdc3a8adbe029f91bdb2c92fd97b4a2440d8716315cd4a65145bc528685132ec"
+  },
+  "ignoredWorkingOutputs": [
+    "scratch/test-results/latest.json",
+    "scratch/test-results/tooling-latest.json",
+    "scratch/skill-validator-deps",
+    "scratch/skill-validator-tmp"
+  ],
+  "runtimeChanges": false,
+  "productionActionsPerformed": false,
+  "remainingUncertainties": [
+    "K01 quest-object interaction effective binding/native target",
+    "K02 original Paladin action-loss writer",
+    "Broader Retail cases and explicitly gated/deferred features remain as documented."
+  ]
+}

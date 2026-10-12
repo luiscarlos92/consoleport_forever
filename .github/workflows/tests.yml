@@ -13,6 +13,8 @@ jobs:
         with:
           python-version: '3.14'
       - run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Check maintained documentation and repository skills
+        run: python -B tools/check_documentation.py
       - name: Verify exact pinned official archives (explicit network stage)
         run: python tools/verify_pinned_sources.py
       - run: ./tools/Test-All.ps1

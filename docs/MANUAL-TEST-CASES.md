@@ -1,3 +1,17 @@
+# Retained procedure and historical checkpoints
+
+Read [current status](IMPLEMENTATION-STATUS.md), [current requirements](REQUIREMENTS.md),
+[development rules](DEVELOPMENT.md) and [current cumulative cases](NEXT-DEPLOYMENT-CHECKLIST.md) first.
+The text below preserves earlier procedures and candidate-specific records.
+Its “current” headings, package counts, permissions and NOT RUN statements
+belong to their historical dates; they do not override current authority or
+scoped user acceptance. Old deployment/retirement authorization is fulfilled.
+Use current scoped tools and root AGENTS.md for new work.
+
+The [original exact bytes](archive/ai-native-2026-10-11/MANUAL-TEST-CASES.pre-restructure.md) are retained.
+
+---
+
 # Retail tests and results - installed candidate.20, revision 17
 
 ## Case 47 — power restoration and character-owned auras (candidate.20)

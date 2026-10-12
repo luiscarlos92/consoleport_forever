@@ -1,0 +1,717 @@
+{
+  "date": "2026-10-11",
+  "timezone": "America/Toronto",
+  "scope": "Documentation-only code/old-document reconciliation; no runtime, tools, tests, dependency or production changes.",
+  "baseCommit": "99d63ef4a04fc7bec04701087e1aeb7b74a9db78",
+  "productHashesBefore": {
+    "addon/ConsolePort_Forever/ActionRecovery.lua": "02c8108068501da27aabf56d4d15fca0ed37694a6e219b1295f208686271f828",
+    "addon/ConsolePort_Forever/Baseline.lua": "01e1179abcc30856a867748bd594fe9f442b23121cbc34f2af840f34afaf6457",
+    "addon/ConsolePort_Forever/BindingPolicy.lua": "32545c0d0d66683b4c9907db9be83bc0dcd9cf6e64f09fe09437dc03f0623afe",
+    "addon/ConsolePort_Forever/Bindings.lua": "faecc497f79d9d7437f87e809844fc7144ab722e33afd89245578461bc232a8f",
+    "addon/ConsolePort_Forever/Capability.lua": "72ba730d2f821aed9a1c20204d7e93d49698d2270a503495617400f72a76d077",
+    "addon/ConsolePort_Forever/Cinematic.lua": "6fbc8ee07ce8f986580615cdb2db9288d9b786f40a3024e32c4e70765bdb89dd",
+    "addon/ConsolePort_Forever/ClassActions.lua": "8db90609dde641f02acff81a5350094f87b45114be600b76d4f342619ccf1c67",
+    "addon/ConsolePort_Forever/ConsolePort_Forever.lua": "fb136f4e0d8cb6fe04ea9537baa116e94071478a0ef9a995ac33529cee3132fb",
+    "addon/ConsolePort_Forever/ConsolePort_Forever.toc": "6a214b5c06ca5a8fafb2bb1496a590a8c8df8c1c9a7ee9404342942b23f8d5ab",
+    "addon/ConsolePort_Forever/Coordinator.lua": "7ec5738efef6e56e1f172b9a4304126910b1aa79f1f3ae5100e68ad41a54e87e",
+    "addon/ConsolePort_Forever/Core.lua": "82d58af0dae095215454d86b85a351834a4c4bf21519f549904c56d504dad8f6",
+    "addon/ConsolePort_Forever/Diagnostics.lua": "88d064c0843ad5dba8f91cc9e55088e047c2eab2a9ec9be9d8dce7708e1a3b3e",
+    "addon/ConsolePort_Forever/HUDPresentation.lua": "ab21174061cf1bc67875443051451ca48a1929622221abdb621111cd0b906630",
+    "addon/ConsolePort_Forever/Layout.lua": "486f4267fe9c5ef217ec87e229ac1ced9a21ace92d579eb9d91f9c7b5e75fef3",
+    "addon/ConsolePort_Forever/ModePolicy.lua": "72ee64c6985d3fc288cce62b2351bf8254364e4f94dfba77fb34dcbc8fa739ba",
+    "addon/ConsolePort_Forever/Plan.lua": "654eadebfa115b3c480d555099609114f511561aaa558a05a5af2bcf6d1500af",
+    "addon/ConsolePort_Forever/Profile.lua": "e18af174f280801bcb410c34d2d1cbc6ba55653bcbb08d5d9d7ba9b99eab20e4",
+    "addon/ConsolePort_Forever/Prompt.lua": "976c8cab8db6b67d6e02e377e51f44148d139f8590159bc452cff5b0dd000d9b",
+    "addon/ConsolePort_Forever/Reference.lua": "eb0961ddb5afa76dc55b9d01a6663159d8c378cb5a628331a6d8264735a36d30",
+    "addon/ConsolePort_Forever/Runtime.lua": "51c97283b038e0a53dd62f3ec7a22a1db07ad49adf2b43de79e07a8a35a86016",
+    "addon/ConsolePort_Forever/RuntimeSetup.lua": "cfd1ea01062bb6e98d65ea68d9962859e4ac7a4987ea6398a174ba63784b1fdd",
+    "addon/ConsolePort_Forever/SavedEditModeReference.lua": "2b7febffaab0baa26abd10a9064e2aacb3fe2cce0620d70f65daa5fbd859a45c",
+    "addon/ConsolePort_Forever/SecureModes.lua": "032bd31b8bb620560f5f20ac81dc1156473702217d5845d5558e336a87a659b2",
+    "addon/ConsolePort_Forever/Skin.lua": "734a2f47d786d98f7d1acf421203dbc33f45aa04f727786ae652b5c6144dbdb5",
+    "addon/ConsolePort_Forever/Store.lua": "80ec4ac1f181d7e7da842bc02b1456d67d552d819959b61a08a7490b43f28fa1",
+    "addon/ConsolePort_Forever/TemporaryAccess.lua": "364f9ca8043f2ca6407baf95255949727c1034bf1420a5db94782a0c547f0247",
+    "addon/ConsolePort_Forever/TemporaryRouting.lua": "a31bb8af8454351efc309966648d3c29ecc58569ff1967f7a3c6c480c8de9555",
+    "addon/ConsolePort_Forever/Transactions.lua": "b5950dd8bafcaba5eb1ce6d27dc93f7a6178d7a6d0dbb2191f59f6ede25b245a",
+    "addon/ConsolePort_Forever/Adapters/BetterBags.lua": "b3b585023ce2a06dc9e1545d00c3ab15b7fa1558ba7d71878135013557c5bf3c",
+    "addon/ConsolePort_Forever/Adapters/BindingBanks.lua": "415ff7353efaa55645cb2b809fc89eaf58dcda7fd544de322edf96603a772724",
+    "addon/ConsolePort_Forever/Adapters/BindingState.lua": "ae63a75e4d55e4ad51966900b71dd8ec4d6e944cdb49da83e4553a4db21c050d",
+    "addon/ConsolePort_Forever/Adapters/ConsolePort.lua": "c2b03ceb1bb0b2e0cb834cf5a644fc4f0f5a9023329527f6f22bbbe9e6e3f3b0",
+    "addon/ConsolePort_Forever/Adapters/DynamicCam.lua": "1313a023223048955e06d11f053134c0bb298ee310ca06a915b306f8ce15e1d1",
+    "addon/ConsolePort_Forever/Adapters/EditMode.lua": "676c351c2148adcf0606c783fc02c26e41c0a0b0a80883670e200c610fbbe559",
+    "addon/ConsolePort_Forever/Adapters/FlatConfig.lua": "8a9c589d6b15b844ee6da75b066992aac8cb4a01074a5fd5d40ed4203a15cef9",
+    "addon/ConsolePort_Forever/Adapters/Integrations.lua": "a9ed4dbc92901a262dfa1dee533f4eb50d232c80d6a790697f17bcaa7e7a664d",
+    "addon/ConsolePort_Forever/Adapters/LiteMount.lua": "ac6a35a6b41cf681f2f83d654be82a5648637879d61f2fa53a1e530fa6b3d3ac",
+    "addon/ConsolePort_Forever/Adapters/NativeBindings.lua": "38f079727662edfe49f2fc5ec9b0fb8b272f68ca2ad0f4199d7f6b0400d9560a",
+    "addon/ConsolePort_Forever/Adapters/Rings.lua": "1a053d9853f214fb7c91efeebad65887b7de12551e35b9af35f3bffba578feff",
+    "addon/ConsolePort_Forever/Assets/ForeverInGame.blp": "9daccf7f192871a876ede143a14f4cc453a726ac271fc89d0e30a5610b5a673f",
+    "addon/ConsolePort_Forever/Assets/ForeverTargeting.blp": "f1cbdf024b1d397abe318dd9caaf67f6c0ab6c5406d03873a456aa48e7b76760",
+    "addon/ConsolePort_Forever/Rings/Discovery.lua": "04e6c8b1e26ae570fad970815b46fe1bfbba876cb1a1fc58345c9b9b9b957e4c",
+    "addon/ConsolePort_Forever/Rings/Selectors.lua": "32ac2e6a837a2f8008ab082e1d4ed991bb617528707d9b2102e8cac35e21b49d",
+    "addon/ConsolePort_Forever/Targeting/Ground.lua": "8703e0a7f5731845c43dd3e892a3682d42cde6e034a3658553319287886b7130",
+    "addon/ConsolePort_Forever/Targeting/Ping.lua": "0bb7a62c2014fe5dec59f39c465ff0d93132cca49f7a9c2cb3daedd33beef7c1",
+    "addon/ConsolePort_Forever/Targeting/Preferences.lua": "3f090e78c851c8aea049f24df970d224651ace6c02eaa78266140525f06b39eb",
+    "addon/ConsolePort_Forever/Targeting/Registry.lua": "8d2719c31db73844ab3c9205b8dc97ec7f41a21f3fca26e271fb43653adabd2b",
+    "addon/ConsolePort_Forever/UI/Contexts.lua": "0452cee7bd5337c4c0278eb87edccd178be473f53dd42c09c21f92bb6bf04b57",
+    "addon/ConsolePort_Forever/UI/EditModeReference.lua": "78315fd8e4404ca8b65d462e031d80216af7e678a4d3e59c34f133e8c31392d0",
+    "addon/ConsolePort_Forever/UI/FocusVisuals.lua": "faa24f4998fc8a0acdffcb9f0209af22c237880a58999cc1c3a44a69e3f1a832",
+    "addon/ConsolePort_Forever/UI/HiddenAccess.lua": "ecb395b7b08ba0490176c3b42eb68e566e3e92813fb32d3ac6e9cca7b077b1ca",
+    "addon/ConsolePort_Forever/UI/ImmersionProgress.lua": "e77e7a5951bef788d4a2bbad6fe0c44acbef1f1b527ade68f1382ed7c4d8c07f",
+    "addon/ConsolePort_Forever/UI/InputBridge.lua": "381638c8a568cf048f4abca00340a55b12de04ff3fe10f5b889f0177e6ab4922",
+    "addon/ConsolePort_Forever/UI/ItemHints.lua": "aec2c1eab3e992358af7e48f342e834e047c56be08c56a3d0b58c85acd65a815",
+    "addon/ConsolePort_Forever/UI/Map.lua": "33d7a5762ba2eae61bad42f0872ad13777c05fd14c96702c5778dad04bbb5059",
+    "addon/ConsolePort_Forever/UI/Ownership.lua": "0bb3b1c386073e63c377475b783ddc370b6daba1a2bc9cf4301e90ca92b1accd",
+    "addon/ConsolePort_Forever/UI/PartyLayout.lua": "a84175418653a72b581e063563f72237946c431c3c0f5cd8be852c05459705ed",
+    "addon/ConsolePort_Forever/UI/Proof.lua": "e55db9613704b8bca9b9161fc4a3246f01fdd4e5af6f5485d29d18555093410f",
+    "addon/ConsolePort_Forever/UI/Scroll.lua": "f8c81f1e7710a312e38d1f5fa15929250cee951d996715f55ceb8bec3a579d25",
+    "addon/ConsolePort_Forever/UI/Targeting.lua": "f6c6e6c6827c1073f53954e40658aa74c718139b1f20c8f4179d64ad6dc372b9",
+    "addon/ConsolePort_Forever/UI/Windows.lua": "2301f8c937c2f41d22a6698b3bbb2d63839c42dd6bd45fdbd9fdcbbcbf58eca7"
+  },
+  "documentHashesBefore": {
+    "docs/ACCEPTANCE.md": "da6a56e558c892141fd30df29793d61a04835e3740a71c9fe573b8479898da33",
+    "docs/ARCHITECTURE.md": "2b2e96646016f92fb4069b07af8a47a3f2ccd29ad1d15833e282dc1af9be5375",
+    "docs/CANDIDATE13-REPAIR-2026-10-08.md": "0f7ed909fe247640d34ffb49b680798141b1c3455d224ac3366979b8f5e23779",
+    "docs/CANDIDATE14-VISUALS-2026-10-08.md": "23ca4e0cc57bca3f7c8f31fb11edcc1e73d5ee2c5213fe02bc8162b3d858d205",
+    "docs/CANDIDATE15-REGRESSIONS-2026-10-08.md": "eab5784cc4e6188c45a3e3a1cce1f0b88b0af6375dcfb9c1b926ce77e7cb031b",
+    "docs/CANDIDATE16-NATIVE-VISUALS-2026-10-08.md": "d16a0d5fb2d341654d4e21260e64bf871bbd99c959cbd2e13cb8b301f98118df",
+    "docs/CANDIDATE17-COMPOSITION-2026-10-08.md": "ce247e7b52dfd8f46ebe462dc3121fd24ebb67390bdb3938ed27d32c5113d84e",
+    "docs/CANDIDATE18-ACTION-FEEDBACK-2026-10-08.md": "c833b8e2a3b5e253e367aabcfae6d6f7aa0a4d94c6798372a8d9f7bf5f540f96",
+    "docs/CANDIDATE19-PLAYER-STRIP-2026-10-08.md": "06f06ab05d99e1d1ca569559aac8aaeaf37b0f9985b40accd28cc55d0bd43a7b",
+    "docs/CANDIDATE20-AURA-RECOVERY-2026-10-08.md": "48664a68a68d20be95cb3ef3c34e070bd3400f954c27015374fd26c0ce1f9e42",
+    "docs/CANDIDATE21-PING-TARGETING-2026-10-09.md": "01891f898705042afb9ee963b54a314b6fc1fd7d7e173e8e3c416a4215283e15",
+    "docs/CANDIDATE22-TEMPORARY-ROUTING-2026-10-09.md": "ceb771a7ed2640e430d0a920979b7f3b89e325d1aaf391728b7867c81e75cffa",
+    "docs/CANDIDATE23-NATIVE-PING-2026-10-10.md": "71a8a5dc7aea0c9287b384b08ab73823bbf0c6c9e3f30a93626d9f62aecbddd1",
+    "docs/CANDIDATE24-PAIR-PING-2026-10-10.md": "4ec7446987f711f246ca155e9edf60a5b2431820235e9b0523422d6f9ad6882a",
+    "docs/CANDIDATE25-SILENT-PING-2026-10-10.md": "ca1fea8f958a057befe627c7a95e68f32ccd2dfb7d1c9faefc7eeff5e4f9af1c",
+    "docs/CANDIDATE27-HOLD-RING-AND-ACTION-GUARD-2026-10-10.md": "a539ef2237f8a4debc4349c3a5fcfa6a7f51240c9c67b140e50c43a8186ec875",
+    "docs/CANDIDATE28-NATIVE-ACCOUNT-PING-RING-2026-10-10.md": "3e051ad4acb97f6900a0b85bd5cb8cd89d72e9023d8e9b0fd7809d4132b30f92",
+    "docs/CANDIDATE29-IMMERSION-EDITMODE-2026-10-10.md": "1183c36196d99fa4a3378ead47f4effb31aa5861bec3b28bd4fad8381cacaf20",
+    "docs/CANDIDATE30-PING-RELEASE-LIFECYCLE-2026-10-10.md": "1e8d2d0c06ffbd056730fc669fa27d11d8569c10ee09571258cce0133c874531",
+    "docs/CANDIDATE6-DEPLOYMENT-2026-10-07.md": "980cf8df021453f7d91256c062318c67a1c5db0a6067506598f620d4c4052eda",
+    "docs/COMBAT-DISPATCH-HOTFIX-2026-10-07.md": "bc353d6e4bbb403bf3c2fc4978b706a4f3fa96f5d52d8cd73ad721749bb6c6b3",
+    "docs/COMPATIBILITY.md": "0c9857a8ea36d59aa1614c11e5d48fa88e947ecfab906717d90a19c462895035",
+    "docs/CONSOLEPORT-UPGRADE-2026-10-06.md": "d07310cee250dbe69270ab0966b8ce18e578cedc37239503b09dfcfd2d389be7",
+    "docs/CONTROLLER_SPEC.md": "00161f0f0b150e7a1c6026b3af01f793c854669b97d3b913077092836a58c47f",
+    "docs/DARKMOON-FIXES-2026-10-06.md": "bd64afd28a1530308ad4e3dd0407156a8a576b3e878d7516619238865cee7d64",
+    "docs/DELIVERY.md": "22f7f307196f69ec9868bd3a4a22ac32d99966d6b01bc4b878d1970acd48d542",
+    "docs/DEPENDENCY-WORKFLOW.md": "f846483e53cea9823e4982a7d15a36fd8984f50c59d2ccdc4b3491d6c347443f",
+    "docs/DEVELOPMENT.md": "d1a5cb6206f4859882e390fa3a77532b6829d7f000a5b96bd4a5288c6d15befc",
+    "docs/FACE-VISUAL-PATCH-2026-10-07.md": "72cc3b30044decc6a4ba29c211959ccb57574aa158db3847a9e66d4c3c4dbe91",
+    "docs/FOREVER-UI-2026-10-08.md": "9f2500e8c02ef53bb4f31c469d3b0c0fddf205c4eb90c8d61a6e5826b554bf37",
+    "docs/GROUND-TARGETING-AND-PARTY-2026-10-06.md": "0487b758de20f60f6ad62b29af6a8006c31c08bc7211706f56e87ef930a80303",
+    "docs/HIDDEN-CONTROLS-AND-RETIREMENT-2026-10-07.md": "a28e08d7ae959e31e91eacb6e6ec36a09164e213db680416571f77f6de5d18d8",
+    "docs/IMPLEMENTATION-STATUS.md": "03fe1634b44a056e2844bbba39749ed9116a00c30a9414db3508643080285882",
+    "docs/INSTALLATION.md": "a00cbb5e6709a91c27641fe37d6d1562f25c443f08503fcb58d1d39cb43b7125",
+    "docs/KNOWN_ISSUES.md": "174d50448314351b2bf88687209daf7b756211bf5af1efab1b3d9f11f21ffdad",
+    "docs/LIVE-INSTALL-2026-10-04.md": "92637e7fc6e8183de1d4ac4517820c5c63245114b51650c5fe4d125fb9acf4b7",
+    "docs/MANUAL-TEST-CASES.md": "fbd01310ca0086d9d301f44356e048981b1e33893c9c02d3980d114d926137f4",
+    "docs/MASTER-PLAN.md": "553c26a07c24e2adb58fd72fa46255ed585a60cda49d111751ca5312bb214ea8",
+    "docs/NATIVE-RECOVERY-2026-10-08.md": "275c37a1f0eaf9bf7deee533fea3bd6fa11f94b3ea9e85af19f203f24a63fc60",
+    "docs/NEXT-DEPLOYMENT-CHECKLIST.md": "e6ce97a76c6132fe77ecbcadea9c8d62dcd40abc6fe86e2e820d9282b9f09ec9",
+    "docs/REQUIREMENTS.md": "2ee6b61ff32ead2de26974d64548d5eb58b04cf3fda718975330f2feb04c4f71",
+    "docs/SHAREDMEDIA-RETIREMENT-2026-10-07.md": "5296b4253df1738b7a99881092ec41b2edf1f8e3f1199a0c858f05090b9faeef",
+    "docs/STATE_MATRIX.md": "fc26860323b8ee576f39310cc2de384c0813e748a83d4c24317f2f390b06032d",
+    "docs/TARGETING-PREFERENCES-AND-ICON-FIX-2026-10-07.md": "9b08ff1ce7d5abae9fba5407af38ba2097f65a76af045ebb45017a5026e04a2e",
+    "docs/TARGETING-REPAIR-2026-10-08.md": "9c08137c90e248cb07fa42ddabe851725bb87e9c6706ae233634e351904e6dbd",
+    "docs/TEMPORARY-MAIN-BANK-ANALYSIS-2026-10-11.md": "aecc7b1597eb5f0b83cade6d72af0503a62a03e9e41be92582214a5ce0b01f94",
+    "docs/TESTING.md": "78670f5293e2367d98cb22ee1ad346843ff68d1ceace8f2ca70425e9b8758b61",
+    "docs/WORKSPACE-ORGANIZATION-2026-10-11.md": "ecd493a23cd8daf9ddd8bfe0f06ad08d55fbd880d1fd433a881a7c245b0dd586",
+    "docs/WTF-AUDIT-2026-10-04-SECOND.md": "61632931b8bd9a63280636d9c8418b2cb2f6cd63832a765585a00ff6d125165f",
+    "docs/WTF-AUDIT-2026-10-04-THIRD.md": "564ccf3dacf41b03877ae97e3803bf7e65206efb79e2d262cb9b48423956cf62",
+    "docs/WTF-AUDIT-2026-10-04.md": "a41c1c03217b6bb8ae85548fb05d36f5d8265ffc3f9de5589c5f83df980a77a2",
+    "docs/decisions/0001-repository-development-system.md": "abf6eb7ad2a3e62eed0b144c060d8f260fecfa57d2c0058f2a5d6e0892eb043a",
+    "docs/decisions/0002-native-execution-and-proof.md": "27c3c7abe71559c54be8d22d9ab3a38ca5873d85f9ef8042fbcec48e3fb453f3",
+    "docs/decisions/0003-character-state-and-manual-edits.md": "1fdebd28243a02a74fb3a80b1083dff4ed9fcf749355998004eef320096d541a",
+    "docs/decisions/0004-scoped-delivery.md": "6193fb0e0d8ea184efdd464c3dbf6f34459438cda3c2793041b1f2fb94f6b756",
+    "docs/decisions/0005-native-account-ping-ring.md": "2b8a9ef02aa3dbf6bd6762a7b18c6d8053ff58e82787fd1b224f5908d5998981",
+    "docs/decisions/0006-native-saved-layout-authority.md": "bc115e1991f45ba2f76eee87d3f868f36ea3865b64722b7002c29d83b02a35ae",
+    "docs/decisions/README.md": "4fa6dd7658d58eb7311b98c9f033528e0b325068ec49728736161d41cbcb3168",
+    "docs/plans/AI-NATIVE-RESTRUCTURE-2026-10-11.md": "ffbb79981d5644a9bd23e52b49887fd62bfbe3fbdc7d47ccb8a2ba293fa7c1ae",
+    "docs/plans/README.md": "0ccf1f8fc3de53d0a734fa7d3fe441e108f70a9cc721d71efa375936d4390ffa",
+    "docs/reference/DEVELOPMENT-HISTORY.md": "9d9a18d1dd854b36c915b6246069c9f22aa80f7c3713c6b0b3feb8e46190c3c3",
+    "docs/reference/EVIDENCE.md": "beec2eb0d0e804433ad6a8b202a34cbf94339e656574fb046dfd41b5462b1ff9",
+    "docs/reference/README.md": "0191bad0ba1095d00bc23f5415ce0f59f3ecdc7d17486486079b5760c2d4447a",
+    "README.md": "aaca136347ecd6d1d9d3545ef792d29e5c5e412591537b52c0b7440d53714303",
+    "CHANGELOG.md": "47a89ad271e75568d613946f4f4f9655c3c5251103a16a79ffcacd2ed10b594d"
+  },
+  "findings": [
+    {
+      "id": "D01",
+      "earlierOrIncompleteClaim": "A loaded/tested module or accepted flag implies enabled functionality.",
+      "currentContractAndLinks": "Bootstrap recovery disables full modes/custom context/full hidden access even when their saved flags are true. TemporaryRouting instead uses installed-character readiness independently of `modesEnabled`. [RefreshModes/RefreshUI](../../addon/ConsolePort_Forever/ConsolePort_Forever.lua); [architecture gates](../ARCHITECTURE.md#native-execution-and-refresh).",
+      "sourceAnchors": [
+        {
+          "path": "addon/ConsolePort_Forever/ConsolePort_Forever.lua",
+          "line": 302,
+          "symbolOrSourceText": "function Addon:RefreshModes",
+          "sha256": "fb136f4e0d8cb6fe04ea9537baa116e94071478a0ef9a995ac33529cee3132fb"
+        },
+        {
+          "path": "addon/ConsolePort_Forever/ConsolePort_Forever.lua",
+          "line": 388,
+          "symbolOrSourceText": "function Addon:RefreshUI",
+          "sha256": "fb136f4e0d8cb6fe04ea9537baa116e94071478a0ef9a995ac33529cee3132fb"
+        }
+      ]
+    },
+    {
+      "id": "D02",
+      "earlierOrIncompleteClaim": "Every write/refresh waits outside combat and Edit Mode.",
+      "currentContractAndLinks": "Main reviewed/protected writes use `CanWrite`; preference Apply blocks combat only, ping refresh has its own combat guard, and saved bookkeeping/diagnostics have independent rules. [Preferences.Apply](../../addon/ConsolePort_Forever/Targeting/Preferences.lua), [Ping.Refresh](../../addon/ConsolePort_Forever/Targeting/Ping.lua); [state matrix](../STATE_MATRIX.md).",
+      "sourceAnchors": [
+        {
+          "path": "addon/ConsolePort_Forever/Targeting/Preferences.lua",
+          "line": 65,
+          "symbolOrSourceText": "function Prefs.Apply",
+          "sha256": "3f090e78c851c8aea049f24df970d224651ace6c02eaa78266140525f06b39eb"
+        },
+        {
+          "path": "addon/ConsolePort_Forever/Targeting/Ping.lua",
+          "line": 311,
+          "symbolOrSourceText": "function Ping:Refresh",
+          "sha256": "0bb7a62c2014fe5dec59f39c465ff0d93132cca49f7a9c2cb3daedd33beef7c1"
+        }
+      ]
+    },
+    {
+      "id": "D03",
+      "earlierOrIncompleteClaim": "Generic helper architecture coordinates all current live hydration/ownership.",
+      "currentContractAndLinks": "ModePolicy.Resolve, Store.Hydrate/CaptureOwnedEdits and UI Ownership.New are pure helpers without current bootstrap call sites. Actual paths use HydrateController, native ring adapters and InputBridge/Layers. [bootstrap](../../addon/ConsolePort_Forever/ConsolePort_Forever.lua); [architecture](../ARCHITECTURE.md).",
+      "sourceAnchors": [
+        {
+          "path": "addon/ConsolePort_Forever/ModePolicy.lua",
+          "line": 7,
+          "symbolOrSourceText": "function Modes.Resolve",
+          "sha256": "72ee64c6985d3fc288cce62b2351bf8254364e4f94dfba77fb34dcbc8fa739ba"
+        },
+        {
+          "path": "addon/ConsolePort_Forever/Store.lua",
+          "line": 72,
+          "symbolOrSourceText": "function Store.Hydrate",
+          "sha256": "80ec4ac1f181d7e7da842bc02b1456d67d552d819959b61a08a7490b43f28fa1"
+        },
+        {
+          "path": "addon/ConsolePort_Forever/UI/Ownership.lua",
+          "line": 4,
+          "symbolOrSourceText": "function Ownership.New",
+          "sha256": "0bb3b1c386073e63c377475b783ddc370b6daba1a2bc9cf4301e90ca92b1accd"
+        }
+      ]
+    },
+    {
+      "id": "D04",
+      "earlierOrIncompleteClaim": "Setup installs all original layout/CVar/profile defaults.",
+      "currentContractAndLinks": "RuntimeSetup starts from captured current fields, scoped archives/fallbacks and readiness. Only two trigger CVars are offered; legacy unloaded files are not installers. [RuntimeSetup.Fields](../../addon/ConsolePort_Forever/RuntimeSetup.lua); [setup contract](RUNTIME-CONFIGURATION.md#what-setup-actually-offers).",
+      "sourceAnchors": [
+        {
+          "path": "addon/ConsolePort_Forever/RuntimeSetup.lua",
+          "line": 105,
+          "symbolOrSourceText": "function Setup.Fields",
+          "sha256": "cfd1ea01062bb6e98d65ea68d9962859e4ac7a4987ea6398a174ba63784b1fdd"
+        }
+      ]
+    },
+    {
+      "id": "D05",
+      "earlierOrIncompleteClaim": "Configuration apply has generic rollback with no further detail.",
+      "currentContractAndLinks": "Coordinator revalidates every reviewed field including no-ops/Keep; journals record attempted steps before writing, read back immediately/finally and recover only still-owned values. Newer edits survive as conflicts/recovery-required. [Coordinator.Accept](../../addon/ConsolePort_Forever/Coordinator.lua), [Transactions](../../addon/ConsolePort_Forever/Transactions.lua); [architecture](../ARCHITECTURE.md#review-apply-and-recovery).",
+      "sourceAnchors": [
+        {
+          "path": "addon/ConsolePort_Forever/Coordinator.lua",
+          "line": 21,
+          "symbolOrSourceText": "function Coordinator:Accept",
+          "sha256": "7ec5738efef6e56e1f172b9a4304126910b1aa79f1f3ae5100e68ad41a54e87e"
+        },
+        {
+          "path": "addon/ConsolePort_Forever/Transactions.lua",
+          "line": 64,
+          "symbolOrSourceText": "function Transactions.Apply",
+          "sha256": "b5950dd8bafcaba5eb1ce6d27dc93f7a6178d7a6d0dbb2191f59f6ede25b245a"
+        }
+      ]
+    },
+    {
+      "id": "D06",
+      "earlierOrIncompleteClaim": "Binding-bank inspection is harmless/read-only or both saved banks always stay unchanged.",
+      "currentContractAndLinks": "Native inactive-bank inspection can discard unsaved view; explicit consent, durable selection intent and separate transient-view review are required. Accepted target projection copies the outgoing keyboard view and may clear target-only keys. [BindingBanks](../../addon/ConsolePort_Forever/Adapters/BindingBanks.lua), [BindingState](../../addon/ConsolePort_Forever/Adapters/BindingState.lua); [bank contract](RUNTIME-CONFIGURATION.md#binding-banks-and-guid-archives).",
+      "sourceAnchors": [
+        {
+          "path": "addon/ConsolePort_Forever/Adapters/BindingBanks.lua",
+          "line": 58,
+          "symbolOrSourceText": "function Banks:InBank",
+          "sha256": "415ff7353efaa55645cb2b809fc89eaf58dcda7fd544de322edf96603a772724"
+        },
+        {
+          "path": "addon/ConsolePort_Forever/Adapters/BindingState.lua",
+          "line": 32,
+          "symbolOrSourceText": "function State:write",
+          "sha256": "ae63a75e4d55e4ad51966900b71dd8ec4d6e944cdb49da83e4553a4db21c050d"
+        }
+      ]
+    },
+    {
+      "id": "D07",
+      "earlierOrIncompleteClaim": "All manual ring removals remain absent, so removed restoration means no automatic class repair.",
+      "currentContractAndLinks": "Generic manual capture preserves order/duplicates/metadata/deletion and dormant entries; separate learned-form augmentation appends missing forms, and narrow accepted class migration/repair remains journaled. Action-slot pickup/place restoration stays removed. [Rings](../../addon/ConsolePort_Forever/Adapters/Rings.lua), [Class.RingProposal/Migrate](../../addon/ConsolePort_Forever/ClassActions.lua); [decision scope](../decisions/0003-character-state-and-manual-edits.md).",
+      "sourceAnchors": [
+        {
+          "path": "addon/ConsolePort_Forever/ClassActions.lua",
+          "line": 56,
+          "symbolOrSourceText": "function Class.RingProposal",
+          "sha256": "8db90609dde641f02acff81a5350094f87b45114be600b76d4f342619ccf1c67"
+        },
+        {
+          "path": "addon/ConsolePort_Forever/ClassActions.lua",
+          "line": 128,
+          "symbolOrSourceText": "function Class.Migrate",
+          "sha256": "8db90609dde641f02acff81a5350094f87b45114be600b76d4f342619ccf1c67"
+        },
+        {
+          "path": "addon/ConsolePort_Forever/Adapters/Rings.lua",
+          "line": 82,
+          "symbolOrSourceText": "function Bridge:CaptureEdits",
+          "sha256": "1a053d9853f214fb7c91efeebad65887b7de12551e35b9af35f3bffba578feff"
+        }
+      ]
+    },
+    {
+      "id": "D08",
+      "earlierOrIncompleteClaim": "The three-class Supported guard controls every class proposal/chord.",
+      "currentContractAndLinks": "Supported gates revision-17 repair and native row suppression. Generic chord/proposal helpers have distinct prerequisites and a right-side fallback for other classes. Later selector previews remain inactive. [ClassActions](../../addon/ConsolePort_Forever/ClassActions.lua); [controller class scope](../CONTROLLER_SPEC.md#class-and-utility-access).",
+      "sourceAnchors": [
+        {
+          "path": "addon/ConsolePort_Forever/ClassActions.lua",
+          "line": 4,
+          "symbolOrSourceText": "function Class.Supported",
+          "sha256": "8db90609dde641f02acff81a5350094f87b45114be600b76d4f342619ccf1c67"
+        },
+        {
+          "path": "addon/ConsolePort_Forever/ClassActions.lua",
+          "line": 23,
+          "symbolOrSourceText": "function Class.Chord",
+          "sha256": "8db90609dde641f02acff81a5350094f87b45114be600b76d4f342619ccf1c67"
+        }
+      ]
+    },
+    {
+      "id": "D09",
+      "earlierOrIncompleteClaim": "R3 is the only hardcoded ping route; all taps must use aimed fallback.",
+      "currentContractAndLinks": "Qualified gamepad keys bound to TOGGLEPINGLISTENER are claimed; native selection is armed on down, so deflected/sticky release can select before artwork. Only empty/neutral release falls back. No down dispatch. [Ping.Refresh/key collection and secure snippets](../../addon/ConsolePort_Forever/Targeting/Ping.lua); [ping contract](../CONTROLLER_SPEC.md#ping-gesture).",
+      "sourceAnchors": [
+        {
+          "path": "addon/ConsolePort_Forever/Targeting/Ping.lua",
+          "line": 311,
+          "symbolOrSourceText": "function Ping:Refresh",
+          "sha256": "0bb7a62c2014fe5dec59f39c465ff0d93132cca49f7a9c2cb3daedd33beef7c1"
+        },
+        {
+          "path": "addon/ConsolePort_Forever/Targeting/Ping.lua",
+          "line": 160,
+          "symbolOrSourceText": "function Ping:Create",
+          "sha256": "0bb7a62c2014fe5dec59f39c465ff0d93132cca49f7a9c2cb3daedd33beef7c1"
+        }
+      ]
+    },
+    {
+      "id": "D10",
+      "earlierOrIncompleteClaim": "Ping hold timing controls protected send or refresh can rebuild each gesture.",
+      "currentContractAndLinks": "0.15-second hold is artwork only; stable declarations preserve active gestures. Modifier/combat/owner/device changes cancel; brief missing input has cosmetic tolerance. Native release/macro dispatch remains independent. [Ping artwork/owner lifecycle](../../addon/ConsolePort_Forever/Targeting/Ping.lua); [controller](../CONTROLLER_SPEC.md).",
+      "sourceAnchors": [
+        {
+          "path": "addon/ConsolePort_Forever/Targeting/Ping.lua",
+          "line": 160,
+          "symbolOrSourceText": "function Ping:Create",
+          "sha256": "0bb7a62c2014fe5dec59f39c465ff0d93132cca49f7a9c2cb3daedd33beef7c1"
+        },
+        {
+          "path": "addon/ConsolePort_Forever/Targeting/Ping.lua",
+          "line": 296,
+          "symbolOrSourceText": "function Ping:CaptureRadialOwners",
+          "sha256": "0bb7a62c2014fe5dec59f39c465ff0d93132cca49f7a9c2cb3daedd33beef7c1"
+        }
+      ]
+    },
+    {
+      "id": "D11",
+      "earlierOrIncompleteClaim": "Eight visible temporary cells imply all native actions/overflow are controller accessible.",
+      "currentContractAndLinks": "Declared capacity matters: default vehicle/override six can leave cells 7–8 empty. Slots 9–12/exit use eligible native mouse-accessible supplemental buttons without a new controller key/cursor takeover. Ordinary bonus appearance is not overflow evidence. [TemporaryRouting](../../addon/ConsolePort_Forever/TemporaryRouting.lua), [TemporaryAccess](../../addon/ConsolePort_Forever/TemporaryAccess.lua); [controller](../CONTROLLER_SPEC.md#priority-and-state).",
+      "sourceAnchors": [
+        {
+          "path": "addon/ConsolePort_Forever/TemporaryAccess.lua",
+          "line": 42,
+          "symbolOrSourceText": "function Access:Enable",
+          "sha256": "364f9ca8043f2ca6407baf95255949727c1034bf1420a5db94782a0c547f0247"
+        },
+        {
+          "path": "addon/ConsolePort_Forever/TemporaryRouting.lua",
+          "line": 100,
+          "symbolOrSourceText": "function Routing:Refresh",
+          "sha256": "a31bb8af8454351efc309966648d3c29ecc58569ff1967f7a3c6c480c8de9555"
+        }
+      ]
+    },
+    {
+      "id": "D12",
+      "earlierOrIncompleteClaim": "Focus mode suppresses gameplay icons, as the setup label still says.",
+      "currentContractAndLinks": "Actual FocusVisuals preserves icons/cooldowns, suppresses seven transient regions and restores later external alpha requests. Source label remains stale; no code change in this pass. [FocusVisuals](../../addon/ConsolePort_Forever/UI/FocusVisuals.lua), [RuntimeSetup](../../addon/ConsolePort_Forever/RuntimeSetup.lua); [known discrepancy](../KNOWN_ISSUES.md#demonstrated-sourcedocument-differences).",
+      "sourceAnchors": [
+        {
+          "path": "addon/ConsolePort_Forever/UI/FocusVisuals.lua",
+          "line": 45,
+          "symbolOrSourceText": "function Visuals:Enable",
+          "sha256": "faa24f4998fc8a0acdffcb9f0209af22c237880a58999cc1c3a44a69e3f1a832"
+        },
+        {
+          "path": "addon/ConsolePort_Forever/RuntimeSetup.lua",
+          "line": 141,
+          "symbolOrSourceText": "Suppress gameplay icons",
+          "sha256": "cfd1ea01062bb6e98d65ea68d9962859e4ac7a4987ea6398a174ba63784b1fdd"
+        }
+      ]
+    },
+    {
+      "id": "D13",
+      "earlierOrIncompleteClaim": "Suspended hidden replacement means all native class/side UI stays visible.",
+      "currentContractAndLinks": "Reviewed sidebar/bag/micro suppression and independent qualified StanceBar suppression remain active paths, with owned-parent/Edit Mode restoration. Native power UI is retained. [Runtime](../../addon/ConsolePort_Forever/Runtime.lua), [Class.UpdateNativeBar](../../addon/ConsolePort_Forever/ClassActions.lua); [presentation](PRESENTATION-AND-UI.md#focus-effects-and-hidden-native-frames).",
+      "sourceAnchors": [
+        {
+          "path": "addon/ConsolePort_Forever/Runtime.lua",
+          "line": 87,
+          "symbolOrSourceText": "function Visibility:Update",
+          "sha256": "51c97283b038e0a53dd62f3ec7a22a1db07ad49adf2b43de79e07a8a35a86016"
+        },
+        {
+          "path": "addon/ConsolePort_Forever/ClassActions.lua",
+          "line": 83,
+          "symbolOrSourceText": "function Class.UpdateNativeBar",
+          "sha256": "8db90609dde641f02acff81a5350094f87b45114be600b76d4f342619ccf1c67"
+        }
+      ]
+    },
+    {
+      "id": "D14",
+      "earlierOrIncompleteClaim": "Visual correctness can be summarized by white icon getters or replacing all surfaces.",
+      "currentContractAndLinks": "Actual skin distinguishes faces/D-pad, empty/filled composition, native range/resource/secret sinks, charge/GCD/LoC feedback and late Masque recreation. HUD geometry is runtime guarded, not a saved preset rewrite. [Skin](../../addon/ConsolePort_Forever/Skin.lua), [HUDPresentation](../../addon/ConsolePort_Forever/HUDPresentation.lua); [visual contract](PRESENTATION-AND-UI.md#active-hud-and-native-feedback).",
+      "sourceAnchors": [
+        {
+          "path": "addon/ConsolePort_Forever/Skin.lua",
+          "line": 320,
+          "symbolOrSourceText": "function Addon:SnapshotFaceVisuals",
+          "sha256": "734a2f47d786d98f7d1acf421203dbc33f45aa04f727786ae652b5c6144dbdb5"
+        },
+        {
+          "path": "addon/ConsolePort_Forever/HUDPresentation.lua",
+          "line": 294,
+          "symbolOrSourceText": "function HUD.PlaceBank",
+          "sha256": "ab21174061cf1bc67875443051451ca48a1929622221abdb621111cd0b906630"
+        }
+      ]
+    },
+    {
+      "id": "D15",
+      "earlierOrIncompleteClaim": "Targeting preferences depend on custom UI takeover, or Defaults/Revert restore prior history.",
+      "currentContractAndLinks": "Native Targeting panel remains available; account maps use specific precedence/qualification. Apply stores prior-table history, Revert resets draft, Defaults resets defined maps, and history has no cap/exposed restore command. [Targeting UI](../../addon/ConsolePort_Forever/UI/Targeting.lua), [Preferences](../../addon/ConsolePort_Forever/Targeting/Preferences.lua); [preferences](RUNTIME-CONFIGURATION.md#ground-preferences).",
+      "sourceAnchors": [
+        {
+          "path": "addon/ConsolePort_Forever/Targeting/Preferences.lua",
+          "line": 65,
+          "symbolOrSourceText": "function Prefs.Apply",
+          "sha256": "3f090e78c851c8aea049f24df970d224651ace6c02eaa78266140525f06b39eb"
+        },
+        {
+          "path": "addon/ConsolePort_Forever/UI/Targeting.lua",
+          "line": 37,
+          "symbolOrSourceText": "function UI:Render",
+          "sha256": "f6c6e6c6827c1073f53954e40658aa74c718139b1f20c8f4179d64ad6dc372b9"
+        }
+      ]
+    },
+    {
+      "id": "D16",
+      "earlierOrIncompleteClaim": "Optional integrations impose newly invented settings/couch camera situations.",
+      "currentContractAndLinks": "Flat adapters preserve current allowed explicit typed values; DynamicCam clones the actual current profile/situations through guarded native lifecycle. No bulk upstream profile rewrite. [Integrations](../../addon/ConsolePort_Forever/Adapters/Integrations.lua), [DynamicCam](../../addon/ConsolePort_Forever/Adapters/DynamicCam.lua); [integration contract](RUNTIME-CONFIGURATION.md#integration-and-saved-layout-details).",
+      "sourceAnchors": [
+        {
+          "path": "addon/ConsolePort_Forever/Adapters/Integrations.lua",
+          "line": 15,
+          "symbolOrSourceText": "function Integrations",
+          "sha256": "a9ed4dbc92901a262dfa1dee533f4eb50d232c80d6a790697f17bcaa7e7a664d"
+        },
+        {
+          "path": "addon/ConsolePort_Forever/Adapters/DynamicCam.lua",
+          "line": 43,
+          "symbolOrSourceText": "function Adapter:Proposal",
+          "sha256": "1313a023223048955e06d11f053134c0bb298ee310ca06a915b306f8ce15e1d1"
+        }
+      ]
+    },
+    {
+      "id": "D17",
+      "earlierOrIncompleteClaim": "Required Items repair needs replaying installer/settings or always re-enables itself.",
+      "currentContractAndLinks": "Only a missing unowned policy initializes through a narrow journal. Exact eligible native dialog gets deferred measured offset; existing disable/restore and native preferences remain guarded. [ImmersionProgress](../../addon/ConsolePort_Forever/UI/ImmersionProgress.lua); [configuration](RUNTIME-CONFIGURATION.md#integration-and-saved-layout-details).",
+      "sourceAnchors": [
+        {
+          "path": "addon/ConsolePort_Forever/UI/ImmersionProgress.lua",
+          "line": 53,
+          "symbolOrSourceText": "function Repair:Refresh",
+          "sha256": "e77e7a5951bef788d4a2bbad6fe0c44acbef1f1b527ade68f1382ed7c4d8c07f"
+        },
+        {
+          "path": "addon/ConsolePort_Forever/UI/ImmersionProgress.lua",
+          "line": 37,
+          "symbolOrSourceText": "function Repair:Queue",
+          "sha256": "e77e7a5951bef788d4a2bbad6fe0c44acbef1f1b527ade68f1382ed7c4d8c07f"
+        }
+      ]
+    },
+    {
+      "id": "D18",
+      "earlierOrIncompleteClaim": "Saved default is always the active layout or packaged reference is applied automatically.",
+      "currentContractAndLinks": "Tracker captures active per GUID and unique owned account default separately, including inactive default. Packaged reference may seed only absent stored default; tracking does not save/select. Party defaults only belong to new-copy review. [EditModeReference](../../addon/ConsolePort_Forever/UI/EditModeReference.lua), [EditMode adapter](../../addon/ConsolePort_Forever/Adapters/EditMode.lua); [layout decision](../decisions/0006-native-saved-layout-authority.md).",
+      "sourceAnchors": [
+        {
+          "path": "addon/ConsolePort_Forever/UI/EditModeReference.lua",
+          "line": 4,
+          "symbolOrSourceText": "function Reference:Capture",
+          "sha256": "78315fd8e4404ca8b65d462e031d80216af7e678a4d3e59c34f133e8c31392d0"
+        },
+        {
+          "path": "addon/ConsolePort_Forever/Adapters/EditMode.lua",
+          "line": 17,
+          "symbolOrSourceText": "function Edit:Proposal",
+          "sha256": "676c351c2148adcf0606c783fc02c26e41c0a0b0a80883670e200c610fbbe559"
+        }
+      ]
+    },
+    {
+      "id": "D19",
+      "earlierOrIncompleteClaim": "`/cpf update` updates code; old action-recovery toggle can enable restoration.",
+      "currentContractAndLinks": "Install/update are review aliases. Restore/recover/selection/view paths differ; any action-recovery argument disables the removed writer. [slash handler](../../addon/ConsolePort_Forever/ConsolePort_Forever.lua); [commands](RUNTIME-CONFIGURATION.md#commands-and-diagnostic-retention).",
+      "sourceAnchors": [
+        {
+          "path": "addon/ConsolePort_Forever/ConsolePort_Forever.lua",
+          "line": 403,
+          "symbolOrSourceText": "SlashCmdList.CONSOLEPORTFOREVER",
+          "sha256": "fb136f4e0d8cb6fe04ea9537baa116e94071478a0ef9a995ac33529cee3132fb"
+        }
+      ]
+    },
+    {
+      "id": "D20",
+      "earlierOrIncompleteClaim": "Passive ActionRecovery means no saved writes, or all evidence is bounded.",
+      "currentContractAndLinks": "Passive hooks/snapshots save own diagnostic state without invoking action writes. Event/diagnostic rows are capped; transactions/history/loadout archives have different retention. Runtime “offline-verified/pending” strings are not live acceptance receipts. [ActionRecovery](../../addon/ConsolePort_Forever/ActionRecovery.lua), [Diagnostics](../../addon/ConsolePort_Forever/Diagnostics.lua), [Proof](../../addon/ConsolePort_Forever/UI/Proof.lua); [retention](RUNTIME-CONFIGURATION.md#commands-and-diagnostic-retention).",
+      "sourceAnchors": [
+        {
+          "path": "addon/ConsolePort_Forever/ActionRecovery.lua",
+          "line": 21,
+          "symbolOrSourceText": "function Recovery:Record",
+          "sha256": "02c8108068501da27aabf56d4d15fca0ed37694a6e219b1295f208686271f828"
+        },
+        {
+          "path": "addon/ConsolePort_Forever/Diagnostics.lua",
+          "line": 4,
+          "symbolOrSourceText": "function Diagnostics:Persist",
+          "sha256": "88d064c0843ad5dba8f91cc9e55088e047c2eab2a9ec9be9d8dce7708e1a3b3e"
+        }
+      ]
+    },
+    {
+      "id": "D21",
+      "earlierOrIncompleteClaim": "Tested popup/window/map/bag/selector/cinematic modules imply completed enabled parity.",
+      "currentContractAndLinks": "Native recovery disables custom context parent gate; exact loot hold, additional selector gestures and held skip remain gated. Native guarded dormant routes are documented individually without claiming activation. [Contexts](../../addon/ConsolePort_Forever/UI/Contexts.lua), [BetterBags](../../addon/ConsolePort_Forever/Adapters/BetterBags.lua), [Selectors](../../addon/ConsolePort_Forever/Rings/Selectors.lua), [Cinematic](../../addon/ConsolePort_Forever/Cinematic.lua); [dormant routes](PRESENTATION-AND-UI.md#dormant-ui-implementation).",
+      "sourceAnchors": [
+        {
+          "path": "addon/ConsolePort_Forever/UI/Contexts.lua",
+          "line": 108,
+          "symbolOrSourceText": "function Contexts:Enable",
+          "sha256": "0452cee7bd5337c4c0278eb87edccd178be473f53dd42c09c21f92bb6bf04b57"
+        },
+        {
+          "path": "addon/ConsolePort_Forever/Adapters/BetterBags.lua",
+          "line": 96,
+          "symbolOrSourceText": "function Bags:Enrich",
+          "sha256": "b3b585023ce2a06dc9e1545d00c3ab15b7fa1558ba7d71878135013557c5bf3c"
+        },
+        {
+          "path": "addon/ConsolePort_Forever/Rings/Selectors.lua",
+          "line": 14,
+          "symbolOrSourceText": "function Selectors",
+          "sha256": "32ac2e6a837a2f8008ab082e1d4ed991bb617528707d9b2102e8cac35e21b49d"
+        },
+        {
+          "path": "addon/ConsolePort_Forever/Cinematic.lua",
+          "line": 5,
+          "symbolOrSourceText": "function Cinematic",
+          "sha256": "6fbc8ee07ce8f986580615cdb2db9288d9b786f40a3024e32c4e70765bdb89dd"
+        }
+      ]
+    }
+  ],
+  "productHashesAfter": {
+    "addon/ConsolePort_Forever/ActionRecovery.lua": "02c8108068501da27aabf56d4d15fca0ed37694a6e219b1295f208686271f828",
+    "addon/ConsolePort_Forever/Adapters/BetterBags.lua": "b3b585023ce2a06dc9e1545d00c3ab15b7fa1558ba7d71878135013557c5bf3c",
+    "addon/ConsolePort_Forever/Adapters/BindingBanks.lua": "415ff7353efaa55645cb2b809fc89eaf58dcda7fd544de322edf96603a772724",
+    "addon/ConsolePort_Forever/Adapters/BindingState.lua": "ae63a75e4d55e4ad51966900b71dd8ec4d6e944cdb49da83e4553a4db21c050d",
+    "addon/ConsolePort_Forever/Adapters/ConsolePort.lua": "c2b03ceb1bb0b2e0cb834cf5a644fc4f0f5a9023329527f6f22bbbe9e6e3f3b0",
+    "addon/ConsolePort_Forever/Adapters/DynamicCam.lua": "1313a023223048955e06d11f053134c0bb298ee310ca06a915b306f8ce15e1d1",
+    "addon/ConsolePort_Forever/Adapters/EditMode.lua": "676c351c2148adcf0606c783fc02c26e41c0a0b0a80883670e200c610fbbe559",
+    "addon/ConsolePort_Forever/Adapters/FlatConfig.lua": "8a9c589d6b15b844ee6da75b066992aac8cb4a01074a5fd5d40ed4203a15cef9",
+    "addon/ConsolePort_Forever/Adapters/Integrations.lua": "a9ed4dbc92901a262dfa1dee533f4eb50d232c80d6a790697f17bcaa7e7a664d",
+    "addon/ConsolePort_Forever/Adapters/LiteMount.lua": "ac6a35a6b41cf681f2f83d654be82a5648637879d61f2fa53a1e530fa6b3d3ac",
+    "addon/ConsolePort_Forever/Adapters/NativeBindings.lua": "38f079727662edfe49f2fc5ec9b0fb8b272f68ca2ad0f4199d7f6b0400d9560a",
+    "addon/ConsolePort_Forever/Adapters/Rings.lua": "1a053d9853f214fb7c91efeebad65887b7de12551e35b9af35f3bffba578feff",
+    "addon/ConsolePort_Forever/Assets/ForeverInGame.blp": "9daccf7f192871a876ede143a14f4cc453a726ac271fc89d0e30a5610b5a673f",
+    "addon/ConsolePort_Forever/Assets/ForeverTargeting.blp": "f1cbdf024b1d397abe318dd9caaf67f6c0ab6c5406d03873a456aa48e7b76760",
+    "addon/ConsolePort_Forever/Baseline.lua": "01e1179abcc30856a867748bd594fe9f442b23121cbc34f2af840f34afaf6457",
+    "addon/ConsolePort_Forever/BindingPolicy.lua": "32545c0d0d66683b4c9907db9be83bc0dcd9cf6e64f09fe09437dc03f0623afe",
+    "addon/ConsolePort_Forever/Bindings.lua": "faecc497f79d9d7437f87e809844fc7144ab722e33afd89245578461bc232a8f",
+    "addon/ConsolePort_Forever/Capability.lua": "72ba730d2f821aed9a1c20204d7e93d49698d2270a503495617400f72a76d077",
+    "addon/ConsolePort_Forever/Cinematic.lua": "6fbc8ee07ce8f986580615cdb2db9288d9b786f40a3024e32c4e70765bdb89dd",
+    "addon/ConsolePort_Forever/ClassActions.lua": "8db90609dde641f02acff81a5350094f87b45114be600b76d4f342619ccf1c67",
+    "addon/ConsolePort_Forever/ConsolePort_Forever.lua": "fb136f4e0d8cb6fe04ea9537baa116e94071478a0ef9a995ac33529cee3132fb",
+    "addon/ConsolePort_Forever/ConsolePort_Forever.toc": "6a214b5c06ca5a8fafb2bb1496a590a8c8df8c1c9a7ee9404342942b23f8d5ab",
+    "addon/ConsolePort_Forever/Coordinator.lua": "7ec5738efef6e56e1f172b9a4304126910b1aa79f1f3ae5100e68ad41a54e87e",
+    "addon/ConsolePort_Forever/Core.lua": "82d58af0dae095215454d86b85a351834a4c4bf21519f549904c56d504dad8f6",
+    "addon/ConsolePort_Forever/Diagnostics.lua": "88d064c0843ad5dba8f91cc9e55088e047c2eab2a9ec9be9d8dce7708e1a3b3e",
+    "addon/ConsolePort_Forever/HUDPresentation.lua": "ab21174061cf1bc67875443051451ca48a1929622221abdb621111cd0b906630",
+    "addon/ConsolePort_Forever/Layout.lua": "486f4267fe9c5ef217ec87e229ac1ced9a21ace92d579eb9d91f9c7b5e75fef3",
+    "addon/ConsolePort_Forever/ModePolicy.lua": "72ee64c6985d3fc288cce62b2351bf8254364e4f94dfba77fb34dcbc8fa739ba",
+    "addon/ConsolePort_Forever/Plan.lua": "654eadebfa115b3c480d555099609114f511561aaa558a05a5af2bcf6d1500af",
+    "addon/ConsolePort_Forever/Profile.lua": "e18af174f280801bcb410c34d2d1cbc6ba55653bcbb08d5d9d7ba9b99eab20e4",
+    "addon/ConsolePort_Forever/Prompt.lua": "976c8cab8db6b67d6e02e377e51f44148d139f8590159bc452cff5b0dd000d9b",
+    "addon/ConsolePort_Forever/Reference.lua": "eb0961ddb5afa76dc55b9d01a6663159d8c378cb5a628331a6d8264735a36d30",
+    "addon/ConsolePort_Forever/Rings/Discovery.lua": "04e6c8b1e26ae570fad970815b46fe1bfbba876cb1a1fc58345c9b9b9b957e4c",
+    "addon/ConsolePort_Forever/Rings/Selectors.lua": "32ac2e6a837a2f8008ab082e1d4ed991bb617528707d9b2102e8cac35e21b49d",
+    "addon/ConsolePort_Forever/Runtime.lua": "51c97283b038e0a53dd62f3ec7a22a1db07ad49adf2b43de79e07a8a35a86016",
+    "addon/ConsolePort_Forever/RuntimeSetup.lua": "cfd1ea01062bb6e98d65ea68d9962859e4ac7a4987ea6398a174ba63784b1fdd",
+    "addon/ConsolePort_Forever/SavedEditModeReference.lua": "2b7febffaab0baa26abd10a9064e2aacb3fe2cce0620d70f65daa5fbd859a45c",
+    "addon/ConsolePort_Forever/SecureModes.lua": "032bd31b8bb620560f5f20ac81dc1156473702217d5845d5558e336a87a659b2",
+    "addon/ConsolePort_Forever/Skin.lua": "734a2f47d786d98f7d1acf421203dbc33f45aa04f727786ae652b5c6144dbdb5",
+    "addon/ConsolePort_Forever/Store.lua": "80ec4ac1f181d7e7da842bc02b1456d67d552d819959b61a08a7490b43f28fa1",
+    "addon/ConsolePort_Forever/Targeting/Ground.lua": "8703e0a7f5731845c43dd3e892a3682d42cde6e034a3658553319287886b7130",
+    "addon/ConsolePort_Forever/Targeting/Ping.lua": "0bb7a62c2014fe5dec59f39c465ff0d93132cca49f7a9c2cb3daedd33beef7c1",
+    "addon/ConsolePort_Forever/Targeting/Preferences.lua": "3f090e78c851c8aea049f24df970d224651ace6c02eaa78266140525f06b39eb",
+    "addon/ConsolePort_Forever/Targeting/Registry.lua": "8d2719c31db73844ab3c9205b8dc97ec7f41a21f3fca26e271fb43653adabd2b",
+    "addon/ConsolePort_Forever/TemporaryAccess.lua": "364f9ca8043f2ca6407baf95255949727c1034bf1420a5db94782a0c547f0247",
+    "addon/ConsolePort_Forever/TemporaryRouting.lua": "a31bb8af8454351efc309966648d3c29ecc58569ff1967f7a3c6c480c8de9555",
+    "addon/ConsolePort_Forever/Transactions.lua": "b5950dd8bafcaba5eb1ce6d27dc93f7a6178d7a6d0dbb2191f59f6ede25b245a",
+    "addon/ConsolePort_Forever/UI/Contexts.lua": "0452cee7bd5337c4c0278eb87edccd178be473f53dd42c09c21f92bb6bf04b57",
+    "addon/ConsolePort_Forever/UI/EditModeReference.lua": "78315fd8e4404ca8b65d462e031d80216af7e678a4d3e59c34f133e8c31392d0",
+    "addon/ConsolePort_Forever/UI/FocusVisuals.lua": "faa24f4998fc8a0acdffcb9f0209af22c237880a58999cc1c3a44a69e3f1a832",
+    "addon/ConsolePort_Forever/UI/HiddenAccess.lua": "ecb395b7b08ba0490176c3b42eb68e566e3e92813fb32d3ac6e9cca7b077b1ca",
+    "addon/ConsolePort_Forever/UI/ImmersionProgress.lua": "e77e7a5951bef788d4a2bbad6fe0c44acbef1f1b527ade68f1382ed7c4d8c07f",
+    "addon/ConsolePort_Forever/UI/InputBridge.lua": "381638c8a568cf048f4abca00340a55b12de04ff3fe10f5b889f0177e6ab4922",
+    "addon/ConsolePort_Forever/UI/ItemHints.lua": "aec2c1eab3e992358af7e48f342e834e047c56be08c56a3d0b58c85acd65a815",
+    "addon/ConsolePort_Forever/UI/Map.lua": "33d7a5762ba2eae61bad42f0872ad13777c05fd14c96702c5778dad04bbb5059",
+    "addon/ConsolePort_Forever/UI/Ownership.lua": "0bb3b1c386073e63c377475b783ddc370b6daba1a2bc9cf4301e90ca92b1accd",
+    "addon/ConsolePort_Forever/UI/PartyLayout.lua": "a84175418653a72b581e063563f72237946c431c3c0f5cd8be852c05459705ed",
+    "addon/ConsolePort_Forever/UI/Proof.lua": "e55db9613704b8bca9b9161fc4a3246f01fdd4e5af6f5485d29d18555093410f",
+    "addon/ConsolePort_Forever/UI/Scroll.lua": "f8c81f1e7710a312e38d1f5fa15929250cee951d996715f55ceb8bec3a579d25",
+    "addon/ConsolePort_Forever/UI/Targeting.lua": "f6c6e6c6827c1073f53954e40658aa74c718139b1f20c8f4179d64ad6dc372b9",
+    "addon/ConsolePort_Forever/UI/Windows.lua": "2301f8c937c2f41d22a6698b3bbb2d63839c42dd6bd45fdbd9fdcbbcbf58eca7"
+  },
+  "productInventoryUnchanged": true,
+  "rootDocumentBeforeHashProvenance": "README.md and CHANGELOG.md hashes from the completed immediately preceding ai-native-restructure receipt; other document baselines were captured at start of this pass.",
+  "createdDocuments": [
+    "docs/reference/CODE-DOCUMENTATION-RECONCILIATION-2026-10-11.md",
+    "docs/reference/PRESENTATION-AND-UI.md",
+    "docs/reference/RUNTIME-CONFIGURATION.md"
+  ],
+  "modifiedDocuments": [
+    "CHANGELOG.md",
+    "README.md",
+    "docs/ARCHITECTURE.md",
+    "docs/COMPATIBILITY.md",
+    "docs/CONTROLLER_SPEC.md",
+    "docs/DEVELOPMENT.md",
+    "docs/IMPLEMENTATION-STATUS.md",
+    "docs/KNOWN_ISSUES.md",
+    "docs/REQUIREMENTS.md",
+    "docs/STATE_MATRIX.md",
+    "docs/TESTING.md",
+    "docs/decisions/0003-character-state-and-manual-edits.md",
+    "docs/decisions/0006-native-saved-layout-authority.md",
+    "docs/reference/README.md"
+  ],
+  "documentHashesAfter": {
+    "docs/reference/CODE-DOCUMENTATION-RECONCILIATION-2026-10-11.md": "8c59885457fc7d786451eedc1f0628a875d85a4c2f6dff216c19a6a596232869",
+    "docs/reference/PRESENTATION-AND-UI.md": "65aa58a8514982a222871fdf145997ca306ef2ca9e27c52ca06bade20413df31",
+    "docs/reference/RUNTIME-CONFIGURATION.md": "0fab100494e439bf7db3ec50f69f5ac46b75940575e54a70ae8ca7f47b4de8e3",
+    "CHANGELOG.md": "49c0284bcf537758eab3b3695dfdcf6a3d0648ae5e2b8049aade76398f9a5f1c",
+    "README.md": "fa28ea3fbbf9bc96162bd5ab8904c982c94a7f744c7db000a51872ca5478dd91",
+    "docs/ARCHITECTURE.md": "df67bdf7ab0de4dc75b28e2675642e2460562519c2f018774642945c18af2e83",
+    "docs/COMPATIBILITY.md": "52144621cf961e96c374af1353eaed3a08f55c4dd6e19306e33f0ecdf26da4f0",
+    "docs/CONTROLLER_SPEC.md": "e1d2f4975192570159e269e9bba783e2fea4caab46609dc9b820d99a1e8a2f3e",
+    "docs/DEVELOPMENT.md": "77d5a80e2bc7756dde8054134048c588ebbde2efd298db73bf933715800c06df",
+    "docs/IMPLEMENTATION-STATUS.md": "9b39e7cc8cf7814fa30d182a49c40eb3571d22e3b1b83408e4e18626aabb6f8d",
+    "docs/KNOWN_ISSUES.md": "de342ac7e7ac6c2ec7fcf28d4660e1c9d4c781d2c8ad41dafceff4c24337b24f",
+    "docs/REQUIREMENTS.md": "367bf6a18323f6bf99e34155dfe1086937f9e8e4f6ff3a4ad4d91a82560d37bc",
+    "docs/STATE_MATRIX.md": "9c8cba39124fdf02533a37a853de03efe504d73a48c831d98d7d290083fed16a",
+    "docs/TESTING.md": "80a8b582aa51dfb8494a24967fbd8b56674ac4e97c49843de4b421dea5ca93c4",
+    "docs/decisions/0003-character-state-and-manual-edits.md": "c323c10c517b9677b078c3bd25870d54a02a254dec16f7c12f35f2b764511d7a",
+    "docs/decisions/0006-native-saved-layout-authority.md": "80ab9131ad0d6561ae8cb5a58b10709aa59f0bff5f992265ae1a6c0e560d047a",
+    "docs/reference/README.md": "3507f04dd5da8fd2021f416c234833c51bb85e875fa65ce0bdaf726980deddbf"
+  },
+  "verification": {
+    "runtime": {
+      "report": "evidence/test-results/ai-native-restructure-runtime-2026-10-11.json",
+      "reportSHA256": "7a4aeb3509e647eb232d85638daae598e217e823278dc41fa9b1f317072860b0",
+      "inventories": {
+        "productHashes": {
+          "filesChecked": 61,
+          "allMatch": true,
+          "mismatches": []
+        },
+        "toolingHashes": {
+          "filesChecked": 122,
+          "allMatch": true,
+          "mismatches": []
+        }
+      },
+      "allRetainedResultsPassed": true,
+      "retainedPassCount": 67,
+      "pinnedDependencyLockMatches": true
+    },
+    "tooling": {
+      "report": "evidence/test-results/ai-native-restructure-tooling-2026-10-11.json",
+      "reportSHA256": "f2f3ee710e221a2b9c8579cfc6ffbf594c0abac1b9fd08ee29529fef0c215d5d",
+      "inventories": {
+        "sourceHashes": {
+          "filesChecked": 122,
+          "allMatch": true,
+          "mismatches": []
+        }
+      },
+      "allRetainedResultsPassed": true,
+      "retainedPassCount": 45,
+      "pinnedDependencyLockMatches": true
+    },
+    "originalSnapshots": {
+      "filesChecked": 9,
+      "allMatch": true,
+      "mismatches": []
+    },
+    "documentation": {
+      "command": "python -B tools/check_documentation.py",
+      "exitCode": 0,
+      "output": "Documentation: 33 maintained pages/skill files checked; 0 errors. Historical text excluded; semantic/remote/Retail proof not evaluated.",
+      "maintainedFilesChecked": 33,
+      "errors": 0,
+      "limits": "Navigation/metadata/structure only; source semantics separately manually reviewed."
+    },
+    "changedDocumentsWhitespace": {
+      "filesChecked": 17,
+      "trailingWhitespace": []
+    }
+  },
+  "completedAtUTC": "2026-10-12T00:34:11.697898+00:00",
+  "outcome": "Completed locally: 21 source-linked reconciliations; 14 existing documents enriched and 3 maintained reference pages added. No runtime/tools/tests/dependency changes; not committed, pushed, packaged or deployed.",
+  "freshDependencyCheck": "Approved documentation-only exemption applies; no freshness assertion made.",
+  "sourceChanges": [],
+  "productionActionsPerformed": [],
+  "remainingDifferences": [
+    "Stale focus review label remains in runtime source; actual icons-preserved behavior documented.",
+    "Runtime diagnostic readiness strings do not ingest later user acceptance receipts.",
+    "Current class augmentation can append removed learned forms; this differs from generic ring deletion preservation.",
+    "Ground preference history has no current cap or exposed restore-history command."
+  ]
+}

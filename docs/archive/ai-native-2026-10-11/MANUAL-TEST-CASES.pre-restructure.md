@@ -1,0 +1,833 @@
+# Retail tests and results - installed candidate.20, revision 17
+
+## Case 47 — power restoration and character-owned auras (candidate.20)
+
+**NOT RUN.** Candidate.20 installed with WoW closed at October 08, 2026, 22:23:50 Toronto.
+Log into Paladin normally.
+Verify the Holy Power strip below player health returns and updates through
+power values 0–5, combat, specialization changes and native redraw. Verify the
+duplicate native three-aura row disappears after secure ring access is restored.
+Hold L1+L2: the restored Auras (Forever) ring must contain all learned auras and
+select them through normal ConsolePort controls, including combat. R2+R1 must
+not open that old aura ring. Utility and unrelated bindings must remain usable.
+Switch to Demon Hunter: no Paladin ring or aura opener may appear; ordinary
+bindings and ground casting must work. Return to Paladin: its ring and L1+L2
+opener must return. Relog and repeat; no repeated repair/full installation prompt.
+Verify native Edit Mode access/restoration, accepted bright round faces, golden
+pressed feedback, cooldowns and symmetric L2/R2. Check Lua/protected-action/taint
+errors. Actual Retail rendering and engine permission remain user-owned.
+
+## Case 46 — candidate.19 wrong-bar suppression (REJECTED)
+
+The user reports the aura row still visible and unwanted Holy Power loss.
+Candidate.19 suppressed the wrong bar. Its invisibility expectation is retired;
+case 47 requires visible native power and character-owned aura-ring access.
+
+## Case 45 â€” candidate.18 action feedback and symmetric trigger labels
+
+**NOT RUN.** Checkout-only work; candidate.17 remains installed. Run only after
+separately authorized deployment with WoW closed. Test PAD1â€“PAD4 (X, Circle,
+Square, Triangle) in Base/L2/R2/L2R2 using controller and keyboard equivalents.
+Press/hold/release ready, unusable, out-of-range, resource-starved and cooling-down
+actions: golden round feedback must appear independently of successful casting
+and return to normal on release. Check empty slots and both key-down settings.
+
+Verify actual GCD, ability cooldown, charged/LoC cooldown, off-GCD abilities with
+and without their own cooldown, failed casts and duration/haste changes. Sweeps
+must follow game state and clear on completion. Check countdown numbers, proc,
+cast/interrupt and reticle effects, empty/refill and bank switching. Preserve the
+accepted bright circular icons and native range/resource colours in combat.
+
+Compare trigger-label centres: R2 mirrors L2 across the HUD screen centreline at
+the same height; L2, banks, class shortcut and combined prompt stay in place.
+Repeat modifier selection, hide/show, combat transitions, layout refresh, UI scale
+and controller glyph changes. Check ordinary plus cursor/player ground casting,
+class-ring hold/release and Lua/protected-action/taint errors. Native engine
+pixels, timing and hardware behavior require this live test; offline suites do
+not mark it passed.
+
+### 42 â€” accepted round-face composition and retained layout (candidate.17)
+
+**Live result:** user-confirmed October 8, 2026: "it works", following the
+combat-grey repair. Earlier user reports confirm round faces, visible stationary
+L2/R2 labels, correct chord-side stance shortcut placement/fading and removal
+of the duplicate aura row. Earlier Paladin/DH ordinary and cursor/player ground
+casting also worked. This records the reported defects, not an assertion that
+the user executed every matrix case below. Evidence: candidate17-live-acceptance.json.
+
+Repeat after any future rendering, native button refresh or dependency change:
+
+- In every bank, ready face spells retain coloured artwork in and out of combat,
+  with the bank selected or inactive. Spend/recover resources, move out/in range,
+  clear/refill a slot and refresh native art. Actual unavailable/range/resource
+  tint remains; empty slots show original grey device art, filled slots do not.
+- True round faces keep their circular border/mask through native/Masque refresh,
+  reload and combat transitions. D-pad art stays native. Raw white icon tint is
+  insufficient: inspect actual rendered colour and background/art visibility.
+- L2/R2 labels stay visible at their inactive-bank position during every selection.
+  L2+R2 and class badge remain on screen without collisions. L1+L2 class shortcuts
+  stay left and R1+R2 stay right; badge opacity follows its owning bank. Native
+  aura row stays suppressed. Preserve the approved sizes and coordinates.
+- Retest normal controller casts and configured cursor/player ground spells in
+  combat on Paladin/DH. Capture /cpf diagnose if any colour/input defect returns.
+
+Offline gates: T53 composition (16 faces, six types, 1,152 redraws and three
+negative controls); T24 roundness; T45/T50 collision/onscreen/fixed-label checks;
+T51 shortcut side/fade; T49 genuine availability; T41/T42 combat input/ground.
+Fengari/native-source doubles are not the Blizzard renderer/secure engine.
+Historical candidate results below keep their original dates and pending scope.
+
+# Historical candidate.5â€“7 test entries
+
+Candidate.7 visual patch is **installed** as of October 7, 15:10:51 Toronto.
+All 49 installed files match and all dependencies/WTF/junctions are unchanged.
+User authorization supersedes earlier preparation-only notes. Case 41 is ready
+for manual testing; its live result remains pending. The user reports
+candidate.6 cursor/player interception works. Their screenshot identifies
+missing custom Circle/Triangle artwork and missing round face masks. Previous
+case 40 remains partially failing for rendering; availability acceptance is
+not inferred from the screenshot.
+
+### 41 - face artwork and circular skin restoration (candidate.7; installed, live test pending)
+
+With candidate.7 now installed, verify all four face buttons in Base, L2,
+R2 and L2R2 are circular. Base Circle should show custom Exit art and Triangle
+look/crosshair art when their resolved bindings match. Jump/Interact custom art
+must remain, and ordinary spell/item icons must retain native availability,
+range/resource colors, charges and translucent cooldown swipes. D-pad skin
+and Masque settings remain as before.
+
+Repeat after reload, entering/leaving a dungeon, target changes, combat entry/
+exit, and a native bar or Masque refresh. No stuck grey usable icons, square
+borders, mouse/ring glyph substitution or Lua errors. If loading into combat
+prevents geometry setup, masks must recover when combat ends. Check `/cpf
+diagnose` for `faceSkin` (16/16; offline-verified is not live acceptance). Confirm
+cursor/player targeting preferences still behave as before. Do not edit live
+WTF or reconfigure/enable disabled DBM for this test.
+
+The refined candidate.6 is now installed with ConsolePort 3.3.10 as of
+October 7, 2026, 14:09:14 Toronto. User authorization supersedes earlier no-deploy
+notes below. Cases 36â€“40 are ready for the user's manual testing after the normal
+revision 13 review/reload. All 39 offline runtime/source suites and 33 tooling
+tests pass; no live controller/taint/rendering acceptance is claimed. DBM remains
+disabled and untouched.
+
+Candidate.6's refined labeled package adds the following pending acceptance
+cases. Do not deploy/run them until the user authorizes installation. Earlier
+case 37 remains applicable, with each spell's selected placement replacing the
+old blanket cursor expectation.
+
+### 39 â€” account-wide targeting tab (refined candidate.6; pending)
+
+- Open ConsolePort configuration â†’ Targeting. Verify this class's qualified
+  ground spells across all specs, plus context defaults and encountered temporary
+  abilities; other classes' catalog must not appear. Use controller focus/scroll
+  through every row and the Apply/Revert buttons.
+- Set Sigil of Flame to At player, Apply and cast its ordinary spell button with
+  every available DH spec. Expect one cast at your feet without saved macros.
+  Switch a second DH character, then reload/logout normally: the ability choice
+  must persist account-wide. Other classes retain their own ability choices.
+- Select Manual placement and test the normal reticle/cancel flow; select Default
+  and verify the displayed recommendation. Revert unsaved edits; native Defaults
+  must change the draft only until Apply. Apply during combat must save nothing.
+- Test known reticles on vehicle/override/temporary/extra bars. Explicit ability
+  preferences override context defaults. Unknown temporary spell rows initially
+  retain native targeting; deliberately select cursor/player only for a real
+  reticle. Returning to Default/manual removes that explicit interception.
+- Enter/leave a temporary mode or input owner while holding a cast; it must not
+  release a different action. Ordinary vehicle spells, empowered actions, items,
+  saved macros, extra-action availability and Exit must remain native.
+
+**Result:** PENDING; no live hardware/taint/tab/persistence claim.
+
+### 40 â€” round face-button availability (refined candidate.6; pending)
+
+- Inspect PAD1â€“PAD4 in every bank outside combat, then enter/leave dungeons and
+  combat repeatedly. Available spells must retain their colored artwork.
+- Spend resources, move out of range, cast GCD/long-cooldown/charge abilities and
+  recover. Native availability tint, cooldown progress and charges must remain
+  legible; the swipe must not completely black out the icon between every cast.
+- If available, enter/leave a party-sync lock and test a disabled zone action.
+  Legitimate locked/disabled desaturation must remain and clear on unlock.
+- Confirm round borders/masks persist after Masque refresh/reload, while D-pad
+  skin stays native. Open/close ordinary windows and return to gameplay.
+
+**Result:** PENDING; offline source reproduction does not certify the screenshot.
+
+Candidate.6/revision 13 is prepared without deployment. Its three new acceptance
+cases are below; run them only after a later authorized installation. DBM is
+deliberately disabled and must stay untouched/excluded. The other screenshot
+experiments are outside this change.
+
+### 36 â€” native Party default (candidate.6 only; pending)
+
+- Review the revision 13 Edit Mode proposal. Verify the differences concern
+  Party style, vertical orientation and its anchor only; use Keep mine to retain
+  a deliberate newer choice. If the known managed copy is inactive, your current
+  layout selection must remain unchanged.
+- Apply/Reload, select the managed layout if needed, and preview Party/Raid in
+  Edit Mode. Compact Party Frames must form a vertical column directly beneath
+  Raid, left aligned, with a small gap. Other frames/settings remain current.
+- Exit Edit Mode and check normal solo/party/raid visibility, reload persistence
+  and native Party targeting. Optional reviewed restore must retain its backup
+  and return previous owned settings.
+
+**Result:** PENDING; offline native contracts do not certify rendered placement.
+
+### 37 â€” normal ground spells at cursor (candidate.6 only; pending)
+
+- Accept only the new ground policy during revision 13 review and reload. Place
+  the ordinary Sigil of Misery spell on a controller bar; no saved macro is needed.
+  Aim the camera at nearby ground and press once. Expect one cast at the hidden
+  cursor position, without a placement-confirmation step. Try another registered
+  ground spell; unlock the free cursor and verify that its actual position is used.
+- Repeat in/out of combat, with L2/R2 modifiers, both native cast edges, held and
+  repeated presses, a changed modifier/temporary mode while held and a spec/talent
+  replacement. A release must not cast another cursor spell. Test entering UI,
+  raid cursor or native target-ring ownership while held: the outstanding ground
+  release must be cancelled.
+- Check normal spells, saved macros, items, flyouts, empowered actions and
+  unregistered spells retain native behavior. Unknown reticles still use native
+  cancellation. Check helpful ground spells without a selected ally, invalid
+  terrain/range, native cooldown/icons/tooltips and `/cpf proof`/`diagnose`.
+- Optional reviewed policy restore/Keep mine must restore native placement;
+  camera/cursor settings and the macro window remain unchanged. Other classes
+  need their own qualified-ID/live acceptance checks.
+
+**Result:** PENDING; offline secure-click models are not Retail hardware/taint proof.
+
+### 38 â€” Better Wardrobe dependency acceptance (pending)
+
+Candidate.6 tracks
+official stable Retail 6.12.3 and its SourceData helper, already installed
+with all 149 official files matching. After a later authorized deployment,
+verify Collections/transmog/dressing-room browsing, added tabs, filters,
+outfits, controller focus and the recolor action that loads SourceData.
+Preserve addon-owned options and helper state. Source closure/syntax/file
+matching does not certify rendered UI or actual game input.
+
+Candidate.5 is installed as of October 6, 19:34:44 Toronto, after the user closed
+WoW and authorized deployment. All dependencies were checked and already
+current; only Forever changed. Retest the October 6 Bags/tooltips/Darkmoon
+failures, then the separate Brewery extra-action button. The earlier observations
+below describe candidate.4 and are retained as history.
+
+October 6 live feedback: mounts/skyriding, normal combat, map zoom and NPC dialogue look okay; Square buys vendor items and opens containers. Backpack hides all action icons; merchant/controller Open hints need improvement; Rinling and Finlay show supplemental artifacts and empty banks. Candidate.5 fixes are being prepared **without deployment** while the user keeps WoW open. See [current feedback/fixes](DARKMOON-FIXES-2026-10-06.md). These broad observations do not certify every old test-card step.
+
+Latest read-only audit: [third WTF report](WTF-AUDIT-2026-10-04-THIRD.md). All 296 files/42 links are intact, 257 Lua/fallback files parse, 52 owned-field checks match and the new runtime log has no entries. Your basic skyriding retest is recorded as successful; the full action/held/combat test is still separate. Test 35 addresses the remaining BagsBar parent/visibility question.
+
+Start out of combat on the current Paladin, with unchanged addon versions and your usual controller. Use a training dummy for damaging actions. Before tests that deliberately alter a binding, ring, frame or setting, note its original value and restore it afterward. Do not reload halfway through a held-input test; normal logout at the end of each batch gives the next read-only audit a complete save.
+
+Use **PASS** only after every applicable step and expected result agrees. Use **PARTIAL** for only some completed steps, **FAIL** for an observed mismatch, and **UNAVAILABLE** when a required quest/vehicle/class/widget does not exist. An offline-verified diagnostic means setup/source checks, not a hardware pass. If a test fails, record its ID, exact step, expected versus actual behavior, class/spec and `/cpf diagnose`; stop that case and continue independent cases. Record the result and notes directly beneath each case in this document. For a failure, include the step letter and expected versus actual behavior.
+
+Installed code source: `c004591fb1372322f33f9bf603a8546e1d039c8e`. Each case below includes its steps, expected result and current recorded outcome.
+
+## Agent execution with an emulated controller
+
+**Controller requirement: PS5 / DualSense, matching the user's controller.** Earlier Xbox OS qualification and preliminary PS4 observations are excluded from PS5 acceptance. The PS4 device was removed when the user corrected the controller requirement. No PS5 case has passed yet.
+
+Preliminary PS4 observations on 2026-10-04: R2+Create opened Character, Circle closed it and restored gameplay icons; L2+Create opened BetterBags; D-pad Down moved its focus. These establish that actual emulated HID reports can reach Retail, but do not certify DualSense behavior or any complete test card. Bags contained a Hearthstone and no observed stack suitable for case 22. The native bag/micro strip appeared hidden in the observed ordinary-play screenshots; Edit Mode/reload restoration remains untested.
+
+For genuine PS5 USB emulation, the user approved the signed USB/IP 0.9.7.7 driver and VIIPER v0.1.9-rc4.6.6 backend. Official release hashes and the driver installer's Authenticode signature were checked. The user completed the administrator setup wizard; its completion screen requires a Windows restart. `C:/Program Files/USBip/usbip.exe` reports version 0.9.7.7. An earlier backend start correctly refused the absent prerequisite. No PS5 device was created; resume after restart. Packet contract checks for `tools/dualsense_live_client.py` passed offline, including trigger chords, axes, inactive touches and an independently calculated CRC. Preparation evidence is `evidence/test-results/dualsense-preparation.json`.
+
+After driver installation, confirm that Retail recognizes **DualSense/PS5**, check the actual PAD controls and leave the saved profile intact. Use actual virtual-controller reports for chords, axes, holds and release transitions; screenshots and `/cpf proof`/`/cpf diagnose` provide observations. Mouse clicks or direct Lua callback execution do not count as controller-input passes. Attempt every applicable case and record observations directly below. USB emulation tests game input/profile behavior; the physical controller's Bluetooth transport, factory sensors and physical feedback remain hardware-specific checks.
+
+The isolated test server must bind USB/IP and its management API to loopback only, use the repository scratch config/key paths and register no startup service. The live client requires observed WoW foreground, sends bounded holds, releases on focus loss or a 10-second watchdog, and removes only its newly created bus. It edits no live WTF. Disconnect and stop the client/server when the batch ends.
+
+## Current controls, from the saved bindings
+
+Cross = PAD1; Circle = PAD2; Square = PAD3; Triangle = PAD4. L2 supplies Shift; R2 supplies Ctrl. L3/R3 are stick clicks. The hardware control named `PADSYSTEM` opens map, with L2+PADSYSTEM zoom in and R2+PADSYSTEM zoom out. `PADFORWARD` opens the ConsolePort menu; L2+PADFORWARD opens utility, R2+PADFORWARD opens your existing Auras/manual class ring. Both-trigger PADFORWARD remains unbound while the new pet gesture is gated.
+
+L2+Back (`SHIFT-PADBACK`) opens Bags; R2+Back opens Character; both triggers+Back opens the spellbook. Your saved Social-button combinations provide the same three window shortcuts if that is the physical control exposed by your pad. Identify these named controls once in ConsolePort Bindings if the controller's printed labels differ. **Circle as contextual Back is distinct from the hardware PADBACK button.** Follow native item prompts if the configured face controls differ.
+
+## Run order
+
+1. Everyday UI: **01 â†’ 35 â†’ 34 â†’ 18 â†’ 19 â†’ 20 â†’ 21 â†’ 22 â†’ 23 â†’ 25 â†’ 26 â†’ 27 â†’ 16 â†’ 28 â†’ 02**. This is the first batch to report.
+2. Actions and transitions: **03 â†’ 04 â†’ 05 â†’ 06 â†’ 07 â†’ 08 â†’ 09 â†’ 10 â†’ 11 â†’ 24 â†’ 33**. Mark unavailable vehicle/quest/overflow cases honestly.
+3. Persistence and integrations: **12 â†’ 14 â†’ 15 â†’ 17 â†’ 29 â†’ 30**. Other classes/characters require their own normal login/review.
+4. Deliberate edits/recovery, last: **13 â†’ 31 â†’ 32**. Runtime restore is optional and can undo the new mode settings if applied.
+
+## Harmless popup used by case 21
+
+Paste this outside combat. It has no gameplay or saved-setting action. Circle should dismiss it and print `CPF Cancel`. The definition is transient and disappears on reload. Do not use `/logout` to obtain a popup; logout can be immediate in a rested area.
+
+```lua
+/run StaticPopupDialogs.CPF_TEST={text="CPF popup test",button1="OK",button2="Cancel",OnCancel=function() print("CPF Cancel") end,timeout=0,whileDead=true,hideOnEscape=true};StaticPopup_Show("CPF_TEST")
+```
+
+## Test cards
+
+### 01 â€” installed version/review
+
+- **A.** Log in after deployment.
+- **B.** Run `/cpf status` and verify candidate.3.
+- **C.** If mode/ring revision 12 was already accepted, continue without forcing a new review; otherwise review the genuinely pending mode/layout and GUID personal-ring fields, Apply and Reload.
+
+**Verify:** Configuration revision remains 12. Code-only fixes do not repeat accepted reviews. Existing anchors, sizes and actions remain; no old automatic preset replaces your layout. Any genuinely applied review retains its journal.
+
+**Result:** NOT RUN
+
+**Notes / failing step:** â€”
+
+### 02 â€” persisted review
+
+- **A.** Run `/cpf status` and `/cpf diagnose` after reload.
+- **B.** Reload once more.
+- **C.** Log out normally and return to the same character.
+
+**Verify:** No repeated review of the same accepted fields. The old missing keyboard exit route and ring-version errors are absent. The old Edit Mode reload-verification failure clears if you kept the same managed layout. Exact gesture/icon gates may remain pending.
+
+**Result:** NOT RUN
+
+**Notes / failing step:** â€”
+
+### 03 â€” ordinary banks
+
+- **A.** Note one assigned action in Base D-pad, L2, R2 and L2R2.
+- **B.** Press each corresponding control on an appropriate target.
+- **C.** Release both triggers.
+
+**Verify:** Every action matches its displayed icon and your original slot; no new spell is inserted. Base returns to its original controls. Empty buttons stay inert.
+
+**Result:** NOT RUN
+
+**Notes / failing step:** â€”
+
+### 04 â€” both mounts
+
+- **A.** Press L2+L3 and note the mount chosen by LM_B1.
+- **B.** Dismount.
+- **C.** Press R2+L3 and note LM_B2's behavior.
+- **D.** Repeat in a place where their existing rules differ, if available.
+
+**Verify:** The two original LiteMount actions/rules remain distinct and usable. Chords are intentionally unchanged. LM_B1 retains its approved icon; an unspecified LM_B2 icon does not make its action fail.
+
+**Result:** NOT RUN
+
+**Notes / failing step:** â€”
+
+### 05 â€” skyriding
+
+- **A.** Mount using your normal chord with skyriding selected.
+- **B.** Compare Base/L2/R2 against test 03 while grounded, then take off.
+- **C.** Hold both triggers and use available flight abilities.
+- **D.** Land and dismount.
+
+**Verify:** Only L2R2 receives actual flight-page actions. Base D-pad/L2/R2 retain ordinary actions and remain visible. No separate full replacement bank appears. Flight actions restore to your ordinary bottom actions after the temporary page ends; landing alone need not end an engine page.
+
+**Result:** PARTIAL
+
+**Notes / failing step:** User: skyriding seems okay after candidate.3; full case not yet recorded.
+
+### 06 â€” steady flight
+
+- **A.** Switch to steady flight through the native game control.
+- **B.** Mount and fly.
+- **C.** Land, dismount and switch back.
+
+**Verify:** No special-bank takeover merely because you are mounted/flying; replacement occurs only if the engine actually supplies a special action page. Mount rule selection remains LiteMount-owned.
+
+**Result:** NOT RUN
+
+**Notes / failing step:** â€”
+
+### 07 â€” visual/skin regression
+
+- **A.** Inspect all banks with triggers released, L2, R2 and both.
+- **B.** Use an action with cooldown, then target something out of range.
+- **C.** Reload and inspect again.
+
+**Verify:** Exactly the face-button art/masks retain the intended circular appearance; D-pad remains as before. Icons, cooldowns, empty cells, ranges/usability and active/inactive scaling remain coherent. No doubled prompts/masks or reset to square face art. For the Paladin grey-icon symptom record the spell, resources, target, range, spec and displayed/resolved action.
+
+**Result:** NOT RUN
+
+**Notes / failing step:** â€”
+
+### 08 â€” quest override
+
+- **A.** Start a quest granting temporary action buttons.
+- **B.** Check all four banks; use temporary ability 1 and a later available slot through L2R2.
+- **C.** End/cancel that quest state using its native route.
+
+**Verify:** Temporary actions replace only L2R2. Base/L2/R2 remain ordinary and visible. Exit restores bottom-bank contents; no quest ability is copied permanently into a spell slot.
+
+**Result:** NOT RUN
+
+**Notes / failing step:** â€”
+
+### 09 â€” vehicle and exit
+
+- **A.** Enter a vehicle with an exit route.
+- **B.** Use its L2R2 actions.
+- **C.** Use the supplemental Exit control with mouse or interface cursor if you have no keyboard exit binding.
+
+**Verify:** Exit remains reachable even with no VEHICLEEXIT keyboard key. It leaves the vehicle once and restores ordinary routing. Exit is absent when the engine says you cannot exit.
+
+**Result:** NOT RUN
+
+**Notes / failing step:** â€”
+
+### 10 â€” overflow
+
+- **A.** Find a genuine vehicle/override/temporary page containing action 9â€“12, if one is available.
+- **B.** Check retained supplemental access at the former extra-page area.
+- **C.** Activate an available later action and leave the mode.
+- **D.** Mount with only a skyriding bonus page.
+
+**Verify:** Only real temporary overflow is shown; bonus-only skyriding produces no numbered side bar. No new paging/ring/keyboard shortcuts. Controls and their cursor parent disappear outside eligible modes after a held press releases. A real >8 case still needs separate acceptance; if none is available, leave that portion UNAVAILABLE.
+
+**Result:** NOT RUN
+
+**Notes / failing step:** â€”
+
+### 11 â€” held transition
+
+- **A.** Hold a primary action/empowered input.
+- **B.** During that hold, trigger a feasible temporary-page entry/exit or release/change triggers.
+- **C.** Release the original input. Repeat with a supplemental overflow control if available.
+
+**Verify:** The release belongs to the original press. It does not execute a new slot selected by the intervening mode/modifier change, cast twice or leave an action held.
+
+**Result:** NOT RUN
+
+**Notes / failing step:** â€”
+
+### 12 â€” forms/stealth
+
+- **A.** On a Druid/Rogue, note the ordinary four-bank actions.
+- **B.** Change normal form/stealth.
+- **C.** Leave that state; if possible do form â†’ vehicle â†’ form.
+
+**Verify:** Ordinary class bonus states do not replace whole banks. A real vehicle/skyriding page still replaces L2R2 and later restores ordinary mapping. Engine spell overrides/usability and intentionally conditional macros may still change their own icons/effects.
+
+**Result:** NOT RUN
+
+**Notes / failing step:** â€”
+
+### 13 â€” Edit Mode
+
+- **A.** Open Blizzard Edit Mode and check the managed layout is selected.
+- **B.** Move a harmless frame a small distance and use native Revert.
+- **C.** Repeat with Save; close and reload.
+
+**Verify:** Native editor handles work; hidden native strips/side bars give way during editing and return to intended visibility on exit. Revert restores the old position; Save retains your deliberate edit. No taint/block/error or silent switch to another profile. A genuine saved manual change can require later conflict review.
+
+**Result:** NOT RUN
+
+**Notes / failing step:** â€”
+
+### 14 â€” shared/personal persistence
+
+- **A.** On character A, change one personal L2/D-pad binding and one manual ring entry through the normal editor.
+- **B.** Log out normally; enter B and complete its review.
+- **C.** Give B a different personal action and return A â†’ B â†’ A.
+
+**Verify:** A/B retain their own personal cells and manual rings, including migration/review state. The unmodified four face controls remain shared. Neither character receives the other's spell/ring contents just because their disk folders share a template.
+
+**Result:** NOT RUN
+
+**Notes / failing step:** â€”
+
+### 15 â€” native spec bars
+
+- **A.** On one character, note its controller arrangement and native action slots.
+- **B.** Switch specialization/loadout.
+- **C.** Switch back.
+
+**Verify:** Controller commands/manual-ring arrangement remain character-owned. Native spell/action slot contents follow the game's existing spec/loadout behavior. No per-spec companion profile is invented or another character's contents appear.
+
+**Result:** NOT RUN
+
+**Notes / failing step:** â€”
+
+### 16 â€” keyboard preservation
+
+- **A.** With UI closed, try your normal jump, movement and a known keyboard action.
+- **B.** Open chat and type; close chat.
+- **C.** Repeat after reload.
+
+**Verify:** Keyboard mappings/text entry remain usable; controller context keys do not cause hidden gameplay actions while typing. No global mount/vehicle keyboard shortcut was assigned by the hotfix.
+
+**Result:** NOT RUN
+
+**Notes / failing step:** â€”
+
+### 17 â€” manual rings
+
+- **A.** Open the utility ring with L2+forward-menu and your existing class ring with R2+forward-menu.
+- **B.** Add/reorder one harmless manual entry in the native ring editor.
+- **C.** Reload, reopen and then repeat test 14.
+
+**Verify:** Existing native opener/gesture works, entries/order remain, and available native quest/zone entries remain automatic. No surprise activation of the new learned-selector/pet gesture.
+
+**Result:** NOT RUN
+
+**Notes / failing step:** â€”
+
+### 18 â€” windows/tabs
+
+- **A.** Use the keyboard or native menu buttons to open Character and Bags together, then acquire interface-cursor focus inside one window. This sets up window cycling without depending on a gameplay opener while another window owns input.
+- **B.** Press L2 and R2 separately to cycle between these two windows.
+- **C.** Close both windows first. Open the spellbook using L2+R2+Back, focus a native tab, then press L1 and R1 to visit its available tabs.
+- **D.** Close all windows and try the same controls in ordinary play.
+
+**Verify:** Window-focus triggers select a real visible window. Shoulders change supported native tabs; absent/disabled tabs stay inert. No gameplay spell fires underneath a focused window. Ordinary controls return after close.
+
+**Result:** NOT RUN
+
+**Notes / failing step:** â€”
+
+### 19 â€” scroll/tooltips
+
+- **A.** Open Achievements with keyboard Y and choose a category with enough entries to show a vertical scrollbar. Put interface-cursor focus on its scrollbar thumb or arrow, rather than a list entry. If that widget is not supported, mark this scroll portion UNAVAILABLE and record the window/widget; do not assume every list is supported.
+- **B.** Return the right stick to neutral, scroll down/up and release.
+- **C.** Close Achievements, open Bags, focus an item with a tooltip and press R3.
+- **D.** Close the window and move/look normally.
+
+**Verify:** Scroll starts only after neutral qualification, stays within bounds and stops on release/focus loss. R3 refreshes/shows the focused tooltip when supported. Ordinary camera/movement returns. Unsupported widgets retain native behavior rather than being falsely marked supported.
+
+**Result:** NOT RUN
+
+**Notes / failing step:** â€”
+
+### 20 â€” focus visuals
+
+- **A.** Note gameplay icons/highlights with UI closed.
+- **B.** Focus Character/Bags using the interface cursor.
+- **C.** Open a nested popup and close it; finally close UI.
+
+**Verify:** Action icons remain visible while the approved UI owner holds focus. Transient gameplay highlights are suppressed, then restored. Ring feedback and item/window controls remain visible. No blank HUD or hidden gameplay cast through a focused window. This follows the October 6 correction to the earlier icon-suppression requirement.
+
+**Result:** NOT RUN
+
+**Notes / failing step:** â€”
+
+### 21 â€” popups
+
+- **A.** Outside combat, paste the harmless two-button popup command at the top of this suite.
+- **B.** Close chat and move the interface cursor onto the popup; press Circle once.
+- **C.** Show it again and press Cross once.
+- **D.** If a real four-button review appears naturally, check its displayed Cross/Circle/Square/Triangle prompts separately; otherwise mark that portion UNAVAILABLE.
+
+**Verify:** Circle cancels once and prints CPF Cancel. Cross dismisses OK without printing CPF Cancel. Neither press activates gameplay underneath the popup. Native button 1/2/3/4 and extra-button routes are tested only where those controls actually exist.
+
+**Result:** NOT RUN
+
+**Notes / failing step:** â€”
+
+### 22 â€” quantity
+
+- **A.** Open Bags with L2+Back.
+- **B.** Select a harmless stack containing at least five items and leave one bag slot free; open its native Split Stack command through the item menu or keyboard Shift-left-click.
+- **C.** Use D-pad left to reach 1 and keep pressing; then right to reach the stack maximum and keep pressing.
+- **D.** Return to 2, confirm with Cross and check the new stack; recombine it.
+- **E.** Open Split Stack again and cancel with Circle; try the parent-window trigger controls while the quantity dialog is open.
+
+**Verify:** Quantity never goes below 1 or above the native maximum. Cross splits exactly the selected quantity once. Circle leaves the stack unchanged. The modal retains priority over parent focus/tab controls; ordinary bag input returns on close.
+
+**Result:** NOT RUN
+
+**Notes / failing step:** â€”
+
+### 23 â€” bag item actions
+
+- **A.** Open Bags with L2+Back and focus a harmless, unlocked item.
+- **B.** Press Triangle to open its native item menu; inspect its choices and cancel.
+- **C.** On a non-usable harmless item, press Cross to pick it up.
+- **D.** Press Circle once, then a second time.
+- **E.** Reopen Bags and, with no merchant/trade/mail open, focus an expendable consumable and press Square once; check its stack count.
+
+**Verify:** Triangle opens the eligible native item menu. Cross acts on the focused item. First Circle clears the carried item while keeping Bags open; second Circle closes Bags. Square performs the native right-click/use once on that item; its stack changes once if consumed. Unsupported, empty or locked nodes stay inert.
+
+**Result:** NOT RUN
+
+**Notes / failing step:** â€”
+
+### 24 â€” bags with merchant/bank
+
+- **A.** Visit a vendor or bank and focus a harmless item.
+- **B.** Try its native eligible item action; cancel a quantity/context popup rather than buying/selling something valuable.
+- **C.** Close/reopen the bag or change focus while a button is held.
+
+**Verify:** Native merchant/bank priority remains. The prior item is not sold/used after its slot/identity changes, and an obsolete release does not activate a new item. Protected repair/equip/sell semantics remain the game's native operations.
+
+**Result:** NOT RUN
+
+**Notes / failing step:** â€”
+
+### 25 â€” map pan/zoom
+
+- **A.** Open the map with the Map control (`PADSYSTEM`), or use its normal keyboard opener only to set up the canvas test.
+- **B.** Acquire interface-cursor focus on the canvas and release both sticks to neutral.
+- **C.** Pan with left stick, release, then zoom in/out with right stick and release.
+- **D.** Focus a search/list field; move the sticks, return to the canvas and neutralize again.
+- **E.** Close the map and move/look normally.
+
+**Verify:** Pan/zoom obey native map bounds and stop after release. Search/list focus suspends canvas input. Zoom respects the native smooth/full preference. Movement, camera and autorun return with no stuck vector. A keyboard setup does not count as a controller-opener pass.
+
+**Result:** NOT RUN
+
+**Notes / failing step:** â€”
+
+### 26 â€” map waypoint/Back
+
+- **A.** On an eligible map, place the controller cursor at a known location and press L3.
+- **B.** Focus that actual waypoint pin and press L3 again.
+- **C.** Use Circle/Back with the canvas open or maximized, then press again if it minimized first.
+
+**Verify:** Waypoint appears at the cursor's map location and can be removed through the current pin. Native prohibited maps remain prohibited. Back follows native minimize-before-close where applicable; it does not clear a gameplay target underneath the map.
+
+**Result:** NOT RUN
+
+**Notes / failing step:** â€”
+
+### 27 â€” quest details
+
+- **A.** Open an eligible quest detail on the map.
+- **B.** Use its shown controls and minimize as appropriate.
+- **C.** Use Back to leave details, then close map.
+
+**Verify:** Native reward/face routes remain; Back returns through native quest detail/list/map behavior. No accidental waypoint or gameplay action while quest details own input.
+
+**Result:** NOT RUN
+
+**Notes / failing step:** â€”
+
+### 28 â€” preserved commands
+
+- **A.** With UI closed, press the Map control (`PADSYSTEM`) to open/close map; test L2+Map for zoom in and R2+Map for zoom out.
+- **B.** Press the forward-menu control (`PADFORWARD`) and close its menu.
+- **C.** On clear ground press L3 to start autorun and L3 again to stop; press R3 to open/use the native ping route.
+- **D.** Use L1 for nearest-friendly and R1 for enemy scan on suitable targets.
+- **E.** When an extra-action button is available, press L2+R3 once; reopen/close a normal UI window and repeat the ordinary shortcuts.
+
+**Verify:** Each existing shortcut invokes its saved native command and returns after contextual UI ownership ends. No new command is assigned to an unbound chord. Extra-action access remains separate from whole-bank replacement. Missing extra-action opportunity is UNAVAILABLE, not PASS.
+
+**Result:** NOT RUN
+
+**Notes / failing step:** â€”
+
+### 29 â€” DynamicCam
+
+- **A.** Open its native options and note the managed profile selected for this character.
+- **B.** Travel between city/interior/open-world and test your existing camera zoom/situations.
+- **C.** Reload and revisit.
+
+**Verify:** Original profile still exists; the managed copy retains your previous situations/scripts and camera preferences. No second independent camera/fade controller or surprise default reset. Manual managed edits remain after reload.
+
+**Result:** NOT RUN
+
+**Notes / failing step:** â€”
+
+### 30 â€” Immersion/ExtraFade
+
+- **A.** Speak to a quest NPC.
+- **B.** Check dialogue positions/scales and fade behavior against your previous setup; finish/cancel dialogue.
+- **C.** If appropriate enter/leave combat and view an allowed native cinematic.
+
+**Verify:** Dialogue controls and all retained offsets/settings remain. Fade restoration follows native Immersion/ExtraFade coordination; chat/tracker visibility follows your approved existing settings. No UI remains stuck faded after closing.
+
+**Result:** NOT RUN
+
+**Notes / failing step:** â€”
+
+### 31 â€” update/conflicts
+
+- **A.** After the installation is stable, deliberately change one supported managed setting through its normal addon editor.
+- **B.** Run `/cpf update`.
+- **C.** If a conflict is offered, choose Keep mine and reload.
+
+**Verify:** A newer owned edit is retained/reviewed rather than silently overwritten. Unchanged/default fields are no-ops. Do not force a conflict to appear if there is no newly proposed default; that part remains UNAVAILABLE.
+
+**Result:** NOT RUN
+
+**Notes / failing step:** â€”
+
+### 32 â€” runtime restore (last)
+
+- **A.** Finish and record the earlier tests.
+- **B.** Run `/cpf status` to identify a chosen runtime journal, then `/cpf restore <id>` and inspect the preview.
+- **C.** Cancel first; only Apply if you deliberately intend to undo that reviewed change.
+
+**Verify:** Cancel changes nothing. An applied restore preserves newer conflicting edits, restores only reviewed fields and retains its own journal. Restoring the mode-install journal can disable the new behavior, so run this last and reapply only through a later review. Disk disaster restore is a separate operation and is not part of this controller test.
+
+**Result:** NOT RUN
+
+**Notes / failing step:** â€”
+
+### 33 â€” reconnect/focus/combat
+
+- **A.** Open a context, hold a control and disconnect/reconnect the controller or change focus.
+- **B.** Neutralize sticks/release buttons and return to ordinary play.
+- **C.** Repeat a low-risk temporary-page transition in combat.
+
+**Verify:** No stuck modifiers/actions/vectors, no delayed release cast and no blocked protected mutation/taint. Configuration application waits until out of combat/Edit Mode.
+
+**Result:** NOT RUN
+
+**Notes / failing step:** â€”
+
+### 34 â€” empty supplemental owner
+
+- **A.** Mount/dismount with skyriding, then open Character as the only eligible window.
+- **B.** Use window-focus triggers and the interface cursor.
+- **C.** Close Character and return to ordinary play; log out normally afterward.
+
+**Verify:** No invisible empty supplemental bar becomes a focus destination or leaves gameplay feedback suppressed. The next read-only WTF audit should contain bounded candidate.3 runtime diagnostics; those recorded statuses remain evidence, not a hardware pass certificate.
+
+**Result:** NOT RUN
+
+**Notes / failing step:** â€”
+
+### 35 â€” native bag/micro strip ownership
+
+- **A.** Out of combat, close all ordinary windows and inspect the native bag/micro-menu strip and five native side bars; distinguish these from the four ConsolePort banks and BetterBags window.
+- **B.** Enter Blizzard Edit Mode through the game menu; check any offered native editing handles, then use Revert/exit without saving a position change.
+- **C.** Reinspect ordinary play, reload once and inspect again; run /cpf diagnose.
+
+**Verify:** The approved native strips/side bars stay hidden in ordinary play and return to the intended state after Edit Mode/reload. Any editing handle actually offered by the game remains usable. If no bag-strip handle is offered, mark that edit-access portion UNAVAILABLE. Record whether BagsBar ownership still reports pending. An unwanted visible strip, unusable offered handle or failed restoration is FAIL; the conservative parent warning alone is not proof of a visual failure.
+
+**Result:** NOT RUN
+
+**Notes / failing step:** â€”
+
+## Known gates â€” observe baseline only
+
+The following are not implemented pass criteria in this candidate: exact one-success gameplay Circle; right-stick-return ring commit/close-and-continue; active ring-entry cancellation; automatic learned class/aura/new pet selector activation; exact transient 0.5-second loot hold; exact held cinematic skip; missing LM_B2 default icon; unaudited scroll widgets. Preserve and observe existing native controls. Their absence does not become a new regression merely because other tests pass. Do not spend the first batch trying to prove an intentionally inactive feature. Real >8 temporary cases require separate review; retained emergency access is not acceptance of new paging/rings.
+
+## Case 42 - hidden class controls and vehicle seats (candidate.8)
+
+Accept or keep revision 14 normally in-game. With the new policy accepted, use
+R2 + menu for learned Warrior stances, Priest Shadowform, Rogue stealth, Druid
+forms and Paladin auras on appropriate characters. Select through ConsolePort's
+current press-point-release or explicit-confirmation preference; verify icons,
+active state, spec/talent changes and combat input. No manual ability macros.
+Open L2 + menu utility ring and select Vehicle seats in a vehicle with seats.
+Verify native seats appear, normal interface cursor can select them, Close returns
+to gameplay, reselecting the ring entry closes the panel and vehicle exit leaves
+no empty cursor owner. Entering the vehicle alone must not activate UI focus.
+Verify normal vehicle actions/exit, Edit Mode show/save/revert/exit, disable/restore
+and remapped/missing ring openers retain access without taint. Retail pending.
+
+## Case 43 - combat engine dispatch after UI ownership (candidate.9)
+
+Before another dungeon, open/close bags, a popup/ready check and vehicle-seat UI;
+then enter combat on a training dummy. Verify face and D-pad abilities in all four
+modifier banks dispatch, including the first press immediately after combat starts.
+Verify an old held UI release does not cast/click anything and the next fresh press
+works. Repeat leaving/re-entering combat, target changes, ground spells and vehicles.
+The offline regression must call native UseAction through engine bindings; visual
+buttons alone cannot pass this test. Actual Retail acceptance remains user-owned.
+
+## Case 44 - prepared native-recovery targeting (candidate.11; not installed)
+
+Only after a separately authorized closed-WoW deployment: enable reviewed ground
+placement and open ConsolePort settings > Targeting. Choose cursor/player/manual
+for a ground spell, Apply outside combat, and verify exactly one cast with no
+selector for cursor/player. Manual must show the normal selector. Test both
+ActionButtonUseKeyDown settings, target changes, every controller bank, normal
+non-ground abilities, pickup/drag, macros/items/flyouts and empowered spells.
+Enter dummy combat immediately after a focused popup/bag; verify the first and
+subsequent ordinary actions dispatch. Hold/release across owner/page/hide changes;
+no delayed or unrelated cast. Reconnect and repeat leaving/entering combat.
+
+Cycle Ordinary abilities / Vehicle UI / Override / Temporary / Extra action.
+Set different preferences for the same spell and verify actual native temporary
+slots select the correct context while ordinary slots retain their own choice.
+Test native overflow actions 9-12 and extra actions, including encounters where
+controls load late. For unknown reticles use Add spell ID or encountered rows;
+explicitly configure cursor/player. Unconfigured spells retain native targeting.
+Confirm terrain/range failures produce ordinary game feedback. Change spec/character,
+log out normally and verify account-wide saved choices. Check for Lua/protected-action
+errors/taint. All Retail cases remain NOT RUN; offline mocks cannot pass this case.
+
+
+## Case 48 - controller ping pointer and native tap/hold (candidate.21, NOT DEPLOYED)
+
+After a separately authorized installation only, park the mouse over UI, return
+to controller camera freelook, then tap R3 aimed at a valid world/unit. Hold R3,
+select a native radial ping and release; repeat in/out of combat and verify the
+prior GamePadCursorCentering preference returns. Check free pointer, native UI,
+raid/target ring ownership, keyboard F2, remapped chords and modal handoff while
+held. Native invalid-target, leader restriction and cooldown errors must remain.
+If the generic error persists, /cpf diagnose and normal game-owned saving retain
+public mouse-focus/CVar evidence. No exact privileged receiver is exposed.
+Actual CVar timing, hardware API permission, unit/world hit test, radial position,
+held owner handoff, combat and taint remain NOT RUN. Offline tests cannot pass
+this case. See CANDIDATE21-PING-TARGETING-2026-10-09.md.
+
+
+## Case 49 - all-character combined temporary bank (candidate.22)
+
+After deployment, test L2+R2 on Demon Hunter and other characters during riding
+ground/takeoff/landing/dismount, possession, quest overrides, vehicles and
+temporary shapeshifts. Only L2+R2 replaces/restores temporary actions; other banks
+retain ordinary abilities. Check original class forms/stealth, ordinary manual
+pages, held page-change releases, exit/dismissal/overflow, native extra actions,
+ground casting, UI/combat first input, layout rebuild and A-B-A character changes.
+Repeat native cap checks: vehicle/override unused positions cannot show foreign
+slot contents. Keyboard and native controller UI/modal priority remain. Inspect
+/cpf status for temporaryRouting and test for errors/taint.
+Actual engine/hardware/rendering acceptance remains NOT RUN until user evidence.
+See CANDIDATE22-TEMPORARY-ROUTING-2026-10-09.md.
+
+
+## Case 50 - native secure controller ping (candidate.23)
+
+Candidate.22 ping is rejected by the user's protected-action popup. After
+candidate.23 deployment, tap R3 in camera freelook at valid world terrain/a unit,
+including a mouse parked over UI before returning to camera control. Hold R3 and
+release through the native radial flow. Repeat in and out of combat. Confirm no
+ConsolePort_Forever blocked-action popup or Lua error. Check keyboard F2/free
+cursor/UI/raid/target-ring modes, rebound chords, modal UI and quick repeated taps.
+Check prior GamePadCursorCentering restores after release. If a popup/error
+remains, run /cpf diagnose before reloading and retain the reported blocked
+function and ping public-focus details. Native server cooldown/eligibility errors
+remain ordinary feedback. Actual Retail input ordering/cursor timing/taint is
+NOT RUN by the agent. Dragonriding is accepted by the user on October 10;
+other case49 families retain their separate live acceptance gates.
+
+## Case 51 - paired secure macro ping repair (candidate.24)
+
+First use R3 in ordinary camera control aimed at valid terrain, with the mouse
+previously parked over a window. Tap and release should send one contextual ping.
+Hold R3, move the right stick to each of the six labelled types, and release;
+each should send exactly the chosen type. The selector opens immediately. Neutral
+release is contextual even after pointing at a type. Circle/B or the seventh
+Cancel wedge sends nothing. If ping is rebound to Circle/B, use the Cancel wedge.
+
+Aim at a soft enemy/friend and check unit pings; keep a different offscreen hard
+target selected and verify it is not used. Test a unit disappearing while held,
+invalid terrain and normal cooldown/group restrictions. Prior centering should
+return after a ground ping; unit pings/cancel should not change it. Repeat with
+ActionButtonUseKeyDown enabled/disabled and prior GamePadCursorCentering 0/1.
+
+Test wholly within combat and across combat entry/exit. Open UI/raid/target ring
+or another modal while held, change modifiers, cancel, then release R3; no delayed
+ping or stuck camera should result. Disconnect while held and reconnect; use a
+fresh R3 press to start a new gesture. Check keyboard F2 retains native behavior.
+Standard modifier layers are qualified; tap-latch/doubled/ordered layer modes
+retain native ping and report pending in /cpf status.
+
+Do not run all scenarios before reporting the first failure. Capture /cpf diagnose
+and the exact error/blocked function if an error occurs. Retail cursor timing,
+taint/secure authority and actual reconnect event ordering remain NOT RUN until
+user evidence. The two-agent offline agreement is readiness for this test, not
+certification that the live client works. Dragonriding remains user-accepted;
+other temporary-bar families retain case49 live acceptance.
+
+## Case 52 - native compiler repair of silent ping (candidate.25, NOT DEPLOYED)
+
+Only after a later explicitly authorized closed-WoW installation: hold R3 in
+ordinary camera control. The six ping types and Cancel should now appear. Test
+a contextual tap on valid terrain, then all six typed releases and cancellation.
+Repeat with the mouse previously parked over UI, aimed enemies/friends and a
+different stale hard target. Check both key-down settings and centering 0/1.
+Repeat combat, modal/other-ring handoff, modifiers and disconnect cases from51.
+
+If no selector appears, capture the pingTargeting line from /cpf status and
+/cpf diagnose before reloading. If the selector appears but no ping is sent,
+report that distinction and any normal ping error. Do not equate hidden Lua
+errors with successful restricted compilation. Existing dragonriding/temporary
+bar acceptance remains separate. Candidate.25 has not been tested in Retail;
+offline native compiler and dispatcher results do not pass this manual case.

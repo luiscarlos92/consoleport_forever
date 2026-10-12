@@ -1,3 +1,17 @@
+# Retained procedure and historical checkpoints
+
+Read [current status](IMPLEMENTATION-STATUS.md), [current requirements](REQUIREMENTS.md),
+[development rules](DEVELOPMENT.md) and [current cumulative cases](NEXT-DEPLOYMENT-CHECKLIST.md) first.
+The text below preserves earlier procedures and candidate-specific records.
+Its “current” headings, package counts, permissions and NOT RUN statements
+belong to their historical dates; they do not override current authority or
+scoped user acceptance. Old deployment/retirement authorization is fulfilled.
+Use current scoped tools and root AGENTS.md for new work.
+
+The [original exact bytes](archive/ai-native-2026-10-11/ACCEPTANCE.pre-restructure.md) are retained.
+
+---
+
 # Retail acceptance: candidate.17 visual repair confirmed; broader H8 pending
 
 This candidate is for the approved personal setup. User-authorized installations and three read-only accepted-login WTF audits are recorded in LIVE-INSTALL-2026-10-04.md and WTF-AUDIT-2026-10-04-THIRD.md. Current installed version is candidate.17, configuration revision 17. The user confirmed the combat-grey repair on October 8, 2026 ("it works"); accepted source is 4cbf2ebb094a7dddcd2c60e26de597b0439ab773. See candidate17-live-acceptance.json and manual case 42 for the precise scope. Saved review persistence and the reported basic appearance/skyriding have evidence; the full hardware/secure/combat/taint/rendering/A-B-A/rollback checklist remains pending. Use the manual test cards and record outcomes directly beneath each case in MANUAL-TEST-CASES.md; the retained BagsBar parent warning needs visual case 35. No WoW process was launched by the agent. Offline Lua hosts execute Lua 5.3 semantics with independent Lua 5.1 parsing; source-contract tests are not Blizzard's secure engine.

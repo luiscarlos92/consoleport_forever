@@ -29,6 +29,12 @@ The [reference index](docs/reference/README.md) routes evidence and history.
 - Preserve native ConsolePort binding/page/input ownership. Full custom modes,
   UI takeover and hidden-control replacement remain suspended. Ground placement
   and its Targeting panel are retired by user instruction; temporary routing remains active.
+- Do not reintroduce Forever ground-placement interception, its Targeting tab,
+  preferences/registry/setup policy, or equivalent automatic macro creation/spell
+  replacement without a new explicit user request authorizing that feature.
+  Older acceptance, saved flags, backups, fixtures, parity plans and general
+  repair/optimization instructions do not authorize reinstatement. Preserve the
+  retirement gates; see [decision 0007](docs/decisions/0007-ground-placement-retirement.md).
 - Runtime Lua/XML locations and TOC order are functional contracts. Cleanup
   alone does not justify moving them or changing loading.
 - Archived scripts/absolute paths are historical evidence, not deployment

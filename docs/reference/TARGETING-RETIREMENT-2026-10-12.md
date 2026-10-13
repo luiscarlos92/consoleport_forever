@@ -7,6 +7,11 @@ Evidence: [requirements](../REQUIREMENTS.md), [runtime](../../addon/ConsolePort_
 
 ## Authority and measured scope
 
+[Decision 0007](../decisions/0007-ground-placement-retirement.md) makes retirement
+a standing exclusion. Older records, saved flags and general repair/optimization
+work cannot reinstate it; equivalent automatic macro/spell replacement inside
+Forever also requires a new explicit user request authorizing ground placement.
+
 The user explicitly requests removal of Forever's Targeting tab and all of its
 ground-placement behavior, followed by confirmation of the exact removal list.
 R3 ping, Circle cancellation, temporary vehicle/skyriding/override routing and
@@ -89,3 +94,11 @@ backup: `C:\Users\luisr\WoW-Backups\ConsolePort-Forever\20261013T014947Z-38f63cc
 No game input, live WTF writes or dependency replacement. User owns reload;
 schema/revision are unchanged and no new setup review is required. Historical
 timings precede retirement and do not certify its Retail performance.
+
+## Post-delivery user observation
+
+The user reports "generally seems to be working" and asks that documentation
+prevent the feature from returning by mistake. Record this as general gameplay
+feedback associated with candidate.36 delivery, without claiming a measured CPU
+reduction, independently verified loaded version or exhaustive individual-case
+acceptance. [Observation](../../evidence/targeting/retirement-user-observation-2026-10-12.json).

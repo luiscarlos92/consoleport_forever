@@ -18,7 +18,12 @@ tooling tests with matching complete inventories. Independent verification confi
 55 installed files, four removed modules, 2,252 other addon files, 310 WTF files,
 42 links/root anchors and all 23,982 prior backup files preserved. No dependency
 or WTF writes or game input. User owns reload; no new setup review is required.
-Retail performance/input/visual/taint acceptance after retirement remains open.
+The user subsequently reports "generally seems to be working" after delivery.
+This is general gameplay feedback; measured CPU improvement and individual
+input/visual/taint cases remain unverified.
+[Observation](../evidence/targeting/retirement-user-observation-2026-10-12.json).
+Ground placement is a standing exclusion under
+[decision 0007](decisions/0007-ground-placement-retirement.md), not pending parity work.
 [Retirement](reference/TARGETING-RETIREMENT-2026-10-12.md),
 [qualification](../evidence/test-results/candidate36-purge-qualification.json),
 [fresh CI](../evidence/test-results/candidate36-fresh-ci.json).

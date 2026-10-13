@@ -24,6 +24,12 @@ scratch copies. `tools/local` scripts can be hashed/parsed; they must not execut
 
 ## Relevant suites and mandatory gates
 
+Ground-placement retirement is a standing exclusion under
+[decision 0007](decisions/0007-ground-placement-retirement.md). T12, T38 and T42
+remain mandatory; old placement fixtures/acceptance do not justify restoring
+the feature or weakening these gates. A renamed or macro-based replacement also
+requires a new explicit user request authorizing ground placement.
+
 | Change | Required proof / existing gate |
 | --- | --- |
 | Any runtime/executable tool or release qualification | Full `Test-All.ps1`, complete current product/tool/test hashes; no failed/skipped required checks. |

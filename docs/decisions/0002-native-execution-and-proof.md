@@ -1,10 +1,15 @@
 # 0002: Retain native execution ownership and realistic proof
 
 Status: maintained
-Reviewed: 2026-10-11
+Reviewed: 2026-10-12
 Evidence: [native recovery](../NATIVE-RECOVERY-2026-10-08.md),
 [compiler correction](../CANDIDATE25-SILENT-PING-2026-10-10.md),
 [runtime branch](../../addon/ConsolePort_Forever/ConsolePort_Forever.lua).
+
+The ground-placement clause below is superseded by
+[decision 0007](0007-ground-placement-retirement.md). It records earlier acceptance,
+not current activation or permission to restore placement. The other native
+ownership and proof rules remain active.
 
 Decision: established current boundary, recorded here without a runtime change.
 Native ConsolePort bindings/pages/UI ownership remain authoritative. Full custom

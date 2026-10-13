@@ -1,0 +1,14 @@
+{
+  "recordedAt": "2026-10-13T02:19:11.581074+00:00",
+  "localDate": "2026-10-12",
+  "associatedCandidate": "2.0.0-candidate.36",
+  "source": "Direct user follow-up after retirement delivery",
+  "userObservation": "generally seems to be working",
+  "userInstruction": "make sure documentation is updated so that this feature doesnt make a comeback by mistake. commit and push",
+  "scope": "General gameplay feedback after delivery; standing ground-placement exclusion confirmed",
+  "loadedCandidateIndependentlyVerified": false,
+  "retailCPUImprovementMeasured": false,
+  "exhaustiveInputVisualTaintAcceptance": false,
+  "gameInputPerformedByAgent": false,
+  "runtimeChangesInThisFollowUp": false
+}

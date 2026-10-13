@@ -18,6 +18,12 @@ native bars, cooldowns, input, retained data and retired targeting remain unchan
 The captured 1,020 native cooldown errors have an unconfirmed original taint writer;
 these source repairs do not claim that gameplay warning is resolved.
 [Audit](docs/reference/COMBAT-ERROR-AUDIT-2026-10-13.md).
+Installed at 00:58:18 Toronto from tested/pushed source
+`4146195e5b126c6e4e1a606d21512e1e7ee8b26f`. Local qualification passed 78 runtime/source
+checks and 66 tooling tests. Independent readback verified 55 installed files,
+four product changes, 2,252 other addon files, 310 WTF files, 42 links/root anchors
+and all 24,353 prior backup files preserved. WoW was closed; no game input or
+dependency/WTF writes. [Receipt](evidence/delivery/candidate37-independent-readback.json).
 
 ## Ground targeting retired — October 12, 2026
 

@@ -1,18 +1,21 @@
 # Pending deployment and cumulative acceptance
 
-Status: candidate.36 installed October 12, 2026 at 21:50:35 Toronto.
+Status: candidate.37 installed October 13, 2026 at 00:58:18 Toronto.
 Standing user permission authorizes qualified Forever updates while playing unless
 explicitly prohibited. Independent verification preserved installer-start WTF,
-other addons, topology and all 23,982 prior backup files. No game
-input or WTF writes; user owns reload.
-[Installation](../evidence/delivery/live-install-candidate36.json),
-[readback](../evidence/delivery/candidate36-independent-readback.json).
+other addons, topology and all 24,353 prior backup files. No game
+input or WTF writes; WoW was closed, and code loads on next login/user-owned reload.
+[Installation](../evidence/delivery/live-install-candidate37.json),
+[readback](../evidence/delivery/candidate37-independent-readback.json).
 
-Candidate.36 requires user-owned reload; accepted revision20 needs no new setup
-review. Ground placement and its Targeting tab are removed. Local and fresh CI
-qualification passed 76 runtime/source checks and 66 tooling tests.
-K04 performance acceptance remains open; no live after-change CPU measurements
-or new blanket visual/input/taint acceptance are claimed.
+Candidate.37 retains revision20/schema3; accepted characters need no new setup
+review. Ground placement and its Targeting tab remain retired. Local qualification
+passed all 78 runtime/source checks and 66 tooling tests with complete inventories.
+K04 performance and K05 native cooldown taint remain open. Passive-observer safety
+and blocked-event evidence are repaired; these fixes do not establish the original
+taint writer or certify warning resolution. New evidence persists automatically
+during normal gameplay; no prescribed reproduction is required.
+[Audit](reference/COMBAT-ERROR-AUDIT-2026-10-13.md).
 
 ## Candidate.34 activation and acceptance
 

@@ -115,3 +115,16 @@ configuration revision20 remain unchanged. Full source/tool/fixture inventories,
 required gates, pushed source, scoped packaging and independent preservation
 readback are required before installation. Current installed status and exact
 receipts belong in [implementation status](../IMPLEMENTATION-STATUS.md).
+
+The qualified Forever-only package was installed October 13 at 00:58:18 Toronto
+from pushed source `4146195e5b126c6e4e1a606d21512e1e7ee8b26f`. Its SHA256 is
+`7d0b14c80ce7884240248cba29cedbc76f7765c6d535561b235cb67f6ba30aae`.
+Independent readback verifies 55 installed files/four changed product files,
+2,252 unselected addon files, 310 WTF files, 42 links/root anchors and all 24,353
+prior backup files. The game's 67 intervening WTF changes were preserved; no
+direct WTF/dependency writes or game input occurred. WoW was closed. The user
+loads the update by next login or reload; no revision20 setup review is required.
+[Install](../../evidence/delivery/live-install-candidate37.json),
+[readback](../../evidence/delivery/candidate37-independent-readback.json).
+K05 remains unresolved at delivery: these are tested observer repairs and
+installed-code proof, not Retail cooldown/taint acceptance.

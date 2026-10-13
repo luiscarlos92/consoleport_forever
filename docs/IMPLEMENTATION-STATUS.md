@@ -2,19 +2,27 @@
 
 Status: maintained
 Reviewed: 2026-10-13
-Evidence: [candidate.36 install](../evidence/delivery/live-install-candidate36.json),
-[independent readback](../evidence/delivery/candidate36-independent-readback.json),
+Evidence: [candidate.37 install](../evidence/delivery/live-install-candidate37.json),
+[independent readback](../evidence/delivery/candidate37-independent-readback.json),
 [Circle acceptance](../evidence/circle/candidate34-live-acceptance-2026-10-12.json).
 
 ## Installed checkpoint
 
-Candidate.37 is locally qualified for the user's combat-error report. It repairs
+Candidate.37 was installed October 13 at **00:58:18 Toronto** from tested/pushed
+source `4146195e5b126c6e4e1a606d21512e1e7ee8b26f`. It repairs
 demonstrated passive-observer read safety and blocked-event attribution coverage.
 The captured native charge-cooldown taint cascade remains K05; its original writer
 is unknown. Schema3/revision20, native input/feedback and the permanent targeting
 retirement remain unchanged. [Audit](reference/COMBAT-ERROR-AUDIT-2026-10-13.md).
 All 78 runtime/source checks and 66 tooling tests pass with complete current
 inventories. [Qualification](../evidence/test-results/candidate37-errors-qualification.json).
+Independent readback verifies 55 installed files/four product changes, 2,252 other
+addon files, 310 installer-start WTF files, 42 links/root anchors and all 24,353
+prior backup files. The game's 67 preflight-to-install WTF changes were retained.
+WoW was closed; no dependency/WTF writes or game input occurred. The code loads
+on next login or user-owned reload; accepted revision20 needs no new review.
+No Retail error resolution, CPU improvement or blanket input/visual acceptance
+is claimed. [Delivery](../evidence/delivery/candidate37-independent-readback.json).
 
 ### Previous candidate.36 checkpoint
 

@@ -9,6 +9,7 @@ function Diagnostics:Persist(section,id)
     -- Bounded last-session evidence for read-only WTF audits. This is runtime
     -- bookkeeping, never proof that a controller or protected action passed.
     if not Addon.record or not Addon.Core then return end
+    if self.blockedOwner and self.blockedOwner~=Addon.record then self.blocked=nil self.blockedOwner=nil end
     local saved=Addon.record.lastRuntimeDiagnostics
     if section and self.persistOwner==Addon.record and saved
         and saved.codeVersion==Addon.VERSION and saved.configRevision==Addon.CONFIG_REVISION then
@@ -25,9 +26,51 @@ function Diagnostics:Persist(section,id)
         visuals=Addon.Core.Copy(self.visuals or {}),
         ping=Addon.Core.Copy(self.ping or {}),
         circle=Addon.Core.Copy(self.circle or {}),
+        blocked=Addon.Core.Copy(self.blocked or {}),
     }
     self.persistOwner=Addon.record
     self:EndPerformance('diagnostics.full',start)
+end
+-- Observe all blamed addons: the reported name is an execution attribution,
+-- not proof of the original writer. Inspect security labels without reading
+-- action/cooldown values, replacing handlers, or changing game logging CVars.
+function Diagnostics:RecordBlocked(api,event,blamed,func)
+    local function scalar(value)
+        if api.issecretvalue and api.issecretvalue(value) then return end
+        if type(value)=='string' then return value:sub(1,240) end
+    end
+    blamed,func=scalar(blamed) or 'unknown',scalar(func) or 'unknown'
+    if self.blockedOwner and self.blockedOwner~=Addon.record then self.blocked=nil end
+    self.blockedOwner=Addon.record
+    self.blocked=self.blocked or {total=0,rows={}}
+    local log=self.blocked
+    log.total=log.total+1
+    local row
+    for _,entry in ipairs(log.rows) do
+        if entry.event==event and entry.addon==blamed and entry.func==func then row=entry break end
+    end
+    if not row then
+        row={event=event,addon=blamed,func=func,count=0}
+        if #log.rows>=16 then table.remove(log.rows,1) end
+        log.rows[#log.rows+1]=row
+        self:Log('blocked',event..': '..blamed..': '..func)
+    end
+    row.count=row.count+1
+    local ok,time=pcall(api.GetTime or function() end)
+    if ok and not (api.issecretvalue and api.issecretvalue(time)) and type(time)=='number'
+        and time==time and time>=0 and time<math.huge then row.time=time end
+    local name=func:match('^([%w_]+):')
+    local object=name and api[name]
+    if object and type(api.issecurevariable)=='function' then
+        row.object=name row.fields={}
+        for _,field in ipairs({'action','eventsRegistered','popupDirection','needsUpdate','OnEvent','UpdateAction'}) do
+            local checked,secure,writer=pcall(api.issecurevariable,object,field)
+            if checked and not (api.issecretvalue and api.issecretvalue(secure)) and type(secure)=='boolean' then
+                row.fields[field]={secure=secure,writer=scalar(writer)}
+            end
+        end
+    end
+    self:Persist('blocked')
 end
 function Diagnostics:Log(kind, message)
     self.entries[#self.entries+1] = {kind=kind, message=tostring(message)}

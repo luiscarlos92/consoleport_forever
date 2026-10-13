@@ -464,8 +464,7 @@ events:SetScript("OnEvent",function(_,event,...)
     if event=="PLAYER_REGEN_DISABLED" then Addon.FocusVisuals:SetFocus(false,_G) Addon.UIContexts:Refresh() return end
     if event=="UPDATE_BINDINGS" then Addon:CaptureControllerEdits() end
     if event=="ADDON_ACTION_BLOCKED" or event=="ADDON_ACTION_FORBIDDEN" then
-        local blamed,func=...
-        if blamed==ADDON_NAME then Addon.Diagnostics:Log("blocked",event..": "..tostring(func)) end
+        Addon.Diagnostics:RecordBlocked(_G,event,...)
         return
     end
     if event=="PLAYER_LOGIN" and not C_AddOns.IsAddOnLoaded("Blizzard_EditMode") and CanWrite() then C_AddOns.LoadAddOn("Blizzard_EditMode") end

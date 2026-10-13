@@ -1,0 +1,38 @@
+{
+  "at": "2026-10-13T04:56:39.736229+00:00",
+  "candidate": "2.0.0-candidate.37",
+  "reportParentHEAD": "d99c94276afed02b4e79de3707dc8816b095f5be",
+  "baselineSourceCommit": "61a50ccb9a63e3275f1f708657de681bcae8292c",
+  "runtimeChecks": 78,
+  "toolingTests": 66,
+  "overallPassed": true,
+  "completeProductInventoryMatches": true,
+  "completeRuntimeToolInventoryMatches": true,
+  "completeToolingInventoryMatches": true,
+  "changedProductFiles": [
+    "addon/ConsolePort_Forever/ActionRecovery.lua",
+    "addon/ConsolePort_Forever/ConsolePort_Forever.lua",
+    "addon/ConsolePort_Forever/ConsolePort_Forever.toc",
+    "addon/ConsolePort_Forever/Diagnostics.lua"
+  ],
+  "unchangedProductFiles": 54,
+  "runtimeReportSHA256": "1c62b0b19a22fd082f4ca82f9d61bb1a350bc148a5f26c8df1c592ca7ad2e4b7",
+  "toolingReportSHA256": "754cdf75b0b42972a38505aed125855faf0cfd93ef80093d8f6df63a514af777",
+  "freshStableCheckSHA256": "d027ae1d79f97ff5932e550f40ae2d0186b942ca3eb77d70645748237f4449d5",
+  "qualifiedDependencyUpdates": [],
+  "configurationRevision": 20,
+  "storeSchema": 3,
+  "originalTaintWriter": "Unknown",
+  "reproducedSourceDefects": [
+    "opaque/unavailable passive observation reads",
+    "foreign-attribution blocked-event blindspot"
+  ],
+  "newGates": [
+    "T77",
+    "T78"
+  ],
+  "retailCooldownFailureResolved": false,
+  "gameInputPerformed": false,
+  "liveWTFWrites": false,
+  "limitation": "Native sources and restricted compiler run with modeled engine APIs; no Retail hardware, rendering, taint or CPU certification."
+}

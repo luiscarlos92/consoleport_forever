@@ -1,7 +1,7 @@
 # Runtime state and coverage matrix
 
 Status: maintained
-Reviewed: 2026-10-12
+Reviewed: 2026-10-13
 Evidence: [routing](../addon/ConsolePort_Forever/TemporaryRouting.lua),
 [mode policy](../addon/ConsolePort_Forever/ModePolicy.lua),
 [bootstrap](../addon/ConsolePort_Forever/ConsolePort_Forever.lua),
@@ -30,7 +30,7 @@ It does not claim blanket Retail acceptance. [Requirements](REQUIREMENTS.md) own
 | Temporary shapeshift/unflagged high page | Ordinary models retained. | Native temporary/high-page evidence where qualified. | Distinguish from ordinary class bonus pages 1–4. | T61. |
 | Native UI/modal focus | Native priority can supersede visible controls. | Full custom UI acquisition suspended. | Native claim relinquishment bridge retained; foreign claims preserved. | T41. |
 | UI to combat | Native gameplay dispatch restored. | Native action handler, all 32 chords. | Release held UI ownership; defer ordinary configuration writes. | T41/T42. |
-| Edit Mode | Native editor owns layout. | Main reviewed/protected setup and saved-layout tracking defer. | Release owned visibility/class presentation. Ground preference Apply can still save its draft; ping refresh has a combat guard rather than the shared Edit Mode guard. | T31/T34/T46/T67; source-specific guards. |
+| Edit Mode | Native editor owns layout. | Main reviewed/protected setup and saved-layout tracking defer. | Release owned visibility/class presentation. Ground preferences are retired; ping refresh has a combat guard rather than the shared Edit Mode guard. | T31/T34/T46/T67; source-specific guards. |
 | Drag/remove/rebind | Native editing owns action slots and commands. | Temporary cache/latch cleared as needed; unchanged declarations not replayed. | Unavailable temporary cells do not consume drops into permanent bindings. | T61/T64. |
 | Reload/login/character switch | GUID archive projected only after readiness/acceptance. | Account base faces and personal modified/D-pad models separated. | Interrupted journal recovery and manual-edit conflicts retained. | T05/T59/T63; coordinator/binding tests. |
 | Pet battle/foreign owner/unknown contract | Native conditions and safe fallback. | Do not force custom claims over another owner. | Do not infer all behavior from a single visible frame. | Applicable native ownership guards; broader Retail cases pending. |

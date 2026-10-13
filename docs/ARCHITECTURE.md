@@ -1,7 +1,7 @@
 # Implementation architecture
 
 Status: maintained
-Reviewed: 2026-10-12
+Reviewed: 2026-10-13
 Evidence: [TOC](../addon/ConsolePort_Forever/ConsolePort_Forever.toc),
 [bootstrap](../addon/ConsolePort_Forever/ConsolePort_Forever.lua),
 [runtime setup](../addon/ConsolePort_Forever/RuntimeSetup.lua).
@@ -183,6 +183,13 @@ Skin/HUD composition, owned parent restoration and the implemented but dormant
 UI routes are described in [presentation and UI](reference/PRESENTATION-AND-UI.md).
 
 ## Change boundaries
+
+Candidate.37 adds read-only blocked-event evidence for all addon attributions,
+bounded to16 aggregate rows in the current GUID's runtime diagnostic snapshot.
+Native field security labels are queried without reading protected values or
+replacing native handlers. ActionRecovery passive reads now reject opaque and
+failed queries before forwarding or persistence. No schema, route, configuration
+review or action-slot ownership changes. [Combat error audit](reference/COMBAT-ERROR-AUDIT-2026-10-13.md).
 
 Document architecture changes here and rationale in [decisions](decisions/README.md).
 Controller behavior belongs in [CONTROLLER_SPEC](CONTROLLER_SPEC.md); approved

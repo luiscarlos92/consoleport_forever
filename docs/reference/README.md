@@ -1,7 +1,7 @@
 # Reference and history navigation
 
 Status: maintained
-Reviewed: 2026-10-11
+Reviewed: 2026-10-13
 Evidence: [migration record](../WORKSPACE-ORGANIZATION-2026-10-11.md),
 [original reference manifest](../../reference/manifests/2026-10-03-initial.json),
 [preserved master plan](../archive/ai-native-2026-10-11/MASTER-PLAN.pre-restructure.md).
@@ -28,6 +28,10 @@ and access limits. The singular `docs/reference` is the new index; the existing
 plural pending-reference directory is intentionally retained without moving it.
 
 ## Current code contracts
+
+- [Combat error audit](COMBAT-ERROR-AUDIT-2026-10-13.md): captured native cooldown
+  failures, broad change-impact review, demonstrated passive-observer repairs,
+  automatic blocked-event evidence and the unresolved live taint origin.
 
 - [HUD performance investigation](HUD-PERFORMANCE-2026-10-12.md): confirmed redundant
   work, operation comparison, native lifecycle audit, optional profiling and

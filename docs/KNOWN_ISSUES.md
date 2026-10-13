@@ -1,7 +1,7 @@
 # Known issues, limitations and deferred proof
 
 Status: maintained
-Reviewed: 2026-10-12
+Reviewed: 2026-10-13
 Evidence: [current status](IMPLEMENTATION-STATUS.md),
 [interaction analysis](TEMPORARY-MAIN-BANK-ANALYSIS-2026-10-11.md),
 [candidate.27 diagnosis](../evidence/action-recovery/candidate27-diagnosis.json),
@@ -11,6 +11,7 @@ Evidence: [current status](IMPLEMENTATION-STATUS.md),
 
 | ID | Status and established facts | Missing observation / next boundary |
 | --- | --- | --- |
+| K05: combat error flood / login blocked-action warning | Open: captured General.log has 1,020 identical native charge-cooldown errors rejecting secret arguments in tainted execution. Candidate.37 repairs demonstrated passive-observer read safety and the foreign-attribution logging blindspot; neither is proven to be the original taint writer. | Normal gameplay after user-owned reload; bounded automatic blocked-event labels improve future evidence without a prescribed reproduction. Generic Lua errors may not emit blocked events. [Audit](reference/COMBAT-ERROR-AUDIT-2026-10-13.md). |
 | K01: quest-object Square interaction | User-reported failure with triggers released and floating hand; mouse interaction worked. Source/offline main-command analysis does not establish blanket ordinary-bank disabling. | Quest identity and effective PAD3 binding/native interaction target during recurrence. INTERACTTARGET differs from unconditional pointer click. Do not patch a guessed cause. |
 | K02: original Paladin quest action loss | Read-only evidence established lost/reassigned action storage. The exact original writer remains unconfirmed. Candidate.26 restoration was followed by editing regressions and removed in candidate.27. | Passive event/loadout/writer context on recurrence. Do not restore automatic pickup/place or use stale Copybara backups. |
 | K04: gameplay HUD CPU spikes | User-supplied Active-mode capture reports 364.155 ms peak, repeated >100 ms ticks. Candidate.35 removes reproduced redundant diagnostic copies, routine skin reconstruction and broad routine event setup; offline counters establish reduced work. | Same-client/scenario/profiler before/after measurements, optional callback timing, and visual/input/taint observations. Exact live spike cause and improvement are unverified. [Investigation](reference/HUD-PERFORMANCE-2026-10-12.md). |

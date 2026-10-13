@@ -1373,6 +1373,33 @@ check('T75.runtime-event-domains-preserve-readiness-combat-and-invalidation', ()
 check('T76.optional-profile-disabled-bounded-public-and-return-transparent', () => {
   execute(source+read('tests/harness/performance_profiling.lua'),'optional-performance-profiler');
 });
+check('T77.passive-action-observer-rejects-opaque-and-failing-reads', () => {
+  const wrap=code=>source+'\n;(function(...)\n'+code+'\nend)("ConsolePort_Forever",Addon);\n'+read('tests/harness/action_observer_public.lua');
+  execute(wrap(read('addon/ConsolePort_Forever/ActionRecovery.lua')),'public-action-observer');
+  let rejected=false;
+  try {execute(wrap(read('evidence/runtime-errors/ActionRecovery-candidate36.lua')),'candidate36-opaque-observer');}
+  catch(error) {rejected=String(error).includes('opaque specialization forwarded');}
+  if(!rejected) throw Error('candidate36 observer defect was not reproduced');
+  const leak=read('addon/ConsolePort_Forever/ActionRecovery.lua').replace('temporary=temporary(api)', 'temporary=api.HasVehicleActionBar()');
+  rejected=false;
+  try {execute(wrap(leak),'unfiltered-temporary-observation');}
+  catch(error) {rejected=String(error).includes('opaque persisted in action observer');}
+  if(!rejected) throw Error('opaque persistence negative control survived');
+});
+check('T78.blocked-events-auto-persist-all-attributions-without-native-writes', () => {
+  const fixture='SESSION_STATE=('+bootstrapState+').installed\n'+bootstrapPrelude+read('tests/harness/blocked_logging_bootstrap.lua');
+  execute(fixture,'blocked-evidence-bootstrap');
+  let rejected=false;
+  const old=fixture.replace('Addon.Diagnostics:RecordBlocked(_G,event,...)', "local blamed,func=...; if blamed==ADDON_NAME then Addon.Diagnostics:Log('blocked',event..': '..tostring(func)) end");
+  try {execute(old,'candidate36-foreign-blocked-blindspot');}
+  catch(error) {rejected=String(error).includes('foreign-addon blocked event not retained automatically');}
+  if(!rejected) throw Error('candidate36 blocked-event blindspot was not reproduced');
+  rejected=false;
+  const leak=fixture.replace('if self.blockedOwner and self.blockedOwner~=Addon.record then self.blocked=nil self.blockedOwner=nil end','do end');
+  try {execute(leak,'stale-owner-full-diagnostic-snapshot');}
+  catch(error) {rejected=String(error).includes('previous GUID blocked evidence copied by full snapshot');}
+  if(!rejected) throw Error('full-snapshot owner isolation negative control survived');
+});
 const report = {at:new Date().toISOString(), commit:cp.execFileSync('git',['rev-parse','HEAD'],{cwd:root}).toString().trim(),
   productHashes:Object.fromEntries(files('addon').map(f=>[f,sha(f)])),
   toolingHashes:Object.fromEntries([...files('tools'),...files('tests')].filter(f=>!f.includes('__pycache__')).map(f=>[f,sha(f)])),

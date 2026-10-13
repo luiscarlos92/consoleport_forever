@@ -1,7 +1,7 @@
 # Validation and proof boundaries
 
 Status: maintained
-Reviewed: 2026-10-12
+Reviewed: 2026-10-13
 Evidence: [runner](../tools/test-all.cjs), [tool tests](../tools/run_tool_tests.py),
 [CI](../.github/workflows/tests.yml), [test instructions](../tests/AGENTS.md).
 
@@ -52,6 +52,7 @@ requires a new explicit user request authorizing ground placement.
 | Research source cache | Five tooling tests cover verified fetch/cache reuse, size/hash drift, preservation of drifted cached inputs, unsafe paths/URLs/identities, failed downloads and redirects. The explicit CI download stage reconstructs ignored inputs from the tracked Circle manifest before offline tests. |
 | Pinned dependency inputs | Seven tooling tests reproduce a fresh checkout's absent unpacked inputs and verify reconstruction of exact pinned archives/files, source-root normalization, read-only reuse, missing-file recovery, rejection/preservation of drift or foreign files, invalid payloads and escaping destinations. No lock refresh or installed-addon change. |
 | Maintained docs/skills | Checker and its missing-target/anchor/escape/manifest cases; manual semantic review. |
+| Passive action/error observations | T77 actual ActionRecovery opaque/failing-read forwarding and persistence with candidate.36/secret-leak negative controls; retain T64's no-restoration/manual/loadout coverage. T78 actual bootstrap blocked/forbidden event capture for all blamed addons, 1,000 repeated events, public security labels without native field reads/writes, limits, detached persistence and GUID-owner changes; old attribution filter must fail. Modeled C labels do not establish the live taint writer or fix the native cooldown cascade. |
 
 The runner's check IDs and build validator determine required suite membership;
 do not maintain a competing fixed pass-count rule. Candidate.30's historical

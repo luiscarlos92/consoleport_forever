@@ -1,7 +1,7 @@
 # Runtime configuration, persistence and recovery
 
 Status: maintained
-Reviewed: 2026-10-12
+Reviewed: 2026-10-13
 Evidence: [bootstrap](../../addon/ConsolePort_Forever/ConsolePort_Forever.lua),
 [setup proposals](../../addon/ConsolePort_Forever/RuntimeSetup.lua),
 [store](../../addon/ConsolePort_Forever/Store.lua),
@@ -147,6 +147,15 @@ defaults place compact vertical Party beneath Raid without moving Raid; existing
 Party/manual edits are not reapplied.
 
 ## Commands and diagnostic retention
+
+Candidate.37's passive action observer rejects opaque/failing query results
+before forwarding, comparing or retaining them; unknown facts remain absent.
+Blocked/forbidden events now record every blamed addon in the current GUID's
+`lastRuntimeDiagnostics.blocked`: total count, up to16 distinct event/addon/function
+aggregates and public native security labels when a frame is identified. It reads
+no secret action/cooldown fields, changes no error handler/CVar and performs no
+protected dispatch. Attribution is not original-writer proof. Ordinary Lua errors
+may not emit these events. [Audit](COMBAT-ERROR-AUDIT-2026-10-13.md).
 
 | Command | Actual behavior |
 | --- | --- |

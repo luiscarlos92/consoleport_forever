@@ -1,0 +1,60 @@
+{
+  "recordedAt": "2026-10-13T04:43:41.483933+00:00",
+  "startingHEAD": "d99c94276afed02b4e79de3707dc8816b095f5be",
+  "reportedInstalledCandidate": "2.0.0-candidate.36",
+  "configurationRevision": 20,
+  "storeSchema": 3,
+  "source": "Retail Logs/General.log (read-only captured snapshot)",
+  "sourceSHA256": "8d7e12e7e196b2566670562039bfbd7f036ce24fb2c32ef1603dc5a3c84b2846",
+  "luaErrorCount": 1020,
+  "uniqueErrors": 1,
+  "first": {
+    "line": 248,
+    "header": "10/12 23:42:34.795  [E][Lua] Lua Error: ...ce/AddOns/Blizzard_ActionBar/Shared/ActionButton.lua:847: bad argument #1 to 'SetCooldown' (Usage: self:SetCooldown(start, duration [, modRate]). Secret values are only allowed during untainted execution for this argument.)",
+    "stack": [
+      "[Interface/AddOns/Blizzard_ActionBar/Shared/ActionButton.lua]:847: in function <...ce/AddOns/Blizzard_ActionBar/Shared/ActionButton.lua:845>",
+      "[Interface/AddOns/Blizzard_ActionBar/Shared/ActionButton.lua]:866: in function 'ActionButton_ApplyCooldown'",
+      "[Interface/AddOns/Blizzard_ActionBar/Shared/ActionButton.lua]:842: in function 'ActionButton_UpdateCooldown'",
+      "[Interface/AddOns/Blizzard_ActionBar/Shared/ActionButton.lua]:575: in function 'Update'",
+      "[Interface/AddOns/Blizzard_ActionBar/Shared/ActionButton.lua]:544: in function 'UpdateAction'",
+      "[Interface/AddOns/Blizzard_ActionBarController/ActionBarController.lua]:187: in function 'ActionBarController_ResetToDefault'",
+      "[Interface/AddOns/Blizzard_ActionBarController/ActionBarController.lua]:172: in function 'ActionBarController_UpdateAll'",
+      "[Interface/AddOns/Blizzard_ActionBarController/ActionBarController.lua]:66: in function <...Blizzard_ActionBarController/ActionBarController.lua:55>"
+    ]
+  },
+  "lastHeader": "10/12 23:59:41.929  [E][Lua] Lua Error: ...ce/AddOns/Blizzard_ActionBar/Shared/ActionButton.lua:847: bad argument #1 to 'SetCooldown' (Usage: self:SetCooldown(start, duration [, modRate]). Secret values are only allowed during untainted execution for this argument.)",
+  "clockLimit": "Raw game log times; no host/server timezone conversion asserted.",
+  "persistedCandidate": "2.0.0-candidate.36",
+  "foreverBlockedEntriesInSavedSnapshot": 0,
+  "taintLogAvailable": false,
+  "liveCausalWriter": "unknown",
+  "confirmed": "Repeated native charge-cooldown SetCooldown rejection of secret arguments during tainted execution.",
+  "sourceDefects": [
+    "Passive action observer forwards opaque specialization index and can retain opaque temporary state or throw on unavailable reads.",
+    "Blocked event logger discards attributions to addons other than ConsolePort_Forever."
+  ],
+  "causalLimit": "Neither source defect is established as the origin of the logged native cooldown taint.",
+  "nativeSource": {
+    "commit": "09b9db7948abc9b9648dedaab51eb0cf3ee67b31",
+    "actionButtonURL": "https://github.com/Gethe/wow-ui-source/blob/09b9db7948abc9b9648dedaab51eb0cf3ee67b31/Interface/AddOns/Blizzard_ActionBar/Shared/ActionButton.lua",
+    "actionButtonSHA256": "54fb5625a5e8aa343cbbc0be805b23e2b3b329011e792448e6b732a4bebd8cba",
+    "templateURL": "https://github.com/Gethe/wow-ui-source/blob/09b9db7948abc9b9648dedaab51eb0cf3ee67b31/Interface/AddOns/Blizzard_ActionBar/Mainline/ActionButtonTemplate.xml",
+    "templateSHA256": "6c2b6b19c746876e48b16068eb4b33d5c68738525f8c54d142c4d563c6500a1d"
+  },
+  "officialDiscussion": [
+    "https://github.com/seblindfors/ConsolePort/issues/182",
+    "https://github.com/seblindfors/ConsolePort/pull/217"
+  ],
+  "retainedOldObserver": {
+    "file": "evidence/runtime-errors/ActionRecovery-candidate36.lua",
+    "sourceCommit": "d99c942",
+    "sha256": "02c8108068501da27aabf56d4d15fca0ed37694a6e219b1295f208686271f828"
+  },
+  "newGates": [
+    "T77.passive-action-observer-rejects-opaque-and-failing-reads",
+    "T78.blocked-events-auto-persist-all-attributions-without-native-writes"
+  ],
+  "targetedReportSHA256": "d6f6b86ad6dd4382f12a9ccd9817d04bef7d872272c8814ed427c73624170e3b",
+  "gameInputPerformed": false,
+  "liveWTFWrites": false
+}

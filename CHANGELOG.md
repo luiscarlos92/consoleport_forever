@@ -1,13 +1,23 @@
 # ConsolePort Forever change history
 
 Status: maintained
-Reviewed: 2026-10-12
+Reviewed: 2026-10-13
 Evidence: [current status](docs/IMPLEMENTATION-STATUS.md),
 [historical chronology](docs/archive/ai-native-2026-10-11/IMPLEMENTATION-STATUS.pre-restructure.md).
 
 Dates below use America/Toronto. This is a curated change index, not invented
 release tags or blanket gameplay certification. Detailed receipts own exact
 source/artifact/file identities. Prepared, installed and accepted are separate.
+
+## Combat-error audit and observer repair — October 13, 2026
+
+Candidate.37 guards passive action observations against opaque/unavailable reads
+and fixes the blocked-action logger's Forever-only attribution filter. Automatic
+evidence now aggregates all blamed addons with bounded public security labels;
+native bars, cooldowns, input, retained data and retired targeting remain unchanged.
+The captured 1,020 native cooldown errors have an unconfirmed original taint writer;
+these source repairs do not claim that gameplay warning is resolved.
+[Audit](docs/reference/COMBAT-ERROR-AUDIT-2026-10-13.md).
 
 ## Ground targeting retired — October 12, 2026
 

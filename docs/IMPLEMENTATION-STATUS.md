@@ -1,12 +1,22 @@
 # Current implementation and acceptance
 
 Status: maintained
-Reviewed: 2026-10-12
+Reviewed: 2026-10-13
 Evidence: [candidate.36 install](../evidence/delivery/live-install-candidate36.json),
 [independent readback](../evidence/delivery/candidate36-independent-readback.json),
 [Circle acceptance](../evidence/circle/candidate34-live-acceptance-2026-10-12.json).
 
 ## Installed checkpoint
+
+Candidate.37 is locally qualified for the user's combat-error report. It repairs
+demonstrated passive-observer read safety and blocked-event attribution coverage.
+The captured native charge-cooldown taint cascade remains K05; its original writer
+is unknown. Schema3/revision20, native input/feedback and the permanent targeting
+retirement remain unchanged. [Audit](reference/COMBAT-ERROR-AUDIT-2026-10-13.md).
+All 78 runtime/source checks and 66 tooling tests pass with complete current
+inventories. [Qualification](../evidence/test-results/candidate37-errors-qualification.json).
+
+### Previous candidate.36 checkpoint
 
 Candidate `2.0.0-candidate.36` was installed October 12 at **21:50:35 Toronto** from
 tested/pushed source `61a50ccb9a63e3275f1f708657de681bcae8292c`. The user's explicit

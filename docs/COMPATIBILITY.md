@@ -1,7 +1,7 @@
 # Client and integration compatibility
 
 Status: maintained
-Reviewed: 2026-10-12
+Reviewed: 2026-10-13
 Evidence: [TOC](../addon/ConsolePort_Forever/ConsolePort_Forever.toc),
 [locked packages](../dependencies/lock.json),
 [native source manifest](../evidence/native/manifest.json),
@@ -16,6 +16,12 @@ identity; candidate.35 does not change these native contracts. The capability pr
 `GetBuildInfo` metadata/readiness; it does not itself establish an all-build
 support guarantee. No Classic or native Forever client support claim is made
 for this companion. Third-party multi-client TOCs do not extend our support scope.
+
+Candidate.37 retains these contracts and uses optional `issecurevariable` only
+for read-only public labels on blocked-event observations; missing/unavailable
+labels are omitted. Native cooldown setters and bar lifecycle remain untouched.
+The [combat error audit](reference/COMBAT-ERROR-AUDIT-2026-10-13.md) distinguishes
+demonstrated observer defects from the still-unknown Retail taint writer.
 
 The Forever comparison snapshot is a separate source reference: branch `forever`,
 1.60.1 build 70205, commit `e3ecc27b64d30fdc735a3f6579b866858f9f9df1`.

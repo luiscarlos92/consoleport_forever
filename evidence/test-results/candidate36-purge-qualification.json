@@ -1,0 +1,36 @@
+{
+  "at": "2026-10-13T01:44:42.103538+00:00",
+  "candidate": "2.0.0-candidate.36",
+  "reportParentHEAD": "6c2bf04666918a259d7ecdd252f87812af2bced3",
+  "runtimeChecks": 76,
+  "toolingTests": 66,
+  "overallPassed": true,
+  "completeProductInventoryMatches": true,
+  "completeRuntimeToolInventoryMatches": true,
+  "completeToolingInventoryMatches": true,
+  "removedProductFiles": [
+    "addon/ConsolePort_Forever/Targeting/Ground.lua",
+    "addon/ConsolePort_Forever/Targeting/Preferences.lua",
+    "addon/ConsolePort_Forever/Targeting/Registry.lua",
+    "addon/ConsolePort_Forever/UI/Targeting.lua"
+  ],
+  "changedProductFiles": [
+    "addon/ConsolePort_Forever/ConsolePort_Forever.lua",
+    "addon/ConsolePort_Forever/ConsolePort_Forever.toc",
+    "addon/ConsolePort_Forever/RuntimeSetup.lua",
+    "addon/ConsolePort_Forever/Store.lua",
+    "addon/ConsolePort_Forever/TemporaryRouting.lua",
+    "addon/ConsolePort_Forever/UI/Proof.lua"
+  ],
+  "unchangedProductFiles": 52,
+  "runtimeReportSHA256": "0307be6dceddf9b35bfd4a6bd9ff9d416892fc0468d8239eea635b6dce4c858b",
+  "toolingReportSHA256": "48b9ea8315480607af1cb0d40855445599667de273a3c9fc3d20606e477e5563",
+  "freshStableCheckSHA256": "1521c9f6005ceda8298ef8ef3516c7da1bd90c0f9e6a74445daf4844ddf137c8",
+  "qualifiedDependencyUpdates": [],
+  "configurationRevision": 20,
+  "storeSchema": 3,
+  "retailPerformanceAcceptance": "Unverified after retirement; user reload and paired profiling required",
+  "gameInputPerformed": false,
+  "liveWTFWrites": false,
+  "limitation": "Native sources and restricted compiler run with modeled engine APIs; no Retail hardware, rendering, reticle, taint or CPU certification."
+}

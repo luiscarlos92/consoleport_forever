@@ -47,7 +47,7 @@ function Setup.Adapters(api,account)
         adapters.bindings.canWrite=adapters.bindingBanks.canWrite
     end
     if account then
-        adapters.policy=Addon.FlatConfigAdapter.New(function() return account.shared.runtimePolicy end,{modesEnabled=true,groundTargetingEnabled=true,focusVisuals=true,uiContextsEnabled=true,windowsEnabled=true,bagsEnabled=true,mapEnabled=true,blizzardVisibility=true,hiddenAccessEnabled=true},api.InCombatLockdown)
+        adapters.policy=Addon.FlatConfigAdapter.New(function() return account.shared.runtimePolicy end,{modesEnabled=true,focusVisuals=true,uiContextsEnabled=true,windowsEnabled=true,bagsEnabled=true,mapEnabled=true,blizzardVisibility=true,hiddenAccessEnabled=true},api.InCombatLockdown)
         adapters.immersionProgress=Addon.FlatConfigAdapter.New(function() return account.shared.integrationPolicy end,
             {immersionProgressRepairVersion=true},api.InCombatLockdown)
     end
@@ -154,10 +154,6 @@ function Setup.Fields(db,guid,adapters,api,revision)
         add("shared/consoleport/layout","consoleport",{"layout"},layout,"Current ConsolePort geometry")
         deferred[#deferred+1]={id="secureModes",reason=modeReason or "mode policy unavailable"}
     end
-    local groundReady,groundReason=Addon.GroundTargeting.Probe(adapters.consoleport,api)
-    if modeReady and groundReady and adapters.policy then
-        add('shared/policy/groundTargetingEnabled','policy',{'groundTargetingEnabled'},true,'Cast verified ground spells at the cursor from ordinary controller spell slots; no saved ability macros')
-    else deferred[#deferred+1]={id='groundTargeting',reason=groundReason or 'secure mode policy unavailable'} end
     if Addon.FocusVisuals:Probe(adapters.consoleport,api) and adapters.policy then
         add("shared/policy/focusVisuals","policy",{"focusVisuals"},true,"Suppress gameplay icons and highlights while the interface cursor owns input")
     else deferred[#deferred+1]={id="focusVisuals",reason="native interface cursor not initialized"} end

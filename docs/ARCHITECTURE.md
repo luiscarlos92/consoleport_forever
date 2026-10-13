@@ -25,7 +25,7 @@ feature's public refresh have their own guards; there is no universal prohibitio
 on all saved-data changes during combat/Edit Mode. `/cpf` exposes configuration
 review, status, diagnosis and guarded restore/recovery paths, not a code updater.
 
-Refresh ordering matters. Passive observers, ping and the Targeting panel are
+Refresh ordering matters. Passive observers and ping are
 initialized before coordinator recovery checks. An interrupted binding-bank
 selection or configuration journal stops subsequent normal refresh work.
 Otherwise reload verification precedes Immersion correction, saved-layout
@@ -70,10 +70,10 @@ Reviewed in-game configuration may use native save APIs. That is separate from
 the disk installer, which must not modify live WTF. Store schema, configuration
 revision and code candidate version are separate identities.
 
-Shared state also retains integration/runtime policies, ground preferences and
-their history, managed profile/layout ownership and the known saved-layout
+Shared state retains integration/runtime policies, managed profile/layout
+ownership and the known saved-layout
 default. Character records retain acceptance flags, field baselines, kept review
-decisions, transaction IDs, reload work, observed spells and diagnostic/layout
+decisions, transaction IDs, reload work and diagnostic/layout
 snapshots. Transactions and independent before-state backups remain in the
 account store. Schema migration retains legacy account/ambiguous character
 material; an unsupported future schema is rejected rather than downgraded.
@@ -115,7 +115,6 @@ committed/restored journal after a later session and keeps pending work on failu
 | --- | --- |
 | BindingPolicy, NativeBindings, BindingState, BindingBanks | Shared/character masks, native selected-bank capture, reviewed projection and bank recovery. |
 | SecureModes, TemporaryRouting, TemporaryAccess | Native secure button extensions. Full SecureModes installer is disabled by native recovery; TemporaryRouting reuses qualified snippets independently. |
-| Targeting/Registry, Preferences, Ground | Qualified spell/context placement choices, observation and secure click adapter. Active under accepted policy without owning action pages. |
 | Targeting/Ping | Actual ConsolePort account ring, native secure release dispatch, cosmetic hold visibility and owner/collision guards. |
 | Circle | Candidate.34 offers native MACRO binding for empty or managed legacy Base PAD2 through normal review; reuses the account resource with identical commands, allowing CRLF/final LF normalization without writing native macro bytes. Legacy inherited helper remains for Keep. Automatic bounded observations and macro format evidence persist across four GUID-owned sessions; no observer selects protected actions. No macrotext fallback or automatic macro repair. No custom layer/takeover or hydration rebinding. Exact stock first-success remains gated. |
 | ClassActions, Rings/Discovery, Rings/Selectors, Adapters/Rings | Class chord/access repair, learned read-only discovery, GUID projection and privately prepared selectors. Preparation is not activation. |
@@ -139,7 +138,7 @@ appearance alone is not a takeover signal. Unchanged refreshes preserve active
 gestures and editing caches. Native drag/drop remains authoritative.
 
 `NATIVE_INPUT_RECOVERY=true` routes `RefreshModes` through temporary routing and
-independent ground placement, and disables the full custom mode installer.
+disables the full custom mode installer.
 `RefreshUI` disables custom context acquisition, while Contexts can retain the
 native combat-claim relinquishment bridge. See [states](STATE_MATRIX.md).
 
@@ -148,17 +147,18 @@ native combat-claim relinquishment bridge. See [states](STATE_MATRIX.md).
 | Binding hydration | Accepted character bindings, writable state, ready native adapters and own GUID capture/projection rules. Account-selected views are not archived as character edits. |
 | Personal rings/class refresh | Accepted rings, exact native ring readiness, closed wheel, writable state and owned projection. Class augmentation may append missing learned forms. |
 | Temporary routing | Installed character and writable refresh/native readiness. In recovery it does **not** require `modesEnabled`. |
-| Ground placement | Installed character plus `groundTargetingEnabled`, writable refresh, qualified native buttons/compiler and spell/context. |
 | Account ping | Installed character, audited native ring/layers and gamepad keys actually bound to `TOGGLEPINGLISTENER`; refresh defers in combat. No separate ping policy flag. |
 | Circle cancel-all | Exact account CPF Circle macro plus accepted/current native MACRO binding. Native engine owns execution; retained legacy click alone uses the helper. Macro creation and binding changes require Use Proposed; existing binding is not automatically installed/restored by frame refresh. Native UI/ring Layers priority remains. |
 | Skin/HUD | Installed character and native button/device readiness; protected geometry work defers while existing cosmetic surfaces can refresh. |
 | Focus feedback | Installed character plus `focusVisuals`, qualified ordinary interface-cursor ownership; released in combat. |
 | Sidebar/bag/micro visibility | Installed character plus `blizzardVisibility` and native identity/parent guards; released for Edit Mode. |
 | Native class row suppression | Independent ClassActions path: supported class, accepted/complete learned ring and matching actual opener; released for Edit Mode. |
-| Targeting configuration panel | Ready ConsolePort configuration module. Remains available in recovery; saved preferences do not alone enable the casting adapter. |
 | Immersion correction | Installed character, exact loaded 1.4.61 contract, owned enabled integration policy, eligible dialog/preferences and ordinary writable state. |
 | Saved Edit Mode tracking | Installed character, ready native capture, outside combat/Edit Mode and not busy; capture does not save/select. |
 | Custom UI/modes/hidden access | Recovery suppresses execution even if accepted saved policy fields are true. Individual window/bag/map flags do not bypass this parent gate. |
+
+Ground placement and its Targeting panel are retired. Old saved preferences and
+observations are ignored without deleting historical data or changing schema.
 
 Only the main runtime paths above determine activation. `ModePolicy.Resolve`,
 `Store.Hydrate`/`CaptureOwnedEdits` and `UI/Ownership.New` are retained pure helper

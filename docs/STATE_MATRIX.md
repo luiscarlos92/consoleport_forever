@@ -51,7 +51,7 @@ It does not claim blanket Retail acceptance. [Requirements](REQUIREMENTS.md) own
 | --- | --- |
 | `appliedRevision > 0` | Installed-character predicate; still requires feature-specific acceptance, policy and probes. |
 | `modesEnabled=true` under native recovery | Full installer remains disabled. TemporaryRouting uses installed-character readiness independently. |
-| UI/window/bag/map/hidden flags true under recovery | Custom acquisition/full hidden replacement remain disabled; targeting preferences and focus cosmetics have separate paths. |
+| UI/window/bag/map/hidden flags true under recovery | Custom acquisition/full hidden replacement remain disabled; focus cosmetics retain a separate path; ground-placement preferences are retired. |
 | `ringAccepted` plus complete qualified class ring/opener | Independent native StanceBar suppression possible; not native power suppression. |
 | Missing/unowned Immersion repair field, eligible installed character | One journaled policy initialization; existing owned disable/restore is preserved. |
 | Legacy class revision or unmarked supported revision-17 repair | Narrow accepted binding/ring migration with journal and reload verification, not full setup replay. |

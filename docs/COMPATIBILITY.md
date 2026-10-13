@@ -26,7 +26,7 @@ See [reference provenance](reference/EVIDENCE.md).
 
 | Package owner | Locked version | Companion integration |
 | --- | --- | --- |
-| seblindfors/ConsolePort | 3.3.10 | Required main/bar plus native optional suite contracts. Exact guards in routing, ground, rings, skin and UI. |
+| seblindfors/ConsolePort | 3.3.10 | Required main/bar plus native optional suite contracts. Exact guards in routing, rings, skin and UI; ground interception is retired. |
 | Cidan/BetterBags | v0.5.14 | Audited bag adapter/custom UI path; full context takeover suspended. |
 | seblindfors/Immersion | 1.4.61 | Reviewed flat settings and Forever-owned Required Items correction. Preserve upstream bytes and ImmersionSetup. |
 | curseforge/Immersion_ExtraFade | 1.18.0 | Optional reviewed integration fields. |

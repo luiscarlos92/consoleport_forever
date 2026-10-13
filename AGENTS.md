@@ -27,8 +27,8 @@ The [reference index](docs/reference/README.md) routes evidence and history.
 - Preserve accepted functionality, manual edits, native power/feedback and
   GUID-owned class data. Automatic action-slot restoration remains removed.
 - Preserve native ConsolePort binding/page/input ownership. Full custom modes,
-  UI takeover and hidden-control replacement remain suspended; ground placement
-  and temporary routing are separate active adapters.
+  UI takeover and hidden-control replacement remain suspended. Ground placement
+  and its Targeting panel are retired by user instruction; temporary routing remains active.
 - Runtime Lua/XML locations and TOC order are functional contracts. Cleanup
   alone does not justify moving them or changing loading.
 - Archived scripts/absolute paths are historical evidence, not deployment

@@ -191,16 +191,13 @@ engine:Combat(false) combat=false
 engine:ForeignClaim(true) engine:Combat(true) combat=true
 assert(not pcall(engine.Dispatch,engine,'PAD1',true),'routing displaced foreign modal owner')
 engine:Combat(false) combat=false engine:ForeignClaim(false)
--- The accepted ground interceptor runs on the final temporary L2+R2 action,
--- with its native click owner and page latch intact.
+-- Ground reticles now travel through the native action route unchanged.
 page('vehicle') slots[133]={'spell',207684,'spell'}
-assert(Addon.GroundTargeting.Enable(bridge,api,true))
 uses,casts,releases={},{},{} engine:Combat(true) combat=true
 engine:Dispatch('CTRL-SHIFT-PAD1',true) engine:Dispatch('CTRL-SHIFT-PAD1',false)
-assert(#casts==1 and #uses==0 and casts[1].text=='/cast [@cursor] Sigil of Misery','temporary routing broke accepted ground placement')
+assert(#casts==0 and #uses==1 and uses[1].slot==133,'temporary routing intercepted native ground reticle')
 engine:Combat(false) combat=false
-assert(Addon.GroundTargeting.Disable(api))
-wrappers=wrapCount -- Ground's separate, idempotent wrappers remain installed.
+wrappers=wrapCount
 assert(Routing:Disable(bridge,api)) page('skyriding',5)
 assert(api.ConsolePortGroupL2.buttons.PAD1:GetAttribute('action')==121,'disable failed to restore native pager')
 assert(legacy.visibleDriver==legacy.props.visibility and legacy.overrideDriver==legacy.props.override)

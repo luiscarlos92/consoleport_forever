@@ -137,28 +137,12 @@ are labels for the same logical banks, not universal literal artwork.
 
 ## Ground placement and UI controls
 
-Ground placement is a reviewed native secure click adapter with account
-preferences and per-spell/context overrides. Qualify a spell/context before
-using it; retain native behavior for unknowns. Do not disable the accepted
-adapter as an incidental workaround for another defect.
-
-The current [preference model](../addon/ConsolePort_Forever/Targeting/Preferences.lua)
-stores shared `groundTargeting` maps for spells, contexts and context-specific
-spells. Modes are `default`, `cursor`, `player` and `manual`; contexts are vehicle,
-override, temporary and extra. Resolution prefers a context-specific spell,
-then general spell, then context, then the registered default. Player defaults
-are explicitly limited to Death and Decay, Defile and Angelic Feather; other
-qualified defaults use cursor placement. Defaults do not qualify unknown reticles:
-the registry or an explicit per-spell cursor/player choice is required. Reviewed
-preferences retain history and native fallback; this describes current source,
-not a claim that every spell has been tested in Retail.
-
-The Targeting configuration panel stays available under recovery. Draft Revert,
-Defaults and Apply have different meanings; Apply stores account preferences
-and whole prior-table history, without itself enabling the adapter. It rejects
-combat but can save during Edit Mode while protected refresh defers. The
-[configuration contract](reference/RUNTIME-CONFIGURATION.md#ground-preferences)
-describes qualification, reset scope and history limitations.
+Forever's ground-placement interceptor and Targeting configuration panel are
+removed by the October 12 user instruction. Ordinary ground spells use their
+native reticle; user-owned macro slots dispatch natively. No replacement macro
+creation, spell replacement or saved preference migration is performed. R3 ping,
+Circle cancellation and temporary action routing retain their separate contracts.
+[Retirement](reference/TARGETING-RETIREMENT-2026-10-12.md).
 
 Full custom UI context acquisition is suspended under native input recovery.
 The following directions have tests/design but are not current enabled parity:

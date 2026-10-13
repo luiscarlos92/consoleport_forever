@@ -28,7 +28,7 @@ scratch copies. `tools/local` scripts can be hashed/parsed; they must not execut
 | --- | --- |
 | Any runtime/executable tool or release qualification | Full `Test-All.ps1`, complete current product/tool/test hashes; no failed/skipped required checks. |
 | Binding/input/UI ownership | T41 actual native Layers/Input combat handoff and engine UseAction dispatch for all 32 chords; held UI release, late widgets, foreign modals, repeated cycles. |
-| Ground targeting | T12 actual restricted environment, T42 full native bindings-to-action dispatch; preserve accepted interceptor and fallback. |
+| Ground-placement retirement | T12 retains inert legacy data and restores unrelated journal fields; T38 rejects retired product modules/symbols/tab; T42 actual native CP/LAB/Blizzard binding-to-action dispatch for all 32 chords, both cast edges, combat/focus/foreign owners, reticles and macro slots. T61 retains temporary routing and native editing coverage. |
 | Temporary routing/pages/editing | T61's 4,160 all-class/family/chord cases, native drag/cache/latch persistence; T62 actual recovery startup; T64 no slot restoration. |
 | Round surfaces/background/usability or related dependency | T24/T49/T53 with actual native/Masque composition and negative controls; all faces, late Show, empty/refill and real range/resource restrictions. |
 | HUD geometry/class placement | T45/T50/T51 with actual unanchored native hierarchy, onscreen/collision, stationary labels, chord side and continuous bank opacity. |

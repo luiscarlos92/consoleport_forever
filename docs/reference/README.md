@@ -78,3 +78,5 @@ later scoped acceptance.
 [Circle macro format comparison](CIRCLE-MACRO-FORMAT-2026-10-12.md) — candidate.34 installed; cast interruption user-confirmed, ground-placement cancellation untested due targeting interception. [Acceptance record](../../evidence/circle/candidate34-live-acceptance-2026-10-12.json).
 
 [Circle protected-action report and automatic review](CIRCLE-BLOCKED-ACTION-2026-10-12.md) — candidate.32 installed; source/delivery proof is separate from pending Retail acceptance.
+
+[Targeting retirement](TARGETING-RETIREMENT-2026-10-12.md) — explicit removal of ground placement and its panel; native routing, ping, Circle and saved data preserved.

@@ -8,6 +8,13 @@ Evidence: [candidate.35 install](../evidence/delivery/live-install-candidate35.j
 
 ## Installed checkpoint
 
+Candidate.36 is qualified and awaiting delivery under the user's ground-placement purge.
+The Targeting tab, placement adapter/preferences/registry, setup policy and scans
+are removed from source. Ping, Circle, temporary routing, HUD and inert old saved data
+remain. All 76 runtime/source checks and 66 tooling tests passed with exact current
+inventories. Candidate.35 is still the installed checkpoint until a verified delivery
+receipt supersedes it. [Retirement](reference/TARGETING-RETIREMENT-2026-10-12.md).
+
 Candidate `2.0.0-candidate.35` was installed October 12, 2026 at **19:52:51 Toronto**
 from tested/pushed source `5359b52b92b5f4fb97178327f902f1203e31e9eb`, retaining
 StoreSchema 3/configuration revision20 and native behavior. It reduces reproduced

@@ -12,6 +12,14 @@ feature may be approved in direction yet still deferred or gated.
 
 ## Current contracts
 
+Latest October 12: explicitly remove Forever's Targeting panel and all of its
+ground-placement behavior, preferences UI/model, registry, setup toggle, scans,
+secure interception and diagnostics. Preserve R3 ping, Circle cancellation,
+vehicle/skyriding/override routing, HUD/native feedback and SavedVariables.
+Historical saved preferences remain inert; no replacement macro feature is added.
+This supersedes R05's earlier preservation requirement.
+[Retirement](reference/TARGETING-RETIREMENT-2026-10-12.md).
+
 October 12 scheduled performance request: investigate HUD-attributed gameplay CPU
 spikes with evidence, implement focused optimizations and prevent recurrence.
 Preserve all implemented features/appearance/input timing, native secure ownership,
@@ -45,7 +53,7 @@ with no WTF writes or game input; the initial no-deploy instruction is supersede
 | R02 | Four ordinary banks: Base, L2, R2, L2+R2. Only unmodified four face bindings shared; ordinary D-pad/modified actions character owned. | BindingPolicy, native binding adapters; [ownership decision](decisions/0003-character-state-and-manual-edits.md). |
 | R03 | Vehicle, possession, quest override, skyriding and native temporary action families replace L2+R2 only; ordinary side/base banks remain. Ordinary class form/stealth changes do not introduce blanket custom replacement. | TemporaryRouting; [state matrix](STATE_MATRIX.md). |
 | R04 | Preserve manual action edits/removals, native drag/drop, binding/ring ownership and native saved layouts. No automatic spell pickup/place/restoration. | Candidate.27 editing repair; passive ActionRecovery. |
-| R05 | Ground placement remains enabled under accepted policy through the repaired independent native adapter; preserve manual/native fallback and context preferences. | Ground/Preferences; scoped Paladin/DH acceptance, T12/T42. |
+| R05 | Ground placement and the Targeting tab are retired. Native spells and user-owned macro slots remain game-owned; retain inert old saved data. | T12 retirement/persistence, T38 absence, T42 native dispatch; [retirement](reference/TARGETING-RETIREMENT-2026-10-12.md). |
 | R06 | R3 sends nothing on down. Tap/empty release sends one contextual aimed ping; selected release sends one selected ping. Hold reveals a real native account ring; keep native selection/cancel/edit behavior. | Candidate.30 supersedes candidate.28 immediate-down requirement; T65 and user acceptance. |
 | R07 | Class-appropriate access and ring content are character owned; preserve learned/manual entries and native routes. | ClassActions and ring projection; exact additional selector gestures remain gated. |
 | R08 | Required Items correction belongs in Forever; preserve Immersion bytes/settings and native preferences. | Deferred native offset post-hooks; T66 and user acceptance. |

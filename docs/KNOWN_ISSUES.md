@@ -20,8 +20,8 @@ Evidence: [current status](IMPLEMENTATION-STATUS.md),
 These are explicit limits, not newly discovered failures:
 
 - Full custom secure modes, UI context takeover and hidden-control replacement
-  remain suspended under native recovery. Native combat-claim relinquishment,
-  temporary routing and independent ground placement remain distinct active paths.
+  remain suspended under native recovery. Native combat-claim relinquishment and
+  temporary routing remain active; ground placement and its panel are retired.
 - Exact additional stick-return/close-and-continue and active-entry cancellation,
   one-success gameplay Circle, additional learned class/pet selector activation,
   transient 0.5-second loot hold and held cinematic skip remain proof gates.

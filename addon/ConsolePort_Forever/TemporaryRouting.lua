@@ -117,7 +117,7 @@ function Routing:Refresh(bridge,api,enabled)
         local group=api['ConsolePortGroup'..name]
         group.__cpfTemporaryPage=group.__cpfTemporaryPage or group:GetAttribute('ActionPageChanged')
         -- LAB's native flyout click handler uses this header upvalue. It must
-        -- also be present when ground placement is disabled for the character.
+        -- remains initialized independently of any optional casting adapters.
         group:Execute('owner = owner or self')
         for key,index in pairs(cells) do
             local button=group.buttons[key]

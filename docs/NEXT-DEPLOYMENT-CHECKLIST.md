@@ -60,6 +60,15 @@ cast report. Exact Forever first-success ordering remains gated.
 
 The candidate.31 cases below are retained historical acceptance context.
 
+## Ground-placement retirement validation
+
+After candidate.36 reload, the Forever Targeting tab and ground-placement setup
+option must be absent. Ordinary ground spells should expose the native reticle;
+user macros remain unchanged. Test both cast edges and combat, R3 ping, Circle
+cast/reticle cancellation, vehicle/skyriding/override L2+R2, held release, manual
+drag/remove and HUD feedback. The assistant does not operate the game. Prior
+ground-placement acceptance below is historical and superseded by this retirement.
+
 ## Installed candidate.31 Circle acceptance
 
 Circle uses a native secure cancel-all click through explicit configuration
@@ -107,8 +116,8 @@ Retail cases has been performed for candidate.31.
 - Candidate.27 action recovery stays passive; automatic action-slot restoration
   remains removed and cannot be re-enabled by the old toggle.
 - Temporary action pages retain native drag/drop, clear stale direct-action
-  caches/latches and avoid needless binding reapplication. Accepted L2+R2 ground
-  placement, class actions/rings and HUD stay intact.
+  caches/latches and avoid needless binding reapplication. L2+R2 temporary routing,
+  class actions/rings and HUD stay intact; ground interception is retired.
 - The original quest wipe's exact writer remains unconfirmed. Old Copybara
   backups are stale, and that addon is uninstalled; do not use them for recovery.
 
@@ -148,6 +157,6 @@ Retail cases has been performed for candidate.31.
 6. Smoke-test ordinary bars, dragonriding/skyriding and quest/vehicle/possession
    overrides: rearrange/remove/add actions, transition in/out and reload/login.
    Edits persist and no removed action returns. Confirm L2+R2 temporary access,
-   native exit controls, accepted ground placement and personal class rings.
+   native exit controls, native ground reticles and personal class rings.
 
 Automated offline passes do not substitute for these hardware/rendering tests.

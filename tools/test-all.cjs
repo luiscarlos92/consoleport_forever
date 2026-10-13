@@ -78,7 +78,7 @@ check('T01.snapshot', () => {
 check('T27.lua51', () => {
   for (const f of files('addon').filter(f=>f.endsWith('.lua'))) parser.parse(read(f),{luaVersion:'5.1'});
 });
-const modules = ['Core','Store','Plan','Transactions','BindingPolicy','ModePolicy','Rings/Discovery','Rings/Selectors','ClassActions','SecureModes','TemporaryAccess','TemporaryRouting','Targeting/Registry','Targeting/Preferences','Targeting/Ground','Targeting/Ping','Circle','UI/Ownership','UI/InputBridge','UI/Windows','UI/Scroll','UI/Map','UI/PartyLayout','Cinematic','Adapters/BetterBags','UI/ItemHints','UI/Contexts','UI/FocusVisuals','UI/Proof','Adapters/NativeBindings',
+const modules = ['Core','Store','Plan','Transactions','BindingPolicy','ModePolicy','Rings/Discovery','Rings/Selectors','ClassActions','SecureModes','TemporaryAccess','TemporaryRouting','Targeting/Ping','Circle','UI/Ownership','UI/InputBridge','UI/Windows','UI/Scroll','UI/Map','UI/PartyLayout','Cinematic','Adapters/BetterBags','UI/ItemHints','UI/Contexts','UI/FocusVisuals','UI/Proof','Adapters/NativeBindings',
   'Adapters/BindingState','Adapters/BindingBanks','Diagnostics','Capability','Adapters/ConsolePort','Adapters/EditMode','Adapters/FlatConfig','Adapters/Integrations','SavedEditModeReference','UI/ImmersionProgress','UI/EditModeReference','Adapters/LiteMount','Adapters/DynamicCam','Adapters/Rings','Baseline','Coordinator','Prompt'];
 const source = 'Addon={};\n' + modules.map(m=>
   ';(function(...)\n'+read('addon/ConsolePort_Forever/'+m+'.lua')+'\nend)("ConsolePort_Forever",Addon);\n').join('');
@@ -432,7 +432,7 @@ check('T14.current-ConsolePort-secure-contract', () => {
   execute(source+read('tests/harness/secure_modes.lua').replace('--@CURRENT_CP',conversion+'\n'+nativeLoad)
     .replace('--@CURRENT_LAB',lib.slice(lib.indexOf('function Generic:SetState('),lib.indexOf('function Generic:DisableDragNDrop('))),'secure-modes-current-source');
 });
-function groundTargetingFixture() {
+function nativeActionFixture() {
   const base='evidence/consoleport-contracts/';
   const native=read(base+'ConsolePort_Bar/Widget/Button/Button.lua');
   const utils=read(base+'ConsolePort/Utils/Utils.lua');
@@ -446,11 +446,11 @@ function groundTargetingFixture() {
   const lab='local function installLABClick(button)\n'+lib.slice(start,end)+'\nend';
   const restricted=read('evidence/native/Blizzard_RestrictedAddOnEnvironment/RestrictedEnvironment.lua');
   for(const name of ['GetActionInfo','IsPressHoldReleaseSpell','IsModifiedClick','IsShiftKeyDown','IsControlKeyDown','IsAltKeyDown','GetVehicleBarIndex','GetOverrideBarIndex','GetTempShapeshiftBarIndex']) {
-    if(!restricted.includes(name)) throw Error('ground snippet API unavailable: '+name);
+    if(!restricted.includes(name)) throw Error('native snippet API unavailable: '+name);
   }
   const execution=read('evidence/native/Blizzard_RestrictedAddOnEnvironment/RestrictedExecution.lua');
   const environment=execution.slice(execution.indexOf('local function CreateRestrictedEnvironment('),execution.indexOf('\nend',execution.indexOf('local function CreateRestrictedEnvironment('))+4);
-  const fixture=read('tests/harness/ground_targeting.lua')
+  const fixture=read('tests/harness/native_action_fixture.lua')
     .replace('--@NATIVE_RESTRICTED_ENV',()=>environment)
     .replace('--@NATIVE_HANDLE_ACCESS',()=>{
       const frames=read('evidence/native/Blizzard_RestrictedAddOnEnvironment/RestrictedFrames.lua');
@@ -467,16 +467,21 @@ function groundTargetingFixture() {
     .replace('--@NATIVE_LAB_CLICK_FACTORY',lab);
   return fixture;
 }
-check('T12.current-native-ground-targeting', () => {
-  execute(source+'\n;(function(...)\n'+read('addon/ConsolePort_Forever/RuntimeSetup.lua')+'\nend)("ConsolePort_Forever",Addon);\n'+groundTargetingFixture(),'ground-targeting-current-native-source');
-  const registry=read('addon/ConsolePort_Forever/Targeting/Registry.lua');
-  const evidence=JSON.parse(read('evidence/targeting/ground-spells.json'));
-  const ids=[...registry.matchAll(/\[(\d+)\]=/g)].map(m=>Number(m[1])).sort((a,b)=>a-b);
-  if(JSON.stringify(ids)!==JSON.stringify(evidence.spells.map(s=>s.id).sort((a,b)=>a-b))) throw Error('ground registry qualification drift');
-  for(const spell of evidence.spells) if(!spell.source || !spell.qualification) throw Error('unqualified ground spell '+spell.id);
+check('T12.ground-placement-retirement-preserves-legacy-saved-data', () => {
+  const fixture=read('tests/harness/targeting_retirement.lua');
+  execute(source+fixture,'placement-retirement');
+  let rejected=false;
+  try { execute(source+'Addon.GroundTargeting={}\n'+fixture,'retained-placement-module'); }
+  catch(error) { rejected=String(error).includes('placement module still loaded'); }
+  if(!rejected) throw Error('Retained placement module negative control survived');
+  rejected=false;
+  const recreate="local ensure=Addon.Store.EnsureSchema; function Addon.Store.EnsureSchema(...) local db,reason=ensure(...); if db then db.shared.groundTargeting={} end return db,reason end\n";
+  try { execute(source+recreate+fixture,'recreated-retired-preferences'); }
+  catch(error) { rejected=String(error).includes('retired preference tables recreated'); }
+  if(!rejected) throw Error('Recreated retired preferences negative control survived');
 });
-check('T42.native-targeting-combat-bindings-full-dispatch', () => {
-  const prelude=groundTargetingFixture().split('assert(Addon.SecureModes.Install(bridge,api))')[0];
+check('T42.native-actions-without-placement-combat-bindings-full-dispatch', () => {
+  const prelude=nativeActionFixture();
   const manager=read('evidence/consoleport-contracts/ConsolePort_Bar/Controller/Manager/Manager.lua');
   const utils=read('evidence/consoleport-contracts/ConsolePort/Utils/Utils.lua');
   const parseStart=utils.indexOf('Parse = function(self, body, args)');
@@ -484,8 +489,15 @@ check('T42.native-targeting-combat-bindings-full-dispatch', () => {
     .replace('--@NATIVE_MANAGER_ENV',manager.slice(manager.indexOf('Manager.Env = {'),manager.indexOf('\n};')+4))
     .replace('--@NATIVE_MANAGER_REGISTER',()=>nativeFunction('evidence/consoleport-contracts/ConsolePort_Bar/Controller/Manager/Manager.lua','Manager:RegisterOverride'))
     .replace('--@NATIVE_MANAGER_PARSE','local native'+utils.slice(parseStart,utils.indexOf('\n\tend;',parseStart)+6));
-  const gameplay=read('tests/harness/native_targeting_dispatch.lua');
-  execute(source+uiContextFixture()+'\n'+adapter+'\nlocal scenario='+JSON.stringify(prelude+'\n'+gameplay)+'\nlocal scope=setmetatable({},{__index=_G}); scope._G=scope; scope.engine=targetingEngine; scope.Addon=Addon; assert(load(scenario,"native-targeting-dispatch","t",scope))(); TEST_SUCCESS=scope.TEST_SUCCESS;','native-targeting-full-dispatch');
+  const headerInit=read('addon/ConsolePort_Forever/TemporaryRouting.lua').match(/group:Execute\('owner = owner or self'\)/)?.[0];
+  if(!headerInit) throw Error('Retained native LAB header initializer unavailable');
+  const gameplay=read('tests/harness/native_action_dispatch.lua').replace('--@RETAINED_HEADER_INIT',headerInit);
+  const wrap=scenario=>source+uiContextFixture()+'\n'+adapter+'\nlocal scenario='+JSON.stringify(scenario)+'\nlocal scope=setmetatable({},{__index=_G}); scope._G=scope; scope.engine=targetingEngine; scope.Addon=Addon; assert(load(scenario,"native-action-dispatch","t",scope))(); TEST_SUCCESS=scope.TEST_SUCCESS;';
+  execute(wrap(prelude+'\n'+gameplay),'native-action-full-dispatch');
+  let rejected=false;
+  try {execute(wrap(prelude+'\n'+gameplay.replace(headerInit,'do end')),'missing-retained-LAB-owner');}
+  catch(error) {rejected=String(error).includes("global 'owner'");}
+  if(!rejected) throw Error('Retained native header owner negative control survived');
 });
 check('T44.Forever-original-art-region-provenance', () => {
   const evidence=JSON.parse(read('evidence/forever-ui/sprite-regions.json'));
@@ -517,14 +529,13 @@ check('T36.native-party-layout-default', () => {
     .replace('--@NATIVE_COMPACT_GENERATE',()=>nativeFunction(base+'Blizzard_UnitFrame/Shared/CompactPartyFrame.lua','CompactPartyFrame_Generate'));
   execute(source+serializer+'\n;(function(...)\n'+read('addon/ConsolePort_Forever/RuntimeSetup.lua')+'\nend)("ConsolePort_Forever",Addon);\n'+fixture,'native-party-layout-default');
 });
-check('T38.account-targeting-native-config-panel', () => {
-  const native=read('evidence/consoleport-contracts/ConsolePort_Config/View/Config/Config.lua');
-  const lifecycle=native.slice(native.indexOf('local Panel ='),native.indexOf('local Canvas ='))+'\n'
-    +native.slice(native.indexOf('do  local panelIDGen'));
-  const fixture=read('tests/harness/targeting_preferences.lua')
-    .replace('--@NATIVE_PANEL_LIFECYCLE',()=>lifecycle)
-    .replace('--@PRODUCT_TARGETING_UI',()=>';(function(...)\n'+read('addon/ConsolePort_Forever/UI/Targeting.lua')+'\nend)("ConsolePort_Forever",Addon);');
-  execute(source+fixture,'account-targeting-native-panel');
+check('T38.retired-targeting-tab-and-casting-code-absent', () => {
+  const retired=['Targeting/Registry.lua','Targeting/Preferences.lua','Targeting/Ground.lua','UI/Targeting.lua'];
+  const toc=read('addon/ConsolePort_Forever/ConsolePort_Forever.toc').replace(/\\/g,'/');
+  for(const name of retired) if(fs.existsSync(path.join(root,'addon/ConsolePort_Forever',name)) || toc.includes(name)) throw Error('Retired module retained: '+name);
+  for(const name of files('addon').filter(f=>/\.(lua|xml)$/.test(f))) {
+    if(/GroundTargeting|GroundSpells|TargetingPreferences|TargetingUI|cpf-ground-|groundTargetingEnabled|targetingObserved/.test(read(name))) throw Error('Retired placement code retained: '+name);
+  }
 });
 check('T39.ConsolePort-3.3.10-layout-compatibility', () => {
   const base='evidence/consoleport-contracts/';
@@ -979,7 +990,7 @@ check('T61.all-classes-native-dragonriding-and-temporary-L2R2-engine-dispatch', 
   const response=pager.match(/local DEFAULT_PAGE_RESPONSE = \(\[\[([\s\S]*?)\]\]\):format\(NUM_ACTIONBAR_PAGES\)/)?.[1].replace('%s','6');
   const header=pager.match(/local HEADER_RESPONSE = \[\[([\s\S]*?)\]\];/)?.[1];
   if(!response || !header) throw Error('Native pager response unavailable');
-  const prelude=groundTargetingFixture().split('assert(Addon.SecureModes.Install(bridge,api))')[0];
+  const prelude=nativeActionFixture();
   const manager=read(base+'ConsolePort_Bar/Controller/Manager/Manager.lua');
   const utils=read(base+'ConsolePort/Utils/Utils.lua');
   const start=utils.indexOf('Parse = function(self, body, args)');

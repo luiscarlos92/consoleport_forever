@@ -9,6 +9,14 @@ Dates below use America/Toronto. This is a curated change index, not invented
 release tags or blanket gameplay certification. Detailed receipts own exact
 source/artifact/file identities. Prepared, installed and accepted are separate.
 
+## Ground targeting retired — October 12, 2026
+
+Candidate.36 removes the Targeting tab, ground-placement interceptor, preference
+model/registry, setup policy, scans and diagnostics under explicit user instruction.
+Native action/macro slots, temporary routing, R3 ping, Circle and HUD remain.
+Old saved data stay inert; schema/revision are unchanged. Retail performance and
+input acceptance require user validation. [Report](docs/reference/TARGETING-RETIREMENT-2026-10-12.md).
+
 ## HUD performance update installed — October 12, 2026
 
 Candidate.35 removes demonstrated redundant diagnostic

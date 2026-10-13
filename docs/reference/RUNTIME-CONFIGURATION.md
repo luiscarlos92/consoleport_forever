@@ -36,7 +36,7 @@ different scope and do not turn a runtime journal into immediate disk durability
 | Circle cancel-all | Candidate.34 automatic login update review (revision20) or explicit review offers native MACRO binding for empty or owned legacy Base PAD2. The changed controller field requires explicit Use Proposed. A separate circleMacro state field reviews one account CPF Circle macro through native CreateMacro/readback/guarded deletion; identical commands allow CRLF/final LF comparison without editing native bytes. Duplicate/edited/full resources defer without overwrite. No auto recreation or RunMacroText fallback. Other nonempty/missing values, Keep and subsequent manual removals retain ownership; ordinary hydration never makes this proposal. |
 | ConsolePort layout | Start from captured current layout. The qualified proposal removes legacy special vehicle visibility/opacity and the standalone override-page declaration; runtime temporary routing is separate. |
 | Preset condition | Propose an empty `bindingPresetCondition`, disabling the old automatic preset condition. |
-| Runtime policies | Offer modes, ground, focus, context/window/bag/map, sidebar visibility and hidden-access fields only where their probes allow. Saved true fields may remain dormant under native recovery. |
+| Runtime policies | Offer modes, focus, context/window/bag/map, sidebar visibility and hidden-access fields only where their probes allow. Saved true fields may remain dormant under native recovery. |
 | Trigger CVars | Only reviewed `GamePadEmulateShift=PADLTRIGGER` and `GamePadEmulateCtrl=PADRTRIGGER`, with registered-native-CVar checks. This is not a bulk CVar import. |
 | Mount icons | Native LiteMount button/icon fields through audited adapters; preserve explicit icons and avoid guessing LM_B2's default. No mount-rule rewrite. |
 | Personal rings | Native validated, GUID-owned personal projection plus learned class augmentation; Shared account rings remain separate. A foreign projection requires review. |
@@ -105,29 +105,14 @@ marker prevents ordinary repeated revision-17 repair. It does not replay full se
 
 ## Ground preferences
 
-[Preferences](../../addon/ConsolePort_Forever/Targeting/Preferences.lua) stores
-account-wide `spells`, `contexts` and `contextSpells`; these do not change by GUID
-or spec. Contexts are vehicle, override, temporary and extra. Resolution skips
-`default` entries and tries context spell, general spell, context, then built-in
-default. General player defaults are spell IDs 43265, 152280 and 121536; contextual
-defaults use cursor. Registry membership or explicit per-spell cursor/player is
-required for qualification; a context-wide cursor preference alone is insufficient.
-
-The native ConsolePort Targeting panel offers draft choices, context selection,
-Add Spell ID, Apply, Revert and Defaults. Adding an ID with `default` does not
-qualify it. Revert resets the draft to saved state. Defaults resets current-class
-curated general entries and all context/context-spell maps; it is not a rollback
-of recorded history. Apply validates and copies the draft, appending the entire
-previous preference table to `groundTargetingHistory`, which currently has no
-retention cap or exposed history-restore command.
-
-Apply rejects combat but has no Edit Mode check. It can save preferences during
-Edit Mode while protected mode refresh still defers through `CanWrite`. The
-panel can exist before character installation; saving a choice does not set the
-ground activation policy. Manual/unqualified/native press-hold-release or
-assisted-combat actions retain native handling. Secure placement uses the actual
-localized spell name and preserves the pressed command until release; no saved
-ability macro, pickup/place or action-storage write is created.
+The October 12 user instruction retires ground placement, its preference model,
+Targeting panel and setup policy. New stores do not create preference/history
+tables. Existing preference/history/observation data, policy values, managed fields
+and transaction steps remain inert and untouched. Unknown historical values do
+not block unrelated setup. Restore review defers an unavailable retired policy
+field while retaining other available fields; it cannot reactivate interception.
+StoreSchema 3 and configuration revision20 remain unchanged. No new review is
+forced for this code retirement. [Report](TARGETING-RETIREMENT-2026-10-12.md).
 
 ## Integration and saved-layout details
 

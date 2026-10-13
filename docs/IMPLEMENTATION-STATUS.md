@@ -2,18 +2,28 @@
 
 Status: maintained
 Reviewed: 2026-10-12
-Evidence: [candidate.35 install](../evidence/delivery/live-install-candidate35.json),
-[independent readback](../evidence/delivery/candidate35-independent-readback.json),
+Evidence: [candidate.36 install](../evidence/delivery/live-install-candidate36.json),
+[independent readback](../evidence/delivery/candidate36-independent-readback.json),
 [Circle acceptance](../evidence/circle/candidate34-live-acceptance-2026-10-12.json).
 
 ## Installed checkpoint
 
-Candidate.36 is qualified and awaiting delivery under the user's ground-placement purge.
-The Targeting tab, placement adapter/preferences/registry, setup policy and scans
-are removed from source. Ping, Circle, temporary routing, HUD and inert old saved data
-remain. All 76 runtime/source checks and 66 tooling tests passed with exact current
-inventories. Candidate.35 is still the installed checkpoint until a verified delivery
-receipt supersedes it. [Retirement](reference/TARGETING-RETIREMENT-2026-10-12.md).
+Candidate `2.0.0-candidate.36` was installed October 12 at **21:50:35 Toronto** from
+tested/pushed source `61a50ccb9a63e3275f1f708657de681bcae8292c`. The user's explicit
+purge removes the Targeting tab, placement adapter/preferences/registry, setup
+policy, scans and diagnostic hooks. Ping, Circle, temporary routing and HUD remain;
+old saved preferences stay inert. StoreSchema 3/configuration revision20 are
+unchanged. Local and fresh Windows CI passed all 76 runtime/source checks and 66
+tooling tests with matching complete inventories. Independent verification confirms
+55 installed files, four removed modules, 2,252 other addon files, 310 WTF files,
+42 links/root anchors and all 23,982 prior backup files preserved. No dependency
+or WTF writes or game input. User owns reload; no new setup review is required.
+Retail performance/input/visual/taint acceptance after retirement remains open.
+[Retirement](reference/TARGETING-RETIREMENT-2026-10-12.md),
+[qualification](../evidence/test-results/candidate36-purge-qualification.json),
+[fresh CI](../evidence/test-results/candidate36-fresh-ci.json).
+
+### Previous candidate.35 performance checkpoint
 
 Candidate `2.0.0-candidate.35` was installed October 12, 2026 at **19:52:51 Toronto**
 from tested/pushed source `5359b52b92b5f4fb97178327f902f1203e31e9eb`, retaining

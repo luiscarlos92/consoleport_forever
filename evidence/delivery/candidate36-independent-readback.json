@@ -1,0 +1,41 @@
+{
+  "at": "2026-10-13T01:53:02.036301+00:00",
+  "installedVersion": "2.0.0-candidate.36",
+  "sourceCommit": "61a50ccb9a63e3275f1f708657de681bcae8292c",
+  "packSHA256": "e8738308e5e2db44ec70a5932083a3beb2868eb76a10c5394453be2a9e5823a9",
+  "closedAt": "2026-10-13T01:50:35.466698+00:00",
+  "installedFilesVerified": 55,
+  "changedRuntimeFiles": [
+    "ConsolePort_Forever.lua",
+    "ConsolePort_Forever.toc",
+    "RuntimeSetup.lua",
+    "Store.lua",
+    "TemporaryRouting.lua",
+    "UI/Proof.lua"
+  ],
+  "removedRuntimeFiles": [
+    "Targeting/Ground.lua",
+    "Targeting/Preferences.lua",
+    "Targeting/Registry.lua",
+    "UI/Targeting.lua"
+  ],
+  "unselectedFilesUnchanged": 2252,
+  "wtfFilesUnchangedDuringInstall": 310,
+  "preflightToInstallGameWTFChangesPreserved": 0,
+  "junctionsUnchanged": 42,
+  "anchorsUnchanged": true,
+  "backupsVerified": true,
+  "priorBackupFilesUnchanged": 23982,
+  "priorBackupDirectoriesPreserved": 2270,
+  "backup": "C:\\Users\\luisr\\WoW-Backups\\ConsolePort-Forever\\20261013T014947Z-38f63cc088cf",
+  "beforeSnapshotSHA256": "937f836c89c855acd4535f2bc58a271fa66dd905e1d985b952f656486ab471c5",
+  "installSnapshotSHA256": "47bd2f436c69fec21d1eeff47fafa07aea7715bc5f45a39e15c51e68f5e10fd4",
+  "dependencyUpdates": [],
+  "configurationRevision": 20,
+  "storeSchema": 3,
+  "noLiveWTFWrites": true,
+  "gameInputPerformed": false,
+  "authorization": "Standing qualified Forever-only permission while playing unless explicitly prohibited",
+  "activation": "User-owned UI reload; no configuration review required by candidate36",
+  "retailPerformanceAcceptance": "Unverified: no post-change engine timings, hardware/taint/rendering observations"
+}

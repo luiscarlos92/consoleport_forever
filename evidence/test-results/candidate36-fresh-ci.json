@@ -1,0 +1,16 @@
+{
+  "at": "2026-10-13T01:53:29.888411+00:00",
+  "runID": 38333628561,
+  "url": "https://github.com/luiscarlos92/consoleport_forever/actions/runs/38333628561",
+  "sourceCommit": "61a50ccb9a63e3275f1f708657de681bcae8292c",
+  "conclusion": "success",
+  "runtimeSuites": 76,
+  "toolingTests": 66,
+  "runtimeReportSHA256": "340582f97775c4fcdcffb9c89b2a6899229e37feb605f3c996e789f4585009df",
+  "toolingReportSHA256": "65106638ca9ff78bc48b79781a0a91a91463ce6bf40e1919860394ef4a051e6e",
+  "completeProductInventoryMatchesLocal": true,
+  "completeRuntimeToolingInventoryMatchesLocal": true,
+  "completeToolingInventoryMatchesLocal": true,
+  "dependencyLockMatchesLocal": true,
+  "limitation": "Fresh Windows CI executes native/product source with modeled APIs; no Retail CPU, hardware, rendering or taint acceptance."
+}

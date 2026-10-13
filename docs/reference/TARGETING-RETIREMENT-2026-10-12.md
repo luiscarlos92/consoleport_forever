@@ -61,6 +61,8 @@ no package refresh or dependency delivery is needed.
 [Qualification](../../evidence/test-results/candidate36-purge-qualification.json),
 [runtime](../../evidence/test-results/candidate36-purge-runtime.json),
 [tooling](../../evidence/test-results/candidate36-purge-tooling.json).
+Fresh Windows [CI](../../evidence/test-results/candidate36-fresh-ci.json) passed
+the same 76/66 checks and matches complete local product/tool/test/lock inventories.
 
 Removal eliminates the ground observation, command preparation and secure wrapper
 installation paths; temporary routing still has its existing cost. Offline tests
@@ -71,7 +73,19 @@ runtime.modes under a consistent gameplay/profiler window.
 
 ## Delivery
 
-Candidate.36 is qualified locally and awaiting scoped delivery. Installation
-receipts will record completion. No game operation, direct WTF write or dependency
-replacement is authorized by this removal; standing qualified Forever-only
-delivery applies.
+Candidate.36 was installed October 12 at 21:50:35 Toronto from tested/pushed source
+`61a50ccb9a63e3275f1f708657de681bcae8292c` under standing Forever-only permission.
+The verified artifact contains 55 files in Forever alone; four removed modules
+are absent. SHA-256:
+`e8738308e5e2db44ec70a5932083a3beb2868eb76a10c5394453be2a9e5823a9`.
+[Artifact](../../evidence/delivery/candidate36-update-artifact.json),
+[preview](../../evidence/delivery/candidate36-preview.json),
+[installation](../../evidence/delivery/live-install-candidate36.json),
+[independent readback](../../evidence/delivery/candidate36-independent-readback.json).
+
+Independent readback confirms 2,252 other addon files, 310 WTF files, 42 links,
+root anchors and all 23,982 prior backup files preserved. New code/configuration
+backup: `C:\Users\luisr\WoW-Backups\ConsolePort-Forever\20261013T014947Z-38f63cc088cf`.
+No game input, live WTF writes or dependency replacement. User owns reload;
+schema/revision are unchanged and no new setup review is required. Historical
+timings precede retirement and do not certify its Retail performance.

@@ -16,6 +16,12 @@ model/registry, setup policy, scans and diagnostics under explicit user instruct
 Native action/macro slots, temporary routing, R3 ping, Circle and HUD remain.
 Old saved data stay inert; schema/revision are unchanged. Retail performance and
 input acceptance require user validation. [Report](docs/reference/TARGETING-RETIREMENT-2026-10-12.md).
+Installed at 21:50:35 Toronto from tested/pushed source
+`61a50ccb9a63e3275f1f708657de681bcae8292c`. Local and fresh Windows CI passed
+76 runtime/source checks and 66 tooling tests with complete inventories matching.
+Independent readback verified all 55 installed files, four module removals,
+2,252 other addon files, 310 WTF files, 42 links/root anchors and all 23,982 prior
+backup files preserved. [Receipt](evidence/delivery/candidate36-independent-readback.json).
 
 ## HUD performance update installed — October 12, 2026
 

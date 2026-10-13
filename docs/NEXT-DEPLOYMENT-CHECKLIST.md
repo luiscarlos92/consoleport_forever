@@ -1,15 +1,16 @@
 # Pending deployment and cumulative acceptance
 
-Status: candidate.35 installed October 12, 2026 at 19:52:51 Toronto.
+Status: candidate.36 installed October 12, 2026 at 21:50:35 Toronto.
 Standing user permission authorizes qualified Forever updates while playing unless
 explicitly prohibited. Independent verification preserved installer-start WTF,
-other addons, topology and all 23,611 prior backup files. No game
+other addons, topology and all 23,982 prior backup files. No game
 input or WTF writes; user owns reload.
-[Installation](../evidence/delivery/live-install-candidate35.json),
-[readback](../evidence/delivery/candidate35-independent-readback.json).
+[Installation](../evidence/delivery/live-install-candidate36.json),
+[readback](../evidence/delivery/candidate36-independent-readback.json).
 
-Candidate.35 requires user-owned reload; accepted revision20 needs no new setup
-review. Offline qualification passed 76 runtime/source checks and 66 tooling tests.
+Candidate.36 requires user-owned reload; accepted revision20 needs no new setup
+review. Ground placement and its Targeting tab are removed. Local and fresh CI
+qualification passed 76 runtime/source checks and 66 tooling tests.
 K04 performance acceptance remains open; no live after-change CPU measurements
 or new blanket visual/input/taint acceptance are claimed.
 

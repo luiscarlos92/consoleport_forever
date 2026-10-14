@@ -191,7 +191,9 @@ Only matching native methods qualify; existing foreign methods are skipped.
 At most102 buttons are considered, with no polling worker. Security labels are
 inspected after completed calls; initial taint and later observed transitions are
 separate, with at most 16 records/four initial records and 3072-character stacks.
-Full trace stops further inspections. First blocked-event stacks share that stack
+Full trace stops further inspections. Blocked events retain at most 16 first
+stack attempts separately from their rolling aggregate rows, so eviction neither
+loses the first callers nor restarts stack collection. They share the stack-length
 bound. Data remain detached and GUID-scoped, and no error handler/CVar, action
 value, native script or native dispatch is changed. This is collection for K05,
 not a taint repair; aborted calls and earlier writers may evade the posthook.

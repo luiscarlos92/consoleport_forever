@@ -1399,6 +1399,11 @@ check('T78.blocked-events-auto-persist-all-attributions-without-native-writes', 
   try {execute(leak,'stale-owner-full-diagnostic-snapshot');}
   catch(error) {rejected=String(error).includes('previous GUID blocked evidence copied by full snapshot');}
   if(!rejected) throw Error('full-snapshot owner isolation negative control survived');
+  rejected=false;
+  const unbounded=fixture.replace('if #log.firstStacks<16 then','if true then');
+  try {execute(unbounded,'blocked-stack-recapture-after-eviction');}
+  catch(error) {rejected=String(error).includes('blocked stack budget exceeded after aggregate eviction');}
+  if(!rejected) throw Error('blocked stack work-budget negative control survived');
 });
 check('T79.native-action-taint-transition-posthook-bounded-passive-owner-isolated', () => {
   const fixture='SESSION_STATE=('+bootstrapState+').installed\n'+bootstrapPrelude+read('tests/harness/native_action_trace.lua');

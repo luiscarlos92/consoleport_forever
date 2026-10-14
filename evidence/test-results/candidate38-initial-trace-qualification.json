@@ -1,0 +1,49 @@
+{
+  "at": "2026-10-14T03:38:13.274425+00:00",
+  "candidate": "2.0.0-candidate.38",
+  "runtimeChecks": 79,
+  "toolingTests": 66,
+  "overallPassed": true,
+  "completeProductInventoryMatches": true,
+  "completeRuntimeToolInventoryMatches": true,
+  "completeToolingInventoryMatches": true,
+  "changedProductFiles": [
+    "addon/ConsolePort_Forever/Adapters/LiteMount.lua",
+    "addon/ConsolePort_Forever/ConsolePort_Forever.lua",
+    "addon/ConsolePort_Forever/ConsolePort_Forever.toc",
+    "addon/ConsolePort_Forever/Diagnostics.lua"
+  ],
+  "unchangedProductFiles": 54,
+  "runtimeReportSHA256": "c8347de4e634d3544a52548c44d3417a145fffbbbd1ffe85e031506fec8e3c51",
+  "toolingReportSHA256": "e39872f7fda06d60598bc187eee02a11a6c66cbd6c312b529f32f26b58e1e5d5",
+  "freshStableCheckSHA256": "08c4394b73a5ab14b2dea8f069956d95e2b3beab1c80efb609ea6180d2389ac9",
+  "qualifiedDependencyUpdates": [
+    "xod-wow/LiteMount"
+  ],
+  "selectedDiagnosticDeliveryDependencies": [],
+  "pendingSeparateDependencyUpdate": "LiteMount12.1.5-1; installed12.1.0-2 remains explicitly covered by T13",
+  "configurationRevision": 20,
+  "storeSchema": 3,
+  "newGates": [
+    "T79"
+  ],
+  "extendedGate": "T78 first blocked stack once per aggregate",
+  "rejectedControls": [
+    "missing automatic native posthook installation",
+    "cross-GUID action-trace leakage"
+  ],
+  "nativeTraceBounds": {
+    "candidateButtons": 102,
+    "records": 16,
+    "initialRecords": 4,
+    "stackCharacters": 3072
+  },
+  "engineTaintLogMustBeKnownOff": true,
+  "nativeActionValuesReadOrWritten": false,
+  "nativeUpdateDispatched": false,
+  "originalCooldownWriter": "Unknown; stored labels attribute prior action fields to ConsolePort_Bar",
+  "retailCooldownFailureResolved": false,
+  "gameInputPerformed": false,
+  "liveWTFWrites": false,
+  "limitations": "Security-label/stack/C posthook APIs are explicit offline doubles. Completed native calls only; captured caller need not be first writer. No Retail taint/timing/authority acceptance claimed."
+}

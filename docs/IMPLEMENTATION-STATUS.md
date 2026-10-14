@@ -12,9 +12,10 @@ Candidate.38 is qualified for automatic native-action transition/blocked
 caller stacks. It is not installed and does not claim to repair K05. All 79
 runtime/source checks and 66 tooling tests pass with exact current inventories.
 [Qualification](../evidence/test-results/candidate38-trace-qualification.json). Fresh stable
-discovery additionally prepares LiteMount 12.1.5-1; native integration code is
-unchanged and the complete package preserves its existing folders/notices.
-LiteMount remains separate from the urgent Forever-only running-game delivery.
+discovery additionally qualifies LiteMount 12.1.5-1; all 115 files already match on
+disk before the first Forever deployment. Its native integration code/notices
+are unchanged; only the Forever version guard needs the new audited identity.
+No LiteMount file replacement is selected.
 Candidate.37 remains installed below.
 
 Candidate.37 was installed October 13 at **00:58:18 Toronto** from tested/pushed

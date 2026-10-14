@@ -154,8 +154,10 @@ store initialization, with at most 16 observations/four initial snapshots and
 clean-to-tainted label change. Native `UpdateAction` posthooks do not read action
 values, invoke updates or replace handlers; full traces stop further inspections.
 Only completed calls are observed, so a captured caller is an observation point,
-not necessarily the original writer. Blocked-event aggregates also retain their
-first bounded stack. No additional command, logging CVar or prescribed gameplay
+not necessarily the original writer. `blocked.firstStacks` separately retains at
+most 16 first stack attempts; rolling aggregate eviction does not discard those
+callers or restart collection. Unavailable stacks still consume an attempt.
+No additional command, logging CVar or prescribed gameplay
 sequence is required, and the feature is not a claimed combat-error repair.
 New trace hooks require engine `taintLog` to be known off; unknown/nonzero values
 defer installation. Forever does not set that CVar or request more engine logging.

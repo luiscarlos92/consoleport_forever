@@ -26,5 +26,13 @@
   "unchangedCount": 112,
   "review": "TOC retains interface120100 and adds120105, version changes. Changelog records release. Bundled MountsRarity changes build/timestamp and numeric mount rarity data; functions/API logic unchanged. All native LM_B1/LM_B2 action, macro, rules, settings/persistence and notice code identical. Complete package folder retained.",
   "nativeIntegration": "Retain old adapter versions; T13 additionally covers12.1.5-1 native ConsolePort binding icon methods, manual icons and combat/owner guards.",
-  "runtimeAcceptance": "Not established; installation requires game closed."
+  "runtimeAcceptance": "Live engine/hardware acceptance unknown. All115 qualified files already present on disk before the Forever update; no vendor replacement required.",
+  "liveDiskReadback": {
+    "checkedAt": "2026-10-14T03:53:42.251714+00:00",
+    "filesCompared": 115,
+    "different": [],
+    "alreadyPresentInPreDeploymentSnapshot": true,
+    "TOCSHA256": "eacdaaf8f83ca6efb24324212cce7beddd82b2f31d28d369d24deb5672b5b3fd",
+    "limit": "On-disk state, not proof of currently loaded engine metadata. No LiteMount replacement performed by this investigation."
+  }
 }

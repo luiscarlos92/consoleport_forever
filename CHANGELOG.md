@@ -16,8 +16,8 @@ security labels and later observed stock action-field transitions with caller
 stacks, plus first blocked-event stacks. It leaves native handlers, input,
 cooldowns and action values unchanged; this is diagnostic instrumentation, not
 a claimed combat-error fix. Fresh discovery also qualifies official LiteMount
-12.1.5-1 while retaining adapter support for installed 12.1.0-2. That package stays
-separate from the urgent Forever-only diagnostic delivery.
+12.1.5-1 while retaining old adapter identities. All 115 files already match that
+release on disk before this deployment; no LiteMount replacement is needed.
 [Investigation](docs/reference/COMBAT-ERROR-AUDIT-2026-10-13.md).
 All 79 runtime/source checks and 66 tooling tests pass with exact current
 inventories. [Qualification](evidence/test-results/candidate38-trace-qualification.json).

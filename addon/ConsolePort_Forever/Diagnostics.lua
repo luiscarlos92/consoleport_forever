@@ -118,7 +118,14 @@ function Diagnostics:RecordBlocked(api,event,blamed,func)
         if entry.event==event and entry.addon==blamed and entry.func==func then row=entry break end
     end
     if not row then
-        row={event=event,addon=blamed,func=func,count=0,stack=TraceStack(api)}
+        row={event=event,addon=blamed,func=func,count=0}
+        -- Retain the first stacks separately from evictable aggregate rows.
+        -- Reserve attempts even if debugstack fails, bounding flood overhead.
+        log.firstStacks=log.firstStacks or {}
+        if #log.firstStacks<16 then
+            row.stack=TraceStack(api)
+            log.firstStacks[#log.firstStacks+1]={event=event,addon=blamed,func=func,stack=row.stack}
+        end
         if #log.rows>=16 then table.remove(log.rows,1) end
         log.rows[#log.rows+1]=row
         self:Log('blocked',event..': '..blamed..': '..func)

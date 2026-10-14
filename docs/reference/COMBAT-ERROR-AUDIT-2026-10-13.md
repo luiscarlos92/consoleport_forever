@@ -152,7 +152,10 @@ values, and record initial contamination separately from later observed
 clean-to-tainted changes. At most 16 observations/four initial snapshots retain
 public writer labels and stacks of at most 3072 characters. Clean/repeated tainted
 observations collect no stack; saturation stops inspections. First blocked-event
-aggregates also retain bounded stacks. No error handler, CVar, native script,
+aggregates also retain bounded stacks. An independent `blocked.firstStacks`
+list keeps the first 16 attempts even after rolling rows are evicted, without
+recapturing stacks indefinitely during an error flood. Missing stack reads also
+consume their attempt. No error handler, CVar, native script,
 action value, cooldown setter or input route is replaced or invoked.
 
 Posthooks run after completed calls and cannot recover a prior write, a failing
@@ -161,7 +164,9 @@ return. Their caller is an observation point rather than certified original
 responsibility. T79 tests actual bootstrap/persistence with explicit C security/
 posthook/stack doubles; missing registration and cross-GUID leakage must fail.
 T78 additionally verifies a first blocked stack is captured once for 1,000 repeated
-events. These are collection-mechanics tests, not reproduced Retail taint.
+events, then more distinct functions than the aggregate capacity: first callers
+remain and total stack attempts stay bounded. Removing the work bound fails.
+These are collection-mechanics tests, not reproduced Retail taint.
 
 Fresh dependency discovery found official LiteMount 12.1.5-1. The
 [selective qualification](../../evidence/dependencies/litemount-12.1.5-1-qualification.json)
@@ -169,10 +174,12 @@ compares all 115 files: no additions/removals and only TOC/version, changelog an
 bundled numeric rarity data/timestamps change. Native integration and notices
 remain identical; T13 retains old versions and covers the new adapter identity.
 This update is unrelated to the combat diagnosis. All nine official stable
-identities are freshly checked. The urgent diagnostic delivery can select only
-Forever through the existing qualified running-game route while retaining
-LiteMount as a separately prepared package; old/new adapter identities are both
-covered. There is no Retail resolution claim at this preparation stage.
+identities are freshly checked. A later independent disk comparison verifies all
+115 new LiteMount files were already present in the pre-deployment snapshot.
+This investigation therefore replaces no LiteMount files; disk state does not
+certify currently loaded engine metadata. Old/new adapter identities are both
+covered, and only Forever is selected through the qualified running-game route.
+There is no Retail combat-error resolution claim at this preparation stage.
 
 The [later logging-window capture](../../evidence/runtime-errors/logging-window-2026-10-13.json)
 also contains 226 nil-call errors beginning in the 22:48 reload window, including
@@ -193,6 +200,12 @@ change and 54 remain unchanged; schema3/configuration revision20 remain intact.
 [Exact reports](../../evidence/test-results/candidate38-trace-qualification.json).
 This qualifies diagnostic collection and old/new LiteMount adapter identities,
 not a Retail taint repair. Only Forever is selected for the urgent update.
+The initial candidate.38 source `c820f0b` was installed during this investigation
+before the final stack-work bound was added. Its artifact, tested-source reports,
+install and independent readback are retained under the `candidate38-initial`
+evidence names. The final qualification includes eviction pressure and independent
+retention of the first stacks; it supersedes that initial source. No activation
+or gameplay acceptance is inferred from either file installation.
 
 ## Candidate.37 impact review
 

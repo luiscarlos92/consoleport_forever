@@ -37,7 +37,7 @@ See [reference provenance](reference/EVIDENCE.md).
 | seblindfors/Immersion | 1.4.61 | Reviewed flat settings and Forever-owned Required Items correction. Preserve upstream bytes and ImmersionSetup. |
 | curseforge/Immersion_ExtraFade | 1.18.0 | Optional reviewed integration fields. |
 | curseforge/DynamicCam | 2.21.1 | Managed native profile copies; preserve foreign profiles and selection lifecycle. |
-| xod-wow/LiteMount | 12.1.5-1 | Prepared official update; native LM_B1/LM_B2 action/icon adapter retains 12.1.0-1 and installed 12.1.0-2 support. No guessed second default icon. |
+| xod-wow/LiteMount | 12.1.5-1 | All 115 files already match on disk before this Forever deployment; adapter additionally retains 12.1.0-1/12.1.0-2 support. No guessed second default icon. |
 | SFX-WoW/Masque | 12.1.0 | Preserve native integration and composed round-face regression contracts. |
 | Tercioo/Plater-Nameplates | Plater-v658 | Pack dependency; no Forever Plater profile adapter or profile/WTF installer. |
 | SLOKnightfall/BetterWardrobe | 6.12.3 | Adopted package coverage including SourceData helper; no dedicated Forever settings adapter. |
@@ -47,7 +47,9 @@ The October 13 check found LiteMount 12.1.5-1: the complete 115-file package add
 no folders/files and removes none. Only TOC/version, changelog and bundled
 MountsRarity timestamp/data change; native action/button/rule/configuration code
 and notices are identical. Its TOC retains Retail interface 120100. Qualification
-does not imply installation. LiteMount remains separately prepared while the
+does not imply engine acceptance. All 115 qualified files already match on disk
+in the pre-deployment snapshot; this investigation performs no LiteMount
+replacement. Loaded engine metadata is separate from that disk evidence. The
 urgent diagnostic delivery uses the tested Forever-only running-game route.
 Candidate.38's diagnostic posthooks target only matching stock `UpdateAction`
 methods on at most 102 named native buttons. They inspect security labels without

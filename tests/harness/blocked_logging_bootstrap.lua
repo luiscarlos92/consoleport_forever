@@ -37,6 +37,11 @@ fire('ADDON_ACTION_FORBIDDEN',opaque,opaque)
 log=record.lastRuntimeDiagnostics.blocked
 assert(log.rows[2].addon=='unknown' and log.rows[2].func=='unknown','opaque blocked payload leaked')
 for i=1,50 do fire('ADDON_ACTION_BLOCKED','Addon'..i,'ProtectedCall'..i) end
+assert(stacks<=16,'blocked stack budget exceeded after aggregate eviction')
+assert(#record.lastRuntimeDiagnostics.blocked.firstStacks==16
+    and record.lastRuntimeDiagnostics.blocked.firstStacks[1].func=='MultiBarLeftButton1:SetAttribute()'
+    and #record.lastRuntimeDiagnostics.blocked.firstStacks[1].stack==3072,
+    'first blocked stacks lost when aggregate rows were evicted')
 assert(#record.lastRuntimeDiagnostics.blocked.rows==16,'blocked evidence rows unbounded')
 assert(#Addon.Diagnostics.entries<=80 and writes==beforeWrites,'diagnostic event changed existing bounds/ownership')
 local other={}

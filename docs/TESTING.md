@@ -14,6 +14,9 @@ or update dispatch, duplicate setup/event costs, foreign methods, opaque/failing
 labels, detached capped stacks, saturation and GUID isolation. Removing automatic
 registration or owner isolation must fail. This tests collection mechanics;
 it cannot reproduce or certify the engine's original taint writer.
+T78 also exercises more distinct blocked functions than the rolling aggregate
+capacity: first stacks survive eviction and total stack attempts stay capped at
+16 per record/session. Removing this independent work bound must fail.
 
 ```powershell
 python -B tools/check_documentation.py

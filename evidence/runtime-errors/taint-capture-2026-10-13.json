@@ -1,0 +1,38 @@
+{
+  "recordedAt": "2026-10-14T03:20:30.190126+00:00",
+  "taintLogSHA256": "3e73dee841ca7384bc8380c31f63ba04f94cb9aa2e3e97ee80aca35eecaf4be9",
+  "bytes": 62801321,
+  "firstLine": "10/13 22:48:00.708  Execution tainted by ConsolePort while reading global CPAPI (<table: 00000234ed7aa0b0>) - Interface/AddOns/ConsolePort/Model/Game/Actionbar.lua:108",
+  "lastLine": "10/13 23:06:56.251      Interface/AddOns/Blizzard_ActionBar/Shared/ActionButton.lua:1026 MultiBarBottomRightButton5:OnEvent()",
+  "firstHighlightWrite": {
+    "line": 1137,
+    "stack": [
+      "10/13 23:02:07.862  Tainted value written to global ON_BAR_HIGHLIGHT_MARKS (<table: 00000234ed7aa0b0>) by ConsolePort - Interface/AddOns/Blizzard_ActionBar/Shared/ActionButton.lua:66",
+      "10/13 23:02:07.862      Interface/AddOns/Blizzard_ActionBar/Shared/ActionButton.lua:66",
+      "10/13 23:02:07.862      ClearOnBarHighlightMarks()",
+      "10/13 23:02:07.862      Interface/AddOns/Blizzard_ProfessionsBook/Blizzard_ProfessionsBook.lua:158",
+      "10/13 23:02:07.862      xpcall()",
+      "10/13 23:02:07.862      Interface/AddOns/ConsolePort_Cursor/Controller/Scripts.lua:18",
+      "10/13 23:02:07.862      pcall()",
+      "10/13 23:02:07.862      Interface/AddOns/ConsolePort_Cursor/Controller/Scripts.lua:28 ExecuteScript()",
+      "10/13 23:02:07.862      Interface/AddOns/ConsolePort_Cursor/View/Cursor.lua:543 ConsolePortCursor:OnEnterNode()",
+      "10/13 23:02:07.862      Interface/AddOns/ConsolePort_Cursor/View/Cursor.lua:579 ConsolePortCursor:Select()",
+      "10/13 23:02:07.862      Interface/AddOns/ConsolePort_Cursor/View/Cursor.lua:574",
+      "10/13 23:02:07.862      Interface/AddOns/ConsolePort_Cursor/Controller/Stack.lua:227"
+    ]
+  },
+  "highlightReadOccurrences": 62713,
+  "stockActionFieldWriteFound": false,
+  "ConsolePortBarAttributionFound": false,
+  "protectedBlockFound": false,
+  "nativeSource": {
+    "commit": "09b9db7948abc9b9648dedaab51eb0cf3ee67b31",
+    "professionsBookURL": "https://github.com/Gethe/wow-ui-source/blob/09b9db7948abc9b9648dedaab51eb0cf3ee67b31/Interface/AddOns/Blizzard_ProfessionsBook/Blizzard_ProfessionsBook.lua",
+    "sha256": "da43556d1701ea7339ac148d5a398746feeacda7579111c87c90648f043515e6"
+  },
+  "interpretation": "Captured public cursor script invocation enters native professions hover, replacing ON_BAR_HIGHLIGHT_MARKS under ConsolePort attribution. Later native highlight reads go through securecallfunction; this trace does not establish escape from that boundary, stock action-field contamination, or the combat cooldown error cause. Logging is silent in the UI; lack of visible response did not mean capture failed.",
+  "runtimeRepairSelected": false,
+  "diagnosticStrategy": "Bounded passive native UpdateAction posthooks for first observed action-label changes and first blocked-event stacks. Posthooks only cover completed calls and cannot recover prior writes or prove original responsibility.",
+  "gameInputPerformed": false,
+  "liveWTFWrites": false
+}

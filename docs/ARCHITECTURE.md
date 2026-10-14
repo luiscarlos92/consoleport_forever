@@ -184,6 +184,18 @@ UI routes are described in [presentation and UI](reference/PRESENTATION-AND-UI.m
 
 ## Change boundaries
 
+Prepared candidate.38 additionally installs native `UpdateAction` posthooks once
+per existing stock button after character-store initialization outside combat.
+Installation requires engine `taintLog` to be known off; the addon never changes it.
+Only matching native methods qualify; existing foreign methods are skipped.
+At most102 buttons are considered, with no polling worker. Security labels are
+inspected after completed calls; initial taint and later observed transitions are
+separate, with at most 16 records/four initial records and 3072-character stacks.
+Full trace stops further inspections. First blocked-event stacks share that stack
+bound. Data remain detached and GUID-scoped, and no error handler/CVar, action
+value, native script or native dispatch is changed. This is collection for K05,
+not a taint repair; aborted calls and earlier writers may evade the posthook.
+
 Candidate.37 adds read-only blocked-event evidence for all addon attributions,
 bounded to16 aggregate rows in the current GUID's runtime diagnostic snapshot.
 Native field security labels are queried without reading protected values or

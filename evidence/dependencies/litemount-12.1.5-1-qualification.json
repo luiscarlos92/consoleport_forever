@@ -1,0 +1,30 @@
+{
+  "recordedAt": "2026-10-14T03:20:30.402461+00:00",
+  "repo": "xod-wow/LiteMount",
+  "oldVersion": "12.1.0-2",
+  "qualifiedVersion": "12.1.5-1",
+  "newFileCount": 115,
+  "added": [],
+  "removed": [],
+  "changed": [
+    {
+      "file": "CHANGELOG.md",
+      "before": "673f06adee3b3591aa2002ee1c1799245de02ee474308540652ad9c5029b50d0",
+      "after": "7a66f72661854ee40c05e31b02b4fa253d90fa0d89b6e532e0bd173158b8fb94"
+    },
+    {
+      "file": "Libs/MountsRarity-2.0/MountsRarity.lua",
+      "before": "5d503f30b485ecccdf277ed7640baddab11b50e7e889ae3635e0441eb62f1515",
+      "after": "328c268c426f175a257566de9b403f5000fc442eeae9ca2d187741be77e84a62"
+    },
+    {
+      "file": "LiteMount.toc",
+      "before": "75a821788bc3c3f0e468c30a1490617451fae2f4a07e0d7e3ef151f5e79bb980",
+      "after": "eacdaaf8f83ca6efb24324212cce7beddd82b2f31d28d369d24deb5672b5b3fd"
+    }
+  ],
+  "unchangedCount": 112,
+  "review": "TOC retains interface120100 and adds120105, version changes. Changelog records release. Bundled MountsRarity changes build/timestamp and numeric mount rarity data; functions/API logic unchanged. All native LM_B1/LM_B2 action, macro, rules, settings/persistence and notice code identical. Complete package folder retained.",
+  "nativeIntegration": "Retain old adapter versions; T13 additionally covers12.1.5-1 native ConsolePort binding icon methods, manual icons and combat/owner guards.",
+  "runtimeAcceptance": "Not established; installation requires game closed."
+}

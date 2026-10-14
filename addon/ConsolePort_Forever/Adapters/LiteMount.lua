@@ -1,6 +1,6 @@
 local _,Addon=...
 local Mount={}
-local auditedVersions={['12.1.0-1']=true,['12.1.0-2']=true}
+local auditedVersions={['12.1.0-1']=true,['12.1.0-2']=true,['12.1.5-1']=true}
 Addon.LiteMountAdapter=Mount
 local ids={'CLICK LM_B1:LeftButton','CLICK LM_B2:LeftButton'}
 function Mount.New(db,api)

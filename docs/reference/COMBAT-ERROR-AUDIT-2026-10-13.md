@@ -3,6 +3,7 @@
 Status: maintained
 Reviewed: 2026-10-13
 Evidence: [captured diagnosis](../../evidence/runtime-errors/diagnosis-2026-10-13.json),
+[candidate.37 recurrence](../../evidence/runtime-errors/recurrence-2026-10-13.json),
 [old observer](../../evidence/runtime-errors/ActionRecovery-candidate36.lua),
 [regression runner](../../tools/test-all.cjs).
 
@@ -16,8 +17,10 @@ a reproduction procedure. No game input or live WTF modification is authorized.
 The captured General.log contains **1,020 instances of one Lua error** between
 raw log times October 12 23:42:34.795 and 23:59:41.929. These clock values are not
 converted to host/server time. The error is Blizzard ActionButton.lua:847 rejecting
-secret arguments to `SetCooldown` during tainted execution. Line866 is the charge
-cooldown branch. Stacks include the native controller's world-entry reset and
+secret arguments to `SetCooldown` during tainted execution. Line866 is the normal
+cooldown branch. The initial diagnosis incorrectly called it the charge branch;
+this maintained report corrects that label without rewriting the old evidence.
+Stacks include the native controller's world-entry reset and
 action-button event dispatch during gameplay. This establishes the failing sink,
 not the original taint writer or the affected button identity. No taint.log or
 saved BugGrabber/BugSack error store was found. The last saved Forever diagnostic
@@ -41,7 +44,157 @@ does not diagnose this session. We therefore retain accepted visibility/parent
 behavior, native events and cooldown ownership. No dispatcher purge, alpha-only
 bar rewrite, global cooldown replacement or error suppression is introduced.
 
-## Impact review
+## Candidate.37 combat recurrence
+
+The user reports the warning recurring during ordinary combat on October 13.
+The [new read-only capture](../../evidence/runtime-errors/recurrence-2026-10-13.json)
+identifies candidate.37 and another 1,020 native `SetCooldown` failures between
+raw log times 21:42:40.569 and 22:17:39.309. These are captured occurrences;
+the snapshot is not asserted to be the complete number of engine failures. A
+later flushed log contains 1,050 cooldown failures, so no fixed 1,020 reporting
+cap is inferred. Both the ordinary
+cooldown and charge branches occur in this capture.
+
+| Native stack route | Captured occurrences |
+| --- | --- |
+| Shared button dispatcher -> cooldown event -> normal setter | 869 |
+| Keyed action dispatcher -> `SPELL_UPDATE_ICON` -> full update -> normal setter | 85 |
+| Shared button dispatcher -> slot change -> `UpdateAction(true)` -> charge setter | 33 |
+| Shared button dispatcher -> cooldown event -> charge setter | 29 |
+| Native action-bar controller reset -> `UpdateAction` -> normal setter | 2 |
+| Shared button dispatcher -> slot change -> `UpdateAction(true)` -> normal setter | 2 |
+
+The saved blocked-event observer counted **926 events**, retaining at most 16
+distinct aggregates. Retained observations mark stock `ActionButton6` through
+`ActionButton12` and `OverrideActionBarButton4` Lua `action` fields insecure,
+with writer attribution **ConsolePort_Bar**. Their inspected `OnEvent`,
+`UpdateAction`, `eventsRegistered`, `needsUpdate` and `popupDirection` fields
+remain secure. The container rows are distinct objects; a secure absent `action`
+field on a container does not exonerate its button. A blocked
+`MultiBarBottomRightButton7:SetAttribute` observation has `action` marked secure,
+so this one tainted field does not explain every blocked event.
+
+These are materially stronger observations than the initial capture. Stock
+`UpdateAction` assigns `self.action`; native update/cooldown and press-and-hold
+paths subsequently read it. Reading an already tainted field provides a source-
+supported route into the failing secret cooldown setter and blocked attribute
+updates. Combat makes the secret-value failure observable; it need not be where
+the initial contamination occurred. This is a consistent propagation mechanism,
+not a captured first-write chain or a one-to-one correlation between the two logs.
+The rows are saved observations, not the live engine state, and evicted aggregates
+cannot reconstruct the full 926-event sequence.
+
+The deeper source review checked these specific alternatives:
+
+- All **303 installed ConsolePort Lua/XML/TOC files** match the qualified 3.3.10
+  unpacked source byte-for-byte; no mixed/modified installation was found.
+- CP_Bar's assisted-combat manager clones functions into a new table, supplies
+  private candidate tables and an addon-local action-change callback registry.
+  Its explicit public `UpdateAction(true)` ticker is a candidate only if a stock
+  button can enter it. The reviewed callers enumerate CP LAB buttons or emit
+  their own button as the callback argument; no such stock-button ingress was
+  established. Cloning is not evidence of mutating the global native manager.
+- Native CallbackRegistry uses `secureexecuterange` and `securecallfunction` for
+  callbacks. A plain mock callback loop would misrepresent that boundary.
+- CP_Bar hides native bars/buttons and removes keyed dispatcher entries, while
+  Blizzard's separate array dispatcher remains active. This explains why a
+  hidden stock button can still receive cooldown events; it does not establish
+  how its Lua field became tainted. Native C hide/parent/attribute calls and nil
+  dispatcher removal remain rejected as standalone causal explanations.
+- The native interface cursor has script substitution for action-button hover,
+  avoiding the native hover method's forced `UpdateAction`. This is a plausible
+  area for a first-write trace, not proof of a failure in that substitution.
+- No source path was found that makes the retired ground-placement adapter,
+  Forever face skin, or temporary-route wrappers the original stock `.action`
+  writer. Permanent retirement stays intact.
+
+Two other General.log errors are separate: BetterBagsItemButton62 reaches native
+tooltip anchoring with `GetRight()` returning nil, then native ContainerFrame
+compares it with half the screen width. These two occurrences do not explain the
+1,020 cooldown failures. The capture supplies no Forever caller for this tooltip
+failure; no upstream tooltip patch is selected.
+
+No taint.log was present. The missing evidence is the engine stack for the first
+ConsolePort_Bar-attributed stock action-field contamination, before its later
+native reads spread it. If the user elects to capture this, enabling
+`/console taintLog 2` followed by a user-owned reload before ordinary play is
+sufficient preparation; no special combat reproduction is prescribed. After the
+next warning, `/console taintLog 0` stops capture. Direct live WTF edits and game
+input by the agent remain prohibited. Repeating field snapshots alone will not
+identify the first write.
+
+That first recurrence review changed evidence/guidance only and selected no
+runtime repair. The following later user instruction expands the investigation.
+
+## Silent taint capture and automatic trace
+
+The user enabled logging but saw no response and requested another investigation
+method. Logging had silently produced a 62,801,321-byte file spanning raw times
+22:48:00.708 through 23:06:56.251. The
+[limited captured evidence](../../evidence/runtime-errors/taint-capture-2026-10-13.json)
+retains the exact hash and first relevant stack, not the full private log.
+At 23:02:07.862, ConsolePort cursor `ExecuteScript`/`OnEnterNode` calls native
+ProfessionsBook.lua:158, whose `ClearOnBarHighlightMarks` replaces the global
+`ON_BAR_HIGHLIGHT_MARKS` under ConsolePort taint. The capture includes 62,713 later
+reads of that global through native `GetOnBarHighlightMark`.
+
+This is a demonstrated contamination path, but native reads use
+`securecallfunction`; the trace does not establish escape from that boundary.
+It contains no ConsolePort_Bar attribution, stock `action`-field write or protected
+block. It therefore does not identify the earlier combat error's first writer.
+No professions hover, tooltip or native highlight behavior is removed on that
+assumption. Enabling logging is not expected to print an activation message.
+
+Candidate.38 adds an alternative collection path: automatic posthooks on matching
+native `UpdateAction` methods for at most 102 existing stock buttons after store
+initialization outside combat. They query `issecurevariable` labels, never action
+values, and record initial contamination separately from later observed
+clean-to-tainted changes. At most 16 observations/four initial snapshots retain
+public writer labels and stacks of at most 3072 characters. Clean/repeated tainted
+observations collect no stack; saturation stops inspections. First blocked-event
+aggregates also retain bounded stacks. No error handler, CVar, native script,
+action value, cooldown setter or input route is replaced or invoked.
+
+Posthooks run after completed calls and cannot recover a prior write, a failing
+call's unfinished stack, or an intermediate contamination that is cleared before
+return. Their caller is an observation point rather than certified original
+responsibility. T79 tests actual bootstrap/persistence with explicit C security/
+posthook/stack doubles; missing registration and cross-GUID leakage must fail.
+T78 additionally verifies a first blocked stack is captured once for 1,000 repeated
+events. These are collection-mechanics tests, not reproduced Retail taint.
+
+Fresh dependency discovery found official LiteMount 12.1.5-1. The
+[selective qualification](../../evidence/dependencies/litemount-12.1.5-1-qualification.json)
+compares all 115 files: no additions/removals and only TOC/version, changelog and
+bundled numeric rarity data/timestamps change. Native integration and notices
+remain identical; T13 retains old versions and covers the new adapter identity.
+This update is unrelated to the combat diagnosis. All nine official stable
+identities are freshly checked. The urgent diagnostic delivery can select only
+Forever through the existing qualified running-game route while retaining
+LiteMount as a separately prepared package; old/new adapter identities are both
+covered. There is no Retail resolution claim at this preparation stage.
+
+The [later logging-window capture](../../evidence/runtime-errors/logging-window-2026-10-13.json)
+also contains 226 nil-call errors beginning in the 22:48 reload window, including
+native nameplate/class bar, casting alpha and tooltip methods. Many faulting
+methods have existing addon posthooks. A
+[first-person Blizzard forum report](https://us.forums.blizzard.com/en/wow/t/wow-forever-gamepad-ui-bugs-build-160170170/2370253)
+describes engine taint logging breaking C posthooks with this error on a different
+Forever client build. This is a Retail hypothesis supported by timing/pattern,
+not confirmed causality and not the earlier cooldown cause. The user reports
+logging off and WoW open. No further engine logging is requested. Candidate.38
+installs its optional diagnostic hooks only when `taintLog` is known zero and
+never changes that CVar. Existing installed hooks require a user-owned reload
+to reset; the diagnostic cannot repair a broken engine posthook mechanism.
+
+Candidate.38 local qualification passes all 79 runtime/source checks and 66
+tooling tests with complete matching current inventories. Four product files
+change and 54 remain unchanged; schema3/configuration revision20 remain intact.
+[Exact reports](../../evidence/test-results/candidate38-trace-qualification.json).
+This qualifies diagnostic collection and old/new LiteMount adapter identities,
+not a Retail taint repair. Only Forever is selected for the urgent update.
+
+## Candidate.37 impact review
 
 Starting source is d99c942, whose product bytes match the installed candidate.36
 qualification. Candidate.35 introduced incremental diagnostic copies, immediate
@@ -58,7 +211,7 @@ temporary routing's native LAB header owner remains independently initialized.
 | Temporary routes/overflow/editing | Qualified native compiler, header/pager, held-release and ordinary-edit restoration remain. No new routing repair is selected without an identified failed contract. T61 retains 4,160 scenarios. |
 | Circle/ping | Native MACRO/secure ring ownership retained. Existing bounded public logging and inactive fallback remain; no protected action is authorized by a public timer. |
 | Dormant UI/context replacement | Native recovery still suppresses full takeover; native combat handoff coverage retained. Disabled helper tests are not evidence of active product behavior. |
-| Optional integrations/persistence | Existing native profiles/layouts/bindings/manual edits remain owned and unchanged. Fresh official stable inspection found no changed package among all nine sources. |
+| Optional integrations/persistence | Existing native profiles/layouts/bindings/manual edits remain owned and unchanged. The initial candidate.37 stable inspection found no changed package among all nine sources; the later candidate.38 inspection separately qualifies LiteMount12.1.5-1 above. |
 | Passive action observer | Demonstrated unsafe read forwarding/persistence and uncaught unavailable reads; repaired below. No action-slot writer is restored. |
 | Blocked-action diagnostics | Demonstrated attribution filter discarded events unless blamed addon was Forever; repaired below. Empty old logs cannot exonerate other integration paths. |
 

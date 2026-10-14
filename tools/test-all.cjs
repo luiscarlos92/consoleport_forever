@@ -406,7 +406,7 @@ check('T46.native-aura-bar-complete-ring-access-and-editor-release', () => {
 check('T13.native-LiteMount-binding-icons', () => {
   const file='evidence/consoleport-contracts/ConsolePort/Model/Game/Bindings.lua';
   const fixture=read('tests/harness/litemount.lua').replace('--@NATIVE_BINDING_ICON_METHODS',()=>['Bindings:GetIcon','Bindings:SetIcon'].map(name=>nativeFunction(file,name)).join('\n'));
-  for(const version of ['12.1.0-1','12.1.0-2']) execute(source+fixture.replace("local version='12.1.0-1'","local version='"+version+"'"),'native-LiteMount-icons-'+version);
+  for(const version of ['12.1.0-1','12.1.0-2','12.1.5-1']) execute(source+fixture.replace("local version='12.1.0-1'","local version='"+version+"'"),'native-LiteMount-icons-'+version);
 });
 check('T23.native-cinematic-held-skip-gate', () => {
   const base='evidence/native/Blizzard_FrameXML/';
@@ -1399,6 +1399,20 @@ check('T78.blocked-events-auto-persist-all-attributions-without-native-writes', 
   try {execute(leak,'stale-owner-full-diagnostic-snapshot');}
   catch(error) {rejected=String(error).includes('previous GUID blocked evidence copied by full snapshot');}
   if(!rejected) throw Error('full-snapshot owner isolation negative control survived');
+});
+check('T79.native-action-taint-transition-posthook-bounded-passive-owner-isolated', () => {
+  const fixture='SESSION_STATE=('+bootstrapState+').installed\n'+bootstrapPrelude+read('tests/harness/native_action_trace.lua');
+  execute(fixture,'native-action-security-transition');
+  let rejected=false;
+  const blind=fixture.replace('self.Diagnostics:InstallNativeActionTrace(_G)', 'do end');
+  try {execute(blind,'missing-automatic-native-trace');}
+  catch(error) {rejected=String(error).includes('native posthook not installed by bootstrap');}
+  if(!rejected) throw Error('automatic posthook blindspot negative control survived');
+  rejected=false;
+  const leak=fixture.replace('if self.actionTraceOwner and self.actionTraceOwner~=Addon.record then self.actionTrace=nil self.actionTraceOwner=nil end','do end');
+  try {execute(leak,'stale-native-action-trace-owner');}
+  catch(error) {rejected=String(error).includes('trace copied between GUID owners');}
+  if(!rejected) throw Error('native trace owner isolation negative control survived');
 });
 const report = {at:new Date().toISOString(), commit:cp.execFileSync('git',['rev-parse','HEAD'],{cwd:root}).toString().trim(),
   productHashes:Object.fromEntries(files('addon').map(f=>[f,sha(f)])),

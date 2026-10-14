@@ -9,6 +9,19 @@ Dates below use America/Toronto. This is a curated change index, not invented
 release tags or blanket gameplay certification. Detailed receipts own exact
 source/artifact/file identities. Prepared, installed and accepted are separate.
 
+## Automatic native-action trace — October 13, 2026
+
+Candidate.38 is qualified, not yet installed. It records bounded initial
+security labels and later observed stock action-field transitions with caller
+stacks, plus first blocked-event stacks. It leaves native handlers, input,
+cooldowns and action values unchanged; this is diagnostic instrumentation, not
+a claimed combat-error fix. Fresh discovery also qualifies official LiteMount
+12.1.5-1 while retaining adapter support for installed 12.1.0-2. That package stays
+separate from the urgent Forever-only diagnostic delivery.
+[Investigation](docs/reference/COMBAT-ERROR-AUDIT-2026-10-13.md).
+All 79 runtime/source checks and 66 tooling tests pass with exact current
+inventories. [Qualification](evidence/test-results/candidate38-trace-qualification.json).
+
 ## Combat-error audit and observer repair — October 13, 2026
 
 Candidate.37 guards passive action observations against opaque/unavailable reads

@@ -1,5 +1,5 @@
 {
-  "lockSHA256": "2e49961920e5f8c4b3966ba42a9ab3f35bb0c55dd233b75b5587bf2830d59c2a",
+  "lockSHA256": "f74caaefdb66a16c87187554770a288b0ba39febe66511b3a3f07145a436061b",
   "discoveryComplete": true,
   "releaseNoticeReviewComplete": false,
   "packDistributionReady": false,
@@ -546,9 +546,9 @@
     },
     {
       "repo": "xod-wow/LiteMount",
-      "version": "12.1.0-2",
-      "officialRelease": "https://github.com/xod-wow/LiteMount/releases/tag/12.1.0-2",
-      "packageSHA256": "2ea930083a18a002bab72423f9efc2a22f912e195add574ddc39361850883a55",
+      "version": "12.1.5-1",
+      "officialRelease": "https://github.com/xod-wow/LiteMount/releases/tag/12.1.5-1",
+      "packageSHA256": "29f360a9dbffff201e9573c8113322d455a1fbec250eefc4578495a59e2febe7",
       "selectedFolders": [
         "LiteMount"
       ],
@@ -660,7 +660,7 @@
         },
         {
           "source": "LiteMount/Libs/MountsRarity-2.0/MountsRarity.lua",
-          "sha256": "5d503f30b485ecccdf277ed7640baddab11b50e7e889ae3635e0441eb62f1515"
+          "sha256": "328c268c426f175a257566de9b403f5000fc442eeae9ca2d187741be77e84a62"
         },
         {
           "source": "LiteMount/Localization.lua",

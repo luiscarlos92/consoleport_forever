@@ -10,6 +10,7 @@ function Diagnostics:Persist(section,id)
     -- bookkeeping, never proof that a controller or protected action passed.
     if not Addon.record or not Addon.Core then return end
     if self.blockedOwner and self.blockedOwner~=Addon.record then self.blocked=nil self.blockedOwner=nil end
+    if self.actionTraceOwner and self.actionTraceOwner~=Addon.record then self.actionTrace=nil self.actionTraceOwner=nil end
     local saved=Addon.record.lastRuntimeDiagnostics
     if section and self.persistOwner==Addon.record and saved
         and saved.codeVersion==Addon.VERSION and saved.configRevision==Addon.CONFIG_REVISION then
@@ -27,9 +28,76 @@ function Diagnostics:Persist(section,id)
         ping=Addon.Core.Copy(self.ping or {}),
         circle=Addon.Core.Copy(self.circle or {}),
         blocked=Addon.Core.Copy(self.blocked or {}),
+        actionTrace=Addon.Core.Copy(self.actionTrace or {}),
     }
     self.persistOwner=Addon.record
     self:EndPerformance('diagnostics.full',start)
+end
+local function TraceString(api,value,limit)
+    if api.issecretvalue and api.issecretvalue(value) then return end
+    if type(value)=='string' then return value:sub(1,limit) end
+end
+local function TraceStack(api)
+    if type(api.debugstack)~='function' then return end
+    local ok,value=pcall(api.debugstack,3,12,6)
+    if ok then return TraceString(api,value,3072) end
+end
+-- Posthooks observe security labels only. They never read/write action values,
+-- dispatch a native update, replace a script, or attempt to scrub engine taint.
+function Diagnostics:ObserveNativeActionTrace(api,object,name,phase)
+    if not Addon.record then return end
+    if self.actionTraceOwner~=Addon.record then
+        self.actionTraceOwner=Addon.record
+        self.actionTrace={rows={}}
+        self.actionTraceLabels={}
+        self.actionTraceInitial=0
+    end
+    local rows=self.actionTrace.rows
+    if #rows>=16 then return end
+    local ok,secure,writer=pcall(api.issecurevariable,object,'action')
+    if not ok or (api.issecretvalue and api.issecretvalue(secure)) or type(secure)~='boolean' then return end
+    local previous=self.actionTraceLabels[name]
+    self.actionTraceLabels[name]=secure
+    if secure or previous==false then return end
+    if phase=='initial' then
+        if self.actionTraceInitial>=4 then return end
+        self.actionTraceInitial=self.actionTraceInitial+1
+    end
+    local row={object=name,phase=phase,previousSecure=previous,writer=TraceString(api,writer,120),stack=TraceStack(api)}
+    rows[#rows+1]=row
+    self:Persist('actionTrace')
+end
+function Diagnostics:InstallNativeActionTrace(api)
+    local native=api.ActionBarActionButtonMixin
+    if not Addon.record or not native or type(native.UpdateAction)~='function'
+        or type(api.hooksecurefunc)~='function' or type(api.issecurevariable)~='function'
+        or (api.InCombatLockdown and api.InCombatLockdown()) then return end
+    -- Some client builds break C posthooks with engine taint logging enabled.
+    -- Never add these diagnostic hooks in that state or change the CVar here.
+    if type(api.GetCVar)~='function' then return end
+    local queried,logging=pcall(api.GetCVar,'taintLog')
+    if not queried or (api.issecretvalue and api.issecretvalue(logging))
+        or (logging~='0' and logging~=0) then return end
+    if self.actionTraceScanOwner==Addon.record then return end
+    self.actionTraceHooks=self.actionTraceHooks or {}
+    for _,prefix in ipairs({'ActionButton','MultiBarBottomLeftButton','MultiBarBottomRightButton',
+        'MultiBarLeftButton','MultiBarRightButton','MultiBar5Button','MultiBar6Button','MultiBar7Button','OverrideActionBarButton'}) do
+        for index=1,(prefix=='OverrideActionBarButton' and 6 or 12) do
+            local name=prefix..index
+            local object=api[name]
+            if object and (self.actionTraceHooks[object] or object.UpdateAction==native.UpdateAction) then
+                self:ObserveNativeActionTrace(api,object,name,'initial')
+                if not self.actionTraceHooks[object] then
+                    local ok=pcall(api.hooksecurefunc,object,'UpdateAction',function()
+                        -- Optional diagnostics must not interrupt the native caller.
+                        pcall(self.ObserveNativeActionTrace,self,api,object,name,'after-update')
+                    end)
+                    if ok then self.actionTraceHooks[object]=true end
+                end
+            end
+        end
+    end
+    self.actionTraceScanOwner=Addon.record
 end
 -- Observe all blamed addons: the reported name is an execution attribution,
 -- not proof of the original writer. Inspect security labels without reading
@@ -50,7 +118,7 @@ function Diagnostics:RecordBlocked(api,event,blamed,func)
         if entry.event==event and entry.addon==blamed and entry.func==func then row=entry break end
     end
     if not row then
-        row={event=event,addon=blamed,func=func,count=0}
+        row={event=event,addon=blamed,func=func,count=0,stack=TraceStack(api)}
         if #log.rows>=16 then table.remove(log.rows,1) end
         log.rows[#log.rows+1]=row
         self:Log('blocked',event..': '..blamed..': '..func)

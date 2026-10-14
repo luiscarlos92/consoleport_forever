@@ -148,6 +148,18 @@ Party/manual edits are not reapplied.
 
 ## Commands and diagnostic retention
 
+Prepared candidate.38 adds automatic `lastRuntimeDiagnostics.actionTrace` after
+store initialization, with at most 16 observations/four initial snapshots and
+3072 characters per stack. Existing taint is distinguished from a later observed
+clean-to-tainted label change. Native `UpdateAction` posthooks do not read action
+values, invoke updates or replace handlers; full traces stop further inspections.
+Only completed calls are observed, so a captured caller is an observation point,
+not necessarily the original writer. Blocked-event aggregates also retain their
+first bounded stack. No additional command, logging CVar or prescribed gameplay
+sequence is required, and the feature is not a claimed combat-error repair.
+New trace hooks require engine `taintLog` to be known off; unknown/nonzero values
+defer installation. Forever does not set that CVar or request more engine logging.
+
 Candidate.37's passive action observer rejects opaque/failing query results
 before forwarding, comparing or retaining them; unknown facts remain absent.
 Blocked/forbidden events now record every blamed addon in the current GUID's

@@ -1,6 +1,6 @@
 {
-  "lockSHA256": "2e49961920e5f8c4b3966ba42a9ab3f35bb0c55dd233b75b5587bf2830d59c2a",
-  "noticeInventorySHA256": "60443b26b553d648456f99fa10cbaf09f3479c6f8b9db0bd51d98a952c111765",
+  "lockSHA256": "f74caaefdb66a16c87187554770a288b0ba39febe66511b3a3f07145a436061b",
+  "noticeInventorySHA256": "9b5ab8d5aa9ea75a9d61ff018426e19fe5fd46db8faf70afea9139e2def912c0",
   "localPersonalAssemblyReviewComplete": true,
   "publicRedistributionApproved": false,
   "scope": "All third-party dependencies use official-source local assembly. This inventory is not a license grant or approval to publish dependency code or media.",
@@ -910,9 +910,9 @@
     },
     {
       "repo": "xod-wow/LiteMount",
-      "version": "12.1.0-2",
+      "version": "12.1.5-1",
       "mainTerms": "GPL-2.0; bundled MountsRarity declares GPL-3.0",
-      "officialRelease": "https://github.com/xod-wow/LiteMount/releases/tag/12.1.0-2",
+      "officialRelease": "https://github.com/xod-wow/LiteMount/releases/tag/12.1.5-1",
       "noticeFiles": [
         {
           "source": "LiteMount/LICENSE.txt",
@@ -1138,7 +1138,7 @@
         },
         {
           "source": "LiteMount/Libs/MountsRarity-2.0/MountsRarity.lua",
-          "sha256": "5d503f30b485ecccdf277ed7640baddab11b50e7e889ae3635e0441eb62f1515",
+          "sha256": "328c268c426f175a257566de9b403f5000fc442eeae9ca2d187741be77e84a62",
           "declarations": [
             "  Copyright (c) 2023 S\u00f6ren Gade\r",
             "  GNU General Public License for more details.\r",

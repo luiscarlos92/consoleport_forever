@@ -31,7 +31,8 @@ plural pending-reference directory is intentionally retained without moving it.
 
 - [Combat error audit](COMBAT-ERROR-AUDIT-2026-10-13.md): captured native cooldown
   failures, broad change-impact review, demonstrated passive-observer repairs,
-  automatic blocked-event evidence and the unresolved live taint origin.
+  candidate.37 combat recurrence with stock action-field taint attributed to
+  ConsolePort_Bar, and the unresolved first write/callback.
 
 - [HUD performance investigation](HUD-PERFORMANCE-2026-10-12.md): confirmed redundant
   work, operation comparison, native lifecycle audit, optional profiling and

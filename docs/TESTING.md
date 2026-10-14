@@ -7,6 +7,14 @@ Evidence: [runner](../tools/test-all.cjs), [tool tests](../tools/run_tool_tests.
 
 ## Entry points
 
+T79 exercises actual bootstrap registration and diagnostic persistence with
+fault-injected native security-label/stack/C posthook APIs: first observed
+clean-to-tainted change, initial-state distinction, no native action-value access
+or update dispatch, duplicate setup/event costs, foreign methods, opaque/failing
+labels, detached capped stacks, saturation and GUID isolation. Removing automatic
+registration or owner isolation must fail. This tests collection mechanics;
+it cannot reproduce or certify the engine's original taint writer.
+
 ```powershell
 python -B tools/check_documentation.py
 ./tools/Test-All.ps1

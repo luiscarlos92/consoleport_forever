@@ -23,6 +23,7 @@ function Addon:InitializeStore()
     local record,error=self.Store.GetCharacter(db,guid,{name=UnitName("player"),realm=GetRealmName()})
     if not record then return false,error end
     self.db,self.guid,self.record=db,guid,record
+    self.Diagnostics:InstallNativeActionTrace(_G)
     record.requiredRevision=self.CONFIG_REVISION
     return true
 end

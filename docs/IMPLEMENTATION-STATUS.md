@@ -8,11 +8,23 @@ Evidence: [candidate.37 install](../evidence/delivery/live-install-candidate37.j
 
 ## Installed checkpoint
 
+Candidate.38 is qualified for automatic native-action transition/blocked
+caller stacks. It is not installed and does not claim to repair K05. All 79
+runtime/source checks and 66 tooling tests pass with exact current inventories.
+[Qualification](../evidence/test-results/candidate38-trace-qualification.json). Fresh stable
+discovery additionally prepares LiteMount 12.1.5-1; native integration code is
+unchanged and the complete package preserves its existing folders/notices.
+LiteMount remains separate from the urgent Forever-only running-game delivery.
+Candidate.37 remains installed below.
+
 Candidate.37 was installed October 13 at **00:58:18 Toronto** from tested/pushed
 source `4146195e5b126c6e4e1a606d21512e1e7ee8b26f`. It repairs
 demonstrated passive-observer read safety and blocked-event attribution coverage.
-The captured native charge-cooldown taint cascade remains K05; its original writer
-is unknown. Schema3/revision20, native input/feedback and the permanent targeting
+The native cooldown taint cascade recurred during ordinary combat on candidate.37.
+Saved blocked-event security labels now identify `ConsolePort_Bar`-attributed
+stock-button `action` taint; the first write/callback remains unknown and K05 is
+open. [Recurrence evidence](../evidence/runtime-errors/recurrence-2026-10-13.json).
+Schema3/revision20, native input/feedback and the permanent targeting
 retirement remain unchanged. [Audit](reference/COMBAT-ERROR-AUDIT-2026-10-13.md).
 All 78 runtime/source checks and 66 tooling tests pass with complete current
 inventories. [Qualification](../evidence/test-results/candidate37-errors-qualification.json).

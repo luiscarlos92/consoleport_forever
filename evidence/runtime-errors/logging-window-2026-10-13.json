@@ -1,0 +1,161 @@
+{
+  "recordedAt": "2026-10-14T03:29:41.048202+00:00",
+  "generalLogSHA256": "20592102bd0359598f56b8d5d5b1d35a0269b6d4d220dac82820f9ca36d2cc80",
+  "cooldownTotalNow": 1050,
+  "lastCooldown": "10/13 22:17:49.105  [E][Lua] Lua Error: ...ce/AddOns/Blizzard_ActionBar/Shared/ActionButton.lua:847: bad argument #1 to 'SetCooldown' (Usage: self:SetCooldown(start, duration [, modRate]). Secret values are only allowed during untainted execution for this argument.)",
+  "nilErrors": 226,
+  "firstNil": "10/13 22:47:55.686  [E][Lua] Lua Error: attempt to call a nil value",
+  "lastNil": "10/13 23:18:12.631  [E][Lua] Lua Error: attempt to call a nil value",
+  "after2248StackGroups": [
+    {
+      "count": 136,
+      "first": "10/13 22:48:10.411  [E][Lua] Lua Error: attempt to call a nil value",
+      "stack": [
+        "[Interface/AddOns/Blizzard_NamePlates/Blizzard_NamePlates.lua]:182: in function 'OnTargetChanged'",
+        "[Interface/AddOns/Blizzard_NamePlates/Blizzard_NamePlates.lua]:60: in function <...e/AddOns/Blizzard_NamePlates/Blizzard_NamePlates.lua:46>"
+      ]
+    },
+    {
+      "count": 28,
+      "first": "10/13 22:48:28.904  [E][Lua] Lua Error: attempt to call a nil value",
+      "stack": [
+        "[Interface/AddOns/Blizzard_UIPanels_Game/Shared/CastingBarFrame.lua]:661: in function 'ApplyAlpha'",
+        "[Interface/AddOns/Blizzard_UIPanels_Game/Shared/CastingBarFrame.lua]:430: in function 'HandleCastStart'",
+        "[Interface/AddOns/Blizzard_UIPanels_Game/Shared/CastingBarFrame.lua]:130: in function <...ns/Blizzard_UIPanels_Game/Shared/CastingBarFrame.lua:107>"
+      ]
+    },
+    {
+      "count": 20,
+      "first": "10/13 23:01:33.059  [E][Lua] Lua Error: attempt to call a nil value",
+      "stack": [
+        "[Interface/AddOns/Blizzard_SharedMapDataProviders/QuestDataProvider.lua]:267: in function 'UpdateTooltip'",
+        "[Interface/AddOns/Blizzard_GameTooltip/Mainline/GameTooltip.lua]:458: in function <...AddOns/Blizzard_GameTooltip/Mainline/GameTooltip.lua:451>"
+      ]
+    },
+    {
+      "count": 19,
+      "first": "10/13 23:18:12.332  [E][Lua] Lua Error: attempt to call a nil value",
+      "stack": [
+        "[Interface/AddOns/Blizzard_SharedXMLGame/Tooltip/TooltipDataHandler.lua]:300: in function <...lizzard_SharedXMLGame/Tooltip/TooltipDataHandler.lua:245>",
+        "[C]: in function 'securecallfunction'",
+        "[Interface/AddOns/Blizzard_SharedXMLGame/Tooltip/TooltipDataHandler.lua]:242: in function <...lizzard_SharedXMLGame/Tooltip/TooltipDataHandler.lua:241>",
+        "[tail call]: ?",
+        "[C]: ?",
+        "[Interface/AddOns/Blizzard_SharedXMLGame/Tooltip/TooltipDataHandler.lua]:517: in function 'SetMinimapMouseover'",
+        "[Interface/AddOns/Blizzard_Minimap/Mainline/Minimap.lua]:304: in function <...terface/AddOns/Blizzard_Minimap/Mainline/Minimap.lua:302>"
+      ]
+    },
+    {
+      "count": 6,
+      "first": "10/13 23:08:39.921  [E][Lua] Lua Error: attempt to call a nil value",
+      "stack": [
+        "[Interface/AddOns/Blizzard_SharedTalentUI/Blizzard_TalentDisplay.lua]:121: in function 'SetTooltipInternal'",
+        "[Interface/AddOns/Blizzard_SharedTalentUI/Blizzard_TalentDisplay.lua]:35: in function 'OnEnter'",
+        "[Interface/AddOns/Blizzard_SharedTalentUI/Blizzard_TalentButtonBase.lua]:25: in function 'OnEnter'",
+        "[Interface/AddOns/Blizzard_SharedTalentUI/Blizzard_TalentButtonSelect.lua]:11: in function 'OnEnter'",
+        "[Interface/AddOns/Blizzard_PlayerSpells/ClassTalents/Blizzard_ClassTalentButtonTemplates.lua]:359: in function <...ClassTalents/Blizzard_ClassTalentButtonTemplates.lua:356>"
+      ]
+    },
+    {
+      "count": 4,
+      "first": "10/13 22:48:05.051  [E][Lua] Lua Error: attempt to call a nil value",
+      "stack": [
+        "[Interface/AddOns/Blizzard_NamePlates/Blizzard_NamePlates.lua]:292: in function 'SetClassNameplateBar'",
+        "[Interface/AddOns/Blizzard_NamePlates/Mainline/Blizzard_ClassNameplateBar.lua]:89: in function 'ShowNameplateBar'",
+        "[Interface/AddOns/Blizzard_NamePlates/Mainline/Blizzard_ClassNameplateBar.lua]:78: in function 'Setup'",
+        "[Interface/AddOns/Blizzard_UnitFrame/Mainline/ClassResourceBarTemplate.lua]:105: in function 'Setup'",
+        "[Interface/AddOns/Blizzard_NamePlates/Mainline/Blizzard_ClassNameplateBar_Paladin.lua]:8: in function 'Setup'",
+        "[Interface/AddOns/Blizzard_NamePlates/Mainline/Blizzard_ClassNameplateBar.lua]:29: in function 'OnEvent'",
+        "[Interface/AddOns/Blizzard_UnitFrame/Mainline/ClassResourceBarTemplate.lua]:76: in function 'OnEvent'",
+        "[Interface/AddOns/Blizzard_NamePlates/Mainline/Blizzard_ClassNameplateBar_Paladin.lua]:12: in function <...ates/Mainline/Blizzard_ClassNameplateBar_Paladin.lua:11>"
+      ]
+    },
+    {
+      "count": 3,
+      "first": "10/13 23:09:33.911  [E][Lua] Lua Error: attempt to call a nil value",
+      "stack": [
+        "[Interface/AddOns/Blizzard_Settings_Shared/Blizzard_SettingControls.lua]:38: in function <...lizzard_Settings_Shared/Blizzard_SettingControls.lua:26>"
+      ]
+    },
+    {
+      "count": 3,
+      "first": "10/13 23:09:34.233  [E][Lua] Lua Error: attempt to call a nil value",
+      "stack": [
+        "[Interface/AddOns/Blizzard_Settings_Shared/Blizzard_SettingControls.lua]:46: in function <...lizzard_Settings_Shared/Blizzard_SettingControls.lua:45>"
+      ]
+    },
+    {
+      "count": 2,
+      "first": "10/13 22:48:04.887  [E][Lua] Lua Error: attempt to call a nil value",
+      "stack": [
+        "[Interface/AddOns/Blizzard_NamePlates/Blizzard_NamePlates.lua]:596: in function <...e/AddOns/Blizzard_NamePlates/Blizzard_NamePlates.lua:538>",
+        "[C]: in function 'UpdateNamePlateOptions'",
+        "[Interface/AddOns/Blizzard_NamePlates/Blizzard_NamePlates.lua]:64: in function <...e/AddOns/Blizzard_NamePlates/Blizzard_NamePlates.lua:46>"
+      ]
+    },
+    {
+      "count": 1,
+      "first": "10/13 22:48:05.008  [E][Lua] Lua Error: attempt to call a nil value",
+      "stack": [
+        "[Interface/AddOns/Blizzard_NamePlates/Blizzard_NamePlates.lua]:596: in function <...e/AddOns/Blizzard_NamePlates/Blizzard_NamePlates.lua:538>",
+        "[C]: in function 'UpdateNamePlateOptions'",
+        "[Interface/AddOns/Blizzard_NamePlates/Blizzard_NamePlates.lua]:66: in function <...e/AddOns/Blizzard_NamePlates/Blizzard_NamePlates.lua:46>"
+      ]
+    },
+    {
+      "count": 1,
+      "first": "10/13 22:48:10.044  [E][Lua] Lua Error: attempt to call a nil value",
+      "stack": [
+        "[Interface/AddOns/Blizzard_NamePlates/Blizzard_NamePlates.lua]:292: in function 'SetClassNameplateBar'",
+        "[Interface/AddOns/Blizzard_NamePlates/Mainline/Blizzard_ClassNameplateBar.lua]:89: in function 'ShowNameplateBar'",
+        "[Interface/AddOns/Blizzard_NamePlates/Mainline/Blizzard_ClassNameplateBar.lua]:78: in function 'Setup'",
+        "[Interface/AddOns/Blizzard_UnitFrame/Mainline/ClassResourceBarTemplate.lua]:105: in function 'Setup'",
+        "[Interface/AddOns/Blizzard_NamePlates/Mainline/Blizzard_ClassNameplateBar_Paladin.lua]:8: in function 'Setup'",
+        "[Interface/AddOns/Blizzard_UnitFrame/Mainline/ClassResourceBarTemplate.lua]:65: in function 'OnEvent'",
+        "[Interface/AddOns/Blizzard_NamePlates/Mainline/Blizzard_ClassNameplateBar_Paladin.lua]:12: in function <...ates/Mainline/Blizzard_ClassNameplateBar_Paladin.lua:11>"
+      ]
+    },
+    {
+      "count": 1,
+      "first": "10/13 22:51:03.069  [E][Lua] Lua Error: attempt to call a nil value",
+      "stack": [
+        "[Interface/AddOns/Blizzard_ActionBar/Shared/ActionButton.lua]:882: in function 'UpdateSpellAlert'",
+        "[Interface/AddOns/Blizzard_ActionBar/Shared/ActionButton.lua]:640: in function 'Update'",
+        "[Interface/AddOns/Blizzard_ActionBar/Shared/ActionButton.lua]:544: in function 'UpdateAction'",
+        "[Interface/AddOns/Blizzard_ActionBarController/ActionBarController.lua]:187: in function 'ActionBarController_ResetToDefault'",
+        "[Interface/AddOns/Blizzard_ActionBarController/ActionBarController.lua]:172: in function 'ActionBarController_UpdateAll'",
+        "[Interface/AddOns/Blizzard_ActionBarController/ActionBarController.lua]:66: in function <...Blizzard_ActionBarController/ActionBarController.lua:55>"
+      ]
+    },
+    {
+      "count": 1,
+      "first": "10/13 23:09:07.894  [E][Lua] Lua Error: attempt to call a nil value",
+      "stack": [
+        "[Interface/AddOns/Blizzard_SharedTalentUI/Blizzard_TalentDisplay.lua]:121: in function <...s/Blizzard_SharedTalentUI/Blizzard_TalentDisplay.lua:100>",
+        "[tail call]: ?",
+        "[C]: in function 'xpcall'",
+        "[Interface/AddOns/Blizzard_ObjectAPI/Mainline/AsyncCallbackSystem.lua]:76: in function 'FireCallbacks'",
+        "[Interface/AddOns/Blizzard_ObjectAPI/Mainline/AsyncCallbackSystem.lua]:35: in function <.../Blizzard_ObjectAPI/Mainline/AsyncCallbackSystem.lua:31>",
+        "[C]: in function 'accessor'",
+        "[Interface/AddOns/Blizzard_ObjectAPI/Mainline/AsyncCallbackSystem.lua]:52: in function 'AddCallback'",
+        "[Interface/AddOns/Blizzard_ObjectAPI/Mainline/AsyncCallbackSystem.lua]:60: in function <.../Blizzard_ObjectAPI/Mainline/AsyncCallbackSystem.lua:58>",
+        "[tail call]: ?",
+        "[Interface/AddOns/Blizzard_SharedTalentUI/Blizzard_TalentDisplay.lua]:33: in function 'OnEnter'",
+        "[Interface/AddOns/Blizzard_SharedTalentUI/Blizzard_TalentButtonBase.lua]:25: in function 'OnEnter'",
+        "[Interface/AddOns/Blizzard_SharedTalentUI/Blizzard_TalentButtonSelect.lua]:11: in function 'OnEnter'",
+        "[Interface/AddOns/Blizzard_PlayerSpells/ClassTalents/Blizzard_ClassTalentButtonTemplates.lua]:359: in function <...ClassTalents/Blizzard_ClassTalentButtonTemplates.lua:356>"
+      ]
+    }
+  ],
+  "countLimits": "Earlier recurrence snapshot contains1020 cooldown errors; later flushed General.log contains1050. No fixed reporting cap is established. One nil error precedes22:48 in the same reload window.",
+  "externalPrimaryReport": {
+    "url": "https://us.forums.blizzard.com/en/wow/t/wow-forever-gamepad-ui-bugs-build-160170170/2370253",
+    "reportedClient": "Forever1.60.1.70170; not the Retail target",
+    "claim": "Engine taint logging after reload breaks addon C posthooks with nil-call errors.",
+    "limit": "Pattern is consistent with this later error family and many faulting methods have Plater/other addon posthooks, but this is a hypothesis for Retail, not reproduced causality or the earlier cooldown cause."
+  },
+  "userFollowup": "User states logging is off and WoW remains open; no further engine logging requested.",
+  "diagnosticGuard": "Do not install new native diagnostic posthooks unless GetCVar taintLog is known0. Do not change game CVars from Forever.",
+  "gameInputPerformed": false,
+  "liveWTFWrites": false
+}

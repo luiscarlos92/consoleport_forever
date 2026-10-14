@@ -9,6 +9,8 @@ local beforeWrites=writes
 local opaque={}
 issecretvalue=function(value) return rawequal(value,opaque) end
 local inspections=0
+local stacks=0
+function debugstack() stacks=stacks+1 return string.rep('native-caller\n',500) end
 MultiBarLeftButton1=setmetatable({}, {__index=function() error('logger read native button field') end})
 function issecurevariable(object,field)
     assert(object==MultiBarLeftButton1)
@@ -27,6 +29,7 @@ local row=log.rows[1]
 assert(row.addon=='ConsolePort' and row.fields.action.writer=='WriterExample' and row.fields.action.secure==false,
     'read-only security label lost')
 assert(inspections==6000 and writes==beforeWrites,'diagnostic observer performed a game/configuration write')
+assert(stacks==1 and #row.stack==3072,'first blocked stack missing, unbounded or repeatedly collected')
 local original=record.lastRuntimeDiagnostics.blocked.rows[1].count
 Addon.Diagnostics.blocked.rows[1].count=1001
 assert(record.lastRuntimeDiagnostics.blocked.rows[1].count==original,'saved blocked evidence aliases live aggregate')

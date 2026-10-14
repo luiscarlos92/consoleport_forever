@@ -1,22 +1,33 @@
 # Current implementation and acceptance
 
 Status: maintained
-Reviewed: 2026-10-13
-Evidence: [candidate.37 install](../evidence/delivery/live-install-candidate37.json),
-[independent readback](../evidence/delivery/candidate37-independent-readback.json),
+Reviewed: 2026-10-14
+Evidence: [candidate.38 install](../evidence/delivery/live-install-candidate38.json),
+[independent readback](../evidence/delivery/candidate38-independent-readback.json),
 [Circle acceptance](../evidence/circle/candidate34-live-acceptance-2026-10-12.json).
 
 ## Installed checkpoint
 
-Candidate.38 is qualified for automatic native-action transition/blocked
-caller stacks. It is not installed and does not claim to repair K05. All 79
-runtime/source checks and 66 tooling tests pass with exact current inventories.
-[Qualification](../evidence/test-results/candidate38-trace-qualification.json). Fresh stable
-discovery additionally qualifies LiteMount 12.1.5-1; all 115 files already match on
-disk before the first Forever deployment. Its native integration code/notices
-are unchanged; only the Forever version guard needs the new audited identity.
-No LiteMount file replacement is selected.
-Candidate.37 remains installed below.
+The final bounded candidate.38 build was installed October 14 at **00:02:27
+Toronto** from tested/pushed source `b89fa7dfa2d5837235a97e6ef411783f6ea7b9b8`.
+It automatically collects native action-label transition and first blocked-call
+stacks, with independent retention/work bounds. It also recognizes the qualified
+LiteMount 12.1.5-1 identity: all 115 vendor files already matched on disk before
+this deployment and were not replaced. Schema3/revision20, native input/feedback
+and permanent ground-placement retirement remain unchanged; no new setup review.
+All 79 runtime/source checks and 66 tooling tests pass with exact current
+inventories. [Qualification](../evidence/test-results/candidate38-trace-qualification.json).
+Only Forever was selected while WoW remained open. Independent readback verifies
+55 files, 2,252 other addon files, 311 WTF files, 42 links/root anchors and all
+25,456 prior backup files/2,342 directories.
+A refused staging attempt preserved 53 game-written WTF changes before retrying
+from a fresh snapshot. No direct WTF/vendor writes or game input occurred.
+[Delivery](../evidence/delivery/candidate38-independent-readback.json).
+The user owns reload/ordinary play; engine logging must stay off for new trace
+hooks. K05 remains open: this is diagnostic collection, not a Retail error fix.
+[Investigation](reference/COMBAT-ERROR-AUDIT-2026-10-13.md).
+
+### Previous candidate.37 checkpoint
 
 Candidate.37 was installed October 13 at **00:58:18 Toronto** from tested/pushed
 source `4146195e5b126c6e4e1a606d21512e1e7ee8b26f`. It repairs

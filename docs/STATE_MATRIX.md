@@ -1,14 +1,15 @@
 # Runtime state and coverage matrix
 
 Status: maintained
-Reviewed: 2026-10-13
+Reviewed: 2026-10-14
 Evidence: [routing](../addon/ConsolePort_Forever/TemporaryRouting.lua),
 [mode policy](../addon/ConsolePort_Forever/ModePolicy.lua),
 [bootstrap](../addon/ConsolePort_Forever/ConsolePort_Forever.lua),
 [test runner](../tools/test-all.cjs).
 
-Candidate.37 is installed with passive-observer hardening and expanded bounded
-blocked-event evidence. Candidate.36's ground-placement and Targeting-panel
+Candidate.38 is installed with bounded automatic native-action transition and
+first blocked-call stacks. Candidate.37's observer hardening remains.
+Candidate.36's ground-placement and Targeting-panel
 retirement remain. Native controller/routing contracts remain; old targeting preferences
 are inert. Circle cast interruption was user-confirmed on candidate.34. Performance
 and broader Retail acceptance remain open, including the K05 cooldown taint origin.

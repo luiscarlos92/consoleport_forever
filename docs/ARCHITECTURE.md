@@ -1,7 +1,7 @@
 # Implementation architecture
 
 Status: maintained
-Reviewed: 2026-10-13
+Reviewed: 2026-10-14
 Evidence: [TOC](../addon/ConsolePort_Forever/ConsolePort_Forever.toc),
 [bootstrap](../addon/ConsolePort_Forever/ConsolePort_Forever.lua),
 [runtime setup](../addon/ConsolePort_Forever/RuntimeSetup.lua).
@@ -184,11 +184,11 @@ UI routes are described in [presentation and UI](reference/PRESENTATION-AND-UI.m
 
 ## Change boundaries
 
-Prepared candidate.38 additionally installs native `UpdateAction` posthooks once
+Candidate.38 additionally installs native `UpdateAction` posthooks once
 per existing stock button after character-store initialization outside combat.
 Installation requires engine `taintLog` to be known off; the addon never changes it.
 Only matching native methods qualify; existing foreign methods are skipped.
-At most102 buttons are considered, with no polling worker. Security labels are
+At most 102 buttons are considered, with no polling worker. Security labels are
 inspected after completed calls; initial taint and later observed transitions are
 separate, with at most 16 records/four initial records and 3072-character stacks.
 Full trace stops further inspections. Blocked events retain at most 16 first

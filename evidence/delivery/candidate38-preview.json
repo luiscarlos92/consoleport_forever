@@ -1,7 +1,7 @@
 {
   "operation": "deploy-companion",
-  "sourceCommit": "c820f0b8b8f9a4b56743269f4f26b78139677ae6",
-  "packSHA256": "183796755766a6ec8e64f83f926ae769fc5b4dd2af98db8f04c71302f33bf636",
+  "sourceCommit": "b89fa7dfa2d5837235a97e6ef411783f6ea7b9b8",
+  "packSHA256": "01ef27c914f2fbcdd1b66354b2a14449f30501db8a2b382aae3f288a58f915ca",
   "dependencyUpdates": [],
   "testedDependencies": {
     "Cidan/BetterBags": {

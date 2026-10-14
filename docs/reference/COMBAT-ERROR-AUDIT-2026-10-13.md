@@ -1,7 +1,7 @@
 # Combat error audit and passive-observer repair
 
 Status: maintained
-Reviewed: 2026-10-13
+Reviewed: 2026-10-14
 Evidence: [captured diagnosis](../../evidence/runtime-errors/diagnosis-2026-10-13.json),
 [candidate.37 recurrence](../../evidence/runtime-errors/recurrence-2026-10-13.json),
 [old observer](../../evidence/runtime-errors/ActionRecovery-candidate36.lua),
@@ -207,6 +207,23 @@ evidence names. The final qualification includes eviction pressure and independe
 retention of the first stacks; it supersedes that initial source. No activation
 or gameplay acceptance is inferred from either file installation.
 
+The final bounded build was installed October 14 at 00:02:27 Toronto from pushed
+source `b89fa7dfa2d5837235a97e6ef411783f6ea7b9b8`, with artifact SHA256
+`01ef27c914f2fbcdd1b66354b2a14449f30501db8a2b382aae3f288a58f915ca`.
+Independent readback verifies all 55 selected files (one final promotion change
+relative to the initial candidate.38), 2,252 other addon files, 311 WTF files,
+42 links/root anchors and all 25,456 prior backup files/2,342 directories.
+The installer refused one attempt after 53 game-owned WTF files changed during
+staging, before code promotion. Those newer files and the refused-attempt backup
+were preserved in the fresh successful retry. No vendor/direct WTF writes or
+game input occurred. The user explicitly confirmed logging off and WoW open,
+and authorized addon updates while open. Only Forever needed replacement.
+[Install](../../evidence/delivery/live-install-candidate38.json),
+[refusal](../../evidence/delivery/candidate38-staging-refusal.json),
+[readback](../../evidence/delivery/candidate38-independent-readback.json).
+The user owns reload and ordinary play. K05 remains open pending live caller
+evidence; no additional engine taint logging or prescribed reproduction is needed.
+
 ## Candidate.37 impact review
 
 Starting source is d99c942, whose product bytes match the installed candidate.36
@@ -224,7 +241,7 @@ temporary routing's native LAB header owner remains independently initialized.
 | Temporary routes/overflow/editing | Qualified native compiler, header/pager, held-release and ordinary-edit restoration remain. No new routing repair is selected without an identified failed contract. T61 retains 4,160 scenarios. |
 | Circle/ping | Native MACRO/secure ring ownership retained. Existing bounded public logging and inactive fallback remain; no protected action is authorized by a public timer. |
 | Dormant UI/context replacement | Native recovery still suppresses full takeover; native combat handoff coverage retained. Disabled helper tests are not evidence of active product behavior. |
-| Optional integrations/persistence | Existing native profiles/layouts/bindings/manual edits remain owned and unchanged. The initial candidate.37 stable inspection found no changed package among all nine sources; the later candidate.38 inspection separately qualifies LiteMount12.1.5-1 above. |
+| Optional integrations/persistence | Existing native profiles/layouts/bindings/manual edits remain owned and unchanged. The initial candidate.37 stable inspection found no changed package among all nine sources; the later candidate.38 inspection separately qualifies LiteMount 12.1.5-1 above. |
 | Passive action observer | Demonstrated unsafe read forwarding/persistence and uncaught unavailable reads; repaired below. No action-slot writer is restored. |
 | Blocked-action diagnostics | Demonstrated attribution filter discarded events unless blamed addon was Forever; repaired below. Empty old logs cannot exonerate other integration paths. |
 

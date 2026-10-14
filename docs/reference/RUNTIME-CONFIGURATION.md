@@ -1,7 +1,7 @@
 # Runtime configuration, persistence and recovery
 
 Status: maintained
-Reviewed: 2026-10-13
+Reviewed: 2026-10-14
 Evidence: [bootstrap](../../addon/ConsolePort_Forever/ConsolePort_Forever.lua),
 [setup proposals](../../addon/ConsolePort_Forever/RuntimeSetup.lua),
 [store](../../addon/ConsolePort_Forever/Store.lua),
@@ -148,7 +148,7 @@ Party/manual edits are not reapplied.
 
 ## Commands and diagnostic retention
 
-Prepared candidate.38 adds automatic `lastRuntimeDiagnostics.actionTrace` after
+Candidate.38 adds automatic `lastRuntimeDiagnostics.actionTrace` after
 store initialization, with at most 16 observations/four initial snapshots and
 3072 characters per stack. Existing taint is distinguished from a later observed
 clean-to-tainted label change. Native `UpdateAction` posthooks do not read action

@@ -1,20 +1,24 @@
 # Pending deployment and cumulative acceptance
 
-Status: candidate.37 installed October 13, 2026 at 00:58:18 Toronto.
+Status: final bounded candidate.38 installed October 14, 2026 at 00:02:27 Toronto.
 Standing user permission authorizes qualified Forever updates while playing unless
 explicitly prohibited. Independent verification preserved installer-start WTF,
-other addons, topology and all 24,353 prior backup files. No game
-input or WTF writes; WoW was closed, and code loads on next login/user-owned reload.
-[Installation](../evidence/delivery/live-install-candidate37.json),
-[readback](../evidence/delivery/candidate37-independent-readback.json).
+other addons, topology and all 25,456 prior backup files/2,342 directories.
+No game input or WTF/vendor writes; WoW was open. The user owns reload to load
+the final build. A refused staging attempt preserved 53 concurrent game-written
+WTF changes before a fresh successful retry.
+[Installation](../evidence/delivery/live-install-candidate38.json),
+[readback](../evidence/delivery/candidate38-independent-readback.json).
 
-Candidate.37 retains revision20/schema3; accepted characters need no new setup
+Candidate.38 retains revision20/schema3; accepted characters need no new setup
 review. Ground placement and its Targeting tab remain retired. Local qualification
-passed all 78 runtime/source checks and 66 tooling tests with complete inventories.
-K04 performance and K05 native cooldown taint remain open. Passive-observer safety
-and blocked-event evidence are repaired; these fixes do not establish the original
-taint writer or certify warning resolution. New evidence persists automatically
-during normal gameplay; no prescribed reproduction is required.
+passed all 79 runtime/source checks and 66 tooling tests with complete inventories.
+K04 performance and K05 native cooldown taint remain open. Automatic bounded
+native-action transition/first blocked-call stacks collect during ordinary play
+with engine logging off. First stacks survive aggregate eviction without
+unbounded recapture. No prescribed combat sequence or additional engine logging
+is requested, and no warning-resolution claim is made. All 115 LiteMount files
+already match 12.1.5-1 on disk; only Forever was selected for this update.
 [Audit](reference/COMBAT-ERROR-AUDIT-2026-10-13.md).
 
 ## Candidate.34 activation and acceptance

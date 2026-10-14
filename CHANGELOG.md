@@ -1,7 +1,7 @@
 # ConsolePort Forever change history
 
 Status: maintained
-Reviewed: 2026-10-13
+Reviewed: 2026-10-14
 Evidence: [current status](docs/IMPLEMENTATION-STATUS.md),
 [historical chronology](docs/archive/ai-native-2026-10-11/IMPLEMENTATION-STATUS.pre-restructure.md).
 
@@ -9,9 +9,9 @@ Dates below use America/Toronto. This is a curated change index, not invented
 release tags or blanket gameplay certification. Detailed receipts own exact
 source/artifact/file identities. Prepared, installed and accepted are separate.
 
-## Automatic native-action trace — October 13, 2026
+## Automatic native-action trace — October 13–14, 2026
 
-Candidate.38 is qualified, not yet installed. It records bounded initial
+Candidate.38 records bounded initial
 security labels and later observed stock action-field transitions with caller
 stacks, plus first blocked-event stacks. It leaves native handlers, input,
 cooldowns and action values unchanged; this is diagnostic instrumentation, not
@@ -21,6 +21,11 @@ release on disk before this deployment; no LiteMount replacement is needed.
 [Investigation](docs/reference/COMBAT-ERROR-AUDIT-2026-10-13.md).
 All 79 runtime/source checks and 66 tooling tests pass with exact current
 inventories. [Qualification](evidence/test-results/candidate38-trace-qualification.json).
+The final bounded build was installed October 14 at 00:02:27 Toronto from pushed
+source `b89fa7dfa2d5837235a97e6ef411783f6ea7b9b8`, with only Forever selected while
+WoW was open. A concurrent WTF save caused one safe refusal; its 53 newer files
+were retained before a fresh retry. No vendor/WTF writes or game input.
+[Readback](evidence/delivery/candidate38-independent-readback.json).
 
 ## Combat-error audit and observer repair — October 13, 2026
 

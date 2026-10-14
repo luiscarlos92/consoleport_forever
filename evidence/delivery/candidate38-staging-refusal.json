@@ -1,0 +1,11 @@
+{
+  "reason": "Live files changed during staging; deployment refused before promotion",
+  "backup": "C:\\Users\\luisr\\WoW-Backups\\ConsolePort-Forever\\20261014T035826Z-0ffbf328a372",
+  "companionChanged": false,
+  "vendorsChanged": false,
+  "wtfChanged": true,
+  "changedWTFFiles": 53,
+  "allNewerWTFChangesRetained": true,
+  "retryFromFreshSnapshot": true,
+  "gameInputPerformed": false
+}

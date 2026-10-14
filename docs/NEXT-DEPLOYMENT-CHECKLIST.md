@@ -21,6 +21,29 @@ is requested, and no warning-resolution claim is made. All 115 LiteMount files
 already match 12.1.5-1 on disk; only Forever was selected for this update.
 [Audit](reference/COMBAT-ERROR-AUDIT-2026-10-13.md).
 
+## Candidate.39 shared utility qualification and manual acceptance
+
+Candidate.39 is qualified for the authorized Forever-only update; installation
+is separately recorded in current status. All 90 runtime/source checks and 66
+tooling tests pass with complete inventories. After delivery, the user owns
+reload and these Retail checks:
+
+1. Open the Utility Ring with the existing L2 + Options binding; preserve manual
+   binding choices and verify native menus/feedback.
+2. Add Rite of Sanctification, change spec and return, then change character/class
+   and return. Unavailable choices should disappear silently and return when known.
+3. Verify an item disappearing at zero possession and returning on replenishment;
+   bank-only items remain unavailable. Remove a visible choice while open and verify
+   it stays deleted. Confirm Clear only if deliberately clearing the entire master.
+4. Reload/change character and confirm saved choices persist. `/cpfutility off`
+   then `/reload` must restore native handling; `/cpfutility on` then `/reload`
+   must resume the retained master.
+5. Observe unexpected chat, blocked-action errors and comparable CPU usage during
+   ordinary play. Offline work bounds do not close K04 or K05.
+
+[Implementation and limits](reference/SHARED-UTILITY-RING-RUNTIME-2026-10-14.md),
+[qualification](../evidence/test-results/candidate39-shared-utility-qualification.json).
+
 ## Candidate.34 activation and acceptance
 
 Candidate.35 performance validation additionally needs consistent one-minute

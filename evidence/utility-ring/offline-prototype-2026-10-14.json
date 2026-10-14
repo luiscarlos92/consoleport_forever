@@ -1,0 +1,59 @@
+{
+  "status": "offline-prototype-qualified-runtime-integration-gated",
+  "at": "2026-10-14T06:24:46.417Z",
+  "sourceCommit": "c80b030c1536c96a69bc3dcc2989e201f1a8a8bf",
+  "scope": "Isolated tests/prototypes only; no addon runtime edits, WoW launch/input, live configuration writes, packaging, commit/push or deployment.",
+  "reports": {
+    "runtime": {
+      "path": "evidence/test-results/shared-utility-runtime-2026-10-14.json",
+      "sha256": "f157a37a4ff146d643d02c29f0a1e12b4d8b00eb5ebe6bb6d954428362255945",
+      "passed": 82
+    },
+    "tooling": {
+      "path": "evidence/test-results/shared-utility-tooling-2026-10-14.json",
+      "sha256": "f33f21b7471ab0dc713a6a3e665979c4e9dea117a503e021c07dfca3acfe8266",
+      "passed": 66
+    }
+  },
+  "inventory": {
+    "productFiles": 58,
+    "toolAndTestFiles": 139,
+    "completeCurrentSource": true,
+    "dependencyLockSHA256": "f74caaefdb66a16c87187554770a288b0ba39febe66511b3a3f07145a436061b",
+    "excludedSourceUnchanged": true
+  },
+  "freshness": {
+    "path": "evidence/dependencies/stable-recheck.json",
+    "sha256": "9d0d548529eaa496a5236d9b0ac59d14a42946b65955bfcc8e2c0dfb8a925ed1",
+    "allCurrent": true
+  },
+  "prototype": {
+    "baselineMessages": 4,
+    "checks": 258,
+    "counts": {
+      "item": 16,
+      "noops": 15,
+      "other": 5,
+      "queued": 70,
+      "rebuilds": 47,
+      "spell": 37,
+      "workers": 65
+    },
+    "itemBurst": {
+      "itemQueries": 1,
+      "notifications": 100,
+      "rebuilds": 0,
+      "spellQueries": 0,
+      "workers": 1
+    },
+    "limitation": "No runtime integration/taint/hardware/CPU-time proof; C APIs and rendering modeled.",
+    "receiptLimit": 2,
+    "uncachedNativeFirstMessages": 1
+  },
+  "negativeControls": 8,
+  "retainedLimitations": [
+    "Uncached native-first spell metadata can produce a removal message before deferred preprocessing.",
+    "Real edit-hook provenance, secure admission, taint, hardware/rendering, engine persistence and Retail CPU remain unqualified.",
+    "Collection, equipment-set and pet entry types remain pending outside this prototype."
+  ]
+}

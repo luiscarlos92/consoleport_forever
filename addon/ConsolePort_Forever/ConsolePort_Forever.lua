@@ -23,6 +23,12 @@ function Addon:InitializeStore()
     local record,error=self.Store.GetCharacter(db,guid,{name=UnitName("player"),realm=GetRealmName()})
     if not record then return false,error end
     self.db,self.guid,self.record=db,guid,record
+    if self.UtilityIntegration then
+        local ready,feature,reason=pcall(self.UtilityIntegration.Refresh,self.UtilityIntegration,self,_G)
+        self.Diagnostics:SetFeature('sharedUtility',ready and feature and 'offline-verified' or 'pending',
+            ready and (feature and feature:Status() or reason) or 'shared utility initialization rejected; /cpfutility off then /reload')
+    end
+    if self.RegisterUtilityEvents then self:RegisterUtilityEvents() end
     self.Diagnostics:InstallNativeActionTrace(_G)
     record.requiredRevision=self.CONFIG_REVISION
     return true
@@ -145,16 +151,22 @@ function Addon:RefreshRings()
     if not self.ringHookTargets[adapter.rings] then
         self.ringHookTargets[adapter.rings]=true
         local target=adapter.rings
+        local beforeHook=target.RefreshAll
         hooksecurefunc(target,'RefreshAll',function()
             local current=self.adapters and self.adapters.rings
             if not self.busy and current and current.rings==target then current:CaptureEdits() end
         end)
+        -- Accept only this known Forever posthook's trampoline. Foreign method
+        -- replacement still fails the shared adapter's ownership guard.
+        local utility=self.utilityRuntime
+        if utility and utility.frame==target and utility.refreshWrapper==beforeHook then utility.refreshWrapper=target.RefreshAll end
         target:HookScript('OnHide',function()
             C_Timer.After(0,function() if CanWrite() and not self.busy then self:RefreshRings() end end)
         end)
     end
     self.Diagnostics:SetFeature('rings','offline-verified','GUID personal rings; native utility extras preserved; new selector gesture remains pending')
     if not preparedBefore then self:PrepareSelectors(adapter) end
+    if self.utilityRuntime then self.utilityRuntime:Resume() end
 end
 function Addon:PrepareSelectors(adapter)
     local snapshot,reason=self.RingDiscovery.Capture(_G,self.guid)
@@ -395,7 +407,9 @@ function Addon:RefreshEventWork(work)
         return self.Diagnostics:Measure('runtime.full',self.Refresh,self)
     end
     if work.modes then self.Diagnostics:Measure('runtime.modes',self.RefreshModes,self) end
-    if work.bags then self.Diagnostics:Measure('runtime.rings',self.RefreshRings,self) end
+    if work.bags and not (self.utilityRuntime and self.utilityRuntime:Enabled()) then
+        self.Diagnostics:Measure('runtime.rings',self.RefreshRings,self)
+    end
     if work.cinematic then self.Diagnostics:Measure('runtime.cinematic',self.Cinematic.Refresh,self.Cinematic,_G) end
     -- Preserve automatic public route observations without rescanning unchanged
     -- macro resources. UPDATE_MACROS still validates synchronously before this queue.
@@ -434,11 +448,27 @@ SlashCmdList.CONSOLEPORTFOREVER=function(input)
         for _,entry in ipairs(Addon.Diagnostics.entries) do Print(entry.kind..": "..entry.message) end
     else Addon:Status() end
 end
+local UTILITY_ONLY={ITEM_COUNT_CHANGED=true,ITEM_DATA_LOAD_RESULT=true,SPELL_DATA_LOAD_RESULT=true,
+    NEW_MOUNT_ADDED=true,TOYS_UPDATED=true,NEW_TOY_ADDED=true,ACTIVE_COMBAT_CONFIG_CHANGED=true,PLAYER_EQUIPMENT_CHANGED=true}
 local events=CreateFrame("Frame")
+function Addon:RegisterUtilityEvents()
+    local active=self.utilityRuntime and self.utilityRuntime:Enabled() or false
+    if active==self.utilityEventsRegistered or (not active and not self.utilityEventsRegistered) then return end
+    for event in pairs(UTILITY_ONLY) do
+        if active then events:RegisterEvent(event)
+        else events:UnregisterEvent(event) end
+    end
+    self.utilityEventsRegistered=active
+end
 for _,event in ipairs({'UNIT_SPELLCAST_START','UNIT_SPELLCAST_STOP','UNIT_SPELLCAST_INTERRUPTED','UNIT_SPELLCAST_SUCCEEDED','UNIT_SPELLCAST_FAILED','UNIT_SPELLCAST_CHANNEL_START','UNIT_SPELLCAST_CHANNEL_STOP','MODIFIER_STATE_CHANGED'}) do events:RegisterEvent(event) end
 events:RegisterEvent('UPDATE_MACROS')
 for _,event in ipairs({"PLAYER_LOGIN","PLAYER_LOGOUT","PLAYER_ENTERING_WORLD","PLAYER_REGEN_ENABLED","PLAYER_REGEN_DISABLED","ADDON_LOADED","UPDATE_BINDINGS","EDIT_MODE_LAYOUTS_UPDATED","SPELLS_CHANGED","ACTIONBAR_SLOT_CHANGED","PLAYER_SPECIALIZATION_CHANGED","TRAIT_CONFIG_UPDATED","UPDATE_SHAPESHIFT_FORMS","PET_BAR_UPDATE","UNIT_PET","BAG_UPDATE_DELAYED","ITEM_LOCK_CHANGED","CURSOR_CHANGED","MERCHANT_SHOW","MERCHANT_CLOSED","CINEMATIC_START","CINEMATIC_STOP","PLAY_MOVIE","STOP_MOVIE","ADDON_ACTION_BLOCKED","ADDON_ACTION_FORBIDDEN"}) do events:RegisterEvent(event) end
 events:SetScript("OnEvent",function(_,event,...)
+    if Addon.UtilityIntegration then
+        local ok=pcall(Addon.UtilityIntegration.Event,Addon.UtilityIntegration,Addon,_G,event,...)
+        if not ok and Addon.utilityRuntime then Addon.utilityRuntime.fault='event read rejected' end
+    end
+    if UTILITY_ONLY[event] then return end
     if event:find('^UNIT_SPELLCAST_') or event=='MODIFIER_STATE_CHANGED' then
         Addon.CircleCancel:OnLogEvent(_G,event,...)
         return

@@ -1,7 +1,7 @@
 # Approved requirements and scope
 
 Status: maintained
-Reviewed: 2026-10-12
+Reviewed: 2026-10-14
 Evidence: [confirmed historical decisions](archive/ai-native-2026-10-11/MASTER-PLAN.pre-restructure.md),
 [current status](IMPLEMENTATION-STATUS.md), [candidate.30 requirement](CANDIDATE30-PING-RELEASE-LIFECYCLE-2026-10-10.md).
 
@@ -68,6 +68,7 @@ with no WTF writes or game input; the initial no-deploy instruction is supersede
 | R11 | Native execution owns protected dispatch. Preserve recovery boundary and accepted working features when repairing another subsystem. | [native execution decision](decisions/0002-native-execution-and-proof.md). |
 | R12 | Check official stable Retail dependencies for product/tooling sessions, qualify changed contracts and deliver only actual changed packages. Preparation is distinct from installation. | [delivery decision](decisions/0004-scoped-delivery.md); docs-only exemption in decision 0001. |
 | R13 | Circle-only work: best qualified Retail cancellation without native Escape/Options; preserve native UI/ring and manual binding ownership. Standing qualified Forever-only deployment permission applies while playing unless explicitly prohibited. | Candidate.34 offers reviewed native MACRO binding for empty or owned legacy Base PAD2. Cast interruption is user-confirmed; ground-placement cancellation untested due reported interception. Combined cast/ground/hard-target cancellation remains the implementation, with exact first-success parity gated. [Acceptance](../evidence/circle/candidate34-live-acceptance-2026-10-12.json), [research](reference/CIRCLE-CANCEL-RESEARCH-2026-10-11.md). |
+| R14 | One shared default utility ring retains manual choices across characters/specs, silently hides unavailable choices and restores them on return; explicit deletion/Clear wins. Preserve native entry types, extras, input and other GUID rings. Bound CPU work. Activate on first eligible use and persist a slash-command disable plus reload without reinstalling; disabled startup installs no feature work and preserves saved choices. | October 14 authorizes continued fixes and qualified deployment until manual testing is required. Candidate.39 implements the runtime archive, native adapter/seed and independent command; offline rejection of the earlier failures is separate from Retail acceptance. [Decision 0008](decisions/0008-shared-utility-ring.md), [runtime proof](reference/SHARED-UTILITY-RING-RUNTIME-2026-10-14.md). |
 | R14 | Eliminate avoidable HUD CPU work/spikes while preserving full functionality, visuals, immediate controller feedback and Retail security. Establish causes/reproductions, controlled before/after evidence, regression protection and future guidance. | Candidate.35 reduces demonstrated diagnostic copies, routine structural refreshes and broad event setup. Optional bounded timing is off by default. K04 Retail CPU/visual/input acceptance remains open; [report](reference/HUD-PERFORMANCE-2026-10-12.md). |
 
 R04's action-slot preservation does not imply an unconditional no-add rule for

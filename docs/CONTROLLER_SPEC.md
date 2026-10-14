@@ -1,13 +1,21 @@
 # Controller behavior specification
 
 Status: maintained
-Reviewed: 2026-10-12
+Reviewed: 2026-10-14
 Evidence: [binding policy](../addon/ConsolePort_Forever/BindingPolicy.lua),
 [shipped reference](../addon/ConsolePort_Forever/Reference.lua),
 [temporary routing](../addon/ConsolePort_Forever/TemporaryRouting.lua),
 [ping](../addon/ConsolePort_Forever/Targeting/Ping.lua).
 
 ## Ordinary banks and saved commands
+
+Candidate.39's shared default utility view uses the existing native utility opener
+(preset L2 + Options/Menu, SHIFT-PADFORWARD). Manual binding edits remain native.
+Unavailable saved choices hide and return on qualified context/possession changes;
+explicit remove/Clear wins. Automatic rebuilds wait while held; same-context native
+edits retain immediate redraw. `/cpfutility off` then `/reload` restores normal
+native handling without reinstalling; on plus reload resumes saved shared choices.
+[Runtime contract](reference/SHARED-UTILITY-RING-RUNTIME-2026-10-14.md).
 
 The expanded HUD has Base/L2/R2/L2R2 banks with eight cells each: four D-pad and
 four face cells. The unmodified faces are reserved/shared commands, leaving 28

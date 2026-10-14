@@ -13,6 +13,15 @@ owns lifecycle and activation; [requirements](../REQUIREMENTS.md) owns intent.
 
 ## What setup actually offers
 
+Candidate.39's utility-only exception activates on first eligible native/public
+startup without changing revision20 setup review. Account sharedUtilityEnabled
+and sharedUtilityArchive retain stable manual choices separately from the native
+available view and GUID class rings. `/cpfutility off` plus reload disables its
+hooks/workers/subscriptions and retains the master/native fallback; on plus reload
+resumes the master. Constructor failure is bounded and the standalone command
+does not depend on configuration initialization. Schema3 remains.
+[Ownership and persistence](../decisions/0008-shared-utility-ring.md).
+
 Revision 19 offers direct native MACRO migration for previously accepted revision-18
 characters, preserving the earlier automatic update review. Current acceptance/decline suppresses repeat prompts; older declines
 do not accept a newer update. Combat/Edit Mode defers review. The popup itself

@@ -1,13 +1,20 @@
 # Client and integration compatibility
 
 Status: maintained
-Reviewed: 2026-10-13
+Reviewed: 2026-10-14
 Evidence: [TOC](../addon/ConsolePort_Forever/ConsolePort_Forever.toc),
 [locked packages](../dependencies/lock.json),
 [native source manifest](../evidence/native/manifest.json),
 [ConsolePort contracts](../evidence/consoleport-contracts/manifest.json).
 
 ## Target and support boundary
+
+Candidate.39 qualifies the same ConsolePort 3.3.10 default-ring source with guarded
+ordinary validation/rebuild/edit adapters, additive version1 utility storage and
+an independent kill switch. Native protected bodies/compiler/dispatch stay
+unchanged. Source-level API and transition proof does not certify Retail engine
+taint, hardware timing or performance; broader acceptance remains separate.
+[Qualification](reference/SHARED-UTILITY-RING-RUNTIME-2026-10-14.md).
 
 The current personal target is Retail, TOC interface `120100`, ConsolePort
 3.3.10, Store schema 3 and configuration revision20. The

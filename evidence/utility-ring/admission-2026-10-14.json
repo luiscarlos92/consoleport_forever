@@ -1,0 +1,73 @@
+{
+  "status": "offline-admission-investigation-complete-runtime-adapter-not-qualified",
+  "at": "2026-10-14T06:56:38.509325+00:00",
+  "sourceCommit": "c80b030c1536c96a69bc3dcc2989e201f1a8a8bf",
+  "authorization": "User authorizes useful additional tests, then qualified implementation/deployment with a persistent first-use feature flag and independent slash disable plus reload.",
+  "scope": "Additional offline admission/flag prototypes and test/evidence/docs only; no runtime edits, game launch/input, live configuration writes, packaging, commit/push or deployment.",
+  "reports": {
+    "runtime": {
+      "path": "evidence/test-results/shared-utility-admission-runtime-2026-10-14.json",
+      "sha256": "095ea5c04b94ed9338d95147e5031a82ae8e87cfa70f16b8d972cc9841539bb8",
+      "passed": 86
+    },
+    "tooling": {
+      "path": "evidence/test-results/shared-utility-admission-tooling-2026-10-14.json",
+      "sha256": "85f323a3b8d68d525c688279834e3712ab85d5ee85b3a7a9894a83f51d9d6e9b",
+      "passed": 66
+    }
+  },
+  "inventory": {
+    "productFiles": 58,
+    "toolAndTestFiles": 143,
+    "completeCurrentSource": true,
+    "dependencyLockSHA256": "f74caaefdb66a16c87187554770a288b0ba39febe66511b3a3f07145a436061b",
+    "excludedSourceUnchanged": true
+  },
+  "freshness": {
+    "path": "evidence/dependencies/stable-recheck.json",
+    "sha256": "bdee73db85593a1e3df394f5276792b9bb29ad51024d6ee124488d3fb795b2c2",
+    "allCurrent": true
+  },
+  "admission": {
+    "admittedMessages": 0,
+    "blockers": {
+      "nativeStarterDropped": true,
+      "opaqueOwnerAccepted": true,
+      "openWheelChanged": true,
+      "startupMessages": 1
+    },
+    "checks": 69,
+    "counts": {
+      "admissions": 15,
+      "edits": 3
+    },
+    "hiddenAfterConfirmedClear": 0,
+    "limitation": "Not runtime qualified: open-wheel bypass, late-load startup rejection, unsupported native starter kinds and opaque context reproduced; feature disable and Retail taint unqualified.",
+    "posthookMessages": 1,
+    "staleAdmissionCacheMessages": 1
+  },
+  "flag": {
+    "standaloneContractPassed": true,
+    "freshVMPersistencePassed": true,
+    "failedConstructorAttemptsFor100Retries": 1,
+    "runtimeSlashCommandInstalled": false,
+    "nativeDisabledFallbackQualified": false
+  },
+  "negativeControls": {
+    "archiveModel": 8,
+    "admission": 2,
+    "flag": 1
+  },
+  "documentation": {
+    "maintainedPagesAndSkillsChecked": 45,
+    "errors": 0
+  },
+  "limits": [
+    "Admission still changes the projection during an open native wheel.",
+    "Late attachment cannot intercept immediate native OnDataLoaded validation.",
+    "Limited importer drops an existing native custom UNITMENU choice.",
+    "Admission accepts modeled opaque GUID context.",
+    "Flag tests do not wire runtime command/hooks/workers/fallback or qualify Retail engine taint, rendering, hardware timing or CPU milliseconds."
+  ],
+  "documentationImpact": "Requirements, known limitations, validation, plan/authority and evidence indexes updated. Runtime loading, controller command activation, state behavior, compatibility, installed status, changelog and deployment checklist remain unchanged because no runtime or delivery change qualifies."
+}

@@ -20,6 +20,13 @@ Evidence: [current status](IMPLEMENTATION-STATUS.md),
 
 These are explicit limits, not newly discovered failures:
 
+- Candidate.39 implements a shared default utility ring and independent persistent
+  disable command. Runtime-source tests reject the four earlier experimental
+  admission defects and legacy ownership conflict. Native menus/feedback,
+  transitions, engine persistence/taint and measured CPU still require scoped
+  Retail acceptance; K04/K05 remain open. Installed state is recorded separately.
+  [Runtime proof](reference/SHARED-UTILITY-RING-RUNTIME-2026-10-14.md).
+
 - Full custom secure modes, UI context takeover and hidden-control replacement
   remain suspended under native recovery. Native combat-claim relinquishment and
   temporary routing remain active; ground placement and its panel are retired.

@@ -9,6 +9,17 @@ Dates below use America/Toronto. This is a curated change index, not invented
 release tags or blanket gameplay certification. Detailed receipts own exact
 source/artifact/file identities. Prepared, installed and accepted are separate.
 
+## Shared utility ring — October 14, 2026
+
+Candidate.39 implements account-shared manual utility choices with native execution,
+availability projection, native edit/deletion/Clear preservation, safe startup
+seed and bounded event work/receipts. First eligible use enables it; independent
+`/cpfutility off` plus reload disables it without reinstalling or deleting the
+archive. Schema3/revision20 and native class/Ping/input ownership remain. Source
+qualification and installation are separate; Retail transitions, feedback,
+taint/persistence and comparable CPU acceptance remain pending.
+[Runtime proof](docs/reference/SHARED-UTILITY-RING-RUNTIME-2026-10-14.md).
+
 ## Automatic native-action trace — October 13–14, 2026
 
 Candidate.38 records bounded initial

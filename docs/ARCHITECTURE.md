@@ -9,7 +9,7 @@ Evidence: [TOC](../addon/ConsolePort_Forever/ConsolePort_Forever.toc),
 ## Loading and initialization
 
 The TOC requires ConsolePort and ConsolePort_Bar, declares optional integrations
-and loads 56 Lua files in order. There is no current Forever XML entry point.
+and loads 60 Lua files in order. There is no current Forever XML entry point.
 Modules share the addon namespace supplied through `...`. `Core`, storage,
 planning, transactions and capability modules precede policies and adapters;
 the main addon file loads last. `Bindings.lua`, `Layout.lua` and `Profile.lua`
@@ -48,6 +48,15 @@ revision owners. Optional fixed-scope inclusive timing is off by default.
 [Evidence and limits](reference/HUD-PERFORMANCE-2026-10-12.md).
 
 ## Configuration and ownership
+
+Candidate.39 adds an independent UtilityFlag bootstrap after Core and public
+utility model/native adapter/integration after Rings. The shared master is
+account owned; the derived default remains a native ring. Personal class rings,
+Ping, input and dispatch retain ownership. Native automatic rebuilds defer while
+held/blocked; qualified explicit editing stays immediate. Logout saves a native
+seed without protected changes; disabled reload installs no utility work.
+Schema3/revision20 remain. [Ownership decision](decisions/0008-shared-utility-ring.md),
+[runtime qualification](reference/SHARED-UTILITY-RING-RUNTIME-2026-10-14.md).
 
 | Layer | Contract |
 | --- | --- |

@@ -22,6 +22,14 @@ It does not claim blanket Retail acceptance. [Requirements](REQUIREMENTS.md) own
 
 ## Context transitions
 
+Candidate.39 adds shared default utility choice projection after public/native
+readiness, with first eligible activation and persistent independent disable.
+Automatic changes defer across held wheels/combat/editor/review/setup; qualified
+native explicit editing stays immediate. Unknown context/foreign owners cannot
+publish. Logout retains the account master and saves a harmless native seed;
+disabled reload installs no utility work. Other rings/input retain their existing
+scope. [Cases and limits](reference/SHARED-UTILITY-RING-RUNTIME-2026-10-14.md).
+
 | Context | Base/L2/R2 | L2R2 / action owner | Other constraints | Evidence |
 | --- | --- | --- | --- | --- |
 | Ordinary gameplay | Native saved commands/actions. | Ordinary model. | Accepted character configuration and native readiness required. | T41/T42/T61/T62. |

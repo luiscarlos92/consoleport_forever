@@ -1358,7 +1358,9 @@ check('T75.runtime-event-domains-preserve-readiness-combat-and-invalidation', ()
   catch(e){rejected=String(e).includes('action event rebuilt configuration/rings');}
   if(!rejected) throw Error('candidate34 broad runtime refresh not rejected');
   rejected=false;
-  try {execute(joined.replace("if work.bags then self.Diagnostics:Measure('runtime.rings',self.RefreshRings,self) end",'do end'),'missing-bag-ring-invalidation');}
+  const bagGuard=/if work\.bags and not \(self\.utilityRuntime and self\.utilityRuntime:Enabled\(\)\) then\s+self\.Diagnostics:Measure\('runtime\.rings',self\.RefreshRings,self\)\s+end/;
+  if(!bagGuard.test(joined)) throw Error('legacy bag invalidation negative control stale');
+  try {execute(joined.replace(bagGuard,'do end'),'missing-bag-ring-invalidation');}
   catch(e){rejected=String(e).includes('bag event lost ring invalidation');}
   if(!rejected) throw Error('bag ring invalidation negative control survived');
   rejected=false;
@@ -1419,11 +1421,230 @@ check('T79.native-action-taint-transition-posthook-bounded-passive-owner-isolate
   catch(error) {rejected=String(error).includes('trace copied between GUID owners');}
   if(!rejected) throw Error('native trace owner isolation negative control survived');
 });
+// Isolated experiment: no product module, TOC entry or native method replacement.
+const utilityPrototype=read('tests/prototypes/shared_utility.lua');
+const utilityHarness=read('tests/harness/shared_utility.lua');
+let utilityState;
+let utilityProof;
+function sharedUtilityFixture(prototype=utilityPrototype) {
+  const lock=JSON.parse(read('dependencies/lock.json'));
+  const packageIdentity=lock.packages.find(p=>p.repo==='seblindfors/ConsolePort');
+  if(packageIdentity.version!=='3.3.10') throw Error('utility prototype native contract not qualified');
+  const native=relative=>{
+    const filename=packageIdentity.unpacked+'/'+relative;
+    if(sha(filename)!==packageIdentity.files[relative]) throw Error('utility prototype native input drift: '+relative);
+    return read(filename);
+  };
+  const section=(code,start,end)=>{
+    const first=code.indexOf(start),last=code.indexOf(end,first+start.length);
+    if(first<0 || last<0) throw Error('utility native section not found: '+start);
+    return code.slice(first,last);
+  };
+  const wrapped=(body,args='"ConsolePort_Rings"')=>';(function(...)\n'+body+'\nend)('+args+');';
+  const database=native('ConsolePort_Rings/Database.lua');
+  const secure=native('ConsolePort_Rings/Controller/Secure.lua');
+  const rela=native('ConsolePort/Libs/External/RelaTable/RelaTable.lua');
+  const config=native('ConsolePort_Rings/View/Config/Config.lua');
+  let harness=utilityHarness
+    .replace('--@NATIVE_ACTION_MAP',()=>wrapped(native('ConsolePort/Model/Game/ActionMap.lua'),'"ConsolePort",db'))
+    .replace('--@NATIVE_DATABASE',()=>section(database,'function env:GetData(','function env:GetSetIcon('))
+    .replace('--@NATIVE_MAP',()=>wrapped(native('ConsolePort_Rings/Model/Map.lua')))
+    .replace('--@NATIVE_CONTAINER',()=>wrapped(native('ConsolePort_Rings/Model/Container.lua')))
+    .replace('--@NATIVE_RUN_SAFE',()=>section(rela,'function Database:RunSafe(','function Database:Signal('))
+    .replace('--@NATIVE_SAFE_QUEUE',()=>section(rela,'function Callbacks:OnLoad()','function compare('))
+    .replace('--@NATIVE_REFRESH',()=>section(secure,'function Secure:QueueRefresh(','function Secure:ClearAllActions('))
+    .replace('--@NATIVE_EVENTS',()=>wrapped(native('ConsolePort_Rings/Controller/Events.lua')))
+    .replace('--@NATIVE_AUTO',()=>wrapped(native('ConsolePort_Rings/Controller/Auto.lua')))
+    .replace('--@NATIVE_OBSERVER',()=>wrapped(native('ConsolePort_Rings/Controller/Observer.lua')))
+    .replace('--@NATIVE_CONFIG_RING',()=>wrapped(native('ConsolePort_Rings/View/Config/Display/Ring.lua')))
+    .replace('--@NATIVE_CONFIG_LOADOUT',()=>wrapped(native('ConsolePort_Rings/View/Config/Loadout/Loadout.lua')))
+    .replace('--@NATIVE_CLEAR',()=>section(config,'function Config:OnRequestWipe(','function Config:OnBindSet('));
+  return {prefix:source+wrapped(prototype,'"OfflinePrototype",Addon'),harness};
+}
+check('T80.shared-utility-offline-native-transitions-editing-and-work-bounds',()=>{
+  parser.parse(utilityPrototype,{luaVersion:'5.1'});
+  parser.parse(utilityHarness,{luaVersion:'5.1'});
+  if(read('addon/ConsolePort_Forever/ConsolePort_Forever.toc').includes('shared_utility')) throw Error('prototype entered runtime load list');
+  const fixture=sharedUtilityFixture();
+  utilityState=execute(fixture.prefix+fixture.harness+serializer+'\nSERIALIZED_STATE=serialized({proof=PROTOTYPE_RESULTS,archive=PERSISTENCE_SAMPLE})','shared-utility-native-offline');
+  utilityProof=require('./saved_variables.cjs').parse('RESULT='+utilityState).RESULT.proof;
+  if(utilityProof.baselineMessages<4 || utilityProof.uncachedNativeFirstMessages<1) throw Error('shared utility reproduction/counterexample absent');
+});
+check('T81.shared-utility-fresh-VM-shared-archive-reappearance',()=>{
+  if(!utilityState) throw Error('native utility proof did not complete');
+  const fixture=sharedUtilityFixture();
+  const setup=fixture.harness.split('-- Reproduce native name failure')[0];
+  execute(fixture.prefix+'\nlocal persisted=('+utilityState+').archive\n'+setup+`
+local replay=P.New(api,persisted)
+replay:ResetAfterReload() pump()
+check(#replay.archive.entries==3 and activeSpell(101) and activeItem(12345),'fresh VM shared archive lost choices')
+ctx={guid='B',spec=577,config=2} replay:Notify('context') pump()
+check(not activeSpell(101) and activeSpell(102),'fresh VM character switch leaked spell')
+check(#logs==0,'fresh VM projection noisy')
+TEST_SUCCESS=true
+`,'shared-utility-fresh-VM');
+});
+check('T82.shared-utility-meaningful-negative-controls',()=>{
+  for(const [name,before,after,message] of [
+    ['catalog-is-learned','local known=self.api.spellKnown(entry.id)','local known=self.api.spellInfo(entry.id).spellID~=nil','initial learned projection incorrect'],
+    ['positive-count-rebuild','if Core.Equal(current,desired) then','if false then','positive count rebuilt utility'],
+    ['missing-item-absence','if count<=0 then','if false then','absent item leaked'],
+    ['ignored-explicit-deletion','table.remove(self.archive.entries,index)','do end','deleted choice resurrected'],
+    ['item-event-rescans-spells',"if event=='context' then","if event=='item' then self:Mark('spell') end\n    if event=='context' then",'bag batch rescanned spells'],
+    ['unbounded-receipts','if #self.receipts>2 then table.remove(self.receipts,1) end','do end','projection receipts unbounded'],
+    ['ignored-stale-context',"if not Core.Equal(now,context(self.api)) then","if false then",'stale classification published'],
+    ['macro-fuzzy-fallback','or current.name~=entry.name or current.body~=entry.body','or false','macro drift retargeted execution'],
+  ]) {
+    if(!utilityPrototype.includes(before)) throw Error('stale utility negative control: '+name);
+    const fixture=sharedUtilityFixture(utilityPrototype.replaceAll(before,after));
+    let rejected=false;
+    try {execute(fixture.prefix+fixture.harness,'shared-utility-negative-'+name);}
+    catch(error) {rejected=String(error).includes(message);}
+    if(!rejected) throw Error('utility negative control did not reject intended defect: '+name);
+  }
+});
+let utilityAdmissionProof;
+let utilityFlagState;
+check('T83.shared-utility-native-admission-ordering-and-counterexamples',()=>{
+  const admission=read('tests/prototypes/shared_utility_admission.lua');
+  parser.parse(admission,{luaVersion:'5.1'});
+  const fixture=sharedUtilityFixture();
+  const setup=fixture.harness.split('-- Reproduce native name failure')[0];
+  const harness=read('tests/harness/shared_utility_admission.lua');
+  parser.parse(harness,{luaVersion:'5.1'});
+  const serializedProof=execute(fixture.prefix+setup+'\n;(function(...)\n'+admission+'\nend)("OfflineAdmission",Addon);\n'+harness+serializer+'\nSERIALIZED_STATE=serialized(ADMISSION_RESULTS)','shared-utility-native-admission');
+  utilityAdmissionProof=require('./saved_variables.cjs').parse('RESULT='+serializedProof).RESULT;
+});
+check('T84.shared-utility-admission-negative-controls',()=>{
+  const admission=read('tests/prototypes/shared_utility_admission.lua');
+  const harness=read('tests/harness/shared_utility_admission.lua');
+  const fixture=sharedUtilityFixture();
+  const setup=fixture.harness.split('-- Reproduce native name failure')[0];
+  for(const [name,before,after,message] of [
+    ['stale-native-event-cache',"self.model:Mark('spell')",'do end','synchronous event invalidation did not prevent native rejection'],
+    ['hidden-clear-resurrection','self.model:Clear(self.model.archive.revision)','do end','confirmed clear retained hidden choices'],
+  ]) {
+    if(!admission.includes(before)) throw Error('stale admission negative control: '+name);
+    let rejected=false;
+    try {execute(fixture.prefix+setup+'\n;(function(...)\n'+admission.replaceAll(before,after)+'\nend)("OfflineAdmission",Addon);\n'+harness,'shared-utility-admission-negative-'+name);}
+    catch(error) {rejected=String(error).includes(message);}
+    if(!rejected) throw Error('admission negative control survived: '+name);
+  }
+});
+check('T85.shared-utility-independent-persistent-disable-contract',()=>{
+  const flag=read('tests/prototypes/shared_utility_flag.lua');
+  const harness=read('tests/harness/shared_utility_flag.lua');
+  parser.parse(flag,{luaVersion:'5.1'}); parser.parse(harness,{luaVersion:'5.1'});
+  const prefix=source+'\n;(function(...)\n'+flag+'\nend)("OfflineFlag",Addon);\n';
+  utilityFlagState=execute(prefix+harness+serializer+'\nSERIALIZED_STATE=serialized(PERSISTED_FLAG_SAMPLE)','shared-utility-independent-flag');
+  let rejected=false;
+  try {execute(source+'\n;(function(...)\n'+flag.replace('if account.sharedUtilityEnabled==nil then','if true then')+'\nend)("OfflineFlag",Addon);\n'+harness,'shared-utility-flag-reset-negative');}
+  catch(error) {rejected=String(error).includes('disabled startup initialized feature');}
+  if(!rejected) throw Error('automatic flag re-enable negative control survived');
+});
+check('T86.shared-utility-disable-survives-fresh-VM-without-feature',()=>{
+  if(!utilityFlagState) throw Error('flag contract did not serialize');
+  const flag=read('tests/prototypes/shared_utility_flag.lua');
+  execute('Addon={};\n;(function(...)\n'+flag+'\nend)("OfflineFlag",Addon);\n'+`
+local account=(${utilityFlagState})
+local Flag=Addon.SharedUtilityFlagPrototype
+local starts=0
+assert(account.sharedUtilityEnabled==false,'reload did not persist disable')
+assert(not Flag.TryStart(account,true,function() starts=starts+1 end) and starts==0,'fresh VM initialized disabled feature')
+assert(Flag.Command(account,'on') and Flag.Enabled(account),'fresh VM could not re-enable')
+assert(Flag.Command(account,'off') and not Flag.Enabled(account),'fresh VM escape hatch failed')
+TEST_SUCCESS=true
+`,'shared-utility-flag-fresh-VM');
+});
+let utilityRuntimeProof;
+function runtimeUtilityFixture(overrides={}) {
+  const fixture=sharedUtilityFixture();
+  const setup=fixture.harness.split('-- Reproduce native name failure')[0];
+  const wrapped=(body)=>'\n;(function(...)\n'+body+'\nend)("ConsolePort_Forever",Addon);\n';
+  const product=['Rings/Utility','Adapters/SharedUtility'].map(name=>wrapped(overrides[name]||read('addon/ConsolePort_Forever/'+name+'.lua'))).join('');
+  return fixture.prefix+setup+product+read('tests/harness/shared_utility_runtime.lua');
+}
+check('T87.shared-utility-runtime-native-boundaries-editing-seed-and-isolation',()=>{
+  parser.parse(read('tests/harness/shared_utility_runtime.lua'),{luaVersion:'5.1'});
+  const state=execute(runtimeUtilityFixture()+serializer+'\nSERIALIZED_STATE=serialized(RUNTIME_UTILITY_RESULTS)','shared-utility-runtime');
+  utilityRuntimeProof=require('./saved_variables.cjs').parse('RESULT='+state).RESULT;
+});
+let utilityIntegrationProof;
+check('T88.shared-utility-actual-initialization-typed-migration-and-independent-command',()=>{
+  const fixture=sharedUtilityFixture();
+  const setup=fixture.harness.split('-- Reproduce native name failure')[0];
+  const wrapped=(body)=>'\n;(function(...)\n'+body+'\nend)("ConsolePort_Forever",Addon);\n';
+  const product=['Rings/Utility','Adapters/SharedUtility'].map(name=>wrapped(read('addon/ConsolePort_Forever/'+name+'.lua'))).join('');
+  const harness=read('tests/harness/shared_utility_integration.lua')
+    .replace('--@UTILITY_FLAG',()=>wrapped(read('addon/ConsolePort_Forever/Rings/UtilityFlag.lua')))
+    .replace('--@UTILITY_INTEGRATION',()=>wrapped(read('addon/ConsolePort_Forever/Rings/UtilityRuntime.lua')));
+  const state=execute(fixture.prefix+setup+product+harness+serializer+'\nSERIALIZED_STATE=serialized(INTEGRATION_UTILITY_RESULTS)','shared-utility-integration');
+  utilityIntegrationProof=require('./saved_variables.cjs').parse('RESULT='+state).RESULT;
+});
+check('T89.shared-utility-runtime-defect-rejection-negative-controls',()=>{
+  const bridge=read('addon/ConsolePort_Forever/Adapters/SharedUtility.lua');
+  const model=read('addon/ConsolePort_Forever/Rings/Utility.lua');
+  for(const [name,module,before,after,message] of [
+    ['open-native-rebuild','Adapters/SharedUtility',"if (self.api.blocked() and not manual) or not now then",'if false then','open wheel changed active/compiled projection'],
+    ['opaque-native-context','Rings/Utility',"function Utility:Context() return context(self.api) end","function Utility:Context() return self.api.context() end",'opaque context published owner/view'],
+    ['lost-native-menu','Rings/Utility',"elseif entry.kind=='native' then","elseif entry.kind=='native' and false then",'native starter command dropped'],
+    ['unsafe-native-startup-seed','Adapters/SharedUtility','Core.Replace(set,seed)','do end','late startup seed validation emitted a removal/lost menu'],
+  ]) {
+    const source=module==='Rings/Utility' ? model : bridge;
+    if(!source.includes(before)) throw Error('stale runtime utility negative control: '+name);
+    let rejected=false;
+    try {execute(runtimeUtilityFixture({[module]:source.replaceAll(before,after)}),'shared-utility-runtime-negative-'+name);}
+    catch(error) {rejected=String(error).includes(message);}
+    if(!rejected) throw Error('runtime utility negative control survived: '+name);
+  }
+  let rejected=false;
+  const mutation=runtimeUtilityFixture().replace('return feature and feature.frame==self.rings','return nil');
+  try {execute(mutation,'shared-utility-legacy-owner-negative');}
+  catch(error) {rejected=String(error).includes('legacy capture overwrote shared data or repeated dormant logs');}
+  if(!rejected) throw Error('legacy utility ownership conflict negative control survived');
+});
+check('T90.shared-utility-TOC-bootstrap-hook-coexistence-and-disabled-events',()=>{
+  if(!bootstrapPrelude) throw Error('bootstrap prelude not qualified');
+  execute('SESSION_STATE=('+bootstrapState+').installed\n'+bootstrapPrelude+`
+TEST_SUCCESS=nil
+GetSpecialization=function() return 1 end
+GetSpecializationInfo=function() return 66 end
+Enum.SpellBookSpellBank={Player=0,Pet=1}
+C_SpellBook=C_SpellBook or {}
+C_SpellBook.IsSpellKnown=function() return true end
+C_Spell=C_Spell or {}
+C_Spell.GetOverrideSpell=function(id) return id end
+C_Spell.RequestLoadSpellData=function() end
+C_Item=C_Item or {}
+C_Item.GetItemCount=function() return 1 end
+C_Item.IsItemDataCachedByID=function() return true end
+C_Item.RequestLoadItemDataByID=function() end
+PlayerHasToy=function() return false end
+ConsolePortForeverDB.sharedUtilityEnabled=nil
+local registrations=0
+for _,frame in ipairs(frames) do
+  local register=frame.RegisterEvent
+  frame.RegisterEvent=function(self,event) registrations=registrations+1 return register(self,event) end
+  frame.UnregisterEvent=function(self,event) self.events[event]=nil end
+end
+fire('PLAYER_LOGIN') flush()
+assert(Addon.utilityRuntime and Addon.utilityRuntime:Enabled(),'TOC bootstrap did not start shared utility')
+assert(Addon.utilityRuntime:Owns(),'Forever posthook invalidated shared native ownership')
+assert(Addon.utilityEventsRegistered==true,'active feature failed to register targeted events')
+local originalRegistrations=registrations
+Addon:RegisterUtilityEvents()
+assert(registrations==originalRegistrations,'unchanged setup re-registered utility events')
+SlashCmdList.CPFUTILITY('off')
+assert(ConsolePortForeverDB.sharedUtilityEnabled==false and not Addon.utilityEventsRegistered,'off command retained targeted event subscription')
+for _,frame in ipairs(frames) do assert(not frame.events.ITEM_COUNT_CHANGED,'disabled feature retained item event') end
+TEST_SUCCESS=true
+`,'shared-utility-TOC-bootstrap');
+});
 const report = {at:new Date().toISOString(), commit:cp.execFileSync('git',['rev-parse','HEAD'],{cwd:root}).toString().trim(),
   productHashes:Object.fromEntries(files('addon').map(f=>[f,sha(f)])),
   toolingHashes:Object.fromEntries([...files('tools'),...files('tests')].filter(f=>!f.includes('__pycache__')).map(f=>[f,sha(f)])),
   pinnedDependencyLockSHA256:sha('dependencies/lock.json'),
-  limitation:'Fengari uses Lua 5.3 semantics. Lua 5.1 syntax checked separately. No Retail secure/hardware proof.', results};
+  limitation:'Fengari uses Lua 5.3 semantics. Lua 5.1 syntax checked separately. No Retail secure/hardware proof.', sharedUtilityPrototype:utilityProof, sharedUtilityAdmission:utilityAdmissionProof, sharedUtilityRuntime:utilityRuntimeProof, sharedUtilityIntegration:utilityIntegrationProof, results};
 const {output} = require('./repository_paths.cjs');
 fs.mkdirSync(output('scratch/test-results'),{recursive:true});
 fs.writeFileSync(output('scratch/test-results/latest.json'),JSON.stringify(report,null,2));

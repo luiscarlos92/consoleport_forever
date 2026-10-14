@@ -54,9 +54,13 @@ function Bridge:Proposal()
         -- copied as an empty Auras placeholder from the previous character.
     end
     sets=Addon.ClassActions.FilterOwnedSets(sets,self.guid,self.api.classForGUID and self.api.classForGUID())
+    local shared=self:SharedUtilityActive()
+    if shared then sets[self.api.defaultSet]=manual(self.rings.Data)[self.api.defaultSet] end
     -- Native validation is applied to detached data only. The accepted proposal
     -- contains exactly the qualified view; unavailable actions stay archived.
-    for id,set in pairs(sets) do sets[id]=self.env:ValidateSet(id,Core.Copy(set)) end
+    for id,set in pairs(sets) do
+        if not (shared and id==self.api.defaultSet) then sets[id]=self.env:ValidateSet(id,Core.Copy(set)) end
+    end
     return {guid=self.guid,sets=sets}
 end
 function Bridge:write(path,value)
@@ -87,11 +91,16 @@ function Bridge:CaptureEdits()
     local sets=state.sets
     Addon.ClassActions.FilterOwnedSets(sets,self.guid,self.api.classForGUID and self.api.classForGUID())
     local dormant={}
+    local shared=self:SharedUtilityActive()
+    if shared then
+        sets[self.api.defaultSet]=Core.Copy((record.rings.sets or {})[self.api.defaultSet])
+        dormant[self.api.defaultSet]=Core.Copy((record.rings.dormant or {})[self.api.defaultSet])
+    end
     -- A native refresh may hide an unavailable manual spell. Keep its archived
     -- position until it can project again; an explicit whole-set deletion wins.
     for id,previous in pairs(record.rings.sets or {}) do
         local current=sets[id]
-        if current then
+        if current and not (shared and id==self.api.defaultSet) then
             local nativeEntries,matched=Core.Copy(current),{}
             for index,action in ipairs(previous) do
                 local exists=false
@@ -114,4 +123,8 @@ function Bridge:CaptureEdits()
     record.rings.sets=Core.Copy(sets)
     record.rings.dormant=dormant
     return true
+end
+function Bridge:SharedUtilityActive()
+    local feature=Addon.utilityRuntime
+    return feature and feature.frame==self.rings
 end

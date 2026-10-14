@@ -1,7 +1,7 @@
 # Decision index
 
 Status: maintained
-Reviewed: 2026-10-12
+Reviewed: 2026-10-14
 Evidence: [approved system](0001-repository-development-system.md),
 [historical authority](../archive/ai-native-2026-10-11/MASTER-PLAN.pre-restructure.md).
 
@@ -14,6 +14,7 @@ Evidence: [approved system](0001-repository-development-system.md),
 | [0005](0005-native-account-ping-ring.md) | Native account ring and superseding release-only requirement. |
 | [0006](0006-native-saved-layout-authority.md) | Saved Edit Mode tracking versus initial managed-copy setup. |
 | [0007](0007-ground-placement-retirement.md) | Standing exclusion of ground placement and its Targeting tab; reinstatement requires a new explicit user request. |
+| [0008](0008-shared-utility-ring.md) | Shared default utility archive, native editing/dispatch, bounded work, startup seed and independent disable. |
 
 Records 0002–0006 document previously established choices; this restructure does
 not newly approve their runtime behavior or reactivate deferred designs. A later

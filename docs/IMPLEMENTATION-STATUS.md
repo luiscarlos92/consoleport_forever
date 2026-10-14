@@ -6,7 +6,21 @@ Evidence: [candidate.38 install](../evidence/delivery/live-install-candidate38.j
 [independent readback](../evidence/delivery/candidate38-independent-readback.json),
 [Circle acceptance](../evidence/circle/candidate34-live-acceptance-2026-10-12.json).
 
-## Installed checkpoint
+## Qualified candidate.39 awaiting scoped installation
+
+Candidate.39 implements the shared default Utility Ring with first eligible
+activation, retained unavailable choices and independent `/cpfutility off` plus
+reload. All 90 runtime/source checks and 66 tooling tests pass against complete
+62-product-file and 145-tool/test-file inventories. Native admission, open-wheel
+editing/deferral, safe next-startup seed, GUID isolation and failure containment
+are exercised with locked native source; five defect controls are rejected.
+Schema3/revision20 and native controller/class/Ping ownership remain.
+[Qualification](../evidence/test-results/candidate39-shared-utility-qualification.json),
+[implementation and manual boundary](reference/SHARED-UTILITY-RING-RUNTIME-2026-10-14.md).
+Candidate.38 remains installed until the separate delivery/readback record.
+Retail CPU, taint, timing, rendering and persistence acceptance remain open.
+
+## Installed candidate.38 checkpoint
 
 The final bounded candidate.38 build was installed October 14 at **00:02:27
 Toronto** from tested/pushed source `b89fa7dfa2d5837235a97e6ef411783f6ea7b9b8`.
@@ -184,7 +198,7 @@ These are scoped observations; later changes still require regression gates.
 - Native ConsolePort input recovery enabled. Full custom modes/UI takeover and
   hidden-control replacement remain suspended.
 - Temporary native-family routing uses L2+R2, preserving ordinary banks.
-- Ground placement is a separate active adapter.
+- Ground placement and its Targeting panel remain retired under decision 0007.
 - Automatic action restoration removed; diagnostic observers remain passive.
 - Native-bound gamepad ping keys (preset R3) send on release through native
   secure machinery. Native selection is armed immediately; neutral/empty tap
@@ -197,8 +211,8 @@ These are scoped observations; later changes still require regression gates.
   by every three-class presentation/repair guard.
 - Reviewed sidebar/bag/micro visibility, qualified class-row suppression and
   focus-feedback cosmetics have independent activation; native power remains.
-- The Targeting panel remains available in recovery. Accepted stored policy
-  flags alone do not prove the corresponding dormant UI path is enabled.
+- Stored targeting policy flags are inert; recovery does not expose its retired
+  panel or reactivate ground-placement interception.
 
 [Architecture](ARCHITECTURE.md) records prerequisites;
 [known issues](KNOWN_ISSUES.md) records open reports and gated features.

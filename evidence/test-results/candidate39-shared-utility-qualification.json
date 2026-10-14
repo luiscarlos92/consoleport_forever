@@ -1,0 +1,192 @@
+{
+  "at": "2026-10-14T17:33:15.763523+00:00",
+  "candidate": "2.0.0-candidate.39",
+  "testedParentCommit": "c80b030c1536c96a69bc3dcc2989e201f1a8a8bf",
+  "runtimeChecks": 90,
+  "toolingTests": 66,
+  "overallPassed": true,
+  "completeProductInventoryMatches": true,
+  "completeRuntimeToolInventoryMatches": true,
+  "completeToolingInventoryMatches": true,
+  "productFiles": 62,
+  "toolingFiles": 145,
+  "changedProductFiles": [
+    "addon/ConsolePort_Forever/Adapters/Rings.lua",
+    "addon/ConsolePort_Forever/Adapters/SharedUtility.lua",
+    "addon/ConsolePort_Forever/ConsolePort_Forever.lua",
+    "addon/ConsolePort_Forever/ConsolePort_Forever.toc",
+    "addon/ConsolePort_Forever/Rings/Utility.lua",
+    "addon/ConsolePort_Forever/Rings/UtilityFlag.lua",
+    "addon/ConsolePort_Forever/Rings/UtilityRuntime.lua"
+  ],
+  "unchangedProductFiles": 55,
+  "runtimeReportSHA256": "4b395a12680d98b76610df57c94e347dc5bbf6c39fb4666620d190646019848d",
+  "toolingReportSHA256": "46ddc327efc0d9fab5396c5a881598f67a5e6bdfd8f6fe2bb31d0bf238694cb3",
+  "freshStableCheckSHA256": "b23be49e4c99740ff945a57b3de6e50c1d9404a7a40d30ef6ddb4435dac83c7a",
+  "qualifiedDependencyUpdates": [],
+  "configurationRevision": 20,
+  "storeSchema": 3,
+  "newRuntimeGates": [
+    "T87",
+    "T88",
+    "T89",
+    "T90"
+  ],
+  "retainedPrototypeGates": [
+    "T80",
+    "T81",
+    "T82",
+    "T83",
+    "T84",
+    "T85",
+    "T86"
+  ],
+  "rejectedControls": [
+    "open-wheel automatic compiled rebuild",
+    "opaque context publishing a projection",
+    "native menu dropped by classifier",
+    "unsafe late native startup seed",
+    "legacy GUID ownership overwrites managed default"
+  ],
+  "runtimeProof": {
+    "archive": {
+      "entries": {
+        "1": {
+          "entryID": 8,
+          "id": 8,
+          "kind": "native",
+          "native": {
+            "binding": "UNITMENU",
+            "type": "custom"
+          }
+        },
+        "2": {
+          "entryID": 9,
+          "id": 101,
+          "kind": "spell"
+        },
+        "3": {
+          "entryID": 10,
+          "id": 102,
+          "kind": "spell"
+        },
+        "4": {
+          "entryID": 11,
+          "id": 12345,
+          "kind": "item"
+        }
+      },
+      "nextID": 12,
+      "receipts": {
+        "1": {
+          "before": {
+            "0": {},
+            "1": {
+              "binding": "UNITMENU",
+              "type": "custom"
+            },
+            "2": {
+              "item": "12345",
+              "type": "item"
+            }
+          },
+          "desired": {
+            "0": {},
+            "1": {
+              "binding": "UNITMENU",
+              "type": "custom"
+            },
+            "2": {
+              "spell": 101,
+              "type": "spell"
+            },
+            "3": {
+              "item": "12345",
+              "type": "item"
+            }
+          },
+          "owner": {
+            "config": 1,
+            "guid": "A",
+            "spec": 66
+          },
+          "revision": 16,
+          "status": "verified"
+        },
+        "2": {
+          "before": {
+            "0": {},
+            "1": {
+              "binding": "UNITMENU",
+              "type": "custom"
+            },
+            "2": {
+              "spell": 101,
+              "type": "spell"
+            },
+            "3": {
+              "item": "12345",
+              "type": "item"
+            }
+          },
+          "desired": {
+            "0": {},
+            "1": {
+              "binding": "UNITMENU",
+              "type": "custom"
+            },
+            "2": {
+              "spell": 102,
+              "type": "spell"
+            },
+            "3": {
+              "item": "12345",
+              "type": "item"
+            }
+          },
+          "owner": {
+            "config": 1,
+            "guid": "A",
+            "spec": 65
+          },
+          "revision": 16,
+          "status": "verified"
+        }
+      },
+      "revision": 16,
+      "version": 1
+    },
+    "checks": 100,
+    "counts": {
+      "item": 1,
+      "noops": 0,
+      "other": 2,
+      "queued": 3,
+      "rebuilds": 2,
+      "spell": 5,
+      "workers": 2
+    },
+    "nativeDeferred": 0,
+    "nativeSeed": {
+      "0": {},
+      "1": {
+        "binding": "UNITMENU",
+        "type": "custom"
+      }
+    },
+    "receiptLimit": 2,
+    "startupMessages": 0
+  },
+  "integrationProof": {
+    "bankQueriesExcluded": true,
+    "checks": 145,
+    "initialChoices": 8,
+    "slashMessages": 6
+  },
+  "gameInputPerformed": false,
+  "liveWTFWrites": false,
+  "retailCPUAccepted": false,
+  "retailPersistenceAccepted": false,
+  "retailTaintAccepted": false,
+  "limitations": "Locked native source with modeled public C APIs, frames and compiled storage. Offline work counts do not certify Retail milliseconds, engine authority, taint, rendering, hardware timing or persistence. K04/K05 remain open."
+}

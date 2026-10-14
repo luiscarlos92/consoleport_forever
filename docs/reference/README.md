@@ -1,7 +1,7 @@
 # Reference and history navigation
 
 Status: maintained
-Reviewed: 2026-10-13
+Reviewed: 2026-10-14
 Evidence: [migration record](../WORKSPACE-ORGANIZATION-2026-10-11.md),
 [original reference manifest](../../reference/manifests/2026-10-03-initial.json),
 [preserved master plan](../archive/ai-native-2026-10-11/MASTER-PLAN.pre-restructure.md).
@@ -28,6 +28,20 @@ and access limits. The singular `docs/reference` is the new index; the existing
 plural pending-reference directory is intentionally retained without moving it.
 
 ## Current code contracts
+
+- [Shared utility runtime implementation](SHARED-UTILITY-RING-RUNTIME-2026-10-14.md):
+  candidate.39 archive, guarded native edits/rebuilds, safe startup seed, independent
+  persistent disable, typed identity and source-versus-Retail proof limits.
+- [Shared utility admission and disable-control investigation](SHARED-UTILITY-RING-ADMISSION-2026-10-14.md):
+  native event/edit admission experiments, four reproduced integration blockers,
+  and isolated persistent flag/fresh-VM escape-hatch proof; not deployed.
+- [Shared utility offline prototype](SHARED-UTILITY-RING-OFFLINE-PROTOTYPE-2026-10-14.md):
+  isolated code/native-source tests, reappearance and deletion, event work/receipt
+  bounds, negative controls and the retained uncached-data limitation; no deployment.
+
+- [Shared utility ring technical investigation](SHARED-UTILITY-RING-TECHNICAL-RESEARCH-2026-10-14.md):
+  source-only refresh/edit ordering, selected source hashes, availability APIs,
+  CPU/persistence constraints and an adapted design; no implementation or live proof.
 
 - [Combat error audit](COMBAT-ERROR-AUDIT-2026-10-13.md): captured native cooldown
   failures, broad change-impact review, demonstrated passive-observer repairs,

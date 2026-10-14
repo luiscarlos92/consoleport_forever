@@ -1,11 +1,34 @@
 # Validation and proof boundaries
 
 Status: maintained
-Reviewed: 2026-10-13
+Reviewed: 2026-10-14
 Evidence: [runner](../tools/test-all.cjs), [tool tests](../tools/run_tool_tests.py),
 [CI](../.github/workflows/tests.yml), [test instructions](../tests/AGENTS.md).
 
 ## Entry points
+
+T87-T90 exercise candidate.39's actual shared-utility runtime model, native
+admission/rebuild/edit boundaries, startup seed, typed migration, independent
+slash disable/fallback and TOC/bootstrap coexistence. Five fault variants restore
+the earlier defects and must fail. Earlier T83 counterexamples remain tests of
+the rejected experimental adapter. [Runtime proof](reference/SHARED-UTILITY-RING-RUNTIME-2026-10-14.md).
+
+T80-T82 exercise an isolated shared-utility prototype outside the addon TOC.
+Hash-verified native validation, event/RunSafe refresh, cursor add, editing and
+macro normalization run with modeled C APIs/frames. The fixture separates spell
+catalog identity from learned status, records legacy log repetition, retains the
+uncached native-first counterexample, verifies shared-choice reappearance and
+deletion, targeted work/receipt bounds and fresh-VM persistence, and rejects eight
+deliberately faulty variants. These are offline model results, not a deployed
+feature or a Retail taint/CPU claim. See the
+[prototype investigation](reference/SHARED-UTILITY-RING-OFFLINE-PROTOTYPE-2026-10-14.md).
+
+T83-T86 extend the isolated proof with native admission ordering, direct edit/
+Clear paths, two targeted mutants, startup/open-wheel/unsupported-kind/opaque-
+context counterexamples, and an independent persistent flag including a fresh
+VM and a re-enable mutant. The adapter remains unqualified: counterexample tests
+pass by reproducing its failures. No runtime feature or slash command is loaded.
+See the [admission investigation](reference/SHARED-UTILITY-RING-ADMISSION-2026-10-14.md).
 
 T79 exercises actual bootstrap registration and diagnostic persistence with
 fault-injected native security-label/stack/C posthook APIs: first observed

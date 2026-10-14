@@ -1,14 +1,24 @@
 # Pending deployment and cumulative acceptance
 
-Status: final bounded candidate.38 installed October 14, 2026 at 00:02:27 Toronto.
+Status: candidate.39 installed October 14, 2026 at 13:47:40 Toronto.
 Standing user permission authorizes qualified Forever updates while playing unless
-explicitly prohibited. Independent verification preserved installer-start WTF,
-other addons, topology and all 25,456 prior backup files/2,342 directories.
-No game input or WTF/vendor writes; WoW was open. The user owns reload to load
-the final build. A refused staging attempt preserved 53 concurrent game-written
-WTF changes before a fresh successful retry.
-[Installation](../evidence/delivery/live-install-candidate38.json),
-[readback](../evidence/delivery/candidate38-independent-readback.json).
+explicitly prohibited. This Forever-only update ran with WoW closed. Independent
+verification confirms 59 installed files and preserves 2,847 other addon files,
+313 WTF files, 42 links/root anchors and all 25,824 prior backup files/2,360
+directories. No game input or WTF/vendor writes. The user owns next login/reload.
+[Installation](../evidence/delivery/live-install-candidate39.json),
+[readback](../evidence/delivery/candidate39-independent-readback.json).
+
+Candidate.39 retains revision20/schema3; accepted characters need no new setup
+review. It activates the shared Utility Ring on first eligible startup and retains
+unavailable choices. `/cpfutility off` plus reload disables without reinstalling;
+`on` plus reload resumes the retained master. Local and fresh Windows CI pass all
+90 runtime/source checks and 66 tooling tests with matching complete inventories.
+Manual cases below remain pending; K04 performance and K05 taint remain open.
+[Qualification](../evidence/test-results/candidate39-shared-utility-qualification.json),
+[CI](../evidence/test-results/candidate39-fresh-ci.json).
+
+## Previous candidate.38 diagnostic checkpoint
 
 Candidate.38 retains revision20/schema3; accepted characters need no new setup
 review. Ground placement and its Targeting tab remain retired. Local qualification
@@ -23,10 +33,9 @@ already match 12.1.5-1 on disk; only Forever was selected for this update.
 
 ## Candidate.39 shared utility qualification and manual acceptance
 
-Candidate.39 is qualified for the authorized Forever-only update; installation
-is separately recorded in current status. All 90 runtime/source checks and 66
-tooling tests pass with complete inventories. After delivery, the user owns
-reload and these Retail checks:
+Candidate.39 is installed; exact delivery is recorded in current status. All 90
+runtime/source checks and 66 tooling tests pass with complete inventories locally
+and in fresh Windows CI. The user owns next login/reload and these Retail checks:
 
 1. Open the Utility Ring with the existing L2 + Options binding; preserve manual
    binding choices and verify native menus/feedback.

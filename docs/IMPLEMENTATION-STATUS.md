@@ -2,13 +2,16 @@
 
 Status: maintained
 Reviewed: 2026-10-14
-Evidence: [candidate.38 install](../evidence/delivery/live-install-candidate38.json),
-[independent readback](../evidence/delivery/candidate38-independent-readback.json),
+Evidence: [candidate.39 install](../evidence/delivery/live-install-candidate39.json),
+[independent readback](../evidence/delivery/candidate39-independent-readback.json),
+[fresh Windows CI](../evidence/test-results/candidate39-fresh-ci.json),
 [Circle acceptance](../evidence/circle/candidate34-live-acceptance-2026-10-12.json).
 
-## Qualified candidate.39 awaiting scoped installation
+## Installed checkpoint
 
-Candidate.39 implements the shared default Utility Ring with first eligible
+Candidate.39 was installed October 14 at **13:47:40 Toronto** from tested/pushed
+source `80bbaf1dfb7624f56ef8b30e55ce7f943574c0c1`. It implements the shared default
+Utility Ring with first eligible
 activation, retained unavailable choices and independent `/cpfutility off` plus
 reload. All 90 runtime/source checks and 66 tooling tests pass against complete
 62-product-file and 145-tool/test-file inventories. Native admission, open-wheel
@@ -17,10 +20,17 @@ are exercised with locked native source; five defect controls are rejected.
 Schema3/revision20 and native controller/class/Ping ownership remain.
 [Qualification](../evidence/test-results/candidate39-shared-utility-qualification.json),
 [implementation and manual boundary](reference/SHARED-UTILITY-RING-RUNTIME-2026-10-14.md).
-Candidate.38 remains installed until the separate delivery/readback record.
-Retail CPU, taint, timing, rendering and persistence acceptance remain open.
+Fresh clean Windows CI passes the same 90/66 checks with matching complete
+inventories. Only Forever was selected with WoW closed. Independent readback
+verifies 59 installed files, 2,847 other addon files, 313 WTF files, 42 links/root
+anchors and all 25,824 prior backup files/2,360 directories. No dependencies or
+live WTF were written; no game input occurred. The user owns next login/reload
+and manual spec/character/item/edit/persistence/disable checks. Accepted revision20
+needs no new setup review. Retail CPU, taint, timing, rendering and persistence
+acceptance remain open; K04/K05 are unchanged.
+[Delivery](../evidence/delivery/candidate39-independent-readback.json).
 
-## Installed candidate.38 checkpoint
+### Previous candidate.38 checkpoint
 
 The final bounded candidate.38 build was installed October 14 at **00:02:27
 Toronto** from tested/pushed source `b89fa7dfa2d5837235a97e6ef411783f6ea7b9b8`.

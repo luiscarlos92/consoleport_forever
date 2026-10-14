@@ -7,8 +7,9 @@ Evidence: [routing](../addon/ConsolePort_Forever/TemporaryRouting.lua),
 [bootstrap](../addon/ConsolePort_Forever/ConsolePort_Forever.lua),
 [test runner](../tools/test-all.cjs).
 
-Candidate.38 is installed with bounded automatic native-action transition and
-first blocked-call stacks. Candidate.37's observer hardening remains.
+Candidate.39 is installed with shared default utility choice projection and an
+independent persistent disable. Candidate.38's bounded automatic native-action
+transition/first blocked-call stacks and candidate.37's observer hardening remain.
 Candidate.36's ground-placement and Targeting-panel
 retirement remain. Native controller/routing contracts remain; old targeting preferences
 are inert. Circle cast interruption was user-confirmed on candidate.34. Performance

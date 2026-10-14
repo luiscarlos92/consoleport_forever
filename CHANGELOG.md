@@ -16,8 +16,12 @@ availability projection, native edit/deletion/Clear preservation, safe startup
 seed and bounded event work/receipts. First eligible use enables it; independent
 `/cpfutility off` plus reload disables it without reinstalling or deleting the
 archive. Schema3/revision20 and native class/Ping/input ownership remain. Source
-qualification and installation are separate; Retail transitions, feedback,
-taint/persistence and comparable CPU acceptance remain pending.
+qualification passes 90 runtime/source checks and 66 tooling tests locally and
+in fresh Windows CI with matching inventories. Installed at 13:47:40 Toronto
+from pushed source `80bbaf1dfb7624f56ef8b30e55ce7f943574c0c1`; 59 Forever files
+read back exactly, other addons/WTF/links/prior backups preserved, WoW closed.
+Retail transitions, feedback, taint/persistence and comparable CPU acceptance
+remain pending. [Delivery](evidence/delivery/candidate39-independent-readback.json).
 [Runtime proof](docs/reference/SHARED-UTILITY-RING-RUNTIME-2026-10-14.md).
 
 ## Automatic native-action trace — October 13–14, 2026

@@ -118,6 +118,8 @@ gates remain required in the complete Test-All run. Reports identify exact full
 source inventories. The complete qualification passes all 90 runtime/source
 checks and 66 tooling tests with 62 product and 145 tool/test files.
 [Exact-source receipt](../../evidence/test-results/candidate39-shared-utility-qualification.json).
+Fresh clean [Windows CI](../../evidence/test-results/candidate39-fresh-ci.json)
+passes the same checks with matching complete source inventories.
 Offline counts do not prove Retail taint, hardware timing,
 pixels, engine persistence or CPU milliseconds; K04/K05 remain open.
 

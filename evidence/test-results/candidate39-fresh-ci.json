@@ -1,0 +1,17 @@
+{
+  "at": "2026-10-14T17:45:27.675636+00:00",
+  "runID": 38607919322,
+  "url": "https://github.com/luiscarlos92/consoleport_forever/actions/runs/38607919322",
+  "sourceCommit": "80bbaf1dfb7624f56ef8b30e55ce7f943574c0c1",
+  "status": "completed",
+  "conclusion": "success",
+  "runtimeChecks": 90,
+  "toolingTests": 66,
+  "fullProductInventoryMatchesLocal": true,
+  "fullToolingInventoryMatchesLocal": true,
+  "pinnedLockMatchesLocal": true,
+  "runtimeReportSHA256": "ef3e9ababc9ac36ab2c8f2f77e8c689c1e3e70085a21350b7551d7362a5f084e",
+  "toolingReportSHA256": "2325439eb1108a5c3d58f9f7b3d9adf717f7eebc1c972d3279d9132e8c90a6bd",
+  "retailAcceptance": false,
+  "limitation": "Independent clean Windows CI corroborates exact source, offline gates and fixture execution; no Retail game/taint/hardware/persistence/CPU certification."
+}

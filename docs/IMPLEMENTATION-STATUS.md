@@ -1,7 +1,7 @@
 # Current implementation and acceptance
 
 Status: maintained
-Reviewed: 2026-10-14
+Reviewed: 2026-10-15
 Evidence: [candidate.39 install](../evidence/delivery/live-install-candidate39.json),
 [independent readback](../evidence/delivery/candidate39-independent-readback.json),
 [fresh Windows CI](../evidence/test-results/candidate39-fresh-ci.json),
@@ -29,6 +29,14 @@ and manual spec/character/item/edit/persistence/disable checks. Accepted revisio
 needs no new setup review. Retail CPU, taint, timing, rendering and persistence
 acceptance remain open; K04/K05 are unchanged.
 [Delivery](../evidence/delivery/candidate39-independent-readback.json).
+
+On October 15 the user reports promising initial shared Utility Ring tests across
+different specs on one character. This is preliminary positive Retail feedback;
+exact abilities/specs, silent hide/return behavior and loaded version were not
+independently verified. Cross-character/class, item, editing, persistence,
+disable/re-enable, measured CPU and taint cases remain individually unasserted.
+K04/K05 remain open.
+[User observation](../evidence/utility-ring/candidate39-user-observation-2026-10-15.json).
 
 ### Previous candidate.38 checkpoint
 

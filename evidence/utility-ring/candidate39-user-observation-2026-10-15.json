@@ -1,0 +1,26 @@
+{
+  "reportedDate": "2026-10-15",
+  "timezone": "America/Toronto",
+  "associatedCandidate": "2.0.0-candidate.39",
+  "installedSourceCommit": "80bbaf1dfb7624f56ef8b30e55ce7f943574c0c1",
+  "source": "Direct user follow-up in this conversation after candidate39 delivery",
+  "userObservation": "initial tests seemed promising between on character and different specs.",
+  "scope": "Preliminary positive feedback for the shared Utility Ring across different specializations on one character",
+  "assessment": "Promising initial observation; complete feature acceptance is not asserted",
+  "loadedCandidateIndependentlyVerified": false,
+  "notIndividuallyAsserted": [
+    "Specific character, specializations, abilities and exact switch/return sequence",
+    "Absence of invalid-entry chat or blocked-action errors",
+    "Switching between different characters or classes and returning",
+    "Item depletion/replenishment and bank-only exclusion",
+    "Native editing, removal, reorder and confirmed Clear",
+    "Persistence across reload, logout and character changes",
+    "Disabling/re-enabling with /cpfutility and reload",
+    "Measured CPU improvement, taint resolution and exhaustive native input/visual behavior"
+  ],
+  "openIssuesUnchanged": ["K04", "K05"],
+  "runtimeChangesInThisFollowUp": false,
+  "deploymentPerformedInThisFollowUp": false,
+  "liveWTFWrites": false,
+  "gameInputPerformedByAgent": false
+}

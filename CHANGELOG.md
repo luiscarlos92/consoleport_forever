@@ -1,7 +1,7 @@
 # ConsolePort Forever change history
 
 Status: maintained
-Reviewed: 2026-10-14
+Reviewed: 2026-10-15
 Evidence: [current status](docs/IMPLEMENTATION-STATUS.md),
 [historical chronology](docs/archive/ai-native-2026-10-11/IMPLEMENTATION-STATUS.pre-restructure.md).
 
@@ -23,6 +23,11 @@ read back exactly, other addons/WTF/links/prior backups preserved, WoW closed.
 Retail transitions, feedback, taint/persistence and comparable CPU acceptance
 remain pending. [Delivery](evidence/delivery/candidate39-independent-readback.json).
 [Runtime proof](docs/reference/SHARED-UTILITY-RING-RUNTIME-2026-10-14.md).
+
+October 15: initial tests across specs on one character received promising user
+feedback. This is preliminary scoped feedback; cross-character/class, detailed
+availability/editing/persistence/disable, measured CPU and taint acceptance remain
+unasserted. [Observation](evidence/utility-ring/candidate39-user-observation-2026-10-15.json).
 
 ## Automatic native-action trace — October 13–14, 2026
 

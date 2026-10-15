@@ -1,6 +1,7 @@
 # Pending deployment and cumulative acceptance
 
 Status: candidate.39 installed October 14, 2026 at 13:47:40 Toronto.
+Reviewed: 2026-10-15
 Standing user permission authorizes qualified Forever updates while playing unless
 explicitly prohibited. This Forever-only update ran with WoW closed. Independent
 verification confirms 59 installed files and preserves 2,847 other addon files,
@@ -14,7 +15,9 @@ review. It activates the shared Utility Ring on first eligible startup and retai
 unavailable choices. `/cpfutility off` plus reload disables without reinstalling;
 `on` plus reload resumes the retained master. Local and fresh Windows CI pass all
 90 runtime/source checks and 66 tooling tests with matching complete inventories.
-Manual cases below remain pending; K04 performance and K05 taint remain open.
+Initial same-character spec tests received promising user feedback October 15;
+the remaining manual cases below are unasserted. K04 performance and K05 taint
+remain open.
 [Qualification](../evidence/test-results/candidate39-shared-utility-qualification.json),
 [CI](../evidence/test-results/candidate39-fresh-ci.json).
 
@@ -36,6 +39,11 @@ already match 12.1.5-1 on disk; only Forever was selected for this update.
 Candidate.39 is installed; exact delivery is recorded in current status. All 90
 runtime/source checks and 66 tooling tests pass with complete inventories locally
 and in fresh Windows CI. The user owns next login/reload and these Retail checks:
+
+**October 15 observation:** the user reports promising initial tests across specs
+on one character. This does not yet establish complete acceptance of the spec
+switch/return sequence or the cross-character/class and other cases below.
+[Scoped record](../evidence/utility-ring/candidate39-user-observation-2026-10-15.json).
 
 1. Open the Utility Ring with the existing L2 + Options binding; preserve manual
    binding choices and verify native menus/feedback.

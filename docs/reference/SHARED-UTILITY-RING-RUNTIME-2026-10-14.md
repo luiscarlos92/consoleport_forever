@@ -1,7 +1,7 @@
 # Shared utility runtime implementation and qualification
 
 Status: maintained
-Reviewed: 2026-10-14
+Reviewed: 2026-10-15
 Evidence: [archive](../../addon/ConsolePort_Forever/Rings/Utility.lua),
 [native adapter](../../addon/ConsolePort_Forever/Adapters/SharedUtility.lua),
 [integration](../../addon/ConsolePort_Forever/Rings/UtilityRuntime.lua),
@@ -123,7 +123,13 @@ passes the same checks with matching complete source inventories.
 Offline counts do not prove Retail taint, hardware timing,
 pixels, engine persistence or CPU milliseconds; K04/K05 remain open.
 
-After qualified delivery, manual acceptance covers reload/opener/native menus,
+On October 15 the user reports promising initial tests across different specs on
+one character. This is a preliminary positive observation, without an individually
+reported ability/spec sequence, cross-character/class result, CPU measurement or
+taint/persistence acceptance.
+[Scoped user record](../../evidence/utility-ring/candidate39-user-observation-2026-10-15.json).
+
+Remaining manual acceptance covers reload/opener/native menus,
 Rite add/spec/class switch and return, item depletion/replenishment, deletion/Clear,
 native remove while open, reload/character persistence and off/reload/on/reload.
 Observe native feedback, unexpected chat/blocked-action errors and comparable CPU.

@@ -1,7 +1,7 @@
 # Known issues, limitations and deferred proof
 
 Status: maintained
-Reviewed: 2026-10-14
+Reviewed: 2026-10-15
 Evidence: [current status](IMPLEMENTATION-STATUS.md),
 [interaction analysis](TEMPORARY-MAIN-BANK-ANALYSIS-2026-10-11.md),
 [candidate.27 diagnosis](../evidence/action-recovery/candidate27-diagnosis.json),
@@ -22,9 +22,12 @@ These are explicit limits, not newly discovered failures:
 
 - Candidate.39 implements a shared default utility ring and independent persistent
   disable command. Runtime-source tests reject the four earlier experimental
-  admission defects and legacy ownership conflict. Native menus/feedback,
-  transitions, engine persistence/taint and measured CPU still require scoped
-  Retail acceptance; K04/K05 remain open. Installed state is recorded separately.
+  admission defects and legacy ownership conflict. October 15 initial spec tests
+  on one character received promising user feedback. Exact switch/return behavior,
+  cross-character/class transitions, native menus/feedback, engine persistence/
+  taint and measured CPU still require scoped Retail acceptance; K04/K05 remain
+  open. [User observation](../evidence/utility-ring/candidate39-user-observation-2026-10-15.json).
+  Installed state is recorded separately.
   [Runtime proof](reference/SHARED-UTILITY-RING-RUNTIME-2026-10-14.md).
 
 - Full custom secure modes, UI context takeover and hidden-control replacement

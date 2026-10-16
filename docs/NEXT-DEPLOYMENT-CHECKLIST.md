@@ -1,25 +1,17 @@
 # Pending deployment and cumulative acceptance
 
-Status: candidate.39 installed October 14, 2026 at 13:47:40 Toronto.
+Status: candidate.40 installed October 16, 2026 at 17:41:52 Toronto.
 Reviewed: 2026-10-16
-Standing user permission authorizes qualified Forever updates while playing unless
-explicitly prohibited. This Forever-only update ran with WoW closed. Independent
-verification confirms 59 installed files and preserves 2,847 other addon files,
-313 WTF files, 42 links/root anchors and all 25,824 prior backup files/2,360
-directories. No game input or WTF/vendor writes. The user owns next login/reload.
-[Installation](../evidence/delivery/live-install-candidate39.json),
-[readback](../evidence/delivery/candidate39-independent-readback.json).
+Evidence: [independent readback](../evidence/delivery/candidate40-independent-readback.json),
+[qualification](../evidence/test-results/candidate40-follower-qualification.json).
 
-Candidate.39 retains revision20/schema3; accepted characters need no new setup
-review. It activates the shared Utility Ring on first eligible startup and retains
-unavailable choices. `/cpfutility off` plus reload disables without reinstalling;
-`on` plus reload resumes the retained master. Local and fresh Windows CI pass all
-90 runtime/source checks and 66 tooling tests with matching complete inventories.
-Initial same-character spec tests received promising user feedback October 15;
-the remaining manual cases below are unasserted. K04 performance and K05 taint
-remain open.
-[Qualification](../evidence/test-results/candidate39-shared-utility-qualification.json),
-[CI](../evidence/test-results/candidate39-fresh-ci.json).
+The qualified Forever-only update ran while WoW was open. All 102 runtime/source
+checks and 70 tooling tests pass locally and in fresh Windows CI with complete
+matching current inventories. [CI](../evidence/test-results/candidate40-fresh-ci.json). Independent
+readback verifies 60 installed files and preservation of other addons,
+WTF, links/root anchors and prior backups. Schema3/revision20 remain; accepted
+characters need no new configuration review. No game input was sent. The user
+owns reload and the scoped cases below; K06, K04 and K05 remain open.
 
 ## Candidate.40 follower acceptance
 

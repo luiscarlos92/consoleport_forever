@@ -2,25 +2,42 @@
 
 Status: maintained
 Reviewed: 2026-10-16
-Evidence: [candidate.39 install](../evidence/delivery/live-install-candidate39.json),
-[independent readback](../evidence/delivery/candidate39-independent-readback.json),
-[fresh Windows CI](../evidence/test-results/candidate39-fresh-ci.json),
-[Circle acceptance](../evidence/circle/candidate34-live-acceptance-2026-10-12.json).
-
-## Candidate.40 preparation
-
-Candidate.40 implements the [candidate.40 runtime](reference/FOLLOWER-DUNGEON-RUNTIME-2026-10-16.md) under current user authorization.
-It uses native secure spell-name dispatch, zone-specific artwork and selective
-unprotected follower-child suppression. Shared numeric source/LAB state and
-native input remain owned by ConsolePort. All 102 runtime/source checks and 70
-tooling tests pass with complete matching 63-product/155-tool-test inventories.
-[Qualification](../evidence/test-results/candidate40-follower-qualification.json).
-Scoped delivery is next; candidate.39 remains installed until a new receipt.
-Retail toggling/rendering, taint and comparable CPU acceptance remain pending.
-Three refreshed dependency packages are prepared, excluded from running-game
-Forever-only delivery. Schema3/revision20 remain.
+Evidence: [candidate.40 install](../evidence/delivery/live-install-candidate40.json),
+[independent readback](../evidence/delivery/candidate40-independent-readback.json),
+[source qualification](../evidence/test-results/candidate40-follower-qualification.json).
 
 ## Installed checkpoint
+
+Candidate.40 was installed October 16 at **17:41:52 Toronto** from tested/pushed
+source `af09814458d23550e671e610da162dd05caadfa7`. It implements native localized spell-name dispatch for
+Dungeon Assistance, state-aware zone artwork and selective suppression of its
+unprotected standalone child. Other extra/zone abilities, numeric source/LAB
+identity and native release input retain their owners. Schema3/revision20 remain;
+accepted characters need no new configuration review.
+[Runtime and limits](reference/FOLLOWER-DUNGEON-RUNTIME-2026-10-16.md).
+
+All 102 runtime/source checks and 70 tooling tests pass with matching complete
+63-product and 155-tool/test inventories. The actual follower runtime exercises
+341 assertions and 128 paired selections; five defect controls fail as required.
+Fresh clean Windows CI passes the same suites with matching complete inventories
+and lock. [CI receipt](../evidence/test-results/candidate40-fresh-ci.json).
+[Qualification](../evidence/test-results/candidate40-follower-qualification.json). Only Forever was selected while WoW ran.
+Independent readback verifies 60 installed files,
+2,847 other addon files, 315 WTF files,
+42 links/root anchors and all 26,194 prior backup files/
+2,378 directories. All 64 intervening preflight-to-install WTF changes were
+retained. No agent dependency/WTF writes or game input.
+[Independent readback](../evidence/delivery/candidate40-independent-readback.json).
+
+The user owns reload and repeated lead/stop, artwork, combat, exit/re-entry and
+coexisting-extra-ability checks. Offline cast spies do not certify C/server
+toggle semantics, taint, hardware timing, pixels, persistence or Retail CPU.
+K06 remains open; K04/K05 are unchanged. BetterBags v0.5.16, Plater-v661 and
+DynamicCam 2.21.2 are qualified in preparation, excluded from this running-game
+delivery. Currently installed dependency versions remain supported and untouched.
+
+### Previous candidate.39 checkpoint
+
 
 Candidate.39 was installed October 14 at **13:47:40 Toronto** from tested/pushed
 source `80bbaf1dfb7624f56ef8b30e55ce7f943574c0c1`. It implements the shared default

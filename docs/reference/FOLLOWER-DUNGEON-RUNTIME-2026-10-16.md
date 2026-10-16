@@ -50,12 +50,24 @@ suppression; protected restoration defers through combat. No protected hide is
 authorized by public observations. The utility feature's existing disable plus
 reload restores native handling without deleting choices.
 
+## Delivery
+
+The qualified Forever-only update is installed; the user owns reload. The
+[artifact audit](../../evidence/delivery/candidate40-artifact-audit.json),
+[installation](../../evidence/delivery/live-install-candidate40.json) and
+[independent readback](../../evidence/delivery/candidate40-independent-readback.json)
+identify exact tested/pushed source and verify all 60 payload files plus preservation.
+Dependencies and WTF were untouched; no game input occurred. This is installation,
+not Retail lead/stop acceptance.
+
 ## Validation and remaining boundary
 
 The [full qualification](../../evidence/test-results/candidate40-follower-qualification.json)
 passes 102 runtime/source checks and 70 tooling tests against complete matching
 63-product and 155-tool/test inventories. The actual runtime records 341 assertions
 and 128 paired gestures. Exact reports and hashes are retained with that receipt.
+[Fresh Windows CI](../../evidence/test-results/candidate40-fresh-ci.json) passes the
+same suites from a clean checkout with matching complete inventories and lock.
 
 T101 runs the actual runtime and initialization caller with captured native ring,
 restricted compiler/dispatch, LAB state/getters, zone refresh and extra-container

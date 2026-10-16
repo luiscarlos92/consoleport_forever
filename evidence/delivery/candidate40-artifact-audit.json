@@ -1,0 +1,59 @@
+{
+  "path": "C:\\Users\\luisr\\Dev\\consoleport_forever\\dist\\2.0.0-candidate.40\\ConsolePort-Forever-Update-companion-only-follower-controls.zip",
+  "sha256": "905beb8288a4680ecf0b81a056b9a3ea623c9797f83f2c336ce8cceec77fc7c5",
+  "bytes": 532083,
+  "sourceCommit": "af09814458d23550e671e610da162dd05caadfa7",
+  "addonFolders": [
+    "ConsolePort_Forever"
+  ],
+  "dependencyUpdates": [],
+  "retiredAddonFolders": {},
+  "version": "2.0.0-candidate.40",
+  "testedDependencies": {
+    "seblindfors/Immersion": {
+      "version": "1.4.61",
+      "sha256": "b180a8cbd1a1d878377da5a85abfdc5576e0c04212f9e900e3e9ca505cde1f3e"
+    },
+    "SFX-WoW/Masque": {
+      "version": "12.1.0",
+      "sha256": "9e1da4827ae60bd25d7fc427cbeeb0dc297e59d53a71a29ae95223d3374bbfa0"
+    },
+    "curseforge/Immersion_ExtraFade": {
+      "version": "1.18.0",
+      "sha256": "89c59d0519b2392b41010dda34ec01d38c9c1702c644f5e57422341b1fec21c6"
+    },
+    "SLOKnightfall/BetterWardrobe": {
+      "version": "6.12.3",
+      "sha256": "abcba6be5535c15a581721192a5c4865e05b568dbac52d79c108c89e6c763d8c"
+    },
+    "seblindfors/ConsolePort": {
+      "version": "3.3.10",
+      "sha256": "6175a327b3b7505b6f1d79ef0adc96c7a65db3cc8220dd59e34de6658dbb4f49"
+    },
+    "xod-wow/LiteMount": {
+      "version": "12.1.5-1",
+      "sha256": "29f360a9dbffff201e9573c8113322d455a1fbec250eefc4578495a59e2febe7"
+    },
+    "Cidan/BetterBags": {
+      "version": "v0.5.16",
+      "sha256": "7ae808093064e973ab053a4bf63cb6f38318f6d2ab321f402d76006104f5cbc7"
+    },
+    "Tercioo/Plater-Nameplates": {
+      "version": "Plater-v661",
+      "sha256": "7e922151e5e9db7c8987c924887bdb952bac43ee65dc499ed75b0c46a41f9089"
+    },
+    "curseforge/DynamicCam": {
+      "version": "2.21.2",
+      "sha256": "53bbab7ad63ffd19c6b812aeb259515e8356618eb09bdc3f9ed97faf57136f2c"
+    }
+  },
+  "dependencyLockSHA256": "2689e5885392dcae38d3c3dc8b516e9f966290c98a37677f3546757d5958753d",
+  "independentPayloadHashesMatchSource": true,
+  "payloadFiles": 60,
+  "manifestOnlyOtherEntry": true,
+  "selectedFolders": [
+    "ConsolePort_Forever"
+  ],
+  "dependencyFilesSelected": 0,
+  "configurationFilesSelected": 0
+}

@@ -1,0 +1,24 @@
+{
+  "at": "2026-10-16T21:42:45.272082+00:00",
+  "candidate": "2.0.0-candidate.40",
+  "run": {
+    "conclusion": "success",
+    "createdAt": "2026-10-16T21:29:41Z",
+    "headSha": "af09814458d23550e671e610da162dd05caadfa7",
+    "status": "completed",
+    "updatedAt": "2026-10-16T21:39:41Z",
+    "url": "https://github.com/luiscarlos92/consoleport_forever/actions/runs/38969746832"
+  },
+  "runtimeChecks": 102,
+  "toolingTests": 70,
+  "runtimeReportSHA256": "e6eabfc7b7947ab320d1db6ba9775b2821b996bc60d21177cc8dc3e98d3aaff3",
+  "toolingReportSHA256": "f5b66ab8403251cf417f93820a21a0dca1abdc33c5833c6b0122d71c54e13f92",
+  "pinnedDownloadReportSHA256": "ad93706a33f1e2a788f2a8589eaf69ac03fd2f0598924e8ae13f9fe813631bd3",
+  "productFiles": 63,
+  "toolingFiles": 155,
+  "completeInventoriesMatchLocalQualification": true,
+  "lockMatchesLocal": true,
+  "officialPackageDownloadsVerified": 9,
+  "nativeFollowerAndIntegrationReconstructionStagePassed": true,
+  "proofLimit": "Clean Windows offline source/compiler/simulation proof; not Retail C/server toggling, rendering, taint, hardware or CPU acceptance."
+}

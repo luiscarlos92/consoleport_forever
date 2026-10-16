@@ -15,8 +15,12 @@ Candidate.40 compiles Dungeon Assistance through native localized spell-name
 dispatch, retains numeric ring/LAB identity, uses native zone-state artwork and
 selectively suppresses only the matching unprotected follower control. Shared
 extra/zone abilities, release handling and archive semantics remain native.
-All 102 runtime/source checks and 70 tooling tests pass with complete current
-inventories. Delivery is tracked in current status; Retail lead/stop
+All 102 runtime/source checks and 70 tooling tests pass locally and in fresh
+Windows CI with complete current
+inventories. Installed at 17:41:52 Toronto from tested/pushed source
+`af09814458d23550e671e610da162dd05caadfa7`; 60 Forever files read back exactly while WoW
+ran, with other addons/WTF/links/prior backups preserved. No game input.
+[Delivery](evidence/delivery/candidate40-independent-readback.json). Retail lead/stop
 acceptance remains open. Three dependency updates are qualified in preparation,
 excluded from this Forever-only update. Schema3/revision20 remain.
 [Implementation and limits](docs/reference/FOLLOWER-DUNGEON-RUNTIME-2026-10-16.md).

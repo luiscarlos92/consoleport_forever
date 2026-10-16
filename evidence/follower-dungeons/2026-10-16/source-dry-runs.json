@@ -1,0 +1,47 @@
+{
+  "date": "2026-10-16",
+  "sourceHead": "594ebaeba621f19075e9a9e83926c8b5c74bc2f9",
+  "status": "passed",
+  "cases": [
+    "Actual Blizzard Refresh versus locked LAB GetTexture: modeled zone icon changes, generic spell icon stays fixed",
+    "Actual Blizzard OnClick versus pinned SECURE_ACTIONS.spell: three arguments with toggle true versus two arguments; one call each",
+    "Actual locked ConsolePort zone auto-assignment: plain transient spell",
+    "Actual Forever Utility.Build: transient payload preserved",
+    "Actual Blizzard container: ExtraAction priority 100, ZoneAbility priority 200; removing zone sibling preserves extra"
+  ],
+  "limits": [
+    "Spell IDs and C API icon/cast responses are synthetic",
+    "No engine toggle semantics, hardware duplicate dispatch, combat authority, taint, actual pixels, saved live ring type or Retail persistence established",
+    "Container test does not qualify hiding all ZoneAbilityFrame or pooled buttons"
+  ],
+  "inputs": [
+    {
+      "file": "evidence/follower-dungeons/2026-10-16/09b9db79-Blizzard_ZoneAbility_ZoneAbility.lua",
+      "sha256": "3725946070cb3b92d4b9b30035bc8a1bdac60ef7a4c77014f71d7fbfaa756c55"
+    },
+    {
+      "file": "evidence/native/Blizzard_FrameXML/SecureTemplates.lua",
+      "sha256": "5fd1efcbfc20b4d426187f55dbee52542d37befd1ef52082db1f466f1049929a"
+    },
+    {
+      "file": "dependencies/unpacked/ConsolePort/3.3.10/ConsolePort_Rings/Controller/Auto.lua",
+      "sha256": "c21476f2cbd0a188109da7731579dd1b297f9b43ea5c107f49064eb38e4cd580"
+    },
+    {
+      "file": "dependencies/unpacked/ConsolePort/3.3.10/ConsolePort/Libs/External/LibActionButton-1.0/LibActionButton-1.0.lua",
+      "sha256": "971cb26e95e06787f2f7d9a72dcfcda8c3ab46634495b924dff0f3eb4de1e80a"
+    },
+    {
+      "file": "evidence/follower-dungeons/2026-10-16/09b9db79-Blizzard_UIPanels_Game_Shared_ExtraAbilityContainer.lua",
+      "sha256": "a7b8cd59dd1d1a47ba89a2af92ca7f24cfc74c2fcf6b8cb74b82ec5904b2d6f4"
+    },
+    {
+      "file": "addon/ConsolePort_Forever/Core.lua",
+      "sha256": "82d58af0dae095215454d86b85a351834a4c4bf21519f549904c56d504dad8f6"
+    },
+    {
+      "file": "addon/ConsolePort_Forever/Rings/Utility.lua",
+      "sha256": "688569b785fb69def8861604036ac9eba74dd7e51d92b0613db7b4b8b1d965ce"
+    }
+  ]
+}

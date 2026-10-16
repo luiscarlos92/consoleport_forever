@@ -1,0 +1,12 @@
+{
+  "date": "2026-10-16",
+  "source": "direct user clarification during the isolated proxy experiment",
+  "gesture": "Open the ring, move selection to the dungeon follower entry, then release to activate",
+  "reportedResult": "Unpredictable follow/lead behavior; the user cannot tell which command it will perform",
+  "limits": [
+    "No controller event stream or cast count was captured",
+    "Ordinary paired release did not reproduce the symptom in the offline execution harness",
+    "No extra release, double cast or engine toggle cause is established by this report"
+  ],
+  "gameInputByAgent": false
+}

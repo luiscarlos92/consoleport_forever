@@ -1,7 +1,7 @@
 # Runtime state and coverage matrix
 
 Status: maintained
-Reviewed: 2026-10-14
+Reviewed: 2026-10-16
 Evidence: [routing](../addon/ConsolePort_Forever/TemporaryRouting.lua),
 [mode policy](../addon/ConsolePort_Forever/ModePolicy.lua),
 [bootstrap](../addon/ConsolePort_Forever/ConsolePort_Forever.lua),
@@ -22,6 +22,15 @@ It does not claim blanket Retail acceptance. [Requirements](REQUIREMENTS.md) own
 [testing](TESTING.md) explains what offline coverage can establish.
 
 ## Context transitions
+
+Follower-dungeon entry/exit, native follower-state changes, coexistence with extra
+and other zone abilities, held-ring transitions, combat and pooled-button reuse
+are candidate.40 cases under R15/K06. Native name dispatch is precompiled outside
+protected-write guards; public icon events never cast or rebuild rings. Only
+the identified unprotected follower child is suppressed. Unknown state, disable,
+editor, owner loss and pool reuse restore owned visibility, deferring protected
+restoration until combat ends. Actual Retail toggle/rendering acceptance remains
+pending; see the [candidate.40 runtime](reference/FOLLOWER-DUNGEON-RUNTIME-2026-10-16.md).
 
 Candidate.39 adds shared default utility choice projection after public/native
 readiness, with first eligible activation and persistent independent disable.

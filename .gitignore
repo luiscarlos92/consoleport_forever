@@ -6,6 +6,13 @@ __pycache__/
 dependencies/cache/
 dependencies/unpacked/
 
+# Reconstruct new research inputs from tracked pinned manifests; no new vendor
+# source or user screenshots are published with this personal implementation.
+/evidence/integration-contracts-2026-10-16/*/
+/evidence/follower-dungeons/2026-10-16/*.lua
+/evidence/follower-dungeons/2026-10-16/*.xml
+/evidence/follower-dungeons/2026-10-16/user-*.png
+
 # Imported legacy upstream checkouts and reproducible package/reference caches.
 # Their bytes remain inside the repo workspace and are indexed in the migration
 # manifest; development scripts, documents and evidence are tracked separately.

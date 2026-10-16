@@ -1,0 +1,70 @@
+{
+  "at": "2026-10-16T21:10:56.314501+00:00",
+  "lockSHA256": "2689e5885392dcae38d3c3dc8b516e9f966290c98a37677f3546757d5958753d",
+  "freshStableReceiptSHA256": "7f548de979dce4cf49de140dbaba535891278da3717a5e1ff96ecbb3a2b816db",
+  "allCurrent": true,
+  "changedPackages": [
+    {
+      "repo": "Cidan/BetterBags",
+      "before": "v0.5.14",
+      "after": "v0.5.16",
+      "archiveSHA256": "7ae808093064e973ab053a4bf63cb6f38318f6d2ab321f402d76006104f5cbc7",
+      "changedFiles": 90,
+      "addedFiles": [
+        "BetterBags/debug/perf/engine.lua",
+        "BetterBags/debug/perf/format.lua",
+        "BetterBags/debug/perf/sessions.lua",
+        "BetterBags/frames/flamegraph.lua",
+        "BetterBags/frames/perfpane.lua",
+        "BetterBags/frames/tracechart.lua",
+        "BetterBags/util/cursorplacement.lua"
+      ],
+      "removedFiles": [
+        "BetterBags/debug/profile.lua"
+      ],
+      "folders": [
+        "BetterBags"
+      ]
+    },
+    {
+      "repo": "Tercioo/Plater-Nameplates",
+      "before": "Plater-v658",
+      "after": "Plater-v661",
+      "archiveSHA256": "7e922151e5e9db7c8987c924887bdb952bac43ee65dc499ed75b0c46a41f9089",
+      "changedFiles": 28,
+      "addedFiles": [],
+      "removedFiles": [],
+      "folders": [
+        "Plater"
+      ]
+    },
+    {
+      "repo": "curseforge/DynamicCam",
+      "before": "2.21.1",
+      "after": "2.21.2",
+      "archiveSHA256": "53bbab7ad63ffd19c6b812aeb259515e8356618eb09bdc3f9ed97faf57136f2c",
+      "changedFiles": 10,
+      "addedFiles": [],
+      "removedFiles": [
+        "DynamicCam/Libs/LibStub/tests/test.lua",
+        "DynamicCam/Libs/LibStub/tests/test2.lua",
+        "DynamicCam/Libs/LibStub/tests/test3.lua",
+        "DynamicCam/Libs/LibStub/tests/test4.lua"
+      ],
+      "folders": [
+        "DynamicCam"
+      ]
+    }
+  ],
+  "versionedContractFilesVerified": 28,
+  "oldCapturesPreserved": true,
+  "nativeFollowerCapturesVerified": 18,
+  "contractQualification": {
+    "BetterBags": "Native item/container/context methods execute against both old v0.5.14 and new v0.5.16 captures. Optional Perf registration is modeled; no full upstream performance certification.",
+    "DynamicCam": "Core, DefaultSettings and AceDB contracts have unchanged hashes; native AceDB lifecycle fixtures exercise retained 2.21.1 and new 2.21.2 exact version guards.",
+    "Plater": "No Forever profile adapter. Changed official package retained intact; TOC closure, syntax and notices use required gates."
+  },
+  "selectedForThisDeployment": [],
+  "reason": "WoW running: qualified exception selects Forever alone; prepared dependency replacement remains pending closed-game delivery.",
+  "proofLimit": "Offline native source/closure/notices qualification does not establish Retail taint, pixels, CPU or engine acceptance."
+}

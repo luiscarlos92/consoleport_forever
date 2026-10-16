@@ -1,11 +1,50 @@
 # Validation and proof boundaries
 
 Status: maintained
-Reviewed: 2026-10-14
+Reviewed: 2026-10-16
 Evidence: [runner](../tools/test-all.cjs), [tool tests](../tools/run_tool_tests.py),
 [CI](../.github/workflows/tests.yml), [test instructions](../tests/AGENTS.md).
 
 ## Entry points
+
+T101/T102 exercise the actual follower runtime/initialization with native secure
+input/dispatch, normalized LAB spell state/getters, zone refresh and extra-container
+ordering. They cover 128 selections, icon invalidation, pool reuse, disable,
+Edit Mode, unknown context, owner loss and protected restoration. A 120-event
+cooldown burst must coalesce without a ring rebuild; five faulty variants fail.
+T88 also loads the module with follower APIs unavailable. Cast APIs record name
+requests without inventing engine lead/stop semantics. See the [candidate.40 runtime](reference/FOLLOWER-DUNGEON-RUNTIME-2026-10-16.md).
+
+T95/T96 test preserved native entry identity and LAB spell feedback with separate
+compiled secure metadata, actual auto-assignment/removal/re-entry, actual shared
+admission, default/manual/other-set scope and owner/readiness restoration.
+T97/T98 execute actual RestrictedFrames and RestrictedEnvironment source to
+reject unsupported combat identity reads, public callback returns/protected
+writes and invented casting authority. T99/T100 exercise actual LAB spell
+getters, ConsolePort texture composition and Blizzard zone Refresh through
+later redraws, override/reuse/readiness, native feedback and foreign ownership.
+Ten new fault controls must fail. These are offline prototypes; none qualifies
+Retail execution or selective hiding. [Extended findings and live boundary](reference/FOLLOWER-DUNGEON-ADMISSION-BOUNDARIES-2026-10-16.md).
+
+T93/T94 extend the isolated follower experiment through the actual native
+custom-binding map, `/click` handler and secure proxy/zone handler. Ninety-six
+selections, permission/readiness failures, public reconciliation, secure combat
+transition clearing and modeled macro rejection are checked. Actual native
+SetContent and automatic assignment reproduce wrong-target reuse and duplicate
+plain-spell rows. Four fault controls must fail. The conservative prototype
+disables combat access and is not a runtime-qualified repair; macro engine
+permission and pool event ordering remain modeled.
+[Proxy-chain findings](reference/FOLLOWER-DUNGEON-PROXY-PROBE-2026-10-16.md).
+
+T91/T92 add an isolated follower-control execution experiment. Actual native
+ring selection, restricted compiler/wrappers, modified-attribute lookup and
+secure spell/click dispatch run with the real shared-utility admission adapter
+present/absent. Normal gestures, sticky/neutral, modifiers, modeled combat,
+held reconciliation, accept binding and deliberately replayed release are
+distinguished. Four fault variants must fail. C cast/toggle semantics and live
+event delivery remain unproved. These older experiments did not modify the addon;
+candidate.40 is qualified separately below.
+[Findings and limits](reference/FOLLOWER-DUNGEON-EXECUTION-PROBE-2026-10-16.md).
 
 T87-T90 exercise candidate.39's actual shared-utility runtime model, native
 admission/rebuild/edit boundaries, startup seed, typed migration, independent
@@ -55,6 +94,15 @@ CI separately retrieves/verifies pinned official dependency archives, then runs
 the same full checks. Local tests assume qualified cached inputs and do not fetch
 network packages or use live game configuration. Simulations use guarded fresh
 scratch copies. `tools/local` scripts can be hashed/parsed; they must not execute.
+
+New follower source copies and versioned integration inputs stay local/ignored;
+tracked manifests identify their exact bytes. After pinned archive retrieval,
+`tools/capture_integration_contracts.py --from-manifest evidence/integration-contracts-2026-10-16/manifest.json --native-manifest evidence/follower-dungeons/2026-10-16/source-manifest.json --native-manifest evidence/follower-dungeons/2026-10-16/proxy-source-manifest.json`
+reconstructs them before documentation/full tests. CI runs this explicit network
+stage. Four tooling tests reject escapes, unpinned identities, wrong downloads,
+lock mismatch and existing drift; valid reuse performs no fetch. A
+[fresh reconstruction](../evidence/follower-dungeons/2026-10-16/candidate40-clean-reconstruction.json)
+also verified all 46 actual inputs. Personal screenshots remain local.
 
 ## Relevant suites and mandatory gates
 

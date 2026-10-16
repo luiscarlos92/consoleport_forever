@@ -1,7 +1,7 @@
 # Pending deployment and cumulative acceptance
 
 Status: candidate.39 installed October 14, 2026 at 13:47:40 Toronto.
-Reviewed: 2026-10-15
+Reviewed: 2026-10-16
 Standing user permission authorizes qualified Forever updates while playing unless
 explicitly prohibited. This Forever-only update ran with WoW closed. Independent
 verification confirms 59 installed files and preserves 2,847 other addon files,
@@ -20,6 +20,23 @@ the remaining manual cases below are unasserted. K04 performance and K05 taint
 remain open.
 [Qualification](../evidence/test-results/candidate39-shared-utility-qualification.json),
 [CI](../evidence/test-results/candidate39-fresh-ci.json).
+
+## Candidate.40 follower acceptance
+
+The [candidate.40 runtime](reference/FOLLOWER-DUNGEON-RUNTIME-2026-10-16.md) documents the candidate and offline proof boundaries.
+After the Forever-only deployment and user-owned reload:
+
+1. Open the usual ring, select Dungeon Assistance and release. Wait for the
+   native cooldown, select again and repeat. Verify alternating lead/stop,
+   matching state artwork and one corresponding command per selection.
+2. Verify the standalone follower control is absent with the owned ring ready;
+   actual extra actions and other zone abilities remain visible/usable.
+3. Check exit/re-entry, combat, Edit Mode and utility disable plus reload.
+   Unknown/unready contexts retain the native fallback. No game input is automated.
+
+BetterBags v0.5.16, Plater-v661 and DynamicCam 2.21.2 are qualified in preparation;
+dependency replacement requires closed WoW and is excluded from this update.
+K06 remains open until the user reports the relevant cases; K04/K05 are unchanged.
 
 ## Previous candidate.38 diagnostic checkpoint
 

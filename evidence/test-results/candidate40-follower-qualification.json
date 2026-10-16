@@ -1,0 +1,54 @@
+{
+  "at": "2026-10-16T21:29:09.144658+00:00",
+  "candidate": "2.0.0-candidate.40",
+  "testedParentCommit": "594ebaeba621f19075e9a9e83926c8b5c74bc2f9",
+  "runtimeChecks": 102,
+  "toolingTests": 70,
+  "overallPassed": true,
+  "completeProductInventoryMatches": true,
+  "completeRuntimeToolInventoryMatches": true,
+  "completeToolingInventoryMatches": true,
+  "productFiles": 63,
+  "toolingFiles": 155,
+  "changedProductFiles": [
+    "addon/ConsolePort_Forever/Adapters/BetterBags.lua",
+    "addon/ConsolePort_Forever/Adapters/DynamicCam.lua",
+    "addon/ConsolePort_Forever/ConsolePort_Forever.toc",
+    "addon/ConsolePort_Forever/Rings/FollowerDungeon.lua",
+    "addon/ConsolePort_Forever/Rings/UtilityRuntime.lua"
+  ],
+  "runtimeReportSHA256": "35373c7f91e43fcb696f15249b2d4e2f8e9308b931c3755e97c673b468d41c5f",
+  "toolingReportSHA256": "8e00c2d576d601d570f727f0985e54736bbd4b1faa594bec1d787eff1fd383b0",
+  "lockSHA256": "2689e5885392dcae38d3c3dc8b516e9f966290c98a37677f3546757d5958753d",
+  "freshStableCheckSHA256": "7f548de979dce4cf49de140dbaba535891278da3717a5e1ff96ecbb3a2b816db",
+  "configurationRevision": 20,
+  "storeSchema": 3,
+  "followerRuntimeProof": {
+    "checks": 341,
+    "coalescedCooldownBurst": 120,
+    "gestures": 128,
+    "limit": "Cast APIs record requests; no invented C/server toggle semantics. Pool, protection, native texture pixels and event delivery are modeled; Retail acceptance remains pending.",
+    "nativeLABStatePreserved": true,
+    "nativeNameRequests": 129,
+    "poolReuseEditModeUnknownAndDisableCovered": true,
+    "protectedCombatDispatch": "native SECURE_ACTIONS.spell -> CastSpellByName",
+    "selectiveNativeSuppression": true,
+    "sourceIdentityPreserved": true
+  },
+  "rejectedRuntimeControls": [
+    "old numeric dispatch",
+    "stale generic icon",
+    "blanket shared-container hiding",
+    "lost LAB spell state",
+    "routine cooldown full rebuild"
+  ],
+  "reconstructionProofSHA256": "2d55e19d7cbaa027802752590138ee003632308701fa615d3947b339a9e144a7",
+  "qualifiedPreparedDependencyUpdates": [
+    "Cidan/BetterBags",
+    "Tercioo/Plater-Nameplates",
+    "curseforge/DynamicCam"
+  ],
+  "selectedDependencyUpdates": [],
+  "deploymentScope": "Forever alone under current authorization; user owns reload",
+  "proofLimit": "Cast API spies establish requests, not C/server toggle semantics. Hardware event timing, taint, rendered pixels, persistence and Retail CPU acceptance remain pending. K06 remains open."
+}

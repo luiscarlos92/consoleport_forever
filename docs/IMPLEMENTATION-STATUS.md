@@ -1,11 +1,24 @@
 # Current implementation and acceptance
 
 Status: maintained
-Reviewed: 2026-10-15
+Reviewed: 2026-10-16
 Evidence: [candidate.39 install](../evidence/delivery/live-install-candidate39.json),
 [independent readback](../evidence/delivery/candidate39-independent-readback.json),
 [fresh Windows CI](../evidence/test-results/candidate39-fresh-ci.json),
 [Circle acceptance](../evidence/circle/candidate34-live-acceptance-2026-10-12.json).
+
+## Candidate.40 preparation
+
+Candidate.40 implements the [candidate.40 runtime](reference/FOLLOWER-DUNGEON-RUNTIME-2026-10-16.md) under current user authorization.
+It uses native secure spell-name dispatch, zone-specific artwork and selective
+unprotected follower-child suppression. Shared numeric source/LAB state and
+native input remain owned by ConsolePort. All 102 runtime/source checks and 70
+tooling tests pass with complete matching 63-product/155-tool-test inventories.
+[Qualification](../evidence/test-results/candidate40-follower-qualification.json).
+Scoped delivery is next; candidate.39 remains installed until a new receipt.
+Retail toggling/rendering, taint and comparable CPU acceptance remain pending.
+Three refreshed dependency packages are prepared, excluded from running-game
+Forever-only delivery. Schema3/revision20 remain.
 
 ## Installed checkpoint
 

@@ -1,7 +1,7 @@
 # Controller behavior specification
 
 Status: maintained
-Reviewed: 2026-10-14
+Reviewed: 2026-10-16
 Evidence: [binding policy](../addon/ConsolePort_Forever/BindingPolicy.lua),
 [shipped reference](../addon/ConsolePort_Forever/Reference.lua),
 [temporary routing](../addon/ConsolePort_Forever/TemporaryRouting.lua),
@@ -16,6 +16,15 @@ explicit remove/Clear wins. Automatic rebuilds wait while held; same-context nat
 edits retain immediate redraw. `/cpfutility off` then `/reload` restores normal
 native handling without reinstalling; on plus reload resumes saved shared choices.
 [Runtime contract](reference/SHARED-UTILITY-RING-RUNTIME-2026-10-14.md).
+
+October 16 intended follower-dungeon behavior: the Utility Ring should expose
+native current lead/stop artwork and one toggle per selection, with the duplicate
+standalone follower button suppressed and other extra/zone abilities preserved.
+Candidate.40 implements localized native spell-name dispatch and zone artwork
+for the numeric default-ring follower entry, with selective unprotected child
+suppression after readiness. The existing hold/release gesture remains native.
+Retail lead/stop alternation and rendered preservation remain pending; see the
+[candidate.40 runtime](reference/FOLLOWER-DUNGEON-RUNTIME-2026-10-16.md).
 
 The expanded HUD has Base/L2/R2/L2R2 banks with eight cells each: four D-pad and
 four face cells. The unmodified faces are reserved/shared commands, leaving 28

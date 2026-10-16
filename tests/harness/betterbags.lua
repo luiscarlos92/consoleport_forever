@@ -62,6 +62,8 @@ local addon={isRetail=true,Bags={Backpack={frame=paneA},Bank={frame=paneB}},modu
 local events={messages={},RegisterMessage=function(self,name,fn) self.messages[name]=fn end}
 addon.modules.Events=events
 addon.modules.Context={New=function() return {} end}
+-- New upstream perf registration is metadata/optional tracing, not item input.
+addon.modules.Perf={RegisterPrototype=function() end}
 addon.modules.Themes={GetItemButton=function() return decoration end}
 function addon:GetModule(name) self.modules[name]=self.modules[name] or {} return self.modules[name] end
 function addon:NewModule(name) self.modules[name]={} return self.modules[name] end

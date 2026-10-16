@@ -1,0 +1,137 @@
+{
+  "date": "2026-10-16",
+  "stage": "isolated research tooling; no runtime repair or release qualification",
+  "sourceHead": "594ebaeba621f19075e9a9e83926c8b5c74bc2f9",
+  "runtimeChecks": 92,
+  "toolingTests": 66,
+  "allPassed": true,
+  "completeInventories": {
+    "productFiles": 62,
+    "toolTestFiles": 146,
+    "matchCurrentFiles": true
+  },
+  "probe": {
+    "cases": {
+      "1": {
+        "adapter": false,
+        "casts": 140
+      },
+      "2": {
+        "adapter": true,
+        "casts": 140
+      }
+    },
+    "checks": 1551,
+    "genericCastArguments": 2,
+    "gestures": 321,
+    "inputEdges": 971,
+    "limits": "C cast semantics/taint/hardware timing remain modeled; argument difference is not a demonstrated cause of Retail reversal.",
+    "nativeAcceptCasts": 1,
+    "nativeClickEntrySupported": false,
+    "nativeDelegateCasts": 2,
+    "nativeZoneCastArguments": 3,
+    "nativeZoneToggle": true,
+    "pairedGestureDoubleDispatchReproduced": false,
+    "replayedReleaseCalls": 1,
+    "traceSamples": {
+      "1": {
+        "button": "LeftButton",
+        "casts": 280,
+        "down": false,
+        "release": "spell",
+        "shown": false
+      },
+      "2": {
+        "button": "LeftButton",
+        "casts": 280,
+        "down": true,
+        "shown": true
+      },
+      "3": {
+        "button": "LeftButton",
+        "casts": 281,
+        "down": false,
+        "release": "spell",
+        "shown": false
+      },
+      "4": {
+        "button": "LeftButton",
+        "casts": 281,
+        "down": true,
+        "shown": false
+      },
+      "5": {
+        "button": "LeftButton",
+        "casts": 281,
+        "down": false,
+        "shown": true
+      },
+      "6": {
+        "button": "LeftButton",
+        "casts": 281,
+        "down": true,
+        "shown": true
+      },
+      "7": {
+        "button": "LeftButton",
+        "casts": 282,
+        "down": false,
+        "release": "spell",
+        "shown": false
+      },
+      "8": {
+        "button": "LeftButton",
+        "casts": 282,
+        "down": true,
+        "shown": true
+      },
+      "9": {
+        "button": "LeftButton",
+        "casts": 283,
+        "down": false,
+        "release": "spell",
+        "shown": false
+      },
+      "10": {
+        "button": "LeftButton",
+        "casts": 284,
+        "down": false,
+        "release": "spell",
+        "shown": false
+      },
+      "11": {
+        "button": "LeftButton",
+        "casts": 284,
+        "down": true,
+        "shown": true
+      },
+      "12": {
+        "button": "LeftButton",
+        "casts": 284,
+        "down": false,
+        "shown": false
+      }
+    }
+  },
+  "negativeControls": [
+    "duplicate generic cast",
+    "stale native release type",
+    "lost native zone toggle request",
+    "bypassed native click access predicate"
+  ],
+  "reports": {
+    "execution-runtime-results.json": "60cfb2682b963f74ebefd9bc76513908e7f3c389c059ddc9765af35708bd571c",
+    "execution-tooling-results.json": "35f18123b80f16674342f3c5940fd2e97d0f688dff71962c869dcc3e0b1c890e"
+  },
+  "researchSourceManifestSHA256": "9f2dc5fef802d6a59d7ca114f01335d5ae429404665de993a8b80c0b8742abf6",
+  "pinnedLockSHA256": "f74caaefdb66a16c87187554770a288b0ba39febe66511b3a3f07145a436061b",
+  "addonChanges": false,
+  "installedChanges": false,
+  "gameInput": false,
+  "limitations": [
+    "CastSpellByID is a recording spy; NPC/aura/server toggle semantics are not modeled",
+    "Additional release is injected explicitly; actual Retail event stream is unknown",
+    "Direct secure click probe is not a qualified ring representation or Retail taint/combat proof",
+    "Fresh discovery identifies three unrelated unqualified updates; no package lock update or deployment"
+  ]
+}

@@ -1,0 +1,67 @@
+[
+  {
+    "sha256": "3725946070cb3b92d4b9b30035bc8a1bdac60ef7a4c77014f71d7fbfaa756c55",
+    "source": "https://raw.githubusercontent.com/Gethe/wow-ui-source/09b9db7948abc9b9648dedaab51eb0cf3ee67b31/Interface/AddOns/Blizzard_ZoneAbility/ZoneAbility.lua",
+    "file": "evidence\\follower-dungeons\\2026-10-16\\09b9db79-Blizzard_ZoneAbility_ZoneAbility.lua"
+  },
+  {
+    "sha256": "a4856f483a235024d0069c7e0da6c4e84cb1a465fe5f47c4698d2ee212cc7b1a",
+    "source": "https://raw.githubusercontent.com/Gethe/wow-ui-source/09b9db7948abc9b9648dedaab51eb0cf3ee67b31/Interface/AddOns/Blizzard_ZoneAbility/ZoneAbility.xml",
+    "file": "evidence\\follower-dungeons\\2026-10-16\\09b9db79-Blizzard_ZoneAbility_ZoneAbility.xml"
+  },
+  {
+    "sha256": "69847349453b51e4876a8ff5bb1fc7909b0f5d818d0c756e783294d8fe9ae258",
+    "source": "https://raw.githubusercontent.com/Gethe/wow-ui-source/09b9db7948abc9b9648dedaab51eb0cf3ee67b31/Interface/AddOns/Blizzard_APIDocumentationGenerated/ZoneAbilityDocumentation.lua",
+    "file": "evidence\\follower-dungeons\\2026-10-16\\09b9db79-Blizzard_APIDocumentationGenerated_ZoneAbilityDocumentation.lua"
+  },
+  {
+    "sha256": "74a93fbf7373dc0a3914d80ee09302fec5498486c8989e85e72467d73e49e256",
+    "source": "https://raw.githubusercontent.com/Gethe/wow-ui-source/09b9db7948abc9b9648dedaab51eb0cf3ee67b31/Interface/AddOns/Blizzard_APIDocumentationGenerated/PartyInfoDocumentation.lua",
+    "file": "evidence\\follower-dungeons\\2026-10-16\\09b9db79-Blizzard_APIDocumentationGenerated_PartyInfoDocumentation.lua"
+  },
+  {
+    "sha256": "a7b8cd59dd1d1a47ba89a2af92ca7f24cfc74c2fcf6b8cb74b82ec5904b2d6f4",
+    "source": "https://raw.githubusercontent.com/Gethe/wow-ui-source/09b9db7948abc9b9648dedaab51eb0cf3ee67b31/Interface/AddOns/Blizzard_UIPanels_Game/Shared/ExtraAbilityContainer.lua",
+    "file": "evidence\\follower-dungeons\\2026-10-16\\09b9db79-Blizzard_UIPanels_Game_Shared_ExtraAbilityContainer.lua"
+  },
+  {
+    "sha256": "cdc57dd44d052ad47bcaea6f8d4f918b90628b8054191467c8fed2fba138b095",
+    "source": "https://raw.githubusercontent.com/Gethe/wow-ui-source/09b9db7948abc9b9648dedaab51eb0cf3ee67b31/Interface/AddOns/Blizzard_UIPanels_Game/Shared/ExtraAbilityContainer.xml",
+    "file": "evidence\\follower-dungeons\\2026-10-16\\09b9db79-Blizzard_UIPanels_Game_Shared_ExtraAbilityContainer.xml"
+  },
+  {
+    "sha256": "3725946070cb3b92d4b9b30035bc8a1bdac60ef7a4c77014f71d7fbfaa756c55",
+    "source": "https://raw.githubusercontent.com/Gethe/wow-ui-source/18c6d677b605b312f3d813d498404631fb941977/Interface/AddOns/Blizzard_ZoneAbility/ZoneAbility.lua",
+    "file": "evidence\\follower-dungeons\\2026-10-16\\18c6d677-Blizzard_ZoneAbility_ZoneAbility.lua"
+  },
+  {
+    "sha256": "a4856f483a235024d0069c7e0da6c4e84cb1a465fe5f47c4698d2ee212cc7b1a",
+    "source": "https://raw.githubusercontent.com/Gethe/wow-ui-source/18c6d677b605b312f3d813d498404631fb941977/Interface/AddOns/Blizzard_ZoneAbility/ZoneAbility.xml",
+    "file": "evidence\\follower-dungeons\\2026-10-16\\18c6d677-Blizzard_ZoneAbility_ZoneAbility.xml"
+  },
+  {
+    "sha256": "64259cb2e84655af2e60e40085738e362b56b1db730598b1dfbade63962f3a8e",
+    "source": "https://raw.githubusercontent.com/Gethe/wow-ui-source/18c6d677b605b312f3d813d498404631fb941977/Interface/AddOns/Blizzard_APIDocumentationGenerated/ZoneAbilityDocumentation.lua",
+    "file": "evidence\\follower-dungeons\\2026-10-16\\18c6d677-Blizzard_APIDocumentationGenerated_ZoneAbilityDocumentation.lua"
+  },
+  {
+    "sha256": "8bcc5fed8ddc03c06163da0bcd5a70fcc31afbdc53d21dbd3e9300ce7e3f89ef",
+    "source": "https://raw.githubusercontent.com/Gethe/wow-ui-source/18c6d677b605b312f3d813d498404631fb941977/Interface/AddOns/Blizzard_APIDocumentationGenerated/PartyInfoDocumentation.lua",
+    "file": "evidence\\follower-dungeons\\2026-10-16\\18c6d677-Blizzard_APIDocumentationGenerated_PartyInfoDocumentation.lua"
+  },
+  {
+    "sha256": "a7b8cd59dd1d1a47ba89a2af92ca7f24cfc74c2fcf6b8cb74b82ec5904b2d6f4",
+    "source": "https://raw.githubusercontent.com/Gethe/wow-ui-source/18c6d677b605b312f3d813d498404631fb941977/Interface/AddOns/Blizzard_UIPanels_Game/Shared/ExtraAbilityContainer.lua",
+    "file": "evidence\\follower-dungeons\\2026-10-16\\18c6d677-Blizzard_UIPanels_Game_Shared_ExtraAbilityContainer.lua"
+  },
+  {
+    "sha256": "cdc57dd44d052ad47bcaea6f8d4f918b90628b8054191467c8fed2fba138b095",
+    "source": "https://raw.githubusercontent.com/Gethe/wow-ui-source/18c6d677b605b312f3d813d498404631fb941977/Interface/AddOns/Blizzard_UIPanels_Game/Shared/ExtraAbilityContainer.xml",
+    "file": "evidence\\follower-dungeons\\2026-10-16\\18c6d677-Blizzard_UIPanels_Game_Shared_ExtraAbilityContainer.xml"
+  },
+  {
+    "file": "evidence/follower-dungeons/2026-10-16/09b9db79-Blizzard_APIDocumentationGenerated_LFGInfoDocumentation.lua",
+    "source": "https://raw.githubusercontent.com/Gethe/wow-ui-source/09b9db7948abc9b9648dedaab51eb0cf3ee67b31/Interface/AddOns/Blizzard_APIDocumentationGenerated/LFGInfoDocumentation.lua",
+    "sha256": "422062d9307f2f0d2916d4dc7ec91b3eef13f5532cd6d670b44cc956e6686315"
+  }
+]

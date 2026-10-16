@@ -1,0 +1,20 @@
+{
+  "date": "2026-10-16",
+  "method": "Read-only narrow inspection of existing saved data; no game input or writes",
+  "source": "account SavedVariables/ConsolePort_Forever.lua",
+  "sourceSha256": "826464527750d6e05f46dd7e1ea7eebcb49bffdbdf7b3ba58c952f905bb5b341",
+  "sourceMtimeUtc": "2026-10-16T02:01:41.533Z",
+  "location": "sharedUtilityArchive.receipts.before and desired",
+  "observedEntry": {
+    "type": "spell",
+    "spell": 426756,
+    "autoassigned": true,
+    "linkSpellName": "Dungeon Assistance"
+  },
+  "savedRingPressAndHold": true,
+  "limits": [
+    "Historical persisted receipts, not current live ring or engine state",
+    "Native logout seed has no persisted default utility array; cannot use it as evidence that the live action is absent",
+    "Candidate loaded for screenshots and hardware dispatch count remain unknown"
+  ]
+}

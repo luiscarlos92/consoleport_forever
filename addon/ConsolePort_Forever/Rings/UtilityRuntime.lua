@@ -20,7 +20,11 @@ local function key(action)
 end
 function Integration:Refresh(addon,api)
     if not addon.db or not Addon.UtilityFlag.Enabled(addon.db) then return nil,'disabled' end
-    if addon.utilityRuntime then addon.utilityRuntime:Resume() return addon.utilityRuntime end
+    if addon.utilityRuntime then
+        addon.utilityRuntime:Resume()
+        self:StartFollower(addon,api,addon.utilityRuntime)
+        return addon.utilityRuntime
+    end
     local session=Addon.UtilityFlag.sessions[addon.db]
     if session then return session.feature,session.reason end
     local lib=api.LibStub('RelaTable',true)
@@ -157,8 +161,15 @@ function Integration:Refresh(addon,api)
         candidate:Mark() candidate.viewDirty=true
         local applied=candidate:Flush()
         if applied and not runtime.primed then runtime:Remember(frame.Data[setID],candidate.mapping,candidate.owner) end
+        self:StartFollower(addon,api,runtime)
         return runtime
     end)
+end
+function Integration:StartFollower(addon,api,runtime)
+    if addon.followerDungeon or not Addon.FollowerDungeon or runtime.stopped then return end
+    addon.followerDungeon=Addon.FollowerDungeon.New(runtime.env,api,
+        function() return runtime:Enabled() and runtime:Owns() end,runtime.api.blocked)
+    if addon.followerDungeon then runtime.frame:QueueRefresh() end
 end
 function Integration:Event(addon,api,event,id)
     local runtime=addon.utilityRuntime

@@ -1,0 +1,152 @@
+{
+  "date": "2026-10-16",
+  "stage": "isolated source experiment; no runtime repair or release qualification",
+  "sourceHead": "594ebaeba621f19075e9a9e83926c8b5c74bc2f9",
+  "runtimeChecks": 94,
+  "toolingTests": 66,
+  "allPassed": true,
+  "completeInventories": {
+    "productFiles": 62,
+    "toolTestFiles": 148,
+    "matchCurrentFiles": true
+  },
+  "proxy": {
+    "checks": 333,
+    "conservativeCandidateDisablesInCombat": true,
+    "fullCombatRouteQualified": false,
+    "limit": "Macro tokenizer/frame C methods/access are modeled; native slash, Map, restricted controller and dispatch are actual source. No Retail permission, taint, pool event-order or full combat qualification.",
+    "macroEnginePermissionQualified": false,
+    "nativeAutoReaddedSpell": true,
+    "routedSelections": 96,
+    "unsafePoolReuseCasts": 1
+  },
+  "execution": {
+    "cases": {
+      "1": {
+        "adapter": false,
+        "casts": 140
+      },
+      "2": {
+        "adapter": true,
+        "casts": 140
+      }
+    },
+    "checks": 1551,
+    "genericCastArguments": 2,
+    "gestures": 321,
+    "inputEdges": 971,
+    "limits": "C cast semantics/taint/hardware timing remain modeled; argument difference is not a demonstrated cause of Retail reversal.",
+    "nativeAcceptCasts": 1,
+    "nativeClickEntrySupported": false,
+    "nativeDelegateCasts": 2,
+    "nativeZoneCastArguments": 3,
+    "nativeZoneToggle": true,
+    "pairedGestureDoubleDispatchReproduced": false,
+    "replayedReleaseCalls": 1,
+    "traceSamples": {
+      "1": {
+        "button": "LeftButton",
+        "casts": 280,
+        "down": false,
+        "release": "spell",
+        "shown": false
+      },
+      "2": {
+        "button": "LeftButton",
+        "casts": 280,
+        "down": true,
+        "shown": true
+      },
+      "3": {
+        "button": "LeftButton",
+        "casts": 281,
+        "down": false,
+        "release": "spell",
+        "shown": false
+      },
+      "4": {
+        "button": "LeftButton",
+        "casts": 281,
+        "down": true,
+        "shown": false
+      },
+      "5": {
+        "button": "LeftButton",
+        "casts": 281,
+        "down": false,
+        "shown": true
+      },
+      "6": {
+        "button": "LeftButton",
+        "casts": 281,
+        "down": true,
+        "shown": true
+      },
+      "7": {
+        "button": "LeftButton",
+        "casts": 282,
+        "down": false,
+        "release": "spell",
+        "shown": false
+      },
+      "8": {
+        "button": "LeftButton",
+        "casts": 282,
+        "down": true,
+        "shown": true
+      },
+      "9": {
+        "button": "LeftButton",
+        "casts": 283,
+        "down": false,
+        "release": "spell",
+        "shown": false
+      },
+      "10": {
+        "button": "LeftButton",
+        "casts": 284,
+        "down": false,
+        "release": "spell",
+        "shown": false
+      },
+      "11": {
+        "button": "LeftButton",
+        "casts": 284,
+        "down": true,
+        "shown": true
+      },
+      "12": {
+        "button": "LeftButton",
+        "casts": 284,
+        "down": false,
+        "shown": false
+      }
+    }
+  },
+  "proxyNegativeControls": [
+    "wrong slash click edge",
+    "missing secure combat transition clear",
+    "stale public delegate retention",
+    "disabled native auto-add counterexample"
+  ],
+  "reports": {
+    "proxy-runtime-results.json": "777c21392e1a7dc59c554072f708d5c994a536c3d3a61d291871640479fffe4c",
+    "proxy-tooling-results.json": "acf35d5b6cc51eb9086569f2c9a5ed12a2825af1b5b4a5cefec6a4334dcc4de1"
+  },
+  "researchSourceManifestSHA256": "9f2dc5fef802d6a59d7ca114f01335d5ae429404665de993a8b80c0b8742abf6",
+  "proxySourceManifestSHA256": "3d056ad65b8749436ada1ee7f2ec0c7154b698b7c9795018fc824d52683bebdb",
+  "verifiedSourceCaptures": 18,
+  "pinnedLockSHA256": "f74caaefdb66a16c87187554770a288b0ba39febe66511b3a3f07145a436061b",
+  "userGestureObservation": "user-gesture-observation.json",
+  "addonChanges": false,
+  "installedChanges": false,
+  "gameInput": false,
+  "releaseQualified": false,
+  "limitations": [
+    "CastSpellByID records arguments; no NPC, aura or server toggle semantics are invented",
+    "Macro authorization/tokenization, frame C methods and access predicates are modeled",
+    "Native pool event order, full combat access, engine restrictions, taint and hardware timing remain unqualified",
+    "User reports release selection; actual extra release and live command count are unknown",
+    "Fresh discovery identifies three unrelated unqualified updates; no package lock update or deployment"
+  ]
+}

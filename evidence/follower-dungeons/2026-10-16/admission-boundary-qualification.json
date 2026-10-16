@@ -1,0 +1,212 @@
+{
+  "date": "2026-10-16",
+  "stage": "offline research complete at Retail execution observation boundary; no runtime repair or deployment",
+  "sourceHead": "594ebaeba621f19075e9a9e83926c8b5c74bc2f9",
+  "runtimeChecks": 100,
+  "toolingTests": 66,
+  "allPassed": true,
+  "completeInventories": {
+    "productFiles": 62,
+    "toolTestFiles": 153,
+    "matchCurrentFiles": true,
+    "addonMatchesPriorProxyCheckpoint": true
+  },
+  "mapping": {
+    "checks": 41,
+    "fullExecutionRouteQualified": false,
+    "labSpellFeedbackKindPreserved": true,
+    "limit": "Admission only. LAB state kind is verified; actual cooldown rendering, proxy lifecycle, Retail macro authority and follower toggle semantics remain unqualified.",
+    "nativeAutoReaddedSpell": false,
+    "nativeRemovalAndReentry": true,
+    "refreshes": 5,
+    "sourceIdentityPreserved": true
+  },
+  "boundaries": {
+    "actualHandleAndWhitelistSource": true,
+    "checks": 9,
+    "directRestrictedCastUnavailable": true,
+    "genericToggleAttributeUnsupported": true,
+    "limit": "C protection/securecall/handle lookup are modeled. Source checks identify unavailable authority; no Retail protection flags, taint, C toggle semantics or permission acceptance.",
+    "publicCallbackReturnsDiscarded": true,
+    "publicCombatWriteRejected": true,
+    "unprotectedCombatIdentityRejected": true
+  },
+  "presentation": {
+    "actualPixelsQualified": false,
+    "checks": 51,
+    "limit": "Actual LAB getters, ConsolePort setter and Blizzard Refresh execute; C textures/metadata are doubles. No event-registration integration, actual pixels, secure dispatch or hidden-control qualification.",
+    "nativeFeedbackGettersPreserved": true,
+    "nativeTextureWrites": 16,
+    "overrideAndReuseCovered": true,
+    "staleIconRejected": true,
+    "zoneReads": 16
+  },
+  "previousExecution": {
+    "cases": {
+      "1": {
+        "adapter": false,
+        "casts": 140
+      },
+      "2": {
+        "adapter": true,
+        "casts": 140
+      }
+    },
+    "checks": 1551,
+    "genericCastArguments": 2,
+    "gestures": 321,
+    "inputEdges": 971,
+    "limits": "C cast semantics/taint/hardware timing remain modeled; argument difference is not a demonstrated cause of Retail reversal.",
+    "nativeAcceptCasts": 1,
+    "nativeClickEntrySupported": false,
+    "nativeDelegateCasts": 2,
+    "nativeZoneCastArguments": 3,
+    "nativeZoneToggle": true,
+    "pairedGestureDoubleDispatchReproduced": false,
+    "replayedReleaseCalls": 1,
+    "traceSamples": {
+      "1": {
+        "button": "LeftButton",
+        "casts": 280,
+        "down": false,
+        "release": "spell",
+        "shown": false
+      },
+      "2": {
+        "button": "LeftButton",
+        "casts": 280,
+        "down": true,
+        "shown": true
+      },
+      "3": {
+        "button": "LeftButton",
+        "casts": 281,
+        "down": false,
+        "release": "spell",
+        "shown": false
+      },
+      "4": {
+        "button": "LeftButton",
+        "casts": 281,
+        "down": true,
+        "shown": false
+      },
+      "5": {
+        "button": "LeftButton",
+        "casts": 281,
+        "down": false,
+        "shown": true
+      },
+      "6": {
+        "button": "LeftButton",
+        "casts": 281,
+        "down": true,
+        "shown": true
+      },
+      "7": {
+        "button": "LeftButton",
+        "casts": 282,
+        "down": false,
+        "release": "spell",
+        "shown": false
+      },
+      "8": {
+        "button": "LeftButton",
+        "casts": 282,
+        "down": true,
+        "shown": true
+      },
+      "9": {
+        "button": "LeftButton",
+        "casts": 283,
+        "down": false,
+        "release": "spell",
+        "shown": false
+      },
+      "10": {
+        "button": "LeftButton",
+        "casts": 284,
+        "down": false,
+        "release": "spell",
+        "shown": false
+      },
+      "11": {
+        "button": "LeftButton",
+        "casts": 284,
+        "down": true,
+        "shown": true
+      },
+      "12": {
+        "button": "LeftButton",
+        "casts": 284,
+        "down": false,
+        "shown": false
+      }
+    }
+  },
+  "previousProxy": {
+    "checks": 333,
+    "conservativeCandidateDisablesInCombat": true,
+    "fullCombatRouteQualified": false,
+    "limit": "Macro tokenizer/frame C methods/access are modeled; native slash, Map, restricted controller and dispatch are actual source. No Retail permission, taint, pool event-order or full combat qualification.",
+    "macroEnginePermissionQualified": false,
+    "nativeAutoReaddedSpell": true,
+    "routedSelections": 96,
+    "unsafePoolReuseCasts": 1
+  },
+  "newFaultControls": {
+    "mapping": [
+      "source mutation",
+      "loss of LAB spell state",
+      "default-set scope escape",
+      "unready delegate route"
+    ],
+    "authority": [
+      "combat handle bypass",
+      "public callback authority",
+      "cast API injected into native whitelist"
+    ],
+    "presentation": [
+      "stale generic icon",
+      "widget/context scope leak",
+      "native texture composition bypass"
+    ]
+  },
+  "reports": {
+    "admission-boundary-runtime-results.json": "72f22de739e45f34e16d27a5bde15662459ddb81d8e6d087f6a49cd484a778df",
+    "admission-boundary-tooling-results.json": "6f9e2c5d7681aa87989720fedee38b44c29b2e8a59f4efa7316803e488aa9f7d"
+  },
+  "researchSourceManifestSHA256": "9f2dc5fef802d6a59d7ca114f01335d5ae429404665de993a8b80c0b8742abf6",
+  "proxySourceManifestSHA256": "3d056ad65b8749436ada1ee7f2ec0c7154b698b7c9795018fc824d52683bebdb",
+  "verifiedResearchCaptures": 18,
+  "criticalNativeSources": {
+    "Blizzard_RestrictedAddOnEnvironment/RestrictedFrames.lua": "d934a9ff9bcad70b754047498eb0a130a210ac7d4eacec67f321f04dcdfd7bb3",
+    "Blizzard_RestrictedAddOnEnvironment/RestrictedEnvironment.lua": "5e42ec4807156002470d957a140d107619b068c941e182af4c4a4b62e1fcd895"
+  },
+  "pinnedLockSHA256": "f74caaefdb66a16c87187554770a288b0ba39febe66511b3a3f07145a436061b",
+  "freshDiscovery": {
+    "checkedAt": "2026-10-16T05:29:17.783037+00:00",
+    "officialSources": 9,
+    "allCurrent": false,
+    "pendingUpdates": [
+      "Cidan/BetterBags",
+      "Tercioo/Plater-Nameplates",
+      "curseforge/DynamicCam"
+    ],
+    "receiptSHA256": "e42bd442158248129a734807b29c0b0f7d3ed43866c2c7675c362d0f81a18fcd"
+  },
+  "userAuthority": "Queued October 16 instruction authorizes further experiments, qualified implementation and deployment, or a Retail-test stopping boundary",
+  "addonChanges": false,
+  "installedChanges": false,
+  "gameInput": false,
+  "releaseQualified": false,
+  "deploymentPerformed": false,
+  "nextBoundary": "Compare native control with ordinary ring release in Retail; establish event/request count or toggle semantics before choosing protected execution repair",
+  "limitations": [
+    "Frame/handle/protection, securecall/taint, macro engine, spell metadata and texture C APIs remain doubles",
+    "No modeled follower AI or invented C/server toggle semantics",
+    "No actual protection flags, event stream, pixels, engine permissions, taint or pool event-order acceptance",
+    "Presentation and mapping prototypes remain outside the addon TOC; no selective-hiding integration",
+    "Fresh discovery reports three unrelated pending updates; no all-current or dependency release qualification"
+  ]
+}

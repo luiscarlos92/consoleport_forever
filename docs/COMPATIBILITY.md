@@ -1,7 +1,7 @@
 # Client and integration compatibility
 
 Status: maintained
-Reviewed: 2026-10-14
+Reviewed: 2026-10-16
 Evidence: [TOC](../addon/ConsolePort_Forever/ConsolePort_Forever.toc),
 [locked packages](../dependencies/lock.json),
 [native source manifest](../evidence/native/manifest.json),
@@ -37,16 +37,28 @@ See [reference provenance](reference/EVIDENCE.md).
 
 ## Locked package identities
 
+October 16 fresh official discovery and selective retrieval qualify BetterBags
+v0.5.16, Plater-v661 and DynamicCam 2.21.2 in the current lock. ConsolePort remains
+3.3.10. The [fresh receipt](../evidence/dependencies/stable-recheck.json) reports
+all current. New [versioned contracts](../evidence/integration-contracts-2026-10-16/manifest.json)
+retain the old captures unchanged. Native item/merchant tests exercise the new
+BetterBags input methods; optional Perf registration is modeled. DynamicCam
+Core/default/AceDB bytes are unchanged. Folder closure and notices are qualified.
+These three packages are prepared but not installed by the Forever-only update.
+Exact guards additionally retain installed BetterBags v0.5.14 and DynamicCam
+2.21.1; Plater has no Forever profile adapter. Offline source qualification
+does not establish Retail performance or taint acceptance.
+
 | Package owner | Locked version | Companion integration |
 | --- | --- | --- |
 | seblindfors/ConsolePort | 3.3.10 | Required main/bar plus native optional suite contracts. Exact guards in routing, rings, skin and UI; ground interception is retired. |
-| Cidan/BetterBags | v0.5.14 | Audited bag adapter/custom UI path; full context takeover suspended. |
+| Cidan/BetterBags | v0.5.16 | Audited bag adapter/custom UI path; full context takeover suspended. |
 | seblindfors/Immersion | 1.4.61 | Reviewed flat settings and Forever-owned Required Items correction. Preserve upstream bytes and ImmersionSetup. |
 | curseforge/Immersion_ExtraFade | 1.18.0 | Optional reviewed integration fields. |
-| curseforge/DynamicCam | 2.21.1 | Managed native profile copies; preserve foreign profiles and selection lifecycle. |
+| curseforge/DynamicCam | 2.21.2 | Managed native profile copies; preserve foreign profiles and selection lifecycle. |
 | xod-wow/LiteMount | 12.1.5-1 | All 115 files already match on disk before this Forever deployment; adapter additionally retains 12.1.0-1/12.1.0-2 support. No guessed second default icon. |
 | SFX-WoW/Masque | 12.1.0 | Preserve native integration and composed round-face regression contracts. |
-| Tercioo/Plater-Nameplates | Plater-v658 | Pack dependency; no Forever Plater profile adapter or profile/WTF installer. |
+| Tercioo/Plater-Nameplates | Plater-v661 | Pack dependency; no Forever Plater profile adapter or profile/WTF installer. |
 | SLOKnightfall/BetterWardrobe | 6.12.3 | Adopted package coverage including SourceData helper; no dedicated Forever settings adapter. |
 
 The lock is authoritative for exact files, archive hashes and selected folders.

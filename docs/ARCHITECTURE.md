@@ -1,7 +1,7 @@
 # Implementation architecture
 
 Status: maintained
-Reviewed: 2026-10-14
+Reviewed: 2026-10-16
 Evidence: [TOC](../addon/ConsolePort_Forever/ConsolePort_Forever.toc),
 [bootstrap](../addon/ConsolePort_Forever/ConsolePort_Forever.lua),
 [runtime setup](../addon/ConsolePort_Forever/RuntimeSetup.lua).
@@ -9,7 +9,7 @@ Evidence: [TOC](../addon/ConsolePort_Forever/ConsolePort_Forever.toc),
 ## Loading and initialization
 
 The TOC requires ConsolePort and ConsolePort_Bar, declares optional integrations
-and loads 60 Lua files in order. There is no current Forever XML entry point.
+and loads 61 Lua files in order. There is no current Forever XML entry point.
 Modules share the addon namespace supplied through `...`. `Core`, storage,
 planning, transactions and capability modules precede policies and adapters;
 the main addon file loads last. `Bindings.lua`, `Layout.lua` and `Profile.lua`
@@ -46,6 +46,14 @@ from structural geometry/readiness work. Diagnostic persistence copies only the
 changed detached section/feature, with a full snapshot for new record/version/
 revision owners. Optional fixed-scope inclusive timing is off by default.
 [Evidence and limits](reference/HUD-PERFORMANCE-2026-10-12.md).
+
+Candidate.40 adds FollowerDungeon immediately before the existing utility runtime
+initializer. Qualified shared-ring startup installs its narrow mapping/presentation
+adapter once. Only follower spell 426756 in the default ring receives compiled
+localized-name dispatch; numeric source/LAB state stay native. Coalesced cosmetics
+reconcile owned follower-child suppression and zone artwork. No public casting,
+pooled-frame proxy, input replacement or new persistence is introduced. See the
+[candidate.40 runtime](reference/FOLLOWER-DUNGEON-RUNTIME-2026-10-16.md).
 
 ## Configuration and ownership
 

@@ -1,0 +1,27 @@
+[
+  {
+    "sha256": "730e612cc460c50420dd7783a374e876249915730bb0986691db52529d9c1a6f",
+    "source": "https://raw.githubusercontent.com/Gethe/wow-ui-source/09b9db7948abc9b9648dedaab51eb0cf3ee67b31/Interface/AddOns/Blizzard_ChatFrameBase/Shared/SlashCommands.lua",
+    "file": "evidence/follower-dungeons/2026-10-16/proxy-Blizzard_ChatFrameBase_Shared_SlashCommands.lua"
+  },
+  {
+    "sha256": "422d7f47d599c98bec963c9ceccd42c739e31bf45a141ab243b5ad267da190ad",
+    "source": "https://raw.githubusercontent.com/Gethe/wow-ui-source/09b9db7948abc9b9648dedaab51eb0cf3ee67b31/Interface/AddOns/Blizzard_ChatFrameBase/Shared/SlashCommandsRegistry.lua",
+    "file": "evidence/follower-dungeons/2026-10-16/proxy-Blizzard_ChatFrameBase_Shared_SlashCommandsRegistry.lua"
+  },
+  {
+    "sha256": "0995b6b5f61a98e3840ddfc9dff2d7e0e9c7c0487562bbfbc66314de7aabd55a",
+    "source": "https://raw.githubusercontent.com/Gethe/wow-ui-source/09b9db7948abc9b9648dedaab51eb0cf3ee67b31/Interface/AddOns/Blizzard_APIDocumentationGenerated/UIMacrosDocumentation.lua",
+    "file": "evidence/follower-dungeons/2026-10-16/proxy-Blizzard_APIDocumentationGenerated_UIMacrosDocumentation.lua"
+  },
+  {
+    "sha256": "54d797c855db7daefdadb8af27c6565983c8b0282c48beb10b4769979c5b7527",
+    "source": "https://raw.githubusercontent.com/Gethe/wow-ui-source/09b9db7948abc9b9648dedaab51eb0cf3ee67b31/Interface/AddOns/Blizzard_SharedXML/PingableType.lua",
+    "file": "evidence/follower-dungeons/2026-10-16/proxy-Blizzard_SharedXML_PingableType.lua"
+  },
+  {
+    "sha256": "6c2b6b19c746876e48b16068eb4b33d5c68738525f8c54d142c4d563c6500a1d",
+    "source": "https://raw.githubusercontent.com/Gethe/wow-ui-source/09b9db7948abc9b9648dedaab51eb0cf3ee67b31/Interface/AddOns/Blizzard_ActionBar/Mainline/ActionButtonTemplate.xml",
+    "file": "evidence/follower-dungeons/2026-10-16/proxy-Blizzard_ActionBar_Mainline_ActionButtonTemplate.xml"
+  }
+]

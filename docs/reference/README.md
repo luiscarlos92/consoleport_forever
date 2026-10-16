@@ -1,7 +1,7 @@
 # Reference and history navigation
 
 Status: maintained
-Reviewed: 2026-10-14
+Reviewed: 2026-10-16
 Evidence: [migration record](../WORKSPACE-ORGANIZATION-2026-10-11.md),
 [original reference manifest](../../reference/manifests/2026-10-03-initial.json),
 [preserved master plan](../archive/ai-native-2026-10-11/MASTER-PLAN.pre-restructure.md).
@@ -28,6 +28,27 @@ and access limits. The singular `docs/reference` is the new index; the existing
 plural pending-reference directory is intentionally retained without moving it.
 
 ## Current code contracts
+
+- [Follower dungeon candidate.40](FOLLOWER-DUNGEON-RUNTIME-2026-10-16.md): native
+  name dispatch, state artwork, selective suppression and remaining Retail test.
+
+- [Follower admission, presentation and engine boundary](FOLLOWER-DUNGEON-ADMISSION-BOUNDARIES-2026-10-16.md):
+  preserved source identity and LAB feedback, actual restricted authority tests,
+  resilient cosmetic icon experiment and the remaining morning Retail comparison.
+- [Follower-control proxy-chain experiment](FOLLOWER-DUNGEON-PROXY-PROBE-2026-10-16.md):
+  supported native binding representation, single-command source tests and
+  counterexamples for pooled delegate reuse/native re-addition. Combat-disable
+  prototype remains outside the addon; candidate.40 uses a separate native route.
+
+- [Follower-control isolated execution experiment](FOLLOWER-DUNGEON-EXECUTION-PROBE-2026-10-16.md):
+  actual native restricted ring/compiler/dispatch, adapter comparison, replayed
+  release counterexample, toggle-argument limits and partial delegation candidate.
+  T91/T92 are historical research tooling, distinct from candidate.40 runtime gates.
+
+- [Follower-dungeon controls investigation and plan](../plans/FOLLOWER-DUNGEON-CONTROLS-2026-10-16.md):
+  separate native extra/zone ownership, actual-source icon/cast/projection dry
+  runs, persisted-entry observations, open execution cause and staged prototype
+  gates and later candidate.40 continuation. Retail acceptance remains pending.
 
 - [Shared utility runtime implementation](SHARED-UTILITY-RING-RUNTIME-2026-10-14.md):
   candidate.39 archive, guarded native edits/rebuilds, safe startup seed, independent

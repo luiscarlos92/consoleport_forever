@@ -1,107 +1,11 @@
 {
-  "lockSHA256": "f74caaefdb66a16c87187554770a288b0ba39febe66511b3a3f07145a436061b",
-  "noticeInventorySHA256": "9b5ab8d5aa9ea75a9d61ff018426e19fe5fd46db8faf70afea9139e2def912c0",
+  "lockSHA256": "2689e5885392dcae38d3c3dc8b516e9f966290c98a37677f3546757d5958753d",
+  "noticeInventorySHA256": "43d3b83d757b4a329acc7ad675bb575093ee135aa05d03092324ad96a23f782f",
   "localPersonalAssemblyReviewComplete": true,
   "publicRedistributionApproved": false,
   "scope": "All third-party dependencies use official-source local assembly. This inventory is not a license grant or approval to publish dependency code or media.",
   "media": "Own unchanged baseline BLPs and exact current upstream/client media remain qualified by media.json; public image/font/audio rights and actual rendering are not inferred.",
   "packages": [
-    {
-      "repo": "Cidan/BetterBags",
-      "version": "v0.5.14",
-      "mainTerms": "MIT",
-      "officialRelease": "https://github.com/Cidan/BetterBags/releases/tag/v0.5.14",
-      "noticeFiles": [
-        {
-          "source": "BetterBags/LICENSE",
-          "sha256": "b92215e6fb3d24dbe22b524d917465340aa22a8e9e018f24986554a902026bec",
-          "copy": "evidence/dependencies/notices/Cidan__BetterBags/BetterBags/LICENSE"
-        },
-        {
-          "source": "BetterBags/libs/WagoAnalytics/LICENSE",
-          "sha256": "ccdd055ace13a16bd6a059586aba1f3a9037bd394a593d0a98bf28912877f075",
-          "copy": "evidence/dependencies/notices/Cidan__BetterBags/BetterBags/libs/WagoAnalytics/LICENSE"
-        }
-      ],
-      "embeddedNoticeSources": [
-        {
-          "source": "BetterBags/BetterBags.toc",
-          "sha256": "3fc1337a2b8721bdaa02211fc8f74a70b3fb82551c5d27672c5dffd6023eab5f",
-          "declarations": [
-            "## X-License: MIT\r"
-          ],
-          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
-        },
-        {
-          "source": "BetterBags/BetterBags_Camelot.toc",
-          "sha256": "69bf987c43774500a22292338fad2124be5ca0093a17f02e7863e18ac3cd5a64",
-          "declarations": [
-            "## X-License: MIT\r"
-          ],
-          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
-        },
-        {
-          "source": "BetterBags/BetterBags_Mists.toc",
-          "sha256": "bf7f61a8b1be18e1095e7073f75d2fb61d70a31d6b4b6b41975fd651ff006acc",
-          "declarations": [
-            "## X-License: MIT\r"
-          ],
-          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
-        },
-        {
-          "source": "BetterBags/BetterBags_TBC.toc",
-          "sha256": "82e23179b31d9e92e051cffac4829f2146ac376c1379e44be2f950635acbe287",
-          "declarations": [
-            "## X-License: MIT\r"
-          ],
-          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
-        },
-        {
-          "source": "BetterBags/BetterBags_Vanilla.toc",
-          "sha256": "b31311160eb8c052814bfaa68e6639c77852697b77749967bb82ff2e50042338",
-          "declarations": [
-            "## X-License: MIT\r"
-          ],
-          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
-        },
-        {
-          "source": "BetterBags/libs/LibSharedMedia-3.0/LibSharedMedia-3.0.lua",
-          "sha256": "db6c60a0cdca4921d35c9a27225ae16f28187dac5a4866c2d75240c3226373f9",
-          "declarations": [
-            "License: LGPL v2.1\r"
-          ],
-          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
-        },
-        {
-          "source": "BetterBags/libs/LibStub/LibStub.lua",
-          "sha256": "6000f58d740eaa2b4a006c1dabb0366f0321fc687bab9e85d97d040a1fd42dab",
-          "declarations": [
-            "-- LibStub is hereby placed in the Public Domain Credits: Kaelten, Cladhaire, ckknight, Mikk, Ammo, Nevcairiel, joshborke\r"
-          ],
-          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
-        },
-        {
-          "source": "BetterBags/libs/LibStub/LibStub.toc",
-          "sha256": "e01f590f6dfb5419595b640e6b5391092b5e39f8581d010adb9d852f4a30578d",
-          "declarations": [
-            "## X-License: Public Domain\t\r"
-          ],
-          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
-        },
-        {
-          "source": "BetterBags/libs/LibWindow-1.1/LibWindow-1.1.lua",
-          "sha256": "40d80952d2a1c9b8a8d25786887cc049159e64b01c2737a4416ec55aa4ab74a0",
-          "declarations": [
-            "License: Public Domain\r"
-          ],
-          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
-        }
-      ],
-      "standaloneNoticeAbsent": false,
-      "supplemental": [],
-      "assembly": "Fetch exact official package for this user and retain all original source/media/notice bytes.",
-      "publicRedistributionApproved": false
-    },
     {
       "repo": "seblindfors/Immersion",
       "version": "1.4.61",
@@ -575,98 +479,6 @@
           "sha256": "c3d3c27f0549fc4a7afe374df7bf90b63f4135b715419f181b3e7b1f579e0fec",
           "declarations": [
             "\tsuggestions and license information, please visit https://github.com/SFX-WoW/Masque.\r"
-          ],
-          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
-        }
-      ],
-      "standaloneNoticeAbsent": false,
-      "supplemental": [],
-      "assembly": "Fetch exact official package for this user and retain all original source/media/notice bytes.",
-      "publicRedistributionApproved": false
-    },
-    {
-      "repo": "curseforge/DynamicCam",
-      "version": "2.21.1",
-      "mainTerms": "MIT; separate bundled library notices retained",
-      "officialRelease": "https://www.curseforge.com/wow/addons/dynamiccam/files/8995535",
-      "noticeFiles": [
-        {
-          "source": "DynamicCam/LICENSE",
-          "sha256": "d073ad048c4a17bfb5a1c69eea17c60f262aa6f542a8ebb10c81e07c6876e6b1",
-          "copy": "evidence/dependencies/notices/curseforge__DynamicCam/DynamicCam/LICENSE"
-        },
-        {
-          "source": "DynamicCam/Libs/LICENSE.md",
-          "sha256": "af51766e056af139f94de73afdc907b860d11707a20e709654ad0bf110f6fb3a",
-          "copy": "evidence/dependencies/notices/curseforge__DynamicCam/DynamicCam/Libs/LICENSE.md"
-        },
-        {
-          "source": "DynamicCam/Libs/LibCamera/LICENSE.md",
-          "sha256": "42989df156027d106f8ef55a8f330f27f09255d6500470dbea5960b32dd43998",
-          "copy": "evidence/dependencies/notices/curseforge__DynamicCam/DynamicCam/Libs/LibCamera/LICENSE.md"
-        },
-        {
-          "source": "DynamicCam/Libs/LibEasing/LICENSE.md",
-          "sha256": "42989df156027d106f8ef55a8f330f27f09255d6500470dbea5960b32dd43998",
-          "copy": "evidence/dependencies/notices/curseforge__DynamicCam/DynamicCam/Libs/LibEasing/LICENSE.md"
-        },
-        {
-          "source": "DynamicCam/Libs/LibMountInfo/LICENSE",
-          "sha256": "17167210cb8256bf1ceaf8b76bce60d544e7415589a6b88bccc91bc3ea792dbd",
-          "copy": "evidence/dependencies/notices/curseforge__DynamicCam/DynamicCam/Libs/LibMountInfo/LICENSE"
-        }
-      ],
-      "embeddedNoticeSources": [
-        {
-          "source": "DynamicCam/DynamicCam.toc",
-          "sha256": "bb23006ec5240b376dd3c8463cc8066ce57c6a3a26bd2854b33760668a2676c7",
-          "declarations": [
-            "## X-License: The MIT License (MIT)\r"
-          ],
-          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
-        },
-        {
-          "source": "DynamicCam/Libs/LibCompress/LibCompress.lua",
-          "sha256": "1d3a6bb930d4134689105c74003851b2aecd7f568a2898d5d85c0591b0fa8ddb",
-          "declarations": [
-            "-- Licence: GPL version 2 (General Public License)\r"
-          ],
-          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
-        },
-        {
-          "source": "DynamicCam/Libs/LibCompress/LibCompress.toc",
-          "sha256": "bef6c501fe7fedc8cfff074aa5a685a724fc8bdaea9e248d574b4796ecdcb471",
-          "declarations": [
-            "## X-License: GPL v2\r"
-          ],
-          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
-        },
-        {
-          "source": "DynamicCam/Libs/LibEasing/LibEasing.lua",
-          "sha256": "d01905038a55bb8f4c1b6dce2af381616d4ac8f25615f0b3dfb1fb7a26ceaa58",
-          "declarations": [
-            "    * Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.\r",
-            "    * Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.\r",
-            "All rights reserved.\r",
-            "Copyright \u00a9 2001 Robert Penner\r",
-            "Disclaimer for Robert Penner's Easing Equations license:\r",
-            "THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS \"AS IS\" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF"
-          ],
-          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
-        },
-        {
-          "source": "DynamicCam/Libs/LibStub/LibStub.lua",
-          "sha256": "186bac9553513504fac3a5c4550ff59f3aee9e8a497376134f3ca01de2ed18d0",
-          "declarations": [
-            "-- LibStub is hereby placed in the Public Domain"
-          ],
-          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
-        },
-        {
-          "source": "DynamicCam/Libs/LibStub/LibStub.toc",
-          "sha256": "1f64542bc3921a190963e7bbd92a706b61fe2e8c411a03cd060a9c6097e6f4fa",
-          "declarations": [
-            "## X-License: Public Domain"
           ],
           "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
         }
@@ -1641,10 +1453,106 @@
       "publicRedistributionApproved": false
     },
     {
+      "repo": "Cidan/BetterBags",
+      "version": "v0.5.16",
+      "mainTerms": "MIT",
+      "officialRelease": "https://github.com/Cidan/BetterBags/releases/tag/v0.5.16",
+      "noticeFiles": [
+        {
+          "source": "BetterBags/LICENSE",
+          "sha256": "b92215e6fb3d24dbe22b524d917465340aa22a8e9e018f24986554a902026bec",
+          "copy": "evidence/dependencies/notices/Cidan__BetterBags/BetterBags/LICENSE"
+        },
+        {
+          "source": "BetterBags/libs/WagoAnalytics/LICENSE",
+          "sha256": "ccdd055ace13a16bd6a059586aba1f3a9037bd394a593d0a98bf28912877f075",
+          "copy": "evidence/dependencies/notices/Cidan__BetterBags/BetterBags/libs/WagoAnalytics/LICENSE"
+        }
+      ],
+      "embeddedNoticeSources": [
+        {
+          "source": "BetterBags/BetterBags.toc",
+          "sha256": "9f6c53e07d5e6c09e8f207f65608572e658d61cff522aaf98e67af2b6abbe782",
+          "declarations": [
+            "## X-License: MIT\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "BetterBags/BetterBags_Camelot.toc",
+          "sha256": "121161221a8dada6b5a5afaf5fafd8aee943c3fe4c5dc1c985e224c366c60667",
+          "declarations": [
+            "## X-License: MIT\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "BetterBags/BetterBags_Mists.toc",
+          "sha256": "ec601c69a382fcd483f4de4eca3996cd19058dbaf23f5a92edd1a5662b747ccd",
+          "declarations": [
+            "## X-License: MIT\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "BetterBags/BetterBags_TBC.toc",
+          "sha256": "7aa93a90d407a45c3bec6b52af05309c6e046dcb5b74e7716a3bffae65dd3e90",
+          "declarations": [
+            "## X-License: MIT\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "BetterBags/BetterBags_Vanilla.toc",
+          "sha256": "a04ba211c50a607145d63f3648f2801fac0c6457d207d908b6cc7c19ed915ef1",
+          "declarations": [
+            "## X-License: MIT\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "BetterBags/libs/LibSharedMedia-3.0/LibSharedMedia-3.0.lua",
+          "sha256": "cfbb556ae5846738a5058a5820b7e2eac55c3df05328f67170779134745f061e",
+          "declarations": [
+            "License: LGPL v2.1\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "BetterBags/libs/LibStub/LibStub.lua",
+          "sha256": "6000f58d740eaa2b4a006c1dabb0366f0321fc687bab9e85d97d040a1fd42dab",
+          "declarations": [
+            "-- LibStub is hereby placed in the Public Domain Credits: Kaelten, Cladhaire, ckknight, Mikk, Ammo, Nevcairiel, joshborke\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "BetterBags/libs/LibStub/LibStub.toc",
+          "sha256": "e01f590f6dfb5419595b640e6b5391092b5e39f8581d010adb9d852f4a30578d",
+          "declarations": [
+            "## X-License: Public Domain\t\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "BetterBags/libs/LibWindow-1.1/LibWindow-1.1.lua",
+          "sha256": "40d80952d2a1c9b8a8d25786887cc049159e64b01c2737a4416ec55aa4ab74a0",
+          "declarations": [
+            "License: Public Domain\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        }
+      ],
+      "standaloneNoticeAbsent": false,
+      "supplemental": [],
+      "assembly": "Fetch exact official package for this user and retain all original source/media/notice bytes.",
+      "publicRedistributionApproved": false
+    },
+    {
       "repo": "Tercioo/Plater-Nameplates",
-      "version": "Plater-v658",
+      "version": "Plater-v661",
       "mainTerms": "Maintainer distribution; no permissive main-addon notice in package",
-      "officialRelease": "https://github.com/Tercioo/Plater-Nameplates/releases/tag/Plater-v658",
+      "officialRelease": "https://github.com/Tercioo/Plater-Nameplates/releases/tag/Plater-v661",
       "noticeFiles": [
         {
           "source": "Plater/fonts/SIL Open Font License.txt",
@@ -1891,7 +1799,7 @@
         },
         {
           "source": "Plater/libs/LibSharedMedia-3.0/LibSharedMedia-3.0.lua",
-          "sha256": "d75f2b4b108711e7e0a56d9d515fe1905063040b3db91d765e2df96d144bf56c",
+          "sha256": "cfbb556ae5846738a5058a5820b7e2eac55c3df05328f67170779134745f061e",
           "declarations": [
             "License: LGPL v2.1\r"
           ],
@@ -1929,6 +1837,98 @@
           "sha256": "585f358758aac167a1e30849ba64f6da964444093ff13db50ef4461413044bca",
           "declarations": [
             "## X-License: LGPL-3.0\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        }
+      ],
+      "standaloneNoticeAbsent": false,
+      "supplemental": [],
+      "assembly": "Fetch exact official package for this user and retain all original source/media/notice bytes.",
+      "publicRedistributionApproved": false
+    },
+    {
+      "repo": "curseforge/DynamicCam",
+      "version": "2.21.2",
+      "mainTerms": "MIT; separate bundled library notices retained",
+      "officialRelease": "https://www.curseforge.com/wow/addons/dynamiccam/files/9188709",
+      "noticeFiles": [
+        {
+          "source": "DynamicCam/LICENSE",
+          "sha256": "d073ad048c4a17bfb5a1c69eea17c60f262aa6f542a8ebb10c81e07c6876e6b1",
+          "copy": "evidence/dependencies/notices/curseforge__DynamicCam/DynamicCam/LICENSE"
+        },
+        {
+          "source": "DynamicCam/Libs/LICENSE.md",
+          "sha256": "af51766e056af139f94de73afdc907b860d11707a20e709654ad0bf110f6fb3a",
+          "copy": "evidence/dependencies/notices/curseforge__DynamicCam/DynamicCam/Libs/LICENSE.md"
+        },
+        {
+          "source": "DynamicCam/Libs/LibCamera/LICENSE.md",
+          "sha256": "42989df156027d106f8ef55a8f330f27f09255d6500470dbea5960b32dd43998",
+          "copy": "evidence/dependencies/notices/curseforge__DynamicCam/DynamicCam/Libs/LibCamera/LICENSE.md"
+        },
+        {
+          "source": "DynamicCam/Libs/LibEasing/LICENSE.md",
+          "sha256": "42989df156027d106f8ef55a8f330f27f09255d6500470dbea5960b32dd43998",
+          "copy": "evidence/dependencies/notices/curseforge__DynamicCam/DynamicCam/Libs/LibEasing/LICENSE.md"
+        },
+        {
+          "source": "DynamicCam/Libs/LibMountInfo/LICENSE",
+          "sha256": "17167210cb8256bf1ceaf8b76bce60d544e7415589a6b88bccc91bc3ea792dbd",
+          "copy": "evidence/dependencies/notices/curseforge__DynamicCam/DynamicCam/Libs/LibMountInfo/LICENSE"
+        }
+      ],
+      "embeddedNoticeSources": [
+        {
+          "source": "DynamicCam/DynamicCam.toc",
+          "sha256": "9b64bb0b10739a50bdd5c0d5f014b9036fc00d1d2c7a0b0c3280c1a9732e50b8",
+          "declarations": [
+            "## X-License: The MIT License (MIT)\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "DynamicCam/Libs/LibCompress/LibCompress.lua",
+          "sha256": "1d3a6bb930d4134689105c74003851b2aecd7f568a2898d5d85c0591b0fa8ddb",
+          "declarations": [
+            "-- Licence: GPL version 2 (General Public License)\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "DynamicCam/Libs/LibCompress/LibCompress.toc",
+          "sha256": "bef6c501fe7fedc8cfff074aa5a685a724fc8bdaea9e248d574b4796ecdcb471",
+          "declarations": [
+            "## X-License: GPL v2\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "DynamicCam/Libs/LibEasing/LibEasing.lua",
+          "sha256": "d01905038a55bb8f4c1b6dce2af381616d4ac8f25615f0b3dfb1fb7a26ceaa58",
+          "declarations": [
+            "    * Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.\r",
+            "    * Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.\r",
+            "All rights reserved.\r",
+            "Copyright \u00a9 2001 Robert Penner\r",
+            "Disclaimer for Robert Penner's Easing Equations license:\r",
+            "THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS \"AS IS\" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "DynamicCam/Libs/LibStub/LibStub.lua",
+          "sha256": "186bac9553513504fac3a5c4550ff59f3aee9e8a497376134f3ca01de2ed18d0",
+          "declarations": [
+            "-- LibStub is hereby placed in the Public Domain"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "DynamicCam/Libs/LibStub/LibStub.toc",
+          "sha256": "1f64542bc3921a190963e7bbd92a706b61fe2e8c411a03cd060a9c6097e6f4fa",
+          "declarations": [
+            "## X-License: Public Domain"
           ],
           "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
         }

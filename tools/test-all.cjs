@@ -197,7 +197,7 @@ check('T07-T09.both-binding-bank-restore', () => execute(source+read('tests/harn
 check('T08-T10.review-details', () => execute(source+read('tests/harness/prompt.lua'),'review-details'));
 check('T12-T13.adapters', () => execute(source+read('tests/harness/adapters.lua'),'adapters'));
 check('T13.pinned-flat-integration-settings', () => {
-  const base='evidence/integration-contracts/';
+  const base='evidence/integration-contracts-2026-10-16/';
   const settingsAST=parser.parse(read(base+'Immersion/Settings.lua'),{luaVersion:'5.1',encodingMode:'x-user-defined'});
   const keys=new Set();
   function visit(value) {
@@ -217,7 +217,7 @@ check('T13.pinned-flat-integration-settings', () => {
   execute(source+'NATIVE_IMMERSION_SETTINGS_KEYS={'+[...keys].sort().map(k=>JSON.stringify(k)).join(',')+'}\n'+fixture,'flat-integrations-native-settings');
 });
 check('T13.current-DynamicCam-AceDB', () => {
-  const base='evidence/integration-contracts/';
+  const base='evidence/integration-contracts-2026-10-16/';
   const lock=JSON.parse(read('dependencies/lock.json'));
   for(const file of JSON.parse(read(base+'manifest.json')).files) {
     const package=lock.packages.find(p=>p.repo===file.repo);
@@ -229,6 +229,7 @@ check('T13.current-DynamicCam-AceDB', () => {
   if(!current.includes('self.db.RegisterCallback(self, "OnProfileChanged", "RefreshConfig")') || !current.includes('function DynamicCam:RefreshConfig()')) throw Error('native DynamicCam lifecycle changed');
   const fixture=read('tests/harness/dynamiccam.lua').replace('--@CURRENT_ACEDB',native)
     .replace('--@CURRENT_DYNAMIC_DEFAULTS',';(function(...)\n'+read(base+'DynamicCam/DefaultSettings.lua')+'\nend)("DynamicCam");');
+  execute(source+serializer+fixture.replaceAll('2.21.1','2.21.2'),'DynamicCam-current-version-native-AceDB');
   const state=execute(source+serializer+fixture,'DynamicCam-native-AceDB');
   require('./saved_variables.cjs').parse('PERSISTED_STATE='+state);
   execute(source+'local PERSISTED_STATE='+state+'\n'+fixture.split('--@LIFECYCLE')[0]+`
@@ -295,19 +296,24 @@ function nativeFunction(file,signature) {
     const body=text.slice(start,end);
     parser.parse(body,{luaVersion:'5.1'}); return body;
 }
-function betterBagsFixture() {
+function betterBagsFixture(integrationBase='evidence/integration-contracts-2026-10-16/') {
   const container='evidence/native/Blizzard_UIPanels_Game/Mainline/ContainerFrame.lua';
   const base='evidence/consoleport-contracts/';
   const fixture=read('tests/harness/betterbags.lua')
     .replace('--@NATIVE_CONTAINER_METHODS',()=>['ContainerFrameItemButton_OnClick','ContainerFrameItemButtonMixin:OnClick','ContainerFrameItemButtonMixin:OnModifiedClick','ContainerFrameItemButtonMixin:GetBagID','ContainerFrameItemButtonMixin:GetSlotAndBagID'].map(name=>nativeFunction(container,name)).join('\n'))
-    .replace('--@NATIVE_BETTERBAGS_ITEM',()=>';(function(...)\n'+read('evidence/integration-contracts/BetterBags/frames/item.lua')+'\nend)("BetterBags");')
-    .replace('--@NATIVE_BETTERBAGS_INTEGRATION',()=>';(function(...)\n'+read('evidence/integration-contracts/BetterBags/integrations/consoleport.lua')+'\nend)("BetterBags");')
+    .replace('--@NATIVE_BETTERBAGS_ITEM',()=>';(function(...)\n'+read(integrationBase+'BetterBags/frames/item.lua')+'\nend)("BetterBags");')
+    .replace('--@NATIVE_BETTERBAGS_INTEGRATION',()=>';(function(...)\n'+read(integrationBase+'BetterBags/integrations/consoleport.lua')+'\nend)("BetterBags");')
     .replace('--@NATIVE_ITEM_MENU_SET',()=>nativeFunction(base+'ConsolePort_Menu/View/Popup/ItemMenu.lua','ItemMenu:SetItem'))
     .replace('--@NATIVE_MODULE_DEMAND',()=>['Modules:IsEnabled','Modules:Demand'].map(name=>nativeFunction(base+'ConsolePort/Controller/Modules.lua',name)).join('\n'));
   return windowFixture()+'\n'+fixture;
 }
 check('T21-T22.native-BetterBags-item-guards', () => {
-  execute(source+betterBagsFixture(),'BetterBags-native-item-contexts');
+  for(const [base,version] of [['evidence/integration-contracts/','v0.5.14'],['evidence/integration-contracts-2026-10-16/','v0.5.16']]) {
+    for(const row of JSON.parse(read(base+'manifest.json')).files.filter(row=>row.repo==='Cidan/BetterBags')) {
+      if(sha(base+row.path)!==row.sha256) throw Error('BetterBags retained contract drift: '+row.path);
+    }
+    execute(source+betterBagsFixture(base).replaceAll('v0.5.14',version),'BetterBags-native-item-contexts-'+version);
+  }
 });
 check('T35.native-merchant-container-hints', () => {
   const fixture=read('tests/harness/item_hints.lua')
@@ -1129,7 +1135,7 @@ check('T64.action-storage-observers-never-restore-or-rewrite-bars', () => {
   catch(error) {rejected=String(error).includes('automatic action-slot restoration rewrote edited bars');}
   if(!rejected) throw Error('Automatic action-slot rewrite regression was not reproduced');
 });
-check('T65.native-account-ping-ring-release-only-and-repeatable-native-controls', () => {
+function nativeAccountRingFixture(checks) {
   const product=read('addon/ConsolePort_Forever/Targeting/Ping.lua');
   if(/CreateFrame\('PieMenu'|CreateTexture|CreateMaskTexture|cpfIcons|SetFocusByIndex|GetIndexForPos/.test(product)) throw Error('Separate ping renderer or selector retained');
   if(/C_Ping(?:Secure)?\.|RunMacroText\s*\(/.test(product)) throw Error('Public privileged ping dispatch');
@@ -1147,7 +1153,7 @@ check('T65.native-account-ping-ring-release-only-and-repeatable-native-controls'
   const slash=normalized('evidence/native/Blizzard_ChatFrameBase/Mainline/SlashCommandsOverrides.lua');
   const compiler=normalized('evidence/native/Blizzard_RestrictedAddOnEnvironment/RestrictedExecution.lua');
   const wrap=p=>';(function(...)\n'+normalized(p)+'\nend)("ConsolePort",db);';
-  let fixture=source+'\n'+normalized('tests/harness/ping_account_ring.lua').replace('--@NATIVE_ACCOUNT_RING_HOST',()=>normalized('tests/harness/ping_account_ring_host.lua')).replace('--@NATIVE_ACCOUNT_RING_CHECKS',()=>normalized('tests/harness/ping_account_ring_checks.lua'))
+  let fixture=source+'\n'+normalized('tests/harness/ping_account_ring.lua').replace('--@NATIVE_ACCOUNT_RING_HOST',()=>normalized('tests/harness/ping_account_ring_host.lua')).replace('--@NATIVE_ACCOUNT_RING_CHECKS',()=>checks ?? normalized('tests/harness/ping_account_ring_checks.lua'))
     .replace('--@CURRENT_PIE_STYLE',()=> 'CPPieSliceMixin={}\nlocal SLICE_FRACTION,BG_FRACTION,MASK_FRACTION=512/300,480/300,512/300;\n'+['CPPieMenuMixin:UpdatePieSlices','CPPieSliceMixin:SetIndex','CPPieSliceMixin:RotateMasks','CPPieSliceMixin:UpdateSize'].map(name=>nativeFunction('evidence/consoleport-contracts/ConsolePort/Widget/PieMenu/PieMenu.lua',name)).join('\n'))
     .replace('--@CURRENT_CONVERSION',()=>utils.slice(utils.indexOf('do\tlocal ConvertSecureBody'),utils.indexOf('\nend',utils.indexOf('do\tlocal ConvertSecureBody'))+4))
     .replace('--@CURRENT_SECURE_ENV',()=>utils.slice(utils.indexOf('CPAPI.SecureExportMixin ='),utils.indexOf('do local UIHider;')))
@@ -1171,6 +1177,10 @@ check('T65.native-account-ping-ring-release-only-and-repeatable-native-controls'
     .replace('--@NATIVE_TEXTURE_ADAPTER',()=>nativeFunction('evidence/consoleport-contracts/ConsolePort/Libs/Local/ActionButton.lua','Lib.SkinUtility.SetTexture'))
     .replace('--@NATIVE_CLICK_ACTION',()=>native.slice(native.indexOf('SECURE_ACTIONS.click ='),native.indexOf('SECURE_ACTIONS.attribute =')));
   if(/--@(?:CURRENT|NATIVE)_/.test(fixture)) throw Error('Unfilled native account ring marker');
+  return fixture;
+}
+check('T65.native-account-ping-ring-release-only-and-repeatable-native-controls', () => {
+  const fixture=nativeAccountRingFixture();
   execute(fixture,'native-account-ping-ring');
   for(const [name,from,to,expected] of [
     ['callable-LibStub-startup',"type(cp.Static)~='function'","type(cp.Static)~='function' or type(api.LibStub)~='function'",'qualified native secure ping selector unavailable'],
@@ -1195,7 +1205,7 @@ check('T65.native-account-ping-ring-release-only-and-repeatable-native-controls'
   }
 });
 check('T66.native-immersion-required-items', () => {
-  const base='evidence/integration-contracts/Immersion/';
+  const base='evidence/integration-contracts-2026-10-16/Immersion/';
   const fixture=read('tests/harness/immersion_progress.lua')
     .replace('--@NATIVE_ADJUST_CHILDREN',()=>['IterateChildren','GetAdjustableChildren','AdjustToChildren'].map(name=>nativeFunction(base+'Components/Scaler.lua','AdjustMixin:'+name)).join('\n'))
     .replace('--@NATIVE_BOUNDARIES',()=>nativeFunction(base+'Components/Elements.lua','Elements:UpdateBoundaries'))
@@ -1574,7 +1584,7 @@ check('T88.shared-utility-actual-initialization-typed-migration-and-independent-
   const fixture=sharedUtilityFixture();
   const setup=fixture.harness.split('-- Reproduce native name failure')[0];
   const wrapped=(body)=>'\n;(function(...)\n'+body+'\nend)("ConsolePort_Forever",Addon);\n';
-  const product=['Rings/Utility','Adapters/SharedUtility'].map(name=>wrapped(read('addon/ConsolePort_Forever/'+name+'.lua'))).join('');
+  const product=['Rings/Utility','Adapters/SharedUtility','Rings/FollowerDungeon'].map(name=>wrapped(read('addon/ConsolePort_Forever/'+name+'.lua'))).join('');
   const harness=read('tests/harness/shared_utility_integration.lua')
     .replace('--@UTILITY_FLAG',()=>wrapped(read('addon/ConsolePort_Forever/Rings/UtilityFlag.lua')))
     .replace('--@UTILITY_INTEGRATION',()=>wrapped(read('addon/ConsolePort_Forever/Rings/UtilityRuntime.lua')));
@@ -1640,11 +1650,235 @@ for _,frame in ipairs(frames) do assert(not frame.events.ITEM_COUNT_CHANGED,'dis
 TEST_SUCCESS=true
 `,'shared-utility-TOC-bootstrap');
 });
+function followerExecutionFixture(mutations={},continuation='') {
+  const nativeManifest=JSON.parse(read('evidence/native/manifest.json'));
+  const researchManifest=JSON.parse(read('evidence/follower-dungeons/2026-10-16/source-manifest.json'));
+  const verified=(filename,manifest,key)=>{
+    const row=manifest.find(row=>String(row[key]).replaceAll('\\','/')===filename || 'evidence/native/'+row.path===filename);
+    if(!row || sha(filename)!==row.sha256) throw Error('Follower execution source drift: '+filename);
+    return read(filename).replace(/\r\n/g,'\n');
+  };
+  const native=verified('evidence/native/Blizzard_FrameXML/SecureTemplates.lua',nativeManifest,'file');
+  verified('evidence/native/Blizzard_RestrictedAddOnEnvironment/RestrictedExecution.lua',nativeManifest,'file');
+  verified('evidence/native/Blizzard_RestrictedAddOnEnvironment/SecureHandlers.lua',nativeManifest,'file');
+  const zone=verified('evidence/follower-dungeons/2026-10-16/09b9db79-Blizzard_ZoneAbility_ZoneAbility.lua',researchManifest,'file');
+  const section=(code,start,end)=>{
+    const first=code.indexOf(start),last=code.indexOf(end,first+start.length);
+    if(first<0 || last<0) throw Error('Follower native section unavailable: '+start);
+    return code.slice(first,last);
+  };
+  let fixture=nativeAccountRingFixture(read('tests/harness/follower_execution.lua'))+'\n'+continuation;
+  const replace=(before,after)=>{
+    if(!fixture.includes(before)) throw Error('Follower fixture boundary changed: '+before.slice(0,80));
+    fixture=fixture.replace(before,()=>after);
+  };
+  // Reuse the existing native host, replacing its simplified attribute lookup
+  // with Blizzard's full modifier/button lookup and an explicit C-API double.
+  replace('function Frame:GetAttribute(key) return self.attrs[key] end',`function Frame:GetAttribute(prefix,name,suffix)
+    if name==nil then return self.attrs[prefix] end
+    return self.attrs[prefix..name..suffix] or self.attrs['*'..name..suffix]
+      or self.attrs[prefix..name..'*'] or self.attrs['*'..name..'*'] or self.attrs[name]
+end`);
+  replace("local function SecureButton_GetModifiedAttribute(frame,key) return frame:GetAttribute(key) end\nlocal function SecureButton_GetAttribute(frame,key) return frame:GetAttribute(key) end\nlocal function SecureButton_GetModifiedUnit() return nil end",`
+CopyTable=Addon.Core.Copy
+function GetFrameMetatable() return {__index=Frame} end
+FOLLOWER_MODIFIERS={}
+function IsShiftKeyDown() return FOLLOWER_MODIFIERS.shift end
+function IsControlKeyDown() return FOLLOWER_MODIFIERS.ctrl end
+function IsAltKeyDown() return FOLLOWER_MODIFIERS.alt end
+function IsModifiedClick() return false end
+function UnitHasVehicleUI() return false end
+gsub=string.gsub
+`+section(native,'local type = type;','--\n-- SecureActionButton'));
+  replace('if row[2].texture then button.icon:SetTexture(row[2].texture) end',"if type(row[2])=='table' and row[2].texture then button.icon:SetTexture(row[2].texture) end");
+  replace('button.icon.parent=button','button.icon.parent=button button.Name={GetText=function() return "Dungeon Assistance" end}');
+  replace('SECURE_ACTIONS.click =',section(native,'SECURE_ACTIONS.spell =','SECURE_ACTIONS.toy =')+'\nSECURE_ACTIONS.click =');
+  // Models expose the real feature's admission/projection without installing
+  // it in the addon or replacing any of the native protected ring snippets.
+  const product=['Rings/Utility','Adapters/SharedUtility'].map(name=>';(function(...)\n'+read('addon/ConsolePort_Forever/'+name+'.lua')+'\nend)("ConsolePort_Forever",Addon);').join('\n');
+  replace('--@FOLLOWER_PRODUCT',product);
+  replace('--@FOLLOWER_ZONE_SOURCE','SOUNDKIT={} ContentFrameMixin={} BaseActionButtonInfoMixin={}\n'+zone);
+  if(continuation) {
+    const proxyManifest=JSON.parse(read('evidence/follower-dungeons/2026-10-16/proxy-source-manifest.json'));
+    const slash=verified('evidence/follower-dungeons/2026-10-16/proxy-Blizzard_ChatFrameBase_Shared_SlashCommands.lua',proxyManifest,'file');
+    const lock=JSON.parse(read('dependencies/lock.json')).packages.find(row=>row.repo==='seblindfors/ConsolePort');
+    const autoPath='ConsolePort_Rings/Controller/Auto.lua';
+    if(sha(lock.unpacked+'/'+autoPath)!==lock.files[autoPath]) throw Error('Follower proxy auto source drift');
+    const actionMap='ConsolePort/Model/Game/ActionMap.lua';
+    if(sha(lock.unpacked+'/'+actionMap)!==lock.files[actionMap]) throw Error('Follower proxy action map source drift');
+    const tableUtils='ConsolePort/Libs/External/RelaTable/RelaTable.lua';
+    if(sha(lock.unpacked+'/'+tableUtils)!==lock.files[tableUtils]) throw Error('Follower proxy table comparison source drift');
+    replace('--@FOLLOWER_PROXY_SOURCE',';(function(...)\n'+read('tests/prototypes/follower_proxy.lua')+'\nend)("OfflineFollowerProxy",Addon);');
+    replace('--@FOLLOWER_NATIVE_CLICK_SLASH',section(slash,'SlashCommandUtil.CheckAddSecureSlashCommand(SLASH_COMMAND.CLICK,','SlashCommandUtil.CheckAddSecureSlashCommand(SLASH_COMMAND.PET_DISMISS,'));
+    replace('--@FOLLOWER_NATIVE_AUTO',';(function(...)\n'+read(lock.unpacked+'/'+autoPath)+'\nend)("ConsolePort_Rings",db);');
+    replace('--@FOLLOWER_NATIVE_ACTION_MAP',section(read(lock.unpacked+'/'+tableUtils),'function compare(','function copy(')+'\ndb.table.compare=compare;\n;(function(...)\n'+read(lock.unpacked+'/'+actionMap)+'\nend)("ConsolePort",db);\nenv.SecureHandlerMap.spellID=db.ActionMap.spellID;');
+  }
+  for(const [before,after] of Object.entries(mutations)) replace(before,after);
+  return fixture;
+}
+let followerExecutionProof;
+check('T91.follower-isolated-native-execution-and-toggle-contract',()=>{
+  parser.parse(read('tests/harness/follower_execution.lua'),{luaVersion:'5.1'});
+  const state=execute(followerExecutionFixture()+serializer+'\nSERIALIZED_STATE=serialized(FOLLOWER_EXECUTION_RESULTS)','follower-native-execution');
+  followerExecutionProof=require('./saved_variables.cjs').parse('RESULT='+state).RESULT;
+});
+check('T92.follower-execution-reproducer-negative-controls',()=>{
+  for(const [name,before,after,expected] of [
+    ['duplicate-dispatch','CastSpellByID(spellID, unit);','CastSpellByID(spellID, unit); CastSpellByID(spellID, unit);','one deliberate selection emitted multiple cast calls'],
+    ['stale-release','self:SetAttribute(TYPE, nil)','do end','one deliberate selection emitted multiple cast calls'],
+    ['lost-toggle-argument','local unitToken, tryToggleSpell = nil, true;','local unitToken, tryToggleSpell = nil, false;','native zone handler lost toggle request'],
+    ['bypassed-native-access','not delegate:HasAccessConstraints()','true','native click access predicate bypassed'],
+  ]) {
+    let rejected=false;
+    try {execute(followerExecutionFixture({[before]:after}),'follower-negative-'+name);}
+    catch(error) {rejected=String(error).includes(expected);}
+    if(!rejected) throw Error('Follower negative control not rejected: '+name);
+  }
+});
+let followerProxyProof;
+check('T93.follower-custom-binding-proxy-chain-and-pool-lifecycle-counterexamples',()=>{
+  for(const path of ['tests/prototypes/follower_proxy.lua','tests/harness/follower_proxy.lua']) parser.parse(read(path),{luaVersion:'5.1'});
+  const fixture=followerExecutionFixture({},read('tests/harness/follower_proxy.lua'));
+  const state=execute(fixture+serializer+'\nSERIALIZED_STATE=serialized(FOLLOWER_PROXY_RESULTS)','follower-native-proxy-chain');
+  followerProxyProof=require('./saved_variables.cjs').parse('RESULT='+state).RESULT;
+});
+check('T94.follower-proxy-chain-meaningful-negative-controls',()=>{
+  for(const [name,before,after,expected] of [
+    ['wrong-slash-edge','down = StringToBoolean(down or "", false);','down = true;','custom binding chain lost or duplicated cast'],
+    ['missing-combat-clear',"self:SetAttribute('typerelease',nil)\n    self:SetAttribute('clickbutton',nil)",'do end','combat pool reuse clicked a different spell'],
+    ['stale-public-reference',"self.frame:SetAttribute('clickbutton',nil)",'do end','missing delegate retained stale cast'],
+    ['native-readd-observer','self:AssignAction(SecureHandlerMap.spellID(spellID))','false','native automatic re-add counterexample did not reproduce'],
+  ]) {
+    let rejected=false;
+    try {execute(followerExecutionFixture({[before]:after},read('tests/harness/follower_proxy.lua')),'follower-proxy-negative-'+name);}
+    catch(error) {rejected=String(error).includes(expected);}
+    if(!rejected) throw Error('Follower proxy negative control not rejected: '+name);
+  }
+});
+function followerAdmissionFixture(mutations={}) {
+  let extra=read('tests/harness/follower_mapping.lua').replace('--@FOLLOWER_MAPPING_SOURCE',()=>';(function(...)\n'+read('tests/prototypes/follower_mapping.lua')+'\nend)("OfflineFollowerMapping",Addon);');
+  return followerExecutionFixture(mutations,read('tests/harness/follower_proxy.lua')+'\n'+extra);
+}
+function followerBoundaryFixture(mutations={}) {
+  const manifest=JSON.parse(read('evidence/native/manifest.json'));
+  const native=path=>{
+    if(sha('evidence/native/'+path)!==manifest.find(row=>row.path===path)?.sha256) throw Error('Follower boundary native source drift: '+path);
+    return read('evidence/native/'+path).replace(/\r\n/g,'\n');
+  };
+  const frames=native('Blizzard_RestrictedAddOnEnvironment/RestrictedFrames.lua');
+  const environment=native('Blizzard_RestrictedAddOnEnvironment/RestrictedEnvironment.lua');
+  let extra=read('tests/harness/follower_boundaries.lua')
+    .replace('--@FOLLOWER_NATIVE_RESTRICTED_FRAMES',()=>';(function(...)\n'+frames+'\nend)("RestrictedFrames");')
+    .replace('--@FOLLOWER_NATIVE_RESTRICTED_ENVIRONMENT',()=>';(function(...)\n'+environment+'\nend)("RestrictedEnvironment",environmentExport);');
+  return followerExecutionFixture(mutations,read('tests/harness/follower_proxy.lua')+'\n'+extra);
+}
+let followerMappingProof,followerBoundaryProof;
+check('T95.follower-native-entry-identity-LAB-feedback-and-compiled-route',()=>{
+  for(const path of ['tests/prototypes/follower_mapping.lua','tests/harness/follower_mapping.lua']) parser.parse(read(path),{luaVersion:'5.1'});
+  const state=execute(followerAdmissionFixture()+serializer+'\nSERIALIZED_STATE=serialized(FOLLOWER_MAPPING_RESULTS)','follower-native-admission');
+  followerMappingProof=require('./saved_variables.cjs').parse('RESULT='+state).RESULT;
+});
+check('T96.follower-compiled-route-admission-negative-controls',()=>{
+  for(const [name,before,after,expected] of [
+    ['mutated-source','return kind,action,route',"info.type='custom'; return kind,action,route",'compiled mapping mutated authoritative native entries'],
+    ['lost-spell-feedback','return kind,action,route',"return 'custom',{},route",'compiled route replaced native LAB spell feedback'],
+    ['scope-escape',"(setContext==1 or setContext=='1')",'true','compiled follower mapping escaped native default autoassigned scope'],
+    ['unready-route',"or not api.ready()",'or false','unready route removed native spell fallback'],
+  ]) {
+    let rejected=false;
+    try {execute(followerAdmissionFixture({[before]:after}),'follower-admission-negative-'+name);}
+    catch(error) {rejected=String(error).includes(expected);}
+    if(!rejected) throw Error('Follower admission negative control not rejected: '+name);
+  }
+});
+check('T97.follower-actual-restricted-identity-and-dispatch-boundaries',()=>{
+  parser.parse(read('tests/harness/follower_boundaries.lua'),{luaVersion:'5.1'});
+  const state=execute(followerBoundaryFixture()+serializer+'\nSERIALIZED_STATE=serialized(FOLLOWER_BOUNDARY_RESULTS)','follower-native-boundaries');
+  followerBoundaryProof=require('./saved_variables.cjs').parse('RESULT='+state).RESULT;
+});
+check('T98.follower-native-authority-boundary-negative-controls',()=>{
+  for(const [name,before,after,expected] of [
+    ['combat-handle-bypass','or not InCombatLockdown())))','or true)))','unprotected combat handle unexpectedly authorized identity read'],
+    ['public-callback-authority',"-- Ensure code isn't run securely\n\tforceinsecure();",'-- removed public callback boundary','public CallMethod incorrectly authorized combat identity write'],
+    ['restricted-cast-api','local RESTRICTED_FUNCTIONS_SCOPE = {','local RESTRICTED_FUNCTIONS_SCOPE = { CastSpellByID = CastSpellByID,','native restricted whitelist unexpectedly exposes protected casting'],
+  ]) {
+    let rejected=false;
+    try {execute(followerBoundaryFixture({[before]:after}),'follower-boundary-negative-'+name);}
+    catch(error) {rejected=String(error).includes(expected);}
+    if(!rejected) throw Error('Follower boundary negative control not rejected: '+name);
+  }
+});
+function followerPresentationFixture(mutations={}) {
+  const lock=JSON.parse(read('dependencies/lock.json')).packages.find(row=>row.repo==='seblindfors/ConsolePort');
+  const relative='ConsolePort/Libs/External/LibActionButton-1.0/LibActionButton-1.0.lua';
+  if(sha(lock.unpacked+'/'+relative)!==lock.files[relative]) throw Error('Follower presentation LAB source drift');
+  const code=read(lock.unpacked+'/'+relative);
+  const methods=['GetTexture','GetChargeInfo','GetCooldownInfo'].map(name=>{
+    const line=code.split(/\r?\n/).find(line=>new RegExp('^Spell\\.'+name+'\\s*=').test(line));
+    if(!line) throw Error('Native follower presentation method missing: '+name);
+    return line;
+  }).join('\n');
+  const extra=read('tests/harness/follower_presentation.lua')
+    .replace('--@FOLLOWER_PRESENTATION_SOURCE',()=>';(function(...)\n'+read('tests/prototypes/follower_presentation.lua')+'\nend)("OfflineFollowerPresentation",Addon);')
+    .replace('--@FOLLOWER_NATIVE_LAB_SPELL_PRESENTATION',()=>methods);
+  return followerExecutionFixture(mutations,read('tests/harness/follower_proxy.lua')+'\n'+extra);
+}
+let followerPresentationProof;
+check('T99.follower-native-icon-overrides-later-writes-and-widget-reuse',()=>{
+  for(const path of ['tests/prototypes/follower_presentation.lua','tests/harness/follower_presentation.lua']) parser.parse(read(path),{luaVersion:'5.1'});
+  const state=execute(followerPresentationFixture()+serializer+'\nSERIALIZED_STATE=serialized(FOLLOWER_PRESENTATION_RESULTS)','follower-native-presentation');
+  followerPresentationProof=require('./saved_variables.cjs').parse('RESULT='+state).RESULT;
+});
+check('T100.follower-presentation-native-composition-negative-controls',()=>{
+  for(const [name,before,after,expected] of [
+    ['stale-icon','                texture=value','                texture=texture','later native texture update restored stale follower icon'],
+    ['scope-leak','api.matches(button)','true','reused widget retained follower icon'],
+    ['native-composition-bypass','return before(region,texture,...)','return CPAPI.Index(region).SetTexture(region,texture,...)','follower texture bypassed native function unmount'],
+  ]) {
+    let rejected=false;
+    try {execute(followerPresentationFixture({[before]:after}),'follower-presentation-negative-'+name);}
+    catch(error) {rejected=String(error).includes(expected);}
+    if(!rejected) throw Error('Follower presentation negative control not rejected: '+name);
+  }
+});
+function followerRuntimeFixture(mutations={}) {
+  const capture=JSON.parse(read('evidence/follower-dungeons/2026-10-16/source-manifest.json'));
+  const file='evidence/follower-dungeons/2026-10-16/09b9db79-Blizzard_UIPanels_Game_Shared_ExtraAbilityContainer.lua';
+  if(sha(file)!==capture.find(row=>row.file.replaceAll('\\','/')===file)?.sha256) throw Error('Follower native extra container drift');
+  const lock=JSON.parse(read('dependencies/lock.json')).packages.find(row=>row.repo==='seblindfors/ConsolePort');
+  const relative='ConsolePort/Libs/External/LibActionButton-1.0/LibActionButton-1.0.lua';
+  if(sha(lock.unpacked+'/'+relative)!==lock.files[relative]) throw Error('Follower LAB state source drift');
+  const extra=read('tests/harness/follower_runtime.lua')
+    .replace('--@FOLLOWER_RUNTIME_SOURCE',()=>['FollowerDungeon','UtilityRuntime'].map(name=>';(function(...)\n'+read('addon/ConsolePort_Forever/Rings/'+name+'.lua')+'\nend)("ConsolePort_Forever",Addon);').join('\n'))
+    .replace('--@FOLLOWER_EXTRA_CONTAINER_SOURCE',()=>read(file))
+    .replace('--@FOLLOWER_LAB_STATE_SOURCE',()=>['Generic:SetState','Generic:SetStateFromHandlerInsecure'].map(name=>nativeFunction(lock.unpacked+'/'+relative,name)).concat(['Generic','Spell'].map(kind=>read(lock.unpacked+'/'+relative).split('\n').find(line=>line.startsWith(kind+'.GetTexture ')))).join('\n'));
+  return followerExecutionFixture(mutations,read('tests/harness/follower_proxy.lua')+'\n'+extra);
+}
+let followerRuntimeProof;
+check('T101.follower-native-name-dispatch-feedback-selective-hiding-and-lifecycle',()=>{
+  parser.parse(read('tests/harness/follower_runtime.lua'),{luaVersion:'5.1'});
+  const state=execute(followerRuntimeFixture()+serializer+'\nSERIALIZED_STATE=serialized(FOLLOWER_RUNTIME_RESULTS)','follower-runtime-native-route');
+  followerRuntimeProof=require('./saved_variables.cjs').parse('RESULT='+state).RESULT;
+});
+check('T102.follower-runtime-old-defect-and-preservation-controls',()=>{
+  for(const [name,before,after,expected] of [
+    ['old-id-dispatch','route.spell=self.name','route.spell=ID','follower did not compile native spell-name route'],
+    ['stale-icon','texture=self:Icon() or texture','texture=texture','runtime retained stale generic ring icon'],
+    ['shared-container-hide','target:Hide()','self.api.ExtraAbilityContainer:Hide()','selective follower suppression hid or retained wrong native controls'],
+    ['lost-feedback','return kind,action,route',"return 'custom',{},route",'runtime replaced native LAB spell feedback'],
+    ['unbounded-cooldown-rebuild',"self:Queue(event~='UNIT_AURA'", "self.recompile=true; self:Queue(event~='UNIT_AURA'",'routine follower icon events rebuilt native rings or scheduled unbounded work'],
+  ]) {
+    let rejected=false;
+    try {execute(followerRuntimeFixture({[before]:after}),'follower-runtime-negative-'+name);}
+    catch(error) {rejected=String(error).includes(expected);}
+    if(!rejected) throw Error('Follower runtime negative control not rejected: '+name);
+  }
+});
 const report = {at:new Date().toISOString(), commit:cp.execFileSync('git',['rev-parse','HEAD'],{cwd:root}).toString().trim(),
   productHashes:Object.fromEntries(files('addon').map(f=>[f,sha(f)])),
   toolingHashes:Object.fromEntries([...files('tools'),...files('tests')].filter(f=>!f.includes('__pycache__')).map(f=>[f,sha(f)])),
   pinnedDependencyLockSHA256:sha('dependencies/lock.json'),
-  limitation:'Fengari uses Lua 5.3 semantics. Lua 5.1 syntax checked separately. No Retail secure/hardware proof.', sharedUtilityPrototype:utilityProof, sharedUtilityAdmission:utilityAdmissionProof, sharedUtilityRuntime:utilityRuntimeProof, sharedUtilityIntegration:utilityIntegrationProof, results};
+  limitation:'Fengari uses Lua 5.3 semantics. Lua 5.1 syntax checked separately. No Retail secure/hardware proof.', sharedUtilityPrototype:utilityProof, sharedUtilityAdmission:utilityAdmissionProof, sharedUtilityRuntime:utilityRuntimeProof, sharedUtilityIntegration:utilityIntegrationProof, followerExecution:followerExecutionProof, followerProxy:followerProxyProof, followerMapping:followerMappingProof, followerBoundaries:followerBoundaryProof, followerPresentation:followerPresentationProof, followerRuntime:followerRuntimeProof, results};
 const {output} = require('./repository_paths.cjs');
 fs.mkdirSync(output('scratch/test-results'),{recursive:true});
 fs.writeFileSync(output('scratch/test-results/latest.json'),JSON.stringify(report,null,2));

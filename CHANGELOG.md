@@ -1,13 +1,25 @@
 # ConsolePort Forever change history
 
 Status: maintained
-Reviewed: 2026-10-15
+Reviewed: 2026-10-16
 Evidence: [current status](docs/IMPLEMENTATION-STATUS.md),
 [historical chronology](docs/archive/ai-native-2026-10-11/IMPLEMENTATION-STATUS.pre-restructure.md).
 
 Dates below use America/Toronto. This is a curated change index, not invented
 release tags or blanket gameplay certification. Detailed receipts own exact
 source/artifact/file identities. Prepared, installed and accepted are separate.
+
+## Follower dungeon controls — October 16, 2026
+
+Candidate.40 compiles Dungeon Assistance through native localized spell-name
+dispatch, retains numeric ring/LAB identity, uses native zone-state artwork and
+selectively suppresses only the matching unprotected follower control. Shared
+extra/zone abilities, release handling and archive semantics remain native.
+All 102 runtime/source checks and 70 tooling tests pass with complete current
+inventories. Delivery is tracked in current status; Retail lead/stop
+acceptance remains open. Three dependency updates are qualified in preparation,
+excluded from this Forever-only update. Schema3/revision20 remain.
+[Implementation and limits](docs/reference/FOLLOWER-DUNGEON-RUNTIME-2026-10-16.md).
 
 ## Shared utility ring — October 14, 2026
 

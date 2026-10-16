@@ -1,6 +1,6 @@
 {
-  "checkedAt": "2026-10-14T16:23:10.909704+00:00",
-  "lockSHA256": "f74caaefdb66a16c87187554770a288b0ba39febe66511b3a3f07145a436061b",
+  "checkedAt": "2026-10-16T20:50:47.765082+00:00",
+  "lockSHA256": "2689e5885392dcae38d3c3dc8b516e9f966290c98a37677f3546757d5958753d",
   "github": [
     {
       "repo": "seblindfors/ConsolePort",
@@ -15,14 +15,14 @@
     },
     {
       "repo": "Cidan/BetterBags",
-      "url": "https://github.com/Cidan/BetterBags/releases/tag/v0.5.14",
-      "latestStable": "v0.5.14",
-      "releaseID": 401468770,
-      "publishedAt": "2026-10-02T01:12:16Z",
+      "url": "https://github.com/Cidan/BetterBags/releases/tag/v0.5.16",
+      "latestStable": "v0.5.16",
+      "releaseID": 414492530,
+      "publishedAt": "2026-10-16T03:06:58Z",
       "matchesLock": true,
-      "assetID": 604493194,
-      "digest": "sha256:16c1ac70c4de2e7f2cfdbf4d2b5f3d3f44514a3f9ecf1040e29c790e8be8c0d7",
-      "bytes": 551933
+      "assetID": 645959265,
+      "digest": "sha256:7ae808093064e973ab053a4bf63cb6f38318f6d2ab321f402d76006104f5cbc7",
+      "bytes": 632500
     },
     {
       "repo": "seblindfors/Immersion",
@@ -59,14 +59,14 @@
     },
     {
       "repo": "Tercioo/Plater-Nameplates",
-      "url": "https://github.com/Tercioo/Plater-Nameplates/releases/tag/Plater-v658",
-      "latestStable": "Plater-v658",
-      "releaseID": 409023939,
-      "publishedAt": "2026-10-10T15:13:34Z",
+      "url": "https://github.com/Tercioo/Plater-Nameplates/releases/tag/Plater-v661",
+      "latestStable": "Plater-v661",
+      "releaseID": 413737955,
+      "publishedAt": "2026-10-15T11:38:52Z",
       "matchesLock": true,
-      "assetID": 628267712,
-      "digest": "sha256:faeda3f14a2b109d2ceaa2a176be4a2e2d016b5e8c12d6c70e8222505bf461e0",
-      "bytes": 4575143
+      "assetID": 643673602,
+      "digest": "sha256:7e922151e5e9db7c8987c924887bdb952bac43ee65dc499ed75b0c46a41f9089",
+      "bytes": 4602619
     },
     {
       "repo": "SLOKnightfall/BetterWardrobe",
@@ -84,10 +84,10 @@
     {
       "repo": "curseforge/DynamicCam",
       "latestURL": "https://www.curseforge.com/wow/addons/dynamiccam/files/all",
-      "officialFile": "https://www.curseforge.com/wow/addons/dynamiccam/files/8995535",
-      "latestStable": "2.21.1",
-      "fileID": 8995535,
-      "metadataVerifiedAt": "2026-10-14T16:23:08.870096+00:00",
+      "officialFile": "https://www.curseforge.com/wow/addons/dynamiccam/files/9188709",
+      "latestStable": "2.21.2",
+      "fileID": 9188709,
+      "metadataVerifiedAt": "2026-10-16T20:48:53.339311+00:00",
       "method": "Official latest-stable Retail listing and file page inspected; no floating latest fetch during assembly.",
       "matchesLock": true
     },
@@ -97,7 +97,7 @@
       "officialFile": "https://www.curseforge.com/wow/addons/immersion-extrafade/files/8995675",
       "latestStable": "1.18.0",
       "fileID": 8995675,
-      "metadataVerifiedAt": "2026-10-14T16:23:08.870096+00:00",
+      "metadataVerifiedAt": "2026-10-16T20:48:53.339332+00:00",
       "method": "Official latest-stable Retail listing and file page inspected; no floating latest fetch during assembly.",
       "matchesLock": true
     }

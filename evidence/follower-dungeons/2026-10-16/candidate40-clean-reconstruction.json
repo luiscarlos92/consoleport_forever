@@ -1,0 +1,13 @@
+{
+  "at": "2026-10-16T21:15:35.840766+00:00",
+  "mode": "Fresh guarded scratch reconstruction using actual pinned HTTP sources and current verified unpacked dependencies",
+  "reconstructedInputs": 46,
+  "integrationFiles": 28,
+  "nativeFiles": 18,
+  "allPinnedHashesMatched": true,
+  "reuseNeededNetwork": false,
+  "localScratch": "C:\\Users\\luisr\\Dev\\consoleport_forever\\scratch\\follower-fresh-captures-c0yo_iqk",
+  "sourceCopiesPublished": false,
+  "screenshotsPublished": false,
+  "limit": "Hash/byte reconstruction only; not Retail execution or permission to publish third-party source/assets."
+}

@@ -1,0 +1,39 @@
+{
+  "release": {
+    "tag_name": "3.3.10",
+    "published_at": "2026-10-07T08:30:22Z",
+    "html_url": "https://github.com/seblindfors/ConsolePort/releases/tag/3.3.10"
+  },
+  "limit": "Selected issue queries are not an exhaustive absence proof; only ConsolePort freshness was inspected in this planning pass",
+  "date": "2026-10-16",
+  "searches": [
+    {
+      "count": 0,
+      "query": "repo:seblindfors/ConsolePort \"Dungeon Assistance\"",
+      "results": []
+    },
+    {
+      "count": 0,
+      "query": "repo:seblindfors/ConsolePort \"zone ability\"",
+      "results": []
+    },
+    {
+      "count": 2,
+      "query": "repo:seblindfors/ConsolePort \"follower\"",
+      "results": [
+        {
+          "number": 240,
+          "title": "Reroute hidden action buttons from the raid cursor",
+          "state": "closed",
+          "html_url": "https://github.com/seblindfors/ConsolePort/pull/240"
+        },
+        {
+          "number": 109,
+          "title": "Raid Cursor is not working as intended in Follower dungeons.",
+          "state": "closed",
+          "html_url": "https://github.com/seblindfors/ConsolePort/issues/109"
+        }
+      ]
+    }
+  ]
+}

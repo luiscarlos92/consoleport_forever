@@ -2,21 +2,42 @@
 
 Status: maintained
 Reviewed: 2026-10-16
-Evidence: [candidate.41 install](../evidence/delivery/live-install-candidate41.json),
-[independent readback](../evidence/delivery/candidate41-independent-readback.json),
-[source qualification](../evidence/test-results/candidate41-follower-qualification.json).
-
-## Candidate.42 integration qualification
-
-The user approved Forever integration after the isolated Pawn/Immersion
-experiment. Candidate.42 adds the three requested presentation surfaces while
-Pawn owns verdicts/text and Immersion owns rewards/comparison/input.
-[Runtime and pending Retail observations](reference/PAWN-IMMERSION-RUNTIME-2026-10-16.md).
-Full current-source qualification and scoped delivery are in progress; candidate.41
-remains the installed checkpoint below until a delivery receipt confirms otherwise.
-Schema3/revision20 remain; Pawn is optional, external and never packaged.
+Evidence: [candidate.42 readback](../evidence/delivery/candidate42-independent-readback.json),
+[source qualification](../evidence/test-results/candidate42-pawn-immersion-qualification.json),
+[fresh CI](../evidence/test-results/candidate42-fresh-ci.json).
 
 ## Installed checkpoint
+
+Candidate.42 was installed October 16 at **23:09:05 Toronto** from tested/pushed
+source `93501c4aca3d41738d17d8d478851c15ba7e87fa`. It adds the approved Pawn/Immersion
+presentation bridge: bag-provider-aware summary arrows, Pawn-generated detailed
+reward notes and retention through native L2 comparison. Pawn owns scores,
+options and formatting; native rewards, selection and controller input retain
+ownership. Pawn remains optional, external and never packaged. Schema3/revision20
+remain; accepted characters need no new setup review.
+[Runtime and proof limits](reference/PAWN-IMMERSION-RUNTIME-2026-10-16.md).
+
+All 106 runtime/source checks and 74 tooling tests pass locally and in fresh
+Windows CI with matching complete 64-product and 165-tool/test inventories.
+Each BetterBags source variant passes 330 assertions per provider load order and
+rejects 16 faulty variants. Two-choice refresh, startup, pending data, retained
+inspector ownership and native padding have explicit reproductions.
+[Qualification](../evidence/test-results/candidate42-pawn-immersion-qualification.json),
+[CI](../evidence/test-results/candidate42-fresh-ci.json).
+
+Only Forever was selected, with WoW closed at preview. Independent readback
+verifies all 61 installed files, 2,847 other addon files, 315 WTF files,
+42 links/root anchors and all 26,947 prior backup files/2,414 directories.
+All 61 intervening preflight-to-install game WTF changes were retained.
+No dependency/WTF writes or game input.
+[Delivery](../evidence/delivery/candidate42-independent-readback.json).
+
+User-owned next login/reload and bag/summary/detail/L2 checks remain. Offline C/UI
+models do not certify Retail pixels, hardware timing, taint, persistence or CPU.
+K04/K05 remain open; prior scoped follower acceptance is retained below. Four
+qualified dependency updates remain prepared and excluded from this delivery.
+
+## Previous candidate.41 checkpoint
 
 Candidate.41 was installed October 16 at **20:45:48 Toronto** from tested/pushed
 source `3478992ec1eb33b7598e554bcaa4993840e7c107`. Candidate.40's unsupported PartyInfo startup guard had kept

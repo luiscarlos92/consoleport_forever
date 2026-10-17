@@ -1,23 +1,21 @@
 # Pending deployment and cumulative acceptance
 
-Status: candidate.41 installed October 16, 2026 at 20:45:48 Toronto.
+Status: candidate.42 installed October 16, 2026 at 23:09:05 Toronto.
 Reviewed: 2026-10-16
-Evidence: [independent readback](../evidence/delivery/candidate41-independent-readback.json),
-[qualification](../evidence/test-results/candidate41-follower-qualification.json).
+Evidence: [independent readback](../evidence/delivery/candidate42-independent-readback.json),
+[qualification](../evidence/test-results/candidate42-pawn-immersion-qualification.json),
+[fresh CI](../evidence/test-results/candidate42-fresh-ci.json).
 
-The Forever-only update passed all 102 runtime/source checks and 70 tooling
-tests locally and in fresh Windows CI with complete matching inventories.
-[CI](../evidence/test-results/candidate41-fresh-ci.json). Independent readback verifies
-all 60 installed files and preservation of other addons, WTF, links/root anchors
-and prior backups. Schema3/revision20 remain. No game input was sent. The user
-confirmed the follower fix on October 16; K06 is resolved for the reported case.
-K04/K05 and broader unreported cases remain open. Four qualified
-dependency updates remain prepared and excluded from this delivery.
+The Forever-only update passes 106 runtime/source checks and 74 tooling tests
+locally and in fresh Windows CI with complete matching inventories. Independent
+readback verifies all 61 installed files and preservation of other addons,
+WTF, links/root anchors and prior backups. Schema3/revision20 remain. No game
+input. Pawn/Immersion Retail acceptance remains pending; K04/K05 are unchanged.
+Four qualified dependency updates remain prepared and excluded.
 
 ## Candidate.42 Pawn/Immersion checks
 
-Candidate.42 integration is approved and under offline qualification. After its
-separately recorded scoped delivery and user-owned reload:
+Candidate.42 is installed. At next login/reload, perform these user-owned checks:
 
 1. Use the same reward/Pawn configuration as bags. Summary icons show only the
    native green arrow when BetterBags selects Pawn and Pawn says upgrade.

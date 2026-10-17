@@ -1,0 +1,32 @@
+{
+  "sourceCommit": "93501c4aca3d41738d17d8d478851c15ba7e87fa",
+  "packSHA256": "4fad7ae3e4ee831297a588b74837060e8caa107746702577d1320b7f9c192587",
+  "closedAt": "2026-10-17T03:09:05.044190+00:00",
+  "backup": "C:\\Users\\luisr\\WoW-Backups\\ConsolePort-Forever\\20261017T025638Z-a85d93211461",
+  "gameRunningAtPreview": false,
+  "at": "2026-10-17T03:14:00.730706+00:00",
+  "installedVersion": "2.0.0-candidate.42",
+  "installedFilesVerified": 61,
+  "changedRuntimeFiles": [
+    "ConsolePort_Forever.lua",
+    "ConsolePort_Forever.toc",
+    "UI/PawnImmersion.lua"
+  ],
+  "removedRuntimeFiles": [],
+  "unselectedFilesUnchanged": 2847,
+  "wtfFilesUnchangedDuringInstall": 315,
+  "preflightToInstallGameWTFChangesPreserved": 61,
+  "junctionsUnchanged": 42,
+  "anchorsUnchanged": true,
+  "backupsVerified": true,
+  "priorBackupFilesUnchanged": 26947,
+  "priorBackupDirectoriesPreserved": 2414,
+  "beforeSnapshotSHA256": "647a51f9846a8848904fd3d265d31bb52eb246591d44b98254aab882b41ab6ea",
+  "installSnapshotSHA256": "a80a0cda82f3e31584d99fd5ab759d676614d09a31c79ee06180a134a73a8d68",
+  "dependencyUpdates": [],
+  "configurationRevision": 20,
+  "storeSchema": 3,
+  "noLiveWTFWrites": true,
+  "gameInputPerformed": false,
+  "retailAcceptance": "User owns reload; bag/summary/detail parity, held/released L2, rendered padding, taint/timing/persistence/CPU remain pending."
+}

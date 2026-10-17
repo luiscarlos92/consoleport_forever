@@ -1,0 +1,25 @@
+{
+  "at": "2026-10-17T02:56:15.207123+00:00",
+  "candidate": "2.0.0-candidate.42",
+  "run": {
+    "conclusion": "success",
+    "createdAt": "2026-10-17T02:37:35Z",
+    "databaseId": 38995657628,
+    "headSha": "93501c4aca3d41738d17d8d478851c15ba7e87fa",
+    "status": "completed",
+    "updatedAt": "2026-10-17T02:43:37Z",
+    "url": "https://github.com/luiscarlos92/consoleport_forever/actions/runs/38995657628",
+    "workflowName": "Offline verification"
+  },
+  "runtimeChecks": 106,
+  "toolingTests": 74,
+  "runtimeReportSHA256": "83fa057815bae468d7c538013d8781c630811475411d28fb6ce2568db3dd3a28",
+  "toolingReportSHA256": "850953755ef46cc2f2ebe2dcc9b79a21647f7f9b1f8c5661b8b088476bf59c44",
+  "pinnedDownloadReportSHA256": "28e1947ca8f79198e48690e4db9124e1f85bf90f66b94be8d1b051901fc11db1",
+  "productFiles": 64,
+  "toolingFiles": 165,
+  "completeInventoriesMatchLocalQualification": true,
+  "lockMatchesLocal": true,
+  "nativeIntegrationAndPawnSourceReconstructionStagePassed": true,
+  "proofLimit": "Clean Windows offline source/compiler/simulation proof; not Retail rendering, taint, hardware, persistence or CPU acceptance."
+}

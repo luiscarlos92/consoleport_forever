@@ -11,15 +11,21 @@ source/artifact/file identities. Prepared, installed and accepted are separate.
 
 ## Pawn feedback in Immersion rewards — October 16, 2026
 
-Candidate.42 integrates the approved Pawn bridge after the isolated experiment:
-bag-provider-aware summary arrows and Pawn-generated detailed reward notes,
-retained through native L2 comparison. Pawn owns scoring/options/formatting;
-Immersion and ConsolePort retain quest, selection and input ownership. Startup,
-active pool/link identity, bounded asynchronous data and native tooltip padding
-are qualified offline. No settings/schema/revision or dependency changes.
+Candidate.42 adds bag-provider-aware summary reward arrows and Pawn-generated
+reward-tooltip notes retained through native L2 comparison. Pawn owns scores,
+options and formatting; Immersion/ConsolePort retain rewards and input. Startup,
+active pool/link ownership, bounded pending data, two-choice refresh and native
+padding are qualified offline. Schema3/revision20 remain.
 [Runtime and limits](docs/reference/PAWN-IMMERSION-RUNTIME-2026-10-16.md).
-Current status records exact qualification and delivery; Retail acceptance remains
-user-owned.
+
+Installed October 16 at 23:09:05 Toronto from tested/pushed source
+`93501c4aca3d41738d17d8d478851c15ba7e87fa`. All 106 runtime/source checks and
+74 tooling tests pass locally and in fresh Windows CI with matching complete
+inventories. Sixteen faulty bridge variants are rejected for each source variant.
+Only Forever was installed; all 61 files read back exactly. Other addons,
+WTF, links and prior backups are preserved. No game input. Retail appearance,
+controller timing, taint, persistence and CPU acceptance remain user-owned.
+[Delivery](evidence/delivery/candidate42-independent-readback.json).
 
 ## Follower activation correction — October 16, 2026
 

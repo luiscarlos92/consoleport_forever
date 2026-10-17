@@ -1,0 +1,85 @@
+{
+  "at": "2026-10-17T02:56:14.820991+00:00",
+  "candidate": "2.0.0-candidate.42",
+  "testedParentCommit": "93501c4aca3d41738d17d8d478851c15ba7e87fa",
+  "runtimeChecks": 106,
+  "toolingTests": 74,
+  "overallPassed": true,
+  "productFiles": 64,
+  "toolingFiles": 165,
+  "completeCurrentProductAndToolingInventoriesMatch": true,
+  "changedProductFiles": [
+    "addon/ConsolePort_Forever/ConsolePort_Forever.lua",
+    "addon/ConsolePort_Forever/ConsolePort_Forever.toc",
+    "addon/ConsolePort_Forever/UI/PawnImmersion.lua"
+  ],
+  "runtimeReportSHA256": "a2974f1f4c162c96264eead7f3c06eb35c98c0e7f05e9a010094047a42d930b8",
+  "toolingReportSHA256": "6643df6a82cceafc89b1bd3780a6ae6cf3b44a8245802b395d55b4042df9246a",
+  "lockSHA256": "2d1c1824b1d815df5b9b9c222aca88051e42059e73d505b9133d992b6979c2bc",
+  "freshStableCheckSHA256": "1c439de4b45c975b88a2c1d45a4ed2e72418d31ce7bf00cd3184f76ce637d659",
+  "proofs": [
+    {
+      "version": "v0.5.14 installed",
+      "sharedAssertions": 245,
+      "additionalAssertions": 85,
+      "scenarios": 41,
+      "negativeControls": 16,
+      "reportSHA256": "ff1da7b0b6ad38fe5866eec17245819884ff3cd0bdd0f132064dde1df4ab5501",
+      "workload": {
+        "nativeOnly": {
+          "nativeTooltipSets": 24,
+          "nativeCompareCalls": 10,
+          "showEvents": 36,
+          "bridgeQueries": 0,
+          "bridgeAnnotations": 0,
+          "bridgeRefreshes": 0,
+          "poolFrames": 2
+        },
+        "withBridge": {
+          "nativeTooltipSets": 26,
+          "nativeCompareCalls": 10,
+          "showEvents": 36,
+          "bridgeQueries": 50,
+          "bridgeAnnotations": 26,
+          "bridgeRefreshes": 1,
+          "poolFrames": 2
+        }
+      }
+    },
+    {
+      "version": "v0.5.16 prepared",
+      "sharedAssertions": 245,
+      "additionalAssertions": 85,
+      "scenarios": 41,
+      "negativeControls": 16,
+      "reportSHA256": "90b4eee9d79880e890591ec0aa546d5337568c193af29f914d46bb5abe1660bc",
+      "workload": {
+        "nativeOnly": {
+          "nativeTooltipSets": 24,
+          "nativeCompareCalls": 10,
+          "showEvents": 36,
+          "bridgeQueries": 0,
+          "bridgeAnnotations": 0,
+          "bridgeRefreshes": 0,
+          "poolFrames": 2
+        },
+        "withBridge": {
+          "nativeTooltipSets": 26,
+          "nativeCompareCalls": 10,
+          "showEvents": 36,
+          "bridgeQueries": 50,
+          "bridgeAnnotations": 26,
+          "bridgeRefreshes": 1,
+          "poolFrames": 2
+        }
+      }
+    }
+  ],
+  "configurationRevision": 20,
+  "storeSchema": 3,
+  "selectedDependencyUpdates": [],
+  "optionalExternalPawn": "2.13.17, never packaged/modified",
+  "noGameInput": true,
+  "noLiveWTFWrites": true,
+  "limits": "Actual scoring, formatter, initialization/event/plugin and reward/pool/compare bodies execute. C APIs, frame metrics, scheduling and subsystem startup/stat input are modeled. No Retail rendering, taint, hardware timing, persistence or CPU acceptance."
+}

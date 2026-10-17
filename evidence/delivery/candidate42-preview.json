@@ -1,0 +1,57 @@
+{
+  "operation": "deploy-companion",
+  "sourceCommit": "93501c4aca3d41738d17d8d478851c15ba7e87fa",
+  "packSHA256": "4fad7ae3e4ee831297a588b74837060e8caa107746702577d1320b7f9c192587",
+  "dependencyUpdates": [],
+  "testedDependencies": {
+    "Cidan/BetterBags": {
+      "sha256": "7ae808093064e973ab053a4bf63cb6f38318f6d2ab321f402d76006104f5cbc7",
+      "version": "v0.5.16"
+    },
+    "SFX-WoW/Masque": {
+      "sha256": "9e1da4827ae60bd25d7fc427cbeeb0dc297e59d53a71a29ae95223d3374bbfa0",
+      "version": "12.1.0"
+    },
+    "SLOKnightfall/BetterWardrobe": {
+      "sha256": "abcba6be5535c15a581721192a5c4865e05b568dbac52d79c108c89e6c763d8c",
+      "version": "6.12.3"
+    },
+    "Tercioo/Plater-Nameplates": {
+      "sha256": "7e922151e5e9db7c8987c924887bdb952bac43ee65dc499ed75b0c46a41f9089",
+      "version": "Plater-v661"
+    },
+    "curseforge/DynamicCam": {
+      "sha256": "dd88b9cc8dccf8e1f4afecf4d2e513d96b07f6fa3360e6749c80de2533383ec1",
+      "version": "2.21.4"
+    },
+    "curseforge/Immersion_ExtraFade": {
+      "sha256": "88209bf00a35119be57011b87d52dc59500469f5eeff87f93b34e9b488f1a125",
+      "version": "1.18.1"
+    },
+    "seblindfors/ConsolePort": {
+      "sha256": "6175a327b3b7505b6f1d79ef0adc96c7a65db3cc8220dd59e34de6658dbb4f49",
+      "version": "3.3.10"
+    },
+    "seblindfors/Immersion": {
+      "sha256": "b180a8cbd1a1d878377da5a85abfdc5576e0c04212f9e900e3e9ca505cde1f3e",
+      "version": "1.4.61"
+    },
+    "xod-wow/LiteMount": {
+      "sha256": "29f360a9dbffff201e9573c8113322d455a1fbec250eefc4578495a59e2febe7",
+      "version": "12.1.5-1"
+    }
+  },
+  "root": "C:\\Program Files (x86)\\World of Warcraft\\_retail_",
+  "consolePortVersion": "3.3.10",
+  "addonFolders": [
+    "ConsolePort_Forever"
+  ],
+  "vendorFileCount": 2847,
+  "characterLinkCount": 42,
+  "currentConfigurationWrites": false,
+  "vendorWrites": false,
+  "execute": false,
+  "allowRunningCompanion": true,
+  "gameRunningAtPreview": false,
+  "reloadRequired": true
+}

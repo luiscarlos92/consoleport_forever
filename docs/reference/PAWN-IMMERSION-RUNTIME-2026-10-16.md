@@ -4,7 +4,10 @@ Status: maintained
 Reviewed: 2026-10-16
 Evidence: [shipping bridge](../../addon/ConsolePort_Forever/UI/PawnImmersion.lua),
 [runtime source pins](../../evidence/pawn-immersion/2026-10-16/runtime-inputs.json),
-[staged plan](../plans/PAWN-IMMERSION-BRIDGE-2026-10-16.md).
+[staged plan](../plans/PAWN-IMMERSION-BRIDGE-2026-10-16.md),
+[source qualification](../../evidence/test-results/candidate42-pawn-immersion-qualification.json),
+[fresh CI](../../evidence/test-results/candidate42-fresh-ci.json),
+[installed readback](../../evidence/delivery/candidate42-independent-readback.json).
 
 The user approved the isolated experiment and subsequently replied “Proceed”
 for Forever integration. Candidate.42 adds summary reward arrows and Pawn's own

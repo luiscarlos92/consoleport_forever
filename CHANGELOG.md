@@ -16,7 +16,12 @@ follower adapter dormant on the documented Retail API. Exact active ability
 identity scopes the repair, including quest/story contexts. API-surface regression
 coverage rejects the old guard; `/cpf status` exposes follower readiness/refusal.
 Native source entries/input and server state remain owned by ConsolePort/Blizzard.
-Qualification/delivery are in progress; active-route Retail acceptance is pending.
+Installed October 16 at 20:45:48 Toronto from tested/pushed source `3478992ec1eb33b7598e554bcaa4993840e7c107`.
+All 102 runtime/source checks and 70 tooling tests pass locally and in fresh
+Windows CI with matching complete inventories; 60 Forever files read back exactly.
+Other addons, WTF, links and prior backups are preserved. No game input.
+[Delivery](evidence/delivery/candidate41-independent-readback.json).
+Active-route Retail acceptance remains pending.
 [Diagnosis](docs/reference/FOLLOWER-DUNGEON-ACTIVATION-2026-10-16.md).
 
 ## Follower dungeon controls — October 16, 2026

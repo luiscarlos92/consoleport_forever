@@ -1,17 +1,17 @@
 # Pending deployment and cumulative acceptance
 
-Status: candidate.40 installed October 16, 2026 at 17:41:52 Toronto.
+Status: candidate.41 installed October 16, 2026 at 20:45:48 Toronto.
 Reviewed: 2026-10-16
-Evidence: [independent readback](../evidence/delivery/candidate40-independent-readback.json),
-[qualification](../evidence/test-results/candidate40-follower-qualification.json).
+Evidence: [independent readback](../evidence/delivery/candidate41-independent-readback.json),
+[qualification](../evidence/test-results/candidate41-follower-qualification.json).
 
-The qualified Forever-only update ran while WoW was open. All 102 runtime/source
-checks and 70 tooling tests pass locally and in fresh Windows CI with complete
-matching current inventories. [CI](../evidence/test-results/candidate40-fresh-ci.json). Independent
-readback verifies 60 installed files and preservation of other addons,
-WTF, links/root anchors and prior backups. Schema3/revision20 remain; accepted
-characters need no new configuration review. No game input was sent. The user
-owns reload and the scoped cases below; K06, K04 and K05 remain open.
+The Forever-only update passed all 102 runtime/source checks and 70 tooling
+tests locally and in fresh Windows CI with complete matching inventories.
+[CI](../evidence/test-results/candidate41-fresh-ci.json). Independent readback verifies
+all 60 installed files and preservation of other addons, WTF, links/root anchors
+and prior backups. Schema3/revision20 remain. No game input was sent. The user
+owns reload and the cases below; K06, K04 and K05 remain open. Four qualified
+dependency updates remain prepared and excluded from this delivery.
 
 ## Candidate.41 follower activation and acceptance
 

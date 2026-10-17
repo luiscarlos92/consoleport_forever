@@ -86,3 +86,15 @@ These packages remain prepared. This authorized running-game delivery selects
 Forever alone and retains support for currently installed versions. Offline
 dependency qualification does not establish new UI-hide, camera, taint or CPU
 acceptance in Retail.
+
+## Qualified delivery
+
+[Full source qualification](../../evidence/test-results/candidate41-follower-qualification.json)
+and [fresh Windows CI](../../evidence/test-results/candidate41-fresh-ci.json) pass
+with matching complete inventories. [Artifact audit](../../evidence/delivery/candidate41-artifact-audit.json),
+[installation](../../evidence/delivery/live-install-candidate41.json) and
+[independent readback](../../evidence/delivery/candidate41-independent-readback.json)
+identify the exact installed Forever-only bytes and preservation results. This
+establishes offline qualification and delivery; the user owns reload and Retail
+active-route acceptance. No private follower state machine or native autoassignment
+replacement is installed.

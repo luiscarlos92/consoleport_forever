@@ -2,22 +2,42 @@
 
 Status: maintained
 Reviewed: 2026-10-16
-Evidence: [candidate.40 install](../evidence/delivery/live-install-candidate40.json),
-[independent readback](../evidence/delivery/candidate40-independent-readback.json),
-[source qualification](../evidence/test-results/candidate40-follower-qualification.json).
-
-## Candidate.41 preparation
-
-The user reports candidate.40 unchanged in Retail. Its startup guard requires an
-unsupported PartyInfo API, and its old fixture fabricated that method. Candidate.41
-uses active Dungeon Assistance identity instead, validates supplied API names
-against captured Blizzard documentation and adds on-demand follower status.
-The [activation diagnosis](reference/FOLLOWER-DUNGEON-ACTIVATION-2026-10-16.md) separates startup proof from still-pending live toggle behavior.
-Qualification/delivery are in progress; candidate.40 remains installed until a
-new verified receipt. K06 remains open. New DynamicCam/ExtraFade archives are
-prepared and excluded from this Forever-only update.
+Evidence: [candidate.41 install](../evidence/delivery/live-install-candidate41.json),
+[independent readback](../evidence/delivery/candidate41-independent-readback.json),
+[source qualification](../evidence/test-results/candidate41-follower-qualification.json).
 
 ## Installed checkpoint
+
+Candidate.41 was installed October 16 at **20:45:48 Toronto** from tested/pushed
+source `3478992ec1eb33b7598e554bcaa4993840e7c107`. Candidate.40's unsupported PartyInfo startup guard had kept
+the follower adapter dormant on the documented API; its old fixture fabricated
+the missing method. The correction activates by exact active ability identity,
+checks fixture API names against native declarations, rejects the old guard and
+adds on-demand `/cpf status` follower readiness. The native named-spell route,
+artwork and selective stock-child suppression can now activate without PartyInfo
+or LFG flags. Source entries, input and protected/server state remain native.
+[Diagnosis and limits](reference/FOLLOWER-DUNGEON-ACTIVATION-2026-10-16.md).
+
+All 102 runtime/source checks and 70 tooling tests pass with complete
+63-product and 156-tool/test inventories. Six defect controls are rejected;
+fresh Windows CI matches both inventories and the lock.
+[qualification](../evidence/test-results/candidate41-follower-qualification.json). [CI receipt](../evidence/test-results/candidate41-fresh-ci.json).
+Only Forever was selected. Independent readback verifies 60 installed files,
+2,847 other addon files, 315 WTF files,
+42 links/root anchors and all 26,570 prior backup files/
+2,396 directories. The preflight and installer WTF inventories match.
+No dependency/WTF writes or game input. [independent readback](../evidence/delivery/candidate41-independent-readback.json).
+
+Schema3/revision20 remain. The user owns reload, checking follower status is
+active, repeated lead/stop, artwork, selective hiding, combat and sibling extra
+abilities. Offline proof does not certify C/server toggle semantics, taint,
+hardware timing, rendering, persistence or Retail CPU. K06 remains open; K04/K05
+are unchanged. BetterBags v0.5.16, Plater-v661, DynamicCam 2.21.4 and ExtraFade
+1.18.1 are qualified in preparation and excluded from this update; installed
+dependency versions remain supported and untouched.
+
+### Previous candidate.40 checkpoint
+
 
 Candidate.40 was installed October 16 at **17:41:52 Toronto** from tested/pushed
 source `af09814458d23550e671e610da162dd05caadfa7`. It implements native localized spell-name dispatch for

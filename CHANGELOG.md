@@ -21,7 +21,9 @@ All 102 runtime/source checks and 70 tooling tests pass locally and in fresh
 Windows CI with matching complete inventories; 60 Forever files read back exactly.
 Other addons, WTF, links and prior backups are preserved. No game input.
 [Delivery](evidence/delivery/candidate41-independent-readback.json).
-Active-route Retail acceptance remains pending.
+The user confirms "done, fixed" after the candidate.41 test instructions. K06 is
+resolved for the reported follower-control/Utility Ring problem; broader cases
+are not individually asserted. [Retail acceptance](evidence/follower-dungeons/2026-10-16/candidate41-user-acceptance.json).
 [Diagnosis](docs/reference/FOLLOWER-DUNGEON-ACTIVATION-2026-10-16.md).
 
 ## Follower dungeon controls — October 16, 2026

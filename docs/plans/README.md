@@ -18,7 +18,9 @@ release is a conditional counterexample and engine causation remains open.
 Those research stages did not implement the addon. The later user comparison and
 authorization now lead to the [candidate.40 runtime](../reference/FOLLOWER-DUNGEON-RUNTIME-2026-10-16.md):
 native name dispatch, zone artwork and selective child suppression. Current status
-owns delivery; Retail lead/stop acceptance remains pending.
+owns delivery. Candidate.41 subsequently corrects the unsupported startup API;
+the user confirms the reported problem fixed, resolving K06.
+[Activation and acceptance](../reference/FOLLOWER-DUNGEON-ACTIVATION-2026-10-16.md).
 The [extended experiments](../reference/FOLLOWER-DUNGEON-ADMISSION-BOUNDARIES-2026-10-16.md)
 preserve native source identity and LAB feedback, exercise actual restricted
 authority and resilient icon composition, and reach the remaining Retail

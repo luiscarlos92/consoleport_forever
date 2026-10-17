@@ -29,12 +29,15 @@ are candidate.40 cases under R15/K06. Native name dispatch is precompiled outsid
 protected-write guards; public icon events never cast or rebuild rings. Only
 the identified unprotected follower child is suppressed. Unknown state, disable,
 editor, owner loss and pool reuse restore owned visibility, deferring protected
-restoration until combat ends. Actual Retail toggle/rendering acceptance remains
-pending; see the [candidate.40 runtime](reference/FOLLOWER-DUNGEON-RUNTIME-2026-10-16.md).
+restoration until combat ends. The earlier implementation and proof boundary are
+recorded in the [candidate.40 runtime](reference/FOLLOWER-DUNGEON-RUNTIME-2026-10-16.md).
 The subsequent candidate.41 [activation diagnosis](reference/FOLLOWER-DUNGEON-ACTIVATION-2026-10-16.md) corrects its unsupported startup API.
 Activation uses the exact active ability identity without a PartyInfo/LFG flag;
 on-demand `/cpf status` distinguishes active handling from startup refusal.
-Native autoassignment and release gestures remain. Retail toggling is unaccepted.
+Native autoassignment and release gestures remain. The user's October 16
+candidate.41 confirmation resolves K06 for the reported problem; individual
+combat, Edit Mode, coexistence and transition cases are not enumerated by that
+report. [Acceptance](../evidence/follower-dungeons/2026-10-16/candidate41-user-acceptance.json).
 
 Candidate.39 adds shared default utility choice projection after public/native
 readiness, with first eligible activation and persistent independent disable.

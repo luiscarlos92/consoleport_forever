@@ -28,11 +28,13 @@ Only Forever was selected. Independent readback verifies 60 installed files,
 2,396 directories. The preflight and installer WTF inventories match.
 No dependency/WTF writes or game input. [independent readback](../evidence/delivery/candidate41-independent-readback.json).
 
-Schema3/revision20 remain. The user owns reload, checking follower status is
-active, repeated lead/stop, artwork, selective hiding, combat and sibling extra
-abilities. Offline proof does not certify C/server toggle semantics, taint,
-hardware timing, rendering, persistence or Retail CPU. K06 remains open; K04/K05
-are unchanged. BetterBags v0.5.16, Plater-v661, DynamicCam 2.21.4 and ExtraFade
+Schema3/revision20 remain. On October 16, after the candidate.41 test instructions,
+the user reports "done, fixed". K06 is resolved for the reported follower-control
+and Utility Ring problem. [Retail acceptance](../evidence/follower-dungeons/2026-10-16/candidate41-user-acceptance.json)
+records that confirmation without inventing a per-case test log. Exhaustive
+combat, Edit Mode, sibling-ability and transition coverage, taint, persistence
+and Retail CPU are not individually asserted; K04/K05 remain open.
+BetterBags v0.5.16, Plater-v661, DynamicCam 2.21.4 and ExtraFade
 1.18.1 are qualified in preparation and excluded from this update; installed
 dependency versions remain supported and untouched.
 

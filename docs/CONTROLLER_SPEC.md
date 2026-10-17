@@ -23,12 +23,15 @@ standalone follower button suppressed and other extra/zone abilities preserved.
 Candidate.40 implements localized native spell-name dispatch and zone artwork
 for the numeric default-ring follower entry, with selective unprotected child
 suppression after readiness. The existing hold/release gesture remains native.
-Retail lead/stop alternation and rendered preservation remain pending; see the
+Candidate.40's implementation and then-pending Retail boundary are recorded in the
 [candidate.40 runtime](reference/FOLLOWER-DUNGEON-RUNTIME-2026-10-16.md).
 The subsequent candidate.41 [activation diagnosis](reference/FOLLOWER-DUNGEON-ACTIVATION-2026-10-16.md) corrects its unsupported startup API.
 Activation uses the exact active ability identity without a PartyInfo/LFG flag;
 on-demand `/cpf status` distinguishes active handling from startup refusal.
-Native autoassignment and release gestures remain. Retail toggling is unaccepted.
+Native autoassignment and release gestures remain. The user confirms the fix on
+candidate.41: "done, fixed". K06 is resolved for the reported problem; this is
+scoped acceptance rather than an enumerated transition matrix.
+[Acceptance](../evidence/follower-dungeons/2026-10-16/candidate41-user-acceptance.json).
 
 The expanded HUD has Base/L2/R2/L2R2 banks with eight cells each: four D-pad and
 four face cells. The unmodified faces are reserved/shared commands, leaving 28

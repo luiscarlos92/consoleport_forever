@@ -14,6 +14,8 @@ unsupported PartyInfo method, while its test fixture fabricated it. Therefore
 its green proof did not establish startup against the documented Retail API.
 Candidate.41 repairs activation by exact active ability identity and adds native
 API-surface regression/status coverage. See the [activation diagnosis](FOLLOWER-DUNGEON-ACTIVATION-2026-10-16.md).
+The user's subsequent "done, fixed" confirms the candidate.41 repair for the
+reported problem and resolves K06. [Acceptance](../../evidence/follower-dungeons/2026-10-16/candidate41-user-acceptance.json).
 The following sections retain candidate.40's implementation and qualification
 checkpoint; they do not establish that its named cast route ran in Retail.
 

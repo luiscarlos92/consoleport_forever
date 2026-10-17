@@ -8,14 +8,17 @@ Evidence: [source dry runs](../../evidence/follower-dungeons/2026-10-16/source-d
 
 ## Current candidate continuation
 
-The later user comparison confirms Blizzard's button works while the numeric
-ring route usually repeats lead and retains blue artwork. The user authorizes
-proceeding with the best supported repair. Candidate.40 now implements the
-[native name route and selective presentation](../reference/FOLLOWER-DUNGEON-RUNTIME-2026-10-16.md).
-The sections below retain the ordered investigation and earlier stopping
-boundaries; their no-code/pending-dependency statements describe those stages.
-The current lock qualifies the three discovered updates, while the running-game
-delivery selects Forever only. Retail lead/stop acceptance remains pending.
+Candidate.41 is installed and the user confirms "done, fixed" after its test
+instructions. K06 is resolved for the reported problem.
+[Acceptance](../../evidence/follower-dungeons/2026-10-16/candidate41-user-acceptance.json).
+Candidate.40's native name route and selective presentation had been gated by an
+unsupported startup API; candidate.41 corrects activation using the active ability
+identity. [Activation diagnosis](../reference/FOLLOWER-DUNGEON-ACTIVATION-2026-10-16.md).
+Native entry addition and protected/server state remain native; a private follower
+state machine was unnecessary for the accepted repair. Four dependency updates
+are qualified in preparation; the delivery selected Forever alone. The sections
+below retain earlier investigation and stopping boundaries as historical stages.
+The user's brief confirmation does not enumerate every broader regression case.
 
 ## Request and current boundary
 

@@ -1,0 +1,25 @@
+{
+  "candidate": "2.0.0-candidate.41",
+  "reportedDate": "2026-10-16",
+  "recordedAt": "2026-10-17T01:05:23.837208+00:00",
+  "timezone": "America/Toronto",
+  "source": "Direct user confirmation in this conversation after candidate41 delivery and Retail test instructions",
+  "userStatement": "done, fixed, update docs commit and push",
+  "installedSourceCommit": "3478992ec1eb33b7598e554bcaa4993840e7c107",
+  "installedReceipt": "evidence/delivery/live-install-candidate41.json",
+  "accepted": [
+    "The user reports the follower-dungeon control / Utility Ring problem fixed on candidate.41; K06 resolved for that reported problem"
+  ],
+  "notIndividuallyAsserted": [
+    "A per-case test log for status output, lead/stop selections, artwork, default-button hiding and sibling abilities",
+    "Every combat, Edit Mode, held-input, exit/re-entry, pooled-widget, disable/reload and cross-character transition",
+    "Retail taint, performance measurements and persistence across all sessions"
+  ],
+  "retainedOwnership": "Forever activation, named-spell compilation and selective cosmetics; ConsolePort entry addition/input and Blizzard protected execution/server follower state remain native",
+  "otherIssues": "K04/K05 unchanged and open",
+  "proofLimits": [
+    "Acceptance covers the user-reported fix, not universal zero-regression certification",
+    "Historical offline, artifact and delivery receipts remain unchanged"
+  ],
+  "changesThisTurn": "Documentation and retained user-acceptance evidence only; no runtime/test/tool/dependency changes, deployment, direct WTF writes or game input"
+}

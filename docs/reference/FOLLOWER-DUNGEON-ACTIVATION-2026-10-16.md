@@ -64,12 +64,13 @@ Five earlier route/presentation/work controls remain. This distinguishes an
 adapter never starting from an active cast behaving incorrectly. New API captures
 stay local/ignored; CI reconstructs them from the tracked hash manifest.
 
-Cast spies still do not model C/server toggle semantics. After installation and
-the user's reload, verify `/cpf status` reports follower controls active while
-Dungeon Assistance is present. Then check the stock follower control disappears,
-the ring icon agrees with state and repeated cooldown-separated selections
-alternate lead/stop. Other extra/zone abilities must remain usable. K06 remains
-open until that scoped Retail result; no game input has been performed.
+Cast spies still do not model C/server toggle semantics. The post-installation
+instructions asked the user to reload, check `/cpf status`, then verify lead/stop,
+artwork, selective stock-button hiding and sibling preservation. The user then
+reports "done, fixed". K06 is resolved for that reported problem.
+[Retail acceptance](../../evidence/follower-dungeons/2026-10-16/candidate41-user-acceptance.json)
+retains the exact confirmation; it does not enumerate individual combat, Edit
+Mode, coexistence, transition or performance cases. No agent game input occurred.
 
 ## Dependency qualification scope
 
@@ -95,6 +96,6 @@ with matching complete inventories. [Artifact audit](../../evidence/delivery/can
 [installation](../../evidence/delivery/live-install-candidate41.json) and
 [independent readback](../../evidence/delivery/candidate41-independent-readback.json)
 identify the exact installed Forever-only bytes and preservation results. This
-establishes offline qualification and delivery; the user owns reload and Retail
-active-route acceptance. No private follower state machine or native autoassignment
-replacement is installed.
+establishes offline qualification and delivery. The subsequent user confirmation
+adds scoped Retail acceptance of the reported fix. No private follower state
+machine or native autoassignment replacement is installed.

@@ -11,7 +11,6 @@ Evidence: [current status](IMPLEMENTATION-STATUS.md),
 
 | ID | Status and established facts | Missing observation / next boundary |
 | --- | --- | --- |
-| K06: follower control duplication / Utility Ring toggle | User reports candidate.40 unchanged. Its unsupported PartyInfo startup guard prevents activation on the documented Retail API; the old fixture fabricated that method. Candidate.41 activates by exact active ability identity and exposes follower status. | Old startup guard must fail with the native API surface. After deployment/reload, verify active status, artwork, selective hiding and lead/stop. Protected execution and server state remain native; entry autoassignment is retained. [activation diagnosis](reference/FOLLOWER-DUNGEON-ACTIVATION-2026-10-16.md). |
 | K05: combat error flood / login blocked-action warning | Recurred on candidate.37 in ordinary combat: captured cooldown failures grew from 1,020 to 1,050 as the log flushed; saved observer counted 926 blocked actions. Retained stock-button `action` fields have `ConsolePort_Bar` taint attribution while inspected event/update methods remain secure. All 303 installed ConsolePort source files match 3.3.10. Candidate.37 observer repairs did not resolve this failure. | The engine taint capture shows a separate cursor/professions highlight write, not the original stock action-field writer. Logging is now off after a different nil-call error family appeared around reload. Installed candidate.38 adds bounded automatic action-label transition/first-blocked stacks, gated on logging being off; no further engine logging or prescribed combat sequence is requested. Two BetterBags tooltip errors are separate. [Audit](reference/COMBAT-ERROR-AUDIT-2026-10-13.md#silent-taint-capture-and-automatic-trace). |
 | K01: quest-object Square interaction | User-reported failure with triggers released and floating hand; mouse interaction worked. Source/offline main-command analysis does not establish blanket ordinary-bank disabling. | Quest identity and effective PAD3 binding/native interaction target during recurrence. INTERACTTARGET differs from unconditional pointer click. Do not patch a guessed cause. |
 | K02: original Paladin quest action loss | Read-only evidence established lost/reassigned action storage. The exact original writer remains unconfirmed. Candidate.26 restoration was followed by editing regressions and removed in candidate.27. | Passive event/loadout/writer context on recurrence. Do not restore automatic pickup/place or use stale Copybara backups. |
@@ -67,6 +66,16 @@ established source limits, not new user defect reports. See
 [reconciliation record](reference/CODE-DOCUMENTATION-RECONCILIATION-2026-10-11.md).
 
 ## Resolved reported defects and acceptance limits
+
+K06 follower-control duplication / Utility Ring toggle is **resolved for the
+user's reported candidate.41 Retail test** on October 16. The user confirms
+"done, fixed" after the deployment and test instructions. Candidate.41 removes
+the unsupported startup API that kept the earlier correction dormant; protected
+execution, server state and native entry addition remain native. The report
+does not enumerate every combat, Edit Mode, sibling-ability or transition case.
+[Acceptance](../evidence/follower-dungeons/2026-10-16/candidate41-user-acceptance.json),
+[activation diagnosis](reference/FOLLOWER-DUNGEON-ACTIVATION-2026-10-16.md).
+K04/K05 remain open.
 
 K03 Circle cast cancellation is **resolved for the user's reported candidate.34
 Retail test** on October 12. Prior menu closure remains confirmed. Ground-placement

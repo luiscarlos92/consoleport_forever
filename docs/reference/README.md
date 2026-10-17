@@ -31,10 +31,13 @@ plural pending-reference directory is intentionally retained without moving it.
 
 - [Follower candidate.41 activation diagnosis](FOLLOWER-DUNGEON-ACTIVATION-2026-10-16.md):
   unsupported startup gate, corrected API-surface test, active ability scope and
-  on-demand status. Candidate.40's installed bytes did not establish activation.
+  on-demand status. Candidate.40's installed bytes did not establish activation;
+  the user accepts candidate.41's fix, resolving K06 for the reported problem.
+  [Acceptance](../../evidence/follower-dungeons/2026-10-16/candidate41-user-acceptance.json).
 
 - [Follower dungeon candidate.40](FOLLOWER-DUNGEON-RUNTIME-2026-10-16.md): native
-  name dispatch, state artwork, selective suppression and remaining Retail test.
+  name dispatch, state artwork and selective suppression; later activation repair
+  and scoped user acceptance are recorded in the candidate.41 diagnosis above.
 
 - [Follower admission, presentation and engine boundary](FOLLOWER-DUNGEON-ADMISSION-BOUNDARIES-2026-10-16.md):
   preserved source identity and LAB feedback, actual restricted authority tests,
@@ -52,7 +55,7 @@ plural pending-reference directory is intentionally retained without moving it.
 - [Follower-dungeon controls investigation and plan](../plans/FOLLOWER-DUNGEON-CONTROLS-2026-10-16.md):
   separate native extra/zone ownership, actual-source icon/cast/projection dry
   runs, persisted-entry observations, open execution cause and staged prototype
-  gates and later candidate.40 continuation. Retail acceptance remains pending.
+  gates and later candidate.41 correction with scoped user acceptance.
 
 - [Shared utility runtime implementation](SHARED-UTILITY-RING-RUNTIME-2026-10-14.md):
   candidate.39 archive, guarded native edits/rebuilds, safe startup seed, independent

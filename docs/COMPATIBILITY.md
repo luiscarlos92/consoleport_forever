@@ -93,7 +93,9 @@ PartyInfo gate referenced an API absent from the captured Blizzard contract;
 the corrected fixture rejects undeclared APIs and executes the real utility
 initialization. The native protected named-spell route and server follower state
 remain authoritative. [Activation investigation](reference/FOLLOWER-DUNGEON-ACTIVATION-2026-10-16.md)
-records the demonstrated startup defect and pending Retail toggle acceptance.
+records the demonstrated startup defect and subsequent scoped user acceptance
+of candidate.41. This does not extend the supported client/API contract or imply
+blanket taint, hardware, rendering or performance acceptance.
 
 - Native secure frames/handlers, restricted macro dispatch and native ownership
   are separate from public Lua callbacks. A public clock cannot gate protected work.

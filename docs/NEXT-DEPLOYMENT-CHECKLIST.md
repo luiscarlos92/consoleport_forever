@@ -10,18 +10,21 @@ tests locally and in fresh Windows CI with complete matching inventories.
 [CI](../evidence/test-results/candidate41-fresh-ci.json). Independent readback verifies
 all 60 installed files and preservation of other addons, WTF, links/root anchors
 and prior backups. Schema3/revision20 remain. No game input was sent. The user
-owns reload and the cases below; K06, K04 and K05 remain open. Four qualified
+confirmed the follower fix on October 16; K06 is resolved for the reported case.
+K04/K05 and broader unreported cases remain open. Four qualified
 dependency updates remain prepared and excluded from this delivery.
 
 ## Candidate.41 follower activation and acceptance
 
-Candidate.40's unchanged-behavior report exposed an unsupported startup API. After
-candidate.41 deployment and the user's reload, `/cpf status` should report follower
-controls active while Dungeon Assistance is present. A refusal/pending reason is
-now explicit. Then run the lead/stop, artwork, native-button hiding and sibling
-checks below. The [activation diagnosis](reference/FOLLOWER-DUNGEON-ACTIVATION-2026-10-16.md) records the scoped correction; K06 remains open.
+Candidate.40's unchanged-behavior report exposed an unsupported startup API.
+Candidate.41 corrected activation and added explicit `/cpf status` readiness.
+After deployment and the test instructions, the user reports "done, fixed".
+K06 is resolved for that reported problem. [Acceptance](../evidence/follower-dungeons/2026-10-16/candidate41-user-acceptance.json),
+[activation diagnosis](reference/FOLLOWER-DUNGEON-ACTIVATION-2026-10-16.md).
+The retained checklist below remains useful for regression testing; the brief
+confirmation does not individually certify every listed transition or context.
 
-## Candidate.40 follower acceptance
+## Retained follower regression checklist
 
 The [candidate.40 runtime](reference/FOLLOWER-DUNGEON-RUNTIME-2026-10-16.md) documents the candidate and offline proof boundaries.
 After the Forever-only deployment and user-owned reload:
@@ -34,9 +37,9 @@ After the Forever-only deployment and user-owned reload:
 3. Check exit/re-entry, combat, Edit Mode and utility disable plus reload.
    Unknown/unready contexts retain the native fallback. No game input is automated.
 
-BetterBags v0.5.16, Plater-v661 and DynamicCam 2.21.2 are qualified in preparation;
+BetterBags v0.5.16, Plater-v661, DynamicCam 2.21.4 and ExtraFade 1.18.1 are qualified in preparation;
 dependency replacement requires closed WoW and is excluded from this update.
-K06 remains open until the user reports the relevant cases; K04/K05 are unchanged.
+K06's candidate.41 user acceptance is recorded above; K04/K05 are unchanged.
 
 ## Previous candidate.38 diagnostic checkpoint
 

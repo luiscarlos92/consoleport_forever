@@ -7,6 +7,14 @@ Evidence: [runner](../tools/test-all.cjs), [tool tests](../tools/run_tool_tests.
 
 ## Entry points
 
+Candidate.41 T101 validates supplied Spell/SpellBook/ZoneAbility functions against
+captured native API declarations and starts without PartyInfo/LFG tables. T102
+restores the old unsupported PartyInfo guard and must reject its startup failure;
+five earlier controls remain. Status/missing-API cases are included. T13 additionally
+executes old/current DynamicCam RefreshConfig and current typed ExtraFade settings.
+These changes correct a fixture that previously fabricated the production gate.
+See the [activation diagnosis](reference/FOLLOWER-DUNGEON-ACTIVATION-2026-10-16.md).
+
 T101/T102 exercise the actual follower runtime/initialization with native secure
 input/dispatch, normalized LAB spell state/getters, zone refresh and extra-container
 ordering. They cover 128 selections, icon invalidation, pool reuse, disable,
@@ -97,7 +105,7 @@ scratch copies. `tools/local` scripts can be hashed/parsed; they must not execut
 
 New follower source copies and versioned integration inputs stay local/ignored;
 tracked manifests identify their exact bytes. After pinned archive retrieval,
-`tools/capture_integration_contracts.py --from-manifest evidence/integration-contracts-2026-10-16/manifest.json --native-manifest evidence/follower-dungeons/2026-10-16/source-manifest.json --native-manifest evidence/follower-dungeons/2026-10-16/proxy-source-manifest.json`
+`tools/capture_integration_contracts.py --from-manifest evidence/integration-contracts-candidate41/manifest.json --native-manifest evidence/follower-dungeons/2026-10-16/source-manifest.json --native-manifest evidence/follower-dungeons/2026-10-16/proxy-source-manifest.json --native-manifest evidence/follower-dungeons/2026-10-16/candidate41-api-source-manifest.json`
 reconstructs them before documentation/full tests. CI runs this explicit network
 stage. Four tooling tests reject escapes, unpinned identities, wrong downloads,
 lock mismatch and existing drift; valid reuse performs no fetch. A

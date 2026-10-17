@@ -80,6 +80,11 @@ and confirmed native-button comparison authorize qualified implementation and
 deployment. Candidate.40 uses localized native secure spell-name dispatch,
 zone-state artwork and selective follower-child suppression. Offline route and
 preservation proof does not establish C/server toggling or Retail acceptance.
+The subsequent unchanged-behavior report authorizes investigation of Forever
+ownership of this specific ability. Candidate.41 repairs the demonstrated dormant
+startup before replacing the entry lifecycle: active ability identity drives the
+adapter, with native autoassignment/protected dispatch retained. The [activation diagnosis](reference/FOLLOWER-DUNGEON-ACTIVATION-2026-10-16.md)
+records this ordering and the pending active-route Retail comparison.
 See the [candidate.40 runtime](reference/FOLLOWER-DUNGEON-RUNTIME-2026-10-16.md) and
 [staged plan](plans/FOLLOWER-DUNGEON-CONTROLS-2026-10-16.md) and K06.
 

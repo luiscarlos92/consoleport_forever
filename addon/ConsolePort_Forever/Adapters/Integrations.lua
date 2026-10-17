@@ -7,7 +7,7 @@ local definitions={
         string='strata boxpoint inspect',
         boolean='hideui boxlock titlelock disableprogression flipshortcuts ttsenabled showprogressbar immersivemode hideminimap hidetracker hidetooltip onthefly supertracked movetalkinghead enablenumbers solidbackground disablebgtextures disableglowani disableportrait disableanisequence disableboxhighlight gossipatcursor',
         binding='accept goodbye reset padaccept padinspect padnext padgoodbye padup paddown padleft padright'}},
-    extrafade={addon='Immersion_ExtraFade',version='1.18.0',variable='IEF_Config',types={
+    extrafade={addon='Immersion_ExtraFade',version='1.18.0',alsoVersion='1.18.1',variable='IEF_Config',types={
         number='trackingBarAlpha',
         boolean='keepAlertFrames keepChatFrame keepPartyRaidFrame keepTrackingBar keepCustomFrames hideNpcPortrait hideFrameRate hideFrameRateCinematic',
         frameMap='customFramesToKeep'}},
@@ -30,9 +30,12 @@ local function valid(value,shape,api)
     end
     return type(value)==shape and (shape~='number' or (value==value and value>-math.huge and value<math.huge))
 end
+local function versionMatches(definition,version)
+    return version==definition.version or (definition.alsoVersion~=nil and version==definition.alsoVersion)
+end
 function Integrations.New(kind,api)
     local definition=assert(definitions[kind])
-    if api.C_AddOns.GetAddOnMetadata(definition.addon,'Version')~=definition.version then return nil,'audited '..definition.addon..' '..definition.version..' required' end
+    if not versionMatches(definition,api.C_AddOns.GetAddOnMetadata(definition.addon,'Version')) then return nil,'audited '..definition.addon..' version required' end
     if not api.C_AddOns.IsAddOnLoaded(definition.addon) or type(api[definition.variable])~='table' then return nil,definition.addon..' settings not initialized' end
     local live,allowed,pending=api[definition.variable],{},{}
     local types=Integrations.Types(kind)
@@ -46,7 +49,7 @@ function Integrations.New(kind,api)
     -- fonts, unknown fields and ExtraFade's transient UIParentAlpha are retained
     -- without adopting them as companion settings. Flat restores need Reload.
     local adapter=Addon.FlatConfigAdapter.New(function()
-        if api.C_AddOns.GetAddOnMetadata(definition.addon,'Version')~=definition.version then error('integration version changed') end
+        if not versionMatches(definition,api.C_AddOns.GetAddOnMetadata(definition.addon,'Version')) then error('integration version changed') end
         local current=api[definition.variable]
         if current~=live then error('integration settings table replaced; refresh readiness before review') end
         return current

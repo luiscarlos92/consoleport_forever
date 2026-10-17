@@ -13,6 +13,14 @@ WTF, links/root anchors and prior backups. Schema3/revision20 remain; accepted
 characters need no new configuration review. No game input was sent. The user
 owns reload and the scoped cases below; K06, K04 and K05 remain open.
 
+## Candidate.41 follower activation and acceptance
+
+Candidate.40's unchanged-behavior report exposed an unsupported startup API. After
+candidate.41 deployment and the user's reload, `/cpf status` should report follower
+controls active while Dungeon Assistance is present. A refusal/pending reason is
+now explicit. Then run the lead/stop, artwork, native-button hiding and sibling
+checks below. The [activation diagnosis](reference/FOLLOWER-DUNGEON-ACTIVATION-2026-10-16.md) records the scoped correction; K06 remains open.
+
 ## Candidate.40 follower acceptance
 
 The [candidate.40 runtime](reference/FOLLOWER-DUNGEON-RUNTIME-2026-10-16.md) documents the candidate and offline proof boundaries.

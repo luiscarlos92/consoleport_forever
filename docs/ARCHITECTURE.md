@@ -55,6 +55,11 @@ reconcile owned follower-child suppression and zone artwork. No public casting,
 pooled-frame proxy, input replacement or new persistence is introduced. See the
 [candidate.40 runtime](reference/FOLLOWER-DUNGEON-RUNTIME-2026-10-16.md).
 
+Candidate.41 corrects follower activation to the public active Dungeon Assistance
+identity. It does not require a PartyInfo/LFG flag. Startup refusal returns a reason;
+`/cpf status` queries cached follower readiness on demand without new event work.
+Native source-entry lifecycle remains; see the [activation diagnosis](reference/FOLLOWER-DUNGEON-ACTIVATION-2026-10-16.md).
+
 ## Configuration and ownership
 
 Candidate.39 adds an independent UtilityFlag bootstrap after Core and public

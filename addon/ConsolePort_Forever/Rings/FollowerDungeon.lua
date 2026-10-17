@@ -11,12 +11,13 @@ local function call(fn,...)
 end
 function Follower.New(env,api,enabled,blocked)
     if type(env.GetKindAndAction)~='function' or not env.Frame or type(env.Frame.AddSecureAction)~='function'
-        or type(env.Frame.ClearAllActions)~='function' or not api.C_PartyInfo or type(api.C_PartyInfo.IsPartyInFollowerDungeon)~='function'
+        or type(env.Frame.ClearAllActions)~='function'
         or not api.C_ZoneAbility or type(api.C_ZoneAbility.GetActiveAbilities)~='function'
         or type(api.C_ZoneAbility.GetZoneAbilityIcon)~='function' or not api.C_Spell
         or type(api.C_Spell.GetSpellName)~='function' or not api.C_SpellBook
         or type(api.C_SpellBook.FindSpellOverrideByID)~='function'
-        or type(api.hooksecurefunc)~='function' or blocked() or not enabled() then return end
+        or type(api.hooksecurefunc)~='function' then return nil,'native follower prerequisites pending' end
+    if blocked() or not enabled() then return nil,'follower setup blocked or disabled' end
     local self=setmetatable({env=env,frame=env.Frame,api=api,enabled=enabled,blocked=blocked,
         views=setmetatable({},{__mode='k'}),hidden={},counts={workers=0,compiles=0,icons=0}}, {__index=Follower})
     self.beforeMap,self.beforeAdd=env.GetKindAndAction,env.Frame.AddSecureAction
@@ -65,16 +66,24 @@ function Follower.New(env,api,enabled,blocked)
     self:Listen() self:HookZone() self:Queue(true)
     return self
 end
+function Follower:Status()
+    if not self:Owns() then return 'native ring ownership unavailable or utility disabled' end
+    if not self.active then return 'outside follower dungeon or active ability unavailable' end
+    if not self.name then return 'localized spell data pending' end
+    if not self.compiled then return 'native follower entry compilation pending' end
+    return 'active; native named-spell route compiled; Retail lead/stop confirmation pending'
+end
 function Follower:Owns()
     return self.enabled() and self.env.Frame==self.frame and self.env.GetKindAndAction==self.map
         and self.frame.AddSecureAction==self.add
 end
 function Follower:ReadContext()
     local api=self.api
-    local inside=call(api.C_PartyInfo.IsPartyInFollowerDungeon)
     local abilities=call(api.C_ZoneAbility.GetActiveAbilities)
     local active=false
-    if public(api,inside) and inside==true and public(api,abilities) and type(abilities)=='table' then
+    -- The active Dungeon Assistance identity is the scope. Quest/story follower
+    -- contexts need not be identified as a matchmade LFG follower dungeon.
+    if public(api,abilities) and type(abilities)=='table' then
         for _,info in ipairs(abilities) do
             if public(api,info) and type(info)=='table' and public(api,info.spellID) and info.spellID==ID then active=true break end
         end

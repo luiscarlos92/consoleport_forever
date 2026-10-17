@@ -167,7 +167,7 @@ function Integration:Refresh(addon,api)
 end
 function Integration:StartFollower(addon,api,runtime)
     if addon.followerDungeon or not Addon.FollowerDungeon or runtime.stopped then return end
-    addon.followerDungeon=Addon.FollowerDungeon.New(runtime.env,api,
+    addon.followerDungeon,addon.followerDungeonReason=Addon.FollowerDungeon.New(runtime.env,api,
         function() return runtime:Enabled() and runtime:Owns() end,runtime.api.blocked)
     if addon.followerDungeon then runtime.frame:QueueRefresh() end
 end

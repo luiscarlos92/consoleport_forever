@@ -1,0 +1,100 @@
+{
+  "at": "2026-10-17T00:16:03.535217+00:00",
+  "candidate": "2.0.0-candidate.41",
+  "lockSHA256": "2d1c1824b1d815df5b9b9c222aca88051e42059e73d505b9133d992b6979c2bc",
+  "freshStableReceiptSHA256": "76d639db9e5f744aeec73d02e8fd06f380d84643d87a8663f6e0c93faa5ae7f7",
+  "coverageSHA256": "28c4503c7f27fcf9c8a1d4647eeaf257a9e283dd11394f3526a32c6ac8fa11d9",
+  "noticesSHA256": "e2b1d54331535146ed5399786f5debf8da880cf902ec9f46459a0e7844f7f022",
+  "noticeReviewSHA256": "a01d95e1b8073acea73cccf54d87345b90ec8166deb1a202781ed5d2f88a1cbe",
+  "contractsManifestSHA256": "fa2669d93c3e8385491116a8531fbe5a5e4d3af3bb05f22dfa79762ea035f437",
+  "changedPackages": [
+    {
+      "repo": "curseforge/DynamicCam",
+      "from": "2.21.2",
+      "to": "2.21.4",
+      "priorArchiveSHA256": "53bbab7ad63ffd19c6b812aeb259515e8356618eb09bdc3f9ed97faf57136f2c",
+      "archiveSHA256": "dd88b9cc8dccf8e1f4afecf4d2e513d96b07f6fa3360e6749c80de2533383ec1",
+      "bytes": 718539,
+      "selectedFolders": [
+        "DynamicCam"
+      ],
+      "foldersAdded": [],
+      "foldersRemoved": [],
+      "files": 107,
+      "filesAdded": [
+        "DynamicCam/Ui/ActionsDescriptor.lua",
+        "DynamicCam/Ui/Controls.lua",
+        "DynamicCam/Ui/Descriptor.lua",
+        "DynamicCam/Ui/MainFrame.lua",
+        "DynamicCam/Ui/SettingsPage.lua",
+        "DynamicCam/Ui/SituationsPage.lua",
+        "DynamicCam/Ui/Textures/commondropdownsettings2x.blp",
+        "DynamicCam/Ui/Textures/export-button.png",
+        "DynamicCam/Ui/Textures/import-button.png",
+        "DynamicCam/Ui/Window.lua"
+      ],
+      "filesRemoved": [
+        "DynamicCam/BLP/commondropdownsettings2x.blp"
+      ],
+      "filesChanged": [
+        "DynamicCam/Core.lua",
+        "DynamicCam/DefaultSettings.lua",
+        "DynamicCam/DynamicCam.toc",
+        "DynamicCam/Locales/deDE.lua",
+        "DynamicCam/Locales/enUS.lua",
+        "DynamicCam/Locales/esES.lua",
+        "DynamicCam/Locales/esMX.lua",
+        "DynamicCam/Locales/frFR.lua",
+        "DynamicCam/Locales/itIT.lua",
+        "DynamicCam/Locales/koKR.lua",
+        "DynamicCam/Locales/ptBR.lua",
+        "DynamicCam/Locales/ruRU.lua",
+        "DynamicCam/Locales/zhCN.lua",
+        "DynamicCam/Locales/zhTW.lua",
+        "DynamicCam/MouseZoom.lua",
+        "DynamicCam/Options.lua",
+        "DynamicCam/Options/ControlFactories.lua",
+        "DynamicCam/Options/Widgets.lua",
+        "DynamicCam/Sharing.lua",
+        "DynamicCam/SituationManager.lua",
+        "DynamicCam/UiHideModule.lua",
+        "DynamicCam/ZoomBasedEditor.lua"
+      ]
+    },
+    {
+      "repo": "curseforge/Immersion_ExtraFade",
+      "from": "1.18.0",
+      "to": "1.18.1",
+      "priorArchiveSHA256": "89c59d0519b2392b41010dda34ec01d38c9c1702c644f5e57422341b1fec21c6",
+      "archiveSHA256": "88209bf00a35119be57011b87d52dc59500469f5eeff87f93b34e9b488f1a125",
+      "bytes": 123093,
+      "selectedFolders": [
+        "Immersion_ExtraFade"
+      ],
+      "foldersAdded": [],
+      "foldersRemoved": [],
+      "files": 46,
+      "filesAdded": [],
+      "filesRemoved": [
+        "Immersion_ExtraFade/Libs/LibStub/tests/test.lua",
+        "Immersion_ExtraFade/Libs/LibStub/tests/test2.lua",
+        "Immersion_ExtraFade/Libs/LibStub/tests/test3.lua",
+        "Immersion_ExtraFade/Libs/LibStub/tests/test4.lua"
+      ],
+      "filesChanged": [
+        "Immersion_ExtraFade/Immersion_ExtraFade.toc",
+        "Immersion_ExtraFade/Libs/AceGUI-3.0/widgets/AceGUIWidget-ColorPicker.lua",
+        "Immersion_ExtraFade/hide_module.lua"
+      ]
+    }
+  ],
+  "sourceReview": [
+    "DynamicCam Core/default changes use native project constants and remove obsolete reactive zoom minimum; native RefreshConfig lifecycle and AceDB executed with retained previous contracts.",
+    "ExtraFade settings/main contracts retained; hide module uses reparenting for tainted Edit Mode display methods. No K05 resolution inferred."
+  ],
+  "localPersonalNoticeReviewComplete": true,
+  "sourceCapturesPublished": false,
+  "installedDependencyUpdates": [],
+  "stage": "Prepared and qualified offline; all dependency bytes excluded from running-game Forever-only delivery.",
+  "limit": "Native engine, rendering, taint, timing, persistence and performance acceptance remain pending."
+}

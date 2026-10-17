@@ -46,7 +46,21 @@ function env:TriggerEvent(name,...)
     for _,row in ipairs(eventCallbacks[name] or {}) do row[1](row[2],...) end
 end
 local activeAbilities={{spellID=ID,uiPriority=1,textureKit='test'}}
-local inside,enabled=true,true
+local enabled=true
+local documentedAPIs={}
+do
+    local APIDocumentation={AddDocumentationTable=function(_,info) documentedAPIs[info.Namespace]=info end}
+    --@FOLLOWER_LFG_API_SOURCE
+end
+local function nativeAPI(namespace,implementations)
+    local contract=assert(documentedAPIs[namespace],'native follower namespace absent: '..namespace)
+    local declared={}
+    for _,fn in ipairs(contract.Functions) do declared[fn.Name]=true end
+    for name,fn in pairs(implementations) do
+        verify(declared[name] and type(fn)=='function','fixture invented a native follower API: '..namespace..'.'..name)
+    end
+    return implementations
+end
 local zoneIcon,override=2222,ID
 C_Spell.GetSpellName=function(id) verify(id==ID,'localized name identity changed') return localized end
 C_ZoneAbility.GetActiveAbilities=function() return Addon.Core.Copy(activeAbilities) end
@@ -96,8 +110,11 @@ zone:UpdateDisplayedZoneAbilities()
 local edit=CreateFrame('Frame',nil,UIParent) edit:Hide()
 local registry={callbacks={}}
 function registry:RegisterCallback(name,fn,owner) self.callbacks[name]={fn,owner} end
-local api={C_PartyInfo={IsPartyInFollowerDungeon=function() return inside end},C_ZoneAbility=C_ZoneAbility,
-    C_Spell=C_Spell,C_SpellBook=C_SpellBook,CreateFrame=CreateFrame,InCombatLockdown=InCombatLockdown,
+local api={C_ZoneAbility=nativeAPI('C_ZoneAbility',{
+        GetActiveAbilities=C_ZoneAbility.GetActiveAbilities,GetZoneAbilityIcon=C_ZoneAbility.GetZoneAbilityIcon}),
+    C_Spell=nativeAPI('C_Spell',{GetSpellName=C_Spell.GetSpellName}),
+    C_SpellBook=nativeAPI('C_SpellBook',{FindSpellOverrideByID=C_SpellBook.FindSpellOverrideByID}),
+    CreateFrame=CreateFrame,InCombatLockdown=InCombatLockdown,
     C_Timer={After=function(_,fn) queue[#queue+1]=fn end},ZoneAbilityFrame=zone,
     EditModeManagerFrame=edit,EventRegistry=registry,ExtraAbilityContainer=container,
     issecretvalue=function(value) return type(value)=='table' and value.opaque end,
@@ -116,6 +133,8 @@ function db:RunSafe(fn,...) verify(not combat,'initialization requested protecte
 local bridge={env=env,frame=ring,api={blocked=blocked},Enabled=function() return enabled end,Owns=function() return true end}
 Addon.UtilityIntegration:StartFollower(app,api,bridge)
 local follower=assert(app.followerDungeon,'utility initialization did not install follower correction')
+verify(not api.C_PartyInfo and not api.C_LFGInfo and not app.followerDungeonReason,
+    'startup required a party/LFG flag instead of the active ability identity')
 local initialMap=env.GetKindAndAction
 Addon.UtilityIntegration:StartFollower(app,api,bridge)
 verify(app.followerDungeon==follower and env.GetKindAndAction==initialMap,'repeated initialization replaced native follower owner')
@@ -126,6 +145,7 @@ verify(ring.Data[1][1].spell==ID and ring.Data[1][1].type=='spell' and ring.Data
     'runtime changed authoritative temporary entry identity')
 verify(ring.widgets[1].states['1'][1]=='spell' and tonumber(ring.widgets[1].states['1'][2])==ID,
     'runtime replaced native LAB spell feedback')
+verify(follower:Status():find('active;',1,true),'startup status concealed inactive follower adapter')
 nativeSettings.ringPressAndHold=true ring:OnPressAndHoldChanged()
 currentIndex=1 edge('LeftButton',true) ring.widgets[1]:UpdateLocal()
 ring.widgets[1].icon:SetTexture(1111)
@@ -205,16 +225,21 @@ zone:UpdateDisplayedZoneAbilities() pump()
 verify(follower.active and ring.secureEnv.DATA['1'][1].spell==localized and not primary:IsShown(),
     'late native zone update did not activate follower correction')
 -- A name unavailable or a secret context never hides the original fallback.
-inside={opaque=true} follower:Queue(true) pump()
+activeAbilities={opaque=true} follower:Queue(true) pump()
 verify(primary:IsShown() and zone.Style:GetAlpha()==1,'opaque follower context hid native fallback')
-inside=true follower:Queue(true) pump()
+activeAbilities={{spellID=ID,uiPriority=1,textureKit='test'}} follower:Queue(true) pump()
 localized='Asistencia de mazmorra' follower:Queue(true) pump()
 verify(ring.secureEnv.DATA['1'][1].spell==localized,'native localized name refresh did not recompile')
 enabled=false follower:Queue(true) pump()
 verify(primary:IsShown() and not follower.events.registered.UNIT_AURA,'disabled feature retained suppression or active cosmetic event worker')
+verify(follower:Status():find('disabled',1,true),'disabled status falsely reports active follower handling')
 local oldMap=env.GetKindAndAction
 verify(not Addon.FollowerDungeon.New(env,api,function() return false end,blocked) and env.GetKindAndAction==oldMap,
     'disabled startup installed follower hooks')
+local savedZone=api.C_ZoneAbility api.C_ZoneAbility=nil
+local unavailable,reason=Addon.FollowerDungeon.New(env,api,function() return true end,blocked)
+verify(not unavailable and reason=='native follower prerequisites pending','missing native API did not explain startup refusal')
+api.C_ZoneAbility=savedZone
 enabled=true follower:Queue(true) pump()
 -- An already protected stock button is left available; public suppression
 -- never gains authority from alpha, a timer or a prior observed spell ID.

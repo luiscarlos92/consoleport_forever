@@ -197,7 +197,7 @@ check('T07-T09.both-binding-bank-restore', () => execute(source+read('tests/harn
 check('T08-T10.review-details', () => execute(source+read('tests/harness/prompt.lua'),'review-details'));
 check('T12-T13.adapters', () => execute(source+read('tests/harness/adapters.lua'),'adapters'));
 check('T13.pinned-flat-integration-settings', () => {
-  const base='evidence/integration-contracts-2026-10-16/';
+  const base='evidence/integration-contracts-candidate41/';
   const settingsAST=parser.parse(read(base+'Immersion/Settings.lua'),{luaVersion:'5.1',encodingMode:'x-user-defined'});
   const keys=new Set();
   function visit(value) {
@@ -215,9 +215,10 @@ check('T13.pinned-flat-integration-settings', () => {
     .replace('--@NATIVE_IMMERSION_CONFIG',()=>';(function(...)\n'+read(base+'Immersion/Config.lua')+'\nend)("Immersion",nativeImmersion);')
     .replace('--@NATIVE_EXTRFADE_OPTIONS',()=>';(function(...)\n'+read(base+'Immersion_ExtraFade/options.lua')+'\nend)("Immersion_ExtraFade");');
   execute(source+'NATIVE_IMMERSION_SETTINGS_KEYS={'+[...keys].sort().map(k=>JSON.stringify(k)).join(',')+'}\n'+fixture,'flat-integrations-native-settings');
+  execute(source+'NATIVE_IMMERSION_SETTINGS_KEYS={'+[...keys].sort().map(k=>JSON.stringify(k)).join(',')+'}\n'+fixture.replaceAll('1.18.0','1.18.1'),'flat-integrations-current-ExtraFade-settings');
 });
 check('T13.current-DynamicCam-AceDB', () => {
-  const base='evidence/integration-contracts-2026-10-16/';
+  const base='evidence/integration-contracts-candidate41/';
   const lock=JSON.parse(read('dependencies/lock.json'));
   for(const file of JSON.parse(read(base+'manifest.json')).files) {
     const package=lock.packages.find(p=>p.repo===file.repo);
@@ -227,9 +228,12 @@ check('T13.current-DynamicCam-AceDB', () => {
     .map(file=>';(function()\n'+read(base+'DynamicCam/Libs/'+file)+'\nend)();').join('\n');
   const current=read(base+'DynamicCam/Core.lua');
   if(!current.includes('self.db.RegisterCallback(self, "OnProfileChanged", "RefreshConfig")') || !current.includes('function DynamicCam:RefreshConfig()')) throw Error('native DynamicCam lifecycle changed');
+  for(const capture of ['evidence/integration-contracts/','evidence/integration-contracts-candidate41/']) {
+    execute(read('tests/harness/dynamiccam_refresh.lua').replace('--@NATIVE_DYNAMIC_REFRESH',()=>nativeFunction(capture+'DynamicCam/Core.lua','DynamicCam:RefreshConfig')),'DynamicCam-native-refresh-contract-'+capture);
+  }
   const fixture=read('tests/harness/dynamiccam.lua').replace('--@CURRENT_ACEDB',native)
     .replace('--@CURRENT_DYNAMIC_DEFAULTS',';(function(...)\n'+read(base+'DynamicCam/DefaultSettings.lua')+'\nend)("DynamicCam");');
-  execute(source+serializer+fixture.replaceAll('2.21.1','2.21.2'),'DynamicCam-current-version-native-AceDB');
+  for (const version of ['2.21.2','2.21.4']) execute(source+serializer+fixture.replaceAll('2.21.1',version),'DynamicCam-current-version-native-AceDB-'+version);
   const state=execute(source+serializer+fixture,'DynamicCam-native-AceDB');
   require('./saved_variables.cjs').parse('PERSISTED_STATE='+state);
   execute(source+'local PERSISTED_STATE='+state+'\n'+fixture.split('--@LIFECYCLE')[0]+`
@@ -296,7 +300,7 @@ function nativeFunction(file,signature) {
     const body=text.slice(start,end);
     parser.parse(body,{luaVersion:'5.1'}); return body;
 }
-function betterBagsFixture(integrationBase='evidence/integration-contracts-2026-10-16/') {
+function betterBagsFixture(integrationBase='evidence/integration-contracts-candidate41/') {
   const container='evidence/native/Blizzard_UIPanels_Game/Mainline/ContainerFrame.lua';
   const base='evidence/consoleport-contracts/';
   const fixture=read('tests/harness/betterbags.lua')
@@ -308,7 +312,7 @@ function betterBagsFixture(integrationBase='evidence/integration-contracts-2026-
   return windowFixture()+'\n'+fixture;
 }
 check('T21-T22.native-BetterBags-item-guards', () => {
-  for(const [base,version] of [['evidence/integration-contracts/','v0.5.14'],['evidence/integration-contracts-2026-10-16/','v0.5.16']]) {
+  for(const [base,version] of [['evidence/integration-contracts/','v0.5.14'],['evidence/integration-contracts-candidate41/','v0.5.16']]) {
     for(const row of JSON.parse(read(base+'manifest.json')).files.filter(row=>row.repo==='Cidan/BetterBags')) {
       if(sha(base+row.path)!==row.sha256) throw Error('BetterBags retained contract drift: '+row.path);
     }
@@ -1205,7 +1209,7 @@ check('T65.native-account-ping-ring-release-only-and-repeatable-native-controls'
   }
 });
 check('T66.native-immersion-required-items', () => {
-  const base='evidence/integration-contracts-2026-10-16/Immersion/';
+  const base='evidence/integration-contracts-candidate41/Immersion/';
   const fixture=read('tests/harness/immersion_progress.lua')
     .replace('--@NATIVE_ADJUST_CHILDREN',()=>['IterateChildren','GetAdjustableChildren','AdjustToChildren'].map(name=>nativeFunction(base+'Components/Scaler.lua','AdjustMixin:'+name)).join('\n'))
     .replace('--@NATIVE_BOUNDARIES',()=>nativeFunction(base+'Components/Elements.lua','Elements:UpdateBoundaries'))
@@ -1845,12 +1849,19 @@ function followerRuntimeFixture(mutations={}) {
   const capture=JSON.parse(read('evidence/follower-dungeons/2026-10-16/source-manifest.json'));
   const file='evidence/follower-dungeons/2026-10-16/09b9db79-Blizzard_UIPanels_Game_Shared_ExtraAbilityContainer.lua';
   if(sha(file)!==capture.find(row=>row.file.replaceAll('\\','/')===file)?.sha256) throw Error('Follower native extra container drift');
+  const apiCapture=JSON.parse(read('evidence/follower-dungeons/2026-10-16/candidate41-api-source-manifest.json'));
+  const apiSource=apiCapture.map(row=>{
+    const file=row.file.replaceAll('\\','/');
+    if(sha(file)!==row.sha256) throw Error('Follower native API contract drift: '+file);
+    return read(file);
+  }).join('\n');
   const lock=JSON.parse(read('dependencies/lock.json')).packages.find(row=>row.repo==='seblindfors/ConsolePort');
   const relative='ConsolePort/Libs/External/LibActionButton-1.0/LibActionButton-1.0.lua';
   if(sha(lock.unpacked+'/'+relative)!==lock.files[relative]) throw Error('Follower LAB state source drift');
   const extra=read('tests/harness/follower_runtime.lua')
     .replace('--@FOLLOWER_RUNTIME_SOURCE',()=>['FollowerDungeon','UtilityRuntime'].map(name=>';(function(...)\n'+read('addon/ConsolePort_Forever/Rings/'+name+'.lua')+'\nend)("ConsolePort_Forever",Addon);').join('\n'))
     .replace('--@FOLLOWER_EXTRA_CONTAINER_SOURCE',()=>read(file))
+    .replace('--@FOLLOWER_LFG_API_SOURCE',()=>apiSource)
     .replace('--@FOLLOWER_LAB_STATE_SOURCE',()=>['Generic:SetState','Generic:SetStateFromHandlerInsecure'].map(name=>nativeFunction(lock.unpacked+'/'+relative,name)).concat(['Generic','Spell'].map(kind=>read(lock.unpacked+'/'+relative).split('\n').find(line=>line.startsWith(kind+'.GetTexture ')))).join('\n'));
   return followerExecutionFixture(mutations,read('tests/harness/follower_proxy.lua')+'\n'+extra);
 }
@@ -1862,6 +1873,7 @@ check('T101.follower-native-name-dispatch-feedback-selective-hiding-and-lifecycl
 });
 check('T102.follower-runtime-old-defect-and-preservation-controls',()=>{
   for(const [name,before,after,expected] of [
+    ['invented-context-api','function Follower.New(env,api,enabled,blocked)',"function Follower.New(env,api,enabled,blocked)\n    if not api.C_PartyInfo or type(api.C_PartyInfo.IsPartyInFollowerDungeon)~='function' then return end",'utility initialization did not install follower correction'],
     ['old-id-dispatch','route.spell=self.name','route.spell=ID','follower did not compile native spell-name route'],
     ['stale-icon','texture=self:Icon() or texture','texture=texture','runtime retained stale generic ring icon'],
     ['shared-container-hide','target:Hide()','self.api.ExtraAbilityContainer:Hide()','selective follower suppression hid or retained wrong native controls'],

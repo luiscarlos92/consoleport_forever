@@ -6,6 +6,17 @@ Evidence: [candidate.40 install](../evidence/delivery/live-install-candidate40.j
 [independent readback](../evidence/delivery/candidate40-independent-readback.json),
 [source qualification](../evidence/test-results/candidate40-follower-qualification.json).
 
+## Candidate.41 preparation
+
+The user reports candidate.40 unchanged in Retail. Its startup guard requires an
+unsupported PartyInfo API, and its old fixture fabricated that method. Candidate.41
+uses active Dungeon Assistance identity instead, validates supplied API names
+against captured Blizzard documentation and adds on-demand follower status.
+The [activation diagnosis](reference/FOLLOWER-DUNGEON-ACTIVATION-2026-10-16.md) separates startup proof from still-pending live toggle behavior.
+Qualification/delivery are in progress; candidate.40 remains installed until a
+new verified receipt. K06 remains open. New DynamicCam/ExtraFade archives are
+prepared and excluded from this Forever-only update.
+
 ## Installed checkpoint
 
 Candidate.40 was installed October 16 at **17:41:52 Toronto** from tested/pushed

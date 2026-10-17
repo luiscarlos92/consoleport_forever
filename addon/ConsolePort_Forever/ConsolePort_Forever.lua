@@ -360,6 +360,10 @@ function Addon:Status()
     Print(("Version %s; character %s; configuration %s/%s; binding set %s"):format(self.VERSION,tostring(self.guid or "pending"),
         tostring(self.record and self.record.appliedRevision or 0),self.CONFIG_REVISION,tostring(GetCurrentBindingSet())))
     Print(self.Diagnostics:Summary())
+    if self.FollowerDungeon then
+        Print('Follower controls: '..(self.followerDungeon and self.followerDungeon:Status()
+            or self.followerDungeonReason or 'shared utility initialization pending or disabled'))
+    end
     local names={}
     for name in pairs(self.capabilities and self.capabilities.modules or {}) do names[#names+1]=name end
     table.sort(names)

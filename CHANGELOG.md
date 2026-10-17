@@ -9,6 +9,16 @@ Dates below use America/Toronto. This is a curated change index, not invented
 release tags or blanket gameplay certification. Detailed receipts own exact
 source/artifact/file identities. Prepared, installed and accepted are separate.
 
+## Follower activation correction — October 16, 2026
+
+Candidate.41 removes an unsupported PartyInfo startup dependency that kept the
+follower adapter dormant on the documented Retail API. Exact active ability
+identity scopes the repair, including quest/story contexts. API-surface regression
+coverage rejects the old guard; `/cpf status` exposes follower readiness/refusal.
+Native source entries/input and server state remain owned by ConsolePort/Blizzard.
+Qualification/delivery are in progress; active-route Retail acceptance is pending.
+[Diagnosis](docs/reference/FOLLOWER-DUNGEON-ACTIVATION-2026-10-16.md).
+
 ## Follower dungeon controls — October 16, 2026
 
 Candidate.40 compiles Dungeon Assistance through native localized spell-name

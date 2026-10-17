@@ -85,6 +85,7 @@ db:RegisterNamespace('Other',{profile={a=1}}) assert(not adapter:Probe())
 -- Qualify explicit-default expansion against the actual Retail profile template.
 local defaultsAddon={projectId=1,WOW_PROJECT_FOREVER='forever'}
 WOW_PROJECT_MAINLINE=1
+WOW_PROJECT_ID=WOW_PROJECT_MAINLINE
 LibStub:NewLibrary('AceAddon-3.0',999).GetAddon=function() return defaultsAddon end
 LibStub:NewLibrary('AceLocale-3.0',999).GetLocale=function() return setmetatable({},{__index=function(_,key) return key end}) end
 function GetCVarDefault() return '1' end

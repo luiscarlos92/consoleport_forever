@@ -31,6 +31,10 @@ the identified unprotected follower child is suppressed. Unknown state, disable,
 editor, owner loss and pool reuse restore owned visibility, deferring protected
 restoration until combat ends. Actual Retail toggle/rendering acceptance remains
 pending; see the [candidate.40 runtime](reference/FOLLOWER-DUNGEON-RUNTIME-2026-10-16.md).
+The subsequent candidate.41 [activation diagnosis](reference/FOLLOWER-DUNGEON-ACTIVATION-2026-10-16.md) corrects its unsupported startup API.
+Activation uses the exact active ability identity without a PartyInfo/LFG flag;
+on-demand `/cpf status` distinguishes active handling from startup refusal.
+Native autoassignment and release gestures remain. Retail toggling is unaccepted.
 
 Candidate.39 adds shared default utility choice projection after public/native
 readiness, with first eligible activation and persistent independent disable.

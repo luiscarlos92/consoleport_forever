@@ -1,0 +1,22 @@
+[
+  {
+    "sha256": "69847349453b51e4876a8ff5bb1fc7909b0f5d818d0c756e783294d8fe9ae258",
+    "source": "https://raw.githubusercontent.com/Gethe/wow-ui-source/09b9db7948abc9b9648dedaab51eb0cf3ee67b31/Interface/AddOns/Blizzard_APIDocumentationGenerated/ZoneAbilityDocumentation.lua",
+    "file": "evidence\\follower-dungeons\\2026-10-16\\09b9db79-Blizzard_APIDocumentationGenerated_ZoneAbilityDocumentation.lua"
+  },
+  {
+    "file": "evidence/follower-dungeons/2026-10-16/09b9db79-Blizzard_APIDocumentationGenerated_LFGInfoDocumentation.lua",
+    "source": "https://raw.githubusercontent.com/Gethe/wow-ui-source/09b9db7948abc9b9648dedaab51eb0cf3ee67b31/Interface/AddOns/Blizzard_APIDocumentationGenerated/LFGInfoDocumentation.lua",
+    "sha256": "422062d9307f2f0d2916d4dc7ec91b3eef13f5532cd6d670b44cc956e6686315"
+  },
+  {
+    "file": "evidence/follower-dungeons/2026-10-16/candidate41-SpellDocumentation.lua",
+    "source": "https://raw.githubusercontent.com/Gethe/wow-ui-source/09b9db7948abc9b9648dedaab51eb0cf3ee67b31/Interface/AddOns/Blizzard_APIDocumentationGenerated/SpellDocumentation.lua",
+    "sha256": "fbedb3cf4b82d623b49a7fa170c982de2e4b005d2bcd5db3068bfb6211e51007"
+  },
+  {
+    "file": "evidence/follower-dungeons/2026-10-16/candidate41-SpellBookDocumentation.lua",
+    "source": "https://raw.githubusercontent.com/Gethe/wow-ui-source/09b9db7948abc9b9648dedaab51eb0cf3ee67b31/Interface/AddOns/Blizzard_APIDocumentationGenerated/SpellBookDocumentation.lua",
+    "sha256": "526e806e3602454d3ccdaba874b9294accb7b0ed56db32adab306cc639dd24b9"
+  }
+]

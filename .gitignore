@@ -9,6 +9,7 @@ dependencies/unpacked/
 # Reconstruct new research inputs from tracked pinned manifests; no new vendor
 # source or user screenshots are published with this personal implementation.
 /evidence/integration-contracts-2026-10-16/*/
+/evidence/integration-contracts-candidate41/*/
 /evidence/follower-dungeons/2026-10-16/*.lua
 /evidence/follower-dungeons/2026-10-16/*.xml
 /evidence/follower-dungeons/2026-10-16/user-*.png

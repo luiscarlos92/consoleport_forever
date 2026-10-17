@@ -1,6 +1,6 @@
 {
-  "lockSHA256": "2689e5885392dcae38d3c3dc8b516e9f966290c98a37677f3546757d5958753d",
-  "noticeInventorySHA256": "43d3b83d757b4a329acc7ad675bb575093ee135aa05d03092324ad96a23f782f",
+  "lockSHA256": "2d1c1824b1d815df5b9b9c222aca88051e42059e73d505b9133d992b6979c2bc",
+  "noticeInventorySHA256": "e2b1d54331535146ed5399786f5debf8da880cf902ec9f46459a0e7844f7f022",
   "localPersonalAssemblyReviewComplete": true,
   "publicRedistributionApproved": false,
   "scope": "All third-party dependencies use official-source local assembly. This inventory is not a license grant or approval to publish dependency code or media.",
@@ -479,49 +479,6 @@
           "sha256": "c3d3c27f0549fc4a7afe374df7bf90b63f4135b715419f181b3e7b1f579e0fec",
           "declarations": [
             "\tsuggestions and license information, please visit https://github.com/SFX-WoW/Masque.\r"
-          ],
-          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
-        }
-      ],
-      "standaloneNoticeAbsent": false,
-      "supplemental": [],
-      "assembly": "Fetch exact official package for this user and retain all original source/media/notice bytes.",
-      "publicRedistributionApproved": false
-    },
-    {
-      "repo": "curseforge/Immersion_ExtraFade",
-      "version": "1.18.0",
-      "mainTerms": "MIT",
-      "officialRelease": "https://www.curseforge.com/wow/addons/immersion-extrafade/files/8995675",
-      "noticeFiles": [
-        {
-          "source": "Immersion_ExtraFade/LICENSE",
-          "sha256": "21fa609537edd30918bd7703c8d5e7ca5ebd1ebf90a5c9a7fe68b781db7750c2",
-          "copy": "evidence/dependencies/notices/curseforge__Immersion_ExtraFade/Immersion_ExtraFade/LICENSE"
-        }
-      ],
-      "embeddedNoticeSources": [
-        {
-          "source": "Immersion_ExtraFade/Immersion_ExtraFade.toc",
-          "sha256": "b26a8c04a5b2ed7abdc268da42d44f3dbf145c0084a6b02eb5b8408581bdf3d7",
-          "declarations": [
-            "## X-License: The MIT License (MIT)\r"
-          ],
-          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
-        },
-        {
-          "source": "Immersion_ExtraFade/Libs/LibStub/LibStub.lua",
-          "sha256": "186bac9553513504fac3a5c4550ff59f3aee9e8a497376134f3ca01de2ed18d0",
-          "declarations": [
-            "-- LibStub is hereby placed in the Public Domain"
-          ],
-          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
-        },
-        {
-          "source": "Immersion_ExtraFade/Libs/LibStub/LibStub.toc",
-          "sha256": "1f64542bc3921a190963e7bbd92a706b61fe2e8c411a03cd060a9c6097e6f4fa",
-          "declarations": [
-            "## X-License: Public Domain"
           ],
           "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
         }
@@ -1848,9 +1805,9 @@
     },
     {
       "repo": "curseforge/DynamicCam",
-      "version": "2.21.2",
+      "version": "2.21.4",
       "mainTerms": "MIT; separate bundled library notices retained",
-      "officialRelease": "https://www.curseforge.com/wow/addons/dynamiccam/files/9188709",
+      "officialRelease": "https://www.curseforge.com/wow/addons/dynamiccam/files/9208028",
       "noticeFiles": [
         {
           "source": "DynamicCam/LICENSE",
@@ -1881,7 +1838,7 @@
       "embeddedNoticeSources": [
         {
           "source": "DynamicCam/DynamicCam.toc",
-          "sha256": "9b64bb0b10739a50bdd5c0d5f014b9036fc00d1d2c7a0b0c3280c1a9732e50b8",
+          "sha256": "0ac218feaf9cc5291d9b250ff141d802127e9a2b75b36ead476ad54d630f7170",
           "declarations": [
             "## X-License: The MIT License (MIT)\r"
           ],
@@ -1926,6 +1883,49 @@
         },
         {
           "source": "DynamicCam/Libs/LibStub/LibStub.toc",
+          "sha256": "1f64542bc3921a190963e7bbd92a706b61fe2e8c411a03cd060a9c6097e6f4fa",
+          "declarations": [
+            "## X-License: Public Domain"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        }
+      ],
+      "standaloneNoticeAbsent": false,
+      "supplemental": [],
+      "assembly": "Fetch exact official package for this user and retain all original source/media/notice bytes.",
+      "publicRedistributionApproved": false
+    },
+    {
+      "repo": "curseforge/Immersion_ExtraFade",
+      "version": "1.18.1",
+      "mainTerms": "MIT",
+      "officialRelease": "https://www.curseforge.com/wow/addons/immersion-extrafade/files/9207207",
+      "noticeFiles": [
+        {
+          "source": "Immersion_ExtraFade/LICENSE",
+          "sha256": "21fa609537edd30918bd7703c8d5e7ca5ebd1ebf90a5c9a7fe68b781db7750c2",
+          "copy": "evidence/dependencies/notices/curseforge__Immersion_ExtraFade/Immersion_ExtraFade/LICENSE"
+        }
+      ],
+      "embeddedNoticeSources": [
+        {
+          "source": "Immersion_ExtraFade/Immersion_ExtraFade.toc",
+          "sha256": "c4af1ae2621156eaf6edfbe3cd9e77af2ea5273d891ba74f6268917571d7bd6a",
+          "declarations": [
+            "## X-License: The MIT License (MIT)\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "Immersion_ExtraFade/Libs/LibStub/LibStub.lua",
+          "sha256": "186bac9553513504fac3a5c4550ff59f3aee9e8a497376134f3ca01de2ed18d0",
+          "declarations": [
+            "-- LibStub is hereby placed in the Public Domain"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "Immersion_ExtraFade/Libs/LibStub/LibStub.toc",
           "sha256": "1f64542bc3921a190963e7bbd92a706b61fe2e8c411a03cd060a9c6097e6f4fa",
           "declarations": [
             "## X-License: Public Domain"

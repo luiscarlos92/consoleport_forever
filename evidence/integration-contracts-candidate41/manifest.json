@@ -1,0 +1,201 @@
+{
+  "purpose": "Exact current contract identities; source copies stay local and ignored. Prior captures retained unchanged.",
+  "files": [
+    {
+      "path": "Immersion/Config.lua",
+      "sha256": "d8b53dbfb3c85c187b3a14fc9183f938b85443ee4da3482ffff86ac43fc3c52b",
+      "repo": "seblindfors/Immersion",
+      "version": "1.4.61",
+      "packageSHA256": "b180a8cbd1a1d878377da5a85abfdc5576e0c04212f9e900e3e9ca505cde1f3e"
+    },
+    {
+      "path": "Immersion/Settings.lua",
+      "sha256": "37c9542e8f437c919c06abdc244374794c83bea3c87ea444fb69620285804220",
+      "repo": "seblindfors/Immersion",
+      "version": "1.4.61",
+      "packageSHA256": "b180a8cbd1a1d878377da5a85abfdc5576e0c04212f9e900e3e9ca505cde1f3e"
+    },
+    {
+      "path": "Immersion/Display/Onload.lua",
+      "sha256": "a810f31fed8c925ec0c9b35f0371e9fb732f381e3eaeb6fb9d0a3cda31082b7e",
+      "repo": "seblindfors/Immersion",
+      "version": "1.4.61",
+      "packageSHA256": "b180a8cbd1a1d878377da5a85abfdc5576e0c04212f9e900e3e9ca505cde1f3e"
+    },
+    {
+      "path": "Immersion/Display/Theme.lua",
+      "sha256": "728151ed3b95071cd53796282fbf5ea9d32a54a16b0ed730bbc2d3ee07acb587",
+      "repo": "seblindfors/Immersion",
+      "version": "1.4.61",
+      "packageSHA256": "b180a8cbd1a1d878377da5a85abfdc5576e0c04212f9e900e3e9ca505cde1f3e"
+    },
+    {
+      "path": "Immersion/LICENSE.md",
+      "sha256": "fbe474bab315f2856f8f393d5273f97eb956d7f93e8f6405b71230c2605d5a2b",
+      "repo": "seblindfors/Immersion",
+      "version": "1.4.61",
+      "packageSHA256": "b180a8cbd1a1d878377da5a85abfdc5576e0c04212f9e900e3e9ca505cde1f3e"
+    },
+    {
+      "path": "Immersion/Logic/Events.lua",
+      "sha256": "10d9907c62d4c7efefbd31fb4594a9b82af2aff1f13dcb4aecbef2fc555180d5",
+      "repo": "seblindfors/Immersion",
+      "version": "1.4.61",
+      "packageSHA256": "b180a8cbd1a1d878377da5a85abfdc5576e0c04212f9e900e3e9ca505cde1f3e"
+    },
+    {
+      "path": "Immersion/Logic/Frame.lua",
+      "sha256": "7ac9e35945801d22915f837c6b180e9e6097a1c96dd328df61d300fd21426f16",
+      "repo": "seblindfors/Immersion",
+      "version": "1.4.61",
+      "packageSHA256": "b180a8cbd1a1d878377da5a85abfdc5576e0c04212f9e900e3e9ca505cde1f3e"
+    },
+    {
+      "path": "Immersion/Logic/Talkbox.lua",
+      "sha256": "57c70782a54ccd24b9a8202f0d22f4a58451f906aed74e4c7415d2ed0d6147ba",
+      "repo": "seblindfors/Immersion",
+      "version": "1.4.61",
+      "packageSHA256": "b180a8cbd1a1d878377da5a85abfdc5576e0c04212f9e900e3e9ca505cde1f3e"
+    },
+    {
+      "path": "Immersion/Components/Elements.lua",
+      "sha256": "eead0cf84abdeb9a502620ff7ed03d3b3ae68ccfe53f8966cf5fc600e3b6cb86",
+      "repo": "seblindfors/Immersion",
+      "version": "1.4.61",
+      "packageSHA256": "b180a8cbd1a1d878377da5a85abfdc5576e0c04212f9e900e3e9ca505cde1f3e"
+    },
+    {
+      "path": "Immersion/Components/Scaler.lua",
+      "sha256": "32880cc2c1cbe835850d32e38031995c1d8a88e5ffb835c92ff7402372c18626",
+      "repo": "seblindfors/Immersion",
+      "version": "1.4.61",
+      "packageSHA256": "b180a8cbd1a1d878377da5a85abfdc5576e0c04212f9e900e3e9ca505cde1f3e"
+    },
+    {
+      "path": "Immersion/Display/Frame.xml",
+      "sha256": "d30804a5bf00bf4d4950652b42b11444491429f3313c61990e5061d415935035",
+      "repo": "seblindfors/Immersion",
+      "version": "1.4.61",
+      "packageSHA256": "b180a8cbd1a1d878377da5a85abfdc5576e0c04212f9e900e3e9ca505cde1f3e"
+    },
+    {
+      "path": "Immersion_ExtraFade/options.lua",
+      "sha256": "0379dfe8363d168a4fd2f43e5a4ea1cd1dc504e1a73807fdd5877206401dde13",
+      "repo": "curseforge/Immersion_ExtraFade",
+      "version": "1.18.1",
+      "packageSHA256": "88209bf00a35119be57011b87d52dc59500469f5eeff87f93b34e9b488f1a125"
+    },
+    {
+      "path": "Immersion_ExtraFade/main.lua",
+      "sha256": "5ffaf20b545be500859756c9413550c146482d5f8aa3266b1e03048c9c9b61ea",
+      "repo": "curseforge/Immersion_ExtraFade",
+      "version": "1.18.1",
+      "packageSHA256": "88209bf00a35119be57011b87d52dc59500469f5eeff87f93b34e9b488f1a125"
+    },
+    {
+      "path": "Immersion_ExtraFade/hide_module.lua",
+      "sha256": "af7ebec7a2c2c47a2546d80237c0be6ceadfba4b9b78fae2ae9acefa38707414",
+      "repo": "curseforge/Immersion_ExtraFade",
+      "version": "1.18.1",
+      "packageSHA256": "88209bf00a35119be57011b87d52dc59500469f5eeff87f93b34e9b488f1a125"
+    },
+    {
+      "path": "BetterBags/integrations/consoleport.lua",
+      "sha256": "d3377cfbe05cbad4558fe88743b669768503cd15b94128c00eccadb218270647",
+      "repo": "Cidan/BetterBags",
+      "version": "v0.5.16",
+      "packageSHA256": "7ae808093064e973ab053a4bf63cb6f38318f6d2ab321f402d76006104f5cbc7"
+    },
+    {
+      "path": "BetterBags/integrations/masque.lua",
+      "sha256": "1724f86963a10c01546ff536bb8c696119d33f52e7f876783853b34106981178",
+      "repo": "Cidan/BetterBags",
+      "version": "v0.5.16",
+      "packageSHA256": "7ae808093064e973ab053a4bf63cb6f38318f6d2ab321f402d76006104f5cbc7"
+    },
+    {
+      "path": "BetterBags/frames/item.lua",
+      "sha256": "ce271c8af9b6291b007aa240e74340c96438b9802402ac0caf17b490760ff9e3",
+      "repo": "Cidan/BetterBags",
+      "version": "v0.5.16",
+      "packageSHA256": "7ae808093064e973ab053a4bf63cb6f38318f6d2ab321f402d76006104f5cbc7"
+    },
+    {
+      "path": "BetterBags/frames/bag.lua",
+      "sha256": "6dd346f00895d1b78fdb78d43dd990e07cd942325279f322760f12e627b1e310",
+      "repo": "Cidan/BetterBags",
+      "version": "v0.5.16",
+      "packageSHA256": "7ae808093064e973ab053a4bf63cb6f38318f6d2ab321f402d76006104f5cbc7"
+    },
+    {
+      "path": "BetterBags/themes/default.lua",
+      "sha256": "198b56880c560367a8b1d8e1644f397b26500f472c5f19dd99fec46497a88304",
+      "repo": "Cidan/BetterBags",
+      "version": "v0.5.16",
+      "packageSHA256": "7ae808093064e973ab053a4bf63cb6f38318f6d2ab321f402d76006104f5cbc7"
+    },
+    {
+      "path": "BetterBags/themes/elvui.lua",
+      "sha256": "39f7170ce15010426d2ebe547bcd838dfb0fbf4ad2956d470926be9ebd4808e0",
+      "repo": "Cidan/BetterBags",
+      "version": "v0.5.16",
+      "packageSHA256": "7ae808093064e973ab053a4bf63cb6f38318f6d2ab321f402d76006104f5cbc7"
+    },
+    {
+      "path": "BetterBags/LICENSE",
+      "sha256": "b92215e6fb3d24dbe22b524d917465340aa22a8e9e018f24986554a902026bec",
+      "repo": "Cidan/BetterBags",
+      "version": "v0.5.16",
+      "packageSHA256": "7ae808093064e973ab053a4bf63cb6f38318f6d2ab321f402d76006104f5cbc7"
+    },
+    {
+      "path": "DynamicCam/Core.lua",
+      "sha256": "eb87fd470af3d7216d65e817b36878cca1231eb1f244034843b6f621caf7a0df",
+      "repo": "curseforge/DynamicCam",
+      "version": "2.21.4",
+      "packageSHA256": "dd88b9cc8dccf8e1f4afecf4d2e513d96b07f6fa3360e6749c80de2533383ec1"
+    },
+    {
+      "path": "DynamicCam/DefaultSettings.lua",
+      "sha256": "62405cbe54f7af21f02a22c41686532ce664c7d763c72701036d0942ac719357",
+      "repo": "curseforge/DynamicCam",
+      "version": "2.21.4",
+      "packageSHA256": "dd88b9cc8dccf8e1f4afecf4d2e513d96b07f6fa3360e6749c80de2533383ec1"
+    },
+    {
+      "path": "DynamicCam/LICENSE",
+      "sha256": "d073ad048c4a17bfb5a1c69eea17c60f262aa6f542a8ebb10c81e07c6876e6b1",
+      "repo": "curseforge/DynamicCam",
+      "version": "2.21.4",
+      "packageSHA256": "dd88b9cc8dccf8e1f4afecf4d2e513d96b07f6fa3360e6749c80de2533383ec1"
+    },
+    {
+      "path": "DynamicCam/Libs/LICENSE.md",
+      "sha256": "af51766e056af139f94de73afdc907b860d11707a20e709654ad0bf110f6fb3a",
+      "repo": "curseforge/DynamicCam",
+      "version": "2.21.4",
+      "packageSHA256": "dd88b9cc8dccf8e1f4afecf4d2e513d96b07f6fa3360e6749c80de2533383ec1"
+    },
+    {
+      "path": "DynamicCam/Libs/LibStub/LibStub.lua",
+      "sha256": "186bac9553513504fac3a5c4550ff59f3aee9e8a497376134f3ca01de2ed18d0",
+      "repo": "curseforge/DynamicCam",
+      "version": "2.21.4",
+      "packageSHA256": "dd88b9cc8dccf8e1f4afecf4d2e513d96b07f6fa3360e6749c80de2533383ec1"
+    },
+    {
+      "path": "DynamicCam/Libs/CallbackHandler-1.0/CallbackHandler-1.0.lua",
+      "sha256": "84a15af505e728ac5e5eb6a8eaba8989d1131d5f8ba14d11abcfe4ce086de3c1",
+      "repo": "curseforge/DynamicCam",
+      "version": "2.21.4",
+      "packageSHA256": "dd88b9cc8dccf8e1f4afecf4d2e513d96b07f6fa3360e6749c80de2533383ec1"
+    },
+    {
+      "path": "DynamicCam/Libs/AceDB-3.0/AceDB-3.0.lua",
+      "sha256": "fe1074edbbd248130f3c9aabfede6631133853e482e96e72f6d25d7a116f4ef7",
+      "repo": "curseforge/DynamicCam",
+      "version": "2.21.4",
+      "packageSHA256": "dd88b9cc8dccf8e1f4afecf4d2e513d96b07f6fa3360e6749c80de2533383ec1"
+    }
+  ]
+}

@@ -38,24 +38,28 @@ See [reference provenance](reference/EVIDENCE.md).
 ## Locked package identities
 
 October 16 fresh official discovery and selective retrieval qualify BetterBags
-v0.5.16, Plater-v661 and DynamicCam 2.21.2 in the current lock. ConsolePort remains
+v0.5.16, Plater-v661, DynamicCam 2.21.4 and ExtraFade 1.18.1 in the current lock. ConsolePort remains
 3.3.10. The [fresh receipt](../evidence/dependencies/stable-recheck.json) reports
-all current. New [versioned contracts](../evidence/integration-contracts-2026-10-16/manifest.json)
+all current. New [versioned contracts](../evidence/integration-contracts-candidate41/manifest.json)
 retain the old captures unchanged. Native item/merchant tests exercise the new
-BetterBags input methods; optional Perf registration is modeled. DynamicCam
-Core/default/AceDB bytes are unchanged. Folder closure and notices are qualified.
-These three packages are prepared but not installed by the Forever-only update.
-Exact guards additionally retain installed BetterBags v0.5.14 and DynamicCam
-2.21.1; Plater has no Forever profile adapter. Offline source qualification
+BetterBags input methods; optional Perf registration is modeled. DynamicCam's
+current native RefreshConfig and defaults execute alongside the retained older
+contract; AceDB ownership and profile lifecycle remain intact. ExtraFade's native
+hide-module changes preserve its optional flat-settings contract. Folder closure
+and notices are qualified. These four packages are prepared but not installed by
+the Forever-only update. Exact guards additionally retain installed BetterBags
+v0.5.14, DynamicCam 2.21.1/2.21.2 and ExtraFade 1.18.0; Plater has no Forever profile adapter. Offline source qualification
 does not establish Retail performance or taint acceptance.
+[Selective qualification](../evidence/dependencies/candidate41-selective-qualification.json)
+records the new archive delta and exact closure/notice evidence.
 
 | Package owner | Locked version | Companion integration |
 | --- | --- | --- |
 | seblindfors/ConsolePort | 3.3.10 | Required main/bar plus native optional suite contracts. Exact guards in routing, rings, skin and UI; ground interception is retired. |
 | Cidan/BetterBags | v0.5.16 | Audited bag adapter/custom UI path; full context takeover suspended. |
 | seblindfors/Immersion | 1.4.61 | Reviewed flat settings and Forever-owned Required Items correction. Preserve upstream bytes and ImmersionSetup. |
-| curseforge/Immersion_ExtraFade | 1.18.0 | Optional reviewed integration fields. |
-| curseforge/DynamicCam | 2.21.2 | Managed native profile copies; preserve foreign profiles and selection lifecycle. |
+| curseforge/Immersion_ExtraFade | 1.18.1 | Optional reviewed integration fields; retain exact 1.18.0 compatibility. |
+| curseforge/DynamicCam | 2.21.4 | Managed native profile copies; preserve foreign profiles and selection lifecycle; retain 2.21.1/2.21.2. |
 | xod-wow/LiteMount | 12.1.5-1 | All 115 files already match on disk before this Forever deployment; adapter additionally retains 12.1.0-1/12.1.0-2 support. No guessed second default icon. |
 | SFX-WoW/Masque | 12.1.0 | Preserve native integration and composed round-face regression contracts. |
 | Tercioo/Plater-Nameplates | Plater-v661 | Pack dependency; no Forever Plater profile adapter or profile/WTF installer. |
@@ -82,6 +86,14 @@ requirements. Keep inactive helpers and unrelated folders unless named retiremen
 is authorized.
 
 ## Runtime/API constraints
+
+Candidate.41 activates the follower adapter from the exact public active zone
+ability 426756. It needs neither PartyInfo nor LFG queue flags. The former
+PartyInfo gate referenced an API absent from the captured Blizzard contract;
+the corrected fixture rejects undeclared APIs and executes the real utility
+initialization. The native protected named-spell route and server follower state
+remain authoritative. [Activation investigation](reference/FOLLOWER-DUNGEON-ACTIVATION-2026-10-16.md)
+records the demonstrated startup defect and pending Retail toggle acceptance.
 
 - Native secure frames/handlers, restricted macro dispatch and native ownership
   are separate from public Lua callbacks. A public clock cannot gate protected work.

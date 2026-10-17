@@ -7,6 +7,16 @@ Evidence: [implementation](../../addon/ConsolePort_Forever/Rings/FollowerDungeon
 [rejected proxy and boundary experiments](FOLLOWER-DUNGEON-ADMISSION-BOUNDARIES-2026-10-16.md),
 [tests](../../tests/harness/follower_runtime.lua).
 
+## Subsequent Retail report and correction
+
+The user reports unchanged behavior after delivery. Candidate.40 requires an
+unsupported PartyInfo method, while its test fixture fabricated it. Therefore
+its green proof did not establish startup against the documented Retail API.
+Candidate.41 repairs activation by exact active ability identity and adds native
+API-surface regression/status coverage. See the [activation diagnosis](FOLLOWER-DUNGEON-ACTIVATION-2026-10-16.md).
+The following sections retain candidate.40's implementation and qualification
+checkpoint; they do not establish that its named cast route ran in Retail.
+
 ## Observation and selected repair
 
 The user confirms that Blizzard's original control consistently alternates the

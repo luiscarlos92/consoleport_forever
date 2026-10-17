@@ -25,6 +25,10 @@ for the numeric default-ring follower entry, with selective unprotected child
 suppression after readiness. The existing hold/release gesture remains native.
 Retail lead/stop alternation and rendered preservation remain pending; see the
 [candidate.40 runtime](reference/FOLLOWER-DUNGEON-RUNTIME-2026-10-16.md).
+The subsequent candidate.41 [activation diagnosis](reference/FOLLOWER-DUNGEON-ACTIVATION-2026-10-16.md) corrects its unsupported startup API.
+Activation uses the exact active ability identity without a PartyInfo/LFG flag;
+on-demand `/cpf status` distinguishes active handling from startup refusal.
+Native autoassignment and release gestures remain. Retail toggling is unaccepted.
 
 The expanded HUD has Base/L2/R2/L2R2 banks with eight cells each: four D-pad and
 four face cells. The unmodified faces are reserved/shared commands, leaving 28

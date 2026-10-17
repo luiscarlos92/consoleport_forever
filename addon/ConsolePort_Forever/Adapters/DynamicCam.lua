@@ -25,7 +25,7 @@ end
 function Adapter:Probe()
     local addon=self.api.addon()
     local db=addon and addon.db
-    if (self.api.version~='2.21.1' and self.api.version~='2.21.2') or type(db)~='table' or type(db.profiles)~='table'
+    if (self.api.version~='2.21.1' and self.api.version~='2.21.2' and self.api.version~='2.21.4') or type(db)~='table' or type(db.profiles)~='table'
         or type(db.GetCurrentProfile)~='function' or type(db.SetProfile)~='function'
         or type(db.DeleteProfile)~='function' or type(addon.RefreshConfig)~='function'
         or type(db.profile)~='table' then return false,'audited DynamicCam/AceDB not initialized' end

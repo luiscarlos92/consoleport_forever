@@ -1,0 +1,59 @@
+{
+  "at": "2026-10-17T00:31:52.023036+00:00",
+  "candidate": "2.0.0-candidate.41",
+  "testedParentCommit": "8d1eb080971201b6ecfc6a751560463b192be861",
+  "runtimeChecks": 102,
+  "toolingTests": 70,
+  "overallPassed": true,
+  "completeProductInventoryMatches": true,
+  "completeRuntimeToolInventoryMatches": true,
+  "completeToolingInventoryMatches": true,
+  "productFiles": 63,
+  "toolingFiles": 156,
+  "changedProductFiles": [
+    "addon/ConsolePort_Forever/Adapters/DynamicCam.lua",
+    "addon/ConsolePort_Forever/Adapters/Integrations.lua",
+    "addon/ConsolePort_Forever/ConsolePort_Forever.lua",
+    "addon/ConsolePort_Forever/ConsolePort_Forever.toc",
+    "addon/ConsolePort_Forever/Rings/FollowerDungeon.lua",
+    "addon/ConsolePort_Forever/Rings/UtilityRuntime.lua"
+  ],
+  "runtimeReportSHA256": "a7ac7d78346ed0a5f40cb1188c2b306271de4c6adda35ff0ee1137f200c00a05",
+  "toolingReportSHA256": "5399b72b77dae895ed7dbea31f8cd23fd0adec7dfb0aaffea2c6c46f6f25523a",
+  "lockSHA256": "2d1c1824b1d815df5b9b9c222aca88051e42059e73d505b9133d992b6979c2bc",
+  "freshStableCheckSHA256": "76d639db9e5f744aeec73d02e8fd06f380d84643d87a8663f6e0c93faa5ae7f7",
+  "configurationRevision": 20,
+  "storeSchema": 3,
+  "followerRuntimeProof": {
+    "checks": 349,
+    "coalescedCooldownBurst": 120,
+    "gestures": 128,
+    "limit": "Cast APIs record requests; no invented C/server toggle semantics. Pool, protection, native texture pixels and event delivery are modeled; Retail acceptance remains pending.",
+    "nativeLABStatePreserved": true,
+    "nativeNameRequests": 129,
+    "poolReuseEditModeUnknownAndDisableCovered": true,
+    "protectedCombatDispatch": "native SECURE_ACTIONS.spell -> CastSpellByName",
+    "selectiveNativeSuppression": true,
+    "sourceIdentityPreserved": true
+  },
+  "rejectedRuntimeControls": [
+    "unsupported PartyInfo startup guard",
+    "old numeric dispatch",
+    "stale generic icon",
+    "blanket shared-container hiding",
+    "lost LAB spell state",
+    "routine cooldown full rebuild"
+  ],
+  "nativeAPIContractSHA256": "ba4a1b2530d720ccc1f5cee196273583e6f72e7035de085e5ff9f6c98315559b",
+  "dependencyQualificationSHA256": "a39e0f56ddc72c8b6b3b854a6be9191d5580bdac5c0a25207fec2f37eaa50496",
+  "reconstructionProofSHA256": "2fc738b71cc9dc016c96a38019c8e32ce9518b1e3328d90062d696c5a94d4bbf",
+  "qualifiedPreparedDependencyUpdates": [
+    "Cidan/BetterBags",
+    "Tercioo/Plater-Nameplates",
+    "curseforge/DynamicCam",
+    "curseforge/Immersion_ExtraFade"
+  ],
+  "selectedDependencyUpdates": [],
+  "deploymentScope": "Forever alone under current authorization; user owns reload",
+  "proofLimit": "Cast API spies establish requests, not C/server toggle semantics. Hardware event timing, taint, rendered pixels, persistence and Retail CPU acceptance remain pending. K06 remains open."
+}

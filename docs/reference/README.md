@@ -29,6 +29,10 @@ plural pending-reference directory is intentionally retained without moving it.
 
 ## Current code contracts
 
+- [Follower candidate.41 activation diagnosis](FOLLOWER-DUNGEON-ACTIVATION-2026-10-16.md):
+  unsupported startup gate, corrected API-surface test, active ability scope and
+  on-demand status. Candidate.40's installed bytes did not establish activation.
+
 - [Follower dungeon candidate.40](FOLLOWER-DUNGEON-RUNTIME-2026-10-16.md): native
   name dispatch, state artwork, selective suppression and remaining Retail test.
 

@@ -1,0 +1,247 @@
+{
+  "capturedAt": "2026-10-17T02:12:53.468399+00:00",
+  "purpose": "R16 isolated source execution only; no package/install",
+  "copyRoot": "scratch/pawn-immersion-inputs",
+  "files": [
+    {
+      "path": "Pawn/Pawn.lua",
+      "repo": "VgerMods/Pawn",
+      "ref": "Pawn-2.13.17",
+      "url": "https://raw.githubusercontent.com/VgerMods/Pawn/Pawn-2.13.17/Pawn.lua",
+      "sha256": "e76785baf21b65eb7eabb1d459b2c41e429f3146c30d990b45408551b6f3caed",
+      "bytes": 269099
+    },
+    {
+      "path": "Pawn/PawnBags.lua",
+      "repo": "VgerMods/Pawn",
+      "ref": "Pawn-2.13.17",
+      "url": "https://raw.githubusercontent.com/VgerMods/Pawn/Pawn-2.13.17/PawnBags.lua",
+      "sha256": "a7088fc810f9c3095bf8e765d8c33a29552356a4b2b36c1ea5e69620f2feb9db",
+      "bytes": 5862
+    },
+    {
+      "path": "Pawn/Core.lua",
+      "repo": "VgerMods/Pawn",
+      "ref": "Pawn-2.13.17",
+      "url": "https://raw.githubusercontent.com/VgerMods/Pawn/Pawn-2.13.17/Core.lua",
+      "sha256": "1c39dd90251093c18ac060b4602701c7b9da2f8f2cf2cdd3fc29071205bc0fab",
+      "bytes": 3942
+    },
+    {
+      "path": "Pawn/Localization.lua",
+      "repo": "VgerMods/Pawn",
+      "ref": "Pawn-2.13.17",
+      "url": "https://raw.githubusercontent.com/VgerMods/Pawn/Pawn-2.13.17/Localization.lua",
+      "sha256": "80c2fd9759cda08f32d8f4767bb2a3bf1f5099e2c761ecb98e62d8f9431bb05c",
+      "bytes": 51767
+    },
+    {
+      "path": "Pawn/VgerCore/VgerCore.lua",
+      "repo": "VgerMods/Pawn",
+      "ref": "Pawn-2.13.17",
+      "url": "https://raw.githubusercontent.com/VgerMods/Pawn/Pawn-2.13.17/VgerCore/VgerCore.lua",
+      "sha256": "0726348e92f9dcdd4154fcbc28a32170146e1e41fc68d2a0f97b7471be128b4f",
+      "bytes": 14870
+    },
+    {
+      "path": "Pawn/Readme.md",
+      "repo": "VgerMods/Pawn",
+      "ref": "Pawn-2.13.17",
+      "url": "https://raw.githubusercontent.com/VgerMods/Pawn/Pawn-2.13.17/Readme.md",
+      "sha256": "0233302a02bd7c878324d8c4ae4d908f8f97580b46f987eb09def1d5a6b9f4aa",
+      "bytes": 13601
+    },
+    {
+      "path": "BetterBags/integrations/pawn.lua",
+      "repo": "Cidan/BetterBags",
+      "ref": "v0.5.14",
+      "url": "https://raw.githubusercontent.com/Cidan/BetterBags/v0.5.14/integrations/pawn.lua",
+      "sha256": "48e6342bc16281e9b657314ada6f4aeda464156db6ce9215675a17181c180d42",
+      "bytes": 1917
+    },
+    {
+      "path": "BetterBags/data/items.lua",
+      "repo": "Cidan/BetterBags",
+      "ref": "v0.5.14",
+      "url": "https://raw.githubusercontent.com/Cidan/BetterBags/v0.5.14/data/items.lua",
+      "sha256": "79de390a56348d824fc840efe58017568bc3f1f340b1729d03ff2865946785f1",
+      "bytes": 90664
+    },
+    {
+      "path": "BetterBags/frames/item.lua",
+      "repo": "Cidan/BetterBags",
+      "ref": "v0.5.14",
+      "url": "https://raw.githubusercontent.com/Cidan/BetterBags/v0.5.14/frames/item.lua",
+      "sha256": "ff6c46475c720dff831d4a947a34aac96745ee0c003c152d3c2818dbe2af254b",
+      "bytes": 33906
+    },
+    {
+      "path": "BetterBags/themes/themes.lua",
+      "repo": "Cidan/BetterBags",
+      "ref": "v0.5.14",
+      "url": "https://raw.githubusercontent.com/Cidan/BetterBags/v0.5.14/themes/themes.lua",
+      "sha256": "dd07357211bf4c58dbbabee1d56635f45040e83ab64dfdf139bf5fa72d2caf48",
+      "bytes": 19952
+    },
+    {
+      "path": "BetterBagsPrepared/integrations/pawn.lua",
+      "repo": "Cidan/BetterBags",
+      "ref": "v0.5.16",
+      "url": "https://raw.githubusercontent.com/Cidan/BetterBags/v0.5.16/integrations/pawn.lua",
+      "sha256": "843e9469488026a18cea5e0e01957992fe128a1230095380c80dbd7f536e8740",
+      "bytes": 1911
+    },
+    {
+      "path": "BetterBagsPrepared/data/items.lua",
+      "repo": "Cidan/BetterBags",
+      "ref": "v0.5.16",
+      "url": "https://raw.githubusercontent.com/Cidan/BetterBags/v0.5.16/data/items.lua",
+      "sha256": "24694764dedd7a3adb85aedd74e12140682481ddbe8139c43e6fbd3dfee3add3",
+      "bytes": 123745
+    },
+    {
+      "path": "Immersion/Components/Elements.lua",
+      "repo": "seblindfors/Immersion",
+      "ref": "1.4.61",
+      "url": "https://raw.githubusercontent.com/seblindfors/Immersion/1.4.61/Components/Elements.lua",
+      "sha256": "edfb09e99bf7c9b954f0e6e9cbbf8dc5f7db83eb01ce6c6d6d7e2d16893ec4f2",
+      "bytes": 31854
+    },
+    {
+      "path": "Immersion/Components/Tooltip.lua",
+      "repo": "seblindfors/Immersion",
+      "ref": "1.4.61",
+      "url": "https://raw.githubusercontent.com/seblindfors/Immersion/1.4.61/Components/Tooltip.lua",
+      "sha256": "530ea3668cc9147304bc9e4bc2fc401c4cc5a50dc8953762cd5f9f4b48e7025d",
+      "bytes": 2020
+    },
+    {
+      "path": "Immersion/Components/Scaler.lua",
+      "repo": "seblindfors/Immersion",
+      "ref": "1.4.61",
+      "url": "https://raw.githubusercontent.com/seblindfors/Immersion/1.4.61/Components/Scaler.lua",
+      "sha256": "acc8ced32a564994af48841c39b32f71699b7f9fcd77e490d998a517fc1796fc",
+      "bytes": 2862
+    },
+    {
+      "path": "Immersion/Logic/Frame.lua",
+      "repo": "seblindfors/Immersion",
+      "ref": "1.4.61",
+      "url": "https://raw.githubusercontent.com/seblindfors/Immersion/1.4.61/Logic/Frame.lua",
+      "sha256": "7df0d0e1233533523a4f41526ab8f89fcf5ad386afe36d5d3323fe0480e316e0",
+      "bytes": 13924
+    },
+    {
+      "path": "Immersion/Logic/Inspector.lua",
+      "repo": "seblindfors/Immersion",
+      "ref": "1.4.61",
+      "url": "https://raw.githubusercontent.com/seblindfors/Immersion/1.4.61/Logic/Inspector.lua",
+      "sha256": "87af5973d9ad8b4a92002f15a7dfe8eb259a7a80bab4ae08331b2a4362001c76",
+      "bytes": 2407
+    },
+    {
+      "path": "Immersion/Logic/Controller.lua",
+      "repo": "seblindfors/Immersion",
+      "ref": "1.4.61",
+      "url": "https://raw.githubusercontent.com/seblindfors/Immersion/1.4.61/Logic/Controller.lua",
+      "sha256": "ed92acf328d53be3dc45a810d3662dca9728f79ff98d643669bab7d098067f53",
+      "bytes": 11451
+    },
+    {
+      "path": "Immersion/Display/Frame.xml",
+      "repo": "seblindfors/Immersion",
+      "ref": "1.4.61",
+      "url": "https://raw.githubusercontent.com/seblindfors/Immersion/1.4.61/Display/Frame.xml",
+      "sha256": "bd421ce2972a55540fdfd95bfe67896b193eac84b63912a040a072c45cc21be3",
+      "bytes": 54336
+    },
+    {
+      "path": "Immersion/Utils.lua",
+      "repo": "seblindfors/Immersion",
+      "ref": "1.4.61",
+      "url": "https://raw.githubusercontent.com/seblindfors/Immersion/1.4.61/Utils.lua",
+      "sha256": "5e11e2743b66814f307d88fda1e9ddcbefeea4cc614c46574e411698fe7334c7",
+      "bytes": 3797
+    },
+    {
+      "path": "Native/Interface/AddOns/Blizzard_ItemButton/Mainline/ItemButtonTemplate.xml",
+      "repo": "Gethe/wow-ui-source",
+      "ref": "09b9db7948abc9b9648dedaab51eb0cf3ee67b31",
+      "url": "https://raw.githubusercontent.com/Gethe/wow-ui-source/09b9db7948abc9b9648dedaab51eb0cf3ee67b31/Interface/AddOns/Blizzard_ItemButton/Mainline/ItemButtonTemplate.xml",
+      "sha256": "8056dd68dabe6ea39562be2517d7b0326a525146dd5aa499582d98c091aeca8a",
+      "bytes": 10387
+    },
+    {
+      "path": "Native/Interface/AddOns/Blizzard_ItemButton/Shared/ItemButtonTemplate.xml",
+      "repo": "Gethe/wow-ui-source",
+      "ref": "09b9db7948abc9b9648dedaab51eb0cf3ee67b31",
+      "url": "https://raw.githubusercontent.com/Gethe/wow-ui-source/09b9db7948abc9b9648dedaab51eb0cf3ee67b31/Interface/AddOns/Blizzard_ItemButton/Shared/ItemButtonTemplate.xml",
+      "sha256": "f75d8cc8793397647e41a297786570f8ad5210119f3d6a7e597ed863cb5c59ce",
+      "bytes": 3174
+    },
+    {
+      "path": "Native/Interface/AddOns/Blizzard_UIPanels_Game/Mainline/ContainerFrame.xml",
+      "repo": "Gethe/wow-ui-source",
+      "ref": "09b9db7948abc9b9648dedaab51eb0cf3ee67b31",
+      "url": "https://raw.githubusercontent.com/Gethe/wow-ui-source/09b9db7948abc9b9648dedaab51eb0cf3ee67b31/Interface/AddOns/Blizzard_UIPanels_Game/Mainline/ContainerFrame.xml",
+      "sha256": "79196fda0dc2bfedbb6fb51aeeabeeb6124c031861c518e2d73cb0e86c8ea3ae",
+      "bytes": 12378
+    },
+    {
+      "path": "Native/Interface/AddOns/Blizzard_GameTooltip/Mainline/GameTooltip.lua",
+      "repo": "Gethe/wow-ui-source",
+      "ref": "09b9db7948abc9b9648dedaab51eb0cf3ee67b31",
+      "url": "https://raw.githubusercontent.com/Gethe/wow-ui-source/09b9db7948abc9b9648dedaab51eb0cf3ee67b31/Interface/AddOns/Blizzard_GameTooltip/Mainline/GameTooltip.lua",
+      "sha256": "5d3bf9efbd59c7f92844d97368a6750d5356fc444ea1c205c53da003ed097525",
+      "bytes": 34307
+    },
+    {
+      "path": "Native/Interface/AddOns/Blizzard_SharedXMLGame/Tooltip/TooltipComparisonManager.lua",
+      "repo": "Gethe/wow-ui-source",
+      "ref": "09b9db7948abc9b9648dedaab51eb0cf3ee67b31",
+      "url": "https://raw.githubusercontent.com/Gethe/wow-ui-source/09b9db7948abc9b9648dedaab51eb0cf3ee67b31/Interface/AddOns/Blizzard_SharedXMLGame/Tooltip/TooltipComparisonManager.lua",
+      "sha256": "5734a4f0270f47b5d8c858d6f9d355d2850fc258687d75a372631369f3420727",
+      "bytes": 13139
+    },
+    {
+      "path": "Pawn/Pawn.toc",
+      "repo": "VgerMods/Pawn",
+      "ref": "Pawn-2.13.17",
+      "url": "https://raw.githubusercontent.com/VgerMods/Pawn/Pawn-2.13.17/Pawn.toc",
+      "sha256": "d880e8a0fe0bef083736dee48e44fbb66255e8f379f58961a310024d93cc252f",
+      "bytes": 1876
+    },
+    {
+      "path": "Pawn/PawnUI.xml",
+      "repo": "VgerMods/Pawn",
+      "ref": "Pawn-2.13.17",
+      "url": "https://raw.githubusercontent.com/VgerMods/Pawn/Pawn-2.13.17/PawnUI.xml",
+      "sha256": "a55bbe15d7e28aaf3a31dbae91bfed691bff228b42e09246f3fa95bacf6385c9",
+      "bytes": 89536
+    },
+    {
+      "path": "Immersion/Immersion.toc",
+      "repo": "seblindfors/Immersion",
+      "ref": "1.4.61",
+      "url": "https://raw.githubusercontent.com/seblindfors/Immersion/1.4.61/Immersion.toc",
+      "sha256": "61576b4a60654cf01a4981e4e08cbcde0a8acab919fde371ca249abb514bf8d3",
+      "bytes": 966
+    },
+    {
+      "path": "Immersion/Logic/Events.lua",
+      "repo": "seblindfors/Immersion",
+      "ref": "1.4.61",
+      "url": "https://raw.githubusercontent.com/seblindfors/Immersion/1.4.61/Logic/Events.lua",
+      "sha256": "e397ca6f7a08e43575a9faa1528fdfa13a0b0b1fa05499d79d2371a001309b39",
+      "bytes": 3930
+    },
+    {
+      "path": "BetterBags/core/init.lua",
+      "repo": "Cidan/BetterBags",
+      "ref": "v0.5.14",
+      "url": "https://raw.githubusercontent.com/Cidan/BetterBags/v0.5.14/core/init.lua",
+      "sha256": "298010e197cb8b2aaaf8128ec8df3bf5f0c2b9cb7d9eb6f9ca2ce510030c5507",
+      "bytes": 14516
+    }
+  ]
+}

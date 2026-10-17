@@ -238,6 +238,8 @@ function Addon:Refresh()
     self:VerifyReload()
     local repaired,repairReason=self.ImmersionProgress:Refresh(self,_G)
     self.Diagnostics:SetFeature('immersionProgress',repaired and 'offline-verified' or 'pending',repairReason)
+    local pawnReady,pawnReason=self.PawnImmersion:Refresh(self,_G)
+    self.Diagnostics:SetFeature('pawnImmersion',pawnReady and 'offline-verified' or 'pending',pawnReason)
     local captured,captureReason=self.EditModeReference:Refresh(self,_G)
     self.Diagnostics:SetFeature('editModeReference',captured and 'captured' or 'pending',captureReason)
     self.ActionRecovery:Refresh(self,_G)
@@ -364,6 +366,7 @@ function Addon:Status()
         Print('Follower controls: '..(self.followerDungeon and self.followerDungeon:Status()
             or self.followerDungeonReason or 'shared utility initialization pending or disabled'))
     end
+    Print('Pawn rewards: '..self.PawnImmersion:Status())
     local names={}
     for name in pairs(self.capabilities and self.capabilities.modules or {}) do names[#names+1]=name end
     table.sort(names)

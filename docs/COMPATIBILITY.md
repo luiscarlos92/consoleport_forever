@@ -35,6 +35,13 @@ The Forever comparison snapshot is a separate source reference: branch `forever`
 It describes inspected source, not a current Forever client test.
 See [reference provenance](reference/EVIDENCE.md).
 
+Candidate.42 additionally qualifies optional external Pawn 2.13.17 with Immersion
+1.4.61 and installed BetterBags v0.5.14 / prepared v0.5.16. Pawn stays outside the
+managed lock and payload. Its public verdict/updater and observed initialization,
+BetterBags' native provider resolution, Immersion's reward pool/setter and native
+comparison remain the owners. Unsupported/missing contracts stay dormant.
+[Runtime source and proof limits](reference/PAWN-IMMERSION-RUNTIME-2026-10-16.md).
+
 ## Locked package identities
 
 October 16 fresh official discovery and selective retrieval qualify BetterBags

@@ -20,6 +20,12 @@ Evidence: [current status](IMPLEMENTATION-STATUS.md),
 
 These are explicit limits, not newly discovered failures:
 
+- R16 Pawn/Immersion has a candidate.42 implementation after the approved isolated
+  experiment. Offline source parity, initialization and composition tests do not
+  establish Retail pixels, taint, controller timing, persistence or CPU. Check
+  the same item/configuration in bags, summary, detail and held/released L2.
+  [Runtime and limits](reference/PAWN-IMMERSION-RUNTIME-2026-10-16.md).
+
 - Candidate.39 implements a shared default utility ring and independent persistent
   disable command. Runtime-source tests reject the four earlier experimental
   admission defects and legacy ownership conflict. October 15 initial spec tests

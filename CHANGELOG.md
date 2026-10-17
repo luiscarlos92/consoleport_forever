@@ -9,6 +9,18 @@ Dates below use America/Toronto. This is a curated change index, not invented
 release tags or blanket gameplay certification. Detailed receipts own exact
 source/artifact/file identities. Prepared, installed and accepted are separate.
 
+## Pawn feedback in Immersion rewards — October 16, 2026
+
+Candidate.42 integrates the approved Pawn bridge after the isolated experiment:
+bag-provider-aware summary arrows and Pawn-generated detailed reward notes,
+retained through native L2 comparison. Pawn owns scoring/options/formatting;
+Immersion and ConsolePort retain quest, selection and input ownership. Startup,
+active pool/link identity, bounded asynchronous data and native tooltip padding
+are qualified offline. No settings/schema/revision or dependency changes.
+[Runtime and limits](docs/reference/PAWN-IMMERSION-RUNTIME-2026-10-16.md).
+Current status records exact qualification and delivery; Retail acceptance remains
+user-owned.
+
 ## Follower activation correction — October 16, 2026
 
 Candidate.41 removes an unsupported PartyInfo startup dependency that kept the

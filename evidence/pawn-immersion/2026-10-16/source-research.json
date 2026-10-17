@@ -1,0 +1,183 @@
+{
+  "stage": "source research and text plan only; no addon execution or dry run",
+  "observedAtUTC": "2026-10-17T01:32:57.032511+00:00",
+  "userFacingDate": "2026-10-16",
+  "userTimezone": "America/Toronto",
+  "checkoutBaseline": "cf0bb9dcc41c8767cd60e2582105fd4887062eb1",
+  "installedVersions": {
+    "Pawn": "2.13.17",
+    "BetterBags": "v0.5.14",
+    "Immersion": "1.4.61"
+  },
+  "officialLatestStableObserved": [
+    {
+      "repo": "VgerMods/Pawn",
+      "tag": "Pawn-2.13.17",
+      "prerelease": false,
+      "releaseURL": "https://github.com/VgerMods/Pawn/releases/tag/Pawn-2.13.17"
+    },
+    {
+      "repo": "Cidan/BetterBags",
+      "tag": "v0.5.16",
+      "prerelease": false,
+      "releaseURL": "https://github.com/Cidan/BetterBags/releases/tag/v0.5.16"
+    },
+    {
+      "repo": "seblindfors/Immersion",
+      "tag": "1.4.61",
+      "prerelease": false,
+      "releaseURL": "https://github.com/seblindfors/Immersion/releases/tag/1.4.61"
+    }
+  ],
+  "selectedInstalledSource": [
+    {
+      "installedRelativePath": "Pawn/Pawn.toc",
+      "sha256": "d880e8a0fe0bef083736dee48e44fbb66255e8f379f58961a310024d93cc252f",
+      "bytes": 1876
+    },
+    {
+      "installedRelativePath": "Pawn/Pawn.lua",
+      "sha256": "e76785baf21b65eb7eabb1d459b2c41e429f3146c30d990b45408551b6f3caed",
+      "bytes": 269099
+    },
+    {
+      "installedRelativePath": "Pawn/PawnBags.lua",
+      "sha256": "a7088fc810f9c3095bf8e765d8c33a29552356a4b2b36c1ea5e69620f2feb9db",
+      "bytes": 5862
+    },
+    {
+      "installedRelativePath": "BetterBags/BetterBags.toc",
+      "sha256": "3fc1337a2b8721bdaa02211fc8f74a70b3fb82551c5d27672c5dffd6023eab5f",
+      "bytes": 2840
+    },
+    {
+      "installedRelativePath": "BetterBags/integrations/pawn.lua",
+      "sha256": "f2a4ecde480036c7b2768a6cf525c312764de0fa0f79fdd71eec928990c1a119",
+      "bytes": 1974
+    },
+    {
+      "installedRelativePath": "BetterBags/data/items.lua",
+      "sha256": "5d48281457083985ea3bcc8513b926bf344bc528363749d9d2cee60d7907073e",
+      "bytes": 93133
+    },
+    {
+      "installedRelativePath": "BetterBags/frames/item.lua",
+      "sha256": "fd600d528c7779c8778f24f559896a6a74dae5e80449aab27f8abf9ee345272e",
+      "bytes": 34886
+    },
+    {
+      "installedRelativePath": "BetterBags/themes/themes.lua",
+      "sha256": "917b4aaa010ab6c34d71e36a0175916b107f16fbd843883a32d07aed05561829",
+      "bytes": 20513
+    },
+    {
+      "installedRelativePath": "BetterBags/core/database.lua",
+      "sha256": "24642da4f00e9cec3b3cf0ffd32e3eeafd217f8886eb09c90789e0a41d7e2e59",
+      "bytes": 57457
+    },
+    {
+      "installedRelativePath": "Immersion/Immersion.toc",
+      "sha256": "c6b20baa8c176b3ff3817376efc2340af1161ff0dd55d8a2c7a266c39f53010e",
+      "bytes": 1017
+    },
+    {
+      "installedRelativePath": "Immersion/Logic/Frame.lua",
+      "sha256": "7ac9e35945801d22915f837c6b180e9e6097a1c96dd328df61d300fd21426f16",
+      "bytes": 14401
+    },
+    {
+      "installedRelativePath": "Immersion/Logic/Inspector.lua",
+      "sha256": "642c19853ed0a0327e81ae57be7e2b36511d31f4ba8735b4561dbf5b39d4ff9e",
+      "bytes": 2503
+    },
+    {
+      "installedRelativePath": "Immersion/Logic/Controller.lua",
+      "sha256": "ad816426fd6910a4c3592cf187be311c16726c21fea671da5b775c5a58b39af2",
+      "bytes": 11909
+    },
+    {
+      "installedRelativePath": "Immersion/Components/Tooltip.lua",
+      "sha256": "4d788e872e4acf7155c2fdfed675dbcae0acb6646512fafb07b6e737c71b9871",
+      "bytes": 2101
+    },
+    {
+      "installedRelativePath": "Immersion/Components/Elements.lua",
+      "sha256": "eead0cf84abdeb9a502620ff7ed03d3b3ae68ccfe53f8966cf5fc600e3b6cb86",
+      "bytes": 32829
+    },
+    {
+      "installedRelativePath": "Immersion/Display/Frame.xml",
+      "sha256": "d30804a5bf00bf4d4950652b42b11444491429f3313c61990e5061d415935035",
+      "bytes": 55649
+    },
+    {
+      "installedRelativePath": "Immersion/Utils.lua",
+      "sha256": "a7cbd622ed9bd78fd349764664e0cf085e20670ac1756dbda3b03f543eb2c6e5",
+      "bytes": 3945
+    }
+  ],
+  "officialSourceComparisons": [
+    {
+      "repo": "VgerMods/Pawn",
+      "tag": "Pawn-2.13.17",
+      "paths": [
+        "Pawn.lua",
+        "PawnBags.lua"
+      ],
+      "installedMatches": "exact bytes"
+    },
+    {
+      "repo": "Cidan/BetterBags",
+      "tag": "v0.5.14",
+      "paths": [
+        "integrations/pawn.lua",
+        "data/items.lua"
+      ],
+      "installedMatches": "after CRLF to LF normalization"
+    },
+    {
+      "repo": "seblindfors/Immersion",
+      "tag": "1.4.61",
+      "paths": [
+        "Logic/Frame.lua",
+        "Components/Tooltip.lua",
+        "Components/Elements.lua"
+      ],
+      "installedMatches": "after CRLF to LF normalization"
+    },
+    {
+      "repo": "Cidan/BetterBags",
+      "tag": "v0.5.16",
+      "paths": [
+        "integrations/pawn.lua",
+        "data/items.lua"
+      ],
+      "installedMatches": false,
+      "note": "Prepared package remains separate from installed v0.5.14; provider still calls Pawn unbudgeted API, late-load refresh message changed."
+    }
+  ],
+  "savedObservation": {
+    "pawnScalarSettingsOnly": {
+      "ShowBagUpgradeAdvisor": true,
+      "ShowQuestUpgradeAdvisor": true,
+      "ShowUpgradesOnTooltips": true,
+      "ShowValuesForUpgradesOnly": true,
+      "ShowItemLevelUpgrades": false,
+      "ShowSpecIcons": true,
+      "ShowEnchanted": false,
+      "AlignNumbersRight": false,
+      "Digits": 1,
+      "ColorTooltipBorder": true,
+      "ShowTooltipIcons": false
+    },
+    "betterBagsProviderFieldPresent": false,
+    "betterBagsProviderUserSetFieldPresent": false,
+    "limit": "Persisted disk observation only. No live Lua state, active profile/spec or screenshot-time effective provider established. No character names, scale weights, item lists or raw saved files retained."
+  },
+  "limits": [
+    "Selected source identity only, not full package qualification.",
+    "No fresh all-dependency check required for documentation-only research; required before later executable development.",
+    "Pawn is installed but outside the current managed dependency lock. Qualify an optional external contract before implementation; this does not authorize packaging Pawn.",
+    "No Lua execution, prototype, runtime/test/tool changes, game input, installation or production writes."
+  ]
+}

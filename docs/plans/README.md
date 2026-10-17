@@ -9,6 +9,14 @@ Plans describe bounded authorized work, not permanent runtime authority.
 The [repository restructure](AI-NATIVE-RESTRUCTURE-2026-10-11.md) records this run.
 No other new implementation plan is activated by the documentation migration.
 
+The October 16 [Pawn/Immersion bridge plan](PAWN-IMMERSION-BRIDGE-2026-10-16.md)
+records source-only investigation of bag-arrow parity, Pawn-generated reward
+tooltip notes and retention during L2 comparison. The user subsequently approved
+the [isolated experiment](../reference/PAWN-IMMERSION-ISOLATED-EXPERIMENT-2026-10-16.md),
+which passes both BetterBags source variants and ten negative controls. The user subsequently approved candidate.42 integration.
+[Runtime ownership and proof limits](../reference/PAWN-IMMERSION-RUNTIME-2026-10-16.md)
+record that stage; current status owns exact delivery and acceptance.
+
 The October 16 [follower-dungeon controls plan](FOLLOWER-DUNGEON-CONTROLS-2026-10-16.md)
 records the initial investigation request: selective duplicate-button suppression,
 native ring artwork and lead/stop correctness. Five source dry runs are complete;

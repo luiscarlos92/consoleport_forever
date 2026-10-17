@@ -1886,6 +1886,14 @@ check('T102.follower-runtime-old-defect-and-preservation-controls',()=>{
     if(!rejected) throw Error('Follower runtime negative control not rejected: '+name);
   }
 });
+for (const [id,args] of [
+  ['T103.pawn-immersion-isolated-installed-source-parity-and-defect-controls',[]],
+  ['T104.pawn-immersion-isolated-prepared-source-parity-and-defect-controls',['--prepared']],
+  ['T105.pawn-immersion-runtime-installed-startup-ownership-and-parity',['--runtime']],
+  ['T106.pawn-immersion-runtime-prepared-startup-ownership-and-parity',['--runtime','--prepared']],
+]) check(id,()=>{
+  cp.execFileSync(process.execPath,[safe('tools/pawn_immersion_experiment.cjs'),...args],{cwd:root,stdio:'pipe'});
+});
 const report = {at:new Date().toISOString(), commit:cp.execFileSync('git',['rev-parse','HEAD'],{cwd:root}).toString().trim(),
   productHashes:Object.fromEntries(files('addon').map(f=>[f,sha(f)])),
   toolingHashes:Object.fromEntries([...files('tools'),...files('tests')].filter(f=>!f.includes('__pycache__')).map(f=>[f,sha(f)])),

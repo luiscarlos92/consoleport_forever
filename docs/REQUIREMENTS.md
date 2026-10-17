@@ -89,6 +89,22 @@ reported problem; K06 is resolved with [scoped Retail acceptance](../evidence/fo
 See the [candidate.40 runtime](reference/FOLLOWER-DUNGEON-RUNTIME-2026-10-16.md) and
 [staged plan](plans/FOLLOWER-DUNGEON-CONTROLS-2026-10-16.md) and K06.
 
+R16 (October 16): bridge Pawn's configured bag upgrade feedback into Immersion.
+Show the bag-style green arrow only on summarized quest reward icons; show Pawn's
+own generated upgrade note on detailed reward tooltips and retain it on the
+selected reward during L2 equipped comparison. Pawn owns verdicts, scales,
+percentages, localization and formatting; no hardcoded scoring or reward
+auto-selection. Preserve native comparison/input, existing reward markers and
+Required Items. The user explicitly requires text research/plan first, approval
+before an isolated dry run, and further review before addon integration. The user
+subsequently approved the isolated experiment and then approved Forever integration with “Proceed”.
+Candidate.42 implements the three presentation surfaces. Pawn is an optional
+external integration, never packaged or modified by Forever. Installation and
+Retail acceptance remain separately recorded in current status.
+[Staged plan](plans/PAWN-IMMERSION-BRIDGE-2026-10-16.md),
+[experiment](reference/PAWN-IMMERSION-ISOLATED-EXPERIMENT-2026-10-16.md),
+[runtime contract](reference/PAWN-IMMERSION-RUNTIME-2026-10-16.md).
+
 R04's action-slot preservation does not imply an unconditional no-add rule for
 learned class rings: current class augmentation appends missing learned forms
 and scoped migrations repair access. Generic ring capture preserves manual

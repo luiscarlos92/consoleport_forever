@@ -29,6 +29,13 @@ plural pending-reference directory is intentionally retained without moving it.
 
 ## Current code contracts
 
+- [Pawn/Immersion bridge research and staged plan](../plans/PAWN-IMMERSION-BRIDGE-2026-10-16.md):
+  installed Pawn/BetterBags verdict and tooltip ownership, pooled Immersion reward
+  views, native L2 comparison and source identities. The subsequently approved
+  [isolated experiment](PAWN-IMMERSION-ISOLATED-EXPERIMENT-2026-10-16.md) passes both
+  BetterBags source variants and rejects ten controls. The user subsequently approved candidate.42 integration;
+  [runtime ownership and limits](PAWN-IMMERSION-RUNTIME-2026-10-16.md) record that stage.
+
 - [Follower candidate.41 activation diagnosis](FOLLOWER-DUNGEON-ACTIVATION-2026-10-16.md):
   unsupported startup gate, corrected API-surface test, active ability scope and
   on-demand status. Candidate.40's installed bytes did not establish activation;

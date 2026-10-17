@@ -1,0 +1,227 @@
+{
+  "stage": "isolated experiment only",
+  "betterBags": "v0.5.16 prepared",
+  "assertions": 246,
+  "scenarios": 41,
+  "poolFrames": 2,
+  "queries": 98,
+  "annotations": 72,
+  "coalescedRefreshes": 6,
+  "compareDelegations": 10,
+  "loadOrders": {
+    "pawnFirst": 246,
+    "bagsFirst": 246
+  },
+  "workload": {
+    "nativeOnly": {
+      "nativeTooltipSets": 24,
+      "nativeCompareCalls": 10,
+      "showEvents": 36,
+      "bridgeQueries": 0,
+      "bridgeAnnotations": 0,
+      "bridgeRefreshes": 0,
+      "poolFrames": 2
+    },
+    "withBridge": {
+      "nativeTooltipSets": 26,
+      "nativeCompareCalls": 10,
+      "showEvents": 36,
+      "bridgeQueries": 50,
+      "bridgeAnnotations": 26,
+      "bridgeRefreshes": 1,
+      "poolFrames": 2
+    }
+  },
+  "controls": [
+    {
+      "name": "hardcoded",
+      "rejected": true,
+      "expectedAssertion": "non-upgrade summary has no arrow",
+      "error": "[string \"R16-experiment\"]:8875: non-upgrade summary has no arrow"
+    },
+    {
+      "name": "hardcoded-text",
+      "rejected": true,
+      "expectedAssertion": "Pawn generated output parity",
+      "error": "[string \"R16-experiment\"]:8875: Pawn generated output parity item=2 scenario=0 population=1: Protection: +28% upgrade~~nil~nil~nil ~=  ~~nil~nil~nil"
+    },
+    {
+      "name": "itemlevel",
+      "rejected": true,
+      "expectedAssertion": "summary upgrade arrow",
+      "error": "[string \"R16-experiment\"]:8875: summary upgrade arrow"
+    },
+    {
+      "name": "pending-false",
+      "rejected": true,
+      "expectedAssertion": "budget exhaustion schedules retry",
+      "error": "[string \"R16-experiment\"]:8875: budget exhaustion schedules retry"
+    },
+    {
+      "name": "stale-widget",
+      "rejected": true,
+      "expectedAssertion": "stale generation/link result rejected",
+      "error": "[string \"R16-experiment\"]:8875: stale generation/link result rejected"
+    },
+    {
+      "name": "duplicate-lines",
+      "rejected": true,
+      "expectedAssertion": "repeated hook cannot duplicate annotation",
+      "error": "[string \"R16-experiment\"]:8875: repeated hook cannot duplicate annotation: Item 2~~nil~nil~nil"
+    },
+    {
+      "name": "lose-on-compare",
+      "rejected": true,
+      "expectedAssertion": "L2 selected note retained",
+      "error": "[string \"R16-experiment\"]:8875: L2 selected note retained:  ~= Item 2~~nil~nil~nil"
+    },
+    {
+      "name": "unbounded-retry",
+      "rejected": true,
+      "expectedAssertion": "finite pending attempts",
+      "error": "[string \"R16-experiment\"]:8875: finite pending attempts"
+    },
+    {
+      "name": "scope-leak",
+      "rejected": true,
+      "expectedAssertion": "Required Items unchanged",
+      "error": "[string \"R16-experiment\"]:8875: Required Items unchanged: Item 2~~nil~nil~nil"
+    },
+    {
+      "name": "hidden-refresh",
+      "rejected": true,
+      "expectedAssertion": "hidden native refresh cannot restart queries",
+      "error": "[string \"R16-experiment\"]:8875: hidden native refresh cannot restart queries: 98 ~= 97"
+    }
+  ],
+  "excerpts": [
+    {
+      "file": "Pawn/VgerCore/VgerCore.lua",
+      "name": "VgerCore.ThrottleDelayCore",
+      "line": 347,
+      "endLine": 373
+    },
+    {
+      "file": "Pawn/VgerCore/VgerCore.lua",
+      "name": "VgerCore.Throttle",
+      "line": 376,
+      "endLine": 378
+    },
+    {
+      "file": "Immersion/Logic/Frame.lua",
+      "name": "Frame:SetItemTooltip",
+      "line": 234,
+      "endLine": 247
+    },
+    {
+      "file": "Immersion/Logic/Frame.lua",
+      "name": "Frame:GetItemColumn",
+      "line": 249,
+      "endLine": 270
+    },
+    {
+      "file": "Immersion/Logic/Frame.lua",
+      "name": "Frame:ShowItems",
+      "line": 272,
+      "endLine": 332
+    },
+    {
+      "file": "Immersion/Logic/Frame.lua",
+      "name": "Frame:UpdateItems",
+      "line": 334,
+      "endLine": 358
+    },
+    {
+      "file": "Immersion/Logic/Inspector.lua",
+      "name": "self.tooltipFramePool:Acquire",
+      "line": 31,
+      "endLine": 49
+    },
+    {
+      "file": "Immersion/Logic/Inspector.lua",
+      "name": "self.tooltipFramePool:ReleaseAll",
+      "line": 51,
+      "endLine": 57
+    },
+    {
+      "file": "Immersion/Logic/Inspector.lua",
+      "name": "self.tooltipFramePool:EnumerateActive",
+      "line": 59,
+      "endLine": 61
+    },
+    {
+      "file": "Immersion/Logic/Inspector.lua",
+      "name": "Inspector:OnShow",
+      "line": 64,
+      "endLine": 68
+    },
+    {
+      "file": "Immersion/Logic/Inspector.lua",
+      "name": "Inspector:OnHide",
+      "line": 70,
+      "endLine": 86
+    },
+    {
+      "file": "Immersion/Logic/Inspector.lua",
+      "name": "Inspector:OnUpdate",
+      "line": 88,
+      "endLine": 94
+    },
+    {
+      "file": "Native/Interface/AddOns/Blizzard_SharedXMLGame/Tooltip/TooltipComparisonManager.lua",
+      "name": "TooltipComparisonManager:CreateComparisonItem",
+      "line": 11,
+      "endLine": 21
+    },
+    {
+      "file": "Native/Interface/AddOns/Blizzard_GameTooltip/Mainline/GameTooltip.lua",
+      "name": "GameTooltip_ShowCompareItem",
+      "line": 483,
+      "endLine": 491
+    },
+    {
+      "file": "Immersion/Logic/Controller.lua",
+      "name": "Inspector:ShowFocusedTooltip",
+      "line": 417,
+      "endLine": 426
+    },
+    {
+      "file": "Immersion/Utils.lua",
+      "name": "L.Create",
+      "line": 11,
+      "endLine": 20
+    },
+    {
+      "file": "BetterBagsPrepared/data/items.lua",
+      "name": "items:RegisterUpgradeProvider",
+      "line": 106,
+      "endLine": 111
+    },
+    {
+      "file": "BetterBagsPrepared/data/items.lua",
+      "name": "items:GetActiveUpgradeProvider",
+      "line": 121,
+      "endLine": 134
+    },
+    {
+      "file": "BetterBagsPrepared/data/items.lua",
+      "name": "items:ResolveUpgrade",
+      "line": 254,
+      "endLine": 282
+    }
+  ],
+  "sourceManifestSHA256": "144ea4f817864e3c878766934a3bc90af9f0cbd4ebcda2d6238a972c701b2d85",
+  "experimentInventory": {
+    "tools/capture_pawn_immersion_experiment.py": "ae09da9971729bb81cf6808abf379a2324d3f5fa970903d1bc6da6090abdec2c",
+    "tools/pawn_immersion_experiment.cjs": "cf785746e840258f9085dc1f3e6d19105b7cda3dbe4f64bfe314dbb54ffc6850",
+    "tests/prototypes/pawn_immersion.lua": "2954d762b133230356a4b29869d8df734f3f845d8ca19a1307bd59fa77fa0223",
+    "tests/harness/pawn_immersion_environment.lua": "11b177e1d6297e049e503607c07fad4df3fbbdb20682abe8a4eeda43941327ad",
+    "tests/harness/pawn_immersion_setup.lua": "b8d151fe9b5a31fc3040c35818e71447941e39b9686589c3f965ca68f854b1da",
+    "tests/harness/pawn_immersion.lua": "71adb803317a1ff55b4493d90d9cc84dedd484a136c7e326a8355438b1053cc7"
+  },
+  "limits": [
+    "Item cache/stat parsing inputs and C APIs are modeled; actual Pawn upgrade arithmetic/formatting execute.",
+    "Frame engine, text metrics, scheduling, protected/secret semantics, rendering and hardware timing are modeled.",
+    "Not an addon initialization, Retail acceptance, persistence/taint or measured CPU proof."
+  ]
+}

@@ -19,6 +19,10 @@ jobs:
         run: python -B tools/capture_integration_contracts.py --from-manifest evidence/integration-contracts-candidate41/manifest.json --native-manifest evidence/follower-dungeons/2026-10-16/source-manifest.json --native-manifest evidence/follower-dungeons/2026-10-16/proxy-source-manifest.json --native-manifest evidence/follower-dungeons/2026-10-16/candidate41-api-source-manifest.json
       - name: Check maintained documentation and repository skills
         run: python -B tools/check_documentation.py
+      - name: Reconstruct isolated Pawn and Immersion experiment inputs
+        run: |
+          python -B tools/capture_pawn_immersion_experiment.py
+          python -B tools/capture_pawn_immersion_experiment.py --runtime
       - run: ./tools/Test-All.ps1
         shell: pwsh
       - uses: actions/upload-artifact@v4

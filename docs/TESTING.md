@@ -7,6 +7,26 @@ Evidence: [runner](../tools/test-all.cjs), [tool tests](../tools/run_tool_tests.
 
 ## Entry points
 
+T103/T104 execute the isolated R16 Pawn/Immersion candidate with installed and
+prepared BetterBags source, actual Pawn upgrade arithmetic/formatting, native
+Immersion reward population/pooling and comparison focus. Both provider load
+orders and ten specific defect controls run. Cached item data, C APIs, frame
+metrics, scheduling and comparison rendering are modeled; full addon startup,
+hardware, taint, pixels, persistence and Retail CPU remain unproved. Inputs are
+reconstructed in the explicit capture stage, never fetched by the test VM.
+Four tooling tests retain capture/drift/output guards.
+[Experiment and proof boundary](reference/PAWN-IMMERSION-ISOLATED-EXPERIMENT-2026-10-16.md).
+
+T105/T106 run the shipping PawnImmersion module against both source variants,
+sharing the isolated parity cases. Actual Pawn initialization/event/plugin bodies,
+Immersion QUEST_* / PlayIntro / inspector paths and locked AceAddon lookups
+execute. Five additional negative controls target premature readiness, missing
+startup observation, padding loss, pool ownership and a retained inspector. Subsystem UI/keybinding/
+option-migration models remain explicit. Repeated visible refresh during L2
+retains native comparison and padding without line/size growth. These are source
+and work-count checks, not Retail acceptance or a full engine startup test.
+[Runtime qualification](reference/PAWN-IMMERSION-RUNTIME-2026-10-16.md).
+
 Candidate.41 T101 validates supplied Spell/SpellBook/ZoneAbility functions against
 captured native API declarations and starts without PartyInfo/LFG tables. T102
 restores the old unsupported PartyInfo guard and must reject its startup failure;

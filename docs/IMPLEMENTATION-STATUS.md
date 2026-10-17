@@ -6,6 +6,16 @@ Evidence: [candidate.41 install](../evidence/delivery/live-install-candidate41.j
 [independent readback](../evidence/delivery/candidate41-independent-readback.json),
 [source qualification](../evidence/test-results/candidate41-follower-qualification.json).
 
+## Candidate.42 integration qualification
+
+The user approved Forever integration after the isolated Pawn/Immersion
+experiment. Candidate.42 adds the three requested presentation surfaces while
+Pawn owns verdicts/text and Immersion owns rewards/comparison/input.
+[Runtime and pending Retail observations](reference/PAWN-IMMERSION-RUNTIME-2026-10-16.md).
+Full current-source qualification and scoped delivery are in progress; candidate.41
+remains the installed checkpoint below until a delivery receipt confirms otherwise.
+Schema3/revision20 remain; Pawn is optional, external and never packaged.
+
 ## Installed checkpoint
 
 Candidate.41 was installed October 16 at **20:45:48 Toronto** from tested/pushed

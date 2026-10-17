@@ -100,6 +100,17 @@ documents persistent fields and recovery commands.
 
 ## Acceptance and observations still needed
 
+R16 Pawn/Immersion is implemented in candidate.42 after staged approval.
+Summary rewards lead to the native detailed inspector and L2 comparison/back;
+Pawn owns arrows/verdicts and tooltip notes. An observed completed Pawn startup,
+accepted character, exact optional versions and current reward/pool/quest ownership
+allow presentation. Close, new population, recovery or lost ownership cancels
+pending work and clears owned arrows. Pending item data retries at most eight
+times per generation; relevant item events can restart a bounded batch.
+Native quest events, reuse, settings/spec/equipment changes and comparison are
+exercised offline. Hardware, pixels, taint, persistence and Retail CPU remain open.
+[Runtime and limits](reference/PAWN-IMMERSION-RUNTIME-2026-10-16.md).
+
 The [cumulative checklist](NEXT-DEPLOYMENT-CHECKLIST.md) covers ring repetition,
 account edits, other-ring reuse, Required Items preferences, saved-layout changes
 and ordinary/temporary editing smoke tests. The reported ring/Required Items

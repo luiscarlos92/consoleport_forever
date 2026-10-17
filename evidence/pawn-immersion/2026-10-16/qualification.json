@@ -1,0 +1,42 @@
+{
+  "at": "2026-10-17T02:07:29.115667+00:00",
+  "stage": "isolated experiment complete; integration approval pending",
+  "testedParentCommit": "cf0bb9dcc41c8767cd60e2582105fd4887062eb1",
+  "overallPassed": true,
+  "runtimeChecks": 104,
+  "toolingTests": 74,
+  "productFiles": 63,
+  "toolingFiles": 163,
+  "completeProductInventoryMatches": true,
+  "completeRuntimeToolInventoryMatches": true,
+  "completeToolingInventoryMatches": true,
+  "productBytesMatchCandidate41Qualification": true,
+  "noTrackedOrUntrackedAddonChanges": true,
+  "lockSHA256": "2d1c1824b1d815df5b9b9c222aca88051e42059e73d505b9133d992b6979c2bc",
+  "inputManifestSHA256": "144ea4f817864e3c878766934a3bc90af9f0cbd4ebcda2d6238a972c701b2d85",
+  "workflowSHA256": "44d8d187c917710b61c96f15edfc05de8c253314aad78db606b4d37a70a538df",
+  "retainedReportSHA256": {
+    "full-runtime.json": "b051297ac18b041d78dfcc884e930254248c726eb3b11f7056507e091fd03356",
+    "full-tooling.json": "d273affb97528c7556be8e03f1de3fbf7ca91f765164f5cab851f467edbbdabb",
+    "dry-run.json": "ee62f21d5218e91cc55e1e0802d5a5ac25d2de97f57994f87b1f90dbf4518887",
+    "dry-run-prepared.json": "0da1e833507820b2709dbad9193dab526c6811e461270df904ff2c7cdd303a41",
+    "dependency-discovery.json": "96a9801ea91b925af9f8e4649b409b51b82c7c2da4aaf863374ba49b48a51f2e"
+  },
+  "assertionsPerConfiguration": 246,
+  "scenariosPerConfiguration": 41,
+  "negativeControls": 10,
+  "versions": [
+    "BetterBags v0.5.14 installed source",
+    "BetterBags v0.5.16 prepared source"
+  ],
+  "loadOrders": [
+    "Pawn first",
+    "BetterBags first"
+  ],
+  "validationNote": "Final prototype changes occurred before T103/T104 executed in the full runtime run. The complete tooling suite was rerun afterward to refresh its exact-source inventory.",
+  "limits": [
+    "No addon integration/package/install, production/WTF write or game input.",
+    "Parsed/cached item values, C APIs, frame metrics, scheduling and comparison rendering are modeled.",
+    "Full addon startup/owner discovery, Retail rendering/taint, hardware timing, persistence and measured CPU remain unqualified."
+  ]
+}

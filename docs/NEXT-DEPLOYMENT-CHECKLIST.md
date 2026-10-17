@@ -14,6 +14,23 @@ confirmed the follower fix on October 16; K06 is resolved for the reported case.
 K04/K05 and broader unreported cases remain open. Four qualified
 dependency updates remain prepared and excluded from this delivery.
 
+## Candidate.42 Pawn/Immersion checks
+
+Candidate.42 integration is approved and under offline qualification. After its
+separately recorded scoped delivery and user-owned reload:
+
+1. Use the same reward/Pawn configuration as bags. Summary icons show only the
+   native green arrow when BetterBags selects Pawn and Pawn says upgrade.
+2. Open reward detail: compare Pawn's exact scale/spec, percentage and formatting
+   with the bag tooltip. Hold/release L2, select the other reward and repeat.
+3. Close/reopen, visit another quest and check a non-upgrade, no-stat/currency
+   reward and asynchronous item loading. No duplicated notes, stale arrows or
+   growing tooltip padding. Required Items, vendor/context markers and native
+   selection/controller behavior remain.
+
+Rendering, taint, controller timing, persistence and Retail CPU remain unaccepted.
+[Runtime scope](reference/PAWN-IMMERSION-RUNTIME-2026-10-16.md).
+
 ## Candidate.41 follower activation and acceptance
 
 Candidate.40's unchanged-behavior report exposed an unsupported startup API.

@@ -9,7 +9,7 @@ Evidence: [TOC](../addon/ConsolePort_Forever/ConsolePort_Forever.toc),
 ## Loading and initialization
 
 The TOC requires ConsolePort and ConsolePort_Bar, declares optional integrations
-and loads 61 Lua files in order. There is no current Forever XML entry point.
+and loads 58 Lua files in order. There is no current Forever XML entry point.
 Modules share the addon namespace supplied through `...`. `Core`, storage,
 planning, transactions and capability modules precede policies and adapters;
 the main addon file loads last. `Bindings.lua`, `Layout.lua` and `Profile.lua`
@@ -59,6 +59,13 @@ Candidate.41 corrects follower activation to the public active Dungeon Assistanc
 identity. It does not require a PartyInfo/LFG flag. Startup refusal returns a reason;
 `/cpf status` queries cached follower readiness on demand without new event work.
 Native source-entry lifecycle remains; see the [activation diagnosis](reference/FOLLOWER-DUNGEON-ACTIVATION-2026-10-16.md).
+
+Candidate.42 loads PawnImmersion beside the independent Required Items repair.
+OptionalDeps adds Pawn so the module can observe its real initialization before
+PLAYER_LOGIN; the shipping bridge activates through normal accepted-character
+Refresh after recovery checks. Cosmetic summary/tooltip hooks preserve the
+suspended custom-UI policy and native input. No schema/revision/settings change.
+[Runtime ownership](reference/PAWN-IMMERSION-RUNTIME-2026-10-16.md).
 
 ## Configuration and ownership
 

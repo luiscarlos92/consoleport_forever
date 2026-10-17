@@ -2,9 +2,9 @@
 ## Title: ConsolePort |cff69ccf0Forever HUD|r
 ## Notes: Reviewed controller configuration, protected routing and artwork companion for Retail ConsolePort.
 ## Author: Console Port - Forever
-## Version: 2.0.0-candidate.41
+## Version: 2.0.0-candidate.42
 ## RequiredDeps: ConsolePort, ConsolePort_Bar
-## OptionalDeps: ConsolePort_Menu, ConsolePort_Cursor, ConsolePort_Rings, ConsolePort_Config, Immersion, Immersion_ExtraFade, DynamicCam, BetterBags, LiteMount, Masque
+## OptionalDeps: ConsolePort_Menu, ConsolePort_Cursor, ConsolePort_Rings, ConsolePort_Config, Immersion, Immersion_ExtraFade, DynamicCam, BetterBags, Pawn, LiteMount, Masque
 ## SavedVariables: ConsolePortForeverDB
 ## SavedVariablesPerCharacter: ConsolePortForeverCharacterDB
 
@@ -47,6 +47,7 @@ Adapters\FlatConfig.lua
 Adapters\Integrations.lua
 SavedEditModeReference.lua
 UI\ImmersionProgress.lua
+UI\PawnImmersion.lua
 UI\EditModeReference.lua
 Adapters\LiteMount.lua
 Adapters\DynamicCam.lua

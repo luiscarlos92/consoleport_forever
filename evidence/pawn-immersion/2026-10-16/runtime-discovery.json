@@ -1,0 +1,16 @@
+{
+  "checkedAt": "2026-10-17T02:25:08.249207+00:00",
+  "stage": "Forever integration",
+  "optionalExternalOnly": true,
+  "release": {
+    "id": 411872652,
+    "tag_name": "Pawn-2.13.17",
+    "html_url": "https://github.com/VgerMods/Pawn/releases/tag/Pawn-2.13.17",
+    "published_at": "2026-10-13T16:13:31Z",
+    "draft": false,
+    "prerelease": false
+  },
+  "managedPackagesCurrent": true,
+  "managedFreshCheck": "evidence/dependencies/stable-recheck.json",
+  "selectedDependencyUpdates": []
+}

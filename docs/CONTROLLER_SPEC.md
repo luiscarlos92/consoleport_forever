@@ -161,6 +161,16 @@ are labels for the same logical banks, not universal literal artwork.
 
 ## Ground placement and UI controls
 
+R16's requested Pawn/Immersion bridge is presentation only: bag-equivalent
+summary reward arrows and Pawn-generated reward-tooltip notes, retained while
+native L2 Currently Equipped comparison is held and after release. Immersion and
+ConsolePort retain focus, selection, comparison and input ownership. No new
+mapping or reward auto-selection is proposed. The approved isolated experiment
+retains the selected note through native comparison focus/unfocus. Hardware and
+full command parsing remain unproved. Candidate.42 integrates the qualified
+presentation paths after the user’s further approval; no new input route exists.
+[Research and stages](plans/PAWN-IMMERSION-BRIDGE-2026-10-16.md).
+
 Forever's ground-placement interceptor and Targeting configuration panel are
 removed by the October 12 user instruction. Ordinary ground spells use their
 native reticle; user-owned macro slots dispatch natively. No replacement macro

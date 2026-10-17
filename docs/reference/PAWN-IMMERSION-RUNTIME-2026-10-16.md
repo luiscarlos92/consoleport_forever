@@ -73,9 +73,10 @@ per-item diagnostic persistence.
 T105/T106 execute the shipping module with installed/prepared BetterBags source,
 the shared scoring/formatting/comparison cases and real Pawn initialization,
 Immersion quest handlers and PlayIntro. Locked AceAddon lookup bodies execute.
-Fifteen faulty variants must fail their intended assertions. Extra cases cover
+Sixteen faulty variants must fail their intended assertions. Extra cases cover
 failed initialization, readiness ordering, lost pool/frame, review/restore/recovery,
-opaque identities, three native quest events and twelve visible refreshes during
+opaque identities, two simultaneous choice tooltips, three native quest events
+and twelve visible refreshes during
 held comparison with stable text/size. Workload receipts compare equivalent native
 sequences and require unchanged comparison/pool bounds and one coalesced batch.
 
@@ -91,3 +92,10 @@ Runtime/TOC/bootstrap, architecture, compatibility, controller/state requirement
 test entry points and current delivery documents are the affected maintenance
 surfaces. Dependency lock, native input, saved schema and configuration revision
 need no change. Isolated-stage receipts and immutable source evidence are retained.
+
+
+The two-choice refresh reproduction found that deleting/replacing a record while
+iterating the live tracking table could skip the other tooltip. The shipping
+bridge snapshots that small table before native repopulation. A negative control
+restores live-table iteration and must fail with a stale note on one choice.
+This extends the isolated experiment’s earlier single-tooltip refresh coverage.

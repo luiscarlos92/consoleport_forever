@@ -97,6 +97,7 @@ const runtimeMutations={
  'padding-loss':['layout.onShow(tooltip);self:LayoutPending(tooltip,layout)','self:LayoutPending(tooltip,layout)'],
  'pool-owner-loss':['and self.inspector.tooltipFramePool==self.pool',''],
  'retained-inspector':['local tips=self.tips','local tips={}'],
+ 'mutable-tooltip-refresh':['local tips=self:SnapshotTips()','local tips=self.tips'],
 };
 function execute(mutation,workload=false,enabled=false,bagsFirst=false) {
  const L=lauxlib.luaL_newstate();
@@ -133,7 +134,8 @@ const expectedFailures={'hardcoded':'non-upgrade summary has no arrow','hardcode
 if(runtime)Object.assign(expectedFailures,{'premature-readiness':'runtime queried before actual Pawn initialization',
  'missing-initialization-observer':'observed actual Pawn initialization did not activate bridge',
  'padding-loss':'native tooltip padding lost or accumulated on refresh','pool-owner-loss':'replaced pool owner retained arrow',
- 'retained-inspector':'retained inspector lost annotation owner on UpdateItems'});
+ 'retained-inspector':'retained inspector lost annotation owner on UpdateItems',
+ 'mutable-tooltip-refresh':'refresh skipped one of two reward tooltips'});
 for(const [name,expected] of Object.entries(expectedFailures)) {
  let failure;try {execute(name);}catch(e){failure=e.message;}
  if(!failure || !failure.includes(expected))throw Error(name+' did not fail its intended assertion: '+failure);

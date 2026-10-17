@@ -136,8 +136,14 @@ function Bridge:Annotate(tooltip,item)
     self.api.PawnUpdateTooltip(tooltip:GetName(),'SetHyperlink',link)
     record.annotated=true
 end
+function Bridge:SnapshotTips()
+    local tips={}
+    for tooltip,record in pairs(self.tips) do tips[tooltip]=record end
+    return tips
+end
 function Bridge:RetryTip(item)
-    for tooltip,record in pairs(self.tips) do
+    local tips=self:SnapshotTips()
+    for tooltip,record in pairs(tips) do
         if record.item==item and record.pending and record.generation==self.generation
             and self:TooltipOwned(tooltip) then self:Repopulate(tooltip,item) end
     end
@@ -213,7 +219,8 @@ function Bridge:Invalidate()
         if not self:Available() or not self.frame:IsVisible() then self:Close();return end
         self.work.refreshes=self.work.refreshes+1;self.attempts=0;self.pending={}
         for _,item in ipairs(self.buttons) do self:UpdateArrow(item) end
-        for tooltip,record in pairs(self.tips) do
+        local tips=self:SnapshotTips()
+        for tooltip,record in pairs(tips) do
             if self:TooltipOwned(tooltip) and self:Identity(record.item)==record.link then
                 self:Repopulate(tooltip,record.item)
             end

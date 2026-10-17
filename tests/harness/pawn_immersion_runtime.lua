@@ -56,6 +56,18 @@ for i=1,12 do
  assert(GameTooltip.shoppingTooltips[1]:IsShown(),'visible tooltip refresh disrupted held L2 comparison')
 end
 inspector:ShowFocusedTooltip(false)
+-- Both choices must refresh. Native repopulation replaces the bridge record;
+-- iterating that same mutable table can silently skip the next tooltip.
+local other=NewReward(NewItem(801,140),'choice',2)
+inspector:Hide();SetRewards({reward,other});ImmersionFrame:ShowItems();RunTimers()
+local first,second=inspector.Active[1]:GetParent(),inspector.Active[2]:GetParent()
+assert(#first.lines>3 and #second.lines>3,'two-upgrade setup missing Pawn notes')
+local best=PawnCommon.Scales.primary.PerCharacterOptions[PawnPlayerFullName].BestItems
+best.INVTYPE_CLOAK={200,MODEL.base.Link}
+PawnResetTooltips();RunTimers();RunTimers()
+assert(#first.lines==3 and #second.lines==3,'refresh skipped one of two reward tooltips')
+best.INVTYPE_CLOAK={100,MODEL.base.Link}
+open();tip=inspector.Active[1]:GetParent()
 -- Secret event identities and returned tooltip links fail closed.
 local q=bridge.work.queries
 bridge.eventFrame:GetScript('OnEvent')(nil,'ITEM_DATA_LOAD_RESULT',{secret=true},true);RunTimers()

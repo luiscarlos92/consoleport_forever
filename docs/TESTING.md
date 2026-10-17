@@ -20,8 +20,9 @@ Four tooling tests retain capture/drift/output guards.
 T105/T106 run the shipping PawnImmersion module against both source variants,
 sharing the isolated parity cases. Actual Pawn initialization/event/plugin bodies,
 Immersion QUEST_* / PlayIntro / inspector paths and locked AceAddon lookups
-execute. Five additional negative controls target premature readiness, missing
-startup observation, padding loss, pool ownership and a retained inspector. Subsystem UI/keybinding/
+execute. Six additional negative controls target premature readiness, missing
+startup observation, padding loss, pool ownership, a retained inspector and
+mutation of the tooltip table during a two-choice refresh. Subsystem UI/keybinding/
 option-migration models remain explicit. Repeated visible refresh during L2
 retains native comparison and padding without line/size growth. These are source
 and work-count checks, not Retail acceptance or a full engine startup test.

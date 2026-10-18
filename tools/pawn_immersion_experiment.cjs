@@ -23,6 +23,9 @@ function output(relative) {
 const manifestPath='evidence/pawn-immersion/2026-10-16/'+(runtime?'runtime':'experiment')+'-inputs.json';
 const manifest=JSON.parse(read(manifestPath));
 for(const row of manifest.files) if(hash(base+row.path)!==row.sha256) throw Error('Input drift: '+row.path);
+const repairManifestPath='evidence/pawn-immersion/2026-10-17/tooltip-repair-inputs.json';
+if(runtime)for(const row of JSON.parse(read(repairManifestPath)).files)
+ if(hash(base+row.path)!==row.sha256)throw Error('Repair input drift: '+row.path);
 const excerpts=[];
 function exprName(n) { return !n?'':n.type==='Identifier'?n.name:exprName(n.base)+n.indexer+exprName(n.identifier); }
 function select(file,names,source=read(base+file)) {
@@ -37,6 +40,10 @@ function select(file,names,source=read(base+file)) {
   }).join('\n');
 }
 const prelude=read('tests/harness/pawn_immersion_environment.lua');
+const getter=runtime?'TooltipUtil={}\nGameTooltipDataMixin={}\n'+
+ select('Native/Interface/AddOns/Blizzard_SharedXMLGame/Tooltip/TooltipUtil.lua',['TooltipUtil.GetDisplayedItem'])+'\n'+
+ select('Native/Interface/AddOns/Blizzard_GameTooltip/Mainline/GameTooltip.lua',['GameTooltipDataMixin:GetItem'])+
+ '\nInstallNativeItemGetter(GameTooltipDataMixin.GetItem)\n':'';
 const pawn=select('Pawn/VgerCore/VgerCore.lua',['VgerCore.ThrottleDelayCore','VgerCore.Throttle'])+`\ndo\n${read(base+'Pawn/Localization.lua')}\n${read(base+'Pawn/Pawn.lua')}\n${runtime?'':'function SetPawnInitialized(v) PawnIsInitialized=v end'}\nend\n`;
 const frame='local Frame,Inspector,L,API = ImmersionFrame,ImmersionFrame.Inspector,ImmersionL,ImmersionAPI\n'+
   select('Immersion/Logic/Frame.lua',['Frame:SetItemTooltip','Frame:GetItemColumn','Frame:ShowItems','Frame:UpdateItems'])+'\n';
@@ -50,8 +57,9 @@ const utils='do local L=ImmersionL; local _="Immersion"\n'+select('Immersion/Uti
 const scaler=`;(function(...)\n${read(base+'Immersion/Components/Scaler.lua')}\nend)('Immersion',ImmersionL);\n`;
 const elements=`;(function(...)\n${read(base+'Immersion/Components/Elements.lua')}\nend)('Immersion',ImmersionL);\n`;
 const prepared=process.argv.includes('--prepared');
-const better=read(base+(prepared?'BetterBagsPrepared':'BetterBags')+'/integrations/pawn.lua')+'\n';
-const providers='do local items,database = BetterItems,BetterDatabase\n'+select((prepared?'BetterBagsPrepared':'BetterBags')+'/data/items.lua',['items:RegisterUpgradeProvider','items:GetActiveUpgradeProvider','items:ResolveUpgrade'])+'\nend\n';
+const preparedGroup=runtime?'BetterBagsPrepared17':'BetterBagsPrepared';
+const better=read(base+(prepared?preparedGroup:'BetterBags')+'/integrations/pawn.lua')+'\n';
+const providers='do local items,database = BetterItems,BetterDatabase\n'+select((prepared?preparedGroup:'BetterBags')+'/data/items.lua',['items:RegisterUpgradeProvider','items:GetActiveUpgradeProvider','items:ResolveUpgrade'])+'\nend\n';
 const nativeXml=read(base+'Native/Interface/AddOns/Blizzard_UIPanels_Game/Mainline/ContainerFrame.xml');
 const arrow=nativeXml.match(/<Texture parentKey="UpgradeIcon" atlas="([^"]+)"[\s\S]*?<Anchor point="([^"]+)" x="([^"]+)" y="([^"]+)"/);
 if(!arrow)throw Error('Missing actual bag upgrade artwork');
@@ -78,7 +86,7 @@ if(runtime){
  select('Immersion/Logic/Events.lua',['Events:QUEST_COMPLETE','Events:QUEST_DETAIL','Events:QUEST_ITEM_UPDATE'])+'\nend\n';
 }
 const boot=runtime?aceSource+eventSource+'Addon={}\n;(function(...)\n'+addonSource+'\nend)("ConsolePort_Forever",Addon)\n'+'do\n'+read('tests/harness/pawn_immersion_runtime_boot.lua')+'\nend\n':'';
-const source=prelude+bindings+pawn+utils+scaler+elements+frame+pool+compare+tooltip+providers+
+const source=prelude+getter+bindings+pawn+utils+scaler+elements+frame+pool+compare+tooltip+providers+
  `(function(...) ${better}\nend)('BetterBags')\n`+boot+read('tests/harness/pawn_immersion_setup.lua')+
  (runtime?'function NewBridge() local b=TEST_BOOT_BRIDGE or Addon.PawnImmersion.New(TEST_OWNER,_G);Addon.PawnImmersion.instance=b;return b end\n':prototype+'\nfunction NewBridge()return Bridge.New()end\n')+
  read('tests/harness/pawn_immersion.lua')+(runtime?'\n'+read('tests/harness/pawn_immersion_runtime.lua'):'');
@@ -98,6 +106,9 @@ const runtimeMutations={
  'pool-owner-loss':['and self.inspector.tooltipFramePool==self.pool',''],
  'retained-inspector':['local tips=self.tips','local tips={}'],
  'mutable-tooltip-refresh':['local tips=self:SnapshotTips()','local tips=self.tips'],
+ 'getter-round-trip':['if not link or not self:TooltipOwned(tooltip,item) then return end',"if not link or not self:TooltipOwned(tooltip,item) then return end;local _,shownLink=tooltip:GetItem();if shownLink~=nil and shownLink~=link then return end"],
+ 'getter-required':['if not link or not self:TooltipOwned(tooltip,item) then return end',"if not link or not self:TooltipOwned(tooltip,item) then return end;local _,shownLink=tooltip:GetItem();if shownLink==nil then self.tips[tooltip]={item=item,link=link,generation=self.generation,pending=true};self.pending[item]={link=link,generation=self.generation};self:Schedule();return end"],
+ 'reference-owner-loss':['and (not item or (button and button.item==item and button.inspector==self.inspector and button.pool==self.pool))',''],
 };
 function execute(mutation,workload=false,enabled=false,bagsFirst=false) {
  const L=lauxlib.luaL_newstate();
@@ -107,7 +118,7 @@ function execute(mutation,workload=false,enabled=false,bagsFirst=false) {
  for(const n of ['dofile','loadfile','load']) {lua.lua_pushnil(L);lua.lua_setglobal(L,to_luastring(n));}
  let body=source;
  if(runtime && runtimeMutations[mutation]) {const [before,after]=runtimeMutations[mutation];if(!body.includes(before))throw Error('Missing mutation target');body=body.replaceAll(before,after);if(mutation==='stale-widget')body=body.replaceAll('self:Identity(item)==record.link','true');if(mutation==='scope-leak')body=body
-   .replace('function Bridge:TooltipOwned(tooltip)',"function Bridge:TooltipOwned(tooltip) if tooltip:GetName()=='ForeignTooltip' then return true end")
+   .replace('function Bridge:TooltipOwned(tooltip,item)',"function Bridge:TooltipOwned(tooltip,item) if tooltip:GetName()=='ForeignTooltip' then return true end")
    .replace('for _,button in ipairs(self.buttons) do if button==item then return true end end','if true then return true end');}
  const program=`RUNTIME=${runtime}; PREPARED=${prepared}; MUTATION=${JSON.stringify(mutation)}; WORKLOAD_ONLY=${workload}; BRIDGE_ENABLED=${enabled}; BAGS_FIRST=${bagsFirst}\n`+body;
  const rc=lauxlib.luaL_loadbuffer(L,to_luastring(program),null,to_luastring('R16-experiment'))||lua.lua_pcall(L,0,0,0);
@@ -135,7 +146,10 @@ if(runtime)Object.assign(expectedFailures,{'premature-readiness':'runtime querie
  'missing-initialization-observer':'observed actual Pawn initialization did not activate bridge',
  'padding-loss':'native tooltip padding lost or accumulated on refresh','pool-owner-loss':'replaced pool owner retained arrow',
  'retained-inspector':'retained inspector lost annotation owner on UpdateItems',
- 'mutable-tooltip-refresh':'refresh skipped one of two reward tooltips'});
+ 'mutable-tooltip-refresh':'refresh skipped one of two reward tooltips',
+ 'getter-round-trip':'decorated quest link suppressed focused Pawn note',
+ 'getter-required':'missing getter hyperlink suppressed focused Pawn note',
+ 'reference-owner-loss':'reused tooltip references authorized stale reward annotation'});
 for(const [name,expected] of Object.entries(expectedFailures)) {
  let failure;try {execute(name);}catch(e){failure=e.message;}
  if(!failure || !failure.includes(expected))throw Error(name+' did not fail its intended assertion: '+failure);
@@ -152,7 +166,7 @@ const report={stage:'isolated experiment only',betterBags:prepared?'v0.5.16 prep
  limits:['Item cache/stat parsing inputs and C APIs are modeled; actual Pawn upgrade arithmetic/formatting execute.',
  'Frame engine, text metrics, scheduling, protected/secret semantics, rendering and hardware timing are modeled.',
  'Not an addon initialization, Retail acceptance, persistence/taint or measured CPU proof.']};
-if(runtime){report.stage='Forever integration source qualification';report.runtimeSHA256=hash('addon/ConsolePort_Forever/UI/PawnImmersion.lua');
+if(runtime){report.stage='Forever integration source qualification';report.repairManifestSHA256=hash(repairManifestPath);report.betterBags=prepared?'v0.5.17 prepared':'v0.5.14 installed';report.runtimeSHA256=hash('addon/ConsolePort_Forever/UI/PawnImmersion.lua');
  report.limits[0]='Real Pawn initialization/event/plugin bodies execute; options migration, UI/keybinding setup and scale parsing subsystems are modeled. Actual upgrade arithmetic and tooltip formatting execute.';
  report.limits[2]='Native initialization and quest event ordering are exercised with C/UI models; no Retail acceptance, persistence/taint or measured CPU proof.';}
 const destination=output('scratch/test-results/pawn-immersion'+(runtime?'-runtime':'')+(prepared?'-prepared':'')+'.json');

@@ -68,12 +68,47 @@ PawnResetTooltips();RunTimers();RunTimers()
 assert(#first.lines==3 and #second.lines==3,'refresh skipped one of two reward tooltips')
 best.INVTYPE_CLOAK={100,MODEL.base.Link}
 open();tip=inspector.Active[1]:GetParent()
--- Secret event identities and returned tooltip links fail closed.
+-- The real native GetItem delegates to TooltipUtil and can expose the primary
+-- data hyperlink (an item string), or no hyperlink. It does not round-trip the
+-- decoration returned by GetQuestItemLink. The native setter and SetReferences
+-- identify this reward; neither getter representation may suppress Pawn.
+local plain=reward.modelLink
+local decorated='|cff1eff00|H'..plain..'|h[Quest reward]|h|r'
+MODEL.items[decorated]=MODEL.items[plain];reward.modelLink=decorated
+MODEL.tooltipHyperlinkMode='bare';open();tip=inspector.Active[1]:GetParent()
+local _,displayed=tip:GetItem()
+assert(displayed==plain and GetQuestItemLink('choice',1)==decorated,'native getter representation case not established')
+assert(#tip.lines>3,'decorated quest link suppressed focused Pawn note')
+local expected=#tip.lines
+inspector:ShowFocusedTooltip(true)
+assert(#tip.lines==expected,'decorated focused note lost on L2 press')
+inspector:ShowFocusedTooltip(false)
+assert(#tip.lines==expected,'decorated focused note lost on L2 release')
+ImmersionFrame:UpdateItems();RunTimers()
+assert(bridge.tips[tip] and bridge.tips[tip].annotated,'getter representation lost retained tooltip ownership')
+MODEL.tooltipHyperlinkMode='missing';open();tip=inspector.Active[1]:GetParent()
+local _,absent=tip:GetItem()
+assert(absent==nil,'native absent getter case not established')
+assert(#tip.lines>3,'missing getter hyperlink suppressed focused Pawn note')
+inspector:ShowFocusedTooltip(true);inspector:ShowFocusedTooltip(false)
+assert(#tip.lines==expected,'missing getter note lost during L2 cycle')
+local annotated=bridge.work.annotations
+local savedItem=tip.Button.item;tip.Button.item=other;bridge.tips[tip]=nil
+bridge:Annotate(tip,reward)
+assert(bridge.work.annotations==annotated,'reused tooltip references authorized stale reward annotation')
+bridge.tips[tip]={item=reward,link=decorated,generation=bridge.generation,annotated=true}
+local populated=MODEL.counts.nativeSets
+PawnResetTooltips();RunTimers()
+assert(MODEL.counts.nativeSets==populated,'reused tooltip references allowed stale native repopulation')
+tip.Button.item=savedItem
+MODEL.tooltipHyperlinkMode=nil;reward.modelLink=plain;open();tip=inspector.Active[1]:GetParent()
+-- Secret event identities and authoritative quest links fail closed.
 local q=bridge.work.queries
 bridge.eventFrame:GetScript('OnEvent')(nil,'ITEM_DATA_LOAD_RESULT',{secret=true},true);RunTimers()
 assert(bridge.work.queries==q,'secret item event caused bridge queries')
-tip=inspector.Active[1]:GetParent();tip.link={secret=true};bridge.tips[tip]=nil
-n=#tip.lines;bridge:Annotate(tip,reward);assert(#tip.lines==n,'secret tooltip identity annotated')
+tip=inspector.Active[1]:GetParent();MODEL.rewards.choice1={secret=true};bridge.tips[tip]=nil
+n=#tip.lines;bridge:Annotate(tip,reward);assert(#tip.lines==n,'secret quest identity annotated')
+MODEL.rewards.choice1=plain
 -- Real event dispatch, QUEST_* handlers and PlayIntro establish first-show
 -- ordering. Animation, focus acquisition, talking-head content and quest
 -- template dispatch below are explicit UI subsystem models.

@@ -1,7 +1,7 @@
 # Known issues, limitations and deferred proof
 
 Status: maintained
-Reviewed: 2026-10-16
+Reviewed: 2026-10-17
 Evidence: [current status](IMPLEMENTATION-STATUS.md),
 [interaction analysis](TEMPORARY-MAIN-BANK-ANALYSIS-2026-10-11.md),
 [candidate.27 diagnosis](../evidence/action-recovery/candidate27-diagnosis.json),
@@ -11,6 +11,7 @@ Evidence: [current status](IMPLEMENTATION-STATUS.md),
 
 | ID | Status and established facts | Missing observation / next boundary |
 | --- | --- | --- |
+| K07: focused reward Pawn note missing | Candidate.42 summary arrows work in the user's reported quest; hover shows +10%/+17% Pawn upgrades, while the focused inspector omits them with and without L2. Candidate.43 removes the unsupported tooltip-getter round-trip requirement and validates native reward references. | Source regression reproduces the old failure; the user's actual getter values remain unknown. Repair qualification and user-owned focused/L2 Retail confirmation are separate. [Diagnosis](reference/PAWN-IMMERSION-TOOLTIP-REPAIR-2026-10-17.md). |
 | K05: combat error flood / login blocked-action warning | Recurred on candidate.37 in ordinary combat: captured cooldown failures grew from 1,020 to 1,050 as the log flushed; saved observer counted 926 blocked actions. Retained stock-button `action` fields have `ConsolePort_Bar` taint attribution while inspected event/update methods remain secure. All 303 installed ConsolePort source files match 3.3.10. Candidate.37 observer repairs did not resolve this failure. | The engine taint capture shows a separate cursor/professions highlight write, not the original stock action-field writer. Logging is now off after a different nil-call error family appeared around reload. Installed candidate.38 adds bounded automatic action-label transition/first-blocked stacks, gated on logging being off; no further engine logging or prescribed combat sequence is requested. Two BetterBags tooltip errors are separate. [Audit](reference/COMBAT-ERROR-AUDIT-2026-10-13.md#silent-taint-capture-and-automatic-trace). |
 | K01: quest-object Square interaction | User-reported failure with triggers released and floating hand; mouse interaction worked. Source/offline main-command analysis does not establish blanket ordinary-bank disabling. | Quest identity and effective PAD3 binding/native interaction target during recurrence. INTERACTTARGET differs from unconditional pointer click. Do not patch a guessed cause. |
 | K02: original Paladin quest action loss | Read-only evidence established lost/reassigned action storage. The exact original writer remains unconfirmed. Candidate.26 restoration was followed by editing regressions and removed in candidate.27. | Passive event/loadout/writer context on recurrence. Do not restore automatic pickup/place or use stale Copybara backups. |
@@ -20,8 +21,8 @@ Evidence: [current status](IMPLEMENTATION-STATUS.md),
 
 These are explicit limits, not newly discovered failures:
 
-- R16 Pawn/Immersion has a candidate.42 implementation after the approved isolated
-  experiment. Offline source parity, initialization and composition tests do not
+- R16 Pawn/Immersion's candidate.42 summary arrows have scoped user confirmation;
+  the focused tooltip failure is K07 above. Offline source parity and initialization do not
   establish Retail pixels, taint, controller timing, persistence or CPU. Check
   the same item/configuration in bags, summary, detail and held/released L2.
   [Runtime and limits](reference/PAWN-IMMERSION-RUNTIME-2026-10-16.md).

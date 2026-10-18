@@ -1,0 +1,47 @@
+{
+  "capturedAt": "2026-10-18T01:06:47.121244+00:00",
+  "purpose": "R16 isolated source execution only; no package/install",
+  "copyRoot": "scratch/pawn-immersion-inputs",
+  "files": [
+    {
+      "path": "Native/Interface/AddOns/Blizzard_SharedXMLGame/Tooltip/TooltipUtil.lua",
+      "repo": "Gethe/wow-ui-source",
+      "ref": "09b9db7948abc9b9648dedaab51eb0cf3ee67b31",
+      "url": "https://raw.githubusercontent.com/Gethe/wow-ui-source/09b9db7948abc9b9648dedaab51eb0cf3ee67b31/Interface/AddOns/Blizzard_SharedXMLGame/Tooltip/TooltipUtil.lua",
+      "sha256": "4825bac4057b4002e630ffa7a6104add204f1164c0910e73bfe7b84ea6b31ec8",
+      "bytes": 2396
+    },
+    {
+      "path": "BetterBagsPrepared17/integrations/pawn.lua",
+      "repo": "Cidan/BetterBags",
+      "ref": "v0.5.17",
+      "url": "https://raw.githubusercontent.com/Cidan/BetterBags/v0.5.17/integrations/pawn.lua",
+      "sha256": "843e9469488026a18cea5e0e01957992fe128a1230095380c80dbd7f536e8740",
+      "bytes": 1911
+    },
+    {
+      "path": "BetterBagsPrepared17/data/items.lua",
+      "repo": "Cidan/BetterBags",
+      "ref": "v0.5.17",
+      "url": "https://raw.githubusercontent.com/Cidan/BetterBags/v0.5.17/data/items.lua",
+      "sha256": "c85f6653ca5f73fb2a50c0c4081332cb2d083e4b1e6bb93b8d3b1b29a3ac120a",
+      "bytes": 124279
+    },
+    {
+      "path": "BetterBagsPrepared/frames/item.lua",
+      "repo": "Cidan/BetterBags",
+      "ref": "v0.5.16",
+      "url": "https://raw.githubusercontent.com/Cidan/BetterBags/v0.5.16/frames/item.lua",
+      "sha256": "eafa9da22085cf1d618dd9ae87ff446dc8d0007be0848b0c66c3eb51697f2f2b",
+      "bytes": 47672
+    },
+    {
+      "path": "BetterBagsPrepared/integrations/consoleport.lua",
+      "repo": "Cidan/BetterBags",
+      "ref": "v0.5.16",
+      "url": "https://raw.githubusercontent.com/Cidan/BetterBags/v0.5.16/integrations/consoleport.lua",
+      "sha256": "2515c4a593edfedc65a39bdba4e0f38ab89d2d20fcb396af9fd1e60ff84d6b34",
+      "bytes": 1670
+    }
+  ]
+}

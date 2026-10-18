@@ -1,0 +1,8 @@
+{
+  "candidate": "2.0.0-candidate.42",
+  "exitCode": 1,
+  "assertion": "decorated quest link suppressed focused Pawn note",
+  "reproduced": true,
+  "output": "C:\\Users\\luisr\\Dev\\consoleport_forever\\tools\\pawn_immersion_experiment.cjs:124\n  throw Error(e+(n?'\\n'+program.split('\\n').slice(n-2,n+1).join('\\n'):'')); }\n  ^\n\nError: [string \"R16-experiment\"]:9427: decorated quest link suppressed focused Pawn note\nlocal nativeAssert=assert\nlocal function assert(value,message)RUNTIME_ASSERTIONS=RUNTIME_ASSERTIONS+1;return nativeAssert(value,message)end\n-- Additional integration ownership and startup cases, beyond shared parity.\n    at execute (C:\\Users\\luisr\\Dev\\consoleport_forever\\tools\\pawn_immersion_experiment.cjs:124:9)\n    at Object.<anonymous> (C:\\Users\\luisr\\Dev\\consoleport_forever\\tools\\pawn_immersion_experiment.cjs:131:14)\n    at Module._compile (node:internal/modules/cjs/loader:1929:14)\n    at Object..js (node:internal/modules/cjs/loader:2060:10)\n    at Module.load (node:internal/modules/cjs/loader:1651:32)\n    at Module._load (node:internal/modules/cjs/loader:1443:12)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:261:19)\n    at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:154:5)\n    at node:internal/main/run_main_module:33:47\n\nNode.js v24.20.0\n",
+  "limit": "Native getter Lua executes; C tooltip primary-data representations are modeled. This reproduces a source defect, not the unobserved live getter values."
+}

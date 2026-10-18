@@ -1,7 +1,7 @@
 # Runtime state and coverage matrix
 
 Status: maintained
-Reviewed: 2026-10-16
+Reviewed: 2026-10-17
 Evidence: [routing](../addon/ConsolePort_Forever/TemporaryRouting.lua),
 [mode policy](../addon/ConsolePort_Forever/ModePolicy.lua),
 [bootstrap](../addon/ConsolePort_Forever/ConsolePort_Forever.lua),
@@ -100,7 +100,11 @@ documents persistent fields and recovery commands.
 
 ## Acceptance and observations still needed
 
-R16 Pawn/Immersion is implemented in candidate.42 after staged approval.
+R16 Pawn/Immersion is implemented after staged approval. The user confirms
+candidate.42 summary arrows but reports missing focused notes with/without L2.
+Candidate.43 repairs the tooltip getter dependency; native item/inspector/pool
+references scope annotation even when GetItem has a different or absent link.
+[Repair and Retail boundary](reference/PAWN-IMMERSION-TOOLTIP-REPAIR-2026-10-17.md).
 Summary rewards lead to the native detailed inspector and L2 comparison/back;
 Pawn owns arrows/verdicts and tooltip notes. An observed completed Pawn startup,
 accepted character, exact optional versions and current reward/pool/quest ownership

@@ -1,6 +1,6 @@
 {
-  "checkedAt": "2026-10-17T02:11:40.199351+00:00",
-  "lockSHA256": "2d1c1824b1d815df5b9b9c222aca88051e42059e73d505b9133d992b6979c2bc",
+  "checkedAt": "2026-10-18T01:07:20.102795+00:00",
+  "lockSHA256": "d778baef798046941e4a8d8fdbd42373b54924a74fba3093979c4fa83b62fb0e",
   "github": [
     {
       "repo": "seblindfors/ConsolePort",
@@ -15,14 +15,14 @@
     },
     {
       "repo": "Cidan/BetterBags",
-      "url": "https://github.com/Cidan/BetterBags/releases/tag/v0.5.16",
-      "latestStable": "v0.5.16",
-      "releaseID": 414492530,
-      "publishedAt": "2026-10-16T03:06:58Z",
+      "url": "https://github.com/Cidan/BetterBags/releases/tag/v0.5.17",
+      "latestStable": "v0.5.17",
+      "releaseID": 416118570,
+      "publishedAt": "2026-10-17T22:58:52Z",
       "matchesLock": true,
-      "assetID": 645959265,
-      "digest": "sha256:7ae808093064e973ab053a4bf63cb6f38318f6d2ab321f402d76006104f5cbc7",
-      "bytes": 632500
+      "assetID": 651831476,
+      "digest": "sha256:dcdd857ac2f842cbcd3086dcdadb4a6e1a4a4f4ee25b26be72c5ce56440be033",
+      "bytes": 1095673
     },
     {
       "repo": "seblindfors/Immersion",
@@ -87,7 +87,7 @@
       "officialFile": "https://www.curseforge.com/wow/addons/dynamiccam/files/9208028",
       "latestStable": "2.21.4",
       "fileID": 9208028,
-      "metadataVerifiedAt": "2026-10-17T02:11:38.709297+00:00",
+      "metadataVerifiedAt": "2026-10-18T01:00:46.113853+00:00",
       "method": "Official latest-stable Retail listing and file page inspected; no floating latest fetch during assembly.",
       "matchesLock": true
     },
@@ -97,7 +97,7 @@
       "officialFile": "https://www.curseforge.com/wow/addons/immersion-extrafade/files/9207207",
       "latestStable": "1.18.1",
       "fileID": 9207207,
-      "metadataVerifiedAt": "2026-10-17T02:11:38.709323+00:00",
+      "metadataVerifiedAt": "2026-10-18T01:00:46.113853+00:00",
       "method": "Official latest-stable Retail listing and file page inspected; no floating latest fetch during assembly.",
       "matchesLock": true
     }

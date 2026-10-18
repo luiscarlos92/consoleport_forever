@@ -8,7 +8,7 @@ TEST_OWNER={guid='test-guid',record={appliedRevision=20},db={transactions={}}}
 function TEST_OWNER:IsCharacterInstalled()return self.record.appliedRevision>0 end
 local metadata=C_AddOns.GetAddOnMetadata
 C_AddOns.GetAddOnMetadata=function(name,...)
- if name=='BetterBags' then return PREPARED and 'v0.5.16' or 'v0.5.14' end
+ if name=='BetterBags' then return PREPARED and 'v0.5.17' or 'v0.5.14' end
  return metadata(name,...)
 end
 local loaded=C_AddOns.IsAddOnLoaded

@@ -1,6 +1,6 @@
 {
-  "lockSHA256": "2d1c1824b1d815df5b9b9c222aca88051e42059e73d505b9133d992b6979c2bc",
-  "noticeInventorySHA256": "e2b1d54331535146ed5399786f5debf8da880cf902ec9f46459a0e7844f7f022",
+  "lockSHA256": "d778baef798046941e4a8d8fdbd42373b54924a74fba3093979c4fa83b62fb0e",
+  "noticeInventorySHA256": "131c95885333423b31177feea71870a3591927648065a71277beee1944bd43a8",
   "localPersonalAssemblyReviewComplete": true,
   "publicRedistributionApproved": false,
   "scope": "All third-party dependencies use official-source local assembly. This inventory is not a license grant or approval to publish dependency code or media.",
@@ -1410,102 +1410,6 @@
       "publicRedistributionApproved": false
     },
     {
-      "repo": "Cidan/BetterBags",
-      "version": "v0.5.16",
-      "mainTerms": "MIT",
-      "officialRelease": "https://github.com/Cidan/BetterBags/releases/tag/v0.5.16",
-      "noticeFiles": [
-        {
-          "source": "BetterBags/LICENSE",
-          "sha256": "b92215e6fb3d24dbe22b524d917465340aa22a8e9e018f24986554a902026bec",
-          "copy": "evidence/dependencies/notices/Cidan__BetterBags/BetterBags/LICENSE"
-        },
-        {
-          "source": "BetterBags/libs/WagoAnalytics/LICENSE",
-          "sha256": "ccdd055ace13a16bd6a059586aba1f3a9037bd394a593d0a98bf28912877f075",
-          "copy": "evidence/dependencies/notices/Cidan__BetterBags/BetterBags/libs/WagoAnalytics/LICENSE"
-        }
-      ],
-      "embeddedNoticeSources": [
-        {
-          "source": "BetterBags/BetterBags.toc",
-          "sha256": "9f6c53e07d5e6c09e8f207f65608572e658d61cff522aaf98e67af2b6abbe782",
-          "declarations": [
-            "## X-License: MIT\r"
-          ],
-          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
-        },
-        {
-          "source": "BetterBags/BetterBags_Camelot.toc",
-          "sha256": "121161221a8dada6b5a5afaf5fafd8aee943c3fe4c5dc1c985e224c366c60667",
-          "declarations": [
-            "## X-License: MIT\r"
-          ],
-          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
-        },
-        {
-          "source": "BetterBags/BetterBags_Mists.toc",
-          "sha256": "ec601c69a382fcd483f4de4eca3996cd19058dbaf23f5a92edd1a5662b747ccd",
-          "declarations": [
-            "## X-License: MIT\r"
-          ],
-          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
-        },
-        {
-          "source": "BetterBags/BetterBags_TBC.toc",
-          "sha256": "7aa93a90d407a45c3bec6b52af05309c6e046dcb5b74e7716a3bffae65dd3e90",
-          "declarations": [
-            "## X-License: MIT\r"
-          ],
-          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
-        },
-        {
-          "source": "BetterBags/BetterBags_Vanilla.toc",
-          "sha256": "a04ba211c50a607145d63f3648f2801fac0c6457d207d908b6cc7c19ed915ef1",
-          "declarations": [
-            "## X-License: MIT\r"
-          ],
-          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
-        },
-        {
-          "source": "BetterBags/libs/LibSharedMedia-3.0/LibSharedMedia-3.0.lua",
-          "sha256": "cfbb556ae5846738a5058a5820b7e2eac55c3df05328f67170779134745f061e",
-          "declarations": [
-            "License: LGPL v2.1\r"
-          ],
-          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
-        },
-        {
-          "source": "BetterBags/libs/LibStub/LibStub.lua",
-          "sha256": "6000f58d740eaa2b4a006c1dabb0366f0321fc687bab9e85d97d040a1fd42dab",
-          "declarations": [
-            "-- LibStub is hereby placed in the Public Domain Credits: Kaelten, Cladhaire, ckknight, Mikk, Ammo, Nevcairiel, joshborke\r"
-          ],
-          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
-        },
-        {
-          "source": "BetterBags/libs/LibStub/LibStub.toc",
-          "sha256": "e01f590f6dfb5419595b640e6b5391092b5e39f8581d010adb9d852f4a30578d",
-          "declarations": [
-            "## X-License: Public Domain\t\r"
-          ],
-          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
-        },
-        {
-          "source": "BetterBags/libs/LibWindow-1.1/LibWindow-1.1.lua",
-          "sha256": "40d80952d2a1c9b8a8d25786887cc049159e64b01c2737a4416ec55aa4ab74a0",
-          "declarations": [
-            "License: Public Domain\r"
-          ],
-          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
-        }
-      ],
-      "standaloneNoticeAbsent": false,
-      "supplemental": [],
-      "assembly": "Fetch exact official package for this user and retain all original source/media/notice bytes.",
-      "publicRedistributionApproved": false
-    },
-    {
       "repo": "Tercioo/Plater-Nameplates",
       "version": "Plater-v661",
       "mainTerms": "Maintainer distribution; no permissive main-addon notice in package",
@@ -1929,6 +1833,102 @@
           "sha256": "1f64542bc3921a190963e7bbd92a706b61fe2e8c411a03cd060a9c6097e6f4fa",
           "declarations": [
             "## X-License: Public Domain"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        }
+      ],
+      "standaloneNoticeAbsent": false,
+      "supplemental": [],
+      "assembly": "Fetch exact official package for this user and retain all original source/media/notice bytes.",
+      "publicRedistributionApproved": false
+    },
+    {
+      "repo": "Cidan/BetterBags",
+      "version": "v0.5.17",
+      "mainTerms": "MIT",
+      "officialRelease": "https://github.com/Cidan/BetterBags/releases/tag/v0.5.17",
+      "noticeFiles": [
+        {
+          "source": "BetterBags/LICENSE",
+          "sha256": "b92215e6fb3d24dbe22b524d917465340aa22a8e9e018f24986554a902026bec",
+          "copy": "evidence/dependencies/notices/Cidan__BetterBags/BetterBags/LICENSE"
+        },
+        {
+          "source": "BetterBags/libs/WagoAnalytics/LICENSE",
+          "sha256": "ccdd055ace13a16bd6a059586aba1f3a9037bd394a593d0a98bf28912877f075",
+          "copy": "evidence/dependencies/notices/Cidan__BetterBags/BetterBags/libs/WagoAnalytics/LICENSE"
+        }
+      ],
+      "embeddedNoticeSources": [
+        {
+          "source": "BetterBags/BetterBags.toc",
+          "sha256": "82f41ed3f72bf9b09057fc0709e79ee8429416b41f463b5e6cd37acb82e0b913",
+          "declarations": [
+            "## X-License: MIT\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "BetterBags/BetterBags_Camelot.toc",
+          "sha256": "d2be08726b6ef7bc389312ea8b763e5c534e2bbbc39541ca0b25707fa7c14fe1",
+          "declarations": [
+            "## X-License: MIT\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "BetterBags/BetterBags_Mists.toc",
+          "sha256": "a9966a52daad173b193d7baf07fc95b2f1c4e3f9f1d4ab28b911032f9fe0ae53",
+          "declarations": [
+            "## X-License: MIT\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "BetterBags/BetterBags_TBC.toc",
+          "sha256": "59dfa24bc73c48e52f1133b351622307b896403c7d1e3971956e11693393917d",
+          "declarations": [
+            "## X-License: MIT\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "BetterBags/BetterBags_Vanilla.toc",
+          "sha256": "3aded9ac79cc28087fbbce5418f76939945c5028257a746e6865fe651e4eac28",
+          "declarations": [
+            "## X-License: MIT\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "BetterBags/libs/LibSharedMedia-3.0/LibSharedMedia-3.0.lua",
+          "sha256": "cfbb556ae5846738a5058a5820b7e2eac55c3df05328f67170779134745f061e",
+          "declarations": [
+            "License: LGPL v2.1\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "BetterBags/libs/LibStub/LibStub.lua",
+          "sha256": "6000f58d740eaa2b4a006c1dabb0366f0321fc687bab9e85d97d040a1fd42dab",
+          "declarations": [
+            "-- LibStub is hereby placed in the Public Domain Credits: Kaelten, Cladhaire, ckknight, Mikk, Ammo, Nevcairiel, joshborke\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "BetterBags/libs/LibStub/LibStub.toc",
+          "sha256": "e01f590f6dfb5419595b640e6b5391092b5e39f8581d010adb9d852f4a30578d",
+          "declarations": [
+            "## X-License: Public Domain\t\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "BetterBags/libs/LibWindow-1.1/LibWindow-1.1.lua",
+          "sha256": "40d80952d2a1c9b8a8d25786887cc049159e64b01c2737a4416ec55aa4ab74a0",
+          "declarations": [
+            "License: Public Domain\r"
           ],
           "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
         }

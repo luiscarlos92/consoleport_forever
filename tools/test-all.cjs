@@ -197,7 +197,7 @@ check('T07-T09.both-binding-bank-restore', () => execute(source+read('tests/harn
 check('T08-T10.review-details', () => execute(source+read('tests/harness/prompt.lua'),'review-details'));
 check('T12-T13.adapters', () => execute(source+read('tests/harness/adapters.lua'),'adapters'));
 check('T13.pinned-flat-integration-settings', () => {
-  const base='evidence/integration-contracts-candidate41/';
+  const base='evidence/integration-contracts-candidate43/';
   const settingsAST=parser.parse(read(base+'Immersion/Settings.lua'),{luaVersion:'5.1',encodingMode:'x-user-defined'});
   const keys=new Set();
   function visit(value) {
@@ -218,7 +218,7 @@ check('T13.pinned-flat-integration-settings', () => {
   execute(source+'NATIVE_IMMERSION_SETTINGS_KEYS={'+[...keys].sort().map(k=>JSON.stringify(k)).join(',')+'}\n'+fixture.replaceAll('1.18.0','1.18.1'),'flat-integrations-current-ExtraFade-settings');
 });
 check('T13.current-DynamicCam-AceDB', () => {
-  const base='evidence/integration-contracts-candidate41/';
+  const base='evidence/integration-contracts-candidate43/';
   const lock=JSON.parse(read('dependencies/lock.json'));
   for(const file of JSON.parse(read(base+'manifest.json')).files) {
     const package=lock.packages.find(p=>p.repo===file.repo);
@@ -228,7 +228,7 @@ check('T13.current-DynamicCam-AceDB', () => {
     .map(file=>';(function()\n'+read(base+'DynamicCam/Libs/'+file)+'\nend)();').join('\n');
   const current=read(base+'DynamicCam/Core.lua');
   if(!current.includes('self.db.RegisterCallback(self, "OnProfileChanged", "RefreshConfig")') || !current.includes('function DynamicCam:RefreshConfig()')) throw Error('native DynamicCam lifecycle changed');
-  for(const capture of ['evidence/integration-contracts/','evidence/integration-contracts-candidate41/']) {
+  for(const capture of ['evidence/integration-contracts/','evidence/integration-contracts-candidate43/']) {
     execute(read('tests/harness/dynamiccam_refresh.lua').replace('--@NATIVE_DYNAMIC_REFRESH',()=>nativeFunction(capture+'DynamicCam/Core.lua','DynamicCam:RefreshConfig')),'DynamicCam-native-refresh-contract-'+capture);
   }
   const fixture=read('tests/harness/dynamiccam.lua').replace('--@CURRENT_ACEDB',native)
@@ -300,24 +300,28 @@ function nativeFunction(file,signature) {
     const body=text.slice(start,end);
     parser.parse(body,{luaVersion:'5.1'}); return body;
 }
-function betterBagsFixture(integrationBase='evidence/integration-contracts-candidate41/') {
+function betterBagsFixture(integrationBase='evidence/integration-contracts-candidate43/',group='BetterBags') {
   const container='evidence/native/Blizzard_UIPanels_Game/Mainline/ContainerFrame.lua';
   const base='evidence/consoleport-contracts/';
   const fixture=read('tests/harness/betterbags.lua')
     .replace('--@NATIVE_CONTAINER_METHODS',()=>['ContainerFrameItemButton_OnClick','ContainerFrameItemButtonMixin:OnClick','ContainerFrameItemButtonMixin:OnModifiedClick','ContainerFrameItemButtonMixin:GetBagID','ContainerFrameItemButtonMixin:GetSlotAndBagID'].map(name=>nativeFunction(container,name)).join('\n'))
-    .replace('--@NATIVE_BETTERBAGS_ITEM',()=>';(function(...)\n'+read(integrationBase+'BetterBags/frames/item.lua')+'\nend)("BetterBags");')
-    .replace('--@NATIVE_BETTERBAGS_INTEGRATION',()=>';(function(...)\n'+read(integrationBase+'BetterBags/integrations/consoleport.lua')+'\nend)("BetterBags");')
+    .replace('--@NATIVE_BETTERBAGS_ITEM',()=>';(function(...)\n'+read(integrationBase+group+'/frames/item.lua')+'\nend)("BetterBags");')
+    .replace('--@NATIVE_BETTERBAGS_INTEGRATION',()=>';(function(...)\n'+read(integrationBase+group+'/integrations/consoleport.lua')+'\nend)("BetterBags");')
     .replace('--@NATIVE_ITEM_MENU_SET',()=>nativeFunction(base+'ConsolePort_Menu/View/Popup/ItemMenu.lua','ItemMenu:SetItem'))
     .replace('--@NATIVE_MODULE_DEMAND',()=>['Modules:IsEnabled','Modules:Demand'].map(name=>nativeFunction(base+'ConsolePort/Controller/Modules.lua',name)).join('\n'));
   return windowFixture()+'\n'+fixture;
 }
 check('T21-T22.native-BetterBags-item-guards', () => {
-  for(const [base,version] of [['evidence/integration-contracts/','v0.5.14'],['evidence/integration-contracts-candidate41/','v0.5.16']]) {
+  for(const [base,version] of [['evidence/integration-contracts/','v0.5.14'],['evidence/integration-contracts-candidate43/','v0.5.17']]) {
     for(const row of JSON.parse(read(base+'manifest.json')).files.filter(row=>row.repo==='Cidan/BetterBags')) {
       if(sha(base+row.path)!==row.sha256) throw Error('BetterBags retained contract drift: '+row.path);
     }
     execute(source+betterBagsFixture(base).replaceAll('v0.5.14',version),'BetterBags-native-item-contexts-'+version);
   }
+  const retained=JSON.parse(read('evidence/pawn-immersion/2026-10-17/tooltip-repair-inputs.json'));
+  for(const row of retained.files.filter(row=>row.ref==='v0.5.16'))
+    if(sha('scratch/pawn-immersion-inputs/'+row.path)!==row.sha256)throw Error('Retained BetterBags input drift');
+  execute(source+betterBagsFixture('scratch/pawn-immersion-inputs/','BetterBagsPrepared').replaceAll('v0.5.14','v0.5.16'),'BetterBags-retained-native-item-contexts-v0.5.16');
 });
 check('T35.native-merchant-container-hints', () => {
   const fixture=read('tests/harness/item_hints.lua')
@@ -1209,7 +1213,7 @@ check('T65.native-account-ping-ring-release-only-and-repeatable-native-controls'
   }
 });
 check('T66.native-immersion-required-items', () => {
-  const base='evidence/integration-contracts-candidate41/Immersion/';
+  const base='evidence/integration-contracts-candidate43/Immersion/';
   const fixture=read('tests/harness/immersion_progress.lua')
     .replace('--@NATIVE_ADJUST_CHILDREN',()=>['IterateChildren','GetAdjustableChildren','AdjustToChildren'].map(name=>nativeFunction(base+'Components/Scaler.lua','AdjustMixin:'+name)).join('\n'))
     .replace('--@NATIVE_BOUNDARIES',()=>nativeFunction(base+'Components/Elements.lua','Elements:UpdateBoundaries'))

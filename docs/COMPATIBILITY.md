@@ -1,7 +1,7 @@
 # Client and integration compatibility
 
 Status: maintained
-Reviewed: 2026-10-16
+Reviewed: 2026-10-17
 Evidence: [TOC](../addon/ConsolePort_Forever/ConsolePort_Forever.toc),
 [locked packages](../dependencies/lock.json),
 [native source manifest](../evidence/native/manifest.json),
@@ -44,8 +44,17 @@ comparison remain the owners. Unsupported/missing contracts stay dormant.
 
 ## Locked package identities
 
-October 16 fresh official discovery and selective retrieval qualify BetterBags
-v0.5.16, Plater-v661, DynamicCam 2.21.4 and ExtraFade 1.18.1 in the current lock. ConsolePort remains
+October 17 discovery found BetterBags v0.5.17. The complete official package,
+Retail closure, notices and affected input/Pawn provider contracts replace .16
+in the prepared lock; installed .14 and retained .16 remain qualified separately.
+The new Sonata theme/window/render system is outside the focused reward repair
+and is not installed. Current [contracts](../evidence/integration-contracts-candidate43/manifest.json)
+retain the earlier captures unchanged. [Package delta](../evidence/dependencies/candidate43-betterbags-qualification.json).
+Candidate.43 also uses the native tooltip setter/references instead of assuming
+a GetItem hyperlink round trip. [Repair](reference/PAWN-IMMERSION-TOOLTIP-REPAIR-2026-10-17.md).
+
+October 16 discovery qualified BetterBags v0.5.16; October 17 replaces that
+prepared version with v0.5.17. Plater-v661, DynamicCam 2.21.4 and ExtraFade 1.18.1 remain in the current lock. ConsolePort remains
 3.3.10. The [fresh receipt](../evidence/dependencies/stable-recheck.json) reports
 all current. New [versioned contracts](../evidence/integration-contracts-candidate41/manifest.json)
 retain the old captures unchanged. Native item/merchant tests exercise the new
@@ -63,7 +72,7 @@ records the new archive delta and exact closure/notice evidence.
 | Package owner | Locked version | Companion integration |
 | --- | --- | --- |
 | seblindfors/ConsolePort | 3.3.10 | Required main/bar plus native optional suite contracts. Exact guards in routing, rings, skin and UI; ground interception is retired. |
-| Cidan/BetterBags | v0.5.16 | Audited bag adapter/custom UI path; full context takeover suspended. |
+| Cidan/BetterBags | v0.5.17 | Audited bag adapter/input and Pawn provider; new theme rendering unaccepted; full context takeover suspended. |
 | seblindfors/Immersion | 1.4.61 | Reviewed flat settings and Forever-owned Required Items correction. Preserve upstream bytes and ImmersionSetup. |
 | curseforge/Immersion_ExtraFade | 1.18.1 | Optional reviewed integration fields; retain exact 1.18.0 compatibility. |
 | curseforge/DynamicCam | 2.21.4 | Managed native profile copies; preserve foreign profiles and selection lifecycle; retain 2.21.1/2.21.2. |

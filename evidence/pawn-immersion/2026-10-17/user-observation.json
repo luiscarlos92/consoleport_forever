@@ -1,0 +1,12 @@
+{
+  "date": "2026-10-17",
+  "candidate": "2.0.0-candidate.42",
+  "quest": "Consequences of Our Duty",
+  "acceptedReportedCase": "Green upgrade arrows on summarized choice rewards work.",
+  "failedReportedCases": [
+    "Focused Choose your reward popup has no Pawn note on the reward tooltips.",
+    "Holding L2 leaves the selected reward without its Pawn note."
+  ],
+  "screenshotsAlsoShow": "Ordinary mouse-hover reward tooltips contain Pawn Protection +10% and +17% upgrade notes; equipped comparison tooltips contain Pawn best/second-best notes.",
+  "limits": "No live getter values or event trace were supplied. Arrow acceptance covers the reported quest only; focused tooltip repair still needs user-owned Retail verification."
+}

@@ -1,7 +1,7 @@
 # Validation and proof boundaries
 
 Status: maintained
-Reviewed: 2026-10-16
+Reviewed: 2026-10-17
 Evidence: [runner](../tools/test-all.cjs), [tool tests](../tools/run_tool_tests.py),
 [CI](../.github/workflows/tests.yml), [test instructions](../tests/AGENTS.md).
 
@@ -27,6 +27,14 @@ option-migration models remain explicit. Repeated visible refresh during L2
 retains native comparison and padding without line/size growth. These are source
 and work-count checks, not Retail acceptance or a full engine startup test.
 [Runtime qualification](reference/PAWN-IMMERSION-RUNTIME-2026-10-16.md).
+
+Candidate.43 extends T105/T106 with actual native GetItem/TooltipUtil bodies and
+explicit primary-data C models. Decorated quest versus bare tooltip links and
+absent getter links must retain focused notes through L2. Three new controls
+restore the old getter dependencies or remove the native item-reference guard.
+T21/T22 retains native BetterBags .14/.16 input and adds .17; its Sonata decoration
+and post-draw visibility are explicitly modeled. These tests do not establish the
+live getter values or theme rendering. [Diagnosis](reference/PAWN-IMMERSION-TOOLTIP-REPAIR-2026-10-17.md).
 
 Candidate.41 T101 validates supplied Spell/SpellBook/ZoneAbility functions against
 captured native API declarations and starts without PartyInfo/LFG tables. T102

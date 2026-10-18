@@ -1,7 +1,7 @@
 # Pending deployment and cumulative acceptance
 
 Status: candidate.42 installed October 16, 2026 at 23:09:05 Toronto.
-Reviewed: 2026-10-16
+Reviewed: 2026-10-17
 Evidence: [independent readback](../evidence/delivery/candidate42-independent-readback.json),
 [qualification](../evidence/test-results/candidate42-pawn-immersion-qualification.json),
 [fresh CI](../evidence/test-results/candidate42-fresh-ci.json).
@@ -14,6 +14,12 @@ input. Pawn/Immersion Retail acceptance remains pending; K04/K05 are unchanged.
 Four qualified dependency updates remain prepared and excluded.
 
 ## Candidate.42 Pawn/Immersion checks
+
+October 17: summary arrows pass the user's reported quest; focused notes fail
+with and without L2 (K07). Candidate.43's getter dependency repair is in
+qualification. After its installation/reload, repeat focused detail for both
+choices and L2 hold/release against ordinary hover's exact Pawn output.
+[Diagnosis](reference/PAWN-IMMERSION-TOOLTIP-REPAIR-2026-10-17.md).
 
 Candidate.42 is installed. At next login/reload, perform these user-owned checks:
 

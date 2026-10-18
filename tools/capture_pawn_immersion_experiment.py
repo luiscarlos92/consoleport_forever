@@ -63,7 +63,17 @@ def main():
 
 
 if __name__ == '__main__':
-    if '--runtime' in sys.argv:
+    if '--tooltip-repair' in sys.argv:
+        MANIFEST = ROOT / 'evidence/pawn-immersion/2026-10-17/tooltip-repair-inputs.json'
+        GROUPS = [
+            ('Gethe/wow-ui-source', PIN, 'Native',
+             ['Interface/AddOns/Blizzard_SharedXMLGame/Tooltip/TooltipUtil.lua']),
+            ('Cidan/BetterBags', 'v0.5.17', 'BetterBagsPrepared17',
+             ['integrations/pawn.lua', 'data/items.lua']),
+            ('Cidan/BetterBags', 'v0.5.16', 'BetterBagsPrepared',
+             ['frames/item.lua', 'integrations/consoleport.lua']),
+        ]
+    elif '--runtime' in sys.argv:
         MANIFEST = ROOT / 'evidence/pawn-immersion/2026-10-16/runtime-inputs.json'
         GROUPS = GROUPS + [
             ('VgerMods/Pawn', 'Pawn-2.13.17', 'Pawn', ['Pawn.toc', 'PawnUI.xml']),

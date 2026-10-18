@@ -9,7 +9,7 @@ end
 function Bags:Probe()
     local api=self.api
     local version=api.C_AddOns and api.C_AddOns.GetAddOnMetadata('BetterBags','Version')
-    if (version~='v0.5.14' and version~='v0.5.16')
+    if (version~='v0.5.14' and version~='v0.5.16' and version~='v0.5.17')
         or not api.C_AddOns.IsAddOnLoaded('BetterBags') or not api.LibStub then return false,'audited BetterBags version required' end
     if not api.ContainerFrameItemButtonMixin or not api.C_Container or not api.C_Container.GetContainerItemInfo or not api.C_Container.GetContainerNumSlots
         or not api.GetCursorInfo or not api.ClearCursor or not api.C_Item or not api.C_Item.GetItemGUID or not api.ItemLocation then return false,'native item identity/container APIs unavailable' end

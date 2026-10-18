@@ -73,8 +73,18 @@ LibStub=function(name) assert(name=='AceAddon-3.0') return ace end
 local items=addon.modules.ItemFrame
 items.buttonsBySlotkey={}
 local item=items:_DoCreate(nil,0)
+-- v0.5.17 caches a Sonata decoration. Supply the already rendered decoration
+-- at that boundary; native item construction and input handlers still execute.
+-- Theme rendering is outside this input/identity test.
+if items.CreateDecoration then
+    assert(not item.frame:IsShown(),'new upstream slot holder was shown before a bag draw')
+    item._decoration=decoration
+end
 item.button:SetID(1) items.buttonsBySlotkey['0_1']=item
 item.frame.parent=paneA
+-- Model a slot that the native bag draw has made visible. v0.5.17 deliberately
+-- constructs holders hidden until that draw; unopened slots stay ineligible.
+item.frame:Show()
 -- Native integration registers the actual bag and demand-created menu stack.
 ConsolePort.AddInterfaceCursorFrame=function(_,frame) return nativeStack:SetFrame(frame,true) end
 ConsolePort.SetCursorNode=function(_,frame) cursor:SetCurrentNode(frame) end

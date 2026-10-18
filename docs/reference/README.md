@@ -29,6 +29,9 @@ plural pending-reference directory is intentionally retained without moving it.
 
 ## Current code contracts
 
+- [Focused reward Pawn note repair](PAWN-IMMERSION-TOOLTIP-REPAIR-2026-10-17.md):
+  candidate.42 partial user confirmation, native getter defect reproduction and
+  candidate.43 reference ownership correction; focused Retail confirmation pending.
 - [Pawn/Immersion bridge research and staged plan](../plans/PAWN-IMMERSION-BRIDGE-2026-10-16.md):
   installed Pawn/BetterBags verdict and tooltip ownership, pooled Immersion reward
   views, native L2 comparison and source identities. The subsequently approved

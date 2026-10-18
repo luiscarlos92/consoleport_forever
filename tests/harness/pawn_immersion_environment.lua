@@ -128,7 +128,15 @@ function methods:GetItem()
  if RUNTIME and i and i.pending then return nil,nil end
  return i and i.Name,self.link
 end
-function methods:GetPrimaryTooltipData()return {type=0,hyperlink=self.link}end
+function InstallNativeItemGetter(getter)methods.GetItem=getter end
+function methods:IsTooltipType(kind)return kind==0 and self.link~=nil end
+function methods:GetPrimaryTooltipData()
+ local item=MODEL.items[self.link]
+ local link=self.link
+ if item and item.pending or MODEL.tooltipHyperlinkMode=='missing' then link=nil
+ elseif MODEL.tooltipHyperlinkMode=='bare' and type(link)=='string' then link=link:match('|H(item:[^|]+)|h') or link end
+ return {type=0,hyperlink=link}
+end
 function methods:SetQuestItem(kind,index)
  MODEL.counts.nativeSets=MODEL.counts.nativeSets+1
  self.link=GetQuestItemLink(kind,index);self.lines={};local i=MODEL.items[self.link]
@@ -152,7 +160,7 @@ UIParent=NewFrame('UIParent');GameTooltip=NewFrame('GameTooltip');GameTooltip.li
 GameTooltip.NineSlice={SetBorderColor=function()end}
 GameTooltip.shoppingTooltips={NewFrame('ShoppingTooltip1'),NewFrame('ShoppingTooltip2')}
 C_TooltipComparison={CompareItem=function(item,tooltip)
- assert(item.hyperlink==tooltip.link,'native comparison identity');MODEL.counts.compare=MODEL.counts.compare+1
+ assert(item.hyperlink==tooltip:GetPrimaryTooltipData().hyperlink,'native comparison identity');MODEL.counts.compare=MODEL.counts.compare+1
  GameTooltip.shoppingTooltips[1]:Show()
  if MUTATION=='lose-on-compare' then tooltip.lines={}end
 end}

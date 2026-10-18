@@ -86,7 +86,8 @@ function Bridge:Arrow(item)
 end
 function Bridge:BagUsesPawn()
     local api=self.api
-    if not (version(api,'BetterBags','v0.5.14') or version(api,'BetterBags','v0.5.16'))
+    if not (version(api,'BetterBags','v0.5.14') or version(api,'BetterBags','v0.5.16')
+        or version(api,'BetterBags','v0.5.17'))
         or not api.LibStub then return false end
     local ace=api.LibStub('AceAddon-3.0',true)
     local bags=ace and ace:GetAddon('BetterBags',true)
@@ -104,25 +105,21 @@ function Bridge:UpdateArrow(item)
     self.pending[item]=nil
     if verdict==true then self:Arrow(item):Show() end
 end
-function Bridge:TooltipOwned(tooltip)
+function Bridge:TooltipOwned(tooltip,item)
     if not tooltip or not self.pool.active[tooltip] or not self.inspector:IsVisible()
         or not tooltip:IsVisible() then return false end
     local name=tooltip:GetName()
+    local button=tooltip.Button
     return type(name)=='string' and name:match('^ImmersionGameTooltip%d+$')
-        and self.api[name]==tooltip and type(tooltip.GetItem)=='function'
+        and self.api[name]==tooltip
+        and (not item or (button and button.item==item and button.inspector==self.inspector and button.pool==self.pool))
 end
 function Bridge:Annotate(tooltip,item)
     local link=self:Identity(item)
-    if not link or not self:TooltipOwned(tooltip) then return end
-    local _,shownLink=tooltip:GetItem()
-    if not known(self.api,shownLink) or (shownLink~=nil and shownLink~=link) then return end
+    if not link or not self:TooltipOwned(tooltip,item) then return end
     local record=self.tips[tooltip]
     if record and record.link==link and record.annotated then return end
     record={item=item,link=link,generation=self.generation};self.tips[tooltip]=record
-    if shownLink==nil then
-        record.pending=true
-        self.pending[item]={link=link,generation=self.generation};self:Schedule();return
-    end
     if self.api.PawnCanItemHaveStats(link) then
         local data=self.api.PawnGetItemData(link)
         if not data or not data.Link then
@@ -130,8 +127,10 @@ function Bridge:Annotate(tooltip,item)
             self.pending[item]={link=link,generation=self.generation};self:Schedule();return
         end
     end
-    -- Supply the full quest link to Pawn; keep Immersion's SetQuestItem and all
-    -- quest context, compare ownership, formatting and option handling intact.
+    -- The native SetItemTooltip posthook and SetReferences identify the reward.
+    -- GetItem reads primary tooltip data; it need not echo the decorated quest
+    -- hyperlink, and may have no hyperlink at all. Pawn explicitly accepts the
+    -- full link through this compatibility entry point without a getter.
     self.work.annotations=self.work.annotations+1
     self.api.PawnUpdateTooltip(tooltip:GetName(),'SetHyperlink',link)
     record.annotated=true
@@ -145,7 +144,7 @@ function Bridge:RetryTip(item)
     local tips=self:SnapshotTips()
     for tooltip,record in pairs(tips) do
         if record.item==item and record.pending and record.generation==self.generation
-            and self:TooltipOwned(tooltip) then self:Repopulate(tooltip,item) end
+            and self:TooltipOwned(tooltip,item) then self:Repopulate(tooltip,item) end
     end
 end
 function Bridge:LayoutPending(tooltip,layout)
@@ -200,12 +199,9 @@ function Bridge:Start(buttons)
     -- Immersion also calls UpdateItems for events which retain its inspector.
     -- Carry only the same active tooltip/item/link into the new generation.
     for tooltip,record in pairs(tips) do
-        if self:TooltipOwned(tooltip) and self:Identity(record.item)==record.link then
-            local _,link=tooltip:GetItem()
-            if known(self.api,link) and (link==record.link or (link==nil and record.pending)) then
-                record.generation=self.generation;self.tips[tooltip]=record
-                if record.pending then self.pending[record.item]={link=record.link,generation=self.generation} end
-            end
+        if self:TooltipOwned(tooltip,record.item) and self:Identity(record.item)==record.link then
+            record.generation=self.generation;self.tips[tooltip]=record
+            if record.pending then self.pending[record.item]={link=record.link,generation=self.generation} end
         end
     end
     self:Schedule()
@@ -221,7 +217,7 @@ function Bridge:Invalidate()
         for _,item in ipairs(self.buttons) do self:UpdateArrow(item) end
         local tips=self:SnapshotTips()
         for tooltip,record in pairs(tips) do
-            if self:TooltipOwned(tooltip) and self:Identity(record.item)==record.link then
+            if self:TooltipOwned(tooltip,record.item) and self:Identity(record.item)==record.link then
                 self:Repopulate(tooltip,record.item)
             end
         end

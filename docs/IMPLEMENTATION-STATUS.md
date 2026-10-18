@@ -1,12 +1,18 @@
 # Current implementation and acceptance
 
 Status: maintained
-Reviewed: 2026-10-16
+Reviewed: 2026-10-17
 Evidence: [candidate.42 readback](../evidence/delivery/candidate42-independent-readback.json),
 [source qualification](../evidence/test-results/candidate42-pawn-immersion-qualification.json),
 [fresh CI](../evidence/test-results/candidate42-fresh-ci.json).
 
 ## Installed checkpoint
+
+October 17 user feedback confirms candidate.42's summary arrows on the reported
+quest, but focused reward notes are missing both with and without L2. Ordinary
+hover shows the expected Pawn notes. K07 tracks this separate failure.
+Candidate.43 removes an unsupported tooltip-getter identity dependency and is
+being qualified for a Forever-only update. [Diagnosis and proof limit](reference/PAWN-IMMERSION-TOOLTIP-REPAIR-2026-10-17.md).
 
 Candidate.42 was installed October 16 at **23:09:05 Toronto** from tested/pushed
 source `93501c4aca3d41738d17d8d478851c15ba7e87fa`. It adds the approved Pawn/Immersion
@@ -32,7 +38,7 @@ All 61 intervening preflight-to-install game WTF changes were retained.
 No dependency/WTF writes or game input.
 [Delivery](../evidence/delivery/candidate42-independent-readback.json).
 
-User-owned next login/reload and bag/summary/detail/L2 checks remain. Offline C/UI
+User-owned focused-detail/L2 repair confirmation remains. Offline C/UI
 models do not certify Retail pixels, hardware timing, taint, persistence or CPU.
 K04/K05 remain open; prior scoped follower acceptance is retained below. Four
 qualified dependency updates remain prepared and excluded from this delivery.

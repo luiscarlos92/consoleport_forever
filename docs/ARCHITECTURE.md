@@ -1,7 +1,7 @@
 # Implementation architecture
 
 Status: maintained
-Reviewed: 2026-10-16
+Reviewed: 2026-10-17
 Evidence: [TOC](../addon/ConsolePort_Forever/ConsolePort_Forever.toc),
 [bootstrap](../addon/ConsolePort_Forever/ConsolePort_Forever.lua),
 [runtime setup](../addon/ConsolePort_Forever/RuntimeSetup.lua).
@@ -66,6 +66,11 @@ PLAYER_LOGIN; the shipping bridge activates through normal accepted-character
 Refresh after recovery checks. Cosmetic summary/tooltip hooks preserve the
 suspended custom-UI policy and native input. No schema/revision/settings change.
 [Runtime ownership](reference/PAWN-IMMERSION-RUNTIME-2026-10-16.md).
+
+Candidate.43 uses the native SetItemTooltip posthook and Button's current item,
+inspector and pool references to identify the displayed reward. Pawn receives
+the full quest link without requiring GetItem to echo its representation.
+[Getter dependency repair](reference/PAWN-IMMERSION-TOOLTIP-REPAIR-2026-10-17.md).
 
 ## Configuration and ownership
 

@@ -1,13 +1,23 @@
 # ConsolePort Forever change history
 
 Status: maintained
-Reviewed: 2026-10-16
+Reviewed: 2026-10-17
 Evidence: [current status](docs/IMPLEMENTATION-STATUS.md),
 [historical chronology](docs/archive/ai-native-2026-10-11/IMPLEMENTATION-STATUS.pre-restructure.md).
 
 Dates below use America/Toronto. This is a curated change index, not invented
 release tags or blanket gameplay certification. Detailed receipts own exact
 source/artifact/file identities. Prepared, installed and accepted are separate.
+
+## Focused reward Pawn note repair — October 17, 2026
+
+The user confirms candidate.42 summary arrows but reports no focused reward
+notes with or without L2. Candidate.43 removes the unsupported requirement that
+the tooltip getter echo the decorated quest link; native reward references
+identify the current population and Pawn still generates all text. The new
+regression rejects the old getter dependency. Source qualification and delivery
+are in progress; focused Retail confirmation remains separate.
+[Diagnosis](docs/reference/PAWN-IMMERSION-TOOLTIP-REPAIR-2026-10-17.md).
 
 ## Pawn feedback in Immersion rewards — October 16, 2026
 

@@ -1,27 +1,24 @@
 # Pending deployment and cumulative acceptance
 
-Status: candidate.42 installed October 16, 2026 at 23:09:05 Toronto.
+Status: candidate.43 installed October 17, 2026 at 21:44:55 Toronto.
 Reviewed: 2026-10-17
-Evidence: [independent readback](../evidence/delivery/candidate42-independent-readback.json),
-[qualification](../evidence/test-results/candidate42-pawn-immersion-qualification.json),
-[fresh CI](../evidence/test-results/candidate42-fresh-ci.json).
+Evidence: [independent readback](../evidence/delivery/candidate43-independent-readback.json),
+[qualification](../evidence/test-results/candidate43-pawn-tooltip-qualification.json),
+[fresh CI](../evidence/test-results/candidate43-fresh-ci.json).
 
-The Forever-only update passes 106 runtime/source checks and 74 tooling tests
-locally and in fresh Windows CI with complete matching inventories. Independent
-readback verifies all 61 installed files and preservation of other addons,
-WTF, links/root anchors and prior backups. Schema3/revision20 remain. No game
-input. Pawn/Immersion Retail acceptance remains pending; K04/K05 are unchanged.
-Four qualified dependency updates remain prepared and excluded.
+All 106 runtime/source checks and 74 tooling tests pass locally and in fresh CI
+with complete matching inventories. The Forever-only installation independently
+preserves other addons, WTF, links/root anchors and prior backups.
+Schema3/revision20 remain. No game input. Four dependency updates remain prepared
+and excluded. K07 awaits focused-tooltip Retail confirmation; K04/K05 remain.
 
-## Candidate.42 Pawn/Immersion checks
+## Candidate.43 Pawn/Immersion checks
 
-October 17: summary arrows pass the user's reported quest; focused notes fail
-with and without L2 (K07). Candidate.43's getter dependency repair is in
-qualification. After its installation/reload, repeat focused detail for both
-choices and L2 hold/release against ordinary hover's exact Pawn output.
+Candidate.42 summary arrows pass the user's reported quest; focused notes fail
+with and without L2 (K07). Candidate.43's getter dependency repair is installed.
+After user-owned reload, compare focused detail for both choices and L2
+hold/release with ordinary hover's exact Pawn output.
 [Diagnosis](reference/PAWN-IMMERSION-TOOLTIP-REPAIR-2026-10-17.md).
-
-Candidate.42 is installed. At next login/reload, perform these user-owned checks:
 
 1. Use the same reward/Pawn configuration as bags. Summary icons show only the
    native green arrow when BetterBags selects Pawn and Pawn says upgrade.
@@ -58,7 +55,7 @@ After the Forever-only deployment and user-owned reload:
 3. Check exit/re-entry, combat, Edit Mode and utility disable plus reload.
    Unknown/unready contexts retain the native fallback. No game input is automated.
 
-BetterBags v0.5.16, Plater-v661, DynamicCam 2.21.4 and ExtraFade 1.18.1 are qualified in preparation;
+BetterBags v0.5.17, Plater-v661, DynamicCam 2.21.4 and ExtraFade 1.18.1 are qualified in preparation;
 dependency replacement requires closed WoW and is excluded from this update.
 K06's candidate.41 user acceptance is recorded above; K04/K05 are unchanged.
 

@@ -61,6 +61,21 @@ provider resolution is exercised against installed .14 and prepared .17; the
 original isolated .16 experiment remains. Dependencies are excluded from this
 Forever-only repair delivery.
 
+## Qualified and installed result
+
+All 106 runtime/source checks and 74 tooling tests pass locally and in fresh
+Windows CI, with complete matching 64-product/165-tool/test inventories. Each
+current source variant passes 340 assertions per provider load order and rejects
+19 faulty variants. The native workload remains 10 comparison calls/two pooled
+frames, with one coalesced refresh for the existing reset burst. No idle worker
+or input route was added. [Qualification](../../evidence/test-results/candidate43-pawn-tooltip-qualification.json),
+[CI](../../evidence/test-results/candidate43-fresh-ci.json).
+
+The Forever-only candidate.43 update is installed under the standing running-game
+authorization. Independent readback verifies selected files and preservation of
+other addons, WTF, links/root anchors and prior backups. The user owns reload.
+[Delivery](../../evidence/delivery/candidate43-independent-readback.json).
+
 ## Retail boundary
 
 After the user reloads, reopen the same focused reward inspector, inspect both

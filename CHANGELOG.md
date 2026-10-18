@@ -15,8 +15,12 @@ The user confirms candidate.42 summary arrows but reports no focused reward
 notes with or without L2. Candidate.43 removes the unsupported requirement that
 the tooltip getter echo the decorated quest link; native reward references
 identify the current population and Pawn still generates all text. The new
-regression rejects the old getter dependency. Source qualification and delivery
-are in progress; focused Retail confirmation remains separate.
+regression rejects the old getter dependency. Installed October 17 at 21:44:55
+Toronto from tested/pushed source `0eb627e9f1de093a85e74e63b7d773c50d5ec5e6`.
+All 106 runtime/source checks and 74 tooling tests pass locally and in fresh CI;
+exact readback preserves other addons, WTF,
+links and backups. Focused Retail confirmation remains separate.
+[Delivery](evidence/delivery/candidate43-independent-readback.json).
 [Diagnosis](docs/reference/PAWN-IMMERSION-TOOLTIP-REPAIR-2026-10-17.md).
 
 ## Pawn feedback in Immersion rewards — October 16, 2026

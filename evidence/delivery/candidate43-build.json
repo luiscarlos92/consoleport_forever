@@ -1,0 +1,51 @@
+{
+  "path": "C:\\Users\\luisr\\Dev\\consoleport_forever\\dist\\2.0.0-candidate.43\\ConsolePort-Forever-Update-companion-only-pawn-tooltip-repair.zip",
+  "sha256": "148a52738af57fa07b9089b255375e5eacd8acd477af1eeb8359f463d1ae5756",
+  "bytes": 536584,
+  "sourceCommit": "0eb627e9f1de093a85e74e63b7d773c50d5ec5e6",
+  "addonFolders": [
+    "ConsolePort_Forever"
+  ],
+  "dependencyUpdates": [],
+  "retiredAddonFolders": {},
+  "version": "2.0.0-candidate.43",
+  "testedDependencies": {
+    "seblindfors/Immersion": {
+      "version": "1.4.61",
+      "sha256": "b180a8cbd1a1d878377da5a85abfdc5576e0c04212f9e900e3e9ca505cde1f3e"
+    },
+    "SFX-WoW/Masque": {
+      "version": "12.1.0",
+      "sha256": "9e1da4827ae60bd25d7fc427cbeeb0dc297e59d53a71a29ae95223d3374bbfa0"
+    },
+    "SLOKnightfall/BetterWardrobe": {
+      "version": "6.12.3",
+      "sha256": "abcba6be5535c15a581721192a5c4865e05b568dbac52d79c108c89e6c763d8c"
+    },
+    "seblindfors/ConsolePort": {
+      "version": "3.3.10",
+      "sha256": "6175a327b3b7505b6f1d79ef0adc96c7a65db3cc8220dd59e34de6658dbb4f49"
+    },
+    "xod-wow/LiteMount": {
+      "version": "12.1.5-1",
+      "sha256": "29f360a9dbffff201e9573c8113322d455a1fbec250eefc4578495a59e2febe7"
+    },
+    "Tercioo/Plater-Nameplates": {
+      "version": "Plater-v661",
+      "sha256": "7e922151e5e9db7c8987c924887bdb952bac43ee65dc499ed75b0c46a41f9089"
+    },
+    "curseforge/DynamicCam": {
+      "version": "2.21.4",
+      "sha256": "dd88b9cc8dccf8e1f4afecf4d2e513d96b07f6fa3360e6749c80de2533383ec1"
+    },
+    "curseforge/Immersion_ExtraFade": {
+      "version": "1.18.1",
+      "sha256": "88209bf00a35119be57011b87d52dc59500469f5eeff87f93b34e9b488f1a125"
+    },
+    "Cidan/BetterBags": {
+      "version": "v0.5.17",
+      "sha256": "dcdd857ac2f842cbcd3086dcdadb4a6e1a4a4f4ee25b26be72c5ce56440be033"
+    }
+  },
+  "dependencyLockSHA256": "d778baef798046941e4a8d8fdbd42373b54924a74fba3093979c4fa83b62fb0e"
+}

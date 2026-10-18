@@ -111,5 +111,10 @@
     "BetterBags/views/gridview.lua",
     "BetterBags/views/views.lua"
   ],
-  "stage": "retrieved and closure/notices audited; affected native contracts and full gates pending; no dependency installation"
+  "stage": "affected item construction/input and Pawn provider contracts plus full exact-source suite passed; prepared only",
+  "qualificationSHA256": "2442f7587a6955ac1c5f0d4c9950e4430e9fd1b3f4ed40efa20110bb06522511",
+  "coverageSHA256": "6464f1b42b6d11bc3627f4bc291394e5ffba4029b23f2f2edf6133168964e9ce",
+  "noticesSHA256": "131c95885333423b31177feea71870a3591927648065a71277beee1944bd43a8",
+  "noticeReviewSHA256": "496adddc420c2a198c7e55e760b59eaa5557974392d47f1be61bf70e0d86594a",
+  "noDependencyInstallation": true
 }

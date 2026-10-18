@@ -2,46 +2,52 @@
 
 Status: maintained
 Reviewed: 2026-10-17
-Evidence: [candidate.42 readback](../evidence/delivery/candidate42-independent-readback.json),
-[source qualification](../evidence/test-results/candidate42-pawn-immersion-qualification.json),
-[fresh CI](../evidence/test-results/candidate42-fresh-ci.json).
+Evidence: [candidate.43 readback](../evidence/delivery/candidate43-independent-readback.json),
+[source qualification](../evidence/test-results/candidate43-pawn-tooltip-qualification.json),
+[fresh CI](../evidence/test-results/candidate43-fresh-ci.json).
 
 ## Installed checkpoint
 
-October 17 user feedback confirms candidate.42's summary arrows on the reported
-quest, but focused reward notes are missing both with and without L2. Ordinary
-hover shows the expected Pawn notes. K07 tracks this separate failure.
-Candidate.43 removes an unsupported tooltip-getter identity dependency and is
-being qualified for a Forever-only update. [Diagnosis and proof limit](reference/PAWN-IMMERSION-TOOLTIP-REPAIR-2026-10-17.md).
-
-Candidate.42 was installed October 16 at **23:09:05 Toronto** from tested/pushed
-source `93501c4aca3d41738d17d8d478851c15ba7e87fa`. It adds the approved Pawn/Immersion
-presentation bridge: bag-provider-aware summary arrows, Pawn-generated detailed
-reward notes and retention through native L2 comparison. Pawn owns scores,
-options and formatting; native rewards, selection and controller input retain
-ownership. Pawn remains optional, external and never packaged. Schema3/revision20
-remain; accepted characters need no new setup review.
-[Runtime and proof limits](reference/PAWN-IMMERSION-RUNTIME-2026-10-16.md).
+Candidate.43 was installed October 17 at **21:44:55 Toronto** from tested/pushed
+source `0eb627e9f1de093a85e74e63b7d773c50d5ec5e6`. It repairs the focused reward
+Pawn annotation path by using Immersion's native item/inspector/pool references,
+without requiring the tooltip getter to echo the quest hyperlink. Pawn still
+owns all scoring, options, localization and formatting. Summary arrows retain
+their qualified path; Immersion/ConsolePort retain reward selection, input and
+comparison. Schema3/revision20 remain;
+accepted characters need no setup review.
+[Diagnosis and proof limit](reference/PAWN-IMMERSION-TOOLTIP-REPAIR-2026-10-17.md).
 
 All 106 runtime/source checks and 74 tooling tests pass locally and in fresh
-Windows CI with matching complete 64-product and 165-tool/test inventories.
-Each BetterBags source variant passes 330 assertions per provider load order and
-rejects 16 faulty variants. Two-choice refresh, startup, pending data, retained
-inspector ownership and native padding have explicit reproductions.
-[Qualification](../evidence/test-results/candidate42-pawn-immersion-qualification.json),
-[CI](../evidence/test-results/candidate42-fresh-ci.json).
+Windows CI, with matching complete 64-product and 165-tool/test inventories.
+Each current source variant passes 340 assertions per provider load order and
+rejects 19 faulty variants, including both getter dependencies and stale native
+references. [Qualification](../evidence/test-results/candidate43-pawn-tooltip-qualification.json),
+[CI](../evidence/test-results/candidate43-fresh-ci.json).
 
-Only Forever was selected, with WoW closed at preview. Independent readback
-verifies all 61 installed files, 2,847 other addon files, 315 WTF files,
-42 links/root anchors and all 26,947 prior backup files/2,414 directories.
-All 61 intervening preflight-to-install game WTF changes were retained.
-No dependency/WTF writes or game input.
-[Delivery](../evidence/delivery/candidate42-independent-readback.json).
+Only Forever was selected under the standing running-game authorization.
+Independent readback verifies 61 installed files, 2,847 other addon files,
+315 WTF files, 42 links/root anchors and 27,324 prior backup files/
+2,432 directories. The preflight and installer WTF inventories match.
+No dependency/WTF writes or game input. Four dependency updates remain prepared,
+including newly qualified BetterBags v0.5.17, and excluded from this delivery.
+[Delivery](../evidence/delivery/candidate43-independent-readback.json).
 
-User-owned focused-detail/L2 repair confirmation remains. Offline C/UI
-models do not certify Retail pixels, hardware timing, taint, persistence or CPU.
-K04/K05 remain open; prior scoped follower acceptance is retained below. Four
-qualified dependency updates remain prepared and excluded from this delivery.
+K07 remains open for user-owned reload and focused reward checks with/without L2.
+The old source failure is reproduced, but the exact live getter values were not
+captured. Offline C/UI models do not certify Retail rendering, timing, taint,
+persistence or CPU. K04/K05 and earlier scoped acceptance retain their boundaries.
+
+## Previous candidate.42 checkpoint
+
+Candidate.42 was installed October 16 at 23:09:05 Toronto from
+`93501c4aca3d41738d17d8d478851c15ba7e87fa`, with 106 runtime/source checks and
+74 tooling tests passing. It introduced the approved Pawn/Immersion bridge.
+The October 17 user report confirms summary arrows on Consequences of Our Duty
+but rejects focused notes both with and without L2; ordinary hover shows Pawn's
++10%/+17% notes. This partial result is K07, not blanket acceptance.
+[Observation](../evidence/pawn-immersion/2026-10-17/user-observation.json),
+[candidate.42 delivery](../evidence/delivery/candidate42-independent-readback.json).
 
 ## Previous candidate.41 checkpoint
 

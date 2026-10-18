@@ -1,0 +1,32 @@
+{
+  "sourceCommit": "0eb627e9f1de093a85e74e63b7d773c50d5ec5e6",
+  "packSHA256": "148a52738af57fa07b9089b255375e5eacd8acd477af1eeb8359f463d1ae5756",
+  "closedAt": "2026-10-18T01:44:55.041424+00:00",
+  "backup": "C:\\Users\\luisr\\WoW-Backups\\ConsolePort-Forever\\20261018T013114Z-0476470f633e",
+  "gameRunningAtPreview": true,
+  "at": "2026-10-18T01:46:47.105912+00:00",
+  "installedVersion": "2.0.0-candidate.43",
+  "installedFilesVerified": 61,
+  "changedRuntimeFiles": [
+    "Adapters/BetterBags.lua",
+    "ConsolePort_Forever.toc",
+    "UI/PawnImmersion.lua"
+  ],
+  "removedRuntimeFiles": [],
+  "unselectedFilesUnchanged": 2847,
+  "wtfFilesUnchangedDuringInstall": 315,
+  "preflightToInstallGameWTFChangesPreserved": 0,
+  "junctionsUnchanged": 42,
+  "anchorsUnchanged": true,
+  "backupsVerified": true,
+  "priorBackupFilesUnchanged": 27324,
+  "priorBackupDirectoriesPreserved": 2432,
+  "beforeSnapshotSHA256": "9d27f921eb7fa7719f57c0e3f1af851de7420a78e5f0d97493e2066d48b9d944",
+  "installSnapshotSHA256": "c23b3df294af58fb8d710275880d3b136b9e7e4e67553b85ea551a9ef258dfd1",
+  "dependencyUpdates": [],
+  "configurationRevision": 20,
+  "storeSchema": 3,
+  "noLiveWTFWrites": true,
+  "gameInputPerformed": false,
+  "retailAcceptance": "User owns reload; Summary arrows are user confirmed for the reported candidate.42 quest. Focused notes with/without L2 need user confirmation after this repair; rendering, taint/timing/persistence/CPU remain pending."
+}

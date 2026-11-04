@@ -16,8 +16,11 @@ native capability/readiness/ownership checks. Updated ConsolePort, bags, mount,
 camera, fade and Pawn integrations can activate without version allowlists.
 Current native-source regression coverage and an old-lock defect control protect
 this behavior. Schema3/revision20 and feature ownership remain.
-[Audit](docs/reference/ADDON-UPDATE-AUDIT-2026-11-03.md). Delivery and Retail
-acceptance are recorded separately in current status.
+[Audit](docs/reference/ADDON-UPDATE-AUDIT-2026-11-03.md). Installed November 3 at
+19:21:17 Toronto; all 61 files match, with other addons, WTF, links and backups
+preserved. All 108 runtime/source checks and 76 tooling tests pass locally and in
+fresh CI. Retail confirmation remains separate.
+[Readback](evidence/delivery/candidate44-independent-readback.json).
 
 ## Focused reward Pawn note repair — October 17, 2026
 

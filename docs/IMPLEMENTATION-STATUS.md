@@ -2,21 +2,34 @@
 
 Status: maintained
 Reviewed: 2026-11-03
-Evidence: [candidate.43 readback](../evidence/delivery/candidate43-independent-readback.json),
-[source qualification](../evidence/test-results/candidate43-pawn-tooltip-qualification.json),
-[fresh CI](../evidence/test-results/candidate43-fresh-ci.json).
+Evidence: [candidate.44 readback](../evidence/delivery/candidate44-independent-readback.json),
+[source qualification](../evidence/test-results/candidate44-addon-compatibility-qualification.json),
+[fresh CI](../evidence/test-results/candidate44-fresh-ci.json).
 
-## Candidate.44 compatibility preparation
+## Current installed checkpoint: candidate.44
 
 The November 3 audit establishes version-admission failures with the installed
 addon updates. Candidate.44 removes all third-party version admission locks and
 uses native capability/readiness/ownership checks. Updated official dependency
-inventories already match on disk, so the intended payload is Forever alone.
-All 108 runtime/source checks and 76 tooling tests pass locally with exact
+inventories already match on disk, so only Forever was delivered.
+All 108 runtime/source checks and 76 tooling tests pass locally and in fresh
+Windows CI with matching complete
 64-product and 165-tool/test inventories. [Qualification](../evidence/test-results/candidate44-addon-compatibility-qualification.json).
-Schema3/revision20 and existing gameplay ownership remain. Preparation, delivery
-and Retail acceptance are separate; the installed checkpoint below remains the
-last verified delivery until a new receipt is recorded.
+Schema3/revision20 and existing gameplay ownership remain.
+
+Installed November 3 at **19:21:17 Toronto** from tested/pushed source
+`ec1f348ceab2dc267de09b822ac4270865394adc`. Independent readback verifies all
+61 Forever files, 3,081 unchanged other addon files, 316 unchanged WTF files,
+42 links/root anchors and 27,702 prior backup files/2,450 directories.
+No dependency/WTF writes or game input. CI commit
+`b994502c214081118af3f33da9fbb16512e0f40c` differs only in historical archive
+fetch selection; every product/tool/test hash matches the delivered qualification.
+[Delivery](../evidence/delivery/candidate44-independent-readback.json),
+[CI](../evidence/test-results/candidate44-fresh-ci.json).
+
+The user owns next login/reload and the compatibility checklist. Offline proof
+does not establish Retail authority, rendering, timing, taint, persistence or CPU.
+K04/K05/K07 remain open; no new setup review is required for accepted revision20.
 [Audit](reference/ADDON-UPDATE-AUDIT-2026-11-03.md),
 [decision](decisions/0009-capability-based-integrations.md).
 

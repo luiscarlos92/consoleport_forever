@@ -1,0 +1,311 @@
+{
+  "addonFolders": [
+    "ConsolePort_Forever"
+  ],
+  "allowRunningCompanion": true,
+  "backup": "C:\\Users\\luisr\\WoW-Backups\\ConsolePort-Forever\\20261104T001007Z-832c19d4bc5f",
+  "characterLinkCount": 42,
+  "closedAt": "2026-11-04T00:21:17.043058+00:00",
+  "consolePortVersion": "3.3.13",
+  "currentConfigurationWrites": false,
+  "dependencyUpdates": [],
+  "execute": true,
+  "gameRunningAtPreview": false,
+  "id": "20261104T001007Z-832c19d4bc5f",
+  "installedFiles": {
+    "ActionRecovery.lua": {
+      "bytes": 8251,
+      "sha256": "080a19fd0691d9a45db5ccaffcdedcf1d7893fbce91802fb672eae919388f9b6"
+    },
+    "Adapters/BetterBags.lua": {
+      "bytes": 8535,
+      "sha256": "58d976f0d156c8ef260ccd86cf66441557f9f889cb75290be2428fee95d7b527"
+    },
+    "Adapters/BindingBanks.lua": {
+      "bytes": 6874,
+      "sha256": "415ff7353efaa55645cb2b809fc89eaf58dcda7fd544de322edf96603a772724"
+    },
+    "Adapters/BindingState.lua": {
+      "bytes": 5962,
+      "sha256": "ae63a75e4d55e4ad51966900b71dd8ec4d6e944cdb49da83e4553a4db21c050d"
+    },
+    "Adapters/ConsolePort.lua": {
+      "bytes": 1683,
+      "sha256": "6044ce16ccd7913860ea29258845712c8860b040de6237181b405b0a8d79aa0d"
+    },
+    "Adapters/DynamicCam.lua": {
+      "bytes": 4738,
+      "sha256": "17b5e1670fd178a1fdd9b5f8759dd1590a607cff0337c82f18f7d862bb0b34ee"
+    },
+    "Adapters/EditMode.lua": {
+      "bytes": 4387,
+      "sha256": "676c351c2148adcf0606c783fc02c26e41c0a0b0a80883670e200c610fbbe559"
+    },
+    "Adapters/FlatConfig.lua": {
+      "bytes": 1055,
+      "sha256": "8a9c589d6b15b844ee6da75b066992aac8cb4a01074a5fd5d40ed4203a15cef9"
+    },
+    "Adapters/Integrations.lua": {
+      "bytes": 3536,
+      "sha256": "ef632c3da5a9399cfd60d09057922b7f63c5617b1302d439f9dab77ac1eccbbe"
+    },
+    "Adapters/LiteMount.lua": {
+      "bytes": 2716,
+      "sha256": "866d7d3ab10273d7a8732f0bbddedca090616164ae7b068f4bffae92508d2605"
+    },
+    "Adapters/NativeBindings.lua": {
+      "bytes": 3130,
+      "sha256": "38f079727662edfe49f2fc5ec9b0fb8b272f68ca2ad0f4199d7f6b0400d9560a"
+    },
+    "Adapters/Rings.lua": {
+      "bytes": 7248,
+      "sha256": "1f18c01464f582599826964ce117dff29e55575c0c9f5447835812eaedeaa8d6"
+    },
+    "Adapters/SharedUtility.lua": {
+      "bytes": 12096,
+      "sha256": "ee66e871bfea86b4d6c1af19c897bab1eaae5c23d5783c7d1d918964fa741635"
+    },
+    "Assets/ForeverInGame.blp": {
+      "bytes": 4195476,
+      "sha256": "9daccf7f192871a876ede143a14f4cc453a726ac271fc89d0e30a5610b5a673f"
+    },
+    "Assets/ForeverTargeting.blp": {
+      "bytes": 132244,
+      "sha256": "f1cbdf024b1d397abe318dd9caaf67f6c0ab6c5406d03873a456aa48e7b76760"
+    },
+    "Baseline.lua": {
+      "bytes": 635,
+      "sha256": "01e1179abcc30856a867748bd594fe9f442b23121cbc34f2af840f34afaf6457"
+    },
+    "BindingPolicy.lua": {
+      "bytes": 1480,
+      "sha256": "32545c0d0d66683b4c9907db9be83bc0dcd9cf6e64f09fe09437dc03f0623afe"
+    },
+    "Capability.lua": {
+      "bytes": 1686,
+      "sha256": "72ba730d2f821aed9a1c20204d7e93d49698d2270a503495617400f72a76d077"
+    },
+    "Cinematic.lua": {
+      "bytes": 2664,
+      "sha256": "dd8b0fff9da43d34085cc3cc6eaf86fc563eb7bac9926eb4a343110a94220a31"
+    },
+    "Circle.lua": {
+      "bytes": 12897,
+      "sha256": "23c78042d8f20ec216a2c8aec683dd2a1bcf85e444f1f47521030967d2778999"
+    },
+    "ClassActions.lua": {
+      "bytes": 9375,
+      "sha256": "8db90609dde641f02acff81a5350094f87b45114be600b76d4f342619ccf1c67"
+    },
+    "ConsolePort_Forever.lua": {
+      "bytes": 33944,
+      "sha256": "ad4e10dca5e8b0c3bac0801c333cbe1c729d842226299634a58f292aa153bab5"
+    },
+    "ConsolePort_Forever.toc": {
+      "bytes": 1649,
+      "sha256": "e28321a253062453b4d10d6d9ba3c55ea2e48491d5e014d169e7cec10d948127"
+    },
+    "Coordinator.lua": {
+      "bytes": 11674,
+      "sha256": "7ec5738efef6e56e1f172b9a4304126910b1aa79f1f3ae5100e68ad41a54e87e"
+    },
+    "Core.lua": {
+      "bytes": 2308,
+      "sha256": "82d58af0dae095215454d86b85a351834a4c4bf21519f549904c56d504dad8f6"
+    },
+    "Diagnostics.lua": {
+      "bytes": 11733,
+      "sha256": "935d6200de9c86b27e75c655240ea301e038b003b4471ca359d883801ba0d4cf"
+    },
+    "HUDPresentation.lua": {
+      "bytes": 25324,
+      "sha256": "118f348a6d25f6de8c175efd6ddff2bfb7f64a370137868155ae4f492496c237"
+    },
+    "ModePolicy.lua": {
+      "bytes": 937,
+      "sha256": "72ee64c6985d3fc288cce62b2351bf8254364e4f94dfba77fb34dcbc8fa739ba"
+    },
+    "Plan.lua": {
+      "bytes": 2848,
+      "sha256": "654eadebfa115b3c480d555099609114f511561aaa558a05a5af2bcf6d1500af"
+    },
+    "Prompt.lua": {
+      "bytes": 7999,
+      "sha256": "976c8cab8db6b67d6e02e377e51f44148d139f8590159bc452cff5b0dd000d9b"
+    },
+    "Reference.lua": {
+      "bytes": 10213,
+      "sha256": "eb0961ddb5afa76dc55b9d01a6663159d8c378cb5a628331a6d8264735a36d30"
+    },
+    "Rings/Discovery.lua": {
+      "bytes": 4849,
+      "sha256": "04e6c8b1e26ae570fad970815b46fe1bfbba876cb1a1fc58345c9b9b9b957e4c"
+    },
+    "Rings/FollowerDungeon.lua": {
+      "bytes": 10385,
+      "sha256": "5c78c41ca54a0126391fc93957c2b8e95a7a0aa1c99e3bcba336c84a5051ad5b"
+    },
+    "Rings/Selectors.lua": {
+      "bytes": 6030,
+      "sha256": "32ac2e6a837a2f8008ab082e1d4ed991bb617528707d9b2102e8cac35e21b49d"
+    },
+    "Rings/Utility.lua": {
+      "bytes": 20290,
+      "sha256": "688569b785fb69def8861604036ac9eba74dd7e51d92b0613db7b4b8b1d965ce"
+    },
+    "Rings/UtilityFlag.lua": {
+      "bytes": 2522,
+      "sha256": "5478e1ca4d5304ac9f7bbb51204f501e00f647c08cb4f93cec3aecdf66b84cf4"
+    },
+    "Rings/UtilityRuntime.lua": {
+      "bytes": 11831,
+      "sha256": "8c66e58e8de68e553d84ceb19b36e01eabe5158805e161dc2f05750d7ad67e8d"
+    },
+    "Runtime.lua": {
+      "bytes": 6434,
+      "sha256": "571a977f435fd39ffff884f5e8f1488e003c8708d16a0bcd159e916e608cdac4"
+    },
+    "RuntimeSetup.lua": {
+      "bytes": 16801,
+      "sha256": "8aac1ef9e88d4e0b9b8acd48d6515cb3da1b7f7cf63f5db829ef1a0e026a15ff"
+    },
+    "SavedEditModeReference.lua": {
+      "bytes": 2938,
+      "sha256": "2b7febffaab0baa26abd10a9064e2aacb3fe2cce0620d70f65daa5fbd859a45c"
+    },
+    "SecureModes.lua": {
+      "bytes": 10673,
+      "sha256": "032bd31b8bb620560f5f20ac81dc1156473702217d5845d5558e336a87a659b2"
+    },
+    "Skin.lua": {
+      "bytes": 24045,
+      "sha256": "7d60afd28ae13dfc2bdbd5fbac83c88a9e7766c2aee245b93172a57022862d93"
+    },
+    "Store.lua": {
+      "bytes": 5037,
+      "sha256": "4bfea3ba75a7f5443f2c5a6d4da2de643d3aebae189a31f01b15cfaf09b92924"
+    },
+    "Targeting/Ping.lua": {
+      "bytes": 20022,
+      "sha256": "8939be703892fd6d5fbe5c1984894d76309932b008678fa8ff939903a2c4716c"
+    },
+    "TemporaryAccess.lua": {
+      "bytes": 5703,
+      "sha256": "364f9ca8043f2ca6407baf95255949727c1034bf1420a5db94782a0c547f0247"
+    },
+    "TemporaryRouting.lua": {
+      "bytes": 13604,
+      "sha256": "3581b277e7f80bfb45acc0e3d7710e6496696eacbc588b86c9288041ec6443de"
+    },
+    "Transactions.lua": {
+      "bytes": 6201,
+      "sha256": "b5950dd8bafcaba5eb1ce6d27dc93f7a6178d7a6d0dbb2191f59f6ede25b245a"
+    },
+    "UI/Contexts.lua": {
+      "bytes": 9119,
+      "sha256": "174a5259716b2734209b34684016d5d9650c6f6f4bd4ed5902c652e1308d9a25"
+    },
+    "UI/EditModeReference.lua": {
+      "bytes": 2689,
+      "sha256": "78315fd8e4404ca8b65d462e031d80216af7e678a4d3e59c34f133e8c31392d0"
+    },
+    "UI/FocusVisuals.lua": {
+      "bytes": 2836,
+      "sha256": "faa24f4998fc8a0acdffcb9f0209af22c237880a58999cc1c3a44a69e3f1a832"
+    },
+    "UI/HiddenAccess.lua": {
+      "bytes": 6104,
+      "sha256": "ecb395b7b08ba0490176c3b42eb68e566e3e92813fb32d3ac6e9cca7b077b1ca"
+    },
+    "UI/ImmersionProgress.lua": {
+      "bytes": 5710,
+      "sha256": "10339b6825586f0ee6728c36f4ef40f8176814c59400bc918a1752f9446529d4"
+    },
+    "UI/InputBridge.lua": {
+      "bytes": 12340,
+      "sha256": "381638c8a568cf048f4abca00340a55b12de04ff3fe10f5b889f0177e6ab4922"
+    },
+    "UI/ItemHints.lua": {
+      "bytes": 6023,
+      "sha256": "aec2c1eab3e992358af7e48f342e834e047c56be08c56a3d0b58c85acd65a815"
+    },
+    "UI/Map.lua": {
+      "bytes": 10375,
+      "sha256": "33d7a5762ba2eae61bad42f0872ad13777c05fd14c96702c5778dad04bbb5059"
+    },
+    "UI/Ownership.lua": {
+      "bytes": 1259,
+      "sha256": "0bb3b1c386073e63c377475b783ddc370b6daba1a2bc9cf4301e90ca92b1accd"
+    },
+    "UI/PartyLayout.lua": {
+      "bytes": 4066,
+      "sha256": "a84175418653a72b581e063563f72237946c431c3c0f5cd8be852c05459705ed"
+    },
+    "UI/PawnImmersion.lua": {
+      "bytes": 14059,
+      "sha256": "a587fb967d31079c5d68b5fc2b7bef0ecfde86ed99482c706942426aed8b8a3b"
+    },
+    "UI/Proof.lua": {
+      "bytes": 8528,
+      "sha256": "d280ee1ec98cd8619d42d43a6ae82dc46b6b2c8158febd86173c773f0149ed75"
+    },
+    "UI/Scroll.lua": {
+      "bytes": 6942,
+      "sha256": "f8c81f1e7710a312e38d1f5fa15929250cee951d996715f55ceb8bec3a579d25"
+    },
+    "UI/Windows.lua": {
+      "bytes": 8619,
+      "sha256": "2301f8c937c2f41d22a6698b3bbb2d63839c42dd6bd45fdbd9fdcbbcbf58eca7"
+    }
+  },
+  "operation": "deploy-companion",
+  "packSHA256": "af51a8ddd65f8b8de038a4a14f6bd47d312b3904c83e2e9a43a116c1e7d380c6",
+  "reloadRequired": true,
+  "root": "C:\\Program Files (x86)\\World of Warcraft\\_retail_",
+  "sourceCommit": "ec1f348ceab2dc267de09b822ac4270865394adc",
+  "stage": "C:\\Users\\luisr\\OneDrive\\Documents\\03 Gaming\\World of Warcraft\\_retail_\\Interface\\.cpf-companion-stage-20261104T001007Z-832c19d4bc5f",
+  "startedAt": "2026-11-04T00:10:10.033183+00:00",
+  "status": "installed",
+  "testedDependencies": {
+    "Cidan/BetterBags": {
+      "sha256": "eabd629e73878544b16f5098295c76a255d3022e14d6c5631719e8d9e1e95a8b",
+      "version": "v0.8.12"
+    },
+    "SFX-WoW/Masque": {
+      "sha256": "e4250f08b5429dd054ee9799db48ab64f1a3523dfd76ad3368437300ddb690c1",
+      "version": "12.1.8"
+    },
+    "SLOKnightfall/BetterWardrobe": {
+      "sha256": "7a05e288627d3ca9b3855133cfa6fc40db615004e4ffcac009c65055b8a304ae",
+      "version": "6.12.5"
+    },
+    "Tercioo/Plater-Nameplates": {
+      "sha256": "04879df2e49f21963fabcc50b2f0a1628260e47e54f1ef7a6b38bdb26ab0e5a3",
+      "version": "Plater-v662"
+    },
+    "curseforge/DynamicCam": {
+      "sha256": "202c8d66a38e676a22576f0fb1e9e8b08135453f78f8f994c96e653e918c1c31",
+      "version": "2.21.5"
+    },
+    "curseforge/Immersion_ExtraFade": {
+      "sha256": "d29784b5c7f798695e366aedf57667508108da19f3e762bb70388916c5d2d23a",
+      "version": "1.18.2"
+    },
+    "seblindfors/ConsolePort": {
+      "sha256": "548994a59cc548f53c26e6530137049129141f138c98d699f78fabe9f07037d2",
+      "version": "3.3.13"
+    },
+    "seblindfors/Immersion": {
+      "sha256": "b180a8cbd1a1d878377da5a85abfdc5576e0c04212f9e900e3e9ca505cde1f3e",
+      "version": "1.4.61"
+    },
+    "xod-wow/LiteMount": {
+      "sha256": "07fb21bc7b195f2a25a7549238b24e8333f633c919d9fcf913766cdc68a6664a",
+      "version": "12.1.5-2"
+    }
+  },
+  "vendorFileCount": 3081,
+  "vendorWrites": false,
+  "vendorsUnchanged": true,
+  "wtfUnchanged": true
+}

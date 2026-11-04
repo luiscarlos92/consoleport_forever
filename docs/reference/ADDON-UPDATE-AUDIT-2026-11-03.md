@@ -9,7 +9,7 @@ Evidence: [official-file readback](../../evidence/dependencies/candidate44-insta
 
 ## Established defect and repair
 
-Installed Forever candidate.43 rejects ConsolePort 3.3.13 through 3.3.10-only
+The pre-update Forever candidate.43 rejects ConsolePort 3.3.13 through 3.3.10-only
 guards in configuration, rings, HUD, temporary routing, ping and contexts. Its
 BetterBags, DynamicCam, ExtraFade, LiteMount and Pawn version guards also reject
 the installed updates. This is a source-proven admission defect; which modules
@@ -68,6 +68,15 @@ BetterBags v0.8.12 source with arbitrary future metadata, both provider load
 orders, the assertions and 19 defect controls recorded in its exact-source receipt.
 All 108 runtime/source checks and 76 tooling tests pass with matching complete
 source inventories. [Qualification](../../evidence/test-results/candidate44-addon-compatibility-qualification.json).
+
+Candidate.44 was installed November 3 at 19:21:17 Toronto from pushed source
+`ec1f348ceab2dc267de09b822ac4270865394adc`, selecting Forever alone. All 61
+files match the artifact independently; other addons, WTF, links/root anchors
+and prior backups are preserved. Fresh Windows CI matches complete local
+inventories; its follow-up changes only historical archive selection after an
+unused old Masque asset returned 404. No additional runtime or dependency payload.
+[Readback](../../evidence/delivery/candidate44-independent-readback.json),
+[CI](../../evidence/test-results/candidate44-fresh-ci.json).
 
 A tooling closure defect discovered with Masque's AllowLoadTextLocale TOC
 annotations is repaired without changing upstream bytes. All declared locale

@@ -1,0 +1,29 @@
+{
+  "at": "2026-11-04T04:50:38.210594+00:00",
+  "candidate": "2.0.0-candidate.44",
+  "run": {
+    "conclusion": "success",
+    "databaseId": 41744937804,
+    "headSha": "b994502c214081118af3f33da9fbb16512e0f40c",
+    "status": "completed",
+    "url": "https://github.com/luiscarlos92/consoleport_forever/actions/runs/41744937804"
+  },
+  "deliveredSourceCommit": "ec1f348ceab2dc267de09b822ac4270865394adc",
+  "ciFollowupChanges": [
+    ".github/workflows/tests.yml"
+  ],
+  "ciFollowupReason": "Fetch only the four packages used by historical captures; unused historical Masque archive returned 404 in the first CI run.",
+  "runtimeChecks": 108,
+  "toolingTests": 76,
+  "productFiles": 64,
+  "toolingFiles": 165,
+  "runtimeReportSHA256": "1dc62de9ac6f8be8e1018f7e7962a3b9b00cf50a529478b87e2460197fee8ff5",
+  "toolingReportSHA256": "cffaae34794dd05c98ab526c597a4de6da55df3d88fb2538c13677de904c31fb",
+  "pinnedDownloadReportSHA256": "e806d82c0fb712b17e2c1a99fdf59188cee9e7ab7a244ddf7468592e07ed076b",
+  "dependencyLockSHA256": "115a473638ea4f58173529d7766ee7b1896a5be656c1fe1f8ebecf4b0bb10b83",
+  "completeInventoriesMatchLocalQualification": true,
+  "completeInventoriesMatchCurrentSource": true,
+  "lockMatchesLocal": true,
+  "nativeIntegrationAndPawnSourceReconstructionStagePassed": true,
+  "proofLimit": "Clean Windows offline source/compiler/simulation proof; not Retail engine authority, rendering, taint, hardware timing, persistence or CPU acceptance."
+}

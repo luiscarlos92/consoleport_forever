@@ -1,16 +1,17 @@
 # Pending deployment and cumulative acceptance
 
-Status: candidate.43 installed October 17, 2026 at 21:44:55 Toronto.
+Status: candidate.44 installed November 3, 2026 at 19:21:17 Toronto.
 Reviewed: 2026-11-03
-Evidence: [independent readback](../evidence/delivery/candidate43-independent-readback.json),
-[qualification](../evidence/test-results/candidate43-pawn-tooltip-qualification.json),
-[fresh CI](../evidence/test-results/candidate43-fresh-ci.json).
+Evidence: [independent readback](../evidence/delivery/candidate44-independent-readback.json),
+[qualification](../evidence/test-results/candidate44-addon-compatibility-qualification.json),
+[fresh CI](../evidence/test-results/candidate44-fresh-ci.json).
 
-All 106 runtime/source checks and 74 tooling tests pass locally and in fresh CI
+All 108 runtime/source checks and 76 tooling tests pass locally and in fresh CI
 with complete matching inventories. The Forever-only installation independently
 preserves other addons, WTF, links/root anchors and prior backups.
-Schema3/revision20 remain. No game input. Four dependency updates remain prepared
-and excluded. K07 awaits focused-tooltip Retail confirmation; K04/K05 remain.
+Schema3/revision20 remain. No game input. Current official dependencies already
+match the user's updated installation and were not recopied. K07 awaits
+focused-tooltip Retail confirmation; K04/K05 remain.
 
 ## Candidate.44 compatibility checks
 
@@ -64,8 +65,9 @@ After the Forever-only deployment and user-owned reload:
 3. Check exit/re-entry, combat, Edit Mode and utility disable plus reload.
    Unknown/unready contexts retain the native fallback. No game input is automated.
 
-BetterBags v0.5.17, Plater-v661, DynamicCam 2.21.4 and ExtraFade 1.18.1 are qualified in preparation;
-dependency replacement requires closed WoW and is excluded from this update.
+At candidate.41, BetterBags v0.5.17, Plater-v661, DynamicCam 2.21.4 and ExtraFade
+1.18.1 were qualified in preparation and excluded. The user's later updates are
+covered by the candidate.44 audit above; this historical list is not pending work.
 K06's candidate.41 user acceptance is recorded above; K04/K05 are unchanged.
 
 ## Previous candidate.38 diagnostic checkpoint

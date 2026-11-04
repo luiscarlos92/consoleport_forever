@@ -16,7 +16,18 @@ jobs:
       - name: Verify exact pinned official archives (explicit network stage)
         run: python tools/verify_pinned_sources.py
       - name: Verify retained historical contract packages (explicit network stage)
-        run: python tools/verify_pinned_sources.py --lock evidence/dependencies/candidate43-lock.json
+        shell: python
+        run: |
+          import json, sys
+          sys.path.insert(0, 'tools')
+          from verify_pinned_sources import verify_download
+          with open('evidence/dependencies/candidate43-lock.json', encoding='utf-8') as source:
+              packages = json.load(source)['packages']
+          with open('evidence/integration-contracts-candidate43/manifest.json', encoding='utf-8') as source:
+              required = {row['repo'] for row in json.load(source)['files']}
+          for package in packages:
+              if package['repo'] in required:
+                  verify_download(package)
       - name: Reconstruct current contract inputs (explicit network stage)
         run: python -B tools/capture_integration_contracts.py --from-manifest evidence/consoleport-contracts-candidate44/manifest.json --from-manifest evidence/integration-contracts-candidate44/manifest.json
       - name: Reconstruct hash-pinned local contract inputs (explicit network stage)

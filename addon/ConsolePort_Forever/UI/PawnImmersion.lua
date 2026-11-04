@@ -5,16 +5,15 @@ local observed=setmetatable({},{__mode='k'})
 local function known(api,value)
     return not api.issecretvalue or not api.issecretvalue(value)
 end
-local function version(api,name,value)
-    return api.C_AddOns and api.C_AddOns.IsAddOnLoaded(name)
-        and api.C_AddOns.GetAddOnMetadata(name,'Version')==value
+local function loaded(api,name)
+    return api.C_AddOns and type(api.C_AddOns.IsAddOnLoaded)=='function' and api.C_AddOns.IsAddOnLoaded(name)
 end
 
 -- Pawn's readiness flag is private. Observe its real initialization boundary:
 -- PawnInitializePlugins is reached after that flag, then defer beyond the final
 -- scale corrections. OptionalDeps puts this observer before PLAYER_LOGIN.
 function Integration:Observe(api)
-    if observed[api] or not version(api,'Pawn','2.13.17')
+    if observed[api] or not loaded(api,'Pawn')
         or type(api.PawnInitializePlugins)~='function' or type(api.PawnInitialize)~='function'
         or type(api.hooksecurefunc)~='function'
         or not api.C_Timer or type(api.C_Timer.After)~='function' then return end
@@ -49,7 +48,7 @@ function Bridge:Allowed()
 end
 function Bridge:Available()
     local api=self.api
-    return self:Allowed() and version(api,'Pawn','2.13.17') and version(api,'Immersion','1.4.61')
+    return self:Allowed() and loaded(api,'Pawn') and loaded(api,'Immersion')
         and observed[api] and observed[api].ready and self.frame and self.inspector and self.pool
         and api.ImmersionFrame==self.frame
         and self.frame.Inspector==self.inspector and self.inspector.tooltipFramePool==self.pool
@@ -86,8 +85,7 @@ function Bridge:Arrow(item)
 end
 function Bridge:BagUsesPawn()
     local api=self.api
-    if not (version(api,'BetterBags','v0.5.14') or version(api,'BetterBags','v0.5.16')
-        or version(api,'BetterBags','v0.5.17'))
+    if not loaded(api,'BetterBags')
         or not api.LibStub then return false end
     local ace=api.LibStub('AceAddon-3.0',true)
     local bags=ace and ace:GetAddon('BetterBags',true)
@@ -228,7 +226,7 @@ function Bridge:Install()
     if self.installed then return true end
     local api=self.api;local frame=api.ImmersionFrame
     local inspector=frame and frame.Inspector
-    if not version(api,'Pawn','2.13.17') or not version(api,'Immersion','1.4.61')
+    if not loaded(api,'Pawn') or not loaded(api,'Immersion')
         or not inspector or not inspector.tooltipFramePool or not inspector.tooltipFramePool.active
         or not frame.TalkBox or not frame.TalkBox.Elements or not frame.TalkBox.Elements.Content
         or not frame.TalkBox.Elements.Content.RewardsFrame

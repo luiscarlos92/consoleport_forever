@@ -23,3 +23,6 @@ dependencies/unpacked/
 /archive/onedrive-legacy/**/current-source/
 /archive/onedrive-legacy/**/current-packages/
 /archive/onedrive-legacy/**/packages/
+
+/evidence/consoleport-contracts-candidate44/*/
+/evidence/integration-contracts-candidate44/*/

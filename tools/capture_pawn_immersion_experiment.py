@@ -63,7 +63,15 @@ def main():
 
 
 if __name__ == '__main__':
-    if '--tooltip-repair' in sys.argv:
+    if '--updates' in sys.argv:
+        MANIFEST = ROOT / 'evidence/pawn-immersion/2026-11-03/update-inputs.json'
+        GROUPS = [
+            ('VgerMods/Pawn', 'Pawn-2.14.1', 'PawnCurrent',
+             ['Pawn.lua','PawnBags.lua','Core.lua','Localization.lua','VgerCore/VgerCore.lua','Readme.md','Pawn.toc','PawnUI.xml']),
+            ('Cidan/BetterBags', 'v0.8.12', 'BetterBagsCurrent',
+             ['integrations/pawn.lua','data/items.lua']),
+        ]
+    elif '--tooltip-repair' in sys.argv:
         MANIFEST = ROOT / 'evidence/pawn-immersion/2026-10-17/tooltip-repair-inputs.json'
         GROUPS = [
             ('Gethe/wow-ui-source', PIN, 'Native',

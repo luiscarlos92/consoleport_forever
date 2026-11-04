@@ -1,10 +1,19 @@
 # Implementation architecture
 
 Status: maintained
-Reviewed: 2026-10-17
+Reviewed: 2026-11-03
 Evidence: [TOC](../addon/ConsolePort_Forever/ConsolePort_Forever.toc),
 [bootstrap](../addon/ConsolePort_Forever/ConsolePort_Forever.lua),
 [runtime setup](../addon/ConsolePort_Forever/RuntimeSetup.lua).
+
+## Integration admission
+
+Candidate.44 removes every third-party addon version allowlist. Native API,
+data shape, readiness, ownership and secure-body probes determine availability.
+Version labels remain diagnostic; reproducible source pins are test evidence.
+No TOC load order, schema, configuration revision or feature ownership changes.
+[Decision 0009](decisions/0009-capability-based-integrations.md),
+[current audit](reference/ADDON-UPDATE-AUDIT-2026-11-03.md).
 
 ## Loading and initialization
 

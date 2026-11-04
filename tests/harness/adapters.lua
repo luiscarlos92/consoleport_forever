@@ -64,6 +64,8 @@ local bridge=Addon.ConsolePortAdapter.New({version="3.3.10",getDB=function() ret
 assert(bridge:Probe() and bridge:Capture().settings.bindingPresetCondition=="keep")
 assert(bridge:write({"settings","bindingPresetCondition"},""))
 assert(bridge:read({"settings","bindingPresetCondition"})=="")
-bridge.api.version="3.2.6" assert(not bridge:Probe())
-bridge.api.version="3.3.5" assert(not bridge:Probe(),'previous audited version silently accepted by the new candidate')
+for _,version in ipairs({'3.3.13','future','3.2.6',''}) do bridge.api.version=version assert(bridge:Probe(),'metadata blocked compatible ConsolePort') end
+bridge.api.version=nil assert(bridge:Probe(),'missing version metadata blocked ConsolePort')
+local get=db.Get db.Get=nil assert(not bridge:Probe(),'missing native getter accepted') db.Get=get
+local apply=bar.ApplyPreset bar.ApplyPreset=nil assert(not bridge:Probe(),'missing layout contract accepted') bar.ApplyPreset=apply
 TEST_SUCCESS=true

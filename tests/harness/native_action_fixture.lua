@@ -58,7 +58,7 @@ end
 SpellFlyout={Hide=function() flyoutHides=flyoutHides+1 end,Toggle=function() end}
 CPAPI={SecureEnvironmentMixin={}}
 local env={Attributes={Update=function(name) return '_childupdate-'..name end},RegisterCallback=function() end}
-function CPAPI.GetEnv() return env,{SetCVar=function() end} end
+function CPAPI.GetEnv() return env,{Actionbar={},SetCVar=function() end} end
 function Mixin(object,...)
     for i=1,select('#',...) do for key,value in pairs(select(i,...)) do object[key]=value end end
     return object
@@ -66,7 +66,7 @@ end
 function CreateFromMixins(...) return Mixin({},...) end
 string.trim=function(value) return value:match('^%s*(.-)%s*$') end
 format,tostring,gsub=string.format,tostring,string.gsub
-NUM_ACTIONBAR_BUTTONS=12
+NUM_ACTIONBAR_BUTTONS=12; NUM_ACTIONBAR_PAGES=6
 --@CURRENT_CP
 local Frame={}
 function Frame:IsProtected() return self.protected~=false end

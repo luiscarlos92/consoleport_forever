@@ -14,6 +14,7 @@ end
 function CastSpellByName(...) error('unexpected named spell route') end
 CPAPI.GetSpellInfo=function(id) return {spellID=tonumber(id),name='Dungeon Assistance'} end
 CPAPI.GetSpellLink=function(id) return 'spell:'..tostring(id) end
+C_Spell=C_Spell or {}; C_Spell.GetSpellLink=CPAPI.GetSpellLink
 CPAPI.Log=function(...) error('unexpected native rejection') end
 db.Bindings.ConvertRingSetIDToDisplayName=function(_,id) return tostring(id) end
 CPAPI.Index=function(value) return getmetatable(value).__index end

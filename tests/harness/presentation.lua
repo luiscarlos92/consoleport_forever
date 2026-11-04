@@ -93,6 +93,7 @@ local removals=0
 local Core={}
 local BASE_TEXTURE='native-square-frame'
 local BASE_BLEND,BASE_LAYER,BASE_LEVEL,BASE_SIZE='BLEND','ARTWORK',0,50
+local TYPE_TABLE='table'
 local STR_SETATLAS,STR_SETTEXTURE='SetNormalAtlas','SetNormalTexture'
 local random=math.random
 local function GetTexCoords() return 0,1,0,1 end
@@ -102,7 +103,7 @@ local function SetSkinPoint(region,button) region:SetAllPoints(button) end
 local function SkinButton(button,regions,skin)
     assert(skin==false) removals=removals+1 button.icon:SetTexture('native-default')
     button._MSQ_CFG=button._MSQ_CFG or {
-        GetTypeSkin=function(_,_,value) return value end,GetSize=function(_,w,h) return w,h end,
+        GetTypeSkin=function(_,value) return value end,GetScaleSize=function(_,w,h) return w,h end,
     }
     Core.Skin_Normal(nil,button,{Texture=BASE_TEXTURE,Width=50,Height=50,UseStates=false})
 end

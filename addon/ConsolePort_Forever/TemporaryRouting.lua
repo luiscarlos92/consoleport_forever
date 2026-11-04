@@ -77,7 +77,7 @@ local function ordinaryDriver(value)
     return value:gsub('%[vehicleui%]%[overridebar%]%s*[^;]+;%s*','')
 end
 function Routing:Probe(bridge,api)
-    if not bridge or not bridge.api or bridge.api.version~='3.3.10' then return false,'ConsolePort version not qualified' end
+    if not bridge or type(bridge.Probe)~='function' then return false,'ConsolePort bridge unavailable' end
     local ok,reason=bridge:Probe()
     if not ok then return false,reason end
     if not api.CPAPI or not api.hooksecurefunc or not Addon.TemporaryAccess:Probe(bridge,api) then return false,'native temporary access/page APIs unavailable' end

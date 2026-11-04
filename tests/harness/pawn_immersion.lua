@@ -213,7 +213,12 @@ for _,name in ipairs({'Pawn','Immersion'})do
 end
 local metadata=C_AddOns.GetAddOnMetadata
 C_AddOns.GetAddOnMetadata=function()return 'unsupported' end
-open({reward});check(not Arrow(reward):IsShown(),'unsupported contract gated')
+open({reward});check(Arrow(reward):IsShown()==RUNTIME,'version metadata changed compatible runtime behavior')
+if RUNTIME then
+ local update=PawnUpdateTooltip;PawnUpdateTooltip=nil
+ open({reward});check(not Arrow(reward):IsShown(),'missing Pawn updater contract accepted')
+ PawnUpdateTooltip=update
+end
 C_AddOns.GetAddOnMetadata=metadata
 MODEL.rewards.choice1={secret=true};SetRewards({reward});MODEL.rewards.choice1={secret=true}
 bridge:Start(ImmersionFrame.TalkBox.Elements.Content.RewardsFrame.Buttons);check(not Arrow(reward):IsShown(),'opaque item link rejected')

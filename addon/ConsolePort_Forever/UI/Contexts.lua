@@ -7,7 +7,7 @@ local function visible(frame)
 end
 function Contexts:Probe(bridge,api)
     local db=bridge.db
-    if bridge.api.version~='3.3.10' or not db.Cursor or type(db.Cursor.GetCurrentNode)~='function'
+    if not db or not db.Cursor or type(db.Cursor.GetCurrentNode)~='function'
         or not Addon.InputBridge.Probe(db.Input,api,db.Layers) or type(api.StaticPopup_ForEachShownDialog)~='function' then
         return false,'audited native popup/cursor/input APIs unavailable'
     end

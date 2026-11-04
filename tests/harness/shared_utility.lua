@@ -74,6 +74,7 @@ CPAPI={DefaultRingSetID=1,ExtraActionButtonID=169,IsModernVersion=true,GetEnv=fu
     EventHandler=function(handler) return handler end,
     CreateElement=function() local value={} env.lastElement=value return value end,
     Popup=function(_,options) env.lastPopup=options return options end}
+C_Spell=C_Spell or {}; C_Spell.GetSpellLink=CPAPI.GetSpellLink
 --@NATIVE_ACTION_MAP
 --@NATIVE_DATABASE
 --@NATIVE_MAP

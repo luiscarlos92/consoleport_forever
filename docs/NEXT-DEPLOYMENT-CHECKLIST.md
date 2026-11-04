@@ -1,7 +1,7 @@
 # Pending deployment and cumulative acceptance
 
 Status: candidate.43 installed October 17, 2026 at 21:44:55 Toronto.
-Reviewed: 2026-10-17
+Reviewed: 2026-11-03
 Evidence: [independent readback](../evidence/delivery/candidate43-independent-readback.json),
 [qualification](../evidence/test-results/candidate43-pawn-tooltip-qualification.json),
 [fresh CI](../evidence/test-results/candidate43-fresh-ci.json).
@@ -11,6 +11,15 @@ with complete matching inventories. The Forever-only installation independently
 preserves other addons, WTF, links/root anchors and prior backups.
 Schema3/revision20 remain. No game input. Four dependency updates remain prepared
 and excluded. K07 awaits focused-tooltip Retail confirmation; K04/K05 remain.
+
+## Candidate.44 compatibility checks
+
+After the user-owned reload, check the HUD and ordinary Base/L2/R2/L2+R2 banks,
+vehicle/skyriding/quest temporary actions, ping and shared/follower Utility Ring.
+Compare Pawn feedback in bags and Immersion summary/focused rewards with and
+without L2. No new setup review is required for accepted revision20. Observe
+camera behavior if Leatrix MaxCameraZoom and DynamicCam are both active.
+[Audit and offline limits](reference/ADDON-UPDATE-AUDIT-2026-11-03.md).
 
 ## Candidate.43 Pawn/Immersion checks
 

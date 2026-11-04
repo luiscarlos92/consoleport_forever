@@ -27,7 +27,7 @@ function Setup.Adapters(api,account)
     if account and Addon.guid then
         local rings=cp.db.Rings
         local classSet=Addon.ClassActions.ResolveSet(rings,api)
-        -- The official Rings TOC has no Version field; qualify the suite owner.
+        -- Version labels are diagnostics only; ring admission probes native capabilities.
         adapters.rings=Addon.RingsAdapter.New({version=api.C_AddOns.GetAddOnMetadata('ConsolePort_Rings','Version') or api.C_AddOns.GetAddOnMetadata('ConsolePort','Version'),
             getDB=function() return cp.db end,getEnv=function()
                 local lib=api.LibStub('RelaTable',true)

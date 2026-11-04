@@ -2,6 +2,7 @@
 from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timezone
 import json
+import argparse
 import re
 import subprocess
 from urllib.request import urlopen
@@ -79,7 +80,12 @@ def verify_download(package):
 
 
 if __name__ == '__main__':
-    lock = ROOT/'dependencies/lock.json'
+    parser=argparse.ArgumentParser()
+    parser.add_argument('--lock',default='dependencies/lock.json')
+    args=parser.parse_args()
+    lock = contained(ROOT/args.lock)
+    if lock != ROOT/'dependencies/lock.json' and not (lock.is_relative_to(ROOT/'evidence/dependencies') and lock.name.endswith('-lock.json')):
+        raise ValueError('Historical lock must be explicit evidence metadata')
     packages = json.loads(lock.read_text(encoding='utf-8'))['packages']
     with ThreadPoolExecutor(max_workers=3) as pool:
         rows = list(pool.map(verify_download, packages))

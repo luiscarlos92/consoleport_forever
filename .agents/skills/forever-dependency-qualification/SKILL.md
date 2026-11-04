@@ -25,6 +25,13 @@ all current official bytes. A documentation-focused task can record a discovered
 update for separately scoped qualification instead of silently expanding into
 product changes; disclose the pending compatibility/delivery consequence.
 
+## Runtime admission
+
+The November 3 user instruction forbids third-party addon version admission
+locks. Preserve capability/readiness/ownership checks instead. Exact release/hash
+pins identify qualification evidence only. See
+[decision 0009](../../../docs/decisions/0009-capability-based-integrations.md).
+
 ## Qualify the changed contract
 
 Inspect affected native source, TOC/load closure, new/removed official folders and

@@ -21,11 +21,14 @@ function files(relative) {
 }
 const sha = relative => crypto.createHash('sha256').update(fs.readFileSync(safe(relative))).digest('hex');
 const results = [];
+const filterArg=process.argv.indexOf('--filter');
+const diagnosticFilter=filterArg<0?null:new RegExp(process.argv[filterArg+1]);
 function check(id, fn) {
+  if(diagnosticFilter && !diagnosticFilter.test(id)) return;
   const start = Date.now();
   console.log('RUNNING '+id);
   try { fn(); results.push({id, status:'passed', ms:Date.now()-start}); }
-  catch (e) { results.push({id, status:'failed', error:e.stack}); }
+  catch (e) { results.push({id, status:'failed', error:e.stack}); console.log('FAILED '+id+' '+String(e).split('\n')[0]); }
 }
 function execute(source, name) {
   const L = lauxlib.luaL_newstate();
@@ -145,13 +148,13 @@ TEST_SUCCESS=true
 check('T06-T14-T16.policies', () => execute(source+read('tests/harness/policies.lua'),'policies'));
 check('T18.current-native-ring-discovery', () => {
   const native=read('evidence/native/Blizzard_ActionBar/Shared/StanceBar.lua')+'\n'+read('evidence/native/Blizzard_ActionBar/Shared/PetActionBar.lua');
-  const current=read('evidence/consoleport-contracts/ConsolePort_Rings/Model/Container.lua');
+  const current=read('evidence/consoleport-contracts-candidate44/ConsolePort_Rings/Model/Container.lua');
   execute(source+read('tests/harness/ring_discovery.lua').replace('--@NATIVE_ACTION_BARS',()=>native)
     .replace('--@CURRENT_RING_CONTAINER',()=>';(function(...)\n'+current+'\nend)("ConsolePort_Rings");'),'ring-discovery-native-source');
 });
 check('T18.learned-selector-preparation', () => execute(source+read('tests/harness/ring_selectors.lua'),'learned-selector-preparation'));
 function ringFixture() {
-  const base='evidence/consoleport-contracts/ConsolePort_Rings/';
+  const base='evidence/consoleport-contracts-candidate44/ConsolePort_Rings/';
   const database=read(base+'Database.lua');
   const secure=read(base+'Controller/Secure.lua');
   const fixture=read('tests/harness/rings.lua')
@@ -197,7 +200,7 @@ check('T07-T09.both-binding-bank-restore', () => execute(source+read('tests/harn
 check('T08-T10.review-details', () => execute(source+read('tests/harness/prompt.lua'),'review-details'));
 check('T12-T13.adapters', () => execute(source+read('tests/harness/adapters.lua'),'adapters'));
 check('T13.pinned-flat-integration-settings', () => {
-  const base='evidence/integration-contracts-candidate43/';
+  const base='evidence/integration-contracts-candidate44/';
   const settingsAST=parser.parse(read(base+'Immersion/Settings.lua'),{luaVersion:'5.1',encodingMode:'x-user-defined'});
   const keys=new Set();
   function visit(value) {
@@ -215,10 +218,10 @@ check('T13.pinned-flat-integration-settings', () => {
     .replace('--@NATIVE_IMMERSION_CONFIG',()=>';(function(...)\n'+read(base+'Immersion/Config.lua')+'\nend)("Immersion",nativeImmersion);')
     .replace('--@NATIVE_EXTRFADE_OPTIONS',()=>';(function(...)\n'+read(base+'Immersion_ExtraFade/options.lua')+'\nend)("Immersion_ExtraFade");');
   execute(source+'NATIVE_IMMERSION_SETTINGS_KEYS={'+[...keys].sort().map(k=>JSON.stringify(k)).join(',')+'}\n'+fixture,'flat-integrations-native-settings');
-  execute(source+'NATIVE_IMMERSION_SETTINGS_KEYS={'+[...keys].sort().map(k=>JSON.stringify(k)).join(',')+'}\n'+fixture.replaceAll('1.18.0','1.18.1'),'flat-integrations-current-ExtraFade-settings');
+  execute(source+'NATIVE_IMMERSION_SETTINGS_KEYS={'+[...keys].sort().map(k=>JSON.stringify(k)).join(',')+'}\n'+fixture.replaceAll('1.18.0','1.18.2'),'flat-integrations-current-ExtraFade-settings');
 });
 check('T13.current-DynamicCam-AceDB', () => {
-  const base='evidence/integration-contracts-candidate43/';
+  const base='evidence/integration-contracts-candidate44/';
   const lock=JSON.parse(read('dependencies/lock.json'));
   for(const file of JSON.parse(read(base+'manifest.json')).files) {
     const package=lock.packages.find(p=>p.repo===file.repo);
@@ -233,7 +236,7 @@ check('T13.current-DynamicCam-AceDB', () => {
   }
   const fixture=read('tests/harness/dynamiccam.lua').replace('--@CURRENT_ACEDB',native)
     .replace('--@CURRENT_DYNAMIC_DEFAULTS',';(function(...)\n'+read(base+'DynamicCam/DefaultSettings.lua')+'\nend)("DynamicCam");');
-  for (const version of ['2.21.2','2.21.4']) execute(source+serializer+fixture.replaceAll('2.21.1',version),'DynamicCam-current-version-native-AceDB-'+version);
+  for (const version of ['2.21.2','2.21.4','2.21.5','future-release']) execute(source+serializer+fixture.replaceAll('2.21.1',version),'DynamicCam-current-version-native-AceDB-'+version);
   const state=execute(source+serializer+fixture,'DynamicCam-native-AceDB');
   require('./saved_variables.cjs').parse('PERSISTED_STATE='+state);
   execute(source+'local PERSISTED_STATE='+state+'\n'+fixture.split('--@LIFECYCLE')[0]+`
@@ -247,7 +250,7 @@ TEST_SUCCESS=true
 });
 check('T21.focus-visuals-proof', () => execute(source+read('tests/harness/focus_visuals.lua'),'focus-visuals-proof'));
 function uiContextFixture() {
-  const base='evidence/consoleport-contracts/';
+  const base='evidence/consoleport-contracts-candidate44/';
   const database=read(base+'ConsolePort/Utils/Database.lua').replace(/\r\n/g,'\n');
   const begin=database.indexOf('db.table.mixin = function');
   const end=database.indexOf('return obj\nend;',begin)+'return obj\nend;'.length;
@@ -279,12 +282,12 @@ check('T41.native-combat-engine-dispatch-after-UI-ownership', () => {
   execute(source+uiContextFixture()+'\n'+read('tests/harness/combat_dispatch.lua')
     .replace('--@NATIVE_ACTION_DISPATCH',()=>action)
     .replace('--@NATIVE_CLASS_HOLD',()=>{
-      const body=read('evidence/consoleport-contracts/ConsolePort_Rings/Controller/Secure.lua').match(/Hold = \[\[([\s\S]*?)\]\]/)[1];
+      const body=read('evidence/consoleport-contracts-candidate44/ConsolePort_Rings/Controller/Secure.lua').match(/Hold = \[\[([\s\S]*?)\]\]/)[1];
       return 'classHold=[=['+body+']=]';
     }),'combat-engine-dispatch');
 });
 function windowFixture() {
-  const base='evidence/consoleport-contracts/';
+  const base='evidence/consoleport-contracts-candidate44/';
   const windows=read('tests/harness/ui_windows.lua')
     .replace('--@NATIVE_STACK',()=>';(function(...)\n'+read(base+'ConsolePort_Cursor/Controller/Stack.lua')+'\nend)("ConsolePort_Cursor");')
     .replace('--@NATIVE_CURSOR_REGISTRATION',()=>nativeFunction(base+'ConsolePort/API.lua','ConsolePort:RemoveInterfaceCursorFrame'))
@@ -302,17 +305,17 @@ function nativeFunction(file,signature) {
 }
 function betterBagsFixture(integrationBase='evidence/integration-contracts-candidate43/',group='BetterBags') {
   const container='evidence/native/Blizzard_UIPanels_Game/Mainline/ContainerFrame.lua';
-  const base='evidence/consoleport-contracts/';
+  const base='evidence/consoleport-contracts-candidate44/';
   const fixture=read('tests/harness/betterbags.lua')
     .replace('--@NATIVE_CONTAINER_METHODS',()=>['ContainerFrameItemButton_OnClick','ContainerFrameItemButtonMixin:OnClick','ContainerFrameItemButtonMixin:OnModifiedClick','ContainerFrameItemButtonMixin:GetBagID','ContainerFrameItemButtonMixin:GetSlotAndBagID'].map(name=>nativeFunction(container,name)).join('\n'))
     .replace('--@NATIVE_BETTERBAGS_ITEM',()=>';(function(...)\n'+read(integrationBase+group+'/frames/item.lua')+'\nend)("BetterBags");')
     .replace('--@NATIVE_BETTERBAGS_INTEGRATION',()=>';(function(...)\n'+read(integrationBase+group+'/integrations/consoleport.lua')+'\nend)("BetterBags");')
     .replace('--@NATIVE_ITEM_MENU_SET',()=>nativeFunction(base+'ConsolePort_Menu/View/Popup/ItemMenu.lua','ItemMenu:SetItem'))
-    .replace('--@NATIVE_MODULE_DEMAND',()=>['Modules:IsEnabled','Modules:Demand'].map(name=>nativeFunction(base+'ConsolePort/Controller/Modules.lua',name)).join('\n'));
+    .replace('--@NATIVE_MODULE_DEMAND',()=>['Modules:GetCharacter','Modules:IsEnabled','Modules:Demand'].map(name=>nativeFunction(base+'ConsolePort/Controller/Modules.lua',name)).join('\n'));
   return windowFixture()+'\n'+fixture;
 }
 check('T21-T22.native-BetterBags-item-guards', () => {
-  for(const [base,version] of [['evidence/integration-contracts/','v0.5.14'],['evidence/integration-contracts-candidate43/','v0.5.17']]) {
+  for(const [base,version] of [['evidence/integration-contracts/','v0.5.14'],['evidence/integration-contracts-candidate43/','v0.5.17'],['evidence/integration-contracts-candidate44/','v0.8.12']]) {
     for(const row of JSON.parse(read(base+'manifest.json')).files.filter(row=>row.repo==='Cidan/BetterBags')) {
       if(sha(base+row.path)!==row.sha256) throw Error('BetterBags retained contract drift: '+row.path);
     }
@@ -325,12 +328,12 @@ check('T21-T22.native-BetterBags-item-guards', () => {
 });
 check('T35.native-merchant-container-hints', () => {
   const fixture=read('tests/harness/item_hints.lua')
-    .replace('--@NATIVE_TOOLTIP_PROMPT',()=>nativeFunction('evidence/consoleport-contracts/ConsolePort/Model/Gamepad/Gamepad.lua','GamepadMixin:GetTooltipButtonPrompt'))
+    .replace('--@NATIVE_TOOLTIP_PROMPT',()=>nativeFunction('evidence/consoleport-contracts-candidate44/ConsolePort/Model/Gamepad/Gamepad.lua','GamepadMixin:GetTooltipButtonPrompt'))
     .replace('--@NATIVE_MERCHANT_BUTTONS',()=>['MerchantItemButton_OnLoad','MerchantItemButton_OnClick','MerchantItemButton_OnEnter'].map(name=>nativeFunction('evidence/native/Blizzard_UIPanels_Game/Mainline/MerchantFrame.lua',name)).join('\n'));
   execute(source+betterBagsFixture()+'\n'+fixture,'native-merchant-container-hints');
 });
 function scrollFixture() {
-  const base='evidence/consoleport-contracts/';
+  const base='evidence/consoleport-contracts-candidate44/';
   const scroll=read('tests/harness/ui_scroll.lua')
     .replace('--@NATIVE_RADIAL',()=>';(function(...)\n'+read(base+'ConsolePort/Controller/Radial.lua')+'\nend)("ConsolePort",db);')
     .replace('--@NATIVE_SCROLL_CONTROLLER',()=>read('evidence/native/Blizzard_SharedXML/Shared/Scroll/ScrollController.lua'))
@@ -353,10 +356,10 @@ check('T21.native-map-canvas-controls', () => {
 });
 function presentationFixture() {
   if (!read('evidence/native/Blizzard_APIDocumentationGenerated/EventUtilsDocumentation.lua').includes('Name = "IsEventValid"')) throw Error('skin event validation lacks pinned native API evidence');
-  const masque='reference/installed-addons/2026-10-03-initial/Masque/Core/Group.lua';
   const package=JSON.parse(read('dependencies/lock.json')).packages.find(p=>p.repo==='SFX-WoW/Masque');
+  const masque=package.unpacked+'/Masque/Core/Group.lua';
   if(sha(masque)!==package.files['Masque/Core/Group.lua']) throw Error('Masque reference differs from current audited package');
-  const group='evidence/consoleport-contracts/ConsolePort_Bar/Widget/Group/Group.lua';
+  const group='evidence/consoleport-contracts-candidate44/ConsolePort_Bar/Widget/Group/Group.lua';
   const fixture=read('tests/harness/presentation.lua')
     .replace('--@NATIVE_MASQUE_NORMAL',()=>{
       const file=package.unpacked+'/Masque/Core/Regions/Normal.lua';
@@ -365,9 +368,9 @@ function presentationFixture() {
     })
     .replace('--@NATIVE_MASQUE_REMOVE',()=>nativeFunction(masque,'GMT:RemoveButton'))
     .replace('--@NATIVE_GROUP_SKIN_LIFECYCLE',()=>['CPGroupBar:UpdateButtons','CPGroupBar:OnMasqueLoaded'].map(name=>nativeFunction(group,name)).join('\n'))
-    .replace('--@NATIVE_MANAGER_BINDINGS',()=>nativeFunction('evidence/consoleport-contracts/ConsolePort_Bar/Controller/Manager/Manager.lua','Manager:GetBindings'))
-    .replace('--@NATIVE_AVAILABILITY',()=>['UpdateUsable','SpellVFX_CastingAnim_OnHide'].map(name=>nativeFunction('evidence/consoleport-contracts/ConsolePort/Libs/External/LibActionButton-1.0/LibActionButton-1.0.lua',name)).join('\n'))
-    .replace('--@NATIVE_UNBOUND_GLYPH',()=>['ResetGlyphTexture','ProxyButtonTextureProvider'].map(name=>nativeFunction('evidence/consoleport-contracts/ConsolePort_Bar/Widget/Button/Button.lua',name)).join('\n'))
+    .replace('--@NATIVE_MANAGER_BINDINGS',()=>nativeFunction('evidence/consoleport-contracts-candidate44/ConsolePort_Bar/Controller/Manager/Manager.lua','Manager:GetBindings'))
+    .replace('--@NATIVE_AVAILABILITY',()=>['UpdateUsable','SpellVFX_CastingAnim_OnHide'].map(name=>nativeFunction('evidence/consoleport-contracts-candidate44/ConsolePort/Libs/External/LibActionButton-1.0/LibActionButton-1.0.lua',name)).join('\n'))
+    .replace('--@NATIVE_UNBOUND_GLYPH',()=>['ResetGlyphTexture','ProxyButtonTextureProvider'].map(name=>nativeFunction('evidence/consoleport-contracts-candidate44/ConsolePort_Bar/Widget/Button/Button.lua',name)).join('\n'))
     .replace('--@PRODUCT_SKIN',()=>['HUDPresentation','Skin'].map(name=>';(function(...)\n'+read('addon/ConsolePort_Forever/'+name+'.lua')+'\nend)("ConsolePort_Forever",Addon);').join('\n'));
   return fixture;
 }
@@ -418,7 +421,7 @@ check('T46.native-aura-bar-complete-ring-access-and-editor-release', () => {
   execute(source+fixture,'native-class-bar');
 });
 check('T13.native-LiteMount-binding-icons', () => {
-  const file='evidence/consoleport-contracts/ConsolePort/Model/Game/Bindings.lua';
+  const file='evidence/consoleport-contracts-candidate44/ConsolePort/Model/Game/Bindings.lua';
   const fixture=read('tests/harness/litemount.lua').replace('--@NATIVE_BINDING_ICON_METHODS',()=>['Bindings:GetIcon','Bindings:SetIcon'].map(name=>nativeFunction(file,name)).join('\n'));
   for(const version of ['12.1.0-1','12.1.0-2','12.1.5-1']) execute(source+fixture.replace("local version='12.1.0-1'","local version='"+version+"'"),'native-LiteMount-icons-'+version);
 });
@@ -433,7 +436,7 @@ check('T23.native-cinematic-held-skip-gate', () => {
   execute(source+scrollFixture()+'\n'+fixture,'cinematic-native-eligibility-gate');
 });
 check('T14.current-ConsolePort-secure-contract', () => {
-  const base='evidence/consoleport-contracts/';
+  const base='evidence/consoleport-contracts-candidate44/';
   const manifest=JSON.parse(read(base+'manifest.json'));
   const package=JSON.parse(read('dependencies/lock.json')).packages.find(p=>p.repo==='seblindfors/ConsolePort');
   if(manifest.version!==package.version || manifest.packageSHA256!==package.sha256) throw Error('contract package drift');
@@ -447,7 +450,7 @@ check('T14.current-ConsolePort-secure-contract', () => {
     .replace('--@CURRENT_LAB',lib.slice(lib.indexOf('function Generic:SetState('),lib.indexOf('function Generic:DisableDragNDrop('))),'secure-modes-current-source');
 });
 function nativeActionFixture() {
-  const base='evidence/consoleport-contracts/';
+  const base='evidence/consoleport-contracts-candidate44/';
   const native=read(base+'ConsolePort_Bar/Widget/Button/Button.lua');
   const utils=read(base+'ConsolePort/Utils/Utils.lua');
   const conversion=utils.slice(utils.indexOf('do\tlocal ConvertSecureBody'),utils.indexOf('\nend',utils.indexOf('do\tlocal ConvertSecureBody'))+4);
@@ -496,12 +499,12 @@ check('T12.ground-placement-retirement-preserves-legacy-saved-data', () => {
 });
 check('T42.native-actions-without-placement-combat-bindings-full-dispatch', () => {
   const prelude=nativeActionFixture();
-  const manager=read('evidence/consoleport-contracts/ConsolePort_Bar/Controller/Manager/Manager.lua');
-  const utils=read('evidence/consoleport-contracts/ConsolePort/Utils/Utils.lua');
+  const manager=read('evidence/consoleport-contracts-candidate44/ConsolePort_Bar/Controller/Manager/Manager.lua');
+  const utils=read('evidence/consoleport-contracts-candidate44/ConsolePort/Utils/Utils.lua');
   const parseStart=utils.indexOf('Parse = function(self, body, args)');
   const adapter=read('tests/harness/targeting_engine.lua')
     .replace('--@NATIVE_MANAGER_ENV',manager.slice(manager.indexOf('Manager.Env = {'),manager.indexOf('\n};')+4))
-    .replace('--@NATIVE_MANAGER_REGISTER',()=>nativeFunction('evidence/consoleport-contracts/ConsolePort_Bar/Controller/Manager/Manager.lua','Manager:RegisterOverride'))
+    .replace('--@NATIVE_MANAGER_REGISTER',()=>nativeFunction('evidence/consoleport-contracts-candidate44/ConsolePort_Bar/Controller/Manager/Manager.lua','Manager:RegisterOverride'))
     .replace('--@NATIVE_MANAGER_PARSE','local native'+utils.slice(parseStart,utils.indexOf('\n\tend;',parseStart)+6));
   const headerInit=read('addon/ConsolePort_Forever/TemporaryRouting.lua').match(/group:Execute\('owner = owner or self'\)/)?.[0];
   if(!headerInit) throw Error('Retained native LAB header initializer unavailable');
@@ -551,15 +554,15 @@ check('T38.retired-targeting-tab-and-casting-code-absent', () => {
     if(/GroundTargeting|GroundSpells|TargetingPreferences|TargetingUI|cpf-ground-|groundTargetingEnabled|targetingObserved/.test(read(name))) throw Error('Retired placement code retained: '+name);
   }
 });
-check('T39.ConsolePort-3.3.10-layout-compatibility', () => {
-  const base='evidence/consoleport-contracts/';
+check('T39.ConsolePort-current-layout-compatibility', () => {
+  const base='evidence/consoleport-contracts-candidate44/';
   const pet=read(base+'ConsolePort_Bar/View/Pet/Petring.lua');
   const fixture=read('tests/harness/cp_3310.lua')
     .replace('--@NATIVE_DATA_TABLE',()=>['Table:Get','Table:Set'].map(name=>nativeFunction(base+'ConsolePort/Model/Data/Data.lua',name)).join('\n'))
     .replace('--@NATIVE_BUILD_LAYOUT',()=>nativeFunction(base+'ConsolePort_Bar/Model/Upgrade.lua','env.BuildLayout'))
     .replace('--@NATIVE_RENAME',()=>nativeFunction(base+'ConsolePort_Bar/View/Config/Loadout.lua','Loadout:OnRename'))
     .replace('--@NATIVE_PET_FACTORY',()=>pet.slice(pet.indexOf("env:AddFactory('Petring'")));
-  execute(source+fixture,'ConsolePort-3.3.10-current-layout-source');
+  execute(source+fixture,'ConsolePort-current-layout-source');
   const iface=read(base+'ConsolePort_Bar/Model/Interface.lua');
   if(!iface.includes('Petring = false;') || !iface.includes('pos = _(Type.ComplexPoint') || !iface.includes('level    = 1;')) throw Error('current interface definitions changed');
 });
@@ -689,8 +692,8 @@ function visibilityFixture() {
 check('T31.native-visibility-parent-lifecycle', () => execute(visibilityFixture(),'native-visibility-parent-lifecycle'));
 check('T40.hidden-controls-native-ring-and-seat-access', () => {
   const fixture=read('tests/harness/hidden_access.lua')
-    .replace('--@NATIVE_LIBSTUB',()=>normalized('evidence/consoleport-contracts/ConsolePort/Libs/External/LibStub/LibStub.lua'))
-    .replace('--@NATIVE_RING_MAP',()=>read('evidence/consoleport-contracts/ConsolePort_Rings/Model/Map.lua'))
+    .replace('--@NATIVE_LIBSTUB',()=>normalized('evidence/consoleport-contracts-candidate44/ConsolePort/Libs/External/LibStub/LibStub.lua'))
+    .replace('--@NATIVE_RING_MAP',()=>read('evidence/consoleport-contracts-candidate44/ConsolePort_Rings/Model/Map.lua'))
     .replace('--@NATIVE_STANCE_VISIBILITY',()=>nativeFunction('evidence/native/Blizzard_ActionBar/Shared/StanceBar.lua','StanceBarMixin:ShouldShow'))
     .replace('--@NATIVE_SEAT_VISIBILITY',()=>nativeFunction('evidence/native/Blizzard_UIPanels_Game/Shared/VehicleSeatIndicator.lua','VehicleSeatIndicatorMixin:UpdateShownState'))
     .replace('--@HIDDEN_ACCESS',()=>';(function(...)\n'+read('addon/ConsolePort_Forever/UI/HiddenAccess.lua')+'\nend)("ConsolePort_Forever",Addon);')
@@ -698,7 +701,7 @@ check('T40.hidden-controls-native-ring-and-seat-access', () => {
   execute(source+fixture,'hidden-controls-native-ring-and-seat-access');
 });
 check('T32.current-ConsolePort-upgrade-contracts', () => {
-  const base='evidence/consoleport-contracts/';
+  const base='evidence/consoleport-contracts-candidate44/';
   const utils=read(base+'ConsolePort/Utils/Utils.lua');
   const conversion=utils.slice(utils.indexOf('do\tlocal ConvertSecureBody'),utils.indexOf('\nend',utils.indexOf('do\tlocal ConvertSecureBody'))+4);
   const modules=read(base+'ConsolePort/Controller/Modules.lua');
@@ -707,24 +710,24 @@ check('T32.current-ConsolePort-upgrade-contracts', () => {
     .replace('--@NATIVE_CONVERSION',()=>conversion)
     .replace('--@NATIVE_MACRO',()=>read(base+'ConsolePort/Utils/Macro.lua').slice(0,read(base+'ConsolePort/Utils/Macro.lua').indexOf('function CPAPI.ModComplement')))
     .replace('--@NATIVE_LAYERS',()=>';(function(...)\n'+read(base+'ConsolePort/Controller/Layers.lua')+'\nend)("ConsolePort",db);')
-    .replace('--@NATIVE_MODULE_MIGRATION',()=>modules.slice(modules.indexOf('Modules.Deprecated ='),modules.indexOf('function Modules:OnDataLoaded')))
+    .replace('--@NATIVE_MODULE_MIGRATION',()=>['Modules:GetCharacter','Modules:IsEnabled'].map(name=>nativeFunction(base+'ConsolePort/Controller/Modules.lua',name)).join('\n')+'\n'+modules.slice(modules.indexOf('Modules.Deprecated ='),modules.indexOf('function Modules:OnDataLoaded')))
     .replace('--@NATIVE_KEYBOARD_MIGRATION',()=>keyboard.slice(keyboard.indexOf('local BUTTON_CONVENTION_VERSION'),keyboard.indexOf('function Keyboard:OnDataLoaded')))
     .replace('--@NATIVE_CLEAR_BLOCKED',()=>nativeFunction(base+'ConsolePort/Model/Gamepad/Gamepad.lua','GamepadAPI:ClearBlockedBindings'));
   execute(fixture,'native-ConsolePort-upgrade');
 });
 check('T33.current-native-shared-bar-layout', () => {
-  const file='evidence/consoleport-contracts/ConsolePort_Bar/Model/Utils.lua';
+  const file='evidence/consoleport-contracts-candidate44/ConsolePort_Bar/Model/Utils.lua';
   const body=read(file);
   const start=body.indexOf('do -- Data handler');
   const end=body.indexOf('end -- Data handler',start)+'end -- Data handler'.length;
   if(start<0 || end<start) throw Error('native bar data-source contract changed');
   const fixture=read('tests/harness/cp_shared_layout.lua')
     .replace('--@NATIVE_BAR_DATA',()=>body.slice(start,end))
-    .replace('--@NATIVE_APPLY_PRESET',()=>nativeFunction(file,'env:ApplyPreset'));
+    .replace('--@NATIVE_APPLY_PRESET',()=>['env:ApplyPresetOptions','env:ApplyPreset'].map(name=>nativeFunction(file,name)).join('\n'));
   execute(source+fixture,'native-shared-bar-layout');
 });
 check('T34.current-native-EditMode-hover-safety', () => {
-  const body=read('evidence/consoleport-contracts/ConsolePort_Cursor/Controller/Scripts.lua');
+  const body=read('evidence/consoleport-contracts-candidate44/ConsolePort_Cursor/Controller/Scripts.lua');
   const start=body.indexOf("_('Blizzard_EditMode', function()");
   const end=body.indexOf("_('Blizzard_DelvesCompanionConfiguration'",start);
   if(start<0 || end<start) throw Error('native Edit Mode hover contract changed');
@@ -922,25 +925,25 @@ check('T59.character-binding-capture-rejects-account-view', () => {
 });
 check('T60.inactive-candidate27-secure-ping-fallback', () => {
   const nativeManifest=JSON.parse(read('evidence/native/manifest.json'));
-  const cpManifest=JSON.parse(read('evidence/consoleport-contracts/manifest.json'));
+  const cpManifest=JSON.parse(read('evidence/consoleport-contracts-candidate44/manifest.json'));
   for(const name of ['Blizzard_ChatFrameBase/Mainline/SlashCommandsOverrides.lua','Blizzard_PingUI/Blizzard_PingManager.lua','Blizzard_FrameXML/SecureTemplates.lua','Blizzard_RestrictedAddOnEnvironment/SecureHandlers.lua','Blizzard_RestrictedAddOnEnvironment/RestrictedFrames.lua','Blizzard_RestrictedAddOnEnvironment/RestrictedExecution.lua']) {
     const row=nativeManifest.find(r=>r.path===name);
     if(!row || sha('evidence/native/'+name)!==row.sha256) throw Error('Native secure ping source drift: '+name);
   }
   for(const name of ['ConsolePort/Controller/Radial.lua','ConsolePort/Controller/Layers.lua','ConsolePort/Utils/Utils.lua','ConsolePort/Utils/Database.lua','ConsolePort_Cursor/View/Cursor.xml','ConsolePort_Target/View/Cursor/Raid.xml','ConsolePort_Target/View/Ring/Targetring.xml','ConsolePort/View/Pie/Pie.xml','ConsolePort/Widget/PieMenu/PieMenu.lua','ConsolePort/Widget/PieMenu/PieMenu.xml','ConsolePort_Rings/View/Ring/Ring.xml']) {
     const row=cpManifest.files.find(r=>r.path===name);
-    if(!row || sha('evidence/consoleport-contracts/'+name)!==row.sha256) throw Error('ConsolePort secure ping source drift: '+name);
+    if(!row || sha('evidence/consoleport-contracts-candidate44/'+name)!==row.sha256) throw Error('ConsolePort secure ping source drift: '+name);
   }
   // The UI cursor is unprotected; the raid cursor and target ring are protected.
   // A synthetic all-protected model would wrongly qualify an unusable startup guard.
-  if(/Secure/.test(read('evidence/consoleport-contracts/ConsolePort_Cursor/View/Cursor.xml'))) throw Error('Native UI cursor protection contract changed');
-  if(!/SecureHandlerStateTemplate/.test(read('evidence/consoleport-contracts/ConsolePort_Target/View/Cursor/Raid.xml')) || !/ConsolePortSecurePie/.test(read('evidence/consoleport-contracts/ConsolePort_Target/View/Ring/Targetring.xml')) || !/SecureActionButtonTemplate/.test(read('evidence/consoleport-contracts/ConsolePort/View/Pie/Pie.xml'))) throw Error('Native protected target owners unavailable');
+  if(/Secure/.test(read('evidence/consoleport-contracts-candidate44/ConsolePort_Cursor/View/Cursor.xml'))) throw Error('Native UI cursor protection contract changed');
+  if(!/SecureHandlerStateTemplate/.test(read('evidence/consoleport-contracts-candidate44/ConsolePort_Target/View/Cursor/Raid.xml')) || !/ConsolePortSecurePie/.test(read('evidence/consoleport-contracts-candidate44/ConsolePort_Target/View/Ring/Targetring.xml')) || !/SecureActionButtonTemplate/.test(read('evidence/consoleport-contracts-candidate44/ConsolePort/View/Pie/Pie.xml'))) throw Error('Native protected target owners unavailable');
   const product=read('addon/ConsolePort_Forever/Targeting/Ping.lua');
   if(/(?:C_Ping(?:Secure)?\.|TogglePingListener\s*\(|RunBinding\s*\(|RunMacroText\s*\()/.test(product)) throw Error('Public addon ping crossed protected dispatch boundary');
   if(fs.existsSync(path.join(root,'addon/ConsolePort_Forever/Bindings.xml'))) throw Error('Insecure custom ping binding retained');
   const normalized=p=>read(p).replace(/\r\n/g,'\n');
-  const utils=normalized('evidence/consoleport-contracts/ConsolePort/Utils/Utils.lua');
-  const database=normalized('evidence/consoleport-contracts/ConsolePort/Utils/Database.lua');
+  const utils=normalized('evidence/consoleport-contracts-candidate44/ConsolePort/Utils/Utils.lua');
+  const database=normalized('evidence/consoleport-contracts-candidate44/ConsolePort/Utils/Database.lua');
   const handlers=normalized('evidence/native/Blizzard_RestrictedAddOnEnvironment/SecureHandlers.lua');
   const native=normalized('evidence/native/Blizzard_FrameXML/SecureTemplates.lua');
   const manager=normalized('evidence/native/Blizzard_PingUI/Blizzard_PingManager.lua');
@@ -949,12 +952,12 @@ check('T60.inactive-candidate27-secure-ping-fallback', () => {
   const wrap=p=>';(function(...)\n'+normalized(p)+'\nend)("ConsolePort",db);';
   const legacy=read('fallbacks/ping-candidate27/Ping.lua.disabled');
   const fixture=source.replace(product,()=>legacy)+'\n'+normalized('fallbacks/ping-candidate27/ping_targeting.lua.disabled')
-    .replace('--@CURRENT_PIE_STYLE',()=> 'CPPieSliceMixin={}\nlocal SLICE_FRACTION,BG_FRACTION,MASK_FRACTION=512/300,480/300,512/300;\n'+['CPPieMenuMixin:UpdatePieSlices','CPPieSliceMixin:SetIndex','CPPieSliceMixin:RotateMasks','CPPieSliceMixin:UpdateSize'].map(name=>nativeFunction('evidence/consoleport-contracts/ConsolePort/Widget/PieMenu/PieMenu.lua',name)).join('\n'))
+    .replace('--@CURRENT_PIE_STYLE',()=> 'CPPieSliceMixin={}\nlocal SLICE_FRACTION,BG_FRACTION,MASK_FRACTION=512/300,480/300,512/300;\n'+['CPPieMenuMixin:UpdatePieSlices','CPPieSliceMixin:SetIndex','CPPieSliceMixin:RotateMasks','CPPieSliceMixin:UpdateSize'].map(name=>nativeFunction('evidence/consoleport-contracts-candidate44/ConsolePort/Widget/PieMenu/PieMenu.lua',name)).join('\n'))
     .replace('--@CURRENT_CONVERSION',()=>utils.slice(utils.indexOf('do\tlocal ConvertSecureBody'),utils.indexOf('\nend',utils.indexOf('do\tlocal ConvertSecureBody'))+4))
     .replace('--@CURRENT_SECURE_ENV',()=>utils.slice(utils.indexOf('CPAPI.SecureExportMixin ='),utils.indexOf('do local UIHider;')))
     .replace('--@CURRENT_SCRIPT_MIXIN',()=>database.slice(database.indexOf('db.table.mixin ='),database.indexOf('return obj\nend;',database.indexOf('db.table.mixin ='))+15))
-    .replace('--@CURRENT_LAYERS',()=>wrap('evidence/consoleport-contracts/ConsolePort/Controller/Layers.lua'))
-    .replace('--@CURRENT_RADIAL',()=>wrap('evidence/consoleport-contracts/ConsolePort/Controller/Radial.lua'))
+    .replace('--@CURRENT_LAYERS',()=>wrap('evidence/consoleport-contracts-candidate44/ConsolePort/Controller/Layers.lua'))
+    .replace('--@CURRENT_RADIAL',()=>wrap('evidence/consoleport-contracts-candidate44/ConsolePort/Controller/Radial.lua'))
     .replace('--@NATIVE_RESTRICTED_COMPILER',()=>compiler.slice(compiler.indexOf('local function SelfScrub('),compiler.indexOf('-- Max number of cached closures')))
     .replace('--@NATIVE_WRAPPED_CLICK',()=>handlers.slice(handlers.indexOf('local function Wrapped_Click('),handlers.indexOf('local function Wrapped_OnEnter(')))
     .replace('--@NATIVE_WRAPPED_OTHER',()=>handlers.slice(handlers.indexOf('local function CreateSimpleWrapper('),handlers.indexOf('local function Wrapped_Drag('))+handlers.slice(handlers.indexOf('local function Wrapped_Attribute('),handlers.indexOf('local LOCAL_Wrap_Handlers')))
@@ -994,7 +997,7 @@ check('T60.inactive-candidate27-secure-ping-fallback', () => {
   if(!rejected) throw Error('Initial state-driver ordering negative control did not fail');
 });
 check('T61.all-classes-native-dragonriding-and-temporary-L2R2-engine-dispatch', () => {
-  const base='evidence/consoleport-contracts/';
+  const base='evidence/consoleport-contracts-candidate44/';
   const manifest=JSON.parse(read(base+'manifest.json'));
   for(const name of ['ConsolePort/Controller/Pager.lua','ConsolePort_Bar/Widget/Bar/Bar.lua']) {
     const row=manifest.files.find(r=>r.path===name);
@@ -1024,7 +1027,9 @@ check('T61.all-classes-native-dragonriding-and-temporary-L2R2-engine-dispatch', 
     })
     .replace('--@NATIVE_PAGER_RESPONSE',()=>`nativePageBody=[=[${response}\n${header}]=]`)
     .replace('--@NATIVE_PAGER_ACTION_HELPERS',()=>{
-      const actionID=pager.match(/GetActionID = \(\[\[([\s\S]*?)\]\]\):format\(NUM_ACTIONBAR_BUTTONS\)/)?.[1].replace('%d','12');
+      const actionBody=pager.match(/GetActionID = \(\[\[([\s\S]*?)\]\]\):format\(NUM_ACTIONBAR_BUTTONS,[^\n]+\)/)?.[1];
+      let i=0;const retailConstants=[12,0,6,0,0,0,0];
+      const actionID=actionBody?.replace(/%d/g,()=>String(retailConstants[i++]));
       const info=pager.match(/GetActionInfo = \[\[([\s\S]*?)\]\];/)?.[1];
       const spell=pager.match(/GetSpellID = \[\[([\s\S]*?)\]\];/)?.[1];
       if(!actionID || !info || !spell) throw Error('Native pager action helpers unavailable');
@@ -1147,14 +1152,14 @@ function nativeAccountRingFixture(checks) {
   const product=read('addon/ConsolePort_Forever/Targeting/Ping.lua');
   if(/CreateFrame\('PieMenu'|CreateTexture|CreateMaskTexture|cpfIcons|SetFocusByIndex|GetIndexForPos/.test(product)) throw Error('Separate ping renderer or selector retained');
   if(/C_Ping(?:Secure)?\.|RunMacroText\s*\(/.test(product)) throw Error('Public privileged ping dispatch');
-  const manifest=JSON.parse(read('evidence/consoleport-contracts/manifest.json'));
+  const manifest=JSON.parse(read('evidence/consoleport-contracts-candidate44/manifest.json'));
   for(const name of ['Database.lua','Model/Map.lua','Model/Container.lua','Controller/Secure.lua','View/Ring/Ring.lua','View/Ring/Button.lua']) {
     const relative='ConsolePort_Rings/'+name;
-    if(sha('evidence/consoleport-contracts/'+relative)!==manifest.files.find(row=>row.path===relative)?.sha256) throw Error('Native account ring contract drift: '+relative);
+    if(sha('evidence/consoleport-contracts-candidate44/'+relative)!==manifest.files.find(row=>row.path===relative)?.sha256) throw Error('Native account ring contract drift: '+relative);
   }
   const normalized=p=>read(p).replace(/\r\n/g,'\n');
-  const utils=normalized('evidence/consoleport-contracts/ConsolePort/Utils/Utils.lua');
-  const database=normalized('evidence/consoleport-contracts/ConsolePort/Utils/Database.lua');
+  const utils=normalized('evidence/consoleport-contracts-candidate44/ConsolePort/Utils/Utils.lua');
+  const database=normalized('evidence/consoleport-contracts-candidate44/ConsolePort/Utils/Database.lua');
   const handlers=normalized('evidence/native/Blizzard_RestrictedAddOnEnvironment/SecureHandlers.lua');
   const native=normalized('evidence/native/Blizzard_FrameXML/SecureTemplates.lua');
   const manager=normalized('evidence/native/Blizzard_PingUI/Blizzard_PingManager.lua');
@@ -1162,27 +1167,27 @@ function nativeAccountRingFixture(checks) {
   const compiler=normalized('evidence/native/Blizzard_RestrictedAddOnEnvironment/RestrictedExecution.lua');
   const wrap=p=>';(function(...)\n'+normalized(p)+'\nend)("ConsolePort",db);';
   let fixture=source+'\n'+normalized('tests/harness/ping_account_ring.lua').replace('--@NATIVE_ACCOUNT_RING_HOST',()=>normalized('tests/harness/ping_account_ring_host.lua')).replace('--@NATIVE_ACCOUNT_RING_CHECKS',()=>checks ?? normalized('tests/harness/ping_account_ring_checks.lua'))
-    .replace('--@CURRENT_PIE_STYLE',()=> 'CPPieSliceMixin={}\nlocal SLICE_FRACTION,BG_FRACTION,MASK_FRACTION=512/300,480/300,512/300;\n'+['CPPieMenuMixin:UpdatePieSlices','CPPieSliceMixin:SetIndex','CPPieSliceMixin:RotateMasks','CPPieSliceMixin:UpdateSize'].map(name=>nativeFunction('evidence/consoleport-contracts/ConsolePort/Widget/PieMenu/PieMenu.lua',name)).join('\n'))
+    .replace('--@CURRENT_PIE_STYLE',()=> 'CPPieSliceMixin={}\nlocal SLICE_FRACTION,BG_FRACTION,MASK_FRACTION=512/300,480/300,512/300;\n'+['CPPieMenuMixin:UpdatePieSlices','CPPieSliceMixin:SetIndex','CPPieSliceMixin:RotateMasks','CPPieSliceMixin:UpdateSize'].map(name=>nativeFunction('evidence/consoleport-contracts-candidate44/ConsolePort/Widget/PieMenu/PieMenu.lua',name)).join('\n'))
     .replace('--@CURRENT_CONVERSION',()=>utils.slice(utils.indexOf('do\tlocal ConvertSecureBody'),utils.indexOf('\nend',utils.indexOf('do\tlocal ConvertSecureBody'))+4))
     .replace('--@CURRENT_SECURE_ENV',()=>utils.slice(utils.indexOf('CPAPI.SecureExportMixin ='),utils.indexOf('do local UIHider;')))
     .replace('--@CURRENT_SCRIPT_MIXIN',()=>database.slice(database.indexOf('db.table.mixin ='),database.indexOf('return obj\nend;',database.indexOf('db.table.mixin ='))+15))
-    .replace('--@CURRENT_LAYERS',()=>wrap('evidence/consoleport-contracts/ConsolePort/Controller/Layers.lua'))
-    .replace('--@CURRENT_RADIAL',()=>wrap('evidence/consoleport-contracts/ConsolePort/Controller/Radial.lua'))
+    .replace('--@CURRENT_LAYERS',()=>wrap('evidence/consoleport-contracts-candidate44/ConsolePort/Controller/Layers.lua'))
+    .replace('--@CURRENT_RADIAL',()=>wrap('evidence/consoleport-contracts-candidate44/ConsolePort/Controller/Radial.lua'))
     .replace('--@NATIVE_RESTRICTED_COMPILER',()=>compiler.slice(compiler.indexOf('local function SelfScrub('),compiler.indexOf('-- Max number of cached closures')))
     .replace('--@NATIVE_WRAPPED_CLICK',()=>handlers.slice(handlers.indexOf('local function Wrapped_Click('),handlers.indexOf('local function Wrapped_OnEnter(')))
     .replace('--@NATIVE_WRAPPED_OTHER',()=>handlers.slice(handlers.indexOf('local function CreateSimpleWrapper('),handlers.indexOf('local function Wrapped_Drag('))+handlers.slice(handlers.indexOf('local function Wrapped_Attribute('),handlers.indexOf('local LOCAL_Wrap_Handlers')))
     .replace('--@NATIVE_ACTION_DISPATCH',()=>native.slice(native.indexOf('SECURE_ACTIONS.macro ='),native.indexOf('local CANCELABLE_ITEMS'))+native.slice(native.indexOf('local PRESS_TYPE_DOWN'),native.indexOf('function SecureUnitButton_OnLoad')))
     .replace('--@NATIVE_PING_METHODS',()=>manager.slice(manager.indexOf('function PingManager:SendMacroPing('),manager.indexOf('function PingManager:CancelPendingPing(')))
     .replace('--@NATIVE_PING_SLASH',()=>slash.slice(slash.indexOf('\tlocal function CleanupPingTypeString('),slash.indexOf('\n\tSlashCommandUtil.CheckAddSecureSlashCommand(SLASH_COMMAND.PING_SPELL')));
-  const ringBase='evidence/consoleport-contracts/ConsolePort_Rings/';
+  const ringBase='evidence/consoleport-contracts-candidate44/ConsolePort_Rings/';
   fixture=fixture.replace('--@NATIVE_RING_DATABASE',()=>normalized(ringBase+'Database.lua').slice(normalized(ringBase+'Database.lua').indexOf('env.Attributes ='),normalized(ringBase+'Database.lua').indexOf('env.LABConfig ='))+normalized(ringBase+'Database.lua').slice(normalized(ringBase+'Database.lua').indexOf('function env:GetData(')))
-    .replace('--@NATIVE_LIBSTUB',()=>normalized('evidence/consoleport-contracts/ConsolePort/Libs/External/LibStub/LibStub.lua'))
+    .replace('--@NATIVE_LIBSTUB',()=>normalized('evidence/consoleport-contracts-candidate44/ConsolePort/Libs/External/LibStub/LibStub.lua'))
     .replace('--@NATIVE_RING_MAP',()=>';(function(...)\n'+normalized(ringBase+'Model/Map.lua')+'\nend)("ConsolePort_Rings",db);')
     .replace('--@NATIVE_RING_CONTAINER',()=>';(function(...)\n'+normalized(ringBase+'Model/Container.lua')+'\nend)("ConsolePort_Rings",db);')
     .replace('--@NATIVE_RING_SECURE',()=>';(function(...)\n'+normalized(ringBase+'Controller/Secure.lua')+'\nend)("ConsolePort_Rings",db);')
     .replace('--@NATIVE_RING_FRONTEND',()=>';(function(...)\n'+normalized(ringBase+'View/Ring/Ring.lua')+'\nend)("ConsolePort_Rings",db);')
     .replace('--@NATIVE_RING_BUTTON',()=>';(function(...)\n'+normalized(ringBase+'View/Ring/Button.lua')+'\nend)("ConsolePort_Rings",db);')
-    .replace('--@NATIVE_TEXTURE_ADAPTER',()=>nativeFunction('evidence/consoleport-contracts/ConsolePort/Libs/Local/ActionButton.lua','Lib.SkinUtility.SetTexture'))
+    .replace('--@NATIVE_TEXTURE_ADAPTER',()=>nativeFunction('evidence/consoleport-contracts-candidate44/ConsolePort/Libs/Local/ActionButton.lua','Lib.SkinUtility.SetTexture'))
     .replace('--@NATIVE_CLICK_ACTION',()=>native.slice(native.indexOf('SECURE_ACTIONS.click ='),native.indexOf('SECURE_ACTIONS.attribute =')));
   if(/--@(?:CURRENT|NATIVE)_/.test(fixture)) throw Error('Unfilled native account ring marker');
   return fixture;
@@ -1292,7 +1297,7 @@ check('T70.automatic-startup-Circle-review-preserves-accepted-configuration', ()
   if(!rejected) throw Error('old revision startup suppression was not rejected');
 });
 check('T71.native-Circle-macro-binding-row-ownership-and-automatic-logs', () => {
-  const formatter=read('evidence/consoleport-contracts/ConsolePort/Utils/Utils.lua');
+  const formatter=read('evidence/consoleport-contracts-candidate44/ConsolePort/Utils/Utils.lua');
   const start=formatter.indexOf('CPAPI.FormatSecureBody  = function');
   const end=formatter.indexOf('\n\tend',start)+5;
   if(start<0 || end<start) throw Error('native secure formatter missing');
@@ -1447,7 +1452,7 @@ let utilityProof;
 function sharedUtilityFixture(prototype=utilityPrototype) {
   const lock=JSON.parse(read('dependencies/lock.json'));
   const packageIdentity=lock.packages.find(p=>p.repo==='seblindfors/ConsolePort');
-  if(packageIdentity.version!=='3.3.10') throw Error('utility prototype native contract not qualified');
+  if(!packageIdentity) throw Error('utility prototype native package unavailable');
   const native=relative=>{
     const filename=packageIdentity.unpacked+'/'+relative;
     if(sha(filename)!==packageIdentity.files[relative]) throw Error('utility prototype native input drift: '+relative);
@@ -1902,6 +1907,22 @@ check('T105.pawn-immersion-runtime-installed-startup-ownership-and-parity',()=>{
 check('T106.pawn-immersion-runtime-prepared-startup-ownership-and-parity',()=>{
   cp.execFileSync(process.execPath,[safe('tools/pawn_immersion_experiment.cjs'),'--runtime','--prepared'],{cwd:root,stdio:'pipe'});
 });
+check('T107.version-independent-contract-admission-and-old-gate-rejection',()=>{
+  for(const file of files('addon').filter(f=>f.endsWith('.lua') && !['Capability.lua','RuntimeSetup.lua','ConsolePort_Forever.lua'].some(n=>f.endsWith(n)))) {
+    const code=read(file);
+    if(/GetAddOnMetadata\([^\n]*['"]Version['"]/.test(code) || /\bapi\.version\b/.test(code)) throw Error('Addon version admission lock: '+file);
+  }
+  const fixture=read('tests/harness/adapters.lua');
+  execute(source+fixture,'compatible-without-version-metadata');
+  const oldGate=source.replace('function Bridge:Probe()','function Bridge:Probe() if self.api.version~="3.3.10" then return false,"version lock" end');
+  let rejected=false;
+  try {execute(oldGate+fixture,'old-version-lock');}
+  catch(error){rejected=String(error).includes('metadata blocked compatible ConsolePort');}
+  if(!rejected)throw Error('Old version-lock defect was not rejected');
+});
+check('T108.current-Pawn-BetterBags-native-parity-with-unknown-metadata',()=>{
+  cp.execFileSync(process.execPath,[safe('tools/pawn_immersion_experiment.cjs'),'--runtime','--current'],{cwd:root,stdio:'pipe'});
+});
 const report = {at:new Date().toISOString(), commit:cp.execFileSync('git',['rev-parse','HEAD'],{cwd:root}).toString().trim(),
   productHashes:Object.fromEntries(files('addon').map(f=>[f,sha(f)])),
   toolingHashes:Object.fromEntries([...files('tools'),...files('tests')].filter(f=>!f.includes('__pycache__')).map(f=>[f,sha(f)])),
@@ -1909,6 +1930,6 @@ const report = {at:new Date().toISOString(), commit:cp.execFileSync('git',['rev-
   limitation:'Fengari uses Lua 5.3 semantics. Lua 5.1 syntax checked separately. No Retail secure/hardware proof.', sharedUtilityPrototype:utilityProof, sharedUtilityAdmission:utilityAdmissionProof, sharedUtilityRuntime:utilityRuntimeProof, sharedUtilityIntegration:utilityIntegrationProof, followerExecution:followerExecutionProof, followerProxy:followerProxyProof, followerMapping:followerMappingProof, followerBoundaries:followerBoundaryProof, followerPresentation:followerPresentationProof, followerRuntime:followerRuntimeProof, results};
 const {output} = require('./repository_paths.cjs');
 fs.mkdirSync(output('scratch/test-results'),{recursive:true});
-fs.writeFileSync(output('scratch/test-results/latest.json'),JSON.stringify(report,null,2));
+fs.writeFileSync(output(diagnosticFilter?'scratch/test-results/diagnostic.json':'scratch/test-results/latest.json'),JSON.stringify(report,null,2));
 for (const r of results) console.log(r.status.toUpperCase()+' '+r.id+(r.error?'\n'+r.error:''));
 process.exitCode=results.some(r=>r.status==='failed')?1:0;

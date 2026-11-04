@@ -1,11 +1,26 @@
 # Client and integration compatibility
 
 Status: maintained
-Reviewed: 2026-10-17
+Reviewed: 2026-11-03
 Evidence: [TOC](../addon/ConsolePort_Forever/ConsolePort_Forever.toc),
 [locked packages](../dependencies/lock.json),
 [native source manifest](../evidence/native/manifest.json),
-[ConsolePort contracts](../evidence/consoleport-contracts/manifest.json).
+[ConsolePort contracts](../evidence/consoleport-contracts-candidate44/manifest.json).
+
+## Current admission policy
+
+Candidate.44 never gates third-party integrations on addon versions. Loaded API,
+data shape, readiness, ownership and secure-body probes determine availability.
+Unknown or missing version metadata alone does not disable compatible features.
+Incompatible contracts retain native fallbacks. [Decision 0009](decisions/0009-capability-based-integrations.md)
+supersedes older exact-version guard statements in the retained checkpoints below.
+
+The current evaluated lock is ConsolePort 3.3.13, BetterBags v0.8.12,
+Immersion 1.4.61, ExtraFade 1.18.2, DynamicCam 2.21.5, LiteMount 12.1.5-2,
+Masque 12.1.8, Plater-v662 and BetterWardrobe 6.12.5; external Pawn is 2.14.1.
+Complete installed official inventories already match. These identities describe
+source evidence, not a support allowlist. The older table below is historical.
+[Audit](reference/ADDON-UPDATE-AUDIT-2026-11-03.md).
 
 ## Target and support boundary
 
@@ -17,7 +32,7 @@ taint, hardware timing or performance; broader acceptance remains separate.
 [Qualification](reference/SHARED-UTILITY-RING-RUNTIME-2026-10-14.md).
 
 The current personal target is Retail, TOC interface `120100`, ConsolePort
-3.3.10, Store schema 3 and configuration revision20. The
+3.3.13, Store schema 3 and configuration revision20. The
 [current checkpoint](IMPLEMENTATION-STATUS.md) owns installed/accepted candidate
 identity; candidate.35 does not change these native contracts. The capability probe records
 `GetBuildInfo` metadata/readiness; it does not itself establish an all-build

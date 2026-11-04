@@ -1,13 +1,23 @@
 # ConsolePort Forever change history
 
 Status: maintained
-Reviewed: 2026-10-17
+Reviewed: 2026-11-03
 Evidence: [current status](docs/IMPLEMENTATION-STATUS.md),
 [historical chronology](docs/archive/ai-native-2026-10-11/IMPLEMENTATION-STATUS.pre-restructure.md).
 
 Dates below use America/Toronto. This is a curated change index, not invented
 release tags or blanket gameplay certification. Detailed receipts own exact
 source/artifact/file identities. Prepared, installed and accepted are separate.
+
+## Addon update compatibility - November 3, 2026
+
+Candidate.44 removes every third-party addon version admission lock and retains
+native capability/readiness/ownership checks. Updated ConsolePort, bags, mount,
+camera, fade and Pawn integrations can activate without version allowlists.
+Current native-source regression coverage and an old-lock defect control protect
+this behavior. Schema3/revision20 and feature ownership remain.
+[Audit](docs/reference/ADDON-UPDATE-AUDIT-2026-11-03.md). Delivery and Retail
+acceptance are recorded separately in current status.
 
 ## Focused reward Pawn note repair — October 17, 2026
 

@@ -32,6 +32,7 @@ assert(not pcall(adapter.write,adapter,{'CLICK LM_B1:LeftButton'},{}))
 assert(not pcall(adapter.write,adapter,{'OTHER'},1))
 Bindings.Icons=Addon.Core.Copy(before) assert(not pcall(adapter.read,adapter,{'CLICK LM_B1:LeftButton'}))
 adapter=assert(Addon.LiteMountAdapter.New(db,api))
-version='newer' assert(not pcall(adapter.read,adapter,{'CLICK LM_B1:LeftButton'}))
+version='newer' assert(pcall(adapter.read,adapter,{'CLICK LM_B1:LeftButton'}),'metadata blocked native mount buttons')
+local button=api.LM_B2 api.LM_B2=nil assert(not adapter:Probe(),'missing native mount button accepted') api.LM_B2=button
 api.LM_B2=nil assert(Addon.LiteMountAdapter.New(db,api)==nil)
 TEST_SUCCESS=true

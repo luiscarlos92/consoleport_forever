@@ -37,7 +37,7 @@ def runtime_closure(folder, files, require_retail=True):
             includes = re.findall(r'<(?:Include|Script)\b[^>]*\bfile\s*=\s*[\"\']([^\"\']+)[\"\']',text,re.I)
         else: return
         for include in includes:
-            include = re.sub(r'\s+\[(?:Allow|Exclude)LoadGameType [\w, ]+\]$','',include)
+            include = re.sub(r'(?:\s+\[(?:Allow|Exclude)Load(?:GameType|TextLocale) [\w, ]+\])+$','',include)
             if '[TextLocale]' in include:
                 for locale in ['enUS','deDE','esES','esMX','frFR','itIT','koKR','ptBR','ruRU','zhCN','zhTW']:
                     visit(str(PurePosixPath(name).parent / include.replace('[TextLocale]',locale).replace('\\','/')))

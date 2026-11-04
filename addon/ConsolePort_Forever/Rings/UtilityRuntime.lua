@@ -31,7 +31,6 @@ function Integration:Refresh(addon,api)
     local env=lib and rawget(lib,'ConsolePort_Rings')
     local db=api.ConsolePort and api.ConsolePort:GetData()
     local frame=db and db.Rings
-    if api.C_AddOns.GetAddOnMetadata('ConsolePort','Version')~='3.3.10' then return nil,'native ring version unqualified' end
     if type(env)~='table' or not frame or env.Frame~=frame or not env.IsDataReady or not env.IsSpellValidationReady
         or type(frame.Data)~='table' or type(frame.Shared)~='table' or type(frame.Data[api.CPAPI.DefaultRingSetID])~='table'
         or type(frame.RefreshAll)~='function' or type(env.ValidateSet)~='function' or not env.Attributes

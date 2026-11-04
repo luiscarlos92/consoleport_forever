@@ -46,8 +46,9 @@ local saved=api.ImmersionSetup
 api.ImmersionSetup=Addon.Core.Copy(saved)
 assert(not pcall(immersion.read,immersion,{'titleoffsetY'}),'stale cached settings table was accepted')
 api.ImmersionSetup=saved versions.Immersion='future'
-assert(not Addon.FlatIntegrations.New('immersion',api))
-assert(not pcall(immersion.write,immersion,{'titleoffsetY'},0),'version changed without requalification')
+assert(Addon.FlatIntegrations.New('immersion',api),'metadata blocked compatible settings')
+assert(immersion:write({'titleoffsetY'},0),'metadata blocked compatible settings write')
+versions.Immersion=nil assert(not Addon.FlatIntegrations.New('immersion',api),'unloaded addon accepted')
 versions.Immersion='1.4.61' api.IEF_Config=nil
 assert(not Addon.FlatIntegrations.New('extrafade',api))
 assert(immersion.reloadRequired and extra.reloadRequired)

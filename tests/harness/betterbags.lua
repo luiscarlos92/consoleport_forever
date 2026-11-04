@@ -64,6 +64,8 @@ addon.modules.Events=events
 addon.modules.Context={New=function() return {} end}
 -- New upstream perf registration is metadata/optional tracing, not item input.
 addon.modules.Perf={RegisterPrototype=function() end}
+-- Pixel sharpening ownership is outside the item-input engine model.
+addon.modules.Texels={DrawsItself=function() end}
 addon.modules.Themes={GetItemButton=function() return decoration end}
 function addon:GetModule(name) self.modules[name]=self.modules[name] or {} return self.modules[name] end
 function addon:NewModule(name) self.modules[name]={} return self.modules[name] end
@@ -93,6 +95,8 @@ addon.modules.ConsolePort:Init() addon.modules.ConsolePort:OnEnable()
 local Modules={Providers={ItemMenu='Menu'}}
 local enabled=true
 CPAPI.GetAddOnEnableState=function() return enabled and 2 or 0 end
+C_AddOns={GetAddOnEnableState=CPAPI.GetAddOnEnableState}
+function UnitGUID() return 'test-character' end
 function Modules:GetEntry() return {addon='ConsolePort_Menu'} end
 local ItemMenu=CreateFrame('Frame','ActualItemMenu',UIParent)
 function ItemMenu:SetBagAndSlot(bag,slot) self.bag,self.slot=bag,slot end

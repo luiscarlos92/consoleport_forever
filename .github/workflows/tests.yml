@@ -15,8 +15,12 @@ jobs:
       - run: npm ci --ignore-scripts --no-audit --no-fund
       - name: Verify exact pinned official archives (explicit network stage)
         run: python tools/verify_pinned_sources.py
+      - name: Verify retained historical contract packages (explicit network stage)
+        run: python tools/verify_pinned_sources.py --lock evidence/dependencies/candidate43-lock.json
+      - name: Reconstruct current contract inputs (explicit network stage)
+        run: python -B tools/capture_integration_contracts.py --from-manifest evidence/consoleport-contracts-candidate44/manifest.json --from-manifest evidence/integration-contracts-candidate44/manifest.json
       - name: Reconstruct hash-pinned local contract inputs (explicit network stage)
-        run: python -B tools/capture_integration_contracts.py --from-manifest evidence/integration-contracts-candidate43/manifest.json --native-manifest evidence/follower-dungeons/2026-10-16/source-manifest.json --native-manifest evidence/follower-dungeons/2026-10-16/proxy-source-manifest.json --native-manifest evidence/follower-dungeons/2026-10-16/candidate41-api-source-manifest.json
+        run: python -B tools/capture_integration_contracts.py --lock evidence/dependencies/candidate43-lock.json --from-manifest evidence/integration-contracts-candidate43/manifest.json --native-manifest evidence/follower-dungeons/2026-10-16/source-manifest.json --native-manifest evidence/follower-dungeons/2026-10-16/proxy-source-manifest.json --native-manifest evidence/follower-dungeons/2026-10-16/candidate41-api-source-manifest.json
       - name: Check maintained documentation and repository skills
         run: python -B tools/check_documentation.py
       - name: Reconstruct isolated Pawn and Immersion experiment inputs
@@ -24,6 +28,7 @@ jobs:
           python -B tools/capture_pawn_immersion_experiment.py
           python -B tools/capture_pawn_immersion_experiment.py --runtime
           python -B tools/capture_pawn_immersion_experiment.py --tooltip-repair
+          python -B tools/capture_pawn_immersion_experiment.py --updates
       - run: ./tools/Test-All.ps1
         shell: pwsh
       - uses: actions/upload-artifact@v4

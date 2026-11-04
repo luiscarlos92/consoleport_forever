@@ -4,6 +4,7 @@ const parser = require('luaparse');
 const {lua,lauxlib,lualib,to_luastring,to_jsstring} = require('fengari');
 const root = fs.realpathSync(path.resolve(__dirname,'..'));
 const runtime=process.argv.includes('--runtime');
+const current=process.argv.includes('--current');
 const base = 'scratch/pawn-immersion-inputs/';
 function safe(p) {
   const candidate=path.resolve(root,p), real=fs.realpathSync(candidate);
@@ -26,7 +27,10 @@ for(const row of manifest.files) if(hash(base+row.path)!==row.sha256) throw Erro
 const repairManifestPath='evidence/pawn-immersion/2026-10-17/tooltip-repair-inputs.json';
 if(runtime)for(const row of JSON.parse(read(repairManifestPath)).files)
  if(hash(base+row.path)!==row.sha256)throw Error('Repair input drift: '+row.path);
+if(current)for(const row of JSON.parse(read('evidence/pawn-immersion/2026-11-03/update-inputs.json')).files)
+ if(hash(base+row.path)!==row.sha256)throw Error('Current input drift: '+row.path);
 const excerpts=[];
+const pawnGroup=current?'PawnCurrent':'Pawn';
 function exprName(n) { return !n?'':n.type==='Identifier'?n.name:exprName(n.base)+n.indexer+exprName(n.identifier); }
 function select(file,names,source=read(base+file)) {
   const ast=parser.parse(source,{luaVersion:'5.1',ranges:true,locations:true});
@@ -39,12 +43,12 @@ function select(file,names,source=read(base+file)) {
     excerpts.push({file,name,line:n.loc.start.line,endLine:n.loc.end.line}); return source.slice(...n.range);
   }).join('\n');
 }
-const prelude=read('tests/harness/pawn_immersion_environment.lua');
+const prelude=read('tests/harness/pawn_immersion_environment.lua').replace("Pawn='2.13.17',Immersion='1.4.61'",current?"Pawn='future',Immersion='future'":"Pawn='2.13.17',Immersion='1.4.61'");
 const getter=runtime?'TooltipUtil={}\nGameTooltipDataMixin={}\n'+
  select('Native/Interface/AddOns/Blizzard_SharedXMLGame/Tooltip/TooltipUtil.lua',['TooltipUtil.GetDisplayedItem'])+'\n'+
  select('Native/Interface/AddOns/Blizzard_GameTooltip/Mainline/GameTooltip.lua',['GameTooltipDataMixin:GetItem'])+
  '\nInstallNativeItemGetter(GameTooltipDataMixin.GetItem)\n':'';
-const pawn=select('Pawn/VgerCore/VgerCore.lua',['VgerCore.ThrottleDelayCore','VgerCore.Throttle'])+`\ndo\n${read(base+'Pawn/Localization.lua')}\n${read(base+'Pawn/Pawn.lua')}\n${runtime?'':'function SetPawnInitialized(v) PawnIsInitialized=v end'}\nend\n`;
+const pawn=select(pawnGroup+'/VgerCore/VgerCore.lua',['VgerCore.ThrottleDelayCore','VgerCore.Throttle'])+`\ndo\n${read(base+pawnGroup+'/Localization.lua')}\n${read(base+pawnGroup+'/Pawn.lua')}\n${runtime?'':'function SetPawnInitialized(v) PawnIsInitialized=v end'}\nend\n`;
 const frame='local Frame,Inspector,L,API = ImmersionFrame,ImmersionFrame.Inspector,ImmersionL,ImmersionAPI\n'+
   select('Immersion/Logic/Frame.lua',['Frame:SetItemTooltip','Frame:GetItemColumn','Frame:ShowItems','Frame:UpdateItems'])+'\n';
 const pool='do local self=ImmersionFrame.Inspector; local Inspector,L=self,ImmersionL\n'+
@@ -57,9 +61,9 @@ const utils='do local L=ImmersionL; local _="Immersion"\n'+select('Immersion/Uti
 const scaler=`;(function(...)\n${read(base+'Immersion/Components/Scaler.lua')}\nend)('Immersion',ImmersionL);\n`;
 const elements=`;(function(...)\n${read(base+'Immersion/Components/Elements.lua')}\nend)('Immersion',ImmersionL);\n`;
 const prepared=process.argv.includes('--prepared');
-const preparedGroup=runtime?'BetterBagsPrepared17':'BetterBagsPrepared';
-const better=read(base+(prepared?preparedGroup:'BetterBags')+'/integrations/pawn.lua')+'\n';
-const providers='do local items,database = BetterItems,BetterDatabase\n'+select((prepared?preparedGroup:'BetterBags')+'/data/items.lua',['items:RegisterUpgradeProvider','items:GetActiveUpgradeProvider','items:ResolveUpgrade'])+'\nend\n';
+const preparedGroup=current?'BetterBagsCurrent':runtime?'BetterBagsPrepared17':'BetterBagsPrepared';
+const better=read(base+((prepared||current)?preparedGroup:'BetterBags')+'/integrations/pawn.lua')+'\n';
+const providers='do local items,database = BetterItems,BetterDatabase; items._upgradeGeneration=0\n'+select(((prepared||current)?preparedGroup:'BetterBags')+'/data/items.lua',['items:RegisterUpgradeProvider','items:GetActiveUpgradeProvider','items:ResolveUpgrade',...(current?['items:InvalidateUpgrades']:[])])+'\nend\n';
 const nativeXml=read(base+'Native/Interface/AddOns/Blizzard_UIPanels_Game/Mainline/ContainerFrame.xml');
 const arrow=nativeXml.match(/<Texture parentKey="UpgradeIcon" atlas="([^"]+)"[\s\S]*?<Anchor point="([^"]+)" x="([^"]+)" y="([^"]+)"/);
 if(!arrow)throw Error('Missing actual bag upgrade artwork');
@@ -75,8 +79,8 @@ if(runtime){
  const toc=read('addon/ConsolePort_Forever/ConsolePort_Forever.toc');
  if(!toc.match(/^## OptionalDeps:.*\bPawn\b/m) || !toc.includes('UI\\PawnImmersion.lua')
    || toc.indexOf('UI\\PawnImmersion.lua')>toc.indexOf('\nConsolePort_Forever.lua')
-   || read(base+'Pawn/Pawn.toc').match(/^## LoadOnDemand:\s*1/m)
-   || !read(base+'Pawn/PawnUI.xml').includes('RegisterEvent("PLAYER_LOGIN")'))throw Error('Pawn startup load contract unavailable');
+   || read(base+pawnGroup+'/Pawn.toc').match(/^## LoadOnDemand:\s*1/m)
+   || !read(base+pawnGroup+'/PawnUI.xml').includes('RegisterEvent("PLAYER_LOGIN")'))throw Error('Pawn startup load contract unavailable');
  const lock=JSON.parse(read('dependencies/lock.json')).packages.find(p=>p.repo==='Cidan/BetterBags');
  const ace='BetterBags/libs/AceAddon-3.0/AceAddon-3.0.lua';
  if(hash(lock.unpacked+'/'+ace)!==lock.files[ace])throw Error('AceAddon lookup source drift');
@@ -169,6 +173,7 @@ const report={stage:'isolated experiment only',betterBags:prepared?'v0.5.16 prep
 if(runtime){report.stage='Forever integration source qualification';report.repairManifestSHA256=hash(repairManifestPath);report.betterBags=prepared?'v0.5.17 prepared':'v0.5.14 installed';report.runtimeSHA256=hash('addon/ConsolePort_Forever/UI/PawnImmersion.lua');
  report.limits[0]='Real Pawn initialization/event/plugin bodies execute; options migration, UI/keybinding setup and scale parsing subsystems are modeled. Actual upgrade arithmetic and tooltip formatting execute.';
  report.limits[2]='Native initialization and quest event ordering are exercised with C/UI models; no Retail acceptance, persistence/taint or measured CPU proof.';}
-const destination=output('scratch/test-results/pawn-immersion'+(runtime?'-runtime':'')+(prepared?'-prepared':'')+'.json');
+if(current){report.currentManifestSHA256=hash('evidence/pawn-immersion/2026-11-03/update-inputs.json');report.betterBags='v0.8.12';report.pawn='2.14.1';report.versionMetadata='arbitrary future values';}
+const destination=output('scratch/test-results/pawn-immersion'+(runtime?'-runtime':'')+(current?'-current':prepared?'-prepared':'')+'.json');
 fs.writeFileSync(destination,JSON.stringify(report,null,2)+'\n');
 console.log(JSON.stringify({assertions:report.assertions,scenarios:report.scenarios,negativeControls:controls.length,report:path.relative(root,destination)}));

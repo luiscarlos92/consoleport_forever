@@ -128,6 +128,9 @@ do
     CPAPI.Log=function(text) log[#log+1]=text end
     CPAPI.EnableAddOn=function(name) selected[name]=true end
     CPAPI.DisableAddOn=function(name) selected[name]=false end
+    C_AddOns={EnableAddOn=CPAPI.EnableAddOn,DisableAddOn=CPAPI.DisableAddOn,GetAddOnEnableState=function(name) return selected[name]==false and 0 or 2 end}
+    function UnitGUID() return 'Character-A' end
+    function Modules:GetInfo(entry) return entry.addon end
     function Modules:GetEntry(id) return {addon=id} end
     --@NATIVE_MODULE_MIGRATION
     --@NATIVE_KEYBOARD_MIGRATION
@@ -135,7 +138,8 @@ do
     ConsolePortCharacterSettings={moduleWorld=false,keyboardEnterButton='character enter'}
     Modules:MigrateFromSettings()
     assert(selected.Rings==true and selected.Menu==false and selected.World==false and selected.Bar==true)
-    assert(selected.Keyboard==nil and ConsolePortSettings.moduleStateVersion==1)
+    assert(selected.Keyboard==false and ConsolePortSettings.moduleStateVersion==1)
+    assert(ConsolePortSettings.moduleStateCharacters['Character-A']==2,'native character module migration not recorded')
     assert(ConsolePortSettings.moduleMenus==nil and ConsolePortCharacterSettings.moduleWorld==nil)
     selected.Bar=false Modules:MigrateFromSettings() assert(selected.Bar==false,'native once-only migration repeated')
     Keyboard:MigrateButtonConvention()

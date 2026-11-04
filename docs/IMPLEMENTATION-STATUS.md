@@ -1,12 +1,26 @@
 # Current implementation and acceptance
 
 Status: maintained
-Reviewed: 2026-10-17
+Reviewed: 2026-11-03
 Evidence: [candidate.43 readback](../evidence/delivery/candidate43-independent-readback.json),
 [source qualification](../evidence/test-results/candidate43-pawn-tooltip-qualification.json),
 [fresh CI](../evidence/test-results/candidate43-fresh-ci.json).
 
-## Installed checkpoint
+## Candidate.44 compatibility preparation
+
+The November 3 audit establishes version-admission failures with the installed
+addon updates. Candidate.44 removes all third-party version admission locks and
+uses native capability/readiness/ownership checks. Updated official dependency
+inventories already match on disk, so the intended payload is Forever alone.
+All 108 runtime/source checks and 76 tooling tests pass locally with exact
+64-product and 165-tool/test inventories. [Qualification](../evidence/test-results/candidate44-addon-compatibility-qualification.json).
+Schema3/revision20 and existing gameplay ownership remain. Preparation, delivery
+and Retail acceptance are separate; the installed checkpoint below remains the
+last verified delivery until a new receipt is recorded.
+[Audit](reference/ADDON-UPDATE-AUDIT-2026-11-03.md),
+[decision](decisions/0009-capability-based-integrations.md).
+
+## Previous installed checkpoint
 
 Candidate.43 was installed October 17 at **21:44:55 Toronto** from tested/pushed
 source `0eb627e9f1de093a85e74e63b7d773c50d5ec5e6`. It repairs the focused reward

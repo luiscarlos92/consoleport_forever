@@ -8,7 +8,7 @@ function Repair:Probe(api)
     local frame=api.ImmersionFrame
     local talk=frame and frame.TalkBox
     local progress=talk and talk.Elements and talk.Elements.Progress
-    if not api.C_AddOns or api.C_AddOns.GetAddOnMetadata('Immersion','Version')~='1.4.61'
+    if not api.C_AddOns or type(api.C_AddOns.IsAddOnLoaded)~='function'
         or not api.C_AddOns.IsAddOnLoaded('Immersion') or type(api.ImmersionSetup)~='table'
         or type(api.RunNextFrame)~='function' or type(api.hooksecurefunc)~='function'
         or type(api.InCombatLockdown)~='function' or type(api.GetQuestID)~='function'

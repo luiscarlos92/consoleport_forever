@@ -1,7 +1,7 @@
 # Reference and history navigation
 
 Status: maintained
-Reviewed: 2026-10-17
+Reviewed: 2026-11-03
 Evidence: [migration record](../WORKSPACE-ORGANIZATION-2026-10-11.md),
 [original reference manifest](../../reference/manifests/2026-10-03-initial.json),
 [preserved master plan](../archive/ai-native-2026-10-11/MASTER-PLAN.pre-restructure.md).
@@ -28,6 +28,8 @@ and access limits. The singular `docs/reference` is the new index; the existing
 plural pending-reference directory is intentionally retained without moving it.
 
 ## Current code contracts
+
+- [November 3 compatibility audit](ADDON-UPDATE-AUDIT-2026-11-03.md): installed official file verification, capability admission and native regression proof limits.
 
 - [Focused reward Pawn note repair](PAWN-IMMERSION-TOOLTIP-REPAIR-2026-10-17.md):
   candidate.42 partial user confirmation, native getter defect reproduction and

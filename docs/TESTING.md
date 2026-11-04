@@ -1,7 +1,7 @@
 # Validation and proof boundaries
 
 Status: maintained
-Reviewed: 2026-10-17
+Reviewed: 2026-11-03
 Evidence: [runner](../tools/test-all.cjs), [tool tests](../tools/run_tool_tests.py),
 [CI](../.github/workflows/tests.yml), [test instructions](../tests/AGENTS.md).
 
@@ -140,6 +140,20 @@ stage. Four tooling tests reject escapes, unpinned identities, wrong downloads,
 lock mismatch and existing drift; valid reuse performs no fetch. A
 [fresh reconstruction](../evidence/follower-dungeons/2026-10-16/candidate40-clean-reconstruction.json)
 also verified all 46 actual inputs. Personal screenshots remain local.
+
+## Current addon compatibility qualification
+
+The runner uses [current ConsolePort sources](../evidence/consoleport-contracts-candidate44/manifest.json)
+and [current optional integrations](../evidence/integration-contracts-candidate44/manifest.json),
+retaining old evidence unchanged. T107 rejects the old version-lock defect and
+checks capability-based admission. T108 exercises current Pawn/BetterBags source,
+both load orders, arbitrary metadata and nineteen defect controls. Existing
+native input, restricted compiler, visual and transition gates remain mandatory.
+
+Reconstruct current captures by passing both current manifests to
+capture_integration_contracts.py. Historical candidate.43 reconstruction explicitly
+selects evidence/dependencies/candidate43-lock.json with --lock; CI verifies both
+package inventories. [Audit and limits](reference/ADDON-UPDATE-AUDIT-2026-11-03.md).
 
 ## Relevant suites and mandatory gates
 

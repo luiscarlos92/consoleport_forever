@@ -5,9 +5,9 @@ function Bridge.New(api)
     return setmetatable({api=api},{__index=Bridge})
 end
 function Bridge:Probe()
-    if self.api.version ~= "3.3.10" then return false,"ConsolePort version has not been audited" end
+    if type(self.api.getDB)~='function' or type(self.api.getBar)~='function' then return false,'ConsolePort accessors unavailable' end
     local db,bar=self.api.getDB(),self.api.getBar()
-    if type(db)~="table" or not db.Settings or not db.Layers or type(db.Set)~="function" then return false,"ConsolePort DB/Layers not initialized" end
+    if type(db)~="table" or type(db.Settings)~='table' or not db.Layers or type(db.Get)~='function' or type(db.Set)~="function" then return false,"ConsolePort DB/Layers not initialized" end
     if type(bar)~="table" or not bar.Layout or not bar.Manager or not bar.Manager.hasEnvironment then return false,"ConsolePort Bar not initialized" end
     if type(bar.ApplyPreset)~="function" then return false,"layout bridge unavailable" end
     self.db,self.bar=db,bar

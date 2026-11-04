@@ -132,7 +132,10 @@ elements.hasItems=false frame:OnEvent('QUEST_PROGRESS') advance() advance() asse
 elements.hasItems=true frame:OnEvent('QUEST_PROGRESS') child.height=180 frame:OnEvent('QUEST_ITEM_UPDATE')
 advance() advance() assert(talk.extraY==228 and frame.lastEvent=='QUEST_PROGRESS')
 api.C_AddOns.GetAddOnMetadata=function() return 'future' end
-assert(not repair:Refresh(owner,api))
+assert(repair:Refresh(owner,api),'version metadata blocked compatible Required Items repair')
+local setter=talk.SetExtraOffset;talk.SetExtraOffset=nil
+assert(not repair:Probe(api),'missing native offset setter accepted')
+talk.SetExtraOffset=setter
 api.C_AddOns.GetAddOnMetadata=function() return '1.4.61' end
 db.shared.integrationPolicy.immersionProgressRepairVersion=nil
 assert(not repair:Refresh(owner,api) and db.nextTransactionID==1,'restored policy was silently enabled again')

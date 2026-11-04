@@ -2,7 +2,7 @@
 -- restricted frame double. This checks contracts, not Retail secure execution.
 CPAPI={SecureEnvironmentMixin={}}
 local env={Attributes={Update=function(name) return '_childupdate-'..name end},RegisterCallback=function() end}
-local nativeDB={SetCVar=function() end}
+local nativeDB={Actionbar={},SetCVar=function() end}
 function CPAPI.GetEnv() return env,nativeDB end
 function Mixin(base,...)
     for i=1,select('#',...) do for k,v in pairs(select(i,...)) do base[k]=v end end
@@ -10,7 +10,7 @@ function Mixin(base,...)
 end
 function CreateFromMixins(...) return Mixin({},...) end
 string.trim=function(s) return s:match('^%s*(.-)%s*$') end
-NUM_ACTIONBAR_BUTTONS=12
+NUM_ACTIONBAR_BUTTONS=12; NUM_ACTIONBAR_PAGES=6
 --@CURRENT_CP
 assert(env.SlotButton.Env.UpdateState:find('IsPressHoldReleaseSpell',1,true))
 local nativeBody=env.SlotButton.Env.UpdateState

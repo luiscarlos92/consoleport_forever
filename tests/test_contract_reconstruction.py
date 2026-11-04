@@ -41,6 +41,17 @@ class ContractReconstruction(unittest.TestCase):
         fetch.assert_not_called()
         self.assertEqual((self.root/'evidence/current/Sample/Main.lua').read_bytes(),self.body)
         self.assertEqual((self.root/self.row['file']).read_bytes(),self.body)
+    def test_historical_lock_requires_explicit_selection_and_matching_bytes(self):
+        historical='evidence/dependencies/prior-lock.json'
+        self.write(historical,{'packages':[self.package]})
+        current=copy.deepcopy(self.package);current['sha256']='b'*64
+        self.write('dependencies/lock.json',{'packages':[current]})
+        with self.assertRaisesRegex(ValueError,'differs from current lock'):
+            capture.restore_manifests([self.integration])
+        self.assertEqual(capture.restore_manifests([self.integration],lock_path=historical),1)
+        self.write('scratch/foreign-lock.json',{'packages':[self.package]})
+        with self.assertRaisesRegex(ValueError,'explicit evidence'):
+            capture.restore_manifests([self.integration],lock_path='scratch/foreign-lock.json')
     def test_existing_drift_is_retained_without_fetch(self):
         self.write(self.row['file'],b'preserve manual difference')
         fetch=Mock()

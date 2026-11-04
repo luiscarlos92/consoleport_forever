@@ -60,7 +60,7 @@ for _,conflict in ipairs(restore.conflicts) do decisions[conflict.id]='accept' e
 assert(coordinator:Accept(decisions))
 assert(db:GetCurrentProfile()=='Original' and db.profile.nested.manual==21 and refreshes==2)
 assert(not db.profiles[name] and first.steps[1].value.situations.one.executeOnInit=='preserved script')
--- Names alone do not confer ownership; versions and namespaces fail locally.
+-- Names alone do not confer ownership; incompatible structures fail locally.
 db.profiles[name]={manual=true}
 assert(not adapter:Proposal(name))
 assert(not adapter:write({'profile',name},{manual=false}))
@@ -80,7 +80,9 @@ assert(not failure:Accept({['new-copy']='accept',['new-select']='accept'}))
 assert(db:GetCurrentProfile()=='Original' and not db.profiles[nextName],'failed selection did not compensate')
 assert(failure.lastJournal.status=='rolled-back' and owned[nextName].removed)
 db.SetProfile=realSetProfile
-adapter.api.version='new unqualified' assert(not adapter:Probe()) adapter.api.version='2.21.1'
+adapter.api.version='future' assert(adapter:Probe(),'metadata blocked compatible AceDB')
+local refresh=addon.RefreshConfig addon.RefreshConfig=nil assert(not adapter:Probe(),'missing native refresh accepted') addon.RefreshConfig=refresh
+adapter.api.version=nil assert(adapter:Probe(),'missing metadata blocked compatible AceDB')
 db:RegisterNamespace('Other',{profile={a=1}}) assert(not adapter:Probe())
 -- Qualify explicit-default expansion against the actual Retail profile template.
 local defaultsAddon={projectId=1,WOW_PROJECT_FOREVER='forever'}

@@ -328,7 +328,7 @@ function Ping:Refresh(api,enabled,bridge)
         return true,'native ping bindings restored'
     end
     local cp=api.CPAPI
-    if not bridge or not bridge.api or bridge.api.version~='3.3.10' or not bridge.db
+    if not bridge or not bridge.db
         or not bridge.db.Radial or type(bridge.db.Radial.Register)~='function'
         or type(bridge.db.Radial.Headers)~='table'
         or not bridge.db.Layers or type(bridge.db.Layers.Claim)~='function'

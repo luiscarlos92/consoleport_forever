@@ -1,7 +1,7 @@
 # ConsolePort Forever agent instructions
 
 Status: maintained
-Reviewed: 2026-10-12
+Reviewed: 2026-11-03
 Evidence: [approved repository system](docs/decisions/0001-repository-development-system.md).
 
 ## Start here
@@ -46,6 +46,13 @@ The [reference index](docs/reference/README.md) routes evidence and history.
   user request and an available permitted mechanism.
 - Public/adaptive product work remains deferred. Local assembly/notices do not
   grant permission to publish third-party code or assets.
+
+## Integration admission
+
+Never lock Forever to a third-party addon version, range or allowlist. Probe
+native capabilities/readiness/ownership instead. Source/version/hash pins remain
+reproducible qualification evidence, not runtime admission gates; see
+[decision 0009](docs/decisions/0009-capability-based-integrations.md).
 
 ## Investigate and implement
 

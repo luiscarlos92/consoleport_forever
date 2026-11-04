@@ -1,5 +1,6 @@
 """Retain the exact current-source set used by offline contract tests."""
 import json
+import argparse
 from repository_paths import ROOT, contained, output, sha
 
 FILES = [
@@ -53,6 +54,10 @@ FILES = [
     'ConsolePort_Menu/Model/Buttons.lua',
 ]
 if __name__ == '__main__':
+    parser=argparse.ArgumentParser()
+    parser.add_argument('--destination',default='evidence/consoleport-contracts')
+    args=parser.parse_args()
+    destination=output(ROOT/args.destination,ROOT/'evidence')
     lock = json.loads((ROOT / 'dependencies/lock.json').read_text(encoding='utf-8'))
     package = next(p for p in lock['packages'] if p['repo'] == 'seblindfors/ConsolePort')
     records = []
@@ -61,13 +66,16 @@ if __name__ == '__main__':
         expected = package['files'][name]
         if sha(source) != expected:
             raise ValueError('Pinned source drift: ' + name)
-        target = output(ROOT / 'evidence/consoleport-contracts' / name)
+        target = output(destination / name)
+        if target.exists() and sha(target)!=expected:
+            raise ValueError('Retain existing pinned capture; choose a new destination: '+name)
         target.parent.mkdir(parents=True, exist_ok=True)
         target.write_bytes(source.read_bytes())
         if sha(source) != expected or sha(target) != expected:
             raise ValueError('Source changed during capture: ' + name)
-        records.append({'path': name, 'sha256': expected})
-    output(ROOT / 'evidence/consoleport-contracts/manifest.json').write_text(json.dumps({
+        records.append({'path': name, 'sha256': expected, 'repo':package['repo'],
+            'version':package['version'],'packageSHA256':package['sha256']})
+    output(destination/'manifest.json').write_text(json.dumps({
         'version': package['version'], 'releaseURL': package['releaseURL'],
         'packageSHA256': package['sha256'], 'purpose': 'Exact unmodified source audit/test contracts; not deployed dependency copies.',
         'files': records}, indent=2), encoding='utf-8')

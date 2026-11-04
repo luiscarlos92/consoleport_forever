@@ -1,0 +1,19 @@
+{
+  "at": "2026-11-04T00:08:22.388996+00:00",
+  "testedParentHEAD": "96d01520668bf21b1d232fac3a4be7d3674a67fe",
+  "stage": "Complete local source qualification",
+  "version": "2.0.0-candidate.44",
+  "runtimeSuites": 108,
+  "toolingTests": 76,
+  "productFiles": 64,
+  "toolTestFiles": 165,
+  "runtimeReportSHA256": "a00bf4a217729b215214757df9e7e9ebedca63bce7b0cd4085dc9a978282725e",
+  "toolingReportSHA256": "ea6420ce3af9d2130418ce8edd958e80150647630be7a41b4e63fbe135088812",
+  "dependencyLockSHA256": "115a473638ea4f58173529d7766ee7b1896a5be656c1fe1f8ebecf4b0bb10b83",
+  "dependencyUpdatesToDeploy": [],
+  "storeSchema": 3,
+  "configurationRevision": 20,
+  "allCurrentSourceInventoriesMatch": true,
+  "versionAdmission": "No third-party version allowlist; T107 rejects old version gate; T108 executes current Pawn/BetterBags with arbitrary metadata.",
+  "limits": "Offline native-source/C/UI models do not certify Retail authority, taint, input timing, rendering, persistence or CPU."
+}

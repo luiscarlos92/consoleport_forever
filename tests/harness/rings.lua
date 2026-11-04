@@ -20,6 +20,7 @@ CPAPI={DefaultRingSetID=1,ExtraActionButtonID=169,IsModernVersion=true,GetEnv=fu
     GetSpellLink=function(spell) return known[spell] and 'spell:'..spell end,
     GetItemInfo=function(item) return {itemLink=tostring(item)} end,Log=function() end,
     Static=function(value) return function() return value end end}
+C_Spell=C_Spell or {}; C_Spell.GetSpellLink=CPAPI.GetSpellLink
 function CreateFromMixins(...)
     local value={} for i=1,select('#',...) do for k,v in pairs(select(i,...)) do value[k]=v end end return value
 end
@@ -155,7 +156,7 @@ assert(#account.characters.A.rings.sets.Auras==2 and account.characters.A.rings.
 local snapshot=a:read({'state'})
 combat=true assert(not a:write({'state'},snapshot)) combat=false
 open=true assert(not a:write({'state'},snapshot)) open=false
-local version=a.api.version a.api.version='future' assert(not a:Probe()) a.api.version=version
+local version=a.api.version a.api.version='future' assert(a:Probe(),'version metadata blocked compatible native rings') a.api.version=version
 env.IsSpellValidationReady=false assert(not a:Proposal()) env.IsSpellValidationReady=true
 a.api.getEnv=function() return {Frame={}} end assert(not a:Probe()) a.api.getEnv=function() return env end
 local retained=account.characters.A.rings.sets

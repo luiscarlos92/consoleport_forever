@@ -19,6 +19,18 @@ import audit_migration
 
 
 class ToolGuards(unittest.TestCase):
+    def test_locale_annotations_preserve_required_closure(self):
+        files={'Sample/Sample.toc':b'## Interface: 120105\nMain.lua\nLocales/deDE.lua [AllowLoadTextLocale deDE]\n',
+            'Sample/Main.lua':b'', 'Sample/Locales/deDE.lua':b''}
+        self.assertEqual(set(runtime_closure('Sample',files)['runtimeFiles']),set(files))
+        del files['Sample/Locales/deDE.lua']
+        with self.assertRaisesRegex(ValueError,'Missing or escaping'):
+            runtime_closure('Sample',files)
+        files['Sample/Sample.toc']=b'## Interface: 120105\n../Outside.lua [AllowLoadTextLocale deDE]\n'
+        files['Outside.lua']=b''
+        with self.assertRaisesRegex(ValueError,'Missing or escaping'):
+            runtime_closure('Sample',files)
+
     @classmethod
     def setUpClass(cls):
         output(ROOT/'scratch').mkdir(exist_ok=True)

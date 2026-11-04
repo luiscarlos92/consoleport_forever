@@ -1,0 +1,87 @@
+{
+  "capturedAt": "2026-11-03T23:39:35.628083+00:00",
+  "purpose": "R16 isolated source execution only; no package/install",
+  "copyRoot": "scratch/pawn-immersion-inputs",
+  "files": [
+    {
+      "path": "PawnCurrent/Pawn.lua",
+      "repo": "VgerMods/Pawn",
+      "ref": "Pawn-2.14.1",
+      "url": "https://raw.githubusercontent.com/VgerMods/Pawn/Pawn-2.14.1/Pawn.lua",
+      "sha256": "c2eee8af80146937e9bd6827afb43e33ebc41d5defab2367048ba00fefc6e1fb",
+      "bytes": 269690
+    },
+    {
+      "path": "PawnCurrent/PawnBags.lua",
+      "repo": "VgerMods/Pawn",
+      "ref": "Pawn-2.14.1",
+      "url": "https://raw.githubusercontent.com/VgerMods/Pawn/Pawn-2.14.1/PawnBags.lua",
+      "sha256": "a7088fc810f9c3095bf8e765d8c33a29552356a4b2b36c1ea5e69620f2feb9db",
+      "bytes": 5862
+    },
+    {
+      "path": "PawnCurrent/Core.lua",
+      "repo": "VgerMods/Pawn",
+      "ref": "Pawn-2.14.1",
+      "url": "https://raw.githubusercontent.com/VgerMods/Pawn/Pawn-2.14.1/Core.lua",
+      "sha256": "1c39dd90251093c18ac060b4602701c7b9da2f8f2cf2cdd3fc29071205bc0fab",
+      "bytes": 3942
+    },
+    {
+      "path": "PawnCurrent/Localization.lua",
+      "repo": "VgerMods/Pawn",
+      "ref": "Pawn-2.14.1",
+      "url": "https://raw.githubusercontent.com/VgerMods/Pawn/Pawn-2.14.1/Localization.lua",
+      "sha256": "c3372268a1bf11603356b4b159742c96e69410f99cd90db6466616a641fc7539",
+      "bytes": 52078
+    },
+    {
+      "path": "PawnCurrent/VgerCore/VgerCore.lua",
+      "repo": "VgerMods/Pawn",
+      "ref": "Pawn-2.14.1",
+      "url": "https://raw.githubusercontent.com/VgerMods/Pawn/Pawn-2.14.1/VgerCore/VgerCore.lua",
+      "sha256": "0726348e92f9dcdd4154fcbc28a32170146e1e41fc68d2a0f97b7471be128b4f",
+      "bytes": 14870
+    },
+    {
+      "path": "PawnCurrent/Readme.md",
+      "repo": "VgerMods/Pawn",
+      "ref": "Pawn-2.14.1",
+      "url": "https://raw.githubusercontent.com/VgerMods/Pawn/Pawn-2.14.1/Readme.md",
+      "sha256": "939a10728fbb0e84cdca0b29363a5f7e1b4527d4ff900d3a823d75c5aec4df7d",
+      "bytes": 6752
+    },
+    {
+      "path": "PawnCurrent/Pawn.toc",
+      "repo": "VgerMods/Pawn",
+      "ref": "Pawn-2.14.1",
+      "url": "https://raw.githubusercontent.com/VgerMods/Pawn/Pawn-2.14.1/Pawn.toc",
+      "sha256": "5bf449126af62be5c24e6b0c6a38699d2d19ead27c863cabd072d2f3bf10765b",
+      "bytes": 1874
+    },
+    {
+      "path": "PawnCurrent/PawnUI.xml",
+      "repo": "VgerMods/Pawn",
+      "ref": "Pawn-2.14.1",
+      "url": "https://raw.githubusercontent.com/VgerMods/Pawn/Pawn-2.14.1/PawnUI.xml",
+      "sha256": "a55bbe15d7e28aaf3a31dbae91bfed691bff228b42e09246f3fa95bacf6385c9",
+      "bytes": 89536
+    },
+    {
+      "path": "BetterBagsCurrent/integrations/pawn.lua",
+      "repo": "Cidan/BetterBags",
+      "ref": "v0.8.12",
+      "url": "https://raw.githubusercontent.com/Cidan/BetterBags/v0.8.12/integrations/pawn.lua",
+      "sha256": "df9bd06485a0d876eefa97c0d83e418ab505495ec8421f8bf63cdd5dc33261ac",
+      "bytes": 2591
+    },
+    {
+      "path": "BetterBagsCurrent/data/items.lua",
+      "repo": "Cidan/BetterBags",
+      "ref": "v0.8.12",
+      "url": "https://raw.githubusercontent.com/Cidan/BetterBags/v0.8.12/data/items.lua",
+      "sha256": "e3df573d2931d910885c1a45182f485efb41a5373b09537d00ee70597da03084",
+      "bytes": 174301
+    }
+  ]
+}

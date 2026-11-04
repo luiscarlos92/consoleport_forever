@@ -1,7 +1,7 @@
 # Approved requirements and scope
 
 Status: maintained
-Reviewed: 2026-10-16
+Reviewed: 2026-11-03
 Evidence: [confirmed historical decisions](archive/ai-native-2026-10-11/MASTER-PLAN.pre-restructure.md),
 [current status](IMPLEMENTATION-STATUS.md), [candidate.30 requirement](CANDIDATE30-PING-RELEASE-LIFECYCLE-2026-10-10.md).
 
@@ -9,6 +9,14 @@ This document owns intended behavior. Source activation is documented in
 [architecture](ARCHITECTURE.md); [reference evidence](reference/EVIDENCE.md)
 distinguishes Forever source, project decisions and runtime proof. A requested
 feature may be approved in direction yet still deferred or gated.
+
+## Addon compatibility policy
+
+November 3: check user-updated addons, patch proven issues, and deploy nothing
+if no patch is needed. Forever must never be locked to a third-party addon
+version. Admission uses native capabilities/readiness/ownership; release/hash
+pins remain qualification evidence. This supersedes earlier exact-version
+admission instructions. [Decision 0009](decisions/0009-capability-based-integrations.md).
 
 ## Current contracts
 

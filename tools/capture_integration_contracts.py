@@ -18,9 +18,12 @@ FILES = {
         'DynamicCam/Libs/AceDB-3.0/AceDB-3.0.lua'],
 }
 
-def restore_manifests(integration_manifests=(), native_manifests=(), fetch=None):
+def restore_manifests(integration_manifests=(), native_manifests=(), fetch=None, lock_path='dependencies/lock.json'):
     """Reconstruct ignored inputs from exact manifests, without replacing captures."""
-    lock = json.loads((ROOT/'dependencies/lock.json').read_text(encoding='utf-8'))
+    locked=contained(ROOT/lock_path)
+    if locked != ROOT/'dependencies/lock.json' and not (locked.is_relative_to(ROOT/'evidence/dependencies') and locked.name.endswith('-lock.json')):
+        raise ValueError('Historical lock must be explicit evidence metadata')
+    lock = json.loads(locked.read_text(encoding='utf-8'))
     packages = {p['repo']:p for p in lock['packages']}
     restored = 0
     def read_manifest(name):
@@ -65,12 +68,20 @@ if __name__ == '__main__':
     parser=argparse.ArgumentParser()
     parser.add_argument('--from-manifest',action='append',default=[])
     parser.add_argument('--native-manifest',action='append',default=[])
+    parser.add_argument('--lock',default='dependencies/lock.json')
+    parser.add_argument('--destination',default='evidence/integration-contracts')
+    parser.add_argument('--modern-bags',action='store_true')
     args=parser.parse_args()
     if args.from_manifest or args.native_manifest:
-        print('Reconstructed',restore_manifests(args.from_manifest,args.native_manifest),'pinned contract files')
+        print('Reconstructed',restore_manifests(args.from_manifest,args.native_manifest,lock_path=args.lock),'pinned contract files')
         raise SystemExit(0)
     lock = json.loads((ROOT / 'dependencies/lock.json').read_text())
     records = []
+    destination=output(ROOT/args.destination,ROOT/'evidence')
+    if args.modern_bags:
+        FILES['BetterBags']=[p for p in FILES['BetterBags'] if '/themes/' not in p]+[
+            'BetterBags/sonata/themes/default.lua','BetterBags/sonata/themes/elvui.lua',
+            'BetterBags/integrations/pawn.lua','BetterBags/data/items.lua']
     for addon, names in FILES.items():
         package = next(p for p in lock['packages'] if addon in p['addonFolders'])
         for name in names:
@@ -78,14 +89,16 @@ if __name__ == '__main__':
             expected = package['files'][name]
             if sha(source) != expected:
                 raise ValueError('Pinned source drift: ' + name)
-            target = output(ROOT / 'evidence/integration-contracts' / name)
+            target = output(destination / name)
+            if target.exists() and sha(target)!=expected:
+                raise ValueError('Retain existing pinned capture; choose a new destination: '+name)
             target.parent.mkdir(parents=True, exist_ok=True)
             target.write_bytes(source.read_bytes())
             if sha(source) != expected or sha(target) != expected:
                 raise ValueError('Source changed during capture: ' + name)
             records.append({'path': name, 'sha256': expected, 'repo': package['repo'],
                 'version': package['version'], 'packageSHA256': package['sha256']})
-    output(ROOT / 'evidence/integration-contracts/manifest.json').write_text(
+    output(destination/'manifest.json').write_text(
         json.dumps({'purpose': 'Exact unmodified integration lifecycle contracts; not deployed dependency copies.',
             'files': records}, indent=2), encoding='utf-8')
     print('Captured', len(records), 'integration contract files')

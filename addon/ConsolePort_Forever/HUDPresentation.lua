@@ -34,7 +34,7 @@ end
 local function Public(value) return not (issecretvalue and issecretvalue(value)) end
 local function DB()
     local bridge=Addon.adapters and Addon.adapters.consoleport
-    if bridge and bridge.api.version=='3.3.10' then return bridge.db end
+    if bridge and type(bridge.db)=='table' then return bridge.db end
 end
 function HUD.Atlas(texture, name)
     if C_Texture and C_Texture.GetAtlasInfo and C_Texture.GetAtlasInfo(name) then

@@ -25,6 +25,7 @@ function GetQuestID() return MODEL.quest end
 function GetQuestItemLink(kind,id) return MODEL.rewards[kind..id] end
 function GetTimePreciseSec() MODEL.clock=MODEL.clock+(MODEL.cost or 0);return MODEL.clock end
 function GetTime()return MODEL.clock end
+function GetLocale()return 'enUS'end
 function issecretvalue(v) return type(v)=='table' and v.secret==true end
 MODEL={level=80,clock=1,cost=0,quest=100,equipped={},rewards={},items={},timers={},counts={compare=0,nativeSets=0,showEvents=0}}
 C_Item={GetItemInfo=function(link) local i=MODEL.items[link];if not i or i.pending then return end;return i.Name,link,i.Rarity,i.Level,i.MinLevel or 1,nil,nil,nil,nil,nil,i.price end}

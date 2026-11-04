@@ -28,6 +28,8 @@ C_Widget={IsFrameWidget=function(frame) return type(frame)=='table' and frame.sc
 CPAPI.Index=function() return Frame end
 CPAPI.GetEnv=function() return {Attributes={PassThrough='native-pass-through'},FrameManagers={},FramePipelines={}},db,'ConsolePort_Cursor' end
 function cursor:OnStackChanged() end
+-- Retail has no Camelot native navigation owner.
+function CPAPI.IsNativeNavigationActive() return false end
 --@NATIVE_STACK
 local CURSOR_ADDON_NAME='ConsolePort_Cursor'
 EventUtil={ContinueOnAddOnLoaded=function(name,fn) assert(name==CURSOR_ADDON_NAME) fn() end}

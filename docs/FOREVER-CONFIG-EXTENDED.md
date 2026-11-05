@@ -32,30 +32,29 @@ addon has worked. It does not alter Immersion or Retail.
 
 ## Native controller navigation
 
-Version 0.1.2 is installed while playing with verified six-file payload and
-unchanged Retail, other addons, WTF, links and prior backups.
-[Delivery](../evidence/forever-config/2026-11-05/navigation-delivery.json),
-[readback](../evidence/forever-config/2026-11-05/navigation-readback.json).
-It attaches the visible BetterBags backpack and available bank windows
-to their existing Blizzard controller through wrapped frame/extra-panel APIs.
-Native navigation discovers the real item buttons; decorative copies are ignored.
-Native item-action footers, context conditions, clicks, menus, held-item back
-behavior and the input binding stack remain owned by Blizzard. The extension
-creates no binding group, input proxy, custom item action or native footer.
+The user confirms Circle closes bags in 0.1.2 but D-pad selection fails. A delayed
+live read shows ContainerFrameCombinedBags active, selection stuck on
+GamepadBackpackButton, input enabled and an addon-blocked action. Passing an
+addon-created extra-panel list through a native wrapper does not make the list's
+contents secure; the previous offline wrapper model did not represent this.
 
-Show/hide, draw completion, controller-mode transitions, design changes and combat
-exit coalesce. Returning from a menu reattaches controls without a delayed focus
-loss; redraws preserve another active window. Native bag-open state is synchronized
-when closing so the next toggle reopens correctly. Login/combat/missing readiness
-and stale logout work retain their guards. The read-only status command reports
-the controller host and visible bag separately.
+Version 0.1.3 discovers the visible BetterBags frame directly through native
+HandlePanelOpen/RefreshButtonGroups calls with frame references only. The stock
+controller remains registered and keeps the original footer, input stack, item
+actions and held-item back behavior. Menu return redirects to the visible frame.
+A close callback on the addon window, only when none exists, queues the current
+BetterBags owner's Hide method. No native handler or foreign close callback is
+replaced, and no input binding group or footer is constructed by the extension.
 
-The stock search shortcut and footer visuals are not redirected. Selecting the
-visible addon search field is a separate native edit-box acceptance case.
-[Plan and scope](reference/BETTERBAGS-NATIVE-NAVIGATION-2026-11-05.md).
-[Targeted qualification](../evidence/forever-config/2026-11-05/navigation-qualification.json)
-passes eighteen defect controls and ten affected tooling tests. Controller use
-in the actual client remains pending.
+Lifecycle guards and coalescing remain. A hidden/disabled/replaced addon panel is
+removed through the native API. Status reports the visible window independently
+of focus, plus its controller, selection and enabled input.
+
+The stock search shortcut and footer visuals remain stock-owned. Current source
+qualification passes twenty defect controls and ten affected tooling tests;
+actual engine security, rendering and controller acceptance remain pending.
+[Qualification](../evidence/forever-config/2026-11-05/selection-qualification.json),
+[plan and scope](reference/BETTERBAGS-NATIVE-NAVIGATION-2026-11-05.md).
 
 ## Circle close follow-up
 

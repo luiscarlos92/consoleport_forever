@@ -48,3 +48,35 @@ The Circle-only source regression did not establish live native window focus.
 The stock search shortcut and footer visuals remain stock-owned; this repair
 does not redirect text entry or relocate the native footer. The visible addon
 search field is a separate native edit-box acceptance case.
+
+## Superseding live-selection repair plan
+
+The 0.1.2 delivery did not fix D-pad use. The user confirms Circle works. Live
+screenshots show the visible BetterBagsBagBackpack, stock controller shown and
+active, input true, cursor alpha 1, no suspension, selection GamepadBackpackButton
+and an addon-blocked action. The earlier tests treated wrapped calls with
+addon-created panel lists as secure; this was not engine proof.
+
+1. Preserve Circle and native item/binding ownership. Remove addon-created
+   extra-panel collections from every call into native navigation.
+2. Keep FrameControlsManager's stock controller, but use the visible addon frame
+   itself as SmartNavigation's panel. Native discovery creates its own collections.
+   On native controller refocus, immediately reattach the visible panel.
+3. Route native AttemptClose through an addon-window close callback only if the
+   window has no handler. It queues the current BetterBags Hide owner; native
+   held-item back is still handled before AttemptClose. Preserve foreign handlers.
+4. Remove hidden/disabled/replaced panel info with the wrapped native API. Keep
+   event bursts bounded and stale/combat/mouse work blocked.
+5. Execute the actual stock initial-target callback, reproduce its backpack-button
+   selection, and require direct visible-frame selection. Add a conservative
+   collection-boundary negative control. This guard does not emulate WoW taint.
+   Recheck native item actions, captured Circle, menu return and lifecycle cases.
+6. Qualify only affected Forever/package checks, build from exact pushed source,
+   snapshot/preview and replace only the selected extension, then independently
+   verify current code, WTF, other addons, roots/links and retained backups.
+
+Native SecureHelper preserves nested values rather than laundering their taint;
+see [pinned source](https://github.com/Gethe/wow-ui-source/blob/eac30af597e5aaa43a60f6675ef5fdcea100375f/Interface/AddOns/Blizzard_GamepadSmartNavigation/SecureHelper.lua).
+The screenshots establish the blocked action and wrong selected frame, not the
+engine's original taint writer. The direct-frame change avoids the implicated
+collection route; successful real D-pad behavior remains user-owned acceptance.

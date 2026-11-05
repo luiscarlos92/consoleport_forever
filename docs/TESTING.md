@@ -17,7 +17,10 @@ action source through actual captured input callbacks. It covers real-item
 discovery, selection/tooltip, clicks, Square, Triangle, Circle/held item, scrolling,
 menu return, mode/combat/readiness, design/reused-window and logout transitions.
 Its modeled native wrapper boundary rejects direct addon input-stack writes.
-These are source/control-flow tests, not engine taint or hardware certification. T112 executes actual
+The live 0.1.2 rejection adds the actual native stock-target callback and a
+conservative guard against addon-created collections crossing native wrappers.
+Twenty defect controls must fail. These are source/control-flow tests, not
+engine taint or hardware certification. T112 executes actual
 DynamicCam defaults, startup, situation evaluator and AceDB logout/reinitialization
 with 20 enabled contexts and seven modeled transitions; disabled-profile and
 missing-startup-evaluation controls must fail. Six additional tooling tests cover
@@ -168,7 +171,7 @@ The runner uses [current ConsolePort sources](../evidence/consoleport-contracts-
 and [current optional integrations](../evidence/integration-contracts-candidate44/manifest.json),
 retaining old evidence unchanged. T107 rejects the old version-lock defect and
 checks capability-based admission. T108 exercises current Pawn/BetterBags source,
-both load orders, arbitrary metadata and nineteen defect controls. Existing
+both load orders, arbitrary metadata and twenty defect controls. Existing
 native input, restricted compiler, visual and transition gates remain mandatory.
 
 Reconstruct current captures by passing both current manifests to

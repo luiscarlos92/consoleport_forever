@@ -33,14 +33,19 @@ function Addon:AttachBagPanel(host)
         or type(nav.GetActiveFrame) ~= "function" or type(nav.GetCurrentButton) ~= "function"
         or type(nav.SetUseGridNavigation) ~= "function" or type(nav.RefreshButtonGroups) ~= "function"
         or type(nav.SetScrollFrameForFrame) ~= "function" or type(nav.SelectTopLeftButton) ~= "function"
-        or nav:GetActiveFrame() ~= host then return end
+        then return end
     for frame, record in pairs(state.frames) do
-        if record.host == host and bb.Bags[record.kind] == record.bag and visible(frame) and not record.closed then
-            nav:SetUseGridNavigation(host, false)
-            nav:RefreshButtonGroups(host, {frame})
+        if record.host == host and bb.Bags[record.kind] == record.bag and visible(frame) and not record.closed
+            and (nav:GetActiveFrame() == host or nav:GetActiveFrame() == frame) then
+            -- A native wrapper can accept a frame reference, but cannot make an
+            -- addon-created panel list or its contents secure. Discover this
+            -- frame directly; keep the original controller/footer registered.
+            if nav:GetActiveFrame() == host then nav:HandlePanelOpen(frame) end
+            nav:SetUseGridNavigation(frame, false)
+            nav:RefreshButtonGroups(frame)
             local scroll = record.bag.scrollBox
             if scroll and (type(scroll.GetDerivedScrollRange) == "function"
-                or type(scroll.GetVerticalScrollRange) == "function") then nav:SetScrollFrameForFrame(host, scroll) end
+                or type(scroll.GetVerticalScrollRange) == "function") then nav:SetScrollFrameForFrame(frame, scroll) end
             local button = nav:GetCurrentButton()
             if not visible(button) or not inside(button, frame) then nav:SelectTopLeftButton() end
             return
@@ -80,6 +85,7 @@ function Addon:RefreshBagNavigation()
         and type(nav.HandlePanelOpen) == "function" and type(nav.SetUseGridNavigation) == "function"
         and type(nav.SelectTopLeftButton) == "function" and type(nav.SetScrollFrameForFrame) == "function"
         and type(nav.GetCurrentButton) == "function"
+        and type(nav.RemovePanelInfo) == "function" and type(nav.AttemptClose) == "function"
         and type(SmartNavigation_MarkFrameIgnored) == "function"
         and type(OpenBackpack) == "function" and type(CloseBackpack) == "function"
         and InputUtil and type(InputUtil.IsGamepadUIEnabled) == "function") then
@@ -111,6 +117,19 @@ function Addon:RefreshBagNavigation()
                 frame:HookScript("OnHide", function() self:QueueBagNavigation() end)
             end
             record.bag, record.kind = bag, kind
+            if not record.closeHandler then
+                record.closeHandler = function()
+                    if not self.active or state.stopped or InCombatLockdown() or not visible(frame)
+                        or not record.registered or nav:GetActiveFrame() ~= frame then return false end
+                    local currentOwner = owner(self)
+                    if not currentOwner or currentOwner.Bags[record.kind] ~= record.bag then return false end
+                    record.closed = true
+                    record.open = nil
+                    self:QueueBagNavigation()
+                    return true
+                end
+            end
+            if frame.SmartNavigationCloseHandler == nil then frame.SmartNavigationCloseHandler = record.closeHandler end
             if not state.hosts[host] then
                 state.hosts[host] = true
                 host:HookScript("OnHide", function()
@@ -132,6 +151,7 @@ function Addon:RefreshBagNavigation()
     end
     for frame, record in pairs(state.frames) do
         if record.registered and (not current[frame] or not visible(frame)) then
+            nav:RemovePanelInfo(frame)
             record.registered:FrameHidden(record.host)
             record.registered = nil
             if record.kind == "Backpack" and not frame:IsShown() then CloseBackpack() end
@@ -150,22 +170,21 @@ function Addon:RefreshBagNavigation()
             else
                 if record.open or not record.registered or not listed(manager, host) then
                     local active = nav:GetActiveFrame()
-                    local focus = record.open or active == nil or active == host
+                    local focus = record.open or active == nil or active == host or active == frame
                     if record.kind == "Backpack" and not host:IsShown() and focus then OpenBackpack() end
                     if host:IsShown() then
                         if record.open and listed(manager, host) then manager:FrameHidden(host) end
                         if listed(manager, host) or manager:FrameShown(host, false, focus) then record.registered = manager end
                         record.open = nil
-                        if nav:GetActiveFrame() == host then
+                        if nav:GetActiveFrame() == host or nav:GetActiveFrame() == frame then
                             -- Keep Blizzard's native controller, footer, actions and
-                            -- binding stack. The visible addon is an extra panel.
-                            nav:HandlePanelOpen(host, {frame})
+                            -- binding stack. Discover the visible frame directly.
                             self:AttachBagPanel(host)
                         end
                     else
                         state.reason = "waiting for native bag controller"
                     end
-                elseif nav:GetActiveFrame() == host then
+                elseif nav:GetActiveFrame() == host or nav:GetActiveFrame() == frame then
                     -- Drawing items must not take focus back from a menu/window.
                     self:AttachBagPanel(host)
                 end
@@ -181,13 +200,22 @@ function Addon:GetBagNavigationStatus()
         local ok, value = pcall(nav.GetActiveFrame, nav)
         if ok and not (issecretvalue and issecretvalue(value)) and type(value) == "table" then active = value end
     end
-    local focused, window = false, nil
+    local focused, window, host = false, nil, nil
     for _, kind in ipairs(kinds) do
         local bag = bb and bb.Bags[kind]
-        if bag and visible(bag.frame) and active == hostFor(kind) then focused, window = true, bag.frame end
+        if bag and visible(bag.frame) then
+            window = bag.frame
+            if active == bag.frame then focused, host = true, hostFor(kind); break end
+        end
     end
     return {reason = state and state.reason or "waiting for BetterBags", focused = focused,
-        itemActions = focused and active.gamepadFooter and active.gamepadFooter.isShown == true or false,
+        itemActions = focused and host and host.gamepadFooter and host.gamepadFooter.isShown == true or false,
+        controller = host and self:PublicCall(host.GetName, host),
+        selected = nav and type(nav.GetCurrentButton) == "function" and (function()
+            local button = nav:GetCurrentButton()
+            return button and self:PublicCall(button.GetName, button)
+        end)(),
+        input = nav and nav.bindingActive == true or false,
         frame = active and self:PublicCall(active.GetName, active),
         window = window and self:PublicCall(window.GetName, window)}
 end

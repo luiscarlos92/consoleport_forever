@@ -27,7 +27,10 @@ The new [Immersion extension](IMMERSION-EXTENDED.md) is installed after local/fr
 The user reports that navigation and item controls remain unusable after the
 Circle-only delivery. Native source identifies missing visible extra-panel
 registration. The scoped 0.1.2 repair keeps Blizzard controller/action ownership;
-actual gamepad and rendering acceptance remains pending.
+the user later confirms Circle works while D-pad remains unusable. The delayed
+client probe selects GamepadBackpackButton and reports an addon-blocked action.
+Version 0.1.3 directly discovers the visible frame without an addon-created panel
+list. Its actual gamepad/security/rendering acceptance remains pending.
 [Scope](reference/BETTERBAGS-NATIVE-NAVIGATION-2026-11-05.md).
 
 ## Inactive or gated capabilities

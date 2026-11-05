@@ -9,6 +9,13 @@ Dates below use America/Toronto. This is a curated change index, not invented
 release tags or blanket gameplay certification. Detailed receipts own exact
 source/artifact/file identities. Prepared, installed and accepted are separate.
 
+## BetterBags direct frame selection - November 5, 2026
+
+Prepared configuration extension 0.1.3 after the user confirmed Circle but rejected
+D-pad use. Native navigation now discovers the visible frame directly without an
+addon-created extra-panel list; the stock controller/footer/item actions remain.
+[Scope and qualification](docs/FOREVER-CONFIG-EXTENDED.md#native-controller-navigation).
+
 ## BetterBags native controller integration - November 5, 2026
 
 Installed configuration extension 0.1.2: native controller/visible extra-panel

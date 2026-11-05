@@ -61,15 +61,17 @@ function navigationFixture(mutation='none'){
   const product=['Core','Navigation'].map(n=>{
     let source=read('addon/ForeverConfig_Extended/'+n+'.lua');
     parser.parse(source,{luaVersion:'5.1'});
-    if(n==='Navigation'&&mutation==='missing-window')source=source.replace('nav:HandlePanelOpen(host, {frame})','-- omitted extra panel').replaceAll('nav:RefreshButtonGroups(host, {frame})','nav:RefreshButtonGroups(host)');
+    if(n==='Navigation'&&mutation==='missing-window')source=source.replace('if nav:GetActiveFrame() == host then nav:HandlePanelOpen(frame) end','-- omitted visible panel');
     if(n==='Navigation'&&mutation==='decorative-item')source=source.replace('SmartNavigation_MarkFrameIgnored(decoration)','do end');
-    if(n==='Navigation'&&mutation==='focus-theft')source=source.replace('elseif nav:GetActiveFrame() == host then','elseif true then\n nav:HandlePanelOpen(host, {frame})');
+    if(n==='Navigation'&&mutation==='focus-theft')source=source.replace('elseif nav:GetActiveFrame() == host or nav:GetActiveFrame() == frame then','elseif true then\n nav:HandlePanelOpen(frame)');
     if(n==='Navigation'&&mutation==='combat-registration')source=source.replaceAll('InCombatLockdown()','false');
     if(n==='Navigation'&&mutation==='lost-close')source=source.replace('bag:Hide(context:New("ForeverConfig_NativeClose"))','do end');
     if(n==='Navigation'&&mutation==='stale-native-open')source=source.replace('if record.kind == "Backpack" and not frame:IsShown() then CloseBackpack() end','-- omitted native bookkeeping');
-    if(n==='Navigation'&&mutation==='no-scroll-owner')source=source.replace('nav:SetScrollFrameForFrame(host, scroll)','do end');
+    if(n==='Navigation'&&mutation==='no-scroll-owner')source=source.replace('nav:SetScrollFrameForFrame(frame, scroll)','do end');
     if(n==='Navigation'&&mutation==='stale-logout')source=source.replace('state.stopped = true','state.stopped = false').replace('state.generation = state.generation + 1','-- omitted generation');
     if(n==='Navigation'&&mutation==='raw-bindings')source=source.replace('    local bb = owner(self)\n    local manager',"    GamepadMode.ActivateBindingGroup(GamepadMode.CreateBindingGroup('forbidden'))\n    local bb = owner(self)\n    local manager");
+    if(n==='Navigation'&&mutation==='missing-visible-close')source=source.replace('if frame.SmartNavigationCloseHandler == nil then frame.SmartNavigationCloseHandler = record.closeHandler end','-- omitted visible-frame close');
+    if(n==='Navigation'&&mutation==='addon-panel-list')source=source.replace('nav:HandlePanelOpen(frame)','nav:HandlePanelOpen(host, {frame})');
     if(n==='Navigation'&&mutation==='lost-refocus')source=source.replace('hooksecurefunc(nav, "HandlePanelOpen", function(_, host) self:AttachBagPanel(host) end)','do end');
     return `assert(load(${JSON.stringify(source)},${JSON.stringify(n)}))('ForeverConfig_Extended',A)`;
   }).join('\n');
@@ -82,17 +84,19 @@ function navigationFixture(mutation='none'){
     .replace('--@NAV_PROMPTS',()=>native('PromptedBinding.lua')+'\n'+native('PromptedBindingFooter.lua'))
     .replace('--@NAV_CONTAINER_PROMPTS',()=>{const src=read('scratch/forever-config-inputs/ContainerFrame.lua');return src.slice(src.indexOf('local function Gamepad_OpenBagDropdownSettings()'),src.indexOf('function ContainerFrameCombinedBagsMixin:ApplySmartNavOverrideForLeftmostButton()'));})
     .replace('--@NAV_NATIVE_BAGS',()=>functions('scratch/forever-config-inputs/ContainerFrame.lua',['CloseBackpack_Combined','CloseBackpack_Individual','CloseBackpack','OpenBackpack','ToggleBackpack_Combined']))
-    .replace('--@NAV_NATIVE_FOCUS',()=>functions('scratch/forever-config-inputs/ContainerFrame.lua',['ContainerFrameCombinedBagsMixin:FocusGamepad','ContainerFrameCombinedBagsMixin:UnfocusGamepad']))
+    .replace('--@NAV_NATIVE_FOCUS',()=>functions('scratch/forever-config-inputs/ContainerFrame.lua',['ContainerFrameCombinedBagsMixin:SmartNavPanelInfoAdded','ContainerFrameCombinedBagsMixin:FocusGamepad','ContainerFrameCombinedBagsMixin:UnfocusGamepad']))
     .replace('--@NAV_PRODUCT',()=>product);
 }
 function runNavigation(){
   execute(navigationFixture());
   execute(navigationFixture('startup-combat'));
-  const controls={'missing-window':'real item/tooltip focus failed','decorative-item':'decorative duplicate remained navigable',
+  const controls={'missing-window':'visible panel/native controller split missing','decorative-item':'decorative duplicate remained navigable',
     'focus-theft':'bag draw stole another window focus','combat-registration':'combat registration attempted',
-    'lost-close':'Circle did not release native owner','stale-native-open':'manual close retained native bag-open bookkeeping',
+    'lost-close':'Circle did not release native owner','stale-native-open':'Circle retained native bag-open bookkeeping',
     'no-scroll-owner':'native scrolling binding missing',
-    'raw-bindings':'addon attempted direct input stack write','lost-refocus':'native menu return lost navigation groups',
+    'addon-panel-list':'addon panel collection crossed native boundary',
+    'missing-visible-close':'Circle did not release native owner',
+    'raw-bindings':'addon attempted direct input stack write','lost-refocus':'item menu did not return native bag focus',
     'stale-logout':'logout work resurrected navigation'};
   for(const [mutation,expected]of Object.entries(controls)){let rejected=false,failure='no failure';try{execute(navigationFixture(mutation));}catch(error){failure=String(error);rejected=failure.includes(expected);}if(!rejected)throw Error('Surviving navigation defect control: '+mutation+' ('+failure+')');}
   return {passed:true,nativeFrameControls:true,nativeNavigation:true,nativeButtonDiscovery:true,defectControls:controls,

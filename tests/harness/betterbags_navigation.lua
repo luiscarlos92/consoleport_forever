@@ -51,10 +51,19 @@ InputUtil={IsGamepadUIEnabled=function()return gamepad end}
 local gamepadInit,gamepadUninit
 function InputUtil.RegisterGamepadInit(_,fn)gamepadInit=fn end
 function InputUtil.RegisterGamepadUninit(_,fn)gamepadUninit=fn end
+local forbidAddonCollections = true -- observed blocked panel-list route; not a general engine taint model
 local secureHelper={CoerceToBoolean=function(v)return not not v end,ToOptionalString=tostring}
 function secureHelper:WrapFunction(fn)
     return function(...)
-        local previous=secureMode;secureMode=true
+        local previous=secureMode
+        if forbidAddonCollections and not previous then
+            for i=1,select('#',...) do
+                local value=select(i,...)
+                assert(type(value)~='table' or value.GetName or value==GamepadMode.FrameControlsManager,
+                    'addon panel collection crossed native boundary')
+            end
+        end
+        secureMode=true
         local values={pcall(fn,...)};secureMode=previous
         if not values[1]then error(values[2])end
         return table.unpack(values,2)
@@ -182,7 +191,10 @@ ContainerFrameCombinedBags.FocusGamepad=ContainerFrameCombinedBagsMixin.FocusGam
 ContainerFrameCombinedBags.UnfocusGamepad=ContainerFrameCombinedBagsMixin.UnfocusGamepad
 ContainerFrameCombinedBags.SmartNavigationCloseHandler=ToggleBackpack_Combined
 ContainerFrameCombinedBags.SetUpSearchGamepad=function()end -- unrelated hidden stock search is excluded
-ContainerFrameCombinedBags.SmartNavPanelInfoAdded=function()end -- stock portrait/grid setup, not the addon window
+GamepadBackpackButton=frame('GamepadBackpackButton','Button',UIParent,50,50)
+GamepadBagBar={GetBagButton=function()return GamepadBackpackButton end}
+ContainerFrameCombinedBags.PortraitButton=frame('StockPortrait','Button',ContainerFrameCombinedBags)
+ContainerFrameCombinedBags.SmartNavPanelInfoAdded=ContainerFrameCombinedBagsMixin.SmartNavPanelInfoAdded
 ContainerFrameCombinedBags.SearchBoxIcon=frame('StockSearchIcon')
 ContainerFrameCombinedBagsMixin.SetupGamepad(ContainerFrameCombinedBags)
 local function newBag(name)
@@ -230,13 +242,13 @@ WOW_PROJECT_CAMELOT=18;WOW_PROJECT_ID=18
 LibStub=function()return {GetAddon=function(_,n)if n=='BetterBags'then return BB end end}end
 -- Native dispatch tracks the hidden stock container; the visible addon is absent.
 manager:FrameShown(ContainerFrameCombinedBags)
-assert(SmartNavigation:GetActiveFrame()==ContainerFrameCombinedBags and SmartNavigation.currentButton==nil,'old hidden owner did not reproduce')
+assert(SmartNavigation:GetActiveFrame()==ContainerFrameCombinedBags and SmartNavigation.currentButton==GamepadBackpackButton,'old hidden owner did not reproduce')
 --@NAV_PRODUCT
 if startupCombat then combat=true end
 A:InstallBagNavigation()
 if startupCombat then assert(not A.navigation,'startup in combat installed navigation');combat=false end
 A:InstallBagNavigation();flush()
-assert(SmartNavigation:GetActiveFrame()==ContainerFrameCombinedBags,'native bag controller not retained')
+assert(SmartNavigation:GetActiveFrame()==backpack.frame and manager.focusedFrame==ContainerFrameCombinedBags,'visible panel/native controller split missing')
 assert(not tContains(manager.shownFrames,backpack.frame),'addon window replaced native controller')
 assert(SmartNavigation.currentButton==backpack.item and tooltip==backpack.item.name,'real item/tooltip focus failed')
 assert(not SmartNavigation:IsButtonValid(backpack.decoration),'decorative duplicate remained navigable')
@@ -258,7 +270,7 @@ assert(itemMenu and SmartNavigation:GetActiveFrame()==itemMenu and not footer.is
 messages['bags/Draw/Backpack/Done']();flush()
 assert(SmartNavigation:GetActiveFrame()==itemMenu,'bag draw stole another window focus')
 itemMenu:Close()
-assert(SmartNavigation:GetActiveFrame()==ContainerFrameCombinedBags and footer.isShown,'item menu did not return native bag focus')
+assert(SmartNavigation:GetActiveFrame()==backpack.frame and manager.focusedFrame==ContainerFrameCombinedBags and footer.isShown,'item menu did not return native bag focus')
 inputs.left(true);inputs.left(false)
 assert(SmartNavigation.currentButton==backpack.item,'native menu return lost navigation groups')
 inputs.right(true);inputs.right(false);flush()
@@ -277,7 +289,7 @@ assert(not heldItem and backpack.frame:IsShown(),'native back did not return hel
 footer.bindings.handlers.circle(true);flush()
 assert(not backpack.frame:IsShown() and #manager.shownFrames==0 and not SmartNavigation.bindingActive,'Circle did not release native owner')
 assert(not ContainerFrameCombinedBags:IsShown(),'Circle retained native bag-open bookkeeping')
-backpack.frame:Show();flush();assert(SmartNavigation:GetActiveFrame()==ContainerFrameCombinedBags,'reopen did not focus bag')
+backpack.frame:Show();flush();assert(SmartNavigation:GetActiveFrame()==backpack.frame,'reopen did not focus bag')
 local other=frame('OtherWindow',nil,UIParent);manager:FrameShown(other)
 assert(not footer.isShown,'native item actions retained focus over another window')
 messages['bags/Draw/Backpack/Done']();flush()
@@ -288,19 +300,19 @@ BankFrame=frame('StockBank',nil,hidden)
 BankFrame.SmartNavigationCloseHandler=function(self)self:Hide();return true end
 messages['item/Updated'](nil,bank.holder,bank.decoration)
 A:InstallBagNavigation();flush();bank.frame:Show();flush()
-assert(SmartNavigation:GetActiveFrame()==BankFrame,'bank window not registered')
-inputs.circle();flush();assert(not bank.frame:IsShown() and backpack.frame:IsShown(),'Circle closed wrong bag')
+assert(SmartNavigation:GetActiveFrame()==bank.frame and manager.focusedFrame==BankFrame,'bank window not registered')
+inputs.circle();flush();assert(not bank.frame:IsShown() and backpack.frame:IsShown(),'Circle closed wrong bag bank='..tostring(bank.frame:IsShown())..' backpack='..tostring(backpack.frame:IsShown())..' active='..tostring(SmartNavigation:GetActiveFrame() and SmartNavigation:GetActiveFrame():GetName()))
 -- Combat writes, startup in combat and stale queued work are refused.
 backpack.frame:Hide();flush();assert(not ContainerFrameCombinedBags:IsShown(),'manual close retained native bag-open bookkeeping')
 combat=true;backpack.frame:Show();start=registrations;flush()
 assert(registrations==start,'combat registration attempted')
-combat=false;A:InstallBagNavigation();flush();assert(SmartNavigation:GetActiveFrame()==ContainerFrameCombinedBags,'combat recovery failed')
+combat=false;A:InstallBagNavigation();flush();assert(SmartNavigation:GetActiveFrame()==backpack.frame,'combat recovery failed')
 local replacement=newBag('Replacement');backpack.frame:Hide();BB.Bags.Backpack=replacement
 BB:WatchBackpackFrame(replacement.frame);flush()
-assert(SmartNavigation:GetActiveFrame()==ContainerFrameCombinedBags and A:GetBagNavigationStatus().window==replacement.frame.name,'design change retained old focus')
+assert(SmartNavigation:GetActiveFrame()==replacement.frame and A:GetBagNavigationStatus().window==replacement.frame.name,'design change retained old focus')
 local reused={frame=replacement.frame}
 function reused:Hide(ctx)assert(ctx);self.closed=true;self.frame:Hide()end
-BB.Bags.Backpack=reused;A:QueueBagNavigation();flush();inputs.circle();flush()
+BB.Bags.Backpack=reused;A:QueueBagNavigation();flush();footer.bindings.handlers.circle(true);flush()
 assert(reused.closed,'reused window closed stale bag owner')
 BB.Bags.Backpack=replacement;replacement.frame:Show();A:QueueBagNavigation();flush()
 replacement.frame.parent=hidden;A:QueueBagNavigation();flush()
@@ -317,7 +329,7 @@ replacement.frame.SmartNavigationCloseHandler=foreign;A:InstallBagNavigation();f
 assert(replacement.frame.SmartNavigationCloseHandler==foreign,'foreign close handler overwritten')
 gamepad=false;ContainerFrameCombinedBags:UnfocusGamepad();A:QueueBagNavigation();start=registrations;flush();assert(registrations==start,'mouse interface registered navigation')
 manager:ResetVars();SmartNavigation:ResetVars();SmartNavigation.enabled=true
-gamepad=true;gamepadInit();flush();assert(SmartNavigation:GetActiveFrame()==ContainerFrameCombinedBags,'gamepad transition lost window')
+gamepad=true;gamepadInit();flush();assert(SmartNavigation:GetActiveFrame()==replacement.frame,'gamepad transition lost window')
 A:QueueBagNavigation();A:StopBagNavigation();start=registrations;local lastRefresh=refreshes;flush();gamepadInit();flush()
 assert(registrations==start and refreshes==lastRefresh,'logout work resurrected navigation')
 local visibleBefore=replacement.frame:IsShown();local close=replacement.frame.SmartNavigationCloseHandler

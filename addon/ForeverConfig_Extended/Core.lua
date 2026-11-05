@@ -1,6 +1,6 @@
 local _, Addon = ...
 Addon.name = "ForeverConfig_Extended"
-Addon.version = "0.1.2"
+Addon.version = "0.1.3"
 Addon.active = WOW_PROJECT_CAMELOT ~= nil and WOW_PROJECT_ID == WOW_PROJECT_CAMELOT
 
 function Addon:GetAddon(name)
@@ -102,6 +102,8 @@ function Addon:PrintStatus()
         print("BetterBags navigation: " .. tostring(navigation.reason) .. "; active window "
             .. tostring(navigation.frame) .. "; bag focused " .. tostring(navigation.focused)
             .. "; visible bag " .. tostring(navigation.window)
+            .. "; controller " .. tostring(navigation.controller)
+            .. "; selected " .. tostring(navigation.selected) .. "; input " .. tostring(navigation.input)
             .. "; item actions " .. tostring(navigation.itemActions))
     end
 end

@@ -14,6 +14,11 @@ for native controller/extra-panel integration. All six payload files match the
 qualified artifact; Retail, other addons, WTF, links and backups are preserved.
 [Delivery](../evidence/forever-config/2026-11-05/navigation-delivery.json),
 [readback](../evidence/forever-config/2026-11-05/navigation-readback.json).
+The user confirms Circle works but rejects D-pad navigation. Delayed live reads
+show the hidden stock backpack button selected and an addon-blocked action.
+Version 0.1.3 is prepared with direct visible-frame discovery, keeping the native
+controller/footer and existing bag close owner.
+[Targeted qualification](../evidence/forever-config/2026-11-05/selection-qualification.json).
 Actual controller acceptance after reload remains pending.
 [Plan and limits](reference/BETTERBAGS-NATIVE-NAVIGATION-2026-11-05.md).
 

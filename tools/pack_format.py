@@ -9,6 +9,8 @@ import stat
 import zipfile
 
 FORMAT = 'ConsolePort-Forever-Personal-Pack'
+STANDALONE_FOREVER_ADDON = 'ImmersionExtended_Forever'
+STANDALONE_FOREVER_SCOPE = 'standalone-forever-addon'
 MAX_BYTES = 1024 * 1024 * 1024
 
 
@@ -150,7 +152,21 @@ def validate_manifest(manifest, rows, require_complete=False):
         retired_names.add(name.casefold())
     if not re.fullmatch('[0-9a-f]{40}', manifest.get('sourceCommit', '')):
         raise ValueError('Exact source commit missing')
-    if not isinstance(manifest.get('compatibility'), dict) or manifest['compatibility'].get('storeSchema') != 3:
+    compatibility = manifest.get('compatibility')
+    if manifest.get('deploymentScope') == STANDALONE_FOREVER_SCOPE:
+        if (sorted(folders) != [STANDALONE_FOREVER_ADDON] or
+                not isinstance(compatibility, dict) or compatibility != {'gameType':'camelot','interface':16001} or
+                manifest.get('dependencyUpdates') != {} or retired):
+            raise ValueError('Invalid standalone Forever scope')
+        if any(not name.startswith(('Interface/AddOns/'+STANDALONE_FOREVER_ADDON+'/', 'Notices/')) for name in files):
+            raise ValueError('Standalone payload contains unrelated files')
+        toc = rows.get('Interface/AddOns/'+STANDALONE_FOREVER_ADDON+'/'+STANDALONE_FOREVER_ADDON+'.toc', b'').decode('utf-8-sig')
+        meta = dict(re.findall(r'^##\s*([^:\r\n]+):\s*([^\r\n]*)', toc, re.M))
+        if (meta.get('Interface') != '16001' or meta.get('AllowLoadGameType') != 'camelot' or
+                meta.get('Dependencies') != 'Immersion' or meta.get('OptionalDeps') != 'Pawn' or
+                any(key.startswith('SavedVariables') for key in meta)):
+            raise ValueError('Standalone Forever loading contract invalid')
+    elif not isinstance(compatibility, dict) or compatibility.get('storeSchema') != 3:
         raise ValueError('Unsupported companion store compatibility')
     if not set(folders).issubset(manifest.get('runtimeClosure', {})):
         raise ValueError('Native runtime closure missing')

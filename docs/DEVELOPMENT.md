@@ -1,10 +1,14 @@
 # Development workflow
 
 Status: maintained
-Reviewed: 2026-10-11
+Reviewed: 2026-11-05
 Evidence: [approved system](decisions/0001-repository-development-system.md),
 [package scripts](../package.json), [CI](../.github/workflows/tests.yml),
 [path guards](../tools/repository_paths.py).
+
+## Standalone Forever delivery
+
+Use build_update.py --standalone-forever and deploy_update.py --forever-root for the [separate Immersion extension](IMMERSION-EXTENDED.md). These explicit modes retain source/full-test/clean-pushed-main gates and reuse current scoped backup/staging/rollback. Only ImmersionExtended_Forever can be selected; Retail roots, other addon payloads, dependency writes and running WoW are refused. Default Retail companion behavior is unchanged.
 
 ## Setup
 

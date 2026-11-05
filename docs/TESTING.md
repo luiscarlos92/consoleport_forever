@@ -1,9 +1,13 @@
 # Validation and proof boundaries
 
 Status: maintained
-Reviewed: 2026-11-03
+Reviewed: 2026-11-05
 Evidence: [runner](../tools/test-all.cjs), [tool tests](../tools/run_tool_tests.py),
 [CI](../.github/workflows/tests.yml), [test instructions](../tests/AGENTS.md).
+
+## Standalone Forever extension checks
+
+T109 executes native Immersion layout/button/event and Pawn budget/verdict source with the new addon. T110 rejects ten targeted faulty variants and retains event-work bounds. Ten tests in test_standalone_forever.py cover explicit client/package selection, preview, preservation, checksums/aliases, interruptions, rollback and newer WTF data. Full Test-All.ps1 remains required; offline source execution does not certify engine rendering, taint or controller behavior. [Scope and model limits](IMMERSION-EXTENDED.md).
 
 ## Entry points
 

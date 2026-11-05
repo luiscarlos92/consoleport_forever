@@ -1,13 +1,17 @@
 # ConsolePort Forever change history
 
 Status: maintained
-Reviewed: 2026-11-03
+Reviewed: 2026-11-05
 Evidence: [current status](docs/IMPLEMENTATION-STATUS.md),
 [historical chronology](docs/archive/ai-native-2026-10-11/IMPLEMENTATION-STATUS.pre-restructure.md).
 
 Dates below use America/Toronto. This is a curated change index, not invented
 release tags or blanket gameplay certification. Detailed receipts own exact
 source/artifact/file identities. Prepared, installed and accepted are separate.
+
+## Immersion Extended for Forever - November 5, 2026
+
+Prepared a separate stateless Forever-only addon for Pawn summary reward arrows and deferred native Required Items layout. Added explicit standalone packaging/client admission to existing tools, source-based lifecycle/work regressions and installer fault/preservation tests. The Retail companion and upstream addons remain unchanged. [Details and acceptance limits](docs/IMMERSION-EXTENDED.md).
 
 ## Addon update compatibility - November 3, 2026
 

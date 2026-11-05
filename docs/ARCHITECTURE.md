@@ -1,10 +1,14 @@
 # Implementation architecture
 
 Status: maintained
-Reviewed: 2026-11-03
+Reviewed: 2026-11-05
 Evidence: [TOC](../addon/ConsolePort_Forever/ConsolePort_Forever.toc),
 [bootstrap](../addon/ConsolePort_Forever/ConsolePort_Forever.lua),
 [runtime setup](../addon/ConsolePort_Forever/RuntimeSetup.lua).
+
+## Independent Forever Immersion addon
+
+ImmersionExtended_Forever has its own TOC, namespace, event lifecycle and stateless runtime. Core gates the Forever client; Rewards observes Pawn startup and decorates owned current reward icons; Progress defers native Required Items measurement; Bootstrap owns event/diagnostic registration. It does not share Retail companion policy/store/transactions. Existing Retail modules remain untouched. [Contract](IMMERSION-EXTENDED.md).
 
 ## Integration admission
 

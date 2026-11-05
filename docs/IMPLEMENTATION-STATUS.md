@@ -1,10 +1,14 @@
 # Current implementation and acceptance
 
 Status: maintained
-Reviewed: 2026-11-03
+Reviewed: 2026-11-05
 Evidence: [candidate.44 readback](../evidence/delivery/candidate44-independent-readback.json),
 [source qualification](../evidence/test-results/candidate44-addon-compatibility-qualification.json),
 [fresh CI](../evidence/test-results/candidate44-fresh-ci.json).
+
+## Separate Forever addon under qualification
+
+November 5: [Immersion Extended (Forever)](IMMERSION-EXTENDED.md) implements the separately requested Pawn summary arrows and Required Items correction. Local full qualification passes; fresh CI and installation remain pending. The Retail candidate.44 runtime and installation below remain unchanged. [Pre-implementation plan](reference/IMMERSION-EXTENDED-FOREVER-PLAN-2026-11-05.md).
 
 ## Current installed checkpoint: candidate.44
 

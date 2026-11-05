@@ -1,0 +1,64 @@
+{
+  "checkedAt": "2026-11-05T06:50:13.642934+00:00",
+  "files": [
+    {
+      "addon_path": "Immersion/Logic/Frame.lua",
+      "captured_path": "evidence/integration-contracts-candidate43/Immersion/Logic/Frame.lua",
+      "installed_bytes_sha256": "7ac9e35945801d22915f837c6b180e9e6097a1c96dd328df61d300fd21426f16",
+      "captured_bytes_sha256": "7ac9e35945801d22915f837c6b180e9e6097a1c96dd328df61d300fd21426f16",
+      "normalized_utf8_lf_sha256": "7df0d0e1233533523a4f41526ab8f89fcf5ad386afe36d5d3323fe0480e316e0",
+      "matches_after_bom_and_line_ending_normalization": true
+    },
+    {
+      "addon_path": "Immersion/Logic/Events.lua",
+      "captured_path": "evidence/integration-contracts-candidate43/Immersion/Logic/Events.lua",
+      "installed_bytes_sha256": "10d9907c62d4c7efefbd31fb4594a9b82af2aff1f13dcb4aecbef2fc555180d5",
+      "captured_bytes_sha256": "10d9907c62d4c7efefbd31fb4594a9b82af2aff1f13dcb4aecbef2fc555180d5",
+      "normalized_utf8_lf_sha256": "e397ca6f7a08e43575a9faa1528fdfa13a0b0b1fa05499d79d2371a001309b39",
+      "matches_after_bom_and_line_ending_normalization": true
+    },
+    {
+      "addon_path": "Immersion/Logic/Talkbox.lua",
+      "captured_path": "evidence/integration-contracts-candidate43/Immersion/Logic/Talkbox.lua",
+      "installed_bytes_sha256": "57c70782a54ccd24b9a8202f0d22f4a58451f906aed74e4c7415d2ed0d6147ba",
+      "captured_bytes_sha256": "57c70782a54ccd24b9a8202f0d22f4a58451f906aed74e4c7415d2ed0d6147ba",
+      "normalized_utf8_lf_sha256": "01f433d956fac7b2732b73ae933b98057b31638d71c1e0d2be5dcfb5101fa8b5",
+      "matches_after_bom_and_line_ending_normalization": true
+    },
+    {
+      "addon_path": "Immersion/Components/Scaler.lua",
+      "captured_path": "evidence/integration-contracts-candidate43/Immersion/Components/Scaler.lua",
+      "installed_bytes_sha256": "32880cc2c1cbe835850d32e38031995c1d8a88e5ffb835c92ff7402372c18626",
+      "captured_bytes_sha256": "32880cc2c1cbe835850d32e38031995c1d8a88e5ffb835c92ff7402372c18626",
+      "normalized_utf8_lf_sha256": "acc8ced32a564994af48841c39b32f71699b7f9fcd77e490d998a517fc1796fc",
+      "matches_after_bom_and_line_ending_normalization": true
+    },
+    {
+      "addon_path": "Immersion/Components/Elements.lua",
+      "captured_path": "evidence/integration-contracts-candidate43/Immersion/Components/Elements.lua",
+      "installed_bytes_sha256": "eead0cf84abdeb9a502620ff7ed03d3b3ae68ccfe53f8966cf5fc600e3b6cb86",
+      "captured_bytes_sha256": "eead0cf84abdeb9a502620ff7ed03d3b3ae68ccfe53f8966cf5fc600e3b6cb86",
+      "normalized_utf8_lf_sha256": "edfb09e99bf7c9b954f0e6e9cbbf8dc5f7db83eb01ce6c6d6d7e2d16893ec4f2",
+      "matches_after_bom_and_line_ending_normalization": true
+    },
+    {
+      "addon_path": "Pawn/Pawn.lua",
+      "captured_path": "scratch/pawn-immersion-inputs/PawnCurrent/Pawn.lua",
+      "installed_bytes_sha256": "c2eee8af80146937e9bd6827afb43e33ebc41d5defab2367048ba00fefc6e1fb",
+      "captured_bytes_sha256": "c2eee8af80146937e9bd6827afb43e33ebc41d5defab2367048ba00fefc6e1fb",
+      "normalized_utf8_lf_sha256": "1469efdcd4ab0c88027f2d7d250204c7bb40002af1793360ea5769f13eaf5b58",
+      "matches_after_bom_and_line_ending_normalization": true
+    },
+    {
+      "addon_path": "Immersion/Display/Frame.xml",
+      "captured_path": "scratch/pawn-immersion-inputs/Immersion/Display/Frame.xml",
+      "installed_bytes_sha256": "d30804a5bf00bf4d4950652b42b11444491429f3313c61990e5061d415935035",
+      "captured_bytes_sha256": "bd421ce2972a55540fdfd95bfe67896b193eac84b63912a040a072c45cc21be3",
+      "normalized_utf8_lf_sha256": "bd421ce2972a55540fdfd95bfe67896b193eac84b63912a040a072c45cc21be3",
+      "matches_after_bom_and_line_ending_normalization": true,
+      "loading_contract": "Reward and Progress Buttons arrays are created by parentArray entries during native XML load, before addon initialization."
+    }
+  ],
+  "gamepadTocEvidence": "https://github.com/Gethe/wow-ui-source/blob/eac30af597e5aaa43a60f6675ef5fdcea100375f/Interface/AddOns/Blizzard_Gamepad/Blizzard_Gamepad.toc",
+  "clientConstantEvidence": "https://github.com/Gethe/wow-ui-source/blob/eac30af597e5aaa43a60f6675ef5fdcea100375f/Interface/AddOns/Blizzard_ProjectConstants/Camelot/ProjectConstants.lua"
+}

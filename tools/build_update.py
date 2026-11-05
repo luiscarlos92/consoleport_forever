@@ -6,7 +6,53 @@ import re
 from build_pack import verified_source
 from repository_paths import ROOT, contained, output, immutable_hashes, sha
 from audit_dependencies import runtime_closure
-from pack_format import FORMAT, archive_bytes, digest, read_pack
+from pack_format import FORMAT, archive_bytes, digest, read_pack, STANDALONE_FOREVER_ADDON, STANDALONE_FOREVER_SCOPE
+
+
+def standalone_payload():
+    folder = STANDALONE_FOREVER_ADDON
+    product = ROOT/'addon'/folder
+    files = {folder+'/'+name:(product/name).read_bytes() for name in immutable_hashes(product)}
+    closure = runtime_closure(folder, files, require_retail=False)
+    return {'Interface/AddOns/'+name:body for name,body in files.items()}, {folder:closure}
+
+
+def build_standalone(label=None):
+    commit, tests, test_hash = verified_source()
+    stable = json.loads((ROOT/'evidence/dependencies/stable-recheck.json').read_text(encoding='utf-8'))
+    lock_hash = sha(ROOT/'dependencies/lock.json')
+    age = (datetime.now(timezone.utc)-datetime.fromisoformat(stable['checkedAt'])).total_seconds()
+    if (not stable['allCurrent'] or not 0 <= age <= 86400 or
+            stable['lockSHA256'] != lock_hash or tests['pinnedDependencyLockSHA256'] != lock_hash):
+        raise ValueError('Current tested official source check required')
+    if label is not None and not re.fullmatch(r'[a-z][a-z0-9-]{0,47}',label):
+        raise ValueError('Output label must be a short lowercase slug')
+    rows, closures = standalone_payload()
+    folder = STANDALONE_FOREVER_ADDON
+    version = closures[folder]['metadata']['Version'].strip()
+    if not re.fullmatch(r'[0-9A-Za-z][0-9A-Za-z.+_-]{0,63}', version):
+        raise ValueError('Unsafe standalone artifact version')
+    manifest = {'format':FORMAT,'formatVersion':1,'sourceCommit':commit,
+        'deploymentScope':STANDALONE_FOREVER_SCOPE,'dependencyUpdates':{},
+        'dependencyLockSHA256':lock_hash,'localPersonalUseOnly':True,
+        'redistributionApproved':False,'assemblyComplete':True,'addonFolders':[folder],
+        'requiredAddonFolders':[folder],'retiredAddonFolders':{},
+        'compatibility':{'gameType':'camelot','interface':16001},
+        'runtimeClosure':closures,'files':{n:digest(b) for n,b in rows.items()},
+        'runtimeReportSHA256':test_hash,'toolingReportSHA256':tests['toolingReportSHA256']}
+    data = archive_bytes(rows,manifest)
+    destination = output(ROOT/'dist'/('immersion-extended-'+version)/
+        ('ImmersionExtended-Forever-'+version+('-'+label if label else '')+'.zip'))
+    if destination.exists():
+        raise ValueError('Retain existing artifact; choose a new label')
+    destination.parent.mkdir(parents=True,exist_ok=True)
+    destination.write_bytes(data)
+    checksum = digest(data)
+    read_pack(destination,checksum,True)
+    receipt = {'path':str(destination),'sha256':checksum,'bytes':len(data),
+        'sourceCommit':commit,'addonFolders':[folder],'version':version}
+    output(destination.with_suffix('.zip.receipt.json')).write_text(json.dumps(receipt,indent=2)+'\n',encoding='utf-8')
+    return receipt
 
 
 def update_payload(lock, coverage, selected_repos=()):
@@ -89,5 +135,9 @@ if __name__=='__main__':
     parser.add_argument('--dependency',action='append',default=[],help='Updated locked repository to include; repeat as needed, default is Forever only')
     parser.add_argument('--label',help='Retained artifact label when rebuilding the same candidate version')
     parser.add_argument('--retire-addon',action='append',default=[],help='Explicit declared retirement to back up and park; never broad pruning')
+    parser.add_argument('--standalone-forever',action='store_true',help='Only ImmersionExtended_Forever; never ships the Retail companion')
     args=parser.parse_args()
-    print(json.dumps(build(args.dependency,args.label,args.retire_addon),indent=2))
+    if args.standalone_forever and (args.dependency or args.retire_addon):
+        parser.error('Standalone Forever cannot update/retire dependencies')
+    print(json.dumps(build_standalone(args.label) if args.standalone_forever else
+        build(args.dependency,args.label,args.retire_addon),indent=2))

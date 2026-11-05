@@ -1,0 +1,14 @@
+## Interface: 16001
+## Title: Immersion Extended (Forever)
+## Notes: Pawn quest reward arrows and deferred Required Items layout correction.
+## Author: Personal WoW tools
+## Version: 0.1.0
+## Dependencies: Immersion
+## OptionalDeps: Pawn
+## DefaultState: enabled
+## AllowLoadGameType: camelot
+
+Core.lua
+Rewards.lua
+Progress.lua
+Bootstrap.lua

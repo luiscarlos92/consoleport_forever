@@ -1,11 +1,15 @@
 # Client and integration compatibility
 
 Status: maintained
-Reviewed: 2026-11-03
+Reviewed: 2026-11-05
 Evidence: [TOC](../addon/ConsolePort_Forever/ConsolePort_Forever.toc),
 [locked packages](../dependencies/lock.json),
 [native source manifest](../evidence/native/manifest.json),
 [ConsolePort contracts](../evidence/consoleport-contracts-candidate44/manifest.json).
+
+## Separate Forever integration
+
+[Immersion Extended](IMMERSION-EXTENDED.md) requires native Immersion capabilities and optionally observed Pawn initialization, without version admission. Its TOC/client gates target Forever interface 16001/camelot. Installed source matches captured contracts after BOM/newline normalization. Fresh November 5 dependency discovery refreshed local BetterBags 0.9.0 and Plater v663 qualification pins; no dependency bytes are selected for the standalone delivery.
 
 ## Current admission policy
 

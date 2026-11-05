@@ -26,15 +26,21 @@ def anchor_info(path):
 
 
 class GameTree:
-    def __init__(self, root, simulation=False, user_install=False, process_check=wow_is_running, allow_running_companion=False):
+    def __init__(self, root, simulation=False, user_install=False, process_check=wow_is_running, allow_running_companion=False, game='retail'):
         self.root = Path(root).absolute()
+        if game not in {'retail', 'forever'}:
+            raise ValueError('Unknown game profile')
+        if game == 'forever' and allow_running_companion:
+            raise ValueError('Forever standalone installation requires closed WoW')
+        self.game = game
         self.simulation, self.process_check = simulation, process_check
         self.allow_running_companion = allow_running_companion
         if allow_running_companion and not (user_install or simulation):
             raise ValueError('Running-game companion mode requires explicit user installation')
         plain_path(self.root, self.root)
-        if not self.root.is_dir() or self.root.name.casefold() != '_retail_':
-            raise ValueError('Select an existing, explicit _retail_ directory')
+        expected_root = '_forever_' if game == 'forever' else '_retail_'
+        if not self.root.is_dir() or self.root.name.casefold() != expected_root:
+            raise ValueError('Select an existing, explicit '+expected_root+' directory')
         if simulation:
             from repository_paths import ROOT, output
             output(self.root, ROOT/'scratch')

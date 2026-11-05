@@ -1,11 +1,15 @@
 # Known issues, limitations and deferred proof
 
 Status: maintained
-Reviewed: 2026-11-03
+Reviewed: 2026-11-05
 Evidence: [current status](IMPLEMENTATION-STATUS.md),
 [interaction analysis](TEMPORARY-MAIN-BANK-ANALYSIS-2026-10-11.md),
 [candidate.27 diagnosis](../evidence/action-recovery/candidate27-diagnosis.json),
 [pack gates](../tools/build_pack.py).
+
+## Standalone Forever acceptance
+
+The new [Immersion extension](IMMERSION-EXTENDED.md) is under offline qualification. Arrow rendering, actual quest item data timing, native-controller focus, Required Items pixels and combat/Edit Mode transitions still require the user-owned launch. BetterBags native gamepad navigation and unrelated Plater/map errors are outside its repairs. It does not add focused reward tooltip annotations.
 
 ## Open reports
 

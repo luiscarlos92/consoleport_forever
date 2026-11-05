@@ -1,7 +1,7 @@
 # Approved requirements and scope
 
 Status: maintained
-Reviewed: 2026-11-03
+Reviewed: 2026-11-05
 Evidence: [confirmed historical decisions](archive/ai-native-2026-10-11/MASTER-PLAN.pre-restructure.md),
 [current status](IMPLEMENTATION-STATUS.md), [candidate.30 requirement](CANDIDATE30-PING-RELEASE-LIFECYCLE-2026-10-10.md).
 
@@ -9,6 +9,10 @@ This document owns intended behavior. Source activation is documented in
 [architecture](ARCHITECTURE.md); [reference evidence](reference/EVIDENCE.md)
 distinguishes Forever source, project decisions and runtime proof. A requested
 feature may be approved in direction yet still deferred or gated.
+
+## R17: separate Forever Immersion extension
+
+November 5 user instruction authorizes planning, implementation, intensive dry runs and installation of a separate Forever-only addon for Pawn reward arrows and the known Required Items positioning correction. No ConsolePort dependency, Retail changes, upstream edits, saved-settings migration, input takeover or focused-tooltip annotation port. Honor Pawn preferences/readiness and native layout ownership. [Contract](IMMERSION-EXTENDED.md).
 
 ## Addon compatibility policy
 

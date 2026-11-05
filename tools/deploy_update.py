@@ -6,7 +6,7 @@ import re
 from deployment_guard import GameTree, copy_inventory, inventory, write_json
 from deploy_companion import deploy as deploy_companion, vendor_fingerprints
 from install_pack import identity, now, prepare_backups
-from pack_format import digest, read_pack, safe_relative
+from pack_format import digest, read_pack, safe_relative, STANDALONE_FOREVER_ADDON, STANDALONE_FOREVER_SCOPE
 
 NAME='ConsolePort_Forever'
 
@@ -42,36 +42,45 @@ def untouched(root,folders):
 
 def deploy(tree,pack,checksum,backup_root,execute=False,fault=lambda event:None):
     manifest,rows=read_pack(pack,checksum,True)
-    owners,updates=targets(manifest,rows)
+    standalone = manifest.get('deploymentScope') == STANDALONE_FOREVER_SCOPE
+    if standalone:
+        if tree.game != 'forever':
+            raise ValueError('Standalone addon requires the explicit Forever client')
+        owners,updates = {STANDALONE_FOREVER_ADDON:'standalone'},{}
+    else:
+        if tree.game != 'retail':
+            raise ValueError('Retail companion package cannot target Forever')
+        owners,updates=targets(manifest,rows)
     retired=manifest.get('retiredAddonFolders',{})
     if any(row['owner'] in manifest['compatibility']['dependencyVersions'] for row in retired.values()):
         raise ValueError('Retired dependency remains in tested active lock')
-    if not updates and not retired:
+    if not standalone and not updates and not retired:
         result=deploy_companion(tree,pack,checksum,backup_root,execute,fault)
         result['dependencyUpdates']=[]
         return result
     tree.closed_operation()
     tree.check(force_process=True)
-    folders=[NAME]+sorted(folder for folder in owners if folder!=NAME)+sorted(retired)
+    folders=[STANDALONE_FOREVER_ADDON] if standalone else [NAME]+sorted(folder for folder in owners if folder!=NAME)+sorted(retired)
     payloads={folder:{} for folder in owners}
     for name,data in rows.items():
         parts=safe_relative(name).parts
         if parts[:2]==('Interface','AddOns'):
             payloads[parts[2]]['/'.join(parts[3:])]=data
     before={folder:inventory(tree.addons/folder) if (tree.addons/folder).exists() else None for folder in folders}
-    if before[NAME] is None: raise ValueError('Existing companion required')
+    if not standalone and before[NAME] is None: raise ValueError('Existing companion required')
     wtf=inventory(tree.wtf,True)
     vendors=untouched(tree.addons,folders)
-    required=manifest['compatibility']['dependencyVersions'].get('seblindfors/ConsolePort',manifest['compatibility']['dependencyVersions'].get('ConsolePort'))
+    versions = manifest['compatibility'].get('dependencyVersions', {})
+    required=versions.get('seblindfors/ConsolePort',versions.get('ConsolePort'))
     def cp_version():
         text=(tree.addons/'ConsolePort/ConsolePort.toc').read_text(encoding='utf-8-sig')
         return re.search(r'^## Version:\s*(.+)$',text,re.M).group(1).strip()
-    if 'ConsolePort' not in folders and cp_version()!=required: raise ValueError('Installed ConsolePort differs from tested version')
-    result={'operation':'deploy-scoped-update','sourceCommit':manifest['sourceCommit'],'packSHA256':checksum,
+    if not standalone and 'ConsolePort' not in folders and cp_version()!=required: raise ValueError('Installed ConsolePort differs from tested version')
+    result={'operation':'deploy-standalone-forever' if standalone else 'deploy-scoped-update','sourceCommit':manifest['sourceCommit'],'packSHA256':checksum,
         'root':str(tree.root),'addonFolders':folders,'dependencyUpdates':sorted(updates),
         'retiredAddonFolders':retired,
         'testedDependencies':manifest.get('testedDependencies',{}),'vendorFileCount':len(vendors),
-        'characterLinkCount':len(wtf['links']),'currentConfigurationWrites':False,'vendorWrites':True,'execute':execute}
+        'characterLinkCount':len(wtf['links']),'currentConfigurationWrites':False,'vendorWrites':not standalone,'execute':execute}
     if not execute: return result
     backups,guard=prepare_backups(tree,backup_root)
     run_id=identity();backup=guard(backups/run_id);backup.mkdir()
@@ -113,10 +122,11 @@ def deploy(tree,pack,checksum,backup_root,execute=False,fault=lambda event:None)
         fault('after-promotion')
         if any((tree.addons/folder).exists() for folder in retired) or any(inventory(tree.addons/folder)!=snapshot for folder,snapshot in staged.items()) or inventory(tree.wtf,True)!=wtf or untouched(tree.addons,folders)!=vendors:
             raise ValueError('Scoped update readback/preservation failed')
-        if cp_version()!=required: raise ValueError('Updated ConsolePort differs from tested version')
+        if not standalone and cp_version()!=required: raise ValueError('Updated ConsolePort differs from tested version')
         receipt.update(status='installed',closedAt=now(),installedAddons=staged,wtfUnchanged=True,unselectedVendorsUnchanged=True)
         write_json(backup/'install-receipt.json',receipt,guard)
-        write_json(tree.addons.parent/'.cpf-companion-installed.json',receipt,lambda p:tree.guard(p,tree.addons.parent))
+        marker = '.immersion-extended-installed.json' if standalone else '.cpf-companion-installed.json'
+        write_json(tree.addons.parent/marker,receipt,lambda p:tree.guard(p,tree.addons.parent))
     except BaseException as error:
         for folder in reversed(promoted): os.rename(tree.guard(tree.addons/folder,tree.addons),tree.guard(failed/folder,stage))
         for folder in reversed(parked): os.rename(tree.guard(previous/folder,stage),tree.guard(tree.addons/folder,tree.addons))
@@ -128,7 +138,9 @@ def deploy(tree,pack,checksum,backup_root,execute=False,fault=lambda event:None)
 
 if __name__=='__main__':
     parser=argparse.ArgumentParser()
-    parser.add_argument('--retail-root',required=True)
+    roots = parser.add_mutually_exclusive_group(required=True)
+    roots.add_argument('--retail-root')
+    roots.add_argument('--forever-root')
     parser.add_argument('--pack',required=True)
     parser.add_argument('--sha256',required=True)
     parser.add_argument('--backup-root',required=True)
@@ -136,6 +148,7 @@ if __name__=='__main__':
     parser.add_argument('--execute',action='store_true')
     parser.add_argument('--allow-running-companion',action='store_true',help='Explicit existing Forever-only update; no dependency/configuration writes')
     args=parser.parse_args()
-    tree=GameTree(args.retail_root,user_install=args.user_install,allow_running_companion=args.allow_running_companion)
+    tree=GameTree(args.forever_root or args.retail_root,user_install=args.user_install,
+        allow_running_companion=args.allow_running_companion,game='forever' if args.forever_root else 'retail')
     result=deploy(tree,args.pack,args.sha256,args.backup_root,args.execute)
     print(json.dumps({key:value for key,value in result.items() if key not in {'installedFiles','installedAddons'}},indent=2))

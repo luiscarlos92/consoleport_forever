@@ -1,0 +1,23 @@
+{
+  "qualified_utc": "2026-11-05T07:23:45.629739+00:00",
+  "runtime_checks": 110,
+  "tooling_tests": 86,
+  "product_files": 70,
+  "tool_test_files": 167,
+  "runtime_report_sha256": "7d0c61fd8eec35a4eb08d29b876d790baf664631d7380466e7385a2993f1323d",
+  "tooling_report_sha256": "d50565c2df172f5ef850c8c3e29e2089141d1f2ee6c9a2f402b691881c805e89",
+  "lock_sha256": "bc057e3c55237188bc8fcf08beec701ca608a3d507db9289f77761f15e640e4c",
+  "standalone_addon_files": {
+    "addon/ImmersionExtended_Forever/Bootstrap.lua": "54f1718d471d127d4d6c166d9fd771616b96a74979fabdcb961c70c865a8f0aa",
+    "addon/ImmersionExtended_Forever/Core.lua": "7d8ca4b1547a10e8cf3b7efab0eb579a8e9b42520d4be97a93b1134aeb72da65",
+    "addon/ImmersionExtended_Forever/ImmersionExtended_Forever.toc": "724777edcae09a0cadff8098c0dd261764a6ded552e83676d460b0b2b209eb2e",
+    "addon/ImmersionExtended_Forever/LICENSE.txt": "9270b19fbd310481d23da62343e79d50f51c19791d233fa457ebde9da5a327fe",
+    "addon/ImmersionExtended_Forever/Progress.lua": "ed530d1edd26593706df1149d0050249e66fd6735df1d2c81240d65b94938eaf",
+    "addon/ImmersionExtended_Forever/Rewards.lua": "9df80b84db2e6c84812aca7a591a971b1a1d81bb28f9cf74f68015de5e09e585"
+  },
+  "all_passed": true,
+  "faulty_runtime_variants_rejected": 10,
+  "standalone_installer_tests": 10,
+  "retail_product_source_changed": false,
+  "limits": "Offline source execution and installer simulations; engine rendering, taint, controller behavior and gameplay persistence await user launch."
+}

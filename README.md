@@ -1,7 +1,7 @@
 # ConsolePort Forever
 
 Status: maintained
-Reviewed: 2026-10-11
+Reviewed: 2026-11-05
 Evidence: [current implementation status](docs/IMPLEMENTATION-STATUS.md).
 
 A personal World of Warcraft Retail controller HUD and configuration companion
@@ -9,9 +9,13 @@ for ConsolePort, inspired by WoW Forever. It combines reviewed configuration,
 native controller routing, artwork and optional integrations while preserving
 upstream addon files and player edits.
 
-The installed checkpoint is candidate.30. Its reported ping-ring and Immersion
-Required Items defects are accepted in Retail; this is not blanket acceptance.
+The Retail installed checkpoint is candidate.44. Historical ping-ring and
+Immersion Required Items acceptance covers the reported cases, not blanket acceptance.
 [Current status](docs/IMPLEMENTATION-STATUS.md) owns installation/acceptance facts.
+
+## Parallel Forever addon
+
+This checkout also contains [Immersion Extended (Forever)](docs/IMMERSION-EXTENDED.md), a separate Pawn-arrow/Required Items companion for the Forever client. It does not include or require ConsolePort; the Retail companion and its release route remain separate.
 
 ## Documentation
 

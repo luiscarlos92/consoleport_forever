@@ -21,15 +21,18 @@ jobs:
           import json, sys
           sys.path.insert(0, 'tools')
           from verify_pinned_sources import verify_download
-          with open('evidence/dependencies/candidate43-lock.json', encoding='utf-8') as source:
-              packages = json.load(source)['packages']
-          with open('evidence/integration-contracts-candidate43/manifest.json', encoding='utf-8') as source:
-              required = {row['repo'] for row in json.load(source)['files']}
-          for package in packages:
-              if package['repo'] in required:
-                  verify_download(package)
+          for candidate in ('candidate43', 'candidate44'):
+              with open('evidence/dependencies/'+candidate+'-lock.json', encoding='utf-8') as source:
+                  packages = json.load(source)['packages']
+              with open('evidence/integration-contracts-'+candidate+'/manifest.json', encoding='utf-8') as source:
+                  required = {row['repo'] for row in json.load(source)['files']}
+              for package in packages:
+                  if package['repo'] in required:
+                      verify_download(package)
       - name: Reconstruct current contract inputs (explicit network stage)
-        run: python -B tools/capture_integration_contracts.py --from-manifest evidence/consoleport-contracts-candidate44/manifest.json --from-manifest evidence/integration-contracts-candidate44/manifest.json
+        run: python -B tools/capture_integration_contracts.py --from-manifest evidence/consoleport-contracts-candidate44/manifest.json --from-manifest evidence/integration-contracts-20261105/manifest.json
+      - name: Reconstruct retained candidate44 integration inputs
+        run: python -B tools/capture_integration_contracts.py --lock evidence/dependencies/candidate44-lock.json --from-manifest evidence/integration-contracts-candidate44/manifest.json
       - name: Reconstruct hash-pinned local contract inputs (explicit network stage)
         run: python -B tools/capture_integration_contracts.py --lock evidence/dependencies/candidate43-lock.json --from-manifest evidence/integration-contracts-candidate43/manifest.json --native-manifest evidence/follower-dungeons/2026-10-16/source-manifest.json --native-manifest evidence/follower-dungeons/2026-10-16/proxy-source-manifest.json --native-manifest evidence/follower-dungeons/2026-10-16/candidate41-api-source-manifest.json
       - name: Check maintained documentation and repository skills

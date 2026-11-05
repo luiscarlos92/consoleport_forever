@@ -1,0 +1,5 @@
+Personal original integration code, adapted from this repository's own
+ConsolePort_Forever integration modules. No upstream Pawn, Immersion,
+BetterBags or ConsolePort source or artwork is included.
+The bags-greenarrow atlas is referenced from the game at runtime.
+Local personal installation; no third-party redistribution granted.

@@ -21,6 +21,10 @@ Activation requires explicit review; other states are not individually asserted.
 It does not claim blanket Retail acceptance. [Requirements](REQUIREMENTS.md) owns intended behavior;
 [testing](TESTING.md) explains what offline coverage can establish.
 
+## Standalone Forever states
+
+For [Immersion Extended](IMMERSION-EXTENDED.md), unsupported clients do not initialize; missing/unfinished Pawn leaves only layout available; disabled Pawn quest advice clears arrows; pending item data retries within a bounded generation; quest/owner change and hide clear owned decoration. Progress requires the current visible bottom-anchored Required Items state and finite scale/geometry, defers in combat/Edit Mode and cancels stale callbacks. Native input and preferences remain owned upstream.
+
 ## Context transitions
 
 Follower-dungeon entry/exit, native follower-state changes, coexistence with extra

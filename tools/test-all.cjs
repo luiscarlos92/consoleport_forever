@@ -200,7 +200,7 @@ check('T07-T09.both-binding-bank-restore', () => execute(source+read('tests/harn
 check('T08-T10.review-details', () => execute(source+read('tests/harness/prompt.lua'),'review-details'));
 check('T12-T13.adapters', () => execute(source+read('tests/harness/adapters.lua'),'adapters'));
 check('T13.pinned-flat-integration-settings', () => {
-  const base='evidence/integration-contracts-candidate44/';
+  const base='evidence/integration-contracts-20261105/';
   const settingsAST=parser.parse(read(base+'Immersion/Settings.lua'),{luaVersion:'5.1',encodingMode:'x-user-defined'});
   const keys=new Set();
   function visit(value) {
@@ -221,7 +221,7 @@ check('T13.pinned-flat-integration-settings', () => {
   execute(source+'NATIVE_IMMERSION_SETTINGS_KEYS={'+[...keys].sort().map(k=>JSON.stringify(k)).join(',')+'}\n'+fixture.replaceAll('1.18.0','1.18.2'),'flat-integrations-current-ExtraFade-settings');
 });
 check('T13.current-DynamicCam-AceDB', () => {
-  const base='evidence/integration-contracts-candidate44/';
+  const base='evidence/integration-contracts-20261105/';
   const lock=JSON.parse(read('dependencies/lock.json'));
   for(const file of JSON.parse(read(base+'manifest.json')).files) {
     const package=lock.packages.find(p=>p.repo===file.repo);
@@ -315,7 +315,7 @@ function betterBagsFixture(integrationBase='evidence/integration-contracts-candi
   return windowFixture()+'\n'+fixture;
 }
 check('T21-T22.native-BetterBags-item-guards', () => {
-  for(const [base,version] of [['evidence/integration-contracts/','v0.5.14'],['evidence/integration-contracts-candidate43/','v0.5.17'],['evidence/integration-contracts-candidate44/','v0.8.12']]) {
+  for(const [base,version] of [['evidence/integration-contracts/','v0.5.14'],['evidence/integration-contracts-candidate43/','v0.5.17'],['evidence/integration-contracts-candidate44/','v0.8.12'],['evidence/integration-contracts-20261105/','v0.9.0']]) {
     for(const row of JSON.parse(read(base+'manifest.json')).files.filter(row=>row.repo==='Cidan/BetterBags')) {
       if(sha(base+row.path)!==row.sha256) throw Error('BetterBags retained contract drift: '+row.path);
     }
@@ -1922,6 +1922,50 @@ check('T107.version-independent-contract-admission-and-old-gate-rejection',()=>{
 });
 check('T108.current-Pawn-BetterBags-native-parity-with-unknown-metadata',()=>{
   cp.execFileSync(process.execPath,[safe('tools/pawn_immersion_experiment.cjs'),'--runtime','--current'],{cwd:root,stdio:'pipe'});
+});
+function immersionExtendedFixture(mutations={}) {
+  const base='evidence/integration-contracts-candidate43/Immersion/';
+  const folder='addon/ImmersionExtended_Forever/';
+  const embed=name=>{
+    let text=read(folder+name+'.lua');
+    for(const [before,after] of Object.entries(mutations[name]||{})) {
+      if(!text.includes(before))throw Error('missing mutation anchor '+name);
+      text=text.replace(before,after);
+    }
+    return ';(function(...)\n'+text+'\nend)("ImmersionExtended_Forever",NS);\n';
+  };
+  return read('tests/harness/immersion_extended.lua')
+    .replace('--@EXT_NATIVE_ADJUST',()=>['IterateChildren','GetAdjustableChildren','AdjustToChildren'].map(n=>nativeFunction(base+'Components/Scaler.lua','AdjustMixin:'+n)).join('\n'))
+    .replace('--@EXT_NATIVE_BOUNDARIES',()=>nativeFunction(base+'Components/Elements.lua','Elements:UpdateBoundaries'))
+    .replace('--@EXT_NATIVE_OFFSETS',()=> 'local GetOffset=UIParent.GetBottom\n'+['SetOffset','SetExtraOffset'].map(n=>nativeFunction(base+'Logic/Talkbox.lua','TalkBox:'+n)).join('\n'))
+    .replace('--@EXT_NATIVE_EVENTS',()=>['QUEST_PROGRESS','QUEST_COMPLETE','QUEST_ITEM_UPDATE'].map(n=>nativeFunction(base+'Logic/Events.lua','Events:'+n)).join('\n'))
+    .replace('--@EXT_NATIVE_FRAME',()=>['OnEvent','UpdateItems'].map(n=>nativeFunction(base+'Logic/Frame.lua','Frame:'+n)).join('\n'))
+    .replace('--@EXT_NATIVE_PAWN',()=>['BudgetThrottle','PawnShouldItemLinkHaveUpgradeArrowUnbudgeted'].map(n=>nativeFunction('scratch/pawn-immersion-inputs/PawnCurrent/Pawn.lua',n)).join('\n')+
+      '\nPawnShouldItemLinkHaveUpgradeArrow=BudgetThrottle(PawnShouldItemLinkHaveUpgradeArrowUnbudgeted,2/60/4,1/4)')
+    .replace('--@EXT_ADDON_SOURCE',()=>['Core','Rewards','Progress','Bootstrap'].map(embed).join('\n'))
+    .replace('--@EXT_BOOTSTRAP_AGAIN',()=>embed('Bootstrap'));
+}
+check('T109.forever-immersion-extension-native-lifecycle-and-layout',()=>{
+  execute(immersionExtendedFixture(),'forever-immersion-extension');
+});
+check('T110.forever-immersion-extension-defect-and-work-controls',()=>{
+  for(const [name,mutations,expected] of [
+    ['premature-pawn',{Rewards:{'return self.ready and self.installed':'return self.installed'}},'premature Pawn call'],
+    ['requires-betterbags',{Rewards:{"and Core.Loaded(api, 'Immersion')":"and Core.Loaded(api, 'Immersion') and Core.Loaded(api, 'BetterBags')"}},'Pawn verdict parity'],
+    ['wrong-verdict',{Rewards:{'elseif verdict == true then':'elseif verdict == false then'}},'Pawn verdict parity'],
+    ['leaked-arrow',{Rewards:{'for _, arrow in pairs(self.arrows) do arrow:Hide() end':'for _, arrow in pairs(self.arrows) do end'}},'close retained upgrade arrow'],
+    ['retry-loop',{Rewards:{'or self.attempts >= 8':'or false'}},'unbounded pending retries'],
+    ['uncoalesced-events',{Rewards:{'if not self.open or self.dirty then return end':'if not self.open then return end'}},'event burst created unbounded callbacks'],
+    ['wrong-padding',{Progress:{'(height + 48)':'(height + 32)'}},'post-layout Required Items correction failed'],
+    ['early-layout',{Progress:{'api.RunNextFrame(function() api.RunNextFrame(function()':'api.RunNextFrame(function()','end) end)':'end)'}},'repair ran before native second measurement'],
+    ['combat-write',{Progress:{'and Core.Writable(api)':'and true'}},'stale/ineligible layout write'],
+    ['stale-quest',{Progress:{'or current ~= ticket.quest':''}},'stale/ineligible layout write'],
+  ]) {
+    let rejected=false;
+    try { execute(immersionExtendedFixture(mutations),'extension-negative-'+name); }
+    catch(error){rejected=String(error).includes(expected);}
+    if(!rejected)throw Error('Standalone extension control did not reject '+name);
+  }
 });
 const report = {at:new Date().toISOString(), commit:cp.execFileSync('git',['rev-parse','HEAD'],{cwd:root}).toString().trim(),
   productHashes:Object.fromEntries(files('addon').map(f=>[f,sha(f)])),

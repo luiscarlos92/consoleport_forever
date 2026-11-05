@@ -38,7 +38,11 @@ GamepadBackpackButton, input enabled and an addon-blocked action. Passing an
 addon-created extra-panel list through a native wrapper does not make the list's
 contents secure; the previous offline wrapper model did not represent this.
 
-Version 0.1.3 discovers the visible BetterBags frame directly through native
+Version 0.1.3 is installed while playing. Its six payload files match the qualified
+artifact; Retail, other addons, WTF, links and retained backups are preserved.
+[Delivery](../evidence/forever-config/2026-11-05/selection-delivery.json),
+[readback](../evidence/forever-config/2026-11-05/selection-readback.json).
+It discovers the visible BetterBags frame directly through native
 HandlePanelOpen/RefreshButtonGroups calls with frame references only. The stock
 controller remains registered and keeps the original footer, input stack, item
 actions and held-item back behavior. Menu return redirects to the visible frame.

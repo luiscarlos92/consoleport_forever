@@ -1,0 +1,26 @@
+{
+  "addonFolders": [
+    "ForeverConfig_Extended"
+  ],
+  "backup": "C:\\Users\\luisr\\Dev\\consoleport_forever\\scratch\\betterbags-selection\\backups\\20261105T221333Z-b18117ef839c",
+  "characterLinkCount": 0,
+  "closedAt": "2026-11-05T22:17:50.796001+00:00",
+  "currentConfigurationWrites": false,
+  "dependencyUpdates": [],
+  "execute": true,
+  "id": "20261105T221333Z-b18117ef839c",
+  "operation": "deploy-standalone-forever",
+  "packSHA256": "6b026fbc3bafaf9778cf6e69cedbfa3c724c8cf17a30858b4204034f20f816de",
+  "retiredAddonFolders": {},
+  "root": "C:\\Program Files (x86)\\World of Warcraft\\_forever_",
+  "sourceCommit": "d6e0db2ed76fe46564cf501d6e68127f3ce54b84",
+  "startedAt": "2026-11-05T22:13:36.543909+00:00",
+  "status": "installed",
+  "testedDependencies": {},
+  "unselectedVendorsUnchanged": true,
+  "vendorFileCount": 3569,
+  "vendorWrites": false,
+  "wtfUnchanged": true,
+  "qualificationScope": "Forever BetterBags direct-frame selection only; T111 with twenty defect controls and ten tooling tests; no fresh Retail suite claim",
+  "liveAcceptance": "Circle accepted on preceding version; D-pad acceptance pending after this version reload"
+}

@@ -19,5 +19,6 @@
   "defect": "L.Mixin registers Frame.OnEvent in a separate script slot. Hooking frame.OnEvent misses normal engine events.",
   "oldCodeReproduction": "Registered frame-script dispatch fails the deferred progress correction. Old method-only hook is rejected by T110.",
   "qualification": "T109 and T110 passed, including Lua 5.1 syntax and eleven negative controls; three scoped-build guard tests and two package preview/contract tests passed.",
-  "limits": "Event/geometry model with actual native methods; live rendering after reload remains pending."
+  "limits": "Event/geometry model with actual native methods; live rendering after reload remains pending.",
+  "installedNativeFunctionsMatchExecutedFixtures": true
 }

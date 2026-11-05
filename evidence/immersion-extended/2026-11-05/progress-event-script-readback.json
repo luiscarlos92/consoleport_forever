@@ -1,0 +1,29 @@
+{
+  "status": "PASS",
+  "at": "2026-11-05T18:51:48.046433+00:00",
+  "sourceCommit": "16d9698ea98124d038801eab12bd486b93642d86",
+  "artifactSHA256": "2b17e309936da5a21ffa2604a024392c3bb0f19c802b80220ae3bef8d9e991d3",
+  "roots": {
+    "retail": {
+      "wtfFilesPreserved": 316,
+      "wtfLinksPreserved": 42,
+      "unselectedAddonFilesPreserved": 3211,
+      "anchorsPreserved": true
+    },
+    "forever": {
+      "wtfFilesPreserved": 106,
+      "wtfLinksPreserved": 0,
+      "unselectedAddonFilesPreserved": 3568,
+      "anchorsPreserved": true
+    }
+  },
+  "backups": {
+    "scratch/forever-settings-audit/20261105T054031Z/backup/Forever-WTF-before-settings.zip": {
+      "sha256": "0d48394c8e647a86ba695ea231e1aa4fbf95b32b81483d2127663493cc849e25"
+    },
+    "scratch/forever-settings-apply/20261105T062218Z/backup/Forever-WTF-immediate-pre-edit.zip": {
+      "sha256": "0d48394c8e647a86ba695ea231e1aa4fbf95b32b81483d2127663493cc849e25"
+    }
+  },
+  "installedFileCount": 6
+}

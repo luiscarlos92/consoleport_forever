@@ -1,0 +1,21 @@
+{
+  "status": "INSTALLED",
+  "version": "0.1.1",
+  "installedAt": "2026-11-05T18:51:12.962309+00:00",
+  "sourceCommit": "16d9698ea98124d038801eab12bd486b93642d86",
+  "artifactSHA256": "2b17e309936da5a21ffa2604a024392c3bb0f19c802b80220ae3bef8d9e991d3",
+  "addonFolders": [
+    "ImmersionExtended_Forever"
+  ],
+  "changedFiles": [
+    "ImmersionExtended_Forever.toc",
+    "Progress.lua"
+  ],
+  "playingModeAuthorized": true,
+  "wtfUnchanged": true,
+  "unselectedAddonsUnchanged": true,
+  "backup": "scratch/immersion-script-fix/backups/20261105T184702Z-3b29bdf946b1",
+  "readback": "progress-event-script-readback.json",
+  "qualificationScope": "Forever Immersion only; no fresh Retail suite or remote CI claim",
+  "limits": "User must reload and reopen the progress dialog for actual visual acceptance."
+}

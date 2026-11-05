@@ -9,7 +9,8 @@ Evidence: [candidate.44 readback](../evidence/delivery/candidate44-independent-r
 ## Separate Forever addon installed
 
 The November 5 clipped Required Items follow-up corrects the standalone Immersion
-event-script hook in version 0.1.1. Only Forever Immersion regression and package
+event-script hook in version 0.1.1, installed while playing with verified
+addon-only readback. Only Forever Immersion regression and package
 checks are run by current user instruction.
 [Scope and proof](IMMERSION-EXTENDED.md#required-items-event-repair).
 

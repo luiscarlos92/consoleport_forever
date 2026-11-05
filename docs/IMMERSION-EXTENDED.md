@@ -17,7 +17,9 @@ Local qualification: 110 runtime/source checks and 86 tooling tests passed again
 
 ## Required Items event repair
 
-Version 0.1.1 fixes the November 5 reported clipped progress panel. Immersion
+Version 0.1.1 is installed while playing for the November 5 clipped progress panel.
+[Delivery](../evidence/immersion-extended/2026-11-05/progress-event-script-delivery.json),
+[readback](../evidence/immersion-extended/2026-11-05/progress-event-script-readback.json). Immersion
 registers its event method in a separate script slot; the extension now uses
 HookScript on that slot after native processing, preserving native ownership.
 The regression fixture dispatches the captured script, and rejects the old hook.

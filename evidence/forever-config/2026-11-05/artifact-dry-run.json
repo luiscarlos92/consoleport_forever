@@ -5,7 +5,7 @@
   "wtfFilesPreserved": 104,
   "unselectedAddonFilesPreserved": 3149,
   "installedFiles": 5,
-  "artifactSHA256": "c65ceaf5d61f959ccd44e1c24f5c9606f6626ae9a1a3bf6ea23c724e70ab1fd9",
-  "sourceCommit": "d28724c374d0288a840c79569cccdc707b2cf872",
+  "artifactSHA256": "30167a6f778e3ad56d55517298ac2d3313e77c0359376c597fdf20f85e51e65c",
+  "sourceCommit": "89adbf2fe6c304f2130f05a0f884b4701e476cd8",
   "limits": "Exact artifact/installer rehearsal against copied production data; not a running game or controller test."
 }

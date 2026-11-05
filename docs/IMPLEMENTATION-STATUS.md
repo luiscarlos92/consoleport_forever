@@ -8,12 +8,17 @@ Evidence: [candidate.44 readback](../evidence/delivery/candidate44-independent-r
 
 ## Separate Forever addon installed
 
-The later November 5 settings follow-up is under qualification as
+The later November 5 settings follow-up is installed as
 [Forever Config Extended](FOREVER-CONFIG-EXTENDED.md): a finite Plater multiplier
 correction, a reproduced direct native bag-route bridge and bounded actual-runtime
 diagnostics. The audit covers all 108 previous migration operations, 17 shared
 account files and 11 shared character files. Current source/default tests do not
-establish live camera or gamepad acceptance. [Plan](reference/FOREVER-SETTINGS-REPAIR-2026-11-05.md).
+establish live camera or gamepad acceptance. Installed with WoW closed at
+13:05:43 Toronto from 89adbf2fe6c304f2130f05a0f884b4701e476cd8; five addon files,
+no dependency/WTF writes. Final local qualification passes 112 runtime checks and
+92 tooling tests. Broader remote re-testing was cancelled at the user request.
+[Delivery](../evidence/forever-config/2026-11-05/delivery.json),
+[readback](../evidence/forever-config/2026-11-05/independent-readback.json). [Plan](reference/FOREVER-SETTINGS-REPAIR-2026-11-05.md).
 
 November 5: [Immersion Extended (Forever)](IMMERSION-EXTENDED.md) implements the separately requested Pawn summary arrows and Required Items correction. Installed November 5 at 02:39:37 Toronto from tested source 652ae9a9cb3c120a40cdc5dc392205ee90428102. Local and fresh Windows CI pass 110 runtime/source checks and 86 tooling tests against complete 70-product/167-tool inventories. Six new addon files match; Retail, other addons, WTF, links and backups are preserved. User-owned game acceptance remains pending. [Delivery](../evidence/immersion-extended/2026-11-05/delivery.json), [readback](../evidence/immersion-extended/2026-11-05/independent-readback.json). The Retail candidate.44 runtime and installation below remain unchanged. [Pre-implementation plan](reference/IMMERSION-EXTENDED-FOREVER-PLAN-2026-11-05.md).
 

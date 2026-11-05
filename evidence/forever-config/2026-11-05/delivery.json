@@ -1,0 +1,18 @@
+{
+  "status": "INSTALLED",
+  "sourceCommit": "89adbf2fe6c304f2130f05a0f884b4701e476cd8",
+  "artifactSHA256": "30167a6f778e3ad56d55517298ac2d3313e77c0359376c597fdf20f85e51e65c",
+  "installedAt": "2026-11-05T18:05:43.195574+00:00",
+  "addonFolders": [
+    "ForeverConfig_Extended"
+  ],
+  "installedFileCount": 5,
+  "backup": "scratch/forever-settings-repair/backups/20261105T180236Z-00a6d4b7651e",
+  "gameClosedAtPreInstallSnapshot": true,
+  "gameClosedAtPostInstallCheck": true,
+  "wtfUnchanged": true,
+  "unselectedAddonsUnchanged": true,
+  "qualification": "Final exact source: 112 local runtime checks and 92 tooling tests passed. Seven bag/migration negative controls and two camera controls passed.",
+  "remoteCI": "Final automatic run 42080189165 cancelled at user request to stop broader Retail checks; no final-source remote CI claim.",
+  "limits": "Disk delivery and source tests only; real bag opening, camera movement, appearance and gamepad acceptance remain user-owned."
+}

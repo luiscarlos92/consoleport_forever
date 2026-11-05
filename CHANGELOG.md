@@ -11,7 +11,7 @@ source/artifact/file identities. Prepared, installed and accepted are separate.
 
 ## BetterBags native controller integration - November 5, 2026
 
-Prepared configuration extension 0.1.2: native controller/visible extra-panel
+Installed configuration extension 0.1.2: native controller/visible extra-panel
 registration for BetterBags, preserving original native item actions and bindings.
 Scope includes focus return, scrolling, held-item back and lifecycle guards.
 [Plan](docs/reference/BETTERBAGS-NATIVE-NAVIGATION-2026-11-05.md).

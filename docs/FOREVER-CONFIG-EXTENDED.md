@@ -32,7 +32,11 @@ addon has worked. It does not alter Immersion or Retail.
 
 ## Native controller navigation
 
-Version 0.1.2 attaches the visible BetterBags backpack and available bank windows
+Version 0.1.2 is installed while playing with verified six-file payload and
+unchanged Retail, other addons, WTF, links and prior backups.
+[Delivery](../evidence/forever-config/2026-11-05/navigation-delivery.json),
+[readback](../evidence/forever-config/2026-11-05/navigation-readback.json).
+It attaches the visible BetterBags backpack and available bank windows
 to their existing Blizzard controller through wrapped frame/extra-panel APIs.
 Native navigation discovers the real item buttons; decorative copies are ignored.
 Native item-action footers, context conditions, clicks, menus, held-item back
@@ -55,7 +59,7 @@ in the actual client remains pending.
 
 ## Circle close follow-up
 
-Version 0.1.1 is installed while playing; [delivery](../evidence/forever-config/2026-11-05/circle-delivery.json)
+The earlier version 0.1.1 was installed while playing; [delivery](../evidence/forever-config/2026-11-05/circle-delivery.json)
 and [readback](../evidence/forever-config/2026-11-05/circle-readback.json) preserve
 Retail, WTF, other addons, links and backups. It observes the native combined frame Hide method. The Circle
 handler captured during native initialization bypasses global bag functions on

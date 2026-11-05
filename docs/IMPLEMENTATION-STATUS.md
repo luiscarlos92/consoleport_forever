@@ -9,8 +9,12 @@ Evidence: [candidate.44 readback](../evidence/delivery/candidate44-independent-r
 ## Separate Forever addon installed
 
 The user rejected the Circle-only repair: BetterBags still had no usable controller
-navigation. Version 0.1.2 of the configuration extension is under scoped qualification
-for native controller/extra-panel integration, not another isolated close hook.
+navigation. Version 0.1.2 of the configuration extension is installed while playing
+for native controller/extra-panel integration. All six payload files match the
+qualified artifact; Retail, other addons, WTF, links and backups are preserved.
+[Delivery](../evidence/forever-config/2026-11-05/navigation-delivery.json),
+[readback](../evidence/forever-config/2026-11-05/navigation-readback.json).
+Actual controller acceptance after reload remains pending.
 [Plan and limits](reference/BETTERBAGS-NATIVE-NAVIGATION-2026-11-05.md).
 
 The November 5 clipped Required Items follow-up corrects the standalone Immersion

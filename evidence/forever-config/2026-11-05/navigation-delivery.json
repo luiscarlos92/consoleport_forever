@@ -1,0 +1,26 @@
+{
+  "addonFolders": [
+    "ForeverConfig_Extended"
+  ],
+  "backup": "C:\\Users\\luisr\\Dev\\consoleport_forever\\scratch\\betterbags-navigation\\backups\\20261105T200541Z-1935802266af",
+  "characterLinkCount": 0,
+  "closedAt": "2026-11-05T20:09:51.809881+00:00",
+  "currentConfigurationWrites": false,
+  "dependencyUpdates": [],
+  "execute": true,
+  "id": "20261105T200541Z-1935802266af",
+  "operation": "deploy-standalone-forever",
+  "packSHA256": "5a6e5661e34134aed255e28c73bfabbfdbc0b20d582656a0feca3d367f324e38",
+  "retiredAddonFolders": {},
+  "root": "C:\\Program Files (x86)\\World of Warcraft\\_forever_",
+  "sourceCommit": "00102b3b007c9c668ccbe4ee9fbaca8cf72651e4",
+  "startedAt": "2026-11-05T20:05:44.530071+00:00",
+  "status": "installed",
+  "testedDependencies": {},
+  "unselectedVendorsUnchanged": true,
+  "vendorFileCount": 3679,
+  "vendorWrites": false,
+  "wtfUnchanged": true,
+  "qualificationScope": "Forever native BetterBags navigation only; targeted T111 and ten tooling tests; no fresh Retail suite claim",
+  "liveAcceptance": "pending user reload and controller testing"
+}

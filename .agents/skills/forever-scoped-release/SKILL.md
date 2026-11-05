@@ -24,6 +24,13 @@ to full installs, dependencies, restore or configuration replacement.
 Scope cannot expand to game launch/input,
 filesystem WTF editing, broad pruning or unrelated package updates.
 
+For the November 5 explicitly authorized Forever configuration follow-up, use
+the separate selected-standalone `--allow-running-forever` route with an explicit
+Forever root. Only qualified standalone addon code is eligible; dependency,
+Retail, full install and WTF operations remain rejected. Preserve current
+snapshots/readback and explain new-addon discovery may require a client restart.
+See [Forever Config Extended](../../../docs/FOREVER-CONFIG-EXTENDED.md).
+
 ## Prepare with existing gates
 
 Check current official stable identities and qualified prepared-but-not-installed

@@ -24,6 +24,13 @@ The new [Immersion extension](IMMERSION-EXTENDED.md) is installed after local/fr
 
 ## Inactive or gated capabilities
 
+The November 5 Forever follow-up reports small Plater plates, BetterBags not
+opening and uncertain DynamicCam activation. The audit identifies a missing
+overall Plater multiplier and reproduces a direct native bag-dispatch bypass.
+The old SetID error is historical and already adapted in installed BetterBags.
+The separate [configuration extension](FOREVER-CONFIG-EXTENDED.md) is under
+qualification; live bag/gamepad/camera acceptance remains unresolved.
+
 These are explicit limits, not newly discovered failures:
 
 - R16 Pawn/Immersion's candidate.42 summary arrows have scoped user confirmation;

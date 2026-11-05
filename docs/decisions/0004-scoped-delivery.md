@@ -46,3 +46,11 @@ Alternatives: full-pack build/install remains for deliberate full installation o
 recovery, not routine fixes. Public redistribution remains unapproved despite
 local notice/assembly review. Retired DBM/HideClassBars/SharedMedia packages are
 not restored because older references included them.
+
+November 5 amendment: the user explicitly permits Forever addon repairs to be
+deployed while playing and owns reload. A separate `--allow-running-forever`
+route permits exactly one qualified standalone Forever addon from the builder's
+explicit supported contracts. It rejects Retail, dependencies, full operations
+and disk-WTF changes. Existing preview, verified backups, exact-source gates,
+concurrent-drift refusal and rollback/readback remain. This does not broaden the
+older Retail companion flag. [Contract](../FOREVER-CONFIG-EXTENDED.md).

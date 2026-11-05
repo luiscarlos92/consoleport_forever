@@ -29,6 +29,9 @@ plural pending-reference directory is intentionally retained without moving it.
 
 ## Current code contracts
 
+- [Forever settings/bag follow-up](FOREVER-SETTINGS-REPAIR-2026-11-05.md):
+  migration audit, native bag dispatch and finite presentation correction plan.
+
 - [November 3 compatibility audit](ADDON-UPDATE-AUDIT-2026-11-03.md): installed official file verification, capability admission and native regression proof limits.
 
 - [Focused reward Pawn note repair](PAWN-IMMERSION-TOOLTIP-REPAIR-2026-10-17.md):

@@ -12,6 +12,12 @@ ImmersionExtended_Forever has its own TOC, namespace, event lifecycle and statel
 
 ## Integration admission
 
+ForeverConfig_Extended is a separate Forever-only namespace and saved status/
+migration receipt. It applies an exact-prior-state Plater scale correction once,
+observes native bag dispatch without taking protected ownership, and captures
+bounded readiness diagnostics. Retail companion and Immersion extension modules
+remain separate. [Contract](FOREVER-CONFIG-EXTENDED.md).
+
 Candidate.44 removes every third-party addon version allowlist. Native API,
 data shape, readiness, ownership and secure-body probes determine availability.
 Version labels remain diagnostic; reproducible source pins are test evidence.

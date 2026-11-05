@@ -9,6 +9,16 @@ Dates below use America/Toronto. This is a curated change index, not invented
 release tags or blanket gameplay certification. Detailed receipts own exact
 source/artifact/file identities. Prepared, installed and accepted are separate.
 
+## Forever settings follow-up - November 5, 2026
+
+Prepared Forever Config Extended 0.1.0: a finite correction for the omitted Plater
+overall multiplier, a native bag-route adapter using BetterBags' existing owner,
+and bounded runtime readiness diagnostics. The saved-data audit rechecks all 108
+prior changes and 17 shared addon files. DynamicCam's existing profile passes
+native startup/evaluator and AceDB tests; actual camera acceptance remains open.
+Added an explicit selected-standalone running-game delivery route under the new
+user authorization. [Scope](docs/FOREVER-CONFIG-EXTENDED.md).
+
 ## Immersion Extended for Forever - November 5, 2026
 
 Installed version 0.1.0 at 02:39:37 Toronto: a separate stateless Forever-only addon for Pawn summary reward arrows and deferred native Required Items layout. Added explicit standalone packaging/client admission to existing tools, source-based lifecycle/work regressions and installer fault/preservation tests. The Retail companion and upstream addons remain unchanged. [Details and acceptance limits](docs/IMMERSION-EXTENDED.md).

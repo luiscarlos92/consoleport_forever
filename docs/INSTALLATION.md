@@ -8,6 +8,12 @@ belong to their historical dates; they do not override current authority or
 scoped user acceptance. Old deployment/retirement authorization is fulfilled.
 Use current scoped tools and root AGENTS.md for new work.
 
+The November 5 Forever configuration follow-up additionally authorizes the
+selected standalone route `--allow-running-forever` with `--forever-root` for
+qualified code-only addon delivery. This is separate from the Retail companion
+exception and never permits dependency or disk-WTF writes. See
+[Forever Config Extended](FOREVER-CONFIG-EXTENDED.md).
+
 The [original exact bytes](archive/ai-native-2026-10-11/INSTALLATION.pre-restructure.md) are retained.
 
 Current exception, October 12: explicitly requested installation while WoW runs

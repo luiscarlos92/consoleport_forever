@@ -15,6 +15,14 @@ focused-tooltip Retail confirmation; K04/K05 remain.
 
 ## Candidate.44 compatibility checks
 
+The November 5 Forever settings follow-up is separately qualified in
+[Forever Config Extended](FOREVER-CONFIG-EXTENDED.md). After addon discovery and
+user-owned login/reload, inspect `/foreverconfig`; compare Plater scale and
+active DynamicCam context, then open/close bags using keyboard, bag buttons and
+the native gamepad route. Verify manual scale changes survive a later reload,
+ordinary item actions and combat behavior. A new addon folder may require a client
+restart. This does not change the Retail candidate.44 acceptance below.
+
 After the user-owned reload, check the HUD and ordinary Base/L2/R2/L2+R2 banks,
 vehicle/skyriding/quest temporary actions, ping and shared/follower Utility Ring.
 Compare Pawn feedback in bags and Immersion summary/focused rewards with and

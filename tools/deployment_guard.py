@@ -26,13 +26,16 @@ def anchor_info(path):
 
 
 class GameTree:
-    def __init__(self, root, simulation=False, user_install=False, process_check=wow_is_running, allow_running_companion=False, game='retail'):
+    def __init__(self, root, simulation=False, user_install=False, process_check=wow_is_running, allow_running_companion=False, game='retail', allow_running_forever=False):
         self.root = Path(root).absolute()
         if game not in {'retail', 'forever'}:
             raise ValueError('Unknown game profile')
         if game == 'forever' and allow_running_companion:
             raise ValueError('Forever standalone installation requires closed WoW')
         self.game = game
+        if allow_running_forever and (game != 'forever' or allow_running_companion or not (user_install or simulation)):
+            raise ValueError('Running Forever standalone mode requires explicit Forever installation')
+        self.allow_running_forever = allow_running_forever
         self.simulation, self.process_check = simulation, process_check
         self.allow_running_companion = allow_running_companion
         if allow_running_companion and not (user_install or simulation):
@@ -72,7 +75,7 @@ class GameTree:
         # bounded to once a second, with forced checks at promotion boundaries.
         if force_process or checked-getattr(self, '_last_process_check', 0) >= 1:
             self.game_running = self.process_check()
-            if self.game_running and not self.allow_running_companion:
+            if self.game_running and not (self.allow_running_companion or self.allow_running_forever):
                 raise ValueError('WoW is running; close the game before backup, install or restore')
             self._last_process_check = checked
         current = {key: anchor_info(path) for key, path in self.lexical.items()}
@@ -82,7 +85,7 @@ class GameTree:
     def closed_operation(self):
         # The explicit exception is qualified only by deploy_companion. Never
         # carry it into full install, configuration restore or backup workflows.
-        if self.allow_running_companion:
+        if self.allow_running_companion or self.allow_running_forever:
             raise ValueError('Running-game permission is limited to an existing companion-only update')
         self.check(force_process=True)
 

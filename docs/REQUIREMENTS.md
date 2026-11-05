@@ -14,6 +14,18 @@ feature may be approved in direction yet still deferred or gated.
 
 November 5 user instruction authorizes planning, implementation, intensive dry runs and installation of a separate Forever-only addon for Pawn reward arrows and the known Required Items positioning correction. No ConsolePort dependency, Retail changes, upstream edits, saved-settings migration, input takeover or focused-tooltip annotation port. Honor Pawn preferences/readiness and native layout ownership. [Contract](IMMERSION-EXTENDED.md).
 
+## R18: Forever settings and bag follow-up
+
+The November 5 follow-up authorizes auditing all migrated Forever settings,
+repairing demonstrated Plater/BetterBags failures and validating DynamicCam and
+Blizzard preferences. A separate Forever-only configuration extension may apply
+finite native-profile corrections and bridge missing BetterBags native bag routes.
+The user permits deployment while playing and owns reload/restart. Preserve
+Retail, upstream files, native controller ownership, later manual edits and prior
+backups; never edit disk SavedVariables underneath a loaded session.
+[Plan](reference/FOREVER-SETTINGS-REPAIR-2026-11-05.md),
+[contract](FOREVER-CONFIG-EXTENDED.md).
+
 ## Addon compatibility policy
 
 November 3: check user-updated addons, patch proven issues, and deploy nothing

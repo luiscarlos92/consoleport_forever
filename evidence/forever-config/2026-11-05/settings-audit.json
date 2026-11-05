@@ -1,0 +1,42 @@
+{
+  "status": "SOURCE_AND_SAVED_STATE_AUDITED",
+  "previousMigrationOperations": 108,
+  "persistedExplicitlyEqual": 89,
+  "nativeDefaultsEqual": 17,
+  "pendingLiveCVarDefaults": [
+    "whisperMode",
+    "GamepadHudModifierUsesToggle"
+  ],
+  "sharedSavedVariableFiles": 17,
+  "plater": {
+    "retailScale": 1.428571452899855,
+    "foreverScale": 1,
+    "matchingGlobalBarDimensions": [
+      112,
+      12
+    ]
+  },
+  "decisions": {
+    "DynamicCam": "Preserve the selected 20-context profile. Native startup and seven modeled transitions pass; capture actual engine readiness.",
+    "Immersion": "Prior presentation edits retained. Remaining raw differences are Forever native controller and voice defaults.",
+    "Immersion_ExtraFade": "Preserve the client UIParentAlpha default. Actual composition remains a live observation.",
+    "Leatrix": "Shared saved values agree; additional per-flavor controls are preserved, not transplanted from an unsupported schema.",
+    "BetterBags": "Classic design remains selected by the false default. Bridge reproduced direct native routes. Preserve native bag-button visibility and avoid introducing Retail mouse-fading behavior before gamepad acceptance.",
+    "Pawn": "Prior display preferences retained; character scale/stat data preserved.",
+    "LiteMount": "Preserve character, mount ownership and game-specific identifiers.",
+    "Masque": "Preserve groups for installed addons and native controller-client differences.",
+    "Blizzard": "Prior presentation and chat edits retained. The shared saved sets, settings definitions and map-provider files match exactly. Runtime CVar defaults are separate observations.",
+    "Auctionator_BtWQuests": "Prior selected display preferences retained; market, quest and identity data preserved.",
+    "ForeverOnlyAddons": "No Retail counterpart; preserve their settings."
+  },
+  "privateEvidence": "Full per-operation and per-addon diffs, current WTF snapshots and link inventories are retained in ignored scratch/forever-settings-repair, not published.",
+  "limits": "Saved values are not live CVars, rendering or initialization evidence. AceDB default stripping differs from lost settings. Camera interpolation, gamepad/item actions, taint and actual visual composition remain user observations.",
+  "sharedCharacterSavedVariableFiles": 11,
+  "exactlyMatchingCharacterFiles": 7,
+  "characterDifferencesPreserved": [
+    "Profession IDs/data",
+    "Quest/character progression",
+    "Pawn gear and item levels",
+    "Plater class/spec range data and GUID markers"
+  ]
+}

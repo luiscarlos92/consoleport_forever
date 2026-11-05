@@ -9,6 +9,14 @@ Evidence: [TOC](../addon/ConsolePort_Forever/ConsolePort_Forever.toc),
 
 ## Separate Forever integration
 
+[Forever Config Extended](FOREVER-CONFIG-EXTENDED.md) qualifies the native Plater
+profile/refresh owner and current BetterBags bag/context handler capabilities.
+Its native bag source is pinned in the reconstruction tool; pins are evidence,
+not runtime version admission. The installed BetterBags release already adapts
+Forever's three-argument item Initialize contract, so the new adapter does not
+replace that fix or upstream files. DynamicCam uses its existing native situation
+conditions and event ownership, with no speculative forced camera patch.
+
 [Immersion Extended](IMMERSION-EXTENDED.md) requires native Immersion capabilities and optionally observed Pawn initialization, without version admission. Its TOC/client gates target Forever interface 16001/camelot. Installed source matches captured contracts after BOM/newline normalization. Fresh November 5 dependency discovery refreshed local BetterBags 0.9.0 and Plater v663 qualification pins; no dependency bytes are selected for the standalone delivery.
 
 ## Current admission policy

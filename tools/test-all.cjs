@@ -1967,6 +1967,12 @@ check('T110.forever-immersion-extension-defect-and-work-controls',()=>{
     if(!rejected)throw Error('Standalone extension control did not reject '+name);
   }
 });
+check('T111.forever-settings-native-bag-dispatch-and-migration',()=>{
+  require('./forever_config_experiment.cjs').run();
+});
+check('T112.forever-dynamiccam-native-startup-and-situation-transitions',()=>{
+  require('./forever_config_experiment.cjs').runDynamicCam();
+});
 const report = {at:new Date().toISOString(), commit:cp.execFileSync('git',['rev-parse','HEAD'],{cwd:root}).toString().trim(),
   productHashes:Object.fromEntries(files('addon').map(f=>[f,sha(f)])),
   toolingHashes:Object.fromEntries([...files('tools'),...files('tests')].filter(f=>!f.includes('__pycache__')).map(f=>[f,sha(f)])),

@@ -8,7 +8,15 @@ Evidence: [approved system](decisions/0001-repository-development-system.md),
 
 ## Standalone Forever delivery
 
-Use build_update.py --standalone-forever and deploy_update.py --forever-root for the [separate Immersion extension](IMMERSION-EXTENDED.md). These explicit modes retain source/full-test/clean-pushed-main gates and reuse current scoped backup/staging/rollback. Only ImmersionExtended_Forever can be selected; Retail roots, other addon payloads, dependency writes and running WoW are refused. Default Retail companion behavior is unchanged.
+Use build_update.py --standalone-forever for the [separate Immersion extension](IMMERSION-EXTENDED.md),
+or --standalone-addon ForeverConfig_Extended for the [configuration extension](FOREVER-CONFIG-EXTENDED.md).
+Both use deploy_update.py --forever-root, retain source/full-test/clean-pushed-main
+gates and reuse current scoped backup/staging/rollback. Exactly one explicitly
+qualified standalone addon is selected; Retail roots, unrelated payloads and
+dependency writes are refused. Closed WoW remains the default. The November 5
+user authorization permits --allow-running-forever for that code-only scope;
+it never permits direct WTF writes, full installs or restore. The separate Retail
+companion mode retains its existing contract.
 
 ## Setup
 

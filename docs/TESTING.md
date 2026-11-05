@@ -7,6 +7,16 @@ Evidence: [runner](../tools/test-all.cjs), [tool tests](../tools/run_tool_tests.
 
 ## Standalone Forever extension checks
 
+T111 executes pinned Forever bag dispatch and upstream BetterBags handlers with
+the configuration extension, including the old bypass, nesting, owner cancellation,
+same-frame toggle parity, a 100-open burst, combat/readiness/logout and manual
+scale preservation. Five specific defect controls must fail. T112 executes actual
+DynamicCam defaults, startup, situation evaluator and AceDB logout/reinitialization
+with 20 enabled contexts and seven modeled transitions; disabled-profile and
+missing-startup-evaluation controls must fail. Six additional tooling tests cover
+selected-addon scope, its exact saved-variable contract and authorized running-game
+preview/install/drift/rollback. [Contract and limits](FOREVER-CONFIG-EXTENDED.md).
+
 T109 executes native Immersion layout/button/event and Pawn budget/verdict source with the new addon. T110 rejects ten targeted faulty variants and retains event-work bounds. Ten tests in test_standalone_forever.py cover explicit client/package selection, preview, preservation, checksums/aliases, interruptions, rollback and newer WTF data. Full Test-All.ps1 remains required; offline source execution does not certify engine rendering, taint or controller behavior. [Scope and model limits](IMMERSION-EXTENDED.md).
 
 ## Entry points

@@ -1,0 +1,65 @@
+{
+  "status": "PASS",
+  "files": [
+    {
+      "path": "DynamicCam/Core.lua",
+      "sha256": "99bb3e8fec5faba775f00d73cdb21d237d802b77502fd66a8acc66bba32053cd",
+      "officialPackage": "curseforge/DynamicCam",
+      "version": "2.21.5"
+    },
+    {
+      "path": "DynamicCam/DefaultSettings.lua",
+      "sha256": "4dfea3cd672ab86ec872126df604d53f9790f8bee5bd6f746508bfe55811078b",
+      "officialPackage": "curseforge/DynamicCam",
+      "version": "2.21.5"
+    },
+    {
+      "path": "DynamicCam/SituationManager.lua",
+      "sha256": "ce0aa45f76d927a0fee5f33c705886e77702e816b1924d4ad9d0da0bff5cf308",
+      "officialPackage": "curseforge/DynamicCam",
+      "version": "2.21.5"
+    },
+    {
+      "path": "BetterBags/core/hooks.lua",
+      "sha256": "688ca72f2f212fc12725b3dbd1e8863957533778a358cfd58c1a17591cb5ccc0",
+      "officialPackage": "Cidan/BetterBags",
+      "version": "v0.9.0"
+    },
+    {
+      "path": "BetterBags/core/init.lua",
+      "sha256": "d591f5634caea055e791f4e601d39362eae79d73af979dfd7780743fcd3c057f",
+      "officialPackage": "Cidan/BetterBags",
+      "version": "v0.9.0"
+    },
+    {
+      "path": "BetterBags/core/database.lua",
+      "sha256": "dc1bd6926cef3e4317933a14afcc9a95e007cb08f135658482c16b8553d2fd3c",
+      "officialPackage": "Cidan/BetterBags",
+      "version": "v0.9.0"
+    },
+    {
+      "path": "BetterBags/core/constants.lua",
+      "sha256": "3809eae2ed119d318377b11881116b21d571b7d234f340ff69175e22c465c378",
+      "officialPackage": "Cidan/BetterBags",
+      "version": "v0.9.0"
+    },
+    {
+      "path": "BetterBags/frames/item.lua",
+      "sha256": "67f0a53fdbcef5b3136c56b4125a4dcf60286af8e4df249c356178049488b1e9",
+      "officialPackage": "Cidan/BetterBags",
+      "version": "v0.9.0"
+    },
+    {
+      "path": "Plater/Plater.lua",
+      "sha256": "044e9ecf4f0254fa9c9c93bf12377b736776384056a77cce425dc6532ec162dd",
+      "officialPackage": "Tercioo/Plater-Nameplates",
+      "version": "Plater-v663"
+    },
+    {
+      "path": "Plater/Plater_DefaultSettings.lua",
+      "sha256": "f17d55d04f9cf984c26671b9444eb6a9bceb0db287c86ab76dd8d4253238f27f",
+      "officialPackage": "Tercioo/Plater-Nameplates",
+      "version": "Plater-v663"
+    }
+  ]
+}

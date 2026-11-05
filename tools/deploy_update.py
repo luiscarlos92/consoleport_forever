@@ -46,7 +46,7 @@ def deploy(tree,pack,checksum,backup_root,execute=False,fault=lambda event:None)
     if standalone:
         if tree.game != 'forever':
             raise ValueError('Standalone addon requires the explicit Forever client')
-        owners,updates = {STANDALONE_FOREVER_ADDON:'standalone'},{}
+        owners,updates = {manifest['addonFolders'][0]:'standalone'},{}
     else:
         if tree.game != 'retail':
             raise ValueError('Retail companion package cannot target Forever')
@@ -58,9 +58,13 @@ def deploy(tree,pack,checksum,backup_root,execute=False,fault=lambda event:None)
         result=deploy_companion(tree,pack,checksum,backup_root,execute,fault)
         result['dependencyUpdates']=[]
         return result
-    tree.closed_operation()
+    if getattr(tree, 'allow_running_forever', False):
+        if not standalone or updates or retired:
+            raise ValueError('Running Forever mode permits only a selected standalone addon')
+    else:
+        tree.closed_operation()
     tree.check(force_process=True)
-    folders=[STANDALONE_FOREVER_ADDON] if standalone else [NAME]+sorted(folder for folder in owners if folder!=NAME)+sorted(retired)
+    folders=sorted(owners) if standalone else [NAME]+sorted(folder for folder in owners if folder!=NAME)+sorted(retired)
     payloads={folder:{} for folder in owners}
     for name,data in rows.items():
         parts=safe_relative(name).parts
@@ -125,7 +129,8 @@ def deploy(tree,pack,checksum,backup_root,execute=False,fault=lambda event:None)
         if not standalone and cp_version()!=required: raise ValueError('Updated ConsolePort differs from tested version')
         receipt.update(status='installed',closedAt=now(),installedAddons=staged,wtfUnchanged=True,unselectedVendorsUnchanged=True)
         write_json(backup/'install-receipt.json',receipt,guard)
-        marker = '.immersion-extended-installed.json' if standalone else '.cpf-companion-installed.json'
+        marker = ('.immersion-extended-installed.json' if folders == [STANDALONE_FOREVER_ADDON]
+                  else '.forever-config-extended-installed.json') if standalone else '.cpf-companion-installed.json'
         write_json(tree.addons.parent/marker,receipt,lambda p:tree.guard(p,tree.addons.parent))
     except BaseException as error:
         for folder in reversed(promoted): os.rename(tree.guard(tree.addons/folder,tree.addons),tree.guard(failed/folder,stage))
@@ -147,8 +152,10 @@ if __name__=='__main__':
     parser.add_argument('--user-install',action='store_true')
     parser.add_argument('--execute',action='store_true')
     parser.add_argument('--allow-running-companion',action='store_true',help='Explicit existing Forever-only update; no dependency/configuration writes')
+    parser.add_argument('--allow-running-forever',action='store_true',help='Explicit selected standalone Forever addon only; no dependency/configuration writes')
     args=parser.parse_args()
     tree=GameTree(args.forever_root or args.retail_root,user_install=args.user_install,
-        allow_running_companion=args.allow_running_companion,game='forever' if args.forever_root else 'retail')
+        allow_running_companion=args.allow_running_companion,game='forever' if args.forever_root else 'retail',
+        allow_running_forever=args.allow_running_forever)
     result=deploy(tree,args.pack,args.sha256,args.backup_root,args.execute)
     print(json.dumps({key:value for key,value in result.items() if key not in {'installedFiles','installedAddons'}},indent=2))

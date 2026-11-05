@@ -32,7 +32,9 @@ addon has worked. It does not alter Immersion or Retail.
 
 ## Circle close follow-up
 
-Version 0.1.1 also observes the native combined frame Hide method. The Circle
+Version 0.1.1 is installed while playing; [delivery](../evidence/forever-config/2026-11-05/circle-delivery.json)
+and [readback](../evidence/forever-config/2026-11-05/circle-readback.json) preserve
+Retail, WTF, other addons, links and backups. It observes the native combined frame Hide method. The Circle
 handler captured during native initialization bypasses global bag functions on
 its close branch. The bridge queues a close through BetterBags without replacing
 bindings, focus, native handlers or protected item actions. The regression calls

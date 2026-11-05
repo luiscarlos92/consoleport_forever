@@ -1,0 +1,25 @@
+{
+  "operation": "deploy-standalone-forever",
+  "sourceCommit": "df29106c3c12ada566e4a100303cd5c08b999d94",
+  "packSHA256": "e024062a2131c311384dafcb59d80a0021bda2a02f23d6992ac7cde1b86fd9b4",
+  "root": "C:\\Program Files (x86)\\World of Warcraft\\_forever_",
+  "addonFolders": [
+    "ForeverConfig_Extended"
+  ],
+  "dependencyUpdates": [],
+  "retiredAddonFolders": {},
+  "testedDependencies": {},
+  "vendorFileCount": 4206,
+  "characterLinkCount": 0,
+  "currentConfigurationWrites": false,
+  "vendorWrites": false,
+  "execute": true,
+  "id": "20261105T190128Z-8f4ca6d8353a",
+  "backup": "C:\\Users\\luisr\\Dev\\consoleport_forever\\scratch\\betterbags-circle\\backups\\20261105T190128Z-8f4ca6d8353a",
+  "status": "installed",
+  "startedAt": "2026-11-05T19:01:31.488929+00:00",
+  "closedAt": "2026-11-05T19:05:33.406961+00:00",
+  "wtfUnchanged": true,
+  "unselectedVendorsUnchanged": true,
+  "qualificationScope": "Forever BetterBags Circle close only; no fresh Retail suite claim"
+}

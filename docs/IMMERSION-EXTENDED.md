@@ -13,7 +13,7 @@ are recorded separately; implementation alone is not game acceptance. It has no
 ConsolePort dependency, configuration, bindings or SavedVariables. Retail remains
 separate and unchanged.
 
-Local qualification: 110 runtime/source checks and 86 tooling tests passed against complete 70 product / 167 tool-test inventories. [Receipt](../evidence/immersion-extended/2026-11-05/local-qualification.json). Installation and engine acceptance remain pending.
+Local qualification: 110 runtime/source checks and 86 tooling tests passed against complete 70 product / 167 tool-test inventories. [Receipt](../evidence/immersion-extended/2026-11-05/local-qualification.json). Installed November 5 at 02:39:37 Toronto; engine acceptance remains pending. [Fresh CI](../evidence/immersion-extended/2026-11-05/ci-verification.json), [artifact rehearsal](../evidence/immersion-extended/2026-11-05/artifact-dry-run.json), [delivery/readback](../evidence/immersion-extended/2026-11-05/delivery.json).
 
 ## Behavior
 

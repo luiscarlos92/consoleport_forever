@@ -6,9 +6,9 @@ Evidence: [candidate.44 readback](../evidence/delivery/candidate44-independent-r
 [source qualification](../evidence/test-results/candidate44-addon-compatibility-qualification.json),
 [fresh CI](../evidence/test-results/candidate44-fresh-ci.json).
 
-## Separate Forever addon under qualification
+## Separate Forever addon installed
 
-November 5: [Immersion Extended (Forever)](IMMERSION-EXTENDED.md) implements the separately requested Pawn summary arrows and Required Items correction. Local full qualification passes; fresh CI and installation remain pending. The Retail candidate.44 runtime and installation below remain unchanged. [Pre-implementation plan](reference/IMMERSION-EXTENDED-FOREVER-PLAN-2026-11-05.md).
+November 5: [Immersion Extended (Forever)](IMMERSION-EXTENDED.md) implements the separately requested Pawn summary arrows and Required Items correction. Installed November 5 at 02:39:37 Toronto from tested source 652ae9a9cb3c120a40cdc5dc392205ee90428102. Local and fresh Windows CI pass 110 runtime/source checks and 86 tooling tests against complete 70-product/167-tool inventories. Six new addon files match; Retail, other addons, WTF, links and backups are preserved. User-owned game acceptance remains pending. [Delivery](../evidence/immersion-extended/2026-11-05/delivery.json), [readback](../evidence/immersion-extended/2026-11-05/independent-readback.json). The Retail candidate.44 runtime and installation below remain unchanged. [Pre-implementation plan](reference/IMMERSION-EXTENDED-FOREVER-PLAN-2026-11-05.md).
 
 ## Current installed checkpoint: candidate.44
 

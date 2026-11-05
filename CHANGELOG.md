@@ -11,7 +11,7 @@ source/artifact/file identities. Prepared, installed and accepted are separate.
 
 ## Immersion Extended for Forever - November 5, 2026
 
-Prepared a separate stateless Forever-only addon for Pawn summary reward arrows and deferred native Required Items layout. Added explicit standalone packaging/client admission to existing tools, source-based lifecycle/work regressions and installer fault/preservation tests. The Retail companion and upstream addons remain unchanged. [Details and acceptance limits](docs/IMMERSION-EXTENDED.md).
+Installed version 0.1.0 at 02:39:37 Toronto: a separate stateless Forever-only addon for Pawn summary reward arrows and deferred native Required Items layout. Added explicit standalone packaging/client admission to existing tools, source-based lifecycle/work regressions and installer fault/preservation tests. The Retail companion and upstream addons remain unchanged. [Details and acceptance limits](docs/IMMERSION-EXTENDED.md).
 
 ## Addon update compatibility - November 3, 2026
 

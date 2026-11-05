@@ -1,0 +1,17 @@
+{
+  "status": "PASS",
+  "checked_utc": "2026-11-05T07:27:40.905500+00:00",
+  "sourceCommit": "652ae9a9cb3c120a40cdc5dc392205ee90428102",
+  "artifact_sha256": "cc940ab80330e9537d6d77aef68701e4355826135da5c366713ba93adbef110f",
+  "actual_artifact_only_addon": [
+    "ImmersionExtended_Forever"
+  ],
+  "full_current_forever_tree_clone": true,
+  "existing_addon_files_preserved": 3139,
+  "wtf_files_preserved": 104,
+  "new_files": 6,
+  "preview_read_only": true,
+  "injected_promotion_failure_rollback_exact": true,
+  "successful_install_exact": true,
+  "simulated_only": true
+}

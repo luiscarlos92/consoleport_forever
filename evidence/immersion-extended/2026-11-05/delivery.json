@@ -1,0 +1,33 @@
+{
+  "status": "INSTALLED_PENDING_USER_GAME_ACCEPTANCE",
+  "version": "0.1.0",
+  "addon": "ImmersionExtended_Forever",
+  "client": "forever",
+  "sourceCommit": "652ae9a9cb3c120a40cdc5dc392205ee90428102",
+  "artifact": "ImmersionExtended-Forever-0.1.0.zip",
+  "artifact_sha256": "cc940ab80330e9537d6d77aef68701e4355826135da5c366713ba93adbef110f",
+  "installed_utc": "2026-11-05T07:39:37.637323+00:00",
+  "installed_toronto": "2026-11-05 02:39:37 EST",
+  "ci_url": "https://github.com/luiscarlos92/consoleport_forever/actions/runs/41986966056",
+  "runtime_checks_passed": 110,
+  "tooling_tests_passed": 86,
+  "exact_product_files": 70,
+  "exact_tool_test_files": 167,
+  "installed_addon_files": 6,
+  "fresh_wtf_backup_files": 104,
+  "wtf_writes": false,
+  "retail_changes": false,
+  "other_addon_changes": false,
+  "consoleport_packages_installed": false,
+  "game_input": false,
+  "scope": [
+    "Pawn summary quest reward arrows independent of BetterBags",
+    "Deferred native Required Items layout correction"
+  ],
+  "acceptance_pending": [
+    "Rendering and native controller interaction",
+    "Real quest/item-data transitions",
+    "Combat/Edit Mode and cold-start observations"
+  ],
+  "rollback": "Disable or park only ImmersionExtended_Forever; preserve current WTF and other addon data. Full pre-install WTF backup and failed-promotion stage retained privately."
+}

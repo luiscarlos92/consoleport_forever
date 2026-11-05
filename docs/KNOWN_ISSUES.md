@@ -9,7 +9,7 @@ Evidence: [current status](IMPLEMENTATION-STATUS.md),
 
 ## Standalone Forever acceptance
 
-The new [Immersion extension](IMMERSION-EXTENDED.md) is under offline qualification. Arrow rendering, actual quest item data timing, native-controller focus, Required Items pixels and combat/Edit Mode transitions still require the user-owned launch. BetterBags native gamepad navigation and unrelated Plater/map errors are outside its repairs. It does not add focused reward tooltip annotations.
+The new [Immersion extension](IMMERSION-EXTENDED.md) is installed after local/fresh-CI qualification; game acceptance remains pending. Arrow rendering, actual quest item data timing, native-controller focus, Required Items pixels and combat/Edit Mode transitions still require the user-owned launch. BetterBags native gamepad navigation and unrelated Plater/map errors are outside its repairs. It does not add focused reward tooltip annotations.
 
 ## Open reports
 

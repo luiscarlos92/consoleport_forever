@@ -1,0 +1,53 @@
+{
+  "status": "PASS",
+  "checked_utc": "2026-11-05T07:39:57.915407+00:00",
+  "sourceCommit": "652ae9a9cb3c120a40cdc5dc392205ee90428102",
+  "artifact_sha256": "cc940ab80330e9537d6d77aef68701e4355826135da5c366713ba93adbef110f",
+  "installed_addon": "ImmersionExtended_Forever",
+  "installed_version": "0.1.0",
+  "installed_files": {
+    "ImmersionExtended_Forever/Bootstrap.lua": "54f1718d471d127d4d6c166d9fd771616b96a74979fabdcb961c70c865a8f0aa",
+    "ImmersionExtended_Forever/Core.lua": "7d8ca4b1547a10e8cf3b7efab0eb579a8e9b42520d4be97a93b1134aeb72da65",
+    "ImmersionExtended_Forever/ImmersionExtended_Forever.toc": "724777edcae09a0cadff8098c0dd261764a6ded552e83676d460b0b2b209eb2e",
+    "ImmersionExtended_Forever/LICENSE.txt": "9270b19fbd310481d23da62343e79d50f51c19791d233fa457ebde9da5a327fe",
+    "ImmersionExtended_Forever/Progress.lua": "ed530d1edd26593706df1149d0050249e66fd6735df1d2c81240d65b94938eaf",
+    "ImmersionExtended_Forever/Rewards.lua": "9df80b84db2e6c84812aca7a591a971b1a1d81bb28f9cf74f68015de5e09e585"
+  },
+  "trees": {
+    "retail_wtf": {
+      "files": 316,
+      "links": 42,
+      "approved_new_files": 0,
+      "original_files_unchanged": true,
+      "routing_links_directories_preserved": true
+    },
+    "forever_wtf": {
+      "files": 104,
+      "links": 0,
+      "approved_new_files": 0,
+      "original_files_unchanged": true,
+      "routing_links_directories_preserved": true
+    },
+    "retail_addons": {
+      "files": 3142,
+      "links": 0,
+      "approved_new_files": 0,
+      "original_files_unchanged": true,
+      "routing_links_directories_preserved": true
+    },
+    "forever_addons": {
+      "files": 3145,
+      "links": 0,
+      "approved_new_files": 6,
+      "original_files_unchanged": true,
+      "routing_links_directories_preserved": true
+    }
+  },
+  "fresh_full_wtf_backup_files": 104,
+  "fresh_full_wtf_backup_verified": true,
+  "prior_backup_archives_verified": 2,
+  "consoleport_packages_absent": true,
+  "wtf_writes": false,
+  "game_input": false,
+  "acceptance": "Pending user-owned launch, rendering/gamepad/taint checks"
+}

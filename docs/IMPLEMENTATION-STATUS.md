@@ -8,6 +8,11 @@ Evidence: [candidate.44 readback](../evidence/delivery/candidate44-independent-r
 
 ## Separate Forever addon installed
 
+The user rejected the Circle-only repair: BetterBags still had no usable controller
+navigation. Version 0.1.2 of the configuration extension is under scoped qualification
+for native controller/extra-panel integration, not another isolated close hook.
+[Plan and limits](reference/BETTERBAGS-NATIVE-NAVIGATION-2026-11-05.md).
+
 The November 5 clipped Required Items follow-up corrects the standalone Immersion
 event-script hook in version 0.1.1, installed while playing with verified
 addon-only readback. Only Forever Immersion regression and package

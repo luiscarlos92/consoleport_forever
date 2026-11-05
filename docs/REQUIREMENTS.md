@@ -20,6 +20,10 @@ The November 5 follow-up authorizes auditing all migrated Forever settings,
 repairing demonstrated Plater/BetterBags failures and validating DynamicCam and
 Blizzard preferences. A separate Forever-only configuration extension may apply
 finite native-profile corrections and bridge missing BetterBags native bag routes.
+The subsequent no-controller-input report authorizes native controller registration
+and visible extra-panel integration for BetterBags. Preserve Blizzard navigation,
+item action conditions, protected click ownership and the native binding stack;
+no custom controller takeover or raw binding-stack replacement.
 The user permits deployment while playing and owns reload/restart. Preserve
 Retail, upstream files, native controller ownership, later manual edits and prior
 backups; never edit disk SavedVariables underneath a loaded session.

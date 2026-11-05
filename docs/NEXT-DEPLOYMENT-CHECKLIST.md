@@ -23,6 +23,14 @@ the native gamepad route. Verify manual scale changes survive a later reload,
 ordinary item actions and combat behavior. A new addon folder may require a client
 restart. This does not change the Retail candidate.44 acceptance below.
 
+The BetterBags native-controller follow-up requires visible item selection with
+the D-pad, Cross click, Square item action, Triangle menu and immediate navigation
+after returning from that menu, right-stick scrolling and Circle close/reopen.
+Check held-item Circle behavior and another window's focus during bag redraws.
+The stock search shortcut and footer visuals are not redirected. These actual
+Forever controller cases remain user-owned acceptance; see the
+[repair plan](reference/BETTERBAGS-NATIVE-NAVIGATION-2026-11-05.md).
+
 After the user-owned reload, check the HUD and ordinary Base/L2/R2/L2+R2 banks,
 vehicle/skyriding/quest temporary actions, ping and shared/follower Utility Ring.
 Compare Pawn feedback in bags and Immersion summary/focused rewards with and

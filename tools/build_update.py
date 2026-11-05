@@ -33,7 +33,8 @@ def validate_targeted_immersion(baseline, current, hashes, folder=STANDALONE_FOR
                'tests/harness/immersion_extended.lua'}
     if folder == 'ForeverConfig_Extended':
         allowed = {'tools/build_update.py', 'tests/test_targeted_immersion.py',
-                   'tools/forever_config_experiment.cjs', 'tests/harness/forever_config.lua'}
+                   'tools/forever_config_experiment.cjs', 'tests/harness/forever_config.lua',
+                   'tools/capture_forever_config.py', 'tests/harness/betterbags_navigation.lua'}
     for group in ('productHashes', 'toolingHashes'):
         before, tested, actual = map(normalize, (baseline[group], current[group], hashes[group]))
         if tested != actual:

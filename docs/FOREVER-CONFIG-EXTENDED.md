@@ -30,6 +30,29 @@ after login/relevant addon readiness/combat exit, on demand and on logout. It do
 not poll, continuously reset settings, force camera motion or claim an inactive
 addon has worked. It does not alter Immersion or Retail.
 
+## Native controller navigation
+
+Version 0.1.2 attaches the visible BetterBags backpack and available bank windows
+to their existing Blizzard controller through wrapped frame/extra-panel APIs.
+Native navigation discovers the real item buttons; decorative copies are ignored.
+Native item-action footers, context conditions, clicks, menus, held-item back
+behavior and the input binding stack remain owned by Blizzard. The extension
+creates no binding group, input proxy, custom item action or native footer.
+
+Show/hide, draw completion, controller-mode transitions, design changes and combat
+exit coalesce. Returning from a menu reattaches controls without a delayed focus
+loss; redraws preserve another active window. Native bag-open state is synchronized
+when closing so the next toggle reopens correctly. Login/combat/missing readiness
+and stale logout work retain their guards. The read-only status command reports
+the controller host and visible bag separately.
+
+The stock search shortcut and footer visuals are not redirected. Selecting the
+visible addon search field is a separate native edit-box acceptance case.
+[Plan and scope](reference/BETTERBAGS-NATIVE-NAVIGATION-2026-11-05.md).
+[Targeted qualification](../evidence/forever-config/2026-11-05/navigation-qualification.json)
+passes eighteen defect controls and ten affected tooling tests. Controller use
+in the actual client remains pending.
+
 ## Circle close follow-up
 
 Version 0.1.1 is installed while playing; [delivery](../evidence/forever-config/2026-11-05/circle-delivery.json)

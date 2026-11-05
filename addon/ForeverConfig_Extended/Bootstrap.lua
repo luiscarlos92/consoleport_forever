@@ -5,6 +5,7 @@ local generation = 0
 local function refresh()
     Addon:ApplySettings()
     Addon:InstallBagBridge()
+    Addon:InstallBagNavigation()
     Addon:Snapshot()
 end
 frame:RegisterEvent("PLAYER_LOGIN")
@@ -13,10 +14,12 @@ frame:RegisterEvent("PLAYER_LOGOUT")
 frame:RegisterEvent("ADDON_LOADED")
 frame:SetScript("OnEvent", function(_, event, name)
     if event == "PLAYER_LOGOUT" then
+        Addon:StopBagNavigation()
         generation = generation + 1
         if Addon.bagState then Addon.bagState.pending = nil end
         Addon:Snapshot("logout")
-    elseif event ~= "ADDON_LOADED" or name == "Plater" or name == "BetterBags" or name == Addon.name then
+    elseif event ~= "ADDON_LOADED" or name == "Plater" or name == "BetterBags" or name == Addon.name
+        or name == "Blizzard_GamepadSharedUtility" or name == "Blizzard_GamepadSmartNavigation" then
         generation = generation + 1
         local current = generation
         C_Timer.After(2, function() if generation == current then refresh() end end)

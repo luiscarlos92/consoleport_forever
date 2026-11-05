@@ -11,7 +11,13 @@ T111 executes pinned Forever bag dispatch and upstream BetterBags handlers with
 the configuration extension, including the old bypass, nesting, owner cancellation,
 same-frame toggle parity, a 100-open burst, combat/readiness/logout and manual
 scale preservation. Mixed same-frame requests and replaced bag designs retain
-their latest owner/intent. Seven specific defect controls must fail. T112 executes actual
+their latest owner/intent. The bag-route defect controls must fail. T111 additionally executes unchanged
+native FrameControlsManager, SmartNavigation, prompted-binding/footer and item
+action source through actual captured input callbacks. It covers real-item
+discovery, selection/tooltip, clicks, Square, Triangle, Circle/held item, scrolling,
+menu return, mode/combat/readiness, design/reused-window and logout transitions.
+Its modeled native wrapper boundary rejects direct addon input-stack writes.
+These are source/control-flow tests, not engine taint or hardware certification. T112 executes actual
 DynamicCam defaults, startup, situation evaluator and AceDB logout/reinitialization
 with 20 enabled contexts and seven modeled transitions; disabled-profile and
 missing-startup-evaluation controls must fail. Six additional tooling tests cover

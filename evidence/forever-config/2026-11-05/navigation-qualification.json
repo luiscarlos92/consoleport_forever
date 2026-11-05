@@ -1,0 +1,82 @@
+{
+  "status": "PASS",
+  "at": "2026-11-05T20:03:54.320567+00:00",
+  "scope": "Forever BetterBags native controller navigation only",
+  "installedExtensionFilesVerified": {
+    "BetterBags.lua": "3a6092fb8e0bb99279bba32b73b4ef975740e9d6391dc0086cca3bfc12eeb407",
+    "Bootstrap.lua": "daebf7a3b54189cc1f7f2f7a7958f1d29ca85595e90882356a9097bc8318959a",
+    "Core.lua": "3b81c1b69991859336fca0a047798fdc8371bb250d0f5e335dd83cd6cd9df861",
+    "ForeverConfig_Extended.toc": "faf61db1761d32a688b2e548c7dc4770d5a6fed0e912db9ec8d9ffa74b17b2ee",
+    "Settings.lua": "d7b5a7a262700d8641d4ed03073df1ed97255572a08e23b2b66ca7f515e295d4"
+  },
+  "installedBetterBagsSourcesVerified": {
+    "core/init.lua": "d591f5634caea055e791f4e601d39362eae79d73af979dfd7780743fcd3c057f",
+    "core/hooks.lua": "688ca72f2f212fc12725b3dbd1e8863957533778a358cfd58c1a17591cb5ccc0",
+    "core/events.lua": "0b2bd36793557db7e4f0ec50d6a13ebf7c6622ad0252a531562d00a66af13df6",
+    "frames/item.lua": "67f0a53fdbcef5b3136c56b4125a4dcf60286af8e4df249c356178049488b1e9",
+    "frames/bag.lua": "5c6622838af23348be445a5200106a89e36146744248a3610e612178b6ed2c77",
+    "render/scrollbox.lua": "65ca6337f9ec9467b176b642fdc0fa7c1851378935ae481da24bdeacb456a7d9"
+  },
+  "cause": "Native controller tracks the hidden stock container and never discovers the visible BetterBags controls.",
+  "fix": "Retain original stock controller, footer, bindings and item actions; attach the visible addon as a native extra panel and refresh on native refocus.",
+  "productFiles": {
+    "BetterBags.lua": "3a6092fb8e0bb99279bba32b73b4ef975740e9d6391dc0086cca3bfc12eeb407",
+    "Bootstrap.lua": "9ebfebfcb499a20be48854c599cbc146e54e1e6ef04788ad3748080ac45d90ee",
+    "Core.lua": "48acf6ae7d6b8c61bc052a82be0393852446369102fa97e7aa69c1f95b3ab4d8",
+    "ForeverConfig_Extended.toc": "5a6370e8c6f32525f0bd509f8204d8c6f0ee6ec6d6d9f1166028b56a61484f8e",
+    "Navigation.lua": "21de8045252ed84f6a1c30c4b587c69f75404af4c14e845235423ebbee7e1227",
+    "Settings.lua": "d7b5a7a262700d8641d4ed03073df1ed97255572a08e23b2b66ca7f515e295d4"
+  },
+  "currentReportSHA256": "2ef85be8a9b7b3c1147dee4788b6d7d7d3397472e093a7e3a7cb623354e0b3cd",
+  "nativeCommit": "eac30af597e5aaa43a60f6675ef5fdcea100375f",
+  "nativeInputs": {
+    "ContainerFrame.lua": "9af2c76d16ebff607dd8b983722f36f98e819b35bc77395232bb2f960d15e3d3",
+    "FrameControlsManager.lua": "d1b1f6e21e9f103806c67c6274b4cb2ad947da99ee8315143ea9f37e1d13416f",
+    "SmartNavigation.lua": "6907e694572194b8bb01aa73f035c75f04c02b33d7c14d0cd6bb98bfd85545d2",
+    "Utility.lua": "a00c0086b9c24de2770ccfe7de992b991f3c4aab942f32fd9f52471553ef09f8",
+    "PromptedBinding.lua": "6966073a5c98149389f793d95e3b9f5e7237153f263b1a2216b652e23782c6f9",
+    "PromptedBindingFooter.lua": "dea94417a2672882d2bfa5e12be23cad8476c731e6e13a357ba779b292c78c1b"
+  },
+  "results": {
+    "passed": true,
+    "nativeDispatch": true,
+    "upstreamBagHandlers": true,
+    "defectControls": {
+      "skip-scale": "scale migration missing",
+      "repeat-migration": "manual scale reset",
+      "no-owner-dedup": "later BetterBags action overwritten",
+      "no-combat-guard": "queued combat action leaked",
+      "no-native-route": "direct backpack did not open",
+      "stale-queue-mode": "latest same-frame open request lost",
+      "replaced-bag": "stale request reached replacement bag",
+      "circle-bypass": "captured Circle close left BetterBags open"
+    },
+    "navigation": {
+      "passed": true,
+      "nativeFrameControls": true,
+      "nativeNavigation": true,
+      "nativeButtonDiscovery": true,
+      "defectControls": {
+        "missing-window": "real item/tooltip focus failed",
+        "decorative-item": "decorative duplicate remained navigable",
+        "focus-theft": "bag draw stole another window focus",
+        "combat-registration": "combat registration attempted",
+        "lost-close": "Circle did not release native owner",
+        "stale-native-open": "manual close retained native bag-open bookkeeping",
+        "no-scroll-owner": "native scrolling binding missing",
+        "raw-bindings": "addon attempted direct input stack write",
+        "lost-refocus": "native menu return lost navigation groups",
+        "stale-logout": "logout work resurrected navigation"
+      },
+      "limits": "Native code executed unchanged. Frame/C APIs, vectors, rendering and secure-wrapper authority modeled; no engine taint, hardware, actual scrolling or protected item-action certification."
+    },
+    "limits": "Native leaf frame/C APIs and timing modeled; no engine rendering, taint, hardware or item actions certified."
+  },
+  "defectControlCount": 18,
+  "toolingTests": {
+    "package": 6,
+    "targetedScope": 4
+  },
+  "noRawBindingWrites": true,
+  "limits": "Native frame/C API leaves, secure wrapper authority and timing modeled. No live hardware, engine taint, protected item action, rendering or scrolling certification. Stock search shortcut and footer visuals remain stock-owned."
+}

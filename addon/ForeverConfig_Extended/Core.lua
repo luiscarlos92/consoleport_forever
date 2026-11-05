@@ -1,6 +1,6 @@
 local _, Addon = ...
 Addon.name = "ForeverConfig_Extended"
-Addon.version = "0.1.1"
+Addon.version = "0.1.2"
 Addon.active = WOW_PROJECT_CAMELOT ~= nil and WOW_PROJECT_ID == WOW_PROJECT_CAMELOT
 
 function Addon:GetAddon(name)
@@ -67,6 +67,7 @@ function Addon:Snapshot(phase)
         betterBagsShown = backpack and self:PublicCall(backpack.IsShown, backpack),
         betterBagsBridge = self.bagState and self.bagState.installed or false,
         betterBagsBridgeActions = self.bagState and self.bagState.actions or 0,
+        betterBagsNavigation = self.GetBagNavigationStatus and self:GetBagNavigationStatus(),
     }
     db.addons = {}
     if C_AddOns then
@@ -96,4 +97,11 @@ function Addon:PrintStatus()
     print("BetterBags: enabled " .. tostring(s.betterBagsEnabled) .. ", backpack " .. tostring(s.betterBagsBackpack)
         .. ", buttons " .. tostring(s.betterBagsButtons) .. ", shown " .. tostring(s.betterBagsShown)
         .. ", bridge " .. tostring(s.betterBagsBridge) .. ", bridge actions " .. s.betterBagsBridgeActions)
+    local navigation = s.betterBagsNavigation
+    if navigation then
+        print("BetterBags navigation: " .. tostring(navigation.reason) .. "; active window "
+            .. tostring(navigation.frame) .. "; bag focused " .. tostring(navigation.focused)
+            .. "; visible bag " .. tostring(navigation.window)
+            .. "; item actions " .. tostring(navigation.itemActions))
+    end
 end

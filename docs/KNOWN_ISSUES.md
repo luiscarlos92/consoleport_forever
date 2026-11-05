@@ -22,6 +22,14 @@ The new [Immersion extension](IMMERSION-EXTENDED.md) is installed after local/fr
 | K02: original Paladin quest action loss | Read-only evidence established lost/reassigned action storage. The exact original writer remains unconfirmed. Candidate.26 restoration was followed by editing regressions and removed in candidate.27. | Passive event/loadout/writer context on recurrence. Do not restore automatic pickup/place or use stale Copybara backups. |
 | K04: gameplay HUD CPU spikes | User-supplied Active-mode capture reports 364.155 ms peak, repeated >100 ms ticks. Candidate.35 removes reproduced redundant diagnostic copies, routine skin reconstruction and broad routine event setup; offline counters establish reduced work. | Same-client/scenario/profiler before/after measurements, optional callback timing, and visual/input/taint observations. Exact live spike cause and improvement are unverified. [Investigation](reference/HUD-PERFORMANCE-2026-10-12.md). |
 
+## BetterBags native controller follow-up
+
+The user reports that navigation and item controls remain unusable after the
+Circle-only delivery. Native source identifies missing visible extra-panel
+registration. The scoped 0.1.2 repair keeps Blizzard controller/action ownership;
+actual gamepad and rendering acceptance remains pending.
+[Scope](reference/BETTERBAGS-NATIVE-NAVIGATION-2026-11-05.md).
+
 ## Inactive or gated capabilities
 
 The November 5 Forever follow-up reports small Plater plates, BetterBags not

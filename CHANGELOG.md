@@ -9,6 +9,13 @@ Dates below use America/Toronto. This is a curated change index, not invented
 release tags or blanket gameplay certification. Detailed receipts own exact
 source/artifact/file identities. Prepared, installed and accepted are separate.
 
+## BetterBags native controller integration - November 5, 2026
+
+Prepared configuration extension 0.1.2: native controller/visible extra-panel
+registration for BetterBags, preserving original native item actions and bindings.
+Scope includes focus return, scrolling, held-item back and lifecycle guards.
+[Plan](docs/reference/BETTERBAGS-NATIVE-NAVIGATION-2026-11-05.md).
+
 ## Immersion progress event script - November 5, 2026
 
 Version 0.1.1 observes the registered frame event script so deferred Required Items

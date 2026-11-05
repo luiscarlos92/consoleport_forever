@@ -3,11 +3,12 @@
 ## Title: Forever Config Extended
 ## Notes: Scoped Retail presentation parity, BetterBags native bag routes and readiness diagnostics.
 ## Author: Local personal addon
-## Version: 0.1.1
+## Version: 0.1.2
 ## OptionalDeps: BetterBags, Plater, DynamicCam, Immersion, ImmersionExtended_Forever, Pawn
 ## SavedVariables: ForeverConfigExtendedDB
 
 Core.lua
 Settings.lua
 BetterBags.lua
+Navigation.lua
 Bootstrap.lua

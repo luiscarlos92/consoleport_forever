@@ -60,6 +60,12 @@ function Addon:InstallBagBridge()
             end
         end)
     end
+    -- Native Circle captures ToggleBackpack_Combined at frame initialization.
+    -- Its close branch hides this frame directly, bypassing public bag routes.
+    local combined = ContainerFrameCombinedBags
+    if combined and type(combined.Hide) == "function" then
+        hooksecurefunc(combined, "Hide", function() request("close") end)
+    end
     for name, mode in pairs({ToggleBackpack = "toggle", OpenBackpack = "open",
         CloseBackpack = "close", OpenAllBags = "open", CloseAllBags = "close"}) do
         if type(_G[name]) == "function" then

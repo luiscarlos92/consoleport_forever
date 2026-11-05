@@ -1,6 +1,6 @@
 local _, Addon = ...
 Addon.name = "ForeverConfig_Extended"
-Addon.version = "0.1.0"
+Addon.version = "0.1.1"
 Addon.active = WOW_PROJECT_CAMELOT ~= nil and WOW_PROJECT_ID == WOW_PROJECT_CAMELOT
 
 function Addon:GetAddon(name)

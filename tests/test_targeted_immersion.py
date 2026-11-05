@@ -23,6 +23,17 @@ class TargetedImmersion(unittest.TestCase):
     def test_only_selected_extension_and_named_qualification_tools(self):
         validate_targeted_immersion(self.base, self.current, self.actual)
 
+    def test_config_route_requires_its_own_checks_and_preserves_immersion(self):
+        base = {'productHashes': {'addon/ForeverConfig_Extended/BetterBags.lua':'old',
+                                 'addon/ImmersionExtended_Forever/Progress.lua':'protected'}, 'toolingHashes':{}}
+        current = copy.deepcopy(base)
+        current['productHashes']['addon/ForeverConfig_Extended/BetterBags.lua']='new'
+        current['results']=[{'id':'T111.forever-settings-native-bag-dispatch-and-migration','status':'passed'}]
+        validate_targeted_immersion(base,current,current,'ForeverConfig_Extended')
+        current['productHashes']['addon/ImmersionExtended_Forever/Progress.lua']='foreign'
+        with self.assertRaisesRegex(ValueError,'outside targeted'):
+            validate_targeted_immersion(base,current,current,'ForeverConfig_Extended')
+
     def test_foreign_addon_or_tool_change_rejected(self):
         for group, name in [('productHashes', 'addon/ConsolePort_Forever/Core.lua'),
                             ('toolingHashes', 'tools/deploy_update.py')]:

@@ -1,0 +1,16 @@
+{
+  "status": "PASS",
+  "scope": "Forever BetterBags Circle close only",
+  "installedExtensionFilesVerified": 5,
+  "cause": "Native combined bag initialization captures ToggleBackpack_Combined. Its close branch directly hides ContainerFrameCombinedBags, bypassing the original bridge.",
+  "fix": "Posthook combined-frame Hide; queue existing BetterBags owner close. No bindings or focus replacement.",
+  "qualification": "T111 passed actual native captured callback; eight negative controls, four scoped-build tests and six installer tests passed.",
+  "currentReportSHA256": "bcbd62992ab59e6f56d2b1df0fffa998e6b5113c166f8a73e804f56d25b26d49",
+  "nativeCommit": "eac30af597e5aaa43a60f6675ef5fdcea100375f",
+  "nativeInputs": {
+    "SmartNavigation.lua": "6907e694572194b8bb01aa73f035c75f04c02b33d7c14d0cd6bb98bfd85545d2",
+    "FrameControlsManager.lua": "d1b1f6e21e9f103806c67c6274b4cb2ad947da99ee8315143ea9f37e1d13416f",
+    "ContainerFrame.lua": "9af2c76d16ebff607dd8b983722f36f98e819b35bc77395232bb2f960d15e3d3"
+  },
+  "limits": "Leaf frames/C APIs modeled. Actual controller close after reload remains pending."
+}

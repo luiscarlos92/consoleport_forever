@@ -30,6 +30,22 @@ after login/relevant addon readiness/combat exit, on demand and on logout. It do
 not poll, continuously reset settings, force camera motion or claim an inactive
 addon has worked. It does not alter Immersion or Retail.
 
+## Circle close follow-up
+
+Version 0.1.1 also observes the native combined frame Hide method. The Circle
+handler captured during native initialization bypasses global bag functions on
+its close branch. The bridge queues a close through BetterBags without replacing
+bindings, focus, native handlers or protected item actions. The regression calls
+the captured native callback and rejects the old missing route.
+[Scoped qualification](../evidence/forever-config/2026-11-05/circle-qualification.json).
+
+A subsequent selected standalone repair can anchor its exact baseline report to
+a retained qualified artifact receipt using the existing builder options
+`--qualified-baseline-receipt` and `--qualified-baseline-report`. The artifact
+report hash must agree, current tests/inventories must match, and unrelated addon
+or tool changes remain rejected. This is targeted qualification, not a fresh
+Retail suite.
+
 ## Delivery and rollback
 
 Use the existing builder with `--standalone-addon ForeverConfig_Extended` and the

@@ -35,6 +35,8 @@ ContainerFrameSettingsManager = {IsUsingCombinedBags = function() return true en
 ContainerFrameCombinedBags = {Hide = function() nativeOpen = false end}
 EventRegistry = {TriggerEvent = function() end}
 --@NATIVE
+-- Native combined-bag OnLoad captures this callback before the extension loads.
+local circleClose = ToggleBackpack_Combined
 function hooksecurefunc(target, key, callback)
     if type(target) == 'string' then target, key, callback = _G, target, key end
     local prior = assert(target[key])
@@ -114,6 +116,9 @@ local replacement={shown=false,IsShown=bag.IsShown,Show=bag.Show,Hide=bag.Hide}
 BB.Bags.Backpack=replacement;flush()
 assert(not replacement.shown and bagToggles==before,'stale request reached replacement bag')
 BB.Bags.Backpack=bag
+OpenBackpack();flush()
+circleClose();flush()
+assert(not bag.shown,'captured Circle close left BetterBags open')
 CloseAllBags(); flush()
 before=bagToggles
 for _=1,100 do OpenBackpack() end

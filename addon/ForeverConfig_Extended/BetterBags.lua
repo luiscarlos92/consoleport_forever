@@ -21,22 +21,27 @@ function Addon:InstallBagBridge()
         hooksecurefunc(bb, "CloseSpecialWindows", function() state.handled = state.handled + 1 end)
     end
     local function request(mode)
-        if InCombatLockdown() or not ready(self) then return end
+        if InCombatLockdown() then return end
+        local owner, requestedBag = ready(self)
+        if owner ~= bb then return end
         if type(ContainerFrame_AllowedToOpenBags) == "function" and mode ~= "close"
             and not ContainerFrame_AllowedToOpenBags() then return end
         if state.pending then
-            -- A top-level toggle supersedes its nested open/close calls.
-            if mode == "toggle" then state.pending.mode = mode end
+            -- Post-hooks arrive inside-out: the final outer route wins, as does
+            -- a genuinely newer explicit request in the same frame.
+            state.pending.mode = mode
+            state.pending.bag = requestedBag
+            state.pending.handled = state.handled
             return
         end
-        local pending = {mode = mode, handled = state.handled, owner = bb}
+        local pending = {mode = mode, handled = state.handled, owner = bb, bag = requestedBag}
         state.pending = pending
         C_Timer.After(0, function()
             if state.pending ~= pending then return end
             state.pending = nil
             if InCombatLockdown() or state.handled ~= pending.handled then return end
             local current, bag = ready(self)
-            if current ~= pending.owner then return end
+            if current ~= pending.owner or bag ~= pending.bag then return end
             if pending.mode ~= "close" and type(ContainerFrame_AllowedToOpenBags) == "function"
                 and not ContainerFrame_AllowedToOpenBags() then return end
             local shown = bag:IsShown()

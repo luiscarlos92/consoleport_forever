@@ -104,6 +104,16 @@ assert(bag.shown and bagToggles == before + 1, 'duplicate bridge')
 CloseAllBags(); flush()
 ToggleAllBags(); BB:ToggleAllBags(); flush()
 assert(not bag.shown, 'later BetterBags action overwritten')
+CloseAllBags(); OpenBackpack(); flush()
+assert(bag.shown,'latest same-frame open request lost')
+OpenBackpack(); CloseAllBags(); flush()
+assert(not bag.shown,'latest same-frame close request lost')
+before=bagToggles
+ToggleBackpack()
+local replacement={shown=false,IsShown=bag.IsShown,Show=bag.Show,Hide=bag.Hide}
+BB.Bags.Backpack=replacement;flush()
+assert(not replacement.shown and bagToggles==before,'stale request reached replacement bag')
+BB.Bags.Backpack=bag
 CloseAllBags(); flush()
 before=bagToggles
 for _=1,100 do OpenBackpack() end

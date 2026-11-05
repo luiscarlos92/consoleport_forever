@@ -17,7 +17,8 @@ BetterBags retains its own window, context, rendering and item actions. The brid
 securely observes native backpack/bag open and close functions that BetterBags
 does not hook itself, then coalesces a missing request into BetterBags' existing
 ToggleAllBags method. A native local bag-open state supplies toggle parity.
-BetterBags handling of the same call chain cancels the queued request. Missing
+BetterBags handling of the same call chain cancels the queued request. Later
+same-frame requests replace earlier intent; a replaced bag design cancels stale work. Missing
 initialization, combat, ownership loss, forbidden native opening and logout cancel
 or reject work. No native function is replaced by addon code and no controller
 binding, protected item action or focus route is claimed.

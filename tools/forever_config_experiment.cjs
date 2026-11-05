@@ -24,6 +24,8 @@ function fixture(mutation='none'){
     if(n==='BetterBags'&&mutation==='no-owner-dedup')source=source.replace('state.handled ~= pending.handled','false');
     if(n==='BetterBags'&&mutation==='no-combat-guard')source=source.replaceAll('InCombatLockdown()','false');
     if(n==='BetterBags'&&mutation==='no-native-route')source=source.replace('if type(_G[name]) == "function" then','if false then').replace('if type(ToggleBag) == "function" then','if false then');
+    if(n==='BetterBags'&&mutation==='stale-queue-mode')source=source.replace('state.pending.mode = mode','if mode == "toggle" then state.pending.mode = mode end');
+    if(n==='BetterBags'&&mutation==='replaced-bag')source=source.replace('or bag ~= pending.bag','');
     return `assert(load(${JSON.stringify(source)},${JSON.stringify(n)}))('ForeverConfig_Extended',A)`;
   }).join('\n');
   return read('tests/harness/forever_config.lua')
@@ -40,7 +42,8 @@ function run(){
   execute(fixture());
   const controls={'skip-scale':'scale migration missing','repeat-migration':'manual scale reset',
     'no-owner-dedup':'later BetterBags action overwritten','no-combat-guard':'queued combat action leaked',
-    'no-native-route':'direct backpack did not open'};
+    'no-native-route':'direct backpack did not open','stale-queue-mode':'latest same-frame open request lost',
+    'replaced-bag':'stale request reached replacement bag'};
   for(const [mutation,expected]of Object.entries(controls)){let rejected=false;try{execute(fixture(mutation));}catch(error){rejected=String(error).includes(expected);}if(!rejected)throw Error('Surviving defect control: '+mutation);}
   return {passed:true,nativeDispatch:true,upstreamBagHandlers:true,defectControls:controls,
     limits:'Native leaf frame/C APIs and timing modeled; no engine rendering, taint, hardware or item actions certified.'};

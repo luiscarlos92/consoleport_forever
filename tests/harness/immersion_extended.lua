@@ -55,9 +55,12 @@ ImmersionFrame=frame
 function frame:IsShown()return self.shown end
 function frame:IsVisible()return self.shown end
 function frame:HookScript(k,fn)
-    local previous=self[k]
-    self[k]=function(...)if previous then previous(...)end;fn(...)end
+    self.scripts = self.scripts or {}
+    local previous=self.scripts[k]
+    self.scripts[k]=function(...)if previous then previous(...)end;fn(...)end
 end
+function frame:RunScript(k,...) if self.scripts[k] then return self.scripts[k](self,...) end end
+function frame:DispatchEvent(...) return self:RunScript('OnEvent',...) end
 function frame:PlayIntro()self.shown=true end
 function frame:AddHint()end
 function frame:RemoveHint()end
@@ -131,6 +134,9 @@ elements.Content={RewardsFrame={Buttons={one,two}}}
 --@EXT_NATIVE_EVENTS
 --@EXT_NATIVE_FRAME
 frame.OnEvent=Frame.OnEvent;frame.UpdateItems=Frame.UpdateItems
+-- Immersion's real L.Mixin captures Frame.OnEvent in the frame script slot.
+-- A later hook of frame.OnEvent does not change this registered callback.
+frame.scripts={OnEvent=frame.OnEvent}
 PawnCommon={ShowQuestUpgradeAdvisor=true,ShowRelicUpgrades=false,ShowItemLevelUpgrades=false}
 PawnOptions={}
 local PawnIsInitialized=false
@@ -152,7 +158,7 @@ function PawnInitialize()
 end
 function PawnResetTooltips()end
 function PawnResetBags()end
-frame:OnEvent('QUEST_PROGRESS')
+frame:DispatchEvent('QUEST_PROGRESS')
 assert(talk.extraY==49,'native stale-height defect did not reproduce')
 advance();assert(progress.height==200 and talk.extraY==49)
 assert(not one.arrow,'baseline unexpectedly supplies upgrade arrows')
@@ -172,7 +178,7 @@ assert(NS.Core.Client(_G) and runtime:Status():find('ready'))
 -- Native reward ownership, level checks and preference remain authoritative.
 levels['item:101']=90;frame:UpdateItems();assert(not one.arrow.shown,'level restriction ignored')
 levels['item:101']=1;frame:UpdateItems();assert(one.arrow.shown)
-frame.shown=false;frame.OnHide();assert(not one.arrow.shown,'close retained upgrade arrow')
+frame.shown=false;frame:RunScript('OnHide');assert(not one.arrow.shown,'close retained upgrade arrow')
 frame.shown=true;frame:UpdateItems()
 PawnCommon.ShowQuestUpgradeAdvisor=false;PawnResetBags();flush();assert(not one.arrow.shown,'disabled quest advisor ignored')
 PawnCommon.ShowQuestUpgradeAdvisor=true;frame:UpdateItems();assert(one.arrow.shown)
@@ -187,7 +193,7 @@ delayed['item:101']=true;frame:UpdateItems();assert(not one.arrow.shown)
 delayed['item:101']=nil;flush(4);assert(one.arrow.shown,'delayed item data did not refresh')
 delayed['item:101']=true;frame:UpdateItems();local before=runtime.rewards.queries
 flush(40);assert(runtime.rewards.queries-before<=8,'unbounded pending retries')
-local pendingTimer=runtime.rewards.timer;frame.shown=false;frame.OnHide()
+local pendingTimer=runtime.rewards.timer;frame.shown=false;frame:RunScript('OnHide')
 assert(not one.arrow.shown and not runtime.rewards.timer and not next(runtime.rewards.pending))
 if pendingTimer then assert(pendingTimer.cancelled)end
 delayed['item:101']=nil;frame.shown=true;links[1]='item:102';frame:UpdateItems();flush()
@@ -200,7 +206,7 @@ assert(#queue-queuedCallbacks<=1,'event burst created unbounded callbacks')
 flush(1);assert(runtime.rewards.queries-before==2,'event burst was not coalesced')
 runtime.rewards:Event('GET_ITEM_INFO_RECEIVED',999,true);assert(not runtime.rewards.dirty,'unrelated item event queued work')
 loaded.Pawn=false;frame:UpdateItems();assert(not one.arrow.shown and not runtime.rewards:Available())
-ready=false;frame:OnEvent('QUEST_PROGRESS');flush();assert(talk.extraY==248,'Pawn absence disabled layout')
+ready=false;frame:DispatchEvent('QUEST_PROGRESS');flush();assert(talk.extraY==248,'registered event script bypassed layout')
 loaded.Pawn=true;frame:UpdateItems();assert(one.arrow.shown,'BetterBags absence blocked Pawn arrows')
 local rewards=elements.Content.RewardsFrame;elements.Content.RewardsFrame=nil
 runtime.rewards:Start();assert(not one.arrow.shown,'lost rewards contract did not fail closed')
@@ -209,7 +215,7 @@ local setter=talk.SetExtraOffset;talk.SetExtraOffset=nil;runtime:Refresh();flush
 assert(not runtime.progress.frame,'lost layout capability still admitted')
 talk.SetExtraOffset=setter;runtime:Refresh();flush()
 -- Native transitions, burst scheduling, settings guards and deferred layout.
-ready=false;child.height=230;frame:OnEvent('QUEST_PROGRESS')
+ready=false;child.height=230;frame:DispatchEvent('QUEST_PROGRESS')
 advance();assert(talk.extraY==49,'repair ran before native second measurement')
 advance();assert(talk.extraY==278)
 local writes=runtime.progress.writes
@@ -217,18 +223,18 @@ for _=1,100 do runtime.progress:Queue()end
 local queuedBefore=nextFrames;flush(6)
 assert(nextFrames-queuedBefore<=3 and runtime.progress.writes==writes,'unbounded/redundant layout work')
 for _,height in ipairs({28,75,150,310}) do
-    child.height=height;config.elementscale=1.5;frame:OnEvent('QUEST_PROGRESS');flush()
+    child.height=height;config.elementscale=1.5;frame:DispatchEvent('QUEST_PROGRESS');flush()
     assert(talk.extraY==(height+48)*1.5,'scaled content measurement wrong')
 end
 config.elementscale=1;child.height=200
 local function cancelled(change)
     frame.shown=true;config.boxpoint='Bottom';config.anidivisor=5;config.nameplatemode=false
     combat=false;editing=false;quest=123
-    ready=false;frame:OnEvent('QUEST_PROGRESS');local before=runtime.progress.writes;change();flush()
+    ready=false;frame:DispatchEvent('QUEST_PROGRESS');local before=runtime.progress.writes;change();flush()
     assert(runtime.progress.writes==before,'stale/ineligible layout write')
 end
-cancelled(function()frame:OnEvent('QUEST_COMPLETE')end);assert(talk.extraY==375,'stale progress moved reward dialog')
-cancelled(function()frame.shown=false;frame.OnHide()end)
+cancelled(function()frame:DispatchEvent('QUEST_COMPLETE')end);assert(talk.extraY==375,'stale progress moved reward dialog')
+cancelled(function()frame.shown=false;frame:RunScript('OnHide')end)
 cancelled(function()quest=999 end)
 cancelled(function()combat=true end);local old=talk.extraY;assert(old~=248)
 combat=false;runtime:Refresh();flush();assert(talk.extraY==248,'combat deferral did not recover')

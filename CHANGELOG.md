@@ -9,6 +9,12 @@ Dates below use America/Toronto. This is a curated change index, not invented
 release tags or blanket gameplay certification. Detailed receipts own exact
 source/artifact/file identities. Prepared, installed and accepted are separate.
 
+## Immersion progress event script - November 5, 2026
+
+Version 0.1.1 observes the registered frame event script so deferred Required Items
+layout also runs on ordinary game events. Only the standalone Forever extension
+is selected; [scoped proof](docs/IMMERSION-EXTENDED.md#required-items-event-repair).
+
 ## Forever settings follow-up - November 5, 2026
 
 Installed Forever Config Extended 0.1.0 with WoW closed at 13:05:43 Toronto: a finite correction for the omitted Plater

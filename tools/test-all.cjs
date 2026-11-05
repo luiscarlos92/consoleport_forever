@@ -1946,10 +1946,12 @@ function immersionExtendedFixture(mutations={}) {
     .replace('--@EXT_BOOTSTRAP_AGAIN',()=>embed('Bootstrap'));
 }
 check('T109.forever-immersion-extension-native-lifecycle-and-layout',()=>{
+  for(const f of files('addon/ImmersionExtended_Forever').filter(f=>f.endsWith('.lua'))) parser.parse(read(f),{luaVersion:'5.1'});
   execute(immersionExtendedFixture(),'forever-immersion-extension');
 });
 check('T110.forever-immersion-extension-defect-and-work-controls',()=>{
   for(const [name,mutations,expected] of [
+    ['method-only-event-hook',{Progress:{"frame:HookScript('OnEvent', function()":"api.hooksecurefunc(frame, 'OnEvent', function()"}},'registered event script bypassed layout'],
     ['premature-pawn',{Rewards:{'return self.ready and self.installed':'return self.installed'}},'premature Pawn call'],
     ['requires-betterbags',{Rewards:{"and Core.Loaded(api, 'Immersion')":"and Core.Loaded(api, 'Immersion') and Core.Loaded(api, 'BetterBags')"}},'Pawn verdict parity'],
     ['wrong-verdict',{Rewards:{'elseif verdict == true then':'elseif verdict == false then'}},'Pawn verdict parity'],

@@ -76,9 +76,10 @@ function Progress:Install()
     self.frame = frame
     if not self.hooked[frame] then
         self.hooked[frame] = true
-        -- OnEvent has completed QUEST_PROGRESS and updated both lastEvent fields.
+        -- Immersion's mixin captures OnEvent in a separate frame-script slot.
+        -- Hook that script after both lastEvent fields have been updated.
         -- One posthook also covers QUEST_ITEM_UPDATE without duplicate scheduling.
-        api.hooksecurefunc(frame, 'OnEvent', function()
+        frame:HookScript('OnEvent', function()
             if self.frame == frame then self:Queue() end
         end)
         frame:HookScript('OnHide', function() self.serial = self.serial + 1; self.ticket = nil end)

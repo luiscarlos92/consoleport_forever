@@ -1,0 +1,23 @@
+{
+  "installedExtensionMatchesPreviousSource": true,
+  "previousFiles": {
+    "Bootstrap.lua": "54f1718d471d127d4d6c166d9fd771616b96a74979fabdcb961c70c865a8f0aa",
+    "Core.lua": "7d8ca4b1547a10e8cf3b7efab0eb579a8e9b42520d4be97a93b1134aeb72da65",
+    "ImmersionExtended_Forever.toc": "724777edcae09a0cadff8098c0dd261764a6ded552e83676d460b0b2b209eb2e",
+    "LICENSE.txt": "9270b19fbd310481d23da62343e79d50f51c19791d233fa457ebde9da5a327fe",
+    "Progress.lua": "ed530d1edd26593706df1149d0050249e66fd6735df1d2c81240d65b94938eaf",
+    "Rewards.lua": "9df80b84db2e6c84812aca7a591a971b1a1d81bb28f9cf74f68015de5e09e585"
+  },
+  "installedNativeInputHashes": {
+    "Utils.lua": "a7cbd622ed9bd78fd349764664e0cf085e20670ac1756dbda3b03f543eb2c6e5",
+    "Logic/Frame.lua": "7ac9e35945801d22915f837c6b180e9e6097a1c96dd328df61d300fd21426f16",
+    "Logic/Events.lua": "10d9907c62d4c7efefbd31fb4594a9b82af2aff1f13dcb4aecbef2fc555180d5",
+    "Logic/Talkbox.lua": "57c70782a54ccd24b9a8202f0d22f4a58451f906aed74e4c7415d2ed0d6147ba",
+    "Components/Scaler.lua": "32880cc2c1cbe835850d32e38031995c1d8a88e5ffb835c92ff7402372c18626",
+    "Components/Elements.lua": "eead0cf84abdeb9a502620ff7ed03d3b3ae68ccfe53f8966cf5fc600e3b6cb86"
+  },
+  "defect": "L.Mixin registers Frame.OnEvent in a separate script slot. Hooking frame.OnEvent misses normal engine events.",
+  "oldCodeReproduction": "Registered frame-script dispatch fails the deferred progress correction. Old method-only hook is rejected by T110.",
+  "qualification": "T109 and T110 passed, including Lua 5.1 syntax and eleven negative controls; three scoped-build guard tests and two package preview/contract tests passed.",
+  "limits": "Event/geometry model with actual native methods; live rendering after reload remains pending."
+}

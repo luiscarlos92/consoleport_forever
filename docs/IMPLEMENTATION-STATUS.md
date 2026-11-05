@@ -8,6 +8,11 @@ Evidence: [candidate.44 readback](../evidence/delivery/candidate44-independent-r
 
 ## Separate Forever addon installed
 
+The November 5 clipped Required Items follow-up corrects the standalone Immersion
+event-script hook in version 0.1.1. Only Forever Immersion regression and package
+checks are run by current user instruction.
+[Scope and proof](IMMERSION-EXTENDED.md#required-items-event-repair).
+
 The later November 5 settings follow-up is installed as
 [Forever Config Extended](FOREVER-CONFIG-EXTENDED.md): a finite Plater multiplier
 correction, a reproduced direct native bag-route bridge and bounded actual-runtime

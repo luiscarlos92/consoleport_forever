@@ -2,7 +2,7 @@
 ## Title: Immersion Extended (Forever)
 ## Notes: Pawn quest reward arrows and deferred Required Items layout correction.
 ## Author: Personal WoW tools
-## Version: 0.1.0
+## Version: 0.1.1
 ## Dependencies: Immersion
 ## OptionalDeps: Pawn
 ## DefaultState: enabled

@@ -11,7 +11,7 @@ source/artifact/file identities. Prepared, installed and accepted are separate.
 
 ## Forever settings follow-up - November 5, 2026
 
-Prepared Forever Config Extended 0.1.0: a finite correction for the omitted Plater
+Installed Forever Config Extended 0.1.0 with WoW closed at 13:05:43 Toronto: a finite correction for the omitted Plater
 overall multiplier, a native bag-route adapter using BetterBags' existing owner,
 and bounded runtime readiness diagnostics. The saved-data audit rechecks all 108
 prior changes and 17 shared addon files. DynamicCam's existing profile passes

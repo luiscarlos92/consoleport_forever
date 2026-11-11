@@ -63,7 +63,10 @@ def main():
 
 
 if __name__ == '__main__':
-    if '--updates' in sys.argv:
+    if '--forever-immersion' in sys.argv:
+        MANIFEST = ROOT / 'evidence/immersion-extended/2026-11-11/pawn-ui-input.json'
+        GROUPS = [('VgerMods/Pawn', 'Pawn-2.14.1', 'PawnCurrent', ['PawnUI.lua'])]
+    elif '--updates' in sys.argv:
         MANIFEST = ROOT / 'evidence/pawn-immersion/2026-11-03/update-inputs.json'
         GROUPS = [
             ('VgerMods/Pawn', 'Pawn-2.14.1', 'PawnCurrent',

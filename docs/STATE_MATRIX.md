@@ -23,7 +23,18 @@ It does not claim blanket Retail acceptance. [Requirements](REQUIREMENTS.md) own
 
 ## Standalone Forever states
 
-For [Immersion Extended](IMMERSION-EXTENDED.md), unsupported clients do not initialize; missing/unfinished Pawn leaves only layout available; disabled Pawn quest advice clears arrows; pending item data retries within a bounded generation; quest/owner change and hide clear owned decoration. Progress requires the current visible bottom-anchored Required Items state and finite scale/geometry, defers in combat/Edit Mode and cancels stale callbacks. Native input and preferences remain owned upstream.
+For [Immersion Extended](IMMERSION-EXTENDED.md), missing or unfinished Pawn
+leaves only layout available. The quest advisor controls arrows, while Pawn
+owns tooltip display preferences. A budget miss retains an arrow for the same
+reward and comparison context. A change of comparison context, reward identity
+or quest, and dialog close invalidate the prior verdict. Inspector retries
+require the same active tooltip, reward and quest. Progress requires the
+current visible bottom-anchored Required Items state and finite scale and
+geometry, defers in combat/Edit Mode and cancels stale callbacks.
+
+[Forever Config Extended](FOREVER-CONFIG-EXTENDED.md) reads presentation and
+camera diagnostics. Startup, late addon loading, combat exit and logout have
+no route to replay the Plater migration or register the old BetterBags bridge.
 
 ## Context transitions
 

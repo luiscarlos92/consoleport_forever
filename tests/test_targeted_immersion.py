@@ -28,7 +28,7 @@ class TargetedImmersion(unittest.TestCase):
                                  'addon/ImmersionExtended_Forever/Progress.lua':'protected'}, 'toolingHashes':{}}
         current = copy.deepcopy(base)
         current['productHashes']['addon/ForeverConfig_Extended/BetterBags.lua']='new'
-        current['results']=[{'id':'T111.forever-settings-native-bag-dispatch-and-migration','status':'passed'}]
+        current['results']=[{'id':'T111.forever-config-diagnostics-and-retired-writes','status':'passed'}]
         validate_targeted_immersion(base,current,current,'ForeverConfig_Extended')
         current['productHashes']['addon/ImmersionExtended_Forever/Progress.lua']='foreign'
         with self.assertRaisesRegex(ValueError,'outside targeted'):

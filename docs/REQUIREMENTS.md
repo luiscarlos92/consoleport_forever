@@ -1,7 +1,7 @@
 # Approved requirements and scope
 
 Status: maintained
-Reviewed: 2026-11-05
+Reviewed: 2026-11-11
 Evidence: [confirmed historical decisions](archive/ai-native-2026-10-11/MASTER-PLAN.pre-restructure.md),
 [current status](IMPLEMENTATION-STATUS.md), [candidate.30 requirement](CANDIDATE30-PING-RELEASE-LIFECYCLE-2026-10-10.md).
 
@@ -13,6 +13,13 @@ feature may be approved in direction yet still deferred or gated.
 ## R17: separate Forever Immersion extension
 
 November 5 user instruction authorizes planning, implementation, intensive dry runs and installation of a separate Forever-only addon for Pawn reward arrows and the known Required Items positioning correction. No ConsolePort dependency, Retail changes, upstream edits, saved-settings migration, input takeover or focused-tooltip annotation port. Honor Pawn preferences/readiness and native layout ownership. [Contract](IMMERSION-EXTENDED.md).
+
+November 11 expands the Forever extension to include Pawn's percentage on
+Immersion's native reward inspector tooltip. Stabilize the summary arrows,
+preserve the Required Items correction, and correct demonstrated reward
+positioning failures while preserving Immersion's native input, layout and
+selection. Both Pawn features must work independently of the bag addon.
+[Revised plan](reference/FOREVER-IMMERSION-REPAIR-PLAN-2026-11-11.md).
 
 ## R18: Forever settings and bag follow-up
 
@@ -31,6 +38,14 @@ Retail, upstream files, native controller ownership, later manual edits and prio
 backups; never edit disk SavedVariables underneath a loaded session.
 [Plan](reference/FOREVER-SETTINGS-REPAIR-2026-11-05.md),
 [contract](FOREVER-CONFIG-EXTENDED.md).
+
+November 11 retires the completed Plater write and the existing BetterBags
+bridge permanently. Preserve the applied settings and diagnostics. DynamicCam
+continues to own its camera behavior. A future BetterBags approach requires a
+new request. Keep the installed third-party addon set enabled and deliver
+qualifying fixes or enhancements through dedicated Forever extensions.
+BtWQuests and BtWQuestsClassic stay on the installed releases in this plan.
+[Revised plan](reference/FOREVER-IMMERSION-REPAIR-PLAN-2026-11-11.md).
 
 ## Addon compatibility policy
 

@@ -23,7 +23,7 @@ def validate_targeted_immersion(baseline, current, hashes, folder=STANDALONE_FOR
     required = {'T109.forever-immersion-extension-native-lifecycle-and-layout',
                 'T110.forever-immersion-extension-defect-and-work-controls'}
     if folder == 'ForeverConfig_Extended':
-        required = {'T111.forever-settings-native-bag-dispatch-and-migration'}
+        required = {'T111.forever-config-diagnostics-and-retired-writes'}
     elif folder != STANDALONE_FOREVER_ADDON:
         raise ValueError('Unsupported targeted standalone addon')
     if len(current['results']) != len(required) or {r['id'] for r in current['results']} != required or any(r['status'] != 'passed' for r in current['results']):
@@ -32,9 +32,8 @@ def validate_targeted_immersion(baseline, current, hashes, folder=STANDALONE_FOR
     allowed = {'tools/build_update.py', 'tools/test-all.cjs', 'tests/test_targeted_immersion.py',
                'tests/harness/immersion_extended.lua'}
     if folder == 'ForeverConfig_Extended':
-        allowed = {'tools/build_update.py', 'tests/test_targeted_immersion.py',
-                   'tools/forever_config_experiment.cjs', 'tests/harness/forever_config.lua',
-                   'tools/capture_forever_config.py', 'tests/harness/betterbags_navigation.lua'}
+        allowed = {'tools/build_update.py', 'tools/test-all.cjs', 'tests/test_targeted_immersion.py',
+                   'tools/forever_config_experiment.cjs', 'tests/harness/forever_config.lua'}
     for group in ('productHashes', 'toolingHashes'):
         before, tested, actual = map(normalize, (baseline[group], current[group], hashes[group]))
         if tested != actual:

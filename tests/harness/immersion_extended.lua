@@ -49,7 +49,11 @@ SlashCmdList={};DEFAULT_CHAT_FRAME={AddMessage=function()end}
 UIParent={GetBottom=function(f)return f.bottom or 0 end}
 ImmersionSetup={boxpoint='Bottom',anidivisor=5,elementscale=1,boxoffsetX=17,boxoffsetY=39,scale=1.2}
 local config=ImmersionSetup
-local L=setmetatable({},{__call=function(_,key)return config[key]end})
+config.padinspect, config.inspect='PAD4','SHIFT'
+local L=setmetatable({
+    Mixin=function(target,mixin) for key,value in pairs(mixin) do target[key]=value end end,
+    UIFrameFadeIn=function() end, UIFrameFadeOut=function() end,
+},{__call=function(_,key)return config[key]end})
 local frame={shown=true,Inspector={Items={}}}
 ImmersionFrame=frame
 function frame:IsShown()return self.shown end
@@ -131,23 +135,125 @@ local function item(id)
 end
 local one,two=item(1),item(2)
 elements.Content={RewardsFrame={Buttons={one,two}}}
+local function textRegion()
+    return {Show=function()end,Hide=function()end,IsVisible=function()return false end}
+end
+elements.Content.RewardsFrame.ItemChooseText=textRegion()
+elements.Content.RewardsFrame.ItemReceiveText=textRegion()
+progress.ReqText=textRegion()
+local Inspector=frame.Inspector
+local Tooltip={}
+--@EXT_NATIVE_INSPECTOR
+L.TooltipMixin=Tooltip
+local compared, cleared
+function GameTooltip_ShowCompareItem(tip) compared=tip end
+function Inspector:IsVisible() return self.shown end
+Inspector.HookScript,Inspector.RunScript=frame.HookScript,frame.RunScript
+function Inspector:Show() self.shown=true;frame.isInspecting=true end
+function Inspector:Hide()
+    self.shown=false
+    frame.isInspecting=false
+    for tip in pairs(self.tooltipFramePool.active) do tip.shown=false end
+    wipe(self.tooltipFramePool.active)
+    self:RunScript('OnHide')
+end
+function Inspector:AdjustToChildren() end
+function Inspector:SetFocus(index) self.focus=self.Active[index] end
+function Inspector:GetFocus() return self.focus end
+Inspector.Active={}
+Inspector.Choices={Text=textRegion()}
+Inspector.Extras={Text=textRegion()}
+local tooltips={}
+local pool={active={}}
+Inspector.tooltipFramePool=pool
+function pool:EnumerateActive() return pairs(self.active) end
+function pool:Acquire()
+    local id=1
+    while tooltips[id] and self.active[tooltips[id]] do id=id+1 end
+    local tip=tooltips[id]
+    if not tip then
+        local name='ImmersionGameTooltip'..id
+        tip={Icon={Texture={SetTexture=function()end}},scripts={OnShow=tooltipOnShow},populations=0,
+            shoppingTooltips={{Hide=function()cleared=true end}}}
+        tip.Button={SetID=function()end,GetParent=function()return tip end}
+        function tip:GetName() return name end
+        function tip:GetItem() return 'Item', self.getter end
+        function tip:IsVisible() return self.shown end
+        function tip:SetParent(parent) self.parent=parent end
+        function tip:SetOwner() end
+        function tip:SetPoint() end
+        function tip:GetAlpha() return 1 end
+        function tip:GetSize() return self.width,self.height end
+        function tip:SetSize(w,h) self.width,self.height=w,h end
+        function tip:Show()
+            if self.shown then return end
+            self.shown=true
+            self:RunScript('OnShow')
+        end
+        function tip:SetQuestItem(_, itemID)
+            self.populations=self.populations+1
+            self.getter=itemID==1 and 'item:bare' or nil
+            self.lines={'Native item card'}
+            self.width,self.height=110,40
+        end
+        function tip:AddLine(line) self.lines[#self.lines+1]=line end
+        function tip:NumLines() return #self.lines end
+        function tip:GetScript(event) return self.scripts[event] end
+        tip.HookScript,tip.RunScript=frame.HookScript,frame.RunScript
+        tooltips[id],_G[name]=tip,tip
+    end
+    self.active[tip]=true
+    return tip
+end
+function frame:GetItemColumn() return {} end
+function one.Icon:GetTexture() return 'icon' end
+function two.Icon:GetTexture() return 'icon' end
+local NPC, controllerInterrupt, popupCounter = frame, true, 0
+local KEY_SETTING, KEY_FIXED = {CIRCLE='padinspect'}, {}
+local function IsGamePadButton(button) return button:match('^PAD') end
+function GetBindingAction() end
+function frame:SetPropagateKeyboardInput() end
+--@EXT_NATIVE_CONTROLLER
 --@EXT_NATIVE_EVENTS
 --@EXT_NATIVE_FRAME
 frame.OnEvent=Frame.OnEvent;frame.UpdateItems=Frame.UpdateItems
+frame.ShowItems=Frame.ShowItems;frame.SetItemTooltip=Frame.SetItemTooltip
+frame.OnKeyDown=Frame.OnKeyDown;frame.IsInspectModifier=Frame.IsInspectModifier
 -- Immersion's real L.Mixin captures Frame.OnEvent in the frame script slot.
 -- A later hook of frame.OnEvent does not change this registered callback.
 frame.scripts={OnEvent=frame.OnEvent}
-PawnCommon={ShowQuestUpgradeAdvisor=true,ShowRelicUpgrades=false,ShowItemLevelUpgrades=false}
+PawnCommon={ShowQuestUpgradeAdvisor=true,ShowRelicUpgrades=false,ShowItemLevelUpgrades=false,
+    ShowUpgradesOnTooltips=true,ShowValuesForUpgradesOnly=true,Scales={Test={}}}
 PawnOptions={}
 local PawnIsInitialized=false
-VgerCore={Fail=function()error('premature Pawn call')end,Message=function()end}
+VgerCore={Fail=function()error('premature Pawn call')end,Message=function()end,Assert=assert}
 C_Item={GetItemInfo=function(link)return nil,nil,nil,nil,levels[link] or 1 end,
     GetItemInfoInstant=function(link)return tonumber(link:match('item:(%d+)'))end}
 function UnitLevel()return 80 end
+function UnitClass()return 'Test','TEST',1 end
 function PawnCanItemHaveStats()return true end
-function PawnGetItemData(link)return {Link=not delayed[link] and link or nil}end
-function PawnIsItemAnUpgrade(data)if verdicts[data.Link] then return {{PercentUpgrade=.1}} end end
+function PawnGetItemData(link)
+    return {Link=not delayed[link] and link or nil, Values={{'Test',20,20,'Test Scale'}}}
+end
+local budgetCost=0
+function PawnIsItemAnUpgrade(data)
+    clock=clock+budgetCost
+    if verdicts[data.Link] then return {{PercentUpgrade=.1,ScaleName='Test'}} end
+end
+function PawnCanItemBeArtifactUpgrade() return false end
+function PawnIsScaleVisible() return true end
+function PawnGetScaleColor() return '' end
+local format, PawnNoValueAnnotationFormat, PawnBigUpgradeThreshold = string.format, '%s%s:', 100
 --@EXT_NATIVE_PAWN
+local advisorChecked=true
+PawnUIFrame_ShowQuestUpgradeAdvisorCheck={
+    GetChecked=function()return advisorChecked end, HookScript=frame.HookScript, RunScript=frame.RunScript,
+    scripts={OnClick=PawnUIFrame_ShowQuestUpgradeAdvisorCheck_OnClick},
+}
+local function setAdvisor(value)
+    advisorChecked=value
+    PawnUIFrame_ShowQuestUpgradeAdvisorCheck:RunScript('OnClick')
+end
 function PawnInitializePlugins()end
 local abortInitialization=false
 function PawnInitialize()
@@ -180,16 +286,22 @@ levels['item:101']=90;frame:UpdateItems();assert(not one.arrow.shown,'level rest
 levels['item:101']=1;frame:UpdateItems();assert(one.arrow.shown)
 frame.shown=false;frame:RunScript('OnHide');assert(not one.arrow.shown,'close retained upgrade arrow')
 frame.shown=true;frame:UpdateItems()
-PawnCommon.ShowQuestUpgradeAdvisor=false;PawnResetBags();flush();assert(not one.arrow.shown,'disabled quest advisor ignored')
-PawnCommon.ShowQuestUpgradeAdvisor=true;frame:UpdateItems();assert(one.arrow.shown)
+setAdvisor(false);flush();assert(not one.arrow.shown,'Pawn checkbox left a stale arrow')
+setAdvisor(true);flush();assert(one.arrow.shown,'Pawn checkbox failed to restore the arrow')
 one.questID=999;frame:UpdateItems();assert(not one.arrow.shown,'foreign quest arrow')
 one.questID=123;one.type='required';frame:UpdateItems();assert(not one.arrow.shown,'required item arrow')
 one.type='choice';one.objectType='currency';frame:UpdateItems();assert(not one.arrow.shown,'currency arrow')
 one.objectType='item';one.shown=false;frame:UpdateItems();assert(not one.arrow.shown,'hidden item arrow')
 one.shown=true;quest=SECRET;frame:UpdateItems();assert(not one.arrow.shown,'secret quest compared')
 quest=123;frame:UpdateItems();assert(one.arrow.shown)
+-- A second native refresh can hit Pawn's real time budget for the same reward.
+clock=clock+.25;budgetCost=.02;frame:UpdateItems();assert(one.arrow.shown)
+frame:UpdateItems();assert(one.arrow.shown,'pending budget result hid confirmed arrow')
+runtime.rewards:Event('PLAYER_EQUIPMENT_CHANGED');flush(1)
+assert(not one.arrow.shown,'previous equipment verdict survived invalidation')
+budgetCost=0;flush(4);assert(one.arrow.shown)
 -- Pending item data and stale button identities.
-delayed['item:101']=true;frame:UpdateItems();assert(not one.arrow.shown)
+delayed['item:101']=true;frame:UpdateItems();assert(one.arrow.shown)
 delayed['item:101']=nil;flush(4);assert(one.arrow.shown,'delayed item data did not refresh')
 delayed['item:101']=true;frame:UpdateItems();local before=runtime.rewards.queries
 flush(40);assert(runtime.rewards.queries-before<=8,'unbounded pending retries')
@@ -208,6 +320,41 @@ runtime.rewards:Event('GET_ITEM_INFO_RECEIVED',999,true);assert(not runtime.rewa
 loaded.Pawn=false;frame:UpdateItems();assert(not one.arrow.shown and not runtime.rewards:Available())
 ready=false;frame:DispatchEvent('QUEST_PROGRESS');flush();assert(talk.extraY==248,'registered event script bypassed layout')
 loaded.Pawn=true;frame:UpdateItems();assert(one.arrow.shown,'BetterBags absence blocked Pawn arrows')
+-- Immersion owns the inspector and comparison. Pawn formats the current reward link.
+local function upgradeLines(tooltip)
+    local count=0
+    for _,line in ipairs(tooltip.lines) do if line:find('+10% upgrade',1,true) then count=count+1 end end
+    return count
+end
+frame:OnKeyDown('PAD4')
+local tip,other=tooltips[1],tooltips[2]
+assert(Inspector:GetFocus()==tip.Button and tip.shown,'native inspector card did not open')
+assert(upgradeLines(tip)>0,'inspector Pawn percentage absent')
+assert(upgradeLines(tip)==1,'duplicate inspector Pawn line')
+assert(upgradeLines(other)==0,'non-upgrade tooltip got a percentage')
+Inspector:ShowFocusedTooltip(true);assert(compared==tip)
+Inspector:ShowFocusedTooltip(false);assert(cleared and upgradeLines(tip)==1,'comparison lost or duplicated note')
+flush()
+assert(tip.width==140,'native inspector padding missing')
+PawnResetTooltips();flush(2)
+assert(tip.width==140,'refreshed tooltip lost native padding')
+assert(upgradeLines(tip)==1,'duplicate inspector Pawn line after refresh')
+setAdvisor(false);flush();frame:SetItemTooltip(tip,one)
+assert(not one.arrow.shown and upgradeLines(tip)==1,'arrow preference changed tooltip preferences')
+setAdvisor(true);flush()
+frame:OnKeyDown('PAD4');assert(not Inspector:IsVisible(),'native inspector card did not close')
+delayed['item:101']=true;frame:ShowItems();assert(upgradeLines(tip)==0)
+delayed['item:101']=nil;flush(5)
+assert(upgradeLines(tip)==1,'delayed Pawn tooltip was not annotated')
+Inspector:Hide();delayed['item:101']=true;frame:ShowItems()
+local priorPopulations=tip.populations
+links[1]='item:102';delayed['item:101']=nil;flush(5)
+assert(tip.populations==priorPopulations,'stale inspector callback annotated a reused tooltip')
+Inspector:Hide();links[1]='item:101';frame:UpdateItems()
+delayed['item:101']=true;frame:ShowItems()
+local timer=assert(runtime.tooltips.timer)
+Inspector:Hide();assert(timer.cancelled and not runtime.tooltips.timer,'inspector close retained retry')
+delayed['item:101']=nil;frame:UpdateItems()
 local rewards=elements.Content.RewardsFrame;elements.Content.RewardsFrame=nil
 runtime.rewards:Start();assert(not one.arrow.shown,'lost rewards contract did not fail closed')
 elements.Content.RewardsFrame=rewards;frame:UpdateItems()

@@ -1,6 +1,6 @@
 local _, Addon = ...
 Addon.name = "ForeverConfig_Extended"
-Addon.version = "0.1.3"
+Addon.version = "0.1.4"
 Addon.active = WOW_PROJECT_CAMELOT ~= nil and WOW_PROJECT_ID == WOW_PROJECT_CAMELOT
 
 function Addon:GetAddon(name)
@@ -29,8 +29,6 @@ function Addon:Snapshot(phase)
     local db = self:Database()
     local dc = self:GetAddon("DynamicCam")
     local plater = _G.Plater
-    local bb = self:GetAddon("BetterBags")
-    local backpack = bb and bb.Bags and bb.Bags.Backpack
     local situations = dc and dc.db and dc.db.profile and dc.db.profile.situations
     local enabled, errors = 0, 0
     if type(situations) == "table" then
@@ -59,19 +57,10 @@ function Addon:Snapshot(phase)
         dynamicCamErrors = errors,
         cameraZoom = self:PublicCall(GetCameraZoom),
         cameraShoulder = self:PublicCall(GetCVar, "test_cameraOverShoulder"),
-        betterBagsLoaded = bb ~= nil,
-        betterBagsEnabled = bb and self:PublicCall(bb.IsEnabled, bb),
-        betterBagsForever = bb and bb.isForever == true or false,
-        betterBagsBackpack = backpack ~= nil,
-        betterBagsButtons = bb and type(bb._buttons) == "table" or false,
-        betterBagsShown = backpack and self:PublicCall(backpack.IsShown, backpack),
-        betterBagsBridge = self.bagState and self.bagState.installed or false,
-        betterBagsBridgeActions = self.bagState and self.bagState.actions or 0,
-        betterBagsNavigation = self.GetBagNavigationStatus and self:GetBagNavigationStatus(),
     }
     db.addons = {}
     if C_AddOns then
-        for _, name in ipairs({"Auctionator", "BetterBags", "BetterBags_Forever", "BtWQuests",
+        for _, name in ipairs({"Auctionator", "BtWQuests",
             "DynamicCam", "Immersion", "Immersion_ExtraFade", "ImmersionExtended_Forever",
             "Leatrix_Maps", "Leatrix_Plus", "Leatrix_Sounds", "LiteMount", "Masque", "Pawn", "Plater",
             "Polestar", "Sparkles_Forever"}) do
@@ -94,16 +83,4 @@ function Addon:PrintStatus()
     print("DynamicCam: " .. tostring(s.dynamicCamProfile) .. ", enabled " .. tostring(s.dynamicCamEnabled)
         .. ", evaluated " .. tostring(s.dynamicCamEvaluated) .. ", situation " .. tostring(s.dynamicCamSituation)
         .. ", enabled situations " .. s.dynamicCamSituations .. ", errors " .. s.dynamicCamErrors)
-    print("BetterBags: enabled " .. tostring(s.betterBagsEnabled) .. ", backpack " .. tostring(s.betterBagsBackpack)
-        .. ", buttons " .. tostring(s.betterBagsButtons) .. ", shown " .. tostring(s.betterBagsShown)
-        .. ", bridge " .. tostring(s.betterBagsBridge) .. ", bridge actions " .. s.betterBagsBridgeActions)
-    local navigation = s.betterBagsNavigation
-    if navigation then
-        print("BetterBags navigation: " .. tostring(navigation.reason) .. "; active window "
-            .. tostring(navigation.frame) .. "; bag focused " .. tostring(navigation.focused)
-            .. "; visible bag " .. tostring(navigation.window)
-            .. "; controller " .. tostring(navigation.controller)
-            .. "; selected " .. tostring(navigation.selected) .. "; input " .. tostring(navigation.input)
-            .. "; item actions " .. tostring(navigation.itemActions))
-    end
 end

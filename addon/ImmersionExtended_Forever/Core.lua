@@ -30,10 +30,13 @@ function NS.New(api)
     if not Core.Client(api) then return nil, 'Forever client required' end
     local runtime = {api = api}
     runtime.rewards = NS.Rewards.New(api)
+    runtime.tooltips = NS.Tooltips.New(api, runtime.rewards)
+    runtime.rewards.onContextChanged = function() runtime.tooltips:Refresh() end
     runtime.progress = NS.Progress.New(api)
     function runtime:Refresh()
         self.rewards:Observe()
-        self.rewards:Install()
+        local installed = self.rewards:Install()
+        self.tooltips:Install(installed and self.rewards.frame)
         self.progress:Install()
         self.progress:Queue()
         local editor = api.EditModeManagerFrame
@@ -44,9 +47,9 @@ function NS.New(api)
     end
     function runtime:Status()
         local r, p = self.rewards, self.progress
-        return ('Immersion Extended: arrows=%s; layout=%s; queries=%d; layouts=%d'):format(
+        return ('Immersion Extended: arrows=%s; layout=%s; queries=%d; layouts=%d; Pawn tooltips=%d'):format(
             r.ready and r.installed and 'ready' or 'waiting for Pawn/Immersion',
-            p.frame and 'available' or 'unavailable', r.queries, p.writes)
+            p.frame and 'available' or 'unavailable', r.queries, p.writes, self.tooltips.annotations)
     end
     return runtime
 end

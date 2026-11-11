@@ -29,6 +29,14 @@ plural pending-reference directory is intentionally retained without moving it.
 
 ## Current code contracts
 
+- [Forever Immersion repair and config retirement plan](FOREVER-IMMERSION-REPAIR-PLAN-2026-11-11.md)
+  covers stable arrows, Pawn percentages, and retirement of the completed
+  Plater migration and BetterBags bridge.
+
+- [November 11 Forever addon audit](FOREVER-ADDON-AUDIT-2026-11-11.md) records
+  the installed folder list, the reproduced Pawn option refresh defect, and the
+  BtWQuests errors found in the Forever client log.
+
 - [Forever settings/bag follow-up](FOREVER-SETTINGS-REPAIR-2026-11-05.md):
   migration audit, native bag dispatch and finite presentation correction plan.
 

@@ -1,33 +1,32 @@
 # Validation and proof boundaries
 
 Status: maintained
-Reviewed: 2026-11-05
+Reviewed: 2026-11-11
 Evidence: [runner](../tools/test-all.cjs), [tool tests](../tools/run_tool_tests.py),
 [CI](../.github/workflows/tests.yml), [test instructions](../tests/AGENTS.md).
 
 ## Standalone Forever extension checks
 
-T111 executes pinned Forever bag dispatch and upstream BetterBags handlers with
-the configuration extension, including the old bypass, nesting, owner cancellation,
-same-frame toggle parity, a 100-open burst, combat/readiness/logout and manual
-scale preservation. Mixed same-frame requests and replaced bag designs retain
-their latest owner/intent. The bag-route defect controls must fail. T111 additionally executes unchanged
-native FrameControlsManager, SmartNavigation, prompted-binding/footer and item
-action source through actual captured input callbacks. It covers real-item
-discovery, selection/tooltip, clicks, Square, Triangle, Circle/held item, scrolling,
-menu return, mode/combat/readiness, design/reused-window and logout transitions.
-Its modeled native wrapper boundary rejects direct addon input-stack writes.
-The live 0.1.2 rejection adds the actual native stock-target callback and a
-conservative guard against addon-created collections crossing native wrappers.
-Twenty defect controls must fail. These are source/control-flow tests, not
-engine taint or hardware certification. T112 executes actual
+T111 loads the configuration extension's actual TOC entries with BetterBags
+available at login and again through a later addon event. It verifies the
+diagnostic command, preserved Plater profile and migration receipt, and logout
+generation. The profile-write and bag-hook negative controls must fail.
+Earlier bag dispatch and native focus evidence is retained in the
+[0.1.3 qualification](../evidence/forever-config/2026-11-05/selection-qualification.json).
+T112 executes actual
 DynamicCam defaults, startup, situation evaluator and AceDB logout/reinitialization
 with 20 enabled contexts and seven modeled transitions; disabled-profile and
 missing-startup-evaluation controls must fail. Six additional tooling tests cover
 selected-addon scope, its exact saved-variable contract and authorized running-game
 preview/install/drift/rollback. [Contract and limits](FOREVER-CONFIG-EXTENDED.md).
 
-T109 executes native Immersion layout/button/event and Pawn budget/verdict source with the new addon. T110 rejects ten targeted faulty variants and retains event-work bounds. Ten tests in test_standalone_forever.py cover explicit client/package selection, preview, preservation, checksums/aliases, interruptions, rollback and newer WTF data. Full Test-All.ps1 remains required; offline source execution does not certify engine rendering, taint or controller behavior. [Scope and model limits](IMMERSION-EXTENDED.md).
+T109 executes native Immersion layout, reward population and inspector comparison
+alongside Pawn's budget, preference callback and formatter. T110 rejects faulty
+variants for arrow continuity, comparison invalidation, checkbox refresh, tooltip
+ownership/reuse/duplication, layout and event-work bounds. Standalone tooling
+tests cover client/package selection, preview, checksums, preservation and rollback.
+Full Test-All.ps1 remains required. Engine rendering, taint and controller
+behavior require client observation. [Scope and model limits](IMMERSION-EXTENDED.md).
 
 ## Entry points
 

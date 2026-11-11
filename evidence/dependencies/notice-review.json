@@ -1,6 +1,6 @@
 {
-  "lockSHA256": "115a473638ea4f58173529d7766ee7b1896a5be656c1fe1f8ebecf4b0bb10b83",
-  "noticeInventorySHA256": "c787e1b25344d7caa7b3de61988d0da6e45daba18bdb5f85e27a5a008d7eb906",
+  "lockSHA256": "a8de8c812bf0b2b969cc01599954f0b8f0b7a45700253ff660d4fff9e99aa865",
+  "noticeInventorySHA256": "04b6736de171ee56ffe8b105b40f656af69420e38435431c73e83b0d5727b47f",
   "localPersonalAssemblyReviewComplete": true,
   "publicRedistributionApproved": false,
   "scope": "All third-party dependencies use official-source local assembly. This inventory is not a license grant or approval to publish dependency code or media.",
@@ -164,9 +164,9 @@
     },
     {
       "repo": "Cidan/BetterBags",
-      "version": "v0.8.12",
+      "version": "v0.9.2",
       "mainTerms": "MIT",
-      "officialRelease": "https://github.com/Cidan/BetterBags/releases/tag/v0.8.12",
+      "officialRelease": "https://github.com/Cidan/BetterBags/releases/tag/v0.9.2",
       "noticeFiles": [
         {
           "source": "BetterBags/LICENSE",
@@ -182,7 +182,7 @@
       "embeddedNoticeSources": [
         {
           "source": "BetterBags/BetterBags.toc",
-          "sha256": "c4aebe00c88d3cb286373d150392cd44eb540bdd2ecf68aa334c5e8182add138",
+          "sha256": "7d6bef6d48afe816f456e885acf9b3b07ede01711691aaa347ebd96d349bf13d",
           "declarations": [
             "## X-License: MIT\r"
           ],
@@ -190,7 +190,7 @@
         },
         {
           "source": "BetterBags/BetterBags_Camelot.toc",
-          "sha256": "ecc3221a2bba7a7771e3b6a37aa8ddb02ed902257eab9ecdb32d6aedd132a697",
+          "sha256": "205963d8c9aad3d8e45cf075195d38b5f4906bc6e66359e2f44c4b9f0236bdd9",
           "declarations": [
             "## X-License: MIT\r"
           ],
@@ -198,7 +198,7 @@
         },
         {
           "source": "BetterBags/BetterBags_Mists.toc",
-          "sha256": "c3626391497aa7fa92d3629dd8d3cf28fe4713fd0bd19c014c064cc98f8ac4f6",
+          "sha256": "6a7f18ed3ab9936079d8943ad84f2c93897c7c697f8f1e581454647a6cd135d1",
           "declarations": [
             "## X-License: MIT\r"
           ],
@@ -206,7 +206,7 @@
         },
         {
           "source": "BetterBags/BetterBags_TBC.toc",
-          "sha256": "cf71abac329fff996c544144b893ac773bcf36b766ccc80734a37eb380da940e",
+          "sha256": "c8c70607e5fdc2b1dfdfa5b3d77b4619f2e16ef600bb05255542e0ada93befb2",
           "declarations": [
             "## X-License: MIT\r"
           ],
@@ -214,7 +214,7 @@
         },
         {
           "source": "BetterBags/BetterBags_Vanilla.toc",
-          "sha256": "b54aa5e3ec3b40dd193466e30a1ec2f9033a956d4d6b1bd700d71e19327171d3",
+          "sha256": "1024a22f04edf2f31399ee3bee17a92237404f3b1d19db10b282d19d016bd8c2",
           "declarations": [
             "## X-License: MIT\r"
           ],
@@ -328,6 +328,56 @@
             "4) The name(s) of the Copyright Holder(s) or the Author(s) of the Font\r",
             "COPYRIGHT HOLDER BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,\r",
             "Copyright 2013 The Antonio Project Authors (https://github.com/googlefonts/antonioFont)\r",
+            "Copyright Holder(s) and the Author(s) or with their explicit written\r",
+            "Copyright Holder. This restriction only applies to the primary font name as\r",
+            "Holder(s) under this license and clearly marked as such. This may\r",
+            "OF COPYRIGHT, PATENT, TRADEMARK, OR OTHER RIGHT. IN NO EVENT SHALL THE\r",
+            "SIL OPEN FONT LICENSE Version 1.1 - 26 February 2007\r",
+            "The goals of the Open Font License (OFL) are to stimulate worldwide\r",
+            "This Font Software is licensed under the SIL Open Font License, Version 1.1.\r",
+            "This license becomes null and void if any of the above conditions are\r",
+            "This license is copied below, and is also available with a FAQ at:\r",
+            "contains the above copyright notice and this license. These can be\r",
+            "copyright statement(s).\r",
+            "distributed by the Copyright Holder(s).\r",
+            "remain under this license does not apply to any document created\r",
+            "requirement for fonts to remain under this license does not apply\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "BetterBags/fonts/papercraft/Caveat_OFL.txt",
+          "sha256": "6be75733f5ff1e7eb72f147f489db88752c890c9c70292be8e2460d7ef77f5bb",
+          "declarations": [
+            "\"Font Software\" refers to the set of files released by the Copyright\r",
+            "4) The name(s) of the Copyright Holder(s) or the Author(s) of the Font\r",
+            "COPYRIGHT HOLDER BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,\r",
+            "Copyright 2014 The Caveat Project Authors (https://github.com/googlefonts/caveat)\r",
+            "Copyright Holder(s) and the Author(s) or with their explicit written\r",
+            "Copyright Holder. This restriction only applies to the primary font name as\r",
+            "Holder(s) under this license and clearly marked as such. This may\r",
+            "OF COPYRIGHT, PATENT, TRADEMARK, OR OTHER RIGHT. IN NO EVENT SHALL THE\r",
+            "SIL OPEN FONT LICENSE Version 1.1 - 26 February 2007\r",
+            "The goals of the Open Font License (OFL) are to stimulate worldwide\r",
+            "This Font Software is licensed under the SIL Open Font License, Version 1.1.\r",
+            "This license becomes null and void if any of the above conditions are\r",
+            "This license is copied below, and is also available with a FAQ at:\r",
+            "contains the above copyright notice and this license. These can be\r",
+            "copyright statement(s).\r",
+            "distributed by the Copyright Holder(s).\r",
+            "remain under this license does not apply to any document created\r",
+            "requirement for fonts to remain under this license does not apply\r"
+          ],
+          "disposition": "Retain the entire original file and bundled terms unchanged; do not generalize containing-addon terms."
+        },
+        {
+          "source": "BetterBags/fonts/papercraft/PatrickHand_OFL.txt",
+          "sha256": "1797d0c67be90ded2cc8b90dc0a6c0686065d5ed75e3b685da5d4e7a1899c8c0",
+          "declarations": [
+            "\"Font Software\" refers to the set of files released by the Copyright\r",
+            "4) The name(s) of the Copyright Holder(s) or the Author(s) of the Font\r",
+            "COPYRIGHT HOLDER BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,\r",
+            "Copyright (c) 2010-2012 Patrick Wagesreiter (mail@patrickwagesreiter.at)\r",
             "Copyright Holder(s) and the Author(s) or with their explicit written\r",
             "Copyright Holder. This restriction only applies to the primary font name as\r",
             "Holder(s) under this license and clearly marked as such. This may\r",
@@ -1581,9 +1631,9 @@
     },
     {
       "repo": "Tercioo/Plater-Nameplates",
-      "version": "Plater-v662",
+      "version": "Plater-v663",
       "mainTerms": "Maintainer distribution; no permissive main-addon notice in package",
-      "officialRelease": "https://github.com/Tercioo/Plater-Nameplates/releases/tag/Plater-v662",
+      "officialRelease": "https://github.com/Tercioo/Plater-Nameplates/releases/tag/Plater-v663",
       "noticeFiles": [
         {
           "source": "Plater/fonts/SIL Open Font License.txt",
@@ -1943,9 +1993,9 @@
     },
     {
       "repo": "curseforge/DynamicCam",
-      "version": "2.21.5",
+      "version": "2.21.6",
       "mainTerms": "MIT; separate bundled library notices retained",
-      "officialRelease": "https://www.curseforge.com/wow/addons/dynamiccam/files/9272555",
+      "officialRelease": "https://www.curseforge.com/wow/addons/dynamiccam/files/9470107",
       "noticeFiles": [
         {
           "source": "DynamicCam/LICENSE",
@@ -1976,7 +2026,7 @@
       "embeddedNoticeSources": [
         {
           "source": "DynamicCam/DynamicCam.toc",
-          "sha256": "c55c57c8d0063839de38ace30870587367e9df7ee9a95a45d4e479ca78f6d302",
+          "sha256": "60c7696755ab50334ac987bb8eb3a2c5b7c38a477c40fa3b603b187cf38c8f30",
           "declarations": [
             "## X-License: The MIT License (MIT)\r"
           ],

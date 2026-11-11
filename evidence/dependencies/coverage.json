@@ -1,5 +1,5 @@
 {
-  "lockSHA256": "bc057e3c55237188bc8fcf08beec701ca608a3d507db9289f77761f15e640e4c",
+  "lockSHA256": "a8de8c812bf0b2b969cc01599954f0b8f0b7a45700253ff660d4fff9e99aa865",
   "selectedFolders": {
     "Immersion": {
       "owner": "seblindfors/Immersion",
@@ -1084,7 +1084,7 @@
       ],
       "metadata": {
         "Interface": "120105, 16001, 50504, 20506, 11509",
-        "Version": "2.21.5",
+        "Version": "2.21.6",
         "Title": "DynamicCam",
         "IconTexture": "interface/icons/inv_misc_spyglass_03.blp [AllowLoadGameType mists, tbc, vanilla]",
         "Author": "mpstark, LudiusMaximus",
@@ -1369,6 +1369,7 @@
         "BetterBags/next/drag.lua",
         "BetterBags/next/fill.lua",
         "BetterBags/next/frameart.lua",
+        "BetterBags/next/glass.lua",
         "BetterBags/next/glitch.lua",
         "BetterBags/next/guildbank.lua",
         "BetterBags/next/guildbutton.lua",
@@ -1394,6 +1395,7 @@
         "BetterBags/next/settings/themes.lua",
         "BetterBags/next/settings/window.lua",
         "BetterBags/next/shatter.lua",
+        "BetterBags/next/sheen.lua",
         "BetterBags/next/smoke.lua",
         "BetterBags/next/snow.lua",
         "BetterBags/next/sparkles.lua",
@@ -1432,6 +1434,7 @@
         "BetterBags/sonata/themes/next/parchment.lua",
         "BetterBags/sonata/themes/next/plain.lua",
         "BetterBags/sonata/themes/next/quiet.lua",
+        "BetterBags/sonata/themes/next/rainywindow.lua",
         "BetterBags/sonata/themes/simpledark.lua",
         "BetterBags/templates/container.xml",
         "BetterBags/templates/debug.xml",
@@ -1455,9 +1458,9 @@
         "Category": "Inventory",
         "Notes": "Better Bags for everyone!",
         "Author": "Cidan",
-        "Version": "v0.9.0",
+        "Version": "v0.9.2",
         "SavedVariables": "BetterBagsDB, BetterBagsPerfDB",
-        "X-Date": "2026-11-05T01:40:40Z",
+        "X-Date": "2026-11-07T17:36:49Z",
         "X-License": "MIT",
         "X-Curse-Project-ID": "942432",
         "X-Wago-ID": "aNDmy96o",

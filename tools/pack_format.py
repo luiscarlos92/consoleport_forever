@@ -12,7 +12,7 @@ FORMAT = 'ConsolePort-Forever-Personal-Pack'
 STANDALONE_FOREVER_ADDON = 'ImmersionExtended_Forever'
 STANDALONE_FOREVER_CONTRACTS = {
     STANDALONE_FOREVER_ADDON: {'Dependencies':'Immersion', 'OptionalDeps':'Pawn'},
-    'ForeverConfig_Extended': {'OptionalDeps':'BetterBags, Plater, DynamicCam, Immersion, ImmersionExtended_Forever, Pawn',
+    'ForeverConfig_Extended': {'OptionalDeps':'Plater, DynamicCam, Immersion, ImmersionExtended_Forever, Pawn',
                               'SavedVariables':'ForeverConfigExtendedDB'},
 }
 STANDALONE_FOREVER_SCOPE = 'standalone-forever-addon'

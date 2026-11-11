@@ -1,5 +1,5 @@
 {
-  "lockSHA256": "115a473638ea4f58173529d7766ee7b1896a5be656c1fe1f8ebecf4b0bb10b83",
+  "lockSHA256": "a8de8c812bf0b2b969cc01599954f0b8f0b7a45700253ff660d4fff9e99aa865",
   "discoveryComplete": true,
   "releaseNoticeReviewComplete": false,
   "packDistributionReady": false,
@@ -107,9 +107,9 @@
     },
     {
       "repo": "Cidan/BetterBags",
-      "version": "v0.8.12",
-      "officialRelease": "https://github.com/Cidan/BetterBags/releases/tag/v0.8.12",
-      "packageSHA256": "eabd629e73878544b16f5098295c76a255d3022e14d6c5631719e8d9e1e95a8b",
+      "version": "v0.9.2",
+      "officialRelease": "https://github.com/Cidan/BetterBags/releases/tag/v0.9.2",
+      "packageSHA256": "8c8af28060a322486e3407376404a3be4227c13479d92f6b09b1e1ae9d516bf5",
       "selectedFolders": [
         "BetterBags"
       ],
@@ -128,23 +128,23 @@
       "embeddedNoticeSources": [
         {
           "source": "BetterBags/BetterBags.toc",
-          "sha256": "c4aebe00c88d3cb286373d150392cd44eb540bdd2ecf68aa334c5e8182add138"
+          "sha256": "7d6bef6d48afe816f456e885acf9b3b07ede01711691aaa347ebd96d349bf13d"
         },
         {
           "source": "BetterBags/BetterBags_Camelot.toc",
-          "sha256": "ecc3221a2bba7a7771e3b6a37aa8ddb02ed902257eab9ecdb32d6aedd132a697"
+          "sha256": "205963d8c9aad3d8e45cf075195d38b5f4906bc6e66359e2f44c4b9f0236bdd9"
         },
         {
           "source": "BetterBags/BetterBags_Mists.toc",
-          "sha256": "c3626391497aa7fa92d3629dd8d3cf28fe4713fd0bd19c014c064cc98f8ac4f6"
+          "sha256": "6a7f18ed3ab9936079d8943ad84f2c93897c7c697f8f1e581454647a6cd135d1"
         },
         {
           "source": "BetterBags/BetterBags_TBC.toc",
-          "sha256": "cf71abac329fff996c544144b893ac773bcf36b766ccc80734a37eb380da940e"
+          "sha256": "c8c70607e5fdc2b1dfdfa5b3d77b4619f2e16ef600bb05255542e0ada93befb2"
         },
         {
           "source": "BetterBags/BetterBags_Vanilla.toc",
-          "sha256": "b54aa5e3ec3b40dd193466e30a1ec2f9033a956d4d6b1bd700d71e19327171d3"
+          "sha256": "1024a22f04edf2f31399ee3bee17a92237404f3b1d19db10b282d19d016bd8c2"
         },
         {
           "source": "BetterBags/fonts/frost/Cinzel_OFL.txt",
@@ -165,6 +165,14 @@
         {
           "source": "BetterBags/fonts/makeitso/Antonio_OFL.txt",
           "sha256": "ae9a754b006df720bb6721e7b78c04990df734f87195c6033140fceab60bebf6"
+        },
+        {
+          "source": "BetterBags/fonts/papercraft/Caveat_OFL.txt",
+          "sha256": "6be75733f5ff1e7eb72f147f489db88752c890c9c70292be8e2460d7ef77f5bb"
+        },
+        {
+          "source": "BetterBags/fonts/papercraft/PatrickHand_OFL.txt",
+          "sha256": "1797d0c67be90ded2cc8b90dc0a6c0686065d5ed75e3b685da5d4e7a1899c8c0"
         },
         {
           "source": "BetterBags/libs/LibSharedMedia-3.0/LibSharedMedia-3.0.lua",
@@ -797,9 +805,9 @@
     },
     {
       "repo": "Tercioo/Plater-Nameplates",
-      "version": "Plater-v662",
-      "officialRelease": "https://github.com/Tercioo/Plater-Nameplates/releases/tag/Plater-v662",
-      "packageSHA256": "04879df2e49f21963fabcc50b2f0a1628260e47e54f1ef7a6b38bdb26ab0e5a3",
+      "version": "Plater-v663",
+      "officialRelease": "https://github.com/Tercioo/Plater-Nameplates/releases/tag/Plater-v663",
+      "packageSHA256": "fb7125dea1d09f3896dc8154b40745efeb4d696f44357bd89f50ed9ef48d2136",
       "selectedFolders": [
         "Plater"
       ],
@@ -1012,9 +1020,9 @@
     },
     {
       "repo": "curseforge/DynamicCam",
-      "version": "2.21.5",
-      "officialRelease": "https://www.curseforge.com/wow/addons/dynamiccam/files/9272555",
-      "packageSHA256": "202c8d66a38e676a22576f0fb1e9e8b08135453f78f8f994c96e653e918c1c31",
+      "version": "2.21.6",
+      "officialRelease": "https://www.curseforge.com/wow/addons/dynamiccam/files/9470107",
+      "packageSHA256": "1264721aa2a169e1e27e5ab04b26152923a75ab80c6f19e6ad9acb8ca84c1254",
       "selectedFolders": [
         "DynamicCam"
       ],
@@ -1048,7 +1056,7 @@
       "embeddedNoticeSources": [
         {
           "source": "DynamicCam/DynamicCam.toc",
-          "sha256": "c55c57c8d0063839de38ace30870587367e9df7ee9a95a45d4e479ca78f6d302"
+          "sha256": "60c7696755ab50334ac987bb8eb3a2c5b7c38a477c40fa3b603b187cf38c8f30"
         },
         {
           "source": "DynamicCam/Libs/LibCompress/LibCompress.lua",

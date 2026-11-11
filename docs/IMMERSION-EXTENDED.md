@@ -1,17 +1,17 @@
 # Immersion Extended (Forever)
 
 Status: maintained
-Reviewed: 2026-11-05
+Reviewed: 2026-11-11
 Evidence: [plan](reference/IMMERSION-EXTENDED-FOREVER-PLAN-2026-11-05.md),
 [source parity](../evidence/immersion-extended/2026-11-05/native-source-parity.json),
 [runtime](../addon/ImmersionExtended_Forever/ImmersionExtended_Forever.toc),
 [safety tests](../tests/test_standalone_forever.py).
 
-This separate personal addon implements Pawn summary reward arrows and the
-Required Items layout correction for WoW Forever. Qualification and installation
-are recorded separately; implementation alone is not game acceptance. It has no
-ConsolePort dependency, configuration, bindings or SavedVariables. Retail remains
-separate and unchanged.
+This standalone addon provides Pawn summary reward arrows, Pawn annotations in
+the native reward inspector and the Required Items layout correction for WoW
+Forever. Immersion owns native input and layout. Pawn owns scoring, options and
+formatting. The extension is independent of bag addons and ConsolePort and
+has no configuration, bindings or SavedVariables of its own.
 
 Local qualification: 110 runtime/source checks and 86 tooling tests passed against complete 70 product / 167 tool-test inventories. [Receipt](../evidence/immersion-extended/2026-11-05/local-qualification.json). Installed November 5 at 02:39:37 Toronto; engine acceptance remains pending. [Fresh CI](../evidence/immersion-extended/2026-11-05/ci-verification.json), [artifact rehearsal](../evidence/immersion-extended/2026-11-05/artifact-dry-run.json), [delivery/readback](../evidence/immersion-extended/2026-11-05/delivery.json).
 
@@ -46,13 +46,18 @@ Once Pawn's real initialization completion is observed, current visible quest
 item rewards/choices receive the native green arrow when Pawn's public budgeted
 verdict is true. Pawn's quest-advisor preference, scales, level checks and scoring
 remain authoritative. Nil results retry at most eight times per population.
-Relevant item/equipment/spec/Pawn-reset events coalesce. Foreign/reused/hidden
-buttons, stale quests and unknown/secret identities cannot receive arrows.
-Close cancels pending work. BetterBags is independent of this feature.
+Relevant item/equipment/spec/Pawn-reset events coalesce. Version 0.1.2
+preserves a confirmed arrow while the same reward and comparison context await
+a fresh Pawn result. The native Pawn advisor checkbox refreshes arrows while
+the quest is open. A negative verdict, changed comparison context, hidden or
+reused button, quest change, or close clears the owned arrow.
 
-The first scope is summary arrows and Required Items layout. Clicks, native focus,
-controller navigation, ordinary positioning and focused tooltip notes stay native.
-The read-only command /immersionextended reports readiness and work counters.
+For native inspector item cards, the extension checks the active pool,
+the current reward and the native item's references after Immersion populates
+the tooltip. Pawn receives the full reward link and appends its own lines.
+Delayed data gets bounded retries tied to the current card. Native padding and
+comparison continue through Immersion. The read-only command
+/immersionextended reports readiness and work counters.
 If loaded after Pawn initialization was missed, reload to observe startup.
 
 ## Client and delivery
@@ -82,14 +87,13 @@ before/after installation.
 
 ## Tests and proof limits
 
-T109 executes the addon with actual Immersion event/layout/button methods and
-Pawn's public budget wrapper/verdict function. Geometry, C APIs, item statistics
-and Pawn's completion boundary are modeled; existing R16 suites retain actual
-Pawn arithmetic coverage. Cases cover optional-addon absence, preferences,
-readiness, delayed items, reuse/close, secrecy, compatible unknown versions,
-layout timing/scale/anchor guards, combat/Edit Mode and bounded event work.
-T110 rejects ten faults targeting readiness, BetterBags coupling, stale arrows,
-unbounded work and wrong/early layout. Ten tooling tests cover client/scope
+T109 executes the addon with actual Immersion event, layout, inspector
+population and comparison methods, plus Pawn's budget, verdict, checkbox and
+tooltip formatting code. Geometry, C APIs, item statistics and Pawn startup
+are modeled. Existing R16 suites retain actual Pawn arithmetic coverage.
+T110 rejects faults including arrow flicker, stale comparison context, missed
+checkbox changes, duplicate and stale tooltip annotations, bag coupling,
+unbounded work, and wrong or early layout. Ten tooling tests cover client/scope
 admission, preview, checksums, aliases, install/update interruption/rollback and
 newer WTF preservation.
 

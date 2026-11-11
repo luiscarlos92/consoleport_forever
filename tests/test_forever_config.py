@@ -75,6 +75,11 @@ class ForeverConfigPackage(unittest.TestCase):
             r[key]=r[key].replace(b'ForeverConfigExtendedDB',b'PlaterDB')
         pack,checksum=self.pack(scope,wrong_db)
         with self.assertRaisesRegex(ValueError,'loading contract'):read_pack(pack,checksum,True)
+        def retired_dependency(m,r):
+            key='Interface/AddOns/'+NAME+'/'+NAME+'.toc'
+            r[key]=r[key].replace(b'OptionalDeps: Plater',b'OptionalDeps: BetterBags, Plater')
+        pack,checksum=self.pack(scope,retired_dependency)
+        with self.assertRaisesRegex(ValueError,'loading contract'):read_pack(pack,checksum,True)
         pack,checksum=self.pack(scope,lambda m,r:m.update(dependencyUpdates={'Cidan/BetterBags':{}}))
         with self.assertRaisesRegex(ValueError,'standalone Forever scope'):read_pack(pack,checksum,True)
 

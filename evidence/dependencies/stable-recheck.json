@@ -1,6 +1,6 @@
 {
-  "checkedAt": "2026-11-05T20:17:41.491216+00:00",
-  "lockSHA256": "bc057e3c55237188bc8fcf08beec701ca608a3d507db9289f77761f15e640e4c",
+  "checkedAt": "2026-11-11T17:31:57.932431+00:00",
+  "lockSHA256": "a8de8c812bf0b2b969cc01599954f0b8f0b7a45700253ff660d4fff9e99aa865",
   "github": [
     {
       "repo": "seblindfors/ConsolePort",
@@ -15,14 +15,14 @@
     },
     {
       "repo": "Cidan/BetterBags",
-      "url": "https://github.com/Cidan/BetterBags/releases/tag/v0.9.0",
-      "latestStable": "v0.9.0",
-      "releaseID": 434669269,
-      "publishedAt": "2026-11-05T01:43:44Z",
+      "url": "https://github.com/Cidan/BetterBags/releases/tag/v0.9.2",
+      "latestStable": "v0.9.2",
+      "releaseID": 437732875,
+      "publishedAt": "2026-11-07T17:38:50Z",
       "matchesLock": true,
-      "assetID": 711646303,
-      "digest": "sha256:69fbc195e543d4b22fe806232354c4d2c6a7fb07a555de82caca2353d33417b8",
-      "bytes": 3277865
+      "assetID": 721427820,
+      "digest": "sha256:8c8af28060a322486e3407376404a3be4227c13479d92f6b09b1e1ae9d516bf5",
+      "bytes": 3354981
     },
     {
       "repo": "seblindfors/Immersion",
@@ -84,10 +84,10 @@
     {
       "repo": "curseforge/DynamicCam",
       "latestURL": "https://www.curseforge.com/wow/addons/dynamiccam/files/all",
-      "officialFile": "https://www.curseforge.com/wow/addons/dynamiccam/files/9272555",
-      "latestStable": "2.21.5",
-      "fileID": 9272555,
-      "metadataVerifiedAt": "2026-11-05T17:13:05.791039+00:00",
+      "officialFile": "https://www.curseforge.com/wow/addons/dynamiccam/files/9470107",
+      "latestStable": "2.21.6",
+      "fileID": 9470107,
+      "metadataVerifiedAt": "2026-11-11T17:20:21.691503+00:00",
       "method": "Official latest-stable Retail listing and file page inspected; no floating latest fetch during assembly.",
       "matchesLock": true
     },
@@ -97,7 +97,7 @@
       "officialFile": "https://www.curseforge.com/wow/addons/immersion-extrafade/files/9272158",
       "latestStable": "1.18.2",
       "fileID": 9272158,
-      "metadataVerifiedAt": "2026-11-05T17:13:05.791039+00:00",
+      "metadataVerifiedAt": "2026-11-11T17:20:21.691503+00:00",
       "method": "Official latest-stable Retail listing and file page inspected; no floating latest fetch during assembly.",
       "matchesLock": true
     }

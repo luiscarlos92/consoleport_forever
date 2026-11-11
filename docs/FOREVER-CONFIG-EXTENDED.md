@@ -1,12 +1,24 @@
 # Forever Config Extended
 
 Status: maintained
-Reviewed: 2026-11-05
+Reviewed: 2026-11-11
 Evidence: [plan](reference/FOREVER-SETTINGS-REPAIR-2026-11-05.md),
 [runtime](../addon/ForeverConfig_Extended/ForeverConfig_Extended.toc),
 [native regression](../tools/forever_config_experiment.cjs).
 
-This independent Forever-only addon corrects the audited shared Default Plater
+## Version 0.1.4
+
+The completed Plater migration and BetterBags bridge are retired from the
+load path. The applied Plater scale and saved migration history stay in
+place. DynamicCam owns its profile and camera behavior. `/foreverconfig`
+continues to report presentation, camera and addon diagnostics. Restoring
+BetterBags later cannot reactivate the bridge. Its open/close, Circle, input
+and focus routes are absent from the version 0.1.4 payload.
+[Revised scope](reference/FOREVER-IMMERSION-REPAIR-PLAN-2026-11-11.md).
+
+## Retained history through 0.1.3
+
+The original Forever-only addon corrected the audited shared Default Plater
 scale from 1.0 to Retail's 1.428571452899855 through Plater's current profile and
 RefreshConfig method. It applies once, only to the exact prior state; a different
 profile, newer manual scale or disabled UIParent mode is preserved. A failed
@@ -88,16 +100,13 @@ restore WTF. Artifact scope, backups, drift refusal, atomic code replacement and
 independent readback remain required. New addon discovery may require a client
 restart rather than a reload.
 
-Disabling the addon removes its future bag bridging and diagnostics. The Plater
-scale is a normal persisted user preference after application; restore that
-single field to the receipt's before value through Plater, or use the retained
-WTF backup with the game closed after checking for later user changes.
+The applied Plater scale is now a normal Plater preference. Existing backups
+and the migration receipt record the earlier value.
 
 ## Validation boundary
 
-The native regression executes the pinned Forever bag dispatch and actual
-BetterBags toggle/event handler with modeled leaf frames/C APIs. It reproduces the
-old bypass, exercises nested/repeated routes, protects later native-owner changes,
-and rejects mutations removing the repair or guards. Offline tests also protect
-manual scale edits and stale logout callbacks. Engine taint, rendering, hardware
+The historical native regression executed the pinned Forever bag dispatch and
+BetterBags handlers. The current retirement regression exercises startup,
+late BetterBags load, diagnostic reads and logout. Its fault controls reject
+a Plater profile write and a native bag hook. Engine taint, rendering, hardware
 navigation, real camera movement and item actions still require user observation.

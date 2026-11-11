@@ -1,12 +1,22 @@
 # Current implementation and acceptance
 
 Status: maintained
-Reviewed: 2026-11-05
+Reviewed: 2026-11-11
 Evidence: [candidate.44 readback](../evidence/delivery/candidate44-independent-readback.json),
 [source qualification](../evidence/test-results/candidate44-addon-compatibility-qualification.json),
 [fresh CI](../evidence/test-results/candidate44-fresh-ci.json).
 
 ## Separate Forever addon installed
+
+The November 11 follow-up prepares Immersion Extended 0.1.2 with stable
+Pawn arrows, live checkbox refresh and Pawn percentages on Immersion's
+native reward inspector. Forever Config Extended 0.1.4 retires the Plater
+write and BetterBags bridge while retaining presentation diagnostics.
+The Required Items positioning behavior is carried forward. BtWQuests
+and the other installed addons are outside both packages.
+[Scope and verification](reference/FOREVER-IMMERSION-REPAIR-PLAN-2026-11-11.md).
+
+## November 5 delivery history
 
 The user rejected the Circle-only repair: BetterBags still had no usable controller
 navigation. Version 0.1.2 of the configuration extension is installed while playing

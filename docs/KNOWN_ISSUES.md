@@ -1,7 +1,7 @@
 # Known issues, limitations and deferred proof
 
 Status: maintained
-Reviewed: 2026-11-05
+Reviewed: 2026-11-11
 Evidence: [current status](IMPLEMENTATION-STATUS.md),
 [interaction analysis](TEMPORARY-MAIN-BANK-ANALYSIS-2026-10-11.md),
 [candidate.27 diagnosis](../evidence/action-recovery/candidate27-diagnosis.json),
@@ -10,6 +10,16 @@ Evidence: [current status](IMPLEMENTATION-STATUS.md),
 ## Standalone Forever acceptance
 
 The new [Immersion extension](IMMERSION-EXTENDED.md) is installed after local/fresh-CI qualification; game acceptance remains pending. Arrow rendering, actual quest item data timing, native-controller focus, Required Items pixels and combat/Edit Mode transitions still require the user-owned launch. BetterBags native gamepad navigation and unrelated Plater/map errors are outside its repairs. It does not add focused reward tooltip annotations.
+
+The November 11 Forever audit reproduces a stale Immersion reward arrow when
+Pawn's quest advisor is switched off with the quest open, and the follow-up
+reproduces a confirmed arrow disappearing during a temporary Pawn budget miss.
+Immersion Extended 0.1.2 addresses both paths and adds Pawn's inspector notes.
+In-game card opening, arrow continuity and layout acceptance remain pending.
+The same audit finds
+BtWQuests quest-link errors and repeated MapCanvas errors with BtWQuests in part
+of the stacks. Correlation with the reported disable-addons popup is pending.
+[Installed inventory and diagnosis](reference/FOREVER-ADDON-AUDIT-2026-11-11.md).
 
 ## Open reports
 

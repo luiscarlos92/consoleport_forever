@@ -1,0 +1,15 @@
+{
+  "capturedAt": "2026-11-11T17:26:07.331418+00:00",
+  "purpose": "R16 isolated source execution only; no package/install",
+  "copyRoot": "scratch/pawn-immersion-inputs",
+  "files": [
+    {
+      "path": "PawnCurrent/PawnUI.lua",
+      "repo": "VgerMods/Pawn",
+      "ref": "Pawn-2.14.1",
+      "url": "https://raw.githubusercontent.com/VgerMods/Pawn/Pawn-2.14.1/PawnUI.lua",
+      "sha256": "5b2b26b3a514d8e08344ec2728d89545567378669379da34e6aa337989f4ee38",
+      "bytes": 115335
+    }
+  ]
+}

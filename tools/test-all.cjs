@@ -200,7 +200,7 @@ check('T07-T09.both-binding-bank-restore', () => execute(source+read('tests/harn
 check('T08-T10.review-details', () => execute(source+read('tests/harness/prompt.lua'),'review-details'));
 check('T12-T13.adapters', () => execute(source+read('tests/harness/adapters.lua'),'adapters'));
 check('T13.pinned-flat-integration-settings', () => {
-  const base='evidence/integration-contracts-20261105/';
+  const base='evidence/integration-contracts-20261111/';
   const settingsAST=parser.parse(read(base+'Immersion/Settings.lua'),{luaVersion:'5.1',encodingMode:'x-user-defined'});
   const keys=new Set();
   function visit(value) {
@@ -221,7 +221,7 @@ check('T13.pinned-flat-integration-settings', () => {
   execute(source+'NATIVE_IMMERSION_SETTINGS_KEYS={'+[...keys].sort().map(k=>JSON.stringify(k)).join(',')+'}\n'+fixture.replaceAll('1.18.0','1.18.2'),'flat-integrations-current-ExtraFade-settings');
 });
 check('T13.current-DynamicCam-AceDB', () => {
-  const base='evidence/integration-contracts-20261105/';
+  const base='evidence/integration-contracts-20261111/';
   const lock=JSON.parse(read('dependencies/lock.json'));
   for(const file of JSON.parse(read(base+'manifest.json')).files) {
     const package=lock.packages.find(p=>p.repo===file.repo);
@@ -236,7 +236,7 @@ check('T13.current-DynamicCam-AceDB', () => {
   }
   const fixture=read('tests/harness/dynamiccam.lua').replace('--@CURRENT_ACEDB',native)
     .replace('--@CURRENT_DYNAMIC_DEFAULTS',';(function(...)\n'+read(base+'DynamicCam/DefaultSettings.lua')+'\nend)("DynamicCam");');
-  for (const version of ['2.21.2','2.21.4','2.21.5','future-release']) execute(source+serializer+fixture.replaceAll('2.21.1',version),'DynamicCam-current-version-native-AceDB-'+version);
+  for (const version of ['2.21.2','2.21.4','2.21.5','2.21.6','future-release']) execute(source+serializer+fixture.replaceAll('2.21.1',version),'DynamicCam-current-version-native-AceDB-'+version);
   const state=execute(source+serializer+fixture,'DynamicCam-native-AceDB');
   require('./saved_variables.cjs').parse('PERSISTED_STATE='+state);
   execute(source+'local PERSISTED_STATE='+state+'\n'+fixture.split('--@LIFECYCLE')[0]+`
@@ -315,7 +315,7 @@ function betterBagsFixture(integrationBase='evidence/integration-contracts-candi
   return windowFixture()+'\n'+fixture;
 }
 check('T21-T22.native-BetterBags-item-guards', () => {
-  for(const [base,version] of [['evidence/integration-contracts/','v0.5.14'],['evidence/integration-contracts-candidate43/','v0.5.17'],['evidence/integration-contracts-candidate44/','v0.8.12'],['evidence/integration-contracts-20261105/','v0.9.0']]) {
+  for(const [base,version] of [['evidence/integration-contracts/','v0.5.14'],['evidence/integration-contracts-candidate43/','v0.5.17'],['evidence/integration-contracts-candidate44/','v0.8.12'],['evidence/integration-contracts-20261111/','v0.9.2']]) {
     for(const row of JSON.parse(read(base+'manifest.json')).files.filter(row=>row.repo==='Cidan/BetterBags')) {
       if(sha(base+row.path)!==row.sha256) throw Error('BetterBags retained contract drift: '+row.path);
     }
@@ -1926,6 +1926,15 @@ check('T108.current-Pawn-BetterBags-native-parity-with-unknown-metadata',()=>{
 function immersionExtendedFixture(mutations={}) {
   const base='evidence/integration-contracts-candidate43/Immersion/';
   const folder='addon/ImmersionExtended_Forever/';
+  const inputs='scratch/pawn-immersion-inputs/';
+  const pawn=inputs+'PawnCurrent/';
+  const advisor=JSON.parse(read('evidence/immersion-extended/2026-11-11/pawn-ui-input.json')).files[0];
+  if(sha(inputs+advisor.path)!==advisor.sha256) throw Error('Pawn advisor callback source drift');
+  const localization=read(pawn+'Localization.lua').match(/^\s*\["TooltipUpgradeAnnotation"\].*$/m)[0];
+  const tooltipXml=read(inputs+'Immersion/Display/Frame.xml').match(/<GameTooltip name="ImmersionItemTooltipTemplate"[\s\S]*?<\/GameTooltip>/)[0];
+  const tooltipOnShow=tooltipXml.match(/<OnShow>([\s\S]*?)<\/OnShow>/)[1];
+  const controller=inputs+'Immersion/Logic/Controller.lua';
+  const circle=read(controller).replace(/\r\n/g,'\n').match(/\['CIRCLE'\] = function\(self\)[\s\S]*?\n\tend;/)[0];
   const embed=name=>{
     let text=read(folder+name+'.lua');
     for(const [before,after] of Object.entries(mutations[name]||{})) {
@@ -1939,10 +1948,19 @@ function immersionExtendedFixture(mutations={}) {
     .replace('--@EXT_NATIVE_BOUNDARIES',()=>nativeFunction(base+'Components/Elements.lua','Elements:UpdateBoundaries'))
     .replace('--@EXT_NATIVE_OFFSETS',()=> 'local GetOffset=UIParent.GetBottom\n'+['SetOffset','SetExtraOffset'].map(n=>nativeFunction(base+'Logic/Talkbox.lua','TalkBox:'+n)).join('\n'))
     .replace('--@EXT_NATIVE_EVENTS',()=>['QUEST_PROGRESS','QUEST_COMPLETE','QUEST_ITEM_UPDATE'].map(n=>nativeFunction(base+'Logic/Events.lua','Events:'+n)).join('\n'))
-    .replace('--@EXT_NATIVE_FRAME',()=>['OnEvent','UpdateItems'].map(n=>nativeFunction(base+'Logic/Frame.lua','Frame:'+n)).join('\n'))
-    .replace('--@EXT_NATIVE_PAWN',()=>['BudgetThrottle','PawnShouldItemLinkHaveUpgradeArrowUnbudgeted'].map(n=>nativeFunction('scratch/pawn-immersion-inputs/PawnCurrent/Pawn.lua',n)).join('\n')+
-      '\nPawnShouldItemLinkHaveUpgradeArrow=BudgetThrottle(PawnShouldItemLinkHaveUpgradeArrowUnbudgeted,2/60/4,1/4)')
-    .replace('--@EXT_ADDON_SOURCE',()=>['Core','Rewards','Progress','Bootstrap'].map(embed).join('\n'))
+    .replace('--@EXT_NATIVE_FRAME',()=>['OnEvent','UpdateItems','SetItemTooltip','ShowItems','IsInspectModifier','OnKeyDown']
+      .map(n=>nativeFunction(base+'Logic/Frame.lua','Frame:'+n)).join('\n'))
+    .replace('--@EXT_NATIVE_CONTROLLER',()=> 'local ControllerInput={'+circle+'}\n'+
+      ['GetKeyForButton','GetUIControlKey','NPC:ParseControllerCommand'].map(n=>nativeFunction(controller,n)).join('\n'))
+    .replace('--@EXT_NATIVE_INSPECTOR',()=>nativeFunction(controller,'Inspector:ShowFocusedTooltip')+'\n'+
+      ['SetReferences','SetFocus','ClearFocus'].map(n=>nativeFunction(inputs+'Immersion/Components/Tooltip.lua','Tooltip:'+n)).join('\n')+
+      '\nlocal function tooltipOnShow(self) '+tooltipOnShow+' end')
+    .replace('--@EXT_NATIVE_PAWN',()=>'local PawnLocal={'+localization+'\n}\n'+
+      ['BudgetThrottle','PawnShouldItemLinkHaveUpgradeArrowUnbudgeted','PawnGetItemLinkFromTooltip','PawnUpdateTooltip',
+        'PawnAddValuesToTooltip','PawnAddTooltipLine'].map(n=>nativeFunction(pawn+'Pawn.lua',n)).join('\n')+
+      '\nPawnShouldItemLinkHaveUpgradeArrow=BudgetThrottle(PawnShouldItemLinkHaveUpgradeArrowUnbudgeted,2/60/4,1/4)\n'+
+      nativeFunction(pawn+'PawnUI.lua','PawnUIFrame_ShowQuestUpgradeAdvisorCheck_OnClick'))
+    .replace('--@EXT_ADDON_SOURCE',()=>['Core','Rewards','Tooltips','Progress','Bootstrap'].map(embed).join('\n'))
     .replace('--@EXT_BOOTSTRAP_AGAIN',()=>embed('Bootstrap'));
 }
 check('T109.forever-immersion-extension-native-lifecycle-and-layout',()=>{
@@ -1955,9 +1973,17 @@ check('T110.forever-immersion-extension-defect-and-work-controls',()=>{
     ['premature-pawn',{Rewards:{'return self.ready and self.installed':'return self.installed'}},'premature Pawn call'],
     ['requires-betterbags',{Rewards:{"and Core.Loaded(api, 'Immersion')":"and Core.Loaded(api, 'Immersion') and Core.Loaded(api, 'BetterBags')"}},'Pawn verdict parity'],
     ['wrong-verdict',{Rewards:{'elseif verdict == true then':'elseif verdict == false then'}},'Pawn verdict parity'],
-    ['leaked-arrow',{Rewards:{'for _, arrow in pairs(self.arrows) do arrow:Hide() end':'for _, arrow in pairs(self.arrows) do end'}},'close retained upgrade arrow'],
+    ['leaked-arrow',{Rewards:{'for item in pairs(self.confirmed) do self:ClearArrow(item) end':'-- skipped confirmed arrows'}},'close retained upgrade arrow'],
+    ['hide-pending-arrow',{Rewards:{'if self.confirmed[item] ~= link then self:ClearArrow(item) end':'self:ClearArrow(item)'}},'pending budget result hid confirmed arrow'],
+    ['stale-comparison',{Rewards:{'if contextChanged then self:ResetArrows() end':'-- comparison reset skipped'}},'previous equipment verdict survived invalidation'],
+    ['missed-advisor',{Rewards:{"checkbox:HookScript('OnClick'":"checkbox:HookScript('OnHide'"}},'Pawn checkbox left a stale arrow'],
+    ['missing-tooltip-annotation',{Tooltips:{"self.api.PawnUpdateTooltip(name, 'SetHyperlink', link)":"-- Pawn formatter omitted"}},'inspector Pawn percentage absent'],
+    ['tooltip-getter-identity',{Tooltips:{"if link then return link, quest, name end":"if link and select(2, tooltip:GetItem()) == link then return link, quest, name end"}},'inspector Pawn percentage absent'],
+    ['duplicate-tooltip-annotation',{Tooltips:{"self.api.PawnUpdateTooltip(name, 'SetHyperlink', link)":"self.api.PawnUpdateTooltip(name, 'SetHyperlink', link); self.api.PawnUpdateTooltip(name, 'SetHyperlink', link)"}},'duplicate inspector Pawn line'],
+    ['stale-tooltip-ownership',{Tooltips:{"return link == record.link and quest == record.quest":"return true"}},'stale inspector callback annotated a reused tooltip'],
+    ['lost-tooltip-padding',{Tooltips:{"layout.onShow(tooltip)":"-- native padding omitted"}},'refreshed tooltip lost native padding'],
     ['retry-loop',{Rewards:{'or self.attempts >= 8':'or false'}},'unbounded pending retries'],
-    ['uncoalesced-events',{Rewards:{'if not self.open or self.dirty then return end':'if not self.open then return end'}},'event burst created unbounded callbacks'],
+    ['uncoalesced-events',{Rewards:{'if self.dirty then return end':'-- coalescing omitted'}},'event burst created unbounded callbacks'],
     ['wrong-padding',{Progress:{'(height + 48)':'(height + 32)'}},'post-layout Required Items correction failed'],
     ['early-layout',{Progress:{'api.RunNextFrame(function() api.RunNextFrame(function()':'api.RunNextFrame(function()','end) end)':'end)'}},'repair ran before native second measurement'],
     ['combat-write',{Progress:{'and Core.Writable(api)':'and true'}},'stale/ineligible layout write'],
@@ -1969,7 +1995,7 @@ check('T110.forever-immersion-extension-defect-and-work-controls',()=>{
     if(!rejected)throw Error('Standalone extension control did not reject '+name);
   }
 });
-check('T111.forever-settings-native-bag-dispatch-and-migration',()=>{
+check('T111.forever-config-diagnostics-and-retired-writes',()=>{
   require('./forever_config_experiment.cjs').run();
 });
 check('T112.forever-dynamiccam-native-startup-and-situation-transitions',()=>{

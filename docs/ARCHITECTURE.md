@@ -1,22 +1,26 @@
 # Implementation architecture
 
 Status: maintained
-Reviewed: 2026-11-05
+Reviewed: 2026-11-11
 Evidence: [TOC](../addon/ConsolePort_Forever/ConsolePort_Forever.toc),
 [bootstrap](../addon/ConsolePort_Forever/ConsolePort_Forever.lua),
 [runtime setup](../addon/ConsolePort_Forever/RuntimeSetup.lua).
 
 ## Independent Forever Immersion addon
 
-ImmersionExtended_Forever has its own TOC, namespace, event lifecycle and stateless runtime. Core gates the Forever client; Rewards observes Pawn startup and decorates owned current reward icons; Progress defers native Required Items measurement; Bootstrap owns event/diagnostic registration. It does not share Retail companion policy/store/transactions. Existing Retail modules remain untouched. [Contract](IMMERSION-EXTENDED.md).
+ImmersionExtended_Forever has its own TOC, namespace, event lifecycle and
+stateless runtime. Core gates the Forever client. Rewards observes Pawn startup
+and decorates current reward icons. Tooltips annotates Immersion's active
+reward inspector cards through Pawn's formatter. Progress defers native
+Required Items measurement. Bootstrap owns event and diagnostic registration.
+[Contract](IMMERSION-EXTENDED.md).
 
 ## Integration admission
 
-ForeverConfig_Extended is a separate Forever-only namespace and saved status/
-migration receipt. It applies an exact-prior-state Plater scale correction once,
-observes native bag dispatch without taking protected ownership, and captures
-bounded readiness diagnostics. Retail companion and Immersion extension modules
-remain separate. [Contract](FOREVER-CONFIG-EXTENDED.md).
+ForeverConfig_Extended captures bounded presentation and camera diagnostics in
+its own Forever-only namespace. It preserves the saved receipt for the retired
+Plater migration. The BetterBags dispatch and focus bridge is outside the
+current load path. [Contract](FOREVER-CONFIG-EXTENDED.md).
 
 Candidate.44 removes every third-party addon version allowlist. Native API,
 data shape, readiness, ownership and secure-body probes determine availability.

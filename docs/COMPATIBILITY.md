@@ -9,6 +9,14 @@ Evidence: [TOC](../addon/ConsolePort_Forever/ConsolePort_Forever.toc),
 
 ## Separate Forever integration
 
+The November 11 standalone source refresh pins BetterBags v0.9.2 and
+DynamicCam 2.21.6 for qualification. Both Forever delivery payloads contain
+extension code only. The retired BetterBags bridge no longer participates in
+Forever Config Extended. The Immersion inspector integration uses the
+installed Immersion 1.4.61 and Pawn 2.14.1 capabilities without version
+admission or bag-provider dependency.
+[Revised scope](reference/FOREVER-IMMERSION-REPAIR-PLAN-2026-11-11.md).
+
 [Forever Config Extended](FOREVER-CONFIG-EXTENDED.md) qualifies the native Plater
 profile/refresh owner and current BetterBags bag/context handler capabilities.
 Its native bag source is pinned in the reconstruction tool; pins are evidence,

@@ -1,0 +1,15 @@
+{
+  "status": "PASS",
+  "sourceCommit": "ab592119616fe226c0fc022cf726cf30e860e8ee",
+  "githubActionsRun": "https://github.com/luiscarlos92/consoleport_forever/actions/runs/43072238368",
+  "runtimeChecks": 112,
+  "toolingChecks": 96,
+  "productFiles": 74,
+  "toolAndTestFiles": 173,
+  "dependencyLockSHA256": "a8de8c812bf0b2b969cc01599954f0b8f0b7a45700253ff660d4fff9e99aa865",
+  "exactLocalAndCISourceInventory": true,
+  "localRuntimeReportSHA256": "6658c03ff866f7f378ab8cc21582b2ceb7aa3a9d0cacbd62e99f5ee624edc9a0",
+  "localToolingReportSHA256": "d60338b58b6788ff272e446f35e310715fc1ce4cd1d4f8dfa2aff41b8f5c2f07",
+  "ciRuntimeReportSHA256": "85ff75f717d4681f1c811db0e382d1460c7571515881d59031ac008d58a4d907",
+  "ciToolingReportSHA256": "0522d97db5a3f8dca8a559b313c982e77093916154892d464d1a13463734819a"
+}

@@ -13,6 +13,16 @@ Schema3/revision20 remain. No game input. Current official dependencies already
 match the user's updated installation and were not recopied. K07 awaits
 focused-tooltip Retail confirmation; K04/K05 remain.
 
+## November 11 standalone Forever acceptance
+
+After launching Forever, open a quest with item choices using Immersion's
+inspect binding. Verify that confirmed upgrade arrows remain steady, that
+the inspector shows Pawn's expected percentage, and that comparison and
+selection work through close and reopen. Check the Required Items dialog
+and the reward screen with the current anchor. Verify ordinary BagPad use
+and the presentation readouts in `/foreverconfig`.
+[Installed scope](IMPLEMENTATION-STATUS.md#separate-forever-addon-installed).
+
 ## Candidate.44 compatibility checks
 
 The November 5 Forever settings follow-up is separately qualified in

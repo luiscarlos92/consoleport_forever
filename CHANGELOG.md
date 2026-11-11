@@ -1,13 +1,20 @@
 # ConsolePort Forever change history
 
 Status: maintained
-Reviewed: 2026-11-05
+Reviewed: 2026-11-11
 Evidence: [current status](docs/IMPLEMENTATION-STATUS.md),
 [historical chronology](docs/archive/ai-native-2026-10-11/IMPLEMENTATION-STATUS.pre-restructure.md).
 
 Dates below use America/Toronto. This is a curated change index, not invented
 release tags or blanket gameplay certification. Detailed receipts own exact
 source/artifact/file identities. Prepared, installed and accepted are separate.
+
+## Forever Pawn reward feedback and config retirement - November 11, 2026
+
+Installed Immersion Extended 0.1.2 for stable Pawn arrows, advisor preference
+refresh and percentages on Immersion's reward inspector. Forever Config
+Extended 0.1.4 removes the completed Plater migration and BetterBags bridge.
+[Qualification and readback](docs/IMPLEMENTATION-STATUS.md#separate-forever-addon-installed).
 
 ## BetterBags direct frame selection - November 5, 2026
 

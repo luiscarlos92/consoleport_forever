@@ -8,13 +8,20 @@ Evidence: [candidate.44 readback](../evidence/delivery/candidate44-independent-r
 
 ## Separate Forever addon installed
 
-The November 11 follow-up prepares Immersion Extended 0.1.2 with stable
-Pawn arrows, live checkbox refresh and Pawn percentages on Immersion's
-native reward inspector. Forever Config Extended 0.1.4 retires the Plater
-write and BetterBags bridge while retaining presentation diagnostics.
-The Required Items positioning behavior is carried forward. BtWQuests
-and the other installed addons are outside both packages.
-[Scope and verification](reference/FOREVER-IMMERSION-REPAIR-PLAN-2026-11-11.md).
+Installed on November 11 in the Forever client. Immersion Extended 0.1.2
+stabilizes Pawn arrows, refreshes an open quest when the Pawn checkbox changes,
+and adds Pawn percentages to Immersion's native reward inspector. It carries
+forward Required Items positioning. Forever Config Extended 0.1.4 retires the
+Plater write and BetterBags bridge while retaining presentation diagnostics.
+
+All 112 runtime and source checks and 96 tooling checks passed locally and
+in fresh Windows CI with identical inventories. Independent readback matches
+both archives and verifies preservation of 3,177 other addon files, 240 WTF
+files, four root anchors and 239 prior backup files. In-game inspection,
+comparison, arrow stability and positioning remain pending user acceptance.
+[Scope](reference/FOREVER-IMMERSION-REPAIR-PLAN-2026-11-11.md),
+[qualification](../evidence/immersion-extended/2026-11-11/qualification.json),
+[independent readback](../evidence/immersion-extended/2026-11-11/independent-readback.json).
 
 ## November 5 delivery history
 
